@@ -1,0 +1,84 @@
+/* Custom CSS tweaks for Hematogones.com */
+/*  Change top bar to purpule gradient */
+.bg-inverse {
+    background: black;
+    background: -webkit-linear-gradient(#5f006f, black);
+    background: -o-linear-gradient(#5f006f, black);
+    background: -moz-linear-gradient(#5f006f, black);
+    background: linear-gradient(#5f006f, black);
+}
+
+/* add vertical spacing between your rows add this line to your css: */
+.top-buffer { margin-top:20px; }
+
+
+/* label hover and active background*/
+label:hover {
+    text-decoration: none;
+    background-color: rgba(3, 169, 244, 0.19);
+}
+
+.highlight {
+    background-color: rgba(156, 39, 176, .25);
+}
+
+.helpful {
+    background-color: rgba(246, 255, 10, 0.34);
+}
+
+/* Highlight collapsed divs when opened */
+.divshow {
+    background-color: rgba(158, 158, 158, 0.19);
+}
+
+/* reset padding and margins for checkbox columns */
+.btn {
+    margin: 0;
+    padding: 0;
+}
+
+.chkboxes {
+    padding: 0.25em;
+
+}
+
+/*  Shrink Table header font size  */
+.table {
+    font-size: 0.65em;
+}
+
+/*Change textarea font to monospace */
+textarea {
+    font-family: monospace;
+}
+
+/* Thin select boxes with this class */
+.custom-select-sm {
+    font-size: 80%;
+    padding: 0;
+}
+
+/*  Sticky cap window to bottom right of screen   */
+.cap-fixed {
+    position: fixed;
+    right: 0;
+    width: 390px;
+    height: 400px;
+    bottom: 0;
+
+}
+/* add outline to div */
+.outline-danger {
+    background-color: transparent;
+    border-color: #d9534f;
+}
+
+.outline-warning {
+    background-color: transparent;
+    border-color: #f0ad4e!important;
+}
+
+#cap-bottom-left {
+    overflow: scroll;
+    max-height: 800px;
+}
