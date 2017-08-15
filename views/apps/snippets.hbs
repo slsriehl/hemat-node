@@ -1,6 +1,6 @@
 <!-- from surgpath/index.php -->
 
-<div class="container-fluid">
+<div class="container">
 <!-- Breadcrumbs nav header -->
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item">
@@ -36,7 +36,7 @@
 <!-- end first container -->
 </div>
 
-<div class="container-fluid">
+<div class="container">
 	<div class="row">
 <!-- left hand column-->
 		<div class="col col-sm-8" id="bottom-l">
@@ -78,7 +78,7 @@
 									<th>Delete</th>
 								</tr>
 
-								{{#for results}}
+								{{#each results}}
 								<tr class='rowselect' id={{entry_id}}>
 									<td>{{entry_id}}</td><td>{{spc_class}}</td>
 									<td>{{keywords}}</td>
@@ -94,6 +94,7 @@
 										</a>
 									</td>
 								</tr>
+								{{/each}}
 							</table>
 <!-- end table scroll-->
 						</div>
@@ -295,4 +296,4 @@
 <!-- end modal label -->
 </div>
 
-<!-- TODO: scripts to include: (surgpath)/js/tag-it.js and (surgpath)/js/surgpath-scripts.js -->
+<!-- TODO: scripts to include: ../vendor/tag-it/tag-it.min.js and ../js/snippets-scripts.js -->
