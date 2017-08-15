@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(express.static("./public"));
+app.use(express.static(__dirname + '/public'));
 
 //++++++ Handlebars config ++++++
 app.engine('hbs', hbs({
@@ -31,7 +31,7 @@ app.set('view engine', 'hbs');
 const session 		= require('express-session'),
 			database 		= require('./models').sequelize,
  			SequelStore	= require('connect-sequelize')(session),
-			modelName		= 'ConnectSession';
+			modelName		= 'user_session';
 
 const setSecret = (secretEnvVar) => {
 	if(secretEnvVar) {
