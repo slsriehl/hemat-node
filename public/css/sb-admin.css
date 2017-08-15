@@ -3,8 +3,8 @@
  * Copyright 2013-2017 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-sb-admin/blob/master/LICENSE)
  */
-body {
-  background: #292b2c; }
+/*body {
+  background: #292b2c; }*/
 
 body.fixed-nav {
   padding-top: 54px; }
@@ -71,6 +71,13 @@ body.fixed-nav {
 .navbar-inverse input.form-control {
   border-color: #eceeef; }
 
+/* added by Sarah */
+#mainNav {
+	position: fixed;
+	width: 100%;
+	z-index: 20;
+}
+
 #mainNav .navbar-collapse {
   max-height: 75vh;
   overflow: auto; }
@@ -130,22 +137,28 @@ body.fixed-nav {
 
 @media (min-width: 992px) {
   #mainNav .navbar-brand {
-    width: 250px; }
+	/* width: 250px; */ }
   #mainNav .navbar-collapse {
     max-height: none;
     overflow: visible; }
+
+/* changed by Sarah */
+
     #mainNav .navbar-collapse .navbar-nav.sidebar-nav {
-      position: absolute;
+			position: fixed; /* was absolute */
       left: 0;
       top: 0;
-      margin-top: 56px;
-      padding-bottom: 56px;
-      height: 100vh;
+      margin-top: 54px; /* was 56px */
+      padding-bottom: 54px; /* was 56px */
+      height: 100%; /* was 100vh */
       background: #292b2c;
       -webkit-flex-direction: column;
       -ms-flex-direction: column;
       flex-direction: column;
-      overflow: auto; }
+      overflow: scroll; /* was auto */
+			width: auto; /* new */
+		}
+
       #mainNav .navbar-collapse .navbar-nav.sidebar-nav > .nav-item {
         padding: 0;
         width: 250px; }
@@ -178,3 +191,20 @@ body.fixed-nav {
         text-align: center; }
     #mainNav .navbar-collapse .navbar-nav > .nav-item.dropdown .dropdown-menu > .dropdown-item > .dropdown-message {
       max-width: 300px; } }
+
+/* added by Sarah */
+			.page-contents {
+				z-index: 10;
+				position: relative;
+				top: 54px; /* menu bar */
+				overflow: auto;
+				padding: 1rem;
+				box-sizing: border-box;
+				width: 100%;
+			}
+			@media screen and (min-width: 992px) {
+				.page-contents {
+					left: 267px; /* sidebar plus scrollbar */
+					width: calc(100% - 267px); /* render in full space minus sidebar */
+				}
+			}
