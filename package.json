@@ -1,0 +1,33 @@
+{
+  "name": "hematogones.com",
+  "version": "1.0.0",
+  "description": "pathology tools",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slsriehl/hemat-node.git"
+  },
+  "author": "Sarah Schieffer Riehl",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/slsriehl/hemat-node/issues"
+  },
+  "homepage": "https://github.com/slsriehl/hemat-node#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "connect-sequelize": "^2.0.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.4",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.5",
+    "morgan": "^1.8.2",
+    "util": "^0.10.3"
+  }
+}

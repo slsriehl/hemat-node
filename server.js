@@ -51,11 +51,13 @@ app.use(session({
 }));
 
 // ++++++ Express routes ++++++
-const userRoutes		= require('./routes/user'),
+//const userRoutes		= require('./routes/user'),
+const testRoutes = require('./routes/tests');
 // 			contextRoutes = require('./routes/context'),
 // 			itemRoutes		= require('./routes/item');
 
-app.use(userRoutes);
+app.use(testRoutes);
+//app.use(userRoutes);
 // app.use(contextRoutes);
 // app.use(itemRoutes);
 
