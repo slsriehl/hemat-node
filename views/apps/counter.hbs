@@ -1,0 +1,240 @@
+		<div class="container-fluid">
+				<!-- Breadcrumbs -->
+				<ol class="breadcrumb">
+						<li class="breadcrumb-item">
+								<a href="../index.php">Home</a>
+						</li>
+						<li class="breadcrumb-item active"><i class="fa fa-calculator mr-2"></i> Customizable keypad tally Counter</li>
+				</ol>
+				<!-- end breadcrumb container-fluid -->
+			</div>
+			<form id="form">
+			<div class="container-fluid">
+				<div class="card mb-3">
+
+						<div class="card-header">
+								<!-- How to use and modal -->
+								<div class="row">
+										<button class="btn btn-default btn-block" data-target="#flipFlop" data-toggle="modal" id='openhelp' type='button'>How to use the custom counter</button> <!-- The modal -->
+										<div aria-hidden="true" aria-labelledby="modalLabel" class="modal fade" id="flipFlop" role="dialog" tabindex="-1">
+												<div class="modal-dialog" role="document">
+														<div class="modal-content">
+																<div class="modal-header">
+																		<h4 class="modal-title" id="modalLabel">How to use the tally counter</h4>
+																		<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+
+																</div>
+																<div class="modal-body">
+																		<p>Enter your legend for the corresponding keypad box. You don't have to use all of them.</p>
+																		<p>Count using the keypad keys as above.</p>
+																		<p>Click the 'print diff' button to result your tally.</p><img class="diffhelp img-responsive" src="../img/new_counter_key.png"></div>
+																<div class="modal-footer">
+																		<p class="text-danger">Pro tip: The tally counter works great with a bluetooth numberpad at your scope!</p>
+																</div>
+														</div>
+												</div>
+										</div>
+								</div>
+						</div>
+						<!-- diff and printout boxes-->
+						<div class="card-block">
+								<div class="hemediff">
+										<!--counter textarea-->
+										<div class="row bg-info p-2">
+												<div class="col-8 my-auto" id="count-display">
+														<textarea class="counter form-control form-control-success" id="textarea" placeholder="Start typing here" rows="2" style="width: 100%;"></textarea>
+												</div>
+												<div class="col-2 text-center my-auto" >
+														<div class="input-group input-group-sm">
+																<select class="form-control form-control-sm" id="limit">
+																		<option value="200" selected hidden>
+																				Count Limit
+																		</option>
+																		<option>
+																				100
+																		</option>
+																		<option>
+																				200
+																		</option>
+																		<option>
+																				300
+																		</option>
+																		<option>
+																				400
+																		</option>
+																		<option>
+																				500
+																		</option>
+																		<option>
+																				600
+																		</option>
+																		<option>
+																				700
+																		</option>
+																		<option>
+																				800
+																		</option>
+																		<option>
+																				900
+																		</option>
+																		<option>
+																				1000
+																		</option>
+																		<option>1500</option>
+																		<option>2000</option>
+																		<option>2500</option>
+																		<option>3000</option>
+																		<option>3500</option>
+																		<option>4000</option>
+																		<option>4500</option>
+																		<option>5000</option>
+																</select>
+																<span class="input-group-addon"><a href="#" data-toggle="tooltip" title="Default is 200 cells counted"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></a></span>
+														</div>
+												</div>
+												<div class="col-2 text-center my-auto" >
+														<input class="form-control form-control-sm" id="counter" size="5" type="text" placeholder="Cell count">
+												</div>
+										</div>
+								</div>
+						</div>
+				</div>
+		</div>
+		<div class="container-fluid">
+				<div class="row">
+						<!--middle colored boxes-->
+						<div class="container-fluid">
+								<div class="row row-grid">
+										<!-- middle left column-->
+										<div class="text-center col-sm-8" id="bottom-l">
+												<table class="table">
+														<tr>
+																<th colspan="4"><h4>Number Pad</th>
+														</tr>
+														<tr>
+																<td style="background-color: lightgray;">
+																</td>
+																<td style="background-color: #4DB6AC;">
+																	<h4>/</h4>
+																	<input
+																		class="form-control form-control-sm"
+																		id="box12"
+																		placeholder="Item 12"
+																		size="10"
+																		tabindex="1"
+																		type="text"
+																	/>
+																	<input
+																		class="form-control form-control-sm"
+																		disabled
+																		id="box_12_num"
+																		size="5"
+																		type="text"
+																	/>
+																	<input
+																		class="form-control form-control-sm"
+																		id="box12_2"
+																		placeholder="Item 12%"
+																		size="10"
+																		type="text"
+																	/>
+																	<input
+																		class="form-control form-control-sm"
+																		id="box_12_pct"
+																		size="5"
+																		type="text"
+																		value="0"
+																	/>
+																</td>
+																<td style="background-color: #81C784;"><h4>*</h4><input class="form-control form-control-sm" id="box13" placeholder="Item 13" size="10" tabindex="1" type="text"><input class="form-control form-control-sm" disabled id="box_13_num" size="5" type="text"><input class="form-control form-control-sm" id="box13_2" placeholder="Item 13%" size="10" type="text"><input class="form-control form-control-sm" id="box_13_pct" size="5" type="text" value="0"></td>
+																<td style="background-color: #4db6ac;"><h4>-</h4><input class="form-control form-control-sm" id="box14" placeholder="Item 14" size="10" tabindex="1" type="text"><input class="form-control form-control-sm" disabled id="box_14_num" size="5" type="text"><input class="form-control form-control-sm" id="box14_2" placeholder="Item 14%" size="10" type="text"><input class="form-control form-control-sm" id="box_14_pct" size="5" type="text" value="0"></td>
+														</tr>
+														<tr>
+																<td style="background-color: #9FA8DA;"><h4>7</h4><input class="form-control form-control-sm" id="box7" placeholder="Item 7" size="10" tabindex="1" type="text"><input class="form-control form-control-sm" disabled id="box_7_num" size="5" type="text"><input class="form-control form-control-sm" id="box7_2" placeholder="Item 7%" size="10" type="text"><input class="form-control form-control-sm" id="box_7_pct" size="5" type="text" value="0"></td>
+																<td style=" background-color: #D7CCC8;"><h4>8</h4><input class="form-control form-control-sm" id="box8" placeholder="Item 8" size="10" tabindex="1" type="text"><input class="form-control form-control-sm" disabled id="box_8_num" size="5" type="text"><input class="form-control form-control-sm" id="box8_2" placeholder="Item 8%" size="10" type="text"><input class="form-control form-control-sm" id="box_8_pct" size="5" type="text" value="0"></td>
+																<td style=" background-color: #9FA8DA;"><h4>9</h4><input class="form-control form-control-sm" id="box9" placeholder="Item 9" size="10" tabindex="1" type="text"><input class="form-control form-control-sm" disabled id="box_9_num" size="5" type="text"><input class="form-control form-control-sm" id="box9_2" placeholder="Item 9%" size="10" type="text"><input class="form-control form-control-sm" id="box_9_pct" size="5" type="text" value="0"></td>
+																<td rowspan="2" style="background-color: rgba(129, 199, 132, 0.97);"><h4>+</h4><input class="form-control form-control-sm" id="box15" placeholder="Item 15" size="10" tabindex="1" type="text"><input class="form-control form-control-sm" disabled id="box_15_num" size="5" type="text"><input class="form-control form-control-sm" id="box15_2" placeholder="Item 15%" size="10" type="text"><input class="form-control form-control-sm" id="box_15_pct" size="5" type="text" value="0"></td>
+														</tr>
+														<tr>
+																<td style=" background-color: #D7CCC8;"><h4>4</h4><input class="form-control form-control-sm" id="box4" placeholder="Item 4" size="10" tabindex="1" type="text"><input class="form-control form-control-sm" disabled id="box_4_num" size="5" type="text"><input class="form-control form-control-sm" id="box4_2" placeholder="Item 4%" size="10" type="text"><input class="form-control form-control-sm" id="box_4_pct" size="5" type="text" value="0"></td>
+																<td style=" background-color: #9FA8DA;"><h4>5</h4><input class="form-control form-control-sm" id="box5" placeholder="Item 5" size="10" tabindex="1" type="text"><input class="form-control form-control-sm" disabled id="box_5_num" size="5" type="text"><input class="form-control form-control-sm" id="box5_2" placeholder="Item 5%" size="10" type="text"><input class="form-control form-control-sm" id="box_5_pct" size="5" type="text" value="0"></td>
+																<td style=" background-color: #D7CCC8;"><h4>6</h4><input class="form-control form-control-sm" id="box6" placeholder="Item 6" size="10" tabindex="1" type="text"><input class="form-control form-control-sm" disabled id="box_6_num" size="5" type="text"><input class="form-control form-control-sm" id="box6_2" placeholder="Item 6%" size="10" type="text"><input class="form-control form-control-sm" id="box_6_pct" size="5" type="text" value="0"></td>
+														</tr>
+														<tr>
+																<td style=" background-color: #9FA8DA;"><h4>1</h4><input class="form-control form-control-sm" id="box1" placeholder="Item 1" size="10" tabindex="1" type="text"><input class="form-control form-control-sm" disabled id="box_1_num" size="5" type="text"><input class="form-control form-control-sm" id="box1_2" placeholder="Item 1%" size="10" type="text"><input class="form-control form-control-sm" id="box_1_pct" size="5" type="text" value="0"></td>
+																<td style=" background-color: #D7CCC8;"><h4>2</h4><input class="form-control form-control-sm" id="box2" placeholder="Item 2" size="10" tabindex="1" type="text"><input class="form-control form-control-sm" disabled id="box_2_num" size="5" type="text"><input class="form-control form-control-sm" id="box2_2" placeholder="Item 2%" size="10" type="text"><input class="form-control form-control-sm" id="box_2_pct" size="5" type="text" value="0"></td>
+																<td style=" background-color: #9FA8DA;"><h4>3</h4><input class="form-control form-control-sm" id="box3" placeholder="Item 3" size="10" tabindex="1" type="text"><input class="form-control form-control-sm" disabled id="box_3_num" size="5" type="text"><input class="form-control form-control-sm" id="box3_2" placeholder="Item 3%" size="10" type="text"><input class="form-control form-control-sm" id="box_3_pct" size="5" type="text" value="0"></td>
+																<td rowspan="2" style=" background-color: lightgray;"><h4>ENT</h4></td>
+														</tr>
+														<tr>
+																<td style=" background-color: #BDBDBD;"></td>
+																<td style=" background-color: #9FA8DA;"><h4>0</h4><input class="form-control form-control-sm" id="box10" placeholder="Item 10" size="10" tabindex="1" type="text"><input class="form-control form-control-sm" disabled id="box_10_num" size="5" type="text"><input class="form-control form-control-sm" id="box10_2" placeholder="Item 10%" size="10" type="text"><input class="form-control form-control-sm" id="box_10_pct" size="5" type="text" value="0"></td>
+																<td style=" background-color: #D7CCC8;"><h4>.</h4><input class="form-control form-control-sm" id="box11" placeholder="Item 11" size="10" tabindex="1" type="text"><input class="form-control form-control-sm" disabled id="box_11_num" size="5" type="text"><input class="form-control form-control-sm" id="box11_2" placeholder="Item 11%" size="10" type="text"><input class="form-control form-control-sm" id="box_11_pct" size="5" type="text" value="0"></td>
+														</tr>
+												</table>
+										</div><!-- middle right text output-->
+										<div class="text-center col-sm-4" id="bottom-r">
+												<div class="card text-center">
+														<div class="card-header">
+																<ul class="nav nav-pills">
+																		<ul class="nav nav-pills">
+
+																				<a class="btn btn-lg btn-outline-info p-2" id="printDiff">
+																						<small>Print Diff</small>
+																				</a>
+
+																				<a class="btn btn-lg btn-outline-success p-2 ml-4" >
+																						<small class="copy btn-default" data-toggle="popover" data-placement="top" data-content="Diff copied to clipboard!" data-clipboard-target="#diffOut" >
+																								Copy</small>
+																				</a>
+
+																				<a class="btn btn-lg btn-outline-danger p-2 ml-4" id="Reset" >
+																						<small>Reset</small>
+																				</a>
+
+																</ul>
+														</div>
+														<div class="card-block">
+																<div class="col">
+																		<textarea id="diffOut" rows="16" style="width: 100%;"></textarea>
+																</div>
+																<p class="card-footer"><input id="switchtext" type="checkbox"> Check to toggle the final diff format</p>
+														</div>
+												</div>
+
+										</div>
+
+								</div>
+						</div>
+
+				</div>
+
+		</div>
+</form>
+<!-- previous diffs card-->
+<div class="container-fluid">
+	<div class="row">
+		<div class="col col-md-12">
+			<div class="card text-center">
+					<div class="card-header">
+							<ul class="nav nav-pills">
+									<li class="nav-item">
+											<a class="nav-link active ml-4" data-toggle="collapse" href="#diffHist-hide" aria-expanded="false" aria-controls="collapsediv"><small> Show previously counted differentials</small></a>
+									</li>
+							</ul>
+					</div>
+					<div class="card-block">
+							<div class="col collapse" id="diffHist-hide">
+									<textarea id="diffHist" rows="16" style="width: 100%;"></textarea>
+							</div>
+					</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--end container-fluid wrapper-->
+
+<!-- scripts
+../js/counter-scripts.js
+-->

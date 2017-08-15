@@ -25,5 +25,14 @@ router.get('/apps/heme_diff', (req, res) => {
 	});
 });
 
+router.get('/apps/counter', (req, res) => {
+	res.render('./apps/counter.hbs',
+	{"specificScripts":
+		[
+			"../js/counter-scripts.js"
+		]
+	});
+});
+
 
 module.exports = router;
