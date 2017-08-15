@@ -1,0 +1,154 @@
+<!-- main template for snips.hematogones.com adapted from source by Chandra Krishnan, 5/6/2017 by Sarah Riehl, 8/14/2017.  All rights reserved. -->
+
+<!DOCTYPE html>
+<!--[if lte IE 6]><html class="preIE7 preIE8 preIE9" lang="en"><![endif]-->
+<!--[if IE 7]><html class="preIE8 preIE9" lang="en"><![endif]-->
+<!--[if IE 8]><html class="preIE9" lang="en"><![endif]-->
+<!--[if gte IE 9]><!-->
+<html lang="en">
+<!--<![endif]-->
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="viewport" content="width=device-width,initial-scale=1, shrink-to-fit=no" />
+			<title>Hematogones.com - Online Pathology / Laboratory tools</title>
+		<meta name="author" content="Sarah Schieffer Riehl with Chandra Krishnan" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+<!-- TODO: favicon -->
+		<link rel="shortcut icon" href="img/hg-favicon.ico" />
+<!-- Bootstrap CSS -->
+		<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.min.css" />
+<!-- Custom fonts for this template -->
+		<link rel="stylesheet" type="text/css" href="vendor/font-awesome/css/font-awesome.min.css" />
+<!-- Plugin CSS -->
+		<link rel="stylesheet" type="text/css" href="vendor/datatables/dataTables.bootstrap4.css" />
+<!-- Custom styles for this template -->
+		<link rel="stylesheet" type="text/css" href="css/sb-admin.css" />
+<!-- custom styles for HG.com -->
+		<link rel="stylesheet" type="text/css" href="css/hg-base.css" />
+<!-- jquery css -->
+		<link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" />
+	</head>
+	<body>
+<!-- navigation header which shows logged in status and user account info, as well as sidebar with main menu -->
+		<nav id="mainNav" class="navbar static-top navbar-toggleable-md navbar-inverse bg-inverse">
+<!-- mobile menu toggle -->
+			<button
+				aria-controls="navbarExample"
+				aria-expanded="false"
+				aria-label="Toggle navigation"
+				class="navbar-toggler navbar-toggler-right"
+				data-target="#navbarExample"
+				data-toggle="collapse"
+				type="button"
+			>
+				<span class="navbar-toggler-icon">
+				</span>
+			</button>
+<!-- begin header bar -->
+			<a class="navbar-brand" href="/">Hematogones.com</a>
+			<div class="collapse navbar-collapse" id="navbarExample">
+<!-- sidebar goes here, header bar continues after -->
+				<ul class="sidebar-nav navbar-nav link-search">
+					<li>
+						<form class="m-3">
+							<label
+								for="nav-search"
+								class="col-2 col-form-label sr-only"
+							>
+								Search links
+							</label>
+							<input
+								class="form-control form-control-sm search-filter"
+								type="search"
+								id="nav-search"
+								placeholder="Search for tools"
+							/>
+						</form>
+					</li>
+<!-- home -->
+			    <li class="nav-item active">
+						<a class="nav-link" href="/">
+							<i class="fa fa-fw fa-home"></i> Home
+						</a>
+					</li>
+					{{> popular-tools}}
+<!-- categories label -->
+					<li class="nav-item">
+						<span class="navbar-brand">
+							Categories
+						</span>
+					</li>
+<!-- CAP cancer checklists label -->
+					<li class="nav-item">
+						<a
+							class="nav-link nav-link-collapse collapsed"
+							data-toggle="collapse"
+							href="#collapseComponents"
+						>
+							<i class="fa fa-fw fa-flask"></i>
+							CAP Cancer Checklists
+						</a>
+<!-- CAP cancer checklists lists -->
+						<ul class="sidebar-second-level collapse" id="collapseComponents">
+							{{> cap-pediatric}}
+							{{> cap-adult}}
+<!-- end CAP list -->
+						</ul>
+<!-- end CAP label -->
+					</li>
+					{{> heme-path}}
+					{{> gi-path}}
+					{{> clin-path}}
+					{{> surg-path}}
+					{{> autopsy}}
+<!-- Contact Link-->
+					<li class="nav-item">
+						<a class="navbar-brand" href="/mail">
+							<i class="fa fa-address-card-o ml-2"></i>
+							Contact Me
+						</a>
+					</li>
+<!-- end sidebar -->
+				</ul>
+<!-- resume header bar -->
+				{{> loginStatusMenu}}
+			</div>
+		</nav>
+		<div class="container">
+<!-- end nav header and sidebar -->
+<!-- page content goes in "body" -->
+			{{{body}}}
+<!-- Footer row-->
+			<div class="row">
+				<div class="col col-sm-12">
+<!-- Lower 2:1 block -->
+					<div class="card mb-3">
+						<div class="card-footer small text-muted">
+							Site by Chandra Krishnan with
+								<a href="https://studioriehl.com/"target="_blank">
+									Studio Riehl
+								</a>
+							.  Updated August 2017.
+<!-- end card-footer -->
+						</div>
+<!-- end card -->
+					</div>
+<!-- end column -->
+				</div>
+<!-- end row -->
+			</div>
+<!-- end container -->
+		</div>
+<!-- scripts footer, send script names to script template so that the particular scripts are rendered last -->
+		{{> standard-scripts}}
+		<!-- specific to each page -->
+		{{#if specificScripts}}
+			{{#each specificScripts}}
+				<script type="text/javascript" src={{this}}></script>
+			{{/each}}
+		{{/if}}
+	</body>
+</html>
