@@ -1,0 +1,298 @@
+<!-- from surgpath/index.php -->
+
+<div class="container-fluid">
+<!-- Breadcrumbs nav header -->
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item">
+			<a href="/">Home</a>
+		</li>
+		<li class="breadcrumb-item active">
+			<i class="fa fa-tags mr-2"></i>
+			Surgical Pathology Snippets
+		</li>
+	</ol>
+
+<!-- <div class="row">
+	<div class="card mb-3">
+		<div class="card-header bg-info">
+-->
+
+<!-- new snippet button that triggers modal -->
+	<div class="row">
+		<div class="col col-md-12">
+			<button
+				class="btn btn-default btn-block"
+				data-target="#addnew"
+				data-toggle="modal"
+				id="openhelp"
+				type="button"
+			>
+				Add new snippet
+			</button>
+<!-- end new snippet btn col -->
+		</div>
+<!-- end new snippet btn row -->
+	</div>
+<!-- end first container -->
+</div>
+
+<div class="container-fluid">
+	<div class="row">
+<!-- left hand column-->
+		<div class="col col-sm-8" id="bottom-l">
+<!-- search, upper left left column-->
+			<div class="card">
+				<div class="card-header">
+					<h5>Search for snippets</h5>
+<!-- end card header -->
+				</div>
+				<div class="card-block">
+					<form method="POST" action="/snippet/search">
+						<input class="form-control" name="search" id="search" />
+						<!-- <input type="hidden" name="doSearch" value="1" /> -->
+						<button class="btn btn-outline-primary p-1" type="submit" >
+							Submit
+						</button>
+					</form>
+<!-- end card block -->
+				</div>
+<!-- end card -->
+			</div>
+<!-- results card -->
+			{{#if results}}
+			<div class="card mt-4">
+				<div class="card-header bg-warning">
+					<h5>Results (click a result to see its contents)</h5>
+<!-- end card header -->
+				</div>
+				<div class="card-block">
+					<div  id="table-wrapper">
+						<div id="table-scroll">
+							<input type="hidden" id="setHere" />
+							<table class="table searchresults">
+								<tr>
+									<th>ID#</th>
+									<th>Specimen Class</th>
+									<th>Keywords</th>
+									<th>Edit</th>
+									<th>Delete</th>
+								</tr>
+
+								{{#for results}}
+								<tr class='rowselect' id={{entry_id}}>
+									<td>{{entry_id}}</td><td>{{spc_class}}</td>
+									<td>{{keywords}}</td>
+									<td>
+										<a onclick="if (confirm('If you haven\'t saved the previous snippet you were editing, it will be lost.  Continue with editing this snippet?')) { return true; } return false;" href="/snippet/edit/{{entry_id}}">
+										Edit</td>
+									<td>
+										<a
+											onclick="if (confirm('Are you sure you want to delete this Report?')) { return true; } return false;"
+											href="/snippet/delete/{{entry_id}}"
+										>
+											Delete
+										</a>
+									</td>
+								</tr>
+							</table>
+<!-- end table scroll-->
+						</div>
+<!-- end table wrapper-->
+					</div>
+<!-- end card block -->
+				</div>
+<!-- end card -->
+			</div>
+<!-- end left hand column -->
+		</div>
+<!-- end conditional display of search results table -->
+		{{/if}}
+		{{#if editResult}}
+<!-- begin right hand column -->
+		<div class="col col-sm-4" id="bottom-r">
+			<div class="card text-center">
+				<div class="card-header">
+					<button class="btn btn-lg btn-outline-info p-2 updateit" id="writeReport" type="button">
+						Update snippet
+					</button>
+					<button class="btn btn-lg btn-outline-danger p-2 ml-4" id="reset" type="button">
+						Reset
+					</button>
+<!-- end card header -->
+				</div>
+				<div class="card-block">
+					<div class="form-group">
+						<textarea class="form-control" id="outPut-1" rows="12" placeholder="Micro"></textarea>
+						<button class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-1" type="button">
+							Copy to Clipboard
+						</button>
+<!-- end first textarea form group -->
+					</div>
+<!-- end first textarea card block -->
+				</div>
+				<div class="card-block">
+					<div class="form-group">
+						<textarea class="form-control" id="outPut-2" rows="6" placeholder="Finals"></textarea>
+						<button class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-2" type="button">
+							Copy to Clipboard
+						</button>
+<!-- end second textarea form group -->
+					</div>
+<!-- end second textarea card block -->
+				</div>
+				<div class="card-block">
+					<div class="form-group">
+						<textarea class="form-control" id="outPut-4" rows="6" placeholder="Comments"></textarea>
+						<button class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-4" type="button">
+							Copy to Clipboard
+						</button>
+<!-- end third textarea form group -->
+					</div>
+<!-- end third textarea card block -->
+				</div>
+<!-- end card -->
+			</div>
+<!-- end right hand column -->
+		</div>
+<!-- end conditional display of editable record -->
+		{{/if}}
+<!-- end row -->
+	</div>
+<!-- end container -->
+</div>
+
+<!-- somewhere -->
+
+<!-- new snippet modal -->
+<div
+	aria-hidden="true"
+	aria-labelledby="modalLabel"
+	class="modal fade"
+	id="addnew"
+	role="dialog"
+	tabindex="-1"
+>
+	<div
+		class="modal-dialog modal-lg"
+		role="document"
+	>
+		<div class="modal-content">
+			<div class="modal-header">
+				<button
+					aria-label="Close"
+					class="close"
+					data-dismiss="modal"
+					type="button"
+				>
+					<span aria-hidden="true">
+						&times;
+					</span>
+				</button>
+				<h4 class="modal-title" id="modalLabel">
+					Add new snippet
+				</h4>
+<!-- end modal header -->
+			</div>
+			<div class="modal-body">
+				<h1>Enter new snippet</h1>
+				<div class="entersearch">
+					<form
+						id="add-snippet"
+						name="entry"
+						action="/snippet/add"
+						method="POST"
+					>
+						<ul class="list-group">
+							<li class="list-group-item">
+								Select class:
+								<select
+									class="form-control form-control-sm"
+									id="ent_class"
+									name="ent_class"
+								>
+									<option value="breast">
+										Breast
+									</option>
+									<option value="GI">
+										GI
+									</option>
+									<option value="peds">
+										Peds
+									</option>
+									<option value="skin">
+										Skin
+									</option>
+									<option value="heme">
+										Heme
+									</option>
+									<option value="neuro">
+										Neuro
+									</option>
+									<option value="soft tissue">
+										Soft tissue
+									</option>
+									<option value="gyn">
+										Gynecologic
+									</option>
+									<option value="cytology">
+										Cytology
+									</option>
+									<option value="small surgicals">
+										Small surgicals
+									</option>
+								</select>
+							</li>
+							<li class="list-group-item">
+								Enter some keywords (separated by a tab)
+								<input
+									class="form-control"
+									id="ent_key"
+									name="ent_key"
+									data-role="tagsinput"
+								/>
+							</li>
+							<li class="list-group-item">
+								<textarea
+								class="form-control"
+								id="ent_micro"
+								name="ent_micro"
+								rows=6
+								placeholder='Enter microscopic description'
+								></textarea>
+							</li>
+							<li class="list-group-item">
+								<textarea
+								class="form-control"
+								id="ent_final"
+								name="ent_final"
+								rows=6
+								placeholder='Enter Final diagnosis'
+								></textarea>
+							</li>
+							<li class="list-group-item">
+								<textarea
+								class="form-control"
+								id="ent_comment"
+								name="ent_comment"
+								rows=6
+								placeholder='Enter any comments'
+								></textarea>
+							</li>
+						</ul>
+						<button class="btn btn-primary p-1" type="submit" id="ent_submit" name="ent_submit">Save new snippet</button>
+					</form>
+<!--end entersearch-->
+				</div>
+<!-- end modal body -->
+			</div>
+			<!--<div class="modal-footer">
+				<input id="search_id" name="search_id" style="display:none">
+			</div> (hidden placeholder for php data)-->
+<!-- end modal content -->
+		</div>
+<!-- end modal dialog -->
+	</div>
+<!-- end modal label -->
+</div>
+
+<!-- TODO: scripts to include: (surgpath)/js/tag-it.js and (surgpath)/js/surgpath-scripts.js -->
