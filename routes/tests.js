@@ -15,5 +15,15 @@ router.get('/apps/snippets', (req, res) => {
 	});
 });
 
+router.get('/apps/heme_diff', (req, res) => {
+	res.render('./apps/heme-diff.hbs',
+	{"specificScripts":
+		[
+			"../vendor/bootstrap/js/bootstrap-datepicker.min.js",
+			"../js/hemediff-scripts.js"
+		]
+	});
+});
+
 
 module.exports = router;
