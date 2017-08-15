@@ -16,20 +16,20 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 <!-- TODO: favicon -->
-		<link rel="shortcut icon" href="img/hg-favicon.ico" />
-<!-- Bootstrap CSS -->
-		<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css" />
-		<link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.min.css" />
-<!-- Custom fonts for this template -->
-		<link rel="stylesheet" type="text/css" href="vendor/font-awesome/css/font-awesome.min.css" />
-<!-- Plugin CSS -->
-		<link rel="stylesheet" type="text/css" href="vendor/datatables/dataTables.bootstrap4.css" />
-<!-- Custom styles for this template -->
-		<link rel="stylesheet" type="text/css" href="css/sb-admin.css" />
-<!-- custom styles for HG.com -->
-		<link rel="stylesheet" type="text/css" href="css/hg-base.css" />
+		<link rel="shortcut icon" href="../img/hg-favicon.ico" />
 <!-- jquery css -->
-		<link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../vendor/jquery/css/jquery-ui.min.css" />
+<!-- Bootstrap CSS -->
+		<link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap-datepicker.min.css" />
+<!-- Custom fonts for this template -->
+		<link rel="stylesheet" type="text/css" href="../vendor/font-awesome/css/font-awesome.min.css" />
+<!-- Plugin CSS -->
+		<link rel="stylesheet" type="text/css" href="../vendor/datatables/dataTables.bootstrap4.css" />
+<!-- Custom styles for this template -->
+		<link rel="stylesheet" type="text/css" href="../css/sb-admin.css" />
+<!-- custom styles for HG.com -->
+		<link rel="stylesheet" type="text/css" href="../css/hg-base.css" />
 	</head>
 	<body>
 <!-- navigation header which shows logged in status and user account info, as well as sidebar with main menu -->
@@ -114,34 +114,34 @@
 <!-- end sidebar -->
 				</ul>
 <!-- resume header bar -->
-				{{> loginStatusMenu}}
+				{{> login-header}}
 			</div>
 		</nav>
-		<div class="container">
 <!-- end nav header and sidebar -->
 <!-- page content goes in "body" -->
 			{{{body}}}
 <!-- Footer row-->
-			<div class="row">
-				<div class="col col-sm-12">
+			<div class="container">
+				<div class="row">
+					<div class="col col-sm-12">
 <!-- Lower 2:1 block -->
-					<div class="card mb-3">
-						<div class="card-footer small text-muted">
-							Site by Chandra Krishnan with
-								<a href="https://studioriehl.com/"target="_blank">
-									Studio Riehl
-								</a>
-							.  Updated August 2017.
+						<div class="card mb-3">
+							<div class="card-footer small text-muted">
+								Site by Chandra Krishnan with
+									<a href="https://studioriehl.com/"target="_blank">
+										Studio Riehl
+									</a>
+								.  Updated August 2017.
 <!-- end card-footer -->
-						</div>
+							</div>
 <!-- end card -->
-					</div>
+						</div>
 <!-- end column -->
-				</div>
+					</div>
 <!-- end row -->
-			</div>
+				</div>
 <!-- end container -->
-		</div>
+			</div>
 <!-- scripts footer, send script names to script template so that the particular scripts are rendered last -->
 		{{> standard-scripts}}
 		<!-- specific to each page -->
