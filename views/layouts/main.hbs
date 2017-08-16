@@ -74,7 +74,7 @@
 							<i class="fa fa-fw fa-home"></i> Home
 						</a>
 					</li>
-					{{> popular-tools}}
+					{{> menus/popular-tools}}
 <!-- categories label -->
 					<li class="nav-item">
 						<span class="navbar-brand ml-2">
@@ -93,17 +93,17 @@
 						</a>
 <!-- CAP cancer checklists lists -->
 						<ul class="sidebar-second-level collapse" id="collapseComponents">
-							{{> cap-pediatric}}
-							{{> cap-adult}}
+							{{> menus/cap-pediatric}}
+							{{> menus/cap-adult}}
 <!-- end CAP list -->
 						</ul>
 <!-- end CAP label -->
 					</li>
-					{{> heme-path}}
-					{{> gi-path}}
-					{{> clin-path}}
-					{{> surg-path}}
-					{{> autopsy}}
+					{{> menus/heme-path}}
+					{{> menus/gi-path}}
+					{{> menus/clin-path}}
+					{{> menus/surg-path}}
+					{{> menus/autopsy}}
 <!-- Contact Link-->
 					<li class="nav-item">
 						<a class="navbar-brand" href="/mail">
@@ -126,8 +126,8 @@
 				<div class="row">
 					<div class="col col-sm-12">
 <!-- Lower 2:1 block -->
-						<div class="card mb-3">
-							<div class="card-footer small text-muted">
+						<div class="card">
+							<div class="card-footer">
 								Site by Chandra Krishnan with
 									<a href="https://studioriehl.com/"target="_blank">
 										Studio Riehl
@@ -146,7 +146,7 @@
 <!-- end wrapper for dynamic page contents -->
 		</section>
 <!-- scripts footer, send script names to script template so that the particular scripts are rendered last -->
-		{{> standard-scripts}}
+		{{> scripts/standard-scripts}}
 		<!-- specific to each page -->
 		{{#if specificScripts}}
 			{{#each specificScripts}}

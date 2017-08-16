@@ -1,0 +1,84 @@
+										 <!-- IHC Modal -->
+										 <div class="modal fade" id="IHCbox" tabindex="-1" role="dialog"
+													aria-labelledby="modelTitleId" aria-hidden="true">
+												 <div class="modal-dialog modal-lg" role="document">
+														 <div class="modal-content">
+																 <div class="modal-header">
+																		 <button type="button" class="close" data-dismiss="modal"
+																						 aria-label="Close">
+																				 <span aria-hidden="true">&times;</span>
+																		 </button>
+																		 <h4 class="modal-title" id="modelTitleId">Immunohistochemistry Table</h4>
+																 </div>
+																	<div class="modal-footer">
+																		 <select id="disclaimer" class="form-control form-control-sm ml-3"
+																						 aria-describedby="helpId" style="display:none;">
+																				 <option selected value = "none" hidden>Choose site for disclaimer</option>
+																		 </select><br>
+																		 <a class="btn btn-lg btn-outline-info p-2" data-dismiss="modal" id="ihcwrite">
+																				 <small>Write to Micro</small>
+																		 </a>
+																 </div>
+																 <div class="modal-body">
+																		 <div class="card-block">
+Chooose cells of interest:
+																				 <select id="celltype" class="form-control form-control-sm mb-3">
+																						 <option selected value="ABNORMAL CELLS">ABNORMAL CELLS</option>
+																						 <option value="ABNORMAL VESSELS">ABNORMAL VESSELS</option>
+																						 <option value="BLASTS">BLASTS</option>
+																						 <option value="PLASMA CELLS">PLASMA CELLS</option>
+																						 <option value="GENERAL">GENERAL</option>
+																				 </select>
+																				 <div class="table-responsive">
+																						 <table class="table" id="ihctable">
+																								 <thead>
+																								 <tr>
+																										 <th>
+Antibody
+																												 <i class="fa fa-question-circle" data-toggle="tooltip"
+																														data-placement="right" title="Start typing antibody name"></i>
+
+																										 </th>
+																										 <th>Value</th>
+																										 <th>Comments</th>
+																								 </tr>
+																								 </thead>
+																								 <tbody>
+																								 <tr>
+																										 <td scope="row">
+
+																												 <input class="form-control form-control-sm search" type="text" >
+
+
+																										 </td>
+																										 <td>
+																												 <select class="form-control form-control-sm ihc_val">
+																														 <option selected hidden>Value?</option>
+																														 <option value="POS">POS</option>
+																														 <option value="NEG">NEG</option>
+																														 <option value="EQUIV">EQUIVOCAL</option>
+																												 </select>
+																										 </td>
+																										 <td>
+																												 <input placeholder="Enter any Comments" class="form-control form-control-sm usercomm" type="text">
+																										 </td>
+																								 </tr>
+																								 </tbody>
+																						 </table>
+																						 <button class="btn btn-block btn-warning addrow">Add another antibody</button>
+
+																				 </div>
+																		 </div>
+																		 <div class='card-block'>
+																				<div class="form-group">
+																					<label for="ihc_interp">Type your interpretation of the stains</label><br>
+																						<textarea class="form-control" rows="5"  id="ihc_interp"></textarea>
+																				</div>
+
+																		 </div>
+
+																 </div>
+
+														 </div>
+												 </div>
+										 </div>

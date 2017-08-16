@@ -1,0 +1,168 @@
+		<div class="container-fluid">
+				<!-- Breadcrumbs -->
+				<ol class="breadcrumb">
+						<li class="breadcrumb-item">
+								<a href="/">Home</a>
+						</li>
+						<li class="breadcrumb-item active"><i class="fa fa-clock-o mr-2"></i>Breast Fixation Time calculator</li>
+				</ol>
+				<div class="card mb-3">
+						<div class="card-header bg-info">
+								<!-- How to use and modal -->
+								<div class="row">
+										<button class="btn btn-default btn-block" data-target="#flipFlop" data-toggle="modal" id='openhelp'
+														type='button'>Fixation times for Austin hospitals
+										</button> <!-- The modal -->
+										<div aria-hidden="true" aria-labelledby="modalLabel" class="modal fade" id="flipFlop" role="dialog"
+												 tabindex="-1">
+												<div class="modal-dialog" role="document">
+														<div class="modal-content">
+																<div class="modal-header">
+																		<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span
+																								aria-hidden="true">&times;</span></button>
+																		<h4 class="modal-title" id="modalLabel">Austin Breast Fixation Schedule</h4>
+																</div>
+																<div class="modal-body">
+																		<div class="card text-center">
+																				<div class="card-header">
+																						<p>Seton Breast Processing out-of-formalin times</p>
+																				</div>
+																				<table class="table">
+																						<tr>
+																								<th >Day received</th>
+																								<th >Time received</th>
+																								<th >Day out of formalin</th>
+																								<th >Time out of formalin</th>
+																						</tr>
+																						<tr>
+																								<td >M-Th</td>
+																								<td >Before 12:30</td>
+																								<td >Same day</td>
+																								<td >19:00</td>
+																						</tr>
+																						<tr>
+																								<td >M-W</td>
+																								<td >After 12:30</td>
+																								<td >Next day</td>
+																								<td >19:00</td>
+																						</tr>
+																						<tr>
+																								<td >Th</td>
+																								<td >After 12:30</td>
+																								<td >Friday</td>
+																								<td >20:45</td>
+																						</tr>
+																						<tr>
+																								<td >Fri</td>
+																								<td >Before 12:30</td>
+																								<td >Friday</td>
+																								<td >20:45</td>
+																						</tr>
+																						<tr>
+																								<td >Fri</td>
+																								<td >After 12:30</td>
+																								<td >Sunday</td>
+																								<td >14:00</td>
+																						</tr>
+																				</table>
+																		</div>
+																</div>
+																<div class="modal-footer">
+																		<button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
+																</div>
+														</div>
+												</div>
+										</div>
+								</div>
+						</div>
+				</div>
+				<div class="container-fluid">
+						<div class="row-fluid">
+								<!--middle colored boxes-->
+										<div class="row row-grid">
+												<!-- bottom left column-->
+												<div class="col-sm-7" id="bottom-l">
+														<div class="card">
+																<div class="card-header">
+																		<p>Enter collection and fixation data</p>
+																</div>
+																<div class="card-block">
+																		<table class="table table-responsive table-striped">
+																				<tr>
+																						<td role="row" ><h4>Collection time:</h4></td>
+																						<td >
+																								<div class="input-group">
+																										<input class="form-control form-control-input" id="timestart" >
+																										<div class="input-group-addon">
+																												<i class="fa fa-calendar"></i>
+																										</div>
+																								</div>
+																						</td>
+																				</tr>
+																				<tr>
+																						<td role="row"><h4>Time in formalin:</h4></td>
+																						<td >
+																								<div class="input-group">
+																										<input class="form-control form-control-input" id="timeformalin" >
+																										<div class="input-group-addon">
+																												<i class="fa fa-calendar"></i>
+																										</div>
+																								</div>
+																						</td>
+																				</tr>
+																				<tr>
+																						<td role="row"><h4>Out of formalin time:</h4></td>
+																						<td >
+																								<div class="input-group">
+																										<input class="form-control form-control-input" id="processorstart" >
+																										<div class="input-group-addon">
+																												<i class="fa fa-calendar"></i>
+																										</div>
+																								</div>
+																						</td>
+																				</tr>
+																		</table>
+																</div>
+														</div>
+												</div>
+												<!-- middle right text output-->
+												<div class="col-sm-5" id="bottom-r">
+														<div class="card text-center">
+																<div class="card-header">
+																		<ul class="nav nav-pills">
+																				<a class="btn btn-lg btn-outline-info p-2" id="writeReport">
+																						<small>Write Report</small>
+																				</a>
+
+																				<a class="btn btn-lg btn-outline-success p-2 ml-4" >
+																						<small class="copy btn-default" data-toggle="popover" data-placement="top" data-content="Diff copied to clipboard!" data-clipboard-target="#outPut-1" >
+																								Copy</small>
+																				</a>
+
+																				<a class="btn btn-lg btn-outline-danger p-2 ml-4" id="Reset" >
+																						<small>Reset</small>
+																				</a>
+																		</ul>
+																</div>
+																<div class="card-block">
+																		<div class="col">
+																				<textarea id="outPut-1" rows="16" style="width: 100%;"></textarea>
+																		</div>
+																		<p class="card-footer"></p>
+																</div>
+														</div>
+												</div>
+										</div>
+
+						</div>
+				</div>
+		<!--end container wrapper-->
+
+<!--
+{"specificScripts":
+	[
+		"../vendor/jquery/js/jquery-ui-timepicker-addon.min.js",
+		"../js/fixation-scripts.js",
+	]
+}
+-->
