@@ -12,5 +12,15 @@ router.get('/gi-path/gi-bx', (req, res) => {
 	});
 });
 
+router.get('/gi-path/liver-bx', (req, res) => {
+	res.render('./page-views/gi-path/liver-bx.hbs',
+	{"specificScripts":
+		[
+			"../json/json-liver.js",
+			"../js/gi-path/liver-scripts.js"
+		]
+	});
+});
+
 
 module.exports = router;
