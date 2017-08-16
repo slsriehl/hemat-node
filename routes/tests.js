@@ -6,51 +6,21 @@ router.get('/', (req, res) => {
 	res.render('index.hbs');
 });
 
-router.get('/apps/snippets', (req, res) => {
-	res.render('./apps/snippets.hbs', {"specificScripts":
+router.get('/surg-path/snippets', (req, res) => {
+	res.render('./page-views/surg-path/snippets.hbs', {"specificScripts":
 		[
 			"../vendor/tag-it/tag-it.min.js",
-			"../js/apps/snippets-scripts.js"
+			"../js/surg-path/snippets-scripts.js"
 		]
 	});
 });
 
-router.get('/apps/heme_diff', (req, res) => {
-	res.render('./apps/heme-diff.hbs',
-	{"specificScripts":
-		[
-			"../vendor/bootstrap/js/bootstrap-datepicker.min.js",
-			"../js/apps/hemediff-scripts.js"
-		]
-	});
-});
-
-router.get('/apps/counter', (req, res) => {
-	res.render('./apps/counter.hbs',
-	{"specificScripts":
-		[
-			"../js/apps/counter-scripts.js"
-		]
-	});
-});
-
-router.get('/apps/pb_smears', (req, res) => {
-	res.render('./apps/pb-smears.hbs',
-	{"specificScripts":
-		[
-			"../json/json-pbsmears.js",
-			"../js/apps/pb-rules.js",
-			"../js/apps/pb-scripts.js"
-		]
-	});
-});
-
-router.get('/apps/gi_bx', (req, res) => {
-	res.render('./apps/gi-bx.hbs',
+router.get('/gi-path/gi-bx', (req, res) => {
+	res.render('./page-views/gi-path/gi-bx.hbs',
 	{"specificScripts":
 		[
 			"../json/json-gi.js",
-			"../js/apps/gi-scripts.js",
+			"../js/gi-path/gi-scripts.js",
 		]
 	});
 });
