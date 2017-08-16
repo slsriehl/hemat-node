@@ -117,22 +117,29 @@ $('#writeReport').on('click', function(){
         var box_9 = $("#box9").val();
         captext += "\n+ Lymph-Vascular Invasion:\n- "+box_9+"\n";
         var box_10 = $("#box10").val();
-        if (box_10 != "N/A") {
+        if (box_10 !="") {
             captext += "\n+ Additional Pathologic Findings:\n- "+box_10+"\n";}
         var box_11 = $("#box11").val();
-        if (box_11 != "None performed"){
+        if (box_11 != ""){
             captext += "\nImmunohistochemistry:\n- "+box_11+"\n";}
 
         var box_12 = $("#box12").val();
+        var box_12_2 = $('#box12_2').val();
         if (box_12 != "Not performed") {
             if (box_12 == 'Translocation detected'){
-                captext += "\nCytogenetics:\n- "+box_12+": "+box_12_2+"\n";}
-            else {captext += "\nCytogenetics:\n- "+box_12+"\n";}
-        }
+                captext += "\nCytogenetics:\n- "+box_12+": "+box_12_2+"\n";
+            }
+            captext += "\nCytogenetics:\n- "+box_12+"\n";
+        } else if (box_12 == "Not performed"){
+            captext += "\nCytogenetics:\n- Not performed\n";}
 
         var box_13 = $("#box13").val();
-        if (box_13 != "Specify molecular testing, if performed") {
-            captext += "\nMolecular Pathology:\n- "+box_13+"\n";}
+        console.log(box_13);
+        if (box_13 != "") {
+            captext += "\nMolecular Pathology:\n- "+box_13+"\n";
+        } else {
+            captext += "\nMolecular Pathology:\n- Not performed\n";
+        }
 
         var box_14 = $("#box14").val();
         captext += "\nRadiographic Findings:\n- "+box_14+"\n";
