@@ -1,0 +1,277 @@
+<div class="container-fluid">
+		<!-- Breadcrumbs -->
+		<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+						<a href="/">Home</a>
+				</li>
+				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+				<li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Salivary Gland tumors</li>
+		</ol>
+
+		{{> page-partials/cap-header}}
+
+	<div class="row">
+		<div class="col col-md-8">
+
+	<h5>Specimen (select all that apply)</h5><br>
+	<select class="form-control form-control-sm "  multiple id="box1">
+	<option>Parotid gland, superficial lobe</option>
+	<option>Parotid gland, deep lobe only</option>
+	<option>Total parotid gland</option>
+	<option>Submandibular gland</option>
+	<option>Sublingual gland</option>
+	<option>Other</option>
+	<option>Not specified</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box1_2' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+	<h5>Specimen status</h5><br>
+	<select class="form-control form-control-sm "  id="box2">
+	<option>Fresh</option>
+	<option>In formalin</option>
+	<option>In other fixative</option>
+	</select>
+
+<hr>
+
+
+	<h5>Procedure (select all that apply) </h5><br>
+	<select class="form-control form-control-sm "  multiple id="box3">
+	<option>Incisional biopsy</option>
+	<option>Excisional biopsy</option>
+	<option>Resection, Superficial parotidectomy</option>
+	<option>Total parotidectomy</option>
+	<option>Resection, submandibular gland</option>
+	<option>Resection, sublingual gland</option>
+	<option>Neck (lymph node) dissection</option>
+	<option>Other</option>
+	<option>Not specified</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box3_2' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+	<h5>Specimen size:</h5><br>
+	<input type="text" class="form-control form-control-sm "  id="box4"  placeholder='cm'>
+
+<hr>
+
+
+	<h5>Specimen Laterality</h5><br>
+	<select class="form-control form-control-sm "  id="box5">
+	<option>Right</option>
+	<option>Left</option>
+	<option>Bilateral</option>
+	<option>Not specified</option>
+	</select>
+
+<hr>
+
+
+	<h5>Tumor Site (select all that apply)</h5><br>
+	<select class="form-control form-control-sm "  multiple id="box6">
+	<option>Parotid gland, Superficial lobe</option>
+	<option>Parotid gland,Deep lobe</option>
+	<option>Parotid gland, Entire parotid gland</option>
+	<option>Submandibular gland</option>
+	<option>Sublingual gland</option>
+	<option>Other</option>
+	<option>Not specified</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box6_2' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+	<h5>Tumor Focality</h5><br>
+	<select class="form-control form-control-sm "  id="box7">
+	<option>Single focus</option>
+	<option>Bilateral</option>
+	<option>Multifocal</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box7_2' style='display:none;' placeholder='Specify sites'>
+
+<hr>
+
+
+	<h5>Tumor size:</h5><br>
+	<input type="text" class="form-control form-control-sm "  id="box8"  placeholder='cm'>
+
+<hr>
+
+
+	<h5>+ Tumor Description (select all that apply)</h5><br>
+	<select class="form-control form-control-sm "  multiple id="box9">
+	<option>Encapsulated/circumscribed</option>
+	<option>Invasive</option>
+	<option>Solid</option>
+	<option>Cystic</option>
+	<option>Other</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box9_2' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+	<h5>Histologic Type:</h5><br>
+	<input type="text" class="form-control form-control-sm "  id="box10"  placeholder='Type first few letters'>
+
+<hr>
+
+
+	<h5>Histologic Grade</h5><br>
+	<select class="form-control form-control-sm "  id="box11">
+	<option>Not applicable</option>
+	<option>GX: Cannot be assessed</option>
+	<option>G1: Well differentiated</option>
+	<option>G2: Moderately differentiated</option>
+	<option>G3: Poorly differentiated</option>
+	<option>Other</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box11_2' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+	<h5>Margins</h5><br>
+	<select class="form-control form-control-sm "  id="box12">
+	<option>Cannot be assessed</option>
+	<option>Margins uninvolved by carcinoma</option>
+	<option>Margin(s) involved by carcinoma</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box12_2' style='display:none;' placeholder='Specify margin and distance to margin'><br>
+	<input type="text" class="form-control form-control-sm "  id='box12_3' style='display:none;' placeholder='Specify involved margin'>
+
+<hr>
+
+
+	<h5>Lymph-Vascular Invasion</h5><br>
+	<select class="form-control form-control-sm "  id="box13">
+	<option>Not identified</option>
+	<option>Present</option>
+	<option>Indeterminate</option>
+	</select>
+
+<hr>
+
+
+	<h5>Perineural Invasion</h5><br>
+	<select class="form-control form-control-sm "  id="box14">
+	<option>Not identified</option>
+	<option>Present</option>
+	<option>Indeterminate</option>
+	</select>
+
+<hr>
+
+
+	<h5>Lymph Nodes, Extranodal Extension </h5><br>
+	<select class="form-control form-control-sm "  id="box15">
+	<option>Not identified</option>
+	<option>Present</option>
+	<option>Indeterminate</option>
+	<option>Not applicable</option>
+	</select>
+
+<hr>
+
+
+	<h5>Pathologic Staging (pTNM)</h5>
+<hr>
+
+	TNM Descriptors (select all that apply)<br><select class="form-control form-control-sm "  id="box16" multiple>
+	<option selected value="Not applicable">Not applicable</option>
+	<option>m</option>
+	<option>r</option>
+	<option>y</option>
+	</select>
+<hr>
+
+
+	<select class="form-control form-control-sm "  id="box17">
+	<option value="pTX">pTX: Cannot be assessed</option>
+	<option value="pT0">pT0: No evidence of primary tumor</option>
+	<option value="pT1">pT1: Tumor 2 cm or less in greatest dimension without extraparenchymal extension (Note I)</option>
+	<option value="pT2">pT2: Tumor more than 2 cm but not more than 4 cm in greatest dimension without</option>
+	<option value="null">extraparenchymal extension (Note I)</option>
+	<option value="pT3">pT3: Tumor more than 4 cm and/or tumor having extraparenchymal extension (Note I)</option>
+	<option value="pT4a">pT4a: Moderately advanced disease. Tumor invades skin, mandible, ear canal, and/or facial</option>
+	<option value="null">nerve.</option>
+	<option value="pT4b">pT4b: Very advanced local disease. Tumor invades skull base and/or pterygoid plates and/or</option>
+	<option value="null">encases carotid artery</option>
+	</select><br>
+
+	<select class="form-control form-control-sm "  id="box18">
+	<option value="pNX">pNX: Cannot be assessed</option>
+	<option value="pN0">pN0: No regional lymph node metastasis</option>
+	<option value="pN1">pN1: Metastasis in a single ipsilateral lymph node, 3 cm or less in greatest dimension</option>
+	<option value="pN2a">pN2a: Metastasis in a single ipsilateral lymph node, more than 3 cm but not more than 6 cm in</option>
+	<option value="null">greatest dimension</option>
+	<option value="pN2b">pN2b: Metastasis in multiple ipsilateral lymph nodes, none more than 6 cm in greatest dimension</option>
+	<option value="pN2c">pN2c: Metastasis in bilateral or contralateral lymph nodes, none more than 6 cm in greatest</option>
+	<option value="null">dimension</option>
+	<option value="pN3">pN3: Metastasis in a lymph node, more than 6 cm in greatest dimension</option>
+	</select><br>
+
+	<select class="form-control form-control-sm "  id="box19">
+	<option value="pMX">pMX: Not Applicable</option>
+	<option value="pM1">pM1: Distant metastasis</option>
+	</select><br>
+	Check here if any lymph nodes submitted? <input class="form-check-input" type="checkbox" id="box20" ><br>
+    <div class='lnchk' style='display:none;'><br>
+	Number of lymph nodes examined: <input type="text" class="form-control form-control-sm "  id="box20_1" ><br>
+	Number of lymph nodes involved: <input type="text" class="form-control form-control-sm "  id="box20_2" ></div>
+<hr>
+
+
+	<h5>+ Additional Pathologic Findings (select all that apply) </h5><br>
+	<select class="form-control form-control-sm "  id="box21">
+	<option>Sialadenitis</option>
+	<option>Tumor associated lymphoid proliferation (TALP)</option>
+	<option>Other </option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box21_2' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+	<h5>+ Ancillary Studies</h5><br>
+	<select class="form-control form-control-sm "  id="box22">
+	<option>None performed</option>
+	<option>Chromosomal microarray pending; see addendum</option>
+	<option>FISH studies pending; see addendum</option>
+	<option>Molecular testing pending; see addendum</option>
+	</select>
+
+<hr>
+
+
+	<h5>+ Clinical History</h5><br>
+	<select class="form-control form-control-sm "  id="box23">
+	<option>Not applicable</option>
+	<option>Neoadjuvant therapy performed</option>
+	</select>
+
+<hr>
+
+
+
+	<!-- close column -->
+			</div>
+			{{> page-partials/cap-footer}}
+	<!-- close row -->
+		</div>
+	<!-- close container -->
+	</div>
+
+
+			<!--
+			"specificScripts":
+				[
+					"../js/cap/salivary-scripts.js",
+				]
+		 -->

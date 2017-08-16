@@ -1,0 +1,168 @@
+<div class="container-fluid">
+		<!-- Breadcrumbs -->
+		<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+						<a href="/">Home</a>
+				</li>
+				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+				<li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>RHABDOMYOSARCOMA: Resection or Biopsy</li>
+		</ol>
+
+		{{> page-partials/cap-header}}
+
+	<div class="row">
+		<div class="col col-md-8">
+
+
+	<b>Procedure</b><br>
+	<select class="form-control form-control-sm "  id="box1">
+	<option>Core needle biopsy</option>
+	<option>Incisional biopsy</option>
+	<option>Excisional biopsy</option>
+	<option>Marginal resection</option>
+	<option>Wide local resection</option>
+	<option>Radical resection</option>
+	<option>Amputation</option>
+	<option>Other</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box1_2' style='display:none;' placeholder='Specify location'><br>
+	<input type="text" class="form-control form-control-sm "  id='box1_3' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+	<b>+ Preoperative treatment</b><br>
+	<select class="form-control form-control-sm "  id="box2">
+	<option>No known preoperative therapy</option>
+	<option>Chemotherapy given</option>
+	<option>Radiation therapy given</option>
+	<option>Preoperative therapy given, type not specified</option>
+	</select>
+
+<hr>
+
+	<b>Tumor Site (Note B)</b><br>
+	<select class="form-control form-control-sm "  id="box3">
+	<option selected>Not specified</option>
+	<option>Bile duct</option>
+	<option>Bladder/prostate</option>
+	<option>Cranial parameningeal</option>
+	<option>Extremity</option>
+	<option>Genitourinary (not bladder/prostate)</option>
+	<option>Head and neck (excluding parameningeal)</option>
+	<option>Orbit</option>
+	<option>Other:</option>
+	</select>
+	<input type="text" class="form-control form-control-sm "  id="box3_2" style="display:none" placeholder="Enter other site" >
+
+<hr>
+
+	<b>Tumor size:</b><br>
+	<input type="text" class="form-control form-control-sm "  id="box4"  placeholder='cm'>
+
+<hr>
+
+	<b>Histologic Type  (Note C)</b><br>
+	<input type="text" class="form-control form-control-sm "  id="box5" placeholder="Choose histologic type" >
+	<input type="text" class="form-control form-control-sm "  id="box5_2" placeholder="Specify other histology here" style="display:none" >
+
+<hr>
+
+	<b>Anaplasia (Note D) </b><br>
+	<select class="form-control form-control-sm "  id="box7">
+	<option selected> Not identified</option>
+	<option> Focal (single or few scattered anaplastic cells)</option>
+	<option> Diffuse (clusters or sheets of anaplastic cells)</option>
+	<option> Indeterminate</option>
+	<option> Cannot be assessed</option>
+	</select>
+
+<hr>
+
+	<b>Fusion Status (if known)</b><br>
+	<select class="form-control form-control-sm "  id="box7_5">
+	<option>Not performed</option>
+	<option>No FOXO1 rearrangement</option>
+	<option>FOXO1 rearrangement present, detected by FISH, amplification present</option>
+	<option>FOXO1 rearrangement present, PAX3 partner confirmed</option>
+	<option>FOXO1 rearrangement present, PAX7 partner confirmed</option>
+	<option>Other</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box7_5_2' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+	<b>Margins (Note E)</b><br>
+	<select class="form-control form-control-sm "  id="box8">
+	<option selected>Cannot be assessed</option>
+	<option>Sarcoma involvement of margins not identified</option>
+	<option>Margin(s) involved by sarcoma</option>
+	<option>Indeterminate</option>
+	</select>
+	<input type="text" class="form-control form-control-sm "  id="box8_2" style="display:none" placeholder="Distance of sarcoma from closest margin (cm)" >
+	<input type="text" class="form-control form-control-sm "  id="box8_3" style="display:none" placeholder="Specify margin(s):" >
+
+<hr>
+
+	<b>Lymph Nodes</b><br>
+	<select class="form-control form-control-sm "  id="box9">
+	<option selected>No regional lymph nodes sampled</option>
+	<option>Metastatic involvement of regional lymph nodes not identified</option>
+	<option>Regional lymph node metastasis present</option>
+	<option>No nodes submitted or found</option>
+	</select>
+
+<hr>
+
+	<div id="lymphnodes" style="display:none">
+	<b>Number of Lymph Nodes Examined</b><br><input type="text" class="form-control form-control-sm "  id="box10"  placeholder="Not applicable">
+
+<hr>
+
+	<b>Number of Lymph Nodes Involved</b><br><input type="text" class="form-control form-control-sm "  id="box11"  placeholder="Not applicable">
+
+<hr>
+
+	</div>
+	<b>Distant Metastasis </b><br>
+	<input type="text" class="form-control form-control-sm "  id="box12"  placeholder="Enter sites of distant metastases, if known (otherwise leave blank)">
+
+<hr>
+
+	<b>The Intergroup Rhabdomyosarcoma Study Postsurgical Clinical Grouping System (Note F) </b><br>
+	<small> Note: Clinical information required to definitively assign stage group (eg, gross residual disease or distant metastatic disease) may not be available to the pathologist. Alternatively, this protocol may not be applicable to some situations (eg, group IIIA). If applicable, the appropriate stage group may be assigned by the pathologist.</small><br>
+	<select class="form-control form-control-sm "  id="box13">
+	<option SELECTED>Not applicable</option>
+	<option>Cannot be assessed</option>
+	<optgroup label="Group I">
+	<option value="IA"> IA	Localized tumor, confined to site of origin, completely resected</option>
+	<option value="IB"> IB	Localized tumor, infiltrating beyond site of origin, completely resected</option>
+	</optgroup>
+	<optgroup label="Group II">
+	<option value="IIA"> IIA	Localized tumor, gross total resection, but with microscopic residual disease</option>
+	<option value="IIB"> IIB	Locally extensive tumor (spread to regional lymph nodes), completely resected</option>
+	<option value="IIC"> II C	Locally extensive tumor (spread to regional lymph nodes), gross total resection, but microscopic residual disease</option>
+	</optgroup>
+	<optgroup label="Group III">
+	<option value="IIIA"> IIIA	Localized or locally extensive tumor, gross residual disease after biopsy only</option>
+	<option value="IIIB"> III B	Localized or locally extensive tumor, gross residual disease after major resection (greater than 50% debulking)</option>
+	</optgroup>
+	<optgroup label="Group IV">
+	<option value="IV"> IV     Any size primary tumor, with or without regional lymph node involvement, with distant metastases, without respect to surgical approach to primary tumor.</option>
+	</optgroup>
+	</select>
+
+	<!-- close column -->
+			</div>
+			{{> page-partials/cap-footer}}
+	<!-- close row -->
+		</div>
+	<!-- close container -->
+	</div>
+
+
+			<!--
+			"specificScripts":
+				[
+					"../js/cap/rhabdo-scripts.js",
+				]
+		 -->

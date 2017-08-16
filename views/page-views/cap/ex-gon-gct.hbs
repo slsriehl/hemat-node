@@ -1,0 +1,260 @@
+<div class="container-fluid">
+		<!-- Breadcrumbs -->
+		<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+						<a href="/">Home</a>
+				</li>
+				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+				<li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Extra-gonadal germ cell tumors</li>
+		</ol>
+
+		{{> page-partials/cap-header}}
+
+	<div class="row">
+		<div class="col col-md-8">
+	<h5>Patient Age (Note A)</h5><br>
+	<select class="form-control form-control-sm "  id="box1">
+	<option selected>Not specified</option>
+	<option>Congenital/neonatal (birth - 6 mo)</option>
+	<option>Childhood/prepubertal (7 mo - 12 y)</option>
+	<option>Postpubertal/adult (≥12 y)</option>
+	</select>
+
+<hr>
+
+	<h5>Tumor Site</h5><br>
+	<select class="form-control form-control-sm "  id="box2">
+	<option selected>Intracranial</option>
+	<option value='Head and neck region'>Head and neck region (including thyroid; excluding intracranial)</option>
+	<option value='Mediastinum'>Mediastinum (pericardium, heart, thymus, and lung)</option>
+	<option>Retroperitoneum/abdomen</option>
+	<option>Sacrococcygeal</option>
+	<option>Other:</option>
+	</select>
+	<input type="text" class="form-control form-control-sm" id="box2_2" style="display:none" placeholder='Enter other site' >
+
+<hr>
+
+	<h5>+ Specimen Integrity</h5><br>
+	<select class="form-control form-control-sm "  id="box3">
+	<option selected>Intact</option>
+	<option>Fragmented</option>
+	</select>
+
+<hr>
+
+	<h5>Tumor Size (cm)</h5><br>
+	Greatest dimension tumor (cm):<br>
+	<input type="text" class="form-control form-control-sm" id="box4"  placeholder="Cannot be assessed">
+
+<hr>
+
+	<h5>Tumor weight (g)</h5><br>
+	<input type="text" class="form-control form-control-sm" id="box5" placeholder='weight (g)'  onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')">
+
+<hr>
+
+	<h5>Histologic Type</h5><br>
+	<input type="text" class="form-control form-control-sm" id="box6" size=60><br>
+	<input type="text" class="form-control form-control-sm" id="box6_2" style="display:none" placeholder='Enter %Seminoma' >
+	<input type="text" class="form-control form-control-sm" id="box6_3" style="display:none" placeholder='Enter %Yolk Sac tumor' >
+	<input type="text" class="form-control form-control-sm" id="box6_4" style="display:none" placeholder='Enter %Choriocarcinoma' >
+	<input type="text" class="form-control form-control-sm" id="box6_5" style="display:none" placeholder='Enter %Embryonal carcinoma' >
+	<input type="text" class="form-control form-control-sm" id="box6_6" style="display:none" placeholder='Enter other germ cell tumor type' >
+	<input type="text" class="form-control form-control-sm" id="box6_7" style="display:none" placeholder='Describe type of sarcoma' >
+	<input type="text" class="form-control form-control-sm" id="box6_8" style="display:none" placeholder='Describe epithelial malignancy' >
+
+<hr>
+
+	<h5>+ Histologic Grade (applicable to immature teratomas only) </h5><br>
+	<select class="form-control form-control-sm "  id="box7">
+	<option selected>Not applicable</option>
+	<option>Grade 1</option>
+	<option>Grade 2</option>
+	<option>Grade 3</option>
+	<option>Indeterminate</option>
+	</select>
+	<input type="text" class="form-control form-control-sm" id="box7_2" style="display:none" placeholder='% of teratoma composed of immature elements' >
+
+<hr>
+
+	<h5>Microscopic Tumor Extension (applicable to sacrococcygeal teratoma only) </h5><br>
+	<select class="form-control form-control-sm "  id="box8">
+	<option selected>Not applicable</option>
+	<option>Tumor involving coccyx identified</option>
+	<option>Coccyx uninvolved</option>
+	<option>Grade 3</option>
+	<option>Cannot be determined</option>
+	</select>
+
+<hr>
+
+	<h5>Margins:</h5><br>
+	<select class="form-control form-control-sm "  id="box9">
+	<option selected>Cannot be assessed</option>
+	<option>Tumor at resection margin not identified</option>
+	<option>Resection margin involved by invasive tumor</option>
+	</select>
+	<input type="text" class="form-control form-control-sm" id="box9_2" style="display:none" placeholder='Distance from closest margin (cm)' >
+	<input type="text" class="form-control form-control-sm" id="box9_3" style="display:none" placeholder='Specify nearest margin' >
+	<input type="text" class="form-control form-control-sm" id="box9_4" style="display:none" placeholder='Specify involved margin' >
+
+<hr>
+
+	<h5>+ Treatment Effect</h5><br>
+	<select class="form-control form-control-sm "  id="box10">
+	<option selected>Not applicable, no known presurgical therapy</option>
+	<option>No viable tumor present</option>
+	<option>Viable tumor present (<10%)</option>
+	<option>Viable tumor present (≥10%)</option>
+	<option>Cannot be determined</option>
+	</select>
+
+<hr>
+
+	<h5>+ Lymph-Vascular Invasion (Note E)</h5><br>
+	<select class="form-control form-control-sm "  id="box11">
+	<option selected>Not identified</option>
+	<option>Present</option>
+	<option>Indeterminate</option>
+	</select>
+
+<hr>
+
+	<h5>+ Perineural Invasion</h5><br>
+	<select class="form-control form-control-sm "  id="box12">
+	<option selected>Not identified</option>
+	<option>Present</option>
+	</select>
+
+<hr>
+
+	<h5>Regional Lymph Nodes (pN)</h5><br>
+	<select class="form-control form-control-sm "  id="box13">
+	<option selected value='pNX'>pNX: Nodal status unknown</option>
+	<option value='pN0'>pN0: No lymph node metastases present </option>
+	<option value='pN1'>pN1: Lymph node metastasis present</option>
+	<option>No nodes submitted or found</option>
+ 	</select><br>
+	<input type="text" class="form-control form-control-sm" id="box13_2"  placeholder='Enter lymph node site'>
+	<input type="text" class="form-control form-control-sm" id="box13_3"  placeholder='Enter histology of metastasis'><br>
+
+	<h5>Number of Lymph Nodes Examined:</h5><input type="text" class="form-control form-control-sm" id="box14"  placeholder='0'><br>
+	<h5>Number of Lymph Nodes Involved:</h5><input type="text" class="form-control form-control-sm" id="box15"  placeholder='0'><br>
+
+<hr>
+
+	<h5>Distant Metastasis (pM)</h5><br>
+	<select class="form-control form-control-sm "  id="box16">
+	<option selected value='pMX'> pMX: Not applicable</option>
+	<option value='pM1'> pM1: 	Distant metastasis present</option>
+	</select>
+
+<hr>
+
+
+	<h5>Pathologic Staging (select all that apply)  (Note G)</h5>	<br>
+	* There is no offically chosen AJCC staging preference, so choose staging type according to site of invovlement:
+<hr>
+
+	<label id='cog'><input class="form-check-input " type='checkbox' name='staging' id='box17_1'> COG Staging (for non-sacrococcygeal or mediastinal tumors)</label><br>
+	<label id='anat'><input class="form-check-input " type='checkbox' name='staging' id='box17_2'>+ Anatomic Classification of Sacrococcygeal Germ Cell Tumors</label><br>
+	<label id='moran'><input class="form-check-input " type='checkbox' name='staging' id='box17_3'>+ Moran and Suster Proposed Clinical Staging for Post-pubertal Mediastinal Germ Cell Tumors</label><br>
+	<br>
+	<div class='COG' style="display:none"><h5>Children’s Oncology Group Staging for any Malignant Extragonadal Germ Cell Tumors</h5><br>
+	<select class="form-control form-control-sm "  id="box17" >
+	<option selected value='Stage I'>Stage I: Complete resection at any site; coccygectomy for sacrococcygeal site; negative tumor margins; tumor markers positive or negative</option>
+	<option value='Stage II'>Stage II: Microscopic residual; lymph nodes negative; tumor markers positive or negative</option>
+	<option value='Stage III'>Stage II: Microscopic residual; lymph nodes negative; tumor markers positive or negative</option>
+	<option value='Stage IV'>Stage IV: Distant metastases, including liver</option>
+	</select>
+
+<hr>
+
+	</div><!--end COG staging div-->
+	<div class='sacro' style="display:none"><h5>+ Anatomic Classification of Sacrococcygeal Germ Cell Tumors</h5><br>
+	<select class="form-control form-control-sm "  id="box18" >
+	<option selected value='Type I'>Type I:	Posterior extension (externalized) with no presacral involvement</option>
+	<option value='Type II'>Type II: Externalized with pelvic extension</option>
+	<option value='Type III'>Type III: Externalized with intra-abdominal extension</option>
+	<option value='Type IV'>Type IV: Entirely presacral (no externalization)</option>
+	</select>
+
+<hr>
+
+	</div><!-- end sacro div-->
+	<div class='moran' style="display:none"><h5>+ Moran and Suster Proposed Clinical Staging for Mediastinal Germ Cell Tumors</h5><br>
+	<select class="form-control form-control-sm "  id="box19" >
+	<option selected value='Stage I'>Stage I: Well-circumscribed tumor with or without focal adhesions to the pleura or pericardium but without microscopic evidence of invasion into adjacent structures</option>
+	<option value='Stage II'>Stage II: Tumor confined to the mediastinum with macroscopic and/or microscopic evidence of infiltration into adjacent structures </option>
+	<option value='Stage IIIA'>Stage IIIA: With metastases to intrathoracic organs (lymph nodes, lung, etc)</option>
+	<option value='Stage IIIB'>Stage IIIB: With extrathoracic metastases</option>
+	</select>
+
+<hr>
+
+	</div><!-- end of moran div-->
+	<h5>+ Additional Clinical or Laboratory Findings (select all that apply) </h5><br>
+	+ Cytogenetics<br>
+	<select class="form-control form-control-sm "  id="box20">
+	<option>Not performed</option>
+	<option selected>Cytogenetics pending</option>
+	<option>Normal karyotype</option>
+	<option>Abnormal karyotype, iso 12p</option>
+	<option>Abnormal karyotype, other:</option>
+	</select>
+	<input type="text" class="form-control form-control-sm" id="box20_2" style="display:none" placeholder='Enter karyotype summary' >
+
+<hr>
+
+	+ Serum Tumor Markers<br>
+	<select class="form-control form-control-sm "  id="box21" multiple>
+	<option selected>Serum marker studies not available or performed</option>
+	<option>AFP level</option>
+ 	<option>HCG level</option>
+	</select>
+	<input type="text" class="form-control form-control-sm" id="box21_2" style="display:none" placeholder='Enter AFP level' >
+	<input type="text" class="form-control form-control-sm" id="box21_3" style="display:none" placeholder='Enter HCG level' >
+
+<hr>
+
+	+ Associated syndromes<br>
+	<select class="form-control form-control-sm "  id="box22">
+	<option selected>Not known</option>
+	<option>Klinefelter</option>
+	<option>Down</option>
+	<option>Other:</option>
+	</select>
+	<input type="text" class="form-control form-control-sm" id="box22_2" style="display:none" placeholder='Enter other findings' >
+
+<hr>
+
+	+ Associated malignancy <br>
+	<select class="form-control form-control-sm "  id="box23">
+	<option selected>None known</option>
+	<option>Leukemia</option>
+	<option>Myelodysplastic syndrome</option>
+	<option>Other:</option>
+	</select>
+	<input type="text" class="form-control form-control-sm" id="box23_2" style="display:none" placeholder='Enter leukemia classification' >
+	<input type="text" class="form-control form-control-sm" id="box23_3" style="display:none" placeholder='Enter MDS classification' >
+	<input type="text" class="form-control form-control-sm" id="box23_4" style="display:none" placeholder='Enter other findings' >
+
+<hr>
+
+
+	<!-- close column -->
+			</div>
+			{{> page-partials/cap-footer}}
+	<!-- close row -->
+		</div>
+	<!-- close container -->
+	</div>
+
+
+			<!--
+			"specificScripts":
+				[
+					"../js/cap/exgct-scripts.js",
+				]
+		 -->

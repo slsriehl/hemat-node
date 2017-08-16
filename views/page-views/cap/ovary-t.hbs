@@ -1,0 +1,383 @@
+<div class="container-fluid">
+		<!-- Breadcrumbs -->
+		<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+						<a href="/">Home</a>
+				</li>
+				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+				<li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Ovary - primary epithelial, borderline, sex-cord stromal and germ cell tumors</li>
+		</ol>
+
+		{{> page-partials/cap-header}}
+
+	<div class="row">
+		<div class="col col-md-8">
+
+	<h5>Specimen</h5><br><select class="form-control form-control-sm "  multiple id="box1">
+	<option></option>
+	<option>Uterus, cervix, bilateral tubes and ovaries</option>
+	<option>Right ovary</option>
+	<option>Left ovary</option>
+	<option>Right fallopian tube</option>
+	<option>Left fallopian tube</option>
+	<option>Uterus</option>
+	<option>Cervix</option>
+	<option>Omentum</option>
+	<option>Peritoneum</option>
+	<option>Other </option>
+	<option>Not specified</option>
+	<option>Cannot be determined</option>
+	</select><br><input type="text" class="form-control form-control-sm "  id='box1_2' style='display:none;' placeholder=''>
+
+<hr>
+
+	<h5>Procedure</h5><br><select class="form-control form-control-sm "  multiple id="box2">
+	<option></option>
+	<option>Right oophorectomy</option>
+	<option>Left oophorectomy</option>
+	<option>Right salpingo-oophorectomy</option>
+	<option>Left salpingo-oophorectomy</option>
+	<option>Bilateral salpingo-oophorectomy</option>
+	<option>Subtotal right oophorectomy</option>
+	<option>Subtotal left oophorectomy</option>
+	<option>Supracervical hysterectomy</option>
+	<option>Hysterectomy </option>
+	<option>Omentectomy</option>
+	<option>Peritoneal biopsies</option>
+	<option>Other </option>
+	<option>Not specified</option>
+	</select><br><input type="text" class="form-control form-control-sm "  id='box2_2' style='display:none;' placeholder=''>
+<hr>
+
+
+	<h5>Lymph Node Sampling</h5><br>
+	<select class="form-control form-control-sm "  id="box3">
+	<option>Performed</option>
+	<option>Not performed</option>
+	<option>Not known</option>
+	<option></option>
+	</select>
+
+<hr>
+
+
+	<h5>Specimen Integrity</h5>
+	<br>
+	Right Ovary<br>
+	<select class="form-control form-control-sm "  id="box4">
+	<option>Not applicable</option>
+	<option>Capsule intact</option>
+	<option>Capsule ruptured</option>
+	<option>Fragmented</option>
+	<option>Cannot be determined</option>
+	</select>
+
+<hr>
+
+	Left Ovary<br>
+	<select class="form-control form-control-sm "  id="box5">
+	<option>Not applicable</option>
+	<option>Capsule intact</option>
+	<option>Capsule ruptured</option>
+	<option>Fragmented</option>
+	<option>Cannot be determined</option>
+	</select>
+
+<hr>
+
+	Morcellated Specimen<br>
+	<select class="form-control form-control-sm "  id="box6">
+	<option>Not applicable</option>
+	<option>Fragmented</option>
+	<option>Cannot be determined</option>
+	</select>
+
+<hr>
+
+	<h5>Primary Tumor Site</h5><br>
+	<select class="form-control form-control-sm "  id="box7">
+	<option></option>
+	<option>Right ovary</option>
+	<option>Left ovary</option>
+	<option>Bilateral ovaries</option>
+	<option>Not specified</option>
+	</select>
+
+<hr>
+
+
+	<h5>Ovarian Surface Involvement</h5><br>
+	<select class="form-control form-control-sm "  id="box8">
+	<option>Absent</option>
+	<option>Present</option>
+	<option>Uncertain/cannot be determined</option>
+	</select>
+
+<hr>
+
+
+	<h5>Tumor Size (cm)</h5><br>
+	<h5>Right Ovary:</h5><br> <input type="text" class="form-control form-control-sm "  id="box9"  placeholder='Cannot be determined'>
+
+<hr>
+
+
+	<h5>Left Ovary:</h5><br> <input type="text" class="form-control form-control-sm "  id="box10"  placeholder='Cannot be determined'>
+
+<hr>
+
+
+	<h5>Histologic Type (select all that apply)</h5><br>
+	<select class="form-control form-control-sm "  multiple id="box11">
+	<option></option>
+	<option>Serous, borderline tumor</option>
+	<option>Serous, carcinoma</option>
+	<option>Mucinous, borderline tumor, intestinal type</option>
+	<option>Mucinous, borderline tumor, endocervical type </option>
+	<option>Mucinous carcinoma</option>
+	<option>Endometrioid borderline tumor</option>
+	<option>Endometrioid carcinoma</option>
+	<option>Clear cell borderline tumor</option>
+	<option>Clear cell carcinoma</option>
+	<option>Transitional cell borderline tumor</option>
+	<option>Transitional cell carcinoma</option>
+	<option>Brenner tumor, borderline</option>
+	<option>Brenner tumor, malignant</option>
+	<option>Squamous cell carcinoma</option>
+	<option>Mixed epithelial borderline tumor</option>
+	<option>Mixed epithelial carcinoma</option>
+	<option>Undifferentiated carcinoma</option>
+	<option>Carcinosarcoma</option>
+	<option>Granulosa cell tumor</option>
+	<option>Other sex cord-stromal tumor</option>
+	<option>Dysgerminoma</option>
+	<option>Yolk sac tumor </option>
+	<option>Immature teratoma</option>
+	<option>Carcinoma in teratoma</option>
+	<option>Mixed malignant germ cell tumor</option>
+	<option>Other</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box11_1' style='display:none;' placeholder='Specify types and percentages'><br>
+	<input type="text" class="form-control form-control-sm "  id='box11_2' style='display:none;' placeholder='Specify type'><br>
+
+	<h5>Histologic grade</h5><br>
+	Both WHO and two-tier grading options are provided. Select based on your own preference.
+	<select class="form-control form-control-sm "  id="box12">
+	<option></option>
+	<option>GX: Cannot be assessed</option>
+	<option>G1: Well differentiated</option>
+	<option>G2: Moderately differentiated</option>
+	<option>G3: Poorly differentiated</option>
+	<option>G4: Undifferentiated</option>
+	<option></option>
+	<option>Low grade </option>
+	<option>High grade</option>
+	<option></option>
+	<option>Not applicable </option>
+	<option></option>
+	</select>
+
+<hr>
+
+	<h5>Implants (Serous borderline tumors only), select all that apply</h5><br>
+	Noninvasive implant<br>
+	<select class="form-control form-control-sm "  id="box13">
+	<option>Not present</option>
+	<option>Present (Epithelial)</option>
+	<option>Present (Desmoplastic)</option>
+	</select><br><input type="text" class="form-control form-control-sm "  id='box13_2' style='display:none;' placeholder='Specify involved sites'>
+<hr>
+
+
+	Invasive implants<br><select class="form-control form-control-sm "  id="box14">
+	<option>Not present</option>
+	<option>Present</option>
+	</select><br><input type="text" class="form-control form-control-sm "  id='box14_2' style='display:none;' placeholder='Specify involved sites'>
+<hr>
+
+
+	<h5>Extent of involvement of Other tissues/organs (select all that apply)</h5><br>
+	Right ovary<br>
+	<select class="form-control form-control-sm "  id="box15">
+	<option>Not applicable</option>
+	<option>Involved</option>
+	<option>Not involved</option>
+	<option>Other</option>
+	</select><br><input type="text" class="form-control form-control-sm "  id='box15_2' style='display:none;' placeholder='Explain'>
+<hr>
+
+
+	Left ovary<br>
+	<select class="form-control form-control-sm "  id="box16">
+	<option>Not applicable</option>
+	<option>Involved</option>
+	<option>Not involved</option>
+	<option>Other</option>
+	</select><br><input type="text" class="form-control form-control-sm "  id='box16_2' style='display:none;' placeholder='Explain'>
+<hr>
+
+
+	Right fallopian tube<br>
+	<select class="form-control form-control-sm "  id="box17">
+	<option>Not applicable</option>
+	<option>Involved</option>
+	<option>Not involved</option>
+	<option>Other</option>
+	</select><br><input type="text" class="form-control form-control-sm "  id='box17_2' style='display:none;' placeholder='Explain'>
+<hr>
+
+
+	Left fallopian tube<br>
+	<select class="form-control form-control-sm "  id="box18">
+	<option>Not applicable</option>
+	<option>Involved</option>
+	<option>Not involved</option>
+	<option>Other</option>
+	</select><br><input type="text" class="form-control form-control-sm "  id='box18_2' style='display:none;' placeholder='Explain'>
+<hr>
+
+
+	Omentum<br>
+	<select class="form-control form-control-sm "  id="box19">
+	<option>Not applicable</option>
+	<option>Involved</option>
+	<option>Not involved</option>
+	<option>Other</option>
+	</select><br><input type="text" class="form-control form-control-sm "  id='box19_2' style='display:none;' placeholder='Explain'>
+<hr>
+
+
+	Uterus<br>
+	<select class="form-control form-control-sm "  id="box20">
+	<option>Not applicable</option>
+	<option>Involved</option>
+	<option>Not involved</option>
+	<option>Other</option>
+	</select><br><input type="text" class="form-control form-control-sm "  id='box20_2' style='display:none;' placeholder='Explain'>
+<hr>
+
+
+	Peritoneum<br>
+	<select class="form-control form-control-sm "  id="box21">
+	<option>Not applicable</option>
+	<option>Involved</option>
+	<option>Not involved</option>
+	<option>Other</option>
+	</select><br><input type="text" class="form-control form-control-sm "  id='box21_2' style='display:none;' placeholder=''>
+<hr>
+
+
+	Other organs<br>
+	<select class="form-control form-control-sm "  id="box22">
+	<option>Not applicable</option>
+	<option>Involved</option>
+	<option>Not involved</option>
+	<option>Other</option>
+	</select><br><input type="text" class="form-control form-control-sm "  id='box22_2' style='display:none;' placeholder='Specify organ(s) involved'>
+<hr>
+
+
+	<h5>+Treatment effect (for carcinomas treated with neoadjuvant therapy)</h5><br>
+	<select class="form-control form-control-sm "  id="box23">
+	<option>Not applicable</option>
+	<option>No definite or minimal response identified (poor or no response)</option>
+	<option>Marked response (minimal residual cancer)</option>
+	</select>
+
+<hr>
+
+
+	<h5>+Lymph-Vascular invasion</h5><br>
+	<select class="form-control form-control-sm "  id="box24">
+	<option>Not identified</option>
+	<option>Present</option>
+	<option>Indeterminate</option>
+	</select>
+
+<hr>
+
+
+	TNM Descriptors (select all that apply)<br><select class="form-control form-control-sm "  id="box25" multiple>
+	<option selected value="Not applicable">Not applicable</option>
+	<option>m</option>
+	<option>r</option>
+	<option>y</option>
+	</select>
+<hr>
+
+
+	<select class="form-control form-control-sm "  id="box26">
+	<option value="pTX [--]">pTX [--]: 	Cannot be assessed</option>
+	<option value="pT0 [--]">pT0 [--]: 	No evidence of primary tumor</option>
+	<option value="pT1 [I]">pT1 [I]:  Tumor limited to ovaries (one or both)</option>
+	<option value="pT1a [IA]">pT1a [IA]:	Tumor limited to one ovary; capsule intact, no tumor on ovarian surface. No malignant cells in ascites or peritoneal washings</option>
+	<option value="pT1b [IB]">pT1b [IB]:	Tumor limited to both ovaries; capsule intact, no tumor on ovarian surface. No malignant cells in ascites or peritoneal washings</option>
+	<option value="pT1c [IC]">pT1c [IC]:	Tumor limited to one or both ovaries with any of the following: capsule ruptured, tumor on ovarian surface, malignant cells in ascites or peritoneal washings</option>
+	<option value="pT2 [II]">pT2 [II]:  Tumor involves one or both ovaries with pelvic extension and/or implants</option>
+	<option value="pT2a [IIA]">pT2a [IIA]:	Extension and/or implants on uterus and/or tube(s). No malignant cells in ascites or peritoneal washings</option>
+	<option value="pT2b [IIB]">pT2b [IIB]:	Extension to other pelvic tissues. No malignant cells in ascites or peritoneal washings</option>
+	<option value="pT2c [IIC]">pT2c [IIC]:	Pelvic extension and/or implants (T2a or T2b / IIa or IIb) with malignant cells in ascites or peritoneal washings</option>
+	<option value="pT3 and/or N1 [III]">pT3 and/or N1 [III]: Tumor involves one or both ovaries with confirmed peritoneal metastasis outside the pelvis (including liver capsule metastasis and/or regional lymph node metastasis [N1])</option>
+	<option value="pT3a [IIIA]">pT3a [IIIA]:	Microscopic peritoneal metastasis beyond pelvis (no macroscopic tumor)</option>
+	<option value="pT3b [IIIB]">pT3b [IIIB]: 	Macroscopic peritoneal metastasis beyond pelvis &le;2 cm in greatest dimension</option>
+	<option value="pT3c and/or N1 [IIIC]">pT3c and/or N1 [IIIC]:  Peritoneal metastasis beyond pelvis &gt;2 cm in greatest dimension and/or regional lymph node metastasis</option>
+	</select><br>
+
+	<select class="form-control form-control-sm "  id="box27">
+	<option value="pNX">pNX:	Cannot be assessed</option>
+	<option value="pN0">pN0:	No regional lymph node metastasis</option>
+	<option value="pN1 [IIIC]">pN1 [IIIC]: Regional lymph node metastasis</option>
+	</select><br>
+
+	<select class="form-control form-control-sm "  id="box28">
+	<option value ='pMX'>Not applicable</option>
+	<option value="pM1 [IV]">pM1 [IV]:	Distant metastases (excludes peritoneal metastasis)</option>
+	</select><br>
+	Check here if any lymph nodes submitted? <input class="form-check-input" type="checkbox" id="box29"><br>
+	<div class='lndiv' style="display:none">
+        Number of lymph nodes examined: <input type="text" class="form-control form-control-sm "  id="box29_1"  ><br>
+        Number of lymph nodes involved: <input type="text" class="form-control form-control-sm "  id="box29_2"  ></div>
+<hr>
+
+
+	<h5>+Additional Pathologc Findings (select all that apply)</h5><br>
+	<select class="form-control form-control-sm "  multiple id="box30">
+	<option>Not applicable</option>
+	<option>None identified</option>
+	<option>Endometriosis, 	Ovarian</option>
+	<option>Endometriosis, 	Extraovarian</option>
+	<option>Endosalpingiosis</option>
+	</select>
+
+<hr>
+
+
+	<h5>Clinical History</h5><br>
+	<select class="form-control form-control-sm "  multiple id="box31">
+	<option>Not applicable</option>
+	<option>Not known</option>
+	<option>BRCA1/2 family history</option>
+	<option>Hereditary breast/ovarian cancer</option>
+	<option>Other</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box31_2' style='display:none;' placeholder=''>
+<hr>
+
+
+	<h5>Ancillary studies:</h5><br>
+	<input type="text" class="form-control form-control-sm "  id="box32"  placeholder='start typing IHC or genetic studies'>
+	<!-- close column -->
+			</div>
+			{{> page-partials/cap-footer}}
+	<!-- close row -->
+		</div>
+	<!-- close container -->
+	</div>
+
+
+			<!--
+			"specificScripts":
+				[
+					"../js/cap/ovary-scripts.js",
+				]
+		 -->

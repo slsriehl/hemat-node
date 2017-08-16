@@ -1,0 +1,105 @@
+<div class="container-fluid">
+		<!-- Breadcrumbs -->
+		<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+						<a href="/">Home</a>
+				</li>
+				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+				<li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Plasma Cell Neoplasm: Targeted biopsy or resection (not random bone marrow)</li>
+		</ol>
+
+		{{> page-partials/cap-header}}
+
+	<div class="row">
+		<div class="col col-md-8">
+<b>Specimen</b><br>
+<select class="form-control form-control-sm "  id="box1">
+<option><option>
+<option>Bone</option>
+<option>Other</option>
+<option>Not specified</option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box1_2' style='display:none;' placeholder='Specify site'><br>
+<input type="text" class="form-control form-control-sm "  id='box1_3' style='display:none;' placeholder='Specify site'>
+<br><br>
+
+<b>Procedure</b><br>
+<select class="form-control form-control-sm "  id="box2">
+<option>Biopsy</option>
+<option>Resection</option>
+<option>Fine-needle aspiration</option>
+<option>Other</option>
+<option>Not specified</option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box2_2' style='display:none;' placeholder='Specify'>
+<br><br>
+
+<b>+ Tumor size:</b><br>
+<input type="text" class="form-control form-control-sm "  id="box3"  placeholder='n/a'>
+<br><br>
+
+<b>+ Cytology</b><br>
+<select class="form-control form-control-sm "  id="box4">
+<option>Nonplasmablastic</option>
+<option>Plasmablastic</option>
+</select>
+<br><br>
+
+<b>+ Immunoglobulin deposits</b><br>
+<select class="form-control form-control-sm "  id="box5">
+<option>Not detected</option>
+<option>Amyloid present; no special stain performed</option>
+<option>Congo Red stain performed: Positive for amyloid</option>
+<option>Congo Red stain performed: Negative for amyloid</option>
+<option>Not assessed</option>
+</select>
+<br><br>
+
+<b>+ WHO Classification Subtype</b><br>
+<select class="form-control form-control-sm "  id="box6">
+<option>Plasma cell myeloma</option>
+<option>Plasmacytoma</option>
+<option>Solitary plasmacytoma of bone</option>
+<option>Extraosseous plasmacytoma</option>
+<option>Plasmacytoma, not otherwise specified</option>
+<option>Other</option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box6_2' style='display:none;' placeholder='Specify'>
+<br><br>
+
+<b>+ Immunoglobulin light-chain type</b><br>
+<select class="form-control form-control-sm "  id="box7">
+<option>Kappa light chain</option>
+<option>Lambda light chain</option>
+<option>No light chain detected</option>
+</select>
+<br><br>
+
+<b>+ Cytogenetic results</b><br>
+<select class="form-control form-control-sm "  multiple id="box8">
+<option>Not applicable</option>
+<option>Cytogenetic testing not performed</option>
+<option>FISH pending; see addendum</option>
+<option>Karyotype pending: see addendum</option>
+<option>Monosomy 13/del13q detected</option>
+<option>del 70p detected</option>
+<option>t(11;14) detected</option>
+<option>IgH (14q32) rerrangement detected</option>
+</select>
+
+
+<!-- close column -->
+		</div>
+		{{> page-partials/cap-footer}}
+<!-- close row -->
+	</div>
+<!-- close container -->
+</div>
+
+
+		<!--
+		"specificScripts":
+			[
+				"../js/cap/plasmacytoma-scripts.js",
+			]
+	 -->

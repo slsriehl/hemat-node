@@ -1,0 +1,650 @@
+<div class="container-fluid">
+		<!-- Breadcrumbs -->
+		<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+						<a href="/">Home</a>
+				</li>
+				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+				<li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Neuroendocrine tumors of Appendix, Colon or Pancreas</li>
+		</ol>
+
+		{{> page-partials/cap-header}}
+
+	<div class="row">
+		<div class="col col-md-8">
+
+    <div class='type'>
+	Select the specimen type to generate the correct template :
+	<select class="form-control form-control-sm "  class='specimen' id='specimen'><option selected>Appendix</option><option>Colon</option><option>Pancreas</option></select>
+	</div>
+	<div class='box' id="Leftpanel">
+	<div class='appy'>
+	<h5>Appendix NETs:</h5>
+
+<hr>
+
+	<h5>Specimen (select all that apply)</h5><br>
+	<select class="form-control form-control-sm "  multiple id="box1">
+	<option selected>Appendix</option>
+	<option>Cecum</option>
+	<option>Right colon</option>
+	<option>Terminal ileum</option>
+	<option>Other:</option>
+	<option>Not specified</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box1_1' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+	<h5>Procedure</h5><br>
+	<select class="form-control form-control-sm "  id="box2">
+	<option>Appendectomy</option>
+	<option>Appendectomy and right colectomy</option>
+	<option>Other:</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box2_1' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+	<h5>Specimen Integrity</h5><br>
+	<select class="form-control form-control-sm "  id="box3">
+	<option>Intact</option>
+	<option>Fragmented</option>
+	<option>Other:</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box3_1' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+	<h5>Specimen size:</h5><br>
+	<input type="text" class="form-control form-control-sm "  id="box4"  placeholder='length (cm)'>
+
+<hr>
+
+
+	<h5>Tumor Site</h5><br>
+	<select class="form-control form-control-sm "  id="box5">
+	<option>Proximal half of appendix</option>
+	<option>Distal half of appendix</option>
+	<option>Diffusely involving appendix</option>
+	<option>Appendix, not otherwise specified</option>
+	<option>Unknown</option>
+	<option>Other:</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box5_1' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+	<h5>Tumor Size:</h5><br>
+	<input type="text" class="form-control form-control-sm "  id="box6"  placeholder='(cm)'>
+
+<hr>
+
+
+	</div><!-- end appy div-->
+
+	<div class='colon' style="display:none">
+	<h5>Colon/Rectum NETs:</h5>
+<hr>
+
+	<h5>Specimen (select all that apply)</h5><br>
+	<select class="form-control form-control-sm "  multiple id="box30">
+	<option>Total colon</option>
+	<option selected>Cecum</option>
+	<option>Ascending colon</option>
+	<option>Transverse colon</option>
+	<option>Descending colon</option>
+	<option>Sigmoid colon</option>
+	<option>Rectum</option>
+	<option>Anus</option>
+	<option>Terminal ileum</option>
+	<option>Appendix</option>
+	<option>Other</option>
+	<option>Not specified</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box30_1' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+	<h5>Procedure</h5><br>
+	<select class="form-control form-control-sm "  id="box31">
+	<option>Right hemicolectomy</option>
+	<option>Transverse colectomy</option>
+	<option>Left hemicolectomy</option>
+	<option>Sigmoidectomy</option>
+	<option>Rectal/rectosigmoid colon (low anterior resection)</option>
+	<option>Total abdominal colectomy</option>
+	<option>Abdominoperineal resection</option>
+	<option>Transanal disk excision (local excision)</option>
+	<option>Other</option>
+	<option>Not specified</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box31_1' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+	<h5>Specimen Size (applicable to transanal disk excision):</h5><br>
+	<input type="text" class="form-control form-control-sm "  id="box32"  placeholder='not applicable'>
+
+<hr>
+
+
+	<h5>Tumor Site (select all that apply)</h5><br>
+	<select class="form-control form-control-sm "  id="box33">
+	<option selected>Cecum</option>
+	<option>Right (ascending) colon</option>
+	<option>Hepatic flexure</option>
+	<option>Transverse colon</option>
+	<option>Splenic flexure</option>
+	<option>Left (descending) colon</option>
+	<option>Sigmoid colon</option>
+	<option>Rectum</option>
+	<option>Other</option>
+	<option>Not specified</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box33_1' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+	<h5>+ Tumor Location</h5><br>
+	<select class="form-control form-control-sm "  id="box34">
+	<option>Tumor is located above peritoneal reflection</option>
+	<option>Tumor is located below the peritoneal reflection</option>
+	<option>Not specified</option>
+	</select>
+
+<hr>
+
+
+	<h5>Tumor Focality</h5><br>
+	<select class="form-control form-control-sm "  id="box35">
+	<option>Unifocal</option>
+	<option>Multifocal</option>
+	<option>Cannot be determine</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box35_1' style='display:none; width:200px' placeholder='Specify # of tumors'>
+
+<hr>
+
+
+	<h5>Microscopic Tumor Extension</h5><br>
+	<select class="form-control form-control-sm "  id="box36">
+	<option>Cannot be assessed</option>
+	<option>No evidence of primary tumor</option>
+	<option>Tumor invades lamina propria</option>
+	<option>Tumor invades into but not through muscularis mucosae</option>
+	<option>Tumor invades submucosa</option>
+	<option>Tumor invades muscularis propria</option>
+	<option>Tumor invades through the muscularis propria into the subserosal adipose tissue or the</option>
+	<option>nonperitonealized pericolic or perirectal soft tissues but does not extend to the serosal surface</option>
+	<option>(visceral peritoneum)</option>
+	<option>Tumor penetrates serosa (visceral peritoneum)</option>
+	<option>Tumor directly invades adjacent structures</option>
+	<option>Tumor penetrates to the surface of the visceral peritoneum (serosa) and directly invades adjacent</option>
+	<option>structures</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box36_1' style='display:none;' placeholder='Specify structures'><br>
+	<input type="text" class="form-control form-control-sm "  id='box36_2' style='display:none;' placeholder='Specify structures'>
+
+<hr>
+
+	</div><!-- end colon div-->
+
+	<div class="common">
+	<h5>Histologic Type and Grade</h5><br>
+	<select class="form-control form-control-sm "  id="box7">
+	<option>GX: Grade cannot be assessed; Well-differentiated neuroendocrine tumor</option>
+	<option>G1: Low grade (carcinoid); Well-differentiated neuroendocrine tumor</option>
+	<option>G2: Intermediate grade; Well-differentiated neuroendocrine tumor</option>
+	<option>Other:</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box7_1' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+	<h5>Mitotic Rate (# / 10 hpf):</h5><br>
+	<input type="text" class="form-control form-control-sm "  id="box8"  placeholder='Cannot be determined'>
+
+<hr>
+
+
+	<h5>Microscopic Tumor Extension</h5><br>
+	<select class="form-control form-control-sm "  id="box9">
+	<option>Cannot be assessed</option>
+	<option>No evidence of primary tumor</option>
+	<option>Tumor invades lamina propria</option>
+	<option>Tumor invades submucosa</option>
+	<option>Tumor invades muscularis propria</option>
+	<option>Tumor invades subserosal tissue without involvement of visceral peritoneum</option>
+	<option>Tumor extends into mesoappendix</option>
+	<option>Tumor penetrates serosa (visceral peritoneum)</option>
+	<option>Tumor directly invades adjacent structures</option>
+	<option>Tumor penetrates to the surface of the visceral peritoneum (serosa) and directly invades adjacent</option>
+	<option>structures</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box9_1' style='display:none;' placeholder='Specify'><br>
+	<input type="text" class="form-control form-control-sm "  id='box9_2' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+	<h5>Margins</h5><br>
+	<input class="form-check-input margin" type="checkbox">Check if all margins are negative<br>
+	<div class='negmargin' style='display:none'>
+	Distance of tumor to closest margin:<input type="text" class="form-control form-control-sm "  id="box10" placeholder="distance in cm"><br>
+	Specify margin:<input type="text" class="form-control form-control-sm "  id="box11" placeholder="Specify"><br>
+	</div>
+	<br>
+	<div class='posmargin'>
+	<h5>Proximal Margin</h5><br>
+	<select class="form-control form-control-sm "  id="box12">
+	<option>Cannot be assessed</option>
+	<option>Uninvolved by tumor</option>
+	<option>Involved by tumor</option>
+	</select>
+
+<hr>
+
+
+
+	<h5>Mesenteric (Mesoappendiceal) Margin</h5><br>
+	<select class="form-control form-control-sm "  id="box13">
+	<option>Not applicable</option>
+	<option>Cannot be assessed</option>
+	<option>Uninvolved by tumor</option>
+	<option>Involved by tumor</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box13_1' style='display:none;' placeholder='Specify distance to margin (cm)'>
+
+<hr>
+
+
+	<h5>Other Margin</h5><br>
+	<select class="form-control form-control-sm "  id="box14">
+	<option selected>Not applicable</option>
+	<option>Cannot be assessed</option>
+	<option>Uninvolved by neuroendocrine tumor</option>
+	<option>Involved by neuroendocrine tumor</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box14_1' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+	<h5>Lymph-Vascular Invasion</h5><br>
+	<select class="form-control form-control-sm "  id="box15">
+	<option>Not identified</option>
+	<option>Present</option>
+	<option>Indeterminate</option>
+	</select>
+
+<hr>
+
+
+	<h5>Perineural Invasion</h5><br>
+	<select class="form-control form-control-sm "  id="box16">
+	<option>Not identified</option>
+	<option>Present</option>
+	<option>Indeterminate</option>
+	</select>
+
+<hr>
+
+	</div>
+
+	<h5>Pathologic Staging (pTNM)</h5>
+<hr>
+
+	TNM Descriptors (select all that apply)<br><select class="form-control form-control-sm "  id="box17" multiple>
+	<option selected value="Not applicable">Not applicable</option>
+	<option>m</option>
+	<option>r</option>
+	<option>y</option>
+	</select>
+<hr>
+
+
+	<select class="form-control form-control-sm "  id="box18">
+	<option value="pTX">pTX: Primary tumor cannot be assessed</option>
+	<option value="pT0">pT0: No evidence of primary tumor</option>
+	<option value="pT1">pT1: Tumor 2 cm or less in greatest dimension</option>
+	<option value="pT1a">pT1a: Tumor 1 cm or less in greatest dimension</option>
+	<option value="pT1b">pT1b: Tumor more than 1 cm but not more than 2 cm</option>
+	<option value="pT2">pT2: Tumor more than 2 cm but not more than 4 cm or with extension to the cecum</option>
+	<option value="pT3">pT3: Tumor more than 4 cm or with extension to the ileum</option>
+	<option value="pT4">pT4: Tumor directly invades other adjacent organs or structures, eg, abdominal wall and skeletal</option>
+	<option value="null">muscle</option>
+	</select><br>
+
+	<select class="form-control form-control-sm "  id="box19">
+	<option value="pN0">pN0: No regional lymph node metastasis</option>
+	<option value="pN1">pN1: Metastasis in regional lymph nodes</option>
+	<option value="pNX">pNX: No nodes submitted or found</option>
+	</select><br>
+
+	<select class="form-control form-control-sm "  id="box20">
+	<option value="pMX">pMX: Not applicable</option>
+	<option value="pM1">pM1: Distant metastasis</option>
+	</select><br>
+	Check here if any lymph nodes submitted? <input class="form-check-input"  type="checkbox" id="box21" ><br><div class='lnchk' style='display:none;'><br>
+	Number of lymph nodes examined: <input type="text" class="form-control form-control-sm "  id="box22" ><br>
+	Number of lymph nodes involved: <input type="text" class="form-control form-control-sm "  id="box23" ></div>
+<hr>
+
+
+	<h5>Ancillary Studies (select all that apply)</h5><br>
+	<select class="form-control form-control-sm "  multiple id="box24">
+	<option selected> None performed </option>
+	<option>Ki-67 labeling index: ≤2%</option>
+	<option>Ki-67 labeling index: 3% to 20%</option>
+	<option>Ki-67 labeling index: >20% </option>
+	<option>Other: </option>
+	<option>Not performed</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box24_1' style='display:none;' placeholder='Specify studies'>
+
+<hr>
+
+
+	<h5>Additional Pathologic Findings (select all that apply)</h5><br>
+	<select class="form-control form-control-sm "  multiple id="box25">
+	<option selected>No tumor necrosis or acute appendicitis present</option>
+	<option>Tumor necrosis present</option>
+	<option>Acute appendicitis present</option>
+	<option>Other:</option>
+	<option></option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box25_1' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+	</div> <!-- End common appy and colon HTML-->
+
+	<!-- begin pancreas HTML-->
+	<div class='panc' style="display:none">
+	<h5>Pancreas NETs:</h5>
+<hr>
+
+	<h5>Specimen (select all that apply)</h5><br>
+	<select class="form-control form-control-sm "  multiple id="box40">
+	<option selected>Head of pancreas</option>
+	<option>Body of pancreas</option>
+	<option>Tail of pancreas</option>
+	<option>Duodenum</option>
+	<option>Stomach</option>
+	<option>Common bile duct</option>
+	<option>Gallbladder</option>
+	<option>Spleen</option>
+	<option>Adjacent large vessels</option>
+	<option>Portal vein</option>
+	<option>Superior mesenteric vein</option>
+	<option>Other large vessel</option>
+	<option>Other sites</option>
+	<option>Not specified</option>
+	<option>Cannot be determined</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box40_1' style='display:none;' placeholder='Specify'><br>
+	<input type="text" class="form-control form-control-sm "  id='box40_2' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+	<h5>Procedure</h5><br>
+	<select class="form-control form-control-sm "  id="box41">
+	<option>Excisional biopsy (enucleation)</option>
+	<option>Pancreaticoduodenectomy (Whipple resection), partial pancreatectomy</option>
+	<option>Pancreaticoduodenectomy (Whipple resection), total pancreatectomy</option>
+	<option>Partial pancreatectomy, pancreatic body</option>
+	<option>Partial pancreatectomy, pancreatic tail</option>
+	<option>Other</option>
+	<option>Not specified</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box41_1' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+	<h5>Tumor Site (select all that apply)</h5><br>
+	<select class="form-control form-control-sm "  multiple id="box42">
+	<option selected>Pancreatic head</option>
+	<option>Uncinate process</option>
+	<option>Pancreatic body</option>
+	<option>Pancreatic tail</option>
+	<option>Other</option>
+	<option>Cannot be determined</option>
+	<option>Not specified</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box42_1' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+	<h5>Tumor Size:</h5><br>
+	<input type="text" class="form-control form-control-sm "  id="box43"  placeholder='Cannot be determined'>
+
+<hr>
+
+
+	<h5>Tumor Focality</h5><br>
+	<select class="form-control form-control-sm "  id="box44">
+	<option>Unifocal</option>
+	<option>Multifocal</option>
+	<option>Cannot be determined</option>
+	<option>Not specified</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box44_1' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+	<h5>Histologic Type and Grade</h5><br>
+	<select class="form-control form-control-sm "  id="box45">
+	<option>Not applicable</option>
+	<option>GX: Grade cannot be assessed: Well-differentiated neuroendocrine tumor</option>
+	<option>G1: Low grade: Well-differentiated neuroendocrine tumor</option>
+	<option>G2: Intermediate grade: Well-differentiated neuroendocrine tumor </option>
+	<option>Other</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box45_1' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+	<h5>+ Functional Type (select all that apply)</h5><br>
+	<select class="form-control form-control-sm "  multiple id="box46">
+	<option selected>Cannot be assessed</option>
+	<option>Pancreatic neuroendocrine tumor, nonfunctional</option>
+	<option>Pancreatic neuroendocrine tumor, functional status unknown</option>
+	<option>Insulin-producing Pancreatic NET (insulinoma)</option>
+	<option>Glucagon-producing Pancreatic NET (glucagonoma)</option>
+	<option>Somatostatin-producing Pancreatic NET (somatostatinoma)</option>
+	<option>Gastrin-producing Pancreatic NET (gastrinoma)</option>
+	<option>Vasoactive intestinal polypeptide)-producing Pancreatic NET (VIPoma)</option>
+	<option>Serotonin-producing Pancreatic NET (carcinoid)</option>
+	<option>Other</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box46_1' style='display:none;' placeholder='Specify hormone'>
+
+<hr>
+
+
+	<h5>Mitotic Rate (# per 10 hpf):</h5><br>
+	<input type="text" class="form-control form-control-sm "  id="box47"  placeholder='per 10 hpf'>
+
+<hr>
+
+
+	<h5>+ Tumor Necrosis</h5><br>
+	<select class="form-control form-control-sm "  id="box48">
+	<option>Not identified</option>
+	<option>Present</option>
+	<option>Not applicable</option>
+	<option>Cannot be determined</option>
+	</select>
+
+<hr>
+
+
+	<h5>Microscopic Tumor Extension (select all that apply)</h5><br>
+	<select class="form-control form-control-sm "  multiple id="box49">
+	<option selected>Cannot be determined</option>
+	<option>No evidence of primary tumor</option>
+	<option>Tumor is confined to pancreas</option>
+	<option>Tumor invades ampulla of Vater</option>
+	<option>Tumor invades common bile duct</option>
+	<option>Tumor invades duodenal wall</option>
+	<option>Tumor invades peripancreatic soft tissues</option>
+	<option>Tumor invades other adjacent organs or structures</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box49_1' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+	<h5>Margins</h5><br>
+	<select class="form-control form-control-sm "  multiple id="box50">
+	<option>Cannot be assessed</option>
+	<option selected>Margins uninvolved by tumor</option>
+	<option></option>
+	<option>Proximal margin (gastric or duodenal) involved</option>
+	<option>Distal margin (distal duodenal) involved</option>
+	<option>Uncinate process (retroperitoneal) margin involved </option>
+	<option>Bile duct margin involved</option>
+	<option>Pancreatic resection margin involved</option>
+	<option>Posterior retroperitoneal surface of pancreas involved</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box50_1' style='display:none;' placeholder='Specify closest margin'><br>
+	<input type="text" class="form-control form-control-sm "  id='box50_2' style='display:none;' placeholder='Specify distance from margin (cm)'>
+
+<hr>
+
+
+	<h5>Lymph-Vascular Invasion</h5><br>
+	<select class="form-control form-control-sm "  id="box51">
+	<option>Not identified</option>
+	<option>Present</option>
+	<option>Indeterminate</option>
+	</select>
+
+<hr>
+
+
+	<h5>Perineural Invasion</h5><br>
+	<select class="form-control form-control-sm "  id="box52">
+	<option>Not identified</option>
+	<option>Present</option>
+	<option>Indeterminate</option>
+	</select>
+
+<hr>
+
+
+	<h5>Pathologic Staging (pTNM)</h5>
+<hr>
+
+	TNM Descriptors (select all that apply)<br><select class="form-control form-control-sm "  id="box53" multiple>
+	<option selected value="Not applicable">Not applicable</option>
+	<option>m</option>
+	<option>r</option>
+	<option>y</option>
+	</select>
+<hr>
+
+
+	<select class="form-control form-control-sm "  id="box54">
+	<option value="pTX">pTX: Cannot be assessed</option>
+	<option value="pT0">pT0: No evidence of primary tumor</option>
+	<option value="pT1">pT1: Tumor limited to the pancreas, 2 cm or less in greatest dimension</option>
+	<option value="pT2">pT2: Tumor limited to the pancreas, more than 2 cm in greatest dimension</option>
+	<option value="pT3">pT3: Tumor extends beyond the pancreas but without involvement of the celiac axis or the superior mesenteric artery</option>
+	<option value="pT4">pT4: Tumor involves the celiac axis or the superior mesenteric artery</option>
+	</select><br>
+
+	<select class="form-control form-control-sm "  id="box55">
+	<option value="pNX">pNX: Cannot be assessed/no nodes submitted</option>
+	<option value="pN0">pN0: No regional lymph node metastasis</option>
+	<option value="pN1">pN1: Regional lymph node metastasis</option>
+	</select><br>
+
+	<select class="form-control form-control-sm "  id="box56">
+	<option value="null">pMX: Not applicable</option>
+	<option value="pM1">pM1: Distant metastasis</option>
+	</select><br>
+	Check here if any lymph nodes submitted? <input class="form-check-input" type="checkbox" id="box57" ><br><div class='lnchk' style='display:none;'><br>
+	Number of lymph nodes examined: <input type="text" class="form-control form-control-sm "  id="box58" ><br>
+	Number of lymph nodes involved: <input type="text" class="form-control form-control-sm "  id="box59" ></div>
+<hr>
+
+
+	<h5>+ Additional Pathologic Findings</h5><br>
+	<select class="form-control form-control-sm "  multiple id="box60">
+	<option selected>None identified</option>
+	<option>Chronic pancreatitis</option>
+	<option>Acute pancreatitis</option>
+	<option>Adenomatosis (multiple neuroendocrine tumors, each less than 5 mm in greatest dimension)</option>
+	<option>Other</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box60_1' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+	<h5>+ Ancillary Studies (select all that apply) </h5><br>
+	<select class="form-control form-control-sm "  multiple id="box61">
+	<option>Ki-67 index: ≤2%</option>
+	<option>Ki-67 index: 3% to 20%</option>
+	<option>Ki-67 index: >20%</option>
+	<option>Other</option>
+	<option selected>Not performed</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box61_1' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+
+	<h5>+ Clinical History (select all that apply) </h5><br>
+	<select class="form-control form-control-sm "  multiple id="box62">
+	<option>Not applicable</option>
+	<option>von Hippel-Lindau disease</option>
+	<option>Multiple endocrine neoplasia type 1</option>
+	<option>Familial pancreatic cancer syndrome</option>
+	<option>Hypoglycemic syndrome</option>
+	<option>Necrolytic migratory erythema</option>
+	<option>Watery diarrhea</option>
+	<option>Hypergastrinemia</option>
+	<option>Zollinger-Ellison syndrome</option>
+	<option>Other</option>
+	<option selected>Not specified</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box62' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+	</div>
+	<!-- end pancreas div-->
+
+
+
+	<!-- close column -->
+			</div>
+			{{> page-partials/cap-footer}}
+	<!-- close row -->
+		</div>
+	<!-- close container -->
+	</div>
+
+
+			<!--
+			"specificScripts":
+				[
+					"../js/cap/net-scripts.js",
+				]
+		 -->

@@ -1,0 +1,379 @@
+<div class="container-fluid">
+		<!-- Breadcrumbs -->
+		<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+						<a href="/">Home</a>
+				</li>
+				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+				<li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Colon cancer resection</li>
+		</ol>
+
+		{{> page-partials/cap-header}}
+
+	<div class="row">
+		<div class="col col-md-8">
+
+<h5>Specimen (select all that apply)</h5><br>
+<select class="form-control form-control-sm "  multiple id="box1">
+<option selected>Not specified</option>
+<option>Terminal ileum</option>
+<option>Cecum</option>
+<option>Appendix</option>
+<option>Ascending colon</option>
+<option>Transverse colon</option>
+<option>Descending colon</option>
+<option>Sigmoid colon</option>
+<option>Rectum</option>
+<option>Anus</option>
+<option>Other:</option>
+</select>
+<input type="text" class="form-control form-control-sm "  id='box1_2' style='display:none;' placeholder='Specify other site' >
+
+<hr>
+
+<h5>Procedure</h5><br><select class="form-control form-control-sm "  id="box2">
+<option selected>Not specified</option>
+<option>Right hemicolectomy</option>
+<option>Transverse colectomy</option>
+<option>Left hemicolectomy</option>
+<option>Sigmoidectomy</option>
+<option>Rectal/rectosigmoid colon (low anterior resection)</option>
+<option>Total abdominal colectomy</option>
+<option>Abdominoperineal resection</option>
+<option>Transanal disk excision (local excision)</option>
+<option>Other:</option>
+</select>
+<input type="text" class="form-control form-control-sm "  id='box2_2' style='display:none;' placeholder='Specify other procedure' >
+
+<hr>
+
+<h5>+ Specimen Length (cm):</h5><br>
+<input type="text" class="form-control form-control-sm "  id="box3"  placeholder='Not applicable'>
+
+<hr>
+
+<h5>Tumor Site (select all that apply)</h5><br>
+<select class="form-control form-control-sm "  multiple id="box4">
+<option selected>Cannot be determined</option>
+<option>Cecum</option>
+<option>Right (ascending) colon</option>
+<option>Hepatic flexure</option>
+<option>Transverse colon</option>
+<option>Splenic flexure</option>
+<option>Left (descending) colon</option>
+<option>Sigmoid colon</option>
+<option>Rectosigmoid </option>
+<option>Rectum</option>
+<option>Ileocecal valve</option>
+<option>Colon, not otherwise specified</option>
+</select>
+
+<hr>
+
+<h5>+ Tumor Location</h5><br>
+<select class="form-control form-control-sm "  id="box5">
+<option selected>Not specified</option>
+<option>Tumor is located above peritoneal reflection</option>
+<option>Tumor is located below the peritoneal reflection</option>
+</select>
+
+<hr>
+
+<h5>Tumor Size (cm):</h5><br> <input type="text" class="form-control form-control-sm "  id="box6"  placeholder='Cannot be determined'>
+
+<hr>
+
+<h5>Macroscopic Tumor Perforation</h5><br>
+<select class="form-control form-control-sm "  id="box7">
+<option selected>Present</option>
+<option>Not identified</option>
+<option>Cannot be determined</option>
+</select>
+
+<hr>
+
+<h5>+ Macroscopic Intactness of Mesorectum</h5><br>
+<select class="form-control form-control-sm "  id="box8">
+<option selected>Not applicable</option>
+<option>Complete</option>
+<option>Near complete</option>
+<option>Incomplete</option>
+<option>Cannot be determined</option>
+</select>
+
+<hr>
+
+<h5>Histologic Type</h5><br><select class="form-control form-control-sm "  id="box9">
+<option selected>Adenocarcinoma</option>
+<option>Mucinous adenocarcinoma </option>
+<option>Signet-ring cell carcinoma </option>
+<option>Large cell neuroendocrine carcinoma</option>
+<option>Small cell neuroendocrine carcinoma </option>
+<option>Squamous cell carcinoma </option>
+<option>Adenosquamous carcinoma</option>
+<option>Medullary carcinoma</option>
+<option>Undifferentiated carcinoma</option>
+<option>Other:</option>
+<option>Carcinoma, type cannot be determined</option>
+</select>
+<input type="text" class="form-control form-control-sm "  id='box9_2' style='display:none;' placeholder='Specify other histology' >
+
+<hr>
+
+<h5>Histologic Grade</h5><br><select class="form-control form-control-sm "  id="box10">
+<option selected>Not applicable</option>
+<option>Cannot be assessed</option>
+<option>Low-grade (well-differentiated to moderately differentiated)</option>
+<option>High-grade (poorly differentiated to undifferentiated)</option>
+<option>Other:</option>
+</select>
+<input type="text" class="form-control form-control-sm "  id='box10_2' style='display:none;' placeholder='Specify other grade' >
+
+<hr>
+
+<input class="form-check-input "  id="box11" type='checkbox'><h5>Check the box to include optional Histologic Features Suggestive of Microsatellite Instability</h5><br>
+<div id="box11_1" style='display:none'>
+<h5>+ Intratumoral Lymphocytic Response (tumor-infiltrating lymphocytes)</h5><br>
+<select class="form-control form-control-sm "  id="box12">
+<option selected>None</option>
+<option>Mild to moderate (0-2 per high-power [X400] field)</option>
+<option>Marked (3 or more per high-power field)</option>
+<option></option>
+</select>
+
+<hr>
+
+<h5>+ Peritumor Lymphocytic Response (Crohn-like response)</h5><br>
+<select class="form-control form-control-sm "  id="box13">
+<option selected>None</option>
+<option>Mild to moderate</option>
+<option>Marked</option>
+<option></option>
+</select>
+
+<hr>
+
+<h5>+ Tumor Subtype and Differentiation (select all that apply)</h5><br>
+<select class="form-control form-control-sm "  multiple id="box14">
+<option selected>Medullary tumor component</option>
+<option>Mucinous tumor component:</option>
+<option>High histologic grade (poorly differentiated)</option>
+</select>
+<input type="text" class="form-control form-control-sm "  id='box14_2' style='display:none;' placeholder='Specify % of mucinous component' >
+
+<hr>
+
+</div><!-- end MSI items-->
+
+<hr>
+
+<h5>Microscopic Tumor Extension</h5><br><select class="form-control form-control-sm "  id="box15">
+<option selected>Cannot be assessed</option>
+<option>No evidence of primary tumor</option>
+<option>No invasion of lamina propria</option>
+<option>Intramucosal carcinoma, invasion of lamina propria/muscularis mucosae</option>
+<option>Tumor invades submucosa</option>
+<option>Tumor invades muscularis propria</option>
+<option>Tumor invades through the muscularis propria into the subserosal adipose tissue or the nonperitonealized pericolic or perirectal soft tissues</option>
+<option>Tumor penetrates to the surface of the visceral peritoneum (serosa) </option>
+<option>Tumor is adherent to other organs or structures;</option>
+<option>Tumor directly invades adjacent structures;</option>
+<option>Tumor penetrates to the surface of the visceral peritoneum (serosa) and directly invades adjacent structures;</option>
+</select>
+<input type="text" class="form-control form-control-sm "  id='box15_2' style='display:none;' placeholder='Specify involved organs/structures' >
+<input type="text" class="form-control form-control-sm "  id='box15_2' style='display:none;' placeholder='Specify structures invaded' >
+<input type="text" class="form-control form-control-sm "  id='box15_3' style='display:none;' placeholder='Specify extra-visceral structures invaded' >
+
+<hr>
+
+<h5>Margins (select all that apply)</h5>
+<hr>
+
+<input type="text" class="form-control form-control-sm "  id="box16" type='checkbox'><h5>Check this if all margins uninvolved by carcinoma</h5>
+<br>
+<input type="text" class="form-control form-control-sm "  id="box16_1"  placeholder='Distance of invasive carcinoma to closest margin (cm)'>
+<br>
+<input type="text" class="form-control form-control-sm "  id="box16_2"  placeholder='Specify margin'>
+
+<hr>
+
+<div id='box16_3' style='display:none'>
+Proximal Margin<br>
+<select class="form-control form-control-sm "  id="box17">
+<option selected>Cannot be assessed</option>
+<option>Uninvolved by invasive carcinoma; No adenoma or dysplasia identified</option>
+<option>Uninvolved by invasive carcinoma; Adenoma / low-grade dysplasia present </option>
+<option>Uninvolved by invasive carcinoma; High-grade dysplasia or intramucosal carcinoma present </option>
+<option>Involved by invasive carcinoma</option>
+</select>
+
+<hr>
+
+Distal Margin<br>
+<select class="form-control form-control-sm "  id="box18">
+<option selected>Cannot be assessed</option>
+<option>Uninvolved by invasive carcinoma; No adenoma or dysplasia identified</option>
+<option>Uninvolved by invasive carcinoma; Adenoma / low-grade dysplasia present </option>
+<option>Uninvolved by invasive carcinoma; High-grade dysplasia or intramucosal carcinoma present </option>
+<option>Involved by invasive carcinoma</option>
+</select>
+
+<hr>
+
+Circumferential (Radial) or Mesenteric Margin<br>
+<select class="form-control form-control-sm "  id="box19">
+<option selected>Not applicable</option>
+<option>Cannot be assessed</option>
+<option>Uninvolved by invasive carcinoma</option>
+<option>Involved by invasive carcinoma (tumor present 0-1 mm from margin)</option>
+</select>
+
+<hr>
+
+Deep Margin (endoscopic mucosal resections only)<br>
+<select class="form-control form-control-sm "  id="box20">
+<option selected>Not applicable</option>
+<option>Cannot be assessed</option>
+<option>Uninvolved by invasive carcinoma</option>
+<option>Involved by invasive carcinoma</option>
+</select>
+
+<hr>
+
+<h5>Mucosal Margin (noncircumferential transanal disk excision)</h5><br>
+<select class="form-control form-control-sm "  id="box21">
+<option selected>Not applicable</option>
+<option>Cannot be assessed</option>
+<option>Uninvolved by invasive carcinoma;</option>
+<option>Involved by invasive carcinoma;</option>
+<option>Uninvolved by adenoma </option>
+<option>Involved by adenoma</option>
+</select>
+<input type="text" class="form-control form-control-sm "  id='box21_2' style='display:none;' placeholder='Specify distance (cm) and designation of closest margin' >
+<input type="text" class="form-control form-control-sm "  id='box21_3' style='display:none;' placeholder='Specify involved margin designation (if possible)' >
+
+<hr>
+
+<h5>Describe any other involved margin(s):</h5><br>
+<input type="text" class="form-control form-control-sm "  id="box22"  placeholder='Not applicable'>
+
+<hr>
+
+</div>
+<h5>Treatment Effect (applicable to carcinomas treated with neoadjuvant therapy)</h5><br>
+<select class="form-control form-control-sm "  id="box23">
+<option selected>Not applicable</option>
+<option>No prior treatment</option>
+<option>Present, No residual tumor (complete response, grade 0)</option>
+<option>Present, Moderate response (grade 1, minimal residual cancer)</option>
+<option>Present, Minimal response (grade 2) </option>
+<option>No definite response identified (grade 3, poor response)</option>
+<option>Not known</option>
+</select>
+
+<hr>
+
+<h5>Lymph-Vascular Invasion</h5><br>
+<select class="form-control form-control-sm "  id="box24">
+<option selected>Not identified</option>
+<option>Present</option>
+<option>Indeterminate</option>
+</select>
+
+<hr>
+
+<h5>Perineural Invasion</h5><br>
+<select class="form-control form-control-sm "  id="box25">
+<option selected>Not identified</option>
+<option>Present</option>
+<option>Indeterminate</option>
+</select>
+
+<hr>
+
+<h5>Tumor Deposits (discontinuous extramural extension)</h5><br><select class="form-control form-control-sm "  id="box26">
+<option selected>Not identified</option>
+<option>Present;</option>
+<option>Indeterminate</option>
+</select>
+<input type="text" class="form-control form-control-sm "  id='box26_2' style='display:none;' placeholder='Specify # of deposits' >
+
+<hr>
+
+<h5>+ Type of Polyp in Which Invasive Carcinoma Arose</h5><br>
+<select class="form-control form-control-sm "  id="box27">
+<option selected>None identified</option>
+<option>Tubular adenoma</option>
+<option>Villous adenoma</option>
+<option>Tubulovillous adenoma</option>
+<option>Traditional serrated adenoma</option>
+<option>Sessile serrated adenoma</option>
+<option>Hamartomatous polyp</option>
+<option>Indeterminate</option>
+</select>
+
+<hr>
+
+TNM Descriptors (select all that apply)<br><select class="form-control form-control-sm "  id="box28" multiple>
+<option selected value="Not applicable">Not applicable</option>
+<option>m</option>
+<option>r</option>
+<option>y</option>
+</select>
+<hr>
+
+<h5>Primary Tumor (pT)</h5><br>
+<select class="form-control form-control-sm "  id="box29">
+<option value="pTX">pTX:	Cannot be assessed</option>
+<option value="pT0">pT0:	No evidence of primary tumor</option>
+<option value="pTis">pTis:	Carcinoma in situ, intraepithelial (no invasion of lamina propria)</option>
+<option value="pTis">pTis:	Carcinoma in situ, invasion of lamina propria/muscularis mucosae</option>
+<option value="pT1">pT1:	Tumor invades submucosa</option>
+<option value="pT2">pT2:	Tumor invades muscularis propria</option>
+<option value="pT3">pT3:	Tumor invades through the muscularis propria into pericolorectal tissues</option>
+<option value="pT4a">pT4a:	Tumor penetrates the visceral peritoneum</option>
+<option value="pT4b">pT4b:	Tumor directly invades or is adherent to other organs or structures </option>
+</select><br>
+<h5>Regional Lymph Nodes(pN)</h5><br>
+<select class="form-control form-control-sm "  id="box30">
+<option value="pNX">pNX:	Cannot be assessed</option>
+<option value="pN0">pN0:	No regional lymph node metastasis</option>
+<option value="pN1a">pN1a:	Metastasis in 1 regional lymph node</option>
+<option value="pN1b">pN1b:	Metastasis in 2 to 3 regional lymph nodes</option>
+<option value="pN1c">pN1c:	Tumor deposit(s) in the subserosa, or non-peritonealized pericolic or perirectal tissues without regional lymph node metastasis</option>
+<option value="pN2a">pN2a:	Metastasis in 4 to 6 regional lymph nodes</option>
+<option value="pN2b">pN2b:	Metastasis in 7 or more regional lymph nodes</option>
+</select>
+<br>
+<h5>Distant Metastasis (pM)</h5><br>
+<select class="form-control form-control-sm "  id="box31">
+<option value="pMX" selected>pMX:    Not applicable </option>
+<option value="pM1">pM1:	Distant metastasis;</option>
+<option value="pM1a">pM1a: 	Metastasis to single organ or site (eg, liver, lung, ovary, nonregional lymph node)</option>
+<option value="pM1b">pM1b: 	Metastasis to more than 1 organ/site or to the peritoneum</option>
+</select>
+</select><input type="text" class="form-control form-control-sm "  id='box31_2' style='display:none;' placeholder='Specify metastatic site(s)' >
+
+<hr>
+
+Check here if any lymph nodes submitted? <input type="text" class="form-control form-control-sm "  type="checkbox" id="box32" ><br>
+Number of lymph nodes examined: <input type="text" class="form-control form-control-sm "  id="box32_1" ><br>
+Number of lymph nodes involved: <input type="text" class="form-control form-control-sm "  id="box32_2" >
+<hr>
+
+
+	<!-- close column -->
+			</div>
+			{{> page-partials/cap-footer}}
+	<!-- close row -->
+		</div>
+	<!-- close container -->
+	</div>
+
+
+			<!--
+			"specificScripts":
+				[
+					"../js/cap/colonrx-scripts.js",
+				]
+		 -->

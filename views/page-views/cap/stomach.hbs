@@ -1,0 +1,443 @@
+<div class="container-fluid">
+		<!-- Breadcrumbs -->
+		<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+						<a href="/">Home</a>
+				</li>
+				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+				<li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Stomach Cancers - Gastrectomy</li>
+		</ol>
+
+		{{> page-partials/cap-header}}
+
+	<div class="row">
+		<div class="col col-md-8">
+
+<h5>Specimen (select all that apply)</h5><br>
+<select class="form-control form-control-sm "  multiple id="box1">
+<option>Stomach </option>
+<option>Gastric body (partial gastrectomy)</option>
+<option>Gastric antrum (partial gastrectomy)</option>
+<option>Distal esophagus</option>
+<option>Proximal duodenum</option>
+<option>Not specified</option>
+</select>
+
+<hr>
+
+
+<h5>Procedure</h5><br>
+<select class="form-control form-control-sm "  id="box2">
+<option>Endoscopic mucosal resection</option>
+<option>Partial gastrectomy, proximal </option>
+<option>Partial gastrectomy, distal </option>
+<option>Total gastrectomy</option>
+<option>Other</option>
+<option>Not specified</option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box2_2' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+<h5>Tumor Site (select all that apply)</h5><br>
+<select class="form-control form-control-sm "  multiple id="box3">
+<option>Fundus (NOS)</option>
+<option>Fundus, Anterior wall</option>
+<option>Fundus, Posterior wall</option>
+<option>Body (NOS)</option>
+<option>Body, Anterior wall</option>
+<option>Body, Posterior wall</option>
+<option>Body,  Lesser curvature</option>
+<option>Body,  Greater curvature</option>
+<option>Antrum (NOS)</option>
+<option>Antrum, Anterior wall</option>
+<option>Antrum, Posterior wall</option>
+<option>Antrum,  Lesser curvature</option>
+<option>Antrum,  Greater curvature</option>
+<option>Other</option>
+<option>Not specified</option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box3_2' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+<h5>Tumor Size (cm):</h5><br>
+<input type="text" class="form-control form-control-sm "  id="box4"  placeholder='Cannot be determined'>
+
+<hr>
+
+
+<h5>Histologic Type (select all that apply)</h5><br>
+<select class="form-control form-control-sm "  multiple id="box5">
+<option>Adenocarcinoma, NOS</option>
+<option>Adenocarcinoma, Intestinal type</option>
+<option>Adenocarcinoma, Diffuse type (signet-ring carcinoma if >50% signet-ring cells)</option>
+<option>Adenocarcinoma, Mixed (approximately equal amounts of intestinal and diffuse)</option>
+<option>Tubular (intestinal) adenocarcinoma</option>
+<option> Poorly cohesive carcinoma (including mixed adenocarcinoma with >50% signet-ring cell features)</option>
+<option>Diffuse carcinoma (noncohesive carcinoma, >80% diffuse/signet-ring cells)</option>
+<option>Mucinous adenocarcinoma (>50% mucinous)</option>
+<option>Papillary adenocarcinoma</option>
+<option>Hepatoid adenocarcinoma</option>
+<option>Carcinoma with lymphoid stroma (medullary carcinoma)</option>
+<option>High-grade neuroendocrine carcinoma</option>
+<option>Large cell neuroendocrine carcinoma</option>
+<option>Small cell neuroendocrine carcinoma</option>
+<option>Mixed adenoneuroendocrine carcinoma</option>
+<option>Squamous cell carcinoma</option>
+<option>Adenosquamous carcinoma</option>
+<option>Undifferentiated carcinoma </option>
+<option>Other</option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box5_2' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+<h5>Histologic Grade</h5><br>
+<select class="form-control form-control-sm "  id="box6">
+<option>Not applicable</option>
+<option>GX: Cannot be assessed</option>
+<option>G1: Well differentiated</option>
+<option>G2: Moderately differentiated</option>
+<option>G3: Poorly differentiated</option>
+<option>G4: Undifferentiated</option>
+<option>Other</option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box6_2' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+<h5>Microscopic Extent of Tumor</h5><br>
+<select class="form-control form-control-sm "  id="box7">
+<option>Cannot be assessed</option>
+<option>No evidence of residual primary tumor</option>
+<option>High-grade dysplasia/carcinoma in situ</option>
+<option>Tumor invades lamina propria</option>
+<option>Tumor invades into but not through muscularis mucosae</option>
+<option>Tumor invades submucosa</option>
+<option>Tumor invades muscularis propria</option>
+<option>Tumor invades subserosal connective tissue without involvement of visceral peritoneum</option>
+<option>Tumor penetrates serosa (visceral peritoneum) </option>
+<option>Tumor directly invades adjacent structures</option>
+<option>Tumor penetrates to the surface of the visceral peritoneum (serosa) and directly invades adjacent structures</option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box7_2' style='display:none;' placeholder='Specify'><br>
+<input type="text" class="form-control form-control-sm "  id='box7_3' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+<b style="color:white;">Margins</h5><br>
+<input class="form-check-input" type="checkbox" id="box8"> Click if all margins are negative<br>
+
+<div id="marginneg" style="display:none;">
+<h5>All margins negative for carcinoma:</h5><br>
+<input type="text" class="form-control form-control-sm "  id="box9a"  placeholder='Specify closest margin'><input type="text" class="form-control form-control-sm "  id="box9b"  placeholder='Specify distance to this margin (cm)'>
+</div>
+
+<hr>
+
+
+<div id="marginpos">
+<h5>Proximal Margin</h5><br>
+<select class="form-control form-control-sm "  multiple id="box10">
+<option>Cannot be assessed</option>
+<option selected>Uninvolved by invasive carcinoma, carcinoma in situ, and low-grade glandular dysplasia</option>
+<option>Involved by invasive carcinoma</option>
+<option>Involved by carcinoma in situ</option>
+<option>Involved by low-grade glandular dysplasia</option>
+</select>
+
+<hr>
+
+
+<h5>Distal Margin</h5><br>
+<select class="form-control form-control-sm "  multiple id="box11">
+<option>Cannot be assessed</option>
+<option selected>Uninvolved by invasive carcinoma, carcinoma in situ, and low-grade glandular dysplasia</option>
+<option>Involved by invasive carcinoma</option>
+<option>Involved by carcinoma in situ</option>
+<option>Involved by low-grade glandular dysplasia</option>
+</select>
+
+<hr>
+
+
+<h5>Omental (Radial) Margins</h5><br>
+<select class="form-control form-control-sm "  multiple id="box12">
+<option>Cannot be assessed</option>
+<option selected>Uninvolved by invasive carcinoma</option>
+<option>Omental margin involved by invasive carcinoma</option>
+<option>Greater omental margin involved by invasive carcinoma</option>
+<option>Lesser omental margin involved by invasive carcinoma</option>
+</select>
+
+<hr>
+
+
+<h5>Deep Margin (endoscopic mucosal resections)</h5><br>
+<select class="form-control form-control-sm "  id="box13">
+<option>Not applicable</option>
+<option>Cannot be assessed</option>
+<option>Uninvolved by invasive carcinoma</option>
+<option>Involved by invasive carcinoma</option>
+</select>
+
+<hr>
+
+
+<h5>Mucosal Margins (endoscopic resections)</h5><br>
+<select class="form-control form-control-sm "  id="box14">
+<option>Not applicable</option>
+<option>Cannot be assessed</option>
+<option>Uninvolved by invasive carcinoma, carcinoma in situ, and low-grade glandular dysplasia</option>
+<option>Involved by invasive carcinoma</option>
+<option>Involved by carcinoma in situ</option>
+<option>Involved by low-grade glandular dysplasia</option>
+</select>
+
+<hr>
+
+
+<h5>Other Margin</h5><br>
+<select class="form-control form-control-sm "  id="box15">
+<option>Not applicable</option>
+<option>Cannot be assessed</option>
+<option>Involved by invasive carcinoma</option>
+<option>Uninvolved by invasive carcinoma</option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box15_2' style='display:none;' placeholder='Specify'><br>
+<input type="text" class="form-control form-control-sm "  id='box15_3' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+</div>
+
+<h5>Treatment Effect (required only if applicable in the setting of neoadjuvant chemotherapy) </h5><br>
+<select class="form-control form-control-sm "  id="box16">
+<option>Not applicable</option>
+<option>No prior treatment</option>
+<option>Present, No residual tumor (complete response, grade 0)</option>
+<option>Present, Marked response (grade 1, minimal residual cancer)</option>
+<option>Present, Moderate response (grade 2) </option>
+<option>No definite response identified (grade 3, poor or no response)</option>
+<option>Not known</option>
+</select>
+
+<hr>
+
+
+<h5>Lymph-Vascular Invasion</h5><br>
+<select class="form-control form-control-sm "  id="box17">
+<option>Not identified</option>
+<option>Present</option>
+<option>Indeterminate</option>
+</select>
+
+<hr>
+
+
+<h5>+ Perineural Invasion</h5><br>
+<select class="form-control form-control-sm "  id="box18">
+<option>Not identified</option>
+<option>Present</option>
+<option>Indeterminate</option>
+</select>
+
+<hr>
+
+
+<h5>Pathologic Staging (pTNM)</h5>
+<hr>
+
+TNM Descriptors (select all that apply)<br><select class="form-control form-control-sm "  id="box19" multiple>
+<option selected value="Not applicable">Not applicable</option>
+<option>m</option>
+<option>r</option>
+<option>y</option>
+</select>
+<hr>
+
+
+<select class="form-control form-control-sm "  id="box20">
+<option value="pTX">pTX:	Cannot be assessed</option>
+<option value="pT0">pT0:	No evidence of primary tumor</option>
+<option value="pTis">pTis:	Carcinoma in situ/high-grade glandular dysplasia</option>
+<option value="pT1">pT1: Tumor invades lamina propria, muscularis mucosae, or submucosa</option>
+<option value="pT1a">pT1a:	Tumor invades lamina propria or muscularis mucosae</option>
+<option value="pT1b">pT1b:	Tumor invades submucosa</option>
+<option value="pT2">pT2:	Tumor invades muscularis propria </option>
+<option value="pT3">pT3:	Tumor invades subserosal connective tissue, without involvement of visceral peritoneum or adjacent structures</option>
+<option value="pT4">pT4:	Tumor invades serosa (visceral peritoneum) or adjacent structures </option>
+<option value="pT4a">pT4a: 	Tumor invades serosa (visceral peritoneum) </option>
+<option value="pT4b">pT4b:  	Tumor invades adjacent structures  </option>
+</select><br>
+
+<select class="form-control form-control-sm "  id="box21">
+<option value="pNX">pNX:	Cannot be assessed / No nodes submitted</option>
+<option value="pN0">pN0:	No regional lymph node metastasis</option>
+<option value="pN1">pN1:	Metastasis in 1 to 2 perigastric lymph nodes</option>
+<option value="pN2">pN2:	Metastasis in 3 to 6 perigastric lymph nodes</option>
+<option value="pN3">pN3:	Metastasis in 7 or more perigastric lymph nodes</option>
+<option value="pN3a">pN3a:  Metastasis in 7 to 15 perigastric lymph nodes</option>
+<option value="pN3b">pN3b:  Metastasis in 16 or more perigastric lymph nodes</option>
+</select><br>
+
+<select class="form-control form-control-sm "  id="box22">
+<option value="pMX">pMX:  Not applicable</option>
+<option value="pM1">pM1:  Distant metastasis </option>
+</select><br>
+Check here if any lymph nodes submitted? <input class="form-check-input"  type="checkbox" id="box23" ><br>
+    <div class='lnchk' style='display:none;'><br>
+Number of lymph nodes examined: <input type="text" class="form-control form-control-sm "  id="box24"  placeholder='0'><br>
+Number of lymph nodes involved: <input type="text" class="form-control form-control-sm "  id="box25"  placeholder='0'></div>
+
+<hr>
+
+
+<h5>+ Additional Pathologic Findings (select all that apply)</h5><br>
+<select class="form-control form-control-sm "  multiple id="box26">
+<option>None identified</option>
+<option>Intestinal metaplasia</option>
+<option>Low-grade glandular dysplasia</option>
+<option>High-grade glandular dysplasia</option>
+<option>Helicobacter pylori-type gastritis</option>
+<option>Chronic, non-specific, gastritis</option>
+<option>Adenomatous polyps</option>
+<option>Hyperplastic polyps</option>
+<option>Fundic gland polyps</option>
+<option>Other</option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box26_2' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+<h5>+ Ancillary Studies:</h5><br>
+<input type="text" class="form-control form-control-sm "  id="box27"  placeholder='enter IHCs, if performed'>
+
+<hr>
+
+
+<h5>+ Clinical History (select all that apply)</h5><br>
+<select class="form-control form-control-sm "  id="box28">
+<option>Previous gastric surgery</option>
+<option>Other</option>
+<option>Not known</option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box28_2' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+
+<b style="color:white;">Choose HER2 Testing - If performed</h5><br>
+
+HER2 Testing<br>
+<select class="form-control form-control-sm "  id="box29">
+<option selected>Not performed</option>
+<option>HER2 by IHC</option>
+<option>HER2 by FISH</option>
+</select>
+
+<hr>
+
+
+<div id="her2ihc" style="display:none;"><br>
+
+<h5>+ HER2 by immunohistochemistry</h5><br>
+<select class="form-control form-control-sm "  id="box30">
+<option>Not applicable</option>
+<option>Negative (score 0)</option>
+<option>Negative (score 1+)</option>
+<option>Equivocal (score 2+)</option>
+<option>Positive (score 3+)</option>
+<option>Indeterminate – poor technical study</option>
+</select>
+
+<hr>
+
+
+<h5>+ HER2 - immunohistochemistry clone</h5><br>
+<select class="form-control form-control-sm "  id="box30b">
+<option>4B5</option>
+<option>HercepTestTM </option>
+<option>A0485 </option>
+<option>SP3 </option>
+<option>CB11</option>
+<option>Other</option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box30b_2' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+</div>
+
+<div id="her2fish" style="display:none;">
+
+<h5>+ HER2 by in-situ hybridization</h5><br>
+<select class="form-control form-control-sm "  id="box31">
+<option>Not applicable</option>
+<option>Negative (not amplified)</option>
+<option>Positive (amplified) </option>
+<option>Indeterminate – poor technical study</option>
+</select>
+
+<hr>
+
+
+Number of observers:<br>
+<input type="text" class="form-control form-control-sm "  id="box32"  placeholder='2'>
+
+<hr>
+
+
+Number of invasive cancer cells counted:<br>
+<input type="text" class="form-control form-control-sm "  id="box33"  placeholder='200'>
+
+<hr>
+
+
+Average number of HER2 (ERBB2) signals per cancer cell:<br>
+<input type="text" class="form-control form-control-sm "  id="box34"  placeholder='1'>
+
+<hr>
+
+
+Average number of CEP17 signals per cancer cell:<br>
+<input type="text" class="form-control form-control-sm "  id="box35"  placeholder='1'>
+
+<hr>
+
+
++ HER2 (ERBB2) - method used<br>
+<select class="form-control form-control-sm "  id="box36">
+<option>FDA cleared</option>
+<option>Laboratory-developed test</option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box36_1' placeholder='Specify vendor'><br>
+<input type="text" class="form-control form-control-sm "  id='box36_2' style='display:none;' placeholder='Specify probe'>
+
+<hr>
+
+</div>
+
+<!-- close column -->
+		</div>
+		{{> page-partials/cap-footer}}
+<!-- close row -->
+	</div>
+<!-- close container -->
+</div>
+
+
+		<!--
+		"specificScripts":
+			[
+				"../js/cap/stomach-scripts.js",
+			]
+	 -->

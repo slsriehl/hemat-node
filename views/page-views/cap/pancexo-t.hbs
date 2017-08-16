@@ -1,0 +1,354 @@
+<div class="container-fluid">
+		<!-- Breadcrumbs -->
+		<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+						<a href="/">Home</a>
+				</li>
+				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+				<li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Pancreatic Exocrine tumors</li>
+		</ol>
+
+		{{> page-partials/cap-header}}
+
+	<div class="row">
+		<div class="col col-md-8">
+	<h5>Specimen (select all that apply)</h5><br>
+	<select class="form-control form-control-sm "  multiple id="box1">
+	<option>Head of pancreas</option>
+	<option>Body of pancreas</option>
+	<option>Tail of pancreas </option>
+	<option>Duodenum</option>
+	<option>Stomach</option>
+	<option>Common bile duct</option>
+	<option>Gallbladder</option>
+	<option>Spleen</option>
+	<option>Portal vein</option>
+	<option>Superior mesenteric vein</option>
+	<option>Other</option>
+	<option>Not specified</option>
+	<option>Cannot be determined</option>
+	</select><br><input type="text" class="form-control form-control-sm "  id='box1_2' style='display:none;' placeholder='Specify other specimen'>
+<hr>
+
+
+	<h5>Procedure</h5><br>
+	<select class="form-control form-control-sm "  id="box2">
+	<option>Pancreaticoduodenectomy (Whipple resection), partial pancreatectomy</option>
+	<option>Pancreaticoduodenectomy (Whipple resection), total pancreatectomy</option>
+	<option>Partial pancreatectomy, pancreatic body </option>
+	<option>Partial pancreatectomy, pancreatic tail</option>
+	<option>Distal pancreatectomy (body, tail) and splenectomy</option>
+	<option>Distal pancreatectomy (tail) and splenectomy</option>
+	<option>Other</option>
+	<option>Not specified</option>
+	</select><br><input type="text" class="form-control form-control-sm "  id='box_2' style='display:none;' placeholder='Specify procedure'>
+<hr>
+
+
+	<h5>Tumor Site (select all that apply)</h5><br>
+	<select class="form-control form-control-sm "  multiple id="box3">
+	<option>Pancreatic head</option>
+	<option>Uncinate process</option>
+	<option>Pancreatic body</option>
+	<option>Pancreatic tail</option>
+	<option>Other </option>
+	<option>Cannot be determined</option>
+	<option>Not specified</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box3_2' style='display:none;' placeholder='Specify site'>
+<hr>
+
+
+	<h5>Tumor Size (cm):</h5><br>
+	<input type="text" class="form-control form-control-sm "  id="box4" size='40' placeholder='Cannot be determined'>
+
+<hr>
+<br>
+
+	<h5>Histologic Type (select all that apply)</h5><br>
+	<select class="form-control form-control-sm "  multiple id="box5">
+	<option>Ductal adenocarcinoma</option>
+	<option>Colloid carcinoma (mucinous noncystic carcinoma)</option>
+	<option>Signet-ring cell carcinoma</option>
+	<option>Adenosquamous carcinoma</option>
+	<option>Intraductal papillary-mucinous neoplasia with low- or intermediate-grade intraepithelial neoplasia</option>
+	<option>Intraductal papillary-mucinous neoplasia with high-grade intraepithelial neoplasia</option>
+	<option>Intraductal papillary-mucinous neoplasia with an associated invasive carcinoma</option>
+	<option>Mucinous cystic neoplasm with low- or intermediate-grade intraepithelial neoplasia</option>
+	<option>Mucinous cystic neoplasm with high-grade intraepithelial neoplasia</option>
+	<option>Mucinous cystic neoplasm with an associated invasive carcinoma</option>
+	<option>Large cell neuroendocrine carcinoma</option>
+	<option>Small cell neuroendocrine carcinoma</option>
+	<option>Undifferentiated (anaplastic) carcinoma</option>
+	<option>Undifferentiated carcinoma with osteoclast-like giant cells</option>
+	<option>Acinar cell carcinoma</option>
+	<option>Acinar cell cystadenocarcinoma</option>
+	<option>Serous cystadenocarcinoma</option>
+	<option>Mixed acinar-ductal carcinoma</option>
+	<option>Mixed ductal-neuroendocrine carcinoma</option>
+	<option>Mixed acinar-neuroendocrine carcinoma</option>
+	<option>Mixed acinar-neuroendocrine-ductal carcinoma</option>
+	<option>Solid-pseudopapillary neoplasm</option>
+	<option>Hepatoid carcinoma</option>
+	<option>Medullary carcinoma</option>
+	<option>Other</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box5_2' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+
+
+	<h5>Histologic grade (ductal carcinomas only)</h5><br>
+	<select class="form-control form-control-sm "  id="box6">
+	<option>Not applicable</option>
+	<option>GX: Cannot be assessed</option>
+	<option>G1: Well differentiated</option>
+	<option>G2: Moderately differentiated</option>
+	<option>G3: Poorly differentiated</option>
+	<option>G4: Undifferentiated</option>
+	<option>Other</option>
+	</select><br><input type="text" class="form-control form-control-sm "  id='box6_2' style='display:none;' placeholder='Specify other grade'>
+<hr>
+
+
+	<h5>Microscopic Tumor Extension (select all that apply)</h5><br>
+	<select class="form-control form-control-sm "  multiple id="box7">
+<option>Cannot be assessed</option>
+	<option>No evidence of primary tumor</option>
+	<option>Carcinoma in situ/high-grade dysplasia</option>
+	<option>Tumor is confined to pancreas</option>
+	<option>Tumor invades ampulla of Vater or sphincter of Oddi </option>
+	<option>Tumor invades duodenal wall </option>
+	<option>Tumor invades peripancreatic soft tissues </option>
+	<option>Tumor invades retroperitoneal soft tissue</option>
+	<option>Tumor invades mesenteric adipose tissue</option>
+	<option>Tumor invades mesocolon</option>
+	<option>Tumor invades other peripancreatic soft tissue</option>
+	<option>Tumor invades extrapancreatic common bile duct</option>
+	<option>Tumor invades other adjacent organs or structures</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box7_2' style='display:none;' placeholder='Specify other soft tissue'>
+	<input type="text" class="form-control form-control-sm "  id='box7_3' style='display:none;' placeholder='Specify organ'><br>
+
+	<h5>Margins</h5><br>
+	<select class="form-control form-control-sm "  id="box8">
+	<option>Cannot be assessed</option>
+	<option>Margins uninvolved by invasive carcinoma</option>
+	<option>Margins involved by invasive carcinoma</option>
+	</select>
+	<input type="text" class="form-control form-control-sm "  id='box8_2' style='display:none;' placeholder='Distance to closest margin (cm)'>
+	<div class='marginpos' style="display:none;">
+
+	<h5>Proximal Pancreatic Parenchymal Margin</h5><br>
+	<select class="form-control form-control-sm "  id="box8a">
+	<option>Cannot be assessed</option>
+	<option>Uninvolved by pancreatic high-grade intraepithelial neoplasia or invasive carcinoma</option>
+	<option>Involved by invasive carcinoma</option>
+	<option>Involved by pancreatic high-grade intraepithelial neoplasia</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box8a_2' style='display:none;' placeholder='Distance to margin (mm)'>
+
+<hr>
+
+
+	<h5>Distal Pancreatic Parenchymal Margin</h5><br>
+	<select class="form-control form-control-sm "  id="box8b">
+	<option>Not applicable</option>
+	<option>Cannot be assessed</option>
+	<option>Uninvolved by pancreatic high-grade intraepithelial neoplasia or invasive carcinoma</option>
+	<option>Involved by invasive carcinoma</option>
+	<option>Involved by pancreatic high-grade intraepithelial neoplasia</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box8b_2' style='display:none;' placeholder='Distance to margin (mm)'>
+
+<hr>
+
+
+	<h5> For Whipple Resections </h5><br>
+	<h5>Pancreatic Neck/Parenchymal Margin</h5><br>
+	<select class="form-control form-control-sm "  id="box8c">
+	<option>Not applicable</option>
+	<option>Cannot be assessed</option>
+	<option>Uninvolved by pancreatic high-grade intraepithelial neoplasia or invasive carcinoma</option>
+	<option>Involved by invasive carcinoma</option>
+	<option>Involved by pancreatic high-grade intraepithelial neoplasia</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box8c_2' style='display:none;' placeholder='Distance to margin (mm)'>
+
+<hr>
+
+
+	<h5>Uncinate (Retroperitoneal/Superior Mesenteric Artery) Margin</h5><br>
+	<select class="form-control form-control-sm "  id="box8d">
+	<option>Not applicable</option>
+	<option>Cannot be assessed</option>
+	<option>Uninvolved by pancreatic high-grade intraepithelial neoplasia or invasive carcinoma</option>
+	<option>Involved by invasive carcinoma</option>
+	<option>Involved by pancreatic high-grade intraepithelial neoplasia</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box8d_2' style='display:none;' placeholder='Distance to margin (mm)'>
+
+<hr>
+
+
+	<h5>Uncinate (Retroperitoneal/Superior Mesenteric Artery) Margin</h5><br>
+	<select class="form-control form-control-sm "  id="box8e">
+	<option>Not applicable</option>
+	<option>Cannot be assessed</option>
+	<option>Uninvolved by pancreatic high-grade intraepithelial neoplasia or invasive carcinoma</option>
+	<option>Involved by invasive carcinoma</option>
+	<option>Involved by pancreatic high-grade intraepithelial neoplasia</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box8e_2' style='display:none;' placeholder='Distance to margin (mm)'>
+
+<hr>
+
+
+	<h5>Proximal Margin (Gastric or Duodenal)</h5><br>
+	<select class="form-control form-control-sm "  id="box8f">
+	<option>Not applicable</option>
+	<option>Cannot be assessed</option>
+	<option>Uninvolved by pancreatic high-grade intraepithelial neoplasia or invasive carcinoma</option>
+	<option>Involved by invasive carcinoma</option>
+	<option>Involved by pancreatic high-grade intraepithelial neoplasia</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box8f_2' style='display:none;' placeholder='Distance to margin (mm)'>
+
+<hr>
+
+
+	<h5>Distal Margin (Distal Duodenal or Jejunal)</h5><br>
+	<select class="form-control form-control-sm "  id="box8g">
+	<option>Not applicable</option>
+	<option>Cannot be assessed</option>
+	<option>Uninvolved by pancreatic high-grade intraepithelial neoplasia or invasive carcinoma</option>
+	<option>Involved by invasive carcinoma</option>
+	<option>Involved by pancreatic high-grade intraepithelial neoplasia</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box8g_2' style='display:none;' placeholder='Distance to margin (mm)'>
+
+	</div>
+
+<hr>
+
+
+	<h5>Treatment effect (for carcinomas with neoadjuvant therapy)</h5><br>
+	<select class="form-control form-control-sm "  id="box9">
+	<option>No prior treatment</option>
+	<option>Present; No viable cancer cells (complete response, score 0)</option>
+	<option>Present; Single cells or rare small groups of cancer cells (near complete response, score 1)</option>
+	<option>Present; Residual cancer with evident tumor regression, but more than single cells or rare small groups of cancer cells (partial response, score 2)</option>
+	<option>Extensive residual cancer with no evident tumor regression (poor or no response, score 3)</option>
+	<option>Not known</option>
+	</select>
+
+<hr>
+
+
+	<h5>Lymph-vascular invasion</h5><br>
+	<select class="form-control form-control-sm "  id="box10">
+	<option>Not identified</option>
+	<option>Present</option>
+	<option>Indeterminate</option>
+	</select>
+
+<hr>
+
+
+	<h5>Perineural invasion</h5><br>
+	<select class="form-control form-control-sm "  id="box11">
+	<option>Not identified</option>
+	<option>Present</option>
+	<option>Indeterminate</option>
+	</select>
+
+<hr>
+
+
+	TNM Descriptors (select all that apply)<br>
+	<select class="form-control form-control-sm "  id="box12_1" multiple>
+	<option selected value="Not applicable">Not applicable</option>
+	<option>m</option>
+	<option>r</option>
+	<option>y</option>
+	</select>
+	<br>
+    Tumor:
+	<select class="form-control form-control-sm "  id="box12_2">
+	<option value="pTX">pTX:	Cannot be assessed</option>
+	<option value="pT0">pT0:	No evidence of primary tumor</option>
+	<option value="pTis">pTis:	Carcinoma in situ</option>
+	<option value="pT1">pT1:	Tumor limited to the pancreas, 2 cm or less in greatest dimension</option>
+	<option value="pT2">pT2:	Tumor limited to the pancreas, more than 2 cm in greatest dimension</option>
+	<option value="pT3">pT3:	Tumor extends beyond the pancreas but without involvement of the celiac axis or the superior mesenteric artery</option>
+	<option value="pT4">pT4:	Tumor involves the celiac axis or the superior mesenteric artery</option>
+	</select><br>
+    Lymph nodes
+	<select class="form-control form-control-sm "  id="box12_3">
+	<option value="pNX">pNX:	Cannot be assessed</option>
+	<option value="pN0">pN0:	No regional lymph node metastasis</option>
+	<option value="pN1">pN1: 	Regional lymph node metastasis</option>
+	</select><br>
+    Metastasis
+	<select class="form-control form-control-sm "  id="box12_4">
+	<option value="pMX">pMX:    Not applicable</option>
+	<option value="pM1">pM1:	Distant </option>
+	</select><br>
+	Check here if any lymph nodes submitted? <input class="form-check-input"  type="checkbox" id="box13" ><br>
+	<div class='lndiv' style="display:none">
+	Number of lymph nodes examined: <input type="text" class="form-control form-control-sm "  id="box13_2" ><br>
+	Number of lymph nodes involved: <input type="text" class="form-control form-control-sm "  id="box13_3" >
+	</div>
+
+<hr>
+
+
+	<h5>+Additional pathologic findings (select all that apply)</h5><br>
+	<select class="form-control form-control-sm "  id="box14">
+	<option>None identified</option>
+	<option>Pancreatic intraepithelial neoplasia</option>
+	<option>Chronic pancreatitis</option>
+	<option>Acute pancreatitis</option>
+	<option>Other</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box14_2' style='display:none;' placeholder='Specify'>
+<hr>
+
+
+	<h5>+Ancillary studies:</h5><br>
+	Type in any immunos or genetic tests below<br>
+	<input type="text" class="form-control form-control-sm "  id="box15" size='40' placeholder='Specify'>
+
+<hr>
+
+
+
+	<h5>Clinical history (select all that apply)</h5><br><select class="form-control form-control-sm "  id="box16">
+	<option>Not specified</option>
+	<option>Neoadjuvant therapy</option>
+	<option>Familial pancreatitis</option>
+	<option>Familial pancreatic cancer syndrome</option>
+	<option>Other</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box16_2' style='display:none;' placeholder='Specify history'>
+<hr>
+
+
+
+	<!-- close column -->
+			</div>
+			{{> page-partials/cap-footer}}
+	<!-- close row -->
+		</div>
+	<!-- close container -->
+	</div>
+
+
+			<!--
+			"specificScripts":
+				[
+					"../js/cap/pancexo-scripts.js",
+				]
+		 -->

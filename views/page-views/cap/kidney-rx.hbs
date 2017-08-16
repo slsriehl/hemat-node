@@ -1,0 +1,269 @@
+<div class="container-fluid">
+		<!-- Breadcrumbs -->
+		<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+						<a href="/">Home</a>
+				</li>
+				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+				<li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Kidney cancers</li>
+		</ol>
+
+		{{> page-partials/cap-header}}
+
+	<div class="row">
+		<div class="col col-md-8">
+	<h5>Procedure</h5><br>
+	<select class="form-control form-control-sm "  id="box1">
+	<option selected>Not specified</option>
+	<option>Partial nephrectomy</option>
+	<option>Radical nephrectomy</option>
+	<option>Other:</option>
+	</select>
+	<input type="text" class="form-control form-control-sm "  id='box1_2' style='display:none;' placeholder='Specify other procedure'  >
+
+<hr>
+
+	<h5>Specimen Laterality</h5><br>
+	<select class="form-control form-control-sm "  id="box2">
+	<option selected>Not specified</option>
+	<option>Right</option>
+	<option>Left</option>
+	</select>
+
+<hr>
+
+	<h5>Tumor Site</h5><br>
+	<select class="form-control form-control-sm "  multiple id="box3">
+	<option selected>Not specified</option>
+	<option>Upper pole</option>
+	<option>Middle</option>
+	<option>Lower pole</option>
+	<option>Other:</option>
+	</select>
+	<input type="text" class="form-control form-control-sm "  id='box3_2' style='display:none;' placeholder=''  >
+
+<hr>
+
+	<h5>Tumor Size (cm):</h5><br>
+	<input type="text" class="form-control form-control-sm "  id="box4"  placeholder='Cannot be determined'>
+
+<hr>
+
+	<h5>Tumor Focality</h5><br>
+	<select class="form-control form-control-sm "  id="box5">
+	<option selected>Unifocal</option>
+	<option>Multifocal</option>
+	</select>
+
+<hr>
+
+	<h5>Macroscopic Extent of Tumor</h5><br>
+	<select class="form-control form-control-sm "  multiple id="box6">
+	<option selected>Primary tumor cannot be assessed</option>
+	<option>No evidence of primary tumor</option>
+	<option>Tumor limited to kidney</option>
+	<option>Tumor extension into perinephric tissues</option>
+	<option>Tumor extension into renal sinus</option>
+	<option>Tumor extension beyond Gerota’s fascia</option>
+	<option>Tumor extension into major veins</option>
+	<option>Tumor extension into major calyx</option>
+	<option>Tumor extension into minor calyx</option>
+	<option>Direct invasion into adrenal gland</option>
+	<option>Non-contiguous extension into adrenal gland</option>
+	<option>Tumor extension into other organ(s);</option>
+	</select>
+	<input type="text" class="form-control form-control-sm "  id='box6_2' style='display:none;' placeholder='Specify involved organs'  >
+
+<hr>
+
+	<h5>Histologic Type</h5><br>
+	<select class="form-control form-control-sm "  id="box7">
+	<option selected>Clear cell renal cell carcinoma</option>
+	<option>Multilocular clear cell renal cell carcinoma</option>
+	<option>Papillary renal cell carcinoma</option>
+	<option>Chromophobe renal cell carcinoma</option>
+	<option>Carcinoma of the collecting ducts of Bellini</option>
+	<option>Renal medullary carcinoma</option>
+	<option>Translocation carcinoma (Xp11 or others)</option>
+	<option>Carcinoma associated with neuroblastoma</option>
+	<option>Mucinous tubular and spindle cell carcinoma</option>
+	<option>Tubulocystic renal cell carcinoma </option>
+	<option>Renal cell carcinoma, unclassified</option>
+	<option>Other:</option>
+	</select>
+	<input type="text" class="form-control form-control-sm "  id='box7_2' style='display:none;' placeholder='Specify other histology'  >
+
+<hr>
+
+	<h5>Sarcomatoid Features</h5><br>
+	<select class="form-control form-control-sm "  id="box8">
+	<option selected>Not identified</option>
+	<option>Present;</option>
+	</select>
+	<input type="text" class="form-control form-control-sm "  id='box8_2' style='display:none;' placeholder='Specify % of sarcomatoid component'  >
+
+<hr>
+
+	<h5>Tumor Necrosis</h5><br>
+	<select class="form-control form-control-sm "  id="box9">
+	<option selected>Not identified</option>
+	<option>Present</option>
+	</select>
+
+<hr>
+
+	<h5>Histologic Grade (Fuhrman Nuclear Grade)</h5><br>
+	<select class="form-control form-control-sm "  id="box10">
+	<option selected>Not applicable</option>
+	<option value='GX'>GX: Cannot be assessed</option>
+	<option value='G1'>G1: Nuclei round, uniform, approximately 10 µm; nucleoli inconspicuous or absent</option>
+	<option value='G2'>G2: Nuclei slightly irregular, approximately 15 µm; nucleoli evident</option>
+	<option value='G3'>G3: Nuclei very irregular, approximately 20 µm; nucleoli large and prominent</option>
+	<option value='G4'>G4: Nuclei bizarre and multilobated, 20 µm or greater, nucleoli prominent, chromatin clumped</option>
+	<option>Other:</option>
+	</select>
+	<input type="text" class="form-control form-control-sm "  id='box10_2' style='display:none;' placeholder='Specify other grade'  >
+
+<hr>
+
+	<h5>Microscopic Tumor Extension (select all that apply)</h5><br>
+	<select class="form-control form-control-sm "  multiple id="box11">
+	<option selected>Primary tumor cannot be assessed</option>
+	<option>No evidence of primary tumor</option>
+	<option>Tumor limited to kidney</option>
+	<option>Tumor extension into perinephric tissue (beyond renal capsule)</option>
+	<option>Tumor extension into renal sinus</option>
+	<option>Tumor extension beyond Gerota’s fascia</option>
+	<option>Tumor extension into major vein (renal vein or its segmental (muscle containing) branches, inferior vena cava)</option>
+	<option>Tumor extension into pelvicalyceal system</option>
+	<option>Tumor extension into adrenal gland</option>
+	<option>Direct invasion (T4)</option>
+	<option>Noncontiguous (M1)</option>
+	<option>Tumor extension into other organ(s);</option>
+	</select>
+	<input type="text" class="form-control form-control-sm "  id='box11_2' style='display:none;' placeholder=''  >
+
+<hr>
+
+	<h5>Margins (select all that apply)</h5><br>
+	<select class="form-control form-control-sm "  id="box12" multiple>
+	<option>Cannot be assessed</option>
+	<option>Margins uninvolved by invasive carcinoma</option>
+	<option>Renal parenchymal margin involved ( partial nephrectomy only) </option>
+	<option>Renal capsular margin involved (partial nephrectomy only) </option>
+	<option>Perinephric fat margin involved (partial nephrectomy only)</option>
+	<option>Gerota’s fascial margin involved </option>
+	<option>Renal vein margin involved </option>
+	<option>Ureteral margin involved </option>
+	<option>Other:</option>
+	</select>
+	<input type="text" class="form-control form-control-sm "  id='box12_2' style='display:none;' placeholder='Specify other involved margin'>
+
+<hr>
+
+	<h5>+ Lymph-Vascular Invasion</h5><br>
+	<small>(excluding renal vein and its muscle containing segmental branches and inferior vena cava)</small><br>
+	<select class="form-control form-control-sm "  id="box13">
+	<option selected>Not identified</option>
+	<option>Present</option>
+	<option>Indeterminate</option>
+	</select>
+
+<hr>
+
+	<h5>Pathologic Staging (pTNM)</h5>
+
+<hr>
+
+	TNM Descriptors (select all that apply)<br>
+        <select class="form-control form-control-sm "  id="box14" multiple>
+	<option selected value="Not applicable">Not applicable</option>
+	<option>m</option>
+	<option>r</option>
+	<option>y</option>
+	</select>
+
+<hr>
+
+	Primary Tumor (pT)<br>
+	<select class="form-control form-control-sm "  id="box15">
+	<option value="pTX">pTX:	Primary tumor cannot be assessed</option>
+	<option value="pT0">pT0:	No evidence of primary tumor</option>
+	<option value="pT1">pT1:  Tumor 7 cm or less in greatest dimension, limited to the kidney</option>
+	<option value="pT1a">pT1a:	Tumor 4 cm or less in greatest dimension, limited to the kidney</option>
+	<option value="pT1b">pT1b:	Tumor more than 4 cm but not more than 7 cm in greatest dimension, limited to the kidney</option>
+	<option value="pT2">pT2:  Tumor more than 7 cm in greatest dimension, limited to the kidney</option>
+	<option value="pT2a">pT2a:	Tumor more than 7 cm but less than or equal to 10 cm in greatest dimension, limited to the kidney</option>
+	<option value="pT2b">pT2b:	Tumor more than 10 cm, limited to the kidney</option>
+	<option value="pT3">pT3:  Tumor extends into major veins or perinephric tissues but not into the ipsilateral adrenal gland and not beyond Gerota’s fascia</option>
+	<option value="pT3a">pT3a:	Tumor grossly extends into the renal vein or its segmental (muscle containing) branches, or tumor invades perirenal and/or renal sinus fat but not beyond Gerota’s fascia</option>
+	<option value="pT3b">pT3b:	Tumor grossly extends into the vena cava below the diaphragm</option>
+	<option value="pT3c">pT3c:	Tumor grossly extends into vena cava above diaphragm or invades the wall of the vena cava</option>
+	<option value="pT4">pT4:	Tumor invades beyond Gerota’s fascia (including contiguous extension into the ipsilateral adrenal gland)</option>
+	</select>
+
+<hr>
+
+	Regional Lymph Nodes (pN)<br>
+	<select class="form-control form-control-sm "  id="box16">
+	<option value="pNX">pNX:	Regional lymph nodes cannot be assessed</option>
+	<option value="pN0">pN0:	No regional lymph node metastasis</option>
+	<option value="pN1">pN1:	Metastasis in regional lymph node(s)</option>
+	</select>
+<hr>
+
+	Distant Metastasis (pM)<br>
+	<select class="form-control form-control-sm "  id="box17">
+	<option value="pMX">pMX: 	Not applicable</option>
+	<option value="pM1">pM1:	Distant metastasis </option>
+	</select>
+<hr>
+
+	Check here if any lymph nodes submitted? <input class="form-check-input " type="checkbox" id="box18" ><br>
+	Number of lymph nodes examined: <input type="text" class="form-control form-control-sm "  id="box18_2" style='display:none; width:100px'><br>
+	Number of lymph nodes involved: <input type="text" class="form-control form-control-sm "  id="box18_3" style='display:none; width:100px'>
+
+<hr>
+
+	<h5>Pathologic Findings in Nonneoplastic Kidney</h5><br>
+	<select class="form-control form-control-sm "  id="box19">
+	<option selected>None identified</option>
+	<option>Insufficient tissue</option>
+	<option>Pathologic findings present</option>
+	</select>
+	<br>
+	<div class="normalkidney" style="display:none">
+	<h5>Glomerular disease:</h5><input type="text" class="form-control form-control-sm "  id="box19_2"   placeholder='specify type'>
+	<br>
+	<h5>Tubulointerstitial disease:</h5><input type="text" class="form-control form-control-sm "  id="box19_3"   placeholder='specify type'>
+	<br>
+	<h5>Vascular disease:</h5><input type="text" class="form-control form-control-sm "  id="box19_4"   placeholder='specify type'>
+	<br>
+	<h5>Other:</h5><input type="text" class="form-control form-control-sm "  id="box19_5"   placeholder='specify type'>
+
+<hr>
+
+	</div>
+	<br>
+	<h5>+  Other Tumors and/or Tumor-like Lesions:</h5><br>
+	Describe any cysts, adenomas or other neoplastic changes<br>
+	<input type="text" class="form-control form-control-sm "  id="box20"  placeholder='Not applicable'>
+
+<hr>
+
+
+	<!-- close column -->
+			</div>
+			{{> page-partials/cap-footer}}
+	<!-- close row -->
+		</div>
+	<!-- close container -->
+	</div>
+
+
+			<!--
+			"specificScripts":
+				[
+					"../js/cap/kidney-scripts.js",
+				]
+		 -->

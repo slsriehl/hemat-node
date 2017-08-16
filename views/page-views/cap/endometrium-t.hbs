@@ -1,0 +1,412 @@
+<div class="container-fluid">
+		<!-- Breadcrumbs -->
+		<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+						<a href="/">Home</a>
+				</li>
+				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+				<li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Endometrial cancer - Hysterectomies and resections</li>
+		</ol>
+
+		{{> page-partials/cap-header}}
+
+	<div class="row">
+		<div class="col col-md-8">
+
+	<h5>Specimen (select all that apply)</h5><br>
+	<select class="form-control form-control-sm "  multiple id="box1">
+	<option>Uterine corpus</option>
+	<option>Cervix</option>
+	<option>Right ovary</option>
+	<option>Left ovary</option>
+	<option>Right fallopian tube</option>
+	<option>Left fallopian tube</option>
+	<option>Left parametrium</option>
+	<option>Right parametrium </option>
+	<option>Vaginal cuff</option>
+	<option>Omentum</option>
+	<option>Other</option>
+	<option>Not specified</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box1_2' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+	<h5>Procedure (select all that apply)</h5><br>
+	<select class="form-control form-control-sm "  multiple id="box2">
+	<option>Supracervical hysterectomy</option>
+	<option>Simple hysterectomy</option>
+	<option>Radical hysterectomy</option>
+	<option>Right oophorectomy</option>
+	<option>Left oophorectomy</option>
+	<option>Right salpingectomy</option>
+	<option>Left salpingectomy</option>
+	<option>Right salpingo-oophorectomy</option>
+	<option>Left salpingo-oophorectomy</option>
+	<option>Bilateral salpingo-oophorectomy</option>
+	<option>Omentectomy</option>
+	<option>Peritoneal biopsies</option>
+	<option>Other</option>
+	<option>Not specified</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box2_2' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+	<h5>Lymph Node Sampling (select all that apply)</h5><br>
+	<select class="form-control form-control-sm "  multiple id="box3">
+	<option>Performed, Pelvic lymph nodes</option>
+	<option>Performed, Para-aortic lymph nodes</option>
+	<option>Not performed</option>
+	<option>Not known</option>
+	<option>Other</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box3_2' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+	<h5>Specimen Integrity</h5><br>
+	<select class="form-control form-control-sm "  id="box4">
+	<option>Morcellated hysterectomy specimen</option>
+	<option>Intact hysterectomy specimen</option>
+	</select>
+
+<hr>
+
+
+	<h5>+ Tumor Site</h5><br>
+	<select class="form-control form-control-sm "  id="box5">
+	<option>Anterior endometrium</option>
+	<option>Posterior endometrium</option>
+	<option>Other</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box5_1' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+	<h5>Tumor Size:</h5><br>
+	<input type="text" class="form-control form-control-sm "  id="box6" style='width:100px;' placeholder='size in cm'>
+
+<hr>
+
+
+	<h5>Histologic Type</h5><br>
+	<select class="form-control form-control-sm "  id="box7">
+	<option>Endometrioid adenocarcinoma, not otherwise characterized</option>
+	<option>Endometrioid adenocarcinoma, variant</option>
+	<option>Mucinous adenocarcinoma </option>
+	<option>Serous adenocarcinoma</option>
+	<option>Clear cell adenocarcinoma</option>
+	<option>Mixed carcinoma</option>
+	<option>Squamous cell carcinoma</option>
+	<option>Transitional cell carcinoma</option>
+	<option>Small cell carcinoma</option>
+	<option>Undifferentiated carcinoma</option>
+	<option>Carcinosarcoma (malignant müllerian mixed tumor)</option>
+	<option>Other</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box7_1' style='display:none;' placeholder='Specify types and %'><br>
+	<input type="text" class="form-control form-control-sm "  id='box7_2' style='display:none;' placeholder='Specify histology'>
+
+<hr>
+
+
+	<h5>Histologic Grade</h5><br>
+	<select class="form-control form-control-sm "  id="box8">
+	<option>FIGO grade 1</option>
+	<option>FIGO grade 2</option>
+	<option>FIGO grade 3</option>
+	<option>G1: Well differentiated</option>
+	<option>G2: Moderately differentiated</option>
+	<option>G3: Poorly differentiated</option>
+	<option>Not applicable</option>
+	</select>
+
+<hr>
+
+
+	<h5>Myometrial Invasion</h5><br>
+	<select class="form-control form-control-sm "  id="box9">
+	<option>Not identified</option>
+	<option>Present, <50% myometrial invasion</option>
+	<option>Present, >50% myometrial invasion</option>
+	<option>Present, Extent of myometrial invasion cannot be determined</option>
+	</select>
+
+<hr>
+
+
+	<h5>Involvement of Cervix (select all that apply)</h5><br>
+	<select class="form-control form-control-sm "  multiple id="box10">
+	<option>Not involved </option>
+	<option>Invasion of cervical stromal connective tissue </option>
+	<option>Cannot be determined</option>
+	</select>
+
+<hr>
+
+
+	<h5>Extent of Involvement of Other Organs</h5>
+	<br>
+
+	<h5>Right ovary</h5><br>
+	<select class="form-control form-control-sm "  id="box11">
+	<option>Not Involved</option>
+	<option>Involved</option>
+	<option>Other</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box11_2' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+	<h5>Left ovary</h5><br>
+	<select class="form-control form-control-sm "  id="box12">
+	<option>Not Involved</option>
+	<option>Involved</option>
+	<option>Other</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box12_2' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+	<h5>Right fallopian tube</h5><br>
+	<select class="form-control form-control-sm "  id="box13">
+	<option>Not Involved</option>
+	<option>Involved</option>
+	<option>Other</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box13_2' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+	<h5>Left fallopian tube</h5><br>
+	<select class="form-control form-control-sm "  id="box14">
+	<option>Not Involved</option>
+	<option>Involved</option>
+	<option>Other</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box14_2' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+	<h5>+Vagina</h5><br>
+	<select class="form-control form-control-sm "  id="box15">
+	<option>Not applicable</option>
+	<option>No tissue submitted</option>
+	<option>Involved</option>
+	<option>Not involved</option>
+	<option></option>
+	</select>
+
+<hr>
+
+
+	<h5>+Right parametrium</h5><br>
+	<select class="form-control form-control-sm "  id="box16">
+	<option>Not applicable</option>
+	<option>No tissue submitted</option>
+	<option>Involved</option>
+	<option>Not involved</option>
+	<option></option>
+	</select>
+
+<hr>
+
+
+	<h5>+Left parametrium</h5><br>
+	<select class="form-control form-control-sm "  id="box17">
+	<option>Not applicable</option>
+	<option>No tissue submitted</option>
+	<option>Involved</option>
+	<option>Not involved</option>
+	<option></option>
+	</select>
+
+<hr>
+
+
+	<h5>+Omentum</h5><br>
+	<select class="form-control form-control-sm "  id="box18">
+	<option>Not applicable</option>
+	<option>No tissue submitted</option>
+	<option>Involved</option>
+	<option>Not involved</option>
+	<option></option>
+	</select>
+
+<hr>
+
+
+	<h5>+Rectal wall</h5><br>
+	<select class="form-control form-control-sm "  id="box19">
+	<option>Not applicable</option>
+	<option>No tissue submitted</option>
+	<option>Involved</option>
+	<option>Not involved</option>
+	<option></option>
+	</select>
+
+<hr>
+
+
+	<h5>+Bladder wall</h5><br>
+	<select class="form-control form-control-sm "  id="box20">
+	<option>Not applicable</option>
+	<option>No tissue submitted</option>
+	<option>Involved</option>
+	<option>Not involved</option>
+	<option></option>
+	</select>
+
+<hr>
+
+
+	<h5>+Pelvic wall</h5><br>
+	<select class="form-control form-control-sm "  id="box21">
+	<option>Not applicable</option>
+	<option>No tissue submitted</option>
+	<option>Involved</option>
+	<option>Not involved</option>
+	<option></option>
+	</select>
+
+<hr>
+
+
+	<h5>+Bladder/bowel mucosa</h5><br>
+	<select class="form-control form-control-sm "  id="box22">
+	<option>Not applicable</option>
+	<option>No tissue submitted</option>
+	<option>Involved</option>
+	<option>Not involved</option>
+	<option></option>
+	</select>
+
+<hr>
+
+
+	<h5>+ Peritoneal Ascitic Fluid</h5><br>
+	<select class="form-control form-control-sm "  id="box23">
+	<option>Not applicable</option>
+	<option>Negative for malignancy</option>
+	<option>Atypical - favor reactive</option>
+	<option>Atypical - cannot exclude malignancy</option>
+	<option>Atypical - suspicious for malignancy</option>
+	<option>Malignant (positive for malignancy)</option>
+	<option>Unsatisfactory - inadequate specimen</option>
+	<option>Unsatisfactory - poor sample preparation</option>
+	<option></option>
+	</select>
+
+<hr>
+
+
+	<h5>+ Margins</h5><br>
+	<select class="form-control form-control-sm "  id="box24">
+	<option>Cannot be assessed</option>
+	<option>Uninvolved by invasive tumor</option>
+	<option>Involved by invasive tumor</option>
+	<option></option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box24_1' style='display:none;' placeholder='Specify closest margin'><br>
+	<input type="text" class="form-control form-control-sm "  id='box24_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
+	<input type="text" class="form-control form-control-sm "  id='box24_3' style='display:none;' placeholder='Specify involved margin'>
+
+<hr>
+
+
+	<h5>Lymph-Vascular Invasion</h5><br>
+	<select class="form-control form-control-sm "  id="box25">
+	<option>Not identified</option>
+	<option>Present</option>
+	<option>Indeterminate</option>
+	</select>
+
+<hr>
+
+
+	<h5>Pathologic Staging (pTNM)</h5>
+<hr>
+
+	TNM Descriptors (select all that apply)<br><select class="form-control form-control-sm "  id="box26" multiple>
+	<option selected value="Not applicable">Not applicable</option>
+	<option>m</option>
+	<option>r</option>
+	<option>y</option>
+	</select>
+<hr>
+
+
+	<select class="form-control form-control-sm "  id="box27">
+	<option value="pTX">pTX:	Primary tumor cannot be assessed</option>
+	<option value="pT0">pT0:	No evidence of primary tumor</option>
+	<option value="pT1a [IA]">pT1a [IA]:	Tumor limited to endometrium or invades less than one-half of the myometrium </option>
+	<option value="pT1b [IB]">pT1b [IB]:	Tumor invades greater than or equal to one-half of the myometrium</option>
+	<option value="pT2 [II]">pT2 [II]: 	Tumor invades stromal connective tissue of the cervix, but does not extend beyond uterus</option>
+	<option value="pT3a [IIIA]">pT3a [IIIA]:	Tumor involves serosa and/or adnexa (direct extension or metastasis) </option>
+	<option value="pT3b [IIIB]">pT3b [IIIB]:	Vaginal involvement (direct extension or metastasis) or parametrial involvement</option>
+	<option value="pT4 [IVA]">pT4 [IVA]:	Tumor invades bladder mucosa and/or bowel mucosa (bullous edema is not sufficient to classify a tumor as T4)</option>
+	<option value="null"></option>
+	</select><br>
+
+	<select class="form-control form-control-sm "  id="box28">
+	<option value="pNX">pNX:	Cannot be assessed</option>
+	<option value="pN0">pN0:	No regional lymph node metastasis</option>
+	<option value="pN1 [IIIC1]">pN1 [IIIC1]: Regional lymph node metastasis to pelvic lymph nodes</option>
+	<option value="pN2 [IIIC2]">pN2 [IIIC2]: Regional lymph node metastasis to para-aortic lymph nodes, with or without positive pelvic lymph nodes</option>
+	</select><br>
+
+	<select class="form-control form-control-sm "  id="box29">
+	<option value="pMX">pMX: Not applicable</option>
+	<option value="pM1 [IVB]">pM1 [IVB]: Distant metastasis (includes metastasis to inguinal lymph nodes, intraperitoneal disease, or lung, liver, or bone metastasis. It excludes metastasis to para-aortic lymph nodes, vagina, pelvic serosa, or adnexa)</option>
+	<option value="null"></option>
+	</select><br>
+	Check here if any lymph nodes submitted? <input class="form-check-input "  type="checkbox" id="box30" ><br><div class='lnchk' style='display:none;'><br>
+	Pelvic lymph nodes:<br>
+	Number of lymph nodes examined: <input type="text" class="form-control form-control-sm "  id="box31" style="width:50px"><br>
+	Number of lymph nodes involved: <input type="text" class="form-control form-control-sm "  id="box32" style="width:50px"><br>
+	<br>
+	Para-aortic lymph nodes:<br>
+	Number of lymph nodes examined: <input type="text" class="form-control form-control-sm "  id="box33" style="width:50px"><br>
+	Number of lymph nodes involved: <input type="text" class="form-control form-control-sm "  id="box34" style="width:50px"><br>
+	</div>
+	<br>
+	<h5>+ Additional Pathologic Findings (select all that apply)</h5><br>
+	<select class="form-control form-control-sm "  multiple id="box35">
+	<option>None identified</option>
+	<option>Hyperplasia, Simple without cytologic atypia</option>
+	<option>Hyperplasia, Complex without cytologic atypia</option>
+	<option>Atypical hyperplasia, Simple</option>
+	<option>Atypical hyperplasia, Complex </option>
+	<option>Endometrial intraepithelial neoplasia (EIN)</option>
+	<option>Other</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box35_1' style='display:none;' placeholder='Specify'>
+
+<hr>
+
+
+
+	<!-- close column -->
+			</div>
+			{{> page-partials/cap-footer}}
+	<!-- close row -->
+		</div>
+	<!-- close container -->
+	</div>
+
+
+			<!--
+			specificScripts":
+				[
+					"../js/cap/endometrium-scripts.js",
+				]
+		 -->

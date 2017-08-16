@@ -1,0 +1,223 @@
+<div class="container-fluid">
+		<!-- Breadcrumbs -->
+		<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+						<a href="/">Home</a>
+				</li>
+				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+				<li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>TESTIS: Radical Orchiectomy</li>
+		</ol>
+
+		{{> page-partials/cap-header}}
+
+	<div class="row">
+		<div class="col col-md-8">
+
+	<h5>Specimen Laterality </h5><br>
+	<select class="form-control form-control-sm "  id="box1">
+	<option selected>Not specified</option>
+	<option> Right</option>
+	<option> Left</option>
+	</select>
+
+<hr>
+
+	<h5>Tumor Focality</h5><br>
+	<select class="form-control form-control-sm "  id="box2">
+	<option selected>Unifocal</option>
+	<option> Multifocal</option>
+	</select>
+
+<hr>
+
+	<h5>Tumor Size (cm)</h5><br>
+	Greatest dimension of main tumor mass (cm):<br>
+	<input type="text" class="form-control form-control-sm "  id="box3" placeholder="Cannot be assessed">
+	<br>
+	Greatest dimension of of additional tumor nodule (cm):<br>
+	<input type="text" class="form-control form-control-sm "  id="box4"  placeholder="Not Applicable">
+
+<hr>
+
+	<h5>Macroscopic Extent of Tumor (select all that apply)</h5><br>
+	<select class="form-control form-control-sm "  id="box5" multiple>
+	<option></option>
+	<option> Confined to the testis</option>
+	<option> Invades hilar soft tissues</option>
+	<option> Invades tunica vaginalis (perforates mesothelium)</option>
+	<option> Invades epididymis</option>
+	<option> Invades spermatic cord</option>
+	<option> Other:</option>
+	</select>
+	<input type="text" class="form-control form-control-sm "  id="box5_2" style="display:none" placeholder='Enter other tumor extent description' >
+
+<hr>
+
+	<h5>Histologic Type</h5><br>
+	<input type="text" class="form-control form-control-sm "  id="box6"><br>
+	<input type="text" class="form-control form-control-sm "  id="box6_2" style="display:none" placeholder='Enter %Seminoma' >
+	<input type="text" class="form-control form-control-sm "  id="box6_3" style="display:none" placeholder='Enter %Yolk Sac tumor' >
+	<input type="text" class="form-control form-control-sm "  id="box6_4" style="display:none" placeholder='Enter %Choriocarcinoma' >
+	<input type="text" class="form-control form-control-sm "  id="box6_5" style="display:none" placeholder='Enter %Embryonal carcinoma' >
+	<input type="text" class="form-control form-control-sm "  id="box6_6" style="display:none" placeholder='Describe somatic malignant component' >
+	<input type="text" class="form-control form-control-sm "  id="box6_7" style="display:none" placeholder='Describe other malignant component' >
+	<input type="text" class="form-control form-control-sm "  id="box6_8" style="display:none" placeholder='Describe mixed sex-cord components' >
+
+<hr>
+
+	<h5> Margins (select all that apply)</h5><br>
+	Spermatic Cord margin:<br>
+	<select class="form-control form-control-sm "  id="box7">
+	<option selected> Uninvolved by tumor</option>
+	<option>Cannot be assessed</option>
+	<option>Involved by tumor</option>
+	</select>
+	<br>
+	Any Other margin:<br>
+	<select class="form-control form-control-sm "  id="box7_1">
+	<option selected> Not applicable</option>
+	<option>Involved by tumor</option>
+	<option>Uninvolved by tumor</option>
+	</select>
+	<input type="text" class="form-control form-control-sm "  id="box7_2" style="display:none" placeholder='Specify involved margin' >
+	<input type="text" class="form-control form-control-sm "  id="box7_3" style="display:none" placeholder='Specify other margin' >
+
+<hr>
+
+	<h5>Microscopic Tumor Extension (select all that apply) </h5><br>
+	<select class="form-control form-control-sm "  id="box8" multiple>
+	<option></option>
+	<option>Confined to testicular parenchyma</option>
+	<option>Spermatic cord</option>
+	<option>Tunica vaginalis (perforates mesothelium) </option>
+	<option>Scrotal wall</option>
+	<option>Rete testis </option>
+    <option>Epididymis </option>
+    <option>Hilar fat </option>
+	<option>Other:</option>
+	</select>
+	<input type="text" class="form-control form-control-sm "  id="box8_2" style="display:none" placeholder='Specify Other' >
+
+<hr>
+
+	<h5>Lymph-Vascular Invasion (Note E) </h5><br>
+	<select class="form-control form-control-sm "  id="box9">
+	<option selected> Absent</option>
+	<option> Present</option>
+	<option> Indeterminate</option>
+	</select>
+
+<hr>
+
+	<h5>Pathologic Staging (pTNM) (Note F)</h5><br>
+	<br>
+	<h5>TNM Descriptors (required only if applicable) (select all that apply) </h5><br>
+	<select class="form-control form-control-sm "  id="box10" multiple>
+	<option selected>Not applicable</option>
+	<option value='m'> m (multiple)</option>
+	<option value='r'> r (recurrent)</option>
+	<option value='y'> y (posttreatment)</option>
+	</select>
+
+<hr>
+
+	<h5>Primary Tumor (pT)</h5><br>
+	<select class="form-control form-control-sm "  id="box11">
+	<option selected value='pT cannot be assessed,'> pTX:	Cannot be assessed</option>
+	<option value='pT0'> pT0:	No evidence of primary tumor</option>
+	<option value='pT1s'> pTis:	Intratubular germ cell neoplasia (carcinoma in situ)</option>
+	<option value='pT1'> pT1:	Tumor limited to the testis and epididymis without vascular/lymphatic invasion; tumor may invade tunica albuginea but not tunica vaginalis</option>
+	<option value='pT2'> pT2:	Tumor limited to the testis and epididymis with vascular/lymphatic invasion, or tumor extending through the tunica albuginea with involvement of the tunica vaginalis</option>
+	<option value='pT3'> pT3:	Tumor invades the spermatic cord with or without vascular/lymphatic invasion</option>
+	<option value='pT4'> pT4:	Tumor invades the scrotum with or without vascular/lymphatic invasion</option>
+	</select>
+
+<hr>
+
+	<h5>Regional Lymph Nodes (pN)</h5><br>
+	<select class="form-control form-control-sm "  id="box12">
+	<option selected value='pNX'> pNX:	Cannot be assessed / No nodes submitted</option>
+	<option value='pN0'> pN0:	No regional lymph node metastasis</option>
+	<option value='pN1'> pN1:	Metastasis with a lymph node mass 2 cm or less in greatest dimension, or 5 or fewer positive nodes, none more than 2 cm in greatest dimension</option>
+	<option value='pN2'> pN2:	Metastasis with a lymph node mass greater than 2 cm but not more than 5 cm in greatest dimension; or more than 5 nodes positive, none greater than 5 cm; or evidence of extranodal extension of tumor</option>
+	<option value='pN3'> pN3:	Metastasis with a lymph node mass greater than 5 cm in greatest dimension</option>
+ 	</select>
+
+<hr>
+
+	<h5>Distant Metastasis (pM)</h5><br>
+	<select class="form-control form-control-sm "  id="box13">
+	<option selected value='pMX'> pMX: Not applicable</option>
+	<option value='pM1'> pM1: 	Distant metastasis present</option>
+	<option value='pM1a'> pM1a:	Nonregional nodal or pulmonary metastasis</option>
+	<option value='pM1b'> pM1b:	Distant metastasis other than to nonregional lymph nodes and lung</option>
+	</select>
+
+<hr>
+
+	<h5># Lymph Nodes Examined:</h5><br>
+	<input type="text" class="form-control form-control-sm "  id="box14"   placeholder="Not applicable"><br>
+	<h5># Lymph Nodes Involved:</h5><br>
+	<input type="text" class="form-control form-control-sm "  id="box15"   placeholder="Not applicable"><br>
+
+<hr>
+
+	<h5>+ Pre-Orchiectomy Serum Tumor Markers (select all that apply)</h5><br>
+	<select class="form-control form-control-sm "  id="box16" multiple>
+	<option selected> Unknown </option>
+	<option> Serum marker studies within normal limits </option>
+	<option> Alpha-fetoprotein (AFP) elevation </option>
+	<option> Beta subunit of human chorionic gonadotropin (b-hCG) elevation </option>
+	<option> Lactate dehydrogenase (LDH) elevation</option>
+	</select>
+
+<hr>
+
+	<h5>+ Post-Orchiectomy Serum Tumor Markers (select all that apply) </h5><br>
+	<select class="form-control form-control-sm "  id="box17" multiple>
+	<option selected> Not applicable </option>
+	<option> Unknown </option>
+	<option> Serum marker studies within normal limits </option>
+	<option> Alpha-fetoprotein (AFP) elevation </option>
+	<option> Beta subunit of human chorionic gonadotropin (b-hCG) elevation </option>
+	<option> Lactate dehydrogenase (LDH) elevation</option>
+	</select>
+
+<hr>
+
+	<h5>+ Serum Tumor Markers (S)</h5><br>
+	<small># N indicates the upper limit of normal for the LDH assay </small><br>
+	<select class="form-control form-control-sm "  id="box18">
+	<option value='SX'> Serum marker studies not available or performed</option>
+	<option value='S0'> S0: Serum marker study levels within normal limits</option>
+ 	<option value='S1'> S1: LDH: <1.5 X N# and	HCG: <5,000	and	AFP: <1,000</option>
+	<option value='S2'> S2: LDH: 1.5-10 X N	or HCG: 5,000-50,000 or	AFP: 1,000-10,000</option>
+	<option value='S3'> S3: LDH: >10 X N or HCG: >50,000 or	AFP: >10,000</option>
+	</select>
+
+<hr>
+
+	<h5>+ Additional Pathologic Findings (select all that apply)</h5><br>
+	<select class="form-control form-control-sm "  id="box19" multiple>
+	<option selected>None identified</option>
+	<option> Intratubular germ cell neoplasia</option>
+	<option> Hemosiderin-laden macrophages</option>
+	<option> Atrophy</option>
+	<option> Other:</option>
+	</select>
+	<input type="text" class="form-control form-control-sm "  id="box19_2" style="display:none" placeholder='Enter other findings' >
+	<!-- close column -->
+			</div>
+			{{> page-partials/cap-footer}}
+	<!-- close row -->
+		</div>
+	<!-- close container -->
+	</div>
+
+
+			<!--
+			"specificScripts":
+				[
+					"../js/cap/testis-scripts.js",
+				]
+		 -->

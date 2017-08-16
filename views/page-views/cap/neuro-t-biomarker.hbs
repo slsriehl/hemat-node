@@ -1,0 +1,568 @@
+<div class="container-fluid">
+		<!-- Breadcrumbs -->
+		<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+						<a href="/">Home</a>
+				</li>
+				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+				<li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>CNS Tumor Biomarker Summary</li>
+		</ol>
+
+		{{> page-partials/cap-header}}
+
+	<div class="row">
+		<div class="col col-md-8">
+	Select tumor biomarker type:
+            <select class="form-control form-control-sm "  id="type"><option>Glioma</option><option value="Embryonal">Embryonal tumors</option></select><br>
+
+            <div class='gliomas'><h5>GLIOMA BIOMARKERS</h5><br>
+<table class="table">
+<tr>
+<td>
+<h5>IDH1/2 Mutation</h5><br>
+<select class="form-control form-control-sm "  id="box1">
+<option>Not applicable</option>
+<option>Pending; see addendum</option>
+<option>Present</option>
+<option>Absent</option>
+<option>Cannot be determined</option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box1_2' style='display:none;' placeholder='Specify'>
+
+</td>
+<td>
+<div class='test'><h5>IDH1/2 Mutation - Testing Method</h5><br>
+<select class="form-control form-control-sm "  id="box2">
+<option>Not applicable</option>
+<option>Direct Sanger sequencing</option>
+<option>Pyrosequencing</option>
+<option>Polymerase chain reaction (PCR), allele-specific hybridization</option>
+<option>Real-time PCR</option>
+<option>High-throughput next-generation sequencing</option>
+<option>Other</option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box2_2' style='display:none;' placeholder='Specify'>
+</div>
+
+</td>
+</tr>
+<tr>
+<td>
+<h5>IDH1 R132H Immunohistochemistry</h5><br>
+<select class="form-control form-control-sm "  id="box3">
+<option>Not applicable</option>
+<option>Pending; see addendum</option>
+<option>Positive</option>
+<option>Negative</option>
+<option>Cannot be determined</option>
+</select>
+<br>
+</td>
+<td>
+<div class='test'><h5>Immunohistochemistry for IDH1 R132H - Testing Method</h5><br>
+<select class="form-control form-control-sm "  id="box4">
+<option>Not applicable</option>
+<option>H09 clone</option>
+<option>Other </option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box4_2' style='display:none;' placeholder='Specify'>
+</div>
+
+</td>
+</tr>
+<tr>
+<td>
+<h5>1p/19q Deletion</h5><br>
+<select class="form-control form-control-sm "  id="box5">
+<option>Not applicable</option>
+<option>Pending; see addendum</option>
+<option>1p/19q co-deletion</option>
+<option>1p only deleted</option>
+<option>19q only deleted</option>
+<option>Polysomy</option>
+<option>Monosomy</option>
+<option>None detected</option>
+<option>Cannot be determined</option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box5_2' style='display:none;' placeholder='Specify'><br>
+<input type="text" class="form-control form-control-sm "  id='box5_3' style='display:none;' placeholder='Specify'>
+<br>
+</td>
+<td>
+<div class='test'><h5>1p/19q Deletion Analysis - Testing Method</h5><br>
+<select class="form-control form-control-sm "  id="box6">
+<option>Not applicable</option>
+<option>In situ hybridization</option>
+<option>Cytogenomic microarray (CMA)</option>
+<option>Loss of heterozygosity</option>
+<option>Other</option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box6_2' style='display:none;' placeholder='Specify'>
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<h5>TP53 Mutation</h5><br>
+<select class="form-control form-control-sm "  id="box7">
+<option>Not applicable</option>
+<option>Pending; see addendum</option>
+<option>Present</option>
+<option>Absent</option>
+<option>Cannot be determined</option>
+</select>
+<br>
+</td>
+<td>
+<div class='test'><h5>TP53 Mutational Analysis - Testing Method</h5><br>
+<select class="form-control form-control-sm "  id="box8">
+<option>Not applicable</option>
+<option>Direct Sanger sequencing</option>
+<option>Pyrosequencing</option>
+<option>PCR, allele-specific hybridization</option>
+<option>Real-time PCR</option>
+<option>High-throughput next-generation sequencing</option>
+<option>Other</option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box8_2' style='display:none;' placeholder='Specify'>
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<h5>ATRX Mutation</h5><br>
+<select class="form-control form-control-sm "  id="box9">
+<option>Not applicable</option>
+<option>Pending; see addendum</option>
+<option>Present</option>
+<option>Absent</option>
+<option>IHC - loss of nuclear expression</option>
+<option>IHC - intact nuclear expression</option>
+<option>Cannot be determined</option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box9_2' style='display:none;' placeholder='Specify'>
+<br>
+</td>
+<td>
+<div class='test'><h5>ATRX Mutation analysis - Testing Method</h5><br>
+<select class="form-control form-control-sm "  id="box10">
+<option>Not applicable</option>
+<option>IHC</option>
+<option>Direct Sanger sequencing</option>
+<option>Pyrosequencing</option>
+<option>PCR, allele-specific hybridization</option>
+<option>Real-time PCR</option>
+<option>High-throughput next-generation sequencing</option>
+<option>Other</option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box10_2' style='display:none;' placeholder='Specify'><br>
+<input type="text" class="form-control form-control-sm "  id='box10_3' style='display:none;' placeholder='Specify'>
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<h5>EGFR Mutation</h5><br>
+<select class="form-control form-control-sm "  id="box11">
+<option>Not applicable</option>
+<option>Pending; see addendum</option>
+<option>Present</option>
+<option>Absent</option>
+<option>Cannot be determined</option>
+</select>
+<br>
+</td>
+<td>
+<div class='test'><h5>EGFR Mutation - Testing Method</h5><br>
+<select class="form-control form-control-sm "  id="box12">
+<option>Not applicable</option>
+<option>Direct Sanger sequencing</option>
+<option>Pyrosequencing</option>
+<option>Polymerase chain reaction (PCR), allele-specific hybridization</option>
+<option>Real-time PCR</option>
+<option>High-throughput next-generation sequencing</option>
+<option>Other</option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box12_2' style='display:none;' placeholder='Specify'>
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<h5>10q23 (PTEN Locus) Deletion</h5><br>
+<select class="form-control form-control-sm "  id="box13">
+<option>Not applicable</option>
+<option>Pending; see addendum</option>
+<option>Deletion identified</option>
+<option>Polysomy</option>
+<option>Monosomy</option>
+<option>None detected</option>
+<option>Cannot be determined </option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box13_2' style='display:none;' placeholder='Specify'><br>
+<input type="text" class="form-control form-control-sm "  id='box13_3' style='display:none;' placeholder='Specify'>
+<br>
+</td>
+<td>
+<div class='test'><h5> 10q23 (PTEN Locus) Deletion Analysis - Testing Method</h5><br>
+<select class="form-control form-control-sm "  id="box14">
+<option>Not applicable</option>
+<option>In situ hybridization</option>
+<option>Cytogenomic microarray (CMA)</option>
+<option>Loss of heterozygosity</option>
+<option>Other</option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box14_2' style='display:none;' placeholder='Specify'>
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<h5>PTEN Mutation</h5><br>
+<select class="form-control form-control-sm "  id="box15">
+<option>Not applicable</option>
+<option>Pending; see addendum</option>
+<option>Present</option>
+<option>Absent</option>
+<option>Cannot be determined</option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box15_2' style='display:none;' placeholder='Specify'>
+<br>
+</td>
+<td>
+<div class='test'><h5>PTEN Mutation Analysis - Testing Method</h5><br>
+<select class="form-control form-control-sm "  id="box16">
+<option>Not applicable</option>
+<option>Direct Sanger sequencing</option>
+<option>Pyrosequencing</option>
+<option>PCR, allele-specific hybridization</option>
+<option>Real-time PCR</option>
+<option>High-throughput next-generation sequencing</option>
+<option>Other</option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box16_2' style='display:none;' placeholder='Specify'>
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<h5>MGMT Promoter Methylation</h5><br>
+<select class="form-control form-control-sm "  id="box17">
+<option>Not applicable</option>
+<option>Pending; see addendum</option>
+<option>Present, Low level</option>
+<option>Present, High level</option>
+<option>Absent</option>
+<option>Cannot be determined</option>
+</select>
+<br>
+</td>
+<td>
+<div class='test'><h5>MGMT Promoter Methylation - Testing Method</h5><br>
+<select class="form-control form-control-sm "  id="box18">
+<option>Not applicable</option>
+<option>Methylation-specific PCR</option>
+<option>Other</option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box18_2' style='display:none;' placeholder='Specify'>
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<h5>BRAF Mutation</h5><br>
+<select class="form-control form-control-sm "  id="box19">
+<option>Not applicable</option>
+<option>Pending; see addendum</option>
+<option>BRAF V600E (c.1799T>A) mutation present</option>
+<option>BRAF V600E (c.1799T>A) mutation present by IHC</option>
+<option>Absent</option>
+<option>Absent by IHC</option>
+<option>Other mutation</option>
+<option>Cannot be determined</option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box19_2' style='display:none;' placeholder='Specify'>
+<br>
+</td>
+<td>
+<div class='test'><h5>BRAF Mutation analysis - Testing method</h5><br>
+<select class="form-control form-control-sm "  id="box20">
+<option>Not applicable</option>
+<option>Direct Sanger sequencing</option>
+<option>Pyrosequencing</option>
+<option>PCR, allele-specific hybridization</option>
+<option>Real-time PCR</option>
+<option>High-throughput next-generation sequencing</option>
+<option>IHC, clone VE1</option>
+<option>Other antibody clone</option>
+<option>Other method</option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box20_2' style='display:none;' placeholder='Specify'><br>
+<input type="text" class="form-control form-control-sm "  id='box20_3' style='display:none;' placeholder='Specify'>
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<h5>BRAF Rearrangement</h5><br>
+<select class="form-control form-control-sm "  id="box21">
+<option>Not applicable</option>
+<option>Pending; see addendum</option>
+<option>Present</option>
+<option>Absent</option>
+<option>Cannot be determined</option>
+</select>
+<br>
+</td>
+<td>
+<div class='test'><h5>BRAF Rearrangement - Testing Method</h5><br>
+<select class="form-control form-control-sm "  id="box22">
+<option>Not applicable</option>
+<option>In situ hybridization</option>
+<option>Cytogenomic microarray (CMA)</option>
+<option>Real-time PCR</option>
+<option>Other</option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box22_2' style='display:none;' placeholder='Specify'>
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<h5>Ki67:</h5><br>
+<input type="text" class="form-control form-control-sm "  id="box23"   placeholder='% positive nuclei'>
+<br>
+</td>
+<td>
+<div class='test'><h5>Ki67 Immunohistochemistry - Testing Method</h5><br>
+<select class="form-control form-control-sm "  id="box24">
+<option>Not applicable</option>
+<option>IHC, antibody clone MIB1</option>
+<option>IHC, antibody clone SP6</option>
+<option>Other</option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box24_2' style='display:none;' placeholder='Specify'>
+</div>
+</td>
+</tr>
+</table>
+
+
+	</div><!-- end gliomas biomarker div-->
+<div class='embryonal'><h5>EMBRONAL TUMOR BIOMARKERS</h5><br>
+<table>
+<tr>
+<td>
+<h5>Beta-Catenin Immunohistochemistry</h5><br>
+<select class="form-control form-control-sm "  id="box25">
+<option>Not applicable</option>
+<option>Pending; see addendum</option>
+<option>Positive (>50% nuclear staining)</option>
+<option>Negative(None or <50% nuclear staining)</option>
+</select>
+
+</td>
+<td>
+<div class='test'><h5>Beta-catenin IHC antibody - Testing method</h5><br>
+<select class="form-control form-control-sm "  id="box26">
+<option>Not applicable</option>
+<option>IHC antibody clone E-5</option>
+<option>IHC antibody clone 14</option>
+<option>IHC antibody clone beta-catenin-1</option>
+<option>Other</option>
+<option></option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box26_2' style='display:none;' placeholder='Specify clone'>
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<h5>Monosomy 6</h5><br>
+<select class="form-control form-control-sm "  id="box27">
+<option>Not applicable</option>
+<option>Pending; see addendum</option>
+<option>Present</option>
+<option>Absent</option>
+</select>
+
+</td>
+<td>
+<div class='test'><h5>Monosomy 6 Analysis - Testing method</h5><br>
+<select class="form-control form-control-sm "  id="box28">
+<option>Not applicable</option>
+<option>In situ hybridization</option>
+<option>Cytogenetic microarray (CMA)</option>
+<option>Other</option>
+<option></option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box28_2' style='display:none;' placeholder='Specify'>
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<h5>GABA1 Immunohistochemistry</h5><br>
+<select class="form-control form-control-sm "  id="box29">
+<option>Not applicable</option>
+<option>Pending; see addendum</option>
+<option>Positive</option>
+<option>Negative</option>
+</select>
+
+</td>
+<td>
+<div class='test'><h5>GABA1 IHC  - Testing method</h5><br>
+<select class="form-control form-control-sm "  id="box30">
+<option>Not applicable</option>
+<option>Clone</option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box30_2' style='display:none;' placeholder='Specify'>
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<h5>MYC Amplification</h5><br>
+<select class="form-control form-control-sm "  id="box31">
+<option>Not applicable</option>
+<option>Pending; see addendum</option>
+<option>Present</option>
+<option>Absent</option>
+<option>Cannot be determined</option>
+</select>
+
+</td>
+<td>
+<div class='test'><h5>MYC Amplification analysis  - Testing method</h5><br>
+<select class="form-control form-control-sm "  id="box32">
+<option>Not applicable</option>
+<option>In situ hybridization</option>
+<option>Cytogenetic microarray (CMA)</option>
+<option>Other</option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box32_2' style='display:none;' placeholder='Specify'>
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<h5>MYCN Amplification</h5><br>
+<select class="form-control form-control-sm "  id="box33">
+<option>Not applicable</option>
+<option>Pending; see addendum</option>
+<option>Present</option>
+<option>Absent</option>
+<option>Cannot be determined</option>
+</select>
+
+</td>
+<td>
+<div class='test'><h5>MYCN Amplification analysis  - Testing method</h5><br>
+<select class="form-control form-control-sm "  id="box34">
+<option>Not applicable</option>
+<option>In situ hybridization</option>
+<option>Cytogenetic microarray (CMA)</option>
+<option>Other</option>
+<option></option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box34_2' style='display:none;' placeholder='Specify'>
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<h5>Isochromosome 17 (i17q)</h5><br>
+<select class="form-control form-control-sm "  id="box35">
+<option>Not applicable</option>
+<option>Pending; see addendum</option>
+<option>Present</option>
+<option>Absent</option>
+<option>Cannot be determined</option>
+</select>
+
+</td>
+<td>
+<div class='test'><h5>Isochromosome 17 (i17q) analysis  - Testing method</h5><br>
+<select class="form-control form-control-sm "  id="box36">
+<option>Not applicable</option>
+<option>In situ hybridization</option>
+<option>Cytogenetic microarray (CMA)</option>
+<option>Other</option>
+<option></option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box36_2' style='display:none;' placeholder='Specify'>
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<h5>INI1 immunohistochemistry</h5><br>
+<select class="form-control form-control-sm "  id="box37">
+<option>Not applicable</option>
+<option>Pending; see addendum</option>
+<option>Loss of nuclear expression</option>
+<option>Intact nuclear expression</option>
+<option>Cannot be determined</option>
+</select>
+
+</td>
+<td>
+<div class='test'><h5>INI1 immunohistochemistry analysis  - Testing method</h5><br>
+<select class="form-control form-control-sm "  id="box38">
+<option>Not applicable</option>
+<option>IHC antibody clone MRQ-27</option>
+<option>IHC antibody clone 25/BAF47</option>
+<option>Other</option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box38_2' style='display:none;' placeholder='Specify'>
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<h5>INI1/SMARCB1 Mutation</h5><br>
+<select class="form-control form-control-sm "  id="box40">
+<option>Not applicable</option>
+<option>Pending; see addendum</option>
+<option>Present</option>
+<option>Absent</option>
+<option>Cannot be determined</option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box40_2' style='display:none;' placeholder='Specify'>
+
+</td>
+<td>
+<div class='test'><h5>INI1/SMARCB1 Mutation - Testing Method</h5><br>
+<select class="form-control form-control-sm "  id="box41">
+<option>Not applicable</option>
+<option>Direct Sanger sequencing</option>
+<option>Pyrosequencing</option>
+<option>PCR, allele-specific hybridization</option>
+<option>Real-time PCR</option>
+<option>High-throughput next-generation sequencing</option>
+<option>Other </option>
+</select><br>
+<input type="text" class="form-control form-control-sm "  id='box41_2' style='display:none;' placeholder='Specify'>
+</div>
+</td>
+</tr>
+</table>
+
+
+	</div><!-- end embryonal biomarker div-->
+	<!-- close column -->
+			</div>
+			{{> page-partials/cap-footer}}
+	<!-- close row -->
+		</div>
+	<!-- close container -->
+	</div>
+
+
+			<!--
+			"specificScripts":
+				[
+					"../js/cap/cnsbio-scripts.js",
+				]
+		 -->

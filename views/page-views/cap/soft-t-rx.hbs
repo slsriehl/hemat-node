@@ -1,0 +1,312 @@
+<div class="container-fluid">
+		<!-- Breadcrumbs -->
+		<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+						<a href="/">Home</a>
+				</li>
+				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+				<li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Soft Tissue Tumor Resection</li>
+		</ol>
+
+		{{> page-partials/cap-header}}
+
+	<div class="row">
+		<div class="col col-md-8">
+
+	<h5>Procedure</h5><br>
+	<select class="form-control form-control-sm "  id="box2">
+	<option selected>Intralesional resection</option>
+	<option>Marginal resection</option>
+	<option>Wide resection</option>
+	<option>Radical resection</option>
+	<option>Other:</option>
+	<option>Not specified</option>
+	<input type="text" class="form-control form-control-sm "  id="box2_2" style="display:none" placeholder='Specify other procedure' >
+	</select>
+
+<hr>
+
+	<h5>Tumor Site (specify if known):</h5><br>
+	<input type="text" class="form-control form-control-sm "  id="box3" placeholder='Site unknown' >
+
+<hr>
+
+	<h5>Tumor Size (greatest dimension, cm):</h5><br>
+	<input type="text" class="form-control form-control-sm "  id="box4" placeholder='Cannot be determined' >
+
+<hr>
+
+	<h5>Histologic Type (Include as many types as apply):</h5> <br>
+	<select class="form-control form-control-sm "  id="box5" multiple>
+	<option> </option>
+	<option>Atypical lipomatous tumor/Well-differentiated liposarcoma</option>
+	<option>Dedifferentiated liposarcoma</option>
+	<option>Myxoid/round cell liposarcoma</option>
+	<option>Pleomorphic liposarcoma</option>
+	<option>Mixed-type liposarcoma</option>
+	<option>Liposarcoma, not otherwise specified</option>
+	<option>Superficial fibromatoses (palmar/plantar)</option>
+	<option>Desmoid-type fibromatoses</option>
+	<option>Lipofibromatosis</option>
+	<option>Giant cell fibroblastoma</option>
+	<option>Dermatofibrosarcoma protuberans</option>
+	<option>Fibrosarcomatous dermatofibrosarcoma protuberans</option>
+	<option>Pigmented dermatofibrosarcomatous protuberans</option>
+	<option>Solitary fibrous tumor, malignant</option>
+	<option>Inflammatory myofibroblastic tumor</option>
+	<option>Low-grade myofibroblastic sarcoma</option>
+	<option>Myxoinflammatory fibroblastic sarcoma/Atypical myxoinflammatory fibroblastic tumor</option>
+	<option>Infantile fibrosarcoma</option>
+	<option>Adult fibrosarcoma</option>
+	<option>Myxofibrosarcoma</option>
+	<option>Low grade fibromyxoid sarcoma</option>
+	<option>Sclerosing epithelioid fibrosarcoma</option>
+	<option>Plexiform fibrohistiocytic tumor</option>
+	<option>Giant cell tumor of soft tissues</option>
+	<option>Leiomyosarcoma</option>
+	<option>Malignant glomus tumor</option>
+	<option>Embryonal rhabdomyosarcoma (including botryoid, anaplastic)</option>
+	<option>Alveolar rhabdomyosarcoma (including solid, anaplastic)</option>
+	<option>Pleomorphic rhabdomyosarcoma</option>
+	<option>Spindle cell/sclerosing rhabdomyosarcoma</option>
+	<option>Kaposiform hemangioendothelioma</option>
+	<option>Retiform hemangioendothelioma</option>
+	<option>Papillary intralymphatic angioendothelioma</option>
+	<option>Composite hemangioendothelioma</option>
+	<option>Pseudomyogenic (epithelioid sarcoma-like) hemangioendothelioma</option>
+	<option>Kaposi sarcoma</option>
+	<option>Epithelioid hemangioendothelioma</option>
+	<option>Angiosarcoma of soft tissue</option>
+	<option>Malignant peripheral nerve sheath tumor</option>
+	<option>Epithelioid malignant peripheral nerve sheath tumor</option>
+	<option>Malignant Triton tumor</option>
+	<option>Malignant granular cell tumor</option>
+	<option>Ectomesenchymoma</option>
+	<option>Extraskeletal mesenchymal chondrosarcoma</option>
+	<option>Extraskeletal osteosarcoma</option>
+	<option>Hemosiderotic fibrolipomatous tumor</option>
+	<option>Atypical fibroxanthoma</option>
+	<option>Angiomatoid fibrous histiocytoma</option>
+	<option>Ossifying fibromyxoid tumor</option>
+	<option>Ossifying fibromyxoid tumor, malignant</option>
+	<option>Mixed tumour</option>
+	<option>Mixed tumor, NOS malignant</option>
+	<option>Myoepithelioma</option>
+	<option>Myoepithelial carcinoma</option>
+	<option>Phosphaturic mesenchymal tumor, benign</option>
+	<option>Phosphaturic mesenchymal tumor, malignant</option>
+	<option>Synovial sarcoma, spindle cell</option>
+	<option>Synovial sarcoma, biphasic</option>
+	<option>Synovial sarcoma, NOS</option>
+	<option>Epithelioid sarcoma</option>
+	<option>Alveolar soft part sarcoma</option>
+	<option>Clear cell sarcoma of soft tissue</option>
+	<option>Extraskeletal myxoid chondrosarcoma </option>
+	<option>Extraskeletal Ewing sarcoma</option>
+	<option>Desmoplastic small round cell tumor</option>
+	<option>Extra-renal rhabdoid tumor</option>
+	<option>Malignant mesenchymoma</option>
+	<option>PEComa NOS, benign</option>
+	<option>PEComa NOS, malignant</option>
+	<option>Intimal sarcoma</option>
+	<option>Undifferentiated spindle cell sarcoma</option>
+	<option>Undifferentiated pleomorphic sarcoma </option>
+	<option>Undifferentiated round cell sarcoma</option>
+	<option>Undifferentiated epithelioid sarcoma</option>
+	<option>Undifferentiated sarcoma NOS</option>
+	</select>
+
+<hr>
+
+	<h5> + Mitotic Rate </h5><br>
+	Specify:<input type="text" class="form-control form-control-sm "  id="box6"  placeholder='0'>/10 high-power fields<br>
+	<small>note: 1 HPF = 400x field (10x ocular and 40x objective)</small>
+
+<hr>
+
+	<h5>Necrosis </h5><br>
+	<select class="form-control form-control-sm "  id="box7">
+	<option selected> Not identified</option>
+	<option> Present</option>
+	<option> Cannot be determined</option>
+	</select>
+	<input type="text" class="form-control form-control-sm "  id="box7_2" style="display:none" placeholder='Extent of necrosis (%)' >
+
+<hr>
+
+	<h5>Macroscopic Extent of Tumor (select all that apply)</h5><br>
+	<select class="form-control form-control-sm "  id="box21" multiple>
+	<option selected> Cannot be determined </option>
+	<option value='Dermal'> Superficial: dermal</option>
+	<option value='Subcutaneous/suprafascial'> Superficial: Subcutaneous/suprafascial  </option>
+	<option value='Fascial'> Deep: Fascial </option>
+	<option value='Subfascial'> Deep: Subfascial </option>
+	<option value='Intramuscular'> Deep: Intramuscular</option>
+	<option value='Mediastinal'> Deep: Mediastinal </option>
+	<option value='Intra-abdominal'> Deep: Intra-abdominal </option>
+	<option value='Retroperitoneal'> Deep: Retroperitoneal </option>
+	<option value='Head and neck'> Deep: Head and neck </option>
+	<option value='Other'> Deep: Other (specify) </option>
+	</select>
+	<input type="text" class="form-control form-control-sm "  id="box21_2" style="display:none" placeholder='Specify other deep site' >
+
+<hr>
+
+	<h5>Histologic Grade (French Federation of Cancer Centers Sarcoma Group [FNCLCC]) (Note D) </h5><br>
+	<br>
+	<button data-toggle="collapse" data-target="#fnclcc" class="btn btn-sm btn-primary"><span> FNCLCC Grading Summary - click here to show list</span></button>
+	<div id="fnclcc">
+	<img src='../images/FNCLCC_hint.png'>
+	</div>
+	<br>
+	<select class="form-control form-control-sm "  id="box8">
+	<option selected> Grade 1 </option>
+	<option> Grade 2 </option>
+	<option> Grade 3 </option>
+	<option> Ungraded sarcoma </option>
+	<option> Cannot be determined</option>
+	</select>
+
+<hr>
+
+	<h5>Margins</h5><br>
+	<select class="form-control form-control-sm "  id="box22">
+	<option selected>Cannot be assessed</option>
+	<option>Margins uninvolved by sarcoma</option>
+	<option>Margins involved by sarcoma</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id='box22_1' style='display:none;' placeholder='Specify closest margin' >
+	<input type="text" class="form-control form-control-sm "  id='box22_2' style='display:none;' placeholder='Specify distance (cm) from margin' >
+	<br>
+	<input type="text" class="form-control form-control-sm "  id='box22_3' style='display:none;' placeholder='Specify involved margin' >
+
+<hr>
+
+	<h5>+ Lymph-Vascular Invasion </h5><br>
+	<select class="form-control form-control-sm "  id="box9">
+	<option selected> Not identified</option>
+	<option> Present</option>
+	<option> Indeterminate</option>
+	</select>
+
+<hr>
+
+	<h5>Pathologic Staging (pTNM)</h5><br>
+	<br>
+	TNM Descriptors (select all that apply)<br>
+	<select class="form-control form-control-sm "  id="box10" multiple>
+	<option selected value="Not applicable">Not applicable</option>
+	<option>m</option>
+	<option>r</option>
+	<option>y</option>
+	</select>
+
+<hr>
+
+	Primary Tumor (pT)<br>
+	<select class="form-control form-control-sm "  id="box11">
+	<option value='pTX' selected>pTX: Primary tumor cannot be assessed </option>
+	<option value='pT0'>pT0: No evidence of primary tumor </option>
+	<option value='pT1a'>pT1a: Tumor 5 cm or less in greatest dimension, superficial tumor</option>
+	<option value='pT1b'>pT1b: Tumor 5 cm or less in greatest dimension, deep tumor</option>
+	<option value='pT2a'> pT2a: Tumor more than 5 cm in greatest dimension, superficial tumor </option>
+	<option value='pT2b'>pT2b: Tumor more than 5 cm in greatest dimension, deep tumor </option>
+	</select>
+
+<hr>
+
+	Regional Lymph Nodes (pN)<br>
+	<select class="form-control form-control-sm "  id="box12">
+	<option value='pNX' selected>pNX: Regional lymph nodes cannot be assessed </option>
+	<option value='pN0'>pN0: No regional lymph node metastasis </option>
+	<option value='pN1'>pN1: Regional lymph node metastasis </option>
+	</select>
+
+<hr>
+
+	<span style="color:white">Check here if any lymph nodes submitted? <input class="form-check-input" type="checkbox" id="box12_1" ></span><br>
+	<div class="nodes" style="display:none">
+	Number of lymph nodes examined:<br>
+	<input type="text" class="form-control form-control-sm "  id="box12_2" ><br>
+	Number of lymph nodes involved: <br>
+	<input type="text" class="form-control form-control-sm "  id="box12_3" ><br></div>
+	<br>
+	Distant Metastases (pM)<br>
+	<select class="form-control form-control-sm "  id="box13">
+	<option selected value='pMX'>pMX: Not applicable </option>
+	<option value='pM1'>pM1: Metastasis involving distant sites other than lung</option>
+	</select>
+	<input type="text" class="form-control form-control-sm "  id="box13_2" style="display:none" placeholder='Specify metastasis site' >
+
+<hr>
+
+	<h5>+ Additional Pathologic Findings</h5><br>
+	<input type="text" class="form-control form-control-sm "  id="box14"  placeholder="None">
+
+<hr>
+
+	<h5>Ancillary Studies<br>
+	<small> The following are required only if applicable; and will not be included in the summary unless you enter a new value</small></h5>
+
+<hr>
+
+	<h5>Immunohistochemistry </h5><br>
+	<input type="text" class="form-control form-control-sm "  id="box15" placeholder="None performed">
+
+<hr>
+
+	<h5>Cytogenetics</h5><br>
+	<select class="form-control form-control-sm "  id="box16">
+	<option selected> Not performed</option>
+	<option> Karyotype pending</option>
+	<option> Karyotype & FISH pending</option>
+	<option> FISH pending</option>
+	<option> Complex abnormal karyotype detected</option>
+	<option> Translocation detected</option>
+	<option> Normal karyotype</option>
+	<input type="text" class="form-control form-control-sm "  id="box16_2" style="display:none" placeholder='Specify translocation' >
+	</select>
+
+<hr>
+
+	<h5>Molecular Pathology (Specify molecular testing, if performed)</h5><br>
+	<input type="text" class="form-control form-control-sm "  id="box17" placeholder='Not performed' >
+
+<hr>
+
+	<h5>Preresection Treatment (select all that apply)</h5><br>
+	<select class="form-control form-control-sm "  id="box19" multiple>
+	<option selected>No therapy </option>
+	<option>Chemotherapy performed </option>
+	<option>Radiation therapy performed </option>
+	<option>Therapy performed, type not specified </option>
+	<option>Unknown </option>
+	</select>
+
+<hr>
+
+	<h5>Treatment Effect</h5><br>
+	<select class="form-control form-control-sm "  id="box20">
+	<option>Not Identified</option>
+	<option>Present</option>
+	<option>Cannot be determined</option>
+	<input type="text" class="form-control form-control-sm "  id="box20_2" style="display:none" placeholder='Specify % viable tumor' >
+
+<hr>
+
+
+	<!-- close column -->
+			</div>
+			{{> page-partials/cap-footer}}
+	<!-- close row -->
+		</div>
+	<!-- close container -->
+	</div>
+
+
+			<!--
+			"specificScripts":
+				[
+					"../js/cap/softrx-scripts.js",
+				]
+		 -->

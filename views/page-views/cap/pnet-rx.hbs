@@ -1,0 +1,237 @@
+<div class="container-fluid">
+		<!-- Breadcrumbs -->
+		<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+						<a href="/">Home</a>
+				</li>
+				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+				<li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>EWING SARCOMA/PRIMITIVE NEUROECTODERMAL TUMOR: Resection</li>
+		</ol>
+
+		{{> page-partials/cap-header}}
+
+	<div class="row">
+		<div class="col col-md-8">
+	Select primary tumor location:<br>
+	<select class="form-control form-control-sm "  id='box13_0'>
+	<option selected>-Choose primary tumor site-</option>
+	<option value='1'>Primary bone</option>
+	<option value='2'>Primary extraosseous</option></select>
+
+<hr>
+
+	<h5>Procedure (Note B) </h5><br>
+	<select class="form-control form-control-sm "  id="box1">
+	<option selected>Not specified</option>
+	<option>Resection</option>
+	<option>Limb salvage procedure</option>
+	<option>Amputation:</option>
+	<option>Other:</option>
+	</select>
+	<input type="text" class="form-control form-control-sm "  id="box1_2" style="display:none" placeholder="Specify other procedure" >
+	<input type="text" class="form-control form-control-sm "  id="box1_3" style="display:none" placeholder="Specfy amputation site" >
+
+<hr>
+
+	<h5>Tumor Site</h5><br>
+	<input type="text" class="form-control form-control-sm "  id="box2"  placeholder="Not specified" >
+
+<hr>
+
+	<h5>Tumor Size (cm) (Note B)</h5><br>
+	<input type="text" class="form-control form-control-sm "  id="box3"  placeholder="Cannot Be Determined" >
+
+<hr>
+
+	<div class='pTbone' style='display:none'><h5>+ Extent of Primary Osseous Tumors (select all that apply)</h5><br>
+	<select class="form-control form-control-sm "  id="box4" multiple>
+	<option selected value='Not applicable'>Not applicable - will not show in summary</option>
+	<option> Diaphysis</option>
+	<option> Metaphysis</option>
+	<option> Medullary cavity</option>
+	<option> Tumor extension into soft tissue</option>
+	<option> Other:</option>
+	<option> Cannot be determined</option>
+	</select>
+	<input type="text" class="form-control form-control-sm "  id="box4_2" style="display:none" placeholder="Enter bony tumor extent" >
+
+<hr>
+</div>
+	<div class='pTsoft' style='display:none'><h5>+  Extent of Primary Extraosseous Tumors (select all that apply)</h5><br>
+	<select class="form-control form-control-sm "  id="box5" multiple>
+	<option selected value='Not applicable'>Not applicable - will not show in summary</option>
+	<option>Dermal</option>
+	<option>Subcutaneous/suprafascial</option>
+	<option>Subfascial</option>
+	<option>Intramuscular</option>
+	<option>Intra-abdominal/pelvic</option>
+	<option>Retroperitoneal</option>
+	<option>Other:</option>
+	<option>Not specified</option>
+	<option>Cannot be determined</option>
+	</select>
+	<input type="text" class="form-control form-control-sm "  id="box5_2" style="display:none" placeholder="Enter sof tissue extent" >
+
+<hr>
+</div>
+	<h5>Margins(Note C)</h5><br>
+	<select class="form-control form-control-sm "  id='box6'>
+	<option selected>Cannot be assessed</option>
+	<option>Margins uninvolved by tumor</option>
+	<option>Margin(s) involved by tumor</option>
+	</select>
+	<input type="text" class="form-control form-control-sm "  id="box6_2" style="display:none" placeholder='Distance (cm) to closest margin' >
+	<input type="text" class="form-control form-control-sm "  id="box6_3" style="display:none" placeholder='Specify involved margin' >
+
+<hr>
+
+	<h5>+ Lymph-Vascular Invasion (Note D)</h5><br>
+	<select class="form-control form-control-sm "  id="box7">
+	<option selected> Not identified</option>
+	<option> Present</option>
+	<option> Indeterminate</option>
+	</select>
+
+<hr>
+
+	<h5>Preresection Treatment (select all that apply)</h5><br>
+	<select class="form-control form-control-sm "  id="box8" multiple>
+	<option selected>No therapy</option>
+	<option>Chemotherapy performed</option>
+	<option>Radiation therapy performed</option>
+	<option>Therapy performed, type not specified</option>
+	<option>Unknown</option>
+	</select>
+
+<hr>
+
+	<h5>Necrosis Postchemotherapy (Note E)</h5><br>
+	<select class="form-control form-control-sm "  id="box9">
+	<option selected>Not applicable</option>
+	<option>Necrosis not identified</option>
+	<option>Necrosis present</option>
+	<option>Cannot be determined</option>
+	</select>
+	<input type="text" class="form-control form-control-sm "  id="box9_2" style="display:none" placeholder="Enter % of necrosis seen">
+
+<hr>
+
+	<h5>+ Additional Pathologic Findings</h5><br>
+    <input type="text" class="form-control form-control-sm "  id="box10"  placeholder='Not applicable'>
+
+<hr>
+
+	<h5>Ancillary Studies (Note F)</h5>
+	<br>
+	<h5>+ Cytogenetics</h5><br>
+	<select class="form-control form-control-sm "  id="box11">
+	<option selected>Not performed</option>
+	<option>Karyotype pending</option>
+	<option>t(11;22) detected</option>
+	<option>Complex karyotype with t(11;22) detected</option>
+	</select>
+
+<hr>
+
+	<h5>+ Molecular Pathology </h5><br>
+	<select class="form-control form-control-sm "  id="box12" multiple>
+	<option selected>None performed</option>
+	<option>EWSR breakapart FISH pending</option>
+	<option>EWSR breakapart detected by FISH</option>
+	<option>EWSR fusion FISH pending </option>
+	<option>EWSR fusion detected by FISH </option>
+	<option>EWSR translocation by PCR pending </option>
+	<option>EWSR translocation by PCR detected </option>
+	</select>
+
+<hr>
+
+	<h5>Regional Lymph Nodes (pN)</h5><br>
+	<select class="form-control form-control-sm "  id="box16">
+	<option selected value='pNX'>Cannot be assessed / No nodes submitted</option>
+	<option value='pN0'>No regional or non-regional lymph node metastasis</option>
+	<option value='pN1a'>Regional lymph node metastasis</option>
+	<option value='pN1b'>Non-regional lymph node metastasis</option>
+	</select><br>
+	<input type="text" class="form-control form-control-sm "  id="box16_2" placeholder='# Regional Lymph nodes examined' ><br>
+	<input type="text" class="form-control form-control-sm "  id="box16_3" style="display:none" placeholder='# Regional Lymph nodes involved' ><br>
+	<input type="text" class="form-control form-control-sm "  id="box16_4" placeholder='# Non-regional Lymph nodes examined' ><br>
+	<input type="text" class="form-control form-control-sm "  id="box16_5" style="display:none" placeholder='# Non-regional Lymph nodes involved' ><br>
+
+<hr>
+
+	<h5>Pathologic Staging (pTNM)</h5>
+	<br>
+	<h5>TNM Descriptors (if applicable)</h5><br>
+	<select class="form-control form-control-sm "  id="box13"  multiple>
+	<option selected>Not applicable</option>
+	<option value='m'>m (multiple primary tumors)</option>
+	<option value='r'>r (recurrent)</option>
+	<option value='y'>y (posttreatment)</option>
+	</select>
+
+<hr>
+
+	<div class='pTbone' style='display:none'><h5>Primary Tumor - for Osseous tumors (pT)</h5><br>
+	<select class="form-control form-control-sm "  id="box14">
+	<option selected value='pTX'>pTX: Primary tumor cannot be assessed</option>
+	<option value='pT0'> pT0: No evidence of primary tumor</option>
+	<option value='pT1'>pT1: Tumor 8 cm or less in greatest dimension</option>
+	<option value='pT2'>pT2: Tumor more than 8 cm in greatest dimension</option>
+	<option value='pT3'>pT3: Discontinuous tumors in the primary bone site</option>
+	</select>
+
+<hr>
+</div>
+	<div class='pTsoft' style='display:none'><h5>Primary Tumor - for Extraosseous tumors (pT)</h5><br>
+	<select class="form-control form-control-sm "  id="box15">
+	<option selected value='pTX'>pTX: Primary tumor cannot be assessed</option>
+	<option value='pT0'> pT0: No evidence of primary tumor</option>
+	<option value='pT1a'>pT1a: Tumor 5 cm or less in greatest dimension, superficial tumor</option>
+	<option value='pT1b'> pT1b: Tumor 5 cm or less in greatest dimension, deep tumor</option>
+	<option value='pT2a'>pT2a: Tumor more than 5 cm in greatest dimension, superficial tumor</option>
+	<option value='pT2b'>pT2b: Tumor more than 5 cm in greatest dimension, deep tumor</option>
+	</select>
+
+<hr>
+</div>
+
+	<h5>Distant Metastasis - for primary bone tumors only(pM)</h5><br>
+	<div class='pTbone' style='display:none'>
+	For primary osseous tumors:<br>
+	<select class="form-control form-control-sm "  id="box17">
+	<option selected value="pMX">Not applicable</option>
+	<option value='pM1a'>Lung</option>
+	<option value='pM1b'>Metastasis involving distant sites other than lung</option>
+	</select>
+	<input type="text" class="form-control form-control-sm "  id="box17_2" style="display:none" placeholder='Enter metastatic sites, if known' >
+
+<hr>
+</div>
+	<div class='pTsoft' style='display:none'>
+	For primary extra-osseous tumors:<br>
+	<select class="form-control form-control-sm "  id="box18">
+	<option selected value="pMX">Not applicable</option>
+	<option value='pM1'>Distant metastases</option>
+	</select>
+	<input type="text" class="form-control form-control-sm "  id="box18_2" style="display:none" placeholder='Enter metastatic sites, if known' >
+
+<hr>
+
+    </div>
+
+	<!-- close column -->
+			</div>
+			{{> page-partials/cap-footer}}
+	<!-- close row -->
+		</div>
+	<!-- close container -->
+	</div>
+
+
+			<!--
+			"specificScripts":
+				[
+					"../js/cap/pnetrx-scripts.js",
+				]
+		 -->
