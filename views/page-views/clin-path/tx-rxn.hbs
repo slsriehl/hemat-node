@@ -1,0 +1,195 @@
+		<div class="container-fluid">
+		<!-- Breadcrumbs -->
+		<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+						<a href="/">Home</a>
+				</li>
+				<li class="breadcrumb-item">
+						Clinical Pathology Tools
+				</li>
+				<li class="breadcrumb-item active"><i class="fa fa-tint mr-2"></i>Transfusion Reaction Workup</li>
+		</ol>
+		<div class="card mb-3">
+				<div class="card-header bg-info">
+						<!-- How to use and modal -->
+						<div class="row">
+								<button class="btn btn-default btn-block" data-target="#flipFlop" data-toggle="modal" id='openhelp'
+												type='button'> How to use
+								</button> <!-- The modal -->
+{{> modals/txrxn-how-to-use}}
+						</div>
+				</div>
+		</div>
+				<div class="row">
+										<!-- bottom left column-->
+										<div class="col col-md-8" id="bottom-l">
+												<div class="card">
+														<div class="card-header">
+																<h5>Vital signs documentation and blood bank data</h5>
+														</div>
+														<div class="card-block">
+																<table class="table table-sm table-responsive">
+																		<thead class="thead-inverse">
+																		<tr>
+																				<th class="w-25">Pre</th>
+																				<th class="w-25">Post</th>
+																				<th class="w-25">Products</th>
+																				<th class="w-25">Lab Testing</th>
+																		</tr>
+																		</thead>
+																		<thead class="thead-default">
+																		<tr>
+																				<th >Temp
+																						<i class="fa fa-question-circle ml-2" data-toggle="tooltip"
+																										title="In F or C">
+																						</i>
+																				</th>
+																				<th >Temp <i class="fa fa-question-circle ml-2" data-toggle="tooltip"
+																										 title="In F or C">
+																						</i></th>
+																				<th >Pt Type</th>
+																				<th >CC</th>
+																		</tr>
+																		</thead>
+																		<tr>
+																				<td ><input class="form-control form-control-sm"  id='temp1' ></td>
+																				<td ><input class="form-control form-control-sm"  id='temp2' ></td>
+																				<td ><select class="form-control form-control-sm"  id='blood_type'><option value="an A+"> A+</option><option>a B+</option><option value="an O+"> O+</option><option value="an AB+"> AB+</option><option value="an A-"> A-</option><option>a B-</option><option value="an O-"> O-</option><option value="an AB-"> AB-</option></select></td>
+																				<td ><select class="form-control form-control-sm"  id='cc'><option>Passed</option><option>Fail</option></select></td>
+																		</tr>
+																		<thead class="thead-default">
+																		<tr>
+																				<th >BP</th>
+																				<th >BP</th>
+																				<th >Prod type</th>
+																				<th >Hemolysis</th>
+																		</tr>
+																		</thead>
+																		<tr>
+																				<td ><input class="form-control form-control-sm"  id='bp1' ></td>
+																				<td ><input class="form-control form-control-sm"  id='bp2' ></td>
+																				<td ><select class="form-control form-control-sm"  id='prod_type'><option value="an A+"> A+</option><option>a B+</option><option value="an O+"> O+</option><option value="an AB+"> AB+</option><option value="an A-"> A-</option><option>a B-</option><option value="an O-"> O-</option><option value="an AB-"> AB-</option></select><br><select class="form-control form-control-sm"  id='prod'><option>RBC</option><option >platelet</option><option>FFP</option><option>cryoprecipitate</option></select></td>
+																				<td ><select class="form-control form-control-sm"  id='hemol'><option>None</option><option>Minimal</option><option>Present</option></select></td>
+																		</tr>
+																		<thead class="thead-default">
+																		<tr>
+																				<th >Date</th>
+																				<th >Date</th>
+																				<th >Treatment?</th>
+																				<th >Pre-Test <i class="fa fa-question-circle ml-2" data-toggle="tooltip"
+																												 title="Blood type from pre-transfusion segment">
+																						</i>
+																				</th>
+																		</tr>
+																		</thead>
+																		<tr>
+																				<td ><input class="form-control form-control-sm datepicker" data-provide="datepicker-inline" id='date1' ></td>
+																				<td ><input class="form-control form-control-sm datepicker" data-provide="datepicker-inline" id='date2' ></td>
+																				<td ><select class="form-control form-control-sm"  id='LR' multiple><option selected>LR</option><option>irradiated</option><option>washed</option><option>CMV negative</option></select></td>
+																				<td ><select class="form-control form-control-sm"  id='pretest'><option value="an A+"> A+</option><option>a B+</option><option value="an O+"> O+</option><option value="an AB+"> AB+</option><option value="an A-"> A-</option><option>a B-</option><option value="an O-"> O-</option><option value="an AB-"> AB-</option></select></td>
+																		</tr>
+																		<thead class="thead-default">
+																		<tr>
+																				<th >Time</th>
+																				<th >Time</th>
+																				<th ></th>
+																				<th >Post-Test
+																						<i class="fa fa-question-circle ml-2" data-toggle="tooltip"
+																							 title="Blood type from post-transfusion sample">
+																						</i>
+																				</th>
+																		</tr>
+																		</thead>
+																		<tr>
+																				<td ><input class="form-control form-control-sm"  id='time1' ></td>
+																				<td ><input class="form-control form-control-sm"  id='time2' ></td>
+																				<td ></td>
+																				<td ><select class="form-control form-control-sm"  id='posttest'><option value="an A+"> A+</option><option>a B+</option><option value="an O+"> O+</option><option value="an AB+"> AB+</option><option value="an A-"> A-</option><option>a B-</option><option value="an O-"> O-</option><option value="an AB-"> AB-</option></select></td>
+																		</tr>
+																		<thead class="thead-default">
+																		<tr>
+																				<th >Symptoms</th>
+																				<th >Premedication</th>
+																				<th ></th>
+																				<th >DAT</th>
+																		</tr>
+																		</thead>
+																		<tr>
+																				<td ><select class="form-control form-control-sm"  id='symptoms' multiple>
+																								<option selected value='fever'>Fever (>2 deg F)</option>
+																								<option>chills</option>
+																								<option>rigors</option>
+																								<option>hypotension</option>
+																								<option>hypertension</option>
+																								<option>shock</option>
+																								<option>chest/back pain</option>
+																								<option>hemoglobinuria</option>
+																								<option>tachycardia/arrhythmias</option>
+																								<option>pulmonary edema</option>
+																								<option>dyspnea/wheezing</option>
+																								<option>nausea/vomiting</option>
+																								<option>flusing</option>
+																								<option>rash/hives</option>
+																								<option>oozing</option>
+																								<option>headache</option>
+
+																						</select></td>
+																				<td ><select class="form-control form-control-sm"  id='premed'><option value='was reportedly given prior to initiation of transfusion.'>Given</option><option value='was not reported.'>Not reported</option></select ></td>
+																				<td ></td>
+																				<td ><select class="form-control form-control-sm"  id='dat'><option>Negative</option><option>Positive</option></select></td>
+																		</tr>
+																</table>
+														</div>
+														<div class="card-footer bg-info">
+														Interpretation and Comments<br>
+																<select class="form-control form-control-sm" id='interp'>
+																		<option selected value="100">Allergic transfusion reaction</option>
+																		<option value="101" >Febrile, non-hemolytic transfusion reaction</option>
+																		<option value="102" >Acute hemolytic transfusion reaction</option>
+																		<option value="103" >Delayed hemolytic transfusion reaction</option>
+																		<option value="104" >Laboratory studies do not support TRALI</option>
+																		<option value="105" >Possible TRALI; defer to speciality testing</option>
+																		<option value="106" >Laboratory data and clinical findings consistent with TACO</option>
+																		<option value="107" >No laboratory evidence of allergic or hemolytic reaction</option>
+																		<option value="108" >Symptoms most consistent with underlying clincial condition; No laboratory evidence of transfusion reaction</option>
+																</select>
+														</div>
+												</div>
+										</div>
+										<!-- middle right text output-->
+										<div class="col col-md-4" id="bottom-r">
+												<div class="card text-center">
+														<div class="card-header">
+																<ul class="nav nav-pills">
+																		<ul class="nav nav-pills">
+
+																				<a class="btn btn-lg btn-outline-info p-2" id="writeReport">
+																						<small>Write Report</small>
+																				</a>
+
+
+																				<a class="btn btn-lg btn-outline-danger p-2 ml-4" id="Reset" >
+																						<small>Reset</small>
+																				</a>
+
+																		</ul>
+																</ul>
+														</div>
+														<div class="card-block">
+																<div class="form-group">
+																		<textarea class="form-control" id="outPut-1" rows="25" placeholder="Report"></textarea>
+																		<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-1">Copy to Clipboard</span>
+																</div>
+														</div>
+												</div>
+										</div>
+		</div>
+		<!--end container wrapper-->
+</div>
+<!--
+"specificScripts":
+	[
+		"../json/json-txrxn.js",
+		"../js/clin-path/txrxn-scripts.js"
+	]
+-->

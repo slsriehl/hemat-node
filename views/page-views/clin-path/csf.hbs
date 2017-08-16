@@ -1,0 +1,262 @@
+
+	<div class="container-fluid">
+		<!-- Breadcrumbs -->
+		<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+						<a href="/">Home</a>
+				</li>
+				<li class="breadcrumb-item">
+						Clinical Pathology Tools
+				</li>
+				<li class="breadcrumb-item active"><i class="fa fa-eyedropper mr-2"></i>Cerebrospinal Fluid Cytology Reports</li>
+		</ol>
+
+		<div class="card mb-3">
+				<div class="card-header bg-info">
+						<!-- How to use and modal -->
+						<div class="row">
+								<button class="btn btn-default btn-block" data-target="#flipFlop" data-toggle="modal" id='openhelp'
+												type='button'> How to use
+								</button>
+<!-- how to use modal -->
+{{> modals/csf-how-to-use}}
+						</div>
+				</div>
+		</div>
+				<div class="row">
+						<!--middle colored boxes-->
+						<div class="col col-sm-8" id="bottom-l">
+										<!-- bottom left column-->
+
+												<div class="card">
+														<div class="card-header">
+																<h5>CSF Reports</h5>
+														</div>
+														<div class="card-block">
+																<div class="table-responsive">
+																		<table class="table table-hover">
+																				<tr>
+																						<th class="h6">Specimen type:</th>
+																						<td>
+																								<select class="form-control form-control col-sm-6" id="spc_type" >
+																										<option value=1>LP</option>
+																										<option value=2>Shunt aspirate</option>
+																								</select>
+																						</td>
+																				</tr>
+																				<tr>
+																						<th class="h6">Volume:</th>
+																						<td>
+																								<select class="form-control form-control col-sm-4" id="box1" >
+																										<option>0.5</option>
+																										<option>1.0</option>
+																										<option>1.5</option>
+																										<option selected>2.0</option>
+																										<option>2.5</option>
+																										<option>3.0</option>
+																										<option>4.0</option>
+																										<option>6.0</option>
+																										<option>7.0</option>
+																										<option>8.0</option>
+																										<option>9.0</option>
+																								</select>
+
+																						</td>
+																				</tr>
+
+																				<tr>
+																						<th class="h6">Gross description:</th>
+																						<td>
+																								<select class="form-control form-control-sm col-sm-4" id="box2">
+																										<option selected value="mxLine100">clear</option>
+																										<option value="mxLine101">pink</option>
+																										<option value="mxLine102">red</option>
+																								</select>
+																						</td>
+																				</tr>
+
+																				<tr>
+																						<th class="h6">RBC count:</th>
+																						<td>
+																								<input class="form-control form-control-sm col-sm-4" id="box3"  placeholder='0'>
+																						</td>
+																				</tr>
+
+																				<tr>
+																						<th class="h6">WBC count:</th>
+																						<td>
+																								<input class="form-control form-control-sm col-sm-4" id="box4"  placeholder='0'>
+																						</td>
+																				</tr>
+
+																				<tr>
+																						<th class="h6">Cellularity</th>
+																						<td>
+																								<select class="form-control form-control-sm col-sm-6" id="box5">
+																										<option value="mxLine150">exceedingly paucicellular</option>
+																										<option value="mxLine151" selected>paucicellular</option>
+																										<option value="mxLine152">cellular</option>
+																										<option value="mxLine153">moderately cellular</option>
+																										<option value="mxLine154">hypercellular</option>
+																										<option value="mxLine155">acellular</option>
+																								</select>
+																						</td>
+																				</tr>
+
+																				<tr>
+																						<th class="h6">Cell types</th>
+																						<td>
+																								<select class="form-control form-control-sm col-sm-8" multiple id="box6">
+																										<option value="mxLine200" selected>lymphocytes</option>
+																										<option value="mxLine202" selected>monocytes</option>
+																										<option value="mxLine201">reactive lymphocytes</option>
+																										<option value="mxLine203">neutrophils</option>
+																										<option value="mxLine204">few neutrophils</option>
+																										<option value="mxLine205">eosinophils</option>
+																										<option value="mxLine206">few eosinophils</option>
+																										<option value="mxLine207">hemosiderin laden histiocytes</option>
+																										<option value="mxLine208">neuropil tissue</option>
+																										<option value="mxLine209">bone marrow elements</option>
+																								</select>
+																						</td>
+																				</tr>
+
+																				<tr>
+																						<th class="h6">RBC contaminants?</th>
+																						<td>
+																								<select class="form-control form-control-sm col-sm-8" id="box7">
+																										<option value="mxLine220" selected>None</option>
+																										<option value="mxLine221">Few</option>
+																										<option value="mxLine222">Increased</option>
+																										<option value="mxLine223">Peripheral blood contamination</option>
+																								</select>
+																						</td>
+																				</tr>
+
+																				<tr>
+																						<th class="h6">Abnormal cells?</th>
+																						<td>
+																								<select class="form-control form-control-sm col-sm-8" id="box8">
+																										<option value="mxLine230" selected>No blasts or malignant cells</option>
+																										<option value="mxLine231">Rare blast-like cells</option>
+																										<option value="mxLine232">Few blasts present</option>
+																										<option value="mxLine233">Frequent blasts present</option>
+																										<option value="mxLine234">Rare atypical ?tumor</option>
+																										<option value="mxLine235">Frequent malignant tumor cells</option>
+																										<option value="mxLine236">Hemophagocytic histocytes (HLH)</option>
+																								</select>
+																						</td>
+																				</tr>
+
+																				<tr>
+																						<th class="h6">Organisms</th>
+																						<td>
+																								<select class="form-control form-control-sm col-sm-10" id="box9">
+																										<option value="mxLine240" selected>No microorganisms are seen</option>
+																										<option value="mxLine241">Rare intracellular bacterial cocci are seen</option>
+																										<option value="mxLine242">Frequent intracellular bacterial cocci are seen</option>
+																										<option value="mxLine243">Rare fungal hyphae are seen</option>
+																								</select>
+																						</td>
+																				</tr>
+
+																				<tr>
+																						<th class="h6">Final diagnoses</th>
+																						<td>
+																								<select class="form-control selectpicker" multiple id="box10">
+																										<option value="dxLine100" selected>No malignant cells seen</option>
+																										<option value="dxLine101">Few red blood cells present</option>
+																										<option value="dxLine102">Predominance of red blood cells</option>
+																										<option value="dxLine103">Predominance of reactive lymphocytes </option>
+																										<option value="dxLine104">Predominance of neutrophils</option>
+																										<option value="dxLine105">Bone marrow elements</option>
+																										<option value="dxLine106">Rare blast-like cells seen </option>
+																										<option value="dxLine107">Blasts present</option>
+																										<option value="dxLine108">Rare atypical cells </option>
+																										<option value="dxLine109">Malignant tumor cells seen </option>
+																										<option value="dxLine110">Rare intracellular bacterial cocci seen </option>
+																										<option value="dxLine111">Frequent intracellular bacterial cocci seen </option>
+																										<option value="dxLine112">Rare fungal hyphae seen </option>
+																										<option value="dxLine113">Hemophagocytic histiocytes present </option>
+																										<option value="dxLine114">Hemosiderin-laden histiocytes present </option>
+																								</select>
+																						</td>
+																				</tr>
+
+																				<tr>
+																						<th class="h6">Comments</th>
+																						<td>
+																								<select class="form-control form-control-sm " multiple id="box11">
+																										<option value="commLine101">Correlation with micro </option>
+																										<option value="commLine102">Rare blast-like cells</option>
+																										<option value="commLine103">Blasts present</option>
+																										<option value="commLine104">HLH present</option>
+																										<option value="commLine105">Rare atypical cells</option>
+																										<option value="commLine106">Metastatic tumor present</option>
+																										<option value="commLine107">Hemosiderin present</option>
+																										<option value="commLine108">Findings discussed with</option>
+																								</select>
+																						</td>
+																				</tr>
+																		</table>
+																</div>
+														</div>
+												</div>
+										</div>
+										<!-- middle right text output-->
+										<div class="col col-sm-4" id="bottom-r">
+												<div class="card text-center">
+														<div class="card-header">
+																<ul class="nav nav-pills">
+																		<ul class="nav nav-pills">
+
+																				<a class="btn btn-lg btn-outline-info p-2" id="writeReport">
+																						<small>Write Report</small>
+																				</a>
+																				<a class="btn btn-lg btn-outline-success p-2 ml-4" id="combineReport">
+																						<small>Combine</small>
+																				</a>
+
+																				<a class="btn btn-lg btn-outline-danger p-2 ml-4" id="Reset" >
+																						<small>Reset</small>
+																				</a>
+
+																		</ul>
+																</ul>
+														</div>
+														<div class="card-block">
+																<div class="form-group">
+																		<textarea class="form-control" id="outPut-1" rows="9" placeholder="Micro"></textarea>
+																		<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-1">Copy to Clipboard</span>
+																</div>
+														</div>
+														<div class="card-block">
+																<div class="form-group">
+																		<textarea class="form-control" id="outPut-2" rows="6" placeholder="Finals"></textarea>
+																		<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-2">Copy to Clipboard</span>
+																</div>
+														</div>
+														<div class="card-block">
+																<div class="form-group">
+																		<textarea class="form-control" id="outPut-3" rows="6" placeholder="Gross"></textarea>
+																		<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-3">Copy to Clipboard</span>
+																</div>
+														</div>
+														<div class="card-block">
+																<div class="form-group">
+																		<textarea class="form-control" id="outPut-4" rows="6" placeholder="Comments"></textarea>
+																		<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-4">Copy to Clipboard</span>
+																</div>
+														</div>
+												</div>
+						</div>
+				</div>
+		<!--end container wrapper-->
+</div>
+<!--
+"specificScripts":
+	[
+		"../json/json-csf.js",
+		"../js/clin-path/csf-scripts.js"
+	]
+-->

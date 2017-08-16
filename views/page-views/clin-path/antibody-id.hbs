@@ -1,0 +1,83 @@
+<div class="container-fluid">
+				<!-- Breadcrumbs -->
+				<ol class="breadcrumb">
+						<li class="breadcrumb-item">
+								<a href="/">Home</a>
+						</li>
+						<li class="breadcrumb-item">
+								Clinical Pathology Tools
+						</li>
+							<li class="breadcrumb-item active"><i class="fa fa-transgender-alt mr-2"></i>Transfusion Antibody</li>
+				</ol>
+				<div class="card mb-3">
+						<div class="card-header">
+								<i class="fa fa-transgender-alt mr-2"></i> Transfusion antibody identification with comments
+						</div>
+						<div class="card-header">
+								<!-- How to use and modal -->
+								<div class="row">
+										<button class="btn btn-default btn-block" data-target="#flipFlop" data-toggle="modal" id="openhelp"
+														type="button">How to use the Antibody identification tool
+										</button>
+										<!-- The modal -->
+{{> modals/antibody-how-to-use}}
+								</div>
+						</div>
+
+				</div>
+				<div class="row">
+
+										<!-- bottom left column-->
+										<div class="col col-md-6" id="bottom-l">
+										<div class="card">
+												<div class="card-header">
+														<p>Select your antibody</p>
+												</div>
+												<div class="card-block">
+														<select class="form-control" id="antibody">
+																<option value="000" selected hidden>Choose</option>
+																<option value="_100">Anti-A1</option>
+																<option value="_110">Anti-C</option>
+																<option value="_111">Anti-C + e</option>
+																<option value="_120">Anti-D baby</option>
+																<option value="_121">Anti-D mom</option>
+																<option value="_130">Anti-E</option>
+																<option value="_140">Anti-I</option>
+																<option value="_141">Anti-IH</option>
+																<option value="_150">Anti-K</option>
+																<option value="_160">Anti-Le(a)</option>
+																<option value="_170">Anti-M</option>
+																<option value="_180">Anti-P1</option>
+																<option value="_190">Warm Auto</option>
+																<option value="_191">Cold Agglutinin</option>
+																<option value="_200">Positive DAT and reactive elution</option>
+														</select>
+												</div>
+										</div>
+										</div>
+										<!-- middle right text output-->
+										<div class="col col-md-6" id="bottom-r">
+												<div class="card text-center">
+														<div class="card-header">
+														</div>
+														<div class="card-block">
+																<div class="form-group">
+																		<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-1">Copy to Clipboard</span>
+																		<textarea class="form-control" id="outPut-1" rows="12" placeholder="Final text"></textarea>
+																		<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-1">Copy to Clipboard</span>
+																</div>
+																<p class="card-footer"><small>Note, %age availability of uncommon red cell units may be different in your region. Adjust text accordingly. </small></p>
+														</div>
+												</div>
+										</div>
+				</div>
+				<!-- end container-fluid -->
+		</div>
+
+<!--
+"specificScripts":
+	[
+		"../json/json-abid.js",
+		"../js/clin-path/antibody-scripts.js"
+	]
+-->
