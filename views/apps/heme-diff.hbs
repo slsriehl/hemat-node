@@ -1,283 +1,270 @@
-<div class="container">
-<!-- Breadcrumbs -->
-<ol class="breadcrumb">
-		<li class="breadcrumb-item">
-				<a href="/">Home</a>
-		</li>
-		<li class="breadcrumb-item active"><i class="fa fa-calculator mr-2"></i> Online Leukocyte/WBC Differential Counter</li>
-</ol>
-	<!-- end breadcrumbs container -->
-</div>
-<form id="form">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-4">
-				<button
-					class="btn btn-default btn-block"
-					data-target="#howto"
-					data-toggle="modal"
-					id='openhelp'
-					type='button'
-				>
-					How to use the diff counter
-				</button>
-	<!-- end column for first button -->
-			</div>
-			<div class="col-sm-4">
-				<button
-					class="btn btn-info btn-block"
-					data-target="#switch"
-					data-toggle="modal"
-					id='openhelp'
-					type='button'
-				>
-					Need a custom diff counter?
-				</button>
-	<!-- end column for second button -->
-			</div>
-	<!-- end row of buttons -->
-		</div>
-	<!-- diff and printout boxes-->
+<?php
 
-	<!--counter textarea-->
-		<div class="row bg-info p-2 hemediff">
-			<div class="col col-md-8 my-auto" id="count-display">
-				<textarea class="counter form-control form-control-success" id="textarea" placeholder="Start typing here" rows="2" style="width: 100%;"></textarea>
-			</div>
-			<div class="col-md-2 text-center my-auto" >
-				<div class="input-group input-group-sm">
-					<select class="form-control form-control-sm" id="limit">
-						<option value="200" selected hidden>
-							Count Limit
-						</option>
-						<option value="100">
-							100
-						</option>
-						<option value="200">
-							200
-						</option>
-						<option value ="300">
-							300
-						</option>
-						<option value="400">
-							400
-						</option>
-						<option value="500">
-							500
-						</option>
-						<option value="600">
-							600
-						</option>
-						<option value="700">
-							700
-						</option>
-						<option value="800">
-							800
-						</option>
-						<option value="900">
-							900
-						</option>
-						<option value="1000">
-							1000
-						</option>
-					</select>
-					<span class="input-group-addon">
-						<a href="#" data-toggle="tooltip" title="Default is 200 cells counted">
-							<i class="fa fa-lightbulb-o" aria-hidden="true"></i>
-						</a>
-					</span>
-	<!-- end input group -->
-				</div>
-	<!-- end col-md-2 select -->
-			</div>
-			<div class="col-md-2 text-center my-auto" >
-				<input
-					class="form-control form-control-sm"
-					id="counter"
-					size="5"
-					type="text"
-					placeholder="Cell count"
-				/>
-	<!-- end col-md-2 cell count input -->
-			</div>
-	<!-- end counter textarea row -->
-		</div>
-	<!-- end counter container -->
-	</div>
-	<!-- container with colored boxes & printout -->
-	<div class="container">
-		<div class="row">
-			<div class="col col-md-8" id="bottom-l">
-	<!--middle colored boxes-->
-				<div class="row row-grid" id="grid-target">
-	<!-- script prepends repetitive cards -->
-					<!-- <div class="text-center col-md-3" id="bottom-l"> -->
-					<div class="card">
-						<div class="card-block meratio" style=" background-color: rgba(255, 235, 59, 0.71);">
-							<p class="pt-2">
-								<small>
-									M:E ratio
-								</small>
-							</p>
-							<input class="form-control form-control-sm" id="merat"  type="text" value="0" />
-	<!-- end card block M:E ratio -->
-						</div>
-	<!-- end card M:E ratio -->
-					</div>
-	<!-- end row-grid grid-target -->
-				</div>
-				<div class="row">
-					<div class="col col-md-12">
-						<div class="card">
-							<div class="card-block neblast" style=" background-color: seashell;">
-								<p class="pt-2">
-									<small>
-										Non-erythroid blast%
-									</small>
-								</p>
-								<input class="form-control form-control-sm text-center" id="noneryblast" type="text" value="0" />
-	<!-- end card block neblast -->
-							</div>
-							<div class="card-footer">
-								<small class="text-muted">
-									The non-erythroid blasts can be used in the diagnosis of erythroleukemias.
-								</small>
-	<!-- end card footer -->
-							</div>
-	<!-- end card -->
-						</div>
-	<!-- end EB column -->
-					</div>
-	<!-- end EB row -->
-				</div>
-	<!-- end first column column -->
-			</div>
-	<!-- middle right text output-->
-			<div class="text-center col col-md-4" id="bottom-r">
-				<div class="card text-center">
-					<div class="card-header">
-						<ul class="nav nav-pills">
-							<li>
-								<a class="btn btn-lg btn-outline-info p-2" id="printDiff">
-									<small>Print Diff</small>
-								</a>
-							</li>
-							<li>
-								<a class="btn btn-lg btn-outline-success p-2 ml-4" >
-									<small class="copy btn-default" data-toggle="popover" data-placement="top" data-content="Diff copied to clipboard!" data-clipboard-target="#diffOut" >
-										Copy
-									</small>
-								</a>
-							</li>
-							<li>
-								<a class="btn btn-lg btn-outline-danger p-2 ml-4" id="Reset" >
-									<small>Reset</small>
-								</a>
-							</li>
-						</ul>
-	<!-- end card header -->
-					</div>
-					<div class="card-block">
-						<textarea id="diffOut" rows="16" style="width: 100%;"></textarea>
-	<!-- end card block -->
-					</div>
-					<div class="card-footer">
-						<input id="switchtext" type="checkbox" />
-						<label>
-							Check to toggle the final diff format
-						</label>
-	<!-- end card footer -->
-					</div>
-	<!-- end card -->
-				</div>
-	<!-- end col-md-4 right hand column -->
-			</div>
-	<!-- end main row of two main columns -->
-		</div>
-	<!-- end container of colored boxes & printout -->
-	</div>
-</form>
-<!-- previous diffs card-->
-<div class="container">
-	<div class="row">
-		<div class="col col-md-12">
-			<div class="card text-center">
-				<div class="card-header">
-					<ul class="nav nav-pills">
-						<li class="nav-item">
-							<a
-								class="nav-link active ml-4"
-								data-toggle="collapse"
-								href="#diffHist-hide"
-								aria-expanded="false"
-								aria-controls="collapsediv"
-							>
-								<small>
-									Show previously counted differentials
-								</small>
-							</a>
+		include ("includes/header.php");
+		?>
+
+
+
+<div class="container-fluid">
+				<!-- Breadcrumbs -->
+				<ol class="breadcrumb">
+						<li class="breadcrumb-item">
+								<a href="/">Home</a>
 						</li>
-					</ul>
-<!-- end card header -->
-				</div>
-				<div class="card-block collapse" id="diffHist-hide">
-					<textarea id="diffHist" rows="16" style="width: 100%;">
-					</textarea>
-<!-- end card block -->
-				</div>
-<!-- end card -->
-			</div>
-<!-- end col -->
-		</div>
-<!-- end row -->
-	</div>
-<!-- end container -->
-</div>
+						<li class="breadcrumb-item active"><i class="fa fa-calculator mr-2"></i> Online Leukocyte/WBC Differential Counter</li>
+				</ol>
+				<form id="form">
+				<div class="card mb-3">
 
-<!-- modals -->
+						<div class="card-header">
+								<!-- How to use and modal -->
+								<div class="row">
+										<div class="col-sm-4">
+												<button class="btn btn-default btn-block" data-target="#howto" data-toggle="modal" id='openhelp' type='button'>How to use the diff counter</button> <!-- The modal -->
+										</div>
+										<div class="col-sm-4">
+												<button class="btn btn-info btn-block" data-target="#switch" data-toggle="modal" id='openhelp' type='button'>Need a custom diff counter?</button> <!-- The modal -->
+
+										</div>
 <!--how to use modal-->
-<div aria-hidden="true" aria-labelledby="modalLabel" class="modal fade" id="howto" role="dialog" tabindex="-1">
-		<div class="modal-dialog" role="document">
-				<div class="modal-content">
-						<div class="modal-header">
-								<h4 class="modal-title" id="modalLabel">How to use the Diff counter</h4>
-								<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
-
-						</div>
-						<div class="modal-body">
-								<p>Use the number pad to count cells according to the legend below</p>
-								<p>2) The frequency and total cell count will appear in the appropriate fields</p>
-								<p>3) Click the button at the bottom to get a text prinout that can be copy/pasted into your pathology report.</p><img class="diffhelp img-responsive" src="../images/diff_key.png"></div>
-						<div class="modal-footer">
-								<p class="text-danger">Want to customize your keypad inputs? Try the <a href="/hg_new/apps/counter.html">customizable tally counter</a>instead.</p>
-						</div>
-				</div>
-		</div>
-</div>
+{{> page-partials/hemediff-how-to-use}}
 <!-- switch to counter modal-->
-<div class="modal fade" id="switch" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-				<div class="modal-content">
-						<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-								</button>
-								<h4 class="modal-title" id="modelTitleId">Do you need a customized modal</h4>
+{{> page-partials/hemediff-switch-counter}}
+								</div>
 						</div>
-						<div class="modal-body">
-								<ul>
-										<li>Why not try the custom tally counter?</li>
-										<li>You can give your own labels using the number pad</li>
-										<li><a href="../apps/counter.php">Click here to go to it</a> </li>
-								</ul>
+						<!-- diff and printout boxes-->
+						<div class="card-block">
+								<div class="hemediff">
+										<!--counter textarea-->
+										<div class="row bg-info p-2">
+												<div class="col-8 my-auto" id="count-display">
+														<textarea class="counter form-control form-control-success" id="textarea" placeholder="Start typing here" rows="2" style="width: 100%;"></textarea>
+												</div>
+												<div class="col-2 text-center my-auto" >
+														<div class="input-group input-group-sm">
+																<select class="form-control form-control-sm" id="limit">
+																		<option value="200" selected hidden>
+																				Count Limit
+																		</option>
+																		<option>
+																				100
+																		</option>
+																		<option>
+																				200
+																		</option>
+																		<option>
+																				300
+																		</option>
+																		<option>
+																				400
+																		</option>
+																		<option>
+																				500
+																		</option>
+																		<option>
+																				600
+																		</option>
+																		<option>
+																				700
+																		</option>
+																		<option>
+																				800
+																		</option>
+																		<option>
+																				900
+																		</option>
+																		<option>
+																				1000
+																		</option>
+																</select>
+																<span class="input-group-addon"><a href="#" data-toggle="tooltip" title="Default is 200 cells counted"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></a></span>
+														</div>
+												</div>
+												<div class="col-2 text-center my-auto" >
+														<input class="form-control form-control-sm" id="counter" size="5" type="text" placeholder="Cell count">
+												</div>
+										</div>
+								</div>
 						</div>
+				</div>
+
+			<div class="row">
+						<!--middle colored boxes-->
+				<div class="text-center col-sm-8" id="bottom-l">
+					<div class="row row-grid">
+						<!-- middle left column-->
+								<div class="card-deck">
+										<div class="card">
+												<div class="card-block meta " style=" background-color: rgba(93, 64, 55, 0.5);">
+														<p class="pt-2"><small>Meta + myelo</small></p>
+														<input class="form-control form-control-sm" id="meta_num" type="text">
+														<p class="pt-2"><small>Meta + myelo%</small></p>
+														<input class="form-control form-control-sm" id="meta_pct" type="text" value="0">
+												</div>
+										</div>
+										<div class="card">
+												<div class="card-block blasts " style=" background-color: rgba(229, 57, 53, 0.5);">
+														<p class="pt-2"><small>Blasts</small></p>
+														<input class="form-control form-control-sm" id="bl_num"  type="text">
+														<p class="pt-2"><small>Blasts%</small></p>
+														<input class="form-control form-control-sm" id="bl_pct"  type="text" value="0">
+												</div>
+										</div>
+										<div class="card">
+												<div class="card-block pros  " style=" background-color: rgba(176, 39, 97, 0.5);">
+														<p class="pt-2"><small>Promyelocytes</small></p>
+														<input class="form-control form-control-sm" id="pro_num"  type="text">
+														<p class="pt-2"><small>Promyelocytes%</small></p>
+														<input class="form-control form-control-sm" id="pro_pct"  type="text" value="0">
+												</div>
+										</div>
+
+										<div class="card">
+												<div class="card-block segs " style=" background-color: rgba(255, 202, 40, 0.5);">
+														<p class="pt-2"><small>Segs + Bands</small></p>
+														<input class="form-control form-control-sm" id="segs_num"  type="text">
+														<p class="pt-2"><small>Segs + Bands%</small></p>
+														<input class="form-control form-control-sm" id="segs_pct"  type="text" value="0">
+												</div>
+										</div>
+								</div>
+								<div class="card-deck">
+										<div class="card">
+												<div class="card-block nrbc " style=" background-color: rgba(128, 0, 128, 0.5);">
+														<p class="pt-2"><small>Nrbc</small></p>
+														<input class="form-control form-control-sm" id="nrbc_num"  type="text">
+														<p class="pt-2"><small>Nrbc%</small></p>
+														<input class="form-control form-control-sm" id="nrbc_pct"  type="text" value="0">
+
+												</div>
+										</div>
+										<div class="card">
+												<div class="card-block lymphs " style=" background-color: rgba(0, 0, 255, 0.5);">
+														<p class="pt-2"><small>Lymphocytes</small></p>
+														<input class="form-control form-control-sm" id="lymph_num"  type="text">
+														<p class="pt-2"><small>Lymphocytes%</small></p>
+														<input class="form-control form-control-sm" id="lymph_pct"  type="text" value="0">
+
+												</div>
+										</div>
+										<div class="card">
+												<div class="card-block mono " style=" background-color: rgba(127, 255, 212, 0.50);">
+														<p class="pt-2"><small>Monocytes</small></p>
+														<input class="form-control form-control-sm" id="mono_num"  type="text">
+														<p class="pt-2"><small>Monocytes%</small></p>
+														<input class="form-control form-control-sm" id="mono_pct"  type="text" value="0">
+
+												</div>
+										</div>
+										<div class="card">
+												<div class="card-block eos " style=" background-color: rgba(255, 0, 0, 0.63);">
+														<p class="pt-2"><small>Eosinophils</small></p>
+														<input class="form-control form-control-sm" id="eos_num"  type="text">
+														<p class="pt-2"><small>Eosinophils%</small></p>
+														<input class="form-control form-control-sm" id="eos_pct"  type="text" value="0">
+												</div>
+										</div>
+								</div>
+								<div class="card-deck">
+										<div class="card">
+												<div class="card-block plasma " style=" background-color: rgba(2, 2, 88, 0.5);">
+														<p class="pt-2"><small>Plasma cells</small></p>
+														<input class="form-control form-control-sm" id="plasma_num"  type="text">
+														<p class="pt-2"><small>Plasma cells%</small></p>
+														<input class="form-control form-control-sm" id="plasma_pct"  type="text" value="0">
+
+												</div>
+										</div>
+										<div class="card">
+												<div class="card-block basos " style=" background-color: rgba(76, 175, 80, 0.54);">
+														<p class="pt-2"><small>Basophils</small></p>
+														<input class="form-control form-control-sm" id="baso_num"  type="text">
+														<p class="pt-2"><small>Basophils%</small></p>
+														<input class="form-control form-control-sm" id="baso_pct"  type="text" value="0">
+
+												</div>
+										</div>
+										<div class="card">
+												<div class="card-block atyp " style=" background-color: darkgrey;">
+														<p class="pt-2"><small>Atypical cells</small></p>
+														<input class="form-control form-control-sm" id="atyp_num"  type="text">
+														<p class="pt-2"><small>Atypical cells%</small></p>
+														<input class="form-control form-control-sm" id="atyp_pct"  type="text" value="0">
+
+												</div>
+										</div>
+										<div class="card">
+												<div class="card-block meratio" style=" background-color: rgba(255, 235, 59, 0.71);">
+														<p class="pt-2"><small>M:E ratio</small></p>
+														<input class="form-control form-control-sm" id="merat"  type="text" value="0">
+
+												</div>
+										</div>
+								</div>
+							</div>
+										<div class="card-block">
+												<div class="neblast " style=" background-color: seashell;">
+														<p class="pt-2"><small>Non-erythroid blast%</small></p>
+														<input class="form-control form-control-sm text-center" id="noneryblast" type="text" value="0">
+
+												</div>
+												<div class="card-footer">
+														<small class="text-muted">The non-erythroid blasts can be used in the diagnosis of erythroleukemias.
+														</small>
+												</div>
+										</div>
+						</div>
+						<!-- middle right text output-->
+						<div class="text-center col-sm-4" id="bottom-r">
+								<div class="card text-center">
+										<div class="card-header">
+												<ul class="nav nav-pills">
+														<a class="btn btn-lg btn-outline-info p-2" id="printDiff">
+																<small>Print Diff</small>
+														</a>
+
+														<a class="btn btn-lg btn-outline-success p-2 ml-4" >
+																<small class="copy btn-default" data-toggle="popover" data-placement="top" data-content="Diff copied to clipboard!" data-clipboard-target="#diffOut" >
+																		Copy</small>
+														</a>
+
+														<a class="btn btn-lg btn-outline-danger p-2 ml-4" id="Reset" >
+																<small>Reset</small>
+														</a>
+												</ul>
+										</div>
+										<div class="card-block">
+												<div class="col">
+														<textarea id="diffOut" rows="16" style="width: 100%;"></textarea>
+												</div>
+												<p class="card-footer"><input id="switchtext" type="checkbox"> Check to toggle the final diff format</p>
+										</div>
+								</div>
+
+						</div>
+					</div>
+				</form>
+<!-- previous diffs card-->
+<div class="card text-center">
+		<div class="card-header">
+				<ul class="nav nav-pills">
+						<li class="nav-item">
+								<a class="nav-link active ml-4" data-toggle="collapse" href="#diffHist-hide" aria-expanded="false" aria-controls="collapsediv"><small> Show previously counted differentials</small></a>
+						</li>
+				</ul>
+		</div>
+		<div class="card-block">
+				<div class="col collapse" id="diffHist-hide">
+						<textarea id="diffHist" rows="16" style="width: 100%;"></textarea>
 				</div>
 		</div>
 </div>
+<!--end container wrapper-->
+</div>
 
-<!-- specificScripts
-
-../vendor/bootstrap/js/bootstrap-datepicker.min.js
-../js/hemediff-scripts.js
-
+<!--
+"specificScripts":
+	[
+		"../js/apps/hemediff-scripts.js"
+	]
 -->
