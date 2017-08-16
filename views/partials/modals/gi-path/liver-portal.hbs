@@ -1,0 +1,181 @@
+<div class="modal fade" id="portal" tabindex="-1" role="dialog" data-backdrop="false"
+		 aria-labelledby="modelTitleId" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+				<div class="modal-content">
+						<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+								</button>
+								<h4 class="modal-title" id="modelTitleId">Portal area description</h4>
+						</div>
+						<div class="modal-body">
+								<table class="table table-striped table-responsive" style="font-size: 1em;">
+										<thead>
+										<tr>
+												<th>
+														Option
+												</th>
+												<th>
+														Value
+												</th>
+										</tr>
+										</thead>
+										<tbody>
+										<tr>
+												<td>
+														Degree of portal inflammation?
+												</td>
+												<td>
+														<select class="form-control form-control-sm" id="port1">
+																<option value="no undue" selected>None</option>
+																<option>mild</option>
+																<option>moderate, slightly expansile </option>
+																<option>marked, expansile </option>
+														</select>
+												</td>
+										</tr>
+										<tr>
+												<td>
+														What is the infltrate?
+												</td>
+												<td>
+														<select class="form-control form-control-sm" id="port2">
+																<option value="only rare small lymphocytes" selected>NA</option>
+																<option>lymphocytes</option>
+																<option>lymphocytes and few eosinophils</option>
+																<option>lymphocytes and many eosinophils</option>
+																<option>lymphocytes and few plasma cells</option>
+																<option>lymphocytes and many plasma cells </option>
+																<option>lymphocytes, eosinophils and few plasma cells </option>
+																<option>lymphocytes, eosinophils and few neutrophils </option>
+																<option>lymphocytes, including some forming germinal centers </option>
+																<option>neutrophils, with fewer lymphocytes </option>
+																<option>neutrophils and lymphocytes, with fewer eosinophils </option>
+														</select>
+												</td>
+										</tr>
+										<tr>
+												<td>
+														Interface infiltrate?
+												</td>
+												<td>
+														<select class="form-control form-control-sm" id="port3">
+																<option value="not present" selected>None</option>
+																<option>minimal and focally present within some portal areas</option>
+																<option>moderate in intensity, affecting less than half of the portal areas </option>
+																<option>moderate in intensity, affecting greater than half of the portal areas </option>
+																<option>severe in intensity, affecting greater than half of the portal areas </option>
+														</select>
+												</td>
+										</tr>
+										<tr>
+												<td>
+														Piecemeal necrosis?
+												</td>
+												<td>
+														<select class="form-control form-control-sm" id="port4">
+																<option value="No" selected>None</option>
+																<option value="Focal (few portal areas)">Focal, few portal areas</option>
+																<option value="Moderate (approximately 50% of portal areas)">Moderate, most portal areas</option>
+																<option value="Marked (most portal areas)">Marked, most portal areas</option>
+														</select>
+												</td>
+										</tr>
+										<tr>
+												<td>
+														Bile ducts?
+												</td>
+												<td>
+														<select class="form-control form-control-sm" id="port5">
+																<option value="adequate" selected>adequate</option>
+																<option >slightly reduced</option>
+																<option >few</option>
+																<option >increased</option>
+																<option value='increased, duct-plate malformation-like' >increased w/ DPM</option>
+														</select><br>
+														<input class="form-control form-control-sm" id="port5_2" style="display: none;" placeholder='# of portal areas in biopsy'><br>
+														<input class="form-control form-control-sm" id="port5_3" style="display: none;" placeholder='# with ducts'>
+												</td>
+										</tr>
+										<tr>
+												<td>
+														Bile duct injury?
+												</td>
+												<td>
+														<select class="form-control form-control-sm" id="port6">
+																<option value="no appreciable" selected>None</option>
+																<option >focal, mild</option>
+																<option >moderate, reactive</option>
+																<option >severe, reactive</option>
+																<option >severe, fibrosing</option>
+																<option >severe, granulomatous</option>
+														</select>
+												</td>
+										</tr>
+										<tr>
+												<td>
+														Cholangioles?
+												</td>
+												<td>
+														<select class="form-control form-control-sm" id="port7">
+																<option value="no appreciable" selected>None</option>
+																<option value="a mild">mild</option>
+																<option value="a moderate">moderate</option>
+																<option value="a severe">severe</option>
+														</select>
+												</td>
+										</tr>
+										<tr>
+												<td>
+														Cholestasis in portal ducts?
+												</td>
+												<td>
+														<select class="form-control form-control-sm" id="port8">
+																<option value="" selected>N/A</option>
+																<option value="Some cholangioles show inspissated bile plugs. ">present, cholangioles</option>
+																<option value="Some interlobular ducts show inspissated bile plugs. ">present, ducts</option>
+																<option value="Some cholangioles and interlobular ducts show inspissated bile plugs. ">present, cholangioles and ducts</option>
+														</select>
+												</td>
+										</tr>
+										<tr>
+												<td>
+														Trichrome?
+												</td>
+												<td>
+														<select class="form-control form-control-sm" id="port9">
+																<option value="no increase in portal fibrosis, 0+" data-score = '0' selected>None</option>
+																<option value="a mild increase in portal fibrosis with minimal expansion, 1a+" data-score = '1a'>minimal Zone3 peri sinusoidal</option>
+																<option value="a mild increase in portal fibrosis with minimal expansion, 1b+" data-score = '1b'>moderate Zone3 peri sinusoidal</option>
+																<option value="a mild increase in portal fibrosis with minimal expansion, 1+" data-score = '1c'>minimal periportal</option>
+																<option value="a moderate increase in portal and periportal fibrosis, 2+" data-score = '2'>increased, periportal fibrosis</option>
+																<option value="increased portal fibrosis with extension to adjacent portal areas, 3+" data-score = '3'>increased, portal-portal bridging</option>
+																<option value="severe bridging fibrosis (cirrhosis), 4+" data-score = '4'>cirrhosis</option>
+														</select>
+												</td>
+										</tr>
+										<tr>
+												<td>
+														Immunos for bile ducts?
+												</td>
+												<td>
+														<select class="form-control form-control-sm" id="port10">
+																<option selected value='NA'>NA</option>
+																<option value="a normal distribution of portal bile ducts">CK7, normal</option>
+																<option value="slightly reduced bile ducts among the portal regions">CK7, slightly reduced ducts</option>
+																<option value="a marked paucity of bile ducts in the portal regions and predominant labeling of cholangioles">CK7, markedly reduced ducts</option>
+														</select>
+												</td>
+										</tr>
+										</tbody>
+								</table>
+						</div>
+						<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+												data-dismiss="modal">Save to micro
+								</button>
+						</div>
+				</div>
+		</div>
+</div>
