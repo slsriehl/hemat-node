@@ -53,14 +53,22 @@ app.use(session({
 // ++++++ Express routes ++++++
 //const userRoutes		= require('./routes/user'),
 const testRoutes = require('./routes/tests');
-const hemePathRoutes = require('./routes/heme-path');
 const capRoutes = require('./routes/cap');
+const hemePathRoutes = require('./routes/heme-path');
+const giPathRoutes = require('./routes/gi-path');
+const clinPathRoutes = require('./routes/clin-path');
+const surgPathRoutes = require('./routes/surg-path');
+const autopsyRoutes = require('./routes/autopsy');
 // 			contextRoutes = require('./routes/context'),
 // 			itemRoutes		= require('./routes/item');
 
 app.use(testRoutes);
 app.use(capRoutes);
 app.use(hemePathRoutes);
+app.use(giPathRoutes);
+app.use(clinPathRoutes);
+app.use(surgPathRoutes);
+app.use(autopsyRoutes);
 //app.use(userRoutes);
 // app.use(contextRoutes);
 // app.use(itemRoutes);

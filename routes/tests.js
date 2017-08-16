@@ -15,22 +15,12 @@ router.get('/surg-path/snippets', (req, res) => {
 	});
 });
 
-router.get('/gi-path/gi-bx', (req, res) => {
-	res.render('./page-views/gi-path/gi-bx.hbs',
-	{"specificScripts":
-		[
-			"../json/json-gi.js",
-			"../js/gi-path/gi-scripts.js",
-		]
-	});
-});
-
-router.get('/apps/fixation', (req, res) => {
-	res.render('./apps/fixation.hbs',
+router.get('/surg-path/fixation', (req, res) => {
+	res.render('./page-views/surg-path/fixation.hbs',
 	{"specificScripts":
 		[
 			"../vendor/jquery/js/jquery-ui-timepicker-addon.min.js",
-			"../js/apps/fixation-scripts.js",
+			"../js/surg-path/fixation-scripts.js",
 		]
 	});
 });
