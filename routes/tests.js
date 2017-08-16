@@ -10,7 +10,7 @@ router.get('/apps/snippets', (req, res) => {
 	res.render('./apps/snippets.hbs', {"specificScripts":
 		[
 			"../vendor/tag-it/tag-it.min.js",
-			"../js/snippets-scripts.js"
+			"../js/apps/snippets-scripts.js"
 		]
 	});
 });
@@ -20,7 +20,7 @@ router.get('/apps/heme_diff', (req, res) => {
 	{"specificScripts":
 		[
 			"../vendor/bootstrap/js/bootstrap-datepicker.min.js",
-			"../js/hemediff-scripts.js"
+			"../js/apps/hemediff-scripts.js"
 		]
 	});
 });
@@ -29,7 +29,7 @@ router.get('/apps/counter', (req, res) => {
 	res.render('./apps/counter.hbs',
 	{"specificScripts":
 		[
-			"../js/counter-scripts.js"
+			"../js/apps/counter-scripts.js"
 		]
 	});
 });
@@ -39,8 +39,8 @@ router.get('/apps/pb_smears', (req, res) => {
 	{"specificScripts":
 		[
 			"../json/json-pbsmears.js",
-			"../js/pb-rules.js",
-			"../js/pb-scripts.js"
+			"../js/apps/pb-rules.js",
+			"../js/apps/pb-scripts.js"
 		]
 	});
 });
@@ -50,7 +50,7 @@ router.get('/apps/gi_bx', (req, res) => {
 	{"specificScripts":
 		[
 			"../json/json-gi.js",
-			"../js/gi-scripts.js",
+			"../js/apps/gi-scripts.js",
 		]
 	});
 });
@@ -60,7 +60,7 @@ router.get('/apps/fixation', (req, res) => {
 	{"specificScripts":
 		[
 			"../vendor/jquery/js/jquery-ui-timepicker-addon.min.js",
-			"../js/fixation-scripts.js",
+			"../js/apps/fixation-scripts.js",
 		]
 	});
 });
