@@ -53,10 +53,12 @@ app.use(session({
 // ++++++ Express routes ++++++
 //const userRoutes		= require('./routes/user'),
 const testRoutes = require('./routes/tests');
+const capRoutes = require('./routes/cap');
 // 			contextRoutes = require('./routes/context'),
 // 			itemRoutes		= require('./routes/item');
 
 app.use(testRoutes);
+app.use(capRoutes);
 //app.use(userRoutes);
 // app.use(contextRoutes);
 // app.use(itemRoutes);
