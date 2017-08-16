@@ -3,6 +3,9 @@ const express = require('express');
 const router = new express.Router;
 
 router.get('/heme-path/pb-smears', (req, res) => {
+	//Report saving & PDFing: AJAX & controller: front end script to generate report, AJAX POST to controller to store in DB per person, generate PDF report & send to file system, and template success/result for download
+	//initial page load with data: controller: if the user has previous reports, pull data & template results including download button
+	//previous report handling: AJAX & controller: if the user selects a previous report, template text from DB & populate generate report button auto download
 	res.render('./page-views/heme-path/pb-smears.hbs',
 	{"specificScripts":
 		[
@@ -14,6 +17,9 @@ router.get('/heme-path/pb-smears', (req, res) => {
 });
 
 router.get('/heme-path/bone-marrow', (req, res) => {
+	//Report saving & PDFing: AJAX & controller: front end script to generate report, AJAX POST to controller to store in DB per person, generate PDF report & send to file system, and template success/result for download
+	//initial page load with data: controller: if the user has previous reports, pull data & template results including download button
+	//previous report handling: AJAX & controller: if the user selects a previous report, template text from DB & populate generate report button auto download
 	res.render('./page-views/heme-path/bone-marrow.hbs',
 	{"specificScripts":
 		[
@@ -26,6 +32,9 @@ router.get('/heme-path/bone-marrow', (req, res) => {
 });
 
 router.get('/heme-path/heme-diff', (req, res) => {
+	//Report saving & PDFing: AJAX & controller: front end script to generate report, AJAX POST to controller to store in DB per person, generate PDF report & send to file system, and template success/result for download
+	//initial page load with data: controller: if the user has previous reports, pull data & template results including download button
+	//previous report handling: AJAX & controller: if the user selects a previous report, template text from DB & populate generate report button auto download
 	res.render('./page-views/heme-path/heme-diff.hbs',
 	{"specificScripts":
 		[
@@ -35,6 +44,9 @@ router.get('/heme-path/heme-diff', (req, res) => {
 });
 
 router.get('/heme-path/counter', (req, res) => {
+	//Report saving & PDFing: AJAX & controller: front end script to generate report, AJAX POST to controller to store in DB per person, generate PDF report & send to file system, and template success/result for download
+	//initial page load with data: controller: if the user has previous reports, pull data & template results including download button
+	//previous report handling: AJAX & controller: if the user selects a previous report, template text from DB & populate generate report button auto download
 	res.render('./page-views/heme-path/counter.hbs',
 	{"specificScripts":
 		[
@@ -44,6 +56,9 @@ router.get('/heme-path/counter', (req, res) => {
 });
 
 router.get('/heme-path/dlbcl', (req, res) => {
+	//Report saving & PDFing: AJAX & controller: front end script to generate report, AJAX POST to controller to store in DB per person, generate PDF report & send to file system, and template success/result for download
+	//initial page load with data: controller: if the user has previous reports, pull data & template results including download button
+	//previous report handling: AJAX & controller: if the user selects a previous report, template text from DB & populate generate report button auto download
 	res.render('./page-views/heme-path/dlbcl.hbs',
 	{"specificScripts":
 		[

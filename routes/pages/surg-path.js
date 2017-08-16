@@ -5,6 +5,7 @@ const router = new express.Router;
 
 //needs database connection
 router.get('/surg-path/ihc-table', (req, res) => {
+	//IHC modal routes
 	//initial page load with data: controller: pull data from mysql, template results
 	//Report saving & PDFing: AJAX & controller: front end script to generate report, AJAX POST to controller to store in DB per person, generate PDF report & send to file system, and template success/result for download
 	//adding data to DB: AJAX & controller: front end script to receive new data, AJAX POST to controller to store in DB per person, template success
@@ -29,7 +30,6 @@ router.get('/surg-path/fixation', (req, res) => {
 	//Report saving & PDFing: AJAX & controller: front end script to generate report, AJAX POST to controller to store in DB per person, generate PDF report & send to file system, and template success/result for download
 	//initial page load with data: controller: if the user has previous reports, pull data & template results including download button
 	//previous report handling: AJAX & controller: if the user selects a previous report, template text from DB & populate generate report button auto download
-	//placeholder data
 	res.render('./page-views/surg-path/fixation.hbs',
 	{"specificScripts":
 		[
