@@ -1,0 +1,253 @@
+<div class="container-fluid">
+		<!-- Breadcrumbs -->
+		<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+						<a href="/">Home</a>
+				</li>
+				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+				<li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Bone tumors, resection</li>
+		</ol>
+
+		{{> page-partials/cap-header}}
+
+	<div class="row">
+		<div class="col col-md-8">
+			<h3 class="mb-2">Bone Tumors - resections</h3>
+			<!-- paste CAP elements here-->
+
+			<b>Specimen, Specify bone involved(if known)</b><br>
+			Side:<br>
+			<select class="form-control form-control-sm"  id="box0">
+			    <option selected>Not specified</option>
+			    <option> Right</option>
+			    <option> Left</option>
+			    <option> Midline</option>
+			</select>
+			<br>
+			Site:<small>Start typing the name of the bone and select from the list</small><br>
+			<input class="form-control form-control-sm"  type="text" id="box1" size="35">
+
+			<hr>
+
+			<b>Procedure</b><br>
+			<select class="form-control form-control-sm"  id="box2">
+			    <option selected>Radical resection</option>
+			    <option>Intralesional resection</option>
+			    <option>Marginal resection</option>
+			    <option>Segmental/wide resection</option>
+			    <option>Other:</option>
+			    <option>Not specified</option>
+			    <input class="form-control form-control-sm"  type="text" id="box2_2" style="display:none" placeholder='Specify other procedure' size='30'>
+			</select>
+
+			<hr>
+
+			<b>Tumor Site (select all that apply)</b><br>
+			<select class="form-control form-control-sm"  id="box3" multiple>
+			    <option selected> Epiphysis or apophysis</option>
+			    <option> Metaphysis</option>
+			    <option> Diaphysis</option>
+			    <option> Cortex</option>
+			    <option> Medullary cavity</option>
+			    <option> Surface </option>
+			    <option> Tumor involves joint</option>
+			    <option> Tumor extension into soft tissue</option>
+			    <option> Cannot be determined</option>
+			</select>
+
+			<hr>
+
+			<b>Greatest dimension of main tumor mass:</b><br>
+			<input class="form-control form-control-sm"  type='text' id="box4" size=15 placeholder='Cannot be assessed'>
+
+			<hr>
+
+			<b>Histologic Type (select all that apply):</b>
+			<br><input class="form-control form-control-sm"  type='text' id="box5" placeholder="Start typing here..."><br>
+
+			<hr>
+
+			<b> + Mitotic Rate </b><br>
+			<form class="form-inline">
+			    <div class="form-group">
+			        <label for="box6">Specify per 10 hpf:</label>
+			        <input class="form-control form-control-sm col-3"  id="box6" placeholder="0">
+			        <span href="#" data-toggle="tooltip" title="note: 1 HPF = 400x field (10x ocular and 40x objective)"><i class="fa fa-lightbulb-o ml-2" aria-hidden="true"></i></span>
+
+			    </div>
+			</form>
+
+			<hr>
+
+			<b>Necrosis </b><br>
+			<select class="form-control form-control-sm"  id="box7">
+			    <option selected> Not identified</option>
+			    <option> Present</option>
+			    <option> Cannot be determined</option>
+			</select>
+			<input class="form-control form-control-sm"  type="text" id="box7_2" style="display:none" placeholder='Extent of necrosis (%)' size='30'>
+
+			<hr>
+
+			<b>Histologic Grade </b><br>
+			<select class="form-control form-control-sm"  id="box8">
+			    <option selected> Low-grade </option>
+			    <option> Intermediate-grade </option>
+			    <option> High-grade </option>
+			    <option> Not applicable </option>
+			    <option> Cannot be determined</option>
+			</select>
+
+			<hr>
+
+			<b>Margins</b><br><select class="form-control form-control-sm"  id="box21">
+			    <option selected>Cannot be assessed</option>
+			    <option>Margins uninvolved by sarcoma</option>
+			    <option>Margins involved by sarcoma</option>
+			</select><br>
+			<input class="form-control form-control-sm"  id='box21_1' style='display:none;' placeholder='Specify closest margin' size='40'>
+			<input class="form-control form-control-sm"  id='box21_2' style='display:none;' placeholder='Specify distance (cm) from margin' size='40'>
+			<input class="form-control form-control-sm"  id='box21_3' style='display:none;' placeholder='Specify involved margin' size='30'>
+
+			<hr>
+
+			<b>+ Lymph-Vascular Invasion </b><br>
+			<select class="form-control form-control-sm"  id="box9">
+			    <option selected> Not identified</option>
+			    <option> Present</option>
+			    <option> Indeterminate</option>
+			</select>
+
+			<hr>
+
+
+			<b>Pathologic Staging (pTNM)</b><br>
+			<br>
+			TNM Descriptors (select all that apply)<br>
+			<select class="form-control form-control-sm"  id="box10" multiple>
+			    <option selected value="Not applicable">Not applicable</option>
+			    <option>m</option>
+			    <option>r</option>
+			    <option>y</option>
+			</select>
+
+			<hr>
+
+			Primary Tumor (pT)<br>
+			<select class="form-control form-control-sm"  id="box11">
+			    <option value='pTX' selected>pTX: Primary tumor cannot be assessed </option>
+			    <option value='pT0'>pT0: No evidence of primary tumor </option>
+			    <option value='pT1'>pT1: Tumor 8 cm or less in greatest dimension</option>
+			    <option value='pT2'>pT2: Tumor more than 8 cm in greatest dimension </option>
+			    <option value='pT3'>pT3: Discontinuous tumors in the primary bone site </option>
+			</select>
+
+			<hr>
+
+			Regional Lymph Nodes (pN)<br>
+			<select class="form-control form-control-sm"  id="box12">
+			    <option value='pNX' selected>pNX: Regional lymph nodes cannot be assessed </option>
+			    <option value='pN0'>pN0: No regional lymph node metastasis </option>
+			    <option value='pN1'>pN1: Regional lymph node metastasis </option>
+			    <option value='pNX'>No nodes submitted or found </option>
+			</select>
+
+			<hr>
+
+			<div class="form-check form-check-inline">
+			    <label class="form-check-label">
+			        <input class="form-check-input"  type="checkbox" id="box12_1" > Check here if any lymph nodes were submitted
+			    </label>
+			</div>
+
+			<div class='nodes' style='display:none'>
+			    Number of lymph nodes examined:<br>
+			    <input class="form-control form-control-sm col-3"  id="box12_2" ><br>
+			    Number of lymph nodes involved:<br>
+			    <input class="form-control form-control-sm col-3"  id="box12_3" > <br>
+			</div>
+
+			<hr>
+
+			Distant Metastases (pM)<br>
+			<select class="form-control form-control-sm"  id="box13">
+			    <option selected value='pMX'>pMX: Not applicable </option>
+			    <option value='pM1a (Lung)'>pM1a: Lung </option>
+			    <option value='pM1b'>pM1b: Metastasis involving distant sites other than lung</option>
+			</select>
+			<input class="form-control form-control-sm"  type="text" id="box13_2" style="display:none" placeholder='Specify metastasis site' size='40'>
+
+			<hr>
+
+			<b>+ Additional Pathologic Findings</b><br>
+			<input class="form-control form-control-sm"  type="text" id="box14" placeholder="None">
+
+			<hr>
+
+			<h4>Ancillary Studies</h4>
+			    <small> The following are required only if applicable; and will not be included in the summary unless you enter a new value</small>
+
+			<hr>
+
+			        <b>Immunohistochemistry </b><br>
+			        <input class="form-control form-control-sm"  id="box15" placeholder="None performed">
+
+			<hr>
+
+			        <b>Cytogenetics</b><br>
+			        <select class="form-control form-control-sm"  id="box16">
+			            <option selected> Not performed</option>
+			            <option> Karyotype pending</option>
+			            <option> Karyotype & FISH pending</option>
+			            <option> FISH pending</option>
+			            <option> Complex abnormal karyotype detected</option>
+			            <option> Translocation detected</option>
+			            <option> Normal karyotype</option>
+
+			        </select>
+			        <input class="form-control form-control-sm"  type="text" id="box16_2" style="display:none" placeholder='Specify translocation' size='40'>
+
+			<hr>
+
+			        <b>Molecular Pathology</b><br>
+			        <input class="form-control form-control-sm"  id="box17" placeholder='Specify molecular testing, if performed' size='50'>
+
+			<hr>
+
+			        <b>Radiographic Findings (if available)</b><br>
+			        <input class="form-control form-control-sm"  id="box18" placeholder="Not available">
+
+			<hr>
+
+			        <b>Preresection Treatment (select all that apply)</b><br>
+			        <select class="form-control form-control-sm"  id="box19" multiple>
+			            <option selected>No therapy </option>
+			            <option>Chemotherapy performed </option>
+			            <option>Radiation therapy performed </option>
+			            <option>Therapy performed, type not specified </option>
+			            <option>Unknown </option>
+			        </select>
+
+			<hr>
+
+			        <b>Treatment Effect</b><br>
+			        <select class="form-control form-control-sm"  id="box20">
+			            <option>Not Identified</option>
+			            <option>Present</option>
+			            <option>Cannot be determined</option>
+			        </select>
+			            <input class="form-control form-control-sm"  type="text" id="box20_2" style="display:none" placeholder='Specify % of necrosis' size='30'>
+	<!-- close column -->
+	</div>
+	{{> page-partials/cap-footer}}
+	<!-- close row -->
+</div>
+<!-- close container -->
+</div>
+<!--
+
+"specificScripts":
+	[
+		"../js/cap/bonerx-scripts.js",
+	]
+-->

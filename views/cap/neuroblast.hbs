@@ -1,0 +1,450 @@
+<div class="container-fluid">
+		<!-- Breadcrumbs -->
+		<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+						<a href="/">Home</a>
+				</li>
+				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+				<li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Neuroblastoma</li>
+		</ol>
+
+		{{> page-partials/cap-header}}
+
+	<div class="row">
+		<div class="col col-md-8">
+			<div class="card">
+					<div class="card-block">
+							<h4 class="card-title">Specimen</h4>
+							<div class="card-body mt-1">
+									<select class="form-control form-control-sm" id="box1">
+											<option selected>Adrenal/periadrenal </option>
+											<option>Retroperitoneal, nonadrenal </option>
+											<option>Thoracic paraspinal </option>
+											<option>Cervical </option>
+											<option>Other:</option>
+											<option>Not specified </option>
+									</select>
+									<input class="form-control form-control-sm" type="text" id="box1_2" placeholder="Enter Other specimen type"  style="display:none">
+							</div>
+					</div>
+			</div>
+
+			<div class="card">
+					<div class="card-block">
+							<h4 class="card-title">Procedure</h4>
+							<div class="card-body mt-1">
+									<select class="form-control form-control-sm" id="box2">
+											<option selected>Resection </option>
+											<option>Incisional biopsy </option>
+											<option>Other:</option>
+											<option>Not specified</option>
+									</select>
+									<input class="form-control form-control-sm" type="text" id="box2_2"  placeholder="Enter other procedure type"  style="display:none">
+							</div>
+					</div>
+			</div>
+
+			<div class="card">
+					<div class="card-block">
+							<h4 class="card-title">Specimen Laterality (select all that apply)
+							</h4>
+							<div class="card-body mt-1">
+									<select class="form-control form-control-sm" id="box3" multiple>
+											<option selected>Not specified</option>
+											<option>Right</option>
+											<option>Left</option>
+											<option>Midline</option>
+											<option>Other</option>
+									</select>
+									<input class="form-control form-control-sm" type="text" id="box3_2"  placeholder="Enter other specimen site"  style="display:none">
+							</div>
+					</div>
+			</div>
+
+			<div class="card">
+					<div class="card-block">
+							<h4 class="card-title">Tumor Size </h4>
+							<div class="card-body mt-1">
+									<form class="form-inline">
+											<div class="form-group">
+													<label for="">Greatest dimension (cm):</label>
+													<input class="form-control form-control-sm ml-2"  id="box4" placeholder="Cannot be assessed">
+											</div>
+									</form>
+							</div>
+					</div>
+			</div>
+
+			<div class="card">
+					<div class="card-block">
+							<h4 class="card-title">Patient Age</h4>
+							<div class="card-body mt-1">
+									<select class="form-control form-control-sm" id="box6">
+											<option selected>Not specified </option>
+											<option><18 months </option>
+											<option>≥18 months and <5 years </option>
+											<option>≥5 years </option>
+									</select>
+							</div>
+					</div>
+			</div>
+
+			<div class="card">
+					<div class="card-block">
+							<h4 class="card-title">Histologic Type (select all that apply) <span href="#" data-toggle="tooltip" data-html="true" title="Note: For nodular (composite) ganglioneuroblastomas with more than 1 nodule, degree of differentiation and mitotic-karyorrhectic index (MKI) must be given for each nodule. Please indicate the differentiation and MKI for the least favorable nodule in the case summary below. Classification of additional nodules can be described in the Comment."><i class="fa fa-lightbulb-o" aria-hidden="true"></i></span></h4>
+							<div class="card-body mt-1">
+
+									<select class="form-control form-control-sm" id="box7" multiple>
+											<option selected>Neuroblastoma </option>
+											<option>Ganglioneuroblastoma; Nodular subtype:</option>
+											<option>Ganglioneuroblastoma; Intermixed subtype </option>
+											<option>Ganglioneuroma </option>
+											<option>Neuroblastic tumor, unclassifiable </option>
+											<option>Cannot be assessed </option>
+									</select>
+									<input class="form-control form-control-sm" type="text" id="box7_2"  placeholder="For GNB nodular, specify number of nodules"  style="display:none">
+							</div>
+					</div>
+			</div>
+
+			<div class="card">
+					<div class="card-block">
+							<h4 class="card-title">Degree of Differentiation (neuroblastic component)  </h4>
+							<div class="card-body mt-1">
+									<select class="form-control form-control-sm" id="box8">
+											<option selected>Undifferentiated </option>
+											<option>Poorly differentiated </option>
+											<option>Differentiating </option>
+											<option>Cannot be assessed </option>
+											<option>Not applicable </option>
+									</select>
+							</div>
+					</div>
+			</div>
+
+			<div class="card">
+					<div class="card-block">
+							<h4 class="card-title">Mitotic-Karyorrhectic Index (MKI) (neuroblastic component) </h4>
+							<div class="card-body mt-1">
+									<select class="form-control form-control-sm" id="box9">
+											<option selected>Low (<100 per 5000 cells; <2%) </option>
+											<option>Intermediate (100-200 per 5000 cells; 2%-4%) </option>
+											<option>High (>200 per 5000 cells; >4%) </option>
+											<option>Indeterminate </option>
+											<option>Cannot be assessed </option>
+											<option>Not applicable</option>
+									</select>
+							</div>
+					</div>
+			</div>
+
+
+			<div class="card">
+					<div class="card-block">
+							<h4 class="card-title">Treatment History  </h4>
+							<div class="card-body mt-1">
+									<select class="form-control form-control-sm" id="box11">
+											<option selected>No known presurgical chemotherapy </option>
+											<option>Presurgical chemotherapy given </option>
+											<option>Not specified</option>
+									</select>
+							</div>
+					</div>
+			</div>
+
+
+
+			<div class="card">
+					<div class="card-block">
+							<h4 class="card-title">+ Treatment effect </h4>
+							<div class="card-body mt-1">
+									<select class="form-control form-control-sm" id="box10">
+											<option selected>Not applicable</option>
+											<option>Not identified</option>
+											<option>Present</option>
+											<option>Not identified</option>
+											<option>Cannot be assessed</option>
+									</select>
+							</div>
+					</div>
+			</div>
+
+			<div class="card">
+					<div class="card-block">
+							<h4 class="card-title"> International Neuroblastoma Pathology Classification (INPC)  <span href="#" data-toggle="tooltip" title="Note: INPC applies to untreated primary tumors and tumors in metastatic sites provided that there is sufficient material to classify histologically. Bone marrow biopsy is useful only for evaluation of degree of neuroblastic differentiation, but not eligible for MKI determination."><i class="fa fa-lightbulb-o" aria-hidden="true"></i></span></h4>
+							<div class="card-body mt-1">
+									<select class="form-control form-control-sm" id="box12" >
+											<option>Cannot be determined secondary to insufficient material </option>
+											<option selected>Favorable Histology</option>
+											<option>Unfavorable Histology</option>
+											<option>Not applicable secondary to previous chemotherapy </option>
+											<option>Indeterminate due to insufficient material</option>
+									</select>
+							</div>
+					</div>
+					<div class="card-footer">
+							<!-- Button trigger modal -->
+							<button type="button" class="btn btn-primary btn-sm p-1" data-toggle="modal" data-target="#inpc">
+									Click here for INPC classification Info
+							</button>
+							<!--INPC Modal -->
+							<div class="modal fade" id="inpc" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+									 aria-hidden="true">
+									<div class="modal-dialog modal-lg" role="document">
+											<div class="modal-content">
+													<div class="modal-header">
+															<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																	<span aria-hidden="true">&times;</span>
+															</button>
+															<h4 class="modal-title" id="modelTitleId">INPC classification</h4>
+													</div>
+													<div class="modal-body">
+															<img src="../images/INPC_favhist.png" alt="INPC favorable histology">
+															<img src="../images/INPC_unfavhist.png" alt="INPC favorable histology">
+													</div>
+											</div>
+									</div>
+							</div>
+					</div>
+			</div>
+
+			<div class="card">
+					<div class="card-block">
+							<h4 class="card-title">Margins </h4>
+							<div class="card-body mt-1">
+									<select class="form-control form-control-sm" id="box13" >
+											<option>Cannot be assessed </option>
+											<option>Margins uninvolved by tumor </option>
+											<option>Margin(s) involved by tumor</option>
+									</select>
+									<div class="margin" style="display:none">Specify margin:<input class="form-control form-control-sm" type="text" id="box13_2"></div>
+							</div>
+					</div>
+			</div>
+
+			<div class="card">
+					<div class="card-block">
+							<h4 class="card-title">+ Lymph-Vascular Invasion </h4>
+							<div class="card-body mt-1">
+									<select class="form-control form-control-sm" id="box14" >
+											<option selected>Not identified
+											<option>Present
+											<option>Indeterminate</option>
+									</select>
+							</div>
+					</div>
+			</div>
+
+			<div class="card">
+					<div class="card-block">
+							<h4 class="card-title"> Extent of Tumor</h4>
+							<div class="card-body mt-1">
+									<select class="form-control form-control-sm" id="box15" >
+											<option selected>Cannot be assessed </option>
+											<option>Encapsulated </option>
+											<option>Extracapsular extension without adjacent organ involvement </option>
+											<option>Extension into adjacent organs </option>
+											<option>Extension into spinal canal</option>
+									</select>
+							</div>
+					</div>
+			</div>
+
+			<div class="card">
+					<div class="card-block">
+							<h4 class="card-title">Regional Lymph Nodes </h4>
+							<div class="card-body mt-1">
+									<select class="form-control form-control-sm" id="box16">
+											<option selected>Cannot be assessed </option>
+											<option>Regional lymph node metastasis not identified </option>
+											<option>Regional lymph node metastasis present</option>
+									</select>
+									<div class="regln" style="display:none"> Specify site:<input class="form-control form-control-sm" type="text" id="box16_2"></div>
+
+							</div>
+					</div>
+			</div>
+
+			<div class="card">
+					<div class="card-block">
+							<h4 class="card-title">Lymph nodes </h4>
+							<div class="card-body mt-1">
+									<form>
+											<div class="form-group">
+													<label for="box17">Number of lymph nodes examined:</label>
+													<input class="form-control form-control-sm col-3" id="box17" placeholder='None submitted' onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')">
+											</div>
+											<div class="form-group">
+													<label for="box18">Number of lymph nodes involved by tumor:</label>
+													<input class="form-control form-control-sm col-3" id="box18" placeholder ='0' onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')">
+											</div>
+									</form>
+							</div>
+					</div>
+			</div>
+
+			<div class="card">
+					<div class="card-block">
+							<h4 class="card-title">Distant Metastasis </h4>
+							<div class="card-body mt-1">
+									<select class="form-control form-control-sm" id="box19">
+											<option>Cannot be assessed </option>
+											<option>Distant metastasis present</option>
+									</select>
+									<div class="distmet" style="display:none">
+											<input class="form-control form-control-sm" type="text" id="box19_2" placeholder="Specify sites, if known"> </div>
+							</div>
+					</div>
+			</div>
+
+			<div class="card">
+					<div class="card-block">
+							<h4 class="card-title"> International Neuroblastoma Staging System
+									<span href="#" data-toggle="tooltip"
+												title="# Multifocal primary tumors (eg, bilateral adrenal primary tumors) should be staged according to the greatest extent of disease, as defined above, and followed by a subscript “M” (eg, 3M).
+
+							## The midline is defined as the vertebral column. Tumors originating on one side and crossing the midline must infiltrate to or beyond the opposite side of the vertebral column.
+
+							### Marrow involvement in stage 4S should be minimal (ie, less than 10% of total nucleated cells identified as malignant on bone marrow biopsy or marrow aspirate). More extensive marrow involvement would be considered stage 4. The meta-iodobenzylguanidine (MIBG) scan (if performed) should be negative in the marrow.
+							">
+											<i class="fa fa-lightbulb-o" aria-hidden="true"></i></span> </h4>
+							<div class="card-body mt-1">
+									<select class="form-control form-control-sm" id="box20">
+											<option selected>Stage 1 </option>
+											<option>Stage 2A </option>
+											<option>Stage 2B </option>
+											<option>Stage 3 </option>
+											<option>Stage 4 </option>
+											<option>Stage 4S </option>
+									</select>
+							</div>
+							<div class="card-footer">
+									<button type="button" class="btn btn-primary btn-sm p-1" data-toggle="modal" data-target="#staging">
+											Click here for Staging Info
+									</button>
+									<!-- NB Staging info Modal -->
+									<div class="modal fade" id="staging" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+											<div class="modal-dialog modal-lg" role="document">
+													<div class="modal-content">
+															<div class="modal-header">
+																	<h5 class="modal-title" id="exampleModalLabel">Neuroblastoma Staging Info</h5>
+																	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																			<span aria-hidden="true">&times;</span>
+																	</button>
+															</div>
+															<div class="modal-body">
+																	<ul>
+																			<li>Stage 1 = localized tumor with complete gross excision, with or without microscopic residual disease; representative ipsilateral nonadherent lymph nodes negative for tumor microscopically (nodes attached to and removed with the primary tumor may be positive)</li>
+
+																			<li>Stage 2A = localized tumor with incomplete gross excision; representative ipsilateral nonadherent lymph nodes negative for tumor microscopically</li>
+
+																			<li>Stage 2B = localized tumor with or without complete gross excision with ipsilateral nonadherent lymph nodes positive for tumor; enlarged contralateral lymph nodes must be negative microscopically</li>
+
+																			<li>Stage 3 = unresectable unilateral tumor infiltrating across the midline,## with or without regional lymph node involvement; localized unilateral tumor with contralateral regional lymph node involvement; midline tumor with bilateral extension by infiltration (unresectable) or by lymph node involvement</li>
+
+																			<li>Stage 4 = any primary tumor with dissemination to distant lymph nodes, bone, bone marrow, liver, skin, and/or other organs (except as defined for stage 4S)</li>
+
+																			<li>Stage 4S = localized primary tumor (as defined for stage 1, 2A, or 2B), with dissemination limited to skin, liver, and/or bone marrow### (limited to infants less than 1 year old)</li>
+
+																	</ul>
+															</div>
+															<div class="modal-footer">
+																	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+															</div>
+													</div>
+											</div>
+									</div>
+
+							</div>
+					</div>
+			</div>
+
+
+			<div class="card">
+					<h3 class="card-title"> Ancillary cytomolecular biomarker information</h3>
+					<div class="card-block">
+							<h4 class="card-title mt-2">MYCN Status</h4>
+							<div class="card-body mt-1">
+									<select class="form-control form-control-sm" id="box21">
+											<option>Not amplified</option>
+											<option>Amplified</option>
+											<option>Gain</option>
+											<option>Cannot be determined</option>
+											<option selected>Pending; see addendum</option>
+											<option>Not performed</option>
+											<option>Other </option>
+									</select>
+									<input class="form-control form-control-sm" id='box21_2' style='display:none;' placeholder='Specify'>
+							</div>
+					</div>
+					<div class="card-block">
+							<h4 class="card-title">LOH Status</h4>
+							<div class="card-body mt-1">
+									<select class="form-control form-control-sm" id="box22">
+											<option>No LOH at 1p or 11q</option>
+											<option>LOH at 1p; No LOH at 11q</option>
+											<option>No LOH at 1p, LOH at 11q</option>
+											<option>LOH at 1p and 11q detected</option>
+											<option>Cannot be determined</option>
+											<option selected>Pending; see addendum</option>
+											<option>Not performed</option>
+											<option>Other </option>
+									</select>
+
+									<input class="form-control form-control-sm" id='box22_2' style='display:none;' placeholder='Specify'>
+
+							</div>
+					</div>
+					<div class="card-block">
+							<h4 class="card-title">Ploidy</h4>
+							<div class="card-body mt-1">
+									<select class="form-control form-control-sm" id="box23">
+											<option>Diploid</option>
+											<option>near Diploid</option>
+											<option>Hyperdiploid</option>
+											<option>Tetraploid</option>
+											<option>Cannot be determined</option>
+											<option selected>Pending; see addendum</option>
+											<option>Not performed</option>
+											<option>Other </option>
+									</select>
+
+									<input class="form-control form-control-sm"  id='box23_2' style='display:none;' placeholder='Specify'>
+
+							</div>
+					</div>
+					<div class="card-block">
+							<h4 class="card-title">Alk status </h4>
+							<div class="card-body mt-1">
+
+									<select class="form-control form-control-sm" id="box24">
+											<option selected>Not applicable</option>
+											<option>Alk positive (detected by IHC)</option>
+											<option>Alk negative (detected by IHC)</option>
+											<option>No Alk mutations (by sequencing)</option>
+											<option>Alk mutation detected (by sequencing)</option>
+											<option>Cannot be determined</option>
+											<option >Pending; see addendum</option>
+											<option>Not performed</option>
+											<option>Other </option>
+									</select>
+
+									<input class="form-control form-control-sm"  id='box24_2' style='display:none;' placeholder='Specify'>
+							</div>
+					</div>
+			</div>
+			<!-- close column -->
+			</div>
+			{{> page-partials/cap-footer}}
+			<!-- close row -->
+		</div>
+		<!-- close container -->
+		</div>
+		<!--
+
+		"specificScripts":
+			[
+				"../js/cap/nb-scripts.js",
+			]
+		-->

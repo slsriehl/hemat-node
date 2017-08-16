@@ -1,0 +1,157 @@
+<div class="container-fluid">
+		<!-- Breadcrumbs -->
+		<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+						<a href="/">Home</a>
+				</li>
+				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+				<li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Bone tumors, biopsy</li>
+		</ol>
+
+		{{> page-partials/cap-header}}
+
+	<div class="row">
+		<div class="col col-md-8">
+			<h3>CAP Bone Tumors - Biopsy</h3>
+			<b>Specimen, Specify bone involved(if known)</b><br>
+			Side:<br>
+		<select class="form-control form-control-sm"  id="box0">
+		    <option selected>Not specified</option>
+		    <option> Right</option>
+		    <option> Left</option>
+		    <option> Midline</option>
+		</select>
+		<br>
+		Site:<small>Start typing the name of the bone and select from the list</small><br>
+		<input class="form-control form-control-sm"  id="box1" size="25">
+
+		<hr>
+
+		<b>Procedure</b><br>
+		<select class="form-control form-control-sm"  id="box2">
+		    <option selected> Core needle biopsy</option>
+		    <option> Curettage</option>
+		    <option> Excisional biopsy</option>
+		    <option> Other:</option>
+		    <option> Not specified</option>
+		    <input class="form-control form-control-sm"  type="text" id="box2_2" style="display:none" placeholder='Specify other procedure' size='30'>
+		</select>
+
+		<hr>
+
+		<b>Tumor Site (select all that apply)</b><br>
+		<select class="form-control form-control-sm"  id="box3" multiple>
+		    <option selected> Epiphysis or apophysis</option>
+		    <option> Metaphysis</option>
+		    <option> Diaphysis</option>
+		    <option> Cortex</option>
+		    <option> Medullary cavity</option>
+		    <option> Surface </option>
+		    <option> Tumor involves joint</option>
+		    <option> Tumor extension into soft tissue</option>
+		    <option> Cannot be determined</option>
+		</select>
+
+		<hr>
+
+		Greatest dimension of main tumor mass (cm):<br>
+		<input class="form-control form-control-sm"  id="box4" style="width:150px" placeholder="Cannot be assessed">
+
+		<hr>
+
+		<b>Histologic Type (select all that apply):</b><br>
+		<input class="form-control form-control-sm"  id="box5" size=60 type='text'><br>
+
+		<hr>
+
+		<b> + Mitotic Rate </b><br>
+		<form class="form-inline">
+		    <div class="form-group">
+		        <label for="box6">Specify per 10 hpf:</label>
+		        <input class="form-control form-control-sm col-3"  id="box6" placeholder="0">
+		        <span href="#" data-toggle="tooltip" title="note: 1 HPF = 400x field (10x ocular and 40x objective)"><i class="fa fa-lightbulb-o ml-2" aria-hidden="true"></i></span>
+
+		    </div>
+		</form>
+
+		<hr>
+
+		<b>Necrosis </b><br>
+		<select class="form-control form-control-sm"  id="box7">
+		    <option selected> Not identified</option>
+		    <option> Present</option>
+		    <option> Cannot be determined</option>
+		</select>
+		<input class="form-control form-control-sm"  type="text" id="box7_2" style="display:none" placeholder='Extent of necrosis (%)' size='30'>
+
+		<hr>
+
+		<b>Histologic Grade </b><br>
+		<select class="form-control form-control-sm"  id="box8">
+		    <option selected> Low-grade </option>
+		    <option> Intermediate-grade </option>
+		    <option> High-grade </option>
+		    <option> Cannot be determined</option>
+		</select>
+
+		<hr>
+
+		<b>+ Lymph-Vascular Invasion </b><br>
+		<select class="form-control form-control-sm"  id="box9">
+		    <option selected> Not identified</option>
+		    <option> Present</option>
+		    <option> Indeterminate</option>
+		</select>
+
+		<hr>
+
+		<b>+ Additional Pathologic Findings</b><br>
+		<input class="form-control form-control-sm"  id="box10" size="40" value ="N/A" placeholder="Enter any additional findings here">
+
+		<hr>
+
+		<h4>Ancillary Studies</h4>
+		<small> The following are required only if applicable; and will not be included in the summary unless you enter a new value</small>
+
+		<hr>
+
+		<b>Immunohistochemistry </b><br>
+		<input class="form-control form-control-sm"  type="text" id="box11" placeholder="None performed">
+
+		<hr>
+
+		<b>Cytogenetics</b><br>
+		<select class="form-control form-control-sm"  id="box12">
+		    <option selected> Not performed</option>
+		    <option> Karyotype pending</option>
+		    <option> Karyotype & FISH pending</option>
+		    <option> FISH pending</option>
+		    <option> Complex abnormal karyotype detected</option>
+		    <option> Translocation detected</option>
+		    <option> Normal karyotype</option>
+		    <input class="form-control form-control-sm"  type="text" id="box12_2" style="display:none" placeholder='Specify translocation' size='40'>
+		</select>
+
+		<hr>
+
+		<b>Molecular Pathology</b><br>
+		<input class="form-control form-control-sm"  type="text" id="box13" placeholder='Specify molecular testing, if performed'>
+
+		<hr>
+
+		<b>Radiographic Findings (if available)</b><br>
+		<input class="form-control form-control-sm"  type="text" id="box14" placeholder="Describe radiographic findings here" value="Not available">
+		<!-- close column -->
+		</div>
+		{{> page-partials/cap-footer}}
+		<!-- close row -->
+	</div>
+	<!-- close container -->
+</div>
+	<!--
+
+	"specificScripts":
+		[
+			"../js/cap/bonebx-scripts.js",
+		]
+	-->
