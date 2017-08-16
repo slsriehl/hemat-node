@@ -1,15 +1,11 @@
-<?php
-
-		include ("includes/header.php");
-		?>
-
-
-
 <div class="container-fluid">
 				<!-- Breadcrumbs -->
 				<ol class="breadcrumb">
 						<li class="breadcrumb-item">
 								<a href="/">Home</a>
+						</li>
+						<li class="breadcrumb-item">
+							Hemediff Tools
 						</li>
 						<li class="breadcrumb-item active"><i class="fa fa-calculator mr-2"></i> Online Leukocyte/WBC Differential Counter</li>
 				</ol>
@@ -27,9 +23,9 @@
 
 										</div>
 <!--how to use modal-->
-{{> page-partials/hemediff-how-to-use}}
+{{> modals/hemediff-how-to-use}}
 <!-- switch to counter modal-->
-{{> page-partials/hemediff-switch-counter}}
+{{> modals/hemediff-switch-counter}}
 								</div>
 						</div>
 						<!-- diff and printout boxes-->
@@ -265,6 +261,6 @@
 <!--
 "specificScripts":
 	[
-		"../js/apps/hemediff-scripts.js"
+		"../js/heme-diff/hemediff-scripts.js"
 	]
 -->

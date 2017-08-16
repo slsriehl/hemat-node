@@ -1,0 +1,1152 @@
+		<div class="container-fluid">
+				<!-- Breadcrumbs -->
+				<ol class="breadcrumb">
+						<li class="breadcrumb-item">
+								<a href="/">Home</a>
+						</li>
+						<li class="breadcrumb-item">
+							Hemepath Tools
+						</li>
+						<li class="breadcrumb-item active"><i class="fa fa-barcode mr-2"></i> Bone marrow biopsies authorship tool</li>
+				</ol>
+				<div class="row">
+						<!-- top card-->
+						<div class="card">
+								<div class="card-header">
+										<!-- inline header form-->
+										<form class="form-inline">
+
+												<div class="input-group date  col-3 text-center" id="date-pick">
+														<label class="sr-only" for="date">Date - Hidden</label>
+														<input id="date" type="text" class="form-control form-control-sm datepicker" data-provide="datepicker-inline" placeholder="Enter Date">
+														<div class="input-group-addon">
+																<span class="fa fa-calendar"></span>
+														</div>
+												</div>
+
+												<div class="col-3 text-center">
+														<div class="input-group">
+																<input class="form-control form-control-sm" type="text" name="site" id="site" list="site_list" />
+																<datalist id="site_list">
+																		<option value="No site specified ">
+																		<option value="DCMC">
+																		<option value="DSMC-UT">
+																		<option value="SMC">
+																		<option value="SNW">
+																		<option value="SSW">
+																		<option value="SMCW">
+																		<option value="SMCH">
+																		<option value="SHL">
+																		<option value="SD Main">
+																		<option value="RR">
+																		<option value="CPL">
+																		<option value="Texas Oncology">
+																		<option value="ARC">
+																		<option value="Baptist">
+																</datalist>
+																<i class="input-group-addon fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="Choose from dropdown or type in site" ></i>
+														</div>
+												</div>
+
+
+												<div class="col-3 text-center">
+														<label class="sr-only" for="agerange">Age - Hidden</label>
+
+														<select id="agerange" class="form-control form-control-sm ">
+																<option value="3" selected="" hidden="">Choose Age range</option>
+																<option value="1">&lt;3 mo</option>
+																<option value="2">3-12mo</option>
+																<option value="3">&gt;12mo  - adult</option>
+														</select>
+												</div>
+
+												<div class="col-3">
+														<button type="button" class="btn btn-primary btn-md p-1" data-toggle="modal" data-target="#cbchelp">Reference Ranges</button>
+												</div>
+
+										</form>
+<!-- CBC Help Modal -->
+{{> modals/cbc-help}}
+<!-- end card header -->
+								</div>
+								<div class="card-block">
+										<p class="card-text">Enter CBC Data</p>
+										<div class="row">
+												<table class="table">
+														<thead class="thead-default">
+														<tr>
+																<th>WBC:</th>
+																<th>RBC:</th>
+																<th>HB:</th>
+																<th>HCT:</th>
+																<th>MCV:</th>
+																<th>MCHC:</th>
+																<th>RDW:</th>
+																<th>PLT:</th>
+														</tr>
+														</thead>
+														<tbody><tr class="bg-info">
+																<td><input type="text" class="form-control form-control-sm cbcval" id="WBC"></td>
+																<td><input type="text" class="form-control form-control-sm cbcval" id="RBC"> </td>
+																<td><input type="text" class="form-control form-control-sm cbcval" id="HB"> </td>
+																<td><input type="text" class="form-control form-control-sm cbcval" id="HCT"> </td>
+																<td><input type="text" class="form-control form-control-sm cbcval" id="MCV"> </td>
+																<td><input type="text" class="form-control form-control-sm cbcval" id="MCHC"> </td>
+																<td><input type="text" class="form-control form-control-sm cbcval" id="RDW"> </td>
+																<td><input type="text" class="form-control form-control-sm cbcval" id="PLT"> </td>
+
+														</tr></tbody><thead class="thead-default">
+														<tr>
+																<th>ABS NEUT:</th>
+																<th>ABS LYM:</th>
+																<th>ABS MONO:</th>
+																<th>ABS EOS </th>
+																<th> </th>
+																<th>%NEUT:</th>
+																<th>%LYM:</th>
+																<th>%MONO:</th>
+														</tr>
+														</thead>
+														<tbody><tr class="bg-info">
+																<td><input type="text" class="form-control form-control-sm cbcval" id="NEUT"> </td>
+																<td><input type="text" class="form-control form-control-sm cbcval" id="LYMPH"> </td>
+																<td><input type="text" class="form-control form-control-sm cbcval" id="MONO"> </td>
+																<td><input type="text" class="form-control form-control-sm cbcval" id="EOS" placeholder="n/a"> </td>
+																<td><input type="checkbox" class="form-check-input" id="CBCswitch"><p>Check to use %values</p>  </td>
+																<td><input type="text" class="form-control form-control-sm cbcval" id="PNEUT" placeholder="0" disabled=""> </td>
+																<td><input type="text" class="form-control form-control-sm cbcval" id="PLYMPH" placeholder="0" disabled=""> </td>
+																<td><input type="text" class="form-control form-control-sm cbcval" id="PMONO" placeholder="0" disabled=""> </td>
+														</tr>
+														</tbody></table>
+										</div>
+										<div class="row">
+												<button class="btn btn-outline-primary p-1" id="cbcWrite">Print CBC</button>
+
+										</div>
+<!-- silent alert for erroneous CBC data, fired from pbrules.js-->
+{{> page-partials/cbc-silent-alert}}
+<!-- end card block -->
+								</div>
+
+
+						</div>
+				</div>
+				<div class="row top-buffer">
+						<div class="col col-md-8" style="max-height: 1000px; overflow: scroll;"><!-- left column-->
+
+
+								<!-- left column accordion-->
+								<div id="accordion" role="tablist" aria-multiselectable="true">
+										{{> page-partials/pb-parts}}
+										<!-- BM DIFF card-->
+										<div class="card">
+												<div class="card-header" role="tab" id="headingThree">
+														<h5 class="mb-0">
+																<a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#" aria-expanded="false" aria-controls="collapseDiff">
+																		Bone Marrow Differential
+																		<i class="fa fa-question-circle " data-toggle="modal" data-target="#diffHelp"></i>
+																</a>
+														</h5>
+												</div>
+<!-- Modal -->
+{{> modals/bone-marrow-diff}}
+												<div class="card-block" aria-labelledby="bmdifferential">
+														<div class="card-text">
+																<textarea id="diffinput" class="form-control counter" rows="2" cols="100" placeholder="BM differential counter"></textarea>
+														</div>
+														<div class="card bg-success">
+																<table class='table table-responsive diffhead'>
+																		<tr >
+																				<th>Count Type</th>
+																				<th>Count Limit</th>
+																				<th>Cells Counted</th>
+																				<th>M:E ratio</th>
+																		</tr>
+																		<tr >
+																				<td >
+																						<select class="form-control form-control-sm"  id="asp_1" name="asp_1">
+																								<option selected value="aspirate">Aspirate</option>
+																								<option value="touch prep">Touch Prep</option>
+																						</select>
+																				</td>
+																				<td >
+																						<select class="form-control form-control-sm"  id="limit"><option>100</option><option selected>200</option><option>300</option><option>400</option><option>500</option></select>
+																				</td>
+																				<td >
+																						<input type="text" class="form-control form-control-sm input-sm"  id="counter" >
+																				</td>
+																				<td >
+																						<input type="text" class="form-control form-control-sm input-sm"   id="merat" >
+																				</td>
+																		</tr>
+																</table>
+														</div>
+														<div class="card">
+																<table class="table table-responsive bg-info difftable">
+																		<tr>
+																				<td><p> Blasts: </p><input class="form-control form-control-sm"  size="3" id="asp_2" name="aspdiff" type="text" value="0"> </td>
+																				<td><p> Pro: </p><input class="form-control form-control-sm"  size="3" id="asp_3" name="aspdiff" value="0"> </td>
+																				<td><p> Meta/Myel: </p><input class="form-control form-control-sm"  size="3" id="asp_4" name="aspdiff" value="0"> </td>
+																				<td><p> Segs: </p><input class="form-control form-control-sm"  size="3" id="asp_5" name="aspdiff" value="0"> </td>
+																				<td><p> Eryth: </p><input class="form-control form-control-sm"  size="3" id="asp_6" name="aspdiff" value="0"> </td>
+																				<td><p> Lymphs: </p><input class="form-control form-control-sm"  size="3" id="asp_7" name="aspdiff" value="0"> </td>
+																		</tr>
+																		<tr>
+																				<td><p> Atypical cells: </p><input class="form-control form-control-sm"  size="3" id="asp_8" name="aspdiff" value="0"> </td>
+																				<td><p> Monos: </p><input class="form-control form-control-sm"  size="3" id="asp_9" name="aspdiff" value="0"> </td>
+																				<td><p> Eos: </p><input class="form-control form-control-sm"  size="3" id="asp_10" name="aspdiff" value="0"> </td>
+																				<td><p> Basos: </p><input class="form-control form-control-sm"  size="3" id="asp_11" name="aspdiff" value="0"> </td>
+																				<td><p> Plasma Cells: </p><input class="form-control form-control-sm"  size="3" id="asp_12" name="aspdiff" value="0"> </td>
+																				<td class="align-bottom"> <button class="btn btn-primary btn-sm p-1" id="diffWrite" type="button">Write Diff</button> </td>
+																		</tr>
+																</table>
+														</div>
+												</div>
+										</div>
+										<!-- ASPIRATE card-->
+										<div class="card">
+												<div class="card-header" role="tab" id="headingFive">
+														<h5 class="mb-0">
+																<a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+																		Aspirate / Touch Preparation
+																</a>
+														</h5>
+												</div>
+												<div id="collapseFive" class="collapse" role="tabpanel" aria-labelledby="headingFive">
+														<div class="card-block chkboxes">
+																<div class="card-group">
+																		<div class="card">
+																				<div class="card-header">
+																						Part Types
+																				</div>
+																				<div class="card-block chkboxes">
+
+																						<div style="font-size: 0.66em;" class="content form-check" id="column1f">
+																								<div class="text-center bg-info">Select specimens submitted:</div>
+																								<div class="form-group">
+																										<label for="spc_val">Specimen type?</label>
+																										<select class="form-control form-control-sm" name="" id="spc_val">
+																												<option selected value="1">Asp + TP</option>
+																												<option value="2">Aspirates only</option>
+																												<option value="3">Biopsy/Touch Preps only</option>
+																										</select>
+																								</div>
+																								<div class="form-group">
+																										<label for="site_val">Procedure site</label>
+																										<select class="form-control form-control-sm" name="" id="site_val">
+																												<option value="Right iliac crest">RIC</option>
+																												<option value="Left iliac crest">LIC</option>
+																												<option value="Bilateral iliac crest">R & L IC</option>
+																										</select>
+																								</div>
+																								<hr>
+																								<div class="bg-info mb-2"></div>
+																								 <label class="form-check-label"  id="_partType248"> <input class="form-check-input"  id="partType248" name="partType" type="checkbox"> 1 SIDE </label> <br>
+																								 <label class="form-check-label"  id="_partType249"> <input class="form-check-input"  id="partType249" name="partType" type="checkbox"> 2 SIDES, SAME </label> <br>
+																								<br>
+																								 <label class="form-check-label"  id="_partType259"> <input class="form-check-input"  id="partType259" name="partType" type="checkbox"> NO PARTICLES, BUT MARROW IS PRESENT </label> <br>
+																								 <label class="form-check-label"  id="_partType257"> <input class="form-check-input"  id="partType257" name="partType" type="checkbox"> APARTICULATE/HEMODILUTE </label> <br>
+																								 <label class="form-check-label"  id="_partType258"> <input class="form-check-input"  id="partType258" name="partType" type="checkbox"> APARTICULATE, TP FOR MICRO DESCRIPTION </label> <br> <br>
+																								<div class="text-center bg-warning"> PARTICLES </div>
+																								 <label class="form-check-label"  id="_partType250"> <input class="form-check-input"  id="partType250" name="partType" type="checkbox"> FEW </label> <br>
+																								 <label class="form-check-label"  id="_partType251"> <input class="form-check-input"  id="partType251" name="partType" type="checkbox"> ADEQUATE </label> <br>
+																								 <label class="form-check-label"  id="_partType252"> <input class="form-check-input"  id="partType252" name="partType" type="checkbox"> NUMEROUS </label> <br>
+																								<br>
+																								 <label class="form-check-label"  id="_partType253"> <input class="form-check-input"  id="partType253" name="partType" type="checkbox"> CELLULAR </label> <br>
+																								 <label class="form-check-label"  id="_partType254"> <input class="form-check-input"  id="partType254" name="partType" type="checkbox"> PAUCICELLULAR </label> <br>
+																								 <label class="form-check-label"  id="_partType255"> <input class="form-check-input"  id="partType255" name="partType" type="checkbox"> HYPERCELLULAR </label> <br>
+																								 <label class="form-check-label"  id="_partType256"> <input class="form-check-input"  id="partType256" name="partType" type="checkbox"> ACELLULAR </label> <br>                                            </div>
+																				</div>
+																		</div>
+																		<div class="card">
+																				<div class="card-header">
+																						Micros
+																				</div>
+																				<div class="card-block chkboxes">
+																						<div style="font-size: 0.66em;" class="content form-check" id="column2f">
+																								<label class="form-check-label"  id="_mxLine249"><input class="form-check-input"  id="mxLine249" name="mxLine" type="checkbox"> TOTALLY NORMAL ASPIRATE</label><br>
+																								<label class="form-check-label"  id="_mxLine250"><input class="form-check-input"  id="mxLine250" name="mxLine" type="checkbox"> NORMAL M&amp;E MATURATION, NO DYSPLASIA </label><br>
+																								<label class="form-check-label"  id="_mxLine251"><input class="form-check-input"  id="mxLine251" name="mxLine" type="checkbox"> FEW M&amp;E PRECURSORS </label><br>
+																								<label class="form-check-label"  id="_mxLine258"><input class="form-check-input"  id="mxLine258" name="mxLine" type="checkbox"> TYPICAL CML </label><br>
+																								<br>
+																								<label class="form-check-label"  id="_mxLine252"><input class="form-check-input"  id="mxLine252" name="mxLine" type="checkbox"> NORMAL MYELOID  </label><br>
+																								<label class="form-check-label"  id="_mxLine259"><input class="form-check-input"  id="mxLine259" name="mxLine" type="checkbox"> MYELOID LEFT-SHIFT  </label><br>
+																								<label class="form-check-label"  id="_mxLine253"><input class="form-check-input"  id="mxLine253" name="mxLine" type="checkbox"> RELATIVE &#8595; MYELOID  </label><br>
+																								<label class="form-check-label"  id="_mxLine257"><input class="form-check-input"  id="mxLine257" name="mxLine" type="checkbox"> RELATIVE &#8595; MYELOID W LEFT SHIFT  </label><br>
+																								<label class="form-check-label"  id="_mxLine254"><input class="form-check-input"  id="mxLine254" name="mxLine" type="checkbox"> RELATIVE &#8593; MYELOID  </label><br>
+																								<label class="form-check-label"  id="_mxLine255"><input class="form-check-input"  id="mxLine255" name="mxLine" type="checkbox"> RELATIVE &#8593; MYELOID W LEFT SHIFT </label><br>
+																								<label class="form-check-label"  id="_mxLine256"><input class="form-check-input"  id="mxLine256" name="mxLine" type="checkbox"> ANY MYELOID DYSPLASIA? </label><br>
+																								<br>
+																								<label class="form-check-label"  id="_mxLine260"><input class="form-check-input"  id="mxLine260" name="mxLine" type="checkbox"> NORMAL ERYTHROID  </label><br>
+																								<label class="form-check-label"  id="_mxLine261"><input class="form-check-input"  id="mxLine261" name="mxLine" type="checkbox"> RELATIVE &#8595; ERYTHROID  </label><br>
+																								<label class="form-check-label"  id="_mxLine266"><input class="form-check-input"  id="mxLine266" name="mxLine" type="checkbox"> RELATIVE &#8595; ERYTHROID W LEFT SHIFT </label><br>
+																								<label class="form-check-label"  id="_mxLine262"><input class="form-check-input"  id="mxLine262" name="mxLine" type="checkbox"> RELATIVE &#8593; ERYTHROID  </label><br>
+																								<label class="form-check-label"  id="_mxLine263"><input class="form-check-input"  id="mxLine263" name="mxLine" type="checkbox"> RELATIVE &#8593; ERYTHROID W LEFT SHIFT </label><br>
+																								<label class="form-check-label"  id="_mxLine264"><input class="form-check-input"  id="mxLine264" name="mxLine" type="checkbox"> MILD ERYTHROID DYSPOIESIS  </label><br>
+																								<label class="form-check-label"  id="_mxLine265"><input class="form-check-input"  id="mxLine265" name="mxLine" type="checkbox"> ANY ERYTHROID DYSPLASIA?  </label><br>
+																								<br>
+																								<label class="form-check-label"  id="_mxLine276"><input class="form-check-input"  id="mxLine276" name="mxLine" type="checkbox"> NO MEGAS  </label><br>
+																								<label class="form-check-label"  id="_mxLine270"><input class="form-check-input"  id="mxLine270" name="mxLine" type="checkbox"> NORMAL MEGAS  </label><br>
+																								<label class="form-check-label"  id="_mxLine275"><input class="form-check-input"  id="mxLine275" name="mxLine" type="checkbox"> FEW MEGAS  </label><br>
+																								<label class="form-check-label"  id="_mxLine271"><input class="form-check-input"  id="mxLine271" name="mxLine" type="checkbox"> MILD &#8593; MEGAS  </label><br>
+																								<label class="form-check-label"  id="_mxLine272"><input class="form-check-input"  id="mxLine272" name="mxLine" type="checkbox"> &#8593; LARGE MEGAS </label><br>
+																								<label class="form-check-label"  id="_mxLine273"><input class="form-check-input"  id="mxLine273" name="mxLine" type="checkbox"> RARE MEGAS DYSPLASIA?  </label><br>
+																								<label class="form-check-label"  id="_mxLine274"><input class="form-check-input"  id="mxLine274" name="mxLine" type="checkbox"> ANY MEGAS DYSPLASIA?  </label><br>
+																								<div class="text-center">
+																										<button class="btn btn-sm btn-outline-danger mt-2 p-1" data-toggle="collapse" href="#asp_abnl" aria-expanded="false" aria-controls="collapsediv">
+																												Abnormal populations</button>
+																								</div>
+																								<div class="bg-info collapse" id="asp_abnl">
+																										<label class="form-check-label"  id="_mxLine300"><input class="form-check-input"  id="mxLine300" name="mxLine" type="checkbox"> ATYPICAL SMALL LYMPHOCYTOSIS </label><br>
+																										<label class="form-check-label"  id="_mxLine301"><input class="form-check-input"  id="mxLine301" name="mxLine" type="checkbox"> ATYPICAL LARGE LYMPHOCYTOSIS </label><br>
+																										<label class="form-check-label"  id="_mxLine302"><input class="form-check-input"  id="mxLine302" name="mxLine" type="checkbox"> CLL </label><br>
+																										<label class="form-check-label"  id="_mxLine303"><input class="form-check-input"  id="mxLine303" name="mxLine" type="checkbox"> CLONAL LYMPHOPLASMACYTIC </label><br>
+																										<label class="form-check-label"  id="_mxLine295"><input class="form-check-input"  id="mxLine295" name="mxLine" type="checkbox"> CLONAL &#8593; PLASMA CELLS </label><br>
+																										<br>
+																										<label class="form-check-label"  id="_mxLine310"><input class="form-check-input"  id="mxLine310" name="mxLine" type="checkbox"> CMML </label><br>
+																										<label class="form-check-label"  id="_mxLine304"><input class="form-check-input"  id="mxLine304" name="mxLine" type="checkbox"> AML, GENERIC </label><br>
+																										<label class="form-check-label"  id="_mxLine305"><input class="form-check-input"  id="mxLine305" name="mxLine" type="checkbox"> AML MONOCYTIC </label><br>
+																										<label class="form-check-label"  id="_mxLine306"><input class="form-check-input"  id="mxLine306" name="mxLine" type="checkbox"> APL </label><br>
+																										<label class="form-check-label"  id="_mxLine307"><input class="form-check-input"  id="mxLine307" name="mxLine" type="checkbox"> ALL </label><br>
+																										<label class="form-check-label"  id="_mxLine311"><input class="form-check-input"  id="mxLine311" name="mxLine" type="checkbox"> MET TUMOR </label><br>
+																								</div>
+																						</div>
+																				</div>
+																		</div>
+																		<div class="card">
+																				<div class="card-header">
+																						Other findings
+																				</div>
+																				<div class="card-block chkboxes">
+																						<div style="font-size: 0.66em;" class="content form-check" id="column3f">
+																								<div class="text-center bg-warning">Other infiltrates </div>
+																								<label class="form-check-label"  id="_mxLine296"><input class="form-check-input"  id="mxLine296" name="mxLine" type="checkbox"> MILD &#8593; SMALL LYMPHS   </label><br>
+																								<label class="form-check-label"  id="_mxLine291"><input class="form-check-input"  id="mxLine291" name="mxLine" type="checkbox"> MILD &#8593; HGONES   </label><br>
+																								<br>
+																								<label class="form-check-label"  id="_mxLine292"><input class="form-check-input"  id="mxLine292" name="mxLine" type="checkbox"> FEW PLASMA CELLS </label><br>
+																								<label class="form-check-label"  id="_mxLine293"><input class="form-check-input"  id="mxLine293" name="mxLine" type="checkbox"> MILD &#8593; PLASMA CELLS </label><br>
+																								<label class="form-check-label"  id="_mxLine294"><input class="form-check-input"  id="mxLine294" name="mxLine" type="checkbox"> REACTIVE PLASMACYTOSIS </label><br>
+																								<br>
+																								<label class="form-check-label"  id="_mxLine308"><input class="form-check-input"  id="mxLine308" name="mxLine" type="checkbox"> INCREASED EOS </label><br>
+																								<br>
+																								<label class="form-check-label"  id="_mxLine309"><input class="form-check-input"  id="mxLine309" name="mxLine" type="checkbox"> INCREASED HISTIOCYTES, FEW W/ RBCS </label><br>
+																								<label class="form-check-label"  id="_mxLine312"><input class="form-check-input"  id="mxLine312" name="mxLine" type="checkbox"> NO HLH </label><br>
+																								<label class="form-check-label"  id="_mxLine313"><input class="form-check-input"  id="mxLine313" name="mxLine" type="checkbox"> HLH PRESENT </label><br>
+																								<br>
+																								<div class="bg-success mt-2 mb-2 text-center">Pertinent Negatives</div>
+																								<label class="form-check-label"  id="_mxLine280"><input class="form-check-input"  id="mxLine280" name="mxLine" type="checkbox">NO BLASTS/NO DYSPLASIA</label><br>
+																								<label class="form-check-label"  id="_mxLine281"><input class="form-check-input"  id="mxLine281" name="mxLine" type="checkbox">BLASTS PRESENT / NO DYSPLASIA  </label><br>
+																								<label class="form-check-label"  id="_mxLine282"><input class="form-check-input"  id="mxLine282" name="mxLine" type="checkbox">NO LYMPHOID INFILTRATES</label><br>
+																								<label class="form-check-label"  id="_mxLine283"><input class="form-check-input"  id="mxLine283" name="mxLine" type="checkbox">DIRECT/TOUCH ARE SIMILAR</label><br>
+
+																								<div class="text-center mt-2">
+																										<button class="btn btn-sm btn-outline-success mt-2 mb-2" data-toggle="collapse" href="#asp_spc_stain" aria-expanded="false" aria-controls="collapsediv"> Special Stains</button>
+																								</div>
+																								<div class="bg-warning collapse" id="asp_spc_stain">
+																								IRON STAINS?<select id="asp_iron" class="spstains">
+																												<option value=''>Select</option>
+																												<option value='mxLine315'>None</option>
+																												<option value='mxLine316'>1+ (trace)</option>
+																												<option value='mxLine317'>2+</option>
+																												<option value='mxLine318'>3+</option>
+																												<option value='mxLine319'>4+</option>
+																										</select><br>
+																										<label class="form-check-label"  id="_mxLine320"><input class="form-check-input"  id="mxLine320" name="mxLine" type="checkbox"> CANNOT ASSESS IRON </label><br>
+																										<br>
+																										<label class="form-check-label"  id="_mxLine321"><input class="form-check-input"  id="mxLine321" name="mxLine" type="checkbox"> NO RINGS </label><br>
+																										<label class="form-check-label"  id="_mxLine322"><input class="form-check-input"  id="mxLine322" name="mxLine" type="checkbox"> RARE RINGS, &lt;5% </label><br>
+																										<label class="form-check-label"  id="_mxLine323"><input class="form-check-input"  id="mxLine323" name="mxLine" type="checkbox"> MANY RINGS, &gt;15% </label><br>
+																										<label class="form-check-label"  id="_mxLine324"><input class="form-check-input"  id="mxLine324" name="mxLine" type="checkbox"> CANNOT ASSESS RINGS </label><br>
+																								</div>
+																								<br>
+
+																						</div>
+																				</div>
+																		</div>
+																</div>
+														</div>
+												</div>
+										</div>
+										<!-- BIOPSY card-->
+										<div class="card">
+												<div class="card-header" role="tab" id="headingSix">
+														<h5 class="mb-0">
+																<a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseFive">
+																		Biopsy and Clot Sections
+																</a>
+														</h5>
+												</div>
+												<div id="collapseSix" class="collapse" role="tabpanel" aria-labelledby="headingSix">
+														<div class="card-block chkboxes">
+																<div class="card-group">
+																		<div class="card">
+																				<div class="card-header">
+																						Part Types
+																				</div>
+																				<div class="card-block chkboxes">
+
+																						<div style="font-size: 0.66em;" class="content form-check" id="column1f">
+
+																								<div class='biopsypart'>
+																										<div class="text-center bg-info mb-2">BIOPSY AND CLOT SECTION:</div>
+																										<label class="form-check-label"  id="_partType300"><input class="form-check-input"  id="partType300" name="partType" type="checkbox"> 1 SIDE BX HEADER </label> <br>
+																										<label class="form-check-label"  id="_partType301"><input class="form-check-input"  id="partType301" name="partType" type="checkbox"> 2 SIDES, SAME, BX HEADER</label> <br>
+																										<label class="form-check-label"  id="_partType302"><input class="form-check-input"  id="partType302" name="partType" type="checkbox"> 2 SIDES, NOT SAME, BX HEADER </label> <br>
+																										<br>ADEQUACY?<br>
+																										<label class="form-check-label"  id="_partType350"><input class="form-check-input"  id="partType350" name="partType" type="checkbox"> ADEQUATE </label> <br>
+																										<label class="form-check-label"  id="_partType304"><input class="form-check-input"  id="partType304" name="partType" type="checkbox"> SUBOPTIMAL W ASPIRATION </label> <br>
+																										<label class="form-check-label"  id="_partType305"><input class="form-check-input"  id="partType305" name="partType" type="checkbox"> SMALL, FRAGMENTED </label> <br>
+																										<label class="form-check-label"  id="_partType306"><input class="form-check-input"  id="partType306" name="partType" type="checkbox"> MOSTLY CARTILAGE </label> <br>
+																										<label class="form-check-label"  id="_partType307"><input class="form-check-input"  id="partType307" name="partType" type="checkbox"> MOSTLY CORTEX </label> <br>
+
+																										<br> BM CELLULARITY:
+																										<select id="bmcellularity">
+																												<option hidden>--choose--</option>
+																												<option>&lt;5</option>
+																												<option>5-10</option>
+																												<option>10</option>
+																												<option>10-20</option>
+																												<option>20</option>
+																												<option>20-30</option>
+																												<option>30 </option>
+																												<option>30-40</option>
+																												<option>40</option>
+																												<option>40-50</option>
+																												<option>50</option>
+																												<option>50-60</option>
+																												<option>60</option>
+																												<option>60-70</option>
+																												<option>70</option>
+																												<option>70-80</option>
+																												<option>80</option>
+																												<option>80-90</option>
+																												<option>90</option>
+																												<option>&gt;95</option>
+																										</select>
+																										<br><br>
+																										QUALITY?<br>
+																										<label class="form-check-label"  id="_partType308"><input class="form-check-input bmcelltext"  id="partType308" name="partType"  value="Normocellular" type="checkbox"> NORMOCELLULAR </label> <br>
+																										<label class="form-check-label"  id="_partType309"><input class="form-check-input bmcelltext"  id="partType309" name="partType"  value="Hypercellular" type="checkbox"> HYPERCELLULAR </label> <br>
+																										<label class="form-check-label"  id="_partType310"><input class="form-check-input bmcelltext"  id="partType310" name="partType"  value="Hypocellular" type="checkbox"> HYPOCELLULAR </label> <br>
+																										<label class="form-check-label"  id="_partType311"><input class="form-check-input"  id="partType311" name="partType" value="Variably cellular" type="checkbox"> VARIABLY CELLULAR </label> <br>
+																								</div><!-- end biopsy part div-->
+
+																								<div class='clotpart' style="display:none;">
+																										<div class="text-center bg-warning">Clot description</div>
+																										Or... <br>
+																										<label class="form-check-label"  id="_partType312"><input class="form-check-input"  id="partType312" name="partType" type="checkbox"> APARTICULATE & HEMODILUTE </label> <br>
+																										<br>
+																										<div class="clotoptions">
+																										<div class="form-group">
+																												<label for="clotnum">Particle adequacy?</label>
+																												<select class="form-control form-control-sm clotcelltext" name="clotnum" id="clotnum">
+																														<option hidden value="adequate">Choose</option>
+																														<option>few</option>
+																														<option>adequate</option>
+																														<option>numerous</option>
+																												</select>
+																										</div>
+																										<div class="form-group">
+																												<label for="clotcell">Particle cellularity?</label>
+																												<select class="form-control form-control-sm clotcelltext" name="clotcell" id="clotcell">
+																														<option hidden value="cellular">Choose</option>
+																														<option>paucicellular</option>
+																														<option>cellular</option>
+																														<option>hypercellular</option>
+																												</select>
+																										</div>
+																										</div>
+																										<hr>
+																										<label class="form-check-label" style="display:none;" id="_partType313"><input class="form-check-input"  id="partType313" name="partType" type="checkbox"> HIDDEN CLOT HEADER </label> <br>
+																								</div>
+
+																						</div>
+																				</div>
+																		</div>
+<!--  Dissimilar bilateral biopsies modal -->
+{{> modals/diss-bilat-bx}}
+																		<div class="card">
+																				<div class="card-header">
+																						Micros
+																				</div>
+																				<div class="card-block chkboxes">
+																						<div style="font-size: 0.66em;" class="content " id="column2f">
+																								<div class="form-check mb-2">
+																										<label class="form-check-label text-success font-weight-bold "  id="_mxLine400"><input class="form-check-input"  id="mxLine400" name="mxLine" type="checkbox"> TOTALLY NORMAL BIOPSY </label><br>
+																										<label class="form-check-label"  id="_mxLine401"><input class="form-check-input"  id="mxLine401" name="mxLine" type="checkbox"> NORMAL M&amp;E MATURATION </label><br>
+																										<label class="form-check-label"  id="_mxLine402"><input class="form-check-input"  id="mxLine402" name="mxLine" type="checkbox"> MINIMAL M&amp;E PRECURSORS (TREATED) </label><br>
+																										<label class="form-check-label"  id="_mxLine408"><input class="form-check-input"  id="mxLine408" name="mxLine" type="checkbox"> TYPICAL CML BIOPSY </label><br>
+
+																								</div>
+																								<div class="form-check mb-2">
+																								<label class="form-check-label"  id="_mxLine403"><input class="form-check-input"  id="mxLine403" name="mxLine" type="checkbox"> NORMAL MYELOID  </label> <br>
+																								<label class="form-check-label"  id="_mxLine404"><input class="form-check-input"  id="mxLine404" name="mxLine" type="checkbox"> RELATIVE &#8595; MYELOID  </label> <br>
+																								<label class="form-check-label"  id="_mxLine407"><input class="form-check-input"  id="mxLine407" name="mxLine" type="checkbox"> RELATIVE &#8595; MYEL W LEFT SHIFT </label> <br>
+																								<label class="form-check-label"  id="_mxLine405"><input class="form-check-input"  id="mxLine405" name="mxLine" type="checkbox"> RELATIVE &#8593; MYELOID  </label> <br>
+																								<label class="form-check-label"  id="_mxLine406"><input class="form-check-input"  id="mxLine406" name="mxLine" type="checkbox"> RELATIVE &#8593; MYEL W LEFT SHIFT </label> <br>
+																								</div>
+																								<div class="form-check mb-2">
+																								<label class="form-check-label"  id="_mxLine410"><input class="form-check-input"  id="mxLine410" name="mxLine" type="checkbox"> NORMAL ERYTHROID  </label> <br>
+																								<label class="form-check-label"  id="_mxLine411"><input class="form-check-input"  id="mxLine411" name="mxLine" type="checkbox"> RELATIVE &#8595; ERYTHROID  </label> <br>
+																								<label class="form-check-label"  id="_mxLine423"><input class="form-check-input"  id="mxLine423" name="mxLine" type="checkbox"> RELATIVE &#8595; ERYTH W LEFT SHIFT </label> <br>
+																								<label class="form-check-label"  id="_mxLine412"><input class="form-check-input"  id="mxLine412" name="mxLine" type="checkbox"> RELATIVE &#8593; ERYTHROID  </label> <br>
+																								<label class="form-check-label"  id="_mxLine413"><input class="form-check-input"  id="mxLine413" name="mxLine" type="checkbox"> RELATIVE &#8593; ERYTH W LEFT SHIFT </label><br>
+																								</div>
+																								<div class="form-check mb-2">
+																								<label class="form-check-label"  id="_mxLine424"><input class="form-check-input"  id="mxLine424" name="mxLine" type="checkbox"> M:E ratio is ___ </label> <br>
+																								</div>
+																								<div class="form-check mb-2">
+																								<label class="form-check-label"  id="_mxLine467"><input class="form-check-input"  id="mxLine467" name="mxLine" type="checkbox"> NO MEGAS  </label> <br>
+																								<label class="form-check-label"  id="_mxLine414"><input class="form-check-input"  id="mxLine414" name="mxLine" type="checkbox"> NORMAL MEGAS  </label> <br>
+																								<label class="form-check-label"  id="_mxLine446"><input class="form-check-input"  id="mxLine446" name="mxLine" type="checkbox"> FEW MEGAS </label> <br>
+																								<label class="form-check-label"  id="_mxLine415"><input class="form-check-input"  id="mxLine415" name="mxLine" type="checkbox"> MILD &#8593; MEGAS  </label> <br>
+																								<label class="form-check-label"  id="_mxLine416"><input class="form-check-input"  id="mxLine416" name="mxLine" type="checkbox"> &#8593; MEGAS  </label> <br>
+																								<label class="form-check-label"  id="_mxLine417"><input class="form-check-input"  id="mxLine417" name="mxLine" type="checkbox"> &#8593; MEGAS W CLUSTERS  </label><br>
+																								<label class="form-check-label"  id="_mxLine418"><input class="form-check-input"  id="mxLine418" name="mxLine" type="checkbox"> MEGAS DYSPLASIA  </label><br>
+																								</div>
+																								<div class="text-justify"><a class="btn btn-sm text-center btn-outline-danger mt-2" data-toggle="collapse" href="#abnbx" aria-expanded="false" aria-controls="collapsediv">
+																												Abnormal marrow infiltrates</a>
+																								</div>
+																								<div class="collapse divshow" id="abnbx">
+																										<div class="form-check mb-2">
+																										<label class="form-check-label" id="_mxLine450"><input class="form-check-input" id="mxLine450" name="mxLine" type="checkbox"> ATYPICAL SMALL LYMPHOCYTOSIS </label><br>
+																										<label class="form-check-label" id="_mxLine451"><input class="form-check-input" id="mxLine451" name="mxLine" type="checkbox"> ATYPICAL LARGE LYMPHOCYTOSIS </label><br>
+																										<label class="form-check-label" id="_mxLine452"><input class="form-check-input" id="mxLine452" name="mxLine" type="checkbox"> HODGKIN, FOCAL </label><br>
+																										<label class="form-check-label" id="_mxLine453"><input class="form-check-input" id="mxLine453" name="mxLine" type="checkbox"> HODGKIN, MULTIFOCAL </label><br>
+																										<label class="form-check-label" id="_mxLine454"><input class="form-check-input" id="mxLine454" name="mxLine" type="checkbox"> CLL </label><br>
+																										<label class="form-check-label" id="_mxLine455"><input class="form-check-input" id="mxLine455" name="mxLine" type="checkbox"> CLONAL LYMPHOPLASMACYTIC </label><br>
+																										<label class="form-check-label" id="_mxLine456"><input class="form-check-input" id="mxLine456" name="mxLine" type="checkbox"> CLONAL &#8593; PLASMA CELLS </label><br>
+																										<label class="form-check-label" id="_mxLine457"><input class="form-check-input" id="mxLine457" name="mxLine" type="checkbox"> CLONAL PLASMA CELLS, SHEETS </label><br>
+																										<label class="form-check-label" id="_mxLine458"><input class="form-check-input" id="mxLine458" name="mxLine" type="checkbox"> LARGE CELL LYMPHOMA </label><br>
+																										</div>
+																										<div class="form-check mb-2">
+																										<label class="form-check-label" id="_mxLine466"><input class="form-check-input" id="mxLine466" name="mxLine" type="checkbox"> CMML </label><br>
+																										<label class="form-check-label" id="_mxLine459"><input class="form-check-input" id="mxLine459" name="mxLine" type="checkbox"> AML, GENERIC </label><br>
+																										<label class="form-check-label" id="_mxLine460"><input class="form-check-input" id="mxLine460" name="mxLine" type="checkbox"> AML MONOCYTIC </label><br>
+																										<label class="form-check-label" id="_mxLine461"><input class="form-check-input" id="mxLine461" name="mxLine" type="checkbox"> APL </label><br>
+																										<label class="form-check-label" id="_mxLine462"><input class="form-check-input" id="mxLine462" name="mxLine" type="checkbox"> ALL </label><br>
+																										<label class="form-check-label" id="_mxLine463"><input class="form-check-input" id="mxLine463" name="mxLine" type="checkbox"> MET CARCINOMA </label><br>
+																										<label class="form-check-label" id="_mxLine464"><input class="form-check-input" id="mxLine464" name="mxLine" type="checkbox"> MET TUMOR, UNILATERAL </label><br>
+																										<label class="form-check-label" id="_mxLine465"><input class="form-check-input" id="mxLine465" name="mxLine" type="checkbox"> MET TUMOR, BILATERAL </label><br>
+																										</div>
+																								</div>
+																						</div>
+																				</div>
+																		</div>
+																		<div class="card">
+																				<div class="card-header">
+																						Other findings
+																				</div>
+																				<div class="card-block chkboxes">
+																						<div style="font-size: 0.66em;" class="content form-check" id="column3f">
+																								<div class="text-center bg-warning">Other infiltrates </div>
+																								<div class="form-check mb-2">
+																								<label class="form-check-label" id="_mxLine436"><input class="form-check-input"  id="mxLine436" name="mxLine" type="checkbox">  &#8593; INTERSITIAL LYMPHS </label><br>
+																								<label class="form-check-label" id="_mxLine435"><input class="form-check-input"  id="mxLine435" name="mxLine" type="checkbox"> NORMAL LYMPHS  </label><br>
+																								<label class="form-check-label" id="_mxLine427"><input class="form-check-input"  id="mxLine427" name="mxLine" type="checkbox"> NPT LYMPH AGGREGATE, 1  </label><br>
+																								<label class="form-check-label" id="_mxLine428"><input class="form-check-input"  id="mxLine428" name="mxLine" type="checkbox"> NPT LYMPH AGGREGATES, &gt;1  </label><br>
+																								<label class="form-check-label" id="_mxLine429"><input class="form-check-input"  id="mxLine429" name="mxLine" type="checkbox"> PT LYMPH AGGREGATE  </label><br>
+																								<label class="form-check-label" id="_mxLine430"><input class="form-check-input"  id="mxLine430" name="mxLine" type="checkbox"> PT LYMPH AGGREGATES, &gt;1  </label><br>
+																								</div>
+																								<div class="form-check mb-2">
+																								<label class="form-check-label" id="_mxLine437"><input class="form-check-input"  id="mxLine437" name="mxLine" type="checkbox"> FEW PLASMA CELLS </label><br>
+																								<label class="form-check-label" id="_mxLine438"><input class="form-check-input"  id="mxLine438" name="mxLine" type="checkbox"> REACTIVE PLASMACYTOSIS </label><br>
+																								</div>
+																								<div class="form-check mb-2">
+																								<label class="form-check-label" id="_mxLine431"><input class="form-check-input"  id="mxLine431" name="mxLine" type="checkbox"> &#8593; EOS  </label>
+																								</div>
+																								<div class="form-check mb-2">
+																										<label class="form-check-label" id="_mxLine432"><input class="form-check-input"  id="mxLine432" name="mxLine" type="checkbox"> &#8593; HISTIOCYTES W/HEMOSIDERIN </label><br>
+																										<label  class="form-check-label" id="_mxLine433"><input class="form-check-input"  id="mxLine433" name="mxLine" type="checkbox"> NO HLH </label><br>
+																										<label  class="form-check-label" id="_mxLine434"><input class="form-check-input"  id="mxLine434" name="mxLine" type="checkbox"> &#8593; HISTIOCYTES W/ HLH </label><br>
+																								</div>
+																								<div class="form-check mb-2">
+																										<label class="form-check-label"  id="_mxLine525"><input class="form-check-input" id="mxLine525" name="mxLine" type="checkbox"> GRANULOMAS, STAINS NEG  </label><br>
+
+																								</div>
+
+																								<div class="bg-success mt-2 mb-2 text-center">Pertinent Negatives</div>
+																								<div class="form-check mb-2">
+																										<label class="form-check-label font-weight-bold "  id="_mxLine447"><input class="form-check-input" id="mxLine447" name="mxLine" type="checkbox">  NO BLASTS OR INFILTRATES  </label>
+																										<label class="form-check-label font-weight-bold "  id="_mxLine448"><input class="form-check-input" id="mxLine448" name="mxLine" type="checkbox">  FEW BLASTS, NO INFILTRATES  </label>
+																										<label class="form-check-label font-weight-bold "  id="_mxLine425"><input class="form-check-input" id="mxLine425" name="mxLine" type="checkbox">  NO LYMPH AGS OR FOCAL LESIONS  </label>
+																										<label class="form-check-label font-weight-bold "  id="_mxLine421"><input class="form-check-input" id="mxLine421" name="mxLine" type="checkbox">  NORMAL BONE  </label><br>
+																										<label class="form-check-label font-weight-bold "  id="_mxLine422"><input class="form-check-input" id="mxLine422" name="mxLine" type="checkbox">  OSTEOPENIC BONE  </label><br>
+																								</div>
+																								<div class="form-check mb-2">
+																										<label class="form-check-label font-weight-bold "  id="_mxLine419"><input class="form-check-input" id="mxLine419" name="mxLine" type="checkbox">  CLOT RESEMBLES MARROW  </label><br>
+																										<label class="form-check-label font-weight-bold "  id="_mxLine439"><input class="form-check-input" id="mxLine439" name="mxLine" type="checkbox">  CLOT W/ FEW PARTICLES  </label><br>
+																										<label class="form-check-label font-weight-bold "  id="_mxLine420"><input class="form-check-input" id="mxLine420" name="mxLine" type="checkbox">  CLOT HAS NO PARTICLES  </label><br>
+																								</div>
+																								<div class="text-center mt-2">
+																										<button class="btn btn-sm btn-outline-success mt-2 mb-2 p-1" data-toggle="collapse" href="#bx_spc_stain" aria-expanded="false" aria-controls="collapsediv"> Special Stains</button>
+																								</div>
+																								<div class="divshow collapse" id="bx_spc_stain">
+																										<table class="table" style="font-size: 1em">
+																												<tr>
+																														<th>Iron stains?</th>
+																												</tr>
+																												<tr>
+																														<td>
+																																Biopsy and clot: <br><select id="bxcl_iron" class="spstains">
+																																		<option hidden>Select</option>
+																																		<option value='mxLine500'>None</option>
+																																		<option value='mxLine501'>1+ (trace)</option>
+																																		<option value='mxLine502'>2+</option>
+																																		<option value='mxLine503'>3+</option>
+																																		<option value='mxLine504'>4+</option>
+																																</select>
+																														</td>
+																														<td>
+																																Clot only: <br><select id="cl_iron " class="spstains">
+																																		<option hidden>Select</option>
+																																		<option value='mxLine505'>None</option>
+																																		<option value='mxLine506'>1+ (trace)</option>
+																																		<option value='mxLine507'>2+</option>
+																																		<option value='mxLine508'>3+</option>
+																																		<option value='mxLine509'>4+</option>
+																																</select>
+																														</td>
+
+																												</tr>
+																												<tr>
+																														<th>Retic / Granulomas</th>
+																												</tr>
+																												<tr>
+																														<td>
+																																Reticulin: <br><select id="bx_retic" class="spstains">
+																																		<option hidden>Select</option>
+																																		<option value='mxLine515'>None</option>
+																																		<option value='mxLine516'>1+ (trace)</option>
+																																		<option value='mxLine517'>2+</option>
+																																		<option value='mxLine518'>3+</option>
+																																		<option value='mxLine519'>4+</option>
+																																</select>
+																														</td>
+																														<td>
+																																Granulomas?:<br>
+																																<select id="bx_grans" class="spstains">
+																																		<option hidden>Select</option>
+																																		<option value='mxLine521'>None</option>
+																																		<option value='mxLine522'>Non-necrotizing</option>
+																																		<option value='mxLine523'>Necrotizing</option>
+																																		<option value='mxLine524'>Epithelioid</option>
+																																		<option value='mxLine525'>Ring</option>
+
+																																</select>
+																														</td>
+																												</tr>
+																										</table>
+
+																								</div>
+																								<!-- Button trigger modal -->
+																								<div class="text-center mt-4">
+																								<button type="button" class="btn btn-outline-primary btn-sm mt-2 p-1" data-toggle="modal"
+																												data-target="#IHCbox">
+																										Immuno Box
+																								</button>
+																								</div>
+{{> page-partials/immuno}}
+												</div>
+										</div>
+								</div>
+						</div>
+				</div>
+		</div>
+</div>
+
+										<!-- FINALS card-->
+										<div class="card">
+												<div class="card-header" role="tab" id="headingFour">
+														<h5 class="mb-0">
+																<a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+																		Final Diagnoses
+																</a>
+														</h5>
+												</div>
+												<div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour">
+														<div class="card-block chkboxes">
+																<div class="card-group">
+																		<div class="card">
+																				<div class="card-header">
+																						Peripheral Smear Finals
+																				</div>
+																				<div class="card-block chkboxes">
+																						<div style="font-size: 0.66em;" class="content form-check" id="column1f">
+																								<div class="bg-info mb-2">RBC Finals</div>
+																								<label class="form-check-label" id="_dxOut100"><input class="form-check-input"  id="dxOut100" name="dxOut" type="checkbox"> NORMAL RBCS </label> <br>
+																								<label class="form-check-label" id="_dxOut101"><input class="form-check-input"  id="dxOut101" name="dxOut" type="checkbox"> NNA </label> <br>
+																								<label class="form-check-label" id="_dxOut114"><input class="form-check-input"  id="dxOut114" name="dxOut" type="checkbox"> HYPO MICRO RED CELLS </label> <br>
+																								<label class="form-check-label" id="_dxOut102"><input class="form-check-input"  id="dxOut102" name="dxOut" type="checkbox"> HYPO MICRO ANEMIA </label> <br>
+																								<label class="form-check-label" id="_dxOut103"><input class="form-check-input"  id="dxOut103" name="dxOut" type="checkbox"> HYPO MICRO ANEMIA W/ &#8593;ANISO </label> <br>
+																								<label class="form-check-label" id="_dxOut104"><input class="form-check-input"  id="dxOut104" name="dxOut" type="checkbox"> NORMO MACRO ANEMIA </label> <br>
+																								<label class="form-check-label" id="_dxOut105"><input class="form-check-input"  id="dxOut105" name="dxOut" type="checkbox"> HYPO MICRO ERYTHROCYTOSIS & &#8593;ANISO</label> <br>
+																								<label class="form-check-label" id="_dxOut106"><input class="form-check-input"  id="dxOut106" name="dxOut" type="checkbox"> NORMO NORMO ERYTHROCYTOSIS</label> <br>
+																								<label class="form-check-label" id="_dxOut107"><input class="form-check-input"  id="dxOut107" name="dxOut" type="checkbox"> NNA W MILD ROULEAUX </label> <br>
+																								<label class="form-check-label" id="_dxOut108"><input class="form-check-input"  id="dxOut108" name="dxOut" type="checkbox"> NNA W SIGNIFICANT ROULEAUX </label> <br>
+																								<label class="form-check-label" id="_dxOut109"><input class="form-check-input"  id="dxOut109" name="dxOut" type="checkbox"> NNA W INCREASED SCHISTS</label> <br>
+																								<label class="form-check-label" id="_dxOut110"><input class="form-check-input"  id="dxOut110" name="dxOut" type="checkbox"> NNA W INCREASED TARGETS</label> <br>
+																								<label class="form-check-label" id="_dxOut111"><input class="form-check-input"  id="dxOut111" name="dxOut" type="checkbox"> NNA W INCREASED SPHEROCYTES</label> <br>
+																								<label class="form-check-label" id="_dxOut112"><input class="form-check-input"  id="dxOut112" name="dxOut" type="checkbox"> NNA W OXIDATION INJURY</label> <br>
+																								<label class="form-check-label" id="_dxOut113"><input class="form-check-input"  id="dxOut113" name="dxOut" type="checkbox"> NNA W TEARDROPS</label> <br>
+																								<div class="bg-info mt-2 mb-2">WBC Finals</div>
+																								<label class="form-check-label" id="_dxOut150"><input class="form-check-input" id="dxOut150" name="dxOut" type="checkbox"> NORMAL WBCs </label><br>
+																								<label class="form-check-label" id="_dxOut151"><input class="form-check-input" id="dxOut151" name="dxOut" type="checkbox"> MILD LEUKOPENIA </label><br>
+																								<label class="form-check-label" id="_dxOut152"><input class="form-check-input" id="dxOut152" name="dxOut" type="checkbox"> MARKED LEUKOPENIA </label><br>
+																								<label class="form-check-label" id="_dxOut153"><input class="form-check-input" id="dxOut153" name="dxOut" type="checkbox"> MILD LEUKOCYTOSIS </label><br>
+																								<label class="form-check-label" id="_dxOut154"><input class="form-check-input" id="dxOut154" name="dxOut" type="checkbox"> MARKED LEUKOCYTOSIS </label><br>
+																								<label class="form-check-label" id="_dxOut155"><input class="form-check-input" id="dxOut155" name="dxOut" type="checkbox"> MILD NEUTROPENIA </label><br>
+																								<label class="form-check-label" id="_dxOut156"><input class="form-check-input" id="dxOut156" name="dxOut" type="checkbox"> MARKED NEUTROPENIA </label><br>
+																								<label class="form-check-label" id="_dxOut157"><input class="form-check-input" id="dxOut157" name="dxOut" type="checkbox"> MILD NEUTROPHILIA NO ACTIVATION </label><br>
+																								<label class="form-check-label" id="_dxOut158"><input class="form-check-input" id="dxOut158" name="dxOut" type="checkbox"> NEUTROPHILIA NO ACTIVATION </label><br>
+																								<label class="form-check-label" id="_dxOut159"><input class="form-check-input" id="dxOut159" name="dxOut" type="checkbox"> NEUTROPHILIA WITH ACTIVATION </label><br>
+																								<label class="form-check-label" id="_dxOut160"><input class="form-check-input" id="dxOut160" name="dxOut" type="checkbox"> MILD LYMPHOPENIA ONLY </label><br>
+																								<label class="form-check-label" id="_dxOut161"><input class="form-check-input" id="dxOut161" name="dxOut" type="checkbox"> MARKED LYMPHOPENIA </label><br>
+																								<label class="form-check-label" id="_dxOut175"><input class="form-check-input" id="dxOut175" name="dxOut" type="checkbox"> SOME REACTIVE LYMPHOCYTES </label><br>
+																								<label class="form-check-label" id="_dxOut162"><input class="form-check-input" id="dxOut162" name="dxOut" type="checkbox"> MILD REACTIVE LYMPHOCYTOSIS </label><br>
+																								<label class="form-check-label" id="_dxOut163"><input class="form-check-input" id="dxOut163" name="dxOut" type="checkbox"> REACTIVE LYMPHS W LGLS </label><br>
+																								<label class="form-check-label" id="_dxOut172"><input class="form-check-input" id="dxOut172" name="dxOut" type="checkbox"> NEUTROPHIL DYSPLASIA </label><br>
+																								<label class="form-check-label" id="_dxOut164"><input class="form-check-input" id="dxOut164" name="dxOut" type="checkbox"> MILD INCREASE IN MONOCYTES </label><br>
+																								<label class="form-check-label" id="_dxOut165"><input class="form-check-input" id="dxOut165" name="dxOut" type="checkbox"> MILD PROMINENCE OF EOS </label><br>
+																								<hr>
+																								<button class="btn btn-sm btn-outline-danger p-1" data-toggle="collapse" href="#maligwbc" aria-expanded="false" aria-controls="collapsediv">
+																										Malignant Diagnoses </button>
+																								<div class="collapse divshow" id="maligwbc">
+																										<label class="form-check-label" id="_dxOut174"><input class="form-check-input" id="dxOut174" name="dxOut" type="checkbox"> LOW GRADE MDS </label><br>
+																										<label class="form-check-label" id="_dxOut166"><input class="form-check-input" id="dxOut166" name="dxOut" type="checkbox"> CMPD </label><br>
+																										<label class="form-check-label" id="_dxOut167"><input class="form-check-input" id="dxOut167" name="dxOut" type="checkbox"> AML </label><br>
+																										<label class="form-check-label" id="_dxOut168"><input class="form-check-input" id="dxOut168" name="dxOut" type="checkbox"> APL </label><br>
+																										<label class="form-check-label" id="_dxOut169"><input class="form-check-input" id="dxOut169" name="dxOut" type="checkbox"> ALL </label><br>
+																										<label class="form-check-label" id="_dxOut170"><input class="form-check-input" id="dxOut170" name="dxOut" type="checkbox"> CLL </label><br>
+																										<label class="form-check-label" id="_dxOut171"><input class="form-check-input" id="dxOut171" name="dxOut" type="checkbox"> SMALL LYMPHOMA  </label><br>
+																										<label class="form-check-label" id="_dxOut173"><input class="form-check-input" id="dxOut173" name="dxOut" type="checkbox"> GENERIC CIRCULATING BLASTS </label><br>
+																								</div>
+																								<div class="bg-info mt-2 mb-2">Plt Finals</div>
+																								<label class="form-check-label" id="_dxOut200"><input class="form-check-input" id="dxOut200" name="dxOut" type="checkbox"> NORMAL PLATELETS </label><br>
+																								<label class="form-check-label" id="_dxOut201"><input class="form-check-input" id="dxOut201" name="dxOut" type="checkbox"> MILD &#8595; </label><br>
+																								<label class="form-check-label" id="_dxOut202"><input class="form-check-input" id="dxOut202" name="dxOut" type="checkbox"> MARKED &#8595; </label><br>
+																								<label class="form-check-label" id="_dxOut203"><input class="form-check-input" id="dxOut203" name="dxOut" type="checkbox"> MILD &#8593; </label><br>
+																								<label class="form-check-label" id="_dxOut204"><input class="form-check-input" id="dxOut204" name="dxOut" type="checkbox"> MARKED THROMBOCYTOSIS </label><br>
+																								<label class="form-check-label" id="_dxOut205"><input class="form-check-input" id="dxOut205" name="dxOut" type="checkbox"> SOME DYSPLASTIC PLATELETS </label><br>
+
+
+																						</div>
+																				</div>
+																		</div>
+																		<div class="card">
+																				<div class="card-header">
+																						Bone Marrow Finals
+																				</div>
+																				<div class="card-block chkboxes">
+																						<div style="font-size: 0.66em;" class="content form-check" id="column2f">
+																								<div class="bg-info font-weight-bold">Biopsy Headers</div>
+																								<div class="biopsypart">
+																										<label class="form-check-label"  id="_dxOut300"><input class="form-check-input"  id="dxOut300" name="dxOut" type="checkbox"> BX&CLOT </label><br>
+																										<label class="form-check-label"  id="_dxOut301"><input class="form-check-input"  id="dxOut301" name="dxOut" type="checkbox"> BX&CLOT, BILATERAL </label><br>
+																										<label class="form-check-label"  id="_dxOut302"><input class="form-check-input"  id="dxOut302" name="dxOut" type="checkbox"> BX CORE ONLY, NORMAL  </label><br>
+																										<label class="form-check-label"  id="_dxOut303"><input class="form-check-input"  id="dxOut303" name="dxOut" type="checkbox"> BX CORES ONLY, BILATERAL</label><br>
+																								</div>
+																								<div class="clotpart" style="display: none">
+																										<label class="form-check-label"  id="_dxOut305"><input class="form-check-input"  id="dxOut305" name="dxOut" type="checkbox"> CLOT ONLY, </label><br>
+																										<label class="form-check-label"  id="_dxOut306"><input class="form-check-input"  id="dxOut306" name="dxOut" type="checkbox"> CLOT ONLY, BILATERAL</label><br>
+																								</div>
+																								<div class="bg-info font-weight-bold mt-2">Diagnoses</div>
+																										<div class="biopsypart">
+																										<span class="font-weight-bold mb-2">Bone marrow biopsy + clot</span><br>
+																										<label class="form-check-label"  id="_dxOut310"><input class="form-check-input"  id="dxOut310" name="dxOut" type="checkbox"> NEGATIVE BIOPSY </label><br>
+																										<label class="form-check-label"  id="_dxOut314"><input class="form-check-input"  id="dxOut314" name="dxOut" type="checkbox"> NEGATIVE BX, &#8593; MYELOIDS </label><br>
+																										<label class="form-check-label"  id="_dxOut315"><input class="form-check-input"  id="dxOut315" name="dxOut" type="checkbox"> NEGATIVE BX, &#8593; MYELOIDS W/ LEFT SHIFT </label><br>
+																										<label class="form-check-label"  id="_dxOut321"><input class="form-check-input"  id="dxOut321" name="dxOut" type="checkbox"> NEGATIVE BX, &#8593; ERYTHROIDS </label><br>
+																										<label class="form-check-label"  id="_dxOut316"><input class="form-check-input"  id="dxOut316" name="dxOut" type="checkbox"> NEGATIVE BX, &#8593; ERYTHROIDS W/ LEFT SHIFT </label><br>
+																										<label class="form-check-label"  id="_dxOut317"><input class="form-check-input"  id="dxOut317" name="dxOut" type="checkbox"> NEGATIVE BX, &#8593; ERYTHROIDS W DYSPOIESIS </label><br>
+																										<label class="form-check-label"  id="_dxOut318"><input class="form-check-input"  id="dxOut318" name="dxOut" type="checkbox"> NEGATIVE BX, HEMODILUTE </label><br>
+																										<label class="form-check-label"  id="_dxOut319"><input class="form-check-input"  id="dxOut319" name="dxOut" type="checkbox"> FEATURES OF CMPD </label><br>
+																										<label class="form-check-label"  id="_dxOut320"><input class="form-check-input"  id="dxOut320" name="dxOut" type="checkbox"> EMPTY/TREATMENT MARROW</label><br>
+
+																										</div>
+																										<div class="clotpart" style="display: none">
+																										<span class="font-weight-bold mb-2">Clot only</span><br>
+																										<label class="form-check-label"  id="_dxOut330"><input class="form-check-input"  id="dxOut330" name="dxOut" type="checkbox"> NEGATIVE CLOT</label><br>
+																										<label class="form-check-label"  id="_dxOut336"><input class="form-check-input"  id="dxOut336" name="dxOut" type="checkbox"> NEGATIVE CL, APARTICULATE/HEMODILUTE</label><br>
+																										<label class="form-check-label"  id="_dxOut332"><input class="form-check-input"  id="dxOut332" name="dxOut" type="checkbox"> NEGATIVE CL, &#8593; MYELOIDS</label><br>
+																										<label class="form-check-label"  id="_dxOut333"><input class="form-check-input"  id="dxOut333" name="dxOut" type="checkbox"> NEGATIVE CL, &#8593; MYELOIDS W/ LEFT SHIFT</label><br>
+																										<label class="form-check-label"  id="_dxOut334"><input class="form-check-input"  id="dxOut334" name="dxOut" type="checkbox"> NEGATIVE CL, &#8593; ERYTHROIDS </label><br>
+																										<label class="form-check-label"  id="_dxOut335"><input class="form-check-input"  id="dxOut335" name="dxOut" type="checkbox"> NEGATIVE CL, &#8593; ERYTHROIDS W DYSPOIESIS</label><br>
+
+																										</div>
+																								<hr>
+
+																								<button class="btn btn-outline-primary btn-sm p-1" data-toggle="collapse" href="#priorhistory" aria-expanded="false" aria-controls="collapsediv">
+																										Any prior history</button>
+																								<div class="collapse mt-1" id="priorhistory">
+																										History of: <select class="form-control form-control-sm" id="dx_history">
+																												<option value="">-Select-</option>
+																												<option value="dxOut350">BALL</option>
+																												<option value="dxOut351">TALL </option>
+																												<option value="dxOut352">AML </option>
+																												<option value="dxOut353">APL </option>
+																												<option value="dxOut354">CML </option>
+																												<option value="dxOut355">FL </option>
+																												<option value="dxOut356">DLBCL </option>
+																												<option value="dxOut357">CLL </option>
+																												<option value="dxOut358">MCL </option>
+																												<option value="dxOut359">MZL </option>
+																												<option value="dxOut360">CHD </option>
+																												<option value="dxOut361">PTCL </option>
+																												<option value="dxOut362">MYEL </option>
+																												<option value="dxOut363">PTLD </option>
+																												<option value="dxOut364">RAEB1 </option>
+																												<option value="dxOut365">RAEB2 </option>
+																												<option value="dxOut366">CARCIN </option>
+																												<option value="dxOut367">NB </option>
+																										</select>
+																										<!-- hidden BALL and AML genetics modals here-->
+																										<div class="dx_history_add_ball">
+																												<select class="form-control form-control-sm" id="ball_history">
+																														<option>NOS</option>
+																														<option>with recurrent genetic abnormalities</option>
+																														<option>with t(9;22)(q34.1;q11.2); BCR-ABL1</option>
+																														<option>with t(v;11q23.3); KMT2A rearranged</option>
+																														<option>with t(12;21)(p13.2;q22.1); ETV6-RUNX1</option>
+																														<option>with hyperdiploidy</option>
+																														<option>with hypodiploidy</option>
+																														<option>with t(5;14)(q31.1;q32.3); IL3-IGH</option>
+																														<option>with t(1;19)(q23;p13.3); TCF3-PBX1</option>
+																														<option>with Ph-like CRLF2 rearrangement</option>
+																														<option>with Ph-like ABL rearrangement</option>
+																														<option>with Ph-like Jak2 rearrangement</option>
+																														<option value="with Ph-like like profile">with BCR-ABL1–like genetic profile</option>
+																														<option>with iAMP21</option>
+																												</select>
+																										</div>
+																										<div class="dx_history_add_aml">
+																												<select class="form-control form-control-sm" id="aml_history">
+																														<option>NOS</option>
+																														<option>with t(8;21)(q22;q22.1); RUNX1-RUNX1T1</option>
+																														<option>with inv(16)(p13.1q22); CBFB-MYH11</option>
+																														<option>with or t(16;16)(p13.1;q22); CBFB-MYH11</option>
+																														<option>with t(9;11)(p21.3;q23.3); MLLT3-KMT2A</option>
+																														<option>with t(6;9)(p23;q34.1); DEK-NUP214</option>
+																														<option>with inv(3)(q21.3q26.2); GATA2, MECOM</option>
+																														<option>with t(3;3)(q21.3;q26.2); GATA2, MECOM</option>
+																														<option>with t(1;22)(p13.3;q13.3);RBM15-MKL1</option>
+																														<option value="with t(15;17); PML-RARA">APL with t(15;17); PML-RARA</option>
+																														<option>with BCR-ABL1</option>
+																														<option>with mutated NPM1</option>
+																														<option>with mutated FLT3</option>
+																														<option>with biallelic mutations of CEBPA</option>
+																														<option>with mutated RUNX1</option>
+																														<option>with myelodysplasia-related changes</option>
+																												</select>
+																										</div>
+
+																								</div>
+																								<hr>
+																										<button class="btn btn-outline-success btn-sm p-1" type="button" data-toggle="collapse"
+																														data-target="#contentId" aria-expanded="false"
+																														aria-controls="contentId">
+																												Other Non-malignant diagnoses
+																										</button>
+																								<div class="collapse mt-1" id="contentId">
+																										<label id="_dxOut370"><input id="dxOut370" name="dxOut" type="checkbox">LYMPH AG, REACTIVE</label><br>
+																										<label id="_dxOut371"><input id="dxOut371" name="dxOut" type="checkbox">MILD INTERSITIAL LYMPHS </label><br>
+																										<label id="_dxOut372"><input id="dxOut372" name="dxOut" type="checkbox">GRANULOMAS PRESENT</label><br>
+																										<label id="_dxOut373"><input id="dxOut373" name="dxOut" type="checkbox">REACTIVE PLASMACYTOSIS </label><br>
+																										<label id="_dxOut374"><input id="dxOut374" name="dxOut" type="checkbox">PROMINENT EOS</label><br>
+																										<label id="_dxOut375"><input id="dxOut375" name="dxOut" type="checkbox">PROMINENT HISTIOCYTES </label><br>
+																										<label id="_dxOut376"><input id="dxOut376" name="dxOut" type="checkbox">NO HLH </label><br>
+																										<label id="_dxOut377"><input id="dxOut377" name="dxOut" type="checkbox">YES HLH </label><br>
+																										<label id="_dxOut379"><input id="dxOut379" name="dxOut" type="checkbox">OSTEOPENIA </label><br>
+
+																								</div>
+																								<hr>
+																										<button class="btn btn-outline-danger btn-sm p-1"  type="button" data-toggle="collapse"
+																														data-target="#malig_bm_dx" aria-expanded="false"
+																														aria-controls="contentId">
+																												Malignant Diagnoses
+																										</button>
+																								<div class="collapse mt-1" id="malig_bm_dx">
+																										<label id="_dxOut380"><input id="dxOut380" name="dxOut" type="checkbox"> MDS, RAEB1/2 </label><br>
+																										<label id="_dxOut381"><input id="dxOut381" name="dxOut" type="checkbox"> AML, NO DYS </label><br>
+																										<label id="_dxOut382"><input id="dxOut382" name="dxOut" type="checkbox"> AML, W MLD </label><br>
+																										<label id="_dxOut383"><input id="dxOut383" name="dxOut" type="checkbox"> APL </label><br>
+																										<label id="_dxOut384"><input id="dxOut384" name="dxOut" type="checkbox"> BALL </label><br>
+																										<label id="_dxOut385"><input id="dxOut385" name="dxOut" type="checkbox"> TALL </label><br>
+																										<br>
+																										<input id='atypIHC' size=3><b>% abnormal infiltrate by IHC</b><br>
+																										<label id="_dxOut386"><input id="dxOut386" name="dxOut" type="checkbox"> CLL </label><br>
+																										<label id="_dxOut387"><input id="dxOut387" name="dxOut" type="checkbox"> LG-LYMPHOMA </label><br>
+																										<label id="_dxOut388"><input id="dxOut388" name="dxOut" type="checkbox"> HG-LYMPHOMA </label><br>
+																										<label id="_dxOut389"><input id="dxOut389" name="dxOut" type="checkbox"> HODGKIN </label><br>
+																										<label id="_dxOut390"><input id="dxOut390" name="dxOut" type="checkbox"> PC DYSCRASIA/MYELOMA </label><br>
+																										<label id="_dxOut391"><input id="dxOut391" name="dxOut" type="checkbox"> METASTATIC TUMOR </label><br>
+																										<label id="_dxOut392"><input id="dxOut392" name="dxOut" type="checkbox"> METASTATIC NEUROBLASTOMA </label><br>
+																								</div>
+																								<hr>
+																								<button class="btn btn-outline-warning btn-sm p-1"  type="button" data-toggle="collapse"
+																												data-target="#spc_bm_dx" aria-expanded="false"
+																												aria-controls="contentId">
+																										Special Stains
+																								</button>
+																								<div class="collapse mt-1" id="spc_bm_dx">
+																										<label class="form-check-label"  id="_dxOut400"><input class="form-check-input"  id="dxOut400" name="dxOut" type="checkbox">IRON STORES</label><select class="ml-2" id="ironstore"><option hidden>-Select-</option><option value='0+'>none</option><option value="1+">trace</option><option >2+</option><option>3+</option><option>4+</option> </select><br>
+																										<label class="form-check-label"  id="_dxOut401"><input class="form-check-input"  id="dxOut401" name="dxOut" type="checkbox">RETIC SCORE </label><select class="ml-2" id="reticscore"><option hidden>-Select-</option><option value='0+'>none</option><option value="1+">trace</option><option >2+</option><option>3+</option><option>4+</option> </select><br>
+																										<label class="form-check-label"  id="_dxOut402"><input class="form-check-input"  id="dxOut402" name="dxOut" type="checkbox">NEG GMS/AFB </label><br>
+																										<label class="form-check-label"  id="_dxOut403"><input class="form-check-input"  id="dxOut403" name="dxOut" type="checkbox">NEG EBV ISH</label><br>
+																								</div>
+																						</div>
+																				</div>
+																		</div>
+																		<div class="card">
+																				<div class="card-header">
+																						Flow / Ancillary testing
+																				</div>
+																				<div class="card-block chkboxes">
+																						<div style="font-size: 0.66em;" class="content form-check" id="column3f">
+																								<div class="bg-info">Flow data and diagnosies</div>
+																								<table class="table table-responsive mb-2" style="font-size: 1em">
+																										<th colspan="2">
+																												Flow percentages
+																										</th>
+																										<tr>
+																												<td>
+																														Blast%<input class="ml-2" id="flowblast" size=3 value="<1">
+																												</td>
+																										</tr>
+																										<tr>
+																												<td>
+																														? clone% <input class="ml-2" id="flowlym" size=3 value="">
+																												</td>
+																												<td>
+																														Light chain? <select class="ml-2" id="flowclone"><option value=null>NA</option><option>Kappa</option><option>Lambda</option></select>
+																												</td>
+																								</table>
+																								<label class="form-check-label"  id="_dxOut500"><input class="form-check-input"  id="dxOut500" name="dxOut" type="checkbox"> NORMAL DIFF, NO &#8593; BLASTS  </label><br>
+																								<label class="form-check-label"  id="_dxOut501"><input class="form-check-input"  id="dxOut501" name="dxOut" type="checkbox"> NORMAL DIFF, NEG FOR BALL </label><br>
+																								<label class="form-check-label"  id="_dxOut506"><input class="form-check-input"  id="dxOut506" name="dxOut" type="checkbox"> NORMAL DIFF, NEG FOR TALL </label><br>
+																								<label class="form-check-label"  id="_dxOut502"><input class="form-check-input"  id="dxOut502" name="dxOut" type="checkbox"> NORMAL DIFF, NEG FOR AML</label><br>
+																								<label class="form-check-label"  id="_dxOut503"><input class="form-check-input"  id="dxOut503" name="dxOut" type="checkbox"> NORMAL DIFF, NEG FOR APL</label><br>
+																								<label class="form-check-label"  id="_dxOut504"><input class="form-check-input"  id="dxOut504" name="dxOut" type="checkbox"> NORMAL DIFF, NEG FOR LYMPHOMA </label><br>
+																								<label class="form-check-label"  id="_dxOut505"><input class="form-check-input"  id="dxOut505" name="dxOut" type="checkbox"> NORMAL DIFF, POLY PLASMA CELLS </label><br>
+																										<button class="btn btn-sm btn-outline-primary mt-2 p-1" type="button" data-toggle="collapse"
+																														data-target="#abnl_flow" aria-expanded="false"
+																														aria-controls="contentId">
+																												Abnormal flow
+																										</button>
+																								<div class="collapse" id="abnl_flow">
+																										<label class="form-check-label"  id="_dxOut515"><input class="form-check-input"  id="dxOut515" name="dxOut" type="checkbox"> CD5+ LYMPHOMA </label><br>
+																										<label class="form-check-label"  id="_dxOut516"><input class="form-check-input"  id="dxOut516" name="dxOut" type="checkbox"> CD10+ LYMPHOMA </label><br>
+																										<label class="form-check-label"  id="_dxOut517"><input class="form-check-input"  id="dxOut517" name="dxOut" type="checkbox"> CD5-,CD10- LYMPHOMA </label><br>
+																										<label class="form-check-label"  id="_dxOut518"><input class="form-check-input"  id="dxOut518" name="dxOut" type="checkbox"> PC DYSCRASIA/MYELOMA </label><br>
+																										<label class="form-check-label"  id="_dxOut519"><input class="form-check-input"  id="dxOut519" name="dxOut" type="checkbox"> AML </label><br>
+																										<label class="form-check-label"  id="_dxOut520"><input class="form-check-input"  id="dxOut520" name="dxOut" type="checkbox"> APL </label><br>
+																										<label class="form-check-label"  id="_dxOut521"><input class="form-check-input"  id="dxOut521" name="dxOut" type="checkbox"> BALL </label><br>
+																										<label class="form-check-label"  id="_dxOut522"><input class="form-check-input"  id="dxOut522" name="dxOut" type="checkbox"> TALL </label><br>
+
+																								</div>
+																								<hr>
+																								<div class="bg-warning mb-2">Ancillary Studies & CAP templates</div>
+																								Cytogenetics:
+																								<select class="form-control form-control-sm" id="cyto_val">
+																										<option selected value="Karyotype pending">Karyotype pending</option>
+																										<option value="Not performed">Not performed</option>
+																										<option value="Abnormal karyotype detected: ">Abnormal karyotype detected</option>
+																								</select>
+																								<br>
+																								FISH:
+																								<select class="form-control form-control-sm " id="fish_val">
+																										<option value="B-cell lymphoma FISH pending">B-lymphoma FISH pending</option>
+																										<option value="T-cell lymphoma FISH pending">T-lymphoma FISH pending</option>
+																										<option value="BALL FISH pending">BALL FISH pending</option>
+																										<option value="TALL FISH pending">TALL FISH pending</option>
+																										<option value="AML FISH pending">AML FISH pending</option>
+																										<option value="PML/RARA FISH pending">APL FISH pending</option>
+																										<option value="MDS FISH pending">MDS FISH pending</option>
+																										<option value="BCR/ABL FISH pending">BCR/ABL FISH pending</option>
+																										<option value="CHIC2 FISH pending">CHIC2 FISH pending</option>
+																										<option value="Myeloma FISH pending">Myeloma FISH pending</option>
+																										<option value="Other FISH pending">Other FISH pending</option>
+																										<option selected value="FISH Testing: Not performed">Not performed</option>
+																								</select>
+																								<br>
+																								MRD:
+																								<select class="form-control form-control-sm " id="mrd_val">
+																										<option value="MRD pending">MRD pending</option>
+																										<option selected value="Not performed">Not performed</option>
+																								</select>
+																								<br>
+																								Molecular:
+																								<select class="form-control form-control-sm " id="mol_val">
+																										<option value="NGS mutation panel pending">NGS mutation panel pending</option>
+																										<option value="AML FLT3, NPM and CEBPA testing pending">FLT3, NPM, CEBPA pending</option>
+																										<option value="Quantitative BCR/ABL transcript detection pending">BCR/ABL quant</option>
+																										<option value="Quantitative PML/RARA transcript detection pending">PML/RARA quant</option>
+																										<option value="JAK2 V617F testing pending">JAK2 pending</option>
+																										<option value="MYD88 mutation testing pending">MYD88 pending</option>
+																										<option value="B-cell clonality testing pending">B-cell clonality pending</option>
+																										<option value="T-cell clonality testing pending">T-cell clonality pending</option>
+																										<option value="Other molecular testing pending">Other molecular test pending</option>
+																										<option selected value="Not performed">Not performed</option>
+																								</select>
+																								<hr>
+																								<div class="bg-warning text-center">Myeloma related options</div>
+																								? Use template <select id="myeloma_0"><option selected>No</option><option>Yes</option></select><br>
+																								Extent of plasma cell infilrates:<br>
+																								<input id="myeloma_1" size=5> - Aspirate<br>
+																								<input id="myeloma_2" size=5> - IHC<br>
+																								Light chain type:
+																								<select id="myeloma_3">
+																										<option>Kappa</option>
+																										<option>Lambda</option>
+																								</select><br>
+																								Immunoglobulin deposits:
+																								<select id="myeloma_4">
+																										<option selected>Not detected</option>
+																										<option>Amyloid detected with Congo Red</option>
+																										<option>Non-amyloid deposits</option>
+																								</select><br>
+																						</div>
+																				</div>
+																		</div>
+																</div>
+														</div>
+												</div>
+												<div class="card">
+														<div class="card-header" role="tab" id="headingSeven">
+																<h5 class="mb-0">
+																		<a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+																				Comments
+																		</a>
+																</h5>
+														</div>
+												<div id="collapseSeven" class="collapse" role="tabpanel" aria-labelledby="headingSeven">
+														<div class="card-block chkboxes">
+																<div class="card-group">
+																		<div class="card">
+																				<div class="card-header">
+																						Negative
+																				</div>
+																				<div class="card-block chkboxes">
+																						<div style="font-size: 0.66em;" class="content form-check" id="column1g">
+																								<label class="form-check-label comment"  id="_commLine300"><input class="form-check-input"  id="commLine300" name="commLine" type="checkbox"> NEG FOR HEME MALIGNANCY w/ CORRELATIONS </label><br>
+																								<label class="form-check-label comment"  id="_commLine301"><input class="form-check-input"  id="commLine301" name="commLine" type="checkbox"> ANCILLARY TESTING CORRELATIONS ONLY  </label><br>
+																								<hr>
+																								<label class="form-check-label comment"  id="_commLine303"><input class="form-check-input"  id="commLine303" name="commLine" type="checkbox"> NEG FOR MET TUMOR </label><br>
+																								<label class="form-check-label comment"  id="_commLine304"><input class="form-check-input"  id="commLine304" name="commLine" type="checkbox"> NEG FOR HODGKIN </label><br>
+																								<label class="form-check-label comment"  id="_commLine305"><input class="form-check-input"  id="commLine305" name="commLine" type="checkbox"> NEG FOR BALL </label><br>
+																								<label class="form-check-label comment"  id="_commLine306"><input class="form-check-input"  id="commLine306" name="commLine" type="checkbox"> NEG FOR TALL </label><br>
+																								<label class="form-check-label comment"  id="_commLine307"><input class="form-check-input"  id="commLine307" name="commLine" type="checkbox"> NEG FOR R/R AML </label><br>
+																								<label class="form-check-label comment"  id="_commLine308"><input class="form-check-input"  id="commLine308" name="commLine" type="checkbox"> NEG FOR MYELOMA </label><br>
+																								<label class="form-check-label comment"  id="_commLine309"><input class="form-check-input"  id="commLine309" name="commLine" type="checkbox"> NEG FOR LOW GRADE LYMPHOMA </label><br>
+																								<label class="form-check-label comment"  id="_commLine310"><input class="form-check-input"  id="commLine310" name="commLine" type="checkbox"> NEG FOR HIGH GRADE LYMPHOMA </label><br>
+																						<hr>
+																								<label class="form-check-label comment"  id="_commLine2"><input class="form-check-input"  id="commLine2" name="commLine" type="checkbox"> CASE D/W ___ </label><br>
+
+																						</div>
+																				</div>
+																		</div>
+																		<!--DOC discussed with name modal-->
+																		<div class="docinput">
+																				Select physician you discussed the case with:
+																				<input type="text" id="doc" list="names" />
+																				<datalist id="names">
+																						<option>Dr. Pandey</option>
+																						<option>Dr. Mallik</option>
+																						<option>Dr. Goodgame</option>
+																				</datalist>
+																		</div>
+																		<div class="card">
+																				<div class="card-header">
+																						Reactive
+																				</div>
+																				<div class="card-block chkboxes">
+																						<div style="font-size: 0.66em;" class="content form-check" id="column1h">
+																								<label class="form-check-label"  id="_commLine350"><input class="form-check-input"  id="commLine350" name="commLine" type="checkbox"> L SHIFTED GRANS DDX </label><br>
+																								<label class="form-check-label"  id="_commLine351"><input class="form-check-input"  id="commLine351" name="commLine" type="checkbox"> INCR EOS </label><br>
+																								<label class="form-check-label"  id="_commLine352"><input class="form-check-input"  id="commLine352" name="commLine" type="checkbox"> REACTIVE PLASMACYTOSIS </label><br>
+																								<label class="form-check-label"  id="_commLine353"><input class="form-check-input"  id="commLine353" name="commLine" type="checkbox"> THERAPY ERYTHROID DYSPOIESIS </label><br>
+																								<label class="form-check-label"  id="_commLine354"><input class="form-check-input"  id="commLine354" name="commLine" type="checkbox"> FEW HLH </label><br>
+																								<label class="form-check-label"  id="_commLine355"><input class="form-check-input"  id="commLine355" name="commLine" type="checkbox"> ITP CHANGES </label><br>
+																								<label class="form-check-label"  id="_commLine356"><input class="form-check-input"  id="commLine356" name="commLine" type="checkbox"> REBOUND ERYTHROID HYPERPLASIA </label><br>
+																								<label class="form-check-label"  id="_commLine357"><input class="form-check-input"  id="commLine357" name="commLine" type="checkbox"> SEROUS ATROPHY </label><br>
+																								<label class="form-check-label"  id="_commLine358"><input class="form-check-input"  id="commLine358" name="commLine" type="checkbox"> IDIOPATHIC HYPO/APLASIA </label><br>
+																								<label class="form-check-label"  id="_commLine359"><input class="form-check-input"  id="commLine359" name="commLine" type="checkbox"> TREATED TO APLASIA </label><br>
+																						</div>
+																				</div>
+																		</div>
+																		<div class="card">
+																				<div class="card-header">
+																						Malignant
+																				</div>
+																				<div class="card-block chkboxes">
+																						<div style="font-size: 0.66em;" class="content form-check" id="column1i">
+																								<label class="form-check-label"  id="_commLine400"><input class="form-check-input"  id="commLine400" name="commLine" type="checkbox"> CMPD DDX</label><br>
+																								<label class="form-check-label"  id="_commLine401"><input class="form-check-input"  id="commLine401" name="commLine" type="checkbox"> C/W CML </label><br>
+																								<label class="form-check-label"  id="_commLine402"><input class="form-check-input"  id="commLine402" name="commLine" type="checkbox"> CLL </label><br>
+																								<label class="form-check-label"  id="_commLine403"><input class="form-check-input"  id="commLine403" name="commLine" type="checkbox"> LOW GRADE LYMPHOMA </label><br>
+																								<label class="form-check-label"  id="_commLine404"><input class="form-check-input"  id="commLine404" name="commLine" type="checkbox"> HIGH GRADE LYMPHOMA </label><br>
+																								<label class="form-check-label"  id="_commLine405"><input class="form-check-input"  id="commLine405" name="commLine" type="checkbox"> AML </label><br>
+																								<label class="form-check-label"  id="_commLine406"><input class="form-check-input"  id="commLine406" name="commLine" type="checkbox"> APL </label><br>
+																								<label class="form-check-label"  id="_commLine407"><input class="form-check-input"  id="commLine407" name="commLine" type="checkbox"> BALL </label><br>
+																								<label class="form-check-label"  id="_commLine408"><input class="form-check-input"  id="commLine408" name="commLine" type="checkbox"> TALL </label><br>
+																								<label class="form-check-label"  id="_commLine409"><input class="form-check-input"  id="commLine409" name="commLine" type="checkbox"> HODGKIN </label><br>
+																								<label class="form-check-label"  id="_commLine410"><input class="form-check-input"  id="commLine410" name="commLine" type="checkbox"> NEUROBLASTOMA - EXTENSIVE </label><br>
+																								<label class="form-check-label"  id="_commLine411"><input class="form-check-input"  id="commLine411" name="commLine" type="checkbox"> NEUROBLASTOMA - FOCAL </label><br>
+																								<label class="form-check-label"  id="_commLine412"><input class="form-check-input"  id="commLine412" name="commLine" type="checkbox"> MYELOMA </label><br>
+																						</div>
+																				</div>
+																		</div>
+																</div>
+														</div>
+												</div>
+										</div>
+										</div>
+										<!-- end accordion cards-->
+								</div>
+								<!-- end left column-->
+						</div>
+						<div class="col col-md-4"><!-- right column-->
+								<a class="btn btn-outline-success p-1 mb-2" id="writeReport" >Write report</a>
+								<form>
+
+										<div class="form-group">
+												<textarea class="form-control" id="outPut-1" rows="5" placeholder="CBC Data"></textarea>
+												<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-1">Copy to Clipboard</span>
+										</div>
+										<div class="form-group">
+												<textarea class="form-control" id="outPut-2" rows="15" placeholder="Example Micro"></textarea>
+												<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-2">Copy to Clipboard</span>
+										</div>
+										<div class="form-group">
+												<div class="input-group">
+														<span class="input-group-addon">Total Diff%:</span> <input class="form-control form-control-sm" id="diffTotal">
+												</div>
+												<textarea class="form-control" id="diffOut" rows="5" placeholder="Bone marrow differential"></textarea>
+												<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#diffOut">Copy to Clipboard</span>
+										</div>
+
+										<div class="form-group">
+												<textarea class="form-control" id="outPut-3" rows="10" placeholder="Example Final"></textarea>
+												<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-3">Copy to Clipboard</span>
+										</div>
+										<div class="form-group">
+												<textarea class="form-control" id="outPut-4" rows="5" placeholder="Example Comment"></textarea>
+												<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-4">Copy to Clipboard</span>
+										</div>
+								</form>
+						</div>
+				</div>
+
+		<!--end container wrapper-->
+			</div>
+
+			<!--
+			"specificScripts":
+				[
+					"../json/json-bonemarrow.js",
+					"../js/heme-path/bm-diff-scripts.js",
+					"../js/heme-path/bm-scripts.js",
+					"../js/heme-path/pb-rules.js"
+				]
+
+			-->

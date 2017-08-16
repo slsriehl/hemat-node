@@ -1,0 +1,262 @@
+<div class="container-fluid">
+		<!-- Breadcrumbs -->
+		<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+						<a href="/">Home</a>
+				</li>
+				<li class="breadcrumb-item active"><i class="fa fa-eercast mr-2"></i>High-Grade B-cell lymphoma Diagnosis Synoptic Template</li>
+		</ol>
+		<div class="card mb-3">
+				<div class="card-header bg-info">
+						<!-- How to use and modal -->
+						<div class="row">
+								<button class="btn btn-default btn-block" data-target="#flipFlop" data-toggle="modal" id='openhelp'
+												type='button'> How to use
+								</button>
+<!-- The modal -->
+{{> modals/dlbcl-how-to-use}}
+						</div>
+				</div>
+		</div>
+		<div class="container-fluid">
+				<div class="row">
+						<!--middle colored boxes-->
+						<div class="container">
+								<div class="row row-grid">
+										<!-- bottom left column-->
+										<div class="col-sm-7" id="bottom-l">
+												<h4>Large B-cell lymphoma Diagnostic synoptic</h4>
+												<hr>
+												<b>HISTOLOGIC TYPE:</b><br>
+												<input class="form-control form-control-sm"  id="box1" placeholder='Start typing'>
+														<button type="button" class="btn btn-info btn-sm mt-1 p-1" data-toggle="modal" data-target="#whomodal">
+																<small>Click here to see how Large B-cell lymphomas are classified in the updated WHO</small>
+														</button>
+<!-- WHO DLBCL Modal -->
+{{> modals/dlbcl-who}}
+												<hr>
+
+												<b>IMMUNOPHENOTYPE:</b><span href="#" data-toggle="tooltip" title="Copy and paste your flow results here"><i class="fa fa-lightbulb-o ml-2"  aria-hidden="true"></i></span><br>
+												<textarea class="form-control form-control-sm" id="box2" rows="5" placeholder='Not performed'></textarea>
+												<hr>
+
+												<div class="NHL">
+														<h5>RELEVANT NHL BIOMARKER RESULTS</h5>
+
+														<table class="table">
+																<tr>
+																		<th >BIOMARKER</th>
+																		<th >RESULTS</th>
+																</tr>
+																<tr>
+																		<td class="h6">CD20</td>
+																		<td><select class="form-control form-control-sm"  id="box3">
+																						<option>Not done</option>
+																						<option>Positive, diffuse</option>
+																						<option>Positive, subset</option>
+																						<option>Positive, focal</option>
+																						<option>Positive, rare</option>
+																						<option>Negative</option>
+																				</select></td>
+																</tr>
+																<tr>
+																		<td class="h6">CD5</td>
+																		<td><select class="form-control form-control-sm"  id="box4">
+																						<option>Not done</option>
+																						<option>Positive, diffuse</option>
+																						<option>Positive, subset</option>
+																						<option>Positive, focal</option>
+																						<option>Positive, rare</option>
+																						<option>Negative</option>
+																				</select></td>
+																</tr>
+																<tr>
+																		<td class="h6">CD30</td>
+																		<td><select class="form-control form-control-sm"  id="box5">
+																						<option>Not done</option>
+																						<option>Positive, diffuse</option>
+																						<option>Positive, subset</option>
+																						<option>Positive, focal</option>
+																						<option>Positive, rare</option>
+																						<option>Negative</option>
+																				</select></td>
+																</tr>
+																<tr>
+																		<td class="h6">KI67</td>
+																		<td><input class="form-control form-control-sm col-4"  id="box6" placeholder='%'></td>
+																</tr>
+																<tr>
+																		<td class="h6">MYC protein</td>
+																		<td><select class="form-control form-control-sm"  id="box7">
+																						<option>Not done</option>
+																						<option>Positive, >40%</option>
+																						<option>Positive, <40%</option>
+																						<option>Positive, rare</option>
+																						<option>Negative</option>
+																				</select></td>
+																</tr>
+																<tr>
+																		<td class="h6">MUM1/IRF4</td>
+																		<td><select class="form-control form-control-sm"  id="box16">
+																						<option>Not done</option>
+																						<option>Positive</option>
+																						<option>Negative</option>
+																				</select></td>
+																</tr>
+																<tr>
+																		<td class="h6">EBER</td>
+																		<td><select class="form-control form-control-sm"  id="box8">
+																						<option>Not done</option>
+																						<option>Positive</option>
+																						<option>Negative</option>
+																				</select></td>
+																</tr>
+																<tr> <td></td><td></td></tr>
+																<tr>
+																		<th >GENETIC STUDIES</th>
+																		<th >RESULTS</th>
+																</tr>
+																<tr>
+																		<td class="h6">MYC rearrangement</td>
+																		<td><select class="form-control form-control-sm"  id="box9">
+																						<option>Not detected</option>
+																						<option>Detected</option>
+																						<option>Pending (see addendum)</option>
+																						<option>Not done</option>
+																				</select></td>
+																</tr>
+																<tr>
+																		<td class="h6">BCL2 rearrangement</td>
+																		<td><select class="form-control form-control-sm"  id="box10">
+																						<option>Not detected</option>
+																						<option>Detected</option>
+																						<option>Reflex, if necessary (see addendum)</option>
+																						<option>Pending (see addendum)</option>
+																						<option>Not done</option>
+																				</select></td>
+																</tr>
+																<tr>
+																		<td class="h6">BCL6 rearrangement</td>
+																		<td><select class="form-control form-control-sm"  id="box11">
+																						<option>Not detected</option>
+																						<option>Detected</option>
+																						<option>Reflex, if necessary (see addendum)</option>
+																						<option>Pending (see addendum)</option>
+																						<option>Not done</option>
+																				</select></td>
+																</tr>
+														</table>
+														<hr>
+														<b>SUBTYPE CLASSIFICATION (HANS)</b>
+														<img class="img img-responsive-stretch"  src="../img/hans.png"><br>
+														<select class="form-control form-control-sm"  id="box12">
+																<option>GC-type</option>
+																<option>non-GC type</option>
+																<option>Indeterminate</option>
+														</select>
+												</div><!-- end NHL biomarker div-->
+
+												<div class="CHL">
+														<b>CHL BIOMARKERS</b><br>
+														<table class="table">
+																<tr>
+																		<th >IMMUNOHISTOCHEMISTRY</th>
+																		<th >RESULTS</th>
+																</tr>
+																<tr>
+																		<td class="h6">CD20</td>
+																		<td><select class="form-control form-control-sm"  id="box20">
+																						<option>Not done</option>
+																						<option>Positive, diffuse</option>
+																						<option>Positive, subset</option>
+																						<option>Positive, focal</option>
+																						<option>Positive, rare</option>
+																						<option>Negative</option>
+																				</select></td>
+																</tr>
+																<tr>
+																		<td class="h6">CD30</td>
+																		<td><select class="form-control form-control-sm"  id="box21">
+																						<option>Not done</option>
+																						<option>Positive, diffuse</option>
+																						<option>Positive, subset</option>
+																						<option>Positive, focal</option>
+																						<option>Positive, rare</option>
+																						<option>Negative</option>
+																				</select></td>
+																</tr>
+																<tr>
+																		<td class="h6">EBER</td>
+																		<td><select class="form-control form-control-sm"  id="box22">
+																						<option>Not done</option>
+																						<option>Positive, large atypical cells only</option>
+																						<option>Positive, small and large cells</option>
+																						<option>Positive, polymorphous pattern</option>
+																						<option>Negative</option>
+																						<option>Pending; see addendum</option>
+																				</select></td>
+																</tr>
+
+														</table>
+
+												</div><!-- end CHL biomarker div-->
+												<hr>
+												<b>SPECIMEN:</b><br>
+												<input class="form-control form-control-sm"  id="box13"  placeholder=''>
+												<hr>
+
+												<b>SITE:</b><br>
+												<input class="form-control form-control-sm"  id="box14"   placeholder=''>
+												<hr>
+
+												<b>PROCEDURE</b><br>
+												<select class="form-control form-control-sm"  id="box15">
+														<option>Excisional biopsy</option>
+														<option>Incisional biopsy</option>
+														<option>Needle biopsy</option>
+														<option>Excision</option>
+														<option>Other</option>
+												</select><br>
+												<input class="form-control form-control-sm"  id='box15_2' style='display:none;' placeholder='Specify'>
+												<hr>
+
+										</div>
+										<!-- middle right text output-->
+										<div class="col-sm-5" id="bottom-r">
+												<div class="card text-center">
+														<div class="card-header">
+																<ul class="nav nav-pills">
+																		<ul class="nav nav-pills">
+
+																				<a class="btn btn-lg btn-outline-info p-2" id="writeReport">
+																						<small>Write Report</small>
+																				</a>
+
+
+																				<a class="btn btn-lg btn-outline-danger p-2 ml-4" id="Reset" >
+																						<small>Reset</small>
+																				</a>
+
+																		</ul>
+																</ul>
+														</div>
+														<div class="card-block">
+																<div class="form-group">
+																		<textarea class="form-control" id="outPut-1" rows="40" placeholder="Synoptic"></textarea>
+																		<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-1">Copy to Clipboard</span>
+																</div>
+														</div>
+												</div>
+										</div>
+								</div>
+						</div>
+				</div>
+		</div>
+		<!--end container wrapper-->
+
+<!--
+"specificScripts":
+	[
+		"../js/heme-path/dlbcl-scripts.js"
+	]
+-->

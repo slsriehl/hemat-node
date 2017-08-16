@@ -53,12 +53,14 @@ app.use(session({
 // ++++++ Express routes ++++++
 //const userRoutes		= require('./routes/user'),
 const testRoutes = require('./routes/tests');
+const hemePathRoutes = require('./routes/heme-path');
 const capRoutes = require('./routes/cap');
 // 			contextRoutes = require('./routes/context'),
 // 			itemRoutes		= require('./routes/item');
 
 app.use(testRoutes);
 app.use(capRoutes);
+app.use(hemePathRoutes);
 //app.use(userRoutes);
 // app.use(contextRoutes);
 // app.use(itemRoutes);
