@@ -1,0 +1,50 @@
+<div>
+	<div class="header">
+		<span id="log-in">Login</span>
+		<span class="current-page">Sign Up</span>
+	</div>
+
+{{#if data}}
+<div class="data">
+	{{data}}
+</div>
+{{/if}}
+
+
+	<form id="signup-form">
+		<div class="text-field">
+			<label>Email</label>
+			<input
+				type="email"
+				name="email"
+				onchange="if(this.checkValidity()) form.emailConf.pattern = this.value;"
+				required
+				title="Please enter a valid email."
+			/>
+		</div>
+		<div class="text-field">
+			<label>Repeat Email</label>
+			<input
+				type="email"
+				name="emailConf"
+				onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same email as above.' : '');"
+				required
+			/>
+		</div>
+		<div class="text-field">
+			<label>Password</label>
+			<input
+				type="password"
+				name="password"
+				pattern="^\S{8,}$"
+				required
+				text="Password must have at least 8 characters."
+			/>
+			<div class="hide-show">
+				<span class="show">Show</span>
+			</div>
+		</div>
+		<button type="submit">Sign Up</button>
+	</form>
+
+</div>

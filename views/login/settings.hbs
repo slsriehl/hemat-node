@@ -1,0 +1,54 @@
+<div class="modal-title">
+	<span>Change Login Info</span>
+</div>
+
+{{#if data}}
+<div class="data">
+	{{data}}
+</div>
+{{/if}}
+
+	<form id="change-form">
+		<div class="text-field">
+			<label>Current Email Address</label>
+			<i id="logged-in-email">{{email}}</i>
+		</div>
+
+		<div class="text-field">
+			<label>Current Password</label>
+			<input
+				type="password"
+				name="password"
+				required
+			/>
+			<div class="hide-show">
+				<span class="show">Show</span>
+			</div>
+		</div>
+		<div class="text-field">
+			<label>New Email</label>
+			<input
+				type="email"
+				name="newEmail"
+				required
+				title="Please enter a valid email."
+			/>
+		</div>
+		<div class="text-field">
+			<label>New Password</label>
+			<input
+				type="password"
+				name="newPassword"
+				pattern="^\S{8,}$"
+				required
+				text="Password must have at least 8 characters."
+			/>
+			<div class="hide-show">
+				<span class="show">Show</span>
+			</div>
+		</div>
+		<div class="button-container">
+			<button type="submit">Change Data</button>
+			<button type="button" id="delete-account">Delete Account</button>
+		</div>
+	</form>
