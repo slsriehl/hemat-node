@@ -162,6 +162,9 @@
 		</section>
 <!-- scripts footer, send script names to script template so that the particular scripts are rendered last -->
 		{{> scripts/standard-scripts}}
+		{{#if login.cookie}}
+			<script type="text/javascript" src="../js/users.js"></script>
+		{{/if}}
 		<!-- specific to each page -->
 		{{#if specificScripts}}
 			{{#each specificScripts}}

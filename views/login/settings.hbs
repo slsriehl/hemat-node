@@ -1,54 +1,74 @@
-<div class="modal-title">
-	<span>Change Login Info</span>
-</div>
-
-{{#if data}}
-<div class="data">
-	{{data}}
-</div>
-{{/if}}
-
-	<form id="change-form">
-		<div class="text-field">
-			<label>Current Email Address</label>
-			<i id="logged-in-email">{{email}}</i>
-		</div>
-
-		<div class="text-field">
-			<label>Current Password</label>
-			<input
-				type="password"
-				name="password"
-				required
-			/>
-			<div class="hide-show">
-				<span class="show">Show</span>
+<div class="container-fluid">
+	{{#if messages}}
+		{{#each messages}}
+			<div class="row">
+				<div class="col col-md-12 message-item" id="{{id}}">
+					{{text}}
+					<!-- / message-item col -->
+				</div>
+				<!-- /message-item row -->
 			</div>
+		{{/each}}
+	{{/if}}
+
+	<div class="row">
+		<div class="col col-md-4">
+			<!-- end placeholder div -->
 		</div>
-		<div class="text-field">
-			<label>New Email</label>
-			<input
-				type="email"
-				name="newEmail"
-				required
-				title="Please enter a valid email."
-			/>
+		<div class="col col-md-4">
+			<h2 class="text-center">Edit Your Settings</h2>
+			<form id="change-form" action="/user" method="POST">
+				<div class="form-group">
+					<label>Current Registered Email Address</label>
+					<span id="logged-in-email" class="form-control">{{email}}</span>
+				</div>
+				<div class="form-group">
+					<label>Current Password</label>
+					<input
+						type="password"
+						name="password"
+						class="form-control"
+						required
+					/>
+					<div class="hide-show">
+						<span class="show">Show</span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label>New Email</label>
+					<input
+						type="email"
+						name="newEmail"
+						required
+						title="Please enter a valid email."
+						class="form-control"
+					/>
+				</div>
+				<div class="form-group">
+					<label>New Password</label>
+					<input
+						type="password"
+						name="newPassword"
+						pattern="^\S{8,}$"
+						required
+						text="Password must have at least 8 characters."
+						class="form-control"
+					/>
+					<div class="hide-show">
+						<span class="show">Show</span>
+					</div>
+				</div>
+				<div class="button-container">
+					<button type="submit" class="btn btn-default">Change Data</button>
+					<button type="button" id="delete-account" class="btn btn-default">Delete Account</button>
+				</div>
+			</form>
+			<!-- end form col -->
 		</div>
-		<div class="text-field">
-			<label>New Password</label>
-			<input
-				type="password"
-				name="newPassword"
-				pattern="^\S{8,}$"
-				required
-				text="Password must have at least 8 characters."
-			/>
-			<div class="hide-show">
-				<span class="show">Show</span>
-			</div>
+		<div class="col col-md-4">
+			<!-- end placeholder div -->
 		</div>
-		<div class="button-container">
-			<button type="submit">Change Data</button>
-			<button type="button" id="delete-account">Delete Account</button>
-		</div>
-	</form>
+		<!-- end settings edit row -->
+	</div>
+	<!-- end container fluid -->
+</div>
