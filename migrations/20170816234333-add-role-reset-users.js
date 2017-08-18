@@ -1,20 +1,39 @@
 'use strict';
 
 module.exports = {
-  up: function(queryInterface, Sequelize) {
+  up: (queryInterface, Sequelize) => {
 		//set to add columns
-				queryInterface.addColumn('users', 'role', Sequelize.STRING);
-		queryInterface.addColumn('users', 'requireReset', {
-					type: Sequelize.BOOLEAN,
-					allowNull: false
-			});
-
-
+		return queryInterface.addColumn('users', 'role', Sequelize.STRING)
+		.then(
+			queryInterface.addColumn('users', 'requireReset', {
+				type: Sequelize.BOOLEAN,
+				allowNull: false
+			})
+		)
+		.then(
+			queryInterface.addColumn('users', 'createdAt', {
+				type: Sequelize.DATE,
+				allowNull: true
+			})
+		)
+		.then(
+			queryInterface.addColumn('users', 'updatedAt', {
+				type: Sequelize.DATE,
+			})
+		)
+		.catch(error => console.log(error));
   },
-  down: function(queryInterface, Sequelize) {
+  down: (queryInterface, Sequelize) => {
 		return queryInterface.removeColumn('users', 'role')
-			.then(
-				queryInterface.removeColumn('users', 'requireReset'))
-			.catch(error => console.log(error));
+		.then(
+			queryInterface.removeColumn('users', 'requireReset')
+		)
+		.then(
+			queryInterface.removeColumn('users', 'createdAt')
+		)
+		.then(
+			queryInterface.removeColumn('users', 'updatedAt')
+		)
+		.catch(error => console.log(error));
   }
 };

@@ -1,19 +1,21 @@
 'use strict';
 
-const models = require('./models/index');
+const models = require('../models/index');
 
 module.exports = {
   up: function (queryInterface, Sequelize) {
     /*
-      make it mandatory for everyone to reset their passwords
+      make chandra an admin
     */
-
 		return models.Users.update({
-			requireReset: true
+			'role': 'admin'
+		}, {
+			where: {
+				id: 1
+			}
 		})
 		.then(data => console.log(data))
 		.catch(error => console.log(error));
-
   },
 
   down: function (queryInterface, Sequelize) {
@@ -24,5 +26,15 @@ module.exports = {
       Example:
       return queryInterface.dropTable('users');
     */
+
+		return models.Users.update({
+			'role': null
+		}, {
+			where: {
+				id: 1
+			}
+		})
+		.then(data => console.log(data))
+		.catch(error => console.log(error));
   }
 };
