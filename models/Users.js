@@ -34,6 +34,14 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.BOOLEAN,
 			allowNull: false
 		}
+		resetPasswordCode: {
+			type: DataTypes.UUID,
+			allowNull: true
+		},
+		resetPasswordExpires: {
+			type: DataTypes.DATE,
+			allowNull: true
+		}
   }, {
     classMethods: {
       associate: function(models) {
