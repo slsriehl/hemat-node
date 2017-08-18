@@ -33,7 +33,7 @@ module.exports = function(sequelize, DataTypes) {
 		requireReset: {
 			type: DataTypes.BOOLEAN,
 			allowNull: false
-		}
+		},
 		resetPasswordCode: {
 			type: DataTypes.UUID,
 			allowNull: true

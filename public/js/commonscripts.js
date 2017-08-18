@@ -1,3 +1,4 @@
+
 $(window).on('load', function() {
 // instantiate copy button
     new Clipboard('.copy');
@@ -254,7 +255,25 @@ $(function () {
      s.parentNode.insertBefore(ga, s);
      })();
      */
-
+//Sarah trying to make the navbar dropdown expand automatically on mobile.
+		//  $("#loginDropdown").on("drop:toggle", function(event) {
+		//  	var dropdown = $(this);
+		//    if (dropdown.is(".on")) {
+		//        dropdown.trigger("drop:off");
+		//    } else {
+		//        dropdown.trigger("drop:on");
+		//    }
+		//  }).on("drop:on", function(event) {
+		//  	console.log('on');
+		//  	$(this).removeAttr('data-toggle');
+		//  }).on("drop:off", function(event) {
+		//  	console.log('off');
+		//  	$(this).attr('data-toggle', 'dropdown');
+		//  });
+		 //
+		 //
+		 //
+		//  $("#navbarExample").on('click', function() {
+		//      $(this).trigger("drop:toggle");
+		//  });
 });
-
-

@@ -30,27 +30,44 @@
 		<link rel="stylesheet" type="text/css" href="../css/sb-admin.css" />
 <!-- custom styles for HG.com -->
 		<link rel="stylesheet" type="text/css" href="../css/hg-base.css" />
+<!-- extra header scripts -->
+		{{#if login.cookie}}
+			<link rel="stylesheet" type="text/css" href="../css/users.css" />
+		{{/if}}
 	</head>
 	<body>
 <!-- navigation header which shows logged in status and user account info, as well as sidebar with main menu -->
 		<nav id="mainNav" class="navbar static-top navbar-toggleable-md navbar-inverse bg-inverse">
 <!-- mobile menu toggle -->
-			<button
-				aria-controls="navbarExample"
-				aria-expanded="false"
-				aria-label="Toggle navigation"
-				class="navbar-toggler navbar-toggler-right"
-				data-target="#navbarExample"
-				data-toggle="collapse"
-				type="button"
-			>
-				<span class="navbar-toggler-icon">
-				</span>
-			</button>
-<!-- begin header bar -->
-			<a class="navbar-brand" href="/">Hematogones.com</a>
-			<div class="collapse navbar-collapse" id="navbarExample">
-<!-- sidebar goes here, header bar continues after -->
+			<div class="navbar-header">
+				<button
+					aria-controls="navbarExample"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+					class="navbar-toggler navbar-toggler-right"
+					data-target="#navbarExample"
+					data-toggle="collapse"
+					type="button"
+					id="toggleNav"
+				>
+					<span class="navbar-toggler-icon">
+					</span>
+				</button>
+	<!-- begin header bar -->
+				<a class="navbar-brand" href="/">Hematogones.com</a>
+			</div>
+			<div class="collapse navbar-collapse navbar-right" id="navbarExample">
+				<!-- <form class="navbar-form" id="loginBarSearchForm" action="/search">
+					<div>
+						<label class="hide-element">Search Site</label>
+						<input type="text" class="form-control" placeholder="Search" id="loginBarSearchInput" />
+					</div>
+					<button type="submit" class="btn btn-default hide-element">
+					</button>
+				</form> -->
+<!-- header bar with logged in info dropdown and search -->
+			{{> login-header}}
+<!-- sidebar goes here -->
 				<ul class="sidebar-nav navbar-nav link-search">
 					<li>
 						<form class="m-3">
@@ -113,8 +130,6 @@
 					</li>
 <!-- end sidebar -->
 				</ul>
-<!-- resume header bar -->
-				{{> login-header}}
 			</div>
 		</nav>
 <!-- end nav header and sidebar -->

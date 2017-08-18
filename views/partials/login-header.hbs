@@ -1,3 +1,56 @@
-<div>
-	login info to follow here
-</div>
+
+<!--TODO: add to users.css .dropdown-link
+
+style dropdown
+
+add to sb-admin .hide-element
+
+-->
+
+<ul class="navbar-nav nav" id="headerMenu">
+<!-- display login/signup menu -->
+{{#if login.cookie}}
+	<!-- search bar -->
+	<li class="menu-item dropdown" id="toggleLoginNav">
+		<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="loginDropdown">
+			<i class="fa fa-user"></i>
+			&nbsp;Hi, {{login.firstname}}
+			<span class="caret"></span>
+		</a>
+		<ul class="dropdown-menu">
+			<li class="menu-item">
+				<a class="dropdown-link" href="/logged-in/account">
+					<i class="fa fa-cog"></i>
+					&nbsp;My Account
+				</a>
+			</li>
+			<li class="menu-item">
+				<a class="dropdown-link" href="/logged-in/history">
+					<i class="fa fa-history"></i>
+					&nbsp;Report History
+				</a>
+			</li>
+			<li class="menu-item">
+				<a class="dropdown-link" href="/user/logout">
+					<i class="fa fa-sign-out"></i>
+					&nbsp;Log Out
+				</a>
+			</li>
+		</ul>
+	</li>
+{{else}}
+	<li class="menu-item">
+		<a class="nav-link" href="/user/signup" id="sign-up">
+			<i class="fa fa-user-plus"></i>
+			&nbsp;Sign Up
+		</a>
+	</li>
+	</li>
+	<li class="menu-item">
+		<a class="nav-link" href="/user/login" id="log-in">
+			<i class="fa fa-sign-in"></i>
+			&nbsp;Log In
+		</a>
+	</li>
+{{/if}}
+</ul>

@@ -58,9 +58,7 @@ const hemePathRoutes = require('./routes/pages/heme-path');
 const giPathRoutes = require('./routes/pages/gi-path');
 const clinPathRoutes = require('./routes/pages/clin-path');
 const surgPathRoutes = require('./routes/pages/surg-path');
-const autopsyRoutes = require('./routes/pages/autopsy');
-
-const testForMigration = require('./migrations/test');
+//const autopsyRoutes = require('./routes/pages/autopsy');
 
 app.use(testRoutes);
 app.use(capRoutes);
@@ -68,8 +66,6 @@ app.use(hemePathRoutes);
 app.use(giPathRoutes);
 app.use(clinPathRoutes);
 app.use(surgPathRoutes);
-
-app.use(testForMigration);
 // app.use(autopsyRoutes);
 
 // ++++++ SERVER LISTEN ++++++
