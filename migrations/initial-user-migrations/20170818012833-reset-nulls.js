@@ -26,6 +26,12 @@ module.exports = {
 				allowNull: true
 			})
 		)
+		.then(
+			queryInterface.changeColumn('Users', 'timestamp', {
+				type: Sequelize.STRING,
+				allowNull: true
+			})
+		)
 		.catch(error => console.log(error));
   },
 

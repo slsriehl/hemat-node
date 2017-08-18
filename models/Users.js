@@ -25,6 +25,10 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
+		timestamp: {
+			type: DataTypes.STRING,
+			allowNull: true
+		},
     role: DataTypes.STRING,
 		requireReset: {
 			type: DataTypes.BOOLEAN,
