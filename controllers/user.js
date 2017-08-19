@@ -19,30 +19,77 @@ const controller = {
 		//hash password
 		const hash = helpers.setHash(req.body.password);
 		console.log(hash);
+
 		//create new user to save
 		const newUser = {
+			firstname: req.body.firstname,
+			lastname: req.body.lastname,
+			username: req.body.username,
 			email: req.body.email,
-			password: hash
+			password: hash,
+			requireReset: false
 		}
-		//sequelize call to save user
+		if(req.body.mobile) {
+			//sanitize mobile to a string of just numbers
+			newUser.mobile = req.body.mobile;
+		}
 
-		return models.User
-		.create(newUser)
-		.then((data) => {
-			//if signup succeeds, save session, send cookie in header, and render
-			//the todo page
-			req.session.message = 'Signup successful!  Start saving to-dos now.';
-			helpers.saveSession(req, res, data);
-			res.header('Cookie', req.session.id);
-			const cookie = req.session.id;
-			contextController.addInitialContexts(req, res, cookie);
-			//console.log(`data from user save ${util.inspect(data)}`);
+		const testUser = {
+			username: req.body.username,
+			email: req.body.email
+		}
+
+		console.log(newUser);
+		console.log(testUser)
+		//sequelize call to save user
+		return models.Users
+		.findAll({
+			attributes: ['username', 'email'],
+			where: {
+				$or: {
+					username: testUser.username,
+					email: testUser.email
+				}
+			}
 		})
-		//if there's some error with the sequelize call,
-		//render the signup page again with a fail message
-		.catch((error) => {
-			helpers.sessionMessage(req, res, `Signup not successful.`, 'signup.hbs');
-		});
+		.then((data) => {
+			//test with positive and negative cases
+			console.log(data);
+			if(data.length == 0) {
+				console.log(newUser);
+				return models.Users
+				.create(newUser)
+				.then((data) => {
+					console.log(data);
+					req.session.message = 'Welcome to Hematogones.com!  I hope you find these tools useful.  We will never sell your information.';
+					req.session.messageType = 'successful-signup';
+					req.session.user = data.dataValues.id;
+					req.session.save();
+					helpers.getSystemMessages(req, res, 'index.hbs');
+				})
+			} else {
+				req.session.message = 'Sorry, that username or email is taken already.  Please try another or <a href="/reset">reset your account</a>.';
+				req.session.messageType = 'fail';
+				req.session.save();
+				helpers.renderSingleMessage(req, res, 'login/signup.hbs');
+			}
+		})
+		// .catch(error => console.log(error));
+		//
+		// 	//if signup succeeds, save session, send cookie in header, and render
+		// 	//the todo page
+		// 	req.session.message = 'Signup successful!  Start saving to-dos now.';
+		// 	helpers.saveSession(req, res, data);
+		// 	res.header('Cookie', req.session.id);
+		// 	const cookie = req.session.id;
+		// 	contextController.addInitialContexts(req, res, cookie);
+		// 	//console.log(`data from user save ${util.inspect(data)}`);
+		// })
+		// //if there's some error with the sequelize call,
+		// //render the signup page again with a fail message
+		// .catch((error) => {
+		// 	helpers.sessionMessage(req, res, `Signup not successful.`, 'signup.hbs');
+		// });
 
 	},
 	//login a user by authenticating login info against the DB

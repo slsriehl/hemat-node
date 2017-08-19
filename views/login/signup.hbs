@@ -3,7 +3,7 @@
 		{{#each messages}}
 			<div class="row">
 				<div class="col col-md-12 message-item" id="{{id}}">
-					{{text}}
+					<span>{{text}}</span>
 					<!-- / message-item col -->
 				</div>
 				<!-- /message-item row -->
@@ -19,10 +19,50 @@
 			<h2 class="text-center">Sign Up</h2>
 			<form id="signup-form" action="/user/signup" method="POST">
 				<div class="form-group">
+					<label>First Name</label>
+					<input
+						type="text"
+						name="firstname"
+						class="form-control"
+						autocapitalize="off"
+						autocorrect="off"
+					/>
+					<label>Last Name</label>
+					<input
+						type="text"
+						name="lastname"
+						class="form-control"
+						autocapitalize="off"
+						autocorrect="off"
+					/>
+				</div>
+				<div class="form-group">
+					<label>User Name</label>
+					<!-- disallow quotes and backslashes -->
+					<input
+						type="text"
+						name="username"
+						class="form-control"
+						autocapitalize="off"
+						autocorrect="off"
+					/>
+				</div>
+				<div class="form-group">
 					<label>Email</label>
 					<input
 						type="email"
 						name="email"
+						class="form-control"
+						autocapitalize="off"
+						autocorrect="off"
+					/>
+				</div>
+				<div class="form-group">
+					<label>Mobile Phone (optional)</label>
+					<!-- world number library? https://intl-tel-input.com/ -->
+					<input
+						type="tel"
+						name="mobile"
 						class="form-control"
 						autocapitalize="off"
 						autocorrect="off"
@@ -36,7 +76,7 @@
 						class="form-control"
 					/>
 					<div class="hide-show">
-						<span class="show">Show</span>
+						<small class="show">Show</small>
 					</div>
 				</div>
 				<button type="submit" class="btn btn-default">Sign Up</button>

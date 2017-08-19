@@ -276,4 +276,36 @@ $(function () {
 		//  $("#navbarExample").on('click', function() {
 		//      $(this).trigger("drop:toggle");
 		//  });
+
+		//show/hide passwords
+		var hideShow = function (event) {
+			console.log('hide show fired');
+			if ($(this).hasClass('show')) {
+				$('.hide-show small').text('Hide');
+				$('[name="password"]').attr('type', 'text');
+				$('[name="newPassword"]').attr('type', 'text');
+				$('.hide-show small').removeClass('show');
+			} else {
+				$('.hide-show small').text('Show');
+				$('[name="password"]').attr('type', 'password');
+				$('[name="newPassword"]').attr('type', 'password');
+				$('.hide-show small').addClass('show');
+			}
+		}
+
+		//change the password fields back to password input type on submit
+		var hideShowSubmit = function() {
+			$('.hide-show small').text('Show').addClass('show');
+			$('.hide-show').parent().find('[name="password"]').attr('type','password');
+		}
+
+		var changeToPasswordFormat = function(formName) {
+			formName.on('submit', hideShowSubmit);
+		}
+
+		$(document).off('click', '.hide-show small').on('click', '.hide-show small', hideShow);
+
+		changeToPasswordFormat($('#login-form'));
+		changeToPasswordFormat($('#signup-form'));
+
 });

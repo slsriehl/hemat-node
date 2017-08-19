@@ -2,6 +2,7 @@
 const models = require('../models');
 const bcrypt = require('bcryptjs');
 const util = require('util');
+const moment = require('moment');
 
 const cookieHelpers = require('./cookie-helpers');
 const readController = require('./read');
@@ -105,6 +106,116 @@ const helpers = {
 		req.session.save();
 		res.render(render, {data: req.session.message, layout: false});
 	},
+	//render with only a single message
+	renderSingleMessage: (req, res, renderPath) => {
+		console.log(req.session);
+		console.log(req.session.message);
+		console.log(req.session.messageType);
+		res.render(renderPath, {
+			messages: [{
+				text: req.session.message,
+				id: req.session.messageType
+			}]
+		});
+	},
+	getSystemMessages: (req, res, renderPath) => {
+		return models.DismissedMessages
+		.findAll({
+			attributes: ['messageId'],
+			where: {
+				userId: req.session.user
+			}
+		})
+		.then((dismissedResults) => {
+			if(dismissedResults.length == 0) {
+				return models.SystemMessages
+				.findAll({
+					attributes: ['id', 'message'],
+						where: {
+							expires: {
+								$gt: moment(new Date()).toISOString()
+							}
+						}
+				})
+				.then((systemMessageResults) => {
+					let messagesToShow = [];
+					for(var i = 0; i < systemMessageResults.length; i++) {
+						let messages = {
+							id: systemMessageResults[i].dataValues.id,
+							text: systemMessageResults[i].dataValues.message
+						}
+						messagesToShow.push(messages);
+					}
+					req.session.systemMessages = messagesToShow;
+					req.session.save();
+					console.log(req.session);
+					res.render(renderPath, {
+						messages: req.session.systemMessages
+					});
+				});
+			} else {
+				let dontShow = [];
+				for(var i = 0; i < dismissedResults.length; i++) {
+					dontShow.push(dismissedResults[i].messageId);
+				}
+				console.log(dontShow);
+				return models.SystemMessages
+				.findAll({
+					attributes: ['id', 'message'],
+						where: {
+							expires: {
+								$gt: moment(new Date()).toISOString()
+							}
+						}
+				})
+				.then((systemMessageResults) => {
+					console.log(systemMessageResults);
+					console.log(`don't show ${dontShow}`);
+					let messagesToShow = [];
+					for(var i = 0; i < systemMessageResults.length; i++) {
+						for(var k = 0; k < dontShow.length; k++) {
+							if(systemMessageResults[i].dataValues.id == dontShow[k]) {
+								console.log('foo');
+							} else {
+								let messages = {
+									id: systemMessageResults[i].dataValues.id,
+									text: systemMessageResults[i].dataValues.message
+								}
+								messagesToShow.push(messages);
+								req.session.systemMessages = messagesToShow;
+								req.session.save();
+								console.log(req.session);
+							}
+						}
+					}
+					res.render(renderPath, {
+						messages: req.session.systemMessages
+					});
+				})
+			}
+
+			console.log(dismissedResults);
+			res.json(dismissedResults);
+		})
+		// return models.SystemMessages
+		// .findAll({
+		// 	attributes: ['id', 'message', 'expires'],
+		// 	where: {
+		// 		expires: {
+		// 			$gt: moment(new Date()).toISOString()
+		// 		}
+		// 	}
+		// })
+		// .then((data) => {
+		// 	console.log(data);
+		//
+		// })
+		// .then((dismissedResult) => {
+		//
+		// })
+		.catch(error => console.log(error));
+	},
+
 	settingsSessMessage: (req, res, message) => {
 		req.session.message = message;
 		req.session.save();
