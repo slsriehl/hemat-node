@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
 			allowNull: false
 		},
     password: {
-			type: DataTypes.STRING,
+			type: DataTypes.CHAR,
 			allowNull: false
 		},
 		timestamp: {
@@ -45,6 +45,7 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
+				Users.hasMany(models.DismissedMessages);
         // associations can be defined here
       }
     }
