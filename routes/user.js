@@ -36,7 +36,7 @@ router.get('/user/login', (req, res) => {
 //Login new user
 router.post('/user/login', (req, res) => {
 	console.log(req.body);
-	// userController.loginUser(req, res);
+	userController.loginUser(req, res);
 });
 
 //get user settings

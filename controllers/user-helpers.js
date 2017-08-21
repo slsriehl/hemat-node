@@ -91,131 +91,88 @@ const helpers = {
 		return bcrypt.compareSync(password, hash);
 	},
 	//create a session object with stored email
-	saveSession: function(req, res, data) {
-    req.session.email = data.dataValues.email;
-		req.session.password = data.dataValues.password;
-		req.session.userId = data.dataValues.id;
-    req.session.cookie.expires = 1000 * 60 * 60 * 24 * 3;
-    req.session.save();
-		//console.log(`req.session.id from saveSession ${req.session.id}`);
-  },
+	// saveSession: function(req, res, data) {
+  //   req.session.email = data.dataValues.email;
+	// 	req.session.password = data.dataValues.password;
+	// 	req.session.userId = data.dataValues.id;
+  //   req.session.cookie.expires = 1000 * 60 * 60 * 24 * 3;
+  //   req.session.save();
+	// 	//console.log(`req.session.id from saveSession ${req.session.id}`);
+  // },
 	//save a session message and render to a template,
 	//possibly with the session email
-	sessionMessage: (req, res, message, render) => {
-		req.session.message = message;
-		req.session.save();
-		res.render(render, {data: req.session.message, layout: false});
-	},
-	//render with only a single message
+	// sessionMessage: (req, res, message, render) => {
+	// 	req.session.message = message;
+	// 	req.session.save();
+	// 	res.render(render, {data: req.session.message, layout: false});
+	// },
+
 	renderSingleMessage: (req, res, renderPath) => {
-		console.log(req.session);
+		//render with only a single message
 		console.log(req.session.message);
 		console.log(req.session.messageType);
-		res.render(renderPath, {
-			messages: [{
-				text: req.session.message,
-				id: req.session.messageType
-			}]
-		});
+		if(req.session.reset == true) {
+			this.initiateResetPassword(req, res, renderPath);
+		} else {
+			res.render(renderPath, {
+				messages: [{
+					text: req.session.message,
+					id: req.session.messageType
+				}]
+			});
+		}
 	},
 	getSystemMessages: (req, res, renderPath) => {
-		return models.DismissedMessages
-		.findAll({
-			attributes: ['messageId'],
-			where: {
-				userId: req.session.user
-			}
+		const thisDate = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss').toString();
+		console.log(thisDate);
+		return models.sequelize.query("SELECT sm.id, sm.message FROM SystemMessages sm WHERE NOT EXISTS (SELECT dm.messageId FROM DismissedMessages dm LEFT JOIN Users u ON dm.userId = u.id WHERE sm.id = dm.messageId AND u.id = " + req.session.user + ") AND sm.expires >= '" + thisDate + "';", {
+			type: models.Sequelize.QueryTypes.SELECT
 		})
-		.then((dismissedResults) => {
-			if(dismissedResults.length == 0) {
-				return models.SystemMessages
-				.findAll({
-					attributes: ['id', 'message'],
-						where: {
-							expires: {
-								$gt: moment(new Date()).toISOString()
-							}
-						}
-				})
-				.then((systemMessageResults) => {
-					let messagesToShow = [];
-					for(var i = 0; i < systemMessageResults.length; i++) {
-						let messages = {
-							id: systemMessageResults[i].dataValues.id,
-							text: systemMessageResults[i].dataValues.message
-						}
-						messagesToShow.push(messages);
-					}
-					req.session.systemMessages = messagesToShow;
-					req.session.save();
-					console.log(req.session);
-					res.render(renderPath, {
-						messages: req.session.systemMessages
-					});
-				});
+		.then((results) => {
+			console.log(`results: ${results}`);
+			if(results.length == 0 && !req.session.message) {
+				res.render(renderPath);
+			} else if (results.length == 0 && req.session.message) {
+				this.renderSingleMessage(req, res, renderPath);
 			} else {
-				let dontShow = [];
-				for(var i = 0; i < dismissedResults.length; i++) {
-					dontShow.push(dismissedResults[i].messageId);
-				}
-				console.log(dontShow);
-				return models.SystemMessages
-				.findAll({
-					attributes: ['id', 'message'],
-						where: {
-							expires: {
-								$gt: moment(new Date()).toISOString()
-							}
-						}
-				})
-				.then((systemMessageResults) => {
-					console.log(systemMessageResults);
-					console.log(`don't show ${dontShow}`);
-					let messagesToShow = [];
-					for(var i = 0; i < systemMessageResults.length; i++) {
-						for(var k = 0; k < dontShow.length; k++) {
-							if(systemMessageResults[i].dataValues.id == dontShow[k]) {
-								console.log('foo');
-							} else {
-								let messages = {
-									id: systemMessageResults[i].dataValues.id,
-									text: systemMessageResults[i].dataValues.message
-								}
-								messagesToShow.push(messages);
-								req.session.systemMessages = messagesToShow;
-								req.session.save();
-								console.log(req.session);
-							}
-						}
+				let systemMessages = [];
+				for(let i = 0; i < results.length; i++) {
+					let systemMessage = {
+						text: results[i].message,
+						id: results[i].id
 					}
-					res.render(renderPath, {
-						messages: req.session.systemMessages
+					systemMessages.push(systemMessage);
+				}
+				req.session.systemMessages = systemMessages;
+				if(req.session.message) {
+					systemMessages.push({
+						text: req.session.message,
+						id: req.session.messageType
 					});
-				})
+				}
+				res.render(renderPath, {
+					messages: systemMessages
+				});
 			}
-
-			console.log(dismissedResults);
-			res.json(dismissedResults);
 		})
-		// return models.SystemMessages
-		// .findAll({
-		// 	attributes: ['id', 'message', 'expires'],
-		// 	where: {
-		// 		expires: {
-		// 			$gt: moment(new Date()).toISOString()
-		// 		}
-		// 	}
-		// })
-		// .then((data) => {
-		// 	console.log(data);
-		//
-		// })
-		// .then((dismissedResult) => {
-		//
-		// })
-		.catch(error => console.log(error));
-	},
+		.catch((error) => console.log(error));
 
+		// return models.DismissedMessages.create({
+		// 	userId: 95,
+		// 	messageId: 2
+		// })
+	},
+	initiateResetPassword: (req, res) => {
+		console.log('initiate reset password fn fired');
+		//use nodemailer and UUID generator plus a DB table giving an expiration date of the UUID to send an email with a path to reset that only works if the UUID isn't expired. requires routes, /user/reset get (validate UUID once), plus an error page if the uuid is expired, and a db migration to create the table of valid reset tokens
+
+		//can you use handlebars to template an email sent through nodemailer?
+	},
+	resetPassword: (req, res) => {
+		console.log('reset password fn fired');
+		//post route validate uuid token again plus validate email address typed in.  hash password, store, login, and display a req.session.message showing reset password successful in addition to system messages
+		//set Users table requireReset to false before sending to login
+	},
 	settingsSessMessage: (req, res, message) => {
 		req.session.message = message;
 		req.session.save();

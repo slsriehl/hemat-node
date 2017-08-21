@@ -2,6 +2,9 @@ const models = require('../models');
 
 const helpers = require('./user-helpers');
 const cookieHelpers = require('./cookie-helpers');
+const generalHelpers = require('./general-helpers');
+
+const escape = require('escape-html');
 
 const readController = require('./read');
 const contextController = require('./context');
@@ -61,69 +64,84 @@ const controller = {
 				.create(newUser)
 				.then((data) => {
 					console.log(data);
-					req.session.message = 'Welcome to Hematogones.com!  I hope you find these tools useful.  We will never sell your information.';
+					req.session.message = escape('Welcome to Hematogones.com!  I hope you find these tools useful.  We will never sell your information.');
 					req.session.messageType = 'successful-signup';
 					req.session.user = data.dataValues.id;
 					req.session.save();
 					helpers.getSystemMessages(req, res, 'index.hbs');
 				})
 			} else {
-				req.session.message = 'Sorry, that username or email is taken already.  Please try another or <a href="/reset">reset your account</a>.';
-				req.session.messageType = 'fail';
+				req.session.message = escape('Sorry, that username or email is taken already.  Please try another or <a href="/reset">reset your account</a>.');
+				req.session.messageType = 'failed-signup';
 				req.session.save();
 				helpers.renderSingleMessage(req, res, 'login/signup.hbs');
 			}
 		})
-		// .catch(error => console.log(error));
-		//
-		// 	//if signup succeeds, save session, send cookie in header, and render
-		// 	//the todo page
-		// 	req.session.message = 'Signup successful!  Start saving to-dos now.';
-		// 	helpers.saveSession(req, res, data);
-		// 	res.header('Cookie', req.session.id);
-		// 	const cookie = req.session.id;
-		// 	contextController.addInitialContexts(req, res, cookie);
-		// 	//console.log(`data from user save ${util.inspect(data)}`);
-		// })
-		// //if there's some error with the sequelize call,
-		// //render the signup page again with a fail message
-		// .catch((error) => {
-		// 	helpers.sessionMessage(req, res, `Signup not successful.`, 'signup.hbs');
-		// });
-
+		.catch((error) => {
+			req.session.error = error;
+			req.session.message = escape("Sorry, we had an error.  Please try to sign up again.  If you get another error, please <a href='/mail' target='_blank'>email our admin</a>.");
+			req.session.messageType = 'system-fail';
+			req.session.save();
+			generalHelpers.writeToErrorLog(req);
+			helpers.renderSingleMessage(req, res, 'login/signup.hbs');
+		});
 	},
 	//login a user by authenticating login info against the DB
 	loginUser: (req, res) => {
 		//body elements are email and password
 		console.log(req.body);
 		//sequelize call to authenticate user against the Users table
-		return models.User
+		return models.Users
 		.findOne({
-			//obj destructing doesn't work.
-			where: { email: req.body.email }
+			attributes: ['id', 'password', 'requireReset'],
+			where: {
+				$or: {
+					email: req.body.credential,
+					username: req.body.credential
+				}
+			}
 		})
 		.then((data) => {
 			console.log(`data ${util.inspect(data)}`);
 			//sequelize call succeeded
 			//compare stored hash to password sent in post request
-			const hash = helpers.getHash(req.body.password, data.dataValues.password);
-			//if the password matches, send cookie in header and
-			//render todo page with the session success message
-			if(hash) {
-				req.session.message = `You have successfully logged in.`;
-				helpers.saveSession(req, res, data);
-				res.header('Cookie', req.session.id);
-				const cookie = req.session.id;
-				readController.readTodos(req, res, cookie);
+			if(data == null) {
+				req.session.message = escape("Sorry, that username or email doesn't match any on record.  Please try again or <a href='/user/reset/request'>reset your password</a>.");
+				req.session.messageType = 'failed-login';
+				req.session.save();
+				helpers.renderSingleMessage(req, res, 'login/login.hbs');
+			} else if(data.dataValues.requireReset == true) {
+				req.session.reset = true;
+				req.session.user = data.dataValues.id;
+				req.session.message = escape("We've recently upgraded our login system.  Please check the email you registered to reset your password.");
+				req.session.messageType = 'password-reset-required';
+				req.session.save();
+				helpers.renderSingleMessage(req, res, 'index.hbs');
 			} else {
-				//if there's data but the hash doesn't match the entered password
-				helpers.sessionMessage(req, res, `Sorry, your credentials don't match any users.  Please check them and try again.`, 'login.hbs');
+				const hash = helpers.getHash(req.body.password, data.dataValues.password);
+				if(hash) {
+					//password matches
+					req.session.user = data.dataValues.id;
+					req.session.message = null;
+					req.session.save();
+					helpers.getSystemMessages(req, res, 'index.hbs');
+				} else {
+					//if there's data but the hash doesn't match the entered password
+					req.session.message = escape("Sorry, that password isn't right.  Please try again or <a href='/user/reset'>reset your password</a>.");
+					req.session.messageType = 'failed-login';
+					req.session.save();
+					helpers.renderSingleMessage(req, res, 'login/login.hbs');
+				}
 			}
 		})
 		//if the sequelize call fails
 		.catch((error) => {
-			console.log(error);
-			helpers.sessionMessage(req, res, `Sorry, your credentials don't match any users.  Please check them and try again.`, 'login.hbs');
+			req.session.error = error;
+			req.session.message = escape("Sorry, we had an error.  Please try to login again.  If you get another error, please <a href='/mail' target='_blank'>email our admin</a>.");
+			req.session.messageType = 'system-fail';
+			req.session.save();
+			generalHelpers.writeToErrorLog(req);
+			helpers.renderSingleMessage(req, res, 'login/login.hbs');
 		});
 	},
 	//delete the session object on logout and render the login page
