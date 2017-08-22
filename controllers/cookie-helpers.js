@@ -32,7 +32,7 @@ const helpers = {
 		cookieFromBrowser = helpers.readCookie(req);
 		console.log(cookieFromBrowser);
 		console.log(req.session.id);
-		if (cookieFromBrowser == req.session.id || newAuth) {
+		if ((cookieFromBrowser == req.session.id && req.session.user) || newAuth) {
 			req.session.isAuth = true;
 			return true;
 		} else {

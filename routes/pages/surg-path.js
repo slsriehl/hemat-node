@@ -3,6 +3,8 @@ const express = require('express');
 
 const router = new express.Router;
 
+const controller = require('../../controllers/pages');
+
 //needs database connection
 router.get('/surg-path/ihc-table', (req, res) => {
 	//IHC modal routes
@@ -12,18 +14,14 @@ router.get('/surg-path/ihc-table', (req, res) => {
 	//initial page load with data: controller: if the user has previous reports, pull data & template results including download button
 	//previous report handling: AJAX & controller: if the user selects a previous report, template text from DB & populate generate report button autodownload
 	//placeholder data
-	const data = [{
-			'opt': 'foo',
-			'name': 'bar',
-			'interp':'baz'
-		}];
-	res.render('./page-views/surg-path/ihc-table.hbs',
-	{"specificScripts":
-		[
-			"../js/surg-path/ihc-scripts.js"
-		],
-		'data': data
-	});
+	// const data = [{
+	// 		'opt': 'foo',
+	// 		'name': 'bar',
+	// 		'interp':'baz'
+	// 	}];
+	controller.userWall(req, res, './page-views/surg-path/ihc-table.hbs', [
+		"../js/surg-path/ihc-scripts.js"
+	]);
 });
 
 router.get('/surg-path/fixation', (req, res) => {
@@ -45,12 +43,10 @@ router.get('/surg-path/snippets', (req, res) => {
 	//custom helper:  if view/edit button is pushed, template fields into text areas, add generate PDF button
 	//AJAX & controller: if snippet is saved save/overwrite in controller/DB (modal for save, save as, & cancel), generate PDF button, template success & download button
 	//download controller/route path
-	res.render('./page-views/surg-path/snippets.hbs', {"specificScripts":
-		[
-			"../vendor/tag-it/tag-it.min.js",
-			"../js/surg-path/snippets-scripts.js"
-		]
-	});
+	controller.userWall(req, res, './page-views/surg-path/snippets.hbs', [
+		"../vendor/tag-it/tag-it.min.js",
+		"../js/surg-path/snippets-scripts.js"
+	]);
 });
 
 

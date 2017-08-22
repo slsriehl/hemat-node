@@ -2,6 +2,8 @@ const express = require('express');
 
 const router = new express.Router;
 
+const controller = require('../../controllers/pages');
+
 router.get('/clin-path/csf', (req, res) => {
 	//Report saving & PDFing: AJAX & controller: front end script to generate report, AJAX POST to controller to store in DB per person, generate PDF report & send to file system, and template success/result for download
 	//initial page load with data: controller: if the user has previous reports, pull data & template results including download button
