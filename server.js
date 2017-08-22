@@ -1,12 +1,13 @@
 // ++++++ dev tools ++++++
-const util = require('util');
+const util		= require('util'),
+			moment	= require('moment');
 
 // ++++++ General Express config ++++++
 const express         = require('express'),
       bodyParser      = require('body-parser'),
       logger          = require('morgan'),
 			hbs							= require('express-handlebars'),
-			cookie					= require('cookie'),
+
       cookieParser    = require('cookie-parser'),
       app             = express();
 
