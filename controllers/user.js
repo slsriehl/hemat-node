@@ -5,6 +5,7 @@ const cookieHelpers = require('./cookie-helpers');
 const generalHelpers = require('./general-helpers');
 
 const escape = require('escape-html');
+const util = require('util');
 
 
 
@@ -63,6 +64,7 @@ const controller = {
 					req.session.message = escape('Welcome to Hematogones.com!  I hope you find these tools useful.  We will never sell your information.');
 					req.session.messageType = 'successful-signup';
 					req.session.user = data.dataValues.id;
+					req.session.firstname = data.dataValues.firstname;
 					req.session.save();
 					helpers.getSystemMessages(req, res, 'index.hbs');
 				})
@@ -99,7 +101,7 @@ const controller = {
 		})
 		.then((data) => {
 			console.log(`data ${util.inspect(data)}`);
-			if(data.length === 0) {
+			if(data == null) {
 				req.session.message = escape("Sorry, that username or email doesn't match any on record.  Please try again or <a href='/user/reset/request'>reset your password</a>.");
 				req.session.messageType = 'failed-login';
 				req.session.save();
@@ -110,12 +112,14 @@ const controller = {
 				req.session.save();
 				helpers.sendResetEmail(req, res);
 			} else {
+				console.log('foo');
 				const hash = helpers.getHash(req.body.password, data.dataValues.password);
 				if(hash) {
 					//password matches
 					console.log('hash successful');
 					req.session.user = data.dataValues.id;
 					req.session.message = null;
+					req.session.messageType = null;
 					req.session.firstname = data.dataValues.firstname;
 					cookieHelpers.verifyCookie(req, res, true);
 					req.session.save();
@@ -132,6 +136,7 @@ const controller = {
 		//if the sequelize call fails
 		.catch((error) => {
 			req.session.error = error;
+			console.log(req.session.error);
 			req.session.message = escape("Sorry, we had an error.  Please try to login again.  If you get another error, please <a href='/mail' target='_blank'>email our admin</a>.");
 			req.session.messageType = 'system-fail';
 			req.session.save();

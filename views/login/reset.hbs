@@ -1,0 +1,43 @@
+<div class="container-fluid">
+	{{#if messages}}
+		{{#each messages}}
+			<div class="row">
+				<div class="col col-md-12 message-item" id="{{id}}">
+					{{{text}}}
+					<!-- / message-item col -->
+				</div>
+				<!-- /message-item row -->
+			</div>
+		{{/each}}
+	{{/if}}
+
+	<div class="row">
+		<div class="col col-md-4">
+			<!-- end placeholder div -->
+		</div>
+		<div class="col col-md-4">
+			<h2 class="text-center">Reset Password</h2>
+			<form id="reset-form" action="/reset/{{code}}" method="POST">
+				<div class="form-group">
+					<label>New Password</label>
+					<input
+						type="password"
+						name="password"
+						class="form-control"
+						required
+					/>
+					<div class="hide-show">
+						<small class="show">Show</small>
+					</div>
+				</div>
+				<button type="submit" class="btn btn-default">Reset Password</button>
+			</form>
+			<!-- end login form col -->
+		</div>
+		<div class="col col-md-4">
+			<!-- end placeholder col -->
+		</div>
+		<!-- end form row -->
+	</div>
+	<!-- end container fluid -->
+</div>

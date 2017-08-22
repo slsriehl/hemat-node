@@ -63,12 +63,12 @@ router.post('/reset/request', (req, res) => {
 });
 
 //load the page to enter the new password
-router.get('/reset/:uuid', (req, res) => {
+router.get('/reset/:code', (req, res) => {
 	resetController.showResetPage(req, res);
 });
 
 //actually set a new password from reset email
-router.post('/reset/:uuid', (req, res) => {
+router.post('/reset/:code', (req, res) => {
 	resetController.resetPassword(req, res);
 });
 
