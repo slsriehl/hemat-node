@@ -64,6 +64,7 @@ const controller = {
 				.create(newUser)
 				.then((data) => {
 					console.log(data);
+					cookieHelpers.verifyCookie(req, res, true);
 					req.session.message = escape('Welcome to Hematogones.com!  I hope you find these tools useful.  We will never sell your information.');
 					req.session.messageType = 'successful-signup';
 					req.session.user = data.dataValues.id;
@@ -93,7 +94,7 @@ const controller = {
 		//sequelize call to authenticate user against the Users table
 		return models.Users
 		.findOne({
-			attributes: ['id', 'password', 'requireReset'],
+			attributes: ['id', 'password', 'firstname', 'requireReset'],
 			where: {
 				$or: {
 					email: req.body.credential,
@@ -121,8 +122,11 @@ const controller = {
 				const hash = helpers.getHash(req.body.password, data.dataValues.password);
 				if(hash) {
 					//password matches
+					console.log('hash successful');
 					req.session.user = data.dataValues.id;
 					req.session.message = null;
+					req.session.firstname = data.dataValues.firstname;
+					cookieHelpers.verifyCookie(req, res, true);
 					req.session.save();
 					helpers.getSystemMessages(req, res, 'index.hbs');
 				} else {
@@ -146,36 +150,57 @@ const controller = {
 	},
 	//delete the session object on logout and render the login page
 	logoutUser: (req, res) => {
-		console.log(req.body);
+		console.log(req.params);
 		req.session.destroy();
-		res.render('login.hbs', {layout: false});
-		//
+		res.render('index.hbs');
+	},
+	//show the index page whether logged in or not
+	renderIndex: (req, res) => {
+		if(cookieHelpers.verifyCookie(req, res)) {
+			req.session.message = null;
+			res.render('index.hbs', {
+				messages: req.session.systemMessages,
+				isAuth: {
+					check: req.session.isAuth,
+					firstname: req.session.firstname
+				}
+			});
+		} else {
+			res.render('index.hbs');
+		}
 	},
 	//display settings page
 	userSettings: (req, res) => {
-		console.log(req.headers);
-		const sentCookie = cookieHelpers.readCookie(req, 'do-it');
-		//query the session store for the user's session
-		//to display their email address on the settings page
-		return models.ConnectSession
-		.findOne({
-			where: { sid: sentCookie }
-		})
-		.then((data) => {
-			console.log(data.dataValues);
-			//the data in the session store is saved as a string,
-			//so parse it into an object
-			sessionObj = JSON.parse(data.dataValues.data);
-			console.log(sessionObj.email);
-			//render email on settings page
-			res.render('settings.hbs', {email: sessionObj.email, layout: false});
-		})
-		//if the call to the session store fails
-		.catch((error) => {
-			console.log(error);
-			helpers.sessionMessage(req, res, `Sorry, your credentials don't match any users.  Please check them and try again.`, 'login.hbs');
-		});
-
+		//console.log(req.headers.cookie);
+		//use the session to display the email and username of the user
+		if(cookieHelpers.verifyCookie(req, res)) {
+			console.log(req.session);
+			return models.Users
+			.findOne({
+				attributes: ['id', 'email', 'username'],
+				where: {
+					id: req.session.user
+				}
+			})
+			.then((data) => {
+				if(data.dataValues.id == req.session.user) {
+					res.render('login/settings.hbs', {
+							messages: [{
+								text: req.session.message,
+								id: req.session.messageType
+							}],
+							isAuth: {
+								check: req.session.isAuth,
+								firstname: req.session.firstname,
+								email: data.dataValues.email,
+								username: data.dataValues.username
+							}
+					});
+				}
+			})
+		} else {
+			res.redirect('/user/login');
+		}
 	},
 	//change user login info in the Users table
 	updateUser: (req, res) => {
@@ -183,26 +208,81 @@ const controller = {
 		//to update their account
 		//they must send their current password to authorize them to change the data
 		console.log(req.body);
-		//if they send both
-		if(req.body.newPassword && req.body.newEmail) {
-			const hash = helpers.setHash(req.body.newPassword)
-			const objToUpdate = { password: hash, email: req.body.newEmail };
-			helpers.updateUser(req, res, objToUpdate);
-		} else if(req.body.newPassword) {
-			//if they just change the password,
-			//pass the new password to the helper function to change the stored hash
-			const hash = helpers.setHash(req.body.newPassword)
-			const objToUpdate = { password: hash };
-			helpers.updateUser(req, res, objToUpdate);
-		} else if(req.body.newEmail) {
-			//if they just change the email
-			//pass the new email to the helper function to change the stored address
-			const objToUpdate = { email: req.body.newEmail };
-			helpers.updateUser(req, res, objToUpdate);
-		} else {
-			//if neither a new password nor a new email is received
-			helpers.settingsSessMessage(req, res, 'Please check the data you were trying to change and send it again.');
-		}
+		return models.Users
+		.findOne({
+			attributes: ['password'],
+			where: {
+				id: req.session.user
+			}
+		})
+		.then((data) => {
+			const hash = helpers.getHash(req.body.password, data.dataValues.password);
+			if(!hash) {
+				req.session.message = escape("Sorry, the current password you entered isn't right.  Please try again or <a href='/user/reset'>reset your password</a>.");
+				req.session.messageType = 'failed-settings-auth';
+				req.session.save();
+				res.redirect('/user');
+			} else {
+				const objToUpdate = {
+					password: helpers.setHash(req.body.newPassword),
+					email: req.body.newEmail,
+					username: req.body.newUsername
+				};
+				const cleanObj = generalHelpers.cleanObj(objToUpdate);
+				models.Users
+				.findAll({
+					attributes: ['id', 'username', 'email'],
+					where: {
+						id: {
+							$ne: req.session.user
+						},
+						$or: {
+							username: req.body.newUsername,
+							email: req.body.newEmail
+						}
+					}
+				})
+				.then((data) => {
+					if(data.length > 0) {
+						req.session.message = escape("Sorry, it looks like someone already has that email or username.  Please try again.");
+						req.session.messageType = 'settings-duplicate-username-or-email';
+						req.session.save();
+						res.redirect('/user');
+					} else if (!cleanObj) {
+						req.session.message = escape("It doesn't seem like you entered any data to change.  Please try again.");
+						req.session.messageType = 'settings-no-info';
+						req.session.save();
+						res.redirect('/user');
+					} else {
+						models.Users
+						.update(cleanObj, {
+							where: {
+								id: req.session.user
+							}
+						})
+						.then((result) => {
+							console.log(result);
+							let dataStr = JSON.stringify(result);
+							console.log(dataStr);
+							if(dataStr === '[0]') {
+								//if no User record was updated
+								req.session.message = escape("We weren't able to change your data.  Please try again or <a href='/mail' target='_blank'>contact our admin</a>.");
+								req.session.messageType = 'settings-didnt-change';
+								req.session.save();
+								res.redirect('/user');
+							} else if (dataStr === '[1]') {
+								//if one User record was updated
+								req.session.message = escape("We got your changes!  Check below to see if everything came through all right.");
+								req.session.messageType = 'successful-settings-change';
+								req.session.save();
+								res.redirect('/user')
+							}
+						});
+					}
+				});
+			}
+		})
+		.catch(error => console.log(error));
 	},
 	//to delete the user and all her todos in the db
 	deleteUser: (req, res) => {

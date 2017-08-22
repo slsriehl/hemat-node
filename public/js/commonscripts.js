@@ -308,4 +308,5 @@ $(function () {
 		changeToPasswordFormat($('#login-form'));
 		changeToPasswordFormat($('#signup-form'));
 
+
 });

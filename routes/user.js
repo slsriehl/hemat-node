@@ -8,14 +8,7 @@ const userController = require('../controllers/user');
 
 //render landing page based on logged in status
 router.get('/', (req, res) => {
-	res.render('index.hbs'
-	// , {
-	// 	login: {
-	// 		cookie: true,
-	// 		firstname: 'Alvin'
-	// 	}
-	// }
-);
+	userController.renderIndex(req, res);
 });
 
 //render signup page
@@ -35,22 +28,17 @@ router.get('/user/login', (req, res) => {
 
 //Login new user
 router.post('/user/login', (req, res) => {
-	console.log(req.body);
 	userController.loginUser(req, res);
 });
 
 //get user settings
 router.get('/user', (req, res) => {
-	res.render('login/settings.hbs', {
-		email: "sallie@gmail.com"
-	});
-	// userController.userSettings(req, res);
+	userController.userSettings(req, res);
 });
 
 //Update user
 router.post('/user', (req, res) => {
-	console.log(req.body);
-	// userController.updateUser(req, res);
+	userController.updateUser(req, res);
 });
 
 //Delete user
@@ -59,7 +47,7 @@ router.delete('/user', (req, res) => {
 });
 
 //logout user
-router.delete('/user/logout', (req, res) => {
+router.get('/user/logout', (req, res) => {
 	userController.logoutUser(req, res);
 });
 

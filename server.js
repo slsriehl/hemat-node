@@ -6,6 +6,7 @@ const express         = require('express'),
       bodyParser      = require('body-parser'),
       logger          = require('morgan'),
 			hbs							= require('express-handlebars'),
+			cookie					= require('cookie'),
       cookieParser    = require('cookie-parser'),
       app             = express();
 
@@ -18,11 +19,15 @@ app.use(cookieParser());
 app.use(express.static(__dirname + '/public'));
 
 //++++++ Handlebars config ++++++
+
 app.engine('hbs', hbs({
   extname: '.hbs',
   defaultLayout: 'main',
   layoutsDir: __dirname + '/views/layouts/',
-  partialsDir: __dirname + '/views/partials/'
+  partialsDir: __dirname + '/views/partials/',
+	helpers: {
+		ifCookie: require('./views/helpers/if-cookie')
+	}
 }));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'hbs');

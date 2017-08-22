@@ -9,12 +9,12 @@ add to sb-admin .hide-element
 
 <ul class="navbar-nav nav" id="headerMenu">
 <!-- display login/signup menu -->
-{{#if login.cookie}}
+{{#if isAuth.check}}
 	<!-- search bar -->
 	<li class="menu-item dropdown" id="toggleLoginNav">
 		<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="loginDropdown">
 			<i class="fa fa-user"></i>
-			&nbsp;Hi, {{login.firstname}}
+			&nbsp;Hi, {{isAuth.firstname}}
 			<span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu">

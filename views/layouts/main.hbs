@@ -66,7 +66,7 @@
 					</button>
 				</form> -->
 <!-- header bar with logged in info dropdown and search -->
-			{{> login-header}}
+			{{> login-header this}}
 <!-- sidebar goes here -->
 				<ul class="sidebar-nav navbar-nav link-search">
 					<li>
@@ -162,7 +162,7 @@
 		</section>
 <!-- scripts footer, send script names to script template so that the particular scripts are rendered last -->
 		{{> scripts/standard-scripts}}
-		{{#if login.cookie}}
+		{{#if isAuth.check}}
 			<script type="text/javascript" src="../js/users.js"></script>
 		{{/if}}
 		<!-- specific to each page -->
@@ -171,5 +171,7 @@
 				<script type="text/javascript" src={{this}}></script>
 			{{/each}}
 		{{/if}}
+		<!-- self-written -->
+			<script type="text/javascript" src="../js/commonscripts.js"></script>
 	</body>
 </html>

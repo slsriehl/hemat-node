@@ -2,7 +2,20 @@ const models = require('../models');
 const util = require('util');
 const fs = require('fs');
 
-const controller = {
+const helpers = {
+	cleanObj: (obj) => {
+		for (let propName in obj) {
+			if (obj[propName] === null || obj[propName] === undefined) {
+				delete obj[propName];
+			}
+		}
+		console.log(obj);
+		if(Object.keys(obj).length === 0) {
+			return false;
+		} else {
+			return obj;
+		}
+	},
 	writeToErrorLog:  (req) => {
 		fs.appendFile('../errors/error-log.txt', req, (error) => {
 			if(error) console.log(error);
@@ -12,6 +25,7 @@ const controller = {
 	sendMail: (req, res) => {
 		console.log('send mail fired');
 	},
+
 };
 
-module.exports = controller;
+module.exports = helpers;
