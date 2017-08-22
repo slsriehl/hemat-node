@@ -1,4 +1,4 @@
-const util = require('util');
+
 
 const helpers = {
 	readCookie: (req, cookieName) => {

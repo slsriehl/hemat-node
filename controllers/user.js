@@ -6,11 +6,6 @@ const generalHelpers = require('./general-helpers');
 
 const escape = require('escape-html');
 
-const readController = require('./read');
-const contextController = require('./context');
-
-
-const util = require('util');
 
 
 const controller = {
@@ -104,20 +99,16 @@ const controller = {
 		})
 		.then((data) => {
 			console.log(`data ${util.inspect(data)}`);
-			//sequelize call succeeded
-			//compare stored hash to password sent in post request
-			if(data == null) {
+			if(data.length === 0) {
 				req.session.message = escape("Sorry, that username or email doesn't match any on record.  Please try again or <a href='/user/reset/request'>reset your password</a>.");
 				req.session.messageType = 'failed-login';
 				req.session.save();
 				helpers.renderSingleMessage(req, res, 'login/login.hbs');
-			} else if(data.dataValues.requireReset == true) {
+			} else if(data.dataValues.requireReset) {
 				req.session.reset = true;
 				req.session.user = data.dataValues.id;
-				req.session.message = escape("We've recently upgraded our login system.  Please check the email you registered to reset your password.");
-				req.session.messageType = 'password-reset-required';
 				req.session.save();
-				helpers.renderSingleMessage(req, res, 'index.hbs');
+				helpers.sendResetEmail(req, res);
 			} else {
 				const hash = helpers.getHash(req.body.password, data.dataValues.password);
 				if(hash) {

@@ -46,6 +46,7 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
 				Users.hasMany(models.DismissedMessages);
+				Users.hasMany(models.ResetTokens);
         // associations can be defined here
       }
     }

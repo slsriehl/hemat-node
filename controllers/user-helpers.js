@@ -1,12 +1,17 @@
 
 const models = require('../models');
-const bcrypt = require('bcryptjs');
+
 const util = require('util');
+const bcrypt = require('bcryptjs');
+const uuid = require('uuid/v4');
 const moment = require('moment');
-//const secretKey = require('./config/secret');
+const escape = require('escape-html');
+
+const nodemailer = require('nodemailer');
+const transporter = require('../config/transporter');
+const from = require('../config/from');
 
 const cookieHelpers = require('./cookie-helpers');
-const readController = require('./read');
 
 const helpers = {
 	//bcrypt save password
@@ -26,16 +31,12 @@ const helpers = {
 		//render with only a single message
 		console.log(req.session.message);
 		console.log(req.session.messageType);
-		if(req.session.reset == true) {
-			helpers.initiateResetPassword(req, res, renderPath);
-		} else {
-			res.render(renderPath, {
-				messages: [{
-					text: req.session.message,
-					id: req.session.messageType
-				}]
-			});
-		}
+		res.render(renderPath, {
+			messages: [{
+				text: req.session.message,
+				id: req.session.messageType
+			}]
+		});
 	},
 	getSystemMessages: (req, res, renderPath) => {
 		const thisDate = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss').toString();
@@ -81,16 +82,87 @@ const helpers = {
 		// 	messageId: 2
 		// })
 	},
-	initiateResetPassword: (req, res) => {
-		console.log('initiate reset password fn fired');
-		//use nodemailer and UUID generator plus a DB table giving an expiration date of the UUID to send an email with a path to reset that only works if the UUID isn't expired. requires routes, /user/reset get (validate UUID once), plus an error page if the uuid is expired, and a db migration to create the table of valid reset tokens
+	sendResetEmail: (req, res) => {
+		console.log('send reset email fired');
+		const tokenEntry = {
+			userId: req.session.user,
+			code: uuid(),
+			used: false,
+			valid: true,
+			expiresAt: moment().add('24', 'h').format('YYYY-MM-DD HH:mm:ss')
+		}
+		return models.ResetTokens
+		.create(tokenEntry)
+		.then((data) => {
+			console.log(data);
+			//invalidate other tokens for the same user
+			return models.ResetTokens
+			.update({
+				valid: false
+			}, {
+				where: {
+					userId: req.session.user,
+					$not: {
+						expiresAt: data.dataValues.expiresAt
+					}
+				}
+			})
+		})
+		.then((something) => {
+			console.log(something);
+			return models.Users
+			.findOne({
+				attributes: ['firstname', 'lastname', 'email'],
+				where: {
+					id: req.session.user
+				},
+				include: [{
+					model: models.ResetTokens,
+					attributes: ['code'],
+					where: {
+						valid: true
+					}
+				}]
+			})
+		})
+		.then((result) => {
+			console.log(util.inspect(result));
+			const mailOptions = {
+				from: `"Hematogones Admin" <${from}>`,
+				to: `"${result.dataValues.firstname} ${result.dataValues.lastname}" <${result.dataValues.email}>`,
+				subject: 'Reset your password at hematogones.com',
+				text: escape(`Thanks for using hematogones.com.  To reset your password, please follow the following link or paste it into your browser. <a href='localhost:5000/reset/${result.dataValues.ResetTokens[0].dataValues.code}' target='_blank'>localhost:5000/reset/${result.dataValues.ResetTokens[0].dataValues.code}</a>  This link will expire in 24 hours, so if it's been longer than that, please request another reset link at localhost:5000/reset/request`)
+			}
+			transporter.sendMail(mailOptions, function(err, response) {
+		    console.log(`transporter.sendMail fired`);
+		    console.log(`err ${err}`);
+		    console.log(`response ${response}`);
+		    if(err && !req.session.reset) {
+		      console.log(`err fired`);
+		      req.session.message = escape("Your reset request failed.  Please contact our <a href='/mail' target='_blank'>admin</a>.");
+					req.session.messageType = 'fail-reset-send-optional';
+		    } else if(err) {
+					console.log(`err fired`);
+		      req.session.message = escape("We've recently upgraded our login system and need you to reset your password, but we're having trouble contacting you.  Please contact our <a href='/mail' target='_blank'>admin</a>.");
+					req.session.messageType = 'fail-reset-send-required';
+				} else if(response && !req.session.reset) {
+		      console.log(`response fired`);
+					req.session.message = escape("Your reset request was successful.  Please check your email to reset your password.");
+					req.session.messageType = 'successful-reset-send-optional';
+		    } else if (response) {
+					console.log(`response fired`);
+					req.session.message = escape("We've recently upgraded our login system.  Please check the email you registered to reset your password.");
+					req.session.messageType = 'successful-reset-send-required';
+				}
+				res.render('index.hbs', {
+					messages: [{
+						text: req.session.message,
+						id: req.session.messageType
+					}]
+				});
+		  });
+		});
 
-		//can you use handlebars to template an email sent through nodemailer?
-	},
-	resetPassword: (req, res) => {
-		console.log('reset password fn fired');
-		//post route validate uuid token again plus validate email address typed in.  hash password, store, login, and display a req.session.message showing reset password successful in addition to system messages
-		//set Users table requireReset to false before sending to login
 	},
 
 }

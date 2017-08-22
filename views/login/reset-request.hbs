@@ -16,8 +16,8 @@
 			<!-- end placeholder div -->
 		</div>
 		<div class="col col-md-4">
-			<h2 class="text-center">Login</h2>
-			<form id="login-form" action="/user/login" method="POST">
+			<h2 class="text-center">Request Password Reset</h2>
+			<form id="reset-request-form" action="/reset/request" method="POST">
 				<div class="form-group">
 					<label>Email or Username</label>
 					<input
@@ -28,26 +28,8 @@
 						autocorrect="off"
 					/>
 				</div>
-				<div class="form-group">
-					<label>Password</label>
-					<input
-						type="password"
-						name="password"
-						class="form-control"
-					/>
-					<div class="hide-show">
-						<small class="show">Show</small>
-					</div>
-				</div>
-				<button type="submit" class="btn btn-default">Login</button>
+				<button type="submit" class="btn btn-default">Request Reset</button>
 			</form>
-			<div>
-				<span>
-					<a href="/reset/request">
-						Reset My Password
-					</a>
-				</span>
-			</div>
 			<!-- end login form col -->
 		</div>
 		<div class="col col-md-4">

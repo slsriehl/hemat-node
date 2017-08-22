@@ -3,6 +3,7 @@ const express = require('express');
 const router = new express.Router;
 
 const userController = require('../controllers/user');
+const resetController = require('../controllers/reset');
 
 //++++++ USER routes ++++++
 
@@ -51,8 +52,26 @@ router.get('/user/logout', (req, res) => {
 	userController.logoutUser(req, res);
 });
 
-router.get('/user/clean', (req, res) => {
-	userController.cleanObjTest();
-})
+//get page to request password reset
+router.get('/reset/request', (req, res) => {
+	res.render('login/reset-request.hbs');
+});
+
+//generate a reset email
+router.post('/reset/request', (req, res) => {
+	resetController.lookupReset(req, res);
+});
+
+//load the page to enter the new password
+router.get('/reset/:uuid', (req, res) => {
+	resetController.showResetPage(req, res);
+});
+
+//actually set a new password from reset email
+router.post('/reset/:uuid', (req, res) => {
+	resetController.resetPassword(req, res);
+});
+
+
 
 module.exports = router;
