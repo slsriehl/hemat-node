@@ -51,4 +51,8 @@ router.get('/user/logout', (req, res) => {
 	userController.logoutUser(req, res);
 });
 
+router.get('/user/clean', (req, res) => {
+	userController.cleanObjTest();
+})
+
 module.exports = router;

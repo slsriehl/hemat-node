@@ -17,6 +17,7 @@
 		</div>
 		<div class="col col-md-4">
 			<h2 class="text-center">Edit Your Settings</h2>
+			<p>Your current password is required to make changes.  Complete whichever fields you wish to change and submit the form.  You do not have to change all fields.</p>
 			<form id="change-form" action="/user" method="POST">
 				<div class="form-group">
 					<label>Current Registered Email Address</label>
@@ -25,6 +26,14 @@
 				<div class="form-group">
 					<label>Current Username</label>
 					<span id="logged-in-username" class="form-control">{{isAuth.username}}</span>
+				</div>
+				<div class="form-group">
+					<label>Current First Name</label>
+					<span id="logged-in-firstname" class="form-control">{{isAuth.firstname}}</span>
+				</div>
+				<div class="form-group">
+					<label>Current Last Name</label>
+					<span id="logged-in-lastname" class="form-control">{{isAuth.lastname}}</span>
 				</div>
 				<div class="form-group">
 					<label>Current Password</label>
@@ -52,6 +61,22 @@
 					<input
 						type="text"
 						name="newUsername"
+						class="form-control"
+					/>
+				</div>
+				<div class="form-group">
+					<label>New First Name</label>
+					<input
+						type="text"
+						name="newFirstname"
+						class="form-control"
+					/>
+				</div>
+				<div class="form-group">
+					<label>New Last Name</label>
+					<input
+						type="text"
+						name="newLastname"
 						class="form-control"
 					/>
 				</div>

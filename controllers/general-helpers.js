@@ -5,11 +5,28 @@ const fs = require('fs');
 const helpers = {
 	cleanObj: (obj) => {
 		for (let propName in obj) {
-			if (obj[propName] === null || obj[propName] === undefined) {
-				delete obj[propName];
+			switch(obj[propName]) {
+				case null:
+					delete obj[propName];
+					break;
+				case false:
+					delete obj[propName];
+					break;
+				case undefined:
+					delete obj[propName];
+					break;
+				case '':
+					delete obj[propName];
+					break;
+				default:
+					// console.log(`${obj[propName]} retained in obj`)
+					break;
 			}
+			// if (obj[propName] === null || obj[propName] === undefined ||) {
+			// 	;
+			// }
 		}
-		console.log(obj);
+		console.log(`final obj returned or not ${util.inspect(obj)}`);
 		if(Object.keys(obj).length === 0) {
 			return false;
 		} else {

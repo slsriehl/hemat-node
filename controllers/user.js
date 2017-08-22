@@ -158,6 +158,7 @@ const controller = {
 	renderIndex: (req, res) => {
 		if(cookieHelpers.verifyCookie(req, res)) {
 			req.session.message = null;
+			req.session.messageType = null;
 			res.render('index.hbs', {
 				messages: req.session.systemMessages,
 				isAuth: {
@@ -177,7 +178,7 @@ const controller = {
 			console.log(req.session);
 			return models.Users
 			.findOne({
-				attributes: ['id', 'email', 'username'],
+				attributes: ['id', 'email', 'username', 'firstname', 'lastname'],
 				where: {
 					id: req.session.user
 				}
@@ -193,9 +194,13 @@ const controller = {
 								check: req.session.isAuth,
 								firstname: req.session.firstname,
 								email: data.dataValues.email,
-								username: data.dataValues.username
+								username: data.dataValues.username,
+								firstname: data.dataValues.firstname,
+								lastname: data.dataValues.lastname
 							}
 					});
+				} else {
+					res.redirect('/user/login');
 				}
 			})
 		} else {
@@ -221,12 +226,14 @@ const controller = {
 				req.session.message = escape("Sorry, the current password you entered isn't right.  Please try again or <a href='/user/reset'>reset your password</a>.");
 				req.session.messageType = 'failed-settings-auth';
 				req.session.save();
-				res.redirect('/user');
+				controller.userSettings(req, res);
 			} else {
 				const objToUpdate = {
 					password: helpers.setHash(req.body.newPassword),
 					email: req.body.newEmail,
-					username: req.body.newUsername
+					username: req.body.newUsername,
+					firstname:  req.body.newFirstname,
+					lastname: req.body.newLastname
 				};
 				const cleanObj = generalHelpers.cleanObj(objToUpdate);
 				models.Users
@@ -247,12 +254,12 @@ const controller = {
 						req.session.message = escape("Sorry, it looks like someone already has that email or username.  Please try again.");
 						req.session.messageType = 'settings-duplicate-username-or-email';
 						req.session.save();
-						res.redirect('/user');
+						controller.userSettings(req, res);
 					} else if (!cleanObj) {
 						req.session.message = escape("It doesn't seem like you entered any data to change.  Please try again.");
 						req.session.messageType = 'settings-no-info';
 						req.session.save();
-						res.redirect('/user');
+						controller.userSettings(req, res);
 					} else {
 						models.Users
 						.update(cleanObj, {
@@ -269,13 +276,13 @@ const controller = {
 								req.session.message = escape("We weren't able to change your data.  Please try again or <a href='/mail' target='_blank'>contact our admin</a>.");
 								req.session.messageType = 'settings-didnt-change';
 								req.session.save();
-								res.redirect('/user');
+								controller.userSettings(req, res);
 							} else if (dataStr === '[1]') {
 								//if one User record was updated
 								req.session.message = escape("We got your changes!  Check below to see if everything came through all right.");
 								req.session.messageType = 'successful-settings-change';
 								req.session.save();
-								res.redirect('/user')
+								controller.userSettings(req, res);
 							}
 						});
 					}
@@ -284,7 +291,7 @@ const controller = {
 		})
 		.catch(error => console.log(error));
 	},
-	//to delete the user and all her todos in the db
+	//to delete the user and all her tests in the db??
 	deleteUser: (req, res) => {
 		console.log(`req.headers.cookie ${util.inspect(req.headers.cookie)}`);
 		console.log(`req.headers.password ${req.headers.password}`);
