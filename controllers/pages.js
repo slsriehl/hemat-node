@@ -1,8 +1,6 @@
 
 const cookieHelpers = require('./cookie-helpers');
 
-const encode = require('escape-html');
-
 const controller = {
 	userWall: (req, res, renderPath, scripts) => {
 		console.log(req.session);
@@ -18,7 +16,7 @@ const controller = {
 		} else {
 			res.render('index.hbs', {
 				messages: [{
-					text: encode('You need an account to access that resource.  <a href="/user/signup">Sign up</a>.'),
+					text: 'You need an account to access that resource.  <a href="/user/signup">Sign up</a>.',
 					id: `access-denied-${renderPath}`
 				}]
 			});

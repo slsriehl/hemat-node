@@ -26,6 +26,9 @@
 						class="form-control"
 						autocapitalize="off"
 						autocorrect="off"
+						pattern="^(?!.*(?:\u0022|\u0027|\u201C|\u201D|\u2018|\u2019|\u0060|\u00B4).*)"
+						text="First name can't have the \u0022 or \u0027 symbols"
+						required
 					/>
 					<label>Last Name</label>
 					<input
@@ -34,6 +37,9 @@
 						class="form-control"
 						autocapitalize="off"
 						autocorrect="off"
+						pattern="^(?!.*(?:\u0022|\u0027|\u201C|\u201D|\u2018|\u2019|\u0060|\u00B4).*)"
+						text="Last name can't have the \u0022 or \u0027 symbols"
+						required
 					/>
 				</div>
 				<div class="form-group">
@@ -45,6 +51,9 @@
 						class="form-control"
 						autocapitalize="off"
 						autocorrect="off"
+						pattern="^(?!.*(?:@|\u0022|\u0027|\u201C|\u201D|\u2018|\u2019|\u0060|\u00B4).*)"
+						text="Username can't have the @, \u0022, or \u0027 symbols"
+						required
 					/>
 				</div>
 				<div class="form-group">
@@ -55,6 +64,7 @@
 						class="form-control"
 						autocapitalize="off"
 						autocorrect="off"
+						required
 					/>
 				</div>
 				<div class="form-group">
@@ -66,6 +76,8 @@
 						class="form-control"
 						autocapitalize="off"
 						autocorrect="off"
+						pattern="^(?!.*(?:\u0022|\u0027|\u201C|\u201D|\u2018|\u2019|\u0060|\u00B4).*)"
+						text="Phone can't have the \u0022 or \u0027 symbols"
 					/>
 				</div>
 				<div class="form-group">
@@ -74,6 +86,9 @@
 						type="password"
 						name="password"
 						class="form-control"
+						pattern="^\S{8,}(?!.*(?:\u0022|\u0027|\u201C|\u201D|\u2018|\u2019|\u0060|\u00B4).*)$"
+						text="Password can't have the \u0022 or \u0027 symbols and must be at least 8 characters."
+						required
 					/>
 					<div class="hide-show">
 						<small class="show">Show</small>

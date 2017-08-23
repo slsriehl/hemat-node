@@ -1,10 +1,10 @@
 const models = require('../models');
 
+const resetController = require('./reset');
 const helpers = require('./user-helpers');
 const cookieHelpers = require('./cookie-helpers');
 const generalHelpers = require('./general-helpers');
 
-const escape = require('escape-html');
 const util = require('util');
 
 
@@ -16,26 +16,26 @@ const controller = {
 		console.log(req.body);
 		//sync models and save user to the Users table
 		//hash password
-		const hash = helpers.setHash(req.body.password);
+		const hash = helpers.setHash(trim(req.body.password));
 		console.log(hash);
 
 		//create new user to save
 		const newUser = {
-			firstname: req.body.firstname,
-			lastname: req.body.lastname,
-			username: req.body.username,
-			email: req.body.email,
+			firstname: trim(req.body.firstname),
+			lastname: trim(req.body.lastname),
+			username: trim(req.body.username),
+			email: trim(req.body.email),
 			password: hash,
 			requireReset: false
 		}
 		if(req.body.mobile) {
 			//sanitize mobile to a string of just numbers
-			newUser.mobile = req.body.mobile;
+			newUser.mobile = trim(req.body.mobile);
 		}
 
 		const testUser = {
-			username: req.body.username,
-			email: req.body.email
+			username: trim(req.body.username),
+			email: trim(req.body.email)
 		}
 
 		console.log(newUser);
@@ -61,7 +61,7 @@ const controller = {
 				.then((data) => {
 					console.log(data);
 					cookieHelpers.verifyCookie(req, res, true);
-					req.session.message = escape('Welcome to Hematogones.com!  I hope you find these tools useful.  We will never sell your information.');
+					req.session.message = 'Welcome to Hematogones.com!  I hope you find these tools useful.';
 					req.session.messageType = 'successful-signup';
 					req.session.user = data.dataValues.id;
 					req.session.firstname = data.dataValues.firstname;
@@ -69,7 +69,7 @@ const controller = {
 					helpers.getSystemMessages(req, res, 'index.hbs');
 				})
 			} else {
-				req.session.message = escape('Sorry, that username or email is taken already.  Please try another or <a href="/reset">reset your account</a>.');
+				req.session.message = 'Sorry, that username or email is taken already.  Please try another or <a href="/reset">reset your account</a>.';
 				req.session.messageType = 'failed-signup';
 				req.session.save();
 				helpers.renderSingleMessage(req, res, 'login/signup.hbs');
@@ -77,7 +77,7 @@ const controller = {
 		})
 		.catch((error) => {
 			req.session.error = error;
-			req.session.message = escape("Sorry, we had an error.  Please try to sign up again.  If you get another error, please <a href='/mail' target='_blank'>email our admin</a>.");
+			req.session.message = "Sorry, we had an error.  Please try to sign up again.  If you get another error, please <a href='/mail' target='_blank'>email our admin</a>.";
 			req.session.messageType = 'system-fail';
 			req.session.save();
 			generalHelpers.writeToErrorLog(req);
@@ -94,15 +94,15 @@ const controller = {
 			attributes: ['id', 'password', 'firstname', 'requireReset'],
 			where: {
 				$or: {
-					email: req.body.credential,
-					username: req.body.credential
+					email: trim(req.body.credential),
+					username: trim(req.body.credential)
 				}
 			}
 		})
 		.then((data) => {
 			console.log(`data ${util.inspect(data)}`);
 			if(data == null) {
-				req.session.message = escape("Sorry, that username or email doesn't match any on record.  Please try again or <a href='/user/reset/request'>reset your password</a>.");
+				req.session.message = "Sorry, that username or email doesn't match any on record.  Please try again or <a href='/user/reset/request'>reset your password</a>.";
 				req.session.messageType = 'failed-login';
 				req.session.save();
 				helpers.renderSingleMessage(req, res, 'login/login.hbs');
@@ -110,10 +110,10 @@ const controller = {
 				req.session.reset = true;
 				req.session.user = data.dataValues.id;
 				req.session.save();
-				helpers.sendResetEmail(req, res);
+				resetController.sendResetEmail(req, res);
 			} else {
 				console.log('foo');
-				const hash = helpers.getHash(req.body.password, data.dataValues.password);
+				const hash = helpers.getHash(trim(req.body.password), data.dataValues.password);
 				if(hash) {
 					//password matches
 					console.log('hash successful');
@@ -126,7 +126,7 @@ const controller = {
 					helpers.getSystemMessages(req, res, 'index.hbs');
 				} else {
 					//if there's data but the hash doesn't match the entered password
-					req.session.message = escape("Sorry, that password isn't right.  Please try again or <a href='/user/reset'>reset your password</a>.");
+					req.session.message = "Sorry, that password isn't right.  Please try again or <a href='/user/reset'>reset your password</a>.";
 					req.session.messageType = 'failed-login';
 					req.session.save();
 					helpers.renderSingleMessage(req, res, 'login/login.hbs');
@@ -137,7 +137,7 @@ const controller = {
 		.catch((error) => {
 			req.session.error = error;
 			console.log(req.session.error);
-			req.session.message = escape("Sorry, we had an error.  Please try to login again.  If you get another error, please <a href='/mail' target='_blank'>email our admin</a>.");
+			req.session.message = "Sorry, we had an error.  Please try to login again.  If you get another error, please <a href='/mail' target='_blank'>email our admin</a>.";
 			req.session.messageType = 'system-fail';
 			req.session.save();
 			generalHelpers.writeToErrorLog(req);
@@ -217,19 +217,19 @@ const controller = {
 			}
 		})
 		.then((data) => {
-			const hash = helpers.getHash(req.body.password, data.dataValues.password);
+			const hash = helpers.getHash(trim(req.body.password), data.dataValues.password);
 			if(!hash) {
-				req.session.message = escape("Sorry, the current password you entered isn't right.  Please try again or <a href='/user/reset'>reset your password</a>.");
+				req.session.message = "Sorry, the current password you entered isn't right.  Please try again or <a href='/user/reset'>reset your password</a>.";
 				req.session.messageType = 'failed-settings-auth';
 				req.session.save();
 				controller.userSettings(req, res);
 			} else {
 				const objToUpdate = {
-					password: helpers.setHash(req.body.newPassword),
-					email: req.body.newEmail,
-					username: req.body.newUsername,
-					firstname:  req.body.newFirstname,
-					lastname: req.body.newLastname
+					password: helpers.setHash(trim(req.body.newPassword)),
+					email: trim(req.body.newEmail),
+					username: trim(req.body.newUsername),
+					firstname:  trim(req.body.newFirstname),
+					lastname: trim(req.body.newLastname)
 				};
 				const cleanObj = generalHelpers.cleanObj(objToUpdate);
 				models.Users
@@ -240,19 +240,19 @@ const controller = {
 							$ne: req.session.user
 						},
 						$or: {
-							username: req.body.newUsername,
-							email: req.body.newEmail
+							username: trim(req.body.newUsername),
+							email: trim(req.body.newEmail)
 						}
 					}
 				})
 				.then((data) => {
 					if(data.length > 0) {
-						req.session.message = escape("Sorry, it looks like someone already has that email or username.  Please try again.");
+						req.session.message = "Sorry, it looks like someone already has that email or username.  Please try again.";
 						req.session.messageType = 'settings-duplicate-username-or-email';
 						req.session.save();
 						controller.userSettings(req, res);
 					} else if (!cleanObj) {
-						req.session.message = escape("It doesn't seem like you entered any data to change.  Please try again.");
+						req.session.message = "It doesn't seem like you entered any data to change.  Please try again.";
 						req.session.messageType = 'settings-no-info';
 						req.session.save();
 						controller.userSettings(req, res);
@@ -269,13 +269,13 @@ const controller = {
 							console.log(dataStr);
 							if(dataStr === '[0]') {
 								//if no User record was updated
-								req.session.message = escape("We weren't able to change your data.  Please try again or <a href='/mail' target='_blank'>contact our admin</a>.");
+								req.session.message = "We weren't able to change your data.  Please try again or <a href='/mail' target='_blank'>contact our admin</a>.";
 								req.session.messageType = 'settings-didnt-change';
 								req.session.save();
 								controller.userSettings(req, res);
 							} else if (dataStr === '[1]') {
 								//if one User record was updated
-								req.session.message = escape("We got your changes!  Check below to see if everything came through all right.");
+								req.session.message = "We got your changes!  Check below to see if everything came through all right.";
 								req.session.messageType = 'successful-settings-change';
 								req.session.save();
 								controller.userSettings(req, res);
@@ -289,64 +289,64 @@ const controller = {
 	},
 	//to delete the user and all her tests in the db??
 	deleteUser: (req, res) => {
-		console.log(`req.headers.cookie ${util.inspect(req.headers.cookie)}`);
-		console.log(`req.headers.password ${req.headers.password}`);
-		const sentCookie = cookieHelpers.readCookie(req, 'do-it');
-		//sync the users table
-			//query the session store for the user's email address based on the
-			//cookie stored on the client side
-		return models.ConnectSession
-		.findOne({
-			where: { sid: sentCookie }
-		})
-		.then((data) => {
-			//if the cookie is found
-			console.log(`found session? ${util.inspect(data.data)}`);
-			//parse the string in the session data column to an object
-			const emailObj = JSON.parse(data.data);
-			//query the Users table for the user stored in the session
-			//if the user is found
-			console.log(`found user? ${util.inspect(emailObj)}`);
-			const hash = helpers.getHash(req.headers.password, emailObj.password);
-			//if the password sent to authorize delete matches the stored hash
-			if(hash) {
-				console.log('password is correct');
-				//delete the User and cascade delete all her todos
-				return models.User
-				.destroy({
-					//object destructuring doesn't work here either. pooh!
-					where: { email: emailObj.email }
-				})
-				.then((data) => {
-					//if a response is received from deleting the user
-					//console.log(`data ${util.inspect(data)}`);
-					//console.log(typeof data);
-					if(data === 0) {
-					//the user wasn't deleted
-						helpers.sessionMessage(req, res, `Sorry, your account wasn't deleted.  Please check your credentials and try again.`, 'login.hbs');
-					} else if(data === 1) {
-						//the user was deleted so delete her session as well
-						req.session.destroy();
-						res.render('login.hbs', {data: 'Your account and all your to-dos were successfully deleted.', layout: false});
-					}
-				})
-				.catch((error) => {
-					//no data was received from deleting the user
-					console.log('error, destroy user call failed');
-					throw error;
-				});
-			} else {
-				//if the password sent to authorize the user delete
-				//doesn't match the stored hash
-				helpers.sessionMessage(req, res, 'Your password is incorrect.  Please try again.', 'login.hbs');
-			}
-		})
-		.catch((error) => {
-			//if the client side cookie is not found in the session store
-			console.log(`error, find session call failed.`);
-			helpers.sessionMessage(req, res, 'Error deleting your account.  Please login again.', 'login.hbs');
-			throw error;
-		});
+	// 	console.log(`req.headers.cookie ${util.inspect(req.headers.cookie)}`);
+	// 	console.log(`req.headers.password ${req.headers.password}`);
+	// 	const sentCookie = cookieHelpers.readCookie(req, 'do-it');
+	// 	//sync the users table
+	// 		//query the session store for the user's email address based on the
+	// 		//cookie stored on the client side
+	// 	return models.ConnectSession
+	// 	.findOne({
+	// 		where: { sid: sentCookie }
+	// 	})
+	// 	.then((data) => {
+	// 		//if the cookie is found
+	// 		console.log(`found session? ${util.inspect(data.data)}`);
+	// 		//parse the string in the session data column to an object
+	// 		const emailObj = JSON.parse(data.data);
+	// 		//query the Users table for the user stored in the session
+	// 		//if the user is found
+	// 		console.log(`found user? ${util.inspect(emailObj)}`);
+	// 		const hash = helpers.getHash(req.headers.password, emailObj.password);
+	// 		//if the password sent to authorize delete matches the stored hash
+	// 		if(hash) {
+	// 			console.log('password is correct');
+	// 			//delete the User and cascade delete all her todos
+	// 			return models.User
+	// 			.destroy({
+	// 				//object destructuring doesn't work here either. pooh!
+	// 				where: { email: emailObj.email }
+	// 			})
+	// 			.then((data) => {
+	// 				//if a response is received from deleting the user
+	// 				//console.log(`data ${util.inspect(data)}`);
+	// 				//console.log(typeof data);
+	// 				if(data === 0) {
+	// 				//the user wasn't deleted
+	// 					helpers.sessionMessage(req, res, `Sorry, your account wasn't deleted.  Please check your credentials and try again.`, 'login.hbs');
+	// 				} else if(data === 1) {
+	// 					//the user was deleted so delete her session as well
+	// 					req.session.destroy();
+	// 					res.render('login.hbs', {data: 'Your account and all your to-dos were successfully deleted.', layout: false});
+	// 				}
+	// 			})
+	// 			.catch((error) => {
+	// 				//no data was received from deleting the user
+	// 				console.log('error, destroy user call failed');
+	// 				throw error;
+	// 			});
+	// 		} else {
+	// 			//if the password sent to authorize the user delete
+	// 			//doesn't match the stored hash
+	// 			helpers.sessionMessage(req, res, 'Your password is incorrect.  Please try again.', 'login.hbs');
+	// 		}
+	// 	})
+	// 	.catch((error) => {
+	// 		//if the client side cookie is not found in the session store
+	// 		console.log(`error, find session call failed.`);
+	// 		helpers.sessionMessage(req, res, 'Error deleting your account.  Please login again.', 'login.hbs');
+	// 		throw error;
+	// 	});
 	}
 }
 
