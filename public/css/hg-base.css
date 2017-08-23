@@ -82,3 +82,39 @@ textarea {
     overflow: scroll;
     max-height: 800px;
 }
+
+/*message center*/
+.message-center .message-box {
+	width: 100%;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	padding: 1rem 1rem 2rem 2rem;
+	margin: 0.5rem 0;
+	background-color: rgba(100, 176, 228, 0.5);
+}
+
+.message-center .message-box .message-item {
+	padding-right: 1rem;
+}
+
+.message-center .message-box .message-dismiss {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+}
+
+.message-center .message-box .message-dismiss h2 {
+	line-height: 0.5;
+	margin: 0;
+}
+
+/* form validation error fields */
+
+.form-group .error {
+	width: 100%;
+	display: block;
+	background-color: rgba(219, 114, 123, 0.5);
+	box-sizing: border-box;
+	padding: 0.5rem;
+}
