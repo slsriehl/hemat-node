@@ -83,16 +83,25 @@ const controller = {
 				req.session.message = 'Sorry, that username or email is taken already.  Please try another or <a href="/reset">reset your account</a>.';
 				req.session.messageType = 'failed-signup';
 				req.session.save();
-				helpers.renderSingleMessage(req, res, 'login/signup.hbs');
+				helpers.renderSingleMessage(req, res, 'login/signup.hbs',
+				[
+
+					"../vendor/jquery/js/jquery.validate.min.js", "../js/login-settings.js"
+				], true);
 			}
 		})
 		.catch((error) => {
 			req.session.error = error;
-			req.session.message = "Sorry, we had an error.  Please try to sign up again.  If you get another error, please <a href='/mail' target='_blank'>email our admin</a>.";
+			req.session.message = "Sorry, we had an error.  Please try to sign up again, and be mindful of the Captcha field.  If you get another error, please <a href='/mail' target='_blank'>email our admin</a>.";
 			req.session.messageType = 'system-fail';
 			req.session.save();
 			generalHelpers.writeToErrorLog(req);
-			helpers.renderSingleMessage(req, res, 'login/signup.hbs');
+			helpers.renderSingleMessage(req, res, 'login/signup.hbs', [
+
+				"../vendor/jquery/js/jquery.validate.min.js", "../js/login-settings.js"
+			],
+			true
+		);
 		});
 	},
 	//login a user by authenticating login info against the DB
@@ -116,7 +125,10 @@ const controller = {
 				req.session.message = "Sorry, that username or email doesn't match any on record.  Please try again or <a href='/user/reset/request'>reset your password</a>.";
 				req.session.messageType = 'failed-login';
 				req.session.save();
-				helpers.renderSingleMessage(req, res, 'login/login.hbs');
+				helpers.renderSingleMessage(req, res, 'login/login.hbs', [
+
+					"../vendor/jquery/js/jquery.validate.min.js", "../js/login-settings.js"
+				]);
 			} else if(data.dataValues.requireReset) {
 				req.session.reset = true;
 				req.session.user = data.dataValues.id;
@@ -140,7 +152,10 @@ const controller = {
 					req.session.message = "Sorry, that password isn't right.  Please try again or <a href='/user/reset'>reset your password</a>.";
 					req.session.messageType = 'failed-login';
 					req.session.save();
-					helpers.renderSingleMessage(req, res, 'login/login.hbs');
+					helpers.renderSingleMessage(req, res, 'login/login.hbs', [
+
+						"../vendor/jquery/js/jquery.validate.min.js", "../js/login-settings.js"
+					]);
 				}
 			}
 		})
@@ -152,7 +167,10 @@ const controller = {
 			req.session.messageType = 'system-fail';
 			req.session.save();
 			generalHelpers.writeToErrorLog(req);
-			helpers.renderSingleMessage(req, res, 'login/login.hbs');
+			helpers.renderSingleMessage(req, res, 'login/login.hbs', [
+
+				"../vendor/jquery/js/jquery.validate.min.js", "../js/login-settings.js"
+			]);
 		});
 	},
 	//delete the session object on logout and render the login page
@@ -204,7 +222,11 @@ const controller = {
 								username: data.dataValues.username,
 								firstname: data.dataValues.firstname,
 								lastname: data.dataValues.lastname
-							}
+							},
+							specificScripts: [
+
+								"../vendor/jquery/js/jquery.validate.min.js", "../js/login-settings.js"
+							]
 					});
 				} else {
 					res.redirect('/user/login');
