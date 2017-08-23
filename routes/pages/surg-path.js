@@ -28,13 +28,10 @@ router.get('/surg-path/fixation', (req, res) => {
 	//Report saving & PDFing: AJAX & controller: front end script to generate report, AJAX POST to controller to store in DB per person, generate PDF report & send to file system, and template success/result for download
 	//initial page load with data: controller: if the user has previous reports, pull data & template results including download button
 	//previous report handling: AJAX & controller: if the user selects a previous report, template text from DB & populate generate report button auto download
-	res.render('./page-views/surg-path/fixation.hbs',
-	{"specificScripts":
-		[
-			"../vendor/jquery/js/jquery-ui-timepicker-addon.min.js",
-			"../js/surg-path/fixation-scripts.js"
-		]
-	});
+	controller.openAccess(req, res, './page-views/surg-path/fixation.hbs', [
+		"../vendor/jquery/js/jquery-ui-timepicker-addon.min.js",
+		"../js/surg-path/fixation-scripts.js"
+	]);
 });
 
 

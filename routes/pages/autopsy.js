@@ -6,12 +6,10 @@ const controller = require('../../controllers/pages');
 
 router.get('/autopsy/weights-table', (req, res) => {
 	//not behind a login
-	res.render('./page-views/autopsy/weights-table.hbs', {
-		specificScripts: [
-			'/path/to/scripts',
-			'/path/to/scripts'
-		]
-	});
+	controller.openAccess(req, res, './page-views/autopsy/weights-table.hbs', [
+		'/path/to/scripts',
+		'/path/to/scripts'
+	]);
 });
 
 router.get('/autopsy/stillbirth', (req, res) => {
