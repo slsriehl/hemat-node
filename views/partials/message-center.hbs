@@ -1,0 +1,18 @@
+<div class="message-center">
+	{{#if messages}}
+		{{#each messages}}
+			<div class="message-box">
+				<div class="message-dismiss">
+					<h2>&times;</h2>
+				<!-- end message-dismiss -->
+				</div>
+				<div class="message-item" id="{{id}}">
+					<span>{{{text}}}</span>
+					<!-- / message-item-->
+				</div>
+				<!-- /message-box -->
+			</div>
+		{{/each}}
+	{{/if}}
+	<!-- /message-center -->
+</div>
