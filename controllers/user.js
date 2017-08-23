@@ -4,15 +4,20 @@ const resetController = require('./reset');
 const helpers = require('./user-helpers');
 const cookieHelpers = require('./cookie-helpers');
 const generalHelpers = require('./general-helpers');
+const reCaptchaSecret = require('../config/recaptcha');
 
 const util = require('util');
-
+const ReCAPTCHA = require('recaptcha2');
 
 
 const controller = {
 	//save a new user to the db
 	signupUser: (req, res) => {
-		//body elements are email and password
+		const recaptcha = new ReCAPTCHA({
+			siteKey: "6Le99i0UAAAAAIIKkc2tRvlXTjVdwxxrwHg7YY2d",
+			secretKey: reCaptchaSecret
+		});
+
 		console.log(req.body);
 		//sync models and save user to the Users table
 		//hash password
@@ -39,17 +44,23 @@ const controller = {
 		}
 
 		console.log(newUser);
-		console.log(testUser)
-		//sequelize call to save user
-		return models.Users
-		.findAll({
-			attributes: ['username', 'email'],
-			where: {
-				$or: {
-					username: testUser.username,
-					email: testUser.email
+		console.log(testUser);
+
+		recaptcha.validateRequest(req)
+		.then(() => {
+		//body elements are many
+
+			//sequelize call to save user
+			return models.Users
+			.findAll({
+				attributes: ['username', 'email'],
+				where: {
+					$or: {
+						username: testUser.username,
+						email: testUser.email
+					}
 				}
-			}
+			})
 		})
 		.then((data) => {
 			//test with positive and negative cases
