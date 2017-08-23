@@ -7,8 +7,6 @@ const express         = require('express'),
       bodyParser      = require('body-parser'),
       logger          = require('morgan'),
 			hbs							= require('express-handlebars'),
-
-      cookieParser    = require('cookie-parser'),
       app             = express();
 
 app.use(logger("dev"));
@@ -16,7 +14,6 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(bodyParser.json());
-app.use(cookieParser());
 app.use(express.static(__dirname + '/public'));
 
 //++++++ Handlebars config ++++++
@@ -26,9 +23,9 @@ app.engine('hbs', hbs({
   defaultLayout: 'main',
   layoutsDir: __dirname + '/views/layouts/',
   partialsDir: __dirname + '/views/partials/',
-	helpers: {
-		ifCookie: require('./views/helpers/if-cookie')
-	}
+	// helpers: {
+	// 	ifCookie: require('./views/helpers/if-cookie')
+	// }
 }));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'hbs');
@@ -37,7 +34,7 @@ app.set('view engine', 'hbs');
 const session 		= require('express-session'),
 			database 		= require('./models').sequelize,
  			SequelStore	= require('connect-sequelize')(session),
-			modelName		= 'user_session';
+			modelName		= 'UserSessions';
 
 const setSecret = (secretEnvVar) => {
 	if(secretEnvVar) {
@@ -53,7 +50,11 @@ app.use(session({
   secret: setSecret(null),
   store: new SequelStore(database, {}, modelName),
   resave: true,
-  saveUninitialized: true
+  saveUninitialized: false,
+	//secure in deployment
+	// cookie: {
+	// 	secure: true
+	// }
 }));
 
 // ++++++ Express routes ++++++
