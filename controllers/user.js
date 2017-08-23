@@ -21,26 +21,26 @@ const controller = {
 		console.log(req.body);
 		//sync models and save user to the Users table
 		//hash password
-		const hash = helpers.setHash(trim(req.body.password));
+		const hash = helpers.setHash(req.body.password.trim());
 		console.log(hash);
 
 		//create new user to save
 		const newUser = {
-			firstname: trim(req.body.firstname),
-			lastname: trim(req.body.lastname),
-			username: trim(req.body.username),
-			email: trim(req.body.email),
+			firstname: req.body.firstname.trim(),
+			lastname: req.body.lastname.trim(),
+			username: req.body.username.trim().toLowerCase(),
+			email: req.body.email.trim().toLowerCase(),
 			password: hash,
 			requireReset: false
 		}
 		if(req.body.mobile) {
 			//sanitize mobile to a string of just numbers
-			newUser.mobile = trim(req.body.mobile);
+			newUser.mobile = req.body.mobile.trim();
 		}
 
 		const testUser = {
-			username: trim(req.body.username),
-			email: trim(req.body.email)
+			username: req.body.username.trim().toLowerCase(),
+			email: req.body.email.trim().toLowerCase()
 		}
 
 		console.log(newUser);
@@ -105,8 +105,8 @@ const controller = {
 			attributes: ['id', 'password', 'firstname', 'requireReset'],
 			where: {
 				$or: {
-					email: trim(req.body.credential),
-					username: trim(req.body.credential)
+					email: req.body.credential.trim().toLowerCase(),
+					username: req.body.credential.trim().toLowerCase()
 				}
 			}
 		})
@@ -124,7 +124,7 @@ const controller = {
 				resetController.sendResetEmail(req, res);
 			} else {
 				console.log('foo');
-				const hash = helpers.getHash(trim(req.body.password), data.dataValues.password);
+				const hash = helpers.getHash(req.body.password.trim(), data.dataValues.password);
 				if(hash) {
 					//password matches
 					console.log('hash successful');
@@ -228,7 +228,7 @@ const controller = {
 			}
 		})
 		.then((data) => {
-			const hash = helpers.getHash(trim(req.body.password), data.dataValues.password);
+			const hash = helpers.getHash(req.body.password.trim(), data.dataValues.password);
 			if(!hash) {
 				req.session.message = "Sorry, the current password you entered isn't right.  Please try again or <a href='/user/reset'>reset your password</a>.";
 				req.session.messageType = 'failed-settings-auth';
@@ -236,11 +236,11 @@ const controller = {
 				controller.userSettings(req, res);
 			} else {
 				const objToUpdate = {
-					password: helpers.setHash(trim(req.body.newPassword)),
-					email: trim(req.body.newEmail),
-					username: trim(req.body.newUsername),
-					firstname:  trim(req.body.newFirstname),
-					lastname: trim(req.body.newLastname)
+					password: helpers.setHash(req.body.newPassword.trim()),
+					email: req.body.newEmail.trim().toLowerCase(),
+					username: req.body.newUsername.trim().toLowerCase(),
+					firstname:  req.body.newFirstname.trim(),
+					lastname: req.body.newLastname.trim()
 				};
 				const cleanObj = generalHelpers.cleanObj(objToUpdate);
 				models.Users
@@ -251,8 +251,8 @@ const controller = {
 							$ne: req.session.user
 						},
 						$or: {
-							username: trim(req.body.newUsername),
-							email: trim(req.body.newEmail)
+							username: objToUpdate.username,
+							email: objToUpdate.email
 						}
 					}
 				})
