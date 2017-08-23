@@ -4,7 +4,13 @@ const helpers = require('./user-helpers');
 const cookieHelpers = require('./cookie-helpers');
 const generalHelpers = require('./general-helpers');
 
+const util = require('util');
+const uuid = require('uuid/v4');
 const moment = require('moment');
+const nodemailer = require('nodemailer');
+
+const transporter = require('../config/transporter');
+const from = require('../config/from');
 
 const controller = {
 	lookupReset: (req, res) => {
@@ -25,7 +31,11 @@ const controller = {
 					message: [{
 						text: "That email or username wasn't found.  Please try again.",
 						id: "reset-request-fail"
-					}]
+					}],
+					specificScripts: [
+
+						"../vendor/jquery/js/jquery.validate.min.js", "../js/login-settings.js"
+					]
 				});
 			} else {
 				req.session.user = data.dataValues.id;
@@ -48,14 +58,22 @@ const controller = {
 			const isNotExpired = moment(data.dataValues.expiresAt).isAfter();
 			if(data.dataValues.valid && isNotExpired) {
 				res.render('login/reset.hbs', {
-					code: req.params.code
+					code: req.params.code,
+					specificScripts: [
+
+						"../vendor/jquery/js/jquery.validate.min.js", "../js/login-settings.js"
+					]
 				});
 			} else {
 				res.render('login/reset-request.hbs', {
 					messages: [{
 						text: 'Sorry, this reset link is expired.  Please request another and use it within 24 hours.',
 						id: 'expired-reset-request-on-load'
-					}]
+					}],
+					specificScripts: [
+
+						"../vendor/jquery/js/jquery.validate.min.js", "../js/login-settings.js"
+					]
 				});
 			}
 		})
@@ -124,7 +142,11 @@ const controller = {
 							messages: [{
 								text: 'Sorry, we were unable to record your new password.  Please try again or <a href="/mail">contact our admin</a>.',
 								id: 'expired-reset-request-on-load'
-							}]
+							}],
+							specificScripts: [
+
+								"../vendor/jquery/js/jquery.validate.min.js", "../js/login-settings.js"
+							]
 						});
 					}
 				});
@@ -133,7 +155,11 @@ const controller = {
 					messages: [{
 						text: 'Sorry, this reset link is expired.  Please request another and use it within 24 hours.',
 						id: 'expired-reset-request-on-try'
-					}]
+					}],
+					specificScripts: [
+
+						"../vendor/jquery/js/jquery.validate.min.js", "../js/login-settings.js"
+					]
 				});
 			}
 		})
