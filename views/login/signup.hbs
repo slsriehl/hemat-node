@@ -1,15 +1,11 @@
 <div class="container-fluid">
-	{{#if messages}}
-		{{#each messages}}
-			<div class="row">
-				<div class="col col-md-12 message-item" id="{{id}}">
-					<span>{{{text}}}</span>
-					<!-- / message-item col -->
-				</div>
-				<!-- /message-item row -->
-			</div>
-		{{/each}}
-	{{/if}}
+
+	<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="#">Home</a></li>
+			<li class="breadcrumb-item active">Sign Up</li>
+	</ol>
+
+{{> message-center this}}
 
 	<div class="row">
 		<div class="col col-md-4">
@@ -24,22 +20,15 @@
 						type="text"
 						name="firstname"
 						class="form-control"
-						autocapitalize="off"
-						autocorrect="off"
-						pattern="^(?!.*(?:\u0022|\u0027|\u201C|\u201D|\u2018|\u2019|\u0060|\u00B4).*)"
-						text="First name can't have the \u0022 or \u0027 symbols"
-						required
+						id="firstname"
+						autofocus
 					/>
 					<label>Last Name</label>
 					<input
 						type="text"
 						name="lastname"
 						class="form-control"
-						autocapitalize="off"
-						autocorrect="off"
-						pattern="^(?!.*(?:\u0022|\u0027|\u201C|\u201D|\u2018|\u2019|\u0060|\u00B4).*)"
-						text="Last name can't have the \u0022 or \u0027 symbols"
-						required
+						id="lastname"
 					/>
 				</div>
 				<div class="form-group">
@@ -49,11 +38,7 @@
 						type="text"
 						name="username"
 						class="form-control"
-						autocapitalize="off"
-						autocorrect="off"
-						pattern="^(?!.*(?:@|\u0022|\u0027|\u201C|\u201D|\u2018|\u2019|\u0060|\u00B4).*)"
-						text="Username can't have the @, \u0022, or \u0027 symbols"
-						required
+						id="username"
 					/>
 				</div>
 				<div class="form-group">
@@ -62,9 +47,7 @@
 						type="email"
 						name="email"
 						class="form-control"
-						autocapitalize="off"
-						autocorrect="off"
-						required
+						id="email"
 					/>
 				</div>
 				<div class="form-group">
@@ -74,10 +57,7 @@
 						type="tel"
 						name="mobile"
 						class="form-control"
-						autocapitalize="off"
-						autocorrect="off"
-						pattern="^(?!.*(?:\u0022|\u0027|\u201C|\u201D|\u2018|\u2019|\u0060|\u00B4).*)"
-						text="Phone can't have the \u0022 or \u0027 symbols"
+						id="mobile"
 					/>
 				</div>
 				<div class="form-group">
@@ -86,13 +66,13 @@
 						type="password"
 						name="password"
 						class="form-control"
-						pattern="^\S{8,}(?!.*(?:\u0022|\u0027|\u201C|\u201D|\u2018|\u2019|\u0060|\u00B4).*)$"
-						text="Password can't have the \u0022 or \u0027 symbols and must be at least 8 characters."
-						required
+						id="password"
 					/>
 					<div class="hide-show">
 						<small class="show">Show</small>
 					</div>
+				</div>
+				<div class="g-recaptcha" data-sitekey="6Le99i0UAAAAAIIKkc2tRvlXTjVdwxxrwHg7YY2d">
 				</div>
 				<button type="submit" class="btn btn-default">Sign Up</button>
 			</form>

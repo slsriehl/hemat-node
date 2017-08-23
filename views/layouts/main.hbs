@@ -31,8 +31,8 @@
 <!-- custom styles for HG.com -->
 		<link rel="stylesheet" type="text/css" href="../css/hg-base.css" />
 <!-- extra header scripts -->
-		{{#if login.cookie}}
-			<link rel="stylesheet" type="text/css" href="../css/users.css" />
+		{{#if signup}}
+			<script src='https://www.google.com/recaptcha/api.js'></script>
 		{{/if}}
 	</head>
 	<body>
@@ -135,6 +135,7 @@
 <!-- end nav header and sidebar -->
 <!-- page content goes in "body" -->
 		<section class="page-contents">
+			
 			{{{body}}}
 <!-- Footer row-->
 			<div class="container-fluid">
