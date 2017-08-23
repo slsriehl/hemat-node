@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var user_session = sequelize.define('user_session', {
+  var UserSessions = sequelize.define('UserSessions', {
     sid: {
 			type: DataTypes.STRING,
 			primaryKey: true
@@ -13,5 +13,5 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
-  return user_session;
+  return UserSessions;
 };
