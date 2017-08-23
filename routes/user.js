@@ -5,16 +5,26 @@ const router = new express.Router;
 const userController = require('../controllers/user');
 const resetController = require('../controllers/reset');
 
+const helpers = require('../controllers/user-helpers');
+
 //++++++ USER routes ++++++
 
 //render landing page based on logged in status
 router.get('/', (req, res) => {
+	helpers.clearSessionMessage(req, res);
 	userController.renderIndex(req, res);
 });
 
 //render signup page
 router.get('/user/signup', (req, res) => {
-	res.render('login/signup.hbs');
+	helpers.clearSessionMessage(req, res);
+	res.render('login/signup.hbs', {
+		signup: true,
+		specificScripts: [
+
+			"../vendor/jquery/js/jquery.validate.min.js", "../js/login-settings.js"
+		]
+	});
 });
 
 //Create new user
@@ -24,7 +34,13 @@ router.post('/user/signup', (req, res) => {
 
 //render login page
 router.get('/user/login', (req, res) => {
-	res.render('login/login.hbs');
+	helpers.clearSessionMessage(req, res);
+	res.render('login/login.hbs', {
+		specificScripts: [
+
+			"../vendor/jquery/js/jquery.validate.min.js", "../js/login-settings.js"
+		]
+	});
 });
 
 //Login new user
@@ -54,7 +70,13 @@ router.get('/user/logout', (req, res) => {
 
 //get page to request password reset
 router.get('/reset/request', (req, res) => {
-	res.render('login/reset-request.hbs');
+	helpers.clearSessionMessage(req, res);
+	res.render('login/reset-request.hbs', {
+		specificScripts: [
+
+			"../vendor/jquery/js/jquery.validate.min.js", "../js/login-settings.js"
+		]
+	});
 });
 
 //generate a reset email
@@ -64,6 +86,7 @@ router.post('/reset/request', (req, res) => {
 
 //load the page to enter the new password
 router.get('/reset/:code', (req, res) => {
+	helpers.clearSessionMessage(req, res);
 	resetController.showResetPage(req, res);
 });
 
