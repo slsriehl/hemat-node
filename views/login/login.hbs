@@ -1,15 +1,11 @@
 <div class="container-fluid">
-	{{#if messages}}
-		{{#each messages}}
-			<div class="row">
-				<div class="col col-md-12 message-item" id="{{id}}">
-					{{{text}}}
-					<!-- / message-item col -->
-				</div>
-				<!-- /message-item row -->
-			</div>
-		{{/each}}
-	{{/if}}
+
+	<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="#">Home</a></li>
+			<li class="breadcrumb-item active">Login</li>
+	</ol>
+
+{{> message-center this}}
 
 	<div class="row">
 		<div class="col col-md-4">
@@ -24,8 +20,7 @@
 						type="text"
 						name="credential"
 						class="form-control"
-						autocapitalize="off"
-						autocorrect="off"
+						id="credential"
 					/>
 				</div>
 				<div class="form-group">
@@ -33,6 +28,7 @@
 					<input
 						type="password"
 						name="password"
+						id="password"
 						class="form-control"
 					/>
 					<div class="hide-show">

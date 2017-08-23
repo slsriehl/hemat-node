@@ -1,15 +1,11 @@
 <div class="container-fluid">
-	{{#if messages}}
-		{{#each messages}}
-			<div class="row">
-				<div class="col col-md-12 message-item" id="{{id}}">
-					{{{text}}}
-					<!-- / message-item col -->
-				</div>
-				<!-- /message-item row -->
-			</div>
-		{{/each}}
-	{{/if}}
+
+	<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="#">Home</a></li>
+			<li class="breadcrumb-item active">Edit Your Settings</li>
+	</ol>
+
+	{{> message-center this}}
 
 	<div class="row">
 		<div class="col col-md-4">
@@ -41,9 +37,7 @@
 						type="password"
 						name="password"
 						class="form-control"
-						pattern="^\S{8,}(?!.*(?:@|\u0022|\u0027|\u201C|\u201D|\u2018|\u2019|\u0060|\u00B4).*)$"
-						text="Password can't have the \u0022 or \u0027 symbols and must be at least 8 characters."
-						required
+						id="password"
 					/>
 					<div class="hide-show">
 						<small class="show">Show</small>
@@ -54,7 +48,7 @@
 					<input
 						type="email"
 						name="newEmail"
-						title="Please enter a valid email."
+						id="newEmail"
 						class="form-control"
 					/>
 				</div>
@@ -63,8 +57,7 @@
 					<input
 						type="text"
 						name="newUsername"
-						pattern="^(?!.*(?:@|\u0022|\u0027|\u201C|\u201D|\u2018|\u2019|\u0060|\u00B4).*)"
-						text="Username can't have the @, \u0022, or \u0027 symbols"
+						id="newUsername"
 						class="form-control"
 					/>
 				</div>
@@ -73,8 +66,7 @@
 					<input
 						type="text"
 						name="newFirstname"
-						pattern="^(?!.*(?:\u0022|\u0027|\u201C|\u201D|\u2018|\u2019|\u0060|\u00B4).*)"
-						text="First name can't have the \u0022 or \u0027 symbols"
+						id="newFirstname"
 						class="form-control"
 					/>
 				</div>
@@ -83,8 +75,7 @@
 					<input
 						type="text"
 						name="newLastname"
-						pattern="^(?!.*(?:\u0022|\u0027|\u201C|\u201D|\u2018|\u2019|\u0060|\u00B4).*)"
-						text="Last name can't have the \u0022 or \u0027 symbols"
+						id="newLastname"
 						class="form-control"
 					/>
 				</div>
@@ -93,8 +84,7 @@
 					<input
 						type="password"
 						name="newPassword"
-						pattern="^\S{8,}(?!.*(?:@|\u0022|\u0027|\u201C|\u201D|\u2018|\u2019|\u0060|\u00B4).*)$"
-						text="Password can't have the \u0022 or \u0027 symbols and must be at least 8 characters."
+						id="newPassword"
 						class="form-control"
 					/>
 					<div class="hide-show">
