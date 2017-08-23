@@ -3,12 +3,7 @@ const models = require('../models');
 
 const util = require('util');
 const bcrypt = require('bcryptjs');
-const uuid = require('uuid/v4');
 const moment = require('moment');
-
-const nodemailer = require('nodemailer');
-const transporter = require('../config/transporter');
-const from = require('../config/from');
 
 const cookieHelpers = require('./cookie-helpers');
 
@@ -26,7 +21,7 @@ const helpers = {
 	getHash: (password, hash) => {
 		return bcrypt.compareSync(password, hash);
 	},
-	renderSingleMessage: (req, res, renderPath) => {
+	renderSingleMessage: (req, res, renderPath, specificScripts, signupKey) => {
 		//render with only a single message
 		console.log(req.session.message);
 		console.log(req.session.messageType);
@@ -34,7 +29,8 @@ const helpers = {
 			messages: [{
 				text: req.session.message,
 				id: req.session.messageType
-			}]
+			}],
+			signup: signupKey
 		});
 	},
 	getSystemMessages: (req, res, renderPath) => {
@@ -80,7 +76,11 @@ const helpers = {
 		// 	userId: 95,
 		// 	messageId: 2
 		// })
-	}
+	},
+	clearSessionMessage: (req, res) => {
+		req.session.message = null;
+		req.session.messageType = null;
+	},
 }
 
 module.exports = helpers;
