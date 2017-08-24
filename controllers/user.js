@@ -404,66 +404,57 @@ const controller = {
 			})
 		}
 	},
-	//to delete the user and all her tests in the db??
 	deleteUser: (req, res) => {
-	// 	console.log(`req.headers.cookie ${util.inspect(req.headers.cookie)}`);
-	// 	console.log(`req.headers.password ${req.headers.password}`);
-	// 	const sentCookie = cookieHelpers.readCookie(req, 'do-it');
-	// 	//sync the users table
-	// 		//query the session store for the user's email address based on the
-	// 		//cookie stored on the client side
-	// 	return models.ConnectSession
-	// 	.findOne({
-	// 		where: { sid: sentCookie }
-	// 	})
-	// 	.then((data) => {
-	// 		//if the cookie is found
-	// 		console.log(`found session? ${util.inspect(data.data)}`);
-	// 		//parse the string in the session data column to an object
-	// 		const emailObj = JSON.parse(data.data);
-	// 		//query the Users table for the user stored in the session
-	// 		//if the user is found
-	// 		console.log(`found user? ${util.inspect(emailObj)}`);
-	// 		const hash = helpers.getHash(req.headers.password, emailObj.password);
-	// 		//if the password sent to authorize delete matches the stored hash
-	// 		if(hash) {
-	// 			console.log('password is correct');
-	// 			//delete the User and cascade delete all her todos
-	// 			return models.User
-	// 			.destroy({
-	// 				//object destructuring doesn't work here either. pooh!
-	// 				where: { email: emailObj.email }
-	// 			})
-	// 			.then((data) => {
-	// 				//if a response is received from deleting the user
-	// 				//console.log(`data ${util.inspect(data)}`);
-	// 				//console.log(typeof data);
-	// 				if(data === 0) {
-	// 				//the user wasn't deleted
-	// 					helpers.sessionMessage(req, res, `Sorry, your account wasn't deleted.  Please check your credentials and try again.`, 'login.hbs');
-	// 				} else if(data === 1) {
-	// 					//the user was deleted so delete her session as well
-	// 					req.session.destroy();
-	// 					res.render('login.hbs', {data: 'Your account and all your to-dos were successfully deleted.', layout: false});
-	// 				}
-	// 			})
-	// 			.catch((error) => {
-	// 				//no data was received from deleting the user
-	// 				console.log('error, destroy user call failed');
-	// 				throw error;
-	// 			});
-	// 		} else {
-	// 			//if the password sent to authorize the user delete
-	// 			//doesn't match the stored hash
-	// 			helpers.sessionMessage(req, res, 'Your password is incorrect.  Please try again.', 'login.hbs');
-	// 		}
-	// 	})
-	// 	.catch((error) => {
-	// 		//if the client side cookie is not found in the session store
-	// 		console.log(`error, find session call failed.`);
-	// 		helpers.sessionMessage(req, res, 'Error deleting your account.  Please login again.', 'login.hbs');
-	// 		throw error;
-	// 	});
+		//to set the user to deleted in the db
+		console.log(req.body);
+		return models.Users
+		.findOne({
+			attributes: ['password'],
+			where: {
+				id: req.session.user
+			}
+		})
+		.then((data) => {
+			console.log(data.dataValues);
+			const hash = helpers.getHash(req.body.password.trim(), data.dataValues.password);
+			if(hash) {
+				return models.Users
+				.update({
+					deletedAt: moment().format('YYYY-MM-DD HH:mm:ss')
+				}, {
+					where: {
+						id: req.session.user
+					}
+				})
+				.then((result) => {
+					console.log(result);
+					const resStr = result.toString();
+					console.log(resStr);
+					if(resStr === '1') {
+						//if account deleted create a new session, set delete message, and redirect to the index page
+						req.session.user = null;
+						req.session.toEnd = true;
+						req.session.message = "Your account has been successfully deleted.";
+						req.session.messageType = "success-account-delete";
+						req.session.save();
+						console.log(util.inspect(req.session) + 'delete success reqsess');
+						res.send(true);
+					} else {
+						req.session.message = "Sorry, your account was not deleted.  Please try again and <a href='/mail'>contact our admin</a> if the problem persists.";
+						req.session.messageType = "failed-account-delete";
+						req.session.save();
+						console.log(req.session.message);
+						res.send(false);
+					}
+				});
+			} else {
+				req.session.message = "The password you entered is not correct.";
+				req.session.messageType = "failed-account-delete";
+				req.session.save();
+				res.send(false);
+			}
+		})
+		.catch(error => console.log(error));
 	}
 }
 
