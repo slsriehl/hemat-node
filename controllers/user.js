@@ -80,7 +80,7 @@ const controller = {
 					helpers.getSystemMessages(req, res, 'index-redirect');
 				})
 			} else {
-				req.session.message = 'Sorry, that username or email is taken already.  Please try another or <a href="/reset">reset your account</a>.';
+				req.session.message = 'Sorry, that username or email is taken already.  Please try another or <a href="/reset">reset your account</a>.  If you previously had an account with these credentials and would like to reactivate it, please <a href="/mail">contact our admin</a>.';
 				req.session.messageType = 'failed-signup';
 				req.session.save();
 				helpers.renderSingleMessage(req, res, 'login/signup.hbs',
