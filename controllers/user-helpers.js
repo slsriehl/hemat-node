@@ -71,9 +71,12 @@ const helpers = {
 						text: singleMessage,
 						id: singleMessageType
 					});
+
+					req.session.inclusiveSystemMessages = systemMessages;
 				}
 				if(renderPath == 'index-redirect') {
-					req.session.inclusiveSystemMessages = systemMessages;
+					console.log('fire index-redirect getSystem');
+					console.log(util.inspect(req.session) + 'reqsess index-redirect getSystem');
 					res.redirect('/');
 				} else if(renderPath) {
 					console.log('fire renderPath getSystem');
