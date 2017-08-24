@@ -111,7 +111,7 @@ const controller = {
 		//sequelize call to authenticate user against the Users table
 		return models.Users
 		.findOne({
-			attributes: ['id', 'password', 'firstname', 'requireReset'],
+			attributes: ['id', 'password', 'firstname', 'requireReset', 'deletedAt'],
 			where: {
 				$or: {
 					email: req.body.credential.trim().toLowerCase(),
@@ -129,6 +129,15 @@ const controller = {
 
 					"../vendor/jquery/js/jquery.validate.min.js", "../js/login-settings.js"
 				]);
+			} else if(data.dataValues.deletedAt) {
+				req.session.message = "You appear to have deleted your account.  To reactivate it, please <a href='/mail'>contact our admin</a>.";
+				req.session.messageType = 'failed-login-deleted-account';
+				req.session.save();
+				helpers.renderSingleMessage(req, res, 'login/login.hbs', [
+
+					"../vendor/jquery/js/jquery.validate.min.js", "../js/login-settings.js"
+				]);
+
 			} else if(data.dataValues.requireReset) {
 				req.session.reset = true;
 				req.session.user = data.dataValues.id;
