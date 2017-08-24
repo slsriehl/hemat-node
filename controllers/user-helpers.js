@@ -23,13 +23,16 @@ const helpers = {
 	},
 	renderSingleMessage: (req, res, renderPath, specificScripts, signupKey) => {
 		//render with only a single message
-		console.log(req.session.message);
-		console.log(req.session.messageType);
+		const singleMessage = req.session.message;
+		const singleMessageType = req.session.messageType;
+		req.session.message = null;
+		req.session.messageType = null;
 		res.render(renderPath, {
 			messages: [{
-				text: req.session.message,
-				id: req.session.messageType
+				text: singleMessage,
+				id: singleMessageType
 			}],
+			specificScripts: specificScripts,
 			signup: signupKey
 		});
 	},
@@ -59,9 +62,14 @@ const helpers = {
 				}
 				req.session.systemMessages = systemMessages;
 				if(req.session.message) {
+					console.log('fire reqsessmsg getSystem');
+					const singleMessage = req.session.message;
+					const singleMessageType = req.session.messageType;
+					req.session.message = null;
+					req.session.messageType = null;
 					systemMessages.push({
-						text: req.session.message,
-						id: req.session.messageType
+						text: singleMessage,
+						id: singleMessageType
 					});
 				}
 				if(renderPath == 'index-redirect') {
