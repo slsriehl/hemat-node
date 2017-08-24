@@ -41,9 +41,9 @@ const helpers = {
 		})
 		.then((results) => {
 			console.log(`results: ${results}`);
-			if(results.length == 0 && !req.session.message) {
+			if(results.length == 0 && !req.session.message && renderPath) {
 				res.render(renderPath);
-			} else if (results.length == 0 && req.session.message) {
+			} else if (results.length == 0 && req.session.message && renderPath) {
 				helpers.renderSingleMessage(req, res, renderPath);
 			} else {
 				let systemMessages = [];
@@ -61,13 +61,17 @@ const helpers = {
 						id: req.session.messageType
 					});
 				}
-				res.render(renderPath, {
-					messages: systemMessages,
-					isAuth: {
-						check: req.session.isAuth,
-						firstname: req.session.firstname
-					}
-				});
+				if(renderPath) {
+					res.render(renderPath, {
+						messages: systemMessages,
+						isAuth: {
+							check: req.session.isAuth,
+							firstname: req.session.firstname
+						}
+					});
+				} else {
+					res.send(true);
+				}
 			}
 		})
 		.catch((error) => console.log(error));

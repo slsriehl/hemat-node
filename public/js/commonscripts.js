@@ -239,6 +239,53 @@ $(function () {
         });
     });
 
+		//dismiss messages: hide and ajax to add to dismissed messages table
+		$('.message-dismiss h2').on('click', function(event) {
+			console.log('foo');
+			$(this).parent().parent().slideUp(500, function() {
+				$.ajax({
+					type: 'POST',
+					url: '/message/dismiss',
+					data: {
+						id: $(this).attr('id')
+					}
+				})
+				.done(function(response) {
+					console.log(response);
+					if(response == true) {
+						console.log('message dismissed!');
+					} else {
+						console.log('message not dismissed, try again');
+					}
+				})
+			});
+		});
+
+		// //loops to remove dismissed message from the page & ajax request to delete dismissed message
+		// //1.  dismissing a session message
+		// var sessionMessageTypes = [
+		// 	'successful-reset',
+		// 	'fail-reset-send-optional',
+		// 	'fail-reset-send-required',
+		// 	'successful-reset-send-optional',
+		// 	'successful-reset-send-required',
+		// 	'successful-signup',
+		// 	'failed-signup',
+		// 	'system-fail',
+		// 	'failed-login',
+		// 	'failed-settings-auth',
+		// 	'settings-duplicate-username-or-email',
+		// 	'settings-no-info',
+		// 	'settings-didnt-change',
+		// 	'successful-settings-change'
+		// ];
+		// for(var i = 0; i < sessionMessageTypes.length; i++) {
+		// 	$('.message-center #' + sessionMessageTypes[i]).on('click', function(event) {
+		// 		this.slideUp();
+		// 	});
+		// }
+	//2.  ajax calls for ids of messagesloop to dismiss system messages by id
+
 
 
     /*/Google analytics
@@ -255,25 +302,5 @@ $(function () {
      s.parentNode.insertBefore(ga, s);
      })();
      */
-//Sarah trying to make the navbar dropdown expand automatically on mobile.
-		//  $("#loginDropdown").on("drop:toggle", function(event) {
-		//  	var dropdown = $(this);
-		//    if (dropdown.is(".on")) {
-		//        dropdown.trigger("drop:off");
-		//    } else {
-		//        dropdown.trigger("drop:on");
-		//    }
-		//  }).on("drop:on", function(event) {
-		//  	console.log('on');
-		//  	$(this).removeAttr('data-toggle');
-		//  }).on("drop:off", function(event) {
-		//  	console.log('off');
-		//  	$(this).attr('data-toggle', 'dropdown');
-		//  });
-		 //
-		 //
-		 //
-		//  $("#navbarExample").on('click', function() {
-		//      $(this).trigger("drop:toggle");
-		//  });
+
 });

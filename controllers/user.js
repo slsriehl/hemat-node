@@ -210,11 +210,20 @@ const controller = {
 			})
 			.then((data) => {
 				if(data.dataValues.id == req.session.user) {
-					res.render('login/settings.hbs', {
-							messages: [{
+					const ifSessionMessages = () => {
+						let theseMessages;
+						if(req.session.message) {
+							theseMessages = [{
 								text: req.session.message,
 								id: req.session.messageType
-							}],
+							}]
+							return theseMessages;
+						} else {
+							return null;
+						}
+					}
+					res.render('login/settings.hbs', {
+							messages: ifSessionMessages,
 							isAuth: {
 								check: req.session.isAuth,
 								firstname: req.session.firstname,
@@ -319,6 +328,34 @@ const controller = {
 			}
 		})
 		.catch(error => console.log(error));
+	},
+	//dismiss a message
+	dismissMessage: (req, res) => {
+		const messageId = parseInt(req.body.id);
+		if(isNaN(messageId)) {
+			console.log('clearing req.session.message et al');
+			req.session.message = null;
+			req.session.messageType = null;
+			res.send(true);
+		} else {
+			const newDismissedMessage = {
+				userId: req.session.user,
+				messageId: messageId
+			}
+			return models.DismissedMessages
+			.create(newDismissedMessage)
+			.then((data) => {
+				if(data.dataValues.userId == req.session.user) {
+					console.log('new dismissed message created, updating session...');
+					helpers.getSystemMessages(req, res, null);
+				}
+			})
+			.catch(error => {
+				console.log(error);
+				//write to error log
+				res.send(false);
+			})
+		}
 	},
 	//to delete the user and all her tests in the db??
 	deleteUser: (req, res) => {

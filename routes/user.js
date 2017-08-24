@@ -95,5 +95,8 @@ router.post('/reset/:code', (req, res) => {
 	resetController.resetPassword(req, res);
 });
 
+router.post('/message/dismiss', (req, res) => {
+	userController.dismissMessage(req, res);
+})
 
 module.exports = router;
