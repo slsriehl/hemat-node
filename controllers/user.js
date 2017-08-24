@@ -8,6 +8,7 @@ const reCaptchaSecret = require('../config/recaptcha');
 
 const util = require('util');
 const ReCAPTCHA = require('recaptcha2');
+const moment = require('moment');
 
 
 const controller = {
@@ -190,29 +191,51 @@ const controller = {
 	},
 	//show the index page whether logged in or not
 	renderIndex: (req, res) => {
-		if(cookieHelpers.verifyCookie(req, res)) {
-			if(req.session.inclusiveSystemMessages) {
-				let systemMessages = req.session.inclusiveSystemMessages;
-				req.session.inclusiveSystemMessages = null;
-				res.render('index.hbs', {
-					messages: systemMessages,
-					isAuth: {
-						check: req.session.isAuth,
-						firstname: req.session.firstname
-					}
-				});
-			} else {
-				req.session.message = null;
-				req.session.messageType = null;
-				res.render('index.hbs', {
-					messages: req.session.systemMessages,
-					isAuth: {
-						check: req.session.isAuth,
-						firstname: req.session.firstname
-					}
-				});
+		console.log(util.inspect(req.session) + 'reqsess renderindex prefunction');
+		if(cookieHelpers.verifyCookie(req, res) && req.session.inclusiveSystemMessages) {
+			//if the logged in user has system messages plus a single session message
+			console.log('fire 1');
+			let systemMessages = req.session.inclusiveSystemMessages;
+			req.session.inclusiveSystemMessages = null;
+			res.render('index.hbs', {
+				messages: systemMessages,
+				isAuth: {
+					check: req.session.isAuth,
+					firstname: req.session.firstname
+				}
+			});
+		} else if (cookieHelpers.verifyCookie(req, res)) {
+			//if the logged in user has system messages but not a single session message
+			console.log('fire 2');
+			req.session.message = null;
+			req.session.messageType = null;
+			res.render('index.hbs', {
+				messages: req.session.systemMessages,
+				isAuth: {
+					check: req.session.isAuth,
+					firstname: req.session.firstname
+				}
+			});
+		} else if(req.session.message) {
+			//if the unlogged in user tried to do something and needs to get a message
+			console.log('fire 3');
+			const loggedOutMessage = req.session.message;
+			const loggedOutMessageType = req.session.messageType;
+			req.session.message = null;
+			req.session.messageType = null;
+			if(req.session.toEnd) {
+				console.log('fire destroy');
+				req.session.destroy();
 			}
+			res.render('index.hbs', {
+				messages: [{
+					text: loggedOutMessage,
+					id: loggedOutMessageType
+				}]
+			});
 		} else {
+			//if the user isn't logged in and doesn't need to get any messages
+			console.log('fire 4');
 			res.render('index.hbs');
 		}
 	},
