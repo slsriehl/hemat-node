@@ -61,7 +61,10 @@ const helpers = {
 						id: req.session.messageType
 					});
 				}
-				if(renderPath) {
+				if(renderPath == 'index-redirect') {
+					req.session.inclusiveSystemMessages = systemMessages;
+					res.redirect('/');
+				} else if(renderPath) {
 					res.render(renderPath, {
 						messages: systemMessages,
 						isAuth: {

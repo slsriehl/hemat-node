@@ -77,7 +77,7 @@ const controller = {
 					req.session.user = data.dataValues.id;
 					req.session.firstname = data.dataValues.firstname;
 					req.session.save();
-					helpers.getSystemMessages(req, res, 'index.hbs');
+					helpers.getSystemMessages(req, res, 'index-redirect');
 				})
 			} else {
 				req.session.message = 'Sorry, that username or email is taken already.  Please try another or <a href="/reset">reset your account</a>.';
@@ -146,7 +146,7 @@ const controller = {
 					req.session.firstname = data.dataValues.firstname;
 					cookieHelpers.verifyCookie(req, res, true);
 					req.session.save();
-					helpers.getSystemMessages(req, res, 'index.hbs');
+					helpers.getSystemMessages(req, res, 'index-redirect');
 				} else {
 					//if there's data but the hash doesn't match the entered password
 					req.session.message = "Sorry, that password isn't right.  Please try again or <a href='/user/reset'>reset your password</a>.";
@@ -182,15 +182,27 @@ const controller = {
 	//show the index page whether logged in or not
 	renderIndex: (req, res) => {
 		if(cookieHelpers.verifyCookie(req, res)) {
-			req.session.message = null;
-			req.session.messageType = null;
-			res.render('index.hbs', {
-				messages: req.session.systemMessages,
-				isAuth: {
-					check: req.session.isAuth,
-					firstname: req.session.firstname
-				}
-			});
+			if(req.session.inclusiveSystemMessages) {
+				let systemMessages = req.session.inclusiveSystemMessages;
+				req.session.inclusiveSystemMessages = null;
+				res.render('index.hbs', {
+					messages: systemMessages,
+					isAuth: {
+						check: req.session.isAuth,
+						firstname: req.session.firstname
+					}
+				});
+			} else {
+				req.session.message = null;
+				req.session.messageType = null;
+				res.render('index.hbs', {
+					messages: req.session.systemMessages,
+					isAuth: {
+						check: req.session.isAuth,
+						firstname: req.session.firstname
+					}
+				});
+			}
 		} else {
 			res.render('index.hbs');
 		}
