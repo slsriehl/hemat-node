@@ -93,7 +93,11 @@
 				</div>
 				<div class="button-container">
 					<button type="submit" class="btn btn-default">Change Data</button>
-					<button type="button" id="delete-account" class="btn btn-default">Delete Account</button>
+					<button class="btn btn-danger" data-target="#delete-account-modal" data-toggle="modal" id='delete-account' type='button'>
+						Delete Account
+					</button>
+					{{> login/modals/delete-account}}
+					{{> login/modals/fail-delete-account}}
 				</div>
 			</form>
 			<!-- end form col -->
