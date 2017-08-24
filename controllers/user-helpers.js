@@ -42,10 +42,13 @@ const helpers = {
 		.then((results) => {
 			console.log(`results: ${results}`);
 			if(results.length == 0 && !req.session.message && renderPath) {
+				console.log('fire 1 getSystem');
 				res.render(renderPath);
 			} else if (results.length == 0 && req.session.message && renderPath) {
+				console.log('fire 2 getSystem');
 				helpers.renderSingleMessage(req, res, renderPath);
 			} else {
+				console.log('fire 3 getSystem');
 				let systemMessages = [];
 				for(let i = 0; i < results.length; i++) {
 					let systemMessage = {
@@ -65,6 +68,7 @@ const helpers = {
 					req.session.inclusiveSystemMessages = systemMessages;
 					res.redirect('/');
 				} else if(renderPath) {
+					console.log('fire renderPath getSystem');
 					res.render(renderPath, {
 						messages: systemMessages,
 						isAuth: {
