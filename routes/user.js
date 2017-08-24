@@ -7,11 +7,13 @@ const resetController = require('../controllers/reset');
 
 const helpers = require('../controllers/user-helpers');
 
+const util = require('util');
+
 //++++++ USER routes ++++++
 
 //render landing page based on logged in status
 router.get('/', (req, res) => {
-	helpers.clearSessionMessage(req, res);
+	console.log(util.inspect(req.session) + 'reqsess root router');
 	userController.renderIndex(req, res);
 });
 
@@ -97,6 +99,19 @@ router.post('/reset/:code', (req, res) => {
 
 router.post('/message/dismiss', (req, res) => {
 	userController.dismissMessage(req, res);
-})
+});
+
+router.post('/user/delete', (req, res) => {
+	userController.deleteUser(req, res);
+});
+
+router.get('/user/delete/success', (req, res) => {
+	console.log(util.inspect(req.session) + '/user/delete/success router reqsess');
+	res.redirect('/');
+});
+
+router.get('/user/delete/fail', (req, res) => {
+	res.redirect('/user');
+});
 
 module.exports = router;
