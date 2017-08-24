@@ -244,47 +244,50 @@ const controller = {
 		//console.log(req.headers.cookie);
 		//use the session to display the email and username of the user
 		if(cookieHelpers.verifyCookie(req, res)) {
-			console.log(req.session);
 			return models.Users
 			.findOne({
-				attributes: ['id', 'email', 'username', 'firstname', 'lastname'],
+				attributes: ['email', 'username', 'firstname', 'lastname', 'mobile'],
 				where: {
 					id: req.session.user
 				}
 			})
 			.then((data) => {
-				if(data.dataValues.id == req.session.user) {
-					const ifSessionMessages = () => {
-						let theseMessages;
-						if(req.session.message) {
-							theseMessages = [{
-								text: req.session.message,
-								id: req.session.messageType
-							}]
-							return theseMessages;
-						} else {
-							return null;
-						}
+				console.log(`req.session at user settings ${util.inspect(req.session)}`);
+				const ifSessionMessages = () => {
+					console.log(req.session.message);
+					if(req.session.message) {
+						let theseMessages = [];
+						const singleMessage = req.session.message;
+						const singleMessageType = req.session.messageType;
+						req.session.message = null;
+						req.session.messageType = null;
+						theseMessages = [{
+							text: singleMessage,
+							id: singleMessageType
+						}];
+						return theseMessages;
+					} else {
+						return null;
 					}
-					res.render('login/settings.hbs', {
-							messages: ifSessionMessages,
-							isAuth: {
-								check: req.session.isAuth,
-								firstname: req.session.firstname,
-								email: data.dataValues.email,
-								username: data.dataValues.username,
-								firstname: data.dataValues.firstname,
-								lastname: data.dataValues.lastname
-							},
-							specificScripts: [
-
-								"../vendor/jquery/js/jquery.validate.min.js", "../js/login-settings.js"
-							]
-					});
-				} else {
-					res.redirect('/user/login');
 				}
+				res.render('login/settings.hbs', {
+						messages: ifSessionMessages(),
+						isAuth: {
+							check: req.session.isAuth,
+							firstname: req.session.firstname,
+							email: data.dataValues.email,
+							username: data.dataValues.username,
+							firstname: data.dataValues.firstname,
+							lastname: data.dataValues.lastname,
+							phone: data.dataValues.mobile
+						},
+						specificScripts: [
+							"../vendor/jquery/js/jquery.validate.min.js",
+							"../js/login-settings.js"
+						]
+				});
 			})
+			.catch(error => console.log(error));
 		} else {
 			res.redirect('/user/login');
 		}
