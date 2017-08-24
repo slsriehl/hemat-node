@@ -24,6 +24,31 @@ var changeToPasswordFormat = function(formName) {
 	formName.on('submit', hideShowSubmit);
 }
 
+var deleteAccount = function() {
+	if(!$('#password').val()) {
+		$('#delete-account-modal').modal('hide');
+		$('#fail-delete-account-modal').modal('show');
+	} else {
+		$.ajax({
+			url: '/user/delete',
+			type: 'POST',
+			data: {
+				password: $('#password').val()
+			}
+		})
+		.done(function(data) {
+			console.log(data);
+			if(data) {
+				window.location.href = '/user/delete/success';
+			} else {
+				window.location.href = '/user/delete/fail';
+			}
+		});
+	}
+}
+
+$('#btn-confirm-delete-account').on('click', deleteAccount);
+
 //custom form validation
 
 //regexs to prevent illegal chars that might mess up databases
