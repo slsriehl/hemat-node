@@ -6,7 +6,9 @@ const util		= require('util'),
 const express         = require('express'),
       bodyParser      = require('body-parser'),
       logger          = require('morgan'),
+			cookieParser		= require('cookie-parser'),
 			hbs							= require('express-handlebars'),
+			secretKey 			= require('./config/secret'),
       app             = express();
 
 app.use(logger("dev"));
@@ -14,6 +16,7 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(bodyParser.json());
+app.use(cookieParser(secretKey));
 app.use(express.static(__dirname + '/public'));
 
 //++++++ Handlebars config ++++++
@@ -36,18 +39,18 @@ const session 		= require('express-session'),
  			SequelStore	= require('connect-sequelize')(session),
 			modelName		= 'UserSessions';
 
-const setSecret = (secretEnvVar) => {
-	if(secretEnvVar) {
-		return secretEnvVar;
-	} else {
-		const secretKey = require('./config/secret');
-		return secretKey;
-	}
-}
+// const setSecret = (secretEnvVar) => {
+// 	if(secretEnvVar) {
+// 		return secretEnvVar;
+// 	} else {
+//
+// 		return secretKey;
+// 	}
+// }
 
 //set session secret with env var, process.env.___
 app.use(session({
-  secret: setSecret(null),
+  secret: secretKey,
   store: new SequelStore(database, {}, modelName),
   resave: true,
   saveUninitialized: false,

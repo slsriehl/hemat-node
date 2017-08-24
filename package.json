@@ -24,6 +24,7 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.2",
     "connect-sequelize": "^2.0.2",
+    "cookie-parser": "^1.4.3",
     "express": "^4.15.4",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.5",
