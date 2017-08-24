@@ -34,13 +34,10 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.BOOLEAN,
 			allowNull: false
 		},
-		resetPasswordCode: {
-			type: DataTypes.UUID,
-			allowNull: true
-		},
-		resetPasswordExpires: {
+		deletedAt: {
 			type: DataTypes.DATE,
-			allowNull: true
+			allowNull: true,
+			defaultValue: null
 		}
   }, {
     classMethods: {

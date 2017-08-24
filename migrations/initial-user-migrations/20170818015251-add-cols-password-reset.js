@@ -9,17 +9,17 @@ module.exports = {
       Example:
       return queryInterface.createTable('users', { id: Sequelize.INTEGER });
     */
-		return queryInterface.addColumn('Users', 'resetPasswordCode', {
-			type: Sequelize.UUID,
-			allowNull: true
-		})
-		.then(
-			queryInterface.addColumn('Users', 'resetPasswordExpires', {
-				type: Sequelize.DATE,
-				allowNull: true
-			})
-		)
-		.catch(error => console.log(error));
+		// return queryInterface.addColumn('Users', 'resetPasswordCode', {
+		// 	type: Sequelize.UUID,
+		// 	allowNull: true
+		// })
+		// .then(
+		// 	queryInterface.addColumn('Users', 'resetPasswordExpires', {
+		// 		type: Sequelize.DATE,
+		// 		allowNull: true
+		// 	})
+		// )
+		// .catch(error => console.log(error));
 
   },
 
@@ -32,10 +32,10 @@ module.exports = {
       return queryInterface.dropTable('users');
     */
 
-		return queryInterface.removeColumn('Users', 'resetPasswordCode')
-		.then(
-			queryInterface.removeColumn('Users', 'resetPasswordExpires')
-		)
-		.catch(error => console.log(error));
+		// return queryInterface.removeColumn('Users', 'resetPasswordCode')
+		// .then(
+		// 	queryInterface.removeColumn('Users', 'resetPasswordExpires')
+		// )
+		// .catch(error => console.log(error));
   }
 };
