@@ -13,7 +13,8 @@ module.exports = function(sequelize, DataTypes) {
 				Apps.belongsTo(models.AppGroups, {
 					foreignKey: 'appGroupId',
 					onDelete: 'SET NULL'
-				})
+				});
+				Apps.hasMany(models.Reports);
       }
     }
   });

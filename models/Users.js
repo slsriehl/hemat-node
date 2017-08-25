@@ -44,7 +44,8 @@ module.exports = function(sequelize, DataTypes) {
       associate: function(models) {
 				Users.hasMany(models.DismissedMessages);
 				Users.hasMany(models.ResetTokens);
-				Users.hasMany(models.CaseReference);
+				Users.hasMany(models.CaseReferences);
+				Users.hasMany(models.Reports);
         // associations can be defined here
       }
     }
