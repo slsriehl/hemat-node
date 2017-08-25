@@ -1,3 +1,5 @@
+var dataObj;
+
 $(window).on('load', function() {
 
     $('#textarea').focus();
@@ -159,9 +161,25 @@ $(window).on('load', function() {
         var atyp_pct = $('#atyp_pct').val();
         var _limit = $('#limit').val();
         var diffStr = _limit + ' cell differential: Blasts: ' + blast_pct + '%; ' + 'Pros: ' + pro_pct + '%; ' + 'Meta/Myelo: ' + meta_pct + '%; ' + 'Segs: ' + seg_pct + '%; ' + 'Eryth: ' + nrbc_pct + '%;' + ' Lymphs: ' + lymph_pct + '%;' + ' Mono: ' + mono_pct + '%;' + ' Eos: ' + eos_pct + '%; ' + 'Plasma cells: ' + plasma_pct + '%; ' + 'Baso: ' + baso_pct + '%; ' + 'Atypical cells: ' + atyp_pct + '%.' + '\n\nM:E ratio= ' + $('#merat').val();
-        $('#diffOut').val(diffStr);
+				//format the diff text automatically
+				var text2 = diffStr.replace(/differential: /, 'differential:\n').replace(/; /g, '\n');
+        $('#diffOut').val(text2);
+				dataObj = {
+					report: text2,
+					appId: 9
+				}
+				console.log(dataObj);
+        // $('#diffOut').val(diffStr);
         // append each printed diff into "history" window with counter to label them
         $('#diffHist').val($('#diffHist').val() + this.counter + ':\n' + diffStr + '\n\n');
+				//add a pdf button to the button bar if it's not already there
+				if(!$('#pdf-report').length) {
+					var makePdfBtn = $('<a class="btn btn-lg btn-outline-success p-2 ml-4" id="pdf-report">');
+					var pdfBtnText = $('<small>Create PDF</small>')
+					makePdfBtn.append(pdfBtnText);
+					$('#report-btn-box').append(makePdfBtn);
+				}
+
     });
 
     $('#printAbs').on('click', function() {
@@ -245,34 +263,12 @@ $(window).on('load', function() {
          */
     });
 
-    $('#switchtext').change(function() {
-        var text = $('#diffOut').val();
-        var text2 = text.replace(/differential: /, 'differential:\n').replace(/; /g, '\n');
-        $('#diffOut').val(text2);
-    });
-//added by Sarah to generate repetitive diff html
-		var deck = function(array) {
-			for(i = 0; i < array.length; i++) {
-				var deckEntry = '<div class="card-deck"><div class="card"><div class="card-block ' +  array[i][1] + '" style="background-color:' +  array[i][3] + ';"><p class="pt-2"><small>' +  array[i][0] + '</small></p><input class="form-control form-control-sm" id="' +  array[i][2] + '_num" type="text"/><p class="pt-2"><small>' +  array[i][0] + '%</small></p><input class="form-control form-control-sm" id="' +  array[i][2] + '_pct" type="text" value="0"/></div></div>';
-
-				$('#grid-target').prepend(deckEntry);
-			}
-		}
-		var cards = [
-			['Atypical cells', 'atyp', 'atyp', 'darkgrey'],
-			['Basophils', 'basos', 'baso', 'rgba(76, 175, 80, 0.54)'],
-			['Plasma cells', 'plasma', 'plasma', 'rgba(2, 2, 88, 0.5)'],
-			['Eosinophils', 'eos', 'eos', 'rgba(255, 0, 0, 0.63)'],
-			['Monocytes', 'mono', 'mono', 'rgba(127, 255, 212, 0.50)'],
-			['Lymphocytes', 'lymphs', 'lymph', 'rgba(0, 0, 255, 0.5)'],
-			['Nrbc', 'nrbc', 'nrbc', 'rgba(128, 0, 128, 0.5)'],
-			['Segs + Bands', 'segs', 'segs', 'rgba(255, 202, 40, 0.5)'],
-			['Promyelocytes', 'pros', 'pro', 'rgba(176, 39, 97, 0.5)'],
-			['Blasts', 'blasts', 'bl', 'rgba(229, 57, 53, 0.5)'],
-			['Meta + myelo', 'meta', 'meta', 'rgba(93, 64, 55, 0.5)']
-		]
-		deck(cards);
-
+		//this is now done automatically when the report is printed
+    // $('#switchtext').change(function() {
+    //     var text = $('#diffOut').val();
+    //     var text2 = text.replace(/differential: /, 'differential:\n').replace(/; /g, '\n');
+    //     $('#diffOut').val(text2);
+    // });
 
 });
 

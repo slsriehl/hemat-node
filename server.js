@@ -63,6 +63,8 @@ app.use(session({
 // ++++++ Express routes ++++++
 const userRoutes = require('./routes/user');
 
+const reportsRoutes = require('./routes/reports');
+
 const capRoutes = require('./routes/pages/cap');
 const hemePathRoutes = require('./routes/pages/heme-path');
 const giPathRoutes = require('./routes/pages/gi-path');
@@ -71,6 +73,8 @@ const surgPathRoutes = require('./routes/pages/surg-path');
 //const autopsyRoutes = require('./routes/pages/autopsy');
 
 app.use(userRoutes);
+
+app.use(reportsRoutes);
 
 app.use(capRoutes);
 app.use(hemePathRoutes);

@@ -261,32 +261,19 @@ $(function () {
 			});
 		});
 
-		// //loops to remove dismissed message from the page & ajax request to delete dismissed message
-		// //1.  dismissing a session message
-		// var sessionMessageTypes = [
-		// 	'successful-reset',
-		// 	'fail-reset-send-optional',
-		// 	'fail-reset-send-required',
-		// 	'successful-reset-send-optional',
-		// 	'successful-reset-send-required',
-		// 	'successful-signup',
-		// 	'failed-signup',
-		// 	'system-fail',
-		// 	'failed-login',
-		// 	'failed-settings-auth',
-		// 	'settings-duplicate-username-or-email',
-		// 	'settings-no-info',
-		// 	'settings-didnt-change',
-		// 	'successful-settings-change'
-		// ];
-		// for(var i = 0; i < sessionMessageTypes.length; i++) {
-		// 	$('.message-center #' + sessionMessageTypes[i]).on('click', function(event) {
-		// 		this.slideUp();
-		// 	});
-		// }
-	//2.  ajax calls for ids of messagesloop to dismiss system messages by id
-
-
+		//send a report to the back end for storage and PDFing
+		$(document).off('click', '#pdf-report').on('click', '#pdf-report', function(event) {
+			console.log(dataObj);
+			//send the report to the back end to be PDFed and saved
+			$.ajax({
+				url: '/report/submit',
+				type: 'POST',
+				data: dataObj
+			})
+			.done(function(response) {
+				console.log(response);
+			})
+		});
 
     /*/Google analytics
      var _gaq = _gaq || [];
