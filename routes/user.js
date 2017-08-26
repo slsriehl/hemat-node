@@ -24,7 +24,7 @@ router.get('/user/signup', (req, res) => {
 		signup: true,
 		specificScripts: [
 
-			"../vendor/jquery/js/jquery.validate.min.js", "../js/login-settings.js"
+			"../js/login-settings.js"
 		]
 	});
 });
@@ -40,7 +40,7 @@ router.get('/user/login', (req, res) => {
 	res.render('login/login.hbs', {
 		specificScripts: [
 
-			"../vendor/jquery/js/jquery.validate.min.js", "../js/login-settings.js"
+			"../js/login-settings.js"
 		]
 	});
 });
@@ -76,7 +76,7 @@ router.get('/reset/request', (req, res) => {
 	res.render('login/reset-request.hbs', {
 		specificScripts: [
 
-			"../vendor/jquery/js/jquery.validate.min.js", "../js/login-settings.js"
+			"../js/login-settings.js"
 		]
 	});
 });

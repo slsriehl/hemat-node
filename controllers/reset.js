@@ -34,7 +34,7 @@ const controller = {
 					}],
 					specificScripts: [
 
-						"../vendor/jquery/js/jquery.validate.min.js", "../js/login-settings.js"
+						"../js/login-settings.js"
 					]
 				});
 			} else {
@@ -61,7 +61,7 @@ const controller = {
 					code: req.params.code,
 					specificScripts: [
 
-						"../vendor/jquery/js/jquery.validate.min.js", "../js/login-settings.js"
+						"../js/login-settings.js"
 					]
 				});
 			} else {
@@ -72,7 +72,7 @@ const controller = {
 					}],
 					specificScripts: [
 
-						"../vendor/jquery/js/jquery.validate.min.js", "../js/login-settings.js"
+						"../js/login-settings.js"
 					]
 				});
 			}
@@ -145,7 +145,7 @@ const controller = {
 							}],
 							specificScripts: [
 
-								"../vendor/jquery/js/jquery.validate.min.js", "../js/login-settings.js"
+								"../js/login-settings.js"
 							]
 						});
 					}
@@ -158,7 +158,7 @@ const controller = {
 					}],
 					specificScripts: [
 
-						"../vendor/jquery/js/jquery.validate.min.js", "../js/login-settings.js"
+						"../js/login-settings.js"
 					]
 				});
 			}

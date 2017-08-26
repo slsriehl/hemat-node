@@ -87,7 +87,7 @@ const controller = {
 				helpers.renderSingleMessage(req, res, 'login/signup.hbs',
 				[
 
-					"../vendor/jquery/js/jquery.validate.min.js", "../js/login-settings.js"
+					"../js/login-settings.js"
 				], true);
 			}
 		})
@@ -99,7 +99,7 @@ const controller = {
 			generalHelpers.writeToErrorLog(req);
 			helpers.renderSingleMessage(req, res, 'login/signup.hbs', [
 
-				"../vendor/jquery/js/jquery.validate.min.js", "../js/login-settings.js"
+				"../js/login-settings.js"
 			],
 			true
 		);
@@ -128,7 +128,7 @@ const controller = {
 				req.session.save();
 				helpers.renderSingleMessage(req, res, 'login/login.hbs', [
 
-					"../vendor/jquery/js/jquery.validate.min.js", "../js/login-settings.js"
+					"../js/login-settings.js"
 				]);
 			} else if(data.dataValues.deletedAt) {
 				req.session.message = "You appear to have deleted your account.  To reactivate it, please <a href='/mail'>contact our admin</a>.";
@@ -136,7 +136,7 @@ const controller = {
 				req.session.save();
 				helpers.renderSingleMessage(req, res, 'login/login.hbs', [
 
-					"../vendor/jquery/js/jquery.validate.min.js", "../js/login-settings.js"
+					"../js/login-settings.js"
 				]);
 
 			} else if(data.dataValues.requireReset) {
@@ -164,7 +164,7 @@ const controller = {
 					req.session.save();
 					helpers.renderSingleMessage(req, res, 'login/login.hbs', [
 
-						"../vendor/jquery/js/jquery.validate.min.js", "../js/login-settings.js"
+						"../js/login-settings.js"
 					]);
 				}
 			}
@@ -179,7 +179,7 @@ const controller = {
 			generalHelpers.writeToErrorLog(req);
 			helpers.renderSingleMessage(req, res, 'login/login.hbs', [
 
-				"../vendor/jquery/js/jquery.validate.min.js", "../js/login-settings.js"
+				"../js/login-settings.js"
 			]);
 		});
 	},
