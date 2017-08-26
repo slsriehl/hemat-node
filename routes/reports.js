@@ -10,6 +10,9 @@ router.post('/report/submit', (req, res) => {
 	reportsController.receiveReport(req, res);
 });
 
+router.get('/report/download/:report', (req, res) => {
+	reportsController.downloadReport(req, res);
+});
 
 
 module.exports = router;

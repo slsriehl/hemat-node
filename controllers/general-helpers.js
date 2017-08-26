@@ -1,5 +1,11 @@
 const models = require('../models');
-const fs = require('fs');
+
+const Promise = require('bluebird');
+
+const path = require('path');
+const fs = require('fs'); //promisify
+const mime = require('mime');
+
 const util = require('util');
 
 const helpers = {
@@ -57,6 +63,12 @@ const helpers = {
 			}
 		}
 		return obj;
+	},
+	resolvePath: (thePath) => {
+		return path.resolve(thePath);
+	},
+	mimeLookup: (file) => {
+		return mime.lookup(file);
 	},
 	writeToErrorLog:  (req) => {
 		fs.appendFile('../errors/error-log.txt', req, (error) => {

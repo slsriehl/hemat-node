@@ -1,12 +1,14 @@
 
 const models = require('../models');
 
+//++++++ Promises ++++++
+const Promise = require('bluebird');
+
 const generalHelpers = require('./general-helpers');
 
 const util = require('util');
+const fs = Promise.promisifyAll(require('fs'));
 
-//++++++ Promises ++++++
-const Promise = require('bluebird');
 
 //++++++ time generation ++++++
 const moment = require('moment');
@@ -15,9 +17,6 @@ const moment = require('moment');
 //++++++ PDFing ++++++
 const pdf = require('handlebars-pdf');
 const pdfTemplate = require('../views/pdfs/2017-08-pdf-template');
-const fs = Promise.promisifyAll(require('fs'));
-const path = require('path');
-const unescape = require('unescape-html');
 
 //++++++ functions ++++++
 const helpers = {
@@ -112,25 +111,26 @@ const helpers = {
 		}
 	},
 	pdfReport: (req, res, finalReportObj) => {
-		const myUserPath = path.resolve(`reports/${req.session.user}`);
+		const myUserPath = generalHelpers.resolvePath(`reports/${req.session.user}`);
 		console.log('myUserPath' + myUserPath);
 		console.log('the function' + helpers.directory(myUserPath));
 		return helpers.directory(myUserPath)
 		.then(() => {
 			console.log('helpers directory is true');
+			req.session.pdf = `${moment().utc().format('YYYYMMDDHHmmss')}-${finalReportObj.appSlug}.pdf`;
 			const report = {
 				template: pdfTemplate,
 				context: {
 					report: [finalReportObj]
 				},
-				path: `${myUserPath}/${moment().utc().format('YYYYMMDDHHmmss')}-${finalReportObj.appSlug}.pdf`
+				path: `${myUserPath}/${req.session.pdf}`
 			}
 			return pdf.create(report)
 		})
-		.then((data) => {
-			console.log('foo');
+		.catch(error => {
+			console.log(error);
+			return Promise.reject('pdf create fail');
 		})
-		.catch(error => console.log(error))
 	},
 	directory: (pathToUserDir) => {
 		console.log('process.cwd()' + process.cwd());
@@ -153,6 +153,9 @@ const helpers = {
 			})
 		})
 	},
+	createReadStream: (file) => {
+		return fs.createReadStream(file)
+	}
 
 }
 
