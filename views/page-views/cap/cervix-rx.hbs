@@ -18,7 +18,7 @@
 		<div class="col col-md-8">
 
 <h5>Specimen (select all that apply)</h5><br>
-<select class="form-control form-control-sm " multiple id="box1">
+<select class="form-control selectpicker form-control-sm " multiple id="box1">
 <option>Cervix</option>
 <option>Uterine corpus</option>
 <option>Right ovary</option>
@@ -37,7 +37,7 @@
 
 
 <h5>Procedure</h5><br>
-<select class="form-control form-control-sm " id="box2">
+<select class="form-control selectpicker form-control-sm " id="box2">
 <option value="Trachelectomy">Trachelectomy (aka cervicectomy)</option>
 <option>Radical hysterectomy</option>
 <option>Pelvic exenteration</option>
@@ -56,7 +56,7 @@
 
 
 <h5>Tumor Site (select all that apply)</h5><br>
-<select class="form-control form-control-sm " multiple id="box4">
+<select class="form-control selectpicker form-control-sm " multiple id="box4">
 <option>Left superior quadrant (12 to 3 o’clock)</option>
 <option>Left inferior quadrant (3 to 6 o’clock)</option>
 <option>Right inferior quadrant (6 to 9 o’clock)</option>
@@ -70,7 +70,7 @@
 
 
 <h5>Histologic Type (select all that apply)</h5><br>
-<select class="form-control form-control-sm " multiple id="box5">
+<select class="form-control selectpicker form-control-sm " multiple id="box5">
 <option>Superficial invasive squamous cell carcinoma (SISSCA) </option>
 <option>Squamous cell carcinoma, not otherwise specified (NOS)</option>
 <option>Squamous cell carcinoma, Keratinizing</option>
@@ -110,7 +110,7 @@
 
 
 <h5>Histologic Grade</h5><br>
-<select class="form-control form-control-sm " id="box6">
+<select class="form-control selectpicker form-control-sm " id="box6">
 <option>Not applicable</option>
 <option>GX: Cannot be assessed</option>
 <option>G1: Well differentiated</option>
@@ -134,7 +134,7 @@
 
 
 <h5>Margins</h5><br>
-<select class="form-control form-control-sm " id="box9">
+<select class="form-control selectpicker form-control-sm " id="box9">
 <option>Cannot be assessed</option>
 <option>Margins uninvolved by invasive carcinoma</option>
 <option>Margin(s) involved by invasive carcinoma</option>
@@ -142,14 +142,14 @@
 </select><br>
 <input type="text" class="form-control form-control-sm " id='box9_1' style='display:none;' placeholder='Specify closest margin'><br>
 <input type="text" class="form-control form-control-sm " id='box9_2' style='display:none;' placeholder='Specify distance from margin (cm)'><br>
-<span id="hsil_margin" style='display:none;'>HSIL margin status<br><select class="form-control form-control-sm " id='box9_3'><option selected>No HSIL identified at distal margin</option><option>HSIL present at distal margin</option></select><br></span>
+<span id="hsil_margin" style='display:none;'>HSIL margin status<br><select class="form-control selectpicker form-control-sm " id='box9_3'><option selected>No HSIL identified at distal margin</option><option>HSIL present at distal margin</option></select><br></span>
 <input type="text" class="form-control form-control-sm " id='box9_4' style='display:none;' placeholder='Specify involved margin'>
 
 <hr>
 
 
 <h5>Lymph-Vascular Invasion</h5><br>
-<select class="form-control form-control-sm " id="box10">
+<select class="form-control selectpicker form-control-sm " id="box10">
 <option>Not identified</option>
 <option>Present</option>
 <option>Cannot be determined</option>
@@ -162,7 +162,7 @@
 <hr>
 
 TNM Descriptors (select all that apply)<br>
-<select class="form-control form-control-sm " id="box11" multiple>
+<select class="form-control selectpicker form-control-sm " id="box11" multiple>
 <option selected value="Not applicable">Not applicable</option>
 <option>m</option>
 <option>r</option>
@@ -171,7 +171,7 @@ TNM Descriptors (select all that apply)<br>
 <hr>
 
 
-<select class="form-control form-control-sm " id="box12"  >
+<select class="form-control selectpicker form-control-sm " id="box12"  >
 <option value="pTX [--]">pTX [--]:	Cannot be assessed</option>
 <option value="pT1 [FIGO I]">pT1  [FIGO I]:  Cervical carcinoma confined to uterus (extension to corpus should be disregarded)</option>
 <option value="pT1a [FIGO IA]">pT1a  [FIGO IA]:	Invasive carcinoma diagnosed by microscopy only. All macroscopically visible lesions (even with superficial invasion) are pT1b/1B.</option>
@@ -192,7 +192,7 @@ TNM Descriptors (select all that apply)<br>
 <option value="pT4 [FIGO IVB]">pT4  [FIGO IVB]:	Tumor spread to distant organs</option>
 </select><br>
 
-<select class="form-control form-control-sm " id="box13"  >
+<select class="form-control selectpicker form-control-sm " id="box13"  >
 <option value="pNX">pNX:	Cannot be assessed / No nodes submitted</option>
 <option value="pN0">pN0:	No regional lymph node metastasis</option>
 <option value="pN1">pN1:	Regional lymph node metastasis</option>
@@ -224,7 +224,7 @@ Check here if any lymph nodes submitted? <input class="form-check-input " type="
 <hr>
 
 
-<select class="form-control form-control-sm " id="box14"  >
+<select class="form-control selectpicker form-control-sm " id="box14"  >
 <option value="pMX">pMX: Not applicable</option>
 <option value="pM1 [IVB]">pM1 [IVB]: Distant metastasis</option>
 </select>
@@ -233,7 +233,7 @@ Check here if any lymph nodes submitted? <input class="form-check-input " type="
 
 
 <h5>+ Additional Pathologic Findings (select all that apply)</h5><br>
-<select class="form-control form-control-sm " multiple id="box18">
+<select class="form-control selectpicker form-control-sm " multiple id="box18">
 <option>None identified</option>
 <option>LGSIL (CIN1/2)</option>
 <option>HGSIL (CIN3)</option>
@@ -247,7 +247,7 @@ Check here if any lymph nodes submitted? <input class="form-check-input " type="
 
 
 <h5>+ Ancillary Studies:</h5><br>
-<select class="form-control form-control-sm " id="box19" multiple>
+<select class="form-control selectpicker form-control-sm " id="box19" multiple>
 <option selected> None performed</option>
 <option> NGS mutation panel performed; see addendum </option>
 <option> p16 immunohistochemistry (see microscopic description) </option>

@@ -41,7 +41,7 @@
 												</div>
 												<div class="col-2 text-center my-auto" >
 														<div class="input-group input-group-sm">
-																<select class="form-control form-control-sm" id="limit">
+																<select class="form-control selectpicker form-control-sm" id="limit">
 																		<option value="200" selected hidden>
 																				Count Limit
 																		</option>
@@ -233,8 +233,9 @@
 												</ul>
 										</div>
 										<div class="card-block">
-												<div class="col">
-														<textarea id="diffOut" rows="16" style="width: 100%;"></textarea>
+												<div class="col col-md-12">
+													{{> page-partials/case-reference}}
+														<textarea id="diffOut" rows="16" style="width: 100%;" class="form-control"></textarea>
 												</div>
 												<p class="card-footer"><input id="switchtext" type="checkbox"> Check to toggle the final diff format</p>
 										</div>
@@ -243,6 +244,7 @@
 						</div>
 					</div>
 				</form>
+				{{> page-modals/new-case-reference}}
 <!-- previous diffs card-->
 <div class="card text-center">
 		<div class="card-header">

@@ -17,7 +17,7 @@
 		<div class="col col-md-8">
 
 	<h5>Procedure (select all that apply)</h5><br>
-	<select class="form-control form-control-sm "  id="box1" multiple>
+	<select class="form-control selectpicker form-control-sm "  id="box1" multiple>
 	<option value='Reoperative resection'>Reoperative resection (completion thyroidectomy)</option>
 	<option>Thyroid lobectomy, Right</option>
 	<option>Thyroid lobectomy, Left </option>
@@ -35,7 +35,7 @@
 <hr>
 
 	<h5>Lymph node sampling (select all that apply)</h5><br>
-	<select class="form-control form-control-sm "  id="box2" multiple>
+	<select class="form-control selectpicker form-control-sm "  id="box2" multiple>
 	<option selected>Focused or single lymph node resection</option>
 	<option>Central compartment dissection (level VI)</option>
 	<option>Lateral neck dissection (level I-V), Right </option>
@@ -48,7 +48,7 @@
 <hr>
 
 	<h5>+ Specimen Integrity</h5><br>
-	<select class="form-control form-control-sm "  id="box3">
+	<select class="form-control selectpicker form-control-sm "  id="box3">
 	<option selected>Intact</option>
 	<option>Fragmented</option>
 	</select>
@@ -92,7 +92,7 @@
 <hr>
 
 	<h5>Tumor Focality</h5><br>
-	<select class="form-control form-control-sm "  id="box6">
+	<select class="form-control selectpicker form-control-sm "  id="box6">
 	<option selected>Unifocal</option>
 	<option>Multifocal</option>
 	</select>
@@ -100,7 +100,7 @@
 <hr>
 
 	<h5>Tumor Laterality (select all that apply)</h5><br>
-	<select class="form-control form-control-sm "  multiple id="box7">
+	<select class="form-control selectpicker form-control-sm "  multiple id="box7">
 	<option></option>
 	<option>Right lobe</option>
 	<option>Left lobe</option>
@@ -121,7 +121,7 @@
 	<tr>
 	<td>
 	<h5>Histologic Type (select all that apply)</h5><br>
-	<select class="form-control form-control-sm "  multiple id="box9">
+	<select class="form-control selectpicker form-control-sm "  multiple id="box9">
 	<option></option>
 	<option>Papillary carcinoma</option>
 	<option>Follicular carcinoma</option>
@@ -137,7 +137,7 @@
 	<td>
 	<div class='papcahisto' style="display:none;">
 	Papillary carcinoma Variant, specify:<br>
-	<select class="form-control form-control-sm "  id="box10_1">
+	<select class="form-control selectpicker form-control-sm "  id="box10_1">
 	<option selected>Classical (usual) </option>
 	<option>Follicular variant (encapsulated/well-demarcated), Tumor capsular invasion not present</option>
 	<option> Follicular variant (encapsulated/well-demarcated), Tumor capsular invasion present</option>
@@ -152,7 +152,7 @@
 	</div><!--end pap carcinoma histo-->
 	<div class="folcahisto" style="display:none">
 	Follicular carcinoma Variant, specify:<br>
-	<select class="form-control form-control-sm "  id="box11">
+	<select class="form-control selectpicker form-control-sm "  id="box11">
 	<option value='typical' selected>Typical morphology</option>
 	<option>Oncocytic (Hürthle cell)</option>
 	<option>Clear cell variant</option>
@@ -160,7 +160,7 @@
 	</select>
 	<br>
 	Extent of tumor invasion:<br>
-	<select class="form-control form-control-sm "  id="box11_1">
+	<select class="form-control selectpicker form-control-sm "  id="box11_1">
 	<option selected>Minimally invasive</option>
 	<option>Widely invasive</option>
 	</select>
@@ -171,7 +171,7 @@
 <hr>
 
 	<h5>Margins</h5><br>
-	<select class="form-control form-control-sm "  id="box13">
+	<select class="form-control selectpicker form-control-sm "  id="box13">
 	<option selected>Cannot be assessed</option>
 	<option>Margins uninvolved by carcinoma</option>
 	<option>Margin(s) involved by carcinoma</option>
@@ -182,7 +182,7 @@
 <hr>
 
 	<h5>Angioinvasion</h5><br>
-	<select class="form-control form-control-sm "  id="box15">
+	<select class="form-control selectpicker form-control-sm "  id="box15">
 	<option></option>
 	<option>Not identified</option>
 	<option>Present, Focal (&lt;4 vessels)</option>
@@ -193,7 +193,7 @@
 <hr>
 
 	<h5>Lymphatic Invasion</h5><br>
-	<select class="form-control form-control-sm "  id="box16">
+	<select class="form-control selectpicker form-control-sm "  id="box16">
 	<option></option>
 	<option>Not identified </option>
 	<option>Present</option>
@@ -203,7 +203,7 @@
 <hr>
 
 	<h5>+ Perineural Invasion</h5><br>
-	<select class="form-control form-control-sm "  id="box17">
+	<select class="form-control selectpicker form-control-sm "  id="box17">
 	<option selected>Not identified </option>
 	<option>Present</option>
 	<option>Cannot be determined</option>
@@ -212,7 +212,7 @@
 <hr>
 
 	<h5>Extrathyroidal Extension</h5><br>
-	<select class="form-control form-control-sm "  id="box18">
+	<select class="form-control selectpicker form-control-sm "  id="box18">
 	<option selected>Cannot be assessed</option>
 	<option>Not identified</option>
 	<option>Present, Minimal</option>
@@ -223,7 +223,7 @@
 
 	<h5>Pathologic Staging (pTNM)</h5>
 	TNM Descriptors (select all that apply)<br>
-	<select class="form-control form-control-sm "  id="box19" multiple>
+	<select class="form-control selectpicker form-control-sm "  id="box19" multiple>
 	<option selected value="Not applicable">Not applicable</option>
 	<option>m</option>
 	<option>r</option>
@@ -232,7 +232,7 @@
 <hr>
 
 	Primary Tumor (pT)<br>
-	<select class="form-control form-control-sm "  id="box20">
+	<select class="form-control selectpicker form-control-sm "  id="box20">
 	<option value=" pTX"> pTX:	Cannot be assessed</option>
 	<option value=" pT0"> pT0:	No evidence of primary tumor</option>
 	<option value=" pT1"> pT1:	Tumor size 2 cm or less, limited to thyroid</option>
@@ -248,7 +248,7 @@
 	<option value="null"></option>
 	</select><br>
 	Regional Lymph Nodes (pN)<br>
-	<select class="form-control form-control-sm "  id="box21">
+	<select class="form-control selectpicker form-control-sm "  id="box21">
 	<option value=" pNX"> pNX:	Regional lymph nodes cannot be assessed</option>
 	<option value=" pNX"> Lymph nodes with psammomabodies only</option>
 	<option value=" pN0"> pN0:	No regional lymph node metastasis</option>
@@ -257,7 +257,7 @@
 	<option></option>
 	</select><br>
 	Distant Metastasis (pM)<br>
-	<select class="form-control form-control-sm "  id="box22">
+	<select class="form-control selectpicker form-control-sm "  id="box22">
 	<option value="pMX">pMX: Not applicable</option>
 	<option value="pM1">pM1: Distant metastasis</option>
 	</select>
@@ -269,7 +269,7 @@
 	<div class='lndiv' style="display:none">
 	Number of lymph nodes examined: <input type="text" class="form-control form-control-sm "  id="box24" ><br>
 	Number of lymph nodes involved: <input type="text" class="form-control form-control-sm "  id="box25"  placeholder="0"><br>
-	Lymph node, Extranodal extension: 	<select class="form-control form-control-sm "  id="box26" >
+	Lymph node, Extranodal extension: 	<select class="form-control selectpicker form-control-sm "  id="box26" >
 	<option>Not Identified</option>
 	<option>Present</option>
 	<option>Cannot be determind</option>
@@ -280,7 +280,7 @@
 <hr>
 
 	<h5>+ Additional Pathologic Findings (select all that apply)</h5><br>
-	<select class="form-control form-control-sm "  multiple id="box27">
+	<select class="form-control selectpicker form-control-sm "  multiple id="box27">
 	<option selected>None identified</option>
 	<option>Adenoma</option>
 	<option>Adenomatoid nodule(s) or Nodular follicular disease </option>
@@ -302,7 +302,7 @@
 
 	<h5>+ Ancillary studies:</h5><br>
 	Select which, if any, ancillary studies are performed (DNA analysis, molecular testing, FISH)<br>
-	<select class="form-control form-control-sm "  multiple id="box29">
+	<select class="form-control selectpicker form-control-sm "  multiple id="box29">
 	<option selected>None performed</option>
 	<option>Solid tumor mutation panel by NGS</option>
 	<option>RET FISH</option>
@@ -314,7 +314,7 @@
 <hr>
 
 	<h5>+ Clinical history:</h5><br>
-	<select class="form-control form-control-sm "  multiple id="box30">
+	<select class="form-control selectpicker form-control-sm "  multiple id="box30">
 	<option selected>No known pertinent history</option>
 	<option>Known history of radiation exposure</option>
 	<option>No known history of radiation exposure</option>

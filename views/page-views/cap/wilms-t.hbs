@@ -17,7 +17,7 @@
 		<div class="col col-md-8">
 
 	<b>Procedure (Notes A and B) </b><br>
-	<select class="form-control form-control-sm "  id="box1">
+	<select class="form-control selectpicker form-control-sm "  id="box1">
 	<option></option>
 	<option>Not specified</option>
 	<option>Core biopsy</option>
@@ -36,7 +36,7 @@
 	<input type="text" class="form-control form-control-sm "  id="box3"  placeholder="Not applicable"><br><br>
 
 	<b>Specimen Laterality</b> <br>
-	<select class="form-control form-control-sm "  id="box4">
+	<select class="form-control selectpicker form-control-sm "  id="box4">
 	<option selected>Not specified</option>
 	<option> Right</option>
 	<option> Left</option>
@@ -56,7 +56,7 @@
 	<br>
 	<br><br>
 	<b>Tumor Focality </b><br>
-	<select class="form-control form-control-sm "  id="box8">
+	<select class="form-control selectpicker form-control-sm "  id="box8">
 	<option selected> Cannot be assessed</option>
 	<option>Unifocal</option>
 	<option>Multifocal</option>
@@ -65,7 +65,7 @@
 	<input type="text" class="form-control form-control-sm "  id="box8_2" style="display:none" placeholder="Number of tumors in specimen" >
 	<br><br>
 	<b>Macroscopic Extent of Tumor</b><br>
-	<select class="form-control form-control-sm "  id="box9">
+	<select class="form-control selectpicker form-control-sm "  id="box9">
 	<optgroup label="Gerota’s Fascia">
 	  <option selected>Gerota’s fascia intact</option>
 	  <option>Gerota’s fascia disrupted</option>
@@ -74,7 +74,7 @@
 	</optgroup>
 	</select>
 	<br>
-	<select class="form-control form-control-sm "  id="box10">
+	<select class="form-control selectpicker form-control-sm "  id="box10">
 	<optgroup label="Renal Sinus">
 	<option selected> No renal sinus involvement by tumor identified</option>
 	<option>Tumor minimally extends into renal sinus soft tissue</option>
@@ -84,7 +84,7 @@
 </optgroup>
 	</select>
 	<br>
-	<select class="form-control form-control-sm "  id="box11">
+	<select class="form-control selectpicker form-control-sm "  id="box11">
 	<optgroup label="Renal Vein">
 	<option selected>Renal vein invasion not identified</option>
 	<option>Renal vein invasion present</option>
@@ -93,7 +93,7 @@
 	</optgroup>
 	</select>
 	<br>
-	<select class="form-control form-control-sm "  id="box11_5">
+	<select class="form-control selectpicker form-control-sm "  id="box11_5">
 	<optgroup label="Renal Capsule">
 	<option selected>No extension beyond renal capsule</option>
 	<option> Extension beyond renal capsule present</option>
@@ -101,7 +101,7 @@
 	</optgroup>
 	</select>
 	<br>
-	<select class="form-control form-control-sm "  id="box12">
+	<select class="form-control selectpicker form-control-sm "  id="box12">
 	<optgroup label="Adjacent Organ Involvement">
 	<option selected> No tumor extension into adjacent organs identified </option>
 	<option>Tumor extension into adjacent organ present (specify organ:  )</option>
@@ -112,7 +112,7 @@
 	<br><br>
 
 	<b>Margins (select all that apply)</b><br>
-	<select class="form-control form-control-sm "  multiple id="box20">
+	<select class="form-control selectpicker form-control-sm "  multiple id="box20">
 	<option>Cannot be assessed</option>
 	<option>Margins uninvolved by tumor</option>
 	<optgroup label="Margins Involved - select all that apply">
@@ -129,7 +129,7 @@
 	<br><br>
 
 	<b>Histologic Type (select all that apply) (Note C)</b><br>
-	<select class="form-control form-control-sm "  id="box13" multiple>
+	<select class="form-control selectpicker form-control-sm "  id="box13" multiple>
 	<option selected>Wilms tumor, favorable histology</option>
 	<option>Wilms tumor, focal anaplasia</option>
 	<option>Wilms tumor, diffuse anaplasia</option>
@@ -146,7 +146,7 @@
 	<br><br>
 
 	<b>+ Nephrogenic rests</b><br>
-	<select class="form-control form-control-sm "  multiple id="box14">
+	<select class="form-control selectpicker form-control-sm "  multiple id="box14">
 	<option>No nephrogenic rests identified</option>
 	<option>Intralobar nephrogenic rests present</option>
 	<option>Perilobar nephrogenic rests present, diffuse</option>
@@ -162,7 +162,7 @@
 	Number of lymph nodes involved: <input type="text" class="form-control form-control-sm "  id="box15_3" ></div><br><br>
 
 	<b>Distant Metastasis </b><br>
-	<select class="form-control form-control-sm "  id="box16">
+	<select class="form-control selectpicker form-control-sm "  id="box16">
 	<option selected> Not applicable</option>
 	<option>Distant metastasis present</option>
 	</select>
@@ -174,7 +174,7 @@
 	<b>Children’s Oncology Group Staging System for pediatric renal tumors other than renal cell carcinoma (select all that apply under the appropriate stage) (Note E)</b><br>
 	<small> Note: TNM designation does not apply to Wilms tumor or other pediatric renal tumors (except renal cell carcinoma - use adult RCC summary in that case).</small><br>
 	<div style="margin-bottom:125px;">
-	<select class="form-control form-control-sm "  id="box17" >
+	<select class="form-control selectpicker form-control-sm "  id="box17" >
 	<option>Cannot be assessed</option>
 	<option value="Stage I">Tumor limited to kidney and completely resected</option>
 	<option value="Stage II">Tumor extends beyond kidney but completely resected and has no metastatic lymph nodes</option>
@@ -221,15 +221,15 @@
 	<b>Bilateral renal involvement at diagnosis (each side should also be staged separately, according to above criteria, as I to IV)</b>
 	</small></div>
 	<div id="bilat" style="display:none;">
-	Right kidney stage: <select class="form-control form-control-sm "  id="box17_2"><option>I</option><option>II</option><option>III</option><option>IV</option></select><br>
-	Left Kidney stage: <select class="form-control form-control-sm "  id="box17_3"><option>I</option><option>II</option><option>III</option><option>IV</option></select><br>
+	Right kidney stage: <select class="form-control selectpicker form-control-sm "  id="box17_2"><option>I</option><option>II</option><option>III</option><option>IV</option></select><br>
+	Left Kidney stage: <select class="form-control selectpicker form-control-sm "  id="box17_3"><option>I</option><option>II</option><option>III</option><option>IV</option></select><br>
 	</div>
 	</div>
 	</span>
 
 
 	<b>+ Ancillary Molecular/Genetic Studies (select all that apply)</b><br>
-	<select class="form-control form-control-sm "  id="box18" multiple >
+	<select class="form-control selectpicker form-control-sm "  id="box18" multiple >
 	<option selected>None performed</option>
 	<option>No LOH at 1p or 16q</option>
 	<option>LOH at 1p; No LOH at 16q</option>
@@ -245,7 +245,7 @@
 	<input type="text" class="form-control form-control-sm "  id="box18_2" style="display:none" placeholder='Enter Other ancillary test' >
 	<br><br>
 	<b>+ Known Underlying Genetic Syndrome</b><br>
-	<select class="form-control form-control-sm "  id="box19" >
+	<select class="form-control selectpicker form-control-sm "  id="box19" >
 	<option selected>Unknown at the time of resection</option>
 	<option>Beckwith-Wiedemann syndrome</option>
 	<option>Perlman familial nephroblastomatosis syndrome</option>

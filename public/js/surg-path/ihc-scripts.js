@@ -42,7 +42,7 @@ $(window).on('load', function(){
         '<input class="form-control form-control-sm search" type="text" >'+
         '</td>'+
         '<td>' +
-        '<select class="form-control form-control-sm ihc_val">'+
+        '<select class="form-control selectpicker form-control-sm ihc_val">'+
         '<option selected hidden>Value?</option><option value="POS">POS</option><option value="NEG">NEG</option><option value="EQUIV">EQUIVOCAL</option>'+
         '</select>'+
         '</td>'+

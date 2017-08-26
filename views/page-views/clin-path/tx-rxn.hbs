@@ -57,8 +57,8 @@
 																		<tr>
 																				<td ><input class="form-control form-control-sm"  id='temp1' ></td>
 																				<td ><input class="form-control form-control-sm"  id='temp2' ></td>
-																				<td ><select class="form-control form-control-sm"  id='blood_type'><option value="an A+"> A+</option><option>a B+</option><option value="an O+"> O+</option><option value="an AB+"> AB+</option><option value="an A-"> A-</option><option>a B-</option><option value="an O-"> O-</option><option value="an AB-"> AB-</option></select></td>
-																				<td ><select class="form-control form-control-sm"  id='cc'><option>Passed</option><option>Fail</option></select></td>
+																				<td ><select class="form-control selectpicker form-control-sm"  id='blood_type'><option value="an A+"> A+</option><option>a B+</option><option value="an O+"> O+</option><option value="an AB+"> AB+</option><option value="an A-"> A-</option><option>a B-</option><option value="an O-"> O-</option><option value="an AB-"> AB-</option></select></td>
+																				<td ><select class="form-control selectpicker form-control-sm"  id='cc'><option>Passed</option><option>Fail</option></select></td>
 																		</tr>
 																		<thead class="thead-default">
 																		<tr>
@@ -71,8 +71,8 @@
 																		<tr>
 																				<td ><input class="form-control form-control-sm"  id='bp1' ></td>
 																				<td ><input class="form-control form-control-sm"  id='bp2' ></td>
-																				<td ><select class="form-control form-control-sm"  id='prod_type'><option value="an A+"> A+</option><option>a B+</option><option value="an O+"> O+</option><option value="an AB+"> AB+</option><option value="an A-"> A-</option><option>a B-</option><option value="an O-"> O-</option><option value="an AB-"> AB-</option></select><br><select class="form-control form-control-sm"  id='prod'><option>RBC</option><option >platelet</option><option>FFP</option><option>cryoprecipitate</option></select></td>
-																				<td ><select class="form-control form-control-sm"  id='hemol'><option>None</option><option>Minimal</option><option>Present</option></select></td>
+																				<td ><select class="form-control selectpicker form-control-sm"  id='prod_type'><option value="an A+"> A+</option><option>a B+</option><option value="an O+"> O+</option><option value="an AB+"> AB+</option><option value="an A-"> A-</option><option>a B-</option><option value="an O-"> O-</option><option value="an AB-"> AB-</option></select><br><select class="form-control selectpicker form-control-sm"  id='prod'><option>RBC</option><option >platelet</option><option>FFP</option><option>cryoprecipitate</option></select></td>
+																				<td ><select class="form-control selectpicker form-control-sm"  id='hemol'><option>None</option><option>Minimal</option><option>Present</option></select></td>
 																		</tr>
 																		<thead class="thead-default">
 																		<tr>
@@ -88,8 +88,8 @@
 																		<tr>
 																				<td ><input class="form-control form-control-sm datepicker" data-provide="datepicker-inline" id='date1' ></td>
 																				<td ><input class="form-control form-control-sm datepicker" data-provide="datepicker-inline" id='date2' ></td>
-																				<td ><select class="form-control form-control-sm"  id='LR' multiple><option selected>LR</option><option>irradiated</option><option>washed</option><option>CMV negative</option></select></td>
-																				<td ><select class="form-control form-control-sm"  id='pretest'><option value="an A+"> A+</option><option>a B+</option><option value="an O+"> O+</option><option value="an AB+"> AB+</option><option value="an A-"> A-</option><option>a B-</option><option value="an O-"> O-</option><option value="an AB-"> AB-</option></select></td>
+																				<td ><select class="form-control selectpicker form-control-sm"  id='LR' multiple><option selected>LR</option><option>irradiated</option><option>washed</option><option>CMV negative</option></select></td>
+																				<td ><select class="form-control selectpicker form-control-sm"  id='pretest'><option value="an A+"> A+</option><option>a B+</option><option value="an O+"> O+</option><option value="an AB+"> AB+</option><option value="an A-"> A-</option><option>a B-</option><option value="an O-"> O-</option><option value="an AB-"> AB-</option></select></td>
 																		</tr>
 																		<thead class="thead-default">
 																		<tr>
@@ -107,7 +107,7 @@
 																				<td ><input class="form-control form-control-sm"  id='time1' ></td>
 																				<td ><input class="form-control form-control-sm"  id='time2' ></td>
 																				<td ></td>
-																				<td ><select class="form-control form-control-sm"  id='posttest'><option value="an A+"> A+</option><option>a B+</option><option value="an O+"> O+</option><option value="an AB+"> AB+</option><option value="an A-"> A-</option><option>a B-</option><option value="an O-"> O-</option><option value="an AB-"> AB-</option></select></td>
+																				<td ><select class="form-control selectpicker form-control-sm"  id='posttest'><option value="an A+"> A+</option><option>a B+</option><option value="an O+"> O+</option><option value="an AB+"> AB+</option><option value="an A-"> A-</option><option>a B-</option><option value="an O-"> O-</option><option value="an AB-"> AB-</option></select></td>
 																		</tr>
 																		<thead class="thead-default">
 																		<tr>
@@ -118,7 +118,7 @@
 																		</tr>
 																		</thead>
 																		<tr>
-																				<td ><select class="form-control form-control-sm"  id='symptoms' multiple>
+																				<td ><select class="form-control selectpicker form-control-sm"  id='symptoms' multiple>
 																								<option selected value='fever'>Fever (>2 deg F)</option>
 																								<option>chills</option>
 																								<option>rigors</option>
@@ -137,15 +137,15 @@
 																								<option>headache</option>
 
 																						</select></td>
-																				<td ><select class="form-control form-control-sm"  id='premed'><option value='was reportedly given prior to initiation of transfusion.'>Given</option><option value='was not reported.'>Not reported</option></select ></td>
+																				<td ><select class="form-control selectpicker form-control-sm"  id='premed'><option value='was reportedly given prior to initiation of transfusion.'>Given</option><option value='was not reported.'>Not reported</option></select ></td>
 																				<td ></td>
-																				<td ><select class="form-control form-control-sm"  id='dat'><option>Negative</option><option>Positive</option></select></td>
+																				<td ><select class="form-control selectpicker form-control-sm"  id='dat'><option>Negative</option><option>Positive</option></select></td>
 																		</tr>
 																</table>
 														</div>
 														<div class="card-footer bg-info">
 														Interpretation and Comments<br>
-																<select class="form-control form-control-sm" id='interp'>
+																<select class="form-control selectpicker form-control-sm" id='interp'>
 																		<option selected value="100">Allergic transfusion reaction</option>
 																		<option value="101" >Febrile, non-hemolytic transfusion reaction</option>
 																		<option value="102" >Acute hemolytic transfusion reaction</option>

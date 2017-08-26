@@ -167,13 +167,13 @@
 																		</tr>
 																		<tr >
 																				<td >
-																						<select class="form-control form-control-sm"  id="asp_1" name="asp_1">
+																						<select class="form-control selectpicker form-control-sm"  id="asp_1" name="asp_1">
 																								<option selected value="aspirate">Aspirate</option>
 																								<option value="touch prep">Touch Prep</option>
 																						</select>
 																				</td>
 																				<td >
-																						<select class="form-control form-control-sm"  id="limit"><option>100</option><option selected>200</option><option>300</option><option>400</option><option>500</option></select>
+																						<select class="form-control selectpicker form-control-sm"  id="limit"><option>100</option><option selected>200</option><option>300</option><option>400</option><option>500</option></select>
 																				</td>
 																				<td >
 																						<input type="text" class="form-control form-control-sm input-sm"  id="counter" >
@@ -228,7 +228,7 @@
 																								<div class="text-center bg-info">Select specimens submitted:</div>
 																								<div class="form-group">
 																										<label for="spc_val">Specimen type?</label>
-																										<select class="form-control form-control-sm" name="" id="spc_val">
+																										<select class="form-control selectpicker form-control-sm" name="" id="spc_val">
 																												<option selected value="1">Asp + TP</option>
 																												<option value="2">Aspirates only</option>
 																												<option value="3">Biopsy/Touch Preps only</option>
@@ -236,7 +236,7 @@
 																								</div>
 																								<div class="form-group">
 																										<label for="site_val">Procedure site</label>
-																										<select class="form-control form-control-sm" name="" id="site_val">
+																										<select class="form-control selectpicker form-control-sm" name="" id="site_val">
 																												<option value="Right iliac crest">RIC</option>
 																												<option value="Left iliac crest">LIC</option>
 																												<option value="Bilateral iliac crest">R & L IC</option>
@@ -442,7 +442,7 @@
 																										<div class="clotoptions">
 																										<div class="form-group">
 																												<label for="clotnum">Particle adequacy?</label>
-																												<select class="form-control form-control-sm clotcelltext" name="clotnum" id="clotnum">
+																												<select class="form-control selectpicker form-control-sm clotcelltext" name="clotnum" id="clotnum">
 																														<option hidden value="adequate">Choose</option>
 																														<option>few</option>
 																														<option>adequate</option>
@@ -451,7 +451,7 @@
 																										</div>
 																										<div class="form-group">
 																												<label for="clotcell">Particle cellularity?</label>
-																												<select class="form-control form-control-sm clotcelltext" name="clotcell" id="clotcell">
+																												<select class="form-control selectpicker form-control-sm clotcelltext" name="clotcell" id="clotcell">
 																														<option hidden value="cellular">Choose</option>
 																														<option>paucicellular</option>
 																														<option>cellular</option>
@@ -782,7 +782,7 @@
 																								<button class="btn btn-outline-primary btn-sm p-1" data-toggle="collapse" href="#priorhistory" aria-expanded="false" aria-controls="collapsediv">
 																										Any prior history</button>
 																								<div class="collapse mt-1" id="priorhistory">
-																										History of: <select class="form-control form-control-sm" id="dx_history">
+																										History of: <select class="form-control selectpicker form-control-sm" id="dx_history">
 																												<option value="">-Select-</option>
 																												<option value="dxOut350">BALL</option>
 																												<option value="dxOut351">TALL </option>
@@ -805,7 +805,7 @@
 																										</select>
 																										<!-- hidden BALL and AML genetics modals here-->
 																										<div class="dx_history_add_ball">
-																												<select class="form-control form-control-sm" id="ball_history">
+																												<select class="form-control selectpicker form-control-sm" id="ball_history">
 																														<option>NOS</option>
 																														<option>with recurrent genetic abnormalities</option>
 																														<option>with t(9;22)(q34.1;q11.2); BCR-ABL1</option>
@@ -823,7 +823,7 @@
 																												</select>
 																										</div>
 																										<div class="dx_history_add_aml">
-																												<select class="form-control form-control-sm" id="aml_history">
+																												<select class="form-control selectpicker form-control-sm" id="aml_history">
 																														<option>NOS</option>
 																														<option>with t(8;21)(q22;q22.1); RUNX1-RUNX1T1</option>
 																														<option>with inv(16)(p13.1q22); CBFB-MYH11</option>
@@ -950,14 +950,14 @@
 																								<hr>
 																								<div class="bg-warning mb-2">Ancillary Studies & CAP templates</div>
 																								Cytogenetics:
-																								<select class="form-control form-control-sm" id="cyto_val">
+																								<select class="form-control selectpicker form-control-sm" id="cyto_val">
 																										<option selected value="Karyotype pending">Karyotype pending</option>
 																										<option value="Not performed">Not performed</option>
 																										<option value="Abnormal karyotype detected: ">Abnormal karyotype detected</option>
 																								</select>
 																								<br>
 																								FISH:
-																								<select class="form-control form-control-sm " id="fish_val">
+																								<select class="form-control selectpicker form-control-sm " id="fish_val">
 																										<option value="B-cell lymphoma FISH pending">B-lymphoma FISH pending</option>
 																										<option value="T-cell lymphoma FISH pending">T-lymphoma FISH pending</option>
 																										<option value="BALL FISH pending">BALL FISH pending</option>
@@ -973,13 +973,13 @@
 																								</select>
 																								<br>
 																								MRD:
-																								<select class="form-control form-control-sm " id="mrd_val">
+																								<select class="form-control selectpicker form-control-sm " id="mrd_val">
 																										<option value="MRD pending">MRD pending</option>
 																										<option selected value="Not performed">Not performed</option>
 																								</select>
 																								<br>
 																								Molecular:
-																								<select class="form-control form-control-sm " id="mol_val">
+																								<select class="form-control selectpicker form-control-sm " id="mol_val">
 																										<option value="NGS mutation panel pending">NGS mutation panel pending</option>
 																										<option value="AML FLT3, NPM and CEBPA testing pending">FLT3, NPM, CEBPA pending</option>
 																										<option value="Quantitative BCR/ABL transcript detection pending">BCR/ABL quant</option>
