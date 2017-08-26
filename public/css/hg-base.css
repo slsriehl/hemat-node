@@ -109,6 +109,11 @@ textarea {
 	margin: 0;
 }
 
+/* unsuccessful ajax call for pdf create or download */
+#create-pdf-fail, #download-pdf-fail {
+	background-color: rgba(219, 114, 123, 0.5)
+}
+
 /* form validation error fields */
 
 .form-group .error {
@@ -117,4 +122,17 @@ textarea {
 	background-color: rgba(219, 114, 123, 0.5);
 	box-sizing: border-box;
 	padding: 0.5rem;
+}
+
+/* style changes regarding download and create pdf buttons */
+.standard-button-box, .report-button-box {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+.report-button-box {
+	margin-top: 0.5rem;
+}
+.report-button-box .btn {
+	margin: 0;
 }
