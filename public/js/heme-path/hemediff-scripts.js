@@ -1,4 +1,5 @@
-var dataObj;
+var dataObj = {};
+dataObj.appId = 9;
 
 $(window).on('load', function() {
 
@@ -164,10 +165,7 @@ $(window).on('load', function() {
 				//format the diff text automatically
 				var text2 = diffStr.replace(/differential: /, 'differential:\n').replace(/; /g, '\n');
         $('#diffOut').val(text2);
-				dataObj = {
-					report: text2,
-					appId: 9
-				}
+				dataObj.singleSection = text2;
 				console.log(dataObj);
         // $('#diffOut').val(diffStr);
         // append each printed diff into "history" window with counter to label them

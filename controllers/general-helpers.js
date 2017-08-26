@@ -3,7 +3,7 @@ const fs = require('fs');
 const util = require('util');
 
 const helpers = {
-	cleanObj: (obj) => {
+	cleanObj: (obj, toArray) => {
 		for (let propName in obj) {
 			switch(obj[propName]) {
 				case null:
@@ -26,12 +26,37 @@ const helpers = {
 			// 	;
 			// }
 		}
+
 		console.log(`final obj returned or not ${util.inspect(obj)}`);
 		if(Object.keys(obj).length === 0) {
 			return false;
+		} else if(toArray) {
+			for(let [key, value] of helpers.entries(obj)) {
+				if (key.includes('Id')) {
+					delete key;
+				} else {
+					toArray.push(key);
+				}
+			}
+			console.log('toArray' + util.inspect(toArray));
+			return helpers.replaceLineBreaks(obj);
 		} else {
-			return obj;
+			return helpers.replaceLineBreaks(obj);
 		}
+	},
+	entries: function* (obj) {
+		for(let key of Object.keys(obj)) {
+			yield[key, obj[key]];
+		}
+	},
+	replaceLineBreaks: (obj) => {
+		for(let [key, value] of helpers.entries(obj)) {
+			if (typeof(value) == 'string' && value.includes('\n')) {
+				let newString = value.replace(/(?:\r\n|\r|\n)/g, '<br /><br />');
+				obj[key] = newString;
+			}
+		}
+		return obj;
 	},
 	writeToErrorLog:  (req) => {
 		fs.appendFile('../errors/error-log.txt', req, (error) => {

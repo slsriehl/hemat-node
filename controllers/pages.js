@@ -1,5 +1,10 @@
 
 const cookieHelpers = require('./cookie-helpers');
+const helpers = require('./pages-helpers');
+
+const models = require('../models');
+
+const util = require('util');
 
 //const userHelpers = require('./user-helpers');
 
@@ -7,14 +12,7 @@ const controller = {
 	userWall: (req, res, renderPath, scripts) => {
 		console.log(req.session);
 		if(cookieHelpers.verifyCookie(req, res)) {
-			res.render(renderPath, {
-				messages: req.session.systemMessages,
-				isAuth: {
-					check: req.session.isAuth,
-					firstname: req.session.firstname
-				},
-				specificScripts: scripts
-			});
+			helpers.getCaseReferences(req, res, renderPath, scripts);
 		} else {
 			res.render('index.hbs', {
 				messages: [{
@@ -27,14 +25,7 @@ const controller = {
 	openAccess: (req, res, renderPath, scripts) => {
 		console.log(req.session);
 		if(cookieHelpers.verifyCookie(req, res)) {
-			res.render(renderPath, {
-				messages: req.session.systemMessages,
-				isAuth: {
-					check: req.session.isAuth,
-					firstname: req.session.firstname
-				},
-				specificScripts: scripts
-			});
+			helpers.getCaseReferences(req, res, renderPath, scripts);
 		} else {
 			res.render(renderPath, {
 				specificScripts: scripts

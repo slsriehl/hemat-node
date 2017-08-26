@@ -112,7 +112,7 @@ $(function () {
             '<input class="form-control form-control-sm search" type="text" >'+
             '</td>'+
             '<td>' +
-            '<select class="form-control form-control-sm ihc_val">'+
+            '<select class="form-control selectpicker form-control-sm ihc_val">'+
             '<option selected hidden>Value?</option><option value="POS">POS</option><option value="NEG">NEG</option><option value="EQUIV">EQUIVOCAL</option>'+
             '</select>'+
             '</td>'+
@@ -239,6 +239,9 @@ $(function () {
         });
     });
 
+		// //initialize bootstrap select
+		// $('.selectpicker').selectpicker();
+
 		//dismiss messages: hide and ajax to add to dismissed messages table
 		$('.message-dismiss h2').on('click', function(event) {
 			console.log('foo');
@@ -261,8 +264,36 @@ $(function () {
 			});
 		});
 
+		//show new case reference popup if new selected
+		$('#caseRefSelect').on('change', function() {
+			if($(this).val() == '-1') {
+				$('#new-case-reference').modal('show');
+				return;
+			} else {
+				return;
+			}
+		});
+
+		//handler to submit new case reference to obj to be sent to back end
+		$('#add-case-reference').on('submit', function(event) {
+			event.preventDefault();
+			console.log(event);
+			$('#new-case-reference').modal('hide');
+			dataObj.newCaseRef = $('#newCaseReference').val();
+			console.log(dataObj);
+			var newRefOption = $('<option value="new" selected="selected">');
+			newRefOption.append(dataObj.newCaseRef);
+			$('#caseRefSelect').append(newRefOption);
+			//return false;
+		});
+
+
+
 		//send a report to the back end for storage and PDFing
 		$(document).off('click', '#pdf-report').on('click', '#pdf-report', function(event) {
+			if($('#caseRefSelect').val() != 'new') {
+				dataObj.referenceId = $('#caseRefSelect').val()
+			}
 			console.log(dataObj);
 			//send the report to the back end to be PDFed and saved
 			$.ajax({
