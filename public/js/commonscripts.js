@@ -287,7 +287,21 @@ $(function () {
 			//return false;
 		});
 
-
+		//create a failure message
+		var failureMessage = function(id, message) {
+			var failMessage = $('<div class="message-box message-fail" id="' + id + '"> \
+							<div class="message-dismiss"> \
+								<h2>&times;</h2> \
+				<!-- end message-dismiss --> \
+				</div> \
+				<div class="message-item"> \
+					<span>' + message + '</span> \
+					<!-- / message-item--> \
+				</div> \
+				<!-- /message-box --> \
+			</div>')
+			$('.message-center').append(failMessage);
+		}
 
 		//send a report to the back end for storage and PDFing
 		$(document).off('click', '#pdf-report').on('click', '#pdf-report', function(event) {
@@ -295,6 +309,7 @@ $(function () {
 				dataObj.referenceId = $('#caseRefSelect').val()
 			}
 			console.log(dataObj);
+			console.log('foo');
 			//send the report to the back end to be PDFed and saved
 			$.ajax({
 				url: '/report/submit',
@@ -303,7 +318,22 @@ $(function () {
 			})
 			.done(function(response) {
 				console.log(response);
-			})
+				if(response.report) {
+					//pdf was successfully created and the data saved in the database
+					if($('.message-fail')) {
+						//hide any previous error messages
+						$('.message-fail').slideUp(400);
+					}
+					//create a button to download the pdf
+					var downloadPdfBtn = $('<a href="/report/download/' + response.report + '" download class="btn btn-lg btn-outline-success p-2 ml-4 download-pdf">');
+					var downloadBtnText = $('<small>Download</small>')
+					downloadPdfBtn.append(downloadBtnText);
+					$('.report-button-box').append(downloadPdfBtn);
+				} else {
+					//create a pdf create error message
+					failureMessage('create-pdf-fail', 'Creating your PDF failed.  Please try again.  If this problem persists, please <a href="/mail">contact our admin</a>.');
+				}
+			});
 		});
 
     /*/Google analytics
