@@ -1,0 +1,21 @@
+{{#if isAuth.check}}
+<div class="form-group">
+	<label>Case Reference</label>
+		<select name="caseRefSelect" id="caseRefSelect" class="form-control selectpicker">
+			<option value="0" class="form-control">
+				No Case Reference
+			</option>
+			<option value="-1" class="form-control">
+				<!-- data-target="#new-case-reference" data-toggle="modal" -->
+				Add a New Case Reference
+			</option>
+			{{#if cases}}
+				{{#each cases}}
+					<option value="{{id}}" class="form-control">
+						{{text}}
+					</option>
+				{{/each}}
+			{{/if}}
+		</select>
+</div>
+{{/if}}
