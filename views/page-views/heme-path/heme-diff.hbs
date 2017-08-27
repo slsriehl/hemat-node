@@ -237,7 +237,7 @@
 													{{> page-partials/case-reference}}
 														<textarea id="diffOut" rows="16" style="width: 100%;" class="form-control"></textarea>
 												</div>
-												<p class="card-footer"><input id="switchtext" type="checkbox"> Check to toggle the final diff format</p>
+												<!-- <p class="card-footer"><input id="switchtext" type="checkbox"> Check to toggle the final diff format</p> -->
 										</div>
 								</div>
 
@@ -246,20 +246,7 @@
 				</form>
 				{{> page-modals/new-case-reference}}
 <!-- previous diffs card-->
-<div class="card text-center">
-		<div class="card-header">
-				<ul class="nav nav-pills">
-						<li class="nav-item">
-								<a class="nav-link active ml-4" data-toggle="collapse" href="#diffHist-hide" aria-expanded="false" aria-controls="collapsediv"><small> Show previously counted differentials</small></a>
-						</li>
-				</ul>
-		</div>
-		<div class="card-block">
-				<div class="col collapse" id="diffHist-hide">
-						<textarea id="diffHist" rows="16" style="width: 100%;"></textarea>
-				</div>
-		</div>
-</div>
+{{> page-partials/history-module}}
 <!--end container wrapper-->
 </div>
 
