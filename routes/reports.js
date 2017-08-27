@@ -14,5 +14,9 @@ router.get('/report/download/:report', (req, res) => {
 	reportsController.downloadReport(req, res);
 });
 
+router.get('/reports/history', (req, res) => {
+	reportsController.reportHistory(req, res);
+});
+
 
 module.exports = router;
