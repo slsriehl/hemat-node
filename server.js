@@ -26,9 +26,9 @@ app.engine('hbs', hbs({
   defaultLayout: 'main',
   layoutsDir: __dirname + '/views/layouts/',
   partialsDir: __dirname + '/views/partials/',
-	// helpers: {
-	// 	ifCookie: require('./views/helpers/if-cookie')
-	// }
+	helpers: {
+		stripeRows: require('./views/helpers/stripe-rows')
+	}
 }));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'hbs');
@@ -82,6 +82,7 @@ app.use(giPathRoutes);
 app.use(clinPathRoutes);
 app.use(surgPathRoutes);
 // app.use(autopsyRoutes);
+
 
 // ++++++ SERVER LISTEN ++++++
 const PORT = process.env.PORT || 5000;
