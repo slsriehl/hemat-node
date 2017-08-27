@@ -64,6 +64,12 @@ const helpers = {
 		}
 		return obj;
 	},
+	removeLineBreaks: (str) => {
+		console.log('str ' + str);
+		let newString = str.replace(/<br\s*[\/]?>/gi, '  ');
+		console.log('newString ' + newString);
+		return newString;
+	},
 	resolvePath: (thePath) => {
 		return path.resolve(thePath);
 	},
