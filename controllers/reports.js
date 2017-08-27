@@ -113,6 +113,48 @@ const controller = {
 			console.log(error)
 			res.send('failure');
 		});
+	},
+	reportHistory: (req, res) => {
+		return helpers.getReports(req, res)
+		.then((data) => {
+			console.log(data);
+			let reportArr = [];
+			for(let i = 0; i < data.length; i++) {
+				const dataObj = {
+					reportId: data[i].dataValues.id,
+					appName: data[i].dataValues.App.dataValues.name,
+					appSlug: data[i].dataValues.App.dataValues.slug,
+					appGroupSlug: data[i].dataValues.App.dataValues.AppGroup.dataValues.slug,
+					date: data[i].dataValues.createdAt
+				}
+				let tempText;
+				if(data[i].dataValues.singleSection) {
+					tempText = generalHelpers.removeLineBreaks(data[i].dataValues.singleSection);
+					dataObj.text = tempText;
+				} else {
+					tempText = generalHelpers.removeLineBreaks(data[i].dataValues.comments);
+					dataObj.text = tempText;
+				}
+				if(data[i].dataValues.CaseReference) {
+					dataObj.reference = data[i].dataValues.CaseReference.dataValues.reference;
+				}
+				const cleanDataObj = generalHelpers.cleanObj(dataObj);
+				reportArr.push(cleanDataObj);
+			}
+			console.log(reportArr);
+			return Promise.resolve(reportArr);
+		})
+		.then((data) => {
+			res.render('login/all-reports.hbs', {
+				messages: req.session.systemMessages,
+				isAuth: {
+					check: req.session.isAuth,
+					firstname: req.session.firstname
+				},
+				reports: data
+			});
+		})
+		.catch(error => console.log(error));
 	}
 }
 

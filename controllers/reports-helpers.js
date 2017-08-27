@@ -155,6 +155,26 @@ const helpers = {
 	},
 	createReadStream: (file) => {
 		return fs.createReadStream(file)
+	},
+	getReports: (req, res) => {
+		return models.Reports
+		.findAll({
+			attributes: ['id', 'singleSection', 'comments', 'createdAt'],
+			where: {
+				userId: req.session.user
+			},
+			include: [{
+				model: models.CaseReferences,
+				attributes: ['reference']
+			}, {
+				model: models.Apps,
+				attributes: ['name', 'slug'],
+				include: [{
+					model: models.AppGroups,
+					attributes: ['slug']
+				}]
+			}]
+		})
 	}
 
 }
