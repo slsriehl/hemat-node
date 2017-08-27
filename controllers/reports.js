@@ -13,7 +13,7 @@ const controller = {
 		//append error message on the front end if nothing is sent or there is no singleSection or comments and don't make the ajax call
 		const prelimObjToSave = {
 			userId: req.session.user,
-			appId: req.body.appId,
+			appId: req.session.app,
 			referenceId: req.body.referenceId,
 			singleSection: req.body.singleSection,
 			comments: req.body.comments,

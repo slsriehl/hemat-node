@@ -2,8 +2,10 @@ const util = require('util');
 
 const models = require('../models');
 
+const Promise = require('bluebird');
+
 const helpers = {
-	getCaseReferences: (req, res, renderPath, scripts) => {
+	getCaseReferences: (req) => {
 		return models.CaseReferences
 		.findAll({
 			attributes: ['id', 'reference'],
@@ -11,29 +13,41 @@ const helpers = {
 				userId: req.session.user
 			}
 		})
-		.then((data) => {
-			console.log('userwall case ref data' + util.inspect(data));
-			const allCases = [];
-			for(let i = 0; i < data.length; i++) {
-				const oneCase = {
-					id: data[i].id,
-					text: data[i].reference
-				}
-				allCases.push(oneCase);
+	},
+	getAnyReports: (req) => {
+		return models.Reports
+		.findOne({
+			attributes: ['id'],
+			where: {
+				userId: req.session.user
 			}
-			console.log('all cases' + util.inspect(allCases));
-			res.render(renderPath, {
-				messages: req.session.systemMessages,
-				isAuth: {
-					check: req.session.isAuth,
-					firstname: req.session.firstname
-				},
-				specificScripts: scripts,
-				cases: allCases
-			});
 		})
-		.catch(error => console.log(error));
-	}
+	},
+	getPreviousReports: (req) => {
+		return models.Reports
+		.findAll({
+			attributes: ['id', 'singleSection', 'comments', 'createdAt'],
+			where: {
+				userId: req.session.user,
+				appId: req.session.app
+			},
+			include: [{
+				model: models.CaseReferences,
+				attributes: ['reference']
+			}]
+		})
+	},
+	getAppId: (req) => {
+		const slugArr = req.originalUrl.split('/');
+		const slug = slugArr[slugArr.length - 1];
+		return models.Apps
+		.findOne({
+			attributes: ['id'],
+			where: {
+				slug: slug
+			}
+		})
+	},
 }
 
 
