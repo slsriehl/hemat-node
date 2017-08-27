@@ -210,12 +210,16 @@ body.fixed-nav {
 				}
 			}
 
-#headerMenu .menu-item .nav-link {
+#toggleLoginNav .dropdown-menu .menu-item .dropdown-link, #toggleLoginNav .dropdown-menu .menu-item .dropdown-link:active, #toggleLoginNav .dropdown-menu .menu-item .dropdown-link:focus {
 	color: white;
 }
 
-#headerMenu .menu-item .nav-link:active, #headerMenu .menu-item .nav-link:focus {
+#toggleLoginNav .dropdown-menu {
+	background-color: #292B2C;
+}
 
+#toggleLoginNav .dropdown-menu .menu-item {
+	padding: 0.5rem 0.75rem;
 }
 
 @media screen and (min-width: 992px) {
