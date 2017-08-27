@@ -50,7 +50,9 @@ const controller = {
 				for(let i = 0; i < result[2].length; i++) {
 					const oneReport = {
 						date: result[2][i].dataValues.createdAt,
-						reportId: result[2][i].dataValues.id
+						reportId: result[2][i].dataValues.id,
+						appSlug: result[2][i].dataValues.App.dataValues.slug,
+						appGroupSlug: result[2][i].dataValues.App.dataValues.AppGroup.dataValues.slug
 					}
 					if(result[2][i].dataValues.CaseReference) {
 						oneReport.reference = result[2][i].dataValues.CaseReference.dataValues.reference;

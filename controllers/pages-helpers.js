@@ -34,6 +34,13 @@ const helpers = {
 			include: [{
 				model: models.CaseReferences,
 				attributes: ['reference']
+			}, {
+				model: models.Apps,
+				attributes: ['name', 'slug'],
+				include: [{
+					model: models.AppGroups,
+					attributes: ['slug']
+				}]
 			}]
 		})
 	},
