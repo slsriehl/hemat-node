@@ -1,5 +1,4 @@
 var dataObj = {};
-dataObj.appId = 9;
 
 $(window).on('load', function() {
 
