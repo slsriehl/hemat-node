@@ -1,0 +1,45 @@
+
+{{#if isAuth.check}}
+<div class="card text-center">
+		<div class="card-header">
+		</div>
+		<div class="card-block" id="previous-reports">
+			{{#unless reports}}
+			<h4>You have not generated any reports yet.</h4>
+			{{else}}
+		{{#each reports}}
+			<div class="row previous-report" id="pr-{{@index}}" {{{stripeRows @index}}}>
+				<div class="col col-md-12 text-left">
+					<h4>
+						{{appName}}{{#if reference}}: {{reference}}{{/if}}: {{date}}
+					</h4>
+					<!-- / date-reference -->
+				</div>
+				<div class="col col-md-12 text-left">
+					<p id="rt-{{@index}}">
+						{{{text}}}
+					</p>
+					<!-- /text -->
+				</div>
+				<ul class="nav nav-pills individual-report-btn-box">
+						<a href="/report/download/{{reportId}}" download class="btn btn-outline-info p-2">
+							<small>
+								Download
+							</small>
+						</a>
+						<a href="/{{appGroupSlug}}/{{appSlug}}/{{reportId}}" class="btn btn-outline-info p-2" id="er-{{@index}}">
+							<small>
+								Copy Plain Text
+							</small>
+						</a>
+					<!-- /buttons -->
+				</ul>
+				<!-- /row -->
+			</div>
+			{{/each}}
+		{{/unless}}
+		<!-- /previous reports -->
+		</div>
+		<!-- /previous module -->
+</div>
+{{/if}}
