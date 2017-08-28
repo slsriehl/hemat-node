@@ -46,6 +46,8 @@ module.exports = function(sequelize, DataTypes) {
 				Users.hasMany(models.ResetTokens);
 				Users.hasMany(models.CaseReferences);
 				Users.hasMany(models.Reports);
+				Users.hasMany(models.Snippets);
+				Users.hasMany(models.IhcPresets);
         // associations can be defined here
       }
     }
