@@ -1,0 +1,175 @@
+{{#if isAuth.check}}
+<div class="container-fluid">
+	<!-- Breadcrumbs -->
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item">
+			<a href="/">Home</a>
+		</li>
+		<li class="breadcrumb-item">
+			{{report.appGroupName}}
+		</li>
+		<li class="breadcrumb-item">
+			{{report.appName}}
+		</li>
+		<li class="breadcrumb-item active">
+			<i class="fa fa-files-o mr-2"></i>
+			Copy or Download Report Generated {{report.time}}{{#if report.reference}} for {{report.reference}}{{/if}}
+		</li>
+	</ol>
+
+ {{> message-center this}}
+	<div class="row">
+		<div class="col col-md-12">
+			<div class="card text-center">
+				<div class="card-header button-box">
+					<ul class="nav nav-pills standard-button-box">
+						<a class="btn btn-lg btn-outline-danger p-2 ml-4" id="Reset" >
+							<small>Reset</small>
+						</a>
+						<a href="/report/download/{{report.reportId}}" download class="btn btn-lg btn-outline-success p-2 ml-4 download-pdf">
+							<small>Download</small>
+						</a>
+					</ul>
+					<!-- end card header -->
+				</div>
+				<div class="card-block">
+					<form id="copy-paste">
+
+						{{#if report.singleSection}}
+						<div class="form-group">
+							<label for="singleSection">
+								Report
+							</label>
+							<textarea class="form-control" id="singleSection" name="singleSection" rows="15">
+								{{report.singleSection}}
+							</textarea>
+							<span class="input-group-addon copy btn btn-primary" data-clipboard-target="singleSection">
+								Copy to Clipboard
+							</span>
+						</div>
+						{{/if}}
+
+						{{#if report.micro}}
+						<div class="form-group">
+							<label for="micro">
+								Micro
+							</label>
+							<textarea class="form-control" id="micro" name="micro" rows="15">
+								{{report.micro}}
+							</textarea>
+							<span class="input-group-addon copy btn btn-primary" data-clipboard-target="micro">
+								Copy to Clipboard
+							</span>
+						</div>
+						{{/if}}
+
+						{{#if report.finals}}
+						<div class="form-group">
+							<label for="finals">
+								Finals
+							</label>
+							<textarea class="form-control" id="finals" name="finals" rows="15">
+								{{report.finals}}
+							</textarea>
+							<span class="input-group-addon copy btn btn-primary" data-clipboard-target="finals">
+								Copy to Clipboard
+							</span>
+						</div>
+						{{/if}}
+
+						{{#if report.gross}}
+						<div class="form-group">
+							<label for="gross">
+								Gross
+							</label>
+							<textarea class="form-control" id="gross" name="gross" rows="15">
+								{{report.gross}}
+							</textarea>
+							<span class="input-group-addon copy btn btn-primary" data-clipboard-target="gross">
+								Copy to Clipboard
+							</span>
+						</div>
+						{{/if}}
+
+						{{#if report.cbcData}}
+						<div class="form-group">
+							<label for="cbcData">
+								CBC Data
+							</label>
+							<textarea class="form-control" id="cbcData" name="cbcData" rows="15">
+								{{report.cbcData}}
+							</textarea>
+							<span class="input-group-addon copy btn btn-primary" data-clipboard-target="cbcData">
+								Copy to Clipboard
+							</span>
+						</div>
+						{{/if}}
+
+						{{#if report.diffPercent}}
+						<div class="form-group">
+							<label for="diffPercent">
+								Diff %
+							</label>
+							<input class="form-control" id="diffPercent" name="diffPercent" value="{{report.diffPercent}}" />
+							<span class="input-group-addon copy btn btn-primary" data-clipboard-target="diffPercent">
+								Copy to Clipboard
+							</span>
+						</div>
+						{{/if}}
+
+						{{#if report.diff}}
+						<div class="form-group">
+							<label for="diff">
+								Diff
+							</label>
+							<textarea class="form-control" id="diff" name="diff" rows="15">
+								{{report.diff}}
+							</textarea>
+							<span class="input-group-addon copy btn btn-primary" data-clipboard-target="diff">
+								Copy to Clipboard
+							</span>
+						</div>
+						{{/if}}
+
+						{{#if report.serologic}}
+						<div class="form-group">
+							<label for="serologic">
+								Serologic
+							</label>
+							<textarea class="form-control" id="serologic" name="serologic" rows="15">
+								{{report.serologic}}
+							</textarea>
+							<span class="input-group-addon copy btn btn-primary" data-clipboard-target="serologic">
+								Copy to Clipboard
+							</span>
+						</div>
+						{{/if}}
+
+						{{#if report.comments}}
+						<div class="form-group">
+							<label for="comments">
+								Comments
+							</label>
+							<textarea class="form-control" id="comments" name="comments" rows="15">
+								{{report.comments}}
+							</textarea>
+							<span class="input-group-addon copy btn btn-primary" data-clipboard-target="comments">
+								Copy to Clipboard
+							</span>
+						</div>
+						{{/if}}
+					</form>
+						<!-- end card block -->
+				</div>
+					<!-- end card -->
+			</div>
+			<!-- end outer col -->
+		</div>
+		<!-- end outer row -->
+	</div>
+
+<!-- card for previous reports for this app -->
+{{> page-partials/history-module}}
+<!--end container wrapper-->
+</div>
+{{/if}}
