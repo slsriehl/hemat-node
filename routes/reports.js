@@ -18,5 +18,9 @@ router.get('/reports/history', (req, res) => {
 	reportsController.reportHistory(req, res);
 });
 
+router.get('/reports/copy/:id', (req, res) => {
+	reportsController.copyReport(req, res);
+});
+
 
 module.exports = router;
