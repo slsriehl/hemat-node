@@ -70,6 +70,15 @@ const helpers = {
 		console.log('newString ' + newString);
 		return newString;
 	},
+	jsLineBreaks: (obj) => {
+		for(let [key, value] of helpers.entries(obj)) {
+			if (typeof(value) == 'string' && value.includes('<br /><br />')) {
+				let newString = value.replace(/<br\s*[\/]?>/gi, '\n');
+				obj[key] = newString;
+			}
+		}
+		return obj;
+	},
 	resolvePath: (thePath) => {
 		return path.resolve(thePath);
 	},
