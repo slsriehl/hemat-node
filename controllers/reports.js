@@ -151,6 +151,9 @@ const controller = {
 					check: req.session.isAuth,
 					firstname: req.session.firstname
 				},
+				specificScripts: [
+					"../js/all-reports.js"
+				],
 				reports: data
 			});
 		})

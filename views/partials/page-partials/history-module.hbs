@@ -3,26 +3,26 @@
 {{#if prevRep}}
 <div class="card text-center">
 		<div class="card-header">
-				<ul class="nav nav-pills individual-report-btn-box">
-					{{#if prevRep.thisApp}}
-					<li class="nav-item">
-						<a class="nav-link ml-4 active">
-							<small>
-								Previous Reports from This App
-							</small>
-						</a>
-					</li>
+			<ul class="nav nav-pills individual-report-btn-box">
+				{{#if prevRep.thisApp}}
+				<li class="nav-item">
+					<a class="nav-link ml-4 active">
+						<small>
+							Previous Reports from This App
+						</small>
+					</a>
+				</li>
+				{{/if}}
+				{{#if prevRep.any}}
+				<li class="nav-item">
+					<a class="nav-link ml-4 active">
+						<small>
+							View All Previous Reports
+						</small>
+					</a>
+				</li>
 					{{/if}}
-					{{#if prevRep.any}}
-					<li class="nav-item">
-						<a class="nav-link ml-4 active">
-							<small>
-								View All Previous Reports
-							</small>
-						</a>
-					</li>
-						{{/if}}
-				</ul>
+			</ul>
 		</div>
 		{{#if prevRep.thisApp}}
 		<div class="card-block" id="previous-reports">
@@ -46,7 +46,7 @@
 								Download
 							</small>
 						</a>
-						<a href="/{{appGroupSlug}}/{{appSlug}}/{{reportId}}" class="btn btn-outline-info p-2" id="er-{{@index}}">
+						<a href="/reports/copy/{{reportId}}" class="btn btn-outline-info p-2" id="er-{{@index}}">
 							<small>
 								Copy Plain Text
 							</small>

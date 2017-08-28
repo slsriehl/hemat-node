@@ -2,8 +2,38 @@
 {{#if isAuth.check}}
 <div class="card text-center">
 		<div class="card-header">
+			<ul class="nav nav-pills individual-report-btn-box">
+				<li class="nav-item">
+					<a class="nav-link ml-4">
+						<small>
+							Sort ASC or DESC
+						</small>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link ml-4 active" id="date-sort">
+						<small>
+							Sort by Date
+						</small>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link ml-4 active" id="ref-sort">
+						<small>
+							Sort by Reference
+						</small>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link ml-4 active" id="app-sort">
+						<small>
+							Sort by App
+						</small>
+					</a>
+				</li>
+			</ul>
 		</div>
-		<div class="card-block" id="previous-reports">
+		<div class="card-block date-desc init" id="previous-reports">
 			{{#unless reports}}
 			<h4>You have not generated any reports yet.</h4>
 			{{else}}
@@ -11,7 +41,7 @@
 			<div class="row previous-report" id="pr-{{@index}}" {{{stripeRows @index}}}>
 				<div class="col col-md-12 text-left">
 					<h4>
-						{{appName}}{{#if reference}}: {{reference}}{{/if}}: {{date}}
+						<span class="app-to-sort">{{appName}}</span><span class="ref-to-sort">{{#if reference}}: {{reference}}{{/if}}</span>: <span class="date-to-sort">{{date}}</span>
 					</h4>
 					<!-- / date-reference -->
 				</div>
@@ -27,7 +57,7 @@
 								Download
 							</small>
 						</a>
-						<a href="/{{appGroupSlug}}/{{appSlug}}/{{reportId}}" class="btn btn-outline-info p-2" id="er-{{@index}}">
+						<a href="/reports/copy/{{reportId}}" class="btn btn-outline-info p-2" id="er-{{@index}}">
 							<small>
 								Copy Plain Text
 							</small>
