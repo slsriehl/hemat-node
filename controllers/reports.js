@@ -123,8 +123,6 @@ const controller = {
 				const dataObj = {
 					reportId: data[i].dataValues.id,
 					appName: data[i].dataValues.App.dataValues.name,
-					appSlug: data[i].dataValues.App.dataValues.slug,
-					appGroupSlug: data[i].dataValues.App.dataValues.AppGroup.dataValues.slug,
 					date: data[i].dataValues.createdAt
 				}
 				let tempText;
@@ -158,7 +156,46 @@ const controller = {
 			});
 		})
 		.catch(error => console.log(error));
-	}
+	},
+	copyReport: (req, res) => {
+		let copyReport;
+		let anyReports;
+		let prevReps;
+		console.log(req.params);
+		req.session.report = req.params.id;
+		//first return the stuff needed for just this report to copy
+		return helpers.findCopyReport(req)
+		.then((result) => {
+			copyReport = result;
+			//then return the stuff from any reports
+			return helpers.getAnyReports(req)
+		})
+		.then((result) => {
+			anyReports = result;
+			if (result == null) {
+				//if there are no reports pass the null value on for prevReps instead of doing the call to the db for prevReps
+				return Promise.resolve(result);
+			} else {
+				return helpers.getPreviousReports(req)
+			}
+		})
+		.then((result) => {
+			prevReps = result;
+			res.render('login/copy-paste.hbs', {
+				messages: req.session.systemMessages,
+				isAuth: {
+					check: req.session.isAuth,
+					firstname: req.session.firstname
+				},
+				//specificScripts: scripts,
+				report: copyReport,
+				prevRep: {
+					any: anyReports,
+					thisApp: prevReps
+				}
+			});
+		})
+	},
 }
 
 module.exports = controller;

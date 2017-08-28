@@ -168,15 +168,111 @@ const helpers = {
 				attributes: ['reference']
 			}, {
 				model: models.Apps,
-				attributes: ['name', 'slug'],
+				attributes: ['name']
+			}]
+		})
+	},
+	getAnyReports: (req) => {
+		return models.Reports
+		.findOne({
+			attributes: ['id'],
+			where: {
+				userId: req.session.user
+			}
+		})
+		.then((data) => {
+			if(data == null) {
+				return Promise.resolve(null);
+			} else {
+				return Promise.resolve(true);
+			}
+		})
+	},
+	getPreviousReports: (req) => {
+		return models.Reports
+		.findAll({
+			attributes: ['id', 'singleSection', 'comments', 'createdAt'],
+			where: {
+				userId: req.session.user,
+				appId: req.session.app
+			},
+			include: [{
+				model: models.CaseReferences,
+				attributes: ['reference']
+			}, {
+				model: models.Apps,
+				attributes: ['name']
+			}]
+		})
+		.then((result) => {
+			console.log(result);
+			let thisApp = [];
+			for(let i = 0; i < result.length; i++) {
+				const oneReport = {
+					date: result[i].dataValues.createdAt,
+					reportId: result[i].dataValues.id,
+				}
+				if(result[i].dataValues.CaseReference) {
+					oneReport.reference = result[i].dataValues.CaseReference.dataValues.reference;
+				}
+				let text;
+				if(result[i].dataValues.singleSection) {
+					text = result[i].dataValues.singleSection;
+				} else {
+					text = result[i].dataValues.comments;
+				}
+				oneReport.text = generalHelpers.removeLineBreaks(text);
+				console.log(oneReport);
+				thisApp.push(oneReport);
+			}
+			console.log('this app' + thisApp);
+			return Promise.resolve(thisApp);
+		})
+	},
+	findCopyReport: (req) => {
+		return models.Reports
+		.findOne({
+			attributes: ['appId', 'singleSection', 'comments', 'micro', 'finals', 'gross', 'cbcData', 'diff', 'diffPercent', 'serologic', 'createdAt'],
+			where: {
+				id: req.session.report
+			},
+			include: [{
+				model: models.CaseReferences,
+				attributes: ['reference']
+			}, {
+				model: models.Apps,
+				attributes: ['name'],
 				include: [{
 					model: models.AppGroups,
-					attributes: ['slug']
+					attributes: ['name']
 				}]
 			}]
 		})
+		.then((data) => {
+			req.session.app = data.dataValues.appId;
+			const thisReport = {
+				reportId: req.session.report,
+				time: data.dataValues.createdAt,
+				appName: data.dataValues.App.dataValues.name,
+				appGroupName: data.dataValues.App.dataValues.AppGroup.dataValues.name,
+				singleSection: data.dataValues.singleSection,
+				comments: data.dataValues.comments,
+				micro: data.dataValues.micro,
+				finals: data.dataValues.finals,
+				gross: data.dataValues.gross,
+				cbcData: data.dataValues.cbcData,
+				diff: data.dataValues.diff,
+				diffPercent: data.dataValues.diffPercent,
+				serologic: data.dataValues.serologic
+			}
+			if(data.dataValues.CaseReference) {
+				thisReport.reference = data.dataValues.CaseReference.dataValues.reference;
+			}
+			const cleanReport = generalHelpers.cleanObj(thisReport);
+			const cleanerReport = generalHelpers.jsLineBreaks(cleanReport);
+			return Promise.resolve(cleanerReport);
+		})
 	}
-
 }
 
 
