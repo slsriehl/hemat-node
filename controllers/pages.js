@@ -2,6 +2,7 @@
 const cookieHelpers = require('./cookie-helpers');
 const generalHelpers = require('./general-helpers');
 const helpers = require('./pages-helpers');
+const reportsHelpers = require('./reports-helpers');
 
 const models = require('../models');
 
@@ -15,60 +16,38 @@ const controller = {
 	userWall: (req, res, renderPath, scripts) => {
 		console.log(req.session);
 		if(cookieHelpers.verifyCookie(req, res)) {
+			let myRefs;
+			let anyReports;
+			let prevReps;
 			return helpers.getAppId(req)
 			.then((result) => {
 				req.session.app = result.dataValues.id;
 			})
 			.then((result) => {
-				//execute three database calls in parallel
-				return Promise.all([helpers.getCaseReferences(req), helpers.getAnyReports(req), helpers.getPreviousReports(req)])
+				//get case references
+				return helpers.getCaseReferences(req)
+				// return Promise.all([helpers.getCaseReferences(req), reportsHelpers.getAnyReports(req), reportsHelpers.getPreviousReports(req)])
 			})
 			.then((result) => {
-				//sanitize case reference object
-				const myRefs = [];
-				for(let i = 0; i < result[0].length; i++) {
-					const oneRef = {
-						id: result[0][i].dataValues.id,
-						text: result[0][i].dataValues.reference
-					}
-					myRefs.push(oneRef);
-				}
-				console.log('all cases' + util.inspect(myRefs));
-
-				//check if there are any reports
-				let anyResults;
-				if(result[1] == null) {
-					anyResults = false;
+				//set the results of case references equal to a var
+				myRefs = result;
+				return Promise.resolve(true);
+			})
+			.then((result) => {
+				//check if the user has any reports
+				return reportsHelpers.getAnyReports(req)
+			})
+			.then((result) => {
+				anyReports = result;
+				if(result == null) {
+					//this will set the value for previous reports to null is there aren't any reports at all
+					return Promise.resolve(null);
 				} else {
-					anyResults = true;
+					return reportsHelpers.getPreviousReports(req)
 				}
-				console.log('any results ' + anyResults);
-
-				//sanitize the results of the reports that are from this app
-				console.log(result[2]);
-				let thisApp = [];
-				for(let i = 0; i < result[2].length; i++) {
-					const oneReport = {
-						date: result[2][i].dataValues.createdAt,
-						reportId: result[2][i].dataValues.id,
-						appSlug: result[2][i].dataValues.App.dataValues.slug,
-						appGroupSlug: result[2][i].dataValues.App.dataValues.AppGroup.dataValues.slug
-					}
-					if(result[2][i].dataValues.CaseReference) {
-						oneReport.reference = result[2][i].dataValues.CaseReference.dataValues.reference;
-					}
-					let text;
-					if(result[2][i].dataValues.singleSection) {
-						text = result[2][i].dataValues.singleSection;
-					} else {
-						text = result[2][i].dataValues.comments;
-					}
-					oneReport.text = generalHelpers.removeLineBreaks(text);
-					console.log(oneReport);
-					thisApp.push(oneReport);
-				}
-				console.log('this app' + thisApp);
-				//render the products
+			})
+			.then((result) => {
+				prevReps = result;
 				res.render(renderPath, {
 					messages: req.session.systemMessages,
 					isAuth: {
@@ -78,8 +57,8 @@ const controller = {
 					specificScripts: scripts,
 					cases: myRefs,
 					prevRep: {
-						any: anyResults,
-						thisApp: thisApp
+						any: anyReports,
+						thisApp: prevReps
 					}
 				});
 			})

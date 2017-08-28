@@ -13,35 +13,17 @@ const helpers = {
 				userId: req.session.user
 			}
 		})
-	},
-	getAnyReports: (req) => {
-		return models.Reports
-		.findOne({
-			attributes: ['id'],
-			where: {
-				userId: req.session.user
+		.then((data) => {
+			const myRefs = [];
+			for(let i = 0; i < data.length; i++) {
+				const oneRef = {
+					id: data[i].dataValues.id,
+					text: data[i].dataValues.reference
+				}
+				myRefs.push(oneRef);
 			}
-		})
-	},
-	getPreviousReports: (req) => {
-		return models.Reports
-		.findAll({
-			attributes: ['id', 'singleSection', 'comments', 'createdAt'],
-			where: {
-				userId: req.session.user,
-				appId: req.session.app
-			},
-			include: [{
-				model: models.CaseReferences,
-				attributes: ['reference']
-			}, {
-				model: models.Apps,
-				attributes: ['name', 'slug'],
-				include: [{
-					model: models.AppGroups,
-					attributes: ['slug']
-				}]
-			}]
+			console.log('all cases' + util.inspect(myRefs));
+			return Promise.resolve(myRefs);
 		})
 	},
 	getAppId: (req) => {
