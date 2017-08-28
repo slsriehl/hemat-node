@@ -10,6 +10,7 @@ module.exports = function(sequelize, DataTypes) {
     diff: DataTypes.TEXT,
     diffPercent: DataTypes.TEXT,
     serologic: DataTypes.TEXT,
+		ihcTable: DataTypes.TEXT,
 		pdfName: DataTypes.STRING
   }, {
     classMethods: {
