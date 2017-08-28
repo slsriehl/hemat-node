@@ -36,7 +36,17 @@ const helpers = {
 			signup: signupKey
 		});
 	},
-	getSystemMessages: (req, res, renderPath) => {
+	noMessageRender: (req, res, renderPath, specificScripts, signupKey) => {
+		if(renderPath == 'index-redirect') {
+			res.redirect('/');
+		} else {
+			res.render(renderPath, {
+				specificScripts: specificScripts,
+				signup: signupKey
+			});
+		}
+	},
+	getSystemMessages: (req, res, renderPath, specificScripts, signupKey) => {
 		const thisDate = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss').toString();
 		console.log(thisDate);
 		return models.sequelize.query("SELECT sm.id, sm.message FROM SystemMessages sm WHERE NOT EXISTS (SELECT dm.messageId FROM DismissedMessages dm LEFT JOIN Users u ON dm.userId = u.id WHERE sm.id = dm.messageId AND u.id = " + req.session.user + ") AND sm.expires >= '" + thisDate + "';", {
@@ -44,12 +54,12 @@ const helpers = {
 		})
 		.then((results) => {
 			console.log(`results: ${results}`);
-			if(results.length == 0 && !req.session.message && renderPath) {
+			if(results.length == 0 && !req.session.message) {
 				console.log('fire 1 getSystem');
-				res.render(renderPath);
+				helpers.noMessageRender(req, res, renderPath, specificScripts, signupKey);
 			} else if (results.length == 0 && req.session.message && renderPath) {
 				console.log('fire 2 getSystem');
-				helpers.renderSingleMessage(req, res, renderPath);
+				helpers.renderSingleMessage(req, res, renderPath, specificScripts, signupKey);
 			} else {
 				console.log('fire 3 getSystem');
 				let systemMessages = [];
