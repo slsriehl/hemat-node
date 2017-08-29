@@ -37,6 +37,35 @@ const helpers = {
 			}
 		})
 	},
+	getIhcPresets: (req) => {
+		return models.IhcPresets
+		.findAll({
+			attributes: ['id', 'interp'],
+			where: {
+				$or: [{
+					userId: 1
+				}, {
+					userId: req.session.user
+				}]
+			}
+		})
+		.then((data) => {
+			if(data.length) {
+				for(let i = 0; i < data.length; i++) {
+					let allPresets;
+					const presets = {
+						presetId: data[i].dataValues.id,
+						interp: data[i].dataValues.interp
+					}
+					allPresets.push(presets);
+				}
+				console.log(allPresets);
+				return Promise.resolve(allPresets);
+			} else {
+				return Promise.resolve(null);
+			}
+		})
+	}
 }
 
 

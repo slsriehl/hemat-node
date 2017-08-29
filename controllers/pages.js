@@ -19,11 +19,19 @@ const controller = {
 			let myRefs;
 			let anyReports;
 			let prevReps;
+			let ihcPresets;
 			return helpers.getAppId(req)
 			.then((result) => {
 				req.session.app = result.dataValues.id;
+				if(req.session.app === 12) {
+					return helpers.getIhcPresets(req)
+				} else {
+					return Promise.resolve(null)
+				}
 			})
 			.then((result) => {
+				//set
+				ihcPresets = result;
 				//get case references
 				return helpers.getCaseReferences(req)
 				// return Promise.all([helpers.getCaseReferences(req), reportsHelpers.getAnyReports(req), reportsHelpers.getPreviousReports(req)])
@@ -59,7 +67,8 @@ const controller = {
 					prevRep: {
 						any: anyReports,
 						thisApp: prevReps
-					}
+					},
+					ihcPresets: ihcPresets
 				});
 			})
 			.catch(error => console.log(error));
