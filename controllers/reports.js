@@ -23,7 +23,8 @@ const controller = {
 			cbcData: req.body.cbcData,
 			diff: req.body.diff,
 			diffPercent: req.body.diffPercent,
-			serologic: req.body.serologic
+			serologic: req.body.serologic,
+			ihcTable: req.body.ihcTable
 		}
 		const myAttributes = [];
 		console.log('prelim obj to save' + util.inspect(prelimObjToSave));

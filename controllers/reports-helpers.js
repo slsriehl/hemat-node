@@ -232,7 +232,7 @@ const helpers = {
 	findCopyReport: (req) => {
 		return models.Reports
 		.findOne({
-			attributes: ['appId', 'singleSection', 'comments', 'micro', 'finals', 'gross', 'cbcData', 'diff', 'diffPercent', 'serologic', 'createdAt'],
+			attributes: ['appId', 'singleSection', 'comments', 'micro', 'finals', 'gross', 'cbcData', 'diff', 'diffPercent', 'serologic', 'ihcTable', 'createdAt'],
 			where: {
 				id: req.session.report
 			},
@@ -263,7 +263,8 @@ const helpers = {
 				cbcData: data.dataValues.cbcData,
 				diff: data.dataValues.diff,
 				diffPercent: data.dataValues.diffPercent,
-				serologic: data.dataValues.serologic
+				serologic: data.dataValues.serologic,
+				ihcTable: data.dataValues.ihcTable
 			}
 			if(data.dataValues.CaseReference) {
 				thisReport.reference = data.dataValues.CaseReference.dataValues.reference;

@@ -144,6 +144,19 @@
 							</span>
 						</div>
 						{{/if}}
+						{{#if report.ihcTable}}
+						<div class="form-group">
+							<label for="ihcTable">
+								IHC Table
+							</label>
+							<textarea class="form-control" id="ihcTable" name="ihcTable" rows="15">
+								{{report.ihcTable}}
+							</textarea>
+							<span class="input-group-addon copy btn btn-primary" data-clipboard-target="ihcTable">
+								Copy to Clipboard
+							</span>
+						</div>
+						{{/if}}
 
 						{{#if report.comments}}
 						<div class="form-group">
