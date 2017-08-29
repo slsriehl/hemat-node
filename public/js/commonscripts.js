@@ -168,6 +168,10 @@ $(function () {
 			});
 		});
 
+		$('#view-all-previous').on('click', function(event) {
+			window.location.href = '/reports/history';
+		});
+
     /*/Google analytics
      var _gaq = _gaq || [];
      _gaq.push(['_setAccount', 'UA-37125342-1']);
