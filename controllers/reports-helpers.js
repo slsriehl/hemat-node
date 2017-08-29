@@ -83,7 +83,7 @@ const helpers = {
 				text: data.dataValues[name]
 			}
 			if (name == 'singleSection') {
-				obj.name = false;
+				obj.name = 'Report';
 			}
 			arrFields.push(obj);
 			return obj;
@@ -159,7 +159,7 @@ const helpers = {
 	getReports: (req, res) => {
 		return models.Reports
 		.findAll({
-			attributes: ['id', 'singleSection', 'comments', 'createdAt'],
+			attributes: ['id', 'singleSection', 'comments', 'ihcTable', 'createdAt'],
 			where: {
 				userId: req.session.user
 			},
@@ -191,7 +191,7 @@ const helpers = {
 	getPreviousReports: (req) => {
 		return models.Reports
 		.findAll({
-			attributes: ['id', 'singleSection', 'comments', 'createdAt'],
+			attributes: ['id', 'singleSection', 'comments', 'ihcTable', 'createdAt'],
 			where: {
 				userId: req.session.user,
 				appId: req.session.app
@@ -218,8 +218,10 @@ const helpers = {
 				let text;
 				if(result[i].dataValues.singleSection) {
 					text = result[i].dataValues.singleSection;
-				} else {
+				} else if(result[i].dataValues.comments) {
 					text = result[i].dataValues.comments;
+				} else {
+					text = result[i].dataValues.ihcTable;
 				}
 				oneReport.text = generalHelpers.removeLineBreaks(text);
 				console.log(oneReport);

@@ -11,20 +11,21 @@ const controller = {
 	receiveReport: (req, res) => {
 		console.log(req.body);
 		//append error message on the front end if nothing is sent or there is no singleSection or comments and don't make the ajax call
+		//trim in generalHelpers.cleanObj
 		const prelimObjToSave = {
 			userId: req.session.user,
 			appId: req.session.app,
-			referenceId: req.body.referenceId.trim(),
-			singleSection: req.body.singleSection.trim(),
-			comments: req.body.comments.trim(),
-			micro: req.body.micro.trim(),
-			finals: req.body.finals.trim(),
-			gross: req.body.gross.trim(),
-			cbcData: req.body.cbcData.trim(),
-			diff: req.body.diff.trim(),
-			diffPercent: req.body.diffPercent.trim(),
-			serologic: req.body.serologic.trim(),
-			ihcTable: req.body.ihcTable.trim()
+			referenceId: req.body.referenceId,
+			singleSection: req.body.singleSection,
+			comments: req.body.comments,
+			micro: req.body.micro,
+			finals: req.body.finals,
+			gross: req.body.gross,
+			cbcData: req.body.cbcData,
+			diff: req.body.diff,
+			diffPercent: req.body.diffPercent,
+			serologic: req.body.serologic,
+			ihcTable: req.body.ihcTable
 		}
 		const myAttributes = [];
 		console.log('prelim obj to save' + util.inspect(prelimObjToSave));
@@ -130,8 +131,11 @@ const controller = {
 				if(data[i].dataValues.singleSection) {
 					tempText = generalHelpers.removeLineBreaks(data[i].dataValues.singleSection);
 					dataObj.text = tempText;
-				} else {
+				} else if (data[i].dataValues.comments) {
 					tempText = generalHelpers.removeLineBreaks(data[i].dataValues.comments);
+					dataObj.text = tempText;
+				} else {
+					tempText = generalHelpers.removeLineBreaks(data[i].dataValues.ihcTable);
 					dataObj.text = tempText;
 				}
 				if(data[i].dataValues.CaseReference) {
