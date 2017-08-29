@@ -8,21 +8,21 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      opt: {
-        type: Sequelize.STRING
-      },
       interp: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+				allowNull: false
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+				allowNull: false
       },
 			userID: {
 				type: Sequelize.INTEGER,
 				references: {
 					model: 'Users',
 					key: 'id'
-				}
+				},
+				allowNull: false
 			},
       createdAt: {
         allowNull: false,
