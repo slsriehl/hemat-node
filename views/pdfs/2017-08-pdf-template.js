@@ -13,15 +13,11 @@ const template =
 		{{/if}}\
 		<p style="font-family: sans-serif;">Timestamp: {{createdAt}}</p>\
 		{{#each reportFields}} \
-			{{#unless name}} \
-			<h3 style="font-family: sans-serif;">Report</h3>\
-			<p style="font-family: sans-serif;">{{{text}}}</p> \
-				<br /><br /> \
-			{{else}} \
+			{{#if text}} \
 				<h3 style="font-family: sans-serif;">{{name}}</h3> \
 				<p style="font-family: sans-serif;">{{{text}}}</p> \
 				<br /><br /> \
-			{{/unless}} \
+			{{/if}} \
 		{{/each}} \
 			{{/each}} \
 </div>';
