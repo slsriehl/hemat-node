@@ -143,23 +143,18 @@
 										<!-- middle right text output-->
 										<div class="col col-md-4" id="bottom-r">
 												<div class="card text-center">
-														<div class="card-header">
-																<ul class="nav nav-pills">
-																		<ul class="nav nav-pills">
-
-																				<a class="btn btn-lg btn-outline-info p-2" id="ihcwrite">
-																						<small>Write Report</small>
-																				</a>
-
-
-																				<a class="btn btn-lg btn-outline-danger p-2 ml-4" id="Reset" >
-																						<small>Reset</small>
-																				</a>
-
-																		</ul>
-																</ul>
+													<div class="card-header button-box">
+															<ul class="nav nav-pills standard-button-box">
+																	<a class="btn btn-lg btn-outline-info p-2 ihc-table-page" id="ihcwrite">
+																			<small>Write Report</small>
+																	</a>
+																	<a class="btn btn-lg btn-outline-danger p-2 ml-4" id="Reset" >
+																			<small>Reset</small>
+																	</a>
+															</ul>
 														</div>
 														<div class="card-block">
+															{{> page-partials/case-reference}}
 																<div class="form-group">
 																		<textarea class="form-control" id="outPut-2" rows="20" placeholder="IHC table"></textarea>
 																		<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-2">Copy to Clipboard</span>
@@ -168,5 +163,7 @@
 												</div>
 										</div>
 								</div>
+								{{> page-modals/new-case-reference}}
+								{{> page-partials/history-module}}
 						</div>
 		<!--end container wrapper-->

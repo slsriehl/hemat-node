@@ -1,4 +1,5 @@
 let ihcObj = {};
+let dataObj = {};
 $(window).on('load', function(){
 // IHC box script
     var autocomp_opt = {
@@ -129,22 +130,25 @@ $(window).on('load', function(){
         }else {
             ihcout = header + body + ihcout + '\n\nINTERPRETATION: '+interp;
         }
+				var outPut2Value = $('#outPut-2').val() + '\n\n' + ihcout;
 
-        $('#outPut-2').focus().val($('#outPut-2').val() + '\n\n'+ ihcout);
+        $('#outPut-2').focus().val(outPut2Value);
+				if($('.ihc-table-page')) {
+					dataObj.ihcTable = outPut2Value;
+					console.log(dataObj);
+					//add a pdf button to the button bar if it's not already there
+					if(!$('#pdf-report').length) {
+						var reportBtnBox = $('<ul class="report-button-box nav nav-pills">');
+						var makePdfBtn = $('<a class="btn btn-lg btn-outline-success p-2 ml-4" id="pdf-report">');
+						var pdfBtnText = $('<small>Save & Create PDF</small>')
+						makePdfBtn.append(pdfBtnText);
+						reportBtnBox.append(makePdfBtn);
+						$('.button-box').append(reportBtnBox);
+					}
+				}
 
     });
 
-    // Update interp textarea with mysql ajax request
-    // $("#ihc_preset").on('change', function() {
-    //     $.ajax({
-    //         type: "POST",
-    //         url: "ajax/ihc_display.php",
-    //         data: $('select#ihc_preset').serialize()
-    //     }).done(function(data) {
-    //         $('#ihc_interp').val(data);
-    //     });
-		//
-    // });
 
     // Save new option/interp to database
     $("#ihc_save").on("submit", function(e){
