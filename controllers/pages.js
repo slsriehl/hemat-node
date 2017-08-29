@@ -23,7 +23,8 @@ const controller = {
 			return helpers.getAppId(req)
 			.then((result) => {
 				req.session.app = result.dataValues.id;
-				if(req.session.app === 12) {
+				const thisApp = req.session.app;
+				if(thisApp === 8 || thisApp === 12 || thisApp === 15 || thisApp === 16) {
 					return helpers.getIhcPresets(req)
 				} else {
 					return Promise.resolve(null)
@@ -90,6 +91,19 @@ const controller = {
 				specificScripts: scripts
 			});
 		}
+	},
+	saveIhcPreset: (req, res) => {
+		console.log(req.body);
+		return models.IhcPresets
+		.create({
+			name: req.body.newName.trim(),
+			interp: req.body.newInterp.trim(),
+			userId: req.session.user
+		})
+		.then((result) => {
+			res.end();
+		})
+		.catch(error => console.log(error));
 	}
 }
 

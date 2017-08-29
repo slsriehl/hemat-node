@@ -46,5 +46,9 @@ router.get('/surg-path/snippets', (req, res) => {
 	]);
 });
 
+//post new interp to db
+router.post('/ihc/save', (req, res) => {
+	controller.saveIhcPreset(req, res);
+});
 
 module.exports = router;

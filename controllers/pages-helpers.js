@@ -40,7 +40,7 @@ const helpers = {
 	getIhcPresets: (req) => {
 		return models.IhcPresets
 		.findAll({
-			attributes: ['id', 'interp'],
+			attributes: ['interp', 'name'],
 			where: {
 				$or: [{
 					userId: 1
@@ -51,11 +51,11 @@ const helpers = {
 		})
 		.then((data) => {
 			if(data.length) {
+				let allPresets = [];
 				for(let i = 0; i < data.length; i++) {
-					let allPresets;
 					const presets = {
-						presetId: data[i].dataValues.id,
-						interp: data[i].dataValues.interp
+						interp: data[i].dataValues.interp,
+						name: data[i].dataValues.name
 					}
 					allPresets.push(presets);
 				}
@@ -65,7 +65,8 @@ const helpers = {
 				return Promise.resolve(null);
 			}
 		})
-	}
+	},
+
 }
 
 

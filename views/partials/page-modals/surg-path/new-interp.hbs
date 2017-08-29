@@ -1,4 +1,4 @@
-<div class="modal fade" id="newinterp" tabindex="-1" role="dialog" data-backdrop="false"
+<div class="modal fade" id="addNewInterp" tabindex="-1" role="dialog" data-backdrop="false"
 		 aria-labelledby="modelTitleId" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 				<div class="modal-content">
@@ -7,24 +7,24 @@
 												aria-label="Close">
 										<span aria-hidden="true">&times;</span>
 								</button>
-								<h4 class="modal-title" id="modelTitleId">Save a new interp</h4>
+								<h4 class="modal-title" id="modelTitleId">Save a new interpretation</h4>
 						</div>
-						<form id="formdata">
+						<form id="ihc_save">
 						<div class="modal-body">
 
 								<div class="form-group">
-										<label for="#">Description of new interpretation</label>
-										<input class="form-control form-control-sm" name="newopt" id="newopt">
+										<label for="newName">Description of new interpretation</label>
+										<input class="form-control form-control-sm" name="newName" id="newName" />
 								</div>
 								<div class="form-group">
-										<label for="#">New interpretation text</label>
-										<textarea class="form-control" rows="8" name="newinterp" id="newinterp"></textarea>
+										<label for="newInterp">New interpretation text</label>
+										<textarea class="form-control" rows="8" name="newInterp" id="newInterp"></textarea>
 								</div>
 
 
 						</div>
 						<div class="modal-footer">
-								<button type="submit" class="btn btn-primary p-1" id="ihc_save">Save</button>
+								<button type="submit" class="btn btn-primary p-1">Save</button>
 								<button type="button" class="btn btn-secondary p-1" data-dismiss="modal">
 										Close
 								</button>

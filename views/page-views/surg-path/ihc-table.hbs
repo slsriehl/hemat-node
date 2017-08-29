@@ -8,9 +8,9 @@
 					Surgical Pathology Tools
 				</li>
 				<li class="breadcrumb-item active"><i class="fa fa-table mr-2"></i>Immunohistochemistry Table</li>
-		</ol> 
+		</ol>
 
- {{> message-center this}} 
+ {{> message-center this}}
 
 		<div class="card mb-3">
 				<div class="card-header bg-info">
@@ -111,10 +111,10 @@
 														<div class="card-block">
 														Interpretation:
 		<select class="form-control selectpicker form-control-sm" name="ihc_preset" id="ihc_preset">
-			<option selected hidden>Choose quick preset if needed</option>
-			{{#if data}}
-			{{#each data}}
-			<option value="{{opt}}">{{name}}</option>
+			<option selected value="null">Choose quick preset if needed</option>
+			{{#if ihcPresets}}
+			{{#each ihcPresets}}
+			<option value="{{interp}}">{{name}}</option>
 			{{/each}}
 			{{/if}}
 		</select><br>
@@ -125,12 +125,19 @@
 	  -->
 
 		<!-- New interp modal button -->
-		<button type="button" class="btn btn-outline-primary btn-sm p-2 mt-1" data-toggle="modal"						data-target="#newinterp" id="add_interp">
-						Save a new interp</button>
+		<button type="button" class="btn btn-outline-primary btn-sm p-2 mt-1" data-toggle="modal"						data-target="#addNewInterp" id="add_interp">
+						Save a new interpretation</button>
 
 <!-- Modal -->
 {{> page-modals/surg-path/new-interp}}
 														</div>
+												</div>
+												<div class='card-block'>
+													 <div class="form-group">
+														 <label for="ihc_interp">Type your additional interpretation of the stains, if any</label><br>
+															 <textarea class="form-control" rows="5"  id="ihc_interp"></textarea>
+													 </div>
+
 												</div>
 										</div>
 										<!-- middle right text output-->

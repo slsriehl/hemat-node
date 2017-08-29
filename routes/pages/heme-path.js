@@ -19,7 +19,8 @@ router.get('/heme-path/bone-marrow', (req, res) => {
 		"../json/json-bonemarrow.js",
 		"../js/heme-path/bm-diff-scripts.js",
 		"../js/heme-path/bm-scripts.js",
-		"../js/heme-path/pb-rules.js"
+		"../js/heme-path/pb-rules.js",
+		"../js/surg-path/ihc-scripts.js"
 	]);
 });
 

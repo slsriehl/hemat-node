@@ -1,3 +1,4 @@
+let ihcObj = {};
 $(window).on('load', function(){
 // IHC box script
     var autocomp_opt = {
@@ -75,8 +76,16 @@ $(window).on('load', function(){
         var ihcout= '';
         var des = $('#disclaimer').val();
         var desc = "\n\nThe immunoperoxidase and/or in situ hybridization stain(s) reported above were developed and their performance characteristics determined by " + des + ". They have not been cleared or approved by the U.S. Food and Drug Administration, although such approval is not required for analyte-specific reagents of this type. This test is used for clinical purposes. It should not be regarded as investigational or for research. This laboratory is certified under the Clinical Laboratory Improvement Amendments of 1988 (CLIA) as qualified to perform high complexity clinical laboratory testing. All controls show appropriate reactivity.";
-        var interp = $('#ihc_interp').val();
-
+				var interpFunc = function() {
+					if($('#ihc_preset').find(":selected").val() != 'null' && $('#ihc_interp').val() != '') {
+						return $('#ihc_preset').find(":selected").val() + '  ' + $('#ihc_interp').val();
+					} else if ($('#ihc_preset').find(":selected").val() == 'null' && $('#ihc_interp').val() != '') {
+						return $('#ihc_interp').val();
+					} else {
+						return $('#ihc_preset').find(":selected").val();
+					}
+				}
+				var interp = interpFunc();
         // array of antibodies
         $('.search').each(function(){
             var item = $(this).val();
@@ -126,42 +135,40 @@ $(window).on('load', function(){
     });
 
     // Update interp textarea with mysql ajax request
-    $("#ihc_preset").on('change', function() {
-        $.ajax({
-            type: "POST",
-            url: "ajax/ihc_display.php",
-            data: $('select#ihc_preset').serialize()
-        }).done(function(data) {
-            $('#ihc_interp').val(data);
-        });
-
-    });
+    // $("#ihc_preset").on('change', function() {
+    //     $.ajax({
+    //         type: "POST",
+    //         url: "ajax/ihc_display.php",
+    //         data: $('select#ihc_preset').serialize()
+    //     }).done(function(data) {
+    //         $('#ihc_interp').val(data);
+    //     });
+		//
+    // });
 
     // Save new option/interp to database
-    $("#ihc_save").on("click", function(e){
+    $("#ihc_save").on("submit", function(e){
+			//don't reload page
+			e.preventDefault();
+			//define ajax request data obj
+			ihcObj.newName = $('#newName').val();
+			ihcObj.newInterp = $('#newInterp').val();
 
-        //$("#formdata").submit(function(e) {
-        e.preventDefault(); // avoid to execute the actual submit of the form.
-
-        $.ajax({
-
-            type: "POST",
-
-            url: "ajax/ihc_save.php",
-
-            data: $("#formdata").serialize(), // serializes the form's elements.
-
-            success: function(data)
-
-            {
-
-                alert(data) ;
-
-                window.location.href = '../apps/ihc.php?=success';
-                //console.log(data);
-
-            }
-        });
+			//close modal
+			$('#addNewInterp').modal('hide');
+			//add the new values to the dropdown and the ajax request data object
+			var newIhcOpt = $('<option value="' + ihcObj.newInterp + '" selected="selected">');
+			newIhcOpt.append(ihcObj.newName);
+			$('#ihc_preset').append(newIhcOpt);
+			//ajax call to save new present in the db
+			$.ajax({
+				url: '/ihc/save',
+				type: 'POST',
+				data: ihcObj
+			})
+			.done(function(response) {
+				console.log(response);
+			});
     });
 
 
