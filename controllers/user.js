@@ -56,10 +56,11 @@ const controller = {
 			.findAll({
 				attributes: ['username', 'email'],
 				where: {
-					$or: {
-						username: testUser.username,
+					$or: [{
+						username: testUser.username
+					}, {
 						email: testUser.email
-					}
+					}]
 				}
 			})
 		})
@@ -114,10 +115,11 @@ const controller = {
 		.findOne({
 			attributes: ['id', 'password', 'firstname', 'requireReset', 'deletedAt'],
 			where: {
-				$or: {
-					email: req.body.credential.trim().toLowerCase(),
+				$or: [{
+					email: req.body.credential.trim().toLowerCase()
+				}, {
 					username: req.body.credential.trim().toLowerCase()
-				}
+				}]
 			}
 		})
 		.then((data) => {
@@ -328,10 +330,11 @@ const controller = {
 						id: {
 							$ne: req.session.user
 						},
-						$or: {
-							username: objToUpdate.username,
+						$or: [{
+							username: objToUpdate.username
+						}, {
 							email: objToUpdate.email
-						}
+						}]
 					}
 				})
 				.then((data) => {
@@ -378,7 +381,7 @@ const controller = {
 	},
 	//dismiss a message
 	dismissMessage: (req, res) => {
-		const messageId = parseInt(req.body.id);
+		const messageId = parseInt(req.body.id.trim());
 		if(isNaN(messageId)) {
 			console.log('clearing req.session.message et al');
 			req.session.message = null;

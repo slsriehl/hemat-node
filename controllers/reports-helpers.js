@@ -22,11 +22,11 @@ const pdfTemplate = require('../views/pdfs/2017-08-pdf-template');
 const helpers = {
 	saveAndAddCaseReference: (req, res, saveObj) => {
 		console.log('saveObj from saveAndAddCaseReference' + util.inspect(saveObj));
-		if(!saveObj.referenceId && req.body.newCaseRef) {
+		if(!saveObj.referenceId && req.body.newCaseRef.trim()) {
 			return models.CaseReferences
 			.findAll({
 				where: {
-					reference: req.body.newCaseRef,
+					reference: req.body.newCaseRef.trim(),
 					userId: req.session.user
 				}
 			})
@@ -35,7 +35,7 @@ const helpers = {
 				if(data.length === 0) {
 					return models.CaseReferences
 					.create({
-						reference: req.body.newCaseRef,
+						reference: req.body.newCaseRef.trim(),
 						userId: req.session.user
 					})
 					.then((result) => {

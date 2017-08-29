@@ -19,10 +19,11 @@ const controller = {
 		.findOne({
 			attributes: ['id', 'firstname'],
 			where: {
-				$or: {
-					username: req.body.credential,
-					email: req.body.credential
-				}
+				$or: [{
+					username: req.body.credential.trim().toLowerCase()
+				}, {
+					email: req.body.credential.trim().toLowerCase()
+				}]
 			}
 		})
 		.then((data) => {
@@ -95,7 +96,7 @@ const controller = {
 			if(data.dataValues.valid && !data.dataValues.used && isNotExpired) {
 				return models.Users
 				.update({
-					password: helpers.setHash(req.body.password),
+					password: helpers.setHash(req.body.password.trim()),
 					requireReset: false
 				}, {
 					where: {

@@ -14,17 +14,17 @@ const controller = {
 		const prelimObjToSave = {
 			userId: req.session.user,
 			appId: req.session.app,
-			referenceId: req.body.referenceId,
-			singleSection: req.body.singleSection,
-			comments: req.body.comments,
-			micro: req.body.micro,
-			finals: req.body.finals,
-			gross: req.body.gross,
-			cbcData: req.body.cbcData,
-			diff: req.body.diff,
-			diffPercent: req.body.diffPercent,
-			serologic: req.body.serologic,
-			ihcTable: req.body.ihcTable
+			referenceId: req.body.referenceId.trim(),
+			singleSection: req.body.singleSection.trim(),
+			comments: req.body.comments.trim(),
+			micro: req.body.micro.trim(),
+			finals: req.body.finals.trim(),
+			gross: req.body.gross.trim(),
+			cbcData: req.body.cbcData.trim(),
+			diff: req.body.diff.trim(),
+			diffPercent: req.body.diffPercent.trim(),
+			serologic: req.body.serologic.trim(),
+			ihcTable: req.body.ihcTable.trim()
 		}
 		const myAttributes = [];
 		console.log('prelim obj to save' + util.inspect(prelimObjToSave));
