@@ -10,22 +10,23 @@ const util = require('util');
 
 const helpers = {
 	cleanObj: (obj, toArray) => {
-		for (let propName in obj) {
-			switch(obj[propName]) {
+		for (let [key, value] of helpers.entries(obj)) {
+			switch(value) {
 				case null:
-					delete obj[propName];
+					delete key;
 					break;
 				case false:
-					delete obj[propName];
+					delete key;
 					break;
 				case undefined:
-					delete obj[propName];
+					delete key;
 					break;
 				case '':
-					delete obj[propName];
+					delete key;
 					break;
 				default:
-					// console.log(`${obj[propName]} retained in obj`)
+				if(typeof(value) == 'string')
+					value = value.trim()
 					break;
 			}
 			// if (obj[propName] === null || obj[propName] === undefined ||) {
