@@ -27,7 +27,8 @@ app.engine('hbs', hbs({
   layoutsDir: __dirname + '/views/layouts/',
   partialsDir: __dirname + '/views/partials/',
 	helpers: {
-		stripeRows: require('./views/helpers/stripe-rows')
+		stripeRows: require('./views/helpers/stripe-rows'),
+		hideReferences: require('./views/helpers/hide-references')
 	}
 }));
 app.set('views', __dirname + '/views');
