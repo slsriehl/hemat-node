@@ -13,9 +13,9 @@
 			<i class="fa fa-tags mr-2"></i>
 			Surgical Pathology Snippets
 		</li>
-	</ol> 
+	</ol>
 
- {{> message-center this}} 
+ {{> message-center this}}
 
 <!-- end breadcrumb container-fluid -->
 </div>
@@ -67,7 +67,6 @@
 <!-- end card -->
 			</div>
 <!-- results card -->
-			{{#if results}}
 			<div class="card mt-4">
 				<div class="card-header bg-warning">
 					<h5>Results (click a result to see its contents)</h5>
@@ -114,22 +113,29 @@
 			</div>
 <!-- end left hand column -->
 		</div>
-<!-- end conditional display of search results table -->
-		{{/if}}
-		{{#if editResult}}
+
 <!-- begin right hand column -->
 		<div class="col col-sm-4" id="bottom-r">
 			<div class="card text-center">
-				<div class="card-header">
-					<button class="btn btn-lg btn-outline-info p-2 updateit" id="writeReport" type="button">
-						Update snippet
-					</button>
-					<button class="btn btn-lg btn-outline-danger p-2 ml-4" id="reset" type="button">
-						Reset
-					</button>
-<!-- end card header -->
+				<div class="card-header button-box">
+						<ul class="nav nav-pills standard-button-box">
+								<a class="btn btn-lg btn-outline-info p-2 updateit" id="updateSnippet">
+										<small>Update</small>
+								</a>
+								<a class="btn btn-lg btn-outline-info p-2 updateit" id="saveAsSnippet">
+										<small>Save As</small>
+								</a>
+								<a class="btn btn-lg btn-outline-info p-2 updateit" id="writeReport">
+										<small>Write Report</small>
+								</a>
+
+								<a class="btn btn-lg btn-outline-danger p-2" id="reset">
+										<small>Reset</small>
+								</a>
+						</ul>
 				</div>
 				<div class="card-block">
+					{{> page-partials/case-reference}}
 					<div class="form-group">
 						<textarea class="form-control" id="outPut-1" rows="12" placeholder="Micro"></textarea>
 						<button class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-1" type="button">
@@ -163,145 +169,17 @@
 			</div>
 <!-- end right hand column -->
 		</div>
-<!-- end conditional display of editable record -->
-		{{/if}}
+
 <!-- end row -->
 	</div>
+	{{> page-partials/history-module}}
 <!-- end container-fluid -->
 </div>
 
 <!-- somewhere -->
 
 <!-- new snippet modal -->
-<div
-	aria-hidden="true"
-	aria-labelledby="modalLabel"
-	class="modal fade"
-	id="addnew"
-	role="dialog"
-	tabindex="-1"
->
-	<div
-		class="modal-dialog modal-lg"
-		role="document"
-	>
-		<div class="modal-content">
-			<div class="modal-header">
-				<button
-					aria-label="Close"
-					class="close"
-					data-dismiss="modal"
-					type="button"
-				>
-					<span aria-hidden="true">
-						&times;
-					</span>
-				</button>
-				<h4 class="modal-title" id="modalLabel">
-					Add new snippet
-				</h4>
-<!-- end modal header -->
-			</div>
-			<div class="modal-body">
-				<h1>Enter new snippet</h1>
-				<div class="entersearch">
-					<form
-						id="add-snippet"
-						name="entry"
-						action="/snippet/add"
-						method="POST"
-					>
-						<ul class="list-group">
-							<li class="list-group-item">
-								Select class:
-								<select
-									class="form-control form-control-sm"
-									id="ent_class"
-									name="ent_class"
-								>
-									<option value="breast">
-										Breast
-									</option>
-									<option value="GI">
-										GI
-									</option>
-									<option value="peds">
-										Peds
-									</option>
-									<option value="skin">
-										Skin
-									</option>
-									<option value="heme">
-										Heme
-									</option>
-									<option value="neuro">
-										Neuro
-									</option>
-									<option value="soft tissue">
-										Soft tissue
-									</option>
-									<option value="gyn">
-										Gynecologic
-									</option>
-									<option value="cytology">
-										Cytology
-									</option>
-									<option value="small surgicals">
-										Small surgicals
-									</option>
-								</select>
-							</li>
-							<li class="list-group-item">
-								Enter some keywords (separated by a tab)
-								<input
-									class="form-control"
-									id="ent_key"
-									name="ent_key"
-									data-role="tagsinput"
-								/>
-							</li>
-							<li class="list-group-item">
-								<textarea
-								class="form-control"
-								id="ent_micro"
-								name="ent_micro"
-								rows=6
-								placeholder='Enter microscopic description'
-								></textarea>
-							</li>
-							<li class="list-group-item">
-								<textarea
-								class="form-control"
-								id="ent_final"
-								name="ent_final"
-								rows=6
-								placeholder='Enter Final diagnosis'
-								></textarea>
-							</li>
-							<li class="list-group-item">
-								<textarea
-								class="form-control"
-								id="ent_comment"
-								name="ent_comment"
-								rows=6
-								placeholder='Enter any comments'
-								></textarea>
-							</li>
-						</ul>
-						<button class="btn btn-primary p-1" type="submit" id="ent_submit" name="ent_submit">Save new snippet</button>
-					</form>
-<!--end entersearch-->
-				</div>
-<!-- end modal body -->
-			</div>
-			<!--<div class="modal-footer">
-				<input id="search_id" name="search_id" style="display:none">
-			</div> (hidden placeholder for php data)-->
-<!-- end modal content -->
-		</div>
-<!-- end modal dialog -->
-	</div>
-<!-- end modal label -->
-</div>
+{{> page-modals/surg-path/new-snippet-modal}}
+{{> page-modals/new-case-reference}}
 
 <!-- TODO: scripts to include: ../vendor/tag-it/tag-it.min.js and ../js/surg-path/snippets-scripts.js -->
