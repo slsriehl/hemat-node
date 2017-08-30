@@ -1,0 +1,131 @@
+<div
+	aria-hidden="true"
+	aria-labelledby="modalLabel"
+	class="modal fade"
+	id="addnew"
+	role="dialog"
+	tabindex="-1"
+	data-backdrop="false"
+>
+	<div
+		class="modal-dialog modal-lg"
+		role="document"
+	>
+		<div class="modal-content">
+			<div class="modal-header">
+				<button
+					aria-label="Close"
+					class="close"
+					data-dismiss="modal"
+					type="button"
+				>
+					<span aria-hidden="true">
+						&times;
+					</span>
+				</button>
+				<h4 class="modal-title" id="modalLabel">
+					Add new snippet
+				</h4>
+<!-- end modal header -->
+			</div>
+			<div class="modal-body">
+				<h1>Enter new snippet</h1>
+				<div class="entersearch">
+					<form
+						id="add-snippet"
+						name="entry"
+						action="/snippet/add"
+						method="POST"
+					>
+						<ul class="list-group">
+							<li class="list-group-item">
+								Select class:
+								<select
+									class="form-control form-control-sm"
+									id="ent_class"
+									name="ent_class"
+								>
+									<option value="breast">
+										Breast
+									</option>
+									<option value="GI">
+										GI
+									</option>
+									<option value="peds">
+										Peds
+									</option>
+									<option value="skin">
+										Skin
+									</option>
+									<option value="heme">
+										Heme
+									</option>
+									<option value="neuro">
+										Neuro
+									</option>
+									<option value="soft tissue">
+										Soft tissue
+									</option>
+									<option value="gyn">
+										Gynecologic
+									</option>
+									<option value="cytology">
+										Cytology
+									</option>
+									<option value="small surgicals">
+										Small surgicals
+									</option>
+								</select>
+							</li>
+							<li class="list-group-item">
+								Enter some keywords (separated by a tab)
+								<input
+									class="form-control"
+									id="ent_key"
+									name="ent_key"
+									data-role="tagsinput"
+								/>
+							</li>
+							<li class="list-group-item">
+								<textarea
+								class="form-control"
+								id="ent_micro"
+								name="ent_micro"
+								rows=6
+								placeholder='Enter microscopic description'
+								></textarea>
+							</li>
+							<li class="list-group-item">
+								<textarea
+								class="form-control"
+								id="ent_final"
+								name="ent_final"
+								rows=6
+								placeholder='Enter Final diagnosis'
+								></textarea>
+							</li>
+							<li class="list-group-item">
+								<textarea
+								class="form-control"
+								id="ent_comment"
+								name="ent_comment"
+								rows=6
+								placeholder='Enter any comments'
+								></textarea>
+							</li>
+						</ul>
+						<button class="btn btn-primary p-1" type="submit" id="ent_submit" name="ent_submit">Save new snippet</button>
+					</form>
+<!--end entersearch-->
+				</div>
+<!-- end modal body -->
+			</div>
+			<!--<div class="modal-footer">
+				<input id="search_id" name="search_id" style="display:none">
+			</div> (hidden placeholder for php data)-->
+<!-- end modal content -->
+		</div>
+<!-- end modal dialog -->
+	</div>
+<!-- end modal label -->
+</div>
