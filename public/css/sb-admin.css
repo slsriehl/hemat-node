@@ -222,6 +222,10 @@ body.fixed-nav {
 	padding: 0.5rem 0.75rem;
 }
 
+.modal {
+	top: 56px;
+}
+
 @media screen and (min-width: 992px) {
 	#navbarExample {
 		display: flex;
