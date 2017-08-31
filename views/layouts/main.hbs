@@ -164,13 +164,13 @@
 		</section>
 <!-- scripts footer, send script names to script template so that the particular scripts are rendered last -->
 		{{> scripts/standard-scripts}}
+		<!-- self-written -->
+			<script type="text/javascript" src="../js/commonscripts.js"></script>
 		<!-- specific to each page -->
 		{{#if specificScripts}}
 			{{#each specificScripts}}
 				<script type="text/javascript" src={{this}}></script>
 			{{/each}}
 		{{/if}}
-		<!-- self-written -->
-			<script type="text/javascript" src="../js/commonscripts.js"></script>
 	</body>
 </html>
