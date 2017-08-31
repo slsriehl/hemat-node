@@ -14,6 +14,11 @@ router.get('/report/download/:report', (req, res) => {
 	reportsController.downloadReport(req, res);
 });
 
+//download a guest report
+router.get('/report/guest/:report', (req, res) => {
+	reportsController.downloadGuest(req, res);
+});
+
 router.get('/reports/history', (req, res) => {
 	reportsController.reportHistory(req, res);
 });
