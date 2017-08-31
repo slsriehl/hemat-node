@@ -1,4 +1,4 @@
-
+var dataObj = {};
 $(window).on('load', function() {
 // instantiate copy button
     new Clipboard('.copy');
@@ -97,14 +97,23 @@ $(function () {
 		});
 
 		//show new case reference popup if new selected
-		$('#caseRefSelect').on('change', function() {
-			if($(this).val() == '-1') {
-				$('#new-case-reference').modal('show');
-				return;
-			} else {
-				return;
-			}
-		});
+			$('#caseRefSelect').on('change', function() {
+				if($(this).val() == '-1') {
+					$('#new-case-reference').modal('show');
+					return;
+				} else {
+					return;
+				}
+			});
+
+			$('#caseRefInput').on('blur', function() {
+				if($(this).val() != '') {
+					dataObj.newCaseRef = $('#caseRefInput').val();
+					return;
+				} else {
+					return;
+				}
+			});
 
 		//handler to submit new case reference to obj to be sent to back end
 		$('#add-case-reference').on('submit', function(event) {
@@ -150,7 +159,7 @@ $(function () {
 			})
 			.done(function(response) {
 				console.log(response);
-				if(response.report) {
+				if(response.report || response.guestReport) {
 					//pdf was successfully created and the data saved in the database
 					if($('.message-fail')) {
 						//hide any previous error messages
@@ -172,7 +181,12 @@ $(function () {
 		});
 
 		var addDownloadBtn = function(response) {
-			var downloadPdfBtn = $('<a href="/report/download/' + response.report + '" download class="btn btn-lg btn-outline-success p-2 ml-4 download-pdf" id="download-pdf">');
+			var downloadPdfBtn;
+			if(response.report) {
+				downloadPdfBtn = $('<a href="/report/download/' + response.report + '" download class="btn btn-lg btn-outline-success p-2 ml-4 download-pdf" id="download-pdf">');
+			} else if (response.guestReport) {
+				downloadPdfBtn = $('<a href="/report/guest/' + response.guestReport + '" download class="btn btn-lg btn-outline-success p-2 ml-4 download-pdf" id="download-pdf">');
+			}
 			var downloadBtnText = $('<small>Download</small>')
 			downloadPdfBtn.append(downloadBtnText);
 			$('.report-button-box').append(downloadPdfBtn);
