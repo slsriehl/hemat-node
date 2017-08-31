@@ -7,6 +7,7 @@ const fs = require('fs'); //promisify
 const mime = require('mime');
 
 const util = require('util');
+const escape = require('escape-html');
 
 const helpers = {
 	cleanObj: (obj, toArray) => {
@@ -26,7 +27,7 @@ const helpers = {
 					break;
 				default:
 				if(typeof(value) == 'string')
-					value = value.trim()
+					value = escape(value.trim());
 					break;
 			}
 			// if (obj[propName] === null || obj[propName] === undefined ||) {

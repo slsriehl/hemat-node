@@ -3,6 +3,7 @@ const util = require('util');
 const models = require('../models');
 
 const Promise = require('bluebird');
+const escape = require('escape-html');
 
 const helpers = {
 	getCaseReferences: (req) => {
@@ -18,7 +19,7 @@ const helpers = {
 			for(let i = 0; i < data.length; i++) {
 				const oneRef = {
 					id: data[i].dataValues.id,
-					text: data[i].dataValues.reference
+					text: escape(data[i].dataValues.reference)
 				}
 				myRefs.push(oneRef);
 			}
@@ -54,8 +55,8 @@ const helpers = {
 				let allPresets = [];
 				for(let i = 0; i < data.length; i++) {
 					const presets = {
-						interp: data[i].dataValues.interp,
-						name: data[i].dataValues.name
+						interp: escape(data[i].dataValues.interp),
+						name: escape(data[i].dataValues.name)
 					}
 					allPresets.push(presets);
 				}

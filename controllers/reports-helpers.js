@@ -8,6 +8,7 @@ const generalHelpers = require('./general-helpers');
 
 const util = require('util');
 const fs = Promise.promisifyAll(require('fs'));
+const escape = require('escape-html');
 
 
 //++++++ time generation ++++++
@@ -26,7 +27,7 @@ const helpers = {
 			return models.CaseReferences
 			.findAll({
 				where: {
-					reference: req.body.newCaseRef.trim(),
+					reference: escape(req.body.newCaseRef.trim()),
 					userId: req.session.user
 				}
 			})
@@ -35,7 +36,7 @@ const helpers = {
 				if(data.length === 0) {
 					return models.CaseReferences
 					.create({
-						reference: req.body.newCaseRef.trim(),
+						reference: escape(req.body.newCaseRef.trim()),
 						userId: req.session.user
 					})
 					.then((result) => {
