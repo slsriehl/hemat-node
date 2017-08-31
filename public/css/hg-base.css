@@ -109,9 +109,13 @@ textarea {
 	margin: 0;
 }
 
+.message-center .message-fail {
+	background-color: rgba(219, 114, 123, 0.5);
+}
+
 /* unsuccessful ajax call for pdf create or download */
 #create-pdf-fail, #download-pdf-fail {
-	background-color: rgba(219, 114, 123, 0.5)
+	background-color: rgba(219, 114, 123, 0.5);
 }
 
 /* form validation error fields */
@@ -143,4 +147,12 @@ textarea {
 
 .previous-report {
 	padding: 1rem 0;
+}
+
+/* snippets */
+button.snippet-result {
+	background-color: rgba(100, 176, 228, 0.5);
+	border: none;
+	border-radius: 5px;
+	padding: 0.25rem;
 }

@@ -7,6 +7,7 @@ const reportsHelpers = require('./reports-helpers');
 const models = require('../models');
 
 const util = require('util');
+const escape = require('escape-html');
 
 const Promise = require('bluebird');
 
@@ -20,6 +21,7 @@ const controller = {
 			let anyReports;
 			let prevReps;
 			let ihcPresets;
+			let snippets;
 			return helpers.getAppId(req)
 			.then((result) => {
 				req.session.app = result.dataValues.id;
@@ -57,6 +59,9 @@ const controller = {
 			})
 			.then((result) => {
 				prevReps = result;
+				if(renderPath == './page-views/surg-path/snippets.hbs') {
+					snippets = true;
+				}
 				res.render(renderPath, {
 					messages: req.session.systemMessages,
 					isAuth: {
@@ -69,7 +74,8 @@ const controller = {
 						any: anyReports,
 						thisApp: prevReps
 					},
-					ihcPresets: ihcPresets
+					ihcPresets: ihcPresets,
+					snippets: snippets
 				});
 			})
 			.catch(error => console.log(error));
@@ -104,7 +110,156 @@ const controller = {
 			res.end();
 		})
 		.catch(error => console.log(error));
-	}
+	},
+	searchSnippets: (req, res) => {
+		console.log(req.body);
+		let searchTerms;
+		let searchStr = '';
+		let searchResults1 = [];
+		let searchResults2 = [];
+		searchTerms = req.body.thisSearch.split(/\s+/);
+		console.log(searchTerms);
+		for(let i = 0; i < searchTerms.length; i++) {
+			let str = '+*' + searchTerms[i] + '* ';
+			searchStr += str;
+		}
+		console.log(searchStr);
+		const theSearch = 'SELECT entry_id, spc_class, keywords, micros, finals, comments, user_id FROM Snippets WHERE (MATCH(keywords) AGAINST ("' + searchStr + '") OR MATCH(finals) AGAINST ("' + searchStr + '")) AND (user_id = "1" OR user_id = "' + req.session.user + '") ORDER BY spc_class, entry_id DESC';
+		console.log(theSearch);
+		return models.sequelize.query(theSearch)
+		.then((data) => {
+			console.log(data);
+			for(let i = 0; i < data.length; i++) {
+				searchResults1 = searchResults1.concat(data[i]);
+			}
+			console.log(searchResults1);
+			for(let i = 0; i < searchResults1.length; i++) {
+				let tempObj = searchResults1[i];
+				searchResults1.splice(i, 1);
+				let text = {
+					micros: generalHelpers.toHtmlEntities(tempObj.micros),
+					finals: generalHelpers.toHtmlEntities(tempObj.finals),
+					comments: generalHelpers.toHtmlEntities(tempObj.comments)
+				}
+				let cleanObj = {
+					id: tempObj.entry_id,
+					userId: tempObj.user_id,
+					spcClass: tempObj.spc_class,
+					keywords: tempObj.keywords,
+					text: JSON.stringify(text)
+				}
+				searchResults2.push(cleanObj);
+				for(let k = 0; k < searchResults1.length; k++) {
+					if(tempObj.entry_id == searchResults1[k].entry_id) {
+						searchResults1.splice(k, 1);
+					}
+				}
+			}
+			console.log(searchResults2);
+			res.json(searchResults2);
+		})
+		.catch(error => console.log(error));
+	},
+	saveSnippet: (req, res) => {
+		console.log(req.body);
+		let newSnippet = {
+			micros: escape(req.body.ent_micro),
+			finals: escape(req.body.ent_final),
+			comments: escape(req.body.ent_comment),
+			user_id: req.session.user,
+			spc_class: escape(req.body.ent_class),
+			keywords: escape(req.body.ent_key)
+		}
+		return models.Snippets
+		.create(newSnippet)
+		.then((data) => {
+			res.send(true);
+		})
+		.catch(error => {
+			console.log(error);
+			res.send(false);
+		});
+	},
+	updateSnippet: (req, res) => {
+		console.log(req.body);
+		return models.Snippets
+		.findOne({
+			attributes: ['entry_id'],
+			where: {
+				user_id: req.session.user,
+				entry_id: req.body.ent_id
+			}
+		})
+		.then((data) => {
+			console.log(data);
+			if(data == null) {
+				res.send("You can't update this snippet because you don't own it.");
+				return Promise.resolve(false);
+			} else {
+				return Promise.resolve(true);
+			}
+		})
+		.then((result) => {
+			if(result == true) {
+				let objToUpdate = {
+					micros: escape(req.body.ent_micro),
+					finals: escape(req.body.ent_final),
+					comments: escape(req.body.ent_comment),
+					spc_class: escape(req.body.ent_class),
+					keywords: escape(req.body.ent_key)
+				}
+				return models.Snippets
+				.update(objToUpdate, {
+					where: {
+						entry_id: req.body.ent_id
+					}
+				})
+			} else {
+				return Promise.resolve(false);
+			}
+		})
+		.then((data) => {
+			console.log(data);
+			let resStr = JSON.stringify(data);
+			if(resStr == '[1]') {
+				res.send(true);
+			} else if (data == false) {
+				return;
+			} else {
+				res.send(false);
+			}
+		})
+		.catch(error => {
+			console.log(error);
+			res.send(false);
+		});
+	},
+	deleteSnippet: (req, res) => {
+		console.log(req.body);
+		if(req.body.user_id == req.session.user) {
+			return models.Snippets
+			.destroy({
+				where:{
+					user_id: req.body.user_id,
+					entry_id: req.body.ent_id
+				}
+			})
+			.then((result) => {
+				if(result === 1) {
+					res.send(true);
+				} else {
+					res.send(false);
+				}
+			})
+			.catch(error => {
+				console.log(error);
+				res.send(false);
+			});
+		} else {
+			res.send("You can't delete that snippet because you don't own it.");
+		}
+
+	},
 }
 
 module.exports = controller;

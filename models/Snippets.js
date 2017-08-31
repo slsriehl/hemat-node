@@ -1,6 +1,12 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var Snippets = sequelize.define('Snippets', {
+		entry_id: {
+			allowNull: false,
+			autoIncrement: true,
+			primaryKey: true,
+			type: DataTypes.INTEGER
+		},
     spc_class: {
 			type: DataTypes.STRING,
 			allowNull: false

@@ -32,10 +32,7 @@
 				<h1>Enter new snippet</h1>
 				<div class="entersearch">
 					<form
-						id="add-snippet"
-						name="entry"
-						action="/snippet/add"
-						method="POST"
+						id="ent_new"
 					>
 						<ul class="list-group">
 							<li class="list-group-item">
@@ -78,7 +75,7 @@
 								</select>
 							</li>
 							<li class="list-group-item">
-								Enter some keywords (separated by a tab)
+								Enter some keywords (separated by commas)
 								<input
 									class="form-control"
 									id="ent_key"
@@ -114,7 +111,10 @@
 								></textarea>
 							</li>
 						</ul>
-						<button class="btn btn-primary p-1" type="submit" id="ent_submit" name="ent_submit">Save new snippet</button>
+						<div class="modal-button-box">
+							<button class="btn btn-primary p-1" type="submit">Save new snippet</button>
+
+						</div>
 					</form>
 <!--end entersearch-->
 				</div>

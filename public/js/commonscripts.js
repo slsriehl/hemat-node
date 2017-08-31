@@ -69,7 +69,7 @@ $(function () {
 });
 
 
-//immuno/ihc box moved to immuno script
+//immuno/ihc box moved to ihc-script
 
 		// //initialize bootstrap select
 		// $('.selectpicker').selectpicker();
@@ -157,10 +157,13 @@ $(function () {
 						$('.message-fail').slideUp(400);
 					}
 					//create a button to download the pdf
-					var downloadPdfBtn = $('<a href="/report/download/' + response.report + '" download class="btn btn-lg btn-outline-success p-2 ml-4 download-pdf">');
-					var downloadBtnText = $('<small>Download</small>')
-					downloadPdfBtn.append(downloadBtnText);
-					$('.report-button-box').append(downloadPdfBtn);
+					if($('#download-pdf').length) {
+						$('#download-pdf').hide();
+						addDownloadBtn(response);
+					} else {
+						addDownloadBtn(response);
+					}
+
 				} else {
 					//create a pdf create error message
 					failureMessage('create-pdf-fail', 'Creating your PDF failed.  Please try again.  If this problem persists, please <a href="/mail">contact our admin</a>.');
@@ -168,7 +171,14 @@ $(function () {
 			});
 		});
 
-		$('#view-all-previous').on('click', function(event) {
+		var addDownloadBtn = function(response) {
+			var downloadPdfBtn = $('<a href="/report/download/' + response.report + '" download class="btn btn-lg btn-outline-success p-2 ml-4 download-pdf" id="download-pdf">');
+			var downloadBtnText = $('<small>Download</small>')
+			downloadPdfBtn.append(downloadBtnText);
+			$('.report-button-box').append(downloadPdfBtn);
+		}
+
+		$(document).off('click', '#view-all-previous').on('click', '#view-all-previous', function(event) {
 			window.location.href = '/reports/history';
 		});
 

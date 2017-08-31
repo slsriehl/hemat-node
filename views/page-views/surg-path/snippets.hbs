@@ -55,7 +55,7 @@
 <!-- end card header -->
 				</div>
 				<div class="card-block">
-					<form method="POST" action="/snippet/search">
+					<form id="doSearch">
 						<input class="form-control" name="search" id="search" />
 						<!-- <input type="hidden" name="doSearch" value="1" /> -->
 						<button class="btn btn-outline-primary p-1" type="submit" >
@@ -69,39 +69,19 @@
 <!-- results card -->
 			<div class="card mt-4">
 				<div class="card-header bg-warning">
-					<h5>Results (click a result to see its contents)</h5>
+					<h5>Results</h5>
 <!-- end card header -->
 				</div>
 				<div class="card-block">
 					<div  id="table-wrapper">
 						<div id="table-scroll">
-							<input type="hidden" id="setHere" />
+							<!-- <input type="hidden" id="setHere" /> -->
 							<table class="table searchresults">
 								<tr>
-									<th>ID#</th>
 									<th>Specimen Class</th>
 									<th>Keywords</th>
-									<th>Edit</th>
-									<th>Delete</th>
+									<th></th>
 								</tr>
-
-								{{#each results}}
-								<tr class='rowselect' id={{entry_id}}>
-									<td>{{entry_id}}</td><td>{{spc_class}}</td>
-									<td>{{keywords}}</td>
-									<td>
-										<a onclick="if (confirm('If you haven\'t saved the previous snippet you were editing, it will be lost.  Continue with editing this snippet?')) { return true; } return false;" href="/snippet/edit/{{entry_id}}">
-										Edit</td>
-									<td>
-										<a
-											onclick="if (confirm('Are you sure you want to delete this Report?')) { return true; } return false;"
-											href="/snippet/delete/{{entry_id}}"
-										>
-											Delete
-										</a>
-									</td>
-								</tr>
-								{{/each}}
 							</table>
 <!-- end table scroll-->
 						</div>
@@ -119,23 +99,20 @@
 			<div class="card text-center">
 				<div class="card-header button-box">
 						<ul class="nav nav-pills standard-button-box">
-								<a class="btn btn-lg btn-outline-info p-2 updateit" id="updateSnippet">
-										<small>Update</small>
-								</a>
 								<a class="btn btn-lg btn-outline-info p-2 updateit" id="saveAsSnippet">
 										<small>Save As</small>
 								</a>
-								<a class="btn btn-lg btn-outline-info p-2 updateit" id="writeReport">
+								<a class="btn btn-lg btn-outline-info p-2" id="writeReport">
 										<small>Write Report</small>
-								</a>
-
-								<a class="btn btn-lg btn-outline-danger p-2" id="reset">
-										<small>Reset</small>
 								</a>
 						</ul>
 				</div>
 				<div class="card-block">
 					{{> page-partials/case-reference}}
+					<input hidden type="text" id="user-holder" />
+					<input hidden type="text" id="class-holder" />
+					<input hidden type="text" id="keyword-holder" />
+					<input hidden type="text" id="entry_id-holder" />
 					<div class="form-group">
 						<textarea class="form-control" id="outPut-1" rows="12" placeholder="Micro"></textarea>
 						<button class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-1" type="button">
