@@ -22,7 +22,7 @@ const pdfTemplate = require('../views/pdfs/2017-08-pdf-template');
 const helpers = {
 	saveAndAddCaseReference: (req, res, saveObj) => {
 		console.log('saveObj from saveAndAddCaseReference' + util.inspect(saveObj));
-		if(!saveObj.referenceId && req.body.newCaseRef.trim()) {
+		if(!saveObj.referenceId && req.body.newCaseRef) {
 			return models.CaseReferences
 			.findAll({
 				where: {
@@ -196,6 +196,8 @@ const helpers = {
 				userId: req.session.user,
 				appId: req.session.app
 			},
+			order: (models.sequelize.literal('id DESC')),
+			limit: 5,
 			include: [{
 				model: models.CaseReferences,
 				attributes: ['reference']
