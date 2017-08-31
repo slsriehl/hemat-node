@@ -10,26 +10,24 @@ const util = require('util');
 const escape = require('escape-html');
 
 const helpers = {
-	cleanObj: (obj, toArray) => {
+	cleanObj: (obj) => {
 		for (let [key, value] of helpers.entries(obj)) {
+			console.log(undefined);
+			console.log('before ' + key + ' ' + value);
 			switch(value) {
 				case null:
-					delete key;
-					break;
 				case false:
-					delete key;
-					break;
 				case undefined:
-					delete key;
-					break;
 				case '':
-					delete key;
+					delete obj[key];
 					break;
 				default:
-				if(typeof(value) == 'string')
+				if(typeof(value) == 'string') {
 					value = escape(value.trim());
+				}
 					break;
 			}
+			console.log('after ' + key + ' ' + value);
 			// if (obj[propName] === null || obj[propName] === undefined ||) {
 			// 	;
 			// }
@@ -38,19 +36,19 @@ const helpers = {
 		console.log(`final obj returned or not ${util.inspect(obj)}`);
 		if(Object.keys(obj).length === 0) {
 			return false;
-		} else if(toArray) {
-			for(let [key, value] of helpers.entries(obj)) {
-				if (key.includes('Id')) {
-					delete key;
-				} else {
-					toArray.push(key);
-				}
-			}
-			console.log('toArray' + util.inspect(toArray));
-			return helpers.replaceLineBreaks(obj);
 		} else {
 			return helpers.replaceLineBreaks(obj);
 		}
+	},
+	generateKeyArr: (obj) => {
+		let toArray = [];
+		for(let [key, value] of helpers.entries(obj)) {
+			if (!key.includes('Id')) {
+				toArray.push(key);
+			}
+		}
+		console.log('toArray ' + toArray);
+		return toArray;
 	},
 	entries: function* (obj) {
 		for(let key of Object.keys(obj)) {
