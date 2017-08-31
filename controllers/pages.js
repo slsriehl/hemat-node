@@ -93,8 +93,19 @@ const controller = {
 		if(cookieHelpers.verifyCookie(req, res)) {
 			controller.userWall(req, res, renderPath, scripts);
 		} else {
-			res.render(renderPath, {
-				specificScripts: scripts
+			return helpers.getAppId(req)
+			.then((result) => {
+				req.session.app = result.dataValues.id;
+				res.render(renderPath, {
+					messages: [{
+						text: '<a href="/user/signup">Sign up</a> to save your reports and access more resources.',
+						id: 'you-should-sign-up'
+					}],
+					specificScripts: scripts
+				});
+			})
+			.catch((error) => {
+				console.log(error);
 			});
 		}
 	},
