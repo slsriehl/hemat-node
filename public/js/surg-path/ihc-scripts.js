@@ -1,5 +1,5 @@
 let ihcObj = {};
-let dataObj = {};
+
 $(window).on('load', function(){
 // IHC box script
     var autocomp_opt = {

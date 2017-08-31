@@ -1,4 +1,3 @@
-var dataObj = {};
 
 $(window).on('load', function() {
 
