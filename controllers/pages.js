@@ -137,9 +137,9 @@ const controller = {
 				let tempObj = searchResults1[i];
 				searchResults1.splice(i, 1);
 				let text = {
-					micros: generalHelpers.toHtmlEntities(tempObj.micros),
-					finals: generalHelpers.toHtmlEntities(tempObj.finals),
-					comments: generalHelpers.toHtmlEntities(tempObj.comments)
+					micros: escape(tempObj.micros),
+					finals: escape(tempObj.finals),
+					comments: escape(tempObj.comments)
 				}
 				let cleanObj = {
 					id: tempObj.entry_id,

@@ -80,16 +80,16 @@ const helpers = {
 		}
 		return obj;
 	},
-	toHtmlEntities: (string) => {
-    return string.replace(/./gm, (s) => {
-        return "&#" + s.charCodeAt(0) + ";";
-    });
-	},
-	fromHtmlEntities: (string) => {
-    return (string + "").replace(/&#\d+;/gm, (s) => {
-        return String.fromCharCode(s.match(/\d+/gm)[0]);
-    });
-	},
+	// toHtmlEntities: (string) => {
+  //   return string.replace(/./gm, (s) => {
+  //       return "&#" + s.charCodeAt(0) + ";";
+  //   });
+	// },
+	// fromHtmlEntities: (string) => {
+  //   return (string + "").replace(/&#\d+;/gm, (s) => {
+  //       return String.fromCharCode(s.match(/\d+/gm)[0]);
+  //   });
+	// },
 	resolvePath: (thePath) => {
 		return path.resolve(thePath);
 	},
