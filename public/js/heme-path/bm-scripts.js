@@ -11,7 +11,7 @@ $("#CBCswitch").change(function() {
 
 });
 
-    
+
 // Write Differential into report text area
     $('#diffWrite').on('click', function(){
 // get assign the values from each text input
@@ -620,62 +620,78 @@ $("#CBCswitch").change(function() {
             }
         }
 
+
     });
 // ======================================================================//
 
 // ********************* Combined report function ***********************//
-    $('#writeReport').on('click', function () {
+	$('#writeReport').on('click', function(event) {
+		dataObj.cbcData = $('#outPut-1').val();
+		dataObj.micro = $('#outPut-2').val();
+		dataObj.finals = $('#outPut-3').val();
+		dataObj.comments = $('#outPut-4').val();
+		dataObj.diffPercent = $('#diffTotal').val();
+		dataObj.diff = $('#diffOut').val();
+		if(!$('#pdf-report').length) {
+			var reportBtnBox = $('<ul class="report-button-box nav nav-pills">');
+			var makePdfBtn = $('<a class="btn btn-lg btn-outline-success p-2 ml-4" id="pdf-report">');
+			var pdfBtnText = $('<small>Save & Create PDF</small>')
+			makePdfBtn.append(pdfBtnText);
+			reportBtnBox.append(makePdfBtn);
+			$('.button-box').append(reportBtnBox);
+		}
+	});
 
-        var aa = $('#outPut-2').val(); // micro output
-        var bb = $('#diffOut').val();// CBC output
-        var re = /BONE MARROW, (?!ASPIRATE)/gm;
-        var match = aa.replace(/BONE MARROW, (?!ASPIRATE)/gm,'DIFFERENTIAL: \n'+bb+"\n\nBONE MARROW, ");
-        var cyto_val = $('#cyto_val').val();
-        var mrd_val = $('#mrd_val').val();
-        var fish_val = $('#fish_val').val();
-        var mol_val = $('#mol_val').val();
-        var spc_val = $('#spc_val').val();
-        var proc_val = '';
-        var site_val = $('#site_val').val();
-
-        if (spc_val == '1'){
-            spc_val = 'Aspirate, touch preparation, clot sections and biopsy';
-            proc_val = 'Aspirate and biopsy';}
-        else if (spc_val == '2'){
-            spc_val = 'Aspirate and clot section';
-            proc_val = 'Aspirate';}
-        else if (spc_val =='3'){
-            spc_val = 'Touch preparation, roll preparation and biopsy';
-            proc_val = 'Biopsy';}
-
-        // Myeloma template bits
-        var myel0 = $('#myeloma_0').val();
-        var myel1 = $('#asp_12').val();
-        var myel2 = $('#myeloma_2').val();
-        var myel3 = $('#myeloma_3').val();
-        var myel4 = $('#myeloma_4').val();
-
-        myel_text = '\nEXTENT OF PLASMA CELL INFILTRATE IN BONE MARROW:\n- Plasma cells on aspirate smear/touch preparation: '+myel1.replace(/%/,'') +'%\n- Plasma cells on core biopsy or clot: '+ myel2.replace(/%/,'')+'%\n\nIMMUNOGLOBULIN LIGHT CHAIN TYPE:\n- '+myel3+' \n\nIMMUNOGLOBULIN DEPOSITS:\n- '+myel4+'\n ';
-
-
-        // store your text to localStorage when someone click the link
-
-        if (myel0 == 'Yes'){
-            var textToPass='\n\n'+$('#outPut-1').val()+'\n\n'+match+'\n\nBONE MARROW SYNOPTIC DIAGNOSIS SUMMARY\n\nHISTOLOGIC DIAGNOSIS:\n'+$('#outPut-3').val()+ myel_text+'\nCYTOGENETIC STUDIES: \n- '+cyto_val+'\n- '+fish_val+'\n\nMRD STUDIES: \n- '+ mrd_val +'\n\nMOLECULAR STUDIES: \n- '+mol_val+'\n\nSPECIMEN: \n- '+ spc_val+ '\n\nPROCEDURE: \n- '+proc_val+'\n\nBIOPSY/ASPIRATION SITE: \n- '+site_val+'\n\nCOMMENT:\n'+$('#outPut-4').val()+'\n\n';
-        }
-        else {
-            if (mrd_val != 'Not performed') {
-                var textToPass = '\n\n' + $('#outPut-1').val() + '\n\n' + match + '\n\nBONE MARROW SYNOPTIC DIAGNOSIS SUMMARY\n\nHISTOLOGIC DIAGNOSIS:\n' + $('#outPut-3').val() + '\nCYTOGENETIC STUDIES: \n- ' + cyto_val + '\n- ' + fish_val + '\n\nMRD STUDIES: \n- ' + mrd_val + '\n\nMOLECULAR STUDIES: \n- ' + mol_val + '\n\nSPECIMEN: \n- ' + spc_val + '\n\nPROCEDURE: \n- ' + proc_val + '\n\nBIOPSY/ASPIRATION SITE: \n- ' + site_val + '\n\nCOMMENT:\n' + $('#outPut-4').val() + '\n\n';
-            } else {
-                var textToPass = '\n\n' + $('#outPut-1').val() + '\n\n' + match + '\n\nBONE MARROW SYNOPTIC DIAGNOSIS SUMMARY\n\nHISTOLOGIC DIAGNOSIS:\n' + $('#outPut-3').val() + '\nCYTOGENETIC STUDIES: \n- ' + cyto_val + '\n- ' + fish_val + '\n\nMOLECULAR STUDIES: \n- ' + mol_val + '\n\nSPECIMEN: \n- ' + spc_val + '\n\nPROCEDURE: \n- ' + proc_val + '\n\nBIOPSY/ASPIRATION SITE: \n- ' + site_val + '\n\nCOMMENT:\n' + $('#outPut-4').val() + '\n\n';
-
-            }
-        }
-        $('#outPut-combine').val(textToPass);
-        $('#combined-report').modal("show");
+        // var aa = $('#outPut-2').val(); // micro output
+        // var bb = $('#diffOut').val();// CBC output
+        // var re = /BONE MARROW, (?!ASPIRATE)/gm;
+        // var match = aa.replace(/BONE MARROW, (?!ASPIRATE)/gm,'DIFFERENTIAL: \n'+bb+"\n\nBONE MARROW, ");
+        // var cyto_val = $('#cyto_val').val();
+        // var mrd_val = $('#mrd_val').val();
+        // var fish_val = $('#fish_val').val();
+        // var mol_val = $('#mol_val').val();
+        // var spc_val = $('#spc_val').val();
+        // var proc_val = '';
+        // var site_val = $('#site_val').val();
+				//
+        // if (spc_val == '1'){
+        //     spc_val = 'Aspirate, touch preparation, clot sections and biopsy';
+        //     proc_val = 'Aspirate and biopsy';}
+        // else if (spc_val == '2'){
+        //     spc_val = 'Aspirate and clot section';
+        //     proc_val = 'Aspirate';}
+        // else if (spc_val =='3'){
+        //     spc_val = 'Touch preparation, roll preparation and biopsy';
+        //     proc_val = 'Biopsy';}
+				//
+        // // Myeloma template bits
+        // var myel0 = $('#myeloma_0').val();
+        // var myel1 = $('#asp_12').val();
+        // var myel2 = $('#myeloma_2').val();
+        // var myel3 = $('#myeloma_3').val();
+        // var myel4 = $('#myeloma_4').val();
+				//
+        // myel_text = '\nEXTENT OF PLASMA CELL INFILTRATE IN BONE MARROW:\n- Plasma cells on aspirate smear/touch preparation: '+myel1.replace(/%/,'') +'%\n- Plasma cells on core biopsy or clot: '+ myel2.replace(/%/,'')+'%\n\nIMMUNOGLOBULIN LIGHT CHAIN TYPE:\n- '+myel3+' \n\nIMMUNOGLOBULIN DEPOSITS:\n- '+myel4+'\n ';
+				//
+				//
+        // // store your text to localStorage when someone click the link
+				//
+        // if (myel0 == 'Yes'){
+        //     var textToPass='\n\n'+$('#outPut-1').val()+'\n\n'+match+'\n\nBONE MARROW SYNOPTIC DIAGNOSIS SUMMARY\n\nHISTOLOGIC DIAGNOSIS:\n'+$('#outPut-3').val()+ myel_text+'\nCYTOGENETIC STUDIES: \n- '+cyto_val+'\n- '+fish_val+'\n\nMRD STUDIES: \n- '+ mrd_val +'\n\nMOLECULAR STUDIES: \n- '+mol_val+'\n\nSPECIMEN: \n- '+ spc_val+ '\n\nPROCEDURE: \n- '+proc_val+'\n\nBIOPSY/ASPIRATION SITE: \n- '+site_val+'\n\nCOMMENT:\n'+$('#outPut-4').val()+'\n\n';
+        // }
+        // else {
+        //     if (mrd_val != 'Not performed') {
+        //         var textToPass = '\n\n' + $('#outPut-1').val() + '\n\n' + match + '\n\nBONE MARROW SYNOPTIC DIAGNOSIS SUMMARY\n\nHISTOLOGIC DIAGNOSIS:\n' + $('#outPut-3').val() + '\nCYTOGENETIC STUDIES: \n- ' + cyto_val + '\n- ' + fish_val + '\n\nMRD STUDIES: \n- ' + mrd_val + '\n\nMOLECULAR STUDIES: \n- ' + mol_val + '\n\nSPECIMEN: \n- ' + spc_val + '\n\nPROCEDURE: \n- ' + proc_val + '\n\nBIOPSY/ASPIRATION SITE: \n- ' + site_val + '\n\nCOMMENT:\n' + $('#outPut-4').val() + '\n\n';
+        //     } else {
+        //         var textToPass = '\n\n' + $('#outPut-1').val() + '\n\n' + match + '\n\nBONE MARROW SYNOPTIC DIAGNOSIS SUMMARY\n\nHISTOLOGIC DIAGNOSIS:\n' + $('#outPut-3').val() + '\nCYTOGENETIC STUDIES: \n- ' + cyto_val + '\n- ' + fish_val + '\n\nMOLECULAR STUDIES: \n- ' + mol_val + '\n\nSPECIMEN: \n- ' + spc_val + '\n\nPROCEDURE: \n- ' + proc_val + '\n\nBIOPSY/ASPIRATION SITE: \n- ' + site_val + '\n\nCOMMENT:\n' + $('#outPut-4').val() + '\n\n';
+				//
+        //     }
+        // }
+        // $('#outPut-combine').val(textToPass);
+        // $('#combined-report').modal("show");
        // localStorage.setItem("myText", textToPass);
-    });
-});
+		// });
+  });
 
 
 

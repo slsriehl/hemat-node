@@ -135,8 +135,8 @@
 						</div>
 				</div>
 				<div class="row top-buffer">
-						<div class="col col-md-8" style="max-height: 1000px; overflow: scroll;"><!-- left column-->
-
+						<div class="col col-md-8"><!-- left column-->
+							<!-- style="max-height: 1000px; overflow: scroll;" -->
 
 								<!-- left column accordion-->
 								<div id="accordion" role="tablist" aria-multiselectable="true">
@@ -1109,8 +1109,26 @@
 								<!-- end left column-->
 						</div>
 						<div class="col col-md-4"><!-- right column-->
-								<a class="btn btn-outline-success p-1 mb-2" id="writeReport" >Write report</a>
-								<form>
+							<div class="card">
+								<div class="card-header button-box">
+										<ul class="nav nav-pills standard-button-box">
+												<a class="btn btn-outline-success p-1 mb-2" id="writeReport" >
+													Write Report
+												</a>
+												<!-- <a class="btn btn-lg btn-outline-success p-2 ml-4" >
+														<small class="copy btn-default" data-toggle="popover" data-placement="top" data-content="Diff copied to clipboard!" data-clipboard-target="#diffOut" >
+																Copy</small>
+												</a>
+
+												<a class="btn btn-lg btn-outline-danger p-2 ml-4" id="Reset" >
+														<small>Reset</small>
+												</a> -->
+										</ul>
+										<!-- / card header -->
+								</div>
+								<div class="card-block">
+									{{> page-partials/case-reference}}
+									<form>
 
 										<div class="form-group">
 												<textarea class="form-control" id="outPut-1" rows="5" placeholder="CBC Data"></textarea>
@@ -1137,7 +1155,13 @@
 												<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-4">Copy to Clipboard</span>
 										</div>
 								</form>
+								<!-- end card block -->
+							</div>
+							<!-- end card -->
 						</div>
+						<!-- end col -->
+					</div>
+					<!-- end row -->
 				</div>
 
 		<!--end container wrapper-->
