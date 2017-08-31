@@ -23,11 +23,11 @@ const pdfTemplate = require('../views/pdfs/2017-08-pdf-template');
 const helpers = {
 	saveAndAddCaseReference: (req, res, saveObj) => {
 		console.log('saveObj from saveAndAddCaseReference' + util.inspect(saveObj));
-		if(!saveObj.referenceId && req.body.newCaseRef) {
+		if(!saveObj.referenceId && saveObj.newCaseRef) {
 			return models.CaseReferences
 			.findAll({
 				where: {
-					reference: escape(req.body.newCaseRef.trim()),
+					reference: saveObj.newCaseRef,
 					userId: req.session.user
 				}
 			})
@@ -42,6 +42,7 @@ const helpers = {
 					.then((result) => {
 						console.log(`result ${util.inspect(result)}`);
 						saveObj.referenceId = result.dataValues.id;
+						delete saveObj.newCaseRef;
 						return Promise.resolve(saveObj);
 					})
 					.catch(error => {
@@ -111,14 +112,60 @@ const helpers = {
 			return Promise.reject("report wasn't created");
 		}
 	},
+	getAppName: (req) => {
+		return models.Apps
+		.findOne({
+			attributes: ['name', 'slug'],
+			where: {
+				id: req.session.app
+			}
+		})
+		.then((data) => {
+			return Promise.resolve({
+				appName: data.dataValues.name,
+				appSlug: data.dataValues.slug
+			});
+		})
+	},
+	unloggedInReportObj: (req, reportObj) => {
+		console.log(reportObj);
+		let newReportArr = [];
+		for(let [key, value] of generalHelpers.entries(reportObj)) {
+			let obj = {};
+			switch(key){
+				case 'singleSection':
+					obj = {
+						name: 'Report',
+						text: value
+					};
+					break;
+				default:
+					obj = {
+						name: key,
+						text: value
+					}
+					break;
+			}
+			newReportArr.push(obj);
+		}
+		return Promise.resolve(newReportArr);
+	},
 	pdfReport: (req, res, finalReportObj) => {
-		const myUserPath = generalHelpers.resolvePath(`reports/${req.session.user}`);
+		let myUserPath;
+		if(req.session.user) {
+			myUserPath = generalHelpers.resolvePath(`reports/${req.session.user}`);
+		} else {
+			myUserPath = generalHelpers.resolvePath(`reports/guest`);
+		}
 		console.log('myUserPath' + myUserPath);
 		console.log('the function' + helpers.directory(myUserPath));
 		return helpers.directory(myUserPath)
 		.then(() => {
 			console.log('helpers directory is true');
 			req.session.pdf = `${moment().utc().format('YYYYMMDDHHmmss')}-${finalReportObj.appSlug}.pdf`;
+			if(!req.session.user) {
+				finalReportObj.createdAt = moment().utc().format('ddd MMM D, HH:mm:ss UTC');
+			}
 			const report = {
 				template: pdfTemplate,
 				context: {
@@ -127,10 +174,6 @@ const helpers = {
 				path: `${myUserPath}/${req.session.pdf}`
 			}
 			return pdf.create(report)
-		})
-		.catch(error => {
-			console.log(error);
-			return Promise.reject('pdf create fail');
 		})
 	},
 	directory: (pathToUserDir) => {
@@ -149,7 +192,7 @@ const helpers = {
 					return Promise.resolve(true);
 				} else {
 					console.log(util.inspect(e) + 'there was a problem creating the folder')
-					return Promise.reject(false);
+					return Promise.reject(error);
 				}
 			})
 		})
