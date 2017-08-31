@@ -1,5 +1,6 @@
-{{#if messages}}
+
 		<div class="message-center">
+			{{#if messages}}
 				{{#each messages}}
 			<div class="message-box" id="{{id}}">
 				<div class="message-dismiss">
@@ -13,6 +14,6 @@
 				<!-- /message-box -->
 			</div>
 				{{/each}}
+				{{/if}}
 			<!-- /message-center -->
 		</div>
-{{/if}}
