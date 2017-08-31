@@ -16,7 +16,6 @@ const template =
 			{{#if text}} \
 				<h3 style="font-family: sans-serif;">{{name}}</h3> \
 				<p style="font-family: sans-serif;">{{{text}}}</p> \
-				<br /><br /> \
 			{{/if}} \
 		{{/each}} \
 			{{/each}} \
