@@ -6,9 +6,9 @@
 				</li>
 				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
 				<li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Pediatric Renal Tumor - Resection</li>
-		</ol> 
+		</ol>
 
- {{> message-center this}} 
+ {{> message-center this}}
 
 
 		{{> page-partials/cap-header}}
@@ -46,12 +46,12 @@
 	<input type="text" class="form-control form-control-sm "  id="box6"  placeholder="Cannot be determined">
 	<br><br>
 	<b>For specimens with multiple tumors, specify greatest dimension of each additional tumor:</b><br>
-	<input class="form-check-input NotApp"  type="checkbox" id="box7" > Not Applicable<br>
+	<input class="form-check-input NotApp"  type="checkbox" id="box7" ><span> Not Applicable</span><br>
 	<br>
-	<input class="form-check-input SubRadio"  type="checkbox" id="box7_2"> Greatest dimension tumor #2 (cm) <br>
+	<input class="form-check-input SubRadio"  type="checkbox" id="box7_2"><span> Greatest dimension tumor #2 (cm)</span><br>
 	<input type="text" class="form-control form-control-sm SubInput"  id="box7_4"  style="display:none" placeholder= "" >
 	<br>
-	<input class="form-check-input SubRadio"  type="checkbox" id="box7_3" > Greatest dimension tumor #3 (cm)<br>
+	<input class="form-check-input SubRadio"  type="checkbox" id="box7_3" ><span> Greatest dimension tumor #3 (cm)</span><br>
 	<input type="text" class="form-control form-control-sm SubInput"  id="box7_5"  style="display:none" placeholder= "" >
 	<br>
 	<br><br>
@@ -157,7 +157,8 @@
 	</select>
 	<br><br>
 
-	Check here if any lymph nodes submitted? <input class="form-check-input"  type="checkbox" id="box15" ><br><div class='lnchk' style='display:none;'><br>
+	<input class="form-check-input"  type="checkbox" id="box15" ><span> Check here if any lymph nodes submitted?</span><br>
+	<div class='lnchk' style='display:none;'>
 	Number of lymph nodes examined: <input type="text" class="form-control form-control-sm "  id="box15_2" ><br>
 	Number of lymph nodes involved: <input type="text" class="form-control form-control-sm "  id="box15_3" ></div><br><br>
 
@@ -258,6 +259,7 @@
 			{{> page-partials/cap-footer}}
 	<!-- close row -->
 		</div>
+		{{> page-partials/history-module}}
 	<!-- close container -->
 	</div>
 

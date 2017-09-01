@@ -6,9 +6,9 @@
 				</li>
 				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
 				<li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Stomach Cancers - Gastrectomy</li>
-		</ol> 
+		</ol>
 
- {{> message-center this}} 
+ {{> message-center this}}
 
 
 		{{> page-partials/cap-header}}
@@ -134,8 +134,11 @@
 <hr>
 
 
-<b style="color:white;">Margins</h5><br>
-<input class="form-check-input" type="checkbox" id="box8"> Click if all margins are negative<br>
+<h5>Margins</h5><br>
+<div class="form-group">
+	<input class="form-check-input" type="checkbox" id="box8"><span> Click if all margins are negative</span>
+</div>
+<br>
 
 <div id="marginneg" style="display:none;">
 <h5>All margins negative for carcinoma:</h5><br>
@@ -257,7 +260,9 @@
 <h5>Pathologic Staging (pTNM)</h5>
 <hr>
 
-TNM Descriptors (select all that apply)<br><select class="form-control selectpicker form-control-sm "  id="box19" multiple>
+<h5>TNM Descriptors (select all that apply)</h5>
+<br>
+<select class="form-control selectpicker form-control-sm "  id="box19" multiple>
 <option selected value="Not applicable">Not applicable</option>
 <option>m</option>
 <option>r</option>
@@ -294,7 +299,9 @@ TNM Descriptors (select all that apply)<br><select class="form-control selectpic
 <option value="pMX">pMX:  Not applicable</option>
 <option value="pM1">pM1:  Distant metastasis </option>
 </select><br>
-Check here if any lymph nodes submitted? <input class="form-check-input"  type="checkbox" id="box23" ><br>
+<div class="form-group">
+	<input class="form-check-input"  type="checkbox" id="box23" ><span> Check here if any lymph nodes submitted?</span><br>
+</div>
     <div class='lnchk' style='display:none;'><br>
 Number of lymph nodes examined: <input type="text" class="form-control form-control-sm "  id="box24"  placeholder='0'><br>
 Number of lymph nodes involved: <input type="text" class="form-control form-control-sm "  id="box25"  placeholder='0'></div>
@@ -338,7 +345,7 @@ Number of lymph nodes involved: <input type="text" class="form-control form-cont
 
 
 
-<b style="color:white;">Choose HER2 Testing - If performed</h5><br>
+<h5 style="color:white;">Choose HER2 Testing - If performed</h5><br>
 
 HER2 Testing<br>
 <select class="form-control selectpicker form-control-sm "  id="box29">
@@ -434,6 +441,7 @@ Average number of CEP17 signals per cancer cell:<br>
 		{{> page-partials/cap-footer}}
 <!-- close row -->
 	</div>
+	{{> page-partials/history-module}}
 <!-- close container -->
 </div>
 

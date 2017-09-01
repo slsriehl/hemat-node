@@ -68,6 +68,7 @@ $(window).on('load', function() {
 // .join("\n- ") use this for var with multiple select options
 // .replace(/;/g,"\n- ") use this for var that needs option to be split in new line
 // Checklist variables
+			var captext = "CAP Ewing Sarcoma/PNET Cancer Template (Biopsy)\n\n";
         var box_1 = $("#box1").val();
         if (box_1 == 'Other:'){
             var box_1_2 = $("#box1_2").val();
@@ -131,5 +132,7 @@ $(window).on('load', function() {
 
         $('#outPut-1').val(captext);
 
+				dataObj.singleSection = $('#outPut-1').val();
+				makeCreatePdfBtn();
     });
 });
