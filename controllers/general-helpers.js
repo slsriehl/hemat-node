@@ -59,11 +59,14 @@ const helpers = {
 	replaceLineBreaks: (obj) => {
 		for(let [key, value] of helpers.entries(obj)) {
 			if (typeof(value) == 'string' && value.includes('\n')) {
-				let newString = value.replace(/(?:\r\n|\r|\n)/g, '<br />');
+				let newString = helpers.strReplaceLineBreaks(value);
 				obj[key] = newString;
 			}
 		}
 		return obj;
+	},
+	strReplaceLineBreaks: (str) => {
+		return str.replace(/(?:\r\n|\r|\n)/g, '<br />');
 	},
 	removeLineBreaks: (str) => {
 		console.log('str ' + str);
