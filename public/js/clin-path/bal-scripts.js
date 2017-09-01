@@ -329,6 +329,12 @@ $('#done').on('click', function(){
         $('#outPut-3').val(gross);
         $('#outPut-4').val(comment);
 
+				dataObj.micro = $('#outPut-1').val();
+				dataObj.finals = $('#outPut-2').val();
+				dataObj.gross = $('#outPut-3').val();
+				dataObj.comments = $('#outPut-4').val();
+				makeCreatePdfBtn();
+
     });
 
 
