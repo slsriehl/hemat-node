@@ -4,6 +4,7 @@ const router = new express.Router;
 
 const userController = require('../controllers/user');
 const resetController = require('../controllers/reset');
+const mailController = require('../controllers/mail');
 
 const helpers = require('../controllers/user-helpers');
 
@@ -16,6 +17,16 @@ router.get('/', (req, res) => {
 	console.log(util.inspect(req.session) + 'reqsess root router');
 	userController.renderIndex(req, res);
 });
+
+//get mail page
+router.get('/mail', (req, res) => {
+	mailController.renderMailPage(req, res);
+})
+
+//send mail
+router.post('/mail', (req, res) => {
+	mailController.sendUserMail(req, res);
+})
 
 //render signup page
 router.get('/user/signup', (req, res) => {

@@ -2,21 +2,21 @@
 var hideShow = function (event) {
 	console.log('hide show fired');
 	if ($(this).hasClass('show')) {
-		$('.hide-show span').text('Hide');
+		$('.hide-show small').text('Hide');
 		$('[name="password"]').attr('type', 'text');
 		$('[name="newPassword"]').attr('type', 'text');
-		$('.hide-show span').removeClass('show');
+		$('.hide-show small').removeClass('show');
 	} else {
-		$('.hide-show span').text('Show');
+		$('.hide-show small').text('Show');
 		$('[name="password"]').attr('type', 'password');
 		$('[name="newPassword"]').attr('type', 'password');
-		$('.hide-show span').addClass('show');
+		$('.hide-show small').addClass('show');
 	}
 }
 
 //change the password fields back to password input type on submit
 var hideShowSubmit = function() {
-	$('.hide-show span').text('Show').addClass('show');
+	$('.hide-show small').text('Show').addClass('show');
 	$('.hide-show').parent().find('[name="password"]').attr('type','password');
 }
 
@@ -104,6 +104,35 @@ var emailMsgs = {
 $(document).ready(function() {
 	$.validator.addMethod("validPattern", function(value, element, validPattern) {
 		return this.optional(element) || validPattern.test(value);
+	});
+
+	//validator instance for mail form
+	$('#send-mail').validate({
+		rules: {
+			name: {
+				required: true,
+				autocorrect: false
+			},
+			email: emailRules,
+			subject: {
+				required: true
+			},
+			message: {
+				required: true
+			}
+		},
+		messages: {
+			name: {
+				required: "Your name is required."
+			},
+			email: emailMsgs,
+			subject: {
+				required: "Subject is required.",
+			},
+			message: {
+				required: "A message is required."
+			}
+		}
 	});
 
 	//validator instance for signup form

@@ -1,0 +1,79 @@
+<div class="container-fluid">
+
+	<!-- Breadcrumbs -->
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="#">Home</a></li>
+		<li class="breadcrumb-item active">Email Us</li>
+	</ol>
+
+ {{> message-center this}}
+
+	<div class="row">
+		<div class="col col-md-2">
+		</div>
+		<div class="col col-md-8">
+			<h2 class="text-center">Email Us</h2>
+			<p>Please email with any questions, comments, or concerns.</p>
+			<form id="send-mail" action="/mail" method="POST">
+				<!-- name -->
+				<div class="form-group">
+					<label for="yourName">
+						Name
+					</label>
+					<input
+						type="text"
+						name="yourName"
+						class="form-control"
+						id="yourName"
+						{{#if isAuth.firstname}}value="{{isAuth.firstname}} {{isAuth.lastname}}"{{/if}}
+					/>
+
+				</div>
+				<!-- email -->
+				<div class="form-group">
+					<label for="yourEmail">
+						Email
+					</label>
+					<input
+						type="email"
+						name="yourEmail"
+						class="form-control"
+						id="yourEmail"
+						{{#if isAuth.email}}value="{{isAuth.email}}"{{/if}}
+					/>
+				</div>
+				<!-- subject -->
+				<div class="form-group">
+					<label for="yourSubject">
+						Subject
+					</label>
+					<input
+						type="text"
+						name="yourSubject"
+						class="form-control"
+						id="yourSubject"
+					/>
+				</div>
+				<!-- email body -->
+				<div class="form-group">
+					<label for="yourMessage">
+						Message
+					</label>
+					<textarea
+						name="yourMessage"
+						class="form-control"
+						id="yourMessage"
+						rows="16"
+					></textarea>
+				</div>
+				<button class="btn btn-outline-info" type="submit">
+					Send
+				</button>
+			</form>
+		</div>
+		<div class="col col-md-2">
+		</div>
+	</div>
+
+<!-- /.container-fluid -->
+</div>
