@@ -45,6 +45,12 @@ const controller = {
 
 		//append error message on the front end if nothing is sent or there is no singleSection or comments and don't make the ajax call
 		//trim and escape in generalHelpers.cleanObj
+		let editedAttributes = [];
+		for(let i = 0; i < myAttributes.length; i++) {
+			if (myAttributes[i] != 'newCaseRef') {
+				editedAttributes.push(myAttributes[i]);
+			}
+		}
 			return helpers.saveAndAddCaseReference(req, res, almostObjToSave)
 			.then((objToSave) => {
 				console.log(objToSave);
@@ -55,14 +61,14 @@ const controller = {
 				console.log(data);
 				req.session.report = data.dataValues.id;
 				console.log('my attributes just before pulling report' + util.inspect(myAttributes));
-				const attrWithTime = [...myAttributes, 'createdAt'];
+				const attrWithTime = [...editedAttributes, 'createdAt'];
 				console.log('attrWithTime' + attrWithTime);
 				return helpers.pullReport(req, res, attrWithTime)
 			})
 			.then((data) => {
 				console.log(util.inspect(data.dataValues.User.dataValues));
-				console.log(myAttributes);
-				return helpers.createReportObj(req, res, myAttributes, data)
+				console.log(editedAttributes);
+				return helpers.createReportObj(req, res, editedAttributes, data)
 			})
 			.then((reportObj) => {
 				console.log(reportObj);
@@ -208,9 +214,11 @@ const controller = {
 				} else if (data[i].dataValues.comments) {
 					tempText = generalHelpers.removeLineBreaks(data[i].dataValues.comments);
 					dataObj.text = tempText;
-				} else {
+				} else if(data[i].dataValues.ihcTable) {
 					tempText = generalHelpers.removeLineBreaks(data[i].dataValues.ihcTable);
 					dataObj.text = tempText;
+				} else {
+					dataObj.text = '';
 				}
 				if(data[i].dataValues.CaseReference) {
 					dataObj.reference = data[i].dataValues.CaseReference.dataValues.reference;

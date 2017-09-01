@@ -264,12 +264,16 @@ const helpers = {
 				let text;
 				if(result[i].dataValues.singleSection) {
 					text = result[i].dataValues.singleSection;
+					oneReport.text = generalHelpers.removeLineBreaks(text);
 				} else if(result[i].dataValues.comments) {
 					text = result[i].dataValues.comments;
-				} else {
+					oneReport.text = generalHelpers.removeLineBreaks(text);
+				} else if (result[i].dataValues.ihcTable) {
 					text = result[i].dataValues.ihcTable;
+					oneReport.text = generalHelpers.removeLineBreaks(text);
+				} else {
+					oneReport.text = '';
 				}
-				oneReport.text = generalHelpers.removeLineBreaks(text);
 				console.log(oneReport);
 				thisApp.push(oneReport);
 			}
