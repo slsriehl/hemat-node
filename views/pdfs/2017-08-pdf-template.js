@@ -4,7 +4,7 @@ const template =
 
 '<div class="report"> \
 {{#each report}} \
-<div style="width: 100%; background-color: rgba(148, 110, 175, 0.5); padding: 1rem;"> \
+<div style="width: 100%; background-color: rgba(148, 110, 175, 0.3); padding: 1rem;"> \
 		<h2 style="font-family: sans-serif;">{{appName}}</h2>\
 		{{#if reference}}\
 			<p style="font-family: sans-serif;">Reference: {{reference}}</p> \
