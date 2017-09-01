@@ -159,6 +159,8 @@ $(window).on('load', function() {
 
 
         $('#outPut-1').val(captext);
+				dataObj.singleSection = $('#outPut-1').val();
+				makeCreatePdfBtn();
 
     });
 });
