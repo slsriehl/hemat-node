@@ -58,7 +58,7 @@ const helpers = {
 	replaceLineBreaks: (obj) => {
 		for(let [key, value] of helpers.entries(obj)) {
 			if (typeof(value) == 'string' && value.includes('\n')) {
-				let newString = value.replace(/(?:\r\n|\r|\n)/g, '<br /><br />');
+				let newString = value.replace(/(?:\r\n|\r|\n)/g, '<br />');
 				obj[key] = newString;
 			}
 		}
@@ -72,7 +72,7 @@ const helpers = {
 	},
 	jsLineBreaks: (obj) => {
 		for(let [key, value] of helpers.entries(obj)) {
-			if (typeof(value) == 'string' && value.includes('<br /><br />')) {
+			if (typeof(value) == 'string' && value.includes('<br />')) {
 				let newString = value.replace(/<br\s*[\/]?>/gi, '\n');
 				obj[key] = newString;
 			}
