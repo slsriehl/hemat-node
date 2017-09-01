@@ -13,8 +13,9 @@
  {{> message-center this}}
 
 				 <!-- Full width row + card -->
-				 <div class="row-fluid">
+				 <div class="row">
 						 <!-- top card-->
+						 <div class="col col-md-12">
 						 <div class="card">
 								 <div class="card-header">
 										 <!-- inline header form-->
@@ -45,7 +46,8 @@
 								 </div>
 								 <div class="card-block">
 										 <div class="row">
-												 <div class="card col col-md-4">
+											 <div class="col col-md-4">
+												 <div class="card">
 														 <div class="card-header">
 																 Choose your patient age
 														 </div>
@@ -53,7 +55,9 @@
 																 <select id="adultgi" class="adultgi form-control form-control-sm" aria-label="class switch"><option selected value='0'>Pediatric</option><option value='1'>Adult</option></select>
 														 </div>
 												 </div>
-												 <div class="card col col-md-4">
+											 </div>
+											 <div class='col col-md-4'>
+												 <div class="card">
 														 <div class="card-header">
 																 Some generic final diagnoses
 														 </div>
@@ -65,7 +69,9 @@
 																 </div>
 														 </div>
 												 </div>
-												 <div class="card col col-md-4">
+											 </div>
+											 <div class="col col-md-4">
+												 <div class="card">
 														 <div class="card-header">
 																 Some generic microscopic diagnoses
 														 </div>
@@ -75,6 +81,7 @@
 																		 <label class="form-check-label" id="_mxLine2"><input class="form-check-input" id="mxLine2" name="mxLine" type="checkbox"> NO GRANULOMAS SEEN </label><br> </div>
 														 </div>
 												 </div>
+											 </div>
 										 </div>
 										 <!-- silent alert for erroneous CBC data, fired from pbrules.js-->
 										 <div class="alert alert-warning alert-dismissible collapse" id="alert-1" role="alert">
@@ -85,6 +92,7 @@
 										 </div>
 								 </div>
 						 </div>
+					 </div>
 				 </div>
 				 <div class="row top-buffer">
 						 <div class="col-md-8">
@@ -645,14 +653,23 @@
 						 </div>
 						 <!-- right column-->
 						 <div class="col col-md-4" id="sticky">
-								 <a class="btn btn-outline-success p-1 mb-2" id="writeReport">Write
-										 report</a>
+							 <div class="card text-center">
+									 <div class="card-header button-box">
+											 <ul class="nav nav-pills standard-button-box">
+												 <a class="btn btn-outline-success p-1 mb-2" id="writeReport">
+													 Write Report
+													 </a>
+											 </ul>
+									 </div>
+									 <div class="card-block">
+
 								 <form>
 										 <!-- hide first text area
 								 <div class="form-group">
 										 <textarea class="form-control" id="outPut-1" rows="5" placeholder="CBC Data"></textarea>
 										 <span class="input-group-addon btn btn-primary" data-clipboard-target="#outPut-1">Copy to Clipboard</span>
 								 </div>   -->
+								 {{> page-partials/case-reference}}
 										 <div class="form-group">
 												 <textarea class="form-control" id="outPut-2" rows="15" placeholder="Example Micro"></textarea>
 												 <span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-2">Copy to Clipboard</span>
@@ -666,7 +683,9 @@
 												 <span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-4">Copy to Clipboard</span>
 										 </div>
 								 </form>
-						 </div>
+							 </div>
+						</div>
+					</div>
 						<!-- end right column-->
 						 <div>
 								<!--modals-->
@@ -788,6 +807,8 @@
 						<!-- end modals div-->
 				 </div>
 				<!-- end bottom row-->
+				{{> page-modals/new-case-reference}}
+				{{> page-partials/history-module}}
 		 </div>
 		 <!--end container wrapper-->
 

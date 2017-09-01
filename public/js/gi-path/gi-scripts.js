@@ -370,14 +370,14 @@ $(window).on('load', function(){
                                 mxLines.mxLine162 = mxLines.mxLine162.replace(/#FFF#/, 'multiple foci').replace(/This focus is/, 'These foci are');
 
                             }
-                        
+
 
                         if (feg_neut == 'No'){
                                 mxLines.mxLine162 = mxLines.mxLine162.replace(/#NNN#/, ' and plasma cells');
                             } else {
                                 mxLines.mxLine162 = mxLines.mxLine162.replace(/#NNN#/, ', plasma cells and few neutrophils');;
                             }
-                        
+
                         // reset checkmark status and clost dialog
                         $('#mxLine162').prop('disabled', false);
                         $('#mxLine162').trigger('click');// complete the check
@@ -868,9 +868,13 @@ $(window).on('load', function(){
 // ********************* Combined report function ***********************//
 $('#writeReport').on('click', function () {
     // store your text to localStorage when someone click the link
-    var textToPass = $('#outPut-2').val()+'\n\n'+$('#outPut-3').val()+'\n\n'+$('#outPut-4').val();
-        $('#outPut-combine').val(textToPass);
-        $('#combined-report').modal("show");
+    // var textToPass = $('#outPut-2').val()+'\n\n'+$('#outPut-3').val()+'\n\n'+$('#outPut-4').val();
+    //     $('#outPut-combine').val(textToPass);
+    //     $('#combined-report').modal("show");
+		dataObj.micro = $('#outPut-2').val();
+		dataObj.finals = $('#outPut-3').val();
+		dataObj.comments = $('#outPut-4').val();
+		makeCreatePdfBtn();
 });
 
 // ======================================================================//
