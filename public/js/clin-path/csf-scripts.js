@@ -201,7 +201,7 @@ $(window).on("load", function (){
                 $("#box10 option:selected").each(function() {
                     box_10.push(dxLines[$(this).val()]); // create arry of dxLines from selected option
                 });
-        
+
                     console.log("diagnoses: "+box_10);
 
 
@@ -242,6 +242,11 @@ $(window).on("load", function (){
         }
         $('#outPut-3').val(report_g);
 
+				dataObj.micro = $('#outPut-1').val();
+				dataObj.finals = $('#outPut-2').val();
+				dataObj.gross = $('#outPut-3').val();
+				dataObj.comments = $('#outPut-4').val();
+				makeCreatePdfBtn();
 
     });
 

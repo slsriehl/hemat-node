@@ -9,9 +9,9 @@
 						Clinical Pathology Tools
 				</li>
 				<li class="breadcrumb-item active"><i class="fa fa-eyedropper mr-2"></i>Cerebrospinal Fluid Cytology Reports</li>
-		</ol> 
+		</ol>
 
- {{> message-center this}} 
+ {{> message-center this}}
 
 
 		<div class="card mb-3">
@@ -209,51 +209,42 @@
 										<!-- middle right text output-->
 										<div class="col col-sm-4" id="bottom-r">
 												<div class="card text-center">
-														<div class="card-header">
-																<ul class="nav nav-pills">
-																		<ul class="nav nav-pills">
+															<div class="card-header button-box">
+																	<ul class="nav nav-pills standard-button-box">
+																		<a class="btn btn-lg btn-outline-info p-2" id="writeReport">
+																				<small>Write Report</small>
+																		</a>
 
-																				<a class="btn btn-lg btn-outline-info p-2" id="writeReport">
-																						<small>Write Report</small>
-																				</a>
-																				<a class="btn btn-lg btn-outline-success p-2 ml-4" id="combineReport">
-																						<small>Combine</small>
-																				</a>
+																		<a class="btn btn-lg btn-outline-danger p-2 ml-4" id="Reset" >
+																				<small>Reset</small>
+																		</a>
+																	</ul>
+															</div>
 
-																				<a class="btn btn-lg btn-outline-danger p-2 ml-4" id="Reset" >
-																						<small>Reset</small>
-																				</a>
-
-																		</ul>
-																</ul>
-														</div>
 														<div class="card-block">
+															{{> page-partials/case-reference}}
 																<div class="form-group">
 																		<textarea class="form-control" id="outPut-1" rows="9" placeholder="Micro"></textarea>
 																		<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-1">Copy to Clipboard</span>
 																</div>
-														</div>
-														<div class="card-block">
 																<div class="form-group">
 																		<textarea class="form-control" id="outPut-2" rows="6" placeholder="Finals"></textarea>
 																		<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-2">Copy to Clipboard</span>
 																</div>
-														</div>
-														<div class="card-block">
 																<div class="form-group">
 																		<textarea class="form-control" id="outPut-3" rows="6" placeholder="Gross"></textarea>
 																		<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-3">Copy to Clipboard</span>
 																</div>
-														</div>
-														<div class="card-block">
 																<div class="form-group">
 																		<textarea class="form-control" id="outPut-4" rows="6" placeholder="Comments"></textarea>
 																		<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-4">Copy to Clipboard</span>
 																</div>
 														</div>
-												</div>
-						</div>
-				</div>
+													</div>
+											</div>
+										</div>
+				{{> page-modals/new-case-reference}}
+				{{> page-partials/history-module}}
 		<!--end container wrapper-->
 </div>
 <!--
