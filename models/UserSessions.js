@@ -5,7 +5,10 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.STRING,
 			primaryKey: true
 		},
-    data: DataTypes.TEXT
+		userId: DataTypes.STRING,
+		expires: DataTypes.DATE,
+		data: DataTypes.STRING(50000)
+    //data: DataTypes.TEXT
   }, {
     classMethods: {
       associate: function(models) {

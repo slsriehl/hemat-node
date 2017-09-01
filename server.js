@@ -11,13 +11,13 @@ const express         = require('express'),
 			secretKey 			= require('./config/secret'),
       app             = express();
 
+app.use(express.static(__dirname + '/public'));
 app.use(logger("dev"));
 app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(bodyParser.json());
 app.use(cookieParser(secretKey));
-app.use(express.static(__dirname + '/public'));
 
 //++++++ Handlebars config ++++++
 
@@ -37,7 +37,7 @@ app.set('view engine', 'hbs');
 //++++++ express sessions ++++++
 const session 		= require('express-session'),
 			database 		= require('./models').sequelize,
- 			SequelStore	= require('connect-sequelize')(session),
+ 			SequelStore	= require('connect-session-sequelize')(session.Store),
 			modelName		= 'UserSessions';
 
 // const setSecret = (secretEnvVar) => {
@@ -52,13 +52,18 @@ const session 		= require('express-session'),
 //set session secret with env var, process.env.___
 app.use(session({
   secret: secretKey,
-  store: new SequelStore(database, {}, modelName),
+  store: new SequelStore({
+		db: database,
+		table: modelName
+	}),
   resave: true,
   saveUninitialized: false,
 	//secure in deployment
-	// cookie: {
-	// 	secure: true
-	// }
+	cookie: {
+		secure: false,
+		maxAge: 1000 * 60 * 60 * 24 * 3,
+    expires: false
+	}
 }));
 
 // ++++++ Express routes ++++++

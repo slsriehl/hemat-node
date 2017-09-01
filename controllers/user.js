@@ -84,7 +84,8 @@ const controller = {
 		})
 		.then((data) => {
 			console.log(data);
-			req.session.regenerate();
+			//req.session.regenerate();
+			//req.session = null;
 			cookieHelpers.verifyCookie(req, res, true);
 			req.session.message = 'Welcome to Hematogones.com!  I hope you find these tools useful.';
 			req.session.messageType = 'successful-signup';
@@ -141,7 +142,8 @@ const controller = {
 				if(hash) {
 					//password matches
 					console.log('hash successful');
-					req.session.regenerate();
+					//req.session.regenerate();
+					//req.session = null;
 					req.session.user = data.dataValues.id;
 					req.session.message = null;
 					req.session.messageType = null;
