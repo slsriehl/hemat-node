@@ -180,7 +180,7 @@ const controller = {
 	//show the index page whether logged in or not
 	renderIndex: (req, res) => {
 		console.log(util.inspect(req.session) + 'reqsess renderindex prefunction');
-		if (cookieHelpers.verifyCookie(req, res)) {
+		if (cookieHelpers.verifyCookie(req, res) && !req.session.message) {
 			//if the logged in user has system messages but not a single session message
 			console.log('verified cookie on index load');
 			res.render('index.hbs', {
@@ -190,6 +190,24 @@ const controller = {
 					firstname: req.session.firstname
 				}
 			});
+		} else if(cookieHelpers.verifyCookie(req, res)) {
+			const msg = req.session.message;
+			const msgType = req.session.messageType;
+			req.session.message = null;
+			req.session.messageType = null;
+			let messages = req.session.systemMessages || [];
+			messages.push({
+				text: msg,
+				id: msgType
+			});
+			res.render('index.hbs', {
+				messages: messages,
+				isAuth: {
+					check: req.session.isAuth,
+					firstname: req.session.firstname
+				}
+			});
+
 		} else if(req.session.message) {
 			//if the unlogged in user tried to do something and needs to get a message
 			console.log('index no cookie but system message');
@@ -248,7 +266,6 @@ const controller = {
 						messages: ifSessionMessages(),
 						isAuth: {
 							check: req.session.isAuth,
-							firstname: req.session.firstname,
 							email: data.dataValues.email,
 							username: data.dataValues.username,
 							firstname: data.dataValues.firstname,
