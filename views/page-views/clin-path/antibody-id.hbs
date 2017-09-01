@@ -8,9 +8,9 @@
 								Clinical Pathology Tools
 						</li>
 							<li class="breadcrumb-item active"><i class="fa fa-transgender-alt mr-2"></i>Transfusion Antibody</li>
-				</ol> 
+				</ol>
 
- {{> message-center this}} 
+ {{> message-center this}}
 
 				<div class="card mb-3">
 						<div class="card-header">
@@ -61,19 +61,42 @@
 										<!-- middle right text output-->
 										<div class="col col-md-6" id="bottom-r">
 												<div class="card text-center">
-														<div class="card-header">
-														</div>
+													<div class="card-header button-box">
+															<ul class="nav nav-pills standard-button-box">
+																	<a class="btn btn-lg btn-outline-info p-2" id="writeReport">
+																			<small>Write Report</small>
+																	</a>
+
+																	<a class="btn btn-lg btn-outline-success p-2 ml-4" >
+																			<small class="copy btn-default" data-toggle="popover" data-placement="top" data-content="Diff copied to clipboard!" data-clipboard-target="#outPut-1" >
+																					Copy</small>
+																	</a>
+
+																	<a class="btn btn-lg btn-outline-danger p-2 ml-4" id="Reset" >
+																			<small>Reset</small>
+																	</a>
+															</ul>
+													</div>
+
+
 														<div class="card-block">
+															{{> page-partials/case-reference}}
 																<div class="form-group">
-																		<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-1">Copy to Clipboard</span>
+
 																		<textarea class="form-control" id="outPut-1" rows="12" placeholder="Final text"></textarea>
-																		<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-1">Copy to Clipboard</span>
+
 																</div>
-																<p class="card-footer"><small>Note, %age availability of uncommon red cell units may be different in your region. Adjust text accordingly. </small></p>
+																<div class="card-footer">
+																	<p>
+																		Note, %age availability of uncommon red cell units may be different in your region. Adjust text accordingly.
+																	</p>
+																</div>
 														</div>
 												</div>
 										</div>
 				</div>
+				{{> page-modals/new-case-reference}}
+				{{> page-partials/history-module}}
 				<!-- end container-fluid -->
 		</div>
 
