@@ -14,6 +14,7 @@
 
 				<!-- Full width row + card -->
 				<div class="row">
+					<div class="col col-md-12">
 								<div class="card mt-3">
 										<div class="card-header">Serologic Data</div>
 										<div class="card-block">
@@ -106,6 +107,7 @@
 {{> page-partials/immuno this}}
 										</div>
 						</div>
+					</div>
 				</div>
 				<div class="row top-buffer">
 						<div class="col col-md-8"><!-- left column-->
@@ -343,10 +345,18 @@
 						</div>
 										<!-- middle right text output-->
 						<div class="col col-md-4"><!-- right column-->
-								<a class="btn btn-outline-success p-1 mb-2" id="writeReport" >Write report</a>
-								<a class="btn btn-outline-danger p-1 mb-2 ml-4" id="Reset" >Reset</a>
-								<form >
+							<div class="card text-center">
+									<div class="card-header button-box">
+											<ul class="nav nav-pills standard-button-box">
+													<a class="btn btn-outline-success p-1 mb-2" id="writeReport" >Write Report</a>
 
+													<a class="btn btn-outline-danger p-1 mb-2 ml-4" id="Reset" >Reset</a>
+													</a>
+											</ul>
+									</div>
+									<div class="card-block">
+								<form >
+									{{> page-partials/case-reference}}
 										<div class="form-group">
 												<textarea class="form-control" id="outPut-1" rows="5" placeholder="Serologic Data"></textarea>
 												<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-1">Copy to Clipboard</span>
@@ -364,9 +374,12 @@
 												<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-4">Copy to Clipboard</span>
 										</div>
 								</form>
+							</div>
 						</div>
 					</div>
-
+				</div>
+				{{> page-modals/new-case-reference}}
+				{{> page-partials/history-module}}
 		<!--end container wrapper-->
 </div>
 

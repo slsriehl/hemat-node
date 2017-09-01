@@ -441,10 +441,16 @@ $(window).on('load', function(){
     // ********************* Combined report function ***********************//
     $('#writeReport').on('click', function () {
         // store your text to localStorage when someone click the link
-        var textToPass = $('#outPut-1').val() +'\n\n'+$('#outPut-2').val()+'\n\nnLIVER, BIOPSY:\n'+$('#outPut-3').val() +'\n\nCOMMENT:\n'+$('#outPut-4').val();
+        // var textToPass = $('#outPut-1').val() +'\n\n'+$('#outPut-2').val()+'\n\nnLIVER, BIOPSY:\n'+$('#outPut-3').val() +'\n\nCOMMENT:\n'+$('#outPut-4').val();
+				//
+        // $('#outPut-combine').val(textToPass);
+        // $('#combined-report').modal("show");
 
-        $('#outPut-combine').val(textToPass);
-        $('#combined-report').modal("show");
+				dataObj.serologic = $('#outPut-1').val();
+				dataObj.micro = $('#outPut-2').val();
+				dataObj.finals = $('#outPut-3').val();
+				dataObj.comments = $('#outPut-4').val();
+				makeCreatePdfBtn();
 
     });
 
