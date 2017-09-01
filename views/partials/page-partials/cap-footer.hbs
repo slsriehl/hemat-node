@@ -1,24 +1,26 @@
 		<!-- middle right text output-->
 <div class="col col-md-4" id="cap-bottom-right">
 	<div class="card text-center">
-		<div class="card-header">
-			<ul class="nav nav-pills">
-				<li class="nav-item">
-					<a class="nav-link active" id="writeReport">
+		<div class="card-header button-box">
+				<ul class="nav nav-pills standard-button-box">
+					<a class="btn btn-lg btn-outline-info p-2" id="writeReport">
 						<small>Write Report</small>
 					</a>
-				</li>
-			</ul>
+					<a class="btn btn-lg btn-outline-success p-2 ml-4" >
+							<small class="copy btn-default" data-toggle="popover" data-placement="top" data-clipboard-target="#outPut-1" >
+									Copy</small>
+					</a>
+						<a class="btn btn-lg btn-outline-danger p-2 ml-4" id="Reset" >
+								<small>Reset</small>
+						</a>
+				</ul>
 		</div>
 		<div class="card-block">
-			<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-1">
-				Copy to Clipboard
-			</span>
-			<textarea class="form-control" id="outPut-1" rows="40" placeholder="Final CAP template text">
-			</textarea>
-			<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-1">
-				Copy to Clipboard
-			</span>
+			{{> page-partials/case-reference}}
+			<div class="form-group">
+				<textarea class="form-control" id="outPut-1" rows="40" placeholder="Final CAP template text">
+				</textarea>
+			</div>
 		</div>
 		<div class="card-footer">
 			<span>
