@@ -9,7 +9,12 @@
 }
 
 /* add vertical spacing between your rows add this line to your css: */
-.top-buffer { margin-top:20px; }
+.top-buffer {
+	margin-top: 1rem; 
+}
+.bottom-buffer {
+	margin-bottom: 1rem;
+}
 
 
 /* label hover and active background*/

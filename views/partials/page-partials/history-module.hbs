@@ -1,65 +1,69 @@
 
 {{#if isAuth.check}}
 {{#if prevRep}}
-<div class="card text-center">
-		<div class="card-header">
-			<ul class="nav nav-pills individual-report-btn-box">
+<div class="row top-buffer">
+	<div class="col col-md-12">
+		<div class="card text-center">
+				<div class="card-header">
+					<ul class="nav nav-pills individual-report-btn-box">
+						{{#if prevRep.thisApp}}
+						<li class="nav-item">
+							<a class="nav-link ml-4 active">
+								<small>
+									Previous Reports from This App
+								</small>
+							</a>
+						</li>
+						{{/if}}
+						{{#if prevRep.any}}
+						<li class="nav-item">
+							<a class="nav-link ml-4 active" id="view-all-previous">
+								<small>
+									View All Previous Reports
+								</small>
+							</a>
+						</li>
+							{{/if}}
+					</ul>
+				</div>
 				{{#if prevRep.thisApp}}
-				<li class="nav-item">
-					<a class="nav-link ml-4 active">
-						<small>
-							Previous Reports from This App
-						</small>
-					</a>
-				</li>
+				<div class="card-block" id="previous-reports">
+				{{#each prevRep.thisApp}}
+					<div class="row previous-report" id="pr-{{@index}}" {{{stripeRows @index}}}>
+						<div class="col col-md-12 text-left">
+							<h4>
+								{{date}}{{#if reference}}: {{reference}}{{/if}}
+							</h4>
+							<!-- / date-reference -->
+						</div>
+						<div class="col col-md-12 text-left">
+							<p id="rt-{{@index}}">
+								{{{text}}}
+							</p>
+							<!-- /text -->
+						</div>
+						<ul class="nav nav-pills individual-report-btn-box">
+								<a href="/report/download/{{reportId}}" download class="btn btn-outline-info p-2">
+									<small>
+										Download
+									</small>
+								</a>
+								<a href="/copy/{{reportId}}" class="btn btn-outline-info p-2" id="er-{{@index}}">
+									<small>
+										Copy Plain Text
+									</small>
+								</a>
+							<!-- /buttons -->
+						</ul>
+						<!-- /row -->
+					</div>
+				{{/each}}
+				<!-- /previous reports -->
+				</div>
 				{{/if}}
-				{{#if prevRep.any}}
-				<li class="nav-item">
-					<a class="nav-link ml-4 active" id="view-all-previous">
-						<small>
-							View All Previous Reports
-						</small>
-					</a>
-				</li>
-					{{/if}}
-			</ul>
+				<!-- /previous module -->
 		</div>
-		{{#if prevRep.thisApp}}
-		<div class="card-block" id="previous-reports">
-		{{#each prevRep.thisApp}}
-			<div class="row previous-report" id="pr-{{@index}}" {{{stripeRows @index}}}>
-				<div class="col col-md-12 text-left">
-					<h4>
-						{{date}}{{#if reference}}: {{reference}}{{/if}}
-					</h4>
-					<!-- / date-reference -->
-				</div>
-				<div class="col col-md-12 text-left">
-					<p id="rt-{{@index}}">
-						{{{text}}}
-					</p>
-					<!-- /text -->
-				</div>
-				<ul class="nav nav-pills individual-report-btn-box">
-						<a href="/report/download/{{reportId}}" download class="btn btn-outline-info p-2">
-							<small>
-								Download
-							</small>
-						</a>
-						<a href="/copy/{{reportId}}" class="btn btn-outline-info p-2" id="er-{{@index}}">
-							<small>
-								Copy Plain Text
-							</small>
-						</a>
-					<!-- /buttons -->
-				</ul>
-				<!-- /row -->
-			</div>
-		{{/each}}
-		<!-- /previous reports -->
-		</div>
-		{{/if}}
-		<!-- /previous module -->
+	</div>
 </div>
 {{/if}}
 {{/if}}
