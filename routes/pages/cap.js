@@ -8,91 +8,91 @@ const controller = require('../../controllers/pages');
 
 router.get('/cap/bone-t-bx', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/bone-t-bx.hbs', [
-		"../js/cap/bonebx-scripts.js",
+		"/js/cap/bonebx-scripts.js",
 	]);
 });
 
 router.get('/cap/bone-t-rx', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/bone-t-rx.hbs', [
-		"../js/cap/bonerx-scripts.js",
+		"/js/cap/bonerx-scripts.js",
 	]);
 });
 
 router.get('/cap/neuro-t', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/neuro-t.hbs', [
-		"../js/cap/neuro-scripts.js",
+		"/js/cap/neuro-scripts.js",
 	]);
 });
 
 router.get('/cap/neuro-t-biomarker', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/neuro-t-biomarker.hbs', [
-		"../js/cap/cnsbio-scripts.js",
+		"/js/cap/cnsbio-scripts.js",
 	]);
 });
 
 router.get('/cap/pnet-bx', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/pnet-bx.hbs', [
-		"../js/cap/pnet-scripts.js",
+		"/js/cap/pnet-scripts.js",
 	]);
 });
 
 router.get('/cap/pnet-rx', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/pnet-rx.hbs', [
-		"../js/cap/pnetrx-scripts.js",
+		"/js/cap/pnetrx-scripts.js",
 	]);
 });
 
 router.get('/cap/ex-gon-gct', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/ex-gon-gct.hbs', [
-		"../js/cap/exgct-scripts.js",
+		"/js/cap/exgct-scripts.js",
 	]);
 });
 
 router.get('/cap/hepatoblast', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/hepatoblast.hbs', [
-		"../js/cap/hepato-scripts.js",
+		"/js/cap/hepato-scripts.js",
 	]);
 });
 
 router.get('/cap/neuroblast', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/neuroblast.hbs', [
-		"../js/cap/nb-scripts.js",
+		"/js/cap/nb-scripts.js",
 	]);
 });
 
 router.get('/cap/neuroend-t', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/neuroend-t.hbs', [
-		"../js/cap/net-scripts.js",
+		"/js/cap/net-scripts.js",
 	]);
 });
 
 router.get('/cap/ovary-t', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/ovary-t.hbs', [
-		"../js/cap/ovary-scripts.js",
+		"/js/cap/ovary-scripts.js",
 	]);
 });
 
 router.get('/cap/wilms-t', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/wilms-t.hbs', [
-		"../js/cap/wilms-scripts.js",
+		"/js/cap/wilms-scripts.js",
 	]);
 });
 
 router.get('/cap/retinoblast', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/retinoblast.hbs', [
-		"../js/cap/rb-scripts.js",
+		"/js/cap/rb-scripts.js",
 	]);
 });
 
 router.get('/cap/rhabdo', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/rhabdo.hbs', [
-		"../js/cap/rhabdo-scripts.js",
+		"/js/cap/rhabdo-scripts.js",
 	]);
 });
 
 router.get('/cap/testis-t', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/testis-t.hbs', [
-		"../js/cap/testis-scripts.js",
+		"/js/cap/testis-scripts.js",
 	]);
 });
 
@@ -100,7 +100,7 @@ router.get('/cap/testis-t', (req, res) => {
 
 router.get('/cap/soft-t-rx', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/soft-t-rx.hbs', [
-		"../js/cap/softrx-scripts.js",
+		"/js/cap/softrx-scripts.js",
 	]);
 });
 
@@ -108,91 +108,91 @@ router.get('/cap/soft-t-rx', (req, res) => {
 
 router.get('/cap/breast', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/breast.hbs', [
-		"../js/cap/breast-scripts.js",
+		"/js/cap/breast-scripts.js",
 	]);
 });
 
 router.get('/cap/cervix-leep', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/cervix-leep.hbs', [
-		"../js/cap/cxleep-scripts.js",
+		"/js/cap/cxleep-scripts.js",
 	]);
 });
 
 router.get('/cap/cervix-rx', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/cervix-rx.hbs', [
-		"../js/cap/cxrx-scripts.js",
+		"/js/cap/cxrx-scripts.js",
 	]);
 });
 
 router.get('/cap/colon-polyp', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/colon-polyp.hbs', [
-		"../js/cap/colonpolyp-scripts.js",
+		"/js/cap/colonpolyp-scripts.js",
 	]);
 });
 
 router.get('/cap/colon-rx', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/colon-rx.hbs', [
-		"../js/cap/colonrx-scripts.js",
+		"/js/cap/colonrx-scripts.js",
 	]);
 });
 
 router.get('/cap/endometrium-t', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/endometrium-t.hbs', [
-		"../js/cap/endometrium-scripts.js",
+		"/js/cap/endometrium-scripts.js",
 	]);
 });
 
 router.get('/cap/esophagus', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/esophagus.hbs', [
-		"../js/cap/esophagus-scripts.js",
+		"/js/cap/esophagus-scripts.js",
 	]);
 });
 
 router.get('/cap/kidney-rx', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/kidney-rx.hbs', [
-		"../js/cap/kidney-scripts.js",
+		"/js/cap/kidney-scripts.js",
 	]);
 });
 
 router.get('/cap/lung-rx', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/lung-rx.hbs', [
-		"../js/cap/lung-scripts.js",
+		"/js/cap/lung-scripts.js",
 	]);
 });
 
 router.get('/cap/melanoma', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/melanoma.hbs', [
-		"../js/cap/melanoma-scripts.js",
+		"/js/cap/melanoma-scripts.js",
 	]);
 });
 
 router.get('/cap/plasmacytoma', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/plasmacytoma.hbs', [
-		"../js/cap/plasmacytoma-scripts.js",
+		"/js/cap/plasmacytoma-scripts.js",
 	]);
 });
 
 router.get('/cap/pancexo-t', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/pancexo-t.hbs', [
-		"../js/cap/pancexo-scripts.js",
+		"/js/cap/pancexo-scripts.js",
 	]);
 });
 
 router.get('/cap/thyroid-t', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/thyroid-t.hbs', [
-		"../js/cap/thyroid-scripts.js",
+		"/js/cap/thyroid-scripts.js",
 	]);
 });
 
 router.get('/cap/salivary-t', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/salivary-t.hbs', [
-		"../js/cap/salivary-scripts.js",
+		"/js/cap/salivary-scripts.js",
 	]);
 });
 
 router.get('/cap/stomach', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/stomach.hbs', [
-		"../js/cap/stomach-scripts.js",
+		"/js/cap/stomach-scripts.js",
 	]);
 });
 

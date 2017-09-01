@@ -8,22 +8,22 @@ const controller = require('../../controllers/pages');
 //needs database connection
 router.get('/surg-path/ihc-table', (req, res) => {
 	controller.userWall(req, res, './page-views/surg-path/ihc-table.hbs', [
-		"../js/surg-path/ihc-scripts.js"
+		"/js/surg-path/ihc-scripts.js"
 	]);
 });
 
 router.get('/surg-path/fixation', (req, res) => {
 	controller.openAccess(req, res, './page-views/surg-path/fixation.hbs', [
-		"../vendor/jquery/js/jquery-ui-timepicker-addon.min.js",
-		"../js/surg-path/fixation-scripts.js"
+		"/vendor/jquery/js/jquery-ui-timepicker-addon.min.js",
+		"/js/surg-path/fixation-scripts.js"
 	]);
 });
 
 
 router.get('/surg-path/snippets', (req, res) => {
 	controller.userWall(req, res, './page-views/surg-path/snippets.hbs', [
-		"../vendor/tag-it/tag-it.min.js",
-		"../js/surg-path/snippets-scripts.js"
+		"/vendor/tag-it/tag-it.min.js",
+		"/js/surg-path/snippets-scripts.js"
 	]);
 });
 

@@ -273,8 +273,8 @@ const controller = {
 							phone: data.dataValues.mobile
 						},
 						specificScripts: [
-							"../vendor/jquery/js/jquery.validate.min.js",
-							"../js/login-settings.js"
+							"/vendor/jquery/js/jquery.validate.min.js",
+							"/js/login-settings.js"
 						]
 				});
 			})

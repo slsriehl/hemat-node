@@ -10,9 +10,9 @@ router.get('/gi-path/gi-bx', (req, res) => {
 	//initial page load with data: controller: if the user has previous reports, pull data & template results including download button
 	//previous report handling: AJAX & controller: if the user selects a previous report, template text from DB & populate generate report button auto download
 	controller.openAccess(req, res, './page-views/gi-path/gi-bx.hbs', [
-		"../json/json-gi.js",
-		"../js/gi-path/gi-scripts.js",
-		"../js/surg-path/ihc-scripts.js"
+		"/json/json-gi.js",
+		"/js/gi-path/gi-scripts.js",
+		"/js/surg-path/ihc-scripts.js"
 	]);
 });
 
@@ -21,9 +21,9 @@ router.get('/gi-path/liver-bx', (req, res) => {
 	//initial page load with data: controller: if the user has previous reports, pull data & template results including download button
 	//previous report handling: AJAX & controller: if the user selects a previous report, template text from DB & populate generate report button auto download
 	controller.userWall(req, res, './page-views/gi-path/liver-bx.hbs', [
-		"../json/json-liver.js",
-		"../js/gi-path/liver-scripts.js",
-		"../js/surg-path/ihc-scripts.js"
+		"/json/json-liver.js",
+		"/js/gi-path/liver-scripts.js",
+		"/js/surg-path/ihc-scripts.js"
 	]);
 });
 

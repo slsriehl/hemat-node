@@ -248,7 +248,7 @@ $(document).ready(function() {
 
 
 
-	$(document).off('click', '.hide-show span').on('click', '.hide-show span', hideShow);
+	$(document).off('click', '.hide-show small').on('click', '.hide-show small', hideShow);
 
 	changeToPasswordFormat($('#login-form'));
 	changeToPasswordFormat($('#signup-form'));

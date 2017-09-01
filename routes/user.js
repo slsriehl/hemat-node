@@ -41,13 +41,13 @@ router.get('/user/signup', (req, res) => {
 				id: tempType
 			}],
 			specificScripts: [
-				"../js/login-settings.js"
+				"/js/login-settings.js"
 			]
 		});
 	} else {
 		res.render('login/signup.hbs', {
 			specificScripts: [
-				"../js/login-settings.js"
+				"/js/login-settings.js"
 			]
 		});
 	}
@@ -72,13 +72,13 @@ router.get('/user/login', (req, res) => {
 				id: tempType
 			}],
 			specificScripts: [
-				"../js/login-settings.js"
+				"/js/login-settings.js"
 			]
 		});
 	} else {
 		res.render('login/login.hbs', {
 			specificScripts: [
-				"../js/login-settings.js"
+				"/js/login-settings.js"
 			]
 		});
 	}
@@ -116,7 +116,7 @@ router.get('/reset/request', (req, res) => {
 	res.render('login/reset-request.hbs', {
 		specificScripts: [
 
-			"../js/login-settings.js"
+			"/js/login-settings.js"
 		]
 	});
 });

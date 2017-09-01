@@ -9,8 +9,8 @@ router.get('/clin-path/csf', (req, res) => {
 	//initial page load with data: controller: if the user has previous reports, pull data & template results including download button
 	//previous report handling: AJAX & controller: if the user selects a previous report, template text from DB & populate generate report button auto download
 	controller.openAccess(req, res, './page-views/clin-path/csf.hbs', [
-		"../json/json-csf.js",
-		"../js/clin-path/csf-scripts.js"
+		"/json/json-csf.js",
+		"/js/clin-path/csf-scripts.js"
 	]);
 });
 
@@ -19,8 +19,8 @@ router.get('/clin-path/bal', (req, res) => {
 	//initial page load with data: controller: if the user has previous reports, pull data & template results including download button
 	//previous report handling: AJAX & controller: if the user selects a previous report, template text from DB & populate generate report button auto download
 	controller.openAccess(req, res, './page-views/clin-path/bal.hbs', [
-		"../json/json-bal.js",
-		"../js/clin-path/bal-scripts.js"
+		"/json/json-bal.js",
+		"/js/clin-path/bal-scripts.js"
 	]);
 });
 
@@ -29,8 +29,8 @@ router.get('/clin-path/antibody-id', (req, res) => {
 	//initial page load with data: controller: if the user has previous reports, pull data & template results including download button
 	//previous report handling: AJAX & controller: if the user selects a previous report, template text from DB & populate generate report button auto download
 	controller.openAccess(req, res, './page-views/clin-path/antibody-id.hbs', [
-		"../json/json-abid.js",
-		"../js/clin-path/antibody-scripts.js"
+		"/json/json-abid.js",
+		"/js/clin-path/antibody-scripts.js"
 	]);
 });
 
@@ -39,8 +39,8 @@ router.get('/clin-path/tx-rxn', (req, res) => {
 	//initial page load with data: controller: if the user has previous reports, pull data & template results including download button
 	//previous report handling: AJAX & controller: if the user selects a previous report, template text from DB & populate generate report button auto download
 	controller.openAccess(req, res, './page-views/clin-path/tx-rxn.hbs', [
-		"../json/json-txrxn.js",
-		"../js/clin-path/txrxn-scripts.js"
+		"/json/json-txrxn.js",
+		"/js/clin-path/txrxn-scripts.js"
 	]);
 });
 
