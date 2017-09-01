@@ -169,15 +169,7 @@ $(window).on('load', function() {
         // append each printed diff into "history" window with counter to label them
         $('#diffHist').val($('#diffHist').val() + this.counter + ':\n' + diffStr + '\n\n');
 				//add a pdf button to the button bar if it's not already there
-				if(!$('#pdf-report').length) {
-
-					var reportBtnBox = $('<ul class="report-button-box nav nav-pills">');
-					var makePdfBtn = $('<a class="btn btn-lg btn-outline-success p-2 ml-4" id="pdf-report">');
-					var pdfBtnText = $('<small>Save & Create PDF</small>')
-					makePdfBtn.append(pdfBtnText);
-					reportBtnBox.append(makePdfBtn);
-					$('.button-box').append(reportBtnBox);
-				}
+				makeCreatePdfBtn();
 
     });
 

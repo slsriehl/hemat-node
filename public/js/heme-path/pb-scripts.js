@@ -186,17 +186,6 @@ $('#writeReport').on('click', function () {
 
 });
 
-var makeCreatePdfBtn = function() {
-	if(!$('#pdf-report').length) {
-		var reportBtnBox = $('<ul class="report-button-box nav nav-pills">');
-		var makePdfBtn = $('<a class="btn btn-lg btn-outline-success p-2 ml-4" id="pdf-report">');
-		var pdfBtnText = $('<small>Save & Create PDF</small>')
-		makePdfBtn.append(pdfBtnText);
-		reportBtnBox.append(makePdfBtn);
-		$('.button-box').append(reportBtnBox);
-	}
-}
-
 $('#mysisReport').on('click', function () {
     // store your text to localStorage when someone click the link
         var mysis_diag = $("#outPut-3").val();

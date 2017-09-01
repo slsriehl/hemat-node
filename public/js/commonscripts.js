@@ -1,4 +1,18 @@
+//share with specific scripts (must be outside page load)
 var dataObj = {};
+
+var makeCreatePdfBtn = function() {
+	if(!$('#pdf-report').length) {
+		var reportBtnBox = $('<ul class="report-button-box nav nav-pills">');
+		var makePdfBtn = $('<a class="btn btn-lg btn-outline-success p-2 ml-4" id="pdf-report">');
+		var pdfBtnText = $('<small>Save & Create PDF</small>')
+		makePdfBtn.append(pdfBtnText);
+		reportBtnBox.append(makePdfBtn);
+		$('.button-box').append(reportBtnBox);
+	}
+}
+
+//onload
 $(window).on('load', function() {
 // instantiate copy button
     new Clipboard('.copy');
@@ -143,6 +157,8 @@ $(function () {
 			</div>')
 			$('.message-center').append(failMessage);
 		}
+
+
 
 		//send a report to the back end for storage and PDFing
 		$(document).off('click', '#pdf-report').on('click', '#pdf-report', function(event) {

@@ -632,14 +632,7 @@ $("#CBCswitch").change(function() {
 		dataObj.comments = $('#outPut-4').val();
 		dataObj.diffPercent = $('#diffTotal').val();
 		dataObj.diff = $('#diffOut').val();
-		if(!$('#pdf-report').length) {
-			var reportBtnBox = $('<ul class="report-button-box nav nav-pills">');
-			var makePdfBtn = $('<a class="btn btn-lg btn-outline-success p-2 ml-4" id="pdf-report">');
-			var pdfBtnText = $('<small>Save & Create PDF</small>')
-			makePdfBtn.append(pdfBtnText);
-			reportBtnBox.append(makePdfBtn);
-			$('.button-box').append(reportBtnBox);
-		}
+		makeCreatePdfBtn();
 	});
 
         // var aa = $('#outPut-2').val(); // micro output
