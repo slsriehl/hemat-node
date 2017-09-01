@@ -8,9 +8,9 @@
 							Hemepath Tools
 						</li>
 						<li class="breadcrumb-item active"><i class="fa fa-battery-3 mr-2"></i> Peripheral Blood Smear authorship tool</li>
-				</ol> 
+				</ol>
 
- {{> message-center this}} 
+ {{> message-center this}}
 
 				<div class="row-fluid">
 						<!-- top card-->
@@ -244,31 +244,49 @@
 								</div>
 								<!-- end left column-->
 						</div>
-						<div class="col-md-4"><!-- right column-->
-								<a class="btn btn-outline-success p-1 mb-2" id="writeReport" >Write report</a>
-								<a class="btn btn-outline-info p-1 mb-2 ml-4" id="mysisReport" >Mysis report</a>
-								<a class="btn btn-outline-danger p-1 mb-2 ml-4" id="Reset" >Reset</a>
-								<form >
+						<div class="col col-md-4"><!-- right column-->
+							<div class="card text-center">
+									<div class="card-header button-box">
+											<ul class="nav nav-pills standard-button-box">
+												<a class="btn btn-outline-success p-1 mb-2" id="writeReport" >Write Report</a>
 
-										<div class="form-group">
-												<textarea class="form-control" id="outPut-1" rows="5" placeholder="CBC Data"></textarea>
-												<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-1">Copy to Clipboard</span>
+												<a class="btn btn-outline-info p-1 mb-2 ml-4" id="mysisReport" >Mysis Report</a>
+
+												<a class="btn btn-outline-danger p-1 mb-2 ml-4" id="Reset" >Reset</a>
+											</ul>
+								<!-- /card header -->
 										</div>
-										<div class="form-group">
-												<textarea class="form-control" id="outPut-2" rows="15" placeholder="Example Micro"></textarea>
-												<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-2">Copy to Clipboard</span>
-										</div>
-										<div class="form-group">
-												<textarea class="form-control" id="outPut-3" rows="10" placeholder="Example Final"></textarea>
-												<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-3">Copy to Clipboard</span>
-										</div>
-										<div class="form-group">
-												<textarea class="form-control" id="outPut-4" rows="5" placeholder="Example Comment"></textarea>
-												<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-4">Copy to Clipboard</span>
-										</div>
-								</form>
+
+									<div class="card-block">
+
+										<form>
+											{{> page-partials/case-reference}}
+												<div class="form-group">
+														<textarea class="form-control" id="outPut-1" rows="5" placeholder="CBC Data"></textarea>
+														<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-1">Copy to Clipboard</span>
+												</div>
+
+												<div class="form-group">
+														<textarea class="form-control" id="outPut-2" rows="15" placeholder="Example Micro"></textarea>
+														<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-2">Copy to Clipboard</span>
+												</div>
+												<div class="form-group">
+														<textarea class="form-control" id="outPut-3" rows="10" placeholder="Example Final"></textarea>
+														<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-3">Copy to Clipboard</span>
+												</div>
+												<div class="form-group">
+														<textarea class="form-control" id="outPut-4" rows="5" placeholder="Example Comment"></textarea>
+														<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-4">Copy to Clipboard</span>
+												</div>
+										</form>
+										<!-- / card block -->
+									</div>
+									<!-- /card -->
+								</div>
 						</div>
 				</div>
+				{{> page-modals/new-case-reference}}
+				{{> page-partials/history-module}}
 		</div>
 		<!--end container wrapper-->
 

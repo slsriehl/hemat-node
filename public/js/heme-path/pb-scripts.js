@@ -174,12 +174,28 @@ $('#cbcWrite').on('click', function () {
 // ********************* Combined report function ***********************//
 $('#writeReport').on('click', function () {
     // store your text to localStorage when someone click the link
-    var textToPass = $('#outPut-1').val() +'\n\n'+$('#outPut-2').val()+'\n\n'+$('#outPut-3').val()+'\n\n'+$('#outPut-4').val();
-
-    $('#outPut-combine').val(textToPass);
-    $('#combined-report').modal("show");
+    // var textToPass = $('#outPut-1').val() +'\n\n'+$('#outPut-2').val()+'\n\n'+$('#outPut-3').val()+'\n\n'+$('#outPut-4').val();
+		//
+    // $('#outPut-combine').val(textToPass);
+    // $('#combined-report').modal("show");
+		dataObj.cbcData = $('#outPut-1').val();
+		dataObj.micro = $('#outPut-2').val();
+		dataObj.finals = $('#outPut-3').val();
+		dataObj.comments = $('#outPut-4').val();
+		makeCreatePdfBtn();
 
 });
+
+var makeCreatePdfBtn = function() {
+	if(!$('#pdf-report').length) {
+		var reportBtnBox = $('<ul class="report-button-box nav nav-pills">');
+		var makePdfBtn = $('<a class="btn btn-lg btn-outline-success p-2 ml-4" id="pdf-report">');
+		var pdfBtnText = $('<small>Save & Create PDF</small>')
+		makePdfBtn.append(pdfBtnText);
+		reportBtnBox.append(makePdfBtn);
+		$('.button-box').append(reportBtnBox);
+	}
+}
 
 $('#mysisReport').on('click', function () {
     // store your text to localStorage when someone click the link
@@ -187,8 +203,14 @@ $('#mysisReport').on('click', function () {
         mysis_diag = mysis_diag.replace(/PERIPHERAL BLOOD/g, "DIAGNOSIS");
         var textToPass = ' \n'+ $('#outPut-2').val() +' \n \n \n'+mysis_diag+' \n \nCOMMENT: '+ $('#outPut-4').val() +' \n ';
 
-    $('#outPut-combine').val(textToPass);
-    $('#combined-report').modal("show");
+				dataObj.cbcData = $('#outPut-1').val();
+				dataObj.micro = $('#outPut-2').val();
+				dataObj.finals = mysis_diag;
+				dataObj.comments = $('#outPut-4').val();
+				makeCreatePdfBtn();
+
+    // $('#outPut-combine').val(textToPass);
+    // $('#combined-report').modal("show");
 
 });
 
