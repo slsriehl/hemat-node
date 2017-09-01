@@ -62,6 +62,8 @@ $(window).on('load', function(){
 
         $('#outPut-1').val(text);
 
+				dataObj.singleSection = $('#outPut-1').val();
+				makeCreatePdfBtn();
     });
 
 });

@@ -8,9 +8,9 @@
 						Clinical Pathology Tools
 				</li>
 				<li class="breadcrumb-item active"><i class="fa fa-tint mr-2"></i>Transfusion Reaction Workup</li>
-		</ol> 
+		</ol>
 
- {{> message-center this}} 
+ {{> message-center this}}
 
 		<div class="card mb-3">
 				<div class="card-header bg-info">
@@ -162,31 +162,36 @@
 										<!-- middle right text output-->
 										<div class="col col-md-4" id="bottom-r">
 												<div class="card text-center">
-														<div class="card-header">
-																<ul class="nav nav-pills">
-																		<ul class="nav nav-pills">
 
-																				<a class="btn btn-lg btn-outline-info p-2" id="writeReport">
-																						<small>Write Report</small>
-																				</a>
+															<div class="card-header button-box">
+																	<ul class="nav nav-pills standard-button-box">
+																		<a class="btn btn-lg btn-outline-info p-2" id="writeReport">
+																				<small>Write Report</small>
+																		</a>
 
+																			<a class="btn btn-lg btn-outline-success p-2 ml-4" >
+																					<small class="copy btn-default" data-toggle="popover" data-placement="top" data-clipboard-target="#outPut-1" >
+																							Copy</small>
+																			</a>
 
-																				<a class="btn btn-lg btn-outline-danger p-2 ml-4" id="Reset" >
-																						<small>Reset</small>
-																				</a>
+																			<a class="btn btn-lg btn-outline-danger p-2 ml-4" id="Reset" >
+																					<small>Reset</small>
+																			</a>
+																	</ul>
+															</div>
 
-																		</ul>
-																</ul>
-														</div>
 														<div class="card-block">
+															{{> page-partials/case-reference}}
 																<div class="form-group">
 																		<textarea class="form-control" id="outPut-1" rows="25" placeholder="Report"></textarea>
-																		<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-1">Copy to Clipboard</span>
+
 																</div>
 														</div>
 												</div>
 										</div>
 		</div>
+		{{> page-modals/new-case-reference}}
+		{{> page-partials/history-module}}
 		<!--end container wrapper-->
 </div>
 <!--
