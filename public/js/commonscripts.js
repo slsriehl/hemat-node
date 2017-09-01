@@ -212,6 +212,11 @@ $(function () {
 			window.location.href = '/reports/history';
 		});
 
+		//focus on field in new case ref modal
+		$('#new-case-reference').on('shown.bs.modal', function () {
+    $('#newCaseReference').focus();
+})
+
     /*/Google analytics
      var _gaq = _gaq || [];
      _gaq.push(['_setAccount', 'UA-37125342-1']);
