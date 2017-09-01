@@ -38,6 +38,9 @@ $('#writeReport').on('click', function () {
 
     $('#outPut-1').val(_starttxt+"\n"+_timeinfix+'\n'+_coldischtxt +'\n'+_fixdurtxt);
 
+		dataObj.singleSection = $('#outPut-1').val();
+		makeCreatePdfBtn();
+
 });/**
  * Created by chandrakrishnan on 4/29/2017.
  */
