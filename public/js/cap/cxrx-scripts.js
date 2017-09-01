@@ -236,6 +236,9 @@ $(window).on('load', function() {
 
         $('#outPut-1').val(captext);
 
+				dataObj.singleSection = $('#outPut-1').val();
+				makeCreatePdfBtn();
+
     });
 });/**
  * Created by Chandra Krishnan on 8/16/2017.
