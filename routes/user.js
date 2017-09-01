@@ -19,14 +19,28 @@ router.get('/', (req, res) => {
 
 //render signup page
 router.get('/user/signup', (req, res) => {
-	helpers.clearSessionMessage(req, res);
-	res.render('login/signup.hbs', {
-		signup: true,
-		specificScripts: [
+	if(req.session.message) {
+		let tempMsg = req.session.message;
+		let tempType = req.session.messageType;
+		req.session.message = null;
+		req.session.messageType = null;
+		res.render('login/signup.hbs', {
+			messages: [{
+				text: tempMsg,
+				id: tempType
+			}],
+			specificScripts: [
+				"../js/login-settings.js"
+			]
+		});
+	} else {
+		res.render('login/signup.hbs', {
+			specificScripts: [
+				"../js/login-settings.js"
+			]
+		});
+	}
 
-			"../js/login-settings.js"
-		]
-	});
 });
 
 //Create new user
@@ -36,13 +50,28 @@ router.post('/user/signup', (req, res) => {
 
 //render login page
 router.get('/user/login', (req, res) => {
-	helpers.clearSessionMessage(req, res);
-	res.render('login/login.hbs', {
-		specificScripts: [
+	if(req.session.message) {
+		let tempMsg = req.session.message;
+		let tempType = req.session.messageType;
+		req.session.message = null;
+		req.session.messageType = null;
+		res.render('login/login.hbs', {
+			messages: [{
+				text: tempMsg,
+				id: tempType
+			}],
+			specificScripts: [
+				"../js/login-settings.js"
+			]
+		});
+	} else {
+		res.render('login/login.hbs', {
+			specificScripts: [
+				"../js/login-settings.js"
+			]
+		});
+	}
 
-			"../js/login-settings.js"
-		]
-	});
 });
 
 //Login new user

@@ -5,6 +5,7 @@ const helpers = require('./user-helpers');
 const cookieHelpers = require('./cookie-helpers');
 const generalHelpers = require('./general-helpers');
 const reCaptchaSecret = require('../config/recaptcha');
+const Promise = require('bluebird');
 
 const util = require('util');
 const ReCAPTCHA = require('recaptcha2');
@@ -68,29 +69,29 @@ const controller = {
 			//test with positive and negative cases
 			console.log(data);
 			if(data.length == 0) {
-				console.log(newUser);
-				return models.Users
-				.create(newUser)
-				.then((data) => {
-					console.log(data);
-					cookieHelpers.verifyCookie(req, res, true);
-					req.session.message = 'Welcome to Hematogones.com!  I hope you find these tools useful.';
-					req.session.messageType = 'successful-signup';
-					req.session.user = data.dataValues.id;
-					req.session.firstname = data.dataValues.firstname;
-					req.session.save();
-					helpers.getSystemMessages(req, res, 'index-redirect');
-				})
+				return Promise.resolve(newUser);
 			} else {
 				req.session.message = 'Sorry, that username or email is taken already.  Please try another or <a href="/reset">reset your account</a>.  If you previously had an account with these credentials and would like to reactivate it, please <a href="/mail">contact our admin</a>.';
 				req.session.messageType = 'failed-signup';
 				req.session.save();
-				helpers.renderSingleMessage(req, res, 'login/signup.hbs',
-				[
-
-					"../js/login-settings.js"
-				], true);
+				res.redirect('/user/signup');
 			}
+		})
+		.then((result) => {
+			console.log(result);
+			return models.Users
+			.create(result)
+		})
+		.then((data) => {
+			console.log(data);
+			req.session.regenerate();
+			cookieHelpers.verifyCookie(req, res, true);
+			req.session.message = 'Welcome to Hematogones.com!  I hope you find these tools useful.';
+			req.session.messageType = 'successful-signup';
+			req.session.user = data.dataValues.id;
+			req.session.firstname = data.dataValues.firstname;
+			req.session.save();
+			helpers.getSystemMessages(req, res, 'index.hbs');
 		})
 		.catch((error) => {
 			req.session.error = error;
@@ -98,12 +99,7 @@ const controller = {
 			req.session.messageType = 'system-fail';
 			req.session.save();
 			generalHelpers.writeToErrorLog(req);
-			helpers.renderSingleMessage(req, res, 'login/signup.hbs', [
-
-				"../js/login-settings.js"
-			],
-			true
-		);
+			res.redirect('/user/signup');
 		});
 	},
 	//login a user by authenticating login info against the DB
@@ -128,19 +124,12 @@ const controller = {
 				req.session.message = "Sorry, that username or email doesn't match any on record.  Please try again or <a href='/user/reset/request'>reset your password</a>.";
 				req.session.messageType = 'failed-login';
 				req.session.save();
-				helpers.renderSingleMessage(req, res, 'login/login.hbs', [
-
-					"../js/login-settings.js"
-				]);
+				res.redirect('/user/login');
 			} else if(data.dataValues.deletedAt) {
 				req.session.message = "You appear to have deleted your account.  To reactivate it, please <a href='/mail'>contact our admin</a>.";
 				req.session.messageType = 'failed-login-deleted-account';
 				req.session.save();
-				helpers.renderSingleMessage(req, res, 'login/login.hbs', [
-
-					"../js/login-settings.js"
-				]);
-
+				controller.renderIndex(req, res);
 			} else if(data.dataValues.requireReset) {
 				req.session.reset = true;
 				req.session.user = data.dataValues.id;
@@ -152,22 +141,20 @@ const controller = {
 				if(hash) {
 					//password matches
 					console.log('hash successful');
+					req.session.regenerate();
 					req.session.user = data.dataValues.id;
 					req.session.message = null;
 					req.session.messageType = null;
 					req.session.firstname = data.dataValues.firstname;
 					cookieHelpers.verifyCookie(req, res, true);
 					req.session.save();
-					helpers.getSystemMessages(req, res, 'index-redirect');
+					helpers.getSystemMessages(req, res, 'index.hbs');
 				} else {
 					//if there's data but the hash doesn't match the entered password
 					req.session.message = "Sorry, that password isn't right.  Please try again or <a href='/user/reset'>reset your password</a>.";
 					req.session.messageType = 'failed-login';
 					req.session.save();
-					helpers.renderSingleMessage(req, res, 'login/login.hbs', [
-
-						"../js/login-settings.js"
-					]);
+					res.redirect('/user/login');
 				}
 			}
 		})
@@ -179,10 +166,7 @@ const controller = {
 			req.session.messageType = 'system-fail';
 			req.session.save();
 			generalHelpers.writeToErrorLog(req);
-			helpers.renderSingleMessage(req, res, 'login/login.hbs', [
-
-				"../js/login-settings.js"
-			]);
+			res.redirect('/user/login');
 		});
 	},
 	//delete the session object on logout and render the login page
@@ -194,23 +178,9 @@ const controller = {
 	//show the index page whether logged in or not
 	renderIndex: (req, res) => {
 		console.log(util.inspect(req.session) + 'reqsess renderindex prefunction');
-		if(cookieHelpers.verifyCookie(req, res) && req.session.inclusiveSystemMessages) {
-			//if the logged in user has system messages plus a single session message
-			console.log('fire 1');
-			let systemMessages = req.session.inclusiveSystemMessages;
-			req.session.inclusiveSystemMessages = null;
-			res.render('index.hbs', {
-				messages: systemMessages,
-				isAuth: {
-					check: req.session.isAuth,
-					firstname: req.session.firstname
-				}
-			});
-		} else if (cookieHelpers.verifyCookie(req, res)) {
+		if (cookieHelpers.verifyCookie(req, res)) {
 			//if the logged in user has system messages but not a single session message
-			console.log('fire 2');
-			req.session.message = null;
-			req.session.messageType = null;
+			console.log('verified cookie on index load');
 			res.render('index.hbs', {
 				messages: req.session.systemMessages,
 				isAuth: {
@@ -220,7 +190,7 @@ const controller = {
 			});
 		} else if(req.session.message) {
 			//if the unlogged in user tried to do something and needs to get a message
-			console.log('fire 3');
+			console.log('index no cookie but system message');
 			const loggedOutMessage = req.session.message;
 			const loggedOutMessageType = req.session.messageType;
 			req.session.message = null;
@@ -237,7 +207,7 @@ const controller = {
 			});
 		} else {
 			//if the user isn't logged in and doesn't need to get any messages
-			console.log('fire 4');
+			console.log('index no cookie no message');
 			res.render('index.hbs');
 		}
 	},
@@ -441,20 +411,20 @@ const controller = {
 						req.session.messageType = "success-account-delete";
 						req.session.save();
 						console.log(util.inspect(req.session) + 'delete success reqsess');
-						res.send(true);
+						controller.renderIndex(req, res);
 					} else {
 						req.session.message = "Sorry, your account was not deleted.  Please try again and <a href='/mail'>contact our admin</a> if the problem persists.";
 						req.session.messageType = "failed-account-delete";
 						req.session.save();
 						console.log(req.session.message);
-						res.send(false);
+						res.redirect('/user');
 					}
 				});
 			} else {
 				req.session.message = "The password you entered is not correct.";
 				req.session.messageType = "failed-account-delete";
 				req.session.save();
-				res.send(false);
+				res.redirect('/user');
 			}
 		})
 		.catch(error => console.log(error));

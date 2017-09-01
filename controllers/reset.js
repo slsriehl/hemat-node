@@ -29,7 +29,7 @@ const controller = {
 		.then((data) => {
 			if(data.length === 0) {
 				res.render('login/reset-request.hbs', {
-					message: [{
+					messages: [{
 						text: "That email or username wasn't found.  Please try again.",
 						id: "reset-request-fail"
 					}],
