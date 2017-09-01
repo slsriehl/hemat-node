@@ -264,6 +264,17 @@ $(window).on("load", function(){
 
         var label15 = document.getElementById("box15").value;
         localStorage.setItem("box15", label15);
+
+				dataObj.singleSection = $('#diffOut').val();
+				if(!$('#pdf-report').length) {
+
+					var reportBtnBox = $('<ul class="report-button-box nav nav-pills">');
+					var makePdfBtn = $('<a class="btn btn-lg btn-outline-success p-2 ml-4" id="pdf-report">');
+					var pdfBtnText = $('<small>Save & Create PDF</small>')
+					makePdfBtn.append(pdfBtnText);
+					reportBtnBox.append(makePdfBtn);
+					$('.button-box').append(reportBtnBox);
+				}
     });
 
     $('#resetDiff').click(function(){
