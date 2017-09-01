@@ -8,9 +8,9 @@
             Hemepath Tools
         </li>
 				<li class="breadcrumb-item active"><i class="fa fa-eercast mr-2"></i>High-Grade B-cell lymphoma Diagnosis Synoptic Template</li>
-		</ol> 
+		</ol>
 
- {{> message-center this}} 
+ {{> message-center this}}
 
 		<div class="card mb-3">
 				<div class="card-header bg-info">
@@ -24,13 +24,10 @@
 						</div>
 				</div>
 		</div>
-		<div class="container-fluid">
 				<div class="row">
 						<!--middle colored boxes-->
-						<div class="container">
-								<div class="row row-grid">
 										<!-- bottom left column-->
-										<div class="col-sm-7" id="bottom-l">
+										<div class="col-sm-8" id="bottom-l">
 												<h4>Large B-cell lymphoma Diagnostic synoptic</h4>
 												<hr>
 												<b>HISTOLOGIC TYPE:</b><br>
@@ -228,25 +225,22 @@
 
 										</div>
 										<!-- middle right text output-->
-										<div class="col-sm-5" id="bottom-r">
+										<div class="col-sm-4" id="bottom-r">
 												<div class="card text-center">
-														<div class="card-header">
-																<ul class="nav nav-pills">
-																		<ul class="nav nav-pills">
+													<div class="card-header button-box">
+															<ul class="nav nav-pills standard-button-box">
+																<a class="btn btn-lg btn-outline-info p-2" id="writeReport">
+																		<small>Write Report</small>
+																</a>
 
-																				<a class="btn btn-lg btn-outline-info p-2" id="writeReport">
-																						<small>Write Report</small>
-																				</a>
+																<a class="btn btn-lg btn-outline-danger p-2 ml-4" id="Reset" >
+																		<small>Reset</small>
+																</a>
 
-
-																				<a class="btn btn-lg btn-outline-danger p-2 ml-4" id="Reset" >
-																						<small>Reset</small>
-																				</a>
-
-																		</ul>
-																</ul>
+															</ul>
 														</div>
 														<div class="card-block">
+															{{> page-partials/case-reference}}
 																<div class="form-group">
 																		<textarea class="form-control" id="outPut-1" rows="40" placeholder="Synoptic"></textarea>
 																		<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-1">Copy to Clipboard</span>
@@ -254,9 +248,9 @@
 														</div>
 												</div>
 										</div>
-								</div>
-						</div>
 				</div>
+				{{> page-modals/new-case-reference}}
+				{{> page-partials/history-module}}
 		</div>
 		<!--end container wrapper-->
 
