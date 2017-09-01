@@ -240,12 +240,7 @@ const controller = {
 					req.session.message = "We've recently upgraded our login system.  Please check the email you registered to reset your password.";
 					req.session.messageType = 'successful-reset-send-required';
 				}
-				res.render('index.hbs', {
-					messages: [{
-						text: req.session.message,
-						id: req.session.messageType
-					}]
-				});
+				res.redirect('/');
 			});
 		});
 
