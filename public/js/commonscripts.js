@@ -183,7 +183,7 @@ $(function () {
 					}
 					//create a button to download the pdf
 					if($('#download-pdf').length) {
-						$('#download-pdf').hide();
+						$('#download-pdf').remove();
 						addDownloadBtn(response);
 					} else {
 						addDownloadBtn(response);
