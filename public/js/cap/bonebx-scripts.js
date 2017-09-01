@@ -144,7 +144,10 @@ $('#writeReport').on('click', function(){
         var box_14 = $("#box14").val();
         captext += "\nRadiographic Findings:\n- "+box_14+"\n";
 
-   $('#outPut-1').val(captext);
+   			$('#outPut-1').val(captext);
+
+				dataObj.singleSection = $('#outPut-1').val();
+				makeCreatePdfBtn();
 
     });
 });
