@@ -6,6 +6,7 @@ const bcrypt = require('bcryptjs');
 const moment = require('moment');
 const Promise = require('bluebird');
 
+const generalHelpers = require('./general-helpers');
 const cookieHelpers = require('./cookie-helpers');
 
 const helpers = {
@@ -81,7 +82,10 @@ const helpers = {
 				res.send('messages updated');
 			}
 		})
-		.catch((error) => console.log(error));
+		.catch(error => {
+			generalHelpers.writeToErrorLog(req, error);
+			console.log(error);
+		});
 	},
 	clearSessionMessage: (req, res) => {
 		req.session.message = null;

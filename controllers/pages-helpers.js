@@ -5,6 +5,8 @@ const models = require('../models');
 const Promise = require('bluebird');
 const escape = require('escape-html');
 
+const generalHelpers = require('./general-helpers');
+
 const helpers = {
 	getCaseReferences: (req) => {
 		return models.CaseReferences

@@ -46,6 +46,7 @@ const helpers = {
 						return Promise.resolve(saveObj);
 					})
 					.catch(error => {
+						generalHelpers.writeToErrorLog(req, error);
 						console.log(error);
 						return Promise.reject(error);
 					});

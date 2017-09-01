@@ -99,7 +99,7 @@ const controller = {
 			req.session.message = "Sorry, we had an error.  Please try to sign up again, and be mindful of the Captcha field.  If you get another error, please <a href='/mail' target='_blank'>email our admin</a>.";
 			req.session.messageType = 'system-fail';
 			req.session.save();
-			generalHelpers.writeToErrorLog(req);
+			generalHelpers.writeToErrorLog(req, error);
 			res.redirect('/user/signup');
 		});
 	},
@@ -167,7 +167,7 @@ const controller = {
 			req.session.message = "Sorry, we had an error.  Please try to login again.  If you get another error, please <a href='/mail' target='_blank'>email our admin</a>.";
 			req.session.messageType = 'system-fail';
 			req.session.save();
-			generalHelpers.writeToErrorLog(req);
+			generalHelpers.writeToErrorLog(req, error);
 			res.redirect('/user/login');
 		});
 	},
@@ -261,7 +261,11 @@ const controller = {
 						]
 				});
 			})
-			.catch(error => console.log(error));
+			.catch(error => {
+				generalHelpers.writeToErrorLog(req, error);
+				console.log(error);
+				res.render('index.hbs');
+			});
 		} else {
 			res.redirect('/user/login');
 		}
@@ -295,61 +299,74 @@ const controller = {
 					lastname: req.body.newLastname.trim()
 				};
 				const cleanObj = generalHelpers.cleanObj(objToUpdate);
-				models.Users
-				.findAll({
-					attributes: ['id', 'username', 'email'],
-					where: {
-						id: {
-							$ne: req.session.user
-						},
-						$or: [{
-							username: objToUpdate.username
-						}, {
-							email: objToUpdate.email
-						}]
-					}
-				})
-				.then((data) => {
-					if(data.length > 0) {
-						req.session.message = "Sorry, it looks like someone already has that email or username.  Please try again.";
-						req.session.messageType = 'settings-duplicate-username-or-email';
-						req.session.save();
-						controller.userSettings(req, res);
-					} else if (!cleanObj) {
-						req.session.message = "It doesn't seem like you entered any data to change.  Please try again.";
-						req.session.messageType = 'settings-no-info';
-						req.session.save();
-						controller.userSettings(req, res);
-					} else {
-						models.Users
-						.update(cleanObj, {
-							where: {
-								id: req.session.user
-							}
-						})
-						.then((result) => {
-							console.log(result);
-							let dataStr = JSON.stringify(result);
-							console.log(dataStr);
-							if(dataStr === '[0]') {
-								//if no User record was updated
-								req.session.message = "We weren't able to change your data.  Please try again or <a href='/mail' target='_blank'>contact our admin</a>.";
-								req.session.messageType = 'settings-didnt-change';
-								req.session.save();
-								controller.userSettings(req, res);
-							} else if (dataStr === '[1]') {
-								//if one User record was updated
-								req.session.message = "We got your changes!  Check below to see if everything came through all right.";
-								req.session.messageType = 'successful-settings-change';
-								req.session.save();
-								controller.userSettings(req, res);
-							}
-						});
-					}
-				});
+				return Promise.resolve(objToUpdate);
 			}
 		})
-		.catch(error => console.log(error));
+		.then((objToUpdate) => {
+			return models.Users
+			.findAll({
+				attributes: ['id', 'username', 'email'],
+				where: {
+					id: {
+						$ne: req.session.user
+					},
+					$or: [{
+						username: objToUpdate.username
+					}, {
+						email: objToUpdate.email
+					}]
+				}
+			})
+		})
+		.then((data) => {
+			if(data.length > 0) {
+				req.session.message = "Sorry, it looks like someone already has that email or username.  Please try again.";
+				req.session.messageType = 'settings-duplicate-username-or-email';
+				req.session.save();
+				controller.userSettings(req, res);
+			} else if (!cleanObj) {
+				req.session.message = "It doesn't seem like you entered any data to change.  Please try again.";
+				req.session.messageType = 'settings-no-info';
+				req.session.save();
+				controller.userSettings(req, res);
+			} else {
+				return Promise.resolve(cleanObj);
+			}
+		})
+		.then((cleanObj) => {
+			return models.Users
+			.update(cleanObj, {
+				where: {
+					id: req.session.user
+				}
+			})
+		})
+		.then((result) => {
+			console.log(result);
+			let dataStr = JSON.stringify(result);
+			console.log(dataStr);
+			if(dataStr === '[0]') {
+				//if no User record was updated
+				req.session.message = "We weren't able to change your data.  Please try again or <a href='/mail' target='_blank'>contact our admin</a>.";
+				req.session.messageType = 'settings-didnt-change';
+				req.session.save();
+				controller.userSettings(req, res);
+			} else if (dataStr === '[1]') {
+				//if one User record was updated
+				req.session.message = "We got your changes!  Check below to see if everything came through all right.";
+				req.session.messageType = 'successful-settings-change';
+				req.session.save();
+				controller.userSettings(req, res);
+			}
+		})
+		.catch(error => {
+			generalHelpers.writeToErrorLog(req, error);
+			console.log(error);
+			req.session.message = "We weren't able to change your data.  Please try again or <a href='/mail' target='_blank'>contact our admin</a>.";
+			req.session.messageType = 'settings-didnt-change';
+			req.session.save();
+			controller.userSettings(req, res);
+		});
 	},
 	//dismiss a message
 	dismissMessage: (req, res) => {
@@ -373,8 +390,8 @@ const controller = {
 				}
 			})
 			.catch(error => {
+				generalHelpers.writeToErrorLog(req, error);
 				console.log(error);
-				//write to error log
 				res.send(false);
 			})
 		}
@@ -401,35 +418,41 @@ const controller = {
 						id: req.session.user
 					}
 				})
-				.then((result) => {
-					console.log(result);
-					const resStr = result.toString();
-					console.log(resStr);
-					if(resStr === '1') {
-						//if account deleted create a new session, set delete message, and redirect to the index page
-						req.session.user = null;
-						req.session.toEnd = true;
-						req.session.message = "Your account has been successfully deleted.";
-						req.session.messageType = "success-account-delete";
-						req.session.save();
-						console.log(util.inspect(req.session) + 'delete success reqsess');
-						controller.renderIndex(req, res);
-					} else {
-						req.session.message = "Sorry, your account was not deleted.  Please try again and <a href='/mail'>contact our admin</a> if the problem persists.";
-						req.session.messageType = "failed-account-delete";
-						req.session.save();
-						console.log(req.session.message);
-						res.redirect('/user');
-					}
-				});
 			} else {
 				req.session.message = "The password you entered is not correct.";
 				req.session.messageType = "failed-account-delete";
 				req.session.save();
-				res.redirect('/user');
+				controller.userSettings(req, res);
 			}
 		})
-		.catch(error => console.log(error));
+		.then((result) => {
+			console.log(result);
+			const resStr = result.toString();
+			console.log(resStr);
+			if(resStr === '1') {
+				//if account deleted create a new session, set delete message, and redirect to the index page
+				req.session.user = null;
+				req.session.toEnd = true;
+				req.session.message = "Your account has been successfully deleted.";
+				req.session.messageType = "success-account-delete";
+				req.session.save();
+				console.log(util.inspect(req.session) + 'delete success reqsess');
+				controller.renderIndex(req, res);
+			} else {
+				req.session.message = "Sorry, your account was not deleted.  Please try again and <a href='/mail'>contact our admin</a> if the problem persists.";
+				req.session.messageType = "failed-account-delete";
+				req.session.save();
+				controller.userSettings(req, res);
+			}
+		})
+		.catch(error => {
+			generalHelpers.writeToErrorLog(req, error);
+			console.log(error);
+			req.session.message = "Sorry, your account was not deleted.  Please try again and <a href='/mail'>contact our admin</a> if the problem persists.";
+			req.session.messageType = "failed-account-delete";
+			req.session.save();
+			controller.userSettings(req, res);
+		});
 	}
 }
 

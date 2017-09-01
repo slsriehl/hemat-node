@@ -43,7 +43,10 @@ const controller = {
 				controller.sendResetEmail(req, res);
 			}
 		})
-		.catch(error => console.log(error));
+		.catch(error => {
+			generalHelpers.writeToErrorLog(req, error);
+			console.log(error);
+		});
 	},
 	showResetPage: (req, res) => {
 		console.log(req.params);

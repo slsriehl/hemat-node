@@ -78,7 +78,10 @@ const controller = {
 					snippets: snippets
 				});
 			})
-			.catch(error => console.log(error));
+			.catch(error => {
+				generalHelpers.writeToErrorLog(req, error);
+				console.log(error);
+			});
 		} else {
 			res.render('index.hbs', {
 				messages: [{
@@ -104,7 +107,8 @@ const controller = {
 					specificScripts: scripts
 				});
 			})
-			.catch((error) => {
+			.catch(error => {
+				generalHelpers.writeToErrorLog(req, error);
 				console.log(error);
 			});
 		}
@@ -120,7 +124,10 @@ const controller = {
 		.then((result) => {
 			res.end();
 		})
-		.catch(error => console.log(error));
+		.catch(error => {
+			generalHelpers.writeToErrorLog(req, error);
+			console.log(error);
+		});
 	},
 	searchSnippets: (req, res) => {
 		console.log(req.body);
@@ -169,7 +176,10 @@ const controller = {
 			console.log(searchResults2);
 			res.json(searchResults2);
 		})
-		.catch(error => console.log(error));
+		.catch(error => {
+			generalHelpers.writeToErrorLog(req, error);
+			console.log(error);
+		});
 	},
 	saveSnippet: (req, res) => {
 		console.log(req.body);
@@ -187,6 +197,7 @@ const controller = {
 			res.send(true);
 		})
 		.catch(error => {
+			generalHelpers.writeToErrorLog(req, error);
 			console.log(error);
 			res.send(false);
 		});
@@ -241,6 +252,7 @@ const controller = {
 			}
 		})
 		.catch(error => {
+			generalHelpers.writeToErrorLog(req, error);
 			console.log(error);
 			res.send(false);
 		});
@@ -263,6 +275,7 @@ const controller = {
 				}
 			})
 			.catch(error => {
+				generalHelpers.writeToErrorLog(req, error);
 				console.log(error);
 				res.send(false);
 			});

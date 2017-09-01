@@ -100,6 +100,7 @@ const controller = {
 				}
 			})
 			.catch(error => {
+				generalHelpers.writeToErrorLog(req, error);
 				console.log(error);
 				res.send('failure');
 			});
@@ -142,6 +143,7 @@ const controller = {
 			}
 		})
 		.catch(error => {
+			generalHelpers.writeToErrorLog(req, error);
 			console.log(error);
 			res.send('failure');
 		});
@@ -167,7 +169,8 @@ const controller = {
 			success.pipe(res);
 		})
 		.catch(error => {
-			console.log(error)
+			generalHelpers.writeToErrorLog(req, error);
+			console.log(error);
 			res.send('failure');
 		});
 	},
@@ -192,7 +195,8 @@ const controller = {
 			success.pipe(res);
 		})
 		.catch(error => {
-			console.log(error)
+			generalHelpers.writeToErrorLog(req, error);
+			console.log(error);
 			res.send('failure');
 		});
 	},
@@ -242,7 +246,10 @@ const controller = {
 				reports: data
 			});
 		})
-		.catch(error => console.log(error));
+		.catch(error => {
+			generalHelpers.writeToErrorLog(req, error);
+			console.log(error);
+		});
 	},
 	copyReport: (req, res) => {
 		let copyReport;

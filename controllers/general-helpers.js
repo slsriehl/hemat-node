@@ -2,8 +2,9 @@ const models = require('../models');
 
 const Promise = require('bluebird');
 
+const moment = require('moment');
 const path = require('path');
-const fs = require('fs'); //promisify
+const fs = Promise.promisifyAll(require('fs')); //promisify
 const mime = require('mime');
 
 const util = require('util');
@@ -95,11 +96,25 @@ const helpers = {
 	mimeLookup: (file) => {
 		return mime.lookup(file);
 	},
-	writeToErrorLog:  (req) => {
-		fs.appendFile('../errors/error-log.txt', req, (error) => {
-			if(error) console.log(error);
-			console.log('there has been an error.  the request object was logged to the error log');
-		})
+	writeToErrorLog:  (req, error) => {
+		const errorText = `****** NEW ERROR AT HEMATOGONES.COM ******\n\n\
+		#date: \n			${moment().utc().format('YYYY-MM-DD HH:mm:ss UTC')} \n\n\
+		#user: \n			${req.session.user} \n\n\
+		#user IP: \n			${req.ip} \n\n\
+		#protocol: \n			${req.protocol} \n\n\
+		#secure connection?: \n			${req.secure} \n\n\
+		#headers: \n			${JSON.stringify(req.headers)} \n\n\
+		#original url: \n			${req.originalUrl} \n\n\
+		#request url: \n			${req.path} \n\n\
+		#ajax request?: \n			${req.xhr} \n\n\
+		#promise error: \n			${error} \n\n\
+		****** END ERROR ******\n\n\n\n`;
+		fs.appendFileAsync('./errors/error-log.md', errorText)
+		.then((e) => {
+			if(e) {
+				console.log('error was not appended to log because ' + e);
+			}
+		});
 	}
 };
 
