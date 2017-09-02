@@ -165,7 +165,7 @@ const helpers = {
 			console.log('helpers directory is true');
 			req.session.pdf = `${moment().utc().format('YYYYMMDDHHmmss')}-${finalReportObj.appSlug}.pdf`;
 			if(!req.session.user) {
-				finalReportObj.createdAt = moment().utc().format('ddd MMM D, HH:mm:ss UTC');
+				finalReportObj.createdAt = moment().utc().format('YYYY-MM-DD HH:mm:ss UTC');
 			}
 			const report = {
 				template: pdfTemplate,
@@ -256,7 +256,7 @@ const helpers = {
 			let thisApp = [];
 			for(let i = 0; i < result.length; i++) {
 				const oneReport = {
-					date: result[i].dataValues.createdAt,
+					date: moment(result[i].dataValues.createdAt).format('YYYY-MM-DD HH:mm:ss UTC'),
 					reportId: result[i].dataValues.id,
 				}
 				if(result[i].dataValues.CaseReference) {
@@ -305,7 +305,7 @@ const helpers = {
 			req.session.app = data.dataValues.appId;
 			const thisReport = {
 				reportId: req.session.report,
-				time: data.dataValues.createdAt,
+				time: moment(data.dataValues.createdAt).format('YYYY-MM-DD HH:mm:ss UTC'),
 				appName: data.dataValues.App.dataValues.name,
 				appGroupName: data.dataValues.App.dataValues.AppGroup.dataValues.name,
 				singleSection: data.dataValues.singleSection,

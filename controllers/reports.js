@@ -6,6 +6,8 @@ const helpers = require('./reports-helpers');
 
 const Promise = require('bluebird');
 
+const moment = require('moment');
+
 const util = require('util');
 
 const controller = {
@@ -209,7 +211,7 @@ const controller = {
 				const dataObj = {
 					reportId: data[i].dataValues.id,
 					appName: data[i].dataValues.App.dataValues.name,
-					date: data[i].dataValues.createdAt
+					date: moment(data[i].dataValues.createdAt).format('YYYY-MM-DD HH:mm:ss UTC')
 				}
 				let tempText;
 				if(data[i].dataValues.singleSection) {
