@@ -4,7 +4,6 @@ const resetController = require('./reset');
 const helpers = require('./user-helpers');
 const cookieHelpers = require('./cookie-helpers');
 const generalHelpers = require('./general-helpers');
-const
 const Promise = require('bluebird');
 
 const util = require('util');
