@@ -293,6 +293,7 @@ const controller = {
 		//to update their account
 		//they must send their current password to authorize them to change the data
 		console.log(req.body);
+		let cleanObj;
 		return models.Users
 		.findOne({
 			attributes: ['password'],
@@ -313,9 +314,10 @@ const controller = {
 					email: req.body.newEmail.trim().toLowerCase(),
 					username: req.body.newUsername.trim().toLowerCase(),
 					firstname:  req.body.newFirstname.trim(),
-					lastname: req.body.newLastname.trim()
+					lastname: req.body.newLastname.trim(),
+					mobile: req.body.newPhone.trim()
 				};
-				const cleanObj = generalHelpers.cleanObj(objToUpdate);
+				cleanObj = generalHelpers.cleanObj(objToUpdate);
 				return Promise.resolve(objToUpdate);
 			}
 		})

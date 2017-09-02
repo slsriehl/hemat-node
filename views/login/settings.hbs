@@ -8,89 +8,174 @@
 	{{> message-center this}}
 
 	<div class="row">
-		<div class="col col-md-4">
+		<div class="col col-md-2">
 			<!-- end placeholder div -->
 		</div>
-		<div class="col col-md-4">
+		<div class="col col-md-8">
 			<h2 class="text-center">Edit Your Settings</h2>
 			<p>Your current password is required to make changes.  Complete whichever fields you wish to change and submit the form.  You do not have to change all fields.</p>
 			<form id="change-form" action="/user" method="POST">
-				<div class="form-group">
-					<label>Current Registered Email Address</label>
-					<span id="logged-in-email" class="form-control">{{isAuth.email}}</span>
-				</div>
-				<div class="form-group">
-					<label>Current Username</label>
-					<span id="logged-in-username" class="form-control">{{isAuth.username}}</span>
-				</div>
-				<div class="form-group">
-					<label>Current First Name</label>
-					<span id="logged-in-firstname" class="form-control">{{isAuth.firstname}}</span>
-				</div>
-				<div class="form-group">
-					<label>Current Last Name</label>
-					<span id="logged-in-lastname" class="form-control">{{isAuth.lastname}}</span>
-				</div>
-				<div class="form-group">
-					<label>Current Password</label>
-					<input
-						type="password"
-						name="password"
-						class="form-control"
-						id="password"
-					/>
-					<div class="hide-show">
-						<small class="show">Show</small>
+				<!-- email row -->
+				<div class="row">
+
+					<div class="col col-sm-6">
+						<div class="form-group">
+							<label>Current Registered Email Address</label>
+							<span id="logged-in-email" class="form-control">{{isAuth.email}}</span>
+						</div>
 					</div>
-				</div>
-				<div class="form-group">
-					<label>New Email</label>
-					<input
-						type="email"
-						name="newEmail"
-						id="newEmail"
-						class="form-control"
-					/>
-				</div>
-				<div class="form-group">
-					<label>New Username</label>
-					<input
-						type="text"
-						name="newUsername"
-						id="newUsername"
-						class="form-control"
-					/>
-				</div>
-				<div class="form-group">
-					<label>New First Name</label>
-					<input
-						type="text"
-						name="newFirstname"
-						id="newFirstname"
-						class="form-control"
-					/>
-				</div>
-				<div class="form-group">
-					<label>New Last Name</label>
-					<input
-						type="text"
-						name="newLastname"
-						id="newLastname"
-						class="form-control"
-					/>
-				</div>
-				<div class="form-group">
-					<label>New Password</label>
-					<input
-						type="password"
-						name="newPassword"
-						id="newPassword"
-						class="form-control"
-					/>
-					<div class="hide-show">
-						<small class="show">Show</small>
+
+					<div class="col col-sm-6">
+						<div class="form-group">
+							<label>New Email</label>
+							<input
+								type="email"
+								name="newEmail"
+								id="newEmail"
+								class="form-control"
+							/>
+						</div>
 					</div>
+					<!-- /email row -->
 				</div>
+				<!-- username row -->
+				<div class="row">
+
+					<div class="col col-sm-6">
+						<div class="form-group">
+							<label>Current Username</label>
+							<span id="logged-in-username" class="form-control">{{isAuth.username}}</span>
+						</div>
+
+					</div>
+
+					<div class="col col-sm-6">
+						<div class="form-group">
+							<label>New Username</label>
+							<input
+								type="text"
+								name="newUsername"
+								id="newUsername"
+								class="form-control"
+							/>
+						</div>
+
+					</div>
+					<!-- /username row -->
+				</div>
+				<!-- firstname row -->
+				<div class="row">
+
+					<div class="col col-sm-6">
+						<div class="form-group">
+							<label>Current First Name</label>
+							<span id="logged-in-firstname" class="form-control">{{isAuth.firstname}}</span>
+						</div>
+
+					</div>
+
+					<div class="col col-sm-6">
+						<div class="form-group">
+							<label>New First Name</label>
+							<input
+								type="text"
+								name="newFirstname"
+								id="newFirstname"
+								class="form-control"
+							/>
+						</div>
+
+					</div>
+					<!-- /firstname row -->
+				</div>
+				<!-- lastname row -->
+				<div class="row">
+
+					<div class="col col-sm-6">
+						<div class="form-group">
+							<label>Current Last Name</label>
+							<span id="logged-in-lastname" class="form-control">{{isAuth.lastname}}</span>
+						</div>
+
+					</div>
+
+					<div class="col col-sm-6">
+						<div class="form-group">
+							<label>New Last Name</label>
+							<input
+								type="text"
+								name="newLastname"
+								id="newLastname"
+								class="form-control"
+							/>
+						</div>
+
+					</div>
+					<!-- /lastname row -->
+				</div>
+				<!-- phone row -->
+				<div class="row">
+
+					<div class="col col-sm-6">
+						<div class="form-group">
+							<label>Current Phone</label>
+							<span id="logged-in-phone" class="form-control">{{isAuth.phone}}</span>
+						</div>
+
+					</div>
+
+					<div class="col col-sm-6">
+						<div class="form-group">
+							<label>New Phone</label>
+							<input
+								type="tel"
+								name="newPhone"
+								id="newPhone"
+								class="form-control"
+							/>
+						</div>
+
+					</div>
+					<!-- /phone row -->
+				</div>
+
+				<!-- password row -->
+				<div class="row">
+
+					<div class="col col-sm-6">
+						<div class="form-group">
+							<label>Current Password</label>
+							<input
+								type="password"
+								name="password"
+								class="form-control"
+								id="password"
+							/>
+							<div class="hide-show">
+								<small class="show">Show</small>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="col col-sm-6">
+						<div class="form-group">
+							<label>New Password</label>
+							<input
+								type="password"
+								name="newPassword"
+								id="newPassword"
+								class="form-control"
+							/>
+							<div class="hide-show">
+								<small class="show">Show</small>
+							</div>
+						</div>
+
+					</div>
+					<!-- /password row -->
+				</div>
+
 				<div class="button-container">
 					<button type="submit" class="btn btn-default">Change Data</button>
 					<button class="btn btn-danger" data-target="#delete-account-modal" data-toggle="modal" id='delete-account' type='button'>
@@ -102,7 +187,7 @@
 			</form>
 			<!-- end form col -->
 		</div>
-		<div class="col col-md-4">
+		<div class="col col-md-2">
 			<!-- end placeholder div -->
 		</div>
 		<!-- end settings edit row -->

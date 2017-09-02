@@ -186,6 +186,9 @@ $(document).ready(function() {
 			newPassword: {
 				minlength: 8,
 				validPattern: otherPattern
+			},
+			newPhone: {
+				validPattern: otherPattern
 			}
 		},
 		messages: {
@@ -202,6 +205,9 @@ $(document).ready(function() {
 			newPassword: {
 				validPattern: "Password can't have the &#34; &#39; &#8220; &#8221; &#8216; &#8217; &#96; or &#180; symbols",
 				minlength: 'Password must be at least 8 characters.'
+			},
+			newPhone: {
+				validPattern: "Phone can't have the &#34; &#39; &#8220; &#8221; &#8216; &#8217; &#96; or &#180; symbols"
 			}
 		}
 	});
