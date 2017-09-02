@@ -8,8 +8,14 @@ const express         = require('express'),
       logger          = require('morgan'),
 			cookieParser		= require('cookie-parser'),
 			hbs							= require('express-handlebars'),
-			secretKey 			= require('./config/secret'),
       app             = express();
+
+let secretKey;
+if(process.ENV.SECRET) {
+	secretKey = process.ENV.SECRET;
+} else {
+	secretKey = require('./config/secret');
+}
 
 app.use(express.static(__dirname + '/public'));
 app.use(logger("dev"));

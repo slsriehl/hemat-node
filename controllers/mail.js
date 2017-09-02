@@ -7,9 +7,26 @@ const Promise = require('bluebird');
 
 const nodemailer = require('nodemailer');
 
-const transporter = require('../config/transporter');
-const emailTo = require('../config/emailTo');
-const from = require('../config/from');
+let transporter;
+if(process.ENV.TRANSPORTER) {
+	transporter = process.ENV.TRANSPORTER;
+} else {
+	transporter = require('../config/transporter');
+}
+
+let emailTo;
+if(process.ENV.EMAIL_TO) {
+	emailTo = process.ENV.EMAIL_TO;
+} else {
+	emailTo = require('../config/emailTo');
+}
+
+let from;
+if(process.ENV.EMAIL_FROM) {
+	from = process.ENV.EMAIL_FROM;
+} else {
+	from = require('../config/from');
+} 
 
 const generalHelpers = require('./general-helpers');
 const cookieHelpers = require('./cookie-helpers');

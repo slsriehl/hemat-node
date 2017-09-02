@@ -9,8 +9,19 @@ const uuid = require('uuid/v4');
 const moment = require('moment');
 const nodemailer = require('nodemailer');
 
-const transporter = require('../config/transporter');
-const from = require('../config/from');
+let transporter;
+if(process.ENV.TRANSPORTER) {
+	transporter = process.ENV.TRANSPORTER;
+} else {
+	transporter = require('../config/transporter');
+}
+
+let from;
+if(process.ENV.EMAIL_FROM) {
+	from = process.ENV.EMAIL_FROM;
+} else {
+	from = require('../config/from');
+}
 
 const controller = {
 	lookupReset: (req, res) => {

@@ -4,14 +4,20 @@ var fs        = require('fs');
 var path      = require('path');
 var Sequelize = require('sequelize');
 var basename  = path.basename(module.filename);
-var env       = process.env.NODE_ENV || 'development';
+var env       = process.env.JAWSDB_URL || process.env.NODE_ENV || 'development';
 var config    = require(__dirname + '/../config/config.json')[env];
 var db        = {};
 
-if (config.use_env_variable) {
-  var sequelize = new Sequelize(process.env[config.use_env_variable]);
+var sequelize;
+if(process.env.JAWSDB_URL) {
+	sequelize = new Sequelize(process.env.JAWSDB_URL);
 } else {
-  var sequelize = new Sequelize(config.database, config.username, config.password, config);
+	var config = require(__dirname + '/../config/config.json')[env];
+	if(config.use_env_variable) {
+  	sequelize = new Sequelize(process.env[config.use_env_variable]);
+	} else {
+  	sequelize = new Sequelize(config.database, config.username, config.password, config);
+	}
 }
 
 fs
