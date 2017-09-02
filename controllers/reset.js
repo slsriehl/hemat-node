@@ -9,12 +9,7 @@ const uuid = require('uuid/v4');
 const moment = require('moment');
 const nodemailer = require('nodemailer');
 
-let transporter;
-if(process.env.TRANSPORTER) {
-	transporter = process.env.TRANSPORTER;
-} else {
-	transporter = require('../config/transporter');
-}
+const transporter = require('./transporter');
 
 let from;
 if(process.env.EMAIL_FROM) {
