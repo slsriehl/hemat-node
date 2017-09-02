@@ -233,23 +233,29 @@ const controller = {
 					console.log(`err fired w/o reset reqd`);
 					req.session.message = "Your reset request failed.  Please contact our <a href='/mail' target='_blank'>admin</a>.";
 					req.session.messageType = 'fail-reset-send-optional';
+					res.redirect('/');
 				} else if(err) {
 					console.log(`err fired w/ reset reqd`);
 					req.session.message = "We've recently upgraded our login system and need you to reset your password, but we're having trouble contacting you.  Please contact our <a href='/mail' target='_blank'>admin</a>.";
 					req.session.messageType = 'fail-reset-send-required';
+					res.redirect('/');
 				} else if(response && !req.session.reset) {
 					console.log(`response fired w/o reset reqd`);
 					req.session.message = "Your reset request was successful.  Please check your email to reset your password.";
 					req.session.messageType = 'successful-reset-send-optional';
+					res.redirect('/');
 				} else if (response) {
 					console.log(`response fired w/ reset reqd`);
 					req.session.message = "We've recently upgraded our login system.  Please check the email you registered to reset your password.";
 					req.session.messageType = 'successful-reset-send-required';
+					res.redirect('/');
 				}
-				res.redirect('/');
 			});
+		})
+		.catch((error) => {
+			generalHelpers.writeToErrorLog(req, error);
+			res.redirect('/');
 		});
-
 	},
 
 }
