@@ -8,22 +8,22 @@ const Promise = require('bluebird');
 const nodemailer = require('nodemailer');
 
 let transporter;
-if(process.ENV.TRANSPORTER) {
-	transporter = process.ENV.TRANSPORTER;
+if(process.env.TRANSPORTER) {
+	transporter = process.env.TRANSPORTER;
 } else {
 	transporter = require('../config/transporter');
 }
 
 let emailTo;
-if(process.ENV.EMAIL_TO) {
-	emailTo = process.ENV.EMAIL_TO;
+if(process.env.EMAIL_TO) {
+	emailTo = process.env.EMAIL_TO;
 } else {
 	emailTo = require('../config/emailTo');
 }
 
 let from;
-if(process.ENV.EMAIL_FROM) {
-	from = process.ENV.EMAIL_FROM;
+if(process.env.EMAIL_FROM) {
+	from = process.env.EMAIL_FROM;
 } else {
 	from = require('../config/from');
 } 

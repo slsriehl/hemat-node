@@ -11,8 +11,8 @@ const express         = require('express'),
       app             = express();
 
 let secretKey;
-if(process.ENV.SECRET) {
-	secretKey = process.ENV.SECRET;
+if(process.env.SECRET) {
+	secretKey = process.env.SECRET;
 } else {
 	secretKey = require('./config/secret');
 }

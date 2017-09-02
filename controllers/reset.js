@@ -10,15 +10,15 @@ const moment = require('moment');
 const nodemailer = require('nodemailer');
 
 let transporter;
-if(process.ENV.TRANSPORTER) {
-	transporter = process.ENV.TRANSPORTER;
+if(process.env.TRANSPORTER) {
+	transporter = process.env.TRANSPORTER;
 } else {
 	transporter = require('../config/transporter');
 }
 
 let from;
-if(process.ENV.EMAIL_FROM) {
-	from = process.ENV.EMAIL_FROM;
+if(process.env.EMAIL_FROM) {
+	from = process.env.EMAIL_FROM;
 } else {
 	from = require('../config/from');
 }

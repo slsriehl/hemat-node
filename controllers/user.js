@@ -12,8 +12,8 @@ const ReCAPTCHA = require('recaptcha2');
 const moment = require('moment');
 
 let reCaptchaSecret;
-if(process.ENV.CAPTCHA) {
-	reCaptchaSecret = process.ENV.CAPTCHA;
+if(process.env.CAPTCHA) {
+	reCaptchaSecret = process.env.CAPTCHA;
 } else {
 	reCaptchaSecret = require('../config/recaptcha');
 }
