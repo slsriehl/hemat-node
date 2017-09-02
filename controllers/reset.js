@@ -39,8 +39,7 @@ const controller = {
 					]
 				});
 			} else {
-				req.session.user = data.dataValues.id;
-				controller.sendResetEmail(req, res);
+				controller.sendResetEmail(req, res, data.dataValues.id);
 			}
 		})
 		.catch(error => {
@@ -168,10 +167,10 @@ const controller = {
 			}
 		})
 	},
-	sendResetEmail: (req, res) => {
+	sendResetEmail: (req, res, user) => {
 		console.log('send reset email fired');
 		const tokenEntry = {
-			userId: req.session.user,
+			userId: user,
 			code: uuid(),
 			used: false,
 			valid: true,
@@ -187,7 +186,7 @@ const controller = {
 				valid: false
 			}, {
 				where: {
-					userId: req.session.user,
+					userId: user,
 					$not: {
 						expiresAt: data.dataValues.expiresAt
 					}
@@ -200,7 +199,7 @@ const controller = {
 			.findOne({
 				attributes: ['firstname', 'lastname', 'email'],
 				where: {
-					id: req.session.user
+					id: user
 				},
 				include: [{
 					model: models.ResetTokens,
@@ -213,11 +212,12 @@ const controller = {
 		})
 		.then((result) => {
 			console.log(util.inspect(result));
+			const myUrlRoot = req.get('host');
 			const mailOptions = {
 				from: `"Hematogones Admin" <${from}>`,
 				to: `"${result.dataValues.firstname} ${result.dataValues.lastname}" <${result.dataValues.email}>`,
 				subject: 'Reset your password at hematogones.com',
-				text: `Thanks for using hematogones.com.  To reset your password, please follow the following link or paste it into your browser. <a href='localhost:5000/reset/${result.dataValues.ResetTokens[0].dataValues.code}' target='_blank'>localhost:5000/reset/${result.dataValues.ResetTokens[0].dataValues.code}</a>  This link will expire in 24 hours, so if it's been longer than that, please request another reset link at localhost:5000/reset/request`
+				html: `<p>Thanks for using hematogones.com.  To reset your password, please follow the following link or paste it into your browser. <a href="${req.protocol}://${myUrlRoot}/reset/${result.dataValues.ResetTokens[0].dataValues.code}" target='_blank'>${myUrlRoot}/reset/${result.dataValues.ResetTokens[0].dataValues.code}</a>.</p><p>This link will expire in 24 hours, so if it's been longer than that, please <a href="${myUrlRoot}/reset/request">request another reset link</a>.</p>`
 			}
 			transporter.sendMail(mailOptions, function(err, response) {
 				console.log(`transporter.sendMail fired`);
