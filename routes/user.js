@@ -49,7 +49,8 @@ router.get('/user/signup', (req, res) => {
 		res.render('login/signup.hbs', {
 			specificScripts: [
 				"/js/login-settings.js"
-			]
+			],
+			signup: true
 		});
 	}
 
