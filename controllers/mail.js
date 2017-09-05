@@ -57,8 +57,8 @@ const controller = {
 						lastname: data.dataValues.lastname
 					},
 					specificScripts: [
-						"../vendor/jquery/js/jquery.validate.min.js",
-						"../js/login-settings.js"
+						"/vendor/jquery/js/jquery.validate.min.js",
+						"/js/login-settings.js"
 					]
 				});
 			})
@@ -68,8 +68,8 @@ const controller = {
 				res.render('mail.hbs', {
 					messages: msg,
 					specificScripts: [
-						"../vendor/jquery/js/jquery.validate.min.js",
-						"../js/login-settings.js"
+						"/vendor/jquery/js/jquery.validate.min.js",
+						"/js/login-settings.js"
 					]
 				});
 			})
@@ -77,8 +77,8 @@ const controller = {
 			res.render('mail.hbs', {
 				messages: msg,
 				specificScripts: [
-					"../vendor/jquery/js/jquery.validate.min.js",
-					"../js/login-settings.js"
+					"/vendor/jquery/js/jquery.validate.min.js",
+					"/js/login-settings.js"
 				]
 			});
 		}

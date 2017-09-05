@@ -243,7 +243,7 @@ const controller = {
 					firstname: req.session.firstname
 				},
 				specificScripts: [
-					"../js/all-reports.js"
+					"/js/all-reports.js"
 				],
 				reports: data
 			});
