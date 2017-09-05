@@ -7,7 +7,7 @@ const generalHelpers = require('./general-helpers');
 const Promise = require('bluebird');
 
 const util = require('util');
-const recaptcha = require('recaptcha2');
+const ReCAPTCHA = require('recaptcha2');
 const moment = require('moment');
 
 let reCaptchaSecret;
@@ -22,9 +22,11 @@ if(process.env.CAPTCHA) {
 const controller = {
 	//save a new user to the db
 	signupUser: (req, res) => {
+
 		const recaptcha = new ReCAPTCHA({
 			siteKey: "6Le99i0UAAAAAIIKkc2tRvlXTjVdwxxrwHg7YY2d",
-			secretKey: reCaptchaSecret
+			secretKey: reCaptchaSecret,
+			ssl: true
 		});
 
 		console.log(req.body);
@@ -55,7 +57,7 @@ const controller = {
 		console.log(newUser);
 		console.log(testUser);
 
-		return recaptcha.validateRequest(req)
+		return recaptcha.validate(req.body['g-recaptcha-response'])
 		.then(() => {
 		//body elements are many
 
@@ -103,6 +105,7 @@ const controller = {
 		})
 		.catch((error) => {
 			req.session.error = error;
+			console.log(error);
 			req.session.message = "Sorry, we had an error.  Please try to sign up again, and be mindful of the Captcha field.  If you get another error, please <a href='/mail' target='_blank'>email our admin</a>.";
 			req.session.messageType = 'system-fail';
 			req.session.save();
