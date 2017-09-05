@@ -34,23 +34,29 @@ const helpers = {
 			.then((data) => {
 				console.log(data);
 				if(data.length === 0) {
-					return models.CaseReferences
-					.create({
-						reference: escape(req.body.newCaseRef.trim()),
-						userId: req.session.user
-					})
-					.then((result) => {
-						console.log(`result ${util.inspect(result)}`);
-						saveObj.referenceId = result.dataValues.id;
-						delete saveObj.newCaseRef;
-						return Promise.resolve(saveObj);
-					})
-					.catch(error => {
-						generalHelpers.writeToErrorLog(req, error);
-						console.log(error);
-						return Promise.reject(error);
-					});
+					return Promise.resolve(true);
+				} else {
+					const error = 'that case ref already exists';
+					return Promise.reject(error);
 				}
+			})
+			.then((data) => {
+				return models.CaseReferences
+				.create({
+					reference: escape(req.body.newCaseRef.trim()),
+					userId: req.session.user
+				})
+			})
+			.then((result) => {
+				console.log(`result ${util.inspect(result)}`);
+				saveObj.referenceId = result.dataValues.id;
+				delete saveObj.newCaseRef;
+				return Promise.resolve(saveObj);
+			})
+			.catch(error => {
+				generalHelpers.writeToErrorLog(req, error);
+				console.log(error);
+				return Promise.reject(error);
 			})
 		} else {
 			return Promise.resolve(saveObj);

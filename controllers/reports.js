@@ -53,60 +53,60 @@ const controller = {
 				editedAttributes.push(myAttributes[i]);
 			}
 		}
-			return helpers.saveAndAddCaseReference(req, res, almostObjToSave)
-			.then((objToSave) => {
-				console.log(objToSave);
+		return helpers.saveAndAddCaseReference(req, res, almostObjToSave)
+		.then((objToSave) => {
+			console.log(objToSave);
+			return models.Reports
+			.create(objToSave)
+		})
+		.then((data) => {
+			console.log(data);
+			req.session.report = data.dataValues.id;
+			console.log('my attributes just before pulling report' + util.inspect(myAttributes));
+			const attrWithTime = [...editedAttributes, 'createdAt'];
+			console.log('attrWithTime' + attrWithTime);
+			return helpers.pullReport(req, res, attrWithTime)
+		})
+		.then((data) => {
+			console.log(data);
+			console.log(util.inspect(data.dataValues.User.dataValues));
+			console.log(editedAttributes);
+			return helpers.createReportObj(req, res, editedAttributes, data)
+		})
+		.then((reportObj) => {
+			console.log(reportObj);
+			return helpers.pdfReport(req, res, reportObj)
+		})
+		.then((success) => {
+			if(success) {
 				return models.Reports
-				.create(objToSave)
-			})
-			.then((data) => {
-				console.log(data);
-				req.session.report = data.dataValues.id;
-				console.log('my attributes just before pulling report' + util.inspect(myAttributes));
-				const attrWithTime = [...editedAttributes, 'createdAt'];
-				console.log('attrWithTime' + attrWithTime);
-				return helpers.pullReport(req, res, attrWithTime)
-			})
-			.then((data) => {
-				console.log(data);
-				console.log(util.inspect(data.dataValues.User.dataValues));
-				console.log(editedAttributes);
-				return helpers.createReportObj(req, res, editedAttributes, data)
-			})
-			.then((reportObj) => {
-				console.log(reportObj);
-				return helpers.pdfReport(req, res, reportObj)
-			})
-			.then((success) => {
-				if(success) {
-					return models.Reports
-					.update({
-						pdfName: req.session.pdf
-					}, {
-						where: {
-							id: req.session.report
-						}
-					})
-				} else {
-					res.send('failure');
-				}
-			})
-			.then((data) => {
-				console.log(data.toString());
-				if(data.toString() === '0') {
-					res.send('failure');
-				} else {
-					console.log(data);
-					res.json({
-						report: req.session.report
-					});
-				}
-			})
-			.catch(error => {
-				generalHelpers.writeToErrorLog(req, error);
-				console.log(error);
+				.update({
+					pdfName: req.session.pdf
+				}, {
+					where: {
+						id: req.session.report
+					}
+				})
+			} else {
 				res.send('failure');
-			});
+			}
+		})
+		.then((data) => {
+			console.log(data.toString());
+			if(data.toString() === '0') {
+				res.send('failure');
+			} else {
+				console.log(data);
+				res.json({
+					report: req.session.report
+				});
+			}
+		})
+		.catch(error => {
+			generalHelpers.writeToErrorLog(req, error);
+			console.log(error);
+			res.send('failure');
+		});
 	},
 	guestReportPromise: (req, res, almostObjToSave) => {
 		let finalReportObj = {
