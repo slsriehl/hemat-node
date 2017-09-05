@@ -9,6 +9,8 @@ const uuid = require('uuid/v4');
 const moment = require('moment');
 const nodemailer = require('nodemailer');
 
+const Promise = require('bluebird');
+
 const transporter = require('./transporter');
 
 let from;
@@ -40,8 +42,7 @@ const controller = {
 						id: "reset-request-fail"
 					}],
 					specificScripts: [
-
-						"../js/login-settings.js"
+						"/js/login-settings.js"
 					]
 				});
 			} else {
@@ -69,8 +70,7 @@ const controller = {
 				res.render('login/reset.hbs', {
 					code: req.params.code,
 					specificScripts: [
-
-						"../js/login-settings.js"
+						"/js/login-settings.js"
 					]
 				});
 			} else {
@@ -80,85 +80,34 @@ const controller = {
 						id: 'expired-reset-request-on-load'
 					}],
 					specificScripts: [
-
-						"../js/login-settings.js"
+						"/js/login-settings.js"
 					]
 				});
 			}
 		})
 	},
 	resetPassword: (req, res) => {
+		let userObjTemp;
 		console.log(req.body);
 		console.log(req.params);
 		return models.ResetTokens
 		.findOne({
-			attributes: ['userId', 'valid', 'used', 'expiresAt'],
+			attributes: ['valid', 'used', 'expiresAt'],
 			where: {
 				code: req.params.code
-			}
+			},
+			include: [{
+				model: models.Users,
+				attributes: ['id', 'firstname']
+			}]
 		})
 		.then((data) => {
 			console.log(data);
-			req.session.user = data.dataValues.userId;
 			const isNotExpired = moment(data.dataValues.expiresAt).isAfter();
 			if(data.dataValues.valid && !data.dataValues.used && isNotExpired) {
-				return models.Users
-				.update({
-					password: helpers.setHash(req.body.password.trim()),
-					requireReset: false
-				}, {
-					where: {
-						id: req.session.user
-					}
-				})
-				.then((data) => {
-					console.log(data);
-					const dataStr = JSON.stringify(data);
-					if(dataStr === '[1]') {
-						console.log(data);
-						req.session.message = 'Password successfully reset!';
-						req.session.messageType = 'successful-reset';
-						req.session.reset = false;
-						cookieHelpers.verifyCookie(req, res, true);
-						req.session.save();
-						return models.ResetTokens
-						.update({
-							valid: false,
-							used: true
-						}, {
-							where: {
-								code: req.params.code
-							}
-						})
-						.then((result) => {
-							console.log(result);
-							return models.Users
-							.findOne({
-								attributes: ['firstname'],
-								where: {
-									id: req.session.user
-								}
-							})
-						})
-						.then((something) => {
-							req.session.firstname = something.dataValues.firstname;
-							req.session.save();
-							helpers.getSystemMessages(req, res, 'index.hbs');
-						});
-
-					} else {
-						res.render('login/reset-request.hbs', {
-							messages: [{
-								text: 'Sorry, we were unable to record your new password.  Please try again or <a href="/mail">contact our admin</a>.',
-								id: 'expired-reset-request-on-load'
-							}],
-							specificScripts: [
-
-								"../js/login-settings.js"
-							]
-						});
-					}
-				});
+				userObjTemp = data.dataValues.User.dataValues;
+				console.log(userObjTemp);
+				return Promise.resolve(userObjTemp);
 			} else {
 				res.render('login/reset-request.hbs', {
 					messages: [{
@@ -166,11 +115,61 @@ const controller = {
 						id: 'expired-reset-request-on-try'
 					}],
 					specificScripts: [
-
-						"../js/login-settings.js"
+						"/js/login-settings.js"
 					]
 				});
 			}
+		})
+		.then((data) => {
+			return models.Users
+			.update({
+				password: helpers.setHash(req.body.password.trim()),
+				requireReset: false
+			}, {
+				where: {
+					id: data.id
+				}
+			})
+		})
+		.then((data) => {
+			console.log(data);
+			const dataStr = JSON.stringify(data);
+			if(dataStr === '[1]') {
+				return Promise.resolve(userObjTemp);
+			} else {
+				res.render('login/reset-request.hbs', {
+					messages: [{
+						text: 'Sorry, we were unable to record your new password.  Please try again or <a href="/mail">contact our admin</a>.',
+						id: 'expired-reset-request-on-load'
+					}],
+					specificScripts: [
+						"/js/login-settings.js"
+					]
+				});
+			}
+		})
+		.then((data) => {
+			console.log(data);
+			req.session.message = 'Password successfully reset!';
+			req.session.messageType = 'successful-reset';
+			req.session.user = data.id;
+			req.session.firstname = data.firstname;
+			req.session.reset = false;
+			cookieHelpers.verifyCookie(req, res, true);
+			req.session.save();
+			return models.ResetTokens
+			.update({
+				valid: false,
+				used: true
+			}, {
+				where: {
+					code: req.params.code
+				}
+			})
+		})
+		.then((result) => {
+			console.log(result);
+			helpers.getSystemMessages(req, res, 'index.hbs');
 		})
 	},
 	sendResetEmail: (req, res, user) => {
@@ -199,8 +198,8 @@ const controller = {
 				}
 			})
 		})
-		.then((something) => {
-			console.log(something);
+		.then((data) => {
+			console.log(data);
 			return models.Users
 			.findOne({
 				attributes: ['firstname', 'lastname', 'email'],
@@ -252,10 +251,6 @@ const controller = {
 				}
 			});
 		})
-		.catch((error) => {
-			generalHelpers.writeToErrorLog(req, error);
-			res.redirect('/');
-		});
 	},
 
 }
