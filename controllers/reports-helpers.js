@@ -190,13 +190,14 @@ const helpers = {
 			console.log(stats);
 			if(stats) {
 				return Promise.resolve(true);
-			} else {
-				return fs.mkdirAsync(pathToUserDir)
 			}
 		})
+		.catch((error) => {
+			return fs.mkdirAsync(pathToUserDir)
+		})
 		.then((e) => {
-			console.log(e.code);
-			if(!e || e.code === 'EEXIST') {
+			console.log(e.errno);
+			if(!e || e.errno === -17) {
 				return Promise.resolve(true);
 			} else {
 				console.log(util.inspect(e) + 'there was a problem creating the folder')
