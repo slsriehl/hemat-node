@@ -192,11 +192,15 @@ const helpers = {
 				return Promise.resolve(true);
 			}
 		})
-		.catch((error) => {
-			return fs.mkdirAsync(pathToUserDir)
+		.catch((e) => {
+			if(e == true || e.errno === -17) {
+				return Promise.resolve(true);
+			} else {
+				return fs.mkdirAsync(pathToUserDir)
+			}
+
 		})
 		.then((e) => {
-			console.log(e.errno);
 			if(e == true || e.errno === -17) {
 				return Promise.resolve(true);
 			} else {
