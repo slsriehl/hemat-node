@@ -68,6 +68,7 @@ const controller = {
 				return helpers.pullReport(req, res, attrWithTime)
 			})
 			.then((data) => {
+				console.log(data);
 				console.log(util.inspect(data.dataValues.User.dataValues));
 				console.log(editedAttributes);
 				return helpers.createReportObj(req, res, editedAttributes, data)
