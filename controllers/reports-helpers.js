@@ -198,7 +198,7 @@ const helpers = {
 		// 		return Promise.resolve(true);
 		// 	} else {
 		return fs.mkdirAsync(pathToUserDir)
-		.then((error) => {
+		.catch((error) => {
 			if(!error || error.errno == -17) {
 				return Promise.resolve(true);
 			} else {
