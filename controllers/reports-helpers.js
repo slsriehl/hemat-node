@@ -188,20 +188,20 @@ const helpers = {
 		return fs.statAsync(pathToUserDir)
 		.then((stats) => {
 			console.log(stats);
-			return Promise.resolve(true);
+			if(stats) {
+				return Promise.resolve(true);
+			} else {
+				return fs.mkdirAsync(pathToUserDir)
+			}
 		})
-		.catch(error => {
-			console.log(error);
-			return fs.mkdirAsync(pathToUserDir)
-			.then((e) => {
-				console.log(e.code);
-				if(!e || e.code === 'EEXIST') {
-					return Promise.resolve(true);
-				} else {
-					console.log(util.inspect(e) + 'there was a problem creating the folder')
-					return Promise.reject(error);
-				}
-			})
+		.then((e) => {
+			console.log(e.code);
+			if(!e || e.code === 'EEXIST') {
+				return Promise.resolve(true);
+			} else {
+				console.log(util.inspect(e) + 'there was a problem creating the folder')
+				return Promise.reject(e);
+			}
 		})
 	},
 	createReadStream: (file) => {
