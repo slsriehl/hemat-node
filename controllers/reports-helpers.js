@@ -185,29 +185,30 @@ const helpers = {
 	},
 	directory: (pathToUserDir) => {
 		console.log('process.cwd()' + process.cwd());
-		return fs.statAsync(pathToUserDir)
-		.then((stats) => {
-			console.log(stats);
-			if(stats) {
-				return Promise.resolve(true);
-			}
-		})
-		.catch((e) => {
-			if(e == true || e.errno === -17) {
+		// return fs.statAsync(pathToUserDir)
+		// .then((stats) => {
+		// 	console.log(stats);
+		// 	if(stats) {
+		// 		return Promise.resolve(true);
+		// 	}
+		// })
+		// .catch((e) => {
+		// 	console.log(e);
+		// 	if(e == true || e.errno == -17) {
+		// 		return Promise.resolve(true);
+		// 	} else {
+		return fs.mkdirAsync(pathToUserDir)
+		.then((error) => {
+			if(!error || error.errno == -17) {
 				return Promise.resolve(true);
 			} else {
-				return fs.mkdirAsync(pathToUserDir)
+				console.log(util.inspect(error) + 'there was a problem creating the folder')
+				return Promise.reject(error);
 			}
+		})
+		// 	}
+		// })
 
-		})
-		.then((e) => {
-			if(e == true || e.errno === -17) {
-				return Promise.resolve(true);
-			} else {
-				console.log(util.inspect(e) + 'there was a problem creating the folder')
-				return Promise.reject(e);
-			}
-		})
 	},
 	createReadStream: (file) => {
 		return fs.createReadStream(file)
