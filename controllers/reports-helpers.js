@@ -197,7 +197,7 @@ const helpers = {
 		})
 		.then((e) => {
 			console.log(e.errno);
-			if(!e || e.errno === -17) {
+			if(e == true || e.errno === -17) {
 				return Promise.resolve(true);
 			} else {
 				console.log(util.inspect(e) + 'there was a problem creating the folder')
