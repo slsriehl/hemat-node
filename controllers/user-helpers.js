@@ -40,8 +40,8 @@ const helpers = {
 						text: results[i].message,
 						id: results[i].id
 					}
+					systemMessages.push(systemMessage);
 				}
-				systemMessages.push(systemMessage);
 				//if there are system messages, return them
 				return Promise.resolve(systemMessages);
 			}
