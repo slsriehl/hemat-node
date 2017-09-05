@@ -7,7 +7,7 @@ const generalHelpers = require('./general-helpers');
 const Promise = require('bluebird');
 
 const util = require('util');
-const ReCAPTCHA = require('recaptcha2');
+const recaptcha = require('recaptcha2');
 const moment = require('moment');
 
 let reCaptchaSecret;
@@ -55,7 +55,7 @@ const controller = {
 		console.log(newUser);
 		console.log(testUser);
 
-		recaptcha.validateRequest(req)
+		return recaptcha.validateRequest(req)
 		.then(() => {
 		//body elements are many
 
