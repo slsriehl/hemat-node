@@ -68,6 +68,8 @@ const helpers = {
 						firstname: req.session.firstname
 					}
 				});
+			} else if (renderPath == 'index.hbs') {
+				res.redirect('/');
 			} else if(renderPath != null) {
 				console.log('getSystem no sessmsg but renderPath');
 				res.render(renderPath, {

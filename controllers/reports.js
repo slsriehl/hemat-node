@@ -18,16 +18,16 @@ const controller = {
 			appId: req.session.app,
 			referenceId: req.body.referenceId,
 			newCaseRef: req.body.newCaseRef,
-			singleSection: req.body.singleSection,
-			comments: req.body.comments,
-			micro: req.body.micro,
-			finals: req.body.finals,
-			gross: req.body.gross,
-			cbcData: req.body.cbcData,
-			diff: req.body.diff,
-			diffPercent: req.body.diffPercent,
-			serologic: req.body.serologic,
-			ihcTable: req.body.ihcTable
+			singleSection: req.body.singleSection //,
+			// comments: req.body.comments,
+			// micro: req.body.micro,
+			// finals: req.body.finals,
+			// gross: req.body.gross,
+			// cbcData: req.body.cbcData,
+			// diff: req.body.diff,
+			// diffPercent: req.body.diffPercent,
+			// serologic: req.body.serologic,
+			// ihcTable: req.body.ihcTable
 		}
 		console.log('prelim obj to save' + util.inspect(prelimObjToSave));
 		if(prelimObjToSave.referenceId == 0) {
@@ -40,7 +40,8 @@ const controller = {
 		if(cookieHelpers.verifyCookie(req, res)) {
 			controller.memberReportPromise(req, res, almostObjToSave, myAttributes);
 		} else {
-			controller.guestReportPromise(req, res, almostObjToSave);
+			res.send("You can't PDF reports unless you're logged in.")
+			//controller.guestReportPromise(req, res, almostObjToSave);
 		}
 	},
 	memberReportPromise: (req, res, almostObjToSave, myAttributes) => {
@@ -218,15 +219,16 @@ const controller = {
 				if(data[i].dataValues.singleSection) {
 					tempText = generalHelpers.removeLineBreaks(data[i].dataValues.singleSection);
 					dataObj.text = tempText;
-				} else if (data[i].dataValues.comments) {
-					tempText = generalHelpers.removeLineBreaks(data[i].dataValues.comments);
-					dataObj.text = tempText;
-				} else if(data[i].dataValues.ihcTable) {
-					tempText = generalHelpers.removeLineBreaks(data[i].dataValues.ihcTable);
-					dataObj.text = tempText;
-				} else {
-					dataObj.text = '';
 				}
+				// } else if (data[i].dataValues.comments) {
+				// 	tempText = generalHelpers.removeLineBreaks(data[i].dataValues.comments);
+				// 	dataObj.text = tempText;
+				// } else if(data[i].dataValues.ihcTable) {
+				// 	tempText = generalHelpers.removeLineBreaks(data[i].dataValues.ihcTable);
+				// 	dataObj.text = tempText;
+				// } else {
+				// 	dataObj.text = '';
+				// }
 				if(data[i].dataValues.CaseReference) {
 					dataObj.reference = data[i].dataValues.CaseReference.dataValues.reference;
 				}

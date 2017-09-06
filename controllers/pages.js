@@ -101,7 +101,7 @@ const controller = {
 				req.session.app = result.dataValues.id;
 				res.render(renderPath, {
 					messages: [{
-						text: '<a href="/user/signup">Sign up</a> to save your reports and access more resources.',
+						text: '<a href="/user/signup">Sign up</a> to save, edit, and PDF your reports and access more resources.',
 						id: 'you-should-sign-up'
 					}],
 					specificScripts: scripts

@@ -26,6 +26,7 @@ const helpers = {
 		if(!saveObj.referenceId && saveObj.newCaseRef) {
 			return models.CaseReferences
 			.findAll({
+				attributes: ['id', 'reference'],
 				where: {
 					reference: saveObj.newCaseRef,
 					userId: req.session.user
@@ -36,21 +37,31 @@ const helpers = {
 				if(data.length === 0) {
 					return Promise.resolve(true);
 				} else {
-					const error = 'that case ref already exists';
-					return Promise.reject(error);
+					for(var i = 0; i < data.length; i++) {
+						if(saveObj.newCaseRef == data[i].dataValues.reference) {
+							saveObj.referenceId = data[i].dataValues.id;
+							return Promise.resolve(false);
+						}
+					}
 				}
 			})
 			.then((data) => {
-				return models.CaseReferences
-				.create({
-					reference: escape(req.body.newCaseRef.trim()),
-					userId: req.session.user
-				})
+				if(data) {
+					return models.CaseReferences
+					.create({
+						reference: escape(req.body.newCaseRef.trim()),
+						userId: req.session.user
+					})
+				} else {
+					return Promise.resolve(false);
+				}
 			})
 			.then((result) => {
 				console.log(`result ${util.inspect(result)}`);
-				saveObj.referenceId = result.dataValues.id;
 				delete saveObj.newCaseRef;
+				if(result) {
+					saveObj.referenceId = result.dataValues.id;
+				}
 				return Promise.resolve(saveObj);
 			})
 			.catch(error => {
@@ -85,20 +96,24 @@ const helpers = {
 		console.log(data);
 		//create an object with the report fields
 		console.log(attrArr);
-		const arrFields = [];
-		const reportFields = attrArr.reduce((obj, name) => {
-			obj = {
-				'name': name,
-				text: data.dataValues[name]
-			}
-			if (name == 'singleSection') {
-				obj.name = 'Report';
-			}
-			arrFields.push(obj);
-			return obj;
-		}, 0);
+		const reportFields = [{
+			name: "Report",
+			text: data.dataValues.singleSection
+		}];
+		// const arrFields = [];
+		// const reportFields = attrArr.reduce((obj, name) => {
+		// 	obj = {
+		// 		'name': name,
+		// 		text: data.dataValues[name]
+		// 	}
+		// 	if (name == 'singleSection') {
+		// 		obj.name = 'Report';
+		// 	}
+		// 	arrFields.push(obj);
+		// 	return obj;
+		// }, 0);
 		const baseReport = {
-			reportFields: arrFields
+			reportFields: reportFields
 		}
 		console.log(baseReport);
 		//add the fields for the first and last name, the reference, and the app name and slug
@@ -216,7 +231,7 @@ const helpers = {
 	getReports: (req, res) => {
 		return models.Reports
 		.findAll({
-			attributes: ['id', 'singleSection', 'comments', 'ihcTable', 'createdAt'],
+			attributes: ['id', 'singleSection', 'createdAt'],
 			where: {
 				userId: req.session.user
 			},
@@ -248,7 +263,7 @@ const helpers = {
 	getPreviousReports: (req) => {
 		return models.Reports
 		.findAll({
-			attributes: ['id', 'singleSection', 'comments', 'ihcTable', 'createdAt'],
+			attributes: ['id', 'singleSection', 'createdAt'],
 			where: {
 				userId: req.session.user,
 				appId: req.session.app
@@ -278,15 +293,16 @@ const helpers = {
 				if(result[i].dataValues.singleSection) {
 					text = result[i].dataValues.singleSection;
 					oneReport.text = generalHelpers.removeLineBreaks(text);
-				} else if(result[i].dataValues.comments) {
-					text = result[i].dataValues.comments;
-					oneReport.text = generalHelpers.removeLineBreaks(text);
-				} else if (result[i].dataValues.ihcTable) {
-					text = result[i].dataValues.ihcTable;
-					oneReport.text = generalHelpers.removeLineBreaks(text);
-				} else {
-					oneReport.text = '';
 				}
+				// } else if(result[i].dataValues.comments) {
+				// 	text = result[i].dataValues.comments;
+				// 	oneReport.text = generalHelpers.removeLineBreaks(text);
+				// } else if (result[i].dataValues.ihcTable) {
+				// 	text = result[i].dataValues.ihcTable;
+				// 	oneReport.text = generalHelpers.removeLineBreaks(text);
+				// } else {
+				// 	oneReport.text = '';
+				// }
 				console.log(oneReport);
 				thisApp.push(oneReport);
 			}
@@ -297,7 +313,7 @@ const helpers = {
 	findCopyReport: (req) => {
 		return models.Reports
 		.findOne({
-			attributes: ['appId', 'singleSection', 'comments', 'micro', 'finals', 'gross', 'cbcData', 'diff', 'diffPercent', 'serologic', 'ihcTable', 'createdAt'],
+			attributes: ['appId', 'singleSection', 'createdAt'],
 			where: {
 				id: req.session.report
 			},
@@ -321,15 +337,15 @@ const helpers = {
 				appName: data.dataValues.App.dataValues.name,
 				appGroupName: data.dataValues.App.dataValues.AppGroup.dataValues.name,
 				singleSection: data.dataValues.singleSection,
-				comments: data.dataValues.comments,
-				micro: data.dataValues.micro,
-				finals: data.dataValues.finals,
-				gross: data.dataValues.gross,
-				cbcData: data.dataValues.cbcData,
-				diff: data.dataValues.diff,
-				diffPercent: data.dataValues.diffPercent,
-				serologic: data.dataValues.serologic,
-				ihcTable: data.dataValues.ihcTable
+				// comments: data.dataValues.comments,
+				// micro: data.dataValues.micro,
+				// finals: data.dataValues.finals,
+				// gross: data.dataValues.gross,
+				// cbcData: data.dataValues.cbcData,
+				// diff: data.dataValues.diff,
+				// diffPercent: data.dataValues.diffPercent,
+				// serologic: data.dataValues.serologic,
+				// ihcTable: data.dataValues.ihcTable
 			}
 			if(data.dataValues.CaseReference) {
 				thisReport.reference = data.dataValues.CaseReference.dataValues.reference;
