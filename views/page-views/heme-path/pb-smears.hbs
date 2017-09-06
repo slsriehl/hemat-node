@@ -260,7 +260,6 @@
 									<div class="card-block">
 
 										<form>
-											{{> page-partials/case-reference}}
 												<div class="form-group">
 														<textarea class="form-control" id="outPut-1" rows="5" placeholder="CBC Data"></textarea>
 														<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-1">Copy to Clipboard</span>
@@ -285,6 +284,7 @@
 								</div>
 						</div>
 				</div>
+				{{> page-modals/combined-report}}
 				{{> page-modals/new-case-reference}}
 				{{> page-partials/history-module}}
 		</div>

@@ -19,10 +19,6 @@
 								<button class="btn btn-default btn-block" data-target="#flipFlop" data-toggle="modal" id='openhelp'
 												type='button'> How to use
 								</button>
-								<!-- The How-to-modal -->
-{{> page-modals/clin-path/bal-how-to-use}}
-								<!-- The alert modals-->
-{{> page-modals/clin-path/bal-alert}}
 						</div>
 				</div>
 		</div>
@@ -263,7 +259,6 @@
 																	</ul>
 															</div>
 															<div class="card-block">
-															{{> page-partials/case-reference}}
 																<div class="form-group">
 																		<textarea class="form-control" id="outPut-1" rows="9" placeholder="Micro"></textarea>
 																		<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-1">Copy to Clipboard</span>
@@ -284,6 +279,11 @@
 												</div>
 										</div>
 				</div>
+				<!-- The How-to-modal -->
+{{> page-modals/clin-path/bal-how-to-use}}
+				<!-- The alert modals-->
+{{> page-modals/clin-path/bal-alert}}
+				{{> page-modals/combined-report}}
 				{{> page-modals/new-case-reference}}
 				{{> page-partials/history-module}}
 		<!--end container wrapper-->
