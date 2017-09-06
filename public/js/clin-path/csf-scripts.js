@@ -242,24 +242,23 @@ $(window).on("load", function (){
         }
         $('#outPut-3').val(report_g);
 
-				dataObj.micro = $('#outPut-1').val();
-				dataObj.finals = $('#outPut-2').val();
-				dataObj.gross = $('#outPut-3').val();
-				dataObj.comments = $('#outPut-4').val();
+				var textToPass = $('#outPut-1').val() +'\n\n'+$('#outPut-2').val()+'\n\n'+$('#outPut-3').val()+'\n\n'+$('#outPut-4').val();
+
+        $('#outPut-combine').val(textToPass);
+        $('#combined-report').modal("show");
+
+				dataObj.singleSection = $('#outPut-combine').val();
 				makeCreatePdfBtn();
 
     });
 
 // COMBINE TO SINGLE REPORT
     // ********************* Combined report function ***********************//
-    $('#combineReport').on('click', function () {
-        // store your text to localStorage when someone click the link
-        var textToPass = $('#outPut-1').val() +'\n\n'+$('#outPut-2').val()+'\n\n'+$('#outPut-3').val()+'\n\n'+$('#outPut-4').val();
-
-        $('#outPut-combine').val(textToPass);
-        $('#combined-report').modal("show");
-
-    });
+    // $('#combineReport').on('click', function () {
+    //     // store your text to localStorage when someone click the link
+    //
+		//
+    // });
 
 
 });

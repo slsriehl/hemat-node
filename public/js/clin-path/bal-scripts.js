@@ -228,8 +228,12 @@ $('#done').on('click', function(){
         if ($.inArray('ORO', box_5) > -1){
             if (box_9 == 'Not applicable'){
                 $('#error').html('<h5>You forgot the ORO stain!</h5>')
+								// $('#alert-modal').on('show.bs.modal', function() {
+                // 	$('#box9').focus();
+								// });
                 $('#alert-modal').modal('show');
-                $('#box9').focus();
+                // $('#box9').focus();
+								// return;
             }
         }
         if(box_9 != "Not applicable"){
@@ -254,8 +258,10 @@ $('#done').on('click', function(){
         if ($.inArray('Fe', box_5) > -1){
             if (box_10 == 'Not applicable'){
                 $('#error').html('<h5>You forgot the Fe stain!</h5>');
-                $('#alert-modal').modal('show');
-                $('#box9').focus();
+                // $('#alert-modal').on('show.bs.modal', function() {
+                // 	$('#box10').focus();
+								// });
+								$('#alert-modal').modal('show');
             }
         }
         if(box_10 != "Not applicable"){
@@ -276,8 +282,12 @@ $('#done').on('click', function(){
         if ($.inArray('GMS', box_5) > -1){
             if (box_11 == 'Not applicable'){
                 $('#error').html('<h5>You forgot the GMS stain!</h5>')
-                $('#alert-modal').modal('show');
-                $('#box9').focus();
+								// $('#alert-modal').on('show.bs.modal', function() {
+                // 	$('#box11').focus();
+								// });
+								$('#alert-modal').modal('show');
+
+                // $('#box9').focus();
             }
         }
         if(box_11 != "Not applicable"){
@@ -329,11 +339,19 @@ $('#done').on('click', function(){
         $('#outPut-3').val(gross);
         $('#outPut-4').val(comment);
 
-				dataObj.micro = $('#outPut-1').val();
-				dataObj.finals = $('#outPut-2').val();
-				dataObj.gross = $('#outPut-3').val();
-				dataObj.comments = $('#outPut-4').val();
-				makeCreatePdfBtn();
+				// get clinical history
+        var box_0 = $("#box0").val();
+        clinical = "Clinical History\n\n" + box_0.join(', ').replace(/\w\S*/, function (txt) {return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()}) + "\n";
+
+        // store your text to localStorage when someone click the link
+
+				if(!$('#alert-modal').hasClass('show')) {
+					var textToPass = clinical+'\n\n'+$('#outPut-1').val()+'\n\n'+$('#outPut-2').val()+'\n\n'+$('#outPut-3').val()+'\n\n'+$('#outPut-4').val();
+					$('#outPut-combine').val(textToPass);
+	        $('#combined-report').modal("show");
+					dataObj.singleSection = $('#outPut-combine').val();
+					makeCreatePdfBtn();
+				}
 
     });
 
@@ -341,16 +359,16 @@ $('#done').on('click', function(){
 
 
 // ********************* Combined report function ***********************//
-    $('#writeReport').on('click', function () {
-        // get clinical history
-        var box_0 = $("#box0").val();
-        clinical = "Clinical History\n\n" + box_0.join(', ').replace(/\w\S*/, function (txt) {return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()}) + "\n";
-
-        // store your text to localStorage when someone click the link
-        var textToPass = clinical+'\n\n'+$('#outPut-1').val()+'\n\n'+$('#outPut-2').val()+'\n\n'+$('#outPut-3').val()+'\n\n'+$('#outPut-4').val();
-        $('#outPut-combine').val(textToPass);
-        $('#combined-report').modal("show");
-    });
+    // $('#writeReport').on('click', function () {
+    //     // get clinical history
+    //     var box_0 = $("#box0").val();
+    //     clinical = "Clinical History\n\n" + box_0.join(', ').replace(/\w\S*/, function (txt) {return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()}) + "\n";
+		//
+    //     // store your text to localStorage when someone click the link
+    //     var textToPass = clinical+'\n\n'+$('#outPut-1').val()+'\n\n'+$('#outPut-2').val()+'\n\n'+$('#outPut-3').val()+'\n\n'+$('#outPut-4').val();
+    //     $('#outPut-combine').val(textToPass);
+    //     $('#combined-report').modal("show");
+    // });
 
 
 
