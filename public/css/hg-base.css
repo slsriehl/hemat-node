@@ -161,3 +161,24 @@ button.snippet-result {
 	border-radius: 5px;
 	padding: 0.25rem;
 }
+
+/* breast fixation inputs */
+.pseudotable {
+	display: flex;
+	flex-direction: column;
+	width: fit-content;
+}
+.pseudotable .form-inline {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 0.5em;
+}
+
+.pseudotable .form-inline .inline-margin {
+	margin-right: 1rem;
+	font-size: 1.25rem;
+}
+/*.pseudotable .form-inline .input-group {
+	min-width: 400px;
+}*/
