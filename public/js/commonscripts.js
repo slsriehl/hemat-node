@@ -2,13 +2,14 @@
 var dataObj = {};
 
 var makeCreatePdfBtn = function() {
-	if(!$('#pdf-report').length) {
-		var reportBtnBox = $('<ul class="report-button-box nav nav-pills">');
-		var makePdfBtn = $('<a class="btn btn-lg btn-outline-success p-2 ml-4" id="pdf-report">');
-		var pdfBtnText = $('<small>Save & Create PDF</small>')
+	var makePdfBtn = $('<a class="btn btn-lg btn-outline-success p-2 ml-4" id="pdf-report">');
+	var pdfBtnText = $('<small>Save & Create PDF</small>');
+	if(!$('#pdf-report').length && $('.report-button-box').length) {
 		makePdfBtn.append(pdfBtnText);
-		reportBtnBox.append(makePdfBtn);
-		$('.button-box').append(reportBtnBox);
+		$('.report-button-box').append(makePdfBtn);
+	} else if(!$('#pdf-report').length && $('.combined-button-box').length && $('.logged-in').length) {
+		makePdfBtn.append(pdfBtnText);
+		$('.combined-button-box').prepend(makePdfBtn);
 	}
 }
 
@@ -111,18 +112,10 @@ $(function () {
 		});
 
 		//show new case reference popup if new selected
-			$('#caseRefSelect').on('change', function() {
+			$('.caseRefSelect').on('change', function() {
+				$('.caseRefSelect').val() == $(this).val();
 				if($(this).val() == '-1') {
 					$('#new-case-reference').modal('show');
-					return;
-				} else {
-					return;
-				}
-			});
-
-			$('#caseRefInput').on('blur', function() {
-				if($(this).val() != '') {
-					dataObj.newCaseRef = $('#caseRefInput').val();
 					return;
 				} else {
 					return;
@@ -138,7 +131,7 @@ $(function () {
 			console.log(dataObj);
 			var newRefOption = $('<option value="new" selected="selected">');
 			newRefOption.append(dataObj.newCaseRef);
-			$('#caseRefSelect').append(newRefOption);
+			$('.caseRefSelect').append(newRefOption);
 			//return false;
 		});
 
@@ -162,8 +155,8 @@ $(function () {
 
 		//send a report to the back end for storage and PDFing
 		$(document).off('click', '#pdf-report').on('click', '#pdf-report', function(event) {
-			if($('#caseRefSelect').val() != 'new') {
-				dataObj.referenceId = $('#caseRefSelect').val()
+			if($(this).parents().find('.caseRefSelect').val() != 'new') {
+				dataObj.referenceId = $('.caseRefSelect').val()
 			}
 			console.log(dataObj);
 			console.log('foo');
@@ -175,7 +168,7 @@ $(function () {
 			})
 			.done(function(response) {
 				console.log(response);
-				if(response.report || response.guestReport) {
+				if(response.report) {
 					//pdf was successfully created and the data saved in the database
 					if($('.message-fail')) {
 						//hide any previous error messages
@@ -188,7 +181,6 @@ $(function () {
 					} else {
 						addDownloadBtn(response);
 					}
-
 				} else {
 					//create a pdf create error message
 					failureMessage('create-pdf-fail', 'Creating your PDF failed.  Please try again.  If this problem persists, please <a href="/mail">contact our admin</a>.');
@@ -197,15 +189,15 @@ $(function () {
 		});
 
 		var addDownloadBtn = function(response) {
-			var downloadPdfBtn;
-			if(response.report) {
-				downloadPdfBtn = $('<a href="/report/download/' + response.report + '" download class="btn btn-lg btn-outline-success p-2 ml-4 download-pdf" id="download-pdf">');
-			} else if (response.guestReport) {
-				downloadPdfBtn = $('<a href="/report/guest/' + response.guestReport + '" download class="btn btn-lg btn-outline-success p-2 ml-4 download-pdf" id="download-pdf">');
-			}
+			var downloadPdfBtn = $('<a href="/report/download/' + response.report + '" download class="btn btn-lg btn-outline-success p-2 ml-4 download-pdf" id="download-pdf">');
 			var downloadBtnText = $('<small>Download</small>')
 			downloadPdfBtn.append(downloadBtnText);
-			$('.report-button-box').append(downloadPdfBtn);
+			if($('.report-button-box').length) {
+				$('.report-button-box').append(downloadPdfBtn);
+			} else {
+				$('.combined-button-box').prepend(downloadPdfBtn);
+			}
+
 		}
 
 		$(document).off('click', '#view-all-previous').on('click', '#view-all-previous', function(event) {
