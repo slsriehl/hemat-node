@@ -26,7 +26,7 @@ var datePickerIcons = {
 }
 
 //onload
-$(window).on('load', function() {
+$(document).ready(function() {
 // instantiate copy button
     new Clipboard('.copy');
 
@@ -190,6 +190,33 @@ $(function () {
 			window.location.hash = '#bc-jump';
 		}
 
+		var successMessage = function(id, message) {
+		var succMessage = $('<div class="message-box message-success" id="' + id + '"> \
+						<div class="message-dismiss"> \
+							<h2>&times;</h2> \
+			<!-- end message-dismiss --> \
+			</div> \
+			<div class="message-item"> \
+				<span>' + message + '</span> \
+				<!-- / message-item--> \
+			</div> \
+			<!-- /message-box --> \
+		</div>')
+		$('.message-center').append(succMessage);
+		//jump to message box
+		window.location.hash = '#bc-jump';
+	}
+
+	var slideUpOldMsgs = function() {
+		history.pushState("", document.title, window.location.pathname + window.location.search);
+		if($('.message-fail')) {
+			$('.message-fail').slideUp(100);
+		}
+		if($('.message-success')) {
+			$('.message-success').slideUp(100);
+		}
+	}
+
 
 
 		//send a report to the back end for storage and PDFing
@@ -208,19 +235,16 @@ $(function () {
 			.done(function(response) {
 				console.log(response);
 				//hide any previous error messages and reset the page location so the hash jump to error messages will work again
-				if($('.message-fail')) {
-					history.pushState("", document.title, window.location.pathname + window.location.search);
-					$('.message-fail').slideUp(100);
-				}
+				slideUpOldMsgs();
 				if(response.report) {
 					//pdf was successfully created and the data saved in the database
 
 					//create a button to download the pdf
 					if($('#download-pdf').length) {
-						$('#download-pdf').remove();
-						addDownloadBtn(response);
+						removeDLAndSend();
+						addDLAndSend(response);
 					} else {
-						addDownloadBtn(response);
+						addDLAndSend(response);
 					}
 				} else {
 					//create a pdf create error message
@@ -229,17 +253,45 @@ $(function () {
 			});
 		});
 
-		var addDownloadBtn = function(response) {
+		var removeDLAndSend = function() {
+			$('#download-pdf').remove();
+			$('#send-pdf').remove();
+		}
+
+		var addDLAndSend = function(response) {
+			//pdfbtn
 			var downloadPdfBtn = $('<a href="/report/download/' + response.report + '" download class="btn btn-lg btn-outline-success p-2 ml-4 download-pdf" id="download-pdf">');
 			var downloadBtnText = $('<small>Download</small>')
 			downloadPdfBtn.append(downloadBtnText);
+			//sendbtn
+			var sendPdfBtn = $('<a href="#" data-report="' + response.report + '" class="btn btn-lg btn-outline-success p-2 ml-4 send-pdf" id="send-pdf">');
+			var sendBtnText = $('<small>Email</small>')
+			sendPdfBtn.append(sendBtnText);
 			if($('.report-button-box').length) {
+				$('.report-button-box').append(sendPdfBtn);
 				$('.report-button-box').append(downloadPdfBtn);
 			} else {
+				$('.combined-button-box').prepend(sendPdfBtn);
 				$('.combined-button-box').prepend(downloadPdfBtn);
 			}
-
 		}
+		$(document).off('click', '.send-pdf').on('click', '.send-pdf', function(event) {
+			console.log('send-pdf click fired');
+			let reportId = $(this).attr('data-report');
+			$.ajax({
+				url: '/report/mail/' + reportId,
+				type: 'GET'
+			})
+			.done(function(response) {
+				slideUpOldMsgs();
+				$('#combined-report').modal('hide');
+				if(response.status) {
+					successMessage(response.msgType, response.msg);
+				} else {
+					failureMessage(response.msgType, response.msg);
+				}
+			});
+		});
 
 		$(document).off('click', '#view-all-previous').on('click', '#view-all-previous', function(event) {
 			window.location.href = '/reports/history';

@@ -25,6 +25,7 @@ if(process.env.EMAIL_FROM) {
 
 const generalHelpers = require('./general-helpers');
 const cookieHelpers = require('./cookie-helpers');
+const reportsHelpers = require('./reports-helpers');
 
 const controller = {
 	renderMailPage: (req, res) => {
@@ -93,23 +94,111 @@ const controller = {
 			subject: req.body.yourSubject,
 			html: message
 		}
-		transporter.sendMail(mailOptions, function(err, response) {
-			console.log(`transporter.sendMail fired`);
-			console.log(`err ${err}`);
-			console.log(`response ${response}`);
-			if(err) {
-				console.log(`err fired`);
-				req.session.message = "Your mail wasn't sent.  Please try again later.";
-				req.session.messageType = 'fail-mail-send';
-				res.redirect('/mail')
-			} else if (response) {
+		transporter.sendMail(mailOptions, function(error, response) {
+			console.log(error);
+			console.log(response);
+			if(response) {
 				console.log(`response fired`);
 				req.session.message = "Your mail was successfully sent.  We'll get back you as soon as we can!";
 				req.session.messageType = 'successful-mail-send';
 				res.redirect('/');
+			} else {
+				console.log(`err fired`);
+				req.session.message = "Your mail wasn't sent.  Please try again later.";
+				req.session.messageType = 'fail-mail-send';
+				res.redirect('/mail')
 			}
 		});
-	}
+
+	},
+	emailReport: (req, res) => {
+		console.log(req.params);
+		let mailOptions;
+		let pdfName;
+		return models.Reports
+		.findOne({
+			attributes: ['pdfName', 'createdAt'],
+			where: {
+				id: req.params.report
+			},
+			include: [{
+				attributes: ['name'],
+				model: models.Apps
+			}, {
+				attributes: ['reference'],
+				model: models.CaseReferences
+			}, {
+				attributes: ['firstname', 'lastname', 'email'],
+				model: models.Users
+			}]
+		})
+		.then((data) => {
+			console.log(util.inspect(data.dataValues, {depth: 3}));
+			let reportObj = {
+				email: data.dataValues.User.dataValues.email,
+				firstname: data.dataValues.User.dataValues.firstname,
+				lastname: data.dataValues.User.dataValues.lastname,
+				app: data.dataValues.App.dataValues.name,
+				pdfName: data.dataValues.pdfName,
+				createdAt: moment(data.dataValues.createdAt).utc().format('YYYY-MM-DD HH:mm:ss UTC')
+			}
+			if(data.dataValues.CaseReference) {
+				reportObj.reference = data.dataValues.CaseReference.dataValues.reference;
+			}
+			console.log(reportObj);
+			return Promise.resolve(reportObj);
+		})
+		.then((data) => {
+			pdfName = data.pdfName;
+			let text;
+			if(data.reference) {
+				text = `${data.app} for ${data.reference} created at ${data.createdAt}`;
+			} else {
+				text = `${data.app} created at ${data.createdAt}`;
+			}
+			mailOptions = {
+				from: from,
+				to: `"${data.firstname} ${data.lastname}" <${data.email}>`,
+				subject: text + ' at hematogones.com',
+				message: `Here is the ${text}.  Thanks for using hematogones.com!`,
+			}
+			let pdf = generalHelpers.resolvePath(`reports/${req.session.user}/${data.pdfName}`);
+			console.log(pdf);
+			console.log(mailOptions);
+			return reportsHelpers.createReadStream(pdf);
+		})
+		.then((result) => {
+			mailOptions.attachments = {
+				filename: pdfName,
+				content: result,
+				contentType: 'application/pdf'
+			}
+			transporter.sendMail(mailOptions, function(error, response) {
+				console.log(response);
+				console.log(error);
+				let msg, msgType;
+				if(response) {
+					console.log(`response fired`);
+					msg = "Check your inbox! Your report is on its way.";
+					msgType = 'successful-report-send';
+					res.send({
+						status: true,
+						msg: msg,
+						msgType: msgType
+					});
+				} else {
+					console.log(`err fired`);
+					msg = "Your report wasn't emailed.  Please try again later or <a href='/mail'>contact our admin</a>";
+					msgType = 'fail-mail-send';
+					res.send({
+						status: false,
+						msg: msg,
+						msgType: msgType
+					});
+				}
+			});
+		});
+	},
 }
 
 module.exports = controller;

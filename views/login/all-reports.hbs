@@ -1,5 +1,18 @@
 
 {{#if isAuth.check}}
+<div class="container-fluid">
+	<!-- Breadcrumbs -->
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item">
+			<a href="/">Home</a>
+		</li>
+		<li class="breadcrumb-item active" id="bc-jump">
+			Report History
+		</li>
+	</ol>
+
+ {{> message-center this}}
+
 <div class="card text-center">
 		<div class="card-header">
 			<ul class="nav nav-pills individual-report-btn-box">
@@ -57,6 +70,11 @@
 								Download
 							</small>
 						</a>
+						<a href="#" data-report="{{reportId}}" class="btn btn-outline-info p-2 send-pdf">
+							<small>
+								Email
+							</small>
+						</a>
 						<a href="/copy/{{reportId}}" class="btn btn-outline-info p-2" id="er-{{@index}}">
 							<small>
 								Copy Plain Text
@@ -71,5 +89,6 @@
 		<!-- /previous reports -->
 		</div>
 		<!-- /previous module -->
+</div>
 </div>
 {{/if}}

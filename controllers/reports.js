@@ -1,8 +1,11 @@
 
 const models = require('../models');
+const helpers = require('./reports-helpers');
 const generalHelpers = require('./general-helpers');
 const cookieHelpers = require('./cookie-helpers');
-const helpers = require('./reports-helpers');
+const transporter = require('./transporter');
+
+const nodemailer = require('nodemailer');
 
 const Promise = require('bluebird');
 
@@ -178,32 +181,33 @@ const controller = {
 			res.send('failure');
 		});
 	},
-	downloadGuest: (req, res) => {
-		console.log(req.params);
-		return models.GuestReports
-		.findOne({
-			attributes: ['pdfName'],
-			where: {
-				id: req.params.report
-			}
-		})
-		.then((data) => {
-			req.session.pdf = data.dataValues.pdfName;
-			var pdf = generalHelpers.resolvePath(`reports/guest/${req.session.pdf}`);
-			var mimetype = generalHelpers.mimeLookup(req.session.pdf);
-			res.setHeader('Content-disposition', `attachment; filename=${req.session.pdf}`);
-			res.setHeader('Content-type', mimetype);
-			return helpers.createReadStream(pdf)
-		})
-		.then((success) => {
-			success.pipe(res);
-		})
-		.catch(error => {
-			generalHelpers.writeToErrorLog(req, error);
-			console.log(error);
-			res.send('failure');
-		});
-	},
+	
+	// downloadGuest: (req, res) => {
+	// 	console.log(req.params);
+	// 	return models.GuestReports
+	// 	.findOne({
+	// 		attributes: ['pdfName'],
+	// 		where: {
+	// 			id: req.params.report
+	// 		}
+	// 	})
+	// 	.then((data) => {
+	// 		req.session.pdf = data.dataValues.pdfName;
+	// 		var pdf = generalHelpers.resolvePath(`reports/guest/${req.session.pdf}`);
+	// 		var mimetype = generalHelpers.mimeLookup(req.session.pdf);
+	// 		res.setHeader('Content-disposition', `attachment; filename=${req.session.pdf}`);
+	// 		res.setHeader('Content-type', mimetype);
+	// 		return helpers.createReadStream(pdf)
+	// 	})
+	// 	.then((success) => {
+	// 		success.pipe(res);
+	// 	})
+	// 	.catch(error => {
+	// 		generalHelpers.writeToErrorLog(req, error);
+	// 		console.log(error);
+	// 		res.send('failure');
+	// 	});
+	// },
 	reportHistory: (req, res) => {
 		return helpers.getReports(req, res)
 		.then((data) => {
