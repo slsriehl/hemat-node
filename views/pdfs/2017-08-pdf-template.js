@@ -15,10 +15,7 @@ const template =
 		<p style="font-family: sans-serif;">Timestamp: {{createdAt}}</p>\
 		</div> \
 		{{#each reportFields}} \
-			{{#if text}} \
-				<h3 style="font-family: sans-serif;">{{name}}</h3> \
 				<p style="font-family: sans-serif;">{{{text}}}</p> \
-			{{/if}} \
 		{{/each}} \
 			{{/each}} \
 </div>';
