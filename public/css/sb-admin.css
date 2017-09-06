@@ -210,11 +210,11 @@ body.fixed-nav {
 				}
 			}
 /* dropdown menu */
-			.dropdown-menu {
+			#headerMenu .dropdown-menu {
 				background-color: unset;
 			}
 			@media screen and (min-width: 992px) {
-				.dropdown-menu {
+				#headerMenu .dropdown-menu {
 					position: fixed;
 					top: 56px; /* height of menu bar */
 					right: 1.75rem; /* width of margin on parent menu item */
@@ -227,23 +227,16 @@ body.fixed-nav {
 					background-color: #292b2c;
 				}
 			}
-			.dropdown-menu .dropdown-link, .dropdown-menu .dropdown-link:active, .dropdown-menu .dropdown-link:hover, .dropdown-menu .dropdown-link:visited {
+			#headerMenu .dropdown-menu .dropdown-link, #headerMenu .dropdown-menu .dropdown-link:active, #headerMenu .dropdown-menu .dropdown-link:hover, #headerMenu .dropdown-menu .dropdown-link:visited {
 				text-decoration: none;
 				color: white;
 			}
-			.dropdown-menu .menu-item {
+			#headerMenu .dropdown-menu .menu-item {
 				padding: 0.75rem 1.5rem;
 				width: fit-content;
 				margin: 0;
 			}
-			/*.dropdown-menu .dropdown-divider-horiz {
-				box-sizing: border-box;
-				height: 3px;
-				color: white;
-				margin: 0;
-				padding: 0;
-				border: 0;
-			}*/
+
 
 /*  move the modal down by the amount of the fixed top bar */
 .modal {
