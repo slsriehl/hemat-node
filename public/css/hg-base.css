@@ -10,7 +10,7 @@
 
 /* add vertical spacing between your rows add this line to your css: */
 .top-buffer {
-	margin-top: 1rem; 
+	margin-top: 1rem;
 }
 .bottom-buffer {
 	margin-bottom: 1rem;
@@ -134,7 +134,7 @@ textarea {
 }
 
 /* style changes regarding download and create pdf buttons */
-.standard-button-box, .report-button-box {
+.standard-button-box, .report-button-box, .combined-button-box {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
