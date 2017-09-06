@@ -1,7 +1,7 @@
 {{#if isAuth.check}}
 <div class="form-group" id="caseRefDiv" {{{hideReferences snippets}}}>
 	<label>Case Reference</label>
-		<select name="caseRefSelect" id="caseRefSelect" class="form-control selectpicker">
+		<select name="caseRefSelect" id="caseRefSelect" class="form-control selectpicker caseRefSelect">
 			<option value="0" class="form-control">
 				No Case Reference
 			</option>
@@ -17,10 +17,5 @@
 				{{/each}}
 			{{/if}}
 		</select>
-</div>
-{{else}}
-<div class="form-group" id="caseRefDiv">
-	<label>Case Reference</label>
-	<input name="caseRefInput" id="caseRefInput" class="form-control" />
 </div>
 {{/if}}

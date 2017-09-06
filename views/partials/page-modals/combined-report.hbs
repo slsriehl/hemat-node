@@ -1,0 +1,42 @@
+<div
+	class="modal fade hide"
+	id="combined-report"
+	tabindex="-1"
+	role="dialog"
+	aria-labelledby="combined-report"
+	aria-hidden="true"
+	data-backdrop="false"
+>
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">
+					Combined Report{{#if isAuth.check}}<span class="logged-in"></span>{{/if}}
+				</h4>
+			</div>
+			<div class="modal-body">
+				{{> page-partials/case-reference}}
+				<textarea id="outPut-combine" rows="25" class="form-control"></textarea>
+			</div>
+			<div class="modal-footer">
+				<div class="button-box">
+					<ul class="nav nav-pills combined-button-box">
+						<a class="btn btn-lg btn-outline-success p-2 ml-4" data-toggle="popover" data-placement="top" data-clipboard-target="#outPut-combine">
+							<small>
+								Copy
+							</small>
+						</a>
+						<a class="btn btn-lg btn-outline-danger p-2 ml-4" data-dismiss="modal">
+							<small>
+								Close
+							</small>
+						</a>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
