@@ -122,24 +122,28 @@ $(function () {
 		// $('.selectpicker').selectpicker();
 
 		//dismiss messages: hide and ajax to add to dismissed messages table
-		$('.message-dismiss h2').on('click', function(event) {
+		$(document).off('click', '.message-dismiss h2').on('click', '.message-dismiss h2', function(event) {
 			console.log('foo');
-			$(this).parent().parent().slideUp(500, function() {
-				$.ajax({
-					type: 'POST',
-					url: '/message/dismiss',
-					data: {
-						id: $(this).attr('id')
-					}
-				})
-				.done(function(response) {
-					console.log(response);
-					if(response == true) {
-						console.log('message dismissed!');
-					} else {
-						console.log('message not dismissed, try again');
-					}
-				})
+			var message = $(this).parent().parent();
+			var messageId = message.attr('id');
+			message.slideUp(500, function() {
+				if(!isNaN(messageId)) {
+					$.ajax({
+						type: 'POST',
+						url: '/message/dismiss',
+						data: {
+							id: messageId
+						}
+					})
+					.done(function(response) {
+						console.log(response);
+						if(response == 'messages updated') {
+							console.log('message dismissed!');
+						} else {
+							console.log('message not dismissed, try again');
+						}
+					})
+				}
 			});
 		});
 
@@ -169,6 +173,7 @@ $(function () {
 
 		//create a failure message
 		var failureMessage = function(id, message) {
+			//create failure message
 			var failMessage = $('<div class="message-box message-fail" id="' + id + '"> \
 							<div class="message-dismiss"> \
 								<h2>&times;</h2> \
@@ -181,6 +186,8 @@ $(function () {
 				<!-- /message-box --> \
 			</div>')
 			$('.message-center').append(failMessage);
+			//jump to message box
+			window.location.hash = '#bc-jump';
 		}
 
 
@@ -200,12 +207,14 @@ $(function () {
 			})
 			.done(function(response) {
 				console.log(response);
+				//hide any previous error messages and reset the page location so the hash jump to error messages will work again
+				if($('.message-fail')) {
+					history.pushState("", document.title, window.location.pathname + window.location.search);
+					$('.message-fail').slideUp(100);
+				}
 				if(response.report) {
 					//pdf was successfully created and the data saved in the database
-					if($('.message-fail')) {
-						//hide any previous error messages
-						$('.message-fail').slideUp(400);
-					}
+
 					//create a button to download the pdf
 					if($('#download-pdf').length) {
 						$('#download-pdf').remove();
@@ -215,7 +224,7 @@ $(function () {
 					}
 				} else {
 					//create a pdf create error message
-					failureMessage('create-pdf-fail', 'Creating your PDF failed.  Please try again.  If this problem persists, please <a href="/mail">contact our admin</a>.');
+					failureMessage('pdf-create-fail', 'Creating your PDF failed.  Please try again.  If this problem persists, please <a href="/mail">contact our admin</a>.');
 				}
 			});
 		});
