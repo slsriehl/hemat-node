@@ -20,12 +20,12 @@ $(window).on('load', function() {
 
 
 // instantiate date picker
-    $('.datepicker').datepicker({
-        todayBtn: "linked",
-        orientation: "bottom auto",
-        todayHighlight: true,
-        autoclose: true
-    });
+    // $('.datepicker').datepicker({
+    //     todayBtn: "linked",
+    //     orientation: "bottom auto",
+    //     todayHighlight: true,
+    //     autoclose: true
+    // });
 
 // Add highlight to checkboxes
     $('input:checkbox').click(function () {
