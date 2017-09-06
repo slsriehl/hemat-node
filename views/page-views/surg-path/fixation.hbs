@@ -32,41 +32,54 @@
 																		<p>Enter collection and fixation data</p>
 																</div>
 																<div class="card-block">
-																		<table class="table table-responsive table-striped">
+																		<!-- <table class="table table-responsive table-striped">
 																				<tr>
 																						<td role="row" ><h4>Collection time:</h4></td>
-																						<td >
-																								<div class="input-group">
-																										<input class="form-control form-control-input" id="timestart" >
-																										<div class="input-group-addon">
-																												<i class="fa fa-calendar"></i>
-																										</div>
+																						<td > -->
+																						<div class="pseudotable">
+																							<div class="form-group form-inline" {{{stripeRows 1}}}>
+																								<label class="inline-margin">Collection Time:</label>
+																								<div class="input-group date" id="timestart">
+																										<input type="text" class="form-control" />
+																										<span class="input-group-addon">
+																												<span class="fa fa-calendar-plus-o"></span>
+																										</span>
 																								</div>
-																						</td>
+																							</div>
+																						<!-- </td>
 																				</tr>
 																				<tr>
 																						<td role="row"><h4>Time in formalin:</h4></td>
-																						<td >
-																								<div class="input-group">
-																										<input class="form-control form-control-input" id="timeformalin" >
-																										<div class="input-group-addon">
-																												<i class="fa fa-calendar"></i>
-																										</div>
-																								</div>
-																						</td>
+																						<td > -->
+																						<div class="form-group form-inline" {{{stripeRows 2}}}>
+																							<label class="inline-margin">Time in Formalin:</label>
+																							<div class="input-group date" id="timeformalin">
+																									<input type="text" class="form-control" />
+																									<span class="input-group-addon">
+																											<span class="fa fa-calendar-plus-o"></span>
+																									</span>
+																							</div>
+																						</div>
+
+																						<!-- </td>
 																				</tr>
 																				<tr>
 																						<td role="row"><h4>Out of formalin time:</h4></td>
-																						<td >
-																								<div class="input-group">
-																										<input class="form-control form-control-input" id="processorstart" >
-																										<div class="input-group-addon">
-																												<i class="fa fa-calendar"></i>
-																										</div>
-																								</div>
-																						</td>
+																						<td > -->
+																						<div class="form-group form-inline" {{{stripeRows 3}}}>
+																							<label class="inline-margin">Out of Formalin Time:</label>
+																							<div class="input-group date" id="processorstart">
+																									<input type="text" class="form-control" />
+																									<span class="input-group-addon">
+																											<span class="fa fa-calendar-plus-o"></span>
+																									</span>
+																							</div>
+																						</div>
+																						<!-- end pseudotable -->
+																					</div>
+																						<!-- </td>
 																				</tr>
-																		</table>
+																		</table> -->
 																</div>
 														</div>
 												</div>

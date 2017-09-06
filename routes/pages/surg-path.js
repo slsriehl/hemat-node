@@ -14,9 +14,13 @@ router.get('/surg-path/ihc-table', (req, res) => {
 
 router.get('/surg-path/fixation', (req, res) => {
 	controller.openAccess(req, res, './page-views/surg-path/fixation.hbs', [
-		"/vendor/jquery/js/jquery-ui-timepicker-addon.min.js",
+		//"/vendor/bootstrap/js/bootstrap-datetimepicker.min.js",
 		"/js/surg-path/fixation-scripts.js"
-	]);
+	]
+	//, [
+		//"/vendor/bootstrap/css/bootstrap-datetimepicker.min.css"
+	//]
+);
 });
 
 
