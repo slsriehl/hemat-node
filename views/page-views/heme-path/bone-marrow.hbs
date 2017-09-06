@@ -19,51 +19,54 @@
 										<!-- inline header form-->
 										<form class="form-inline">
 
-												<div class="input-group date  col-3 text-center" id="date-pick">
-														<label class="sr-only" for="date">Date - Hidden</label>
-														<input id="date" type="text" class="form-control form-control-sm datepicker" data-provide="datepicker-inline" placeholder="Enter Date">
-														<div class="input-group-addon">
-																<span class="fa fa-calendar"></span>
-														</div>
+											<div class="col col-sm-3 text-center">
+												<label class="sr-only" for="date">Date - Hidden</label>
+													<div class="input-group date my-date-picker">
+															<input type="text" class="form-control form-control-sm" placeholder="Enter Date" id="date-pick" />
+															<span class="input-group-addon">
+																	<span class="fa fa-calendar-plus-o"></span>
+															</span>
+													</div>
 												</div>
 
-												<div class="col-3 text-center">
+												<div class="col col-sm-3 text-center">
 														<div class="input-group">
-																<input class="form-control form-control-sm" type="text" name="site" id="site" list="site_list" />
-																<datalist id="site_list">
-																		<option value="No site specified ">
-																		<option value="DCMC">
-																		<option value="DSMC-UT">
-																		<option value="SMC">
-																		<option value="SNW">
-																		<option value="SSW">
-																		<option value="SMCW">
-																		<option value="SMCH">
-																		<option value="SHL">
-																		<option value="SD Main">
-																		<option value="RR">
-																		<option value="CPL">
-																		<option value="Texas Oncology">
-																		<option value="ARC">
-																		<option value="Baptist">
-																</datalist>
-																<i class="input-group-addon fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="Choose from dropdown or type in site" ></i>
+															<input class="form-control form-control-sm" type="text" name="site" id="site" list="site_list" />
+															<datalist id="site_list">
+																	<option value="No site specified ">
+																	<option value="DCMC">
+																	<option value="DSMC-UT">
+																	<option value="SMC">
+																	<option value="SNW">
+																	<option value="SSW">
+																	<option value="SMCW">
+																	<option value="SMCH">
+																	<option value="SHL">
+																	<option value="SD Main">
+																	<option value="RR">
+																	<option value="CPL">
+																	<option value="Texas Oncology">
+																	<option value="ARC">
+																	<option value="Baptist">
+															</datalist>
+															<i class="input-group-addon fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="Choose from dropdown or type in site" ></i>
 														</div>
 												</div>
 
 
-												<div class="col-3 text-center">
+												<div class="col col-sm-3 text-center">
+													<div class="input-group">
 														<label class="sr-only" for="agerange">Age - Hidden</label>
 
-														<select id="agerange" class="form-control form-control-sm ">
-																<option value="3" selected="" hidden="">Choose Age range</option>
+														<select id="agerange" class="form-control form-control-sm" placeholder="Choose Age Range">
+																<option value="3" selected="selected" hidden="">Choose Age range</option>
 																<option value="1">&lt;3 mo</option>
 																<option value="2">3-12mo</option>
 																<option value="3">&gt;12mo  - adult</option>
 														</select>
+													</div>
 												</div>
-
-												<div class="col-3">
+												<div class="col col-md-3">
 														<button type="button" class="btn btn-primary btn-md p-1" data-toggle="modal" data-target="#cbchelp">Reference Ranges</button>
 												</div>
 

@@ -19,12 +19,18 @@
 										<div class="card-header">Serologic Data</div>
 										<div class="card-block">
 										<div class="row mb-2">
-												<form class="form-inline">
-														<div class="form-group">
-																<label for="">Date of Labs:</label>
-																<input class="form-control form-control-sm ml-2 datepicker" data-provide="datepicker-inline" id="date">
+												<!-- <form class="form-inline"> -->
+														<div class="col col-sm-3 form-group form-inline">
+																<label for="lab-date">Date of Labs:</label>
+																<div class="input-group date my-date-picker" >
+																		<input type="text" name="lab-date" class="form-control form-control-sm ml-2" id="date" />
+																		<span class="input-group-addon">
+																				<span class="fa fa-calendar-plus-o"></span>
+																		</span>
+																</div>
+
 														</div>
-												</form>
+												<!-- </form> -->
 										</div>
 										<div class="row">
 												<div class="table-responsive">

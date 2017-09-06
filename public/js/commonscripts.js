@@ -13,6 +13,18 @@ var makeCreatePdfBtn = function() {
 	}
 }
 
+var datePickerIcons = {
+	time: 'fa fa-clock-o',
+	date: 'fa fa-calendar-plus-o',
+	up: 'fa fa-chevron-up',
+	down: 'fa fa-chevron-down',
+	previous: 'fa fa-chevron-left',
+	next: 'fa fa-chevron-right',
+	today: 'fa fa-window-restore',
+	clear: 'fa fa-trash-o',
+	close: 'fa fa-window-close'
+}
+
 //onload
 $(window).on('load', function() {
 // instantiate copy button
@@ -20,12 +32,32 @@ $(window).on('load', function() {
 
 
 // instantiate date picker
-    // $('.datepicker').datepicker({
-    //     todayBtn: "linked",
-    //     orientation: "bottom auto",
-    //     todayHighlight: true,
-    //     autoclose: true
-    // });
+    $('.my-date-picker').datetimepicker({
+			format: 'MM-DD-YYYY',
+			icons: datePickerIcons,
+			collapse: false,
+			allowInputToggle: true,
+			viewMode: 'days',
+			widgetPositioning: {
+				vertical: 'bottom'
+			},
+			showTodayButton: true
+        // todayBtn: "linked",
+        // orientation: "bottom auto",
+        // todayHighlight: true,
+        // autoclose: true
+    });
+//instantiate time picker
+	$('.my-time-picker').datetimepicker({
+		format: 'h:mm a',
+		icons: datePickerIcons,
+		collapse: false,
+		allowInputToggle: true,
+		viewDate: false,
+		widgetPositioning: {
+			vertical: 'bottom'
+		}
+	});
 
 // Add highlight to checkboxes
     $('input:checkbox').click(function () {

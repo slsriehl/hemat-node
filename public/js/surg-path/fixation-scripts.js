@@ -2,17 +2,7 @@
 $(window).on('load', function() {
 
 	//date-time pickers
-	var datePickerIcons = {
-		time: 'fa fa-clock-o',
-		date: 'fa fa-calendar-plus-o',
-		up: 'fa fa-chevron-up',
-		down: 'fa fa-chevron-down',
-		previous: 'fa fa-chevron-left',
-		next: 'fa fa-chevron-right',
-		today: 'fa fa-window-restore',
-		clear: 'fa fa-trash-o',
-		close: 'fa fa-window-close'
-	}
+
 
 	$('#timestart').datetimepicker({
 			format: 'MM-DD-YYYY h:mm a',
