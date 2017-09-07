@@ -1,5 +1,3 @@
-var dataObj = {};
-
 $(document).ready(function(){
 
 	//handler and ajax call to search db for keyword matching search
@@ -101,17 +99,13 @@ $(document).ready(function(){
 		//show case reference dropdown on write report click
 		$('#writeReport').on('click', function(event) {
 			$('#caseRefDiv').attr('style', 'display: block;');
-			dataObj.micro = $('#outPut-1').val();
-			dataObj.finals = $('#outPut-2').val();
-			dataObj.comments = $('#outPut-4').val();
-			if(!$('#pdf-report').length && (dataObj.micro || dataObj.finals || dataObj.comments)) {
-				var reportBtnBox = $('<ul class="report-button-box nav nav-pills">');
-				var makePdfBtn = $('<a class="btn btn-lg btn-outline-success p-2 ml-4" id="pdf-report">');
-				var pdfBtnText = $('<small>Save & Create PDF</small>')
-				makePdfBtn.append(pdfBtnText);
-				reportBtnBox.append(makePdfBtn);
-				$('.button-box').append(reportBtnBox);
-			}
+			var textToPass = 'REPORT:\n\nMICRO:\n' + $('#outPut-1').val() +'\n\nFINALS:\n'+$('#outPut-2').val()+'\n\nCOMMENTS:\n'+$('#outPut-4').val();
+
+			$('#outPut-combine').val(textToPass);
+			$('#combined-report').modal("show");
+
+			dataObj.singleSection = $('#outPut-combine').val();
+			makeCreatePdfBtn();
 		});
 
 		//save snippet as (open and populate modal)

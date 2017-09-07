@@ -134,7 +134,7 @@ $(window).on('load', function(){
 
         $('#outPut-2').focus().val(outPut2Value);
 				if($('.ihc-table-page')) {
-					dataObj.ihcTable = outPut2Value;
+					dataObj.singleSection = outPut2Value;
 					console.log(dataObj);
 					//add a pdf button to the button bar if it's not already there
 					makeCreatePdfBtn();
