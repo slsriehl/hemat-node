@@ -7,8 +7,6 @@ var basename  = path.basename(module.filename);
 var env       = process.env.NODE_ENV || 'development';
 var db        = {};
 
-console.log(process.env.MY_DB);
-
 var sequelize;
 var config;
 if(process.env.MY_DB) {
