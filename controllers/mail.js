@@ -89,7 +89,7 @@ const controller = {
 		let message = generalHelpers.strReplaceLineBreaks(req.body.yourMessage);
 		message = `<p>${message}</p><p><strong>From: </strong> ${req.body.yourName} at ${req.body.yourEmail}</p>`;
 		const mailOptions = {
-			from: from,
+			from: `"Hematogones Admin" <${from}>`,
 			to: emailTo,
 			subject: req.body.yourSubject,
 			html: message
@@ -157,7 +157,7 @@ const controller = {
 				text = `${data.app} created at ${data.createdAt}`;
 			}
 			mailOptions = {
-				from: from,
+				from: `"Hematogones Admin" <${from}>`,
 				to: `"${data.firstname} ${data.lastname}" <${data.email}>`,
 				subject: text + ' at hematogones.com',
 				message: `Here is the ${text}.  Thanks for using hematogones.com!`,
