@@ -25,7 +25,7 @@ const controller = {
 		console.log(req.body);
 		models.Users
 		.findOne({
-			attributes: ['id', 'firstname'],
+			attributes: ['id'],
 			where: {
 				$or: [{
 					username: req.body.credential.trim().toLowerCase()
@@ -35,7 +35,9 @@ const controller = {
 			}
 		})
 		.then((data) => {
-			if(data.length === 0) {
+			console.log(data);
+			if(data == null) {
+				console.log('data is null');
 				res.render('login/reset-request.hbs', {
 					messages: [{
 						text: "That email or username wasn't found.  Please try again.",

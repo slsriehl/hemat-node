@@ -114,10 +114,9 @@ router.get('/user/logout', (req, res) => {
 
 //get page to request password reset
 router.get('/reset/request', (req, res) => {
-	helpers.clearSessionMessage(req, res);
+	// helpers.clearSessionMessage(req, res);
 	res.render('login/reset-request.hbs', {
 		specificScripts: [
-
 			"/js/login-settings.js"
 		]
 	});
@@ -130,7 +129,7 @@ router.post('/reset/request', (req, res) => {
 
 //load the page to enter the new password
 router.get('/reset/:code', (req, res) => {
-	helpers.clearSessionMessage(req, res);
+	// helpers.clearSessionMessage(req, res);
 	resetController.showResetPage(req, res);
 });
 

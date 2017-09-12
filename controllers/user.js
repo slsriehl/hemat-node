@@ -143,9 +143,8 @@ const controller = {
 				controller.renderIndex(req, res);
 			} else if(data.dataValues.requireReset) {
 				req.session.reset = true;
-				req.session.user = data.dataValues.id;
 				req.session.save();
-				resetController.sendResetEmail(req, res);
+				resetController.sendResetEmail(req, res, data.dataValues.id);
 			} else {
 				console.log('foo');
 				const hash = helpers.getHash(req.body.password.trim(), data.dataValues.password);
