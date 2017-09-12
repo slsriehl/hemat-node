@@ -13,6 +13,7 @@ $(document).ready(function(){
 		})
 		.done(function(response) {
 			console.log(response);
+			$('.searchresults').empty();
 			if(response.length) {
 				for(var i = 0; i < response.length; i++) {
 					var newRow = $('<tr class="rowselect" id="' + response[i].id + '" data-user="' + response[i].userId + '">');
@@ -110,13 +111,30 @@ $(document).ready(function(){
 
 		//save snippet as (open and populate modal)
 		$('#saveAsSnippet').on('click', function(event) {
+			appendSaveBtn();
 			$('#addnew').modal('show');
 			openSaveWithContent();
 		});
 
+		$('#openhelp').on('click', function(event) {
+			appendSaveBtn();
+			$('#addnew').modal('show');
+		});
+
+		var appendUpdateBtn = function() {
+			$('#edit-snippet-button-box').empty();
+			var updateBtn = $('<button class="btn btn-primary p-1" id="update-snippet" type="button">Update Snippet</button>');
+			$('#edit-snippet-button-box').append(updateBtn);
+		}
+		var appendSaveBtn = function() {
+			$('#edit-snippet-button-box').empty();
+			var saveNewBtn = $('<button class="btn btn-primary p-1" type="submit">Save Snippet</button>');
+			$('#edit-snippet-button-box').append(saveNewBtn)
+		}
 		//open save as modal while populating selected content
 		var openSaveWithContent = function(withId) {
-			$('#ent_class option[value="' + $('#class-holder').val() + '"]').prop('selected', true);
+			console.log('class holder val ' + $('#class-holder').text());
+			$('#ent_class').val($('#class-holder').text()).change();
 			$('#ent_key').val($('#keyword-holder').text());
 			$('#ent_micro').val($('#outPut-1').text());
 			$('#ent_final').val($('#outPut-2').text());
@@ -130,11 +148,9 @@ $(document).ready(function(){
 
 		//update snippet
 		$(document).off('click', '#updateSnippet').on('click', '#updateSnippet', function(event) {
+			appendUpdateBtn();
 			$('#addnew').modal('show');
 			openSaveWithContent(true);
-			var updateButton = $('<button class="btn btn-primary p-1" id="update-snippet" type="button">');
-			updateButton.append('Update');
-			$('.modal-button-box').append(updateButton);
 		});
 		var clearNonFormPanel = function() {
 			$('#outPut-1').text('');
@@ -236,10 +252,8 @@ $(document).ready(function(){
 					if(response == true) {
 						clearNonFormPanel();
 						snippetSuccessMessage('Your snippet has been deleted.');
-					} else if(response == "You can't delete that snippet because you don't own it.") {
-						snippetFailMessage(response);
 					} else {
-						snippetFailMessage('Your snippet was not deleted.  Please try again.');
+						snippetFailMessage('The requested snippet was not deleted.  It may not belong to you.');
 					}
 				});
 			} else {
