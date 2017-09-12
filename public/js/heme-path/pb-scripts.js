@@ -134,7 +134,7 @@ $('#cbcWrite').on('click', function () {
 
     var cbcText = '';
     var mySite = $('#site').val();
-    var dateIx = $('#date').val();
+    var dateIx = $('#date-pick').val();
     var wbcIx = $('#WBC').val();
     var rbcIx = $('#RBC').val();
     var hbIx = $('#HB').val();
