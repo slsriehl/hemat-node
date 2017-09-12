@@ -55,21 +55,27 @@ $(window).on('load', function() {
 });
 
 $('#writeReport').on('click', function () {
-		var start = new Date($('#timestart').val())
-		var startdate = start.toLocaleString("en-us", { month: "long" }) + " " + start.getDate() + ", "  + start.getFullYear();
-		var start_timeb = start.getHours() + ':' + ((start.getMinutes()<10?'0':'') + start.getMinutes());
-		var end = new Date($('#timeformalin').val());
-		var end_timeb = end.getHours() + ':' + ((end.getMinutes()<10?'0':'') + end.getMinutes());
-		var proc = new Date($('#processorstart').val());
-		var cold_difference = (end - start) / 1000 / 60;
-		var fix_difference = (proc - end) / 1000 / 60;
-		var fix_hours = Math.floor(fix_difference / 60);
-		var fix_minutes = fix_difference % 60;
+	console.log('timestart ' + $('#timestart').data('DateTimePicker').viewDate());
+	console.log('timeformalin ' + $('#timeformalin').data('DateTimePicker').viewDate());
+	console.log('processorstart ' + $('#processorstart').data('DateTimePicker').viewDate());
+		var start = $('#timestart').data('DateTimePicker').viewDate();
+		// var startdate = start.format('MMMM D, YYYY');
+		// var start_timeb = start.getHours() + ':' + ((start.getMinutes()<10?'0':'') + start.getMinutes());
+		var end = $('#timeformalin').data('DateTimePicker').viewDate();
+		// var end_timeb = end.getHours() + ':' + ((end.getMinutes()<10?'0':'') + end.getMinutes());
+		var proc = $('#processorstart').data('DateTimePicker').viewDate();
+		var cold_difference = moment.duration(end.diff(start)).asMinutes();
+		var fix_diff_mins = moment.duration(proc.diff(end)).asMinutes();
+		var fix_hours = Math.floor(fix_diff_mins / 60);
+		var fix_mins = Math.floor(fix_diff_mins % 60);
+		// var fix_hours = Math.floor(fix_difference / 60);
+		// var fix_minutes = fix_difference % 60;
 
-		var _starttxt = "Collection time: \t"+startdate+"; "+start_timeb;
-		var _timeinfix = "Time in fixative: \t"+startdate+"; "+end_timeb;
+		var _starttxt = "Collection time: \t"+ start.format('MMMM D, YYYY; HH:mm');
+		var _timeinfix = "Time in fixative: \t"+ end.format('MMMM D, YYYY; HH:mm');
 		var _coldischtxt = "Cold ischemia time: \t" + cold_difference + " minutes";
-		var _fixdurtxt = "Fixation time: \t\t" + fix_hours + " hours, " + fix_minutes + " minutes";
+		var _fixdurtxt = "Fixation time: \t\t" + fix_hours + ' hours, ' + fix_mins + ' minutes';
+		// fix_hours + " hours, " + fix_minutes + " minutes";
 
 		$('#outPut-1').val(_starttxt+"\n"+_timeinfix+'\n'+_coldischtxt +'\n'+_fixdurtxt);
 
