@@ -184,6 +184,7 @@ $(document).ready(function(){
 		});
 
 		var snippetSuccessMessage = function(message) {
+			$('.message-center').empty();
 			var successMessage = $('<div class="message-box"> \
 							<div class="message-dismiss"> \
 								<h2>&times;</h2> \
@@ -198,6 +199,7 @@ $(document).ready(function(){
 			$('.message-center').append(successMessage);
 		}
 		var snippetFailMessage = function(message) {
+			$('.message-center').empty();
 			var failMessage = $('<div class="message-box message-fail"> \
 							<div class="message-dismiss"> \
 								<h2>&times;</h2> \
