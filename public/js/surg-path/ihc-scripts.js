@@ -63,7 +63,15 @@ $(window).on('load', function(){
         $(this).parent().parent().remove();
     });
 
-
+		$('#ihc_preset').on('change', function() {
+			if($(this).val() != 'null') {
+				$('#ihc_preset_change').text($(this).find(":selected").val());
+				$('#selected_preset').show();
+			} else {
+				$('#ihc_preset_change').text('');
+				$('#selected_preset').hide();
+			}
+		});
 
     $('#ihcwrite').on('click', function(){
         // get row values
@@ -75,16 +83,17 @@ $(window).on('load', function(){
         var header = 'Immunohistochemistry is performed (with working controls) to further characterize the process. Stains are summarized as follows:\n';
         var body = '\nCELLS OF INTEREST: '+interest+'\nANTIBODY ........... VALUE ... COMMENT\n';
         var ihcout= '';
-        var des = $('#disclaimer').val();
-        var desc = "\n\nThe immunoperoxidase and/or in situ hybridization stain(s) reported above were developed and their performance characteristics determined by " + des + ". They have not been cleared or approved by the U.S. Food and Drug Administration, although such approval is not required for analyte-specific reagents of this type. This test is used for clinical purposes. It should not be regarded as investigational or for research. This laboratory is certified under the Clinical Laboratory Improvement Amendments of 1988 (CLIA) as qualified to perform high complexity clinical laboratory testing. All controls show appropriate reactivity.";
+        //var des = $('#disclaimer').val();
+        //var desc = "\n\nThe immunoperoxidase and/or in situ hybridization stain(s) reported above were developed and their performance characteristics determined by " + des + ". They have not been cleared or approved by the U.S. Food and Drug Administration, although such approval is not required for analyte-specific reagents of this type. This test is used for clinical purposes. It should not be regarded as investigational or for research. This laboratory is certified under the Clinical Laboratory Improvement Amendments of 1988 (CLIA) as qualified to perform high complexity clinical laboratory testing. All controls show appropriate reactivity.";
 				var interpFunc = function() {
-					if($('#ihc_preset').find(":selected").val() != 'null' && $('#ihc_interp').val() != '') {
-						return $('#ihc_preset').find(":selected").val() + '  ' + $('#ihc_interp').val();
-					} else if ($('#ihc_preset').find(":selected").val() == 'null' && $('#ihc_interp').val() != '') {
-						return $('#ihc_interp').val();
-					} else {
-						return $('#ihc_preset').find(":selected").val();
-					}
+					return $('#ihc_preset_change').val() + '  ' + $('#ihc_interp').val();
+					// if($('#ihc_preset').find(":selected").val() != 'null' && $('#ihc_interp').val() != '') {
+					// 	return $('#ihc_preset').find(":selected").val() + '  ' + $('#ihc_interp').val();
+					// } else if ($('#ihc_preset').find(":selected").val() == 'null' && $('#ihc_interp').val() != '') {
+					// 	return $('#ihc_interp').val();
+					// } else {
+					// 	return $('#ihc_preset').find(":selected").val();
+					// }
 				}
 				var interp = interpFunc();
         // array of antibodies
@@ -125,11 +134,11 @@ $(window).on('load', function(){
         console.log(ihcout);
 
         // final table
-        if (des != "none" ) {
-            ihcout = header + body + ihcout + desc + '\n\nINTERPRETATION: '+interp;
-        }else {
+        // if (des != "none" ) {
+        //     ihcout = header + body + ihcout + desc + '\n\nINTERPRETATION: '+interp;
+        // }else {
             ihcout = header + body + ihcout + '\n\nINTERPRETATION: '+interp;
-        }
+        // }
 				var outPut2Value = $('#outPut-2').val() + '\n\n' + ihcout;
 
         $('#outPut-2').focus().val(outPut2Value);

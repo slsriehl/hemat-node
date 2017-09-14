@@ -183,6 +183,12 @@ button.snippet-result {
 	min-width: 400px;
 }*/
 
+/* hide previous reports module at the bottom of each page by default */
 #previous-reports {
+	display: none;
+}
+
+/* IHC: hide the selected preset edit field when no preset is selected */
+#selected_preset {
 	display: none;
 }
