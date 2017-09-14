@@ -141,35 +141,41 @@ const controller = {
 			let str = '+*' + searchTerms[i] + '* ';
 			searchStr += str;
 		}
+		searchStr = searchStr.trim();
 		console.log(searchStr);
-		const theSearch = 'SELECT entry_id, spc_class, keywords, micros, finals, comments, user_id FROM Snippets WHERE (MATCH(keywords) AGAINST ("' + searchStr + '") OR MATCH(finals) AGAINST ("' + searchStr + '")) AND (user_id = "1" OR user_id = "' + req.session.user + '") ORDER BY spc_class, entry_id DESC';
+		const theSearch = 'SELECT entry_id, spc_class, keywords, micros, finals, comments, user_id FROM Snippets WHERE (MATCH(keywords) AGAINST ("' + searchStr + '" IN BOOLEAN MODE) OR MATCH(finals) AGAINST ("' + searchStr + '" IN BOOLEAN MODE)) AND (user_id = "1" OR user_id = "' + req.session.user + '") ORDER BY spc_class, entry_id DESC';
 		console.log(theSearch);
 		return models.sequelize.query(theSearch)
 		.then((data) => {
 			console.log(data);
-			for(let i = 0; i < data.length; i++) {
-				searchResults1 = searchResults1.concat(data[i]);
+			for(let i = 0; i < data[0].length; i++) {
+				searchResults1 = searchResults1.concat(data[0][i]);
+			}
+			for(let i = 0; i < data[1].length; i++) {
+				searchResults1 = searchResults1.concat(data[1][i]);
 			}
 			console.log(searchResults1);
 			for(let i = 0; i < searchResults1.length; i++) {
-				let tempObj = searchResults1[i];
-				searchResults1.splice(i, 1);
-				let text = {
-					micros: escape(tempObj.micros),
-					finals: escape(tempObj.finals),
-					comments: escape(tempObj.comments)
-				}
-				let cleanObj = {
-					id: tempObj.entry_id,
-					userId: tempObj.user_id,
-					spcClass: tempObj.spc_class,
-					keywords: tempObj.keywords,
-					text: JSON.stringify(text)
-				}
-				searchResults2.push(cleanObj);
-				for(let k = 0; k < searchResults1.length; k++) {
-					if(tempObj.entry_id == searchResults1[k].entry_id) {
-						searchResults1.splice(k, 1);
+				if(searchResults1[i].entry_id) {
+					let tempObj = searchResults1[i];
+					searchResults1.splice(i, 1);
+					let text = {
+						micros: escape(tempObj.micros),
+						finals: escape(tempObj.finals),
+						comments: escape(tempObj.comments)
+					}
+					let cleanObj = {
+						id: tempObj.entry_id,
+						userId: tempObj.user_id,
+						spcClass: tempObj.spc_class,
+						keywords: tempObj.keywords,
+						text: JSON.stringify(text)
+					}
+					searchResults2.push(cleanObj);
+					for(let k = 0; k < searchResults1.length; k++) {
+						if(tempObj.entry_id == searchResults1[k].entry_id) {
+							searchResults1[k].entry_id = null;
+						}
 					}
 				}
 			}
