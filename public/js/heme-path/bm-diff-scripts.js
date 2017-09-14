@@ -3,7 +3,7 @@
 
 $(window).on('load', function() {
 // init sound
-var beep = new Audio('../media/beep.mp3');
+	var beep = new Audio('../media/beep.mp3');
 
 
 // focus on text area
@@ -93,6 +93,7 @@ $('#diffinput').focus().alphanum({allowNumeric:true, allowLatin:false, disallow 
 			$('#asp_8').val(_atyp_pct);
 			}
 				if (len >= _limit) {
+					beep.play();
 					alert ('You have counted '+_limit+' cells.');
 
 				}
@@ -111,10 +112,10 @@ $('#diffinput').focus().alphanum({allowNumeric:true, allowLatin:false, disallow 
 			$('#merat').val(mer);
 			}else{
 			$('#merat').val('Not applicable');
-			}		
-	
-	
+			}
+
+
 	});//end of function
- 
+
 
 });

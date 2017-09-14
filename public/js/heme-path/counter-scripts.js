@@ -1,5 +1,7 @@
 $(window).on("load", function(){
 
+	// init sound
+	var beep = new Audio('../media/beep.mp3');
 
 // set localStorage variables
     if(localStorage.getItem('box1')) {
@@ -65,8 +67,7 @@ $(window).on("load", function(){
 
 
 
-// init sound
-        var beep = new Audio('../media/beep.mp3');
+
 
     // focus on text area
     $('#textarea').focus().alphanum({allowNumeric:true, allowLatin:false, allow : '+-/*0.'});
@@ -182,7 +183,7 @@ $(window).on("load", function(){
         }
 
         if (len >= _limit) {
-
+								beep.play();
                 alert ('You have counted '+_limit+' cells.');
 
             }
