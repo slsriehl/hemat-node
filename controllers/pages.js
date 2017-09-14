@@ -180,7 +180,12 @@ const controller = {
 				}
 			}
 			console.log(searchResults2);
-			res.json(searchResults2);
+			const sendMe = {
+				loggedIn: req.session.user,
+				snips: searchResults2
+			}
+			console.log(sendMe);
+			res.json(sendMe);
 		})
 		.catch(error => {
 			generalHelpers.writeToErrorLog(req, error);

@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+	var userId;
 	//handler and ajax call to search db for keyword matching search
 	$('#doSearch').on('submit', function(event) {
 		event.preventDefault();
@@ -14,10 +14,11 @@ $(document).ready(function(){
 		.done(function(response) {
 			console.log(response);
 			$('.searchresults').empty();
-			if(response.length) {
-				for(var i = 0; i < response.length; i++) {
-					var newRow = $('<tr class="rowselect" id="' + response[i].id + '" data-user="' + response[i].userId + '">');
-					var columns = "<td><span class='spcClass-res'>" + response[i].spcClass + "</span></td><td><span class='keyword-res'>" + response[i].keywords + "</span></td><td><button value='" + response[i].text + "' class='snippet-result' type='button'>Copy/Edit/Delete</button></td>";
+			if(response.snips.length) {
+				userId = response.loggedIn;
+				for(var i = 0; i < response.snips.length; i++) {
+					var newRow = $('<tr class="rowselect" id="' + response.snips[i].id + '" data-user="' + response.snips[i].userId + '">');
+					var columns = "<td><span class='spcClass-res'>" + response.snips[i].spcClass + "</span></td><td><span class='keyword-res'>" + response.snips[i].keywords + "</span></td><td><button value='" + response.snips[i].text + "' class='snippet-result' type='button'>Copy/Edit/Delete</button></td>";
 					newRow.append(columns);
 					$('.searchresults').append(newRow);
 				}
@@ -63,7 +64,7 @@ $(document).ready(function(){
 		$('#class-holder').append(snippetResult.parent().parent().find('.spcClass-res').text());
 		$('#keyword-holder').append(snippetResult.parent().parent().find('.keyword-res').text());
 		$('#entry_id-holder').append(snippetResult.parent().parent().attr('id'));
-		if(snippetResult.parent().parent().attr('data-user') != 1 && !$('#deleteSnippet').length && !$('#updateSnippet').length) {
+		if(snippetResult.parent().parent().attr('data-user') == userId && !$('#deleteSnippet').length && !$('#updateSnippet').length) {
 			//append delete and update buttons if the snippet belongs to the user
 			var deleteButton = $('<a class="btn btn-lg btn-outline-danger p-2" id="deleteSnippet">');
 			deleteButton.append('<small>Delete</small>');
@@ -71,7 +72,7 @@ $(document).ready(function(){
 			updateButton.append('<small>Update</small>');
 			$('.standard-button-box').append(updateButton);
 			$('.standard-button-box').append(deleteButton);
-		} else if(snippetResult.parent().parent().attr('data-user') == 1 && $('#deleteSnippet').length && $('#updateSnippet').length) {
+		} else if(snippetResult.parent().parent().attr('data-user') != userId && $('#deleteSnippet').length && $('#updateSnippet').length) {
 			$('#deleteSnippet').remove();
 			$('#updateSnippet').remove();
 		}
