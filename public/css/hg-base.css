@@ -182,3 +182,7 @@ button.snippet-result {
 /*.pseudotable .form-inline .input-group {
 	min-width: 400px;
 }*/
+
+#previous-reports {
+	display: none;
+}

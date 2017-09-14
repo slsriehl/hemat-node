@@ -299,8 +299,13 @@ $(function () {
 
 		//focus on field in new case ref modal
 		$('#new-case-reference').on('shown.bs.modal', function () {
-    $('#newCaseReference').focus();
-})
+    	$('#newCaseReference').focus();
+		});
+
+		//show/hide previous-reports
+		$('#toggle-prev-rep').on('click', function(event) {
+			$('#previous-reports').toggle();
+		});
 
     /*/Google analytics
      var _gaq = _gaq || [];
