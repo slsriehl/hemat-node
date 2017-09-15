@@ -134,12 +134,24 @@ $(document).ready(function(){
 		}
 		//open save as modal while populating selected content
 		var openSaveWithContent = function(withId) {
+			//fill in all the fields with values from the displayed snippet (some in hidden inputs)
 			console.log('class holder val ' + $('#class-holder').text());
 			$('#ent_class').val($('#class-holder').text()).change();
-			$('#ent_key').val($('#keyword-holder').text());
 			$('#ent_micro').val($('#outPut-1').text());
 			$('#ent_final').val($('#outPut-2').text());
 			$('#ent_comment').val($('#outPut-4').text());
+			//loop existing tags to insert spaces for good rendering
+			var tagLoop = function(extText) {
+				var textArr = extText.split(',');
+				return textArr.join(', ');
+			}
+			//add the initial tags to the hidden input tag field
+			$('#ent_key').attr('value', tagLoop($('#keyword-holder').text()));
+			//instantiate the tag field
+			$('#ent_key').tagit({
+				allowSpaces: true,
+			});
+
 			if(withId) {
 				var idInput = $('<input hidden id="ent_id" name="ent_id" />');
 				idInput.attr('value', $('#entry_id-holder').text());
@@ -256,15 +268,6 @@ $(document).ready(function(){
 		//     });
 		//
 		// });
-
-		// instantiate tags
-		$("#ent_key").tagit({
-
-				allowSpaces: true,
-
-				fieldname: "keywords" //Each tag's hidden input field will have this name. If you're using PHP, you may want to use something like itemName[fieldName][] for this option's value.
-
-		});
 
 });
 
