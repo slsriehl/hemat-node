@@ -201,7 +201,7 @@ const controller = {
 			comments: escape(req.body.ent_comment),
 			user_id: req.session.user,
 			spc_class: escape(req.body.ent_class),
-			keywords: escape(req.body.ent_key)
+			keywords: escape(req.body.tags)
 		}
 		return models.Snippets
 		.create(newSnippet)

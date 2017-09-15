@@ -200,6 +200,9 @@ $(document).ready(function(){
 
 		$("#ent_new").on("submit", function(e){
 			e.preventDefault(); // avoid to execute the actual submit of the form.
+			console.log('ent new serial' + $('#ent_new').serialize());
+			console.log('ent key text' + $('#ent_key').text());
+			console.log('ent key val' + $('#ent_key').val());
 			$.ajax({
 				type: "POST",
 				url: '/snippet/save',
