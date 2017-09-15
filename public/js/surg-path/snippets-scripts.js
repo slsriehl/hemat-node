@@ -13,15 +13,10 @@ $(document).ready(function(){
 		})
 		.done(function(response) {
 			console.log(response);
-			$('.searchresults').empty();
+			$('.searchresults .rowselect').remove();
 			if(response.snips.length) {
 				userId = response.loggedIn;
-				for(var i = 0; i < response.snips.length; i++) {
-					var newRow = $('<tr class="rowselect" id="' + response.snips[i].id + '" data-user="' + response.snips[i].userId + '">');
-					var columns = "<td><span class='spcClass-res'>" + response.snips[i].spcClass + "</span></td><td><span class='keyword-res'>" + response.snips[i].keywords + "</span></td><td><button value='" + response.snips[i].text + "' class='snippet-result' type='button'>Copy/Edit/Delete</button></td>";
-					newRow.append(columns);
-					$('.searchresults').append(newRow);
-				}
+				loopAppendResults(response.snips, 'all');
 			} else {
 				var newRow = $('<tr class="rowselect">');
 				var columns = '<td><span>No Results</span></td><td></td><td></td>';
@@ -31,6 +26,14 @@ $(document).ready(function(){
 		});
 	});
 
+	var emptyFormAlert = function() {
+		if(!$('#outPut-1').val() && !$('#outPut-2').val() && !$('#outPut-4').val()) {
+			alert('The form is empty.');
+			return true;
+		} else {
+			return;
+		}
+	}
 	//handle click on a search result
 	$(document).off('click', '.snippet-result').on('click', '.snippet-result', function(event) {
 		if($('#outPut-1').val() || $('#outPut-2').val() || $('#outPut-4').val()) {
@@ -100,21 +103,26 @@ $(document).ready(function(){
 
 		//show case reference dropdown on write report click
 		$('#writeReport').on('click', function(event) {
-			$('#caseRefDiv').attr('style', 'display: block;');
-			var textToPass = 'REPORT:\n\nMICRO:\n' + $('#outPut-1').val() +'\n\nFINALS:\n'+$('#outPut-2').val()+'\n\nCOMMENTS:\n'+$('#outPut-4').val();
+			if(!emptyFormAlert()) {
+				$('#caseRefDiv').attr('style', 'display: block;');
+				var textToPass = 'REPORT:\n\nMICRO:\n' + $('#outPut-1').val() +'\n\nFINALS:\n'+$('#outPut-2').val()+'\n\nCOMMENTS:\n'+$('#outPut-4').val();
 
-			$('#outPut-combine').val(textToPass);
-			$('#combined-report').modal("show");
+				$('#outPut-combine').val(textToPass);
+				$('#combined-report').modal("show");
 
-			dataObj.singleSection = $('#outPut-combine').val();
-			makeCreatePdfBtn();
+				dataObj.singleSection = $('#outPut-combine').val();
+				makeCreatePdfBtn();
+			}
+
 		});
 
 		//save snippet as (open and populate modal)
 		$('#saveAsSnippet').on('click', function(event) {
-			appendSaveBtn();
-			$('#addnew').modal('show');
-			openSaveWithContent();
+			if(!emptyFormAlert()) {
+				appendSaveBtn();
+				$('#addnew').modal('show');
+				openSaveWithContent();
+			}
 		});
 
 		$('#openhelp').on('click', function(event) {
@@ -161,9 +169,11 @@ $(document).ready(function(){
 
 		//update snippet
 		$(document).off('click', '#updateSnippet').on('click', '#updateSnippet', function(event) {
-			appendUpdateBtn();
-			$('#addnew').modal('show');
-			openSaveWithContent(true);
+			if(!emptyFormAlert()) {
+				appendUpdateBtn();
+				$('#addnew').modal('show');
+				openSaveWithContent(true);
+			}
 		});
 		var clearNonFormPanel = function() {
 			$('#outPut-1').text('');
@@ -174,6 +184,22 @@ $(document).ready(function(){
 			$('#entry_id-holder').text('');
 			$('#user-holder').text('');
 		}
+		var loopAppendResults = function(results, position, update) {
+			for(var i = 0; i < results.length; i++) {
+				var newRow = $('<tr class="rowselect" id="' + results[i].id + '" data-user="' + userId + '">');
+				var columns = "<td><span class='spcClass-res'>" + results[i].spcClass + "</span></td><td><span class='keyword-res'>" + results[i].keywords + "</span></td><td><button value='" + results[i].text + "' class='snippet-result' type='button'>Copy/Edit/Delete</button></td>";
+				newRow.append(columns);
+				if(update) {
+					$('.rowselect#' + results[i].id).remove();
+				}
+				if(position === 'top') {
+					$('.searchresults tr:eq(0)').after(newRow);
+				} else {
+					$('.searchresults').append(newRow);
+				}
+
+			}
+		}
 		$(document).off('click', '#update-snippet').on('click', '#update-snippet', function(event) {
 			$('#addnew').modal('hide');
 			$.ajax({
@@ -183,9 +209,11 @@ $(document).ready(function(){
 			})
 			.done(function(response) {
 				console.log(response);
-				if(response == true) {
+				if(response.snips) {
 					$('#ent_new')[0].reset();
+					$('#ent_key').removeAttr('value');
 					clearNonFormPanel();
+					loopAppendResults(response.snips, 'top', true);
 					frontEndMessage(null, 'Your snippet was successfully saved.', 'message-success');
 				} else if (response == "You can't update this snippet because you don't own it.") {
 					frontEndMessage(null, response, 'message-fail');
@@ -210,67 +238,48 @@ $(document).ready(function(){
 			})
 			.done(function(response) {
 				console.log(response);
-				if(response == true) {
+				if(response.snips) {
 					$('#addnew').modal('hide');
-						frontEndMessage(null, 'Your snippet has been saved.', 'message-success');
-						$('#ent_new')[0].reset();
-						clearNonFormPanel();
-					} else {
-						$('#addnew').modal('hide');
-						frontEndMessage(null, 'Your snippet has not been saved.  Press the Add New or Save As button to try again.', 'message-fail');
-					}
+					loopAppendResults(response.snips, 'top');
+					frontEndMessage(null, 'Your snippet has been saved.', 'message-success');
+					$('#ent_new')[0].reset();
+					$('#ent_key').removeAttr('value');
+					clearNonFormPanel();
+				} else {
+					$('#addnew').modal('hide');
+					frontEndMessage(null, 'Your snippet has not been saved.  Press the Add New or Save As button to try again.', 'message-fail');
+				}
 			});
 		});
 
 		//delete a snippet that you own
 		$(document).off('click', '#deleteSnippet').on('click', '#deleteSnippet', function(event) {
-			if(confirm('Are you sure you want to delete this snippet?')) {
-				var data = {
-					ent_id: $('#entry_id-holder').text(),
-					user_id: $('#user-holder').text()
-				}
-				$.ajax({
-					url: '/snippet/delete',
-					type: 'POST',
-					data: data
-				})
-				.done(function(response) {
-					console.log(response);
-					if(response == true) {
-						clearNonFormPanel();
-						frontEndMessage(null, 'Your snippet has been deleted.', 'message-success');
-					} else {
-						frontEndMessage(null, 'The requested snippet was not deleted.  It may not belong to you.', 'message-fail');
+			if(!emptyFormAlert()) {
+				if(confirm('Are you sure you want to delete this snippet?')) {
+					var data = {
+						ent_id: $('#entry_id-holder').text(),
+						user_id: $('#user-holder').text()
 					}
-				});
-			} else {
-				return;
+					$.ajax({
+						url: '/snippet/delete',
+						type: 'POST',
+						data: data
+					})
+					.done(function(response) {
+						console.log(response);
+						if(response.removeId) {
+							clearNonFormPanel();
+							$('.rowselect#' + response.removeId).remove();
+							frontEndMessage(null, 'Your snippet has been deleted.', 'message-success');
+						} else {
+							frontEndMessage(null, 'The requested snippet was not deleted.  It may not belong to you.', 'message-fail');
+						}
+					});
+				} else {
+					return;
+				}
 			}
-
 		});
-
-		// update snippet
-		//setTimeout(function(){ $('.logerror').fadeOut(); $('.logsuccess').fadeOut();  }, 5000);
-
-		// $('.searchresults tbody tr').click(function () {
-		//     var id = $(this).attr('id');
-		//     $('#setHere').val(id);
-		//     console.log(id);
-		// });
-
-
-
-		// $('.updateit').click(function () {
-		//     var micros = $('#outPut-1').val();
-		//     var finals = $('#outPut-2').val();
-		//     var comments = $('#outPut-3').val();
-		//     var id = $('#setHere').val();
-		//
-		//     $.post('updateit.php', {micros:micros, finals:finals, comments:comments, id:id}, function (data) {
-		//         alert(data);
-		//     });
-		//
-		// });
 
 });
 
