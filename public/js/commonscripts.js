@@ -183,7 +183,7 @@ $(function () {
 		//create a front end message
 		var frontEndMessage = function(id, message, className) {
 			removeOldMessages();
-			var fEMessage = $('<div class="message-box">'); \
+			var fEMessage = $('<div class="message-box">');
 			if(className) {
 				fEMessage.addClass(className)
 			}
@@ -199,7 +199,7 @@ $(function () {
 				<!-- / message-item--> \
 			</div> \
 			<!-- /message-box --> \
-		</div>');
+		</div>';
 		fEMessage.append(fEMessageInner);
 		$('.message-center').append(FEMessage);
 		//jump to message box
