@@ -32,6 +32,12 @@
 		<link rel="stylesheet" type="text/css" href="/css/sb-admin.css" />
 <!-- custom styles for HG.com -->
 		<link rel="stylesheet" type="text/css" href="/css/hg-base.css" />
+		<!-- specific css -->
+				{{#if specificCss}}
+					{{#each specificCss}}
+						<link rel="stylesheet" type="text/css" href={{this}} />
+					{{/each}}
+				{{/if}}
 <!-- extra header scripts -->
 		{{#if signup}}
 			<script src='https://www.google.com/recaptcha/api.js'></script>

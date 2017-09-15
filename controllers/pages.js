@@ -14,7 +14,7 @@ const Promise = require('bluebird');
 //const userHelpers = require('./user-helpers');
 
 const controller = {
-	userWall: (req, res, renderPath, scripts) => {
+	userWall: (req, res, renderPath, scripts, css) => {
 		console.log(req.session);
 		if(cookieHelpers.verifyCookie(req, res)) {
 			let myRefs;
@@ -75,7 +75,8 @@ const controller = {
 						thisApp: prevReps
 					},
 					ihcPresets: ihcPresets,
-					snippets: snippets
+					snippets: snippets,
+					specificCss: css
 				});
 			})
 			.catch(error => {
