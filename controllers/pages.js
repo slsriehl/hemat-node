@@ -206,7 +206,21 @@ const controller = {
 		return models.Snippets
 		.create(newSnippet)
 		.then((data) => {
-			res.send(true);
+			let text = {
+				micros: escape(data.dataValues.micros),
+				finals: escape(data.dataValues.finals),
+				comments: escape(data.dataValues.comments)
+			}
+			let cleanObj = {
+				id: data.dataValues.entry_id,
+				userId: data.dataValues.user_id,
+				spcClass: data.dataValues.spc_class,
+				keywords: data.dataValues.keywords,
+				text: JSON.stringify(text)
+			}
+			res.json({
+				snips: [cleanObj]
+			});
 		})
 		.catch(error => {
 			generalHelpers.writeToErrorLog(req, error);
@@ -216,6 +230,7 @@ const controller = {
 	},
 	updateSnippet: (req, res) => {
 		console.log(req.body);
+		let objToUpdate = {};
 		return models.Snippets
 		.findOne({
 			attributes: ['entry_id'],
@@ -235,12 +250,12 @@ const controller = {
 		})
 		.then((result) => {
 			if(result == true) {
-				let objToUpdate = {
+				objToUpdate = {
 					micros: escape(req.body.ent_micro),
 					finals: escape(req.body.ent_final),
 					comments: escape(req.body.ent_comment),
 					spc_class: escape(req.body.ent_class),
-					keywords: escape(req.body.ent_key)
+					keywords: escape(req.body.tags)
 				}
 				return models.Snippets
 				.update(objToUpdate, {
@@ -256,7 +271,21 @@ const controller = {
 			console.log(data);
 			let resStr = JSON.stringify(data);
 			if(resStr == '[1]') {
-				res.send(true);
+				let text = {
+					micros: escape(objToUpdate.micros),
+					finals: escape(objToUpdate.finals),
+					comments: escape(objToUpdate.comments)
+				}
+				let cleanObj = {
+					id: req.body.ent_id,
+					// userId: req.body.,
+					spcClass: objToUpdate.spc_class,
+					keywords: objToUpdate.keywords,
+					text: JSON.stringify(text)
+				}
+				res.json({
+					snips: [cleanObj]
+				});
 			} else if (data == false) {
 				return;
 			} else {
@@ -281,7 +310,9 @@ const controller = {
 			})
 			.then((result) => {
 				if(result === 1) {
-					res.send(true);
+					res.json({
+						removeId: req.body.ent_id
+					});
 				} else {
 					res.send(false);
 				}
