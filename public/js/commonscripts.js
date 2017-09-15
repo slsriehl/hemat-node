@@ -118,22 +118,22 @@ $(document).ready(function() {
 
  // nav-bar search filter - ##note! nav.php must be loaded in nav to work.
     $('#nav-search').on('keyup', function() {
-        var input = $('.search-filter').val();
+        var input = $(this).val();
         console.log('input: ' + input);
-        if (input.length >1) {
+        if (input.length > 1) {
             console.log('input not zero');
             // first hide the links lists from view
-            $('.link-search li').hide();
+            $('.link-search .nav-item').hide();
             // but secretly unhide the collapsed links
             // using .show, so the nested uls can be viewed
             $('.link-search .collapse').show();
             // then filter in the matching links only
-            $('.link-search').find('li:casecontains("' + input + '")').show();
+            $('.link-search').find('.nav-item:casecontains("' + input + '")').show();
         } else {
             // secretly unhide the collapsed links
             $('.link-search .collapse').hide();
             // if search is empty, show the div and reset columns
-            $('.link-search li').show();
+            $('.link-search .nav-item').show();
         }
     });
 
