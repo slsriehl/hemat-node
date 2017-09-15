@@ -171,28 +171,26 @@ $(function () {
 			//return false;
 		});
 
-		//create a failure message
-		var failureMessage = function(id, message) {
-			//create failure message
-			var failMessage = $('<div class="message-box message-fail" id="' + id + '"> \
-							<div class="message-dismiss"> \
-								<h2>&times;</h2> \
-				<!-- end message-dismiss --> \
-				</div> \
-				<div class="message-item"> \
-					<span>' + message + '</span> \
-					<!-- / message-item--> \
-				</div> \
-				<!-- /message-box --> \
-			</div>')
-			$('.message-center').append(failMessage);
-			//jump to message box
-			window.location.hash = '#bc-jump';
+		//remove old front end messages
+		var removeOldMessages = function () {
+			if ($('.message-center').find().hasClass('message-fail')) {
+				$('.message-center').find().hasClass('message-fail').remove();
+			}
+			if ($('.message-center').find().hasClass('message-success')) {
+				$('.message-center').find().hasClass('message-success').remove();
+			}
 		}
-
-		var successMessage = function(id, message) {
-		var succMessage = $('<div class="message-box message-success" id="' + id + '"> \
-						<div class="message-dismiss"> \
+		//create a front end message
+		var frontEndMessage = function(id, message, className) {
+			removeOldMessages();
+			var fEMessage = $('<div class="message-box">'); \
+			if(className) {
+				fEMessage.addClass(className)
+			}
+			if(id) {
+				fEMessage.attr('id', id);
+			}
+			var fEMessageInner = '<div class="message-dismiss"> \
 							<h2>&times;</h2> \
 			<!-- end message-dismiss --> \
 			</div> \
@@ -201,8 +199,9 @@ $(function () {
 				<!-- / message-item--> \
 			</div> \
 			<!-- /message-box --> \
-		</div>')
-		$('.message-center').append(succMessage);
+		</div>');
+		fEMessage.append(fEMessageInner);
+		$('.message-center').append(FEMessage);
 		//jump to message box
 		window.location.hash = '#bc-jump';
 	}
@@ -248,7 +247,7 @@ $(function () {
 					}
 				} else {
 					//create a pdf create error message
-					failureMessage('pdf-create-fail', 'Creating your PDF failed.  Please try again.  If this problem persists, please <a href="/mail">contact our admin</a>.');
+					frontEndMessage('pdf-create-fail', 'Creating your PDF failed.  Please try again.  If this problem persists, please <a href="/mail">contact our admin</a>.', 'message-fail');
 				}
 			});
 		});
@@ -286,9 +285,9 @@ $(function () {
 				slideUpOldMsgs();
 				$('#combined-report').modal('hide');
 				if(response.status) {
-					successMessage(response.msgType, response.msg);
+					frontEndMessage(response.msgType, response.msg, 'message-success');
 				} else {
-					failureMessage(response.msgType, response.msg);
+					frontEndMessage(response.msgType, response.msg, 'message-fail');
 				}
 			});
 		});

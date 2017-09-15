@@ -174,46 +174,15 @@ $(document).ready(function(){
 				if(response == true) {
 					$('#ent_new')[0].reset();
 					clearNonFormPanel();
-					snippetSuccessMessage('Your snippet was successfully saved.');
+					frontEndMessage(null, 'Your snippet was successfully saved.', 'message-success');
 				} else if (response == "You can't update this snippet because you don't own it.") {
-					snippetFailMessage(response);
+					frontEndMessage(null, response, 'message-fail');
 				} else {
-					snippetFailMessage('Your snippet has not been saved.  Press the Update button to try again.');
+					frontEndMessage(null, 'Your snippet has not been saved.  Press the Update button to try again.', 'message-fail');
 				}
 
 			});
 		});
-
-		var snippetSuccessMessage = function(message) {
-			$('.message-center').empty();
-			var successMessage = $('<div class="message-box"> \
-							<div class="message-dismiss"> \
-								<h2>&times;</h2> \
-				<!-- end message-dismiss --> \
-				</div> \
-				<div class="message-item"> \
-					<span>' + message + '</span> \
-					<!-- / message-item--> \
-				</div> \
-				<!-- /message-box --> \
-			</div>');
-			$('.message-center').append(successMessage);
-		}
-		var snippetFailMessage = function(message) {
-			$('.message-center').empty();
-			var failMessage = $('<div class="message-box message-fail"> \
-							<div class="message-dismiss"> \
-								<h2>&times;</h2> \
-				<!-- end message-dismiss --> \
-				</div> \
-				<div class="message-item"> \
-					<span>' + message + '</span> \
-					<!-- / message-item--> \
-				</div> \
-				<!-- /message-box --> \
-			</div>');
-		$('.message-center').append(failMessage);
-		}
 
 		// NEW ENTRY SUBMIT
 
@@ -228,12 +197,12 @@ $(document).ready(function(){
 				console.log(response);
 				if(response == true) {
 					$('#addnew').modal('hide');
-						snippetSuccessMessage('Your snippet has been saved.');
+						frontEndMessage(null, 'Your snippet has been saved.', 'message-success');
 						$('#ent_new')[0].reset();
 						clearNonFormPanel();
 					} else {
 						$('#addnew').modal('hide');
-							snippetFailMessage('Your snippet has not been saved.  Press the Add New or Save As button to try again.');
+						frontEndMessage(null, 'Your snippet has not been saved.  Press the Add New or Save As button to try again.', 'message-fail');
 					}
 			});
 		});
@@ -254,9 +223,9 @@ $(document).ready(function(){
 					console.log(response);
 					if(response == true) {
 						clearNonFormPanel();
-						snippetSuccessMessage('Your snippet has been deleted.');
+						frontEndMessage(null, 'Your snippet has been deleted.', 'message-success');
 					} else {
-						snippetFailMessage('The requested snippet was not deleted.  It may not belong to you.');
+						frontEndMessage(null, 'The requested snippet was not deleted.  It may not belong to you.', 'message-fail');
 					}
 				});
 			} else {
