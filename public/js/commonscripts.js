@@ -25,6 +25,44 @@ var datePickerIcons = {
 	close: 'fa fa-window-close'
 }
 
+//remove old front end messages
+
+var slideUpOldMsgs = function() {
+	history.pushState("", document.title, window.location.pathname + window.location.search);
+	if($('.message-fail')) {
+		$('.message-fail').slideUp(100);
+	}
+	if($('.message-success')) {
+		$('.message-success').slideUp(100);
+	}
+}
+
+//create a front end message
+var frontEndMessage = function(id, message, className) {
+	slideUpOldMsgs();
+	var fEMessage = $('<div class="message-box">');
+	if(className) {
+		fEMessage.addClass(className)
+	}
+	if(id) {
+		fEMessage.attr('id', id);
+	}
+	var fEMessageInner = '<div class="message-dismiss"> \
+			<h2>&times;</h2> \
+			<!-- end message-dismiss --> \
+			</div> \
+			<div class="message-item"> \
+				<span>' + message + '</span> \
+				<!-- / message-item--> \
+			</div> \
+			<!-- /message-box --> \
+		</div>';
+	fEMessage.append(fEMessageInner);
+	$('.message-center').append(fEMessage);
+	//jump to message box
+	window.location.hash = '#bc-jump';
+}
+
 //onload
 $(document).ready(function() {
 // instantiate copy button
@@ -171,52 +209,6 @@ $(function () {
 			//return false;
 		});
 
-		//remove old front end messages
-		var removeOldMessages = function () {
-			if ($('.message-center').find().hasClass('message-fail')) {
-				$('.message-center').find().hasClass('message-fail').remove();
-			}
-			if ($('.message-center').find().hasClass('message-success')) {
-				$('.message-center').find().hasClass('message-success').remove();
-			}
-		}
-		//create a front end message
-		var frontEndMessage = function(id, message, className) {
-			removeOldMessages();
-			var fEMessage = $('<div class="message-box">');
-			if(className) {
-				fEMessage.addClass(className)
-			}
-			if(id) {
-				fEMessage.attr('id', id);
-			}
-			var fEMessageInner = '<div class="message-dismiss"> \
-							<h2>&times;</h2> \
-			<!-- end message-dismiss --> \
-			</div> \
-			<div class="message-item"> \
-				<span>' + message + '</span> \
-				<!-- / message-item--> \
-			</div> \
-			<!-- /message-box --> \
-		</div>';
-		fEMessage.append(fEMessageInner);
-		$('.message-center').append(FEMessage);
-		//jump to message box
-		window.location.hash = '#bc-jump';
-	}
-
-	var slideUpOldMsgs = function() {
-		history.pushState("", document.title, window.location.pathname + window.location.search);
-		if($('.message-fail')) {
-			$('.message-fail').slideUp(100);
-		}
-		if($('.message-success')) {
-			$('.message-success').slideUp(100);
-		}
-	}
-
-
 
 		//send a report to the back end for storage and PDFing
 		$(document).off('click', '#pdf-report').on('click', '#pdf-report', function(event) {
@@ -282,7 +274,6 @@ $(function () {
 				type: 'GET'
 			})
 			.done(function(response) {
-				slideUpOldMsgs();
 				$('#combined-report').modal('hide');
 				if(response.status) {
 					frontEndMessage(response.msgType, response.msg, 'message-success');
