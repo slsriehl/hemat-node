@@ -278,7 +278,7 @@ const controller = {
 				}
 				let cleanObj = {
 					id: req.body.ent_id,
-					// userId: req.body.,
+					userId: req.session.user,
 					spcClass: objToUpdate.spc_class,
 					keywords: objToUpdate.keywords,
 					text: JSON.stringify(text)

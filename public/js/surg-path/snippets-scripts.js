@@ -186,7 +186,7 @@ $(document).ready(function(){
 		}
 		var loopAppendResults = function(results, position, update) {
 			for(var i = 0; i < results.length; i++) {
-				var newRow = $('<tr class="rowselect" id="' + results[i].id + '" data-user="' + userId + '">');
+				var newRow = $('<tr class="rowselect" id="' + results[i].id + '" data-user="' + results[i].userId + '">');
 				var columns = "<td><span class='spcClass-res'>" + results[i].spcClass + "</span></td><td><span class='keyword-res'>" + results[i].keywords + "</span></td><td><button value='" + results[i].text + "' class='snippet-result' type='button'>Copy/Edit/Delete</button></td>";
 				newRow.append(columns);
 				if(update) {
