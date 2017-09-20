@@ -1,5 +1,7 @@
 $(document).ready(function(){
 	var userId;
+
+
 	//handler and ajax call to search db for keyword matching search
 	$('#doSearch').on('submit', function(event) {
 		event.preventDefault();
@@ -25,6 +27,27 @@ $(document).ready(function(){
 			}
 		});
 	});
+
+	var createTagIt = function(value) {
+		//remove the tagit ul
+		if($('.tagit').length) {
+			$('.tagit').remove();
+		}
+		//remove the ent_key field
+		if($('#ent_key').length) {
+			$('#ent_key').remove();
+		}
+		//re-create the ent_key field
+		var ent_key = $('<input class="form-control" id="ent_key" name="tags" data-role="tags_input" />');
+		//append the new ent_key field to the html
+		$('#ent_key_container').append(ent_key);
+		//add the initial tags to ent_key
+		$('#ent_key').attr('value', value);
+		//instantiate the tagit field on ent_key
+		$('#ent_key').tagit({
+			allowSpaces: true
+		});
+	}
 
 	var emptyFormAlert = function() {
 		if(!$('#outPut-1').val() && !$('#outPut-2').val() && !$('#outPut-4').val()) {
@@ -139,6 +162,7 @@ $(document).ready(function(){
 
 		$('#openhelp').on('click', function(event) {
 			appendSaveBtn();
+			createTagIt('');
 			$('#addnew').modal('show');
 		});
 
@@ -165,13 +189,7 @@ $(document).ready(function(){
 				var textArr = extText.split(',');
 				return textArr.join(', ');
 			}
-			//add the initial tags to the hidden input tag field
-			$('#ent_key').attr('value', tagLoop($('#keyword-holder').text()));
-			//instantiate the tag field
-			$('#ent_key').tagit({
-				allowSpaces: true,
-			});
-
+			createTagIt(tagLoop($('#keyword-holder').text()));
 			if(withId) {
 				var idInput = $('<input hidden id="ent_id" name="ent_id" />');
 				idInput.attr('value', $('#entry_id-holder').text());
@@ -232,7 +250,6 @@ $(document).ready(function(){
 				console.log(response);
 				if(response.snips) {
 					$('#ent_new')[0].reset();
-					$('#ent_key').removeAttr('value');
 					clearNonFormPanel();
 					loopAppendResults(response.snips, 'top', true);
 					frontEndMessage(null, 'Your snippet was successfully saved.', 'message-success');
@@ -264,7 +281,6 @@ $(document).ready(function(){
 					loopAppendResults(response.snips, 'top');
 					frontEndMessage(null, 'Your snippet has been saved.', 'message-success');
 					$('#ent_new')[0].reset();
-					$('#ent_key').removeAttr('value');
 					clearNonFormPanel();
 				} else {
 					$('#addnew').modal('hide');
