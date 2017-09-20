@@ -5,7 +5,7 @@ $(document).ready(function(){
 	//handler and ajax call to search db for keyword matching search
 	$('#doSearch').on('submit', function(event) {
 		event.preventDefault();
-		console.log('foo');
+		//console.log('foo');
 		$.ajax({
 			url: '/snippets/search',
 			type: 'POST',
@@ -62,15 +62,15 @@ $(document).ready(function(){
 		if($('#outPut-1').val() || $('#outPut-2').val() || $('#outPut-4').val()) {
 			var myConfirm = confirm("Viewing this snippet will wipe out the text you're currently working with.  Do you want to continue?");
 			if(myConfirm) {
-				console.log('myconfirm positive');
+				//console.log('myconfirm positive');
 				clearNonFormPanel();
 				return appendToTextAreas($(this));
 			} else {
-				console.log('myconfirm negative');
+				//console.log('myconfirm negative');
 				return false;
 			}
 		} else {
-			console.log('the textareas are empty');
+			//console.log('the textareas are empty');
 			return appendToTextAreas($(this));
 		}
 	});
@@ -82,12 +82,12 @@ $(document).ready(function(){
 		if($('#download-pdf').length) {
 			$('#download-pdf').remove();
 		}
-		console.log('appendToTextAreas fired');
+		//console.log('appendToTextAreas fired');
 		//console.log(snippetResult.parent().parent().hasClass('u-1'));
-		console.log('value ' + snippetResult.val());
-		var itemObj = JSON.parse(snippetResult.val());
-		console.log(itemObj);
-		console.log(itemObj.micros);
+		//console.log('value ' + snippetResult.attr('value'));
+		var itemObj = JSON.parse(snippetResult.attr('value'));
+		//console.log(itemObj);
+		//console.log(itemObj.micros);
 		//val to show text
 		$('#outPut-1').val(itemObj.micros);
 		$('#outPut-2').val(itemObj.finals);
@@ -179,7 +179,7 @@ $(document).ready(function(){
 		//open save as modal while populating selected content
 		var openSaveWithContent = function(withId) {
 			//fill in all the fields with values from the displayed snippet (some in hidden inputs)
-			console.log('class holder val ' + $('#class-holder').text());
+			//console.log('class holder val ' + $('#class-holder').text());
 			$('#ent_class').val($('#class-holder').text()).change();
 			$('#ent_micro').val($('#outPut-1').text());
 			$('#ent_final').val($('#outPut-2').text());
@@ -206,7 +206,7 @@ $(document).ready(function(){
 			}
 		});
 		var clearNonFormPanel = function() {
-			console.log('clearNonFormPanel fired');
+			//console.log('clearNonFormPanel fired');
 			$('#outPut-1').text('');
 			$('#outPut-2').text('');
 			$('#outPut-4').text('');
@@ -266,9 +266,9 @@ $(document).ready(function(){
 
 		$("#ent_new").on("submit", function(e){
 			e.preventDefault(); // avoid to execute the actual submit of the form.
-			console.log('ent new serial' + $('#ent_new').serialize());
-			console.log('ent key text' + $('#ent_key').text());
-			console.log('ent key val' + $('#ent_key').val());
+			//console.log('ent new serial' + $('#ent_new').serialize());
+			//console.log('ent key text' + $('#ent_key').text());
+			//console.log('ent key val' + $('#ent_key').val());
 			$.ajax({
 				type: "POST",
 				url: '/snippet/save',
