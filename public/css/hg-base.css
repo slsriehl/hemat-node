@@ -206,3 +206,7 @@ button.snippet-result {
 #selected_preset {
 	display: none;
 }
+/* fix display problem with tagit field on snippets page */
+#ent_key_container > ul {
+	width: 100%;
+}
