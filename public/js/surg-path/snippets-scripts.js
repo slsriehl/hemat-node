@@ -37,13 +37,17 @@ $(document).ready(function(){
 	//handle click on a search result
 	$(document).off('click', '.snippet-result').on('click', '.snippet-result', function(event) {
 		if($('#outPut-1').val() || $('#outPut-2').val() || $('#outPut-4').val()) {
-			if(confirm("Viewing this snippet will wipe out the text you're currently working with.  Do you want to continue?")) {
+			var myConfirm = confirm("Viewing this snippet will wipe out the text you're currently working with.  Do you want to continue?");
+			if(myConfirm) {
+				console.log('myconfirm positive');
 				clearNonFormPanel();
 				return appendToTextAreas($(this));
 			} else {
+				console.log('myconfirm negative');
 				return false;
 			}
 		} else {
+			console.log('the textareas are empty');
 			return appendToTextAreas($(this));
 		}
 	});
@@ -55,18 +59,26 @@ $(document).ready(function(){
 		if($('#download-pdf').length) {
 			$('#download-pdf').remove();
 		}
-		console.log(snippetResult.parent().parent().hasClass('u-1'));
+		console.log('appendToTextAreas fired');
+		//console.log(snippetResult.parent().parent().hasClass('u-1'));
 		console.log('value ' + snippetResult.val());
 		var itemObj = JSON.parse(snippetResult.val());
 		console.log(itemObj);
+		console.log(itemObj.micros);
+		//val to show text
+		$('#outPut-1').val(itemObj.micros);
+		$('#outPut-2').val(itemObj.finals);
+		$('#outPut-4').val(itemObj.comments);
+		//append to set value (weird, I know.  Shouldn't either append or val do it?  But it seems not, especially after clearing the textboxes and repopulating them)
 		$('#outPut-1').append(itemObj.micros);
 		$('#outPut-2').append(itemObj.finals);
 		$('#outPut-4').append(itemObj.comments);
-		var userClass = snippetResult.parent().parent();
+		//set values of hidden inputs
 		$('#user-holder').append(snippetResult.parent().parent().attr('data-user'));
 		$('#class-holder').append(snippetResult.parent().parent().find('.spcClass-res').text());
 		$('#keyword-holder').append(snippetResult.parent().parent().find('.keyword-res').text());
 		$('#entry_id-holder').append(snippetResult.parent().parent().attr('id'));
+
 		if(snippetResult.parent().parent().attr('data-user') == userId && !$('#deleteSnippet').length && !$('#updateSnippet').length) {
 			//append delete and update buttons if the snippet belongs to the user
 			var deleteButton = $('<a class="btn btn-lg btn-outline-danger p-2" id="deleteSnippet">');
@@ -176,6 +188,7 @@ $(document).ready(function(){
 			}
 		});
 		var clearNonFormPanel = function() {
+			console.log('clearNonFormPanel fired');
 			$('#outPut-1').text('');
 			$('#outPut-2').text('');
 			$('#outPut-4').text('');
@@ -183,6 +196,14 @@ $(document).ready(function(){
 			$('#keyword-holder').text('');
 			$('#entry_id-holder').text('');
 			$('#user-holder').text('');
+
+			$('#outPut-1').val('');
+			$('#outPut-2').val('');
+			$('#outPut-4').val('');
+			$('#class-holder').val('');
+			$('#keyword-holder').val('');
+			$('#entry_id-holder').val('');
+			$('#user-holder').val('');
 		}
 		var loopAppendResults = function(results, position, update) {
 			for(var i = 0; i < results.length; i++) {
