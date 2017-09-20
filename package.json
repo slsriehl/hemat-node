@@ -34,6 +34,7 @@
     "fs": "0.0.1-security",
     "handlebars": "^4.0.10",
     "handlebars-pdf": "^1.0.1",
+    "jquery": "^3.2.1",
     "method-override": "^2.3.9",
     "mime": "^1.3.6",
     "moment": "^2.18.1",
@@ -45,5 +46,12 @@
     "unescape-html": "^1.1.0",
     "util": "^0.10.3",
     "uuid": "^3.1.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-dom": "^1.5.0",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.5.3",
+    "nightmare": "^2.10.0"
   }
 }
