@@ -42,10 +42,6 @@ const controller = {
 			.then((result) => {
 				//set the results of case references equal to a var
 				myRefs = result;
-				return Promise.resolve(true);
-			})
-			.then((result) => {
-				//check if the user has any reports
 				return reportsHelpers.getAnyReports(req)
 			})
 			.then((result) => {
