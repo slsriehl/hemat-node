@@ -3,29 +3,29 @@ $(document).ready(function() {
 	//definition for sorting function to be called by click handlers
 	var sortDivsAndStripe = function(sortType) {
 		//add and remove classes from the report parent container to indicate the sort type and order, and set the order variable to indicate the order that the reports will be sorted
-		if((!$("#previous-reports").hasClass(sortType + '-asc') && !$("#previous-reports").hasClass(sortType + '-desc')) || $("#previous-reports").hasClass(sortType + '-asc') || ($("#previous-reports").hasClass('date-desc') && $("#previous-reports").hasClass('init'))) {
+		if((!$("#report-history").hasClass(sortType + '-asc') && !$("#report-history").hasClass(sortType + '-desc')) || $("#report-history").hasClass(sortType + '-asc') || ($("#report-history").hasClass('date-desc') && $("#report-history").hasClass('init'))) {
 			//function calls to remove all previous sorting classes
-			killClass($('#previous-reports'), '-asc');
-			killClass($('#previous-reports'), '-desc');
+			killClass($('#report-history'), '-asc');
+			killClass($('#report-history'), '-desc');
 			//add current sort class
-			$('#previous-reports').addClass(sortType + '-desc');
+			$('#report-history').addClass(sortType + '-desc');
 			//remove the init class if this is the first sort after load and it's on the date criteria
-			if($("#previous-reports").hasClass('init')) {
-				$("#previous-reports").removeClass('init');
+			if($("#report-history").hasClass('init')) {
+				$("#report-history").removeClass('init');
 			}
 			//set order variable
 			order = 'desc';
 		} else {
 			//function calls to remove all previous sorting classes
-			killClass($('#previous-reports'), '-desc');
-			killClass($('#previous-reports'), '-asc');
+			killClass($('#report-history'), '-desc');
+			killClass($('#report-history'), '-asc');
 			//add current sort class
-			$('#previous-reports').addClass(sortType + '-asc');
+			$('#report-history').addClass(sortType + '-asc');
 			//set order variable
 			order = 'asc';
 		}
 		//function call to sort the rows of reports based on the values of the date, reference, or app used
-		sortUsingNestedText($('#previous-reports'), ".previous-report", spanName(sortType), order);
+		sortUsingNestedText($('#report-history'), ".previous-report", spanName(sortType), order);
 		//remove the ids that allow the math to stripe in prep for new striping ids
 		$('.previous-report').removeAttr('id');
 		//remove the style that stripes
@@ -33,7 +33,7 @@ $(document).ready(function() {
 		//create an array of the divs with the previous-report class to iterate through and stripe
 		var prevRepArr = $('.previous-report').toArray();
 		//console.log(prevRepArr);
-		//function call to iterate previous-reports, add new striping class, stripe
+		//function call to iterate report-history, add new striping class, stripe
 		iterateReports(prevRepArr, 'rgba(100, 176, 228, 0.2)');
 	}
 
