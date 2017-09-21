@@ -8,6 +8,7 @@ const models = require('../models');
 
 const util = require('util');
 const escape = require('escape-html');
+//var unescape = require('unescape-html');
 
 const Promise = require('bluebird');
 
@@ -157,10 +158,11 @@ const controller = {
 					let tempObj = searchResults1[i];
 					searchResults1.splice(i, 1);
 					let text = {
-						micros: escape(tempObj.micros),
-						finals: escape(tempObj.finals),
-						comments: escape(tempObj.comments)
+						micros: escape((tempObj.micros)),
+						finals: escape((tempObj.finals)),
+						comments: escape((tempObj.comments))
 					}
+					//console.log(text.finals);
 					let cleanObj = {
 						id: tempObj.entry_id,
 						userId: tempObj.user_id,

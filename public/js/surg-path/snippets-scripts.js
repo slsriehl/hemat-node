@@ -89,13 +89,13 @@ $(document).ready(function(){
 		//console.log(itemObj);
 		//console.log(itemObj.micros);
 		//val to show text
-		$('#outPut-1').val(itemObj.micros);
-		$('#outPut-2').val(itemObj.finals);
-		$('#outPut-4').val(itemObj.comments);
+		$('#outPut-1').val(he.decode(itemObj.micros));
+		$('#outPut-2').val(he.decode(itemObj.finals));
+		$('#outPut-4').val(he.decode(itemObj.comments));
 		//append to set value (weird, I know.  Shouldn't either append or val do it?  But it seems not, especially after clearing the textboxes and repopulating them)
-		$('#outPut-1').append(itemObj.micros);
-		$('#outPut-2').append(itemObj.finals);
-		$('#outPut-4').append(itemObj.comments);
+		$('#outPut-1').append(he.decode(itemObj.micros));
+		$('#outPut-2').append(he.decode(itemObj.finals));
+		$('#outPut-4').append(he.decode(itemObj.comments));
 		//set values of hidden inputs
 		$('#user-holder').append(snippetResult.parent().parent().attr('data-user'));
 		$('#class-holder').append(snippetResult.parent().parent().find('.spcClass-res').text());
