@@ -14,7 +14,9 @@ module.exports = function(sequelize, DataTypes) {
 					foreignKey: 'appGroupId',
 					onDelete: 'SET NULL'
 				});
-				Apps.hasMany(models.Reports);
+				Apps.hasMany(models.Reports, {
+					foreignKey: 'reportId'
+				});
       }
     }
   });

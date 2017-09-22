@@ -13,7 +13,9 @@ module.exports = function(sequelize, DataTypes) {
 					foreignKey: 'userId',
 					onDelete: 'CASCADE'
 				});
-				CaseReferences.hasMany(models.Reports);
+				CaseReferences.hasMany(models.Reports, {
+					foreignKey: 'referenceId'
+				});
       }
     }
   });

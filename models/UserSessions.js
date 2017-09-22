@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		userId: DataTypes.STRING,
 		expires: DataTypes.DATE,
-		data: DataTypes.STRING(50000)
+		data: DataTypes.TEXT
     //data: DataTypes.TEXT
   }, {
     classMethods: {

@@ -42,12 +42,24 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-				Users.hasMany(models.DismissedMessages);
-				Users.hasMany(models.ResetTokens);
-				Users.hasMany(models.CaseReferences);
-				Users.hasMany(models.Reports);
-				Users.hasMany(models.Snippets);
-				Users.hasMany(models.IhcPresets);
+				Users.hasMany(models.DismissedMessages, {
+					foreignKey: 'userId'
+				});
+				Users.hasMany(models.ResetTokens, {
+					foreignKey: 'userId'
+				});
+				Users.hasMany(models.CaseReferences, {
+					foreignKey: 'userId'
+				});
+				Users.hasMany(models.Reports, {
+					foreignKey: 'userId'
+				});
+				Users.hasMany(models.Snippets, {
+					foreignKey: 'userId'
+				});
+				Users.hasMany(models.IhcPresets, {
+					foreignKey: 'userId'
+				});
         // associations can be defined here
       }
     }
