@@ -84,7 +84,7 @@ const controller = {
 			res.render('index.hbs', {
 				messages: [{
 					text: 'You need an account to access that resource.  <a href="/user/signup">Sign up</a>.',
-					id: `access-denied-${renderPath}`
+					id: `access-denied`
 				}]
 			});
 		}
@@ -96,6 +96,7 @@ const controller = {
 		} else {
 			return helpers.getAppId(req)
 			.then((result) => {
+				console.log(result);
 				req.session.app = result.dataValues.id;
 				res.render(renderPath, {
 					messages: [{
