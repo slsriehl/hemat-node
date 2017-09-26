@@ -5,3 +5,5 @@ config
 to-dos.md
 reports/*/*
 errors
+npm-debug.log
+mochawesome-report
