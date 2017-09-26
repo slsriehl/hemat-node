@@ -17,7 +17,7 @@ router.get('/report/download/:report', (req, res) => {
 
 router.get('/report/mail/:report', (req, res) => {
 	mailController.emailReport(req, res);
-})
+});
 
 //download a guest report
 // router.get('/report/guest/:report', (req, res) => {

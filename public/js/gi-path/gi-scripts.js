@@ -22,12 +22,32 @@ $(window).on('load', function(){
         }
     });
 
+// Set variables across the different functions
+// temporary holder for checkbox id
+    var part_choice  = null;
+    var diag_choice  = null;
+    var micro_choice = null;
+    var comm_choice  = null;
+
+// new text
+    var final_text = $('#outPut-3').val();
+    var micro_text = $('#outPut-2').val();
+    var comm_text  = $('#outPut-4').val();
+
+// old micro text to revert to
+    var final_old = '';
+    var micro_old = '';
+    var comm_old  = '';
+
+
+
+
 // Adult micros activation
     $('.adultgi').on('change', function(){
-		console.log('adultgi switched');
+        console.log('adultgi switched');
         var sel = $(this).val();
         if (sel == '1'){ // 1 = Adult designation
-		console.log('adultgi confirmed');
+            console.log('adultgi confirmed');
             // Change gastric biopsies to include IM description
             $('#column3c').on('click', function(){
                 $("#intestinalmetaplasia-confirm").dialog({
@@ -39,38 +59,38 @@ $(window).on('load', function(){
                     buttons: {
                         "Yes": function () {
                             $(this).dialog('close');
-                            var micro_text = $('#outPut-2').val();
-                            var final_text = $('#outPut-3').val();
+                            micro_text = $('#outPut-2').val();
+                            final_text = $('#outPut-3').val();
                             micro_text = micro_text.replace(/^\s+|\s+$/g, "")+' Intestinal metaplasia is identified; no dysplasia or carcinoma is seen. \n\n';
                             final_text += '- Intestinal metaplasia present; no dysplasia or carcinoma seen\n';
                             // update textarea
                             $('#outPut-3').val(final_text);
                             $('#outPut-2').val(micro_text);
                             // keep changes in textarea by simulating spacebar keypress
-                            var e = jQuery.Event("keydown");
-                            e.which = 32; // spacebar keycode value
-                            $("#outPut-3").focus();
-                            $("#outPut-3").trigger(e);
-                            $('#outPut-3').val($('#outPut-3').val()+String.fromCharCode(e.which));
-                            $("#outPut-2").focus();
-                            $("#outPut-2").trigger(e);
-                            $('#outPut-2').val($('#outPut-2').val()+String.fromCharCode(e.which));
+                            //var e = jQuery.Event("keydown");
+                            //e.which = 32; // spacebar keycode value
+                            //$("#outPut-3").focus();
+                            //$("#outPut-3").trigger(e);
+                            //$('#outPut-3').val($('#outPut-3').val()+String.fromCharCode(e.which));
+                            //$("#outPut-2").focus();
+                            //$("#outPut-2").trigger(e);
+                            //$('#outPut-2').val($('#outPut-2').val()+String.fromCharCode(e.which));
                             // end simulation snippett
 
 
                         },
                         "No": function () {
                             $(this).dialog('close');
-                            var micro_text = $('#outPut-2').val();
+                            micro_text = $('#outPut-2').val();
                             micro_text = micro_text.replace(/^\s+|\s+$/g, "")+' No intestinal metaplasia or carcinoma is seen. \n\n';
                             // update textarea
                             $('#outPut-2').val(micro_text);
                             // keep changes in textarea by simulating spacebar keypress
-                            var e = jQuery.Event("keydown");
-                            e.which = 32; // spacebar keycode value
-                            $("#outPut-2").focus();
-                            $("#outPut-2").trigger(e);
-                            $('#outPut-2').val($("#outPut-2").val()+String.fromCharCode(e.which));
+                            //var e = jQuery.Event("keydown");
+                            //e.which = 32; // spacebar keycode value
+                            //$("#outPut-2").focus();
+                            //$("#outPut-2").trigger(e);
+                            //$('#outPut-2').val($("#outPut-2").val()+String.fromCharCode(e.which));
                             // end simulation snippett
 
 
@@ -195,7 +215,7 @@ $(window).on('load', function(){
             var duo_list_markup = $('<div class="form-inline"><input type="checkbox" class="form-control form-control-sm mr-2 source" value="' + duo_part + '">' + duo_part + '</div>');
             if($.inArray(duo_part, duoArr) > -1){ // check to see if item already present in array, if so remove for unchecked box
                 duoArr.splice(duo_part, 1);
-              //  $('.duo_list').remove(duo_list_markup);
+                //  $('.duo_list').remove(duo_list_markup);
                 console.log('already in duo array, removed');
             } else { // item not present so add it to the array of part types
                 duoArr.push(duo_part);
@@ -216,8 +236,8 @@ $(window).on('load', function(){
             }
 
             for (var i=100; i<113; i++){
-                    mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/the (.*?) show/, 'the \''+last_duo+'\' show');
-                }
+                mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/the (.*?) show/, 'the \''+last_duo+'\' show');
+            }
 
             console.log('formatted multi duo text:' + duo_sent);
         }
@@ -352,9 +372,9 @@ $(window).on('load', function(){
     $('#_mxLine162').on('mousedown', function(e){
         e.preventDefault();
         var que = $(this).find('input').attr('id');
-            $("#" + que).prop('checked', false).prop("disabled", true);
-            console.log('feg checked');
-            if (!$("#" + que).is(":checked")) {
+        $("#" + que).prop('checked', false).prop("disabled", true);
+        console.log('feg checked');
+        if (!$("#" + que).is(":checked")) {
             $('.feg_list').dialog('open').dialog({
                 title: "Secretory diarrhea workup",
                 modal: 'true',
@@ -365,18 +385,18 @@ $(window).on('load', function(){
                         var feg_neut = $('#feg_2').val();
 
                         if (feg_focus == 'Single'){
-                                mxLines.mxLine162 = mxLines.mxLine162.replace(/#FFF#/, 'a single focus');
-                            } else {
-                                mxLines.mxLine162 = mxLines.mxLine162.replace(/#FFF#/, 'multiple foci').replace(/This focus is/, 'These foci are');
+                            mxLines.mxLine162 = mxLines.mxLine162.replace(/#FFF#/, 'a single focus');
+                        } else {
+                            mxLines.mxLine162 = mxLines.mxLine162.replace(/#FFF#/, 'multiple foci').replace(/This focus is/, 'These foci are');
 
-                            }
+                        }
 
 
                         if (feg_neut == 'No'){
-                                mxLines.mxLine162 = mxLines.mxLine162.replace(/#NNN#/, ' and plasma cells');
-                            } else {
-                                mxLines.mxLine162 = mxLines.mxLine162.replace(/#NNN#/, ', plasma cells and few neutrophils');;
-                            }
+                            mxLines.mxLine162 = mxLines.mxLine162.replace(/#NNN#/, ' and plasma cells');
+                        } else {
+                            mxLines.mxLine162 = mxLines.mxLine162.replace(/#NNN#/, ', plasma cells and few neutrophils');;
+                        }
 
                         // reset checkmark status and clost dialog
                         $('#mxLine162').prop('disabled', false);
@@ -647,26 +667,26 @@ $(window).on('load', function(){
         var que = $(this).find('input').attr('id'); // find id of closest checkbox in this label
         $("#"+que).prop('checked', false).prop("disabled", true); // pause check event
         if (!$("#"+que).is(":checked")){
-                console.log(que);
-                var num = prompt('How many biopsy pieces?');
-               // var numword = toWords(num);
-                var adeq = prompt('How many have adequate submucosa?')
-               // var adeqword = toWords(adeq);
-                mxLines[que] = mxLines[que].replace(/#NUM#/, num );
-                if (adeq == num) {
-                    console.log("adeq = num");
-                    mxLines[que] = mxLines[que].replace(/#ADEQ#/, "all").replace(/all adequate biopsy/,"all biopsy" );
-                } else {
-                    mxLines[que] = mxLines[que].replace(/#ADEQ#/, adeq);
-                }
-                console.log(mxLines[que]);
-                $("#"+que).prop("disabled", false); // undisable checkbox
-                $("#"+que).trigger('click'); // resume click event
+            console.log(que);
+            var num = prompt('How many biopsy pieces?');
+            // var numword = toWords(num);
+            var adeq = prompt('How many have adequate submucosa?')
+            // var adeqword = toWords(adeq);
+            mxLines[que] = mxLines[que].replace(/#NUM#/, num );
+            if (adeq == num) {
+                console.log("adeq = num");
+                mxLines[que] = mxLines[que].replace(/#ADEQ#/, "all").replace(/all adequate biopsy/,"all biopsy" );
+            } else {
+                mxLines[que] = mxLines[que].replace(/#ADEQ#/, adeq);
             }
-        });
+            console.log(mxLines[que]);
+            $("#"+que).prop("disabled", false); // undisable checkbox
+            $("#"+que).trigger('click'); // resume click event
+        }
+    });
 
-/***************************************************************************************************/
-/******************************* GRANULOMA MODAL ****************************************************/
+    /***************************************************************************************************/
+    /******************************* GRANULOMA MODAL ****************************************************/
 
     $('#mxLine311, #mxLine312, #mxLine318, #mxLine319').on('change', function(){
         if ($(this).is(':checked')){
@@ -746,21 +766,7 @@ $(window).on('load', function(){
 // **** ADD MICROS WITH ONE-CLICK UNDO *****//
 //											//
 //											//
-// temporary holder for checkbox id
-    var part_choice  = null;
-    var diag_choice  = null;
-    var micro_choice = null;
-    var comm_choice  = null;
 
-// new text
-    var final_text = $('#outPut-3').val();
-    var micro_text = $('#outPut-2').val();
-    var comm_text  = $('#outPut-4').val();
-
-// old micro text to revert to
-    var final_old = '';
-    var micro_old = '';
-    var comm_old  = '';
 
 // fill final diagnosis textbox
     function print_final() {
@@ -866,14 +872,12 @@ $(window).on('load', function(){
 // **** ADD MICROS WITH ONE-CLICK UNDO *****//
 
 // ********************* Combined report function ***********************//
-$('#writeReport').on('click', function () {
-    // store your text to localStorage when someone click the link
-    var textToPass = $('#outPut-2').val()+'\n\n'+$('#outPut-3').val()+'\n\n'+$('#outPut-4').val();
+    $('#writeReport').on('click', function () {
+        // store your text to localStorage when someone click the link
+        var textToPass = $('#outPut-2').val()+'\n\n'+$('#outPut-3').val()+'\n\n'+$('#outPut-4').val();
         $('#outPut-combine').val(textToPass);
         $('#combined-report').modal("show");
-		dataObj.singleSection = $('#outPut-combine').val();
-		makeCreatePdfBtn();
-});
+    });
 
 // ======================================================================//
 
