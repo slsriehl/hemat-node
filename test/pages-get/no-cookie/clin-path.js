@@ -9,7 +9,11 @@ const util = require('util');
 chai.use(chaiHTTP);
 chai.use(chaiCheerio);
 
+const responseStatus = require('../../helpers/response-status').getResponseStatus;
+
 const headerNotSignedIn = require('../../helpers/header').notSignedIn;
+
+const scriptHelper = require('../../helpers/scripts-loop').scriptReverse;
 
 const should = chai.should();
 
@@ -17,15 +21,15 @@ const should = chai.should();
 const tests = {
 	bal: function(done) {
 		const pathTo = '/clin-path/bal';
+		const scripts = [
+			"/json/json-bal.js",
+			"/js/clin-path/bal-scripts.js"
+		];
 		return chai.request(server)
     .get(pathTo)
     .then(function(res) {
       //console.log(util.inspect(res.res, {depth: null}));
-      res.should.have.status(200);
-      res.should.be.html;
-			let resString = JSON.stringify(res.res.text)
-			//console.log(resString);
-			$ = cheerio.load(res.res.text);
+      $ = responseStatus(res);
 			headerNotSignedIn();
 			$('#you-should-sign-up').should.exist;
 			//check for page modals
@@ -35,8 +39,7 @@ const tests = {
 			$('#new-case-reference').should.exist;
 			$('.individual-report-btn-box').should.not.exist;
 			//check for scripts
-			$('script')[$('script').length - 1].attribs.src.should.equal("/js/clin-path/bal-scripts.js");
-			$('script')[$('script').length - 2].attribs.src.should.equal("/json/json-bal.js");
+			scriptHelper(scripts, true);
 
 			//text panel
 			$('#done').should.exist;
@@ -54,20 +57,20 @@ const tests = {
 			done();
 		})
 		.catch(function(err) {
-			console.log(util.inspect(err));
+			done(err);
 		});
 	},
 	csf: function(done) {
 		const pathTo = '/clin-path/csf';
+		const scripts = [
+			"/json/json-csf.js",
+			"/js/clin-path/csf-scripts.js"
+		];
 		return chai.request(server)
     .get(pathTo)
     .then(function(res) {
       //console.log(util.inspect(res.res, {depth: null}));
-      res.should.have.status(200);
-      res.should.be.html;
-			let resString = JSON.stringify(res.res.text)
-			//console.log(resString);
-			$ = cheerio.load(res.res.text);
+      $ = responseStatus(res);
 			headerNotSignedIn();
 			$('#you-should-sign-up').should.exist;
 			//check for page modals
@@ -76,8 +79,7 @@ const tests = {
 			$('#new-case-reference').should.exist;
 			$('.individual-report-btn-box').should.not.exist;
 			//check for scripts
-			$('script')[$('script').length - 1].attribs.src.should.equal("/js/clin-path/csf-scripts.js");
-			$('script')[$('script').length - 2].attribs.src.should.equal("/json/json-csf.js");
+			scriptHelper(scripts, true);
 
 			//text panel
 			$('#writeReport').should.exist;
@@ -95,20 +97,20 @@ const tests = {
 			done();
 		})
 		.catch(function(err) {
-			console.log(util.inspect(err));
+			done(err);
 		});
 	},
 	antibodyId: function(done) {
 		const pathTo = '/clin-path/antibody-id';
+		const scripts = [
+			"/json/json-abid.js",
+			"/js/clin-path/antibody-scripts.js"
+		];
 		return chai.request(server)
     .get(pathTo)
     .then(function(res) {
       //console.log(util.inspect(res.res, {depth: null}));
-      res.should.have.status(200);
-      res.should.be.html;
-			let resString = JSON.stringify(res.res.text)
-			//console.log(resString);
-			$ = cheerio.load(res.res.text);
+      $ = responseStatus(res);
 			headerNotSignedIn();
 			$('#you-should-sign-up').should.exist;
 			//check for page modals
@@ -117,8 +119,7 @@ const tests = {
 			$('#new-case-reference').should.exist;
 			$('.individual-report-btn-box').should.not.exist;
 			//check for scripts
-			$('script')[$('script').length - 1].attribs.src.should.equal("/js/clin-path/antibody-scripts.js");
-			$('script')[$('script').length - 2].attribs.src.should.equal("/json/json-abid.js");
+			scriptHelper(scripts, true);
 
 			//text panel
 			$('#writeReport').should.exist;
@@ -130,20 +131,20 @@ const tests = {
 			done();
 		})
 		.catch(function(err) {
-			console.log(util.inspect(err));
+			done(err);
 		});
 	},
 	txRxn: function(done) {
 		const pathTo = '/clin-path/tx-rxn';
+		const scripts = [
+			"/json/json-txrxn.js",
+			"/js/clin-path/txrxn-scripts.js"
+		];
 		return chai.request(server)
 		.get(pathTo)
 		.then(function(res) {
 			//console.log(util.inspect(res.res, {depth: null}));
-			res.should.have.status(200);
-			res.should.be.html;
-			let resString = JSON.stringify(res.res.text)
-			//console.log(resString);
-			$ = cheerio.load(res.res.text);
+			$ = responseStatus(res);
 			headerNotSignedIn();
 			$('#you-should-sign-up').should.exist;
 			//check for page modals
@@ -152,8 +153,7 @@ const tests = {
 			$('#new-case-reference').should.exist;
 			$('.individual-report-btn-box').should.not.exist;
 			//check for scripts
-			$('script')[$('script').length - 1].attribs.src.should.equal("/js/clin-path/txrxn-scripts.js");
-			$('script')[$('script').length - 2].attribs.src.should.equal("/json/json-txrxn.js");
+			scriptHelper(scripts, true);
 
 			//text panel
 			$('#writeReport').should.exist;
@@ -165,7 +165,7 @@ const tests = {
 			done();
 		})
 		.catch(function(err) {
-			console.log(util.inspect(err));
+			done(err);
 		});
 	},
 }
