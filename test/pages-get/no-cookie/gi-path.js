@@ -9,7 +9,11 @@ const util = require('util');
 chai.use(chaiHTTP);
 chai.use(chaiCheerio);
 
+const responseStatus = require('../../helpers/response-status').getResponseStatus;
+
 const headerNotSignedIn = require('../../helpers/header').notSignedIn;
+
+const scriptHelper = require('../../helpers/scripts-loop').scriptReverse;
 
 const should = chai.should();
 //Nightmare.Promise = Promise;
@@ -18,15 +22,16 @@ const should = chai.should();
 const tests = {
 	giBx: function(done) {
 		const pathTo = '/gi-path/gi-bx';
+		const scripts = [
+			"/json/json-gi.js",
+			"/js/gi-path/gi-scripts.js",
+			"/js/surg-path/ihc-scripts.js"
+		];
 		return chai.request(server)
     .get(pathTo)
     .then(function(res) {
       //console.log(util.inspect(res.res, {depth: null}));
-      res.should.have.status(200);
-      res.should.be.html;
-			let resString = JSON.stringify(res.res.text)
-			//console.log(resString);
-			$ = cheerio.load(res.res.text);
+      $ = responseStatus(res);
 			headerNotSignedIn();
 			$('#you-should-sign-up').should.exist;
 
@@ -39,9 +44,7 @@ const tests = {
 			$('.individual-report-btn-box').should.not.exist;
 
 			//check for scripts
-			$('script')[$('script').length - 1].attribs.src.should.equal("/js/surg-path/ihc-scripts.js");
-			$('script')[$('script').length - 2].attribs.src.should.equal("/js/gi-path/gi-scripts.js");
-			$('script')[$('script').length - 3].attribs.src.should.equal("/json/json-gi.js");
+			scriptHelper(scripts, true);
 
 			//text panel
 			$('#writeReport').should.exist;
@@ -57,20 +60,21 @@ const tests = {
 			done();
 		})
 		.catch(function(err) {
-			console.log(util.inspect(err));
+			done(err);
 		});
 	},
 	liverBx: function(done) {
 		const pathTo = '/gi-path/liver-bx';
+		const scripts = [
+			"/json/json-liver.js",
+			"/js/gi-path/liver-scripts.js",
+			"/js/surg-path/ihc-scripts.js"
+		];
 		chai.request(server)
     .get(pathTo)
     .then(function(res) {
 			//console.log(res);
-      res.should.have.status(200);
-      res.should.be.html;
-			let resString = JSON.stringify(res.res.text)
-			//console.log(resString);
-			$ = cheerio.load(res.res.text);
+      $ = responseStatus(res);
 			//check for header and not signed in message
 			headerNotSignedIn();
 			$('#access-denied').should.exist;
@@ -85,9 +89,7 @@ const tests = {
 			$('.individual-report-btn-box').should.not.exist;
 
 			//scripts
-			$('script')[$('script').length - 1].attribs.src.should.not.equal("/js/surg-path/ihc-scripts.js");
-			$('script')[$('script').length - 2].attribs.src.should.not.equal("/js/gi-path/liver-scripts.js");
-			$('script')[$('script').length - 3].attribs.src.should.not.equal("/json/json-liver.js");
+			scriptHelper(scripts, false);
 
 			//text boxes should not render
 			$('#writeReport').should.not.exist;
@@ -101,7 +103,7 @@ const tests = {
 			done();
 		})
 		.catch(function(err) {
-			console.log(util.inspect(err));
+			done(err);
 		});
 	}
 }
