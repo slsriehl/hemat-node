@@ -9,7 +9,11 @@ const util = require('util');
 chai.use(chaiHTTP);
 chai.use(chaiCheerio);
 
+const responseStatus = require('../../helpers/response-status').getResponseStatus;
+
 const headerNotSignedIn = require('../../helpers/header').notSignedIn;
+
+const scriptHelper = require('../../helpers/scripts-loop').scriptReverse;
 
 const should = chai.should();
 //Nightmare.Promise = Promise;
@@ -18,15 +22,14 @@ const should = chai.should();
 const tests = {
 	hemeDiff: function(done) {
 		const pathTo = '/heme-path/heme-diff';
+		const scripts = [
+			"/js/heme-path/hemediff-scripts.js"
+		];
 		return chai.request(server)
     .get(pathTo)
     .then(function(res) {
       //console.log(util.inspect(res.res, {depth: null}));
-      res.should.have.status(200);
-      res.should.be.html;
-			let resString = JSON.stringify(res.res.text)
-			//console.log(resString);
-			$ = cheerio.load(res.res.text);
+      $ = responseStatus(res);
 			headerNotSignedIn();
 			$('#you-should-sign-up').should.exist;
 			//check for page modals
@@ -36,7 +39,7 @@ const tests = {
 			$('#new-case-reference').should.exist;
 			$('.individual-report-btn-box').should.not.exist;
 			//check for scripts
-			$('script')[$('script').length - 1].attribs.src.should.equal('/js/heme-path/hemediff-scripts.js');
+			scriptHelper(scripts, true);
 			//text panel
 			$('#printDiff').should.exist;
 			$('#diffOut').should.exist;
@@ -49,20 +52,19 @@ const tests = {
 			done();
 		})
 		.catch(function(err) {
-			console.log(util.inspect(err));
+			done(err);
 		});
 	},
 	counter: function(done) {
 		const pathTo = '/heme-path/counter';
+		const scripts = [
+			"/js/heme-path/counter-scripts.js"
+		];
 		chai.request(server)
     .get(pathTo)
     .then(function(res) {
 			//console.log(res);
-      res.should.have.status(200);
-      res.should.be.html;
-			let resString = JSON.stringify(res.res.text)
-			//console.log(resString);
-			$ = cheerio.load(res.res.text);
+      $ = responseStatus(res);
 			headerNotSignedIn();
 			$('#you-should-sign-up').should.exist;
 			//modals on the page
@@ -71,7 +73,7 @@ const tests = {
 			$('#new-case-reference').should.exist;
 			$('.individual-report-btn-box').should.not.exist;
 			//scripts on the page
-			$('script')[$('script').length - 1].attribs.src.should.equal('/js/heme-path/counter-scripts.js');
+			scriptHelper(scripts, true);
 			//text panel
 			$('#printDiff').should.exist;
 			$('#diffOut').should.exist;
@@ -84,20 +86,21 @@ const tests = {
 			done();
 		})
 		.catch(function(err) {
-			console.log(util.inspect(err));
+			done(err);
 		});
 	},
 	pbSmears: function(done) {
 		const pathTo = '/heme-path/pb-smears';
+		const scripts = [
+			"/json/json-pbsmears.js",
+			"/js/heme-path/pb-rules.js",
+			"/js/heme-path/pb-scripts.js"
+		];
 		chai.request(server)
     .get(pathTo)
     .then(function(res) {
 			//console.log(res);
-      res.should.have.status(200);
-      res.should.be.html;
-			let resString = JSON.stringify(res.res.text)
-			//console.log(resString);
-			$ = cheerio.load(res.res.text);
+      $ = responseStatus(res);
 			headerNotSignedIn();
 			$('#you-should-sign-up').should.exist;
 
@@ -108,9 +111,7 @@ const tests = {
 			$('.individual-report-btn-box').should.not.exist;
 
 			//check for scripts
-			$('script')[$('script').length - 1].attribs.src.should.equal("/js/heme-path/pb-scripts.js");
-			$('script')[$('script').length - 2].attribs.src.should.equal("/js/heme-path/pb-rules.js");
-			$('script')[$('script').length - 3].attribs.src.should.equal("/json/json-pbsmears.js");
+			scriptHelper(scripts, true);
 
 			//text panel
 			$('#writeReport').should.exist;
@@ -129,20 +130,23 @@ const tests = {
 			done();
 		})
 		.catch(function(err) {
-			console.log(util.inspect(err));
+			done(err);
 		});
 	},
 	boneMarrow: function(done) {
 		const pathTo = '/heme-path/bone-marrow';
+		const scripts = [
+			"/json/json-bonemarrow.js",
+			"/js/heme-path/bm-diff-scripts.js",
+			"/js/heme-path/bm-scripts.js",
+			"/js/heme-path/pb-rules.js",
+			"/js/surg-path/ihc-scripts.js"
+		];
 		chai.request(server)
     .get(pathTo)
     .then(function(res) {
 			//console.log(res);
-      res.should.have.status(200);
-      res.should.be.html;
-			let resString = JSON.stringify(res.res.text)
-			//console.log(resString);
-			$ = cheerio.load(res.res.text);
+      $ = responseStatus(res);
 			//check for header and not signed in message
 			headerNotSignedIn();
 			$('#you-should-sign-up').should.exist;
@@ -155,11 +159,7 @@ const tests = {
 			$('.individual-report-btn-box').should.not.exist;
 
 			//scripts
-			$('script')[$('script').length - 1].attribs.src.should.equal("/js/surg-path/ihc-scripts.js");
-			$('script')[$('script').length - 2].attribs.src.should.equal("/js/heme-path/pb-rules.js");
-			$('script')[$('script').length - 3].attribs.src.should.equal("/js/heme-path/bm-scripts.js");
-			$('script')[$('script').length - 4].attribs.src.should.equal("/js/heme-path/bm-diff-scripts.js");
-			$('script')[$('script').length - 5].attribs.src.should.equal("/json/json-bonemarrow.js");
+			scriptHelper(scripts, true);
 
 			//text panel
 			$('#writeReport').should.exist;
@@ -178,20 +178,19 @@ const tests = {
 			done();
 		})
 		.catch(function(err) {
-			console.log(util.inspect(err));
+			done(err);
 		});
 	},
 	dlbcl: function(done) {
 		const pathTo = '/heme-path/dlbcl';
+		const scripts = [
+			"/js/heme-path/dlbcl-scripts.js"
+		];
 		chai.request(server)
     .get(pathTo)
     .then(function(res) {
 			//console.log(res);
-      res.should.have.status(200);
-      res.should.be.html;
-			let resString = JSON.stringify(res.res.text)
-			//console.log(resString);
-			$ = cheerio.load(res.res.text);
+      $ = responseStatus(res);
 			//check for header and not signed in message
 			headerNotSignedIn();
 			$('#access-denied').should.exist;
@@ -204,7 +203,8 @@ const tests = {
 			$('.individual-report-btn-box').should.not.exist;
 
 			//scripts
-			$('script')[$('script').length - 1].attribs.src.should.not.equal("/js/heme-path/dlbcl-scripts.js");
+			scriptHelper(scripts, false);
+
 			//text boxes should not render
 			$('#writeReport').should.not.exist;
 			$('#Reset').should.not.exist;
@@ -214,7 +214,7 @@ const tests = {
 			done();
 		})
 		.catch(function(err) {
-			console.log(util.inspect(err));
+			done(err);
 		});
 	}
 }
