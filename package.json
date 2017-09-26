@@ -9,10 +9,10 @@
   "scripts": {
     "start": "nodemon server.js",
 		"test-pages": "mocha test/pages-get.js --reporter mochawesome --reporter-options autoOpen=true",
-		"test-reports": "mocha test/reports.js --reporter mochawesome",
-		"test-user": "mocha test/user.js --reporter mochawesome",
-		"test-snippets": "mocha test/snippets.js --reporter mochawesome",
-		"test-ihc": "mocha test/ihc.js --reporter mochawesome"
+		"test-reports": "mocha test/reports.js --reporter mochawesome --reporter-options autoOpen=true",
+		"test-user": "mocha test/user.js --reporter mochawesome --reporter-options autoOpen=true",
+		"test-snippets": "mocha test/snippets.js --reporter mochawesome --reporter-options autoOpen=true",
+		"test-ihc": "mocha test/ihc.js --reporter mochawesome --reporter-options autoOpen=true"
   },
   "repository": {
     "type": "git",
