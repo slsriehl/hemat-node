@@ -28,5 +28,9 @@ let transporter = {
 		transporter.auth.pass = require('../config/pass');
 	}
 
+//testing
+	if(process.env.NODE_ENV == 'test') {
+		transporter = require('../test/email-config/transporter');
+	}
 
 	module.exports = nodemailer.createTransport(transporter);

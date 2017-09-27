@@ -24,7 +24,7 @@ const surgPathNoCookie = require('./pages-get/no-cookie/surg-path');
 const surgPathWrongCookie = require('./pages-get/wrong-cookie/surg-path');
 const surgPathRightCookie = require('./pages-get/right-cookie/surg-path');
 
-const beforeEachHooks = require('./helpers/before-each-pages-get');
+const beforeEachHooks = require('./helpers/before-each/pages-get');
 
 describe('logged in get requests', function () {
 	beforeEach('setup logged in', function(done) {

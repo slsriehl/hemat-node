@@ -11,7 +11,7 @@ chai.use(chaiCheerio);
 
 const responseStatus = require('./response-status').getResponseStatus;
 
-const headerHelpers = require('./header');
+const headerHelpers = require('./header/pages-get');
 
 const should = chai.should();
 //Nightmare.Promise = Promise;

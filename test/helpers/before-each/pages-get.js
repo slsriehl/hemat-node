@@ -1,9 +1,9 @@
 
-const models = require('../../models');
+const models = require('../../../models');
 
 const bcrypt = require('bcryptjs');
 
-const bulkCreate = require('./bulk-create');
+const bulkCreate = require('../bulk-create/pages-get');
 
 const helpers = {
 	expiredCookie: function(done) {
@@ -23,7 +23,7 @@ const helpers = {
 				firstname: 'Louise',
 				lastname: 'Bates',
 				username: 'louise',
-				email: 'louise@example.com',
+				email: 'auurpgnddqjdchqu@ethereal.email',
 				password: password,
 				requireReset: false
 			}
@@ -50,9 +50,7 @@ const helpers = {
 			done();
 		})
 		.catch(function(error) {
-			console.log('table sync error');
-			throw error;
-			done();
+			done(error);
 		});
 	},
 	correctCookie: function(done) {
@@ -72,7 +70,7 @@ const helpers = {
 				firstname: 'Louise',
 				lastname: 'Bates',
 				username: 'louise',
-				email: 'louise@example.com',
+				email: 'auurpgnddqjdchqu@ethereal.email',
 				password: password,
 				requireReset: false
 			}
@@ -99,9 +97,7 @@ const helpers = {
 			done();
 		})
 		.catch(function(error) {
-			console.log('table sync error');
-			throw error;
-			done();
+			done(error);
 		});
 	}
 }

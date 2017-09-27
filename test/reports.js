@@ -1,6 +1,6 @@
 process.env.NODE_ENV = 'test';
 
-const beforeEachHooks = require('./helpers/before-each-reports');
+const beforeEachHooks = require('./helpers/before-each/reports');
 
 describe('report behavior with the correct auth cred (cookie sent matches an isAuth session)', function () {
 	beforeEach('setup report-ready db', function(done) {
@@ -14,7 +14,7 @@ describe('reports behavior where cookie references a missing session', function(
 	});
 });
 
-describe('user pages behavior where cookie references an isAuth false session', function() {
+describe('reports behavior where cookie references an isAuth false session', function() {
 	beforeEach('setup reports-ready db with false auth cred (cookie sent matches an isAuth false session)', function(done) {
 		beforeEachHooks.isAuthFalseCookie(done);
 	});

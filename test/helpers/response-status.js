@@ -12,7 +12,7 @@ const resStatus = {
 	},
 	ajaxResponseStatus: function(res) {
 		res.should.have.status(200);
-		res.should.be.html;
+		res.should.be.json;
 		let resString = res.res.text;
 		return resString;
 	}

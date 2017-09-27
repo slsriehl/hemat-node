@@ -1,6 +1,10 @@
 process.env.NODE_ENV = 'test';
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
-const beforeEachHooks = require('./helpers/before-each-user');
+const beforeEachHooks = require('./helpers/before-each/user');
+
+const root = require('./user/root');
+const mail = require('./user/mail');
 
 describe('user pages behavior with valid cookie/session', function () {
 	beforeEach('setup user-ready db with the correct auth cred (cookie sent matches an isAuth session)', function(done) {
@@ -26,12 +30,15 @@ describe('user pages behavior where no cookie is sent', function() {
 	});
 	//tests
 	//root
-	it('should render the main page with logged out header');
+	it('should render the main page with logged out header', function(done) {
+		root.renderIndexNoCookie(done);
+	});
 	//signup
 	it('should render the signup page with logged out header');
 	it('should signup with valid inputs');
 	it('should not signup with a username already taken');
 	it('should not signup with an email already taken');
+	 //will not pass
 	it('should not signup with a password too short');
 	//login
 	it('should render the login page with logged out header');
@@ -53,7 +60,9 @@ describe('user pages behavior where no cookie is sent', function() {
 	//reset password: sending reset email
 	it('should render reset password email/username input if requireReset is true');
 	it('should render reset password email/username input on request');
-	it('should send reset email with valid token on reset request submit with valid email');
+	it('should send reset email with valid token on reset request submit with valid email', function(done) {
+		mail.sendResetFromEmail(done);
+	});
 	it('should send reset email with valid token on reset request submit with valid username');
 	it('should not send reset email with invalid email');
 	it('should not send reset email with invalid username');
