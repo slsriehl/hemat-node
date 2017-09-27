@@ -7,5 +7,6 @@ reports/*/*
 errors
 npm-debug.log
 mochawesome-report
-test/helpers/transporter.js
-test-transporter.tar.gz
+test-send.tar.gz
+test/email-config/test-sent-from.txt
+test/email-config/test-send
