@@ -10,7 +10,7 @@ chai.use(chaiCheerio);
 
 const responseStatus = require('../../helpers/response-status').getResponseStatus;
 
-const headerNotSignedIn = require('../../helpers/header').notSignedIn;
+const headerNotSignedIn = require('../../helpers/header/pages-get').notSignedIn;
 
 const scriptHelper = require('../../helpers/scripts-loop').scriptReverse;
 
