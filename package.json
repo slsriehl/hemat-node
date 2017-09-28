@@ -30,7 +30,6 @@
     "body-parser": "^1.17.2",
     "connect-session-sequelize": "^4.1.0",
     "cookie-parser": "^1.4.3",
-    "entity-convert": "0.0.4",
     "escape-html": "^1.0.3",
     "express": "^4.15.4",
     "express-handlebars": "^3.0.0",
@@ -38,7 +37,6 @@
     "fs": "0.0.1-security",
     "handlebars": "^4.0.10",
     "handlebars-pdf": "^1.0.1",
-    "jquery": "^3.2.1",
     "mime": "^1.3.6",
     "moment": "^2.18.1",
     "morgan": "^1.8.2",
@@ -54,15 +52,10 @@
     "chai": "^4.1.2",
     "chai-cheerio": "^1.0.0",
     "chai-http": "^3.0.0",
-    "chai-jq": "0.0.9",
-    "chai-jquery": "^2.0.0",
     "cheerio": "^1.0.0-rc.2",
-    "front-mailparser": "^0.6.1-1",
-    "jquery": "^3.2.1",
     "mocha": "^3.5.3",
     "mochawesome": "^2.3.1",
     "mochawesome-report-generator": "^2.2.2",
-    "node-pop3": "^0.1.0",
     "yapople": "^0.2.3"
   }
 }
