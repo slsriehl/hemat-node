@@ -8,7 +8,9 @@ const util = require('util');
 chai.use(chaiHTTP);
 chai.use(chaiCheerio);
 
-const fs = Promise.promisifyAll(require('fs'));
+const readFileAsync = Promise.promisify(require('fs').readFile);
+
+const path = require('path');
 
 const should = chai.should();
 
@@ -37,18 +39,28 @@ let client;
 // const transporter = Promise.promisifyAll(sendCredentials);
 
 const tests = {
-	sendResetFromEmail: function(done) {
+	sendResetNotReq: function(usedEmail, done) {
 		const pathTo = '/reset/request';
 		let sentMessage;
+		let credential;
+		if(usedEmail) {
+			credential = popCredentials.louise.user;
+		} else {
+			credential = 'louise';
+		}
 		return chai.request(server)
 		.post(pathTo)
 		.type('form')
-		.send({credential: popCredentials.louise.user})
+		.send({credential})
 		.then(function(res) {
 			//test the dom response
+			console.log(res.res.text);
 			$ = responseStatusReload(res);
-
-			return fs.readFile('../email-config/test-sent-from.txt', 'utf-8')
+			$('.message-center').should.have.length(1);
+			console.log($('.message-center'))
+			$('#successful-reset-send-optional').should.exist;
+			$('#successful-reset-send-optional').should.contain("Your reset request was successful.  Please check your email to reset your password.");
+			return readFileAsync(__dirname + '/../email-config/test-sent-from.txt', 'utf8')
 		})
 		.then(function(data) {
 			console.log(data);
@@ -80,6 +92,7 @@ const tests = {
 		})
 		.then(function(data) {
 			data.should.have.length(1);
+			console.log(sentMessage.html);
 			sentMessage.html.should.contain(data[0].dataValues.code);
 		})
 		.then(function() {

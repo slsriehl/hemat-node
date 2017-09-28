@@ -1,36 +1,54 @@
 const nodemailer = require('nodemailer');
 
-let transporter = {
-		host: null,
-		port: 465,
-		secure: true, // use SSL
-		auth: {
-			user: null,
-			pass: null
+const Promise = require('bluebird');
+
+const testTransport = require('../test/email-config/transporter');
+
+const transporter = {
+	setTrans: function() {
+		let transport = {
+				host: null,
+				port: 465,
+				secure: true, // use SSL
+				auth: {
+					user: null,
+					pass: null
+				}
+			}
+
+		if(process.env.TRANS_HOST) {
+			transport.host = process.env.TRANS_HOST;
+		} else {
+			transport.host = require('../config/host');
 		}
-	}
 
-	if(process.env.TRANS_HOST) {
-		transporter.host = process.env.TRANS_HOST;
-	} else {
-		transporter.host = require('../config/host');
-	}
+		if(process.env.TRANS_USER) {
+			transport.auth.user = process.env.TRANS_USER;
+		} else {
+			transport.auth.user = require('../config/from');
+		}
 
-	if(process.env.TRANS_USER) {
-		transporter.auth.user = process.env.TRANS_USER;
-	} else {
-		transporter.auth.user = require('../config/from');
+		if(process.env.TRANS_PASS) {
+			transport.auth.pass = process.env.TRANS_PASS;
+		} else {
+			transport.auth.pass = require('../config/pass');
+		}
+		return transport;
+	},
+	testTrans: function() {
+		if(process.env.NODE_ENV == 'test') {
+			return testTransport.createTestAccount()
+		} else {
+			return Promise.resolve(transporter.setTrans());
+		}
+	},
+	transportPromise: function(mailOptions) {
+		return transporter.testTrans()
+		.then((result) => {
+		 let transporterProm = Promise.promisifyAll(nodemailer.createTransport(result));
+			return transporterProm.sendMailAsync(mailOptions);
+		});
 	}
+}
 
-	if(process.env.TRANS_PASS) {
-		transporter.auth.pass = process.env.TRANS_PASS;
-	} else {
-		transporter.auth.pass = require('../config/pass');
-	}
-
-//testing
-	if(process.env.NODE_ENV == 'test') {
-		transporter = require('../test/email-config/transporter');
-	}
-
-	module.exports = nodemailer.createTransport(transporter);
+	module.exports = transporter.transportPromise;

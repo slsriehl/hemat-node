@@ -220,39 +220,43 @@ const controller = {
 		.then((result) => {
 			console.log(util.inspect(result));
 			const myUrlRoot = req.get('host');
-			const mailOptions = {
+			let mailOptions = {
 				from: `"Hematogones Admin" <${from}>`,
 				to: `"${result.dataValues.firstname} ${result.dataValues.lastname}" <${result.dataValues.email}>`,
 				subject: 'Reset your password at hematogones.com',
 				html: `<p>Thanks for using hematogones.com.  To reset your password, please follow the following link or paste it into your browser. <a href="${req.protocol}://${myUrlRoot}/reset/${result.dataValues.ResetTokens[0].dataValues.code}" target='_blank'>${myUrlRoot}/reset/${result.dataValues.ResetTokens[0].dataValues.code}</a>.</p><p>This link will expire in 24 hours, so if it's been longer than that, please <a href="${myUrlRoot}/reset/request">request another reset link</a>.</p>`
 			}
-			transporter.sendMail(mailOptions, function(err, response) {
-				console.log(`transporter.sendMail fired`);
-				console.log(`err ${err}`);
-				console.log(`response ${response}`);
-				if(err && !req.session.reset) {
-					console.log(`err fired w/o reset reqd`);
-					req.session.message = "Your reset request failed.  Please contact our <a href='/mail' target='_blank'>admin</a>.";
-					req.session.messageType = 'fail-reset-send-optional';
-					res.redirect('/');
-				} else if(err) {
-					console.log(`err fired w/ reset reqd`);
-					req.session.message = "We've recently upgraded our login system and need you to reset your password, but we're having trouble contacting you.  Please contact our <a href='/mail' target='_blank'>admin</a>.";
-					req.session.messageType = 'fail-reset-send-required';
-					res.redirect('/');
-				} else if(response && !req.session.reset) {
-					console.log(`response fired w/o reset reqd`);
-					req.session.message = "Your reset request was successful.  Please check your email to reset your password.";
-					req.session.messageType = 'successful-reset-send-optional';
-					res.redirect('/');
-				} else if (response) {
-					console.log(`response fired w/ reset reqd`);
-					req.session.message = "We've recently upgraded our login system.  Please check the email you registered to reset your password.";
-					req.session.messageType = 'successful-reset-send-required';
-					res.redirect('/');
-				}
-			});
+			//console.log(transporter);
+			return transporter(mailOptions)
 		})
+		.then((response) => {
+			console.log(`response ${response}`);
+			if(!req.session.reset) {
+				console.log(`response fired w/o reset reqd`);
+				req.session.message = "Your reset request was successful.  Please check your email to reset your password.";
+				req.session.messageType = 'successful-reset-send-optional';
+				res.redirect('/');
+			} else {
+				console.log(`response fired w/ reset reqd`);
+				req.session.message = "We've recently upgraded our login system.  Please check the email you registered to reset your password.";
+				req.session.messageType = 'successful-reset-send-required';
+				res.redirect('/');
+			}
+		})
+		.catch((err) => {
+			console.log(`err ${err}`);
+			if(!req.session.reset) {
+				console.log(`err fired w/o reset reqd`);
+				req.session.message = "Your reset request failed.  Please contact our <a href='/mail' target='_blank'>admin</a>.";
+				req.session.messageType = 'fail-reset-send-optional';
+				res.redirect('/');
+			} else {
+				console.log(`err fired w/ reset reqd`);
+				req.session.message = "We've recently upgraded our login system and need you to reset your password, but we're having trouble contacting you.  Please contact our <a href='/mail' target='_blank'>admin</a>.";
+				req.session.messageType = 'fail-reset-send-required';
+				res.redirect('/');
+			}
+		});
 	},
 
 }

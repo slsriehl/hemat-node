@@ -61,9 +61,11 @@ describe('user pages behavior where no cookie is sent', function() {
 	it('should render reset password email/username input if requireReset is true');
 	it('should render reset password email/username input on request');
 	it('should send reset email with valid token on reset request submit with valid email', function(done) {
-		mail.sendResetFromEmail(done);
+		mail.sendResetNotReq(true, done);
 	});
-	it('should send reset email with valid token on reset request submit with valid username');
+	// it('should send reset email with valid token on reset request submit with valid username', function(done) {
+	// 	mail.sendResetNotReq(false, done);
+	// });
 	it('should not send reset email with invalid email');
 	it('should not send reset email with invalid username');
 	//reset password: resetting password
