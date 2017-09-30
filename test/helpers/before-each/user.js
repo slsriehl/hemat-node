@@ -1,7 +1,11 @@
 
 const models = require('../../../models');
 
+const path = require('path');
+
 const Promise = require('bluebird');
+
+const fs = Promise.promisifyAll(require('fs'));
 
 const popCredentials = require('../../email-config/test-send/pop-objs');
 
@@ -19,7 +23,10 @@ const helpers = {
 	},
 	noCookie: function(done) {
 		//set up the test db and give it a session that is isAuth false and one that isAuth true, plus a resetTokens file with one in it, a user file with one plain in it and one resetRequired in it
-		return models.sequelize.query('SET FOREIGN_KEY_CHECKS = 0')
+		return fs.writeFileAsync(__dirname + '/../../email-config/test-sent-from.txt', '', 'utf8')
+		.then(function() {
+			return models.sequelize.query('SET FOREIGN_KEY_CHECKS = 0')
+		})
 		.then(function(){
 			models.sequelize.options.maxConcurrentQueries = 1;
 			return models.sequelize.sync({
@@ -45,7 +52,7 @@ const helpers = {
 			return models.ResetTokens
 			.bulkCreate(bulkCreate.resetTokens)
 		})
-		.then(function() {
+		.then(function(tokens) {
 			done();
 		})
 		.catch(function(error) {
