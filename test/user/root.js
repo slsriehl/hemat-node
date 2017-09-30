@@ -3,7 +3,9 @@ const chai = require('chai');
 const chaiHTTP = require('chai-http');
 const chaiCheerio = require('chai-cheerio');
 const cheerio = require('cheerio');
-const server = require('../../server');
+//
+// const server = require('../../server');
+const app = require('../../app');
 const Promise = require('bluebird');
 const util = require('util');
 chai.use(chaiHTTP);
@@ -46,6 +48,9 @@ const stylesheets = [
 
 const tests = {
 	renderIndexNoCookie: function(done) {
+		let server = app.listen(3000, function() {
+			console.log('listening');
+		});
 		return chai.request(server)
     .get(pathTo)
     .then(function(res) {
@@ -56,11 +61,11 @@ const tests = {
 			//check for scripts
 			scriptHelper.scriptReverse(scripts, true);
 			scriptHelper.cssReverse(stylesheets, true);
-		})
-		.then(function() {
+			server.close();
 			done();
 		})
 		.catch(function(err) {
+			server.close();
 			done(err);
 		});
 	}
