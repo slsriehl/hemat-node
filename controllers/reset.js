@@ -60,7 +60,7 @@ const controller = {
 		console.log(req.params);
 		return models.ResetTokens
 		.findOne({
-			attributes: ['code', 'valid', 'expiresAt'],
+			attributes: ['code', 'valid', 'used', 'expiresAt'],
 			where: {
 				code: req.params.code
 			}
@@ -68,7 +68,7 @@ const controller = {
 		.then((data) => {
 			console.log(data);
 			const isNotExpired = moment(data.dataValues.expiresAt).isAfter();
-			if(data.dataValues.valid && isNotExpired) {
+			if(data.dataValues.valid && !data.dataValues.used && isNotExpired) {
 				res.render('login/reset.hbs', {
 					code: req.params.code,
 					specificScripts: [
