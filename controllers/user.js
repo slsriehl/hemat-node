@@ -11,12 +11,20 @@ const ReCAPTCHA = require('recaptcha2');
 const moment = require('moment');
 
 let reCaptchaSecret;
-if(process.env.CAPTCHA) {
+if(process.env.NODE_ENV == 'test') {
+	reCaptchaSecret = '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe';
+} else if(process.env.CAPTCHA) {
 	reCaptchaSecret = process.env.CAPTCHA;
 } else {
 	reCaptchaSecret = require('../config/recaptcha');
 }
 
+let reCaptchaSite;
+if(process.env.NODE_ENV == 'test') {
+	reCaptchaSite = '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI';
+} else {
+	reCaptchaSite = "6Le99i0UAAAAAIIKkc2tRvlXTjVdwxxrwHg7YY2d";
+}
 
 
 const controller = {
@@ -24,7 +32,7 @@ const controller = {
 	signupUser: (req, res) => {
 
 		const recaptcha = new ReCAPTCHA({
-			siteKey: "6Le99i0UAAAAAIIKkc2tRvlXTjVdwxxrwHg7YY2d",
+			siteKey: reCaptchaSite,
 			secretKey: reCaptchaSecret,
 			ssl: true
 		});

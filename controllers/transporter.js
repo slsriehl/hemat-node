@@ -2,8 +2,6 @@ const nodemailer = require('nodemailer');
 
 const Promise = require('bluebird');
 
-const testTransport = require('../test/email-config/transporter');
-
 const transporter = {
 	setTrans: function() {
 		let transport = {
@@ -37,7 +35,11 @@ const transporter = {
 	},
 	testTrans: function() {
 		if(process.env.NODE_ENV == 'test') {
-			return testTransport.createTestAccount()
+			const testTransport = require('../test/email-config/transporter');
+			let foo = testTransport.createTestAccount();
+			decache('testTransport');
+			return foo;
+			return
 		} else {
 			return Promise.resolve(transporter.setTrans());
 		}
