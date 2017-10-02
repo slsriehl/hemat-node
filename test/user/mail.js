@@ -3,12 +3,13 @@ const chai = require('chai');
 const chaiHTTP = require('chai-http');
 const chaiCheerio = require('chai-cheerio');
 const cheerio = require('cheerio');
-//
-// const server = require('../../server');
-
 const util = require('util');
 chai.use(chaiHTTP);
 chai.use(chaiCheerio);
+
+// const mockery = require('mockery');
+//
+// const nodemailerMock = require('nodemailer-mock');
 
 const fs = Promise.promisifyAll(require('fs'));
 
@@ -19,9 +20,10 @@ const should = chai.should();
 const models = require('../../models');
 
 const app = require('../../app');
-let server;
 
 const responseStatusReload = require('../helpers/response-status').getResponseStatus;
+
+const mailPrep = require('../helpers/before-each/mail');
 
 //mail stuff
 const popCredentials = require('../email-config/test-send/pop-objs');
@@ -32,20 +34,9 @@ let newClient;
 
 let client;
 
-// const Pop3Command = require('node-pop3');
-//
-// const MailParser = require('front-mailparser').MailParser;
-// const mailParser = new MailParser;
-// mailParser.on('end', function(mail) {
-// 	console.log(mail);
-// });
-// const sendCredentials = require('../email-config/transporter');
-//
-// const transporter = Promise.promisifyAll(sendCredentials);
-
 const tests = {
 	renderPageNoCookie: function(done) {
-		server = app.listen(3000, function () {
+		let server = app.listen(3000, function () {
 		  console.log('express server listening to your mom');
 		});
 		let $;
@@ -74,9 +65,6 @@ const tests = {
 		});
 	},
 	sendResetNotReq: function(usedEmail, done) {
-		server = app.listen(3000, function () {
-		  console.log('express server listening to your mom');
-		});
 		let $;
 		const pathTo = '/reset/request';
 		let sentMessage;
@@ -86,6 +74,11 @@ const tests = {
 		} else {
 			credential = 'louise';
 		}
+		//mailPrep.before()
+		let server = app.listen(3000, function () {
+		  console.log('express server listening to your mom');
+		});
+		//mockery.registerMock('nodemailer', nodemailerMock);
 		return chai.request.agent(server)
 		.post(pathTo)
 		//.header('Cookie')
@@ -99,7 +92,10 @@ const tests = {
 			console.log($('.message-center'))
 			$('#successful-reset-send-optional').should.exist;
 			$('#successful-reset-send-optional').should.contain("Your reset request was successful.  Please check your email to reset your password.");
-			return fs.readFileAsync(__dirname + '/../email-config/test-sent-from.txt', 'utf8');
+			// const sentMail = mailPrep.getMail();
+			// console.log(sentMail);
+			// sentMail.should.have.length(1);
+			return fs.readFileAsync(__dirname + '/../email-config/test-sent-from.txt', 'utf8')
 		})
 		.then(function(data) {
 			console.log(data);
@@ -136,9 +132,12 @@ const tests = {
 		})
 		.then(function(res) {
 			server.close();
+			//mailPrep.after();
 			done();
 		})
 		.catch(function(err) {
+			server.close();
+			//mailPrep.after();
 			done(err);
 		});
 	},
