@@ -3,9 +3,6 @@ const models = require('../models');
 const helpers = require('./reports-helpers');
 const generalHelpers = require('./general-helpers');
 const cookieHelpers = require('./cookie-helpers');
-const transporter = require('./transporter');
-
-const nodemailer = require('nodemailer');
 
 const Promise = require('bluebird');
 
@@ -181,7 +178,7 @@ const controller = {
 			res.send('failure');
 		});
 	},
-	
+
 	// downloadGuest: (req, res) => {
 	// 	console.log(req.params);
 	// 	return models.GuestReports

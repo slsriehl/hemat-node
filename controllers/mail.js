@@ -94,20 +94,19 @@ const controller = {
 			subject: req.body.yourSubject,
 			html: message
 		}
-		transporter.sendMail(mailOptions, function(error, response) {
-			console.log(error);
+		return transporter(mailOptions)
+		.then((response) => {
 			console.log(response);
-			if(response) {
-				console.log(`response fired`);
-				req.session.message = "Your mail was successfully sent.  We'll get back you as soon as we can!";
-				req.session.messageType = 'successful-mail-send';
-				res.redirect('/');
-			} else {
-				console.log(`err fired`);
-				req.session.message = "Your mail wasn't sent.  Please try again later.";
-				req.session.messageType = 'fail-mail-send';
-				res.redirect('/mail')
-			}
+			console.log(`response fired`);
+			req.session.message = "Your mail was successfully sent.  We'll get back you as soon as we can!";
+			req.session.messageType = 'successful-mail-send';
+			res.redirect('/');
+		})
+		.catch((error) => {
+			console.log(`err fired`);
+			req.session.message = "Your mail wasn't sent.  Please try again later.";
+			req.session.messageType = 'fail-mail-send';
+			res.redirect('/mail');
 		});
 
 	},
@@ -173,29 +172,27 @@ const controller = {
 				content: result,
 				contentType: 'application/pdf'
 			}
-			transporter.sendMail(mailOptions, function(error, response) {
-				console.log(response);
-				console.log(error);
-				let msg, msgType;
-				if(response) {
-					console.log(`response fired`);
-					msg = "Check your inbox! Your report is on its way.";
-					msgType = 'successful-report-send';
-					res.send({
-						status: true,
-						msg: msg,
-						msgType: msgType
-					});
-				} else {
-					console.log(`err fired`);
-					msg = "Your report wasn't emailed.  Please try again later or <a href='/mail'>contact our admin</a>";
-					msgType = 'fail-mail-send';
-					res.send({
-						status: false,
-						msg: msg,
-						msgType: msgType
-					});
-				}
+			return transporter(mailOptions)
+		})
+		.then((response) => {
+			let msg, msgType;
+			console.log(`response fired`);
+			msg = "Check your inbox! Your report is on its way.";
+			msgType = 'successful-report-send';
+			res.send({
+				status: true,
+				msg: msg,
+				msgType: msgType
+			});
+		})
+		.then((error) => {
+			console.log(`err fired`);
+			msg = "Your report wasn't emailed.  Please try again later or <a href='/mail'>contact our admin</a>";
+			msgType = 'fail-mail-send';
+			res.send({
+				status: false,
+				msg: msg,
+				msgType: msgType
 			});
 		});
 	},
