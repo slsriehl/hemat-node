@@ -1,11 +1,13 @@
+const util = require('util');
+
 const nodemailer = require('nodemailer');
 
 const Promise = require('bluebird');
 
-const nodemailerMock = require('nodemailer-mock');
-const mockery = require('mockery');
+//const nodemailerMock = require('nodemailer-mock');
+//const mockery = require('mockery');
 
-const transporter = {
+const thisTransporter = {
 	setTrans: function() {
 		let transport = {
 				host: null,
@@ -39,18 +41,20 @@ const transporter = {
 	testTrans: function() {
 		if(process.env.NODE_ENV == 'test') {
 			const testTransport = require('../test/email-config/transporter');
+			console.log(`test transport ${util.inspect(testTransport())}`);
 			//mockery.registerMock('nodemailer', nodemailerMock);
-			return testTransport;
+			return testTransport();
 		} else {
-			return transporter.setTrans();
+			return thisTransporter.setTrans();
 		}
 
 	},
 	transportPromise: function(mailOptions) {
-		let transport = transporter.testTrans();
-		let transporterProm = Promise.promisifyAll(nodemailer.createTransport(transport));
+		let myTransport = thisTransporter.testTrans();
+		console.log(myTransport);
+		let transporterProm = Promise.promisify(nodemailer.createTransport(myTransport));
 		return transporterProm.sendMailAsync(mailOptions);
 	}
 }
 
-	module.exports = transporter.transportPromise;
+	module.exports = thisTransporter.transportPromise;
