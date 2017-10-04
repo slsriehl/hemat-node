@@ -29,7 +29,7 @@ if(process.env.NODE_ENV == 'test') {
 
 const controller = {
 	//save a new user to the db
-	signupUser: (req, res) => {
+	signupUser: (req, res, next) => {
 
 		const recaptcha = new ReCAPTCHA({
 			siteKey: reCaptchaSite,
@@ -86,30 +86,42 @@ const controller = {
 			//test with positive and negative cases
 			console.log(data);
 			if(data.length == 0) {
+				console.log('data length is 0');
 				return Promise.resolve(newUser);
 			} else {
 				req.session.message = 'Sorry, that username or email is taken already.  Please try another or <a href="/reset">reset your account</a>.  If you previously had an account with these credentials and would like to reactivate it, please <a href="/mail">contact our admin</a>.';
 				req.session.messageType = 'failed-signup';
 				req.session.save();
-				res.redirect('/user/signup');
+				console.log(req.session.message);
+				res.redirect(303, '/user/signup');
+				return Promise.resolve('complete');
+				//return next();
 			}
 		})
 		.then((result) => {
-			console.log(result);
-			return models.Users
-			.create(result)
+			console.log(`result from newUser ${util.inspect(result)}`);
+			if(result != 'complete') {
+				return models.Users
+				.create(result)
+			} else {
+				return Promise.resolve('complete');
+			}
 		})
 		.then((data) => {
 			console.log(data);
 			//req.session.regenerate();
 			//req.session = null;
-			cookieHelpers.verifyCookie(req, res, true);
-			req.session.message = 'Welcome to Hematogones.com!  I hope you find these tools useful.';
-			req.session.messageType = 'successful-signup';
-			req.session.user = data.dataValues.id;
-			req.session.firstname = data.dataValues.firstname;
-			req.session.save();
-			helpers.getSystemMessages(req, res, 'index.hbs');
+			if(data != 'complete') {
+				cookieHelpers.verifyCookie(req, res, true);
+				req.session.message = 'Welcome to Hematogones.com!  I hope you find these tools useful.';
+				req.session.messageType = 'successful-signup';
+				req.session.user = data.dataValues.id;
+				req.session.firstname = data.dataValues.firstname;
+				req.session.save();
+				helpers.getSystemMessages(req, res, 'index.hbs');
+			} else {
+				return Promise.resolve(true);
+			}
 		})
 		.catch((error) => {
 			req.session.error = error;
@@ -174,6 +186,7 @@ const controller = {
 					req.session.messageType = 'failed-login';
 					req.session.save();
 					res.redirect('/user/login');
+					return Promise.resolve(true);
 				}
 			}
 		})

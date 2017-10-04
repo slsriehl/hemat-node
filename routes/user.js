@@ -57,8 +57,8 @@ router.get('/user/signup', (req, res) => {
 });
 
 //Create new user
-router.post('/user/signup', (req, res) => {
-	userController.signupUser(req, res);
+router.post('/user/signup', (req, res, next) => {
+	userController.signupUser(req, res, next);
 });
 
 //render login page
