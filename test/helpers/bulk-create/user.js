@@ -82,8 +82,17 @@ const helpers = {
 		valid: 0,
 		userId: 1,
 		expiresAt: moment().add(3, 'minutes').format('YYYY-MM-DD HH:mm:ss')
-	}]
-
+	}],
+	session: {
+		sid: '-UQEXCuRToxObWKYDYwJ4j5-0fEpWphk',
+		expires: moment().add(3, 'days'),
+		data: '{"cookie":{"originalMaxAge":false,"expires":false,"secure":false,"httpOnly":true,"path":"/"},"isAuth":false}'
+	},
+	expiredSession: {
+		sid: '-UQEXCuRToxObWKYDYwJ4j5-0fEpWphk',
+		expires: moment().subtract(3, 'days'),
+		data: '{"cookie":{"originalMaxAge":false,"expires":false,"secure":false,"httpOnly":true,"path":"/"},"isAuth":false}'
+	}
 }
 
 module.exports = helpers;

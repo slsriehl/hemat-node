@@ -17,16 +17,16 @@ const path = require('path');
 
 const should = chai.should();
 
-const models = require('../../models');
+const models = require('../../../models');
 
-const app = require('../../app');
+const app = require('../../../app');
 
-const responseStatusReload = require('../helpers/response-status').getResponseStatus;
+const responseStatusReload = require('../../helpers/response-status').getResponseStatus;
 
-const mailPrep = require('../helpers/before-each/mail');
+const mailPrep = require('../../helpers/before-each/mail');
 
 //mail stuff
-const popCredentials = require('../email-config/test-send/pop-objs');
+const popCredentials = require('../../email-config/test-send/pop-objs');
 
 const Client = require('yapople').Client;
 
@@ -35,7 +35,7 @@ let newClient;
 let client;
 
 const tests = {
-	renderPageNoCookie: function(done) {
+	renderPage: function(done) {
 		let server = app.listen(3000, function () {
 		  console.log('express server listening to your mom');
 		});
@@ -43,6 +43,7 @@ const tests = {
 		const pathTo = '/mail';
 		return chai.request(server)
 		.get(pathTo)
+		.set('Cookie', 'connect.sid=s%3A-UQEXCuRToxObWKYDYwJ4j5-0fEpWphk.kTW4ey%2Fxy4s9fOSA9bd%2FgTrMWX2cszRvEc9nEALjvZU')
 		.then(function(res) {
 			$ = responseStatusReload(res);
 			$('#send-mail').should.exist;
@@ -81,13 +82,14 @@ const tests = {
 		//mockery.registerMock('nodemailer', nodemailerMock);
 		return chai.request.agent(server)
 		.post(pathTo)
-		//.header('Cookie')
+		.set('Cookie', 'connect.sid=s%3A-UQEXCuRToxObWKYDYwJ4j5-0fEpWphk.kTW4ey%2Fxy4s9fOSA9bd%2FgTrMWX2cszRvEc9nEALjvZU')
 		.type('form')
 		.send({credential})
 		.then(function(res) {
 			//test the dom response
 			//console.log(res.res.text);
 			$ = responseStatusReload(res);
+			$('#fail-reset-send-optional').should.not.exist;
 			$('.message-center').should.have.length(1);
 			console.log($('.message-center'))
 			$('#successful-reset-send-optional').should.exist;
@@ -95,7 +97,7 @@ const tests = {
 			// const sentMail = mailPrep.getMail();
 			// console.log(sentMail);
 			// sentMail.should.have.length(1);
-			return fs.readFileAsync(__dirname + '/../email-config/test-sent-from.txt', 'utf8')
+			return fs.readFileAsync(__dirname + '/../../email-config/test-sent-from.txt', 'utf8')
 		})
 		.then(function(data) {
 			console.log(data);
@@ -153,6 +155,7 @@ const tests = {
 		}
 		return chai.request(server)
 		.post(pathTo)
+		.set('Cookie', 'connect.sid=s%3A-UQEXCuRToxObWKYDYwJ4j5-0fEpWphk.kTW4ey%2Fxy4s9fOSA9bd%2FgTrMWX2cszRvEc9nEALjvZU')
 		.type('form')
 		.send({credential})
 		.then(function(res) {
