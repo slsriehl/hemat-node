@@ -9,20 +9,21 @@ const controller = require('../../controllers/pages');
 router.get('/surg-path/ihc-table', (req, res) => {
 	controller.userWall(req, res, './page-views/surg-path/ihc-table.hbs', [
 		"/js/surg-path/ihc-scripts.js"
-	]);
-});
+	])
+})
 
 router.get('/surg-path/fixation', (req, res) => {
 	controller.openAccess(req, res, './page-views/surg-path/fixation.hbs', [
-		//"/vendor/bootstrap/js/bootstrap-datetimepicker.min.js",
 		"/js/surg-path/fixation-scripts.js"
-	]
-	//, [
-		//"/vendor/bootstrap/css/bootstrap-datetimepicker.min.css"
-	//]
-);
-});
+	])
+})
 
+router.get('/surg-path/sjogrens', (req, res) => {
+    controller.openAccess(req, res, './page-views/surg-path/sjogrens.hbs', [
+    "/js/surg-path/sjogrens-scripts.js",
+	"/json/json-sjogrens.js"
+	])
+})
 
 router.get('/surg-path/snippets', (req, res) => {
 	controller.userWall(req, res, './page-views/surg-path/snippets.hbs', [
@@ -32,8 +33,8 @@ router.get('/surg-path/snippets', (req, res) => {
 	], [
 		"/vendor/tag-it/css/jquery.tagit.css",
 		"/vendor/tag-it/css/tagit.ui-zendesk.css"
-	]);
-});
+	])
+})
 
 //post new interp to db
 router.post('/ihc/save', (req, res) => {

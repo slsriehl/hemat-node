@@ -123,7 +123,7 @@ $(window).on('load', function() {
 // *************************************************************/
     $('#writeReport').on('click', function () {
 
-        var captext = "CAP Soft Tissue Tumor Resection Cancer Summary\n\n";
+        var captext = "Soft Tissue Tumor Resection Cancer Synoptic\n\n";
 // Checklist variables
         var box_2 = $("#box2").val();
         var box_2_2 = $("#box2_2").val();

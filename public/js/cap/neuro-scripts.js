@@ -100,7 +100,7 @@ $(window).on('load', function() {
     $('#writeReport').on('click', function () {
 
 
-        var captext = "CAP CNS Tumor Cancer Summary\n\n";
+        var captext = "CNS Tumor Cancer Synoptic\n\n";
 // Checklist variables
         var box_1 = $("#box1").val();
         var box_1_3 = $("#box1_3").val();
@@ -143,15 +143,19 @@ $(window).on('load', function() {
         }
 
         var box_8 = $("#box8").val();
-        if (box_8 != 'Not applicable'){
+        if (box_8.length > 0){
             captext += "\n+ Ancillary Studies:\n [Designated block for future studies: "+box_8+"]\n";}
 
         var box_9 = $("#box9").val();
         captext += "\n+ Special Stains:\n- "+box_9.join("\n- ")+"\n";
         var box_10 = $("#box10").val();
-        captext += "\n+ Immunohistochemistry:\n- "+box_10+"\n";
+        if (box_10.length == 0) {
+            captext += "\n+ Immunohistochemistry:\n- Not performed" + box_10 + "\n";
+        } else {
+            captext += "\n+ Immunohistochemistry:\n- "+box_10+"\n";}
         var box_11 = $("#box11").val();
-        captext += "\n+ Electron Microscopy:\n- "+box_11+"\n";
+        if (box_11.length > 0) {
+        captext += "\n+ Electron Microscopy:\n- "+box_11+"\n";}
         var box_12 = $("#box12").val();
         captext += "\n+ Molecular Genetic Studies:\n- "+box_12.join("\n- ")+"\n";
 

@@ -348,7 +348,7 @@ $(window).on('load', function() {
 // *************************************************************/
     $('#writeReport').on('click', function () {
 
-        var captext = "CAP Neuroendocrine Tumor Summary\n\n";
+        var captext = "Neuroendocrine Tumor Summary\n\n";
 
         var box_0 = $('#specimen').val();
 

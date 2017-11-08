@@ -84,7 +84,7 @@ $('#writeReport').on('click', function(){
 
 // assign the values from each text input
 // get assign the values from each text input
-        var captext = "CAP Bone Tumor Biopsy Cancer Summary\n\n";
+        var captext = "Bone Tumor Biopsy Cancer Synoptic\n\n";
 // Checklist variables
         var box_0 = $("#box0").val();
         var box_1 = $("#box1").val();

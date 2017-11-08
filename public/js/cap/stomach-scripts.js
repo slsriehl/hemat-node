@@ -189,7 +189,7 @@ $(window).on('load', function() {
 // *************************************************************/
     $('#writeReport').on('click', function () {
 
-        var captext = "CAP Gastric Cancer Summary\n\n";
+        var captext = "Gastric Cancer Synoptic\n\n";
 
         var box_1 = $("#box1").val();
         captext += "\nSpecimen:\n- "  + box_1.join('\n- ') + "\n";

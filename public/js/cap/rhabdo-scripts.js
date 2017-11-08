@@ -88,7 +88,7 @@ $(window).on('load', function() {
 // *************************************************************/
     $('#writeReport').on('click', function () {
 
-        var captext = "CAP Rhabdomyosarcoma Cancer Summary\n\n";
+        var captext = "Rhabdomyosarcoma Cancer Synoptic\n\n";
         var box_1 = $("#box1").val();
         var box_1_2 = $("#box1_2").val();
         var box_1_3 = $("#box1_3").val();

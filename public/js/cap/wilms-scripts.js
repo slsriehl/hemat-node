@@ -162,7 +162,7 @@ $(window).on('load', function() {
 // *************************************************************/
     $('#writeReport').on('click', function () {
 
-        var captext = "CAP Pediatric Renal Tumor Cancer Summary\n\n";
+        var captext = "Pediatric Renal Tumor Cancer Synoptic\n\n";
 // .join("\n- ") use this for var with multiple select options
 // val().replace(/;/g,"\n- ") use this for var that needs option to be split in new line
 // Checklist variables

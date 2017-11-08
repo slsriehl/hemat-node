@@ -129,7 +129,7 @@ $(window).on('load', function() {
     $('#writeReport').on('click', function () {
 
 
-        var captext = "CAP Ewing Sarcoma/PNET Cancer Template (Resection)\n\n";
+        var captext = "Ewing Sarcoma/PNET Cancer Template (Resection)\n\n";
         var box_1 = $("#box1").val();
         var box_1_2 = $("#box1_2").val();
         var box_1_3 = $("#box1_3").val();

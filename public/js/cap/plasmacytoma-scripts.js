@@ -43,7 +43,7 @@ $(window).on('load', function() {
     $('#writeReport').on('click', function () {
 
 
-        var captext = "CAP Plasmacytoma Cancer Summary\n\n";
+        var captext = "Plasmacytoma Cancer Synoptic\n\n";
 
         var box_1 = $("#box1").val();
         var box_1_2 = $("#box1_2").val();

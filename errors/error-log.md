@@ -1,0 +1,396 @@
+****** NEW ERROR AT HEMATOGONES.COM ******
+
+		#date: 
+			2017-10-09 02:34:48 UTC 
+
+		#user: 
+			undefined 
+
+		#user IP: 
+			::1 
+
+		#protocol: 
+			http 
+
+		#secure connection?: 
+			false 
+
+		#headers: 
+			{"host":"localhost:5000","connection":"keep-alive","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36","upgrade-insecure-requests":"1","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8","dnt":"1","accept-encoding":"gzip, deflate, br","accept-language":"en-US,en;q=0.8","cookie":"__utma=111872281.1419738796.1504842769.1504842769.1504873862.2; __utmz=111872281.1504842769.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1419738796.1504842769; connect.sid=s%3AIJUuSWYw6wfDolpNjZOKwuDfLh3Ppg7U.pg8kIM4pTB0tmXOsygtlqAS2vHFlnUni%2FSwmch5MCcA"} 
+
+		#original url: 
+			/surg-path/sjogrens 
+
+		#request url: 
+			/surg-path/sjogrens 
+
+		#ajax request?: 
+			false 
+
+		#promise error: 
+			TypeError: Cannot read property 'dataValues' of null 
+
+		****** END ERROR ******
+
+
+
+****** NEW ERROR AT HEMATOGONES.COM ******
+
+		#date: 
+			2017-10-28 01:55:34 UTC 
+
+		#user: 
+			undefined 
+
+		#user IP: 
+			::1 
+
+		#protocol: 
+			http 
+
+		#secure connection?: 
+			false 
+
+		#headers: 
+			{"host":"localhost:5000","connection":"keep-alive","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36","upgrade-insecure-requests":"1","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8","dnt":"1","accept-encoding":"gzip, deflate, br","accept-language":"en-US,en;q=0.8","cookie":"__utma=111872281.1419738796.1504842769.1504842769.1504873862.2; __utmz=111872281.1504842769.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1419738796.1504842769; connect.sid=s%3A8xzOVZVhFcsC2RNtJo0i_XmjVXj2BIxY.W%2FnJ1q2WtVkaCJaGSsT%2BkaxYRi%2B6qNZkt4iD32Hd5n8"} 
+
+		#original url: 
+			/surg-path/sjogrens 
+
+		#request url: 
+			/surg-path/sjogrens 
+
+		#ajax request?: 
+			false 
+
+		#promise error: 
+			TypeError: Cannot read property 'dataValues' of null 
+
+		****** END ERROR ******
+
+
+
+****** NEW ERROR AT HEMATOGONES.COM ******
+
+		#date: 
+			2017-10-28 01:56:37 UTC 
+
+		#user: 
+			undefined 
+
+		#user IP: 
+			::1 
+
+		#protocol: 
+			http 
+
+		#secure connection?: 
+			false 
+
+		#headers: 
+			{"host":"localhost:5000","connection":"keep-alive","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36","upgrade-insecure-requests":"1","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8","dnt":"1","accept-encoding":"gzip, deflate, br","accept-language":"en-US,en;q=0.8","cookie":"__utma=111872281.1419738796.1504842769.1504842769.1504873862.2; __utmz=111872281.1504842769.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1419738796.1504842769; connect.sid=s%3A8xzOVZVhFcsC2RNtJo0i_XmjVXj2BIxY.W%2FnJ1q2WtVkaCJaGSsT%2BkaxYRi%2B6qNZkt4iD32Hd5n8"} 
+
+		#original url: 
+			/surg-path/sjogrens 
+
+		#request url: 
+			/surg-path/sjogrens 
+
+		#ajax request?: 
+			false 
+
+		#promise error: 
+			TypeError: Cannot read property 'dataValues' of null 
+
+		****** END ERROR ******
+
+
+
+****** NEW ERROR AT HEMATOGONES.COM ******
+
+		#date: 
+			2017-10-28 02:08:07 UTC 
+
+		#user: 
+			undefined 
+
+		#user IP: 
+			::1 
+
+		#protocol: 
+			http 
+
+		#secure connection?: 
+			false 
+
+		#headers: 
+			{"host":"localhost:5000","connection":"keep-alive","upgrade-insecure-requests":"1","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8","dnt":"1","referer":"http://localhost:5000/","accept-encoding":"gzip, deflate, br","accept-language":"en-US,en;q=0.8","cookie":"__utma=111872281.1419738796.1504842769.1504842769.1504873862.2; __utmz=111872281.1504842769.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1419738796.1504842769; connect.sid=s%3A8xzOVZVhFcsC2RNtJo0i_XmjVXj2BIxY.W%2FnJ1q2WtVkaCJaGSsT%2BkaxYRi%2B6qNZkt4iD32Hd5n8"} 
+
+		#original url: 
+			/surg-path/Sjogrens 
+
+		#request url: 
+			/surg-path/Sjogrens 
+
+		#ajax request?: 
+			false 
+
+		#promise error: 
+			TypeError: Cannot read property 'dataValues' of null 
+
+		****** END ERROR ******
+
+
+
+****** NEW ERROR AT HEMATOGONES.COM ******
+
+		#date: 
+			2017-10-28 02:08:17 UTC 
+
+		#user: 
+			undefined 
+
+		#user IP: 
+			::1 
+
+		#protocol: 
+			http 
+
+		#secure connection?: 
+			false 
+
+		#headers: 
+			{"host":"localhost:5000","connection":"keep-alive","upgrade-insecure-requests":"1","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8","dnt":"1","referer":"http://localhost:5000/","accept-encoding":"gzip, deflate, br","accept-language":"en-US,en;q=0.8","cookie":"__utma=111872281.1419738796.1504842769.1504842769.1504873862.2; __utmz=111872281.1504842769.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1419738796.1504842769; connect.sid=s%3A8xzOVZVhFcsC2RNtJo0i_XmjVXj2BIxY.W%2FnJ1q2WtVkaCJaGSsT%2BkaxYRi%2B6qNZkt4iD32Hd5n8"} 
+
+		#original url: 
+			/surg-path/Sjogrens 
+
+		#request url: 
+			/surg-path/Sjogrens 
+
+		#ajax request?: 
+			false 
+
+		#promise error: 
+			TypeError: Cannot read property 'dataValues' of null 
+
+		****** END ERROR ******
+
+
+
+****** NEW ERROR AT HEMATOGONES.COM ******
+
+		#date: 
+			2017-10-28 02:08:49 UTC 
+
+		#user: 
+			undefined 
+
+		#user IP: 
+			::1 
+
+		#protocol: 
+			http 
+
+		#secure connection?: 
+			false 
+
+		#headers: 
+			{"host":"localhost:5000","connection":"keep-alive","upgrade-insecure-requests":"1","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8","dnt":"1","referer":"http://localhost:5000/","accept-encoding":"gzip, deflate, br","accept-language":"en-US,en;q=0.8","cookie":"__utma=111872281.1419738796.1504842769.1504842769.1504873862.2; __utmz=111872281.1504842769.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1419738796.1504842769; connect.sid=s%3A8xzOVZVhFcsC2RNtJo0i_XmjVXj2BIxY.W%2FnJ1q2WtVkaCJaGSsT%2BkaxYRi%2B6qNZkt4iD32Hd5n8"} 
+
+		#original url: 
+			/surg-path/sjogrens 
+
+		#request url: 
+			/surg-path/sjogrens 
+
+		#ajax request?: 
+			false 
+
+		#promise error: 
+			TypeError: Cannot read property 'dataValues' of null 
+
+		****** END ERROR ******
+
+
+
+****** NEW ERROR AT HEMATOGONES.COM ******
+
+		#date: 
+			2017-10-28 02:10:49 UTC 
+
+		#user: 
+			undefined 
+
+		#user IP: 
+			::1 
+
+		#protocol: 
+			http 
+
+		#secure connection?: 
+			false 
+
+		#headers: 
+			{"host":"localhost:5000","connection":"keep-alive","upgrade-insecure-requests":"1","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8","dnt":"1","referer":"http://localhost:5000/","accept-encoding":"gzip, deflate, br","accept-language":"en-US,en;q=0.8","cookie":"__utma=111872281.1419738796.1504842769.1504842769.1504873862.2; __utmz=111872281.1504842769.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1419738796.1504842769; connect.sid=s%3A8xzOVZVhFcsC2RNtJo0i_XmjVXj2BIxY.W%2FnJ1q2WtVkaCJaGSsT%2BkaxYRi%2B6qNZkt4iD32Hd5n8"} 
+
+		#original url: 
+			/surg-path/sjogrens 
+
+		#request url: 
+			/surg-path/sjogrens 
+
+		#ajax request?: 
+			false 
+
+		#promise error: 
+			TypeError: Cannot read property 'dataValues' of null 
+
+		****** END ERROR ******
+
+
+
+****** NEW ERROR AT HEMATOGONES.COM ******
+
+		#date: 
+			2017-10-28 02:11:00 UTC 
+
+		#user: 
+			undefined 
+
+		#user IP: 
+			::1 
+
+		#protocol: 
+			http 
+
+		#secure connection?: 
+			false 
+
+		#headers: 
+			{"host":"localhost:5000","connection":"keep-alive","upgrade-insecure-requests":"1","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8","dnt":"1","referer":"http://localhost:5000/","accept-encoding":"gzip, deflate, br","accept-language":"en-US,en;q=0.8","cookie":"__utma=111872281.1419738796.1504842769.1504842769.1504873862.2; __utmz=111872281.1504842769.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1419738796.1504842769; connect.sid=s%3A8xzOVZVhFcsC2RNtJo0i_XmjVXj2BIxY.W%2FnJ1q2WtVkaCJaGSsT%2BkaxYRi%2B6qNZkt4iD32Hd5n8"} 
+
+		#original url: 
+			/surg-path/sjogrens 
+
+		#request url: 
+			/surg-path/sjogrens 
+
+		#ajax request?: 
+			false 
+
+		#promise error: 
+			TypeError: Cannot read property 'dataValues' of null 
+
+		****** END ERROR ******
+
+
+
+****** NEW ERROR AT HEMATOGONES.COM ******
+
+		#date: 
+			2017-10-28 02:12:43 UTC 
+
+		#user: 
+			undefined 
+
+		#user IP: 
+			::1 
+
+		#protocol: 
+			http 
+
+		#secure connection?: 
+			false 
+
+		#headers: 
+			{"host":"localhost:5000","connection":"keep-alive","upgrade-insecure-requests":"1","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8","dnt":"1","referer":"http://localhost:5000/gi-path/gi-bx","accept-encoding":"gzip, deflate, br","accept-language":"en-US,en;q=0.8","cookie":"__utma=111872281.1419738796.1504842769.1504842769.1504873862.2; __utmz=111872281.1504842769.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1419738796.1504842769; connect.sid=s%3A8xzOVZVhFcsC2RNtJo0i_XmjVXj2BIxY.W%2FnJ1q2WtVkaCJaGSsT%2BkaxYRi%2B6qNZkt4iD32Hd5n8"} 
+
+		#original url: 
+			/surg-path/sjogrens 
+
+		#request url: 
+			/surg-path/sjogrens 
+
+		#ajax request?: 
+			false 
+
+		#promise error: 
+			TypeError: Cannot read property 'dataValues' of null 
+
+		****** END ERROR ******
+
+
+
+****** NEW ERROR AT HEMATOGONES.COM ******
+
+		#date: 
+			2017-10-28 02:13:07 UTC 
+
+		#user: 
+			undefined 
+
+		#user IP: 
+			::ffff:127.0.0.1 
+
+		#protocol: 
+			http 
+
+		#secure connection?: 
+			false 
+
+		#headers: 
+			{"host":"localhost:5000","connection":"keep-alive","upgrade-insecure-requests":"1","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8","dnt":"1","referer":"http://localhost:5000/gi-path/gi-bx","accept-encoding":"gzip, deflate, br","accept-language":"en-US,en;q=0.8","cookie":"__utma=111872281.1419738796.1504842769.1504842769.1504873862.2; __utmz=111872281.1504842769.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1419738796.1504842769; connect.sid=s%3A8xzOVZVhFcsC2RNtJo0i_XmjVXj2BIxY.W%2FnJ1q2WtVkaCJaGSsT%2BkaxYRi%2B6qNZkt4iD32Hd5n8"} 
+
+		#original url: 
+			/surg-path/sjogrens 
+
+		#request url: 
+			/surg-path/sjogrens 
+
+		#ajax request?: 
+			false 
+
+		#promise error: 
+			TypeError: Cannot read property 'dataValues' of null 
+
+		****** END ERROR ******
+
+
+
+****** NEW ERROR AT HEMATOGONES.COM ******
+
+		#date: 
+			2017-10-28 02:13:52 UTC 
+
+		#user: 
+			undefined 
+
+		#user IP: 
+			::1 
+
+		#protocol: 
+			http 
+
+		#secure connection?: 
+			false 
+
+		#headers: 
+			{"host":"localhost:5000","connection":"keep-alive","upgrade-insecure-requests":"1","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8","dnt":"1","referer":"http://localhost:5000/gi-path/gi-bx","accept-encoding":"gzip, deflate, br","accept-language":"en-US,en;q=0.8","cookie":"__utma=111872281.1419738796.1504842769.1504842769.1504873862.2; __utmz=111872281.1504842769.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1419738796.1504842769; connect.sid=s%3A8xzOVZVhFcsC2RNtJo0i_XmjVXj2BIxY.W%2FnJ1q2WtVkaCJaGSsT%2BkaxYRi%2B6qNZkt4iD32Hd5n8"} 
+
+		#original url: 
+			/surg-path/sjogrens 
+
+		#request url: 
+			/surg-path/sjogrens 
+
+		#ajax request?: 
+			false 
+
+		#promise error: 
+			TypeError: Cannot read property 'dataValues' of null 
+
+		****** END ERROR ******
+
+
+

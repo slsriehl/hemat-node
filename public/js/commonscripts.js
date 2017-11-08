@@ -87,7 +87,7 @@ $(document).ready(function() {
     });
 //instantiate time picker
 	$('.my-time-picker').datetimepicker({
-		format: 'h:mm a',
+		format: 'HH:mm',
 		icons: datePickerIcons,
 		collapse: false,
 		allowInputToggle: true,

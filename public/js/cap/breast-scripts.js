@@ -257,7 +257,7 @@ $(window).on('load', function(){
 
 //**************SYNOPTICS****************//
 $('#writeReport').on('click', function() {
-    var captext = "CAP Invasive Breast Cancer Summary\n\n";
+    var captext = "Invasive Breast Cancer Synoptic\n\n";
 // Checklist variables
 
     var box_1 = $("#box1").val();

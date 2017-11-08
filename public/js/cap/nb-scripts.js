@@ -103,7 +103,7 @@ $(window).on('load', function(){
 
 
 // get assign the values from each text input
-        var captext = "CAP Neuroblastoma Cancer summary\n\n";
+        var captext = "Neuroblastoma Cancer Synoptic\n\n";
         var box_1 = $("#box1").val();
         if (box_1 == 'Other:'){
             var box_1_2 = $("#box1_2").val();

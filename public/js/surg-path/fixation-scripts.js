@@ -5,7 +5,7 @@ $(window).on('load', function() {
 
 
 	$('#timestart').datetimepicker({
-			format: 'MM-DD-YYYY h:mm a',
+			format: 'MM-DD-YYYY HH:mm',
 			icons: datePickerIcons,
 			collapse: false,
 			sideBySide: true,
@@ -17,7 +17,7 @@ $(window).on('load', function() {
 	});
 
 	$('#timeformalin').datetimepicker({
-			format: 'MM-DD-YYYY h:mm a',
+			format: 'MM-DD-YYYY HH:mm',
 			icons: datePickerIcons,
 			collapse: false,
 			sideBySide: true,
@@ -29,7 +29,7 @@ $(window).on('load', function() {
 	});
 
 	$('#processorstart').datetimepicker({
-			format: 'MM-DD-YYYY h:mm a',
+			format: 'MM-DD-YYYY HH:mm',
 			icons: datePickerIcons,
 			collapse: false,
 			sideBySide: true,

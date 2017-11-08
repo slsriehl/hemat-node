@@ -125,7 +125,7 @@ $(window).on('load', function() {
 // *************************************************************/
     $('#writeReport').on('click', function () {
 
-        var captext = "CAP Bone Tumor Resection Cancer Summary\n\n";
+        var captext = "Bone Tumor Resection Cancer Synoptic\n\n";
 // Checklist variables
         var box_0 = $("#box0").val();
         var box_1 = $("#box1").val();

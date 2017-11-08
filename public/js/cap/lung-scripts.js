@@ -114,7 +114,7 @@ $(window).on('load', function() {
 // *************************************************************/
     $('#writeReport').on('click', function () {
 
-        var captext = "CAP Lung cancer summary\n";
+        var captext = "Lung Cancer Synoptic\n";
 
         var box_1 = $("#box1").val();
         var box_1_2 = $("#box1_2").val();

@@ -877,6 +877,8 @@ $(window).on('load', function(){
         var textToPass = $('#outPut-2').val()+'\n\n'+$('#outPut-3').val()+'\n\n'+$('#outPut-4').val();
         $('#outPut-combine').val(textToPass);
         $('#combined-report').modal("show");
+        dataObj.singleSection = $('#outPut-combine').val();
+        makeCreatePdfBtn();
     });
 
 // ======================================================================//

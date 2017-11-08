@@ -198,7 +198,7 @@ $(window).on('load', function() {
     $('#writeReport').on('click', function () {
 
 
-        var captext = "CAP Extra-gonadal Germ Cell Tumor Cancer Summary\n\n";
+        var captext = "Extra-gonadal Germ Cell Tumor Cancer Synoptic\n\n";
 
         var box_1 = $("#box1").val();
         captext += "Patient Age:\n- "+box_1+"\n";

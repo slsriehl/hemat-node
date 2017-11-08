@@ -52,7 +52,7 @@ $(window).on('load', function() {
 // *************************************************************/
     $('#writeReport').on('click', function () {
 
-        var captext = "CAP Colon Cancer (Polypectomy) Summary\n\n";
+        var captext = "Colon Cancer (Polypectomy) Summary\n\n";
 // Checklist variables
         var box_1 = $("#box1").val();
         if (box_1 == 'Other:'){

@@ -155,7 +155,99 @@ $(window).on('load', function() {
 // *************************************************************/
     $('#writeReport').on('click', function () {
 
+        var captext = "Pediatric Liver Cancer Synoptic\n\n";
 
+        var box_2 = $("#box2").val();
+        var box_2_2 = $("#box2_2").val();
+        if(box_2 != "Not applicable"){
+            if (box_2 == 'Other'){
+                captext += "\nResection:\n- "  + box_2_2+ "\n";}
+            else {captext += "\nResection:\n- "  + box_2+ "\n";}
+        }
+
+
+        var box_3 = $("#box3").val();
+        var box_3_2 = $("#box3_2").val();
+        if (box_3 == 'Other'){
+            captext += "\nTumor site:\n- "  + box_3_2+ "\n";}
+        else {captext += "\nTumor site:\n- "  + box_3+ "\n";}
+
+
+        var box_4 = $("#box4").val();
+        captext += "\nTumor size:\n- "  + box_4.replace(/cm/,'') + " cm\n";
+
+
+        var box_5 = $("#box5").val();
+        captext += "\n+ Tumor focality:\n- "  + box_5+ "\n";
+
+        var box_6 = $("#box6").val();
+        var box_6_2 = $("#box6_2").val();
+        if ($.inArray('Other', box_6) >-1){
+            captext += "\n+ Macroscopic extension of tumor:\n- "  + box_6.join('\n- ').replace(/Other/, box_6_2) + "\n";}
+        else {captext += "\n+ Macroscopic extension of tumor:\n- "  + box_6.join('\n- ') + "\n";}
+
+        var box_7 = $("#box7").val();
+        captext += "\nPreoperative Treatment:\n- "  + box_7+ "\n";
+
+        var box_8 = $("#box8").val();
+        var box_8_2 = $("#box8_2").val();
+        if ($.inArray('Hepatoblastoma, Other', box_8) >-1){
+            captext += "\nHistologic Type:\n- "  + box_8.join('\n- ').replace(/Hepatoblastoma, Other/, box_8_2) + "\n";}
+        else {captext += "\nHistologic Type:\n- "  + box_8.join('\n- ') + "\n";}
+
+        var box_9 = $("#box9").val();
+        var box_9_2 = $("#box9_2").val();
+        if (box_9 == 'Present'){
+            captext += "\n+ Treatment Effect:\n- Present, "  + box_9_2.replace(/%/,'')+ "% necrosis\n";}
+        else {captext += "\n+ Treatment Effect:\n- "  + box_9+ "\n";}
+
+
+        var box_10 = $("#box10").val();
+        var box_10_2 = $("#box10_2").val();
+        var box_10_3 = $("#box10_3").val();
+        if (box_10 == 'Uninvolved by tumor') { captext += "\nResection Margin:\n- "+box_10+"\n- Closest margin distance: "+box_10_2+"\n";}
+        else if (box_10 == 'Involved by tumor'){ captext += "\nResection Margin:\n- "+box_10+"\n- "+box_10_3+"\n";}
+        else {captext += "\nResection Margin:\n- "+box_10+"\n";}
+
+        var box_11 = $("#box11").val();
+        var box_11_3 = $("#box11_3").val();
+        if (box_11 == 'Uninvolved by tumor'){
+            captext += "\nCapsular surface margin:\n- Uninvolved by tumor, closest distance: "  + box_11_3.replace(/cm/,'')+ " cm\n";}
+        else {captext += "\nCapsular surface margin:\n- "  + box_11+ "\n";}
+
+
+        var box_12 = $("#box12").val();
+        captext += "\n+ Lymph-Vascular Invasion, Macroscopic:\n- "  + box_12.join('\n- ') + "\n";
+
+        var box_13 = $("#box13").val();
+        captext += "\n+ Lymph-Vascular Invasion, Microscopic:\n- "  + box_13+ "\n";
+
+        if ($("#box14").is(':checked')) {
+            var box_14_2 = $("#box14_2").val();
+            var box_14_3 = $("#box14_3").val();
+            captext += "\nLymph node involvement:\n\tLymph nodes examined: "+box_14_2+"\n\tLymph nodes involved: "+box_14_3+"\n";}
+
+        var box_15 = $("#box15").val();
+        if(box_15 != "Not applicable"){
+            captext += "\nDistant Metastases:\n- "  + box_15+ "\n";}
+
+        var box_16 = $("#box16").val();
+        captext += "\n+ Staging (Children's Oncology Group):\n- "  + box_16 + "\n";
+
+        var box_17 = $("#box17").val();
+        var box_17_2 = $("#box17_2").val();
+        if ($.inArray('Other', box_17) >-1){
+            captext += "\n+ Additional Pathologic Findings:\n- "  + box_17.join('\n- ').replace(/Other/, box_17_2) + "\n";}
+        else {captext += "\n+ Additional Pathologic Findings:\n- "  + box_17.join('\n- ') + "\n";}
+
+        var box_18 = $("#box18").val();
+        captext += "\nSerum AFP level:\n- "  + box_18+ "\n";
+
+        var box_19 = $("#box19").val();
+        var box_19_2 = $("#box19_2").val();
+        if ($.inArray('Other', box_19) >-1){
+            captext += "\n+ Ancillary Studies:\n- "  + box_19.join('\n- ').replace(/Other/, box_19_2) + "\n";}
+        else {captext += "\n+ Ancillary Studies:\n- "  + box_19.join('\n- ') + "\n";}
 
 
         $('#outPut-1').val(captext);
