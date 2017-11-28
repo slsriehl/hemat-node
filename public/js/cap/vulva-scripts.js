@@ -45,10 +45,10 @@ $(window).on('load', function () {
 
     $('#box9').on("change", function () {
         var sela = $('#box9').val();
-        var neg = sela.filter(el = > el.indexOf('Uninvolved') > -1
+        var neg = sela.filter(el => el.indexOf('Uninvolved') > -1
         )
         ;
-        var pos = sela.filter(el = > el.indexOf('Involved') > -1
+        var pos = sela.filter(el => el.indexOf('Involved') > -1
         )
         ;
         if ((neg.length > 0) && (pos.length == 0)) {
@@ -69,10 +69,10 @@ $(window).on('load', function () {
 
     $('#box10').on("change", function () {
         var sela = $('#box10').val();
-        var neg = sela.filter(el = > el.indexOf('Uninvolved') > -1
+        var neg = sela.filter(el => el.indexOf('Uninvolved') > -1
         )
         ;
-        var pos = sela.filter(el = > el.indexOf('Involved') > -1
+        var pos = sela.filter(el => el.indexOf('Involved') > -1
         )
         ;
         if ((neg.length > 0) && (pos.length == 0)) {
@@ -204,10 +204,10 @@ $(window).on('load', function () {
         var box_9_1 = $("#box9_1").val();
         var box_9_2 = $("#box9_2").val();
         var box_9_3 = $("#box9_3").val();
-        var negbox_9 = box_9.filter(el = > el.indexOf("Uninvolved") > -1
+        var negbox_9 = box_9.filter(el => el.indexOf("Uninvolved") > -1
         )
         ;
-        var posbox_9 = box_9.filter(el = > el.indexOf("Involved") > -1
+        var posbox_9 = box_9.filter(el => el.indexOf("Involved") > -1
         )
         ;
         if ((negbox_9.length > 0 ) && (posbox_9.length == 0  )) {
@@ -221,10 +221,10 @@ $(window).on('load', function () {
         var box_10_1 = $("#box10_1").val();
         var box_10_2 = $("#box10_2").val();
         var box_10_3 = $("#box10_3").val();
-        var negbox_10 = box_10.filter(el = > el.indexOf("Uninvolved") > -1
+        var negbox_10 = box_10.filter(el => el.indexOf("Uninvolved") > -1
         )
         ;
-        var posbox_10 = box_10.filter(el = > el.indexOf("Involved") > -1
+        var posbox_10 = box_10.filter(el => el.indexOf("Involved") > -1
         )
         ;
         if ((negbox_10.length > 0 ) && (posbox_10.length == 0  )) {

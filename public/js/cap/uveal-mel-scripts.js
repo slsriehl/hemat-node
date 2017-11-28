@@ -22,10 +22,10 @@ $(window).on('load', function () {
 
     $('#box3').on("change", function () {
         var sela = $('#box3').val();
-        var trig1 = sela.filter(el = > el.indexOf('Between') > -1
+        var trig1 = sela.filter(el => el.indexOf('Between') > -1
         )
         ;
-        var trig2 = sela.filter(el = > el.indexOf('Other') > -1
+        var trig2 = sela.filter(el => el.indexOf('Other') > -1
         )
         ;
         if (trig1.length > 0) {
@@ -75,10 +75,10 @@ $(window).on('load', function () {
 
     $('#box19').on("change", function () {
         var sela = $('#box19').val();
-        var trig1 = sela.filter(el = > el.indexOf('Mitotic') > -1
+        var trig1 = sela.filter(el => el.indexOf('Mitotic') > -1
         )
         ;
-        var trig2 = sela.filter(el = > el.indexOf('Other') > -1
+        var trig2 = sela.filter(el => el.indexOf('Other') > -1
         )
         ;
         if (trig1.length > 0) {
@@ -145,10 +145,10 @@ $(window).on('load', function () {
         var box_3 = $("#box3").val();
         var box_3_2 = $("#box3_2").val();
         var box_3_3 = $("#box3_3").val();
-        var trig1_box_3 = box_3.filter(el = > el.indexOf("Between") > -1
+        var trig1_box_3 = box_3.filter(el => el.indexOf("Between") > -1
         )
         ;
-        var trig2_box_3 = box_3.filter(el = > el.indexOf("Other") > -1
+        var trig2_box_3 = box_3.filter(el => el.indexOf("Other") > -1
         )
         ;
         if ((trig1_box_3.length > 0 ) && (trig2_box_3.length == 0  )) {
@@ -225,10 +225,10 @@ $(window).on('load', function () {
         var box_19 = $("#box19").val();
         var box_19_2 = $("#box19_2").val();
         var box_19_3 = $("#box19_3").val();
-        var trig1_box_19 = box_19.filter(el = > el.indexOf("Mitotic") > -1
+        var trig1_box_19 = box_19.filter(el => el.indexOf("Mitotic") > -1
         )
         ;
-        var trig2_box_19 = box_19.filter(el = > el.indexOf("Other") > -1
+        var trig2_box_19 = box_19.filter(el => el.indexOf("Other") > -1
         )
         ;
         if ((trig1_box_19.length > 0 ) && (trig2_box_19.length == 0  )) {

@@ -216,21 +216,21 @@ $(window).on('load', function () {
         if (box_10_2.length > 0) {
             box_10.replace('Other', box_10_2);
         }
-        var inv = box_10.filter(el = > el.indexOf('Invasive') > -1
+        var inv = box_10.filter(el => el.indexOf('Invasive') > -1
         )
         ; // FILTER KEYWORD #1
         $.each(inv, function (index, value) {
             var str = "Invasive carcinoma involving:"; // REPLACE TERM FOR FILTERED SET
             inv[index] = value.replace(str, '');
         });
-        var cis = box_10.filter(el = > el.indexOf('situ') > -1
+        var cis = box_10.filter(el => el.indexOf('situ') > -1
         )
         ;// FILTER KEYWORD #2
         $.each(cis, function (index, value) {
             var str = "In situ/noninvasive high - grade urothelial carcinoma involving:"; // REPLACE TERM FOR FILTERED SET
             cis[index] = value.replace(str, '');
         });
-        var dys = box_10.filter(el = > el.indexOf('dysplasia') > -1
+        var dys = box_10.filter(el => el.indexOf('dysplasia') > -1
         )
         ;// FILTER KEYWORD #3
         $.each(dys, function (index, value) {

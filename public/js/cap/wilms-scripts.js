@@ -23,13 +23,13 @@ $(window).on('load', function() {
 
     $('#box5').on("change", function () {
         var sela = $('#box5').val();
-        var trig1 = sela.filter(el = > el.indexOf('#2') > -1
+        var trig1 = sela.filter(el => el.indexOf('#2') > -1
         )
         ;
-        var trig2 = sela.filter(el = > el.indexOf('#3') > -1
+        var trig2 = sela.filter(el => el.indexOf('#3') > -1
         )
         ;
-        var trig3 = sela.filter(el = > el.indexOf('Other') > -1
+        var trig3 = sela.filter(el => el.indexOf('Other') > -1
         )
         ;
         if (trig1.length > 0) {
@@ -181,13 +181,13 @@ $(window).on('load', function() {
         var box_5_2 = $("#box5_2").val();
         var box_5_3 = $("#box5_3").val();
         var box_5_4 = $("#box5_4").val();
-        var trig1_box_5 = box_5.filter(el = > el.indexOf("#2") > -1
+        var trig1_box_5 = box_5.filter(el => el.indexOf("#2") > -1
         )
         ;
-        var trig2_box_5 = box_5.filter(el = > el.indexOf("#3") > -1
+        var trig2_box_5 = box_5.filter(el => el.indexOf("#3") > -1
         )
         ;
-        var trig3_box_5 = box_5.filter(el = > el.indexOf("Other") > -1
+        var trig3_box_5 = box_5.filter(el => el.indexOf("Other") > -1
         )
         ;
 

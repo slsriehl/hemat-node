@@ -50,10 +50,10 @@ $(window).on('load', function () {
 
     $('#box7').on("change", function () {
         var sela = $('#box7').val();
-        var neg = sela.filter(el = > el.indexOf('Uninvolved') > -1
+        var neg = sela.filter(el => el.indexOf('Uninvolved') > -1
         )
         ;
-        var pos = sela.filter(el = > el.indexOf('Involved') > -1
+        var pos = sela.filter(el => el.indexOf('Involved') > -1
         )
         ;
         if ((neg.length > 0) && (pos.length == 0)) {
@@ -75,10 +75,10 @@ $(window).on('load', function () {
 
     $('#box8').on("change", function () {
         var sela = $('#box8').val();
-        var neg = sela.filter(el = > el.indexOf('Uninvolved') > -1
+        var neg = sela.filter(el => el.indexOf('Uninvolved') > -1
         )
         ;
-        var pos = sela.filter(el = > el.indexOf('Involved') > -1
+        var pos = sela.filter(el => el.indexOf('Involved') > -1
         )
         ;
 
@@ -212,10 +212,10 @@ $(window).on('load', function () {
         var box_7_1 = $("#box7_1").val();
         var box_7_2 = $("#box7_2").val();
         var box_7_3 = $("#box7_3").val();
-        var negbox_7 = box_7.filter(el = > el.indexOf("Uninvolved") > -1
+        var negbox_7 = box_7.filter(el => el.indexOf("Uninvolved") > -1
         )
         ;
-        var posbox_7 = box_7.filter(el = > el.indexOf("Involved") > -1
+        var posbox_7 = box_7.filter(el => el.indexOf("Involved") > -1
         )
         ;
         if ((negbox_7.length > 0 ) && (posbox_7.length == 0  )) {
@@ -229,10 +229,10 @@ $(window).on('load', function () {
         var box_8_1 = $("#box8_1").val();
         var box_8_2 = $("#box8_2").val();
         var box_8_3 = $("#box8_3").val();
-        var negbox_8 = box_8.filter(el = > el.indexOf('Uninvolved') > -1
+        var negbox_8 = box_8.filter(el => el.indexOf('Uninvolved') > -1
         )
         ;
-        var posbox_8 = box_8.filter(el = > el.indexOf('Involved') > -1
+        var posbox_8 = box_8.filter(el => el.indexOf('Involved') > -1
         )
         ;
         if ((negbox_8.length > 0) && (posbox_8.length == 0)) {
