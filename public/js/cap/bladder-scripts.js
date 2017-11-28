@@ -31,12 +31,8 @@ $(window).on('load', function () {
 
     $('#box4').on("change", function () {
         var sel = $('#box4').val();
-        var sq = sel.filter(el = > el.indexOf('Squamous cell') > -1
-        )
-        ;
-        var ad = sel.filter(el = > el.indexOf('Adenocarcinoma') > -1
-        )
-        ;
+        var sq = sel.filter(el => el.indexOf('Squamous cell') > -1);
+        var ad = sel.filter(el => el.indexOf('Adenocarcinoma') > -1);
         var diff = $(sel).not(sq).not(ad).get();
         console.log("sq:" + sq.length);
         console.log("ad:" + ad.length);
@@ -124,10 +120,10 @@ $(window).on('load', function () {
 
     $('#box20').on("change", function () {
         var sela = $('#box20').val();
-        var trig1 = sela.filter(el = > el.indexOf('Therapy') > -1
+        var trig1 = sela.filter(el => el.indexOf('Therapy') > -1
         )
         ;
-        var trig2 = sela.filter(el = > el.indexOf('Other') > -1
+        var trig2 = sela.filter(el => el.indexOf('Other') > -1
         )
         ;
         if (trig1.length > 0) {
@@ -259,21 +255,21 @@ $(window).on('load', function () {
         if (box_10_2.length > 0) {
             box_10.replace('Other', box_10_2);
         }
-        var inv = box_10.filter(el = > el.indexOf('Invasive') > -1
+        var inv = box_10.filter(el => el.indexOf('Invasive') > -1
         )
         ;
         $.each(inv, function (index, value) {
             var str = "Invasive carcinoma involving: ";
             inv[index] = value.replace(str, '');
         });
-        var cis = box_10.filter(el = > el.indexOf('situ') > -1
+        var cis = box_10.filter(el => el.indexOf('situ') > -1
         )
         ;
         $.each(cis, function (index, value) {
             var str = "Carcinoma in situ/noninvasive high-grade urothelial carcinoma involving: ";
             cis[index] = value.replace(str, '');
         });
-        var dys = box_10.filter(el = > el.indexOf('low-grade') > -1
+        var dys = box_10.filter(el => el.indexOf('low-grade') > -1
         )
         ;
         $.each(dys, function (index, value) {
@@ -325,10 +321,10 @@ $(window).on('load', function () {
         var box_20 = $("#box20").val();
         var box_20_2 = $("#box20_2").val();
         var box_20_3 = $("#box20_3").val();
-        var trig1_box_20 = box_20.filter(el = > el.indexOf("Therapy") > -1
+        var trig1_box_20 = box_20.filter(el => el.indexOf("Therapy") > -1
         )
         ;
-        var trig2_box_20 = box_20.filter(el = > el.indexOf("Other") > -1
+        var trig2_box_20 = box_20.filter(el => el.indexOf("Other") > -1
         )
         ;
         if ((trig1_box_20.length > 0 ) && (trig2_box_20.length == 0  )) {
