@@ -126,10 +126,18 @@ $(window).on('load', function() {
 //************************************************************//
 // Script to populate the template data in the output textarea//
 // *************************************************************/
-    $('#writeReport').on('click', function () {
+    $('.writeReport').on('click', function () {
 
+        $('input[type="text"]').each(function () {
+            if ($(this).val().length < 1) {
+                $(this).val($(this).attr('placeholder'));
+            }
+            if ($(this).val().length < 1) {
+                $(this).addClass('empty')
+            }
+        });
 
-        var captext = "Ewing Sarcoma/PNET Cancer Template (Resection)\n\n";
+        var captext = "Ewing Sarcoma/PNET (Resection) Cancer Synoptic\nAJCC 2018 cancer staging version\n\n";
         var box_1 = $("#box1").val();
         var box_1_2 = $("#box1_2").val();
         var box_1_3 = $("#box1_3").val();

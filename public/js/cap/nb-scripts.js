@@ -99,11 +99,18 @@ $(window).on('load', function(){
 //************************************************************//
 // Script to populate the template data in the output textarea//
 // *************************************************************/
-    $('#writeReport').on('click', function(){
+    $('.writeReport').on('click', function () {
 
+        $('input[type="text"]').each(function () {
+            if ($(this).val().length < 1) {
+                $(this).val($(this).attr('placeholder'));
+            }
+            if ($(this).val().length < 1) {
+                $(this).addClass('empty')
+            }
+        });
 
-// get assign the values from each text input
-        var captext = "Neuroblastoma Cancer Synoptic\n\n";
+        var captext = "Neuroblastoma Cancer Synoptic\nAJCC 2018 cancer staging version\n\n";
         var box_1 = $("#box1").val();
         if (box_1 == 'Other:'){
             var box_1_2 = $("#box1_2").val();

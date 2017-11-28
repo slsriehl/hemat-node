@@ -1,198 +1,192 @@
-
 <div class="container-fluid">
-		<!-- Breadcrumbs -->
-		<ol class="breadcrumb">
-				<li class="breadcrumb-item">
-						<a href="/">Home</a>
-				</li>
-				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
-				<li class="breadcrumb-item active" id="bc-jump"><i class="fa fa-flask mr-2"></i>Cervical LEEP/CONE biopsies</li>
-		</ol>
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+        <li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Cervical Cancer - Leep or Cone excision</li>
+    </ol>
+    {{> message-center this}}
+    {{> page-partials/cap-header}}
 
- {{> message-center this}}
+    <div class="row">
+        {{> page-partials/cap-validate-alert}}
+        <div class="col col-md-8">
+
+            <!-- paste markup here-->
+            <hr>
+            <h5>Procedure</h5>
+            <select id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Cold knife cone excision</option>
+                <option>Loop electrical excision procedure (LEEP)</option>
+                <option>Large loop excision of the transformation zone (LLETZ)</option>
+                <option>Other</option>
+                <option>Not specified</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;'
+                   placeholder='Specify Other'>
 
 
-		{{> page-partials/cap-header}}
+            <hr>
+            <h5>Tumor Size (cm)</h5>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box2" placeholder="">
 
-	<div class="row">
-		<div class="col col-md-8">
 
-<b>Specimen (select all that apply)</b><br>
-<select class="form-control selectpicker form-control-sm " multiple id="box1">
-<option>Cervix</option>
-<option>Other</option>
-<option>Not specified</option>
-</select><br>
-<input type='text' class="form-control form-control-sm " id='box1_2' style='display:none;' placeholder='Specify'>
-<br><br>
+            <hr>
+            <h5>Histologic Type</h5>
+            <select id="box3" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Squamous cell carcinoma, NOS</option>
+                <option>Squamous cell carcinoma, keratinizing</option>
+                <option>Squamous cell carcinoma, nonkeratinizing</option>
+                <option>Squamous cell carcinoma, basaloid</option>
+                <option>Squamous cell carcinoma, verrucous</option>
+                <option>Squamous cell carcinoma, warty</option>
+                <option>Squamous cell carcinoma, papillary</option>
+                <option>Squamous cell carcinoma, lymphoepithelioma-like</option>
+                <option>Squamous cell carcinoma, squamotransitional</option>
+                <option>Endocervical adenocarcionoma, usual type</option>
+                <option>Mucinous carcinoma, NOS</option>
+                <option>Mucinous carcinoma, intestinal type</option>
+                <option>Mucinous carcinoma, signet-ring cell type</option>
+                <option>Mucinous carcinoma, gastric type</option>
+                <option>Villoglandular carcinoma</option>
+                <option>Endometrioid carcinoma</option>
+                <option>Clear cell carcinoma</option>
+                <option>Serous carcinoma</option>
+                <option>Mesonephric carcinoma</option>
+                <option>Adenocarcinoma admixed with neuroendocrine carcinoma</option>
+                <option>Adenosquamous carcinoma</option>
+                <option>Adenosquamous carcinoma, glassy cell variant</option>
+                <option>Adenoid cystic carcinoma</option>
+                <option>Adenoid basal carcinoma</option>
+                <option>Small cell neuroendocrine carcinoma</option>
+                <option>Large cell neuroendocrine carcinoma</option>
+                <option>Undifferentiated carcinoma</option>
+                <option>Carcinosarcoma</option>
+                <option>Other</option>
+                <option>Carcinoma, type cannot be determined</option>
+                <option></option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box3_2' style='display:none;'
+                   placeholder='Specify Other'>
 
-<b>Procedure</b><br>
-<select class="form-control selectpicker form-control-sm " id="box2">
-<option>Cold knife cone excision</option>
-<option>Loop electrical excision procedure (LEEP)</option>
-<option>Other</option>
-<option>Not specified</option>
-</select><br>
-<input type='text' class="form-control form-control-sm " id='box2_2' style='display:none;' placeholder='Specify'>
-<br><br>
 
-<b>Tumor Site (select all that apply)</b><br>
-<select class="form-control selectpicker form-control-sm " multiple id="box3">
-<option>Not specified</option>
-<option>Left superior quadrant (12 to 3 o’clock)</option>
-<option>Left inferior quadrant (3 to 6 o’clock)</option>
-<option>Right inferior quadrant (6 to 9 o’clock)</option>
-<option>Right superior quadrant (9 to 12 o’clock)</option>
-<option>Other</option>
-<option></option>
-</select><br>
-<input type='text' class="form-control form-control-sm " id='box3_2' style='display:none;' placeholder='Specify'>
-<br><br>
+            <hr>
+            <h5>Histologic Grade</h5>
+            <select id="box4" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>G1: Well differentiated</option>
+                <option>G2: Moderately differentiated</option>
+                <option>G3: Poorly differentiated</option>
+                <option>GX: Cannot be assessed</option>
+                <option>Not applicable</option>
+            </select>
 
-<b>Tumor Size:</b><br>
-<input type='text' class="form-control form-control-sm " id="box4"   placeholder='(cm)'>
-<br><br>
 
-<b>Histologic Type (select all that apply)</b><br>
-<select class="form-control selectpicker form-control-sm " multiple id="box5">
-<option>Superficial invasive squamous cell carcinoma (SISSCA) </option>
-<option>Squamous cell carcinoma, not otherwise specified (NOS)</option>
-<option>Squamous cell carcinoma, Keratinizing</option>
-<option>Squamous cell carcinoma, Non-keratinizing</option>
-<option>Squamous cell carcinoma, Basaloid</option>
-<option>Squamous cell carcinoma, Verrucous</option>
-<option>Squamous cell carcinoma, Warty</option>
-<option>Squamous cell carcinoma, Papillary</option>
-<option>Squamous cell carcinoma, Lymphoepithelioma-like</option>
-<option>Squamous cell carcinoma, Squamotransitional</option>
-<option>Early invasive adenocarcinoma </option>
-<option>Mucinous adenocarcinoma, Endocervical</option>
-<option>Mucinous adenocarcinoma, Intestinal</option>
-<option>Mucinous adenocarcinoma, Signet-ring cell</option>
-<option>Mucinous adenocarcinoma, Minimal deviation</option>
-<option>Mucinous adenocarcinoma, Villoglandular</option>
-<option>Mucinous adenocarcinoma, Gastric</option>
-<option>Endometrioid adenocarcinoma</option>
-<option>Clear cell adenocarcinoma</option>
-<option>Serous adenocarcinoma</option>
-<option>Mesonephric adenocarcinoma</option>
-<option>Adenosquamous carcinoma</option>
-<option>Glassy cell carcinoma variant</option>
-<option>Adenoid cystic carcinoma</option>
-<option>Adenoid basal carcinoma</option>
-<option>Carcinoid</option>
-<option>Atypical carcinoid</option>
-<option>Small cell carcinoma</option>
-<option>Large cell neuroendocrine carcinoma</option>
-<option>Undifferentiated carcinoma</option>
-<option>Other</option>
-<option>Carcinoma, type cannot be determined</option>
-</select><br>
-<input type='text' class="form-control form-control-sm " id='box5_2' style='display:none;' placeholder='Specify'>
-<br><br>
+            <hr>
+            <h5>Stromal Invasion</h5>
 
-<b>Histologic Grade</b><br>
-<select class="form-control selectpicker form-control-sm " id="box6">
-<option>Not applicable</option>
-<option>GX: Cannot be assessed</option>
-<option>G1: Well differentiated</option>
-<option>G2: Moderately differentiated</option>
-<option>G3: Poorly differentiated</option>
-</select>
-<br><br>
+            <h6>Depth of stromal invasion (mm)</h6>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box5" placeholder="">
 
-<b>Stromal Invasion - Depth (mm):</b><br>
-<input type='text' class="form-control form-control-sm " id="box7"   placeholder='Cannot be assessed'>
-<br><br>
+            <h6>Horizontal extent longitudinal/length (mm)</h6>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box6" placeholder="if applicable">
 
-<b>Stromal Invasion - Horizontal extent (mm):</b><br>
-<input type='text' class="form-control form-control-sm " id="box8"   placeholder='Cannot be assessed'>
-<br><br>
+            <h6>Horizontal extent circumferential/width</h6>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box7" placeholder="if applicable">
 
-<b>Endocervical margin (select all that apply)</b><br>
-<select class="form-control selectpicker form-control-sm " multiple id="box9">
-<option>Margin cannot be assessed</option>
-<option>Not involved by invasive carcinoma</option>
-<option>Involved by invasive carcinoma</option>
-<option>Not involved by intraepithelial squamous neoplasia</option>
-<option>Involved by intraepithelial squamous neoplasia</option>
-<option>Involved by intraepithelial squamous neoplasia, low grade</option>
-<option>Involved by intraepithelial squamous neoplasia, high grade</option>
-<option>Not involved by adenocarcinoma in situ</option>
-<option>Involved by adenocarcinoma in situ</option>
-</select><br>
-<input type='text' class="form-control form-control-sm " id='box9_1' style='display:none;' placeholder='Specify closest margin'><br>
-<input type='text' class="form-control form-control-sm " id='box9_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
-<input type='text' class="form-control form-control-sm " id='box9_3' style='display:none;' placeholder='Specify involved margin'>
-<br><br>
 
-<b>Exocervical margin (select all that apply)</b><br>
-<select class="form-control selectpicker form-control-sm " multiple id="box10">
-<option>Margins cannot be assessed</option>
-<option>Not involved by invasive carcinoma</option>
-<option>Involved by invasive carcinoma</option>
-<option>Not involved by intraepithelial squamous neoplasia</option>
-<option>Involved by intraepithelial squamous neoplasia</option>
-<option>Involved by intraepithelial squamous neoplasia, low grade</option>
-<option>Involved by intraepithelial squamous neoplasia, high grade</option>
-<option>Not involved by adenocarcinoma in situ</option>
-<option>Involved by adenocarcinoma in situ</option>
-</select><br>
-<input type='text' class="form-control form-control-sm " id='box10_1' style='display:none;' placeholder='Specify closest margin'><br>
-<input type='text' class="form-control form-control-sm " id='box10_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
-<input type='text' class="form-control form-control-sm " id='box10_3' style='display:none;' placeholder='Specify involved margin'>
-<br><br>
+            <hr>
+            <h5>Margins - Endocervical</h5>
 
-<b>Deep margin (select all that apply)</b><br>
-<select class="form-control selectpicker form-control-sm " multiple id="box11">
-<option>Margins cannot be assessed</option>
-<option>Not involved by invasive carcinoma</option>
-<option>Involved by invasive carcinoma</option>
-<option>Not involved by intraepithelial squamous neoplasia</option>
-<option>Involved by intraepithelial squamous neoplasia</option>
-<option>Involved by intraepithelial squamous neoplasia, low grade</option>
-<option>Involved by intraepithelial squamous neoplasia, high grade</option>
-<option>Not involved by adenocarcinoma in situ</option>
-<option>Involved by adenocarcinoma in situ</option>
-</select><br>
-<input type='text' class="form-control form-control-sm " id='box11_1' style='display:none;' placeholder='Specify closest margin'><br>
-<input type='text' class="form-control form-control-sm " id='box11_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
-<input type='text' class="form-control form-control-sm " id='box11_3' style='display:none;' placeholder='Specify involved margin'>
-<br><br>
+            <select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Cannot be assessed</option>
+                <option>Uninvolved by invasive carcinoma</option>
+                <option>Involved by invasive carcinoma</option>
+                <option>Margins uninvolved by intraepithelial neoplasia</option>
+                <option>Involved by high-grade squamous intraepithelial lesion (CIN 2-3)</option>
+                <option>Involved by adenocarcinoma in situ (AIS)</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box8_1' style='display:none;'
+                   placeholder='Specify closest margin'><br>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box8_2' style='display:none;'
+                   placeholder='Specify distance from margin (mm)'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box8_3' style='display:none;'
+                   placeholder='Specify involved margin'>
 
-<b>Lymph-Vascular Invasion</b><br>
-<select class="form-control selectpicker form-control-sm " id="box12">
-<option>Not identified</option>
-<option>Present</option>
-<option>Indeterminate</option>
-</select>
-<br><br>
 
-<b>+ Additional Pathologic Findings (select all that apply)</b><br>
-<select class="form-control selectpicker form-control-sm " multiple id="box13">
-<option>None identified</option>
-<option>LGSIL (CIN1/2)</option>
-<option>HGSIL (CIN3)</option>
-<option>Koilocytosis</option>
-<option>Inflammation</option>
-<option>Other</option>
-</select><br>
-<input type='text' class="form-control form-control-sm " id='box13_2' style='display:none;' placeholder='Specify'>
-<br><br>
+            <hr>
+            <h5>Margins - Ectocervical</h5>
 
-<!-- close column -->
-		</div>
-		{{> page-partials/cap-footer}}
-<!-- close row -->
-	</div>
-	{{> page-partials/history-module}}
-<!-- close container -->
+            <select id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Cannot be assessed</option>
+                <option>Uninvolved by invasive carcinoma</option>
+                <option>Involved by invasive carcinoma</option>
+                <option>Margins uninvolved by intraepithelial neoplasia</option>
+                <option>Involved by high-grade squamous intraepithelial lesion (CIN 2-3)</option>
+                <option>Involved by adenocarcinoma in situ (AIS)</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box9_1' style='display:none;'
+                   placeholder='Specify closest margin'><br>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box9_2' style='display:none;'
+                   placeholder='Specify distance from margin (mm)'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box9_3' style='display:none;'
+                   placeholder='Specify involved margin'>
+
+
+            <hr>
+            <h5>Margins - Deep</h5>
+
+            <select id="box10" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Cannot be assessed</option>
+                <option>Uninvolved by invasive carcinoma</option>
+                <option>Involved by invasive carcinoma</option>
+                <option>Margins uninvolved by intraepithelial neoplasia</option>
+                <option>Involved by high-grade squamous intraepithelial lesion (CIN 2-3)</option>
+                <option>Involved by adenocarcinoma in situ (AIS)</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box10_1' style='display:none;'
+                   placeholder='Specify closest margin'><br>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box10_2' style='display:none;'
+                   placeholder='Specify distance from margin (mm)'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box10_3' style='display:none;'
+                   placeholder='Specify involved margin'>
+
+
+            <hr>
+            <h5>+ Additional Pathologic Findings</h5>
+            <select multiple id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option selected>None identified</option>
+                <option>Low-grade squamous intraepithelial lesion (CIN 1)</option>
+                <option>High-grade squamous intraepithelial lesion (CIN 2 or 3)</option>
+                <option>Inflammation</option>
+                <option>Other</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box12_2' style='display:none;'
+                   placeholder='Specify Other'>
+
+
+            <!-- end markup-->
+
+            <!-- close markup -->
+        </div>
+        {{> page-partials/cap-footer}}
+        <!-- close row -->
+    </div>
+    {{> page-partials/history-module}}
+    <!-- close container -->
 </div>
 
 
-		<!--
-		"specificScripts":
-			[
-				"/js/cap/cxleep-scripts.js",
-			]
-	 -->
+<!--
+			"specificScripts":
+				[
+					"/js/cap/$-scripts.js",
+				]
+		 -->

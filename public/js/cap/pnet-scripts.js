@@ -63,12 +63,18 @@ $(window).on('load', function() {
 //************************************************************//
 // Script to populate the template data in the output textarea//
 // *************************************************************/
-    $('#writeReport').on('click', function () {
+    $('.writeReport').on('click', function () {
 
-// .join("\n- ") use this for var with multiple select options
-// .replace(/;/g,"\n- ") use this for var that needs option to be split in new line
-// Checklist variables
-			var captext = "Ewing Sarcoma/PNET Cancer Template (Biopsy)\n\n";
+        $('input[type="text"]').each(function () {
+            if ($(this).val().length < 1) {
+                $(this).val($(this).attr('placeholder'));
+            }
+            if ($(this).val().length < 1) {
+                $(this).addClass('empty')
+            }
+        });
+
+        var captext = "Ewing Sarcoma/PNET (Biopsy) Cancer Synoptic\nAJCC 2018 cancer staging version\n\n";
         var box_1 = $("#box1").val();
         if (box_1 == 'Other:'){
             var box_1_2 = $("#box1_2").val();

@@ -1,0 +1,329 @@
+<div class="container-fluid">
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+        <li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Uterine Sarcomas</li>
+    </ol>
+    {{> message-center this}}
+    {{> page-partials/cap-header}}
+
+    <div class="row">
+        {{> page-partials/cap-validate-alert}}
+        <div class="col col-md-8">
+
+            <!-- paste markup here-->
+            <hr>
+            <h5>Procedure</h5><br>
+            <select multiple id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Total hysterectomy and bilateral salpingo-oophorectomy</option>
+                <option>Radical hysterectomy</option>
+                <option>Simple hysterectomy</option>
+                <option>Supracervical hysterectomy</option>
+                <option>Bilateral salpingo-oophorectomy</option>
+                <option>Right salpingo-oophorectomy</option>
+                <option>Left salpingo-oophorectomy</option>
+                <option>Salpingo-oophorectomy, side not specified</option>
+                <option>Right oophorectomy</option>
+                <option>Left oophorectomy</option>
+                <option>Oophorectomy, side not specified</option>
+                <option>Bilateral salpingectomy</option>
+                <option>Right salpingectomy</option>
+                <option>Left salpingectomy</option>
+                <option>Salpingectomy, side not specified</option>
+                <option>Omentectomy</option>
+                <option>Peritoneal biopsies</option>
+                <option>Peritoneal washing</option>
+                <option>Other</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;'
+                   placeholder='Specify Other'>
+
+
+            <hr>
+            <h5>Specimen Integrity</h5><br>
+            <select id="box2" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Intact</option>
+                <option>Opened</option>
+                <option>Morcellated</option>
+                <option>Other</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box2_2' style='display:none;'
+                   placeholder='Specify Other'>
+
+
+            <hr>
+            <h5>Tumor Size (cm)</h5><br>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box3" placeholder="Greatest dimension">
+
+
+            too
+
+            <hr>
+            <h5>Histologic Type (select all that apply)
+                <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
+                   title="# Low-grade endometrial stromal sarcoma is distinguished from benign endometrial stromal nodule by
+                    depth of myometrial invasion ≥3 mm, lymphovascular invasion, or ≥3 foci of myometrial invasion of any depth.
+                    Minor marginal irregularity in the form of tongues <3 mm is allowable for an endometrial stromal nodule.
+                    This protocol does not apply to endometrial stromal nodules."
+                   aria-hidden="true"></i>
+            </h5>
+            <!-- Button trigger modal -->
+            <button class="btn btn-sm btn-info mt-2 mb-2" data-toggle="modal" data-target="#help_utsarc_histo">
+                Explanatory notes on tumor types
+            </button>
+
+            <!-- Histology help Modal -->
+            {{> page-modals/cap-helpers/utsarc-histo-help}}
+            <br>
+            <select id="box4" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Leiomyosarcoma</option>
+                <option>Leiomyosarcoma, epithelioid type</option>
+                <option>Leiomyosarcoma, myxoid type</option>
+                <option>Endometrial stromal sarcoma, low grade</option>
+                <option>Endometrial stromal sarcoma with smooth muscle differentiation, low grade</option>
+                <option>Endometrial stromal sarcoma with sex cord elements, low grade</option>
+                <option>Endometrial stromal sarcoma with glandular elements, low grade</option>
+                <option>Endometrial stromal sarcoma, high grade</option>
+                <option>Undifferentiated uterine/endometrial sarcoma</option>
+                <option>Adenosarcoma</option>
+                <option>Adenosarcoma with rhabdomyoblastic differentiation</option>
+                <option>Adenosarcoma with cartilaginous differentiation</option>
+                <option>Adenosarcoma with osseous differentiation</option>
+                <option>Adenosarcoma with other heterologous element</option>
+                <option>Adenosarcoma with sarcomatous overgrowth</option>
+                <option>Rhabdomyosarcoma</option>
+                <option>Malignant perivascular epithelioid cell tumor</option>
+                <option>Other histologic type not listed</option>
+            </select>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box4_2' style='display:none;'
+                   placeholder='Specify heterologouselement type'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box4_3' style='display:none;'
+                   placeholder='Specify Other'>
+
+
+            <div class="adenosarc" style="display: none;">
+                <hr>
+                <h5>Histologic Grade (required only for adenosarcoma)</h5><br>
+                <select id="box5" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option selected>Not applicable</option>
+                    <option>Low grade</option>
+                    <option>High grade</option>
+                    <option>With sarcomatous overgrowth</option>
+                    <option>Cannot be assessed</option>
+                </select>
+
+
+                <hr>
+                <h5>Myometrial Invasion (required only for adenosarcoma)</h5><br>
+                <select id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option selected>Not applicable</option>
+                    <option>Not identified</option>
+                    <option>Present</option>
+                    <option>Cannot be determined</option>
+                </select>
+                <input type="number" class="form-control form-control-sm mt-3 col-sm-6" id='box6_2'
+                       style='display:none;' placeholder='Specify invasion depth (mm)'>
+                <input type="number" class="form-control form-control-sm mt-3 col-sm-6" id='box6_4'
+                       style='display:none;' placeholder='Specify myometrial thickness (mm)'>
+                <input type="number" class="form-control form-control-sm mt-3 col-sm-6" id='box6_5'
+                       style='display:none;' placeholder='Specify % myometrial invasion'>
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box6_3' style='display:none;'
+                       placeholder='Specify why'>
+
+            </div><!-- end hidden adenosarc items-->
+
+
+            <hr>
+            <h5>Other Tissue/ Organ Involvement</h5><br>
+            <select multiple id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not applicable</option>
+                <option>Not identified</option>
+                <option>Right ovary</option>
+                <option>Left ovary</option>
+                <option>Ovary (side not specified)</option>
+                <option>Right fallopian tube</option>
+                <option>Left fallopian tube</option>
+                <option>Fallopian tube (side not specified)</option>
+                <option>Vagina</option>
+                <option>Right parametrium</option>
+                <option>Left parametrium</option>
+                <option>Parametrium (side not specified)</option>
+                <option>Pelvic wall</option>
+                <option>Omentum</option>
+                <option>Other organs/tissue</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box7_2' style='display:none;'
+                   placeholder='Specify Other'>
+
+
+            <hr>
+            <h5>Margins</h5><br>
+
+            <select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Cannot be assessed</option>
+                <option>Uninvolved by sarcoma</option>
+                <option>Involved by sarcoma</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box8_1' style='display:none;'
+                   placeholder='Specify closest margin'><br>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box8_2' style='display:none;'
+                   placeholder='Specify distance from margin (mm)'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box8_3' style='display:none;'
+                   placeholder='Specify involved margin'>
+
+
+            <hr>
+            <h5>Lymphovascular Invasion</h5><br>
+            <select id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+            <hr>
+            <h5>+ Peritoneal/Ascitic Fluid</h5><br>
+            <select id="box10" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option selected>Not submitted/ unknown</option>
+                <option>Negative for malignancy (normal/benign)</option>
+                <option>Atypical and/or suspicious</option>
+                <option>Malignant (positive for malignancy)</option>
+                <option>Unsatisfactory/nondiagnostic</option>
+                <option>Results pending</option>
+            </select>
+
+
+            <hr>
+            <h5>+ Ancillary Studies</h5><br>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box21" placeholder="Specify">
+
+
+            <hr>
+            <h5>Pathologic Staging (pTNM)
+
+            </h5><br>
+
+            <h6>TNM Descriptors (select all that apply)</h6><br>
+            <select id="box11" class='form-control selectpicker form-control-sm col-sm-6' multiple>
+                <option selected value="Not applicable">Not applicable</option>
+                <option>r</option>
+                <option>y</option>
+            </select>
+            <h6>pT</h6><br>
+            <select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="null"></option>
+                <optgroup label="All sarcomas except adenosarcoma">
+                    <option value="pTX[FIGO">pTX[FIGO: -]: Primary tumor cannot be assessed</option>
+                    <option value="pT0[FIGO">pT0[FIGO: -]: No evidence of primary tumor</option>
+                    <option value="pT1[FIGO">pT1[FIGO: I]: Tumor is limited to the uterus</option>
+                    <option value="pT1a[FIGO">pT1a[FIGO: IA]: Tumor 5 cm or less in greatest dimension</option>
+                    <option value="pT1b[FIGO">pT1b[FIGO: IB]: Tumor more than 5 cm</option>
+                    <option value="pT2[FIGO">pT2[FIGO: II]: Tumor extends beyond the uterus, within the pelvis</option>
+                    <option value="pT2a[FIGO">pT2a[FIGO: IIA]: Tumor involves adnexa</option>
+                    <option value="pT2b[FIGO">pT2b[FIGO: IIB]: Tumor involves other pelvic tissues</option>
+                    <option value="pT3[FIGO">pT3[FIGO: III]: Tumor infiltrates abdominal tissues</option>
+                    <option value="pT3a[FIGO">pT3a[FIGO: IIIA]: Tumor infiltrates abdominal tissues in one site</option>
+                    <option value="pT3b[FIGO">pT3b[FIGO: IIIB]: Tumor infiltrates abdominal tissues in more than one
+                        site
+                    </option>
+                    <option value="pT4[FIGO">pT4[FIGO: IVA]: Tumor invades bladder or rectum</option>
+                </optgroup>
+                <optgroup label="For adenosarcoma">
+                    <option value="pTX[FIGO">pTX[FIGO: -]: Primary tumor cannot be assessed</option>
+                    <option value="pT0[FIGO">pT0[FIGO: -]: No evidence of primary tumor</option>
+                    <option value="pT1[FIGO">pT1[FIGO: I]: Tumor limited to the uterus</option>
+                    <option value="pT1a[FIGO">pT1a[FIGO: IA]: Tumor limited to the endometrium/endocervix</option>
+                    <option value="pT1b[FIGO">pT1b[FIGO: IB]: Tumor invades to less than half of the myometrium</option>
+                    <option value="pT1c[FIGO">pT1c[FIGO: IC]: Tumor invades one half or more of the myometrium</option>
+                    <option value="pT2[FIGO">pT2[FIGO: II]: Tumor extends beyond the uterus, but within the pelvis
+                    </option>
+                    <option value="pT2a[FIGO">pT2a[FIGO:IIA]: Tumor involves adnexa</option>
+                    <option value="pT2b[FIGO">pT2b[FIGO: IIB]: Tumor involves other pelvic tissues</option>
+                    <option value="pT3[FIGO">pT3[FIGO: III]: Tumor infiltrates abdominal tissues</option>
+                    <option value="pT3a[FIGO">pT3a[FIGO: IIIA]: Tumor infiltrates abdominal tissues in one site</option>
+                    <option value="pT3b[FIGO">pT3b[FIGO: IIIB]: Tumor infiltrates abdominal tissues in more than one
+                        site
+                    </option>
+                    <option value="pT4[FIGO">pT4[FIGO: IVA]: Tumor invades bladder and/or rectum</option>
+                </optgroup>
+            </select>
+            <br>
+
+            <h6>pN</h6>
+            <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
+               title="Note: Lymph nodes designated as pelvic, parametrial, obturator, internal iliac (hypogastric), external iliac, common iliac, sacral, presacral, and para-aortic are considered regional lymph nodes.
+               Any other involved nodes should be categorized as metastases (pM1) and commented on in the distant metastasis section.
+               Presence of isolated tumor cells no greater than 0.2 mm in regional lymph node(s) is considered N0(i+)."
+               aria-hidden="true"></i>
+            <br>
+            <select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pNX">pNX: Regional lymph nodes cannot be assessed</option>
+                <option value="pN0">pN0: No regional lymph node metastasis</option>
+                <option value="pN0(i+)">pN0(i+): Isolated tumor cells in regional lymph node(s) no greater than 0.2 mm
+                </option>
+                <option value="pN1[FIGO">pN1[FIGO: IIIC]: Regional lymph node metastasis</option>
+            </select>
+            <br>
+
+            <h6>pM</h6><br>
+            <select id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option selected value='pMx'>pMx: Not applicable</option>
+                <option value="pM1[FIGO">pM1[FIGO: IVB]: Distant metastasis (excluding adnexa, pelvic and abdominal
+                    tissues)
+                </option>
+            </select>
+            <br>
+            <form class="form-inline">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box15">
+                </label>
+            </form>
+            <div class='lnchk' style='display:none;'><br>
+                <form class="form-inline">
+                    <label class="mb-2">Total Number of Nodes Examined
+                        <input type="number" class="form-control form-control-sm ml-3" id="box16"></label>
+                    <label class="mb-2">Number of Nodes with Metastasis (excludes ITCs)
+                        <input type="number" class="form-control form-control-sm ml-3" id="box17"></label>
+                    <label class="mb-2">Number of Nodes with Isolated Tumor Cells (ITCs)
+                        <input type="number" class="form-control form-control-sm ml-3" id="box18">
+                        <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
+                           title="Note: ITC are <0.2 mm foci. #Reporting the number of lymph nodes with isolated tumor cells is required only in the absence of metastasis greater than 0.2 mm in other lymph nodes."
+                           aria-hidden="true"></i></label>
+                    <label class="mb-2">Specify Lymph Node(s) with Tumor
+                        <input type="text" class="form-control form-control-sm w-100 ml-3" id="box19"
+                               value="Not applicable"></label>
+
+                    <h6 class="w-100">+ Additional Lymph Node Findings</h6><br>
+                    <select id="box20" class='form-control selectpicker form-control-sm ml-3'>
+                        <option>None identified</option>
+                        <option>Extranodal extension</option>
+                        <option>Fixed/ulcerated nodes</option>
+                        <option>Other</option>
+                        <option>Cannot be determined</option>
+                        <option selected>Not applicable</option>
+                    </select>
+                    <br>
+                    <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box20_2'
+                           style='display:none;' placeholder='Specify Other'>
+
+                </form>
+            </div>
+
+
+            <!-- end markup-->
+
+            <!-- close markup -->
+        </div>
+        {{> page-partials/cap-footer}}
+        <!-- close row -->
+    </div>
+    {{> page-partials/history-module}}
+    <!-- close container -->
+</div>

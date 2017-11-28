@@ -153,9 +153,18 @@ $(window).on('load', function() {
 //************************************************************//
 // Script to populate the template data in the output textarea//
 // *************************************************************/
-    $('#writeReport').on('click', function () {
+    $('.writeReport').on('click', function () {
 
-        var captext = "Pediatric Liver Cancer Synoptic\n\n";
+        $('input[type="text"]').each(function () {
+            if ($(this).val().length < 1) {
+                $(this).val($(this).attr('placeholder'));
+            }
+            if ($(this).val().length < 1) {
+                $(this).addClass('empty')
+            }
+        });
+
+        var captext = "Pediatric Liver Cancer Synoptic\nAJCC 2018 cancer staging version\n\n";
 
         var box_2 = $("#box2").val();
         var box_2_2 = $("#box2_2").val();

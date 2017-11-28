@@ -1,0 +1,326 @@
+<div class="container-fluid">
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+        <li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Vulva carcinoma</li>
+    </ol>
+    {{> message-center this}}
+    {{> page-partials/cap-header}}
+
+    <div class="row">
+        {{> page-partials/cap-validate-alert}}
+        <div class="col col-md-8">
+
+            <!-- paste markup here-->
+            <hr>
+            <h5>Procedure</h5><br>
+            <select id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Local excision</option>
+                <option>Wide excision</option>
+                <option>Partial vulvectomy</option>
+                <option>Total vulvectomy</option>
+                <option>Radical vulvectomy</option>
+                <option>Other</option>
+                <option>Not specified</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;'
+                   placeholder='Specify Other'>
+
+
+            <hr>
+            <h5>Tumor Site</h5><br>
+            <select multiple id="box2" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Right vulva</option>
+                <option>Left vulva</option>
+                <option>Clitoris</option>
+                <option>Other</option>
+                <option>Not specified</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box2_2' style='display:none;'
+                   placeholder='Specify Other'>
+
+
+            <hr>
+            <h5>Tumor Size (cm)</h5><br>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box3" placeholder="">
+
+
+            <hr>
+            <h5>Tumor Focality</h5><br>
+            <select id="box4" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Unifocal</option>
+                <option>Multifocal</option>
+                <option>Cannot be determined</option>
+                <option>Not specified</option>
+            </select>
+
+
+            <hr>
+            <h5>Histologic Type</h5><br>
+            <select id="box5" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Squamous cell carcinoma, keratinizing</option>
+                <option>Squamous cell carcinoma, nonkeratinizing</option>
+                <option>Squamous cell carcinoma, basaloid</option>
+                <option>Squamous cell carcinoma, verrucous</option>
+                <option>Squamous cell carcinoma, warty</option>
+                <option>Squamous cell carcinoma, papillary</option>
+                <option>Adenocarcinoma, NOS</option>
+                <option>Adenocarcinoma, mammary gland type</option>
+                <option>Adenocarcinoma, skene gland type</option>
+                <option>Adenocarcinoma, sweat gland type</option>
+                <option>Adenocarcinoma, intestinal type</option>
+                <option>Adenocarcinoma, with associated Paget disease</option>
+                <option>Adenosquamous carcinoma</option>
+                <option>Transitional cell carcinoma</option>
+                <option>Adenoid cystic carcinoma</option>
+                <option>Adenoid basal carcinoma</option>
+                <option>Small cell neuroendocrine carcinoma</option>
+                <option>Large cell neuroendocrine carcinoma</option>
+                <option>Undifferentiated carcinoma</option>
+                <option>Other histologic type not listed</option>
+                <option>Carcinoma, type cannot be determined</option>
+                <option></option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box5_2' style='display:none;'
+                   placeholder='Specify Other histologic type not listed'>
+
+
+            <hr>
+            <h5>Histologic Grade</h5><br>
+            <select id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>G1: Well differentiated</option>
+                <option>G2: Moderately differentiated</option>
+                <option>G3: Poorly differentiated</option>
+                <option>G4: Undifferentiated</option>
+                <option>Other</option>
+                <option>GX: Cannot be assessed</option>
+                <option>Not applicable</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box6_2' style='display:none;'
+                   placeholder='Specify Other'>
+
+
+            <hr>
+            <h5>Depth of Invasion (mm)</h5><br>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box7">
+
+
+            <hr>
+            <h5>+ Tumor Border</h5><br>
+            <select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Pushing</option>
+                <option>Infiltrating</option>
+            </select>
+
+
+            <hr>
+
+
+            <h5>Margins - Peripheral</h5><br>
+            <select multiple id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Cannot be assessed</option>
+                <option>Uninvolved by invasive carcinoma</option>
+                <option>Involved by invasive carcinoma</option>
+                <option>Uninvolved by intraepithelial neoplasia</option>
+                <option>Involved by high-grade squamous intraepithelial lesion (VIN 2-3)</option>
+                <option>Involved by vulvar intraepithelial neoplasia, differentiated (simplex) type (dVIN)</option>
+                <option>Involved by Paget disease</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box9_1' style='display:none;'
+                   placeholder='Specify closest margin'><br>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box9_2' style='display:none;'
+                   placeholder='Specify distance from margin (mm)'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box9_3' style='display:none;'
+                   placeholder='Specify involved margin'>
+
+            <hr>
+
+            <h5>Margins - Deep</h5><br>
+            <select multiple id="box10" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Cannot be assessed</option>
+                <option>Uninvolved by invasive carcinoma</option>
+                <option>Involved by invasive carcinoma</option>
+                <option>Uninvolved by intraepithelial neoplasia</option>
+                <option>Involved by high-grade squamous intraepithelial lesion (VIN 2-3)</option>
+                <option>Involved by vulvar intraepithelial neoplasia, differentiated (simplex) type (dVIN)</option>
+                <option>Involved by Paget disease</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box10_1' style='display:none;'
+                   placeholder='Specify closest margin'><br>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box10_2' style='display:none;'
+                   placeholder='Specify distance from margin (mm)'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box10_3' style='display:none;'
+                   placeholder='Specify involved margin'>
+
+
+            <hr>
+            <h5>Lymphovascular Invasion</h5><br>
+            <select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+            <hr>
+            <h5>Pathologic Staging (pTNM)
+                <!-- Button trigger modal -->
+                <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#help_tnm">TNM vs FIGO
+                    designation
+                </button>
+            </h5>
+
+            <br>
+            <h6>TNM Descriptors (select all that apply)</h6><br>
+            <select id="box12" class='form-control selectpicker form-control-sm col-sm-6' multiple>
+                <option selected value="Not applicable">Not applicable</option>
+                <option>m</option>
+                <option>r</option>
+                <option>y</option>
+            </select>
+            <br>
+            <h6>pT
+                <i class="fa fa-question-circle ml-2" data-toggle="tooltip" data-placement="right"
+                   title="Multifocal lesions should be designated as such. The largest lesion or the lesion with the greatest depth of invasion will be the target lesion identified to address the highest pT stage. Depth of invasion is defined as the measurement of the tumor from the epithelial–stromal junction of the adjacent most superficial dermal papilla to the deepest point of invasion."
+                   aria-hidden="true"></i>
+
+            </h6><br>
+            <select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pTX">pTX: Primary tumor cannot be assessed</option>
+                <option value="pT0">pT0: No evidence of primary tumor</option>
+                <option value="pT1">pT1: Tumor confined to the vulva and / or perineum#</option>
+                <option value="pT1a">pT1a: Lesions 2 cm or less, confined to the vulva and/or perineum, and with stromal
+                    invasion of 1.0 mm or less ##
+                </option>
+                <option value="pT1b">pT1b: Lesions more than 2 cm, or any size with stromal invasion more than 1.0 mm,
+                    confined to the vulva and/or perineum
+                </option>
+                <option value="pT2">pT2: Tumor of any size with extension to adjacent perineal structures (lower/distal
+                    third of the urethra, lower/distal third of the vagina, anal involvement)
+                </option>
+                <option value="pT3">pT3: Tumor of any size with extension to any of the following: upper/proximal
+                    two-thirds of the urethra, upper/proximal two-thirds of the vagina, bladder mucosa, or rectal
+                    mucosa, or fixed to pelvic bone
+                </option>
+            </select>
+            <br>
+
+            <h6>pN</h6><br>
+            <select id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pNX">pNX: Regional lymph nodes cannot be assessed</option>
+                <option value="pN0">pN0: No regional lymph node metastasis</option>
+                <option value="pN0(i+)">pN0(i+): Isolated tumor cells in regional lymph node(s) no greater than 0.2 mm
+                </option>
+                <option value="pN1">pN1: Regional lymph node metastasis with one or two lymph node metastases each less
+                    than 5 mm, or one lymph node metastasis ≥ 5 mm
+                </option>
+                <option value="pN1a">pN1a: One or two lymph node metastasis each less than 5 mm#</option>
+                <option value="pN1b">pN1b: One lymph node metastasis ≥ 5 mm</option>
+                <option value="pN2">pN2: Regional lymph node metastasis with three or more lymph node metastases each
+                    less than 5 mm, or two or more lymph node metastases ≥ 5 mm, or lymph node(s) with extranodal
+                    extension
+                </option>
+                <option value="pN2a">pN2a: Three or more lymph node metastases each less than 5 mm#</option>
+                <option value="pN2b">pN2b: Two or more lymph node metastases ≥ 5 mm</option>
+                <option value="pN2c">pN2c: Lymph node(s) with extranodal extension</option>
+                <option value="pN3">pN3: Fixed or ulcerated regional lymph node metastasis</option>
+            </select>
+            <br>
+
+            <h6>pM
+                <i class="fa fa-question-circle ml-2" data-toggle="tooltip" data-placement="right"
+                   title="Internal iliac/hypogastric, external iliac, and common iliac lymph nodes are considered distant metastasis."
+                   aria-hidden="true"></i>
+            </h6><br>
+            <select id="box15" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pMX">pMX: Not applicable</option>
+                <option value="pM1">pM1: Distant metastasis (including pelvic lymph node metastasis)</option>
+            </select>
+            <br>
+            <form class="form-inline">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box16">
+                </label>
+            </form>
+            <div class='lnchk' style='display:none;'><br>
+                Total lymph nodes (sentinel and non-sentinel) examined:
+                <i class="fa fa-question-circle ml-2" data-toggle="tooltip" data-placement="right"
+                   title="Only inguinal and femoral nodes are considered regional lymph nodes. Any other involved nodes should be categorized as metastases (pM1) and be commented on in the distant metastasis section. Presence of isolated tumor cells no greater than 0.2 mm in regional lymph node(s) is considered N0 (i+)."
+                   aria-hidden="true"></i>
+                <input type="number" class="form-control form-control-sm col-sm-6" id="box17" style="width:100px">
+                Number of lymph nodes involved: <input type="number" class="form-control form-control-sm col-sm-6"
+                                                       id="box18" style="width:100px">
+                Number of Sentinel Nodes Examined: <input type="number" class="form-control form-control-sm col-sm-6"
+                                                          id="box19" style="width:100px" placeholder="0">
+                Number of Nodes with Metastasis 5 mm or Greater
+                <input type="number" class="form-control form-control-sm col-sm-6" id="box20" style="width:100px"
+                       value="0">
+                Number of Nodes with Metastasis Less than 5 mm (excludes ITCs)
+                <input type="number" class="form-control form-control-sm col-sm-6" id="box21" style="width:100px"
+                       value="0">
+                Number of Nodes with Isolated Tumor Cells (ITCs) (0.2 mm or less)
+                <input type="number" class="form-control form-control-sm col-sm-6" id="box22" style="width:100px"
+                       value="0">
+                Specify Lymph Node(s) involved by Tumor:
+                <i class="fa fa-question-circle ml-2" data-toggle="tooltip"
+                   title="Note: Information should include location and laterality of sentinel or non-sentinel regional lymph nodes with tumor."
+                   aria-hidden="true"></i>
+                <input type="text" class="form-control form-control-sm col-sm-6" id="box23" value="Not applicable">
+                <h6 class="mt-3">Additional Lymph Node Findings</h6><br>
+                <select multiple id="box24" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>None identified</option>
+                    <option>Extranodal extension</option>
+                    <option>Fixed/ulcerated nodes</option>
+                    <option>Other</option>
+                    <option selected>Not applicable</option>
+                </select>
+                <br>
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box24_2' style='display:none;'
+                       placeholder='Specify Other'>
+
+            </div>
+
+
+            <hr>
+            <h5>+ Additional Pathologic Findings</h5><br>
+            <select id="box25" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Condyloma accuminatum</option>
+                <option>High grade squamous intraepithelial lesion (VIN 2-3)</option>
+                <option>Low grade squamous intraepithelial lesion (VIN 1)</option>
+                <option>Vulvar intraepithelial neoplasia, differentiated (simplex) type (dVIN)</option>
+                <option>Lichen sclerosus</option>
+                <option>Other</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box25_2' style='display:none;'
+                   placeholder='Specify Other'>
+
+
+            <!-- end markup-->
+            <!-- Histology help Modal -->
+            {{> page-modals/cap-helpers/cap-vulva-tnm-help}}
+            <!-- close markup -->
+        </div>
+        {{> page-partials/cap-footer}}
+        <!-- close row -->
+    </div>
+    {{> page-partials/history-module}}
+    <!-- close container -->
+</div>
+
+
+<!--
+"specificScripts":
+    [
+        "/js/cap/vulva-scripts.js",
+    ]
+-->

@@ -297,6 +297,19 @@ $(function () {
 			$('#previous-reports').toggle();
 		});
 
+    // show/hide cap validation alert, instead of destroying with close
+    $(function () {
+        $("[data-hide]").on("click", function () {
+            $(this).closest("." + $(this).attr("data-hide")).hide();
+        });
+    });
+
+    // smooth scroll to top on cap 'write report' click
+    $('.writeReport').click(function () {
+        $("html, body").animate({scrollTop: 125}, 600);
+    });
+
+
     /*/Google analytics
      var _gaq = _gaq || [];
      _gaq.push(['_setAccount', 'UA-37125342-1']);

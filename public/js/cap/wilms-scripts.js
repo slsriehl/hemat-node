@@ -10,256 +10,308 @@ $(window).on('load', function() {
 //                        Pop-ups                              //
 // *************************************************************/
 
-    $('#box1').change(function () {
+    $('#box1').on("change", function () {
         var sel = $('#box1').val();
-        if (sel == 'Other:') {
-            $('input[id=box1_2]').show();
-        } else if (sel != 'Other:') {
-            $('input[id=box1_2]').hide();
+        if (sel.indexOf("Other") > -1) {
+
+            $('#box1_2').show();
+        }
+        else {
+            $('#box1_2').hide();
         }
     });
 
-
-    $('#box7').change(function () {
-        if ($('#box7').is(':checked')) {
-            $('.SubRadio').attr('disabled', 'disabled');
+    $('#box5').on("change", function () {
+        var sela = $('#box5').val();
+        var trig1 = sela.filter(el = > el.indexOf('#2') > -1
+        )
+        ;
+        var trig2 = sela.filter(el = > el.indexOf('#3') > -1
+        )
+        ;
+        var trig3 = sela.filter(el = > el.indexOf('Other') > -1
+        )
+        ;
+        if (trig1.length > 0) {
+            $('#box5_2').show();
         }
-        else if (!$('#box7').is(':checked')) {
-            $('.SubRadio').prop('disabled', false);
+        else {
+            $('#box5_2').hide();
         }
-    });
-
-    $('input[id=box7_2]').change(function () {
-        if ( $(this).is(':checked') ) {
-            $('#box7_4').show();
-        } else {
-            $('#box7_4').hide();
+        if (trig2.length > 0) {
+            $('#box5_3').show();
         }
-    });
-
-    $('input[id=box7_3]').change(function () {
-        if ( $(this).is(':checked') ) {
-            $('#box7_5').show();
-        } else {
-            $('#box7_5').hide();
+        else {
+            $('#box5_3').hide();
         }
-    });
-
-    $('#box8').change(function () {
-        var sel = $('#box8').val();
-        if (sel == 'Multifocal') {
-            $('input[id=box8_2]').show();
-        } else if (sel != 'Multifocal:') {
-            $('input[id=box8_2]').hide();
+        if (trig3.length > 0) {
+            $('#box5_4').show();
+        }
+        else {
+            $('#box5_4').hide();
         }
     });
 
-    $('#box13').change(function () {
-        var sel = $('#box13').val();
-        if (sel == 'Other:') {
-            $('input[id=box13_2]').show();
-        } else if (sel != 'Other:') {
-            $('input[id=box13_2]').hide();
+    $('#box6').on("change", function () {
+        var sel = $('#box6').val();
+        if (sel.indexOf("Multifocal") > -1) {
+
+            $('#box6_2').show();
+        }
+        else {
+            $('#box6_2').hide();
         }
     });
 
-    $("#box15").change(function(){
-        if ($(this).is(":checked")){
-            $(".lnchk").show();}
-        else{
-            $(".lnchk").hide();}
+    $('#box9').on("change", function () {
+        var sel = $('#box9').val();
+        if (sel.indexOf("present") > -1) {
+
+            $('#box9_2').show();
+        }
+        else {
+            $('#box9_2').hide();
+        }
     });
-    $('#box16').change(function () {
+
+    $('#box10').on("change", function () {
+        var sela = $('#box10').val();
+        if (sela.indexOf('Uninvolved') > -1) {
+            $('#box10_1').show();
+            $('#box10_2').show();
+        }
+        else {
+            $('#box10_1').hide();
+            $('#box10_2').hide();
+        }
+        if (sela.indexOf("Involved") > -1) {
+            $('#box10_3').show();
+        }
+        else {
+            $('#box10_3').hide();
+        }
+    });
+
+    $('#box11').on("change", function () {
+        var sel = $('#box11').val();
+        if (sel.indexOf("Other") > -1) {
+
+            $('#box11_2').show();
+        }
+        else {
+            $('#box11_2').hide();
+        }
+    });
+
+    $('#box16').on("change", function () {
         var sel = $('#box16').val();
-        if (sel == 'Distant metastasis present') {
-            $('input[id=box16_2]').show();
-        } else if (sel != 'Distant metastasis present') {
-            $('input[id=box16_2]').hide();
+        if (sel.indexOf("Present") > -1) {
+
+            $('#box16_2').show();
+        }
+        else {
+            $('#box16_2').hide();
         }
     });
 
-    $('#box17').change(function () {
-        var sel = $('#box17').val();
-        if (sel == 'Stage I') {
-            $('.stage1').show();
-            $('.stage2').hide();
-            $('.stage3').hide();
-            $('.stage4').hide();
-            $('.stage5').hide();
-            $('#bilat').hide();
-        }
-        if (sel == 'Stage II') {
-            $('.stage1').hide();
-            $('.stage2').show();
-            $('.stage3').hide();
-            $('.stage4').hide();
-            $('.stage5').hide();
-            $('#bilat').hide();
-        }
-        if (sel == 'Stage III') {
-            $('.stage1').hide();
-            $('.stage2').hide();
-            $('.stage3').show();
-            $('.stage4').hide();
-            $('.stage5').hide();
-            $('#bilat').hide();
-        }
-        if (sel == 'Stage IV') {
-            $('.stage1').hide();
-            $('.stage2').hide();
-            $('.stage3').hide();
-            $('.stage4').show();
-            $('.stage5').hide();
-            $('#bilat').hide();
-        }
-        if (sel == 'Stage V') {
-            $('.stage1').hide();
-            $('.stage2').hide();
-            $('.stage3').hide();
-            $('.stage4').hide();
-            $('.stage5').show();
-            $('#bilat').show();
-        }
-        else if (sel == 'Not applicable' || sel == 'Cannot be assessed') {
-            $('.stage1').hide();
-            $('.stage2').hide();
-            $('.stage3').hide();
-            $('.stage4').hide();
-            $('.stage5').hide();
-            $('#bilat').hide();
-        }
-    });
-    $('#box18').change(function () {
+    $('#box18').on("change", function () {
         var sel = $('#box18').val();
         if ($.inArray('Other', sel) >-1) {
             $('#box18_2').show();
-        } else {
+        }
+        else {
             $('#box18_2').hide();
         }
     });
 
-    $('#box20').change(function(){
-        var sela = $('#box20').val();
-        var selb = $('#box20').val();
-        if ($.inArray('Margins uninvolved by tumor', sela) >-1) {
-            $('#box20_1').show();
-            $('#box20_2').show();
-        }
-        else {
-            $('#box20_1').hide();
-            $('#box20_2').hide();
-        }
-        if ($.inArray('Other margin involved by tumor', selb) >-1) {
-            $('#box20_3').show();}
-        else {
-            $('#box20_3').hide();
-        }
-    });
 
 
 //************************************************************//
 // Script to populate the template data in the output textarea//
 // *************************************************************/
-    $('#writeReport').on('click', function () {
+    $('.writeReport').on('click', function () {
 
-        var captext = "Pediatric Renal Tumor Cancer Synoptic\n\n";
-// .join("\n- ") use this for var with multiple select options
-// val().replace(/;/g,"\n- ") use this for var that needs option to be split in new line
-// Checklist variables
+        // ***************** INPUT VALIDATION ********************//
+        $('select[multiple]:visible').each(function () {
+            // Check if at least one selection is made
+            if ($(this).val().length > 0) {
+                $(this).removeClass('empty');
+            } else {
+                $(this).addClass('empty');
+                $('#cap-valid').show();
+            }
+        });
+
+        $('input[type="text"]:visible').each(function () {
+            // Check if at least one selection is made
+            if ($.trim($(this).val()).length > 0) {
+                $(this).removeClass('empty');
+            } else {
+                if ($(this).attr('placeholder').indexOf('applicable') < 0) {
+                    $(this).addClass('empty');
+                    $('#cap-valid').show();
+                }
+            }
+        });
+
+        // ***************** END VALIDATION ********************//
+
+        var captext = "Pediatric Renal Tumors Cancer Synoptic\n(2016 update, COG staging system)\n\n";
+
         var box_1 = $("#box1").val();
-        if (box_1 == 'Other:'){
-            box_1_2 = $("#box1_2").val();
-            captext += "Procedure:\n- "+box_1_2+"\n";}
-        else {captext += "Procedure:\n- "+box_1+"\n";}
+        var box_1_2 = $("#box1_2").val();
+        if (box_1 == 'Other') {
+            captext += "\nProcedure:\n- " + box_1_2 + "\n";
+        }
+        else {
+            captext += "\nProcedure:\n- " + box_1 + "\n";
+        }
+
 
         var box_2 = $("#box2").val();
-        captext += "\nSpecimen Size:\n- "+box_2.replace(/cm/,'')+"cm\n";
-        var box_3 = $("#box3").val();
-        captext += "\nSpecimen Weight:\n- "+box_3.replace(/gm/,'')+"gm\n";
-        var box_4 = $("#box4").val();
-        captext += "\nSpecimen Laterality:\n- "+box_4+"\n";
+        captext += "\nSpecimen Weight (g):\n- " + box_2 + "\n";
 
+        var box_3 = $("#box3").val();
+        captext += "\nSpecimen Laterality:\n- " + box_3 + "\n";
+
+        var box_4 = $("#box4").val();
+        captext += "\nTumor Size:\n- " + box_4.replace(/cm/, '') + "cm\n";
+
+        var box_5 = $("#box5").val();
+        var box_5_2 = $("#box5_2").val();
+        var box_5_3 = $("#box5_3").val();
+        var box_5_4 = $("#box5_4").val();
+        var trig1_box_5 = box_5.filter(el = > el.indexOf("#2") > -1
+        )
+        ;
+        var trig2_box_5 = box_5.filter(el = > el.indexOf("#3") > -1
+        )
+        ;
+        var trig3_box_5 = box_5.filter(el = > el.indexOf("Other") > -1
+        )
+        ;
+
+        if ((trig1_box_5.length > 0 ) && (trig2_box_5.length == 0  )) {
+            captext += "\nAdditional dimensions of multiple tumors:\n- Tumor #2 maximum size: " + box_5_2.replace(/cm/, '') + "cm\n";
+        }
+        else if ((trig1_box_5.length == 0 ) && (trig2_box_5.length > 0  )) {
+            captext += "\nAdditional dimensions of multiple tumors:\n- Tumor #3 maximum size: " + box_5_3.replace(/cm/, '') + "cm\n";
+        }
+        else if ((trig1_box_5.length > 0 ) && (trig2_box_5.length > 0  )) {
+            captext += "\nAdditional dimensions of multiple tumors:\n- Tumor #2 maximum size: " + box_5_2.replace(/cm/, '') + "cm\n- Tumor #3 maximum size: " + box_5_3.replace(/cm/, '') + "cm\n";
+        } else if ((trig3_box_5.length > 0) && (trig1_box_5.length > 0 ) && (trig2_box_5.length > 0  )) {
+            captext += "\nAdditional dimensions of multiple tumors:\n- Tumor #2 maximum size: " + box_5_2.replace(/cm/, '') + "cm\n- Tumor #3 maximum size: " + box_5_3.replace(/cm/, '') + "cm\n- Other tumors maximum size: " + box_5_4.replace(/cm/, '') + "cm\n";
+        }
+        else {
+            captext += "\nAdditional dimensions of multiple tumors:\n- " + box_5.join("\n- ") + "\n";
+        }
 
         var box_6 = $("#box6").val();
-        captext += "\nTumor Size:\n- "+box_6+"\n";
+        var box_6_2 = $("#box6_2").val();
+        if (box_6 == 'Multifocal') {
+            captext += "\nTumor Focality:\n- Multifocal: " + box_6_2 + " tumors identified\n";
+        }
+        else {
+            captext += "\nTumor Focality:\n- " + box_6 + "\n";
+        }
+
 
         var box_7 = $("#box7").val();
-        var box_7_2 = $("#box7_2").val();
-        var box_7_3 = $("#box7_3").val();
-        if($('#box7_2').is(':checked')){
-            var box_7_4 = $("#box7_4").val();
-            captext += "\nMultiple tumors are present:\n- Greatest dimension of 2nd tumor: "+box_7_4+"cm\n";}
-        if($('#box7_3').is(':checked')){
-            var box_7_4 = $("#box7_4").val();
-            var box_7_5 = $("#box7_5").val();
-            captext += "- Greatest dimension of 3nd tumor: "+box_7_5+"cm\n";}
-        else {captext += "\nMultiple tumor foci not present \n";}
-
         var box_8 = $("#box8").val();
-        if (box_8 == 'Multifocal'){
-            box_8_2 = $("#box8_2").val();
-            captext += "\nTumor Focality:\n- "+box_8+" : Total # of tumors = "+box_8_2+"\n";}
-        else {captext += "\nTumor Focality:\n- "+box_8+"\n";}
-
         var box_9 = $("#box9").val();
+        var box_20 = $("#box9").val();
+        var box_21 = $("#box9").val();
+        var box_21_2 = $("#box9_2").val();
+        captext += "\nTumor Extent:\n- "
+        captext += "\tGerota’s Fascia: " + box_7 + "\n";
+
+        captext += "\tRenal Sinus: " + box_8 + "\n";
+
+        captext += "\tRenal Vein: " + box_9 + "\n";
+
+        captext += "\tRenal Capsule: " + box_20 + "\n";
+
+        if (box_21 == 'present') {
+            captext += "\tAdjacent Organ Involvement: Present: " + box_21_2 + "\n";
+        }
+        else {
+            captext += "\tAdjacent Organ Involvement: " + box_21 + "\n";
+        }
+
+
         var box_10 = $("#box10").val();
+        var box_10_1 = $("#box10_1").val();
+        var box_10_2 = $("#box10_2").val();
+        var box_10_3 = $("#box10_3").val();
+        if (box_10.indexOf("Uninvolved") > -1) {
+            captext += "\nMargins:\n- Margins uninvolved by tumor\n- Nearest margin: " + box_10_1 + "\n- Distance to this margin: " + box_10_2.replace(/mm/, "") + "mm\n";
+        }
+        else if (box_10.indexOf("Involved") > -1) {
+            captext += "\nMargins:\n- Margins involved by tumor\n- Margin involved: " + box_10_3 + "\n";
+        }
+        else {
+            captext += "\nMargins:\n- " + box_10 + "\n";
+        }
+
         var box_11 = $("#box11").val();
-        var box_11_5 = $("#box11_5").val();
+        var box_11_2 = $("#box11_2").val();
+        if (box_11 == 'Other') {
+            captext += "\nHistologic Type:\n- " + box_11_2 + "\n";
+        }
+        else {
+            captext += "\nHistologic Type:\n- " + box_11 + "\n";
+        }
+
+
         var box_12 = $("#box12").val();
-        captext += "\nMacroscopic Extent of Tumor:\n-[Gerota's Fascia]: "+box_9+"\n\n-[Renal Sinus]: "+box_10+"\n\n-[Renal Vein]: "+box_11+"\n\n-[Renal Capsule]: "+box_11_5+"\n\n-[Adjacent Organ Involvement]: "+box_12+"\n";
+        captext += "\n+ Nephrogenic Rests:\n- " + box_12.join('\n- ') + "\n";
 
         var box_13 = $("#box13").val();
-        if (box_13 == 'Other:'){
-            box_13_2 = $("#box13_2").val();
-            captext += "\nHistologic Type:\n- "+box_13_2+"\n";}
-        else {captext += "\nHistologic Type(s):\n- "+box_13.join("\n- ")+"\n";}
+        if ($.inArray("Not applicable", box_13) == -1) {
+            captext += "\n+ Posttherapy Histologic Classification:\n- " + box_13.join('\n- ') + "\n";
+        }
 
         var box_14 = $("#box14").val();
-        captext += "\n+ Nephrogenic rests:\n- "  + box_14.join('\n- ') + "\n";
-
-        if ($("#box15").is(':checked')) {
-            var box15_2 = $("#box15_2").val();
-            var box15_3 = $("#box15_3").val();
-            captext += "\nLymph nodes examined: "+box15_2+"\nLymph nodes involved: "+box15_3+"\n";}
-        else {
-            captext +="\nNo lymph nodes submitted\n";}
-
-        var box_20 = $("#box20").val();
-        var box_20_1 = $("#box20_1").val();
-        var box_20_2 = $("#box20_2").val();
-        var box_20_3 = $("#box20_3").val();
-        if ($.inArray('Margins uninvolved by tumor', box_20) > -1 && $.inArray('Other margin involved by tumor', box_20) == -1) { captext += "\nMargins: Uninvolved by tumor\n - Closest margin: "+ box_20_2 +"\n - Distance to this margin: "+ box_20_1.replace(/cm/, '') +" cm\n";}
-        else if ($.inArray('Other margin involved by tumor', box_20) > -1 && $.inArray('Margins uninvolved by tumor', box_20) == -1) { captext += "\nMargins:\n- "+box_20.join("\n- ").replace(/Other margin involved by tumor/, box_20_3)+"\n";}
-        else {captext += "\nMargins:\n- "+box_20.join("\n- ")+"\n";}
+        var box_15 = $("#box15").val();
+        if (box_14.length == 0) {
+            captext += "\nLymph nodes:\n\tLymph Nodes Examined: " + box_14 + "\n\tLymph nodes involved: " + box_15 + "\n";
+        } else {
+            captext += "\nLymph nodes: None submitted\n";
+        }
 
 
         var box_16 = $("#box16").val();
-        if (box_16 == 'Distant metastasis present'){
-            box_16_2 = $("#box16_2").val();
-            captext += "\nDistant Metastasis:\n- "+box_16+"\n- Metastatic site: "+box_16_2+"\n";}
-        else {captext += "\nDistant Metastasis:\n- "+box_16+"\n";}
+        var box_16_2 = $("#box16_2").val();
+        if (box_16 != "Not applicable") {
+            if (box_16.indexOf("Present") > -1) {
+                captext += "\nDistant Metastasis:\n- " + box_16_2 + "\n";
+            }
+            else {
+                captext += "\nDistant Metastasis:\n- " + box_16 + "\n";
+            }
+        }
+
+
+        var box_17 = $("#box17").val();
+        captext += "\nChildren’s Oncology Group Staging System :\n- " + box_17.join('\n- ') + "\n";
 
         var box_18 = $("#box18").val();
         var box_18_2 = $("#box18_2").val();
         if ($.inArray('Other', box_18) >-1){
-            captext += "\nAncillary Studies:\n- "+box_18.join('\n- ').replace(/Other/, box_18_2)+"\n";}
-        else {captext += "\nAncillary Studies:\n- "+box_18.join('\n- ')+"\n";}
+            captext += "\n+ Ancillary Molecular/Genetic Studies:\n- " + box_18.join('\n- ').replace(/Other/, box_18_2) + "\n";
+        }
+        else {
+            captext += "\n+ Ancillary Molecular/Genetic Studies:\n- " + box_18.join('\n- ') + "\n";
+        }
 
         var box_19 = $("#box19").val();
-        captext += "\nUnderlying Genetic Syndrome:\n- "+box_19+"\n";
-
-        var box_17 = $("#box17").val();
-        if (box_17 == 'Stage V'){
-            box_17_2 = $("#box17_2").val();
-            box_17_3 = $("#box17_3").val();
-            captext += "\nChildren’s Oncology Group Staging System:\n- "+box_17+"\n- Right Kidney Stage: "+box_17_2+"\n- Left Kidney Stage: "+box_17_3+"\n";}
-        else {captext += "\nChildren’s Oncology Group Staging System:\n- "+box_17+"\n";}
+        captext += "\n+ Known Underlying Genetic Syndrome:\n- " + box_19 + "\n";
 
 
         $('#outPut-1').val(captext);
 
-				dataObj.singleSection = $('#outPut-1').val();
-				makeCreatePdfBtn();
-
+        dataObj.singleSection = $('#outPut-1').val();
+        makeCreatePdfBtn();
     });
 });
+

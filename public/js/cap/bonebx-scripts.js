@@ -79,12 +79,18 @@ $(window).on('load', function(){
 //************************************************************//
 // Script to populate the template data in the output textarea//
 // *************************************************************/
-$('#writeReport').on('click', function(){
+    $('.writeReport').on('click', function () {
 
+        $('input[type="text"]').each(function () {
+            if ($(this).val().length < 1) {
+                $(this).val($(this).attr('placeholder'));
+            }
+            if ($(this).val().length < 1) {
+                $(this).addClass('empty')
+            }
+        });
 
-// assign the values from each text input
-// get assign the values from each text input
-        var captext = "Bone Tumor Biopsy Cancer Synoptic\n\n";
+        var captext = "Bone Cancer (Biopsy) Synoptic\nAJCC 2018 cancer staging version\n\n";
 // Checklist variables
         var box_0 = $("#box0").val();
         var box_1 = $("#box1").val();

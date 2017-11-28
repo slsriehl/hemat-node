@@ -394,3 +394,111 @@
 
 
 
+****** NEW ERROR AT HEMATOGONES.COM ******
+
+		#date: 
+			2017-11-19 04:41:35 UTC 
+
+		#user: 
+			1 
+
+		#user IP: 
+			::1 
+
+		#protocol: 
+			http 
+
+		#secure connection?: 
+			false 
+
+		#headers: 
+			{"host":"localhost:5000","connection":"keep-alive","content-length":"907","accept":"*/*","origin":"http://localhost:5000","x-requested-with":"XMLHttpRequest","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36","content-type":"application/x-www-form-urlencoded; charset=UTF-8","dnt":"1","referer":"http://localhost:5000/cap/soft-t-rx","accept-encoding":"gzip, deflate, br","accept-language":"en-US,en;q=0.9","cookie":"__utma=111872281.1419738796.1504842769.1504842769.1504873862.2; __utmz=111872281.1504842769.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1419738796.1504842769; connect.sid=s%3ADMeqEGq6rQrXNXj0lYLbyHRWJSmt_EZ3.WIThJ442oKVmJIXeaWGVR7t6ErSeav5%2B4R2DIUTE4QE"} 
+
+		#original url: 
+			/report/submit 
+
+		#request url: 
+			/report/submit 
+
+		#ajax request?: 
+			true 
+
+		#promise error: 
+			Error: EEXIST: file already exists, mkdir 'C:\Users\Chandra Krishnan\PhpstormProjects\hemat-node\reports\1' 
+
+		****** END ERROR ******
+
+
+
+****** NEW ERROR AT HEMATOGONES.COM ******
+
+		#date: 
+			2017-11-19 04:43:13 UTC 
+
+		#user: 
+			1 
+
+		#user IP: 
+			::1 
+
+		#protocol: 
+			http 
+
+		#secure connection?: 
+			false 
+
+		#headers: 
+			{"host":"localhost:5000","connection":"keep-alive","content-length":"740","accept":"*/*","origin":"http://localhost:5000","x-requested-with":"XMLHttpRequest","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36","content-type":"application/x-www-form-urlencoded; charset=UTF-8","dnt":"1","referer":"http://localhost:5000/cap/bone-t-bx","accept-encoding":"gzip, deflate, br","accept-language":"en-US,en;q=0.9","cookie":"__utma=111872281.1419738796.1504842769.1504842769.1504873862.2; __utmz=111872281.1504842769.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1419738796.1504842769; connect.sid=s%3ADMeqEGq6rQrXNXj0lYLbyHRWJSmt_EZ3.WIThJ442oKVmJIXeaWGVR7t6ErSeav5%2B4R2DIUTE4QE"} 
+
+		#original url: 
+			/report/submit 
+
+		#request url: 
+			/report/submit 
+
+		#ajax request?: 
+			true 
+
+		#promise error: 
+			Error: EEXIST: file already exists, mkdir 'C:\Users\Chandra Krishnan\PhpstormProjects\hemat-node\reports\1' 
+
+		****** END ERROR ******
+
+
+
+****** NEW ERROR AT HEMATOGONES.COM ******
+
+		#date: 
+			2017-11-19 04:43:30 UTC 
+
+		#user: 
+			1 
+
+		#user IP: 
+			::1 
+
+		#protocol: 
+			http 
+
+		#secure connection?: 
+			false 
+
+		#headers: 
+			{"host":"localhost:5000","connection":"keep-alive","content-length":"343","accept":"*/*","origin":"http://localhost:5000","x-requested-with":"XMLHttpRequest","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36","content-type":"application/x-www-form-urlencoded; charset=UTF-8","dnt":"1","referer":"http://localhost:5000/gi-path/gi-bx","accept-encoding":"gzip, deflate, br","accept-language":"en-US,en;q=0.9","cookie":"__utma=111872281.1419738796.1504842769.1504842769.1504873862.2; __utmz=111872281.1504842769.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1419738796.1504842769; connect.sid=s%3ADMeqEGq6rQrXNXj0lYLbyHRWJSmt_EZ3.WIThJ442oKVmJIXeaWGVR7t6ErSeav5%2B4R2DIUTE4QE"} 
+
+		#original url: 
+			/report/submit 
+
+		#request url: 
+			/report/submit 
+
+		#ajax request?: 
+			true 
+
+		#promise error: 
+			Error: EEXIST: file already exists, mkdir 'C:\Users\Chandra Krishnan\PhpstormProjects\hemat-node\reports\1' 
+
+		****** END ERROR ******
+
+
+

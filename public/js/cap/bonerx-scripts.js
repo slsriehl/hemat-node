@@ -123,9 +123,18 @@ $(window).on('load', function() {
 //************************************************************//
 // Script to populate the template data in the output textarea//
 // *************************************************************/
-    $('#writeReport').on('click', function () {
+    $('.writeReport').on('click', function () {
 
-        var captext = "Bone Tumor Resection Cancer Synoptic\n\n";
+        $('input[type="text"]').each(function () {
+            if ($(this).val().length < 1) {
+                $(this).val($(this).attr('placeholder'));
+            }
+            if ($(this).val().length < 1) {
+                $(this).addClass('empty')
+            }
+        });
+
+        var captext = "Bone Cancer (Resection) Synoptic\nAJCC 2018 cancer staging version\n\n";
 // Checklist variables
         var box_0 = $("#box0").val();
         var box_1 = $("#box1").val();

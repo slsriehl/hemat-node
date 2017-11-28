@@ -255,9 +255,20 @@ $(window).on('load', function(){
         else{$('#box39_6').hide();}
     });
 
-//**************SYNOPTICS****************//
-$('#writeReport').on('click', function() {
-    var captext = "Invasive Breast Cancer Synoptic\n\n";
+//**************Synoptic\nAJCC 2018 cancer staging version\n\nS****************//
+    $('.writeReport').on('click', function () {
+
+        $('input[type="text"]').each(function () {
+            if ($(this).val().length < 1) {
+                $(this).val($(this).attr('placeholder'));
+            }
+            if ($(this).val().length < 1) {
+                $(this).addClass('empty')
+            }
+        });
+
+
+        var captext = "Breast Cancer Synoptic\nAJCC 2018 cancer staging version\n\n";
 // Checklist variables
 
     var box_1 = $("#box1").val();

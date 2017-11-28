@@ -96,8 +96,6 @@ router.get('/cap/testis-t', (req, res) => {
 	]);
 });
 
-
-
 router.get('/cap/soft-t-rx', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/soft-t-rx.hbs', [
 		"/js/cap/softrx-scripts.js",
@@ -195,6 +193,49 @@ router.get('/cap/stomach', (req, res) => {
 		"/js/cap/stomach-scripts.js",
 	]);
 });
+
+router.get('/cap/urethra-t', (req, res) = > {
+    controller.userWall(req, res, './page-views/cap/urethra-t.hbs', [
+    "/js/cap/urethra-scripts.js",
+]);
+})
+;
+
+router.get('/cap/bladder-t', (req, res) = > {
+    controller.userWall(req, res, './page-views/cap/bladder-t.hbs', [
+    "/js/cap/bladder-scripts.js",
+]);
+})
+;
+
+router.get('/cap/uterine-sarc', (req, res) = > {
+    controller.userWall(req, res, './page-views/cap/uterine-sarc.hbs', [
+    "/js/cap/utsarc-scripts.js",
+]);
+})
+;
+
+router.get('/cap/uveal-mel', (req, res) = > {
+    controller.userWall(req, res, './page-views/cap/uveal-mel.hbs', [
+    "/js/cap/uveal-mel-scripts.js",
+]);
+})
+;
+
+router.get('/cap/vagina', (req, res) = > {
+    controller.userWall(req, res, './page-views/cap/vagina.hbs', [
+    "/js/cap/vagina-scripts.js",
+]);
+})
+;
+
+router.get('/cap/vulva', (req, res) = > {
+    controller.userWall(req, res, './page-views/cap/vulva.hbs', [
+    "/js/cap/vulva-scripts.js",
+]);
+})
+;
+
 
 
 module.exports = router;

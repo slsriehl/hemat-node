@@ -1,275 +1,380 @@
-
 <div class="container-fluid">
-		<!-- Breadcrumbs -->
-		<ol class="breadcrumb">
-				<li class="breadcrumb-item">
-						<a href="/">Home</a>
-				</li>
-				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
-				<li class="breadcrumb-item active" id="bc-jump"><i class="fa fa-flask mr-2"></i>Cervical cancer resections</li>
-		</ol>
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+        <li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Cervical carcinoma resection</li>
+    </ol>
+    {{> message-center this}}
+    {{> page-partials/cap-header}}
 
- {{> message-center this}}
+    <div class="row">
+        {{> page-partials/cap-validate-alert}}
+        <div class="col col-md-8">
 
-
-		{{> page-partials/cap-header}}
-
-	<div class="row">
-		<div class="col col-md-8">
-
-<h5>Specimen (select all that apply)</h5><br>
-<select class="form-control selectpicker form-control-sm " multiple id="box1">
-<option>Cervix</option>
-<option>Uterine corpus</option>
-<option>Right ovary</option>
-<option>Left ovary</option>
-<option>Right fallopian tube</option>
-<option>Left fallopian tube</option>
-<option>Vagina</option>
-<option>Urinary bladder</option>
-<option>Rectum</option>
-<option>Other</option>
-<option>Not specified</option>
-</select><br>
-<input type="text" class="form-control form-control-sm " id='box1_2' style='display:none;' placeholder='Specify'>
-
-<hr>
-
-
-<h5>Procedure</h5><br>
-<select class="form-control selectpicker form-control-sm " id="box2">
-<option value="Trachelectomy">Trachelectomy (aka cervicectomy)</option>
-<option>Radical hysterectomy</option>
-<option>Pelvic exenteration</option>
-<option>Other</option>
-<option>Not specified</option>
-</select><br>
-<input type="text" class="form-control form-control-sm " id='box2_2' style='display:none;' placeholder='Specify'>
-
-<hr>
+            <!-- paste markup here-->
+            <hr>
+            <h5>Procedure (select all that apply)</h5>
+            <select multiple id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Trachelectomy</option>
+                <option>Radical hysterectomy</option>
+                <option>Simple hysterectomy</option>
+                <option>Pelvic exenteration</option>
+                <option>Bilateral salpingo-oophorectomy</option>
+                <option>Right salpingo-oophorectomy</option>
+                <option>Left salpingo-oophorectomy</option>
+                <option>Salpingo-oophorectomy, side not specified</option>
+                <option>Right oophorectomy</option>
+                <option>Left oophorectomy</option>
+                <option>Oophorectomy, side not specified</option>
+                <option>Bilateral salpingectomy</option>
+                <option>Right salpingectomy</option>
+                <option>Left salpingectomy</option>
+                <option>Salpingectomy, side not specified</option>
+                <option>Vaginal cuff resection</option>
+                <option>Omentectomy</option>
+                <option>Other</option>
+            </select>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;'
+                   placeholder='Specify included organs'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_3' style='display:none;'
+                   placeholder='Specify Other'>
 
 
-<h5>Tumor Size:</h5><br>
-<input type="text" class="form-control form-control-sm " id="box3"  placeholder='(cm)'>
-
-<hr>
-
-
-<h5>Tumor Site (select all that apply)</h5><br>
-<select class="form-control selectpicker form-control-sm " multiple id="box4">
-<option>Left superior quadrant (12 to 3 o’clock)</option>
-<option>Left inferior quadrant (3 to 6 o’clock)</option>
-<option>Right inferior quadrant (6 to 9 o’clock)</option>
-<option>Right superior quadrant (9 to 12 o’clock)</option>
-<option>Other</option>
-<option>Not specified</option>
-</select><br>
-<input type="text" class="form-control form-control-sm " id='box4_1' style='display:none;' placeholder='Specify'>
-
-<hr>
+            <hr>
+            <h5>Tumor Size (cm)
+                <!-- Button trigger modal -->
+                <button class="btn btn-sm btn-info m-2 p-1" data-toggle="modal" data-target="#help_size">A note about
+                    measuring tumor size
+                </button>
+            </h5>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box2" placeholder="">
 
 
-<h5>Histologic Type (select all that apply)</h5><br>
-<select class="form-control selectpicker form-control-sm " multiple id="box5">
-<option>Superficial invasive squamous cell carcinoma (SISSCA) </option>
-<option>Squamous cell carcinoma, not otherwise specified (NOS)</option>
-<option>Squamous cell carcinoma, Keratinizing</option>
-<option>Squamous cell carcinoma, Non-keratinizing</option>
-<option>Squamous cell carcinoma, Basaloid</option>
-<option>Squamous cell carcinoma, Verrucous</option>
-<option>Squamous cell carcinoma, Warty</option>
-<option>Squamous cell carcinoma, Papillary</option>
-<option>Squamous cell carcinoma, Lymphoepithelioma-like</option>
-<option>Squamous cell carcinoma, Squamotransitional</option>
-<option>Early invasive adenocarcinoma </option>
-<option>Mucinous adenocarcinoma, Endocervical</option>
-<option>Mucinous adenocarcinoma, Intestinal</option>
-<option>Mucinous adenocarcinoma, Signet-ring cell</option>
-<option>Mucinous adenocarcinoma, Minimal deviation</option>
-<option>Mucinous adenocarcinoma, Villoglandular</option>
-<option>Mucinous adenocarcinoma, Gastric</option>
-<option>Endometrioid adenocarcinoma</option>
-<option>Clear cell adenocarcinoma</option>
-<option>Serous adenocarcinoma</option>
-<option>Mesonephric adenocarcinoma</option>
-<option>Adenosquamous carcinoma</option>
-<option>Glassy cell carcinoma variant</option>
-<option>Adenoid cystic carcinoma</option>
-<option>Adenoid basal carcinoma</option>
-<option>Carcinoid</option>
-<option>Atypical carcinoid</option>
-<option>Small cell carcinoma</option>
-<option>Large cell neuroendocrine carcinoma</option>
-<option>Undifferentiated carcinoma</option>
-<option>Other</option>
-<option>Carcinoma, type cannot be determined</option>
-</select><br>
-<input type="text" class="form-control form-control-sm " id='box5_2' style='display:none;' placeholder='Specify'>
-
-<hr>
-
-
-<h5>Histologic Grade</h5><br>
-<select class="form-control selectpicker form-control-sm " id="box6">
-<option>Not applicable</option>
-<option>GX: Cannot be assessed</option>
-<option>G1: Well differentiated</option>
-<option>G2: Moderately differentiated</option>
-<option>G3: Poorly differentiated</option>
-</select>
-
-<hr>
+            <hr>
+            <h5>Histologic Type</h5>
+            <select multiple id="box3" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Squamous cell carcinoma, NOS</option>
+                <option>Squamous cell carcinoma, keratinizing</option>
+                <option>Squamous cell carcinoma, nonkeratinizing</option>
+                <option>Squamous cell carcinoma, basaloid</option>
+                <option>Squamous cell carcinoma, verrucous</option>
+                <option>Squamous cell carcinoma, warty</option>
+                <option>Squamous cell carcinoma, papillary</option>
+                <option>Squamous cell carcinoma, lymphoepithelioma-like</option>
+                <option>Squamous cell carcinoma, squamotransitional</option>
+                <option>Endocervical adenocarcionoma, usual type</option>
+                <option>Mucinous carcinoma, NOS</option>
+                <option>Mucinous carcinoma, intestinal type</option>
+                <option>Mucinous carcinoma, signet-ring cell type</option>
+                <option>Mucinous carcinoma, gastric type</option>
+                <option>Villoglandular carcinoma</option>
+                <option>Endometrioid carcinoma</option>
+                <option>Clear cell carcinoma</option>
+                <option>Serous carcinoma</option>
+                <option>Mesonephric carcinoma</option>
+                <option>Adenocarcinoma admixed with neuroendocrine carcinoma</option>
+                <option>Adenosquamous carcinoma</option>
+                <option>Adenosquamous carcinoma, glassy cell variant</option>
+                <option>Adenoid cystic carcinoma</option>
+                <option>Adenoid basal carcinoma</option>
+                <option>Small cell neuroendocrine carcinoma</option>
+                <option>Large cell neuroendocrine carcinoma</option>
+                <option>Undifferentiated carcinoma</option>
+                <option>Carcinosarcoma</option>
+                <option>Other</option>
+                <option>Carcinoma, type cannot be determined</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box3_2' style='display:none;'
+                   placeholder='Specify Other'>
 
 
-<h5>Stromal Invasion - Depth (mm):</h5><br>
-<input type="text" class="form-control form-control-sm " id="box7"  placeholder='Cannot be assessed'>
+            <hr>
+            <h5>Histologic Grade</h5>
+            <select id="box4" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>G1: Well differentiated</option>
+                <option>G2: Moderately differentiated</option>
+                <option>G3: Poorly differentiated</option>
+                <option>GX: Cannot be assessed</option>
+                <option>Not applicable</option>
+            </select>
 
-<hr>
-
-
-<h5>Stromal Invasion - Horizontal extent (mm):</h5><br>
-<input type="text" class="form-control form-control-sm " id="box8"  placeholder='Cannot be assessed'>
-
-<hr>
-
-
-<h5>Margins</h5><br>
-<select class="form-control selectpicker form-control-sm " id="box9">
-<option>Cannot be assessed</option>
-<option>Margins uninvolved by invasive carcinoma</option>
-<option>Margin(s) involved by invasive carcinoma</option>
-<option>Not applicable</option>
-</select><br>
-<input type="text" class="form-control form-control-sm " id='box9_1' style='display:none;' placeholder='Specify closest margin'><br>
-<input type="text" class="form-control form-control-sm " id='box9_2' style='display:none;' placeholder='Specify distance from margin (cm)'><br>
-<span id="hsil_margin" style='display:none;'>HSIL margin status<br><select class="form-control selectpicker form-control-sm " id='box9_3'><option selected>No HSIL identified at distal margin</option><option>HSIL present at distal margin</option></select><br></span>
-<input type="text" class="form-control form-control-sm " id='box9_4' style='display:none;' placeholder='Specify involved margin'>
-
-<hr>
+            <hr>
+            <h5>Stromal invasion</h5>
 
 
-<h5>Lymph-Vascular Invasion</h5><br>
-<select class="form-control selectpicker form-control-sm " id="box10">
-<option>Not identified</option>
-<option>Present</option>
-<option>Cannot be determined</option>
-</select>
-
-<hr>
+            <h6>Depth of stromal invasion (mm)</h6>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box5" placeholder="">
 
 
-<h5>Pathologic Staging (pTNM)</h5>
-<hr>
-
-TNM Descriptors (select all that apply)<br>
-<select class="form-control selectpicker form-control-sm " id="box11" multiple>
-<option selected value="Not applicable">Not applicable</option>
-<option>m</option>
-<option>r</option>
-<option>y</option>
-</select>
-<hr>
+            <h6>Horizontal extent longitudinal/length (mm)</h6>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box6" placeholder="if applicable">
 
 
-<select class="form-control selectpicker form-control-sm " id="box12"  >
-<option value="pTX [--]">pTX [--]:	Cannot be assessed</option>
-<option value="pT1 [FIGO I]">pT1  [FIGO I]:  Cervical carcinoma confined to uterus (extension to corpus should be disregarded)</option>
-<option value="pT1a [FIGO IA]">pT1a  [FIGO IA]:	Invasive carcinoma diagnosed by microscopy only. All macroscopically visible lesions (even with superficial invasion) are pT1b/1B.</option>
-<option value="pT1a1 [FIGO IA1]">pT1a1  [FIGO IA1]:	Stromal invasion ≤3.0 mm in depth and horizontal spread ≤7.0 mm</option>
-<option value="pT1a2 [FIGO IA2]">pT1a2  [FIGO IA2]:	Stromal invasion >3.0 mm but not more than 5.0 mm in depth and horizontal spread ≤7.0 mm</option>
-<option value="pT1b [FIGO IB]">pT1b  [FIGO IB]:	Clinically visible lesion confined to the cervix or microscopic lesion greater than T1a2/IA2</option>
-<option value="pT1b1 [FIGO IB1]">pT1b1  [FIGO IB1]:	Clinically visible lesion ≤4.0 cm in greatest dimension</option>
-<option value="pT1b2 [FIGO IB2]">pT1b2  [FIGO IB2]:	Clinically visible lesion >4.0 cm in greatest dimension</option>
-<option value="pT2 [FIGO II]">pT2  [FIGO II]:  Tumor invades beyond the uterus but not to pelvic wall or to lower third of vagina</option>
-<option value="pT2a [FIGO IIA]">pT2a  [FIGO IIA]:	Tumor without parametrial invasion</option>
-<option value="pT2a1 [FIGO IIA1]">pT2a1  [FIGO IIA1]:	Clinically visible lesion ≤4.0 cm in greatest dimension</option>
-<option value="pT2a2 [FIGO IIA2]">pT2a2  [FIGO IIA2]	Clinically visible lesion >4.0 cm in greatest dimension</option>
-<option value="pT2b [FIGO IIB]">pT2b  [FIGO IIB]:	Tumor with parametrial invasion</option>
-<option value="pT3 [FIGO III]">pT3  [FIGO III]:  Tumor extends to the pelvic wall and/or involves the lower third of the vagina and/or causes hydronephrosis or non-functioning kidney</option>
-<option value="pT3a [FIGO IIIA]">pT3a  [FIGO IIIA]: 	Tumor involves lower third of vagina, but not pelvic wall </option>
-<option value="pT3b [FIGO IIIB]">pT3b  [FIGO IIIB]: 	Tumor extends to pelvic wall and/or causes hydronephrosis or non-functioning kidney</option>
-<option value="pT4 [FIGO IVA]">pT4  [FIGO IVA]:	Tumor invades the mucosa of bladder or rectum and/or extends beyond true pelvis to adjacent organs (bullous edema is not sufficient evidence to classify a tumor as pT4)</option>
-<option value="pT4 [FIGO IVB]">pT4  [FIGO IVB]:	Tumor spread to distant organs</option>
-</select><br>
+            <h6>Horizontal extent circumferential/width (mm)</h6>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box7" placeholder="if applicable">
 
-<select class="form-control selectpicker form-control-sm " id="box13"  >
-<option value="pNX">pNX:	Cannot be assessed / No nodes submitted</option>
-<option value="pN0">pN0:	No regional lymph node metastasis</option>
-<option value="pN1">pN1:	Regional lymph node metastasis</option>
-</select><br>
-Check here if any lymph nodes submitted? <input class="form-check-input " type="checkbox" id="box15" ><br>
-<div class='lnchk' style='display:none;'><br>
-<table class="table"  >
-  <tr>
-    <th >Nodes</th>
-    <th >Pelvic</th>
-    <th >Para-Aortic</th>
-    <th >Other</th>
-  </tr>
-  <tr>
-    <td >Examined</td>
-    <td ><input type="text" class="form-control form-control-sm " id="box16_1"  placeholder=0></td>
-    <td ><input type="text" class="form-control form-control-sm " id="box16_2"  placeholder=0></td>
-    <td ><input type="text" class="form-control form-control-sm " id="box16_3"  placeholder=0></td>
-  </tr>
-  <tr>
-    <td >Involved</td>
-    <td ><input type="text" class="form-control form-control-sm " id="box17_1"  placeholder=0></td>
-    <td ><input type="text" class="form-control form-control-sm " id="box17_2"  placeholder=0></td>
-    <td ><input type="text" class="form-control form-control-sm " id="box17_3"  placeholder=0></td>
-  </tr>
-</table>
+
+            <hr>
+            <h5>Other Tissue/ Organ Involvement</h5>
+            <select multiple id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not applicable</option>
+                <option>Not identified</option>
+                <option>Right parametrium</option>
+                <option>Left parametrium</option>
+                <option>Parametrium (side not specified)</option>
+                <option>Vagina, upper two-thirds</option>
+                <option>Vagina, lower one-third</option>
+                <option>Vagina (location not specified)</option>
+                <option>Right ovary</option>
+                <option>Left ovary</option>
+                <option>Ovary (side not specified)</option>
+                <option>Right fallopian tube</option>
+                <option>Left fallopian tube</option>
+                <option>Fallopian tube (side not specified)</option>
+                <option>Pelvic wall</option>
+                <option>Bladder wall</option>
+                <option>Bladder mucosa</option>
+                <option>Rectal wall</option>
+                <option>Bowel mucosa</option>
+                <option>Omentum</option>
+                <option>Other</option>
+                <option>Cannot be determined</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box8_2' style='display:none;'
+                   placeholder='Specify Other'>
+
+
+            <hr>
+            <h5>Margins - Ectocervical</h5>
+
+            <select id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Cannot be assessed</option>
+                <option>Uninvolved by invasive carcinoma</option>
+                <option>Involved by invasive carcinoma</option>
+                <option>Margins uninvolved by intraepithelial neoplasia</option>
+                <option>Involved by high-grade squamous intraepithelial lesion (CIN 2-3)</option>
+                <option>Involved by adenocarcinoma in situ (AIS)</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box9_1' style='display:none;'
+                   placeholder='Specify closest margin'><br>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box9_2' style='display:none;'
+                   placeholder='Specify distance from margin (mm)'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box9_3' style='display:none;'
+                   placeholder='Specify involved margin'>
+
+
+            <hr>
+            <h5>Margins - Radial(Circumferential)</h5>
+
+            <select id="box10" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Cannot be assessed</option>
+                <option>Uninvolved by invasive carcinoma</option>
+                <option>Involved by invasive carcinoma</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box10_1' style='display:none;'
+                   placeholder='Specify closest margin'><br>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box10_2' style='display:none;'
+                   placeholder='Specify distance from margin (mm)'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box10_3' style='display:none;'
+                   placeholder='Specify involved margin'>
+
+
+            <hr>
+            <h5>Lymphovascular Invasion</h5>
+            <select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+            <hr>
+            <h5>Pathologic Staging (pTNM)
+
+            </h5>
+
+            <h6>TNM Descriptors (select all that apply)</h6><br>
+            <select id="box12" class='form-control selectpicker form-control-sm col-sm-6' multiple>
+                <option selected value="Not applicable">Not applicable</option>
+                <option>m</option>
+                <option>r</option>
+                <option>y</option>
+            </select>
+            <h6 class='mt-2'>pT</h6>
+            <select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pT0">pT0: No evidence of primary tumor</option>
+                <option value="pT1">pT1: Cervical carcinoma confined to uterus (extension to corpus should be
+                    disregarded)
+                </option>
+                <option value="pT1a">pT1a: Invasive carcinoma diagnosed by microscopy only. Stromal invasion with a
+                    maximum depth of 5.0 mm measured from the base of the epithelium and a horizontal spread of 7.0 mm
+                    or less. Vascular space involvement, venous or lymphatic, does not affect classification.
+                </option>
+                <option value="pT1a1">pT1a1: Measured stromal invasion of 3.0 mm or less in depth and 7.0 mm or less in
+                    horizontal spread
+                </option>
+                <option value="pT1a2">pT1a2: Measured stromal invasion of more than 3.0 mm and not more than 5.0 mm,
+                    with a horizontal spread of 7.0 mm or less
+                </option>
+                <option value="pT1b">pT1b: Clinically visible lesion confined to the cervix or microscopic lesion
+                    greater than T1a2/IA2. Includes all macroscopically visible lesions, even those with superficial
+                    invasion.
+                </option>
+                <option value="pT1b1">pT1b1: Clinically visible lesion 4.0 cm or less in greatest dimension</option>
+                <option value="pT1b2">pT1b2: Clinically visible lesion more than 4.0 cm in greatest dimension</option>
+                <option value="pT2">pT2: Cervical carcinoma invading beyond the uterus but not to the pelvic wall or to
+                    lower third of the vagina
+                </option>
+                <option value="pT2a">pT2a: Tumor without parametrial invasion</option>
+                <option value="pT2a1">pT2a1: Clinically visible lesion 4.0 cm or less in greatest dimension</option>
+                <option value="pT2a2">pT2a2: Clinically visible lesion more than 4.0 cm in greatest dimension</option>
+                <option value="pT2b">pT2b: Tumor with parametrial invasion</option>
+                <option value="pT3">pT3: Tumor extending to the pelvic sidewall# and/or involving the lower third of the
+                    vagina and/or causing hydronephrosis or nonfunctioning kidney
+                </option>
+                <option value="pT3a">pT3a: Tumor involving the lower third of the vagina but not extending to the pelvic
+                    wall
+                </option>
+                <option value="pT0">pT0: No evidence of primary tumor</option>
+                <option value="pT1">pT1: Cervical carcinoma confined to uterus (extension to corpus should be
+                    disregarded)
+                </option>
+                <option value="pT1a">pT1a: Invasive carcinoma diagnosed by microscopy only. Stromal invasion with a
+                    maximum depth of 5.0 mm measured from the base of the epithelium and a horizontal spread of 7.0 mm
+                    or less. Vascular space involvement, venous or lymphatic, does not affect classification.
+                </option>
+                <option value="pT1a1">pT1a1: Measured stromal invasion of 3.0 mm or less in depth and 7.0 mm or less in
+                    horizontal spread
+                </option>
+                <option value="pT1a2">pT1a2: Measured stromal invasion of more than 3.0 mm and not more than 5.0 mm,
+                    with a horizontal spread of 7.0 mm or less
+                </option>
+                <option value="pT1b">pT1b: Clinically visible lesion confined to the cervix or microscopic lesion
+                    greater than T1a2/IA2. Includes all macroscopically visible lesions, even those with superficial
+                    invasion.
+                </option>
+                <option value="pT1b1">pT1b1: Clinically visible lesion 4.0 cm or less in greatest dimension</option>
+                <option value="pT1b2">pT1b2: Clinically visible lesion more than 4.0 cm in greatest dimension</option>
+                <option value="pT2">pT2: Cervical carcinoma invading beyond the uterus but not to the pelvic wall or to
+                    lower third of the vagina
+                </option>
+                <option value="pT2a">pT2a: Tumor without parametrial invasion</option>
+                <option value="pT2a1">pT2a1: Clinically visible lesion 4.0 cm or less in greatest dimension</option>
+                <option value="pT2a2">pT2a2: Clinically visible lesion more than 4.0 cm in greatest dimension</option>
+                <option value="pT2b">pT2b: Tumor with parametrial invasion</option>
+                <option value="pT3">pT3: Tumor extending to the pelvic sidewall# and/or involving the lower third of the
+                    vagina and/or causing hydronephrosis or nonfunctioning kidney
+                </option>
+                <option value="pT3a">pT3a: Tumor involving the lower third of the vagina but not extending to the pelvic
+                    wall
+                </option>
+                <option value="pT3b">pT3b: Tumor extending to the pelvic wall and/or causing hydronephrosis or
+                    nonfunctioning kidney
+                </option>
+                <option value="pT4">pT4: Tumor invading the mucosa of the bladder or rectum and/or extending beyond the
+                    true pelvis (bullous edema is not sufficient to classify a tumor as T4)
+                </option>
+            </select>
+            <br>
+
+            <h6 class='mt-2'>pN
+                <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
+                   title="Note: Lymph nodes designated as pelvic, parametrial, obturator, internal iliac (hypogastric), external iliac, common iliac, sacral, presacral and para-aortic are considered regional lymph nodes. Any other involved nodes should be categorized as metastases (pM1) and commented on in the distant metastasis section. Presence of isolated tumor cells no greater than 0.2 mm in regional lymph node(s) is considered N0(i+)."
+                   aria-hidden="true"></i>
+            </h6>
+            <select id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pNX">pNX: Regional lymph nodes cannot be assessed</option>
+                <option value="pN0">pN0: No regional lymph node metastasis</option>
+                <option value="pN0(i+)">pN0(i+): Isolated tumor cells in regional lymph node(s) no greater than 0.2 mm
+                </option>
+                <option value="pN1">pN1: Regional lymph node metastasis</option>
+            </select>
+            <br>
+
+            <h6 class='mt-2'>pM</h6>
+            <select id="box15" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option selected value='pMx'>pMx: Not applicable</option>
+                <option value="pM1">pM1: Distant metastasis</option>
+            </select>
+            <br>
+            <form class="form-inline">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box16">
+                </label>
+            </form>
+            <div class='lnchk' style='display:none;'><br>
+                Total lymph nodes (sentinel and non-sentinel) examined:
+                <input type="number" class="form-control form-control-sm col-sm-6" id="box17" style="width:100px">
+
+                Number of Sentinel Nodes Examined:
+                <input type="number" class="form-control form-control-sm col-sm-6" id="box18" style="width:100px"
+                       placeholder="0">
+
+                Number of lymph nodes involved (> 0.2 mm metastasis):
+                <input type="number" class="form-control form-control-sm col-sm-6" id="box19" style="width:100px">
+
+                Number of lymph nodes with Isolated Tumor Cells (ITCs) (0.2 mm or less)
+                <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
+                   title="Reporting the number of lymph nodes with isolated tumor cells is required only in the absence of metastasis greater than 0.2 mm in other lymph nodes."
+                   aria-hidden="true"></i>
+                <input type="text" class="form-control form-control-sm col-sm-6" id="box20" style="width:100px"
+                       placeholder="if applicable">
+
+                Specify Lymph Node(s) involved by Tumor:
+                <i class="fa fa-question-circle ml-2" data-toggle="tooltip"
+                   title="Note: Information should include location and laterality of sentinel or non-sentinel regional lymph nodes with tumor."
+                   aria-hidden="true"></i>
+                <input type="text" class="form-control form-control-sm col-sm-6" id="box21"
+                       placeholder="List nodes by designation">
+
+            </div>
+
+
+            <hr>
+            <h5>+ Additional Pathologic Findings</h5>
+            <select multiple id="box25" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>None identified</option>
+                <option>Low-grade squamous intraepithelial lesion (CIN 1)</option>
+                <option>High-grade squamous intraepithelial lesion (CIN 2 or 3)</option>
+                <option>Inflammation</option>
+                <option>Other</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box25_2' style='display:none;'
+                   placeholder='Specify Other'>
+
+
+            <hr>
+            <h5>+ p16 Immunohistochemistry</h5>
+            <select id="box26" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Positive</option>
+                <option>Negative</option>
+                <option selected>Not applicable</option>
+            </select>
+
+
+            <hr>
+            <h5>+ Ancillary Studies</h5>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box27" placeholder="if applicable">
+
+
+            <!-- end markup-->
+            <!-- Histology help Modal -->
+            {{> page-modals/cap-helpers/cervix-tumor-size}}
+
+
+            <!-- close markup -->
+        </div>
+        {{> page-partials/cap-footer}}
+        <!-- close row -->
+    </div>
+    {{> page-partials/history-module}}
+    <!-- close container -->
 </div>
-
-<hr>
-
-
-<select class="form-control selectpicker form-control-sm " id="box14"  >
-<option value="pMX">pMX: Not applicable</option>
-<option value="pM1 [IVB]">pM1 [IVB]: Distant metastasis</option>
-</select>
-<hr>
-
-
-
-<h5>+ Additional Pathologic Findings (select all that apply)</h5><br>
-<select class="form-control selectpicker form-control-sm " multiple id="box18">
-<option>None identified</option>
-<option>LGSIL (CIN1/2)</option>
-<option>HGSIL (CIN3)</option>
-<option>Koilocytosis</option>
-<option>Inflammation</option>
-<option>Other</option>
-</select><br>
-<input type="text" class="form-control form-control-sm " id='box18_2' style='display:none;' placeholder='Specify'>
-
-<hr>
-
-
-<h5>+ Ancillary Studies:</h5><br>
-<select class="form-control selectpicker form-control-sm " id="box19" multiple>
-<option selected> None performed</option>
-<option> NGS mutation panel performed; see addendum </option>
-<option> p16 immunohistochemistry (see microscopic description) </option>
-<option> ProEx C immunohistochemistry (see microscopic description) </option>
-</select>
-
-<hr>
-
-
-<!-- close column -->
-		</div>
-		{{> page-partials/cap-footer}}
-<!-- close row -->
-	</div>
-	{{> page-partials/history-module}}
-<!-- close container -->
-</div>
-
-
-		<!--
-		"specificScripts":
-			[
-				"/js/cap/cxrx-scripts.js",
-			]
-	 -->
