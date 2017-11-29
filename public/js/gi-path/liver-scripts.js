@@ -15,7 +15,7 @@ $(window).on('load', function(){
     $('.adequacy').change(function(){
         if ($(this).is(':checked') ){
             var cores = prompt('Enter number of cores submitted');
-		var core_words = toWords(core);
+		var core_words = toWords(cores);
             for (var i=100; i<103; i++){
                 if (cores == '1'){
                     partTypes['partType'+i] = partTypes['partType'+i].replace(/Sections show ### cores of liver tissue which are/, "Sections show a single core of liver tissue which is");
