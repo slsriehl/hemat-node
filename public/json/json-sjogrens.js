@@ -18,7 +18,7 @@ $(window).on('load', function(){
 
     mxLines = {
 // normal
-        mxLine200: 'The lobules are comprised of unremarkable ducts without periductal fibrosis or undue dilataion. ',
+        mxLine200: 'The lobules are comprised of unremarkable ducts without periductal fibrosis or undue dilation. ',
 // atrophic lobules
         mxLine201: 'The lobules are mostly comprised of unremarkable ducts without periductal fibrosis or undue dilation. Some lobules show atrophy as evidenced by dilated ducts with periducal fibrosis and acinar depletion. ',
 // focal duct injury
