@@ -158,18 +158,14 @@ $(window).on('load', function () {
     }
 
 // Retain any manual edits within textarea
-    $('textarea').on('input', function () {
-        if ($(this).is('#outPut-2')) {
-            final_text = $(this).val();
-        }
-        else if ($(this).is('#outPut-3')) {
-            micro_text = $(this).val();
-        }
-        else if ($(this).is('#outPut-4')) {
-            comm_text = $(this).val();
-        }
+    $('textarea').on('input', function(){
+        if ($(this).is('#outPut-2')){
+            micro_text = $(this).val();}
+        else if ($(this).is('#outPut-4')){
+            comm_text = $(this).val();}
+        else if ($(this).is('#outPut-3')){
+            final_text = $(this).val();}
     });
-
 
 // Micros: add new selection to list, unless unchecked
     $('input:checkbox').change(function () {
