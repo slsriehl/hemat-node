@@ -142,7 +142,7 @@ $(window).on('load', function () {
             $('#outPut-2').val(micro_text);
         }
         else if (micro_choice !== null) {
-            micro_text += mxLines[micro_choice] + '\n';
+            micro_text += mxLines[micro_choice];
             micro_choice = null;
             $('#outPut-2').val(micro_text);
         }
