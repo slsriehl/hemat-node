@@ -66,18 +66,7 @@ $(window).on('load', function(){
                             // update textarea
                             $('#outPut-3').val(final_text);
                             $('#outPut-2').val(micro_text);
-                            // keep changes in textarea by simulating spacebar keypress
-                            //var e = jQuery.Event("keydown");
-                            //e.which = 32; // spacebar keycode value
-                            //$("#outPut-3").focus();
-                            //$("#outPut-3").trigger(e);
-                            //$('#outPut-3').val($('#outPut-3').val()+String.fromCharCode(e.which));
-                            //$("#outPut-2").focus();
-                            //$("#outPut-2").trigger(e);
-                            //$('#outPut-2').val($('#outPut-2').val()+String.fromCharCode(e.which));
-                            // end simulation snippett
-
-
+    
                         },
                         "No": function () {
                             $(this).dialog('close');
@@ -85,14 +74,6 @@ $(window).on('load', function(){
                             micro_text = micro_text.replace(/^\s+|\s+$/g, "")+' No intestinal metaplasia or carcinoma is seen. \n\n';
                             // update textarea
                             $('#outPut-2').val(micro_text);
-                            // keep changes in textarea by simulating spacebar keypress
-                            //var e = jQuery.Event("keydown");
-                            //e.which = 32; // spacebar keycode value
-                            //$("#outPut-2").focus();
-                            //$("#outPut-2").trigger(e);
-                            //$('#outPut-2').val($("#outPut-2").val()+String.fromCharCode(e.which));
-                            // end simulation snippett
-
 
                         }
                     }
@@ -669,15 +650,18 @@ $(window).on('load', function(){
         if (!$("#"+que).is(":checked")){
             console.log(que);
             var num = prompt('How many biopsy pieces?');
-            // var numword = toWords(num);
+            var numword = toWords(num);
             var adeq = prompt('How many have adequate submucosa?')
-            // var adeqword = toWords(adeq);
-            mxLines[que] = mxLines[que].replace(/#NUM#/, num );
+            var adeqword = toWords(adeq);
+            mxLines[que] = mxLines[que].replace(/#NUM# / , numword );
             if (adeq == num) {
                 console.log("adeq = num");
-                mxLines[que] = mxLines[que].replace(/#ADEQ#/, "all").replace(/all adequate biopsy/,"all biopsy" );
+                mxLines[que] = mxLines[que].replace(/#ADEQ#/, "all").replace(/all adequate biopsy/ , "all biopsy" );
+            } else if (adeq == 0){
+                console.log("adeq = 0");
+                mxLines[que] = mxLines[que].replace(/#ADEQ#/, "none").replace(/Ganglion.*(fragments)/ , "Ganglion cells are not seen in the limited sampled submucosa" );               
             } else {
-                mxLines[que] = mxLines[que].replace(/#ADEQ#/, adeq);
+                mxLines[que] = mxLines[que].replace(/#ADEQ# /, adeqword);
             }
             console.log(mxLines[que]);
             $("#"+que).prop("disabled", false); // undisable checkbox
