@@ -1,0 +1,104 @@
+<div class="container-fluid">
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+            Clinical Pathology Tools
+        </li>
+        <li class="breadcrumb-item active"><i class="fa fa-percentage mr-2"></i>Kleihauer-Betke Fetal Hemoglobin % and RhIg vial calculator</li>
+    </ol>
+
+    {{> message-center this}}
+
+    <div class="card mb-3">
+        <div class="card-header bg-info">
+            <!-- How to use and modal -->
+            <div class="row">
+                <button class="btn btn-default btn-block" data-target="#howto" data-toggle="modal" id='openhelp'
+                        type='button'> Disclaimer and References
+                </button>
+                <!-- The modal -->
+                {{> page-modals/clin-path/kb-how-to-use}}
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <!-- card -->
+                <div class="card text-center">
+                    <div class="card-header">
+                        <h5>Two button counter<button class="btn btn-secondary ml-2" data-toggle="tooltip" title="The estimated number of normocytic maternal red blood cells at 400x is 2500"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></button></h5>
+                    </div>
+                    <div class="card-block">
+                        <div class="row">
+                            <div class="col"  >
+                                <div class="row d-inline" >
+                                    <div class="btn-group btn-group-lg ml-3 mr-3" style="width: 100%;" role="group">
+                                        <button class="btn btn-danger counter p-3" style="width: 100%;" id="fetal" type="button">Fetal RBC</button>
+                                        <button class="btn btn-primary counter p-3" style="width: 100%;" id="maternal" type="button">Maternal RBC</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="row d-inline">
+                                    <div class="btn-group ml-3 mr-3" style="width: 100%;" role="group">
+                                        <input class="form-control" id="fet_cnt" type="number" placeholder="Fetal" value="">
+                                        <input class="form-control" id="mat_cnt" type="number" placeholder="Maternal" value="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer align-content-center">
+                        <div class="form-group ">
+                            <label for="fet_pct"><p class="h5">Percentage of Fetal RBCs</p></label>
+                            <input type="number" min="0" max="100" class="form-control p-2" id="fet_pct" value="">
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-4 mb-2 text-center">
+                    <div class="card-header ">
+                        <h5>Enter maternal information for more accurate dosage <button class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Uses maternal height/weight and the more accurate CAP recommended RhIg dose calculation"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></button></h5>
+                    </div>
+                    <div class="card-block">
+                        <label for="mat_height">Height (inches or cm):</label> <input class="form-control mb-1 mat_data" type="number" id="mat_height">
+
+                        <label for="mat_weight"> Weight:</label>
+                        <form class="form-inline mb-1">
+                            <div class="col">
+                                <div class="row">
+                                    <select class="form-control col-3 ml-1 " id="mat_unit"><option>lb</option><option>kg</option></select>
+                                    <input class="form-control col-8 mat_data" type="number" id="mat_weight">
+
+                                </div>
+                            </div>
+                        </form>
+                        <label for="mat_blood">Maternal Blood volume (ml):</label> <input class="form-control " type="number" id="mat_blood" value='5000'>
+                    </div>
+                </div>
+                <div class="card mt-4 mb-2">
+                    <div class="card-header">
+                        <h5><button class="btn btn-lg btn-danger btn-block p-2" id="calc">Calculate</button></h5>
+                    </div>
+                    <div class="card-block">
+                        <textarea class="form-control p-1" rows="6" id="rhig_out"></textarea>
+                    </div>
+                    <div class="card-footer">
+                        <p class="text-muted text-center">Do you like this app? Get it on your  <a href="https://play.google.com/store/apps/details?id=com.hematogones.rhigcalc">Android <i class="fa fa-android ml-1"></i></a> device</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    {{> page-modals/new-case-reference}}
+    {{> page-partials/history-module}}
+    <!--end container wrapper-->
+</div>

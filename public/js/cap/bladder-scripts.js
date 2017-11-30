@@ -255,29 +255,24 @@ $(window).on('load', function () {
         if (box_10_2.length > 0) {
             box_10.replace('Other', box_10_2);
         }
-        var inv = box_10.filter(el => el.indexOf('Invasive') > -1
-        )
-        ;
+        var inv = box_10.filter(el => el.indexOf('Invasive') > -1);
         $.each(inv, function (index, value) {
             var str = "Invasive carcinoma involving: ";
             inv[index] = value.replace(str, '');
         });
-        var cis = box_10.filter(el => el.indexOf('situ') > -1
-        )
-        ;
+        var cis = box_10.filter(el => el.indexOf('situ') > -1);
         $.each(cis, function (index, value) {
             var str = "Carcinoma in situ/noninvasive high-grade urothelial carcinoma involving: ";
             cis[index] = value.replace(str, '');
         });
-        var dys = box_10.filter(el => el.indexOf('low-grade') > -1
-        )
-        ;
+        var dys = box_10.filter(el => el.indexOf('low-grade') > -1);
         $.each(dys, function (index, value) {
             var str = "Noninvasive low-grade urothelial carcinoma/urothelial dysplasia involving: ";
             dys[index] = value.replace(str, '');
         });
         captext += "\nMargins:";
         if (inv.length > 0) {
+            console.log(inv);
             captext += "\n- Invasive carcinoma involving: " + inv.join(', ') + "\n";
         }
         if (cis.length > 0) {
@@ -286,7 +281,8 @@ $(window).on('load', function () {
         if (dys.length > 0) {
             captext += "\n- Low-grade urothelial dysplasia involving: " + dys.join(', ') + "\n";
         }
-        else {
+        else if ((inv.length + cis.length + dys.length) == 0){
+            console.log('else margin triggered');
             captext += "\n- " + box_10.join('\n- ') + "\n";
         }
 

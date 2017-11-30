@@ -32,4 +32,10 @@ router.get('/clin-path/tx-rxn', (req, res) => {
 	]);
 });
 
+router.get('/clin-path/kb', (req, res) => {
+    controller.openAccess(req, res, './page-views/clin-path/kb.hbs', [
+    "/js/clin-path/kb-scripts.js"
+]);
+});
+
 module.exports = router;

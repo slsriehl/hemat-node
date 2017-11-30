@@ -363,6 +363,26 @@ $(function () {
         $("html, body").animate({scrollTop: 125}, 600);
     });
 
+    // Expand select[multiple] for option.length > 6
+    $('select[multiple]').each(function() {
+    	if (this.options.length > 6){
+    		$(this).attr('size', "8");
+    	} else {
+            $(this).attr('size', "6");
+            $(this).css("overflow", "hidden");
+		}
+    });
+
+    // Make multiple select options without need for ctrl or shift
+    $('option').mousedown(function(e){
+        e.preventDefault();
+        var select = this;
+        var scroll = select .scrollTop;
+        e.target.selected = !e.target.selected;
+        setTimeout(function(){select.scrollTop = scroll;}, 0);
+        $(select).trigger("change").focus(); // resume click event with 'change' listener
+    }).mousemove(function(e){e.preventDefault()});
+
     /*/Google analytics
      var _gaq = _gaq || [];
      _gaq.push(['_setAccount', 'UA-37125342-1']);
