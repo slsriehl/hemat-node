@@ -89,23 +89,39 @@ $(window).on('load', function () {
         }
     });
 
-    $('#box9').on("change", function () {
+    $('#box9').on("change", function(){
         var sel = $('#box9').val();
-        if ($.inArray('Other', sel) > -1) {
-            $('#box9_2').show();
+        if (sel.indexOf('adjacent') > -1){
+            $('.invade1_hid').show();
         }
-        else {
-            $('#box9_2').hide();
+        else {$('.invade1_hid').hide();}
+    });
+
+    $('#box9_2').on("change", function(){
+        var sel = $('#box9_2').val();
+        if ($.inArray('Other', sel) >-1) {
+            $('#box9_3').show();
         }
+        else {$('#box9_3').hide();}
     });
 
     $('#box10').on("change", function () {
         var sel = $('#box10').val();
-        if ($.inArray('Other', sel) > -1) {
-            $('#box10_2').show();
+        if (sel.indexOf('involving') > -1) {
+            $('.margin_hid').show();
         }
         else {
-            $('#box10_2').hide();
+            $('.margin_hid').hide();
+        }
+    });
+
+    $('#box10_2').on("change", function () {
+        var sel = $('#box10_2').val();
+        if (sel.indexOf('Other') > -1) {
+            $('#box10_3').show();
+        }
+        else {
+            $('#box10_3').hide();
         }
     });
 
@@ -194,7 +210,7 @@ $(window).on('load', function () {
         }
 
         var box_3 = $("#box3").val();
-        captext += "\nTumor Size (cm):\n- " + box_3.replace(/cm/, '') + "cm\n";
+        captext += "\nTumor Size:\n- " + box_3.replace(/cm/, '') + "cm\n";
 
         var box_4 = $("#box4").val();
         var box_4_2 = $("#box4_2").val();
@@ -210,9 +226,9 @@ $(window).on('load', function () {
 
         var box_6 = $("#box6").val();
         var box_6_2 = $("#box6_2").val();
-        if ($.inArray("Not applicable", box_6) == -1) {
-            if ($.inArray('Other', box_6) > -1) {
-                captext += "\nHistologic Grade:\n- " + box_6.replace(/Other/, box_6_2) + "\n";
+        if (box_6 != "Not applicable") {
+            if (box_6.indexOf("Other") > -1) {
+                captext += "\nHistologic Grade:\n- " + box_6_2 + "\n";
             }
             else {
                 captext += "\nHistologic Grade:\n- " + box_6 + "\n";
@@ -241,50 +257,32 @@ $(window).on('load', function () {
             captext += "\n+ Tumor Configuration:\n- " + box_8.join('\n- ') + "\n";
         }
 
-        var box_9 = $("#box9").val();
-        var box_9_2 = $("#box9_2").val();
-        if ($.inArray('Other', box_9) > -1) {
-            captext += "\nTumor Extension:\n- " + box_9.join('\n- ').replace(/Other/, box_9_2) + "\n";
-        }
-        else {
-            captext += "\nTumor Extension:\n- " + box_9.join('\n- ') + "\n";
-        }
-
+        captext += "\nTumor Extension:\n";
+        
+                var box_9 = $("#box9").val();
+                var box_9_2 = $("#box9_2").val();
+                var box_9_3 = $("#box9_3").val();
+                if (box_9.indexOf('adjacent') > -1){
+                    if ($.inArray('Other', box_9_2) > -1){
+                        captext += "- Tumor invades the following adjacent structures: " + box_9_2.join(', ').replace(/Other/, box_9_3) + "\n";
+                    }else {
+                        captext += "- Tumor invades the following adjacent structures: " + box_9_2.join(', ') + "\n";
+                    }
+                }
+                else {captext += "- "  + box_9 + "\n";}
+                
         var box_10 = $("#box10").val();
         var box_10_2 = $("#box10_2").val();
-        if (box_10_2.length > 0) {
-            box_10.replace('Other', box_10_2);
+        var box_10_3 = $("#box10_3").val();
+        if (box_10.indexOf('involving') > -1){
+            if ($.inArray('Other', box_10_2) > -1){
+                captext += "\nMargins:\n- " + box_10 + " "+ box_10_2.join(', ').replace(/Other/, box_10_3) + "\n";
+            }else {
+                captext += "\nMargins:\n- " + box_10 + " "+ box_10_2.join(', ') + "\n";
+            }
         }
-        var inv = box_10.filter(el => el.indexOf('Invasive') > -1);
-        $.each(inv, function (index, value) {
-            var str = "Invasive carcinoma involving: ";
-            inv[index] = value.replace(str, '');
-        });
-        var cis = box_10.filter(el => el.indexOf('situ') > -1);
-        $.each(cis, function (index, value) {
-            var str = "Carcinoma in situ/noninvasive high-grade urothelial carcinoma involving: ";
-            cis[index] = value.replace(str, '');
-        });
-        var dys = box_10.filter(el => el.indexOf('low-grade') > -1);
-        $.each(dys, function (index, value) {
-            var str = "Noninvasive low-grade urothelial carcinoma/urothelial dysplasia involving: ";
-            dys[index] = value.replace(str, '');
-        });
-        captext += "\nMargins:";
-        if (inv.length > 0) {
-            console.log(inv);
-            captext += "\n- Invasive carcinoma involving: " + inv.join(', ') + "\n";
-        }
-        if (cis.length > 0) {
-            captext += "\n- Carcinoma in situ involving: " + cis.join(', ') + "\n";
-        }
-        if (dys.length > 0) {
-            captext += "\n- Low-grade urothelial dysplasia involving: " + dys.join(', ') + "\n";
-        }
-        else if ((inv.length + cis.length + dys.length) == 0){
-            console.log('else margin triggered');
-            captext += "\n- " + box_10.join('\n- ') + "\n";
-        }
+        else {captext += "\nMargins:\n- "  + box_10 + "\n";}
+
 
         var box_11 = $("#box11").val();
         captext += "\nLymphovascular Invasion:\n- " + box_11 + "\n";

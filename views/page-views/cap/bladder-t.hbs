@@ -168,7 +168,7 @@
 
             <hr>
             <h5>Tumor Extension</h5><br>
-            <select multiple id="box9" class='form-control selectpicker form-control-sm col-sm-10'>
+            <select id="box9" class='form-control selectpicker form-control-sm col-sm-10'>
                 <option>No evidence of primary tumor</option>
                 <option>Noninvasive papillary carcinoma</option>
                 <option>Urothelial carcinoma in situ, “flat tumor”</option>
@@ -177,73 +177,55 @@
                 <option>Tumor invades deep muscularis propria (outer half)</option>
                 <option>Tumor microscopically invades perivesical tissue</option>
                 <option>Tumor macroscopically invades perivesical tissue (extravesical mass)</option>
-                <optgroup label="Adjacent involvement of Male structures">
-                    <option>Prostate (transmural invasion from the bladder tumor)</option>
-                    <option>Seminal vesicles</option>
-                </optgroup>
-                <optgroup label="Tumor invades adjacent Female structures">
-                    <option>Uterus</option>
-                    <option>Vagina</option>
-                    <option>Adnexae</option>
-                </optgroup>
-                <option>Pelvis wall</option>
-                <option>Abdominal wall</option>
-                <option>Rectum</option>
-                <option>Other adjacent structure</option>
+                <option>Tumor invades adjacent structures</option>
                 <option>Cannot be assessed</option>
             </select>
             <br>
-            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box9_2' style='display:none;'
-                   placeholder='Specify Other site'>
+            <div class='invade1_hid' style='display: none;' >
+                <h6>Choose structures which are invaded (select all that apply)</h6>
+                <select multiple id="box9_2" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <optgroup label="Male structures">
+                        <option value="Prostate">Prostate (transmural invasion from the bladder tumor)</option>
+                        <option>Seminal vesicles</option>
+                    </optgroup>
+                    <optgroup label="Female structures">
+                        <option>Uterus</option>
+                        <option>Vagina</option>
+                        <option>Adnexae</option>
+                    </optgroup>
+                    <optgroup label="Other structures"></optgroup>
+                    <option>Pelvis wall</option>
+                    <option>Abdominal wall</option>
+                    <option>Rectum</option>
+                    <option>Other</option>
+                    </optgroup>
+                </select>
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box9_3' style='display:none;' placeholder='Specify Other'>
+            </div>
 
 
             <hr>
             <h5>Margins</h5><br>
-            <select multiple id="box10" class='form-control selectpicker form-control-sm col-sm-10'>
+            <select id="box10" class='form-control selectpicker form-control-sm col-sm-10'>
                 <option>Uninvolved by invasive carcinoma and carcinoma in situ/ noninvasive urothelial carcinoma
                 </option>
                 <option>Uninvolved by invasive carcinoma</option>
-                <optgroup label="Invasive carcinoma">
-                    <option>Invasive carcinoma involving: right ureteral margin</option>
-                    <option>Invasive carcinoma involving: left ureteral margin</option>
-                    <option>Invasive carcinoma involving: urethral margin</option>
-                    <option>Invasive carcinoma involving: soft tissue margin</option>
-                    <option>Invasive carcinoma involving: Other margin</option>
-                </optgroup>
-                <optgroup label="High grade In-situ/non-invasive">
-                    <option>Carcinoma in situ/noninvasive high-grade urothelial carcinoma involving: right ureteral
-                        margin
-                    </option>
-                    <option>Carcinoma in situ/noninvasive high-grade urothelial carcinoma involving: left ureteral
-                        margin
-                    </option>
-                    <option>Carcinoma in situ/noninvasive high-grade urothelial carcinoma involving: urethral margin
-                    </option>
-                    <option>Carcinoma in situ/noninvasive high-grade urothelial carcinoma involving: soft tissue
-                        margin
-                    </option>
-                    <option>Carcinoma in situ/noninvasive high-grade urothelial carcinoma involving: Other margin
-                    </option>
-                </optgroup>
-                <optgroup label="Low-grade non-invasive/dysplasia">
-                    <option>Noninvasive low-grade urothelial carcinoma/urothelial dysplasia involving: right ureteral
-                        margin
-                    </option>
-                    <option>Noninvasive low-grade urothelial carcinoma/urothelial dysplasia involving: left ureteral
-                        margin
-                    </option>
-                    <option>Noninvasive low-grade urothelial carcinoma/urothelial dysplasia involving: urethral margin
-                    </option>
-                    <option>Noninvasive low-grade urothelial carcinoma/urothelial dysplasia involving: soft tissue
-                        margin
-                    </option>
-                    <option>Noninvasive low-grade urothelial carcinoma/urothelial dysplasia involving: Other margin
-                    </option>
-                </optgroup>
+                <option value="Invasive carcinoma involving: ">Involved by invasive carcinoma</option>
+                <option value="Non-invasive high-grade dysplasia involving: ">Involved by carcinoma in situ/noninvasive high-grade urothelial carcinoma </option>
+                <option value="Non-invasive low-grade dysplasia involving: ">Involved by noninvasive low-grade urothelial carcinoma/urothelial dysplasia</option>
             </select>
             <br>
-            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box10_2' style='display:none;'
-                   placeholder='Specify type of involvement and location'>
+            <div class='margin_hid' style='display: none;' >
+                <h6>Choose margins which are involved (select all that apply)</h6>
+                <select multiple id="box10_2" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Right ureteral margin</option>
+                    <option>Left ureteral margin</option>
+                    <option>Urethral margin</option>
+                    <option>Soft tissue margin</option>
+                    <option>Other</option>
+                </select>
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box10_3' style='display:none;' placeholder='Specify Other'>
+            </div>
 
 
             <hr>
