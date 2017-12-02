@@ -140,6 +140,13 @@ $(window).on('load', function () {
         }
     });
 
+    $('#box23').on("change", function(){
+        var sel = $('#box23').val();
+        if ($.inArray('specify', sel) >-1) {
+            $('#box23_2').show();}
+        else {$('#box23_2').hide();}
+    });
+
 
 //************************************************************//
 // Script to populate the template data in the output textarea//
@@ -294,6 +301,12 @@ $(window).on('load', function () {
         if (box_19 != "Not applicable") {
             captext += "\n+ Extranodal Extension:\n- " + box_19 + "\n";
         }
+
+        var box_23 = $("#box23").val();
+        var box_23_2 = $("#box23_2").val();
+        if ($.inArray('specify', box_23) >-1){
+            captext += "\nPathologic Findings in Ipsilateral Nonneoplastic Renal Tissue :\n- "  + box_23.join('\n- ').replace(/specify/, box_23_2) + "\n";}
+        else {captext += "\nPathologic Findings in Ipsilateral Nonneoplastic Renal Tissue :\n- "  + box_23.join('\n- ') + "\n";}
 
         var box_20 = $("#box20").val();
         var box_20_2 = $("#box20_2").val();
