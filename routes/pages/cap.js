@@ -200,6 +200,18 @@ router.get('/cap/urethra-t', (req, res) => {
 ]);
 });
 
+router.get('/cap/ureter-pelvis-t', (req, res) => {
+    controller.userWall(req, res, './page-views/cap/ureter-pelvis-t.hbs', [
+    "/js/cap/ureter-scripts.js",
+]);
+});
+
+router.get('/cap/bladder-bx', (req, res) => {
+    controller.userWall(req, res, './page-views/cap/bladder-bx.hbs', [
+    "/js/cap/bladder-bx-scripts.js",
+]);
+});
+
 router.get('/cap/bladder-t', (req, res) => {
     controller.userWall(req, res, './page-views/cap/bladder-t.hbs', [
     "/js/cap/bladder-scripts.js",

@@ -1,0 +1,320 @@
+<div class="container-fluid">
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+        <li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Ureter and Renal Pelvis carcinomas</li>
+    </ol>
+    {{> message-center this}}
+    {{> page-partials/cap-header}}
+
+    <div class="row">
+        {{> page-partials/cap-validate-alert}}
+        <div class="col col-md-8">
+
+            <!-- paste markup here-->
+            <hr>
+            <h5>Procedure</h5><br>
+            <select id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Nephroureterectomy, partial</option>
+                <option>Nephroureterectomy, complete</option>
+                <option>Ureterectomy</option>
+                <option>Other </option>
+                <option>Not specified</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;'
+                   placeholder='Specify Other'>
+
+            <hr>
+            <h5>Specimen Laterality</h5>
+            <select id="box30" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Right</option>
+                <option>Left</option>
+                <option>Not specified</option>
+            </select>
+            <br>
+
+
+
+            <hr>
+            <h5>Tumor Site</h5>
+            <select id="box2" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Ureter</option>
+                <option>Renal pelvis</option>
+                <option>Ureter and renal pelvis</option>
+                <option>Kidney</option>
+                <option>Cannot be determined</option>
+            </select><br>
+
+            <hr>
+            <h5>Tumor Size (cm)</h5><br>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box3" placeholder="Greatest dimension">
+
+
+            <hr>
+            <h5>Histologic Type</h5><br>
+            <select multiple id="box4" class='form-control selectpicker form-control-sm col-sm-10'>
+                <optgroup label="Urothelial">
+                    <option>Papillary Urothelial carcinoma, invasive</option>
+                    <option>Urothelial carcinoma in situ</option>
+                    <option>Urothelial carcinoma, invasive</option>
+                    <option>Urothelial carcinoma, nested (including large nested) variant</option>
+                    <option>Urothelial carcinoma, microcystic variant</option>
+                    <option>Urothelial carcinoma, micropapillary variant</option>
+                    <option>Urothelial carcinoma, lymphoepithelioma-like variant</option>
+                    <option>Urothelial carcinoma, plasmacytoid / signet ring / diffuse variant</option>
+                    <option>Urothelial carcinoma, sarcomatoid variant</option>
+                    <option>Urothelial carcinoma, giant cell variant</option>
+                    <option>Urothelial carcinoma, poorly differentiated variant</option>
+                    <option>Urothelial carcinoma, lipid-rich variant</option>
+                    <option>Urothelial carcinoma, clear cell variant</option>
+                    <option>Urothelial carcinoma with squamous differentiation</option>
+                    <option>Urothelial carcinoma with glandular differentiation</option>
+                    <option>Urothelial carcinoma with trophoblastic differentiation</option>
+                    <option>Urothelial carcinoma with Mϋllerian differentiation</option>
+                </optgroup>
+                <optgroup label="Squamous">
+                    <option>Pure Squamous cell carcinoma</option>
+                    <option>Verrucous (Squamous cell) carcinoma</option>
+                    <option>Squamous cell carcinoma in situ only</option>
+                </optgroup>
+                <optgroup label="Glandular">
+                    <option>Adenocarcinoma</option>
+                    <option>Adenocarcinoma, enteric</option>
+                    <option>Adenocarcinoma, mucinous</option>
+                    <option>Adenocarcinoma, mixed</option>
+                    <option>Adenocarcinoma in situ only</option>
+                </optgroup>
+                <optgroup label="Mϋllerian Type">
+                    <option>Clear cell carcinoma</option>
+                    <option>Endometrioid carcinoma</option>
+                </optgroup>
+                <optgroup label="Neuroendocrine Tumors">
+                    <option>Small cell neuroendocrine carcinoma</option>
+                    <option>Large cell neuroendocrine carcinoma</option>
+                    <option>Well-differentiated neuroendocrine carcinoma</option>
+                </optgroup>
+                <option>Other histologic type</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box4_2' style='display:none;'
+                   placeholder='Specify Other'>
+
+
+            <hr>
+            <h5>+ Associated Epithelial Lesions</h5><br>
+            <select multiple id="box5" class='form-control selectpicker form-control-sm col-sm-10'>
+                <option>None identified</option>
+                <option>Urothelial papilloma</option>
+                <option>Urothelial papilloma, inverted type</option>
+                <option>Papillary urothelial neoplasm, low malignant potential (PUNLMP)</option>
+                <option>Urothelial proliferation of uncertain malignant potential</option>
+                <option>Urothelial dysplasia</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+            <div class="uro-grade-1" style="display: none;">
+                <hr>
+                <h5>Histologic Grade - For urothelial carcinoma, other variants, or divergent differentiation</h5><br>
+                <select id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Low grade</option>
+                    <option>High grade</option>
+                    <option>Other</option>
+                    <option selected>Not applicable</option>
+                </select>
+                <br>
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box6_2' style='display:none;'
+                       placeholder='Specify Other'>
+            </div>
+
+
+            <div class="uro-grade-2" style="display: none;">
+                <hr>
+
+                <h5>Histologic Grade - For squamous cell carcinoma or adenocarcinoma</h5><br>
+                <select id="box7" class='form-control selectpicker form-control-sm col-sm-10'>
+                    <option>G1: Well differentiated</option>
+                    <option>G2: Moderately differentiated</option>
+                    <option>G3: Poorly differentiated</option>
+                    <option>GX: Cannot be assessed</option>
+                    <option>Other</option>
+                    <option>Not applicable</option>
+                    <option>Cannot be assessed</option>
+                    <option selected>Not applicable</option>
+                </select>
+                <br>
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box7_2' style='display:none;'
+                       placeholder='Specify Other'>
+            </div>
+
+
+
+            <hr>
+            <h5>Tumor Extension</h5><br>
+            <select id="box9" class='form-control selectpicker form-control-sm col-sm-10'>
+                <option>No evidence of primary tumor</option>
+                <option>Noninvasive papillary carcinoma</option>
+                <option>Carcinoma in situ</option>
+                <option>Tumor invades subepithelial connective tissue</option>
+                <option>Tumor invades the muscularis</option>
+                <option>Tumor invades beyond muscularis into periureteral fat or peripelvic fat or the renal parenchyma</option>
+                <option>Tumor invades adjacent organs, or through the kidney into the perinephric fat</option>
+                <option>Cannot be assessed</option>            </select>
+            <br>
+
+
+            <hr>
+            <h5>+ Tumor Configuration</h5><br>
+            <select multiple id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Papillary</option>
+                <option>Solid/nodule</option>
+                <option>Flat</option>
+                <option>Ulcerated</option>
+                <option>Cannot be determined</option>
+                <option>Other</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box8_2' style='display:none;'
+                   placeholder='Specify Other'>
+
+            <hr>
+            <h5>Margins</h5><br>
+            <select id="box10" class='form-control selectpicker form-control-sm col-sm-10'>
+                <option>Uninvolved by invasive carcinoma and carcinoma in situ/ noninvasive urothelial carcinoma
+                </option>
+                <option>Uninvolved by invasive carcinoma</option>
+                <option value="Invasive carcinoma involving: ">Involved by invasive carcinoma</option>
+                <option value="Non-invasive high-grade dysplasia involving: ">Involved by carcinoma in situ/noninvasive high-grade urothelial carcinoma </option>
+                <option value="Non-invasive low-grade dysplasia involving: ">Involved by noninvasive low-grade urothelial carcinoma/urothelial dysplasia</option>
+            </select>
+            <br>
+            <div class='margin_hid' style='display: none;' >
+                <h6>Choose margins which are involved (select all that apply)</h6>
+                <select multiple id="box10_2" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Proximal ureteral margin</option>
+                    <option>Distal ureteral margin</option>
+                    <option >Deep soft tissue margin</option>
+                    <option>Other</option>
+                </select>
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box10_3' style='display:none;' placeholder='Specify Other'>
+            </div>
+            <div class='margin2_hid' style='display: none;' >
+                <h6>Choose margins which are involved (select all that apply)</h6>
+                <select multiple id="box10_4" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Proximal ureteral margin</option>
+                    <option>Distal ureteral margin</option>
+                    <option>Other</option>
+                </select>
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box10_5' style='display:none;' placeholder='Specify Other'>
+            </div>
+
+
+            <hr>
+            <h5>Lymphovascular Invasion</h5><br>
+            <select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+            <hr>
+            <h5>Pathologic Staging (pTNM)</h5>
+            <br>
+
+            <h6>TNM Descriptors (select all that apply)</h6><br>
+            <select id="box12" class='form-control selectpicker form-control-sm col-sm-6' multiple>
+                <option selected value="Not applicable">Not applicable</option>
+                <option>m</option>
+                <option>r</option>
+                <option>y</option>
+            </select><br>
+            <h6 class="mt-2">pT</h6>
+            <select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pTX">pTX: Primary tumor cannot be assessed</option>
+                <option value="pT0">pT0: No evidence of primary tumor</option>
+                <option value="pTa">pTa: Papillary noninvasive carcinoma</option>
+                <option value="pTis">pTis: Carcinoma in situ</option>
+                <option value="pT1">pT1: Tumor invades subepithelial connective tissue</option>
+                <option value="pT2">pT2: Tumor invades the muscularis</option>
+                <option value="pT3">pT3: (For renal pelvis only) Tumor invades beyond muscularis into peripelvic fat or into the renal parenchyma</option>
+                <option value="pT3">pT3: (For ureter only) Tumor invades beyond muscularis into periureteric fat</option>
+                <option value="pT4">pT4: Tumor invades adjacent organs, or through the kidney into the perinephric fat</option>                </option>
+            </select>
+            <br>
+
+            <h6 class='mt-2'>pN</h6>
+            <select id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pNX">pNX: Regional lymph node cannot be assessed</option>
+                <option value="pN0">pN0: No regional lymph node metastasis</option>
+                <option value="pN1">pN1: Metastasis ≤2 cm in greatest dimension, in a single lymph node</option>
+                <option value="pN2">pN2: Metastasis >2 cm, in a single lymph node; or multiple lymph nodes</option>            </select>
+            <br>
+
+            <h6 class='mt-2'>pM</h6>
+            <select id="box15" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option selected value='pMx'>pMx: Not applicable</option>
+                <option value="pM1">pM1: Distant metastasis</option>
+            </select>
+            <br>
+            <form class="form-inline">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box16">
+                </label>
+            </form>
+            <div class='lnchk' style='display:none;'><br>
+                <form class="form-inline col-8">
+                    <label class="m-2">Number of lymph nodes examined: <input type="number"
+                                                                              class="form-control form-control-sm col-sm-6 ml-3"
+                                                                              id="box17" style="width:100px"></label>
+                    <label class="m-2">Number of lymph nodes involved: <input type="number"
+                                                                              class="form-control form-control-sm col-sm-6 ml-3"
+                                                                              id="box18" style="width:100px"></label>
+                </form>
+            </div>
+
+
+            <hr>
+            <h5>+ Extranodal Extension</h5><br>
+            <select id="box19" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present</option>
+                <option>Cannot be determined</option>
+                <option selected>Not applicable</option>
+            </select>
+
+
+            <hr>
+            <h5>+ Additional Pathologic Findings (select all that apply)</h5><br>
+            <select multiple id="box20" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Urothelial carcinoma in situ</option>
+                <option>Urothelial dysplasia, low-grade</option>
+                <option>Adenocarcinoma of prostate</option>
+                <option>Inflammation/regenerative changes</option>
+                <option>Therapy-related changes</option>
+                <option>Cystitis cystica et glandularis</option>
+                <option>Keratinizing squamous metaplasia</option>
+                <option>Intestinal metaplasia</option>
+                <option>Other</option>
+            </select>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box20_2' style='display:none;'
+                   placeholder='Specify Therapy'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box20_3' style='display:none;'
+                   placeholder='Specify Other'>
+
+
+            <!-- end markup-->
+
+            <!-- close markup -->
+        </div>
+        {{> page-partials/cap-footer}}
+        <!-- close row -->
+    </div>
+    {{> page-partials/history-module}}
+    <!-- close container -->
+</div>
+
