@@ -1,0 +1,248 @@
+<div class="container-fluid">
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+        <li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Gestational Trophoblastic tumors </li>
+    </ol>
+    {{> message-center this}}
+    {{> page-partials/cap-header}}
+
+    <div class="row">
+        {{> page-partials/cap-validate-alert}}
+        <div class="col col-md-8">
+
+            <!-- paste markup here-->
+            <hr>
+            <h5>Procedure</h5>
+            <select id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Dilation and curettage</option>
+                <option>Simple hysterectomy</option>
+                <option>Supracervical hysterectomy</option>
+                <option>Radical hysterectomy</option>
+                <option>Pelvic exenteration</option>
+                <option>Other</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr>
+            <h5>Specimen integrity</h5>
+            <select id="box2" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Intact</option>
+                <option>Opened</option>
+                <option>Morcellated</option>
+                <option>Other</option>
+                <option selected>Not applicable</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box2_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr>
+            <h5>Tumor Site</h5>
+            <select id="box3" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Uterine corpus</option>
+                <option>Uterine cervix</option>
+                <option>Other</option>
+                <option>Cannot be determined</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box3_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr>
+            <h5>Tumor Size (cm)</h5>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box4" placeholder="">
+
+
+
+
+            <hr>
+            <h5>Histologic Type
+                <!-- Button trigger modal -->
+                <button class="btn btn-sm btn-info ml-3"  data-toggle="modal" data-target="#help_trophihc">A note about immunohistochemistry and GTT classification</button>
+            </h5>
+            <select id="box5" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Hydatidiform mole, invasive</option>
+                <option>Choriocarcinoma</option>
+                <option>Placental site trophoblastic tumor</option>
+                <option>Epithelioid trophoblastic tumor</option>
+                <option>Malignant trophoblastic tumor, type cannot be determined</option>
+                <option>Other histologic type not listed</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box5_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr>
+            <h5>Other Tissue/Organ Involvement</h5>
+            <select multiple id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Right ovary</option>
+                <option>Left ovary</option>
+                <option>Ovary (side not specified)</option>
+                <option>Right fallopian tube</option>
+                <option>Left fallopian tube</option>
+                <option>Fallopian tube (side not specified)</option>
+                <option>Vagina</option>
+                <option>Right broad ligament</option>
+                <option>Left broad ligament</option>
+                <option>Broad ligament (side not specified)</option>
+                <option>Other organs/tissue</option>
+                <option>Cannot be determined</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box6_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr>
+            <h5>Margins</h5>
+
+            <select id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Cannot be assessed</option>
+                <option>Uninvolved by tumor</option>
+                <option>Involved by tumor</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box7_1' style='display:none;' placeholder='Specify closest margin'><br>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box7_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box7_3' style='display:none;' placeholder='Specify involved margin'>
+
+
+
+
+
+
+            <hr>
+            <h5>Lymphovascular Invasion</h5>
+            <select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+
+
+
+            <hr>
+            <h5>Pathologic Staging (pTNM)
+                <small class="ml-2">Why no pN</small><i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
+               title="Gestational trophoblastic tumors do not have an N classification.
+                    Nodal involvement in these tumors is rare but has an extremely poor prognosis.
+                    Nodal metastases should be classified as metastatic M1b disease." aria-hidden="true"></i>
+            </h5>
+
+            <h6>TNM Descriptors (select all that apply)</h6><br>
+            <select id="box9" class='form-control selectpicker form-control-sm col-sm-6' multiple>
+                <option selected value="Not applicable">Not applicable</option>
+                <option>m</option>
+                <option>r</option>
+                <option>y</option>
+            </select>
+            <h6 class='mt-2'>pT</h6>
+            <select id="box10" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pTX">pTX: Primary tumor cannot be assessed</option>
+                <option value="pT0">pT0: No evidence of primary tumor</option>
+                <option value="pT1">pT1: Tumor confined to uterus</option>
+                <option value="pT2">pT2: Tumor extends to other genital structures by metastasis or direct extension</option>
+            </select>
+            <br>
+
+            <h6 class='mt-2'>pM
+            <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
+               title="Genital metastasis (vagina, broad ligament, ovary, fallopian tube) is classified as T2.
+               Direct invasion or metastasis to any nongenital structure is classified using the M classification."
+               aria-hidden="true"></i>
+            </h6>
+            <select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option selected value='pMx'>pMx: Not applicable</option>
+                <option value="pM1">pM1: Distant metastasis (not further specified)</option>
+                <option value="pM1a">pM1a: Lung metastasis only</option>
+                <option value="pM1b">pM1b: All other distant metastasis</option>
+            </select>
+            <br>
+
+            <div class="met-sites" style="display: none;">
+            <h6>Specify metastatic sites (select all that apply)</h6>
+            <select multiple id="box16" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Unknown</option>
+                <option>Lung</option>
+                <option>Spleen</option>
+                <option>Kidney</option>
+                <option>Gastrointestinal tract</option>
+                <option>Liver</option>
+                <option>Brain</option>
+                <option>Lymph node(s)</option>
+                <option>Other </option>
+            </select>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box16_2' style='display:none;' placeholder='Specify involved nodes'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box16_3' style='display:none;' placeholder='Specify Other sites'>
+            </div>
+
+
+
+
+            <hr>
+            <h5>+ FIGO Stage (2015 FIGO Cancer Report)</h5>
+            <select id="box17" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="FIGO I:">FIGO I: Disease confined to the uterus</option>
+                <option value="FIGO II:">FIGO II: Gestational trophoblastic tumor extends outside of the uterus, but limited to the genital structures (adenexa, vagina, broad ligament)</option>
+                <option value="FIGO III:">FIGO III: Gestational trophoblastic tumor extends to the lungs, with or without known genital tract involvement</option>
+                <option value="FIGO IV:">FIGO IV: All other metastatic sites</option>
+            </select>
+
+
+
+
+
+
+            <hr>
+            <h5>+ Ancillary Studies</h5>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box18" placeholder="start typing...">
+
+
+
+
+
+
+            <!-- end markup-->
+            <!-- Trophoblast IHC help Modal -->
+            {{> page-modals/cap-helpers/trophoblast-ihc-help}}
+
+
+            <!-- close markup -->
+        </div>
+        {{> page-partials/cap-footer}}
+        <!-- close row -->
+    </div>
+    {{> page-partials/history-module}}
+    <!-- close container -->
+</div>
+
+
+<!--
+			"specificScripts":
+				[
+					"/js/cap/$-scripts.js",
+				]
+		 -->
