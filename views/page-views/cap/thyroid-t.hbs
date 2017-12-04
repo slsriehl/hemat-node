@@ -5,7 +5,7 @@
 						<a href="/">Home</a>
 				</li>
 				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
-				<li class="breadcrumb-item active" id="bc-jump"><i class="fa fa-flask mr-2"></i>Thyroid Cancer Synoptic - Thyroidectomies</li>
+				<li class="breadcrumb-item active" id="bc-jump"><i class="fa fa-flask mr-2"></i>Thyroid Cancer</li>
 		</ol>
 
  {{> message-center this}}
@@ -15,313 +15,303 @@
 
 	<div class="row">
 		<div class="col col-md-8">
-
-	<h5>Procedure (select all that apply)</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box1" multiple>
-	<option value='Reoperative resection'>Reoperative resection (completion thyroidectomy)</option>
-	<option>Thyroid lobectomy, Right</option>
-	<option>Thyroid lobectomy, Left </option>
-	<option>Partial thyroidectomy, Right </option>
-	<option>Partial thyroidectomy, Left </option>
-	<option>Lobectomy with isthmus, Right </option>
-	<option>Lobectomy with isthmus, Left</option>
-	<option>Total thyroidectomy</option>
-	<option>Subtotal thyroidectomy, Right with partial left</option>
-	<option>Subtotal thyroidectomy, Left with partial right</option>
-	<option>Other:</option>
-	</select>
-	<input type="text" class="form-control form-control-sm "  id='box1_2' style='display:none;' placeholder='Specify other procedure' >
-
-<hr>
-
-	<h5>Lymph node sampling (select all that apply)</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box2" multiple>
-	<option selected>Focused or single lymph node resection</option>
-	<option>Central compartment dissection (level VI)</option>
-	<option>Lateral neck dissection (level I-V), Right </option>
-	<option>Lateral neck dissection (level I-V), Left </option>
-	<option>Superior mediastinal lymph nodes (level VII)</option>
-	<option>Other:</option>
-	</select><br>
-	<input type="text" class="form-control form-control-sm "  id='box2_2' style='display:none;' placeholder='Specify other lymph node' >
-
-<hr>
-
-	<h5>+ Specimen Integrity</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box3">
-	<option selected>Intact</option>
-	<option>Fragmented</option>
-	</select>
-
-<hr>
-
-	<h5>+ Specimen Size</h5><br>
-	Enter values where applicable (this element is not required by CAP):<br>
-	<table class="table">
-	  <tr>
-		<td>Right lobe</td>
-		<td><input type="text" class="form-control form-control-sm "  id="box4_1"  placeholder='Dimensions (cm)'></td>
-	  </tr>
-	  <tr>
-		<td>Left lobe</td>
-		<td><input type="text" class="form-control form-control-sm "  id="box4_2"  placeholder='Dimensions (cm)'></td>
-	  </tr>
-	  <tr>
-		<td>Isthmus+/-pyramidal lobes</td>
-		<td><input type="text" class="form-control form-control-sm "  id="box4_3"  placeholder='Dimensions (cm)'></td>
-	  </tr>
-	  <tr>
-		<td>Central compartment</td>
-		<td><input type="text" class="form-control form-control-sm "  id="box4_4"  placeholder='Dimensions (cm)'></td>
-	  </tr>
-	  <tr>
-		<td>Right neck dissection</td>
-		<td><input type="text" class="form-control form-control-sm "  id="box4_5"  placeholder='Dimensions (cm)'></td>
-	  </tr>
-	  <tr>
-		<td>Left neck dissection</td>
-		<td><input type="text" class="form-control form-control-sm "  id="box4_6"  placeholder='Dimensions (cm)'></td>
-	  </tr>
-	</table>
-
-<hr>
-
-	<h5>+ Specimen weight:</h5><br>
-	<input type="text" class="form-control form-control-sm "  id="box5"  placeholder='weight (g)'>
-
-<hr>
-
-	<h5>Tumor Focality</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box6">
-	<option selected>Unifocal</option>
-	<option>Multifocal</option>
-	</select>
-
-<hr>
-
-	<h5>Tumor Laterality (select all that apply)</h5><br>
-	<select class="form-control selectpicker form-control-sm "  multiple id="box7">
-	<option></option>
-	<option>Right lobe</option>
-	<option>Left lobe</option>
-	<option>Isthmus </option>
-	<option>Pyramidal lobe </option>
-	<option>Other:</option>
-	</select><br>
-	<input type="text" class="form-control form-control-sm "  id='box7_2' style='display:none;' placeholder='Specify involved site' >
-
-<hr>
-
-	<h5>Tumor Size:</h5><br>
-	<input type="text" class="form-control form-control-sm "  id="box8"  placeholder='Size (cm)'>
-
-<hr>
-
-	<table class="table">
-	<tr>
-	<td>
-	<h5>Histologic Type (select all that apply)</h5><br>
-	<select class="form-control selectpicker form-control-sm "  multiple id="box9">
-	<option></option>
-	<option>Papillary carcinoma</option>
-	<option>Follicular carcinoma</option>
-	<option>Poorly differentiated thyroid carcinomas, including insular carcinoma </option>
-	<option>Medullary carcinoma</option>
-	<option>Undifferentiated carcinoma, focal and without extrathyroid extension</option>
-	<option>Undifferentiated carcinoma, major component</option>
-	<option>Other:</option>
-	<option>Carcinoma, type cannot be determined</option>
-	</select>
-	<input type="text" class="form-control form-control-sm "  id='box9_1' style='display:none;' placeholder='Specify other histology' >
-	</td>
-	<td>
-	<div class='papcahisto' style="display:none;">
-	Papillary carcinoma Variant, specify:<br>
-	<select class="form-control selectpicker form-control-sm "  id="box10_1">
-	<option selected>Classical (usual) </option>
-	<option>Follicular variant (encapsulated/well-demarcated), Tumor capsular invasion not present</option>
-	<option> Follicular variant (encapsulated/well-demarcated), Tumor capsular invasion present</option>
-	<option>Follicular variant, infiltrative </option>
-	<option>Tall cell variant</option>
-	<option>Cribriform-morular variant</option>
-	<option>Diffuse sclerosing variant</option>
-	<option>Other:</option>
-	</select>
-	<input type="text" class="form-control form-control-sm "  id='box10_1b' style='display:none;' placeholder='Specify other variant' >
-	<br>
-	</div><!--end pap carcinoma histo-->
-	<div class="folcahisto" style="display:none">
-	Follicular carcinoma Variant, specify:<br>
-	<select class="form-control selectpicker form-control-sm "  id="box11">
-	<option value='typical' selected>Typical morphology</option>
-	<option>Oncocytic (Hürthle cell)</option>
-	<option>Clear cell variant</option>
-	<option>Mucinous variant</option>
-	</select>
-	<br>
-	Extent of tumor invasion:<br>
-	<select class="form-control selectpicker form-control-sm "  id="box11_1">
-	<option selected>Minimally invasive</option>
-	<option>Widely invasive</option>
-	</select>
-	</div><!--end fol ca histo-->
-	</td>
-	</table><!-- end histology table-->
-
-<hr>
-
-	<h5>Margins</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box13">
-	<option selected>Cannot be assessed</option>
-	<option>Margins uninvolved by carcinoma</option>
-	<option>Margin(s) involved by carcinoma</option>
-	</select>
-	<input type="text" class="form-control form-control-sm "  id='box13_1' style='display:none;' placeholder='Distance to closest margn (mm)' ><br>
-	<input type="text" class="form-control form-control-sm "  id='box13_2' style='display:none;' placeholder='Site of involvement' >
-
-<hr>
-
-	<h5>Angioinvasion</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box15">
-	<option></option>
-	<option>Not identified</option>
-	<option>Present, Focal (&lt;4 vessels)</option>
-	<option>Present, Extensive (&ge;;3 vessels)</option>
-	<option>Cannot be assessed</option>
-	</select>
-
-<hr>
-
-	<h5>Lymphatic Invasion</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box16">
-	<option></option>
-	<option>Not identified </option>
-	<option>Present</option>
-	<option>Cannot be determined</option>
-	</select>
-
-<hr>
-
-	<h5>+ Perineural Invasion</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box17">
-	<option selected>Not identified </option>
-	<option>Present</option>
-	<option>Cannot be determined</option>
-	</select>
-
-<hr>
-
-	<h5>Extrathyroidal Extension</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box18">
-	<option selected>Cannot be assessed</option>
-	<option>Not identified</option>
-	<option>Present, Minimal</option>
-	<option>Present, Extensive</option>
-	</select>
-
-<hr>
-
-	<h5>Pathologic Staging (pTNM)</h5>
-	TNM Descriptors (select all that apply)<br>
-	<select class="form-control selectpicker form-control-sm "  id="box19" multiple>
-	<option selected value="Not applicable">Not applicable</option>
-	<option>m</option>
-	<option>r</option>
-	<option>y</option>
-	</select>
-<hr>
-
-	Primary Tumor (pT)<br>
-	<select class="form-control selectpicker form-control-sm "  id="box20">
-	<option value=" pTX"> pTX:	Cannot be assessed</option>
-	<option value=" pT0"> pT0:	No evidence of primary tumor</option>
-	<option value=" pT1"> pT1:	Tumor size 2 cm or less, limited to thyroid</option>
-	<option value=" pT1a"> pT1a: 	Tumor 1 cm or less in greatest dimension limited to the thyroid.</option>
-	<option value=" pT1b"> pT1b: 	Tumor more than 1 cm but not more than 2 cm in greatest dimension, limited to the thyroid</option>
-	<option value=" pT2"> pT2:	Tumor more than 2 cm, but not more than 4 cm, limited to thyroid</option>
-	<option value=" pT3"> pT3:	Tumor more than 4 cm limited to thyroid or any tumor with minimal extrathyroid extension (eg, extension to sternothyroid muscle or perithyroid soft tissues)</option>
-	<option value=" pT4a"> pT4a:	Moderately advanced disease. Tumor of any size extending beyond the thyroid capsule to invade subcutaneous soft tissues, larynx, trachea, esophagus or recurrent laryngeal nerve</option>
-	<option value=" pT4b"> pT4b:	Very advanced disease. Tumor invades prevertebral fascia or encases carotid artery or mediastinal vessels</option>
-	<option></option>
-	<option value="pT4a">pT4a:	(For Anaplastic Carcinoma) Intrathyroidal anaplastic carcinoma</option>
-	<option value="pT4b">pT4b:	(For Anaplastic Carcinoma)  Gross extrathyroid extension</option>
-	<option value="null"></option>
-	</select><br>
-	Regional Lymph Nodes (pN)<br>
-	<select class="form-control selectpicker form-control-sm "  id="box21">
-	<option value=" pNX"> pNX:	Regional lymph nodes cannot be assessed</option>
-	<option value=" pNX"> Lymph nodes with psammomabodies only</option>
-	<option value=" pN0"> pN0:	No regional lymph node metastasis</option>
-	<option value=" pN1a"> pN1a:	Metastasis to Level VI (pretracheal, paratracheal and prelaryngeal/Delphian) lymph nodes</option>
-	<option value=" pN1b"> pN1b:	Metastasis to unilateral, bilateral or contralateral cervical (Levels I, II, III, IV, V) or retropharyngeal or superior mediastinal lymph nodes (Level VII).</option>
-	<option></option>
-	</select><br>
-	Distant Metastasis (pM)<br>
-	<select class="form-control selectpicker form-control-sm "  id="box22">
-	<option value="pMX">pMX: Not applicable</option>
-	<option value="pM1">pM1: Distant metastasis</option>
-	</select>
-<hr>
+			<hr>
+			<h5>Procedure</h5>
+			<select id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
+				<option>Total thyroidectomy</option>
+				<option>Right partial excision</option>
+				<option>Left partial excision</option>
+				<option>Partial excision</option>
+				<option>Right lobectomy</option>
+				<option>Left lobectomy</option>
+				<option>Right lobectomy with isthmusectomy </option>
+				<option>Left lobectomy with isthmusectomy </option>
+				<option>Right lobe with partial left lobectomy </option>
+				<option>Left lobe with partial right lobectomy </option>
+				<option>Completion thyroidectomy</option>
+			</select>
 
 
-	<h5><span style="color:white;">Check here if any lymph nodes submitted?</span></h5>
-	<input class="form-check-input" type="checkbox" id="box23" ><br>
-	<div class='lndiv' style="display:none">
-	Number of lymph nodes examined: <input type="text" class="form-control form-control-sm "  id="box24" ><br>
-	Number of lymph nodes involved: <input type="text" class="form-control form-control-sm "  id="box25"  placeholder="0"><br>
-	Lymph node, Extranodal extension: 	<select class="form-control selectpicker form-control-sm "  id="box26" >
-	<option>Not Identified</option>
-	<option>Present</option>
-	<option>Cannot be determind</option>
-	</select><br>
-	Size of largest metastatic deposit:<input type="text" class="form-control form-control-sm "  id='box26b'  placeholder="(mm)"><br>
-	</div>
 
-<hr>
 
-	<h5>+ Additional Pathologic Findings (select all that apply)</h5><br>
-	<select class="form-control selectpicker form-control-sm "  multiple id="box27">
-	<option selected>None identified</option>
-	<option>Adenoma</option>
-	<option>Adenomatoid nodule(s) or Nodular follicular disease </option>
-	<option>Diffuse hyperplasia (Graves’ disease)</option>
-	<option>Thyroiditis, Advanced</option>
-	<option>Thyroiditis, Focal (nonspecific)</option>
-	<option>Thyroiditis, Palpation</option>
-	<option>Parathyroid gland(s), Within normal limits</option>
-	<option>Parathyroid gland(s), Hypercellular</option>
-	<option>C-cell hyperplasia </option>
-	</select>
 
-<hr>
+			<hr>
+			<h5>Tumor Focality</h5>
+			<select id="box2" class='form-control selectpicker form-control-sm col-sm-6'>
+				<option>Unifocal</option>
+				<option>Multifocal</option>
+				<option>Cannot be determined</option>
+			</select>
 
-	<h5>+ Immunohistochemistry performed:</h5><br>
-	<input type="text" class="form-control form-control-sm "  id="box28" placeholder='Enter stains performed, if any'>
 
-<hr>
 
-	<h5>+ Ancillary studies:</h5><br>
-	Select which, if any, ancillary studies are performed (DNA analysis, molecular testing, FISH)<br>
-	<select class="form-control selectpicker form-control-sm "  multiple id="box29">
-	<option selected>None performed</option>
-	<option>Solid tumor mutation panel by NGS</option>
-	<option>RET FISH</option>
-	<option>NTRK1 FISH</option>
-	<option>BRAF mutation analysis</option>
-	<option>RAS mutation analysis</option>
-	</select>
 
-<hr>
 
-	<h5>+ Clinical history:</h5><br>
-	<select class="form-control selectpicker form-control-sm "  multiple id="box30">
-	<option selected>No known pertinent history</option>
-	<option>Known history of radiation exposure</option>
-	<option>No known history of radiation exposure</option>
-	<option>Known family history of thyroid cancer</option>
-	</select>
-	<!-- close column -->
+			<hr>
+			<h5>Tumor Site</h5>
+			<select multiple id="box3" class='form-control selectpicker form-control-sm col-sm-6'>
+				<option>Right lobe</option>
+				<option>Left lobe</option>
+				<option>Isthmus</option>
+				<option>Pyramidal lobe</option>
+				<option>Other</option>
+			</select>
+			<br>
+			<input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box3_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+			<hr>
+			<h5>Tumor Size (cm)</h5>
+			<input type="text" class="form-control form-control-sm col-sm-6" id="box4" placeholder="Greatest dimension">
+
+
+
+
+			<hr>
+			<h5>Histologic Type</h5>
+			<input type="text" class="form-control form-control-sm col-sm-6" id="box5" placeholder="Start typing and choose match">
+			<br>
+
+
+
+			<hr>
+			<h5>Margins</h5>
+
+			<select id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
+				<option>Cannot be assessed</option>
+				<option>Uninvolved by carcinoma</option>
+				<option>Involved by carcinoma</option>
+			</select>
+			<br>
+			<input type="text" class="form-control form-control-sm col-sm-6" id='box6_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
+			<input type="text" class="form-control form-control-sm col-sm-6" id='box6_3' style='display:none;' placeholder='Specify involved margin'>
+
+
+
+
+
+
+			<hr>
+			<h5>Angioinvasion</h5>
+			<select id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
+				<option>Not identified</option>
+				<option>Present, Focal (less than 4 vessels)</option>
+				<option>Present, Extensive (4 or more vessels)</option>
+				<option>Cannot be determined</option>
+			</select>
+
+
+
+
+
+			<hr>
+			<h5>Lymphatic Invasion</h5>
+			<select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
+				<option>Not identified</option>
+				<option>Present</option>
+				<option>Cannot be determined</option>
+			</select>
+
+
+
+
+
+			<hr>
+			<h5>Mitotic Rate</h5>
+			<form class="form-inline">
+				<div class="form-group">
+					<label for="">Specify:</label>
+					<input type="number" class="form-control form-control-sm ml-2 mr-2" id="box9" style="width:100px" placeholder="0">/10 high-power fields (approx 2 mm^2)
+				</div>
+				<p class="w-100">
+					<small>Note: Mitoses should be counted in 10 consecutive high power fields (HPF) at 400x
+						in the most mitotically active area.
+					For most microscopes, 10 HPF is roughly equivalent to 2.5 mm2</small></p>
+			</form>
+
+
+
+
+			<hr>
+			<h5>+ Perineural Invasion</h5>
+			<select id="box10" class='form-control selectpicker form-control-sm col-sm-6'>
+				<option>Not identified</option>
+				<option>Present</option>
+				<option>Cannot be determined</option>
+			</select>
+
+
+
+
+
+			<hr>
+			<h5>Extrathyroidal Extension</h5>
+			<select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
+				<option>Not identified</option>
+				<option>Present, invading only strap muscles</option>
+				<option>Present, invading subcutaneous soft tissues, larynx, trachea, esophagus or recurrent laryngeal nerve</option>
+				<option>Present, invading prevertebral fascia or encasing the carotid artery or mediastinal vessels</option>
+				<option>Cannot be determined</option>
+			</select>
+
+
+
+
+
+			<hr>
+			<h5>Pathologic Staging (pTNM)
+
+			</h5>
+
+			<h6>TNM Descriptors (select all that apply)</h6><br>
+			<select id="box12" class='form-control selectpicker form-control-sm col-sm-6' multiple>
+				<option selected value="Not applicable">Not applicable</option>
+				<option>m</option>
+				<option>r</option>
+				<option>y</option>
+			</select>
+			<h6 class='mt-2'>pT</h6>
+			<select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
+				<option value="null"><optgroup label="Papillary, Follicular, Poorly Differentiated, Hurthle Cell and Anaplastic"></option>
+				<option value="pTX">pTX: Primary tumor cannot be assessed</option>
+				<option value="pT0">pT0: No evidence of primary tumor</option>
+				<option value="pT1a">pT1a: Tumor ≤1 cm in greatest dimension limited to the thyroid</option>
+				<option value="pT1b">pT1b: Tumor >1 cm but ≤2 cm in greatest dimension, limited to the thyroid</option>
+				<option value="pT2">pT2: Tumor >2 cm, but ≤4 cm in greatest dimension, limited to thyroid</option>
+				<option value="pT3a">pT3a: Tumor >4 cm limited to the thyroid</option>
+				<option value="pT3b">pT3b: Gross extrathyroidal extension invading only strap muscles (sternohyoid, sternothyroid, thyrohyoid, or omohyoid muscles) from a tumor of any size</option>
+				<option value="pT4a">pT4a: Gross extrathyroidal extension invading subcutaneous soft tissues, larynx, trachea, esophagus, or recurrent laryngeal nerve from a tumor of any size</option>
+				<option value="pT4b">pT4b: Gross extrathyroidal extension invading prevertebral fascia or encasing the carotid artery or mediastinal vessels from a tumor of any size</option>
+				<option value="null"></optgroup></option>
+				<option value="null"><optgroup label="Medullary Thyroid Carcinoma"></option>
+				<option value="pTX">pTX: Primary tumor cannot be assessed</option>
+				<option value="pT0">pT0: No evidence of primary tumor</option>
+				<option value="pT1a">pT1a: Tumor ≤1 cm in greatest dimension limited to the thyroid</option>
+				<option value="pT1b">pT1b: Tumor >1 cm but ≤2 cm in greatest dimension, limited to the thyroid</option>
+				<option value="pT2">pT2: Tumor >2 cm, but ≤4 cm in greatest dimension, limited to thyroid</option>
+				<option value="pT3a">pT3a: Tumor >4 cm in greatest dimension limited to the thyroid</option>
+				<option value="pT3b">pT3b: Tumor of any size with gross extrathyroidal extension invading only strap muscles (sternohyoid, sternothyroid, thyrohyoid or omohyoid muscles)</option>
+				<option value="pT4a">pT4a: Moderately advanced disease; tumor of any size with gross extrathyroidal extension into the nearby tissues of the neck, including subcutaneous soft tissue, larynx, trachea, esophagus, or recurrent laryngeal nerve</option>
+				<option value="pT4b">pT4b: Very advanced disease; tumor of any size with extension toward the spine or into nearby large blood vessels, gross extrathyroidal extension invading the prevertebral fascia, or encasing the carotid artery or mediastinal vessels</option>
+				<option value="null"></optgroup></option>
+			</select>
+			<br>
+
+			<h6 class='mt-2'>pN</h6>
+			<select id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
+				<option value="pNX">pNX: Regional lymph nodes cannot be assessed</option>
+				<option value="pN0">pN0: No evidence of locoregional lymph node metastasis#</option>
+				<option value="pN0a">pN0a: One or more cytologically or histologically confirmed benign lymph nodes</option>
+				<option value="pN1">pN1: Metastasis to regional nodes</option>
+				<option value="pN1a">pN1a: Metastasis to level VI or VII (pretracheal, paratracheal, or prelaryngeal/Delphian, or upper mediastinal) lymph nodes. This can be unilateral or bilateral disease.</option>
+				<option value="pN1b">pN1b: Metastasis to unilateral, bilateral, or contralateral lateral neck lymph nodes (levels I, II, III, IV, or V) or retropharyngeal lymph nodes</option>
+			</select>
+			<br>
+
+			<h6 class='mt-2'>pM</h6>
+			<select id="box15" class='form-control selectpicker form-control-sm col-sm-6'>
+				<option selected value='pMx'>pMx: Not applicable</option>
+				<option value="pM1">pM1: Distant metastasis</option>
+			</select>
+			<br>
+			<form class="form-inline">
+				<label class="form-check-label">Check here if any lymph nodes submitted?
+					<input class="form-control form-control-sm col-sm-6" type="checkbox" id="box16" >
+				</label>
+			</form>
+			<div class='lnchk' style='display:none;'><br>
+				<!-- Button trigger modal -->
+				<button class="btn btn-sm btn-info m-3"  data-toggle="modal" data-target="#help_thyroid_node">Some information about lymph node levels</button>
+
+				<form class="form-inline col-8">
+					<label class="m-2">Number of lymph nodes examined: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box17" style="width:100px"></label>
+				</form>
+					<h6 class="m-2">Specify Nodal Levels examined</h6>
+					<select multiple id="box20" class='form-control selectpicker form-control-sm col-sm-6 m-2'>
+						<option>Level VI - (central compartment dissection)</option>
+						<option>Level VII (superior mediastinal lymph nodes)</option>
+						<option>Level I-V (lateral neck dissection)</option>
+						<option>Other</option>
+					</select>
+					<br>
+					<input type="text" class="form-control form-control-sm mt-3 col-sm-6 m-2" id='box20_2' style='display:none;' placeholder='Specify Other'>
+				<form class="form-inline col-8">
+					<label class="m-2">Number of lymph nodes involved: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box18" style="width:100px"></label>
+				</form>
+				<div class="node-involved" style="display: none";>
+
+					<h6 class="m-2">Specify Nodal Levels involved</h6>
+					<select multiple id="box19" class='form-control selectpicker form-control-sm col-sm-6 m-2'>
+						<option>Level VI - (central compartment dissection)</option>
+						<option>Level VII (superior mediastinal lymph nodes)</option>
+						<option>Level I-V (lateral neck dissection)</option>
+						<option>Other</option>
+					</select>
+					<br>
+					<input type="text" class="form-control form-control-sm mt-3 col-sm-6 m-2" id='box19_2' style='display:none;' placeholder='Specify Other'>
+
+
+					<h6 class="m-2">Size of Largest Metastatic Deposit (cm)</h6>
+					<input type="text" class="form-control form-control-sm col-sm-6 m-2" id="box21" placeholder="">
+
+					<h6 class="m-2">Extranodal Extension</h6>
+					<select id="box22" class='form-control selectpicker form-control-sm col-sm-6 m-2'>
+						<option>Not identified</option>
+						<option>Present</option>
+						<option>Cannot be determined</option>
+					</select>
+				</div>
 			</div>
+
+
+
+
+
+
+
+
+
+
+			<hr>
+			<h5>+ Additional Pathologic Findings (select all that apply)</h5>
+			<select multiple id="box23" class='form-control selectpicker form-control-sm col-sm-6'>
+				<option>Adenoma</option>
+				<option>Adenomatoid nodule(s) or nodular follicular disease</option>
+				<option>Diffuse hyperplasia (Graves’ disease)</option>
+				<option>Thyroiditis </option>
+				<option>Parathyroid gland(s) present</option>
+				<option>C-cell hyperplasia </option>
+				<option>None identified</option>
+				<option>Other</option>
+			</select>
+			<input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box23_2' style='display:none;' placeholder='Specify # of parathyroid glands'>
+			<input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box23_3' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+			<hr>
+			<h5>+ Clinical History (select all that apply)</h5>
+			<select multiple id="box24" class='form-control selectpicker form-control-sm col-sm-6'>
+				<option>Radiation exposure</option>
+				<option>No known radiation exposure</option>
+				<option>Family history</option>
+				<option>Postoperative serum marker</option>
+				<option>Other</option>
+			</select>
+			<input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box24_2' style='display:none;' placeholder='Specify marker and level'>
+			<input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box24_3' style='display:none;' placeholder='Specify Other'>
+
+			<!-- close column -->
+			<!-- Histology help Modal -->
+			{{> page-modals/cap-helpers/thyroid-node-help}}
+
+
+		</div>
 			{{> page-partials/cap-footer}}
 	<!-- close row -->
 		</div>
@@ -329,10 +319,3 @@
 	<!-- close container -->
 	</div>
 
-
-			<!--
-			"specificScripts":
-				[
-					"/js/cap/thyroid-scripts.js",
-				]
-		 -->

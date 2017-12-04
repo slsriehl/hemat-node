@@ -194,6 +194,13 @@ router.get('/cap/stomach', (req, res) => {
 	]);
 });
 
+router.get('/cap/trophoblast', (req, res) => {
+    controller.userWall(req, res, './page-views/cap/trophoblast.hbs', [
+    "/js/cap/trophoblast.js",
+]);
+});
+
+
 router.get('/cap/urethra-t', (req, res) => {
     controller.userWall(req, res, './page-views/cap/urethra-t.hbs', [
     "/js/cap/urethra-scripts.js",
