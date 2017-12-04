@@ -194,9 +194,15 @@ router.get('/cap/stomach', (req, res) => {
 	]);
 });
 
+router.get('/cap/thymus-t', (req, res) => {
+    controller.userWall(req, res, './page-views/cap/thymus-t.hbs', [
+    "/js/cap/thymus-scripts.js",
+]);
+});
+
 router.get('/cap/trophoblast', (req, res) => {
     controller.userWall(req, res, './page-views/cap/trophoblast.hbs', [
-    "/js/cap/trophoblast.js",
+    "/js/cap/trophoblast-scripts.js",
 ]);
 });
 

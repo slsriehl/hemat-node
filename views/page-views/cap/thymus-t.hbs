@@ -1,0 +1,252 @@
+<div class="container-fluid">
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+        <li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>thymus-t$</li>
+    </ol>
+    {{> message-center this}}
+    {{> page-partials/cap-header}}
+
+    <div class="row">
+        {{> page-partials/cap-validate-alert}}
+        <div class="col col-md-8">
+
+            <!-- paste markup here-->
+            <hr>
+            <h5>Procedure</h5>
+            <select id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Thymectomy</option>
+                <option>Partial thymectomy</option>
+                <option>Other</option>
+                <option>Not specified</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr>
+            <h5>Tumor Size (cm)</h5>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box2" placeholder="Greatest dimension">
+
+
+
+
+            <hr>
+            <h5>Histologic Type</h5>
+            <select id="box3" class='form-control selectpicker form-control-sm col-sm-6'>
+                <optgroup label="Thymoma">
+                    <option>Type A thymoma</option>
+                    <option>Type AB thymoma</option>
+                    <option>Type B1 thymoma</option>
+                    <option>Type B2 thymoma</option>
+                    <option>Type B3 thymoma</option>
+                </optgroup>
+                <optgroup label="Thymic carcinoma">
+                    <option>Squamous cell carcinoma</option>
+                    <option>Basaloid carcinoma</option>
+                    <option>Mucoepidermoid carcinoma</option>
+                    <option>Lymphoepithelioma-like carcinoma</option>
+                    <option>Clear cell carcinoma</option>
+                    <option>Sarcomatoid carcinoma</option>
+                    <option>Adenocarcinoma</option>
+                    <option>NUT carcinoma</option>
+                    <option>Undifferentiated carcinoma</option>
+                </optgroup>
+                <optgroup label="Neuroendocrine tumors">
+                    <option>Typical carcinoid</option>
+                    <option>Atypical carcinoid</option>
+                    <option>Large cell neuroendocrine carcinoma</option>
+                    <option>Small cell carcinoma</option>
+                </optgroup>
+                <option>Other histologic type</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box3_2' style='display:none;' placeholder='Specify Other histologic type'>
+
+
+
+
+
+            <hr>
+            <h5>Transcapsular Invasion</h5>
+            <select id="box4" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Present</option>
+                <option>Absent</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+
+
+
+            <hr>
+            <h5>Tumor Extension (select all that apply)</h5>
+            <select multiple id="box5" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Tumor confined to thymus</option>
+                <option>Tumor extends to the mediastinal fat</option>
+                <option>Tumor involves pulmonary parenchyma</option>
+                <option>Tumor involves mediastinal pleura</option>
+                <option>Tumor invades pericardium</option>
+                <option>Tumor invades diaphragm</option>
+                <option>Tumor invades adjacent organs or structures</option>
+                <option>Other </option>
+                <option>Cannot be assessed</option>
+                <option>Not applicable</option>
+            </select>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box5_2' style='display:none;' placeholder='Specify adjacent organs'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box5_3' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr>
+            <h5>Margins</h5>
+
+            <select id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Cannot be assessed</option>
+                <option>Uninvolved by tumor</option>
+                <option>Involved by tumor</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box6_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box6_3' style='display:none;' placeholder='Specify involved margin'>
+
+
+
+
+
+
+            <hr>
+            <h5>Treatment Effect</h5>
+            <select id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>No known presurgical therapy</option>
+                <option>Not identified</option>
+                <option>Present</option>
+                <option>Cannot be determined</option>
+            </select>
+            <br>
+            <input type="number" class="form-control form-control-sm mt-3 col-sm-6" id='box7_2' style='display:none;' placeholder='Specify % residual viable tumor'>
+
+
+
+
+
+            <hr>
+            <h5>Lymphovascular Invasion</h5>
+            <select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+
+
+
+            <hr>
+            <h5>Pathologic Staging (pTNM)
+
+            </h5>
+
+            <h6>TNM Descriptors (select all that apply)</h6><br>
+            <select id="box9" class='form-control selectpicker form-control-sm col-sm-6' multiple>
+                <option selected value="Not applicable">Not applicable</option>
+                <option>m</option>
+                <option>r</option>
+                <option>y</option>
+            </select>
+            <h6 class='mt-2'>pT</h6>
+            <select id="box10" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pTX">pTX: Primary tumor cannot be assessed</option>
+                <option value="pT0">pT0: No evidence of primary tumor</option>
+                <option value="pT1a">pT1a:  Tumor encapsulated or extending into the mediastinal fat; with no mediastinal pleura involvement</option>
+                <option value="pT1b">pT1b:  Tumor encapsulated or extending into the mediastinal fat; with direct invasion of mediastinal pleura</option>
+                <option value="pT2">pT2: Tumor with direct invasion of the pericardium (either partial or full thickness)</option>
+                <option value="pT3">pT3: Tumor with direct invasion into any of the following: lung, brachiocephalic vein, superior vena cava, phrenic nerve, chest wall, or extrapericardial pulmonary artery or veins</option>
+                <option value="pT4">pT4: Tumor with invasion into any of the following: aorta (ascending, arch, or descending), arch vessels, intrapericardial pulmonary artery, myocardium, trachea, esophagus</option>
+            </select>
+            <br>
+
+            <h6 class='mt-2'>pN</h6>
+            <select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pNX">pNX: Regional lymph nodes cannot be assessed</option>
+                <option value="pN0">pN0: No regional lymph node metastasis</option>
+                <option value="pN1">pN1: Metastasis in anterior (perithymic) lymph nodes</option>
+                <option value="pN2">pN2: Metastasis in deep intrathoracic or cervical lymph nodes</option>
+            </select>
+            <br>
+
+            <h6 class='mt-2'>pM</h6>
+            <select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option selected value='pMx'>pMx: Not applicable</option>
+                <option value="pM1">pM1: Pleural, pericardial, or distant metastasis</option>
+                <option value="pM1a">pM1a: Separate pleural or pericardial nodule(s)</option>
+                <option value="pM1b">pM1b: Pulmonary intraparenchymal nodule or distant organ metastasis</option>
+            </select>
+            <br>
+            <form class="form-inline">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box13" >
+                </label>
+            </form>
+            <div class='lnchk' style='display:none;'><br>
+                <form class="form-inline col-8">
+                    <label class="m-2">Number of lymph nodes examined: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box14" style="width:100px"></label>
+                    <label class="m-2">Number of lymph nodes involved: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box15" style="width:100px"></label>
+                </form>
+            </div>
+
+
+            <hr>
+            <h5>+ Additional Pathologic Findings</h5>
+            <select multiple id="box16" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Age-appropriate involution changes</option>
+                <option>Fibrosis</option>
+                <option>Follicular thymic hyperplasia</option>
+                <option>Epithelial thymic hyperplasia</option>
+                <option>True thymic hyperplasia</option>
+                <option>Cystic changes in tumor</option>
+                <option>Cystic changes in adjacent thymus</option>
+                <option>Other</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box16_2' style='display:none;' placeholder='Specify Other '>
+
+
+
+
+
+            <hr>
+            <h5>+ Ancillary Studies - Immunohistochemistry</h5>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box17" placeholder="Start typing stains, then choose from dropdown ">
+
+
+
+
+
+
+            <!-- end markup-->
+
+            <!-- close markup -->
+        </div>
+        {{> page-partials/cap-footer}}
+        <!-- close row -->
+    </div>
+    {{> page-partials/history-module}}
+    <!-- close container -->
+</div>
+
+
+<!--
+			"specificScripts":
+				[
+					"/js/cap/$-scripts.js",
+				]
+		 -->
