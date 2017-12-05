@@ -74,6 +74,11 @@ $(window).on('load', function() {
             } else {
                 $('#box5_9').hide();
             }
+            if (sel.indexOf('Seminoma') > -1){
+                $('.marsden').show();
+            } else {
+                $('.marsden').hide();
+            }
 
         }
     });
@@ -280,6 +285,7 @@ $(window).on('load', function() {
         else {captext += box_11+" "+box_12+" "+box_13+"\n";}
 
         var box_23 = $("#box23").val();
+        if (box_23 != "Not applicable")
         captext += "\n+ Modified Royal Marsden Staging System:\n- "  + box_23+ "\n";
 
         if ($("#box14").is(':checked')) {
