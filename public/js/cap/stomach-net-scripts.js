@@ -219,9 +219,22 @@ $(window).on('load', function() {
         var box_13 = $("#box13").val();
         var box_14 = $("#box14").val();
         var box_15 = $("#box15").val();
+        var box_15_2 = $("#box15_2").val();
         captext += '\nPathologic Staging (pTNM):\n- ';
-        if (box_12 != "Not applicable"){captext += box_12.join("")+' '+box_13+" "+box_14+" "+box_15+"\n";}
-        else {captext += box_13+" "+box_14+" "+box_15+"\n";}
+        if (box_12 != "Not applicable"){
+            if (box_15_2.length > 0){
+                captext += box_12.join("") + ' ' + box_13 + " " + box_14 + " " + box_15 + "\nMetastatic sites: "+box_15_2+"\n";
+            }else {
+                captext += box_12.join("") + ' ' + box_13 + " " + box_14 + " " + box_15 + "\n";
+            }
+        }
+        else {
+            if (box_15_2.length > 0){
+                captext += box_13 + " " + box_14 + " " + box_15 + "\nMetastatic sites: "+box_15_2+"\n";
+            }else {
+                captext += box_13 + " " + box_14 + " " + box_15 + "\n";
+            }
+            }
 
         if ($("#box16").is(':checked')) {
             var box_17 = $("#box17").val();
