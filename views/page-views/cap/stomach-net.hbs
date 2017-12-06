@@ -90,7 +90,10 @@
 
 
             <hr>
-            <h5>Mitotic Rate</h5>
+            <h5>Mitotic Rate
+            <!-- Button trigger modal -->
+            <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_mitoses">A word about mitotic rate</button>
+            </h5>
             <select id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option><2 mitoses/2 mm2</option>
                 <option>2-20 mitoses/2 mm2</option>
@@ -104,7 +107,10 @@
 
 
             <hr>
-            <h5>Ki-67 Labeling Index</h5>
+            <h5>Ki-67 Labeling Index
+            <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
+               title="Ki-67 index is reported as percent positive tumor cells in area of highest nuclear labeling (“hot spot”), although the precise method of assessment has not been standardized." aria-hidden="true"></i>
+            </h5>
             <select id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option><3%</option>
                 <option>3% to 20%</option>
@@ -311,6 +317,8 @@
 
 
             <!-- end markup-->
+            <!-- Histology help Modal -->
+            {{> page-modals/cap-helpers/stomach-net-mitoses}}
 
             <!-- close markup -->
         </div>
