@@ -70,7 +70,10 @@
 
 
             <hr>
-            <h5>Histologic Type and Grade</h5>
+            <h5>Histologic Type and Grade
+            <!-- Button trigger modal -->
+            <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_stom_grades">Some information about grading</button>
+            </h5>
             <small>
                 Note: For poorly differentiated (high-grade) neuroendocrine carcinomas, the College of American Pathologists (CAP) protocol for carcinoma of the stomach1 should be used.
             </small>
@@ -319,6 +322,7 @@
             <!-- end markup-->
             <!-- Histology help Modal -->
             {{> page-modals/cap-helpers/stomach-net-mitoses}}
+            {{> page-modals/cap-helpers/stomach-net-grading}}
 
             <!-- close markup -->
         </div>
