@@ -98,6 +98,15 @@ $(window).on('load', function () {
         }
     });
 
+    $("#box13").on("change", function(){
+        var sel = $("#box13_2").val();
+        if (sel != "pMx"){
+            $("#box13_2").show();
+        } else {
+            $("#box13_2").hide();
+        }
+    });
+
     $("#box14").on("change", function () {
         if ($(this).is(":checked")) {
             $(".lnchk").show();
@@ -151,11 +160,9 @@ $(window).on('load', function () {
             if ($.trim($(this).val()).length > 0) {
                 $(this).removeClass('empty');
             } else {
-                if ($(this).attr('placeholder').indexOf('applicable') < 0) {
                     $(this).addClass('empty');
                     $('#cap-valid').show();
                 }
-            }
         });
 
         // ***************** END VALIDATION ********************//
@@ -249,13 +256,22 @@ $(window).on('load', function () {
         var box_11 = $("#box11").val();
         var box_12 = $("#box12").val();
         var box_13 = $("#box13").val();
+        var box_13_2 = $("#box13_2").val();
         captext += '\nPathologic Staging (pTNM):\n- ';
-        if (box_10 != "Not applicable") {
-            captext += box_10.join("") + ' ' + box_11 + " " + box_12 + " " + box_13 + "\n";
+        if (box_10 != "Not applicable"){
+            if (box_13 != "pMx"){
+                captext += box_10.join("")+" "+box_11+" "+box_12+" "+box_13+" (metastatic site(s): " + box_13_2 + ")\n";
+            } else {
+                captext += box_10.join("")+" "+box_11+" "+box_12+" "+box_13+"\n";
+            }
+        } else {
+            if (box_13 != "pMx"){
+                captext += box_11+" "+box_12+" "+box_13+" (metastatic site(s): " + box_13_2 + ")\n";
+            } else {
+                captext += box_11+" "+box_12+" "+box_13+"\n";
+            }
         }
-        else {
-            captext += box_11 + " " + box_12 + " " + box_13 + "\n";
-        }
+
 
         if ($("#box14").is(':checked')) {
             var box_15 = $("#box15").val();

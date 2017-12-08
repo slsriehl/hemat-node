@@ -169,10 +169,8 @@ $(window).on('load', function () {
             if ($.trim($(this).val()).length > 0) {
                 $(this).removeClass('empty');
             } else {
-                if ($(this).attr('placeholder').indexOf('applicable') < 0) {
-                    $(this).addClass('empty');
-                    $('#cap-valid').show();
-                }
+                $(this).addClass('empty');
+                $('#cap-valid').show();
             }
         });
 
