@@ -17,7 +17,7 @@
 		<div class="col col-md-8">
 
             <hr>
-            <h5>Procedure</h5><br>
+            <h5>Procedure</h5>
             <select id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option>Intralesional resection</option>
                 <option>Marginal resection</option>
@@ -27,15 +27,17 @@
                 <option>Not specified</option>
             </select>
             <br>
-            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;'
-                   placeholder='Specify Procedure'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;' placeholder='Specify Other'>
+
+
+
 
 
             <hr>
-            <h5>Tumor Site</h5><br>
+            <h5>Tumor Site</h5>
             <select id="box2" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option>Head and neck</option>
-                <option>Trunk and extremities</option>
+                <option selected>Trunk and extremities</option>
                 <option>Abdominal visceral organs</option>
                 <option>Thoracic visceral organs</option>
                 <option>Retroperitoneum</option>
@@ -43,51 +45,56 @@
                 <option>Not specified</option>
             </select>
             <br>
-            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box2_2'
-                   placeholder='Specify site(s) of involvement'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box2_2' placeholder='Specify site'>
 
 
-            <hr>
-            <h5>Tumor Size</h5><br>
-            <input type="text" class="form-control form-control-sm col-sm-6" id="box3" placeholder="cm">
+
 
 
             <hr>
-            <h5>Histologic Type</h5><br>
-            <input type="text" class="form-control form-control-sm col-sm-6" id="box4"
-                   placeholder="Start typing for dropdown">
+            <h5>Tumor Size (cm)</h5>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box3" placeholder="">
+
+
 
 
             <hr>
-            <h5>Mitotic Rate</h5><br>
+            <h5>Histologic Type</h5>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box4" placeholder="Start typing and choose from list...">
+
+
+
+
+            <hr>
+            <h5>Mitotic Rate</h5>
             <form class="form-inline">
                 <div class="form-group">
-                    <label for="">Specify:</label>
-                    <input type="text" class="form-control form-control-sm ml-2 mr-2" id="box5" style="width:50px"
-                           placeholder="0"> /10 high-power fields
+                    <label>Specify:</label>
+                    <input type="number" class="form-control form-control-sm ml-2 mr-2" id="box5" style="width:100px" placeholder="0">			/10 high-power fields
                 </div>
-                <p class="w-100">
-                    <small>note: 1 HPF = 400x field (10x ocular and 40x objective)</small>
-                </p>
+                <p class="w-100"><small>note: 1 HPF x 400 = 0.1734 mm2; X40 objective; most proliferative area</small></p>
             </form>
 
 
+
+
             <hr>
-            <h5>Necrosis</h5><br>
+            <h5>Necrosis</h5>
             <select id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option>Not identified</option>
                 <option>Present</option>
             </select>
             <br>
-            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box6_2' style='display:none;'
-                   placeholder='Specify Extent %'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box6_2' style='display:none;' placeholder='Specify % necrosis'>
+
+
+
 
 
             <hr>
             <h5>Histologic Grade - based on FNCLCC grading scheme<!-- Question trigger modal -->
                 <i class="fa fa-question-circle ml-2" data-toggle="modal" data-target="#help_sarcgrade"></i>
             </h5>
-            <br>
             <select id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option>Grade 1</option>
                 <option>Grade 2</option>
@@ -96,29 +103,30 @@
                 <option>Cannot be assessed</option>
             </select>
 
-            <!-- Sarcoma help Modal -->
-            {{> page-modals/cap-helpers/sarcoma-grade-modal}}
-
-<hr>
 
 
-            <h5>Margins</h5><br>
+
+
+            <hr>
+            <h5>Margins</h5>
+
             <select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option>Cannot be assessed</option>
                 <option>Uninvolved by sarcoma</option>
                 <option>Involved by sarcoma</option>
             </select>
             <br>
-            <input type="text" class="form-control form-control-sm col-sm-6" id='box8_1' style='display:none;'
-                   placeholder='Specify closest margin'><br>
-            <input type="text" class="form-control form-control-sm col-sm-6" id='box8_2' style='display:none;'
-                   placeholder='Specify distance from margin (cm)'>
-            <input type="text" class="form-control form-control-sm col-sm-6" id='box8_3' style='display:none;'
-                   placeholder='Specify involved margin'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box8_1' style='display:none;' placeholder='Specify close (<2.0 cm from tumor) margins'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box8_2' style='display:none;' placeholder='Specify distance from closest margin (cm)'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box8_3' style='display:none;' placeholder='Specify involved margin(s)'>
+
+
+
+
 
 
             <hr>
-            <h5>+ Lymphovascular Invasion</h5><br>
+            <h5>+ Lymphovascular Invasion</h5>
             <select id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option>Not identified</option>
                 <option>Present</option>
@@ -126,129 +134,78 @@
             </select>
 
 
-<hr>
 
 
-            <h5>Pathologic Staging (pTNM)</h5><br>
 
-            <h6>TNM Descriptors (select all that apply)</h6>
+            <hr>
+            <h5>Pathologic Staging (pTNM)
+
+            </h5>
+
+            <h6>TNM Descriptors (select all that apply)</h6><br>
             <select id="box10" class='form-control selectpicker form-control-sm col-sm-6' multiple>
                 <option selected value="Not applicable">Not applicable</option>
                 <option>m</option>
                 <option>r</option>
                 <option>y</option>
             </select>
-            <br>
-
-            <h6>pT</h6>
+            <h6 class='mt-2'>pT</h6>
             <select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
-
-                <optgroup label="Head and Neck">
-                    <option value="pTX">pTX: Primary tumor cannot be assessed</option>
-                    <option value="pT1">pT1: Tumor ≤2 cm</option>
-                    <option value="pT2">pT2: Tumor >2 to ≤4 cm</option>
-                    <option value="pT3">pT3: Tumor >4 cm</option>
-                    <option value="pT4">pT4: Tumor with invasion of adjoining structures</option>
-                    <option value="pT4a">pT4a: Tumor with orbital invasion, skull base/dural invasion, invasion of
-                        central compartment viscera,involvement of facial skeleton, or invasion of pterygoid muscles
-                    </option>
-                    <option value=" pT4b">pT4b: Tumor with brain parenchymal invasion, carotid artery encasement,
-                        prevertebral muscle invasion, or central nervous system involvement via perineural spread
-                </optgroup>
-
-                <optgroup label="Trunk and Extremities">
-                    <option value="pTX">pTX: Primary tumor cannot be assessed</option>
-                    <option value="pT0">pT0: No evidence of primary tumor</option>
-                    <option value="pT1">pT1: Tumor 5 cm or less in greatest dimension</option>
-                    <option value="pT2">pT2: Tumor more than 5 cm and less than or equal to 10 cm in greatest
-                        dimension
-                    </option>
-                    <option value="pT3">pT3: Tumor more than 10 cm and less than or equal to 15 cm in greatest
-                        dimension
-                    </option>
-                    <option value="pT4">pT4: Tumor more than 15 cm in greatest dimension
-                </optgroup>
-                <optgroup label="Abdomen and Thoracic Visceral Organs">
-                    <option value="pTX">pTX: Primary tumor cannot be assessed</option>
-                    <option value="pT1">pT1: Organ confined</option>
-                    <option value="pT2">pT2: Tumor extension into tissue beyond organ</option>
-                    <option value="pT2a">pT2a: Invades serosa or visceral peritoneum</option>
-                    <option value="pT2b">pT2b: Extension beyond serosa (mesentery)</option>
-                    <option value="pT3">pT3: Invades another organ</option>
-                    <option value="pT4">pT4: Multifocal involvement</option>
-                    <option value="pT4a">pT4a: Multifocal (2 sites)</option>
-                    <option value="pT4b">pT4b: Multifocal (3-5 sites)</option>
-                    <option value="pT4c">pT4c: Multifocal (>5 sites)</option>
-                </optgroup>
-                <optgroup label="Retroperitoneum">
-                    <option value="pTX">pTX: Primary tumor cannot be assessed</option>
-                    <option value="pT0">__ pT0: No evidence of primary tumor</option>
-                    <option value="pT1">pT1: Tumor 5 cm or less in greatest dimension</option>
-                    <option value="pT2">pT2: Tumor more than 5 cm and less than or equal to 10 cm in greatest
-                        dimension
-                    </option>
-                    <option value="pT3">pT3: Tumor more than 10 cm and less than or equal to 15 cm in greatest
-                        dimension
-                    </option>
-                    <option value="pT4">pT4: Tumor more than 15 cm in greatest dimension</option>
-                </optgroup>
-                <optgroup label="Orbit">
-                    <option value="pTX">pTX: Primary tumor cannot be assessed</option>
-                    <option value="pT0">pT0: No evidence of primary tumor</option>
-                    <option value="pT1">pT1: Tumor ≤2 cm in greatest dimension</option>
-                    <option value="pT2">pT2: Tumor >2 cm in greatest dimension without invasion of bony walls or globe
-                    </option>
-                    <option value="pT3">pT3: Tumor of any size with invasion of bony walls</option>
-                    <option value="pT4">pT4: Tumor of any size with invasion of globe or periorbital structures,
-                        including eyelid, conjunctiva, temporal fossa, nasal cavity, paranasal sinuses, and/or central
-                        nervous system
-                    </option>
-                </optgroup>
+                <option value="pTX">pTX: Primary tumor cannot be assessed</option>
+                <option value="pT0">pT0: No evidence of primary tumor</option>
+                <option value="pT1">pT1: Tumor 5 cm or less in greatest dimension</option>
+                <option value="pT2">pT2: Tumor more than 5 cm and less than or equal to 10 cm in greatest dimension</option>
+                <option value="pT3">pT3: Tumor more than 10 cm and less than or equal to 15 cm in greatest dimension</option>
+                <option value="pT4">pT4: Tumor more than 15 cm in greatest dimension</option>
             </select>
             <br>
-            <h6>pN</h6>
+
+            <h6 class='mt-2'>pN</h6>
             <select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option value="pN0">pN0: No regional lymph node metastasis or unknown lymph node status</option>
                 <option value="pN1">pN1: Regional lymph node metastasis</option>
             </select>
             <br>
-            <h6>pM</h6>
+
+            <h6 class='mt-2'>pM</h6>
             <select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
-                <option value="pMX">pMX: Not applicable</option>
+                <option selected value='pMx'>pMx: Not applicable</option>
                 <option value="pM1">pM1: Distant metastasis</option>
             </select>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box13_2' style='display:none;' placeholder='Specify metastatic sites'>
+
             <br>
             <form class="form-inline">
                 <label class="form-check-label">Check here if any lymph nodes submitted?
-                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box14">
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box14" >
                 </label>
             </form>
             <div class='lnchk' style='display:none;'><br>
-                Number of lymph nodes examined: <input type="text" class="form-control form-control-sm col-sm-6"
-                                                       id="box15" style="width:50px"><br>
-                Number of lymph nodes involved: <input type="text" class="form-control form-control-sm col-sm-6"
-                                                       id="box16" style="width:50px"></div>
+                <form class="form-inline col-8">
+                    <label class="m-2">Number of lymph nodes examined: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box15" style="width:100px"></label>
+                    <label class="m-2">Number of lymph nodes involved: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box16" style="width:100px"></label>
+                </form>
+            </div>
+
+            <hr>
+            <h5>Ancillary Studies</h5><br>
+
+            <h6>Immunohistochemistry</h6>
+            <input type="text" class="form-control form-control-sm col-sm-6 mb-3" id="box17" placeholder="Start typing and choose from list...">
+
+
+            <h6>Cytogenetics</h6>
+            <input type="text" class="form-control form-control-sm col-sm-6 mb-3" id="box18" placeholder="Specify">
+
+
+            <h6>Molecular testing</h6>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box19" placeholder="Specify">
+
+
 
 
             <hr>
-            <h5>Ancillary Studies</h5>
-            <hr>
-            <h5>Immunohistochemistry</h5><br>
-            <input type="text" class="form-control form-control-sm col-sm-6" id="box17" placeholder="Not performed">
-
-
-            <hr>
-            <h5>Cytogenetics</h5><br>
-            <input type="text" class="form-control form-control-sm col-sm-6" id="box18" placeholder="Not performed">
-
-
-            <hr>
-            <h5>Molecular Pathology</h5><br>
-            <input type="text" class="form-control form-control-sm col-sm-6" id="box19" placeholder="Not performed">
-
-
-            <hr>
-            <h5>+ Preresection Treatment</h5><br>
+            <h5>+ Preresection Treatment</h5>
             <select id="box20" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option>No known preresection therapy</option>
                 <option>Chemotherapy performed</option>
@@ -258,22 +215,22 @@
             </select>
 
 
+
+
+
             <hr>
-            <h5>Treatment Effect</h5><br>
+            <h5>Treatment Effect</h5>
             <select id="box21" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option>No known presurgical therapy</option>
                 <option>Not identified</option>
                 <option>Present</option>
                 <option>Cannot be determined</option>
             </select>
-            <br>
-            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box21_2' style='display:none;'
-                   placeholder='Specify % viable tumor'>
 
-
-            <hr>
 
             <!-- close column -->
+            <!-- Sarcoma help Modal -->
+            {{> page-modals/cap-helpers/sarcoma-grade-modal}}
 			</div>
 			{{> page-partials/cap-footer}}
 	<!-- close row -->

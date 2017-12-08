@@ -200,14 +200,30 @@ $(window).on('load', function() {
 // *************************************************************/
     $('.writeReport').on('click', function () {
 
-        $('input[type="text"]').each(function () {
-            if ($(this).val().length < 1) {
-                $(this).val($(this).attr('placeholder'));
-            }
-            if ($(this).val().length < 1) {
-                $(this).addClass('empty')
+// ***************** INPUT VALIDATION ********************//
+        $('select[multiple]:visible').each(function() {
+            // Check if at least one selection is made
+            if($(this).val().length > 0) {
+                $(this).removeClass('empty');
+            } else {
+                $(this).addClass('empty');
+                $('#cap-valid').show();
             }
         });
+
+        $('input[type="text"]:visible').each(function() {
+            // Check if at least one selection is made
+            if($.trim($(this).val()).length > 0) {
+                $(this).removeClass('empty');
+            } else {
+                if ($(this).attr('placeholder').indexOf('applicable') < 0) {
+                    $(this).addClass('empty');
+                    $('#cap-valid').show();
+                }
+            }
+        });
+
+        // ***************** END VALIDATION ********************//
 
         var captext = "_____ Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
 
