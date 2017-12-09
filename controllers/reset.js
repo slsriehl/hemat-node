@@ -226,7 +226,7 @@ const controller = {
 				subject: 'Reset your password at hematogones.com',
 				html: `<p>Thanks for using hematogones.com.  To reset your password, please follow the following link or paste it into your browser. <a href="${req.protocol}://${myUrlRoot}/reset/${result.dataValues.ResetTokens[0].dataValues.code}" target='_blank'>${myUrlRoot}/reset/${result.dataValues.ResetTokens[0].dataValues.code}</a>.</p><p>This link will expire in 24 hours, so if it's been longer than that, please <a href="${myUrlRoot}/reset/request">request another reset link</a>.</p>`
 			}
-			//console.log(transporter);
+			console.log(transporter);
 			return transporter(mailOptions)
 		})
 		.then((response) => {

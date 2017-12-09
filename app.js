@@ -72,6 +72,10 @@ app.use(session({
 	}
 }));
 
+//++++++ middleware for unauth system messages ++++++
+let unAuthMsg = require('./routes/middleware/logged-out-messages');
+app.use(unAuthMsg);
+
 // ++++++ Express routes ++++++
 const userRoutes = require('./routes/user');
 

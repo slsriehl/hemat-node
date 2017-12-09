@@ -99,7 +99,9 @@ const controller = {
 				console.log(result);
 				req.session.app = result.dataValues.id;
 				res.render(renderPath, {
-					messages: [{
+					messages: [
+						...req.session.unAuthSystemMessages,
+						{
 						text: '<a href="/user/signup">Sign up</a> to save, edit, and PDF your reports and access more resources.',
 						id: 'you-should-sign-up'
 					}],
