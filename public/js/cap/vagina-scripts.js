@@ -99,7 +99,7 @@ $(window).on('load', function () {
     });
 
     $("#box13").on("change", function(){
-        var sel = $("#box13_2").val();
+        var sel = $("#box13").val();
         if (sel != "pMx"){
             $("#box13_2").show();
         } else {

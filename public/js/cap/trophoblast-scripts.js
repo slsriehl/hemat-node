@@ -253,16 +253,16 @@ $(window).on('load', function() {
             var trig1_box_16 = box_16.filter(el => el.indexOf("Lymph") > -1);
             var trig2_box_16 = box_16.filter(el => el.indexOf("Other") > -1);
             if ((trig1_box_16.length > 0 ) && (trig2_box_16.length == 0  )) {
-                captext += "\nSpecify metastatic sites:\n- " + box_16.join("\n- ").replace(/Lymph node\(s\)/, "Lymph nodes: " + box_16_2) + "\n";
+                captext += "\nMetastatic sites:\n- " + box_16.join("\n- ").replace(/Lymph node\(s\)/, "Lymph nodes: " + box_16_2) + "\n";
             }
             else if ((trig1_box_16.length == 0 ) && (trig2_box_16.length > 0  )) {
-                captext += "\nSpecify metastatic sites:\n- " + box_16.join("\n- ").replace(/Other/, box_16_3) + "\n";
+                captext += "\nMetastatic sites:\n- " + box_16.join("\n- ").replace(/Other/, box_16_3) + "\n";
             }
             else if ((trig1_box_16.length > 0 ) && (trig2_box_16.length > 0  )) {
-                captext += "\nSpecify metastatic sites:\n- " + box_16.join("\n- ").replace(/Lymph node\(s\)/, "Lymph nodes: " + box_16_2).replace(/Other/, box_16_3) + "\n";
+                captext += "\nMetastatic sites:\n- " + box_16.join("\n- ").replace(/Lymph node\(s\)/, "Lymph nodes: " + box_16_2).replace(/Other/, box_16_3) + "\n";
             }
             else {
-                captext += "\nSpecify metastatic sites:\n- " + box_16.join("\n- ") + "\n";
+                captext += "\nMetastatic sites:\n- " + box_16.join("\n- ") + "\n";
             }
         }
 

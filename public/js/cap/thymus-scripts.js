@@ -130,6 +130,15 @@ $(window).on('load', function() {
             $(".lnchk").hide();}
     });
 
+    $("#box12").on("change", function(){
+        var sel = $("#box12").val();
+        if (sel == "pM1b"){
+            $("#box12_2").show();
+        } else {
+            $("#box12_2").hide();
+        }
+    });
+
     $('#box16').on("change", function(){
         var sel = $('#box16').val();
         if ($.inArray('Other ', sel) >-1) {
@@ -228,9 +237,21 @@ $(window).on('load', function() {
         var box_10 = $("#box10").val();
         var box_11 = $("#box11").val();
         var box_12 = $("#box12").val();
+        var box_12_2 = $("#box12_2").val();
         captext += '\nPathologic Staging (pTNM):\n- ';
-        if (box_9 != "Not applicable"){captext += box_9.join("")+' '+box_10+" "+box_11+" "+box_12+"\n";}
-        else {captext += box_10+" "+box_11+" "+box_12+"\n";}
+        if (box_9 != "Not applicable"){
+            if (box_12 == "pM1b"){
+                captext += box_9.join("")+" "+box_10+" "+box_11+" "+box_12+" (metastatic site(s): " + box_12_2 + ")\n";
+            } else {
+                captext += box_9.join("")+" "+box_10+" "+box_11+" "+box_12+"\n";
+            }
+        } else {
+            if (box_12 == "pM1b"){
+                captext += box_10+" "+box_11+" "+box_12+" (metastatic site(s): " + box_12_2 + ")\n";
+            } else {
+                captext += box_10+" "+box_11+" "+box_12+"\n";
+            }
+        }
 
         if ($("#box13").is(':checked')) {
             var box_14 = $("#box14").val();
