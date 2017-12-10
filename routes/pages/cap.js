@@ -188,6 +188,18 @@ router.get('/cap/salivary-t', (req, res) => {
 	]);
 });
 
+router.get('/cap/skin-merkel', (req, res) => {
+    controller.userWall(req, res, './page-views/cap/skin-merkel.hbs', [
+    "/js/cap/skin-merkel-scripts.js",
+]);
+});
+
+router.get('/cap/small-intestine', (req, res) => {
+    controller.userWall(req, res, './page-views/cap/small-intestine.hbs', [
+    "/js/cap/small-intestine-scripts.js",
+]);
+});
+
 router.get('/cap/stomach', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/stomach.hbs', [
 		"/js/cap/stomach-scripts.js",
