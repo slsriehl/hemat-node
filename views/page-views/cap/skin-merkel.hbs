@@ -1,0 +1,234 @@
+<div class="container-fluid">
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+        <li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Skin: Merkel Cell carcinoma</li>
+    </ol>
+    {{> message-center this}}
+    {{> page-partials/cap-header}}
+
+    <div class="row">
+        {{> page-partials/cap-validate-alert}}
+        <div class="col col-md-8">
+
+            <!-- paste markup here-->
+            <hr>
+            <h5>Procedure (select all that apply)</h5>
+            <select multiple id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Excision</option>
+                <option>Re-excision</option>
+                <option>Lymphadenectomy, sentinel node(s)</option>
+                <option>Lymphadenectomy, regional nodes </option>
+                <option>Other</option>
+                <option>Not specified</option>
+            </select>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;' placeholder='Specify regional nodes'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_3' style='display:none;' placeholder='Specify Other procedure'>
+
+
+
+
+
+            <hr>
+            <h5>Tumor Site</h5>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box2" placeholder="">
+
+
+
+
+            <hr>
+            <h5>Tumor Size (cm)</h5>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box3" placeholder="">
+
+
+
+            <hr>
+            <h5>+ Tumor thickness</h5>
+            <div class="card-block">There are published and unpublished data from 3 independent prospective cohorts of
+                Merkel cell carcinoma (MCC) patients examining tumor thickness (measured in millimeters from the stratum granulosum
+                to the deepest infiltrating tumor cells) as a prognostic indicator for outcome.</div>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box18" placeholder="if transected, indicate 'at least x mm' ">
+
+
+
+            <hr>
+            <h5>Margins - Peripheral</h5>
+
+            <select id="box4" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Cannot be assessed</option>
+                <option>Uninvolved by carcinoma</option>
+                <option>Involved by carcinoma</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box4_1' style='display:none;' placeholder='Specify closest margin'><br>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box4_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box4_3' style='display:none;' placeholder='Specify involved margin'>
+
+
+
+
+
+
+            <hr>
+            <h5>Margins - Deep</h5>
+
+            <select id="box5" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Cannot be assessed</option>
+                <option>Uninvolved by carcinoma</option>
+                <option>Involved by carcinoma</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box5_1' style='display:none;' placeholder='Specify closest margin'><br>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box5_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box5_3' style='display:none;' placeholder='Specify involved margin'>
+
+
+
+
+
+
+            <hr>
+            <h5>Lymphovascular Invasion</h5>
+            <select id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+
+
+
+            <hr>
+            <h5>Tumor Extension</h5>
+            <select multiple id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Tumor invades bone</option>
+                <option>Tumor invades muscle</option>
+                <option>Tumor invades fascia</option>
+                <option>Tumor invades cartilage</option>
+                <option>Other</option>
+                <option>Cannot be assessed</option>
+                <option>Not applicable</option>
+            </select>
+            <br>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box7_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr>
+            <h5>+ Tumor-Infiltrating Lymphocytes
+            <!-- Button trigger modal -->
+            <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_til">About TILs</button>
+            </h5>
+            <select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present, nonbrisk</option>
+                <option>Present, brisk</option>
+            </select>
+
+
+
+
+
+            <hr>
+            <h5>+ Tumor Growth Pattern</h5>
+            <select id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Nodular</option>
+                <option>Infiltrative</option>
+            </select>
+
+
+
+
+
+            <hr>
+            <h5>Pathologic Staging (pTNM)
+
+            </h5>
+
+            <h6>TNM Descriptors (select all that apply)</h6><br>
+            <select id="box10" class='form-control selectpicker form-control-sm col-sm-6' multiple>
+                <option selected value="Not applicable">Not applicable</option>
+                <option>m</option>
+                <option>r</option>
+                <option>y</option>
+            </select>
+            <h6 class='mt-2'>pT</h6>
+            <select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pTX">pTX: Primary tumor cannot be assessed (eg, curetted)</option>
+                <option value="pT0">pT0: No evidence of primary tumor</option>
+                <option value="pTis">pTis: In situ primary tumor</option>
+                <option value="pT1">pT1: Maximum clinical tumor diameter ≤2 cm</option>
+                <option value="pT2">pT2: Maximum clinical tumor diameter >2 but ≤5 cm</option>
+                <option value="pT3">pT3: Maximum clinical tumor diameter >5 cm</option>
+                <option value="pT4">pT4: Primary tumor invades bone, muscle, fascia, or cartilage</option>
+            </select>
+            <br>
+
+            <h6 class='mt-2'>pN</h6>
+            <select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pNX">pNX: Regional lymph nodes cannot be assessed (eg, previously removed for another reason or not removed for pathological evaluation)</option>
+                <option value="pN0">pN0: No regional lymph node metastasis detected on pathological evaluation</option>
+                <option value="pN1">pN1: Metastasis in regional lymph node(s)</option>
+                <option value="pN1a(sn)">pN1a(sn): Clinically occult regional lymph node metastasis identified only by sentinel lymph node biopsy</option>
+                <option value="pN1a">pN1a: Clinically occult regional lymph node metastasis following lymph node dissection</option>
+                <option value="pN1b">pN1b: Clinically and/or radiologically detected regional lymph node metastasis#</option>
+                <option value="pN2">pN2: In transit metastasis (discontinuous from primary tumor; located between primary tumor and draining regional nodal basin, or distal to the primary tumor) without lymph node metastasis</option>
+                <option value="pN3">pN3: In transit metastasis (discontinuous from primary tumor; located between primary tumor and draining regional nodal basin, or distal to the primary tumor) with lymph node metastasis</option>
+            </select>
+            <br>
+
+            <h6 class='mt-2'>pM</h6>
+            <select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option selected value='pMx'>pMx: Not applicable</option>
+                <option value="pM1a">pM1a: Metastasis to distant skin, distant subcutaneous tissue, or distant lymph node(s), microscopically confirmed</option>
+                <option value="pM1b">pM1b: Metastasis to lung, microscopically confirmed</option>
+                <option value="pM1c">pM1c: Metastasis to all other distant sites, microscopically confirmed</option>
+            </select>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box13_2" style="display:none;" placeholder="Specify metastatic sites">
+            <br>
+            <form class="form-inline">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box14" >
+                </label>
+            </form>
+            <div class='lnchk' style='display:none;'><br>
+                <form class="form-inline col-8">
+                    <label class="m-2">Number of lymph nodes examined: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box15" style="width:100px"></label>
+                    <label class="m-2">Number of Sentinel Nodes Examined: <input type="text" class="form-control form-control-sm col-sm-6" id="box17" placeholder=""> </label>
+                    <label class="m-2">Number of lymph nodes involved: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box16" style="width:100px"></label>
+                </form>
+            </div>
+
+
+
+
+
+
+
+            <!-- end markup-->
+            <!-- TIL help Modal -->
+            {{> page-modals/cap-helpers/merkel-til}}
+
+            <!-- close markup -->
+        </div>
+        {{> page-partials/cap-footer}}
+        <!-- close row -->
+    </div>
+    {{> page-partials/history-module}}
+    <!-- close container -->
+</div>
+
+
+<!--
+			"specificScripts":
+				[
+					"/js/cap/$-scripts.js",
+				]
+		 -->
