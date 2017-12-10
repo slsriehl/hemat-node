@@ -5,7 +5,7 @@
 			<a href="/">Home</a>
 		</li>
 		<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
-		<li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Skin: Melanoma (Excisions)</li>
+		<li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Skin: Melanoma (Biopsy or Excisions)</li>
 	</ol>
 	{{> message-center this}}
 	{{> page-partials/cap-header}}
@@ -19,6 +19,9 @@
 			<hr>
 			<h5>Procedure (select all that apply)</h5>
 			<select multiple id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
+				<option>Biopsy, shave</option>
+				<option>Biopsy, punch</option>
+				<option>Biopsy, incisional</option>
 				<option>Excision</option>
 				<option>Re-excision</option>
 				<option>Sentinel node(s) biopsy</option>

@@ -149,7 +149,7 @@ $(window).on('load', function() {
 
 
 
-        var captext = "Cutaneous Melanoma (Excision) Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
+        var captext = "Cutaneous Melanoma Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
 
         var box_1 = $("#box1").val();
         var box_1_2 = $("#box1_2").val();
