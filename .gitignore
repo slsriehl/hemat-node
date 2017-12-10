@@ -4,7 +4,6 @@ bower_components
 config
 to-dos.md
 reports/*/*
-errors
 npm-debug.log
 mochawesome-report
 test-send.tar.gz

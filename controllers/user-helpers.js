@@ -24,9 +24,10 @@ const helpers = {
 		return bcrypt.compareSync(password, hash);
 	},
 	getSystemMessages: (req, res, renderPath) => {
+		req.session.unAuthSystemMessages = [];
 		const thisDate = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss').toString();
 		console.log(thisDate);
-		return models.sequelize.query("SELECT sm.id, sm.message FROM SystemMessages sm WHERE NOT EXISTS (SELECT dm.messageId FROM DismissedMessages dm LEFT JOIN Users u ON dm.userId = u.id WHERE sm.id = dm.messageId AND u.id = " + req.session.user + ") AND sm.expires >= '" + thisDate + "';", {
+		return models.sequelize.query("SELECT sm.id, sm.message FROM SystemMessages sm WHERE sm.auth = true AND NOT EXISTS (SELECT dm.messageId FROM DismissedMessages dm LEFT JOIN Users u ON dm.userId = u.id WHERE sm.id = dm.messageId AND u.id = " + req.session.user + ") AND sm.expires >= '" + thisDate + "';", {
 			type: models.Sequelize.QueryTypes.SELECT
 		})
 		.then((results) => {

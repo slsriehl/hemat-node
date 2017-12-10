@@ -250,7 +250,9 @@ const controller = {
 				req.session.destroy();
 			}
 			res.render('index.hbs', {
-				messages: [{
+				messages: [
+					...req.session.unAuthSystemMessages,
+					{
 					text: loggedOutMessage,
 					id: loggedOutMessageType
 				}]
@@ -258,7 +260,9 @@ const controller = {
 		} else {
 			//if the user isn't logged in and doesn't need to get any messages
 			console.log('index no cookie no message');
-			res.render('index.hbs');
+			res.render('index.hbs', {
+				messages: req.session.unAuthSystemMessages
+			});
 		}
 	},
 	//display settings page
