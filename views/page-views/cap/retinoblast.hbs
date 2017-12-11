@@ -1,264 +1,305 @@
 <div class="container-fluid">
-		<!-- Breadcrumbs -->
-		<ol class="breadcrumb">
-				<li class="breadcrumb-item">
-						<a href="/">Home</a>
-				</li>
-				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
-				<li class="breadcrumb-item active" id="bc-jump"><i class="fa fa-flask mr-2"></i>RETINOBLASTOMA: Enucleation, Partial or Complete Exenteration</li>
-		</ol>
-
- {{> message-center this}}
-
-
-		{{> page-partials/cap-header}}
+	<!-- Breadcrumbs -->
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item">
+			<a href="/">Home</a>
+		</li>
+		<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+		<li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Retinoblastoma</li>
+	</ol>
+	{{> message-center this}}
+	{{> page-partials/cap-header}}
 
 	<div class="row">
+		{{> page-partials/cap-validate-alert}}
 		<div class="col col-md-8">
 
-	<h5>Procedure</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box1">
-	<option>Enucleation</option>
-	<option>Partial exenteration</option>
-	<option>Complete exenteration</option>
-	<option>Other (specify)</option>
-	<option>Not specified</option>
-	<option></option>
-	</select><br>
-	<input type="text" class="form-control form-control-sm "  id='box1_2' style='display:none;' placeholder='Length of optic nerve (mm)'><br>
-	<input type="text" class="form-control form-control-sm "  id='box1_3' style='display:none;' placeholder='Specify'>
+			<!-- paste markup here-->
 
-<hr>
-
-	<h5>Specimen Laterality</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box2">
-	<option>Right</option>
-	<option>Left</option>
-	<option>Not specified</option>
-	<option></option>
-	</select>
-
-<hr>
-
-	<h5>Tumor Site (macroscopic examination/transillumination) (select all that apply)</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box4" multiple>
-	<option selected>Cannot be determined</option>
-	<option>Superotemporal quadrant of globe</option>
-	<option>Superonasal quadrant of globe</option>
-	<option>Inferotemporal quadrant of globe</option>
-	<option>Inferonasal quadrant of globe</option>
-	<option> Other:</option>
-	</select>
-	<input type="text" class="form-control form-control-sm "  id="box4_2" style="display:none" placeholder="Enter other tumor site" size="40">
-
-<hr>
-
-	<h5>Tumor Size After Sectioning (Notes G, H)</h5><br>
-	<input class="form-check-input" type="checkbox" id="box6" value="Cannot be determined"> Cannot be determined<br>
-	<table class="table">
-	<tr><th>Dimension</th><th>Size</th></tr>
-	<tr><td>Greatest basal diameter </td><td><input type="text" class="form-control form-control-sm "  id="box6_2"  placeholder="" >mm</td></tr>
-	<tr><td>Greatest height:</td><td><input type="text" class="form-control form-control-sm "  id="box6_3"  placeholder="" >mm</td></tr>
-	</table>
-
-<hr>
-
-	<h5>Tumor Site After Sectioning</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box7">
-	<option>Cannot be determined</option>
-	<option>Superonasal</option>
-	<option>Inferonasal</option>
-	<option>Superotemporal</option>
-	<option>Inferotemporal</option>
-	</select>
-
-<hr>
-
-	<h5>Tumor Involvement of Other Ocular Structures (select all that apply)</h5><br>
-	<select class="form-control selectpicker form-control-sm "  multiple id="box8">
-	<option>Cannot be determined</option>
-	<option>Cornea</option>
-	<option>Anterior chamber</option>
-	<option>Iris</option>
-	<option>Angle</option>
-	<option>Lens</option>
-	<option>Ciliary body</option>
-	<option>Vitreous</option>
-	<option>Retina</option>
-	<option>Sub-retinal space</option>
-	<option>Optic disc</option>
-	<option>Choroid, minimal (solid tumor nest less than 3 mm in maximum diameter [width or thickness])</option>
-	<option>Choroid, massive (solid tumor nest 3 mm or more in maximum diameter [width or thickness])</option>
-	<option>Sclera</option>
-	<option>Vortex vein</option>
-	<option>Orbit</option>
-	<option>Other:</option>
-	</select><br>
-	<input type="text" class="form-control form-control-sm "  id='box8_2' style='display:none;' placeholder='Specify'>
-
-<hr>
-
-	<h5>Growth Pattern (Note L)</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box10">
-	<option>Cannot be determined</option>
-	<option>Endophytic </option>
-	<option>Exophytic</option>
-	<option>Combined endophytic/exophytic</option>
-	<option>Diffuse</option>
-	<option>Anterior Diffuse</option>
-	</select>
-
-<hr>
-
-	<h5>Extent of Optic Nerve Invasion</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box11">
-	<option>Cannot be determined</option>
-	<option>None</option>
-	<option>Anterior to lamina cribrosa</option>
-	<option>At lamina cribrosa</option>
-	<option>Posterior to lamina cribrosa but not to end of nerve</option>
-	<option>To cut end of optic nerve</option>
-	</select>
-
-<hr>
-
-	<h5>Histologic Grade</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box12">
-	<option selected value='pGX'>pGX: Grade cannot be assessed</option>
-	<option value='pG1'>pG1: Well differentiated</option>
-	<option value='pG2'>pG2: Moderately differentiated</option>
-	<option value='pG3'>pG3: Poorly differentiated</option>
-	<option value='pG4'>pG4: Undifferentiated</option>
-	</select>
-
-<hr>
-
-	<h5>Histologic Features (select all that apply)</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box9" multiple>
-	<option>Cannot be determined</option>
-	<option>Undifferentiated</option>
-	<option value="Differentiated">Differentiated, select features:</option>
-	<option>Necrotic</option>
-	</select>
-
-<hr>
-
-	<div class='histo' style="display:none">
-	<select class="form-control selectpicker form-control-sm "  id="box9_2" multiple>
-	<option>Homer Wright rosettes</option>
-	<option>Flexner-Wintersteiner rosettes</option>
-	<option>Fleurettes</option>
-	</select>
-	</div>
-
-<hr>
-
-	<h5>+ Anaplasia Grade</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box9_3">
-	<option>Cannot be determined</option>
-	<option>No anaplasia present</option>
-	<option>Mild</option>
-	<option>Moderate</option>
-	<option>Severe</option>
-	</select>
-
-<hr>
-
-	<h5>Margins (select all that apply)</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box13">
-	<option selected>No tumor at margins</option>
-	<option>Cannot be assessed</option>
-	<option>Tumor present at surgical margin of optic nerve</option>
-	<option value="Extrascleral extension">Extrascleral extension (for enucleation specimens)</option>
-	<option>Other margin(s) involved:</option>
-	</select>
-	<input type="text" class="form-control form-control-sm "  id="box13_2" style="display:none" placeholder='Specify other margin' >
-
-<hr>
-
-	<h5>Pathologic Staging (pTNM) (Note F)</h5><br>
-	<br>
-	<h5>TNM Descriptors (required only if applicable) (select all that apply) </h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box14" multiple >
-	<option selected>Not applicable</option>
-	<option value='m'> m (multiple primary tumors)</option>
-	<option value='r'> r (recurrent)</option>
-	<option value='y'> y (posttreatment)</option>
-	</select>
-
-<hr>
-
-	<h5>Primary Tumor (pT)</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box15" >
-	<option selected value='pTX'> pTX:	Cannot be assessed</option>
-	<option value='pT0'>pT0:	No evidence of primary tumor</option>
-	<option value='pT1'>pT1:	Tumor confined to the eye with no optic nerve or choroidal invasion</option>
-	<option value='pT2a'>pT2a:	Tumor superficially invades optic nerve head but does not extend past lamina cribrosa or tumor exhibits focal choroidal invasion</option>
-	<option value='pT2b'>pT2b:	Tumor superficially invades optic nerve head but does not extend past lamina cribrosa and exhibits focal choroidal invasion</option>
-	<option value='pT3a'>pT3a:	Tumor invades optic nerve past lamina cribrosa but not to surgical resection line or tumor exhibits massive choroidal invasion</option>
-	<option value='pT3b'>pT3b:	Tumor invades optic nerve past lamina cribrosa but not to surgical resection line and exhibits massive choroidal invasion</option>
-	<option value='pT4a'>pT4a:	Tumor invades optic nerve to resection line but no extra-ocular extension identified</option>
-	<option value='pT4b'>pT4b:	Tumor invades optic nerve to resection line and extra-ocular extension identified</option>
-	</select>
-
-<hr>
-
-	<h5>Regional Lymph Nodes (pN)</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box16" >
-	<option selected value='pNX'> pNX:	Regional lymph nodes cannot be assessed </option>
-	<option value='pN0'>pN0: 	No regional lymph node involvement</option>
-	<option value='pN1'>pN1: 	Regional lymph node involvement (preauricular, cervical, submandibular)</option>
-	<option value='pN2'>pN2: 	Distant lymph node involvement</option>
- 	</select>
-
-<hr>
-
-	<h5>Distant Metastasis (pM)</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box17" >
-	<option selected value='pMX' > Not applicable</option>
-	<option value='pM1'>pM1: 	Metastasis to sites other than CNS</option>
-	<option value='pM1a'>pM1a: 	Single lesion</option>
-	<option value='pM1b'>pM1b:	Multiple lesions</option>
-	<option value='pM1c'>pM1c: 	CNS metastasis</option>
-	<option value='pM1d'>pM1d: 	Discrete mass(es) without leptomeningeal and/or CSF involvement</option>
-	<option value='pM1e'>pM1e: 	Leptomeningeal and/or CSF involvement</option>
-	</select>
-
-<hr>
-
-	<h5>+ Additional Pathologic Findings (select all that apply)</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box18" multiple >
-	<option selected>None identified</option>
-	<option>Calcifications</option>
-	<option>Mitotic rate (per 40x field):</option>
-	<option>Apoptosis</option>
-	<option>Basophilic vascular deposits</option>
-	<option>Inflammatory cells</option>
-	<option>Hemorrhage</option>
-	<option>Neovascularization</option>
-	<option>Retinal detachement</option>
-	<option>Other:</option>
-	</select><br>
-	<input type="text" class="form-control form-control-sm "  id="box18_2" style="display:none" placeholder='Specify mitotic rate' >
-	<input type="text" class="form-control form-control-sm "  id="box18_3" style="display:none" placeholder='Specify site of neovascularization' >
-	<input type="text" class="form-control form-control-sm "  id="box18_4" style="display:none" placeholder='Specify other findings' >
-
-<hr>
+			<hr>
+			<h5>Procedure</h5>
+			<select id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
+				<option>Enucleation</option>
+				<option>Partial exenteration</option>
+				<option>Complete exenteration</option>
+				<option>Other</option>
+				<option>Not specified</option>
+			</select>
+			<input type="number" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2'  placeholder='Specify length of optic nerve (mm)'>
+			<input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_3' style='display:none;' placeholder='Specify Other'>
 
 
-	<!-- close column -->
+
+
+
+			<hr>
+			<h5>Specimen Laterality</h5>
+			<select id="box2" class='form-control selectpicker form-control-sm col-sm-6'>
+				<option>Right</option>
+				<option>Left</option>
+				<option>Not specified</option>
+			</select>
+
+
+
+
+
+			<hr>
+			<h5>Tumor Site (macroscopic examination/transillumination)</h5>
+			<select multiple id="box3" class='form-control selectpicker form-control-sm col-sm-6'>
+				<option>Cannot be determined</option>
+				<option>Superotemporal quadrant of globe</option>
+				<option>Superonasal quadrant of globe</option>
+				<option>Inferotemporal quadrant of globe</option>
+				<option>Inferonasal quadrant of globe</option>
+				<option>Anterior chamber</option>
+				<option>Between -- and -- o’clock</option>
+				<option>Other</option>
+			</select>
+			<input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box3_2' style='display:none;' placeholder="Specify Between X and Y o\'clock">
+			<input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box3_3' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+			<hr>
+			<h5>Tumor Size After Sectioning</h5>
+			<h6 class="mt-3">Tumor size - Greatest basal diameter (mm)</h6>
+			<input type="text" class="form-control form-control-sm col-sm-6" id="box4" placeholder="">
+
+			<h6 class="mt-3">Tumor size - Greatest thickness (mm)</h6>
+			<input type="text" class="form-control form-control-sm col-sm-6" id="box5" placeholder="">
+
+
+
+
+			<hr>
+			<h5>Tumor Site After Sectioning</h5>
+			<select id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
+				<option>Cannot be determined</option>
+				<option>Superonasal</option>
+				<option>Inferonasal</option>
+				<option>Superotemporal</option>
+				<option>Inferotempora</option>
+			</select>
+
+
+
+
+
+			<hr>
+			<h5>Tumor Involvement of Other Ocular Structures
+			<!-- Button trigger modal -->
+			<button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_retino">Some notes on choroidal invasion</button>
+			</h5>
+			<select multiple id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
+				<option>Cannot be determined</option>
+				<option>Cornea</option>
+				<option>Anterior chamber</option>
+				<option>Iris</option>
+				<option>Angle</option>
+				<option>Lens</option>
+				<option>Ciliary body</option>
+				<option>Vitreous</option>
+				<option>Retina</option>
+				<option>Sub-retinal space</option>
+				<option>Sub-retinal pigment epithelial space</option>
+				<option>Optic nerve head</option>
+				<option value="Choroid, minimal">Choroid, minimal (solid tumor nest less than 3 mm in maximum diameter [width or thickness])</option>
+				<option value="Choroid, massive">Choroid, massive (solid tumor nest 3 mm or more in maximum diameter [width or thickness])</option>
+				<option>Sclera</option>
+				<option>Vortex vein</option>
+				<option>Orbit</option>
+				<option>Other</option>
+			</select>
+			<input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box7_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+			<hr>
+			<h5>Growth Pattern</h5>
+			<select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
+				<option>Cannot be determined</option>
+				<option>Endophytic</option>
+				<option>Exophytic</option>
+				<option>Combined endophytic/exophytic</option>
+				<option>Diffuse</option>
+				<option>Anterior diffuse</option>
+			</select>
+
+
+
+
+
+			<hr>
+			<h5>Extent of Optic Nerve Invasion</h5>
+			<select id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
+				<option>Cannot be determined</option>
+				<option>None</option>
+				<option>Anterior to lamina cribrosa</option>
+				<option>At lamina cribrosa</option>
+				<option>Posterior to lamina cribrosa but not to end of nerve</option>
+				<option>To cut end of optic nerve</option>
+			</select>
+
+
+
+
+
+			<hr>
+			<h5>Histologic Grade</h5>
+			<select id="box10" class='form-control selectpicker form-control-sm col-sm-6'>
+				<option value="G1">G1: Tumor with areas of retinocytoma (fleurettes or neuronal differentiation)</option>
+				<option value="G2">G2: Tumor with many rosettes (Flexner-Wintersteiner or Homer Wright)</option>
+				<option value="G3">G3: Tumor with occasional rosettes (Flexner-Wintersteiner or Homer Wright)</option>
+				<option value="G4">G4: Tumor with poorly differentiated cells without rosettes and/or with extensive areas (more than half of tumor) of anaplasia</option>
+				<option value="GX">GX: Grade cannot be assessed</option>
+			</select>
+
+
+
+
+
+			<hr>
+			<h5>+ Anaplasia Grade</h5>
+			<small>
+				Note: Grade based on the highest level of anaplasia in the tumor, with at least 30% of the tumor being able to be graded.
+			</small>
+			<select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
+				<option>Mild</option>
+				<option>Moderate</option>
+				<option>Severe</option>
+				<option>Cannot be determined</option>
+			</select>
+
+
+
+
+
+			<hr>
+			<h5>+ Cytologic Features Suggesting MYCN Amplification</h5>
+			<small>Note: Unilateral retinoblastoma with a loose cellular pattern, round nuclei, and prominent multiple nucleoli</small>
+			<select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
+				<option>Absent</option>
+				<option>Present</option>
+			</select>
+
+
+
+
+
+			<hr>
+			<h5>Margins</h5>
+			<select multiple id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
+				<option>Cannot be assessed</option>
+				<option>No tumor at margins</option>
+				<option>Tumor present at surgical margin of optic nerve</option>
+				<option>Extrascleral extension </option>
+				<option>Other margin(s) involved</option>
+			</select>
+			<input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box13_2' style='display:none;' placeholder='Specify Other involved margins'>
+
+
+
+
+
+			<hr>
+			<h5>Pathologic Staging (pTNM)
+
+			</h5>
+
+			<h6>TNM Descriptors (select all that apply)</h6><br>
+			<select id="box14" class='form-control selectpicker form-control-sm col-sm-6' multiple>
+				<option selected value="Not applicable">Not applicable</option>
+				<option>m</option>
+				<option>r</option>
+				<option>y</option>
+			</select>
+			<h6 class='mt-2'>pT</h6>
+			<select id="box15" class='form-control selectpicker form-control-sm col-sm-6'>
+				<option value="pTX">pTX: Unknown evidence of intraocular tumor</option>
+				<option value="pT0">pT0: No evidence of intraocular tumor</option>
+				<option value="pT1">pT1: Intraocular tumor(s) without any local invasion, focal choroidal invasion, or pre- or intralaminar involvement of the optic nerve head</option>
+				<option value="pT2">pT2: Intraocular tumor(s) with local invasion</option>
+				<option value="pT2a">pT2a: Concomitant focal choroidal invasion and pre- or intralaminar involvement of the optic nerve head</option>
+				<option value="null">pT2b Tumor invasion of stroma of iris and/or trabecular meshwork and/or Schlemm’s canal</option>
+				<option value="pT3">pT3: Intraocular tumor(s) with significant local invasion</option>
+				<option value="null">pT3a Massive choroidal invasion (>3 mm in largest diameter, or multiple foci of focal choroidal involvement totaling >3 mm, or any full-thickness choroidal involvement)</option>
+				<option value="pT3b">pT3b: Retrolaminar invasion of the optic nerve head, not involving the transected end of the optic nerve</option>
+				<option value="pT3c">pT3c: Any partial-thickness involvement of the sclera within the inner two thirds</option>
+				<option value="pT3d">pT3d: Full-thickness invasion into the outer third of the sclera and/or invasion into or around emissary channels</option>
+				<option value="pT4">pT4: Evidence of extraocular tumor: tumor at the transected end of the optic nerve, tumor in the meningeal spaces around the optic nerve, full-thickness invasion of the sclera with invasion of the episclera, adjacent adipose tissue, extraocular muscle, bone, conjunctiva, or eyelids</option>
+			</select>
+			<br>
+
+			<h6 class='mt-2'>pN</h6>
+			<select id="box16" class='form-control selectpicker form-control-sm col-sm-6'>
+				<option value="pNX">pNX: Regional lymph nodes cannot be assessed</option>
+				<option value="pN0">pN0: No regional lymph node involvement</option>
+				<option value="pN1">pN1: Regional lymph node involvement</option>
+			</select>
+			<br>
+
+			<h6 class='mt-2'>pM</h6>
+			<select id="box17" class='form-control selectpicker form-control-sm col-sm-6'>
+				<option selected value='pMx'>pMx: Not applicable</option>
+				<option value="pM1">pM1: Distant metastasis with histopathologic confirmation</option>
+				<option value="pM1a">pM1a: Histopathologic confirmation of tumor at any distant site (eg, bone marrow, liver, or other)</option>
+				<option value="pM1b">pM1b: Histopathologic confirmation of tumor in the cerebrospinal fluid or CNS parenchyma</option>
+			</select>
+			<input type="text" class="form-control form-control-sm col-sm-6" id="box17_2" style="display:none;" placeholder="Specify metastatic sites">
+			<br>
+			<form class="form-inline">
+				<label class="form-check-label">Check here if any lymph nodes submitted?
+					<input class="form-control form-control-sm col-sm-6" type="checkbox" id="box18" >
+				</label>
+			</form>
+			<br>
+			<div class='lnchk' style='display:none;'><br>
+				<form class="form-inline col-8">
+					<label class="m-2">Number of lymph nodes examined: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box19" style="width:100px"></label>
+					<label class="m-2">Number of lymph nodes involved: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box20" style="width:100px"></label>
+				</form>
 			</div>
-			{{> page-partials/cap-footer}}
-	<!-- close row -->
+
+
+			<hr>
+			<h5>+ Additional Pathologic Findings (select all that apply)</h5>
+			<select multiple id="box21" class='form-control selectpicker form-control-sm col-sm-6'>
+				<option>None identified</option>
+				<option>Calcifications</option>
+				<option>Apoptosis</option>
+				<option>Mitotic rate</option>
+				<option>Necrosis</option>
+				<option>Basophilic vascular deposits</option>
+				<option>Inflammatory cells</option>
+				<option>Hemorrhage </option>
+				<option>Retinal detachment</option>
+				<option>Neovascularization </option>
+				<option>Other</option>
+			</select>
+			<input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box21_2' style='display:none;' placeholder='Specify mitotic rate'>
+			<input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box21_3' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+
+
+
+			<!-- end markup-->
+			<!-- classification help Modal -->
+			{{> page-modals/cap-helpers/retino-classification-help}}
+
+			<!-- close markup -->
 		</div>
-		{{> page-partials/history-module}}
-	<!-- close container -->
+		{{> page-partials/cap-footer}}
+		<!-- close row -->
 	</div>
-
-
-			<!--
-			"specificScripts":
-				[
-					"/js/cap/rb-scripts.js",
-				]
-		 -->
+	{{> page-partials/history-module}}
+	<!-- close container -->
+</div>
