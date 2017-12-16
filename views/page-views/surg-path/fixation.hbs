@@ -1,122 +1,111 @@
-		<div class="container-fluid">
-				<!-- Breadcrumbs -->
-				<ol class="breadcrumb">
-						<li class="breadcrumb-item">
-								<a href="/">Home</a>
-						</li>
-						<li class="breadcrumb-item">
-								Surgical Pathology Tools
-						</li>
-						<li class="breadcrumb-item active" id="bc-jump"><i class="fa fa-clock-o mr-2"></i>Breast Fixation Time calculator</li>
-				</ol>
+<div class="container-fluid">
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+            Surgical Pathology Tools
+        </li>
+        <li class="breadcrumb-item active" id="bc-jump"><i class="fa fa-clock-o mr-2"></i>Breast Fixation Time
+            calculator
+        </li>
+    </ol>
 
- {{> message-center this}}
+    {{> message-center this}}
 
-				<div class="card mb-3">
-						<div class="card-header bg-info">
-								<!-- How to use and modal -->
-								<div class="row">
-										<button class="btn btn-default btn-block" data-target="#flipFlop" data-toggle="modal" id='openhelp'
-														type='button'>Fixation times for Austin hospitals
-										</button> <!-- The modal -->
-										{{> page-modals/surg-path/fixation-times}}
-								</div>
-						</div>
-				</div>
-						<div class="row">
-								<!--middle colored boxes-->
-												<!-- bottom left column-->
-												<div class="col-sm-8" id="bottom-l">
-														<div class="card">
-																<div class="card-header">
-																		<p>Enter collection and fixation data</p>
-																</div>
-																<div class="card-block">
-																		<!-- <table class="table table-responsive table-striped">
-																				<tr>
-																						<td role="row" ><h4>Collection time:</h4></td>
-																						<td > -->
-																						<div class="pseudotable">
-																							<div class="form-group form-inline" {{{stripeRows 1}}}>
-																								<label class="inline-margin">Collection Time:</label>
-																								<div class="input-group date" id="timestart">
-																										<input type="text" class="form-control" />
-																										<span class="input-group-addon">
-																												<span class="fa fa-calendar-plus-o"></span>
-																										</span>
-																								</div>
-																							</div>
-																						<!-- </td>
-																				</tr>
-																				<tr>
-																						<td role="row"><h4>Time in formalin:</h4></td>
-																						<td > -->
-																						<div class="form-group form-inline" {{{stripeRows 2}}}>
-																							<label class="inline-margin">Time in Formalin:</label>
-																							<div class="input-group date" id="timeformalin">
-																									<input type="text" class="form-control" />
-																									<span class="input-group-addon">
-																											<span class="fa fa-calendar-plus-o"></span>
-																									</span>
-																							</div>
-																						</div>
+    <div class="card mb-3">
+        <div class="card-header bg-info">
+            <!-- How to use and modal -->
+            <div class="row">
+                <button class="btn btn-default btn-block" data-target="#flipFlop" data-toggle="modal" id='openhelp'
+                        type='button'>Fixation times for Austin hospitals
+                </button> <!-- The modal -->
+                {{> page-modals/surg-path/fixation-times}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!--middle colored boxes-->
+        <!-- bottom left column-->
+        <div class="col-sm-8" id="bottom-l">
+            <div class="card">
+                <div class="card-header">
+                    <p>Enter collection and fixation data</p>
+                </div>
+                <div class="card-block">
+                    <div class="pseudotable">
+                        <div class="form-group form-inline" {{{stripeRows 1}}}>
+                            <label class="inline-margin">Collection Time:</label>
+                            <div class="input-group date" id="timestart">
+                                <input type="text" class="form-control"/>
+                                <span class="input-group-addon">
+                                <span class="fa fa-calendar-plus-o"></span>
+                        </span>
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" {{{stripeRows 2}}}>
+                            <label class="inline-margin">Time in Formalin:</label>
+                            <div class="input-group date" id="timeformalin">
+                                <input type="text" class="form-control"/>
+                                <span class="input-group-addon">
+                                <span class="fa fa-calendar-plus-o"></span>
+                        </span>
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" {{{stripeRows 3}}}>
+                            <label class="inline-margin">Out of Formalin Time:</label>
+                            <div class="input-group date" id="processorstart">
+                                <input type="text" class="form-control"/>
+                                <span class="input-group-addon">
+                                <span class="fa fa-calendar-plus-o"></span>
+                        </span>
+                            </div>
+                        </div>
+                        <!-- end pseudotable -->
+                    </div>
+                    <!-- </td>
+            </tr>
+    </table> -->
+                </div>
+            </div>
+        </div>
+        <!-- middle right text output-->
+        <div class="col-sm-4" id="bottom-r">
+            <div class="card text-center">
+                <div class="card-header button-box">
+                    <ul class="nav nav-pills standard-button-box">
+                        <a class="btn btn-lg btn-outline-info p-2" id="writeReport">
+                            <small>Write Report</small>
+                        </a>
 
-																						<!-- </td>
-																				</tr>
-																				<tr>
-																						<td role="row"><h4>Out of formalin time:</h4></td>
-																						<td > -->
-																						<div class="form-group form-inline" {{{stripeRows 3}}}>
-																							<label class="inline-margin">Out of Formalin Time:</label>
-																							<div class="input-group date" id="processorstart">
-																									<input type="text" class="form-control" />
-																									<span class="input-group-addon">
-																											<span class="fa fa-calendar-plus-o"></span>
-																									</span>
-																							</div>
-																						</div>
-																						<!-- end pseudotable -->
-																					</div>
-																						<!-- </td>
-																				</tr>
-																		</table> -->
-																</div>
-														</div>
-												</div>
-												<!-- middle right text output-->
-												<div class="col-sm-4" id="bottom-r">
-														<div class="card text-center">
-															<div class="card-header button-box">
-																	<ul class="nav nav-pills standard-button-box">
-																		<a class="btn btn-lg btn-outline-info p-2" id="writeReport">
-																				<small>Write Report</small>
-																		</a>
+                        <a class="btn btn-lg btn-outline-success p-2 ml-4">
+                            <small class="copy btn-default" data-toggle="popover" data-placement="top"
+                                   data-content="Diff copied to clipboard!" data-clipboard-target="#outPut-1">
+                                Copy
+                            </small>
+                        </a>
 
-																		<a class="btn btn-lg btn-outline-success p-2 ml-4" >
-																				<small class="copy btn-default" data-toggle="popover" data-placement="top" data-content="Diff copied to clipboard!" data-clipboard-target="#outPut-1" >
-																						Copy</small>
-																		</a>
+                        <a class="btn btn-lg btn-outline-danger p-2 ml-4" id="Reset">
+                            <small>Reset</small>
+                        </a>
+                    </ul>
+                    {{> page-partials/logged-in-btn-box}}
+                </div>
+                <div class="card-block">
+                    {{> page-partials/case-reference}}
+                    <div class="form-group">
+                        <textarea id="outPut-1" rows="16" class="form-control"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-																		<a class="btn btn-lg btn-outline-danger p-2 ml-4" id="Reset" >
-																				<small>Reset</small>
-																		</a>
-																	</ul>
-																	{{> page-partials/logged-in-btn-box}}
-															</div>
-																<div class="card-block">
-																	{{> page-partials/case-reference}}
-																		<div class="form-group">
-																				<textarea id="outPut-1" rows="16" class="form-control"></textarea>
-																		</div>
-																</div>
-														</div>
-												</div>
-
-						</div>
-						{{> page-modals/new-case-reference}}
-						{{> page-partials/history-module}}
-				</div>
-		<!--end container wrapper-->
+    </div>
+    {{> page-modals/new-case-reference}}
+    {{> page-partials/history-module}}
+</div>
+<!--end container wrapper-->
 
 <!--
 {"specificScripts":

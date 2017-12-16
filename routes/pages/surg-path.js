@@ -12,6 +12,12 @@ router.get('/surg-path/ihc-table', (req, res) => {
 	])
 })
 
+router.get('/surg-path/prostate-bx', (req, res) => {
+    controller.userWall(req, res, './page-views/surg-path/prostate-bx.hbs', [
+    "/js/surg-path/prostate-bx-scripts.js"
+])
+})
+
 router.get('/surg-path/fixation', (req, res) => {
 	controller.openAccess(req, res, './page-views/surg-path/fixation.hbs', [
 		"/js/surg-path/fixation-scripts.js"

@@ -10,15 +10,6 @@ $(window).on('load', function() {
 //                        Pop-ups                              //
 // *************************************************************/
 
-    $('#box1').change(function(){
-        var sel = $('#box1').val();
-        if (sel == 'Bone') {
-            $('#box1_2').show();}
-        else {$('#box1_2').hide();}
-        if (sel == 'Other') {
-            $('#box1_3').show();}
-        else {$('#box1_3').hide();}
-    });
 
     $('#box2').change(function(){
         var sel = $('#box2').val();
@@ -55,10 +46,7 @@ $(window).on('load', function() {
 
         var box_1 = $("#box1").val();
         var box_1_2 = $("#box1_2").val();
-        var box_1_3 = $("#box1_3").val();
-        if (box_1 == 'Bone') { captext += "\nSpecimen:\n- "+box_1+": "+box_1_2+"\n";}
-        else if (box_1 == 'Other'){ captext += "\nSpecimen:\n- "+box_1+": "+box_1_3+"\n";}
-        else {captext += "\nSpecimen:\n- "+box_1+"\n";}
+        captext += "\nSpecimen:\n- "+box_1+": "+box_1_2+"\n";}
 
         var box_2 = $("#box2").val();
         var box_2_2 = $("#box2_2").val();
@@ -70,7 +58,7 @@ $(window).on('load', function() {
         var box_3 = $("#box3").val();
         if (box_3 != 'n/a'){
             captext += "\n+ Tumor size:\n- "  + box_3.replace(/cm/,'') + "cm\n";}
-        else {captext += "\n+ Tumor size: Not known at this time";}
+        else {captext += "\n+ Tumor size: Not known at this time\n";}
 
         var box_4 = $("#box4").val();
         captext += "\n+ Cytology:\n- "  + box_4+ "\n";
