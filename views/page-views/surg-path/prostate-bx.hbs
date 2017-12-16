@@ -1,0 +1,164 @@
+<div class="container-fluid">
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+            Surgical Pathology Tools
+        </li>
+        <li class="breadcrumb-item active" id="bc-jump"><i class="fa fa-hand-pointer-o mr-2"></i>Prostate Biopsies</li>
+    </ol>
+
+    {{> message-center this}}
+
+    <div class="card mb-3">
+        <div class="card-header bg-info">
+            <!-- How to use and modal -->
+            <div class="row">
+                <button class="btn btn-default btn-block" data-target="#flipFlop" data-toggle="modal" id='openhelp'
+                        type='button'>How to use
+                </button>
+                <!-- The modal -->
+                {{> page-modals/surg-path/prostate-howto}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- bottom left column-->
+        <div class="col-sm-8" id="bottom-l">
+            <div class="card pblock">
+                <div class="card-header h6">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label>Select part:</label>
+                            <select class="form-control from-control-sm ml-2 ppart">
+                                <option>Right apex</option>
+                                <option>Right apex lateral</option>
+                                <option>Right apex medial</option>
+                                <option>Left apex</option>
+                                <option>Left apex lateral</option>
+                                <option>Left apex medial</option>
+                                <option>Right mid</option>
+                                <option>Right mid lateral</option>
+                                <option>Right mid medial</option>
+                                <option>Left mid</option>
+                                <option>Left mid lateral</option>
+                                <option>Left mid medial</option>
+                                <option>Right base</option>
+                                <option>Right base lateral</option>
+                                <option>Right base medial</option>
+                                <option>Left base</option>
+                                <option>Left base lateral</option>
+                                <option>Left base medial</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-block">
+                    <h5>Diagnosis</h5>
+                    <select class="form-control form-control-sm pdiagnosis">
+                        <option selected>Benign prostatic glands and stroma</option>
+                        <option value='Benign atrophic changes'>Atrophy</option>
+                        <option value='Mild chronic inflammation'>Chronic inflammation</option>
+                        <option value='Chronic and acute inflammation'>Acute and Chronic inflammation</option>
+                        <option value='Atypical small acinar proliferation'>ASAP</option>
+                        <option value='Positive'>POSITIVE FOR TUMOR</option>
+                    </select>
+
+                    <hr>
+
+                    <div class=" row hidden-block">
+                        <h5 class="mb-3 w-100">Select tumor characteristics</h5>
+                        <h6 class="mb-3 col-4">Histologic type</h6>
+                        <input type="text" class="form-control form-control-sm col-sm-6 diag-1"
+                               placeholder="Start typing and then choose">
+
+                        <form class="form-inline col-sm-6">
+                            <h6 class="col-sm-6 mt-3 ">Primary Gleason Pattern</h6>
+                            <select class="gleason-1 form-control form-control-sm col-sm-3">
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </form>
+
+                        <form class="form-inline col-sm-6">
+                            <h6 class="col-sm-6 mt-3 ">Secondary Gleason Pattern</h6>
+                            <select class="gleason-2 form-control form-control-sm col-sm-3">
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </form>
+                        <form class="form-inline col-sm-6">
+                            <h6 class="col-sm-6 mt-3 gleason-3">Tertiary Gleason Pattern</h6>
+                            <select class="gleason-3 form-control form-control-sm col-sm-3">
+                                <option selected>Not applicable</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </form>
+                        <form class="form-inline col-sm-6">
+                            <h6 class="mb-3 col-4">Gleason Grade group</h6>
+                            <input type="text" class="form-control form-control-sm col-sm-6 gleason-grade"
+                                   placeholder="Start typing and then choose">
+                        </form>
+                        <div class="w-100"></div>
+                        <form class="form-inline col-sm-6">
+                            <h6 class="col-sm-4 mt-3 gleason-pct-4">Percent pattern 4</h6>
+                            <input type="text" class="form-control form-control-sm col-sm-6" placeholder="%">
+                        </form>
+                        <form class="form-inline col-sm-6">
+                            <h6 class="col-sm-4 mt-3 gleason-pct-55">Percent pattern 5</h6>
+                            <input type="text" class="form-control form-control-sm col-sm-6" placeholder="%">
+                        </form>
+
+
+                    </div>
+
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-outline-info pclone p-2 m-2">Add part</button>
+                    <button class="btn btn-outline-danger pdestroy p-2 m-2">Delete part</button>
+                </div>
+            </div>
+
+        </div>
+        <!-- middle right text output-->
+        <div class="col-sm-4" id="bottom-r">
+            <div class="card text-center">
+                <div class="card-header button-box">
+                    <ul class="nav nav-pills standard-button-box">
+                        <a class="btn btn-lg btn-outline-info p-2" id="writeReport">
+                            <small>Write Report</small>
+                        </a>
+
+                        <a class="btn btn-lg btn-outline-success p-2 ml-4">
+                            <small class="copy btn-default" data-toggle="popover" data-placement="top"
+                                   data-content="Diff copied to clipboard!" data-clipboard-target="#outPut-1">
+                                Copy
+                            </small>
+                        </a>
+
+                        <a class="btn btn-lg btn-outline-danger p-2 ml-4" id="Reset">
+                            <small>Reset</small>
+                        </a>
+                    </ul>
+                    {{> page-partials/logged-in-btn-box}}
+                </div>
+                <div class="card-block">
+                    {{> page-partials/case-reference}}
+                    <div class="form-group">
+                        <textarea id="outPut-1" rows="16" class="form-control"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    {{> page-modals/new-case-reference}}
+    {{> page-partials/history-module}}
+</div>
+
