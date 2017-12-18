@@ -170,6 +170,12 @@ router.get('/cap/melanoma-bx', (req, res) => {
 ]);
 });
 
+router.get('/cap/pharynx-t', (req, res) => {
+    controller.userWall(req, res, './page-views/cap/pharynx-t.hbs', [
+    "/js/cap/pharynx-scripts.js",
+]);
+});
+
 router.get('/cap/plasmacytoma', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/plasmacytoma.hbs', [
 		"/js/cap/plasmacytoma-scripts.js",
