@@ -374,7 +374,20 @@ $(function () {
     });
 
     // Make multiple select options without need for ctrl or shift
-    $('option').mousedown(function(e){
+    $("select[multiple]").mousedown(function(e){
+        e.preventDefault();
+
+        var select = this;
+        var scroll = select.scrollTop;
+
+        e.target.selected = !e.target.selected;
+
+        setTimeout(function(){select.scrollTop = scroll;}, 0);
+
+        $(select).trigger("change").focus();
+    }).mousemove(function(e){e.preventDefault()});
+	/*
+	$('option').mousedown(function(e){
         e.preventDefault();
         var select = this;
         var scroll = select .scrollTop;
@@ -382,6 +395,7 @@ $(function () {
         setTimeout(function(){select.scrollTop = scroll;}, 0);
         $(select).trigger("change").focus(); // resume click event with 'change' listener
     }).mousemove(function(e){e.preventDefault()});
+    */
 
 
     /*/Google analytics
