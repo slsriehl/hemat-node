@@ -1,0 +1,318 @@
+<div class="container-fluid">
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+        <li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Larynx tumors</li>
+    </ol>
+    {{> message-center this}}
+    {{> page-partials/cap-header}}
+
+    <div class="row">
+        {{> page-partials/cap-validate-alert}}
+        <div class="col col-md-8">
+
+            <!-- paste markup here-->
+
+
+            <hr>
+            <h5>Procedure (select all that apply)</h5>
+            <select multiple id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Excision</option>
+                <option>Endolaryngeal excision</option>
+                <option>Transoral laser excision (glottis)</option>
+                <option>Supraglottic laryngectomy</option>
+                <option>Supracricoid laryngectomy</option>
+                <option>Vertical hemilaryngectomy, right</option>
+                <option>Vertical hemilaryngectomy, left</option>
+                <option>Partial laryngectomy </option>
+                <option>Total laryngectomy</option>
+                <option>Neck (lymph node) dissection </option>
+                <option>Other</option>
+                <option>Not specified</option>
+            </select>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;' placeholder='Specify Other'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_3' style='display:none;' placeholder='Specify dissection'>
+
+
+
+
+
+            <hr>
+            <h5>Tumor Site</h5>
+            <select id="box2" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Supraglottis</option>
+                <option>Glottis</option>
+                <option>Subglottis</option>
+                <option>Other</option>
+                <option>Not specified</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box2_2' style='display:none;' placeholder='Specify '>
+
+
+
+
+
+            <hr>
+            <h5>Transglottic Extension</h5>
+            <select id="box3" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Present</option>
+                <option>Not identified</option>
+            </select>
+
+
+
+
+
+            <hr>
+            <h5>Tumor Laterality</h5>
+            <select multiple id="box4" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Right</option>
+                <option>Left</option>
+                <option>Midline</option>
+                <option>Not specified</option>
+            </select>
+
+
+
+
+
+            <hr>
+            <h5>Tumor Focality</h5>
+            <select id="box5" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Unifocal</option>
+                <option>Multifocal</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+
+
+
+            <hr>
+            <h5>Tumor Size (cm)</h5>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box6" placeholder="">
+
+
+
+
+            <hr>
+            <h5>Histologic Type</h5>
+            <select id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
+                <optgroup label="Squamous Cell Carcinoma and Variants">
+                    <option>Squamous cell carcinoma, conventional (keratinizing)</option>
+                    <option>Squamous cell carcinoma, nonkeratinizing</option>
+                    <option>Acantholytic squamous cell carcinoma</option>
+                    <option>Adenosquamous carcinoma</option>
+                    <option>Basaloid squamous cell carcinoma</option>
+                    <option>Papillary squamous cell carcinoma</option>
+                    <option>Spindle cell squamous cell carcinoma</option>
+                    <option>Verrucous squamous cell carcinoma</option>
+                    <option>Lymphoepithelial carcinoma</option>
+                </optgroup>
+                <optgroup label="Carcinomas of Minor Salivary Glands">
+                    <option>Mucoepidermoid carcinoma, low grade</option>
+                    <option>Mucoepidermoid carcinoma, intermediate grade</option>
+                    <option>Mucoepidermoid carcinoma, high grade</option>
+                    <option>Adenoid cystic carcinoma, tubular pattern</option>
+                    <option>Adenoid cystic carcinoma, cribriform pattern</option>
+                    <option>Adenoid cystic carcinoma, solid pattern </option>
+                    <option>Adenocarcinoma, not otherwise specified, low grade</option>
+                    <option>Adenocarcinoma, not otherwise specified, intermediate grade</option>
+                    <option>Adenocarcinoma, not otherwise specified, high grade</option>
+                </optgroup>
+                <optgroup label="Neuroendocrine Carcinoma">
+                    <option>Well-differentiated neuroendocrine carcinoma (typical carcinoid tumor)</option>
+                    <option>Moderately differentiated neuroendocrine carcinoma (atypical carcinoid tumor)</option>
+                    <option>Poorly differentiated neuroendocrine carcinoma, small cell type</option>
+                    <option>Poorly differentiated neuroendocrine carcinoma, large cell type</option>
+                    <option>Combined (or composite) neuroendocrine carcinoma</option>
+                </optgroup>
+                <optgroup label="Melanoma">
+                    <option>Mucosal melanoma
+                </optgroup>
+                <option>Carcinoma, type cannot be determined</option>
+                <option>Other histologic type</option>
+            </select>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box7_2' style='display:none;' placeholder='Specify Other'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box7_3' style='display:none;' placeholder='Specify composite'>
+
+
+            <hr>
+            <h5>Histologic Grade (Squamous cell carcinomas only)</h5>
+            <select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>G1: Well differentiated</option>
+                <option>G2: Moderately differentiated</option>
+                <option>G3: Poorly differentiated</option>
+                <option>Other</option>
+                <option>GX: Cannot be assessed</option>
+                <option selected>Not applicable</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box8_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr>
+            <h5>Margins - Invasive</h5>
+
+            <select id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Cannot be assessed</option>
+                <option>Uninvolved by invasive tumor</option>
+                <option>Involved by invasive tumor</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box9_1' style='display:none;' placeholder='Specify closest margin'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box9_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box9_3' style='display:none;' placeholder='Specify involved margin'>
+
+
+
+
+
+
+            <hr>
+            <h5>Margins - high-grade dysplasia/in-situ</h5>
+
+            <select id="box10" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>No in-situ component present</option>
+                <option>Cannot be assessed</option>
+                <option>Uninvolved by invasive tumor</option>
+                <option>Involved by invasive tumor</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box10_1' style='display:none;' placeholder='Specify closest margin'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box10_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box10_3' style='display:none;' placeholder='Specify involved margin'>
+
+
+
+
+
+
+            <hr>
+            <h5>Lymphovascular Invasion</h5>
+            <select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+
+
+
+            <hr>
+            <h5>Perineural Invasion</h5>
+            <select id="box25" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+            <hr class="mt-3" >
+            <h5>Pathologic Staging (pTNM)
+
+            </h5>
+
+            <h6>TNM Descriptors (select all that apply)</h6>
+            <select id="box12" class='form-control selectpicker form-control-sm col-sm-6' multiple>
+                <option selected value="Not applicable">Not applicable</option>
+                <option>m</option>
+                <option>r</option>
+                <option>y</option>
+            </select>
+            <h6 class='mt-2'>pT</h6>
+            <select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
+
+            </select>
+
+            <h6 class='mt-2'>pN</h6>
+            <select id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
+
+            </select>
+
+            <h6 class='mt-2'>pM</h6>
+            <select id="box15" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option selected value='pMx'>pMx: Not applicable</option>
+                <option value="pM1">pM1: Distant metastasis</option>
+            </select>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box15_2" style="display:none;"
+                   placeholder="Specify metastatic sites">
+
+            <form class="form-inline mt-4">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box16">
+                </label>
+            </form>
+            <div class='lnchk' style='display:none;'>
+                <form class="form-inline col-8">
+                    <label class="m-2">Number of lymph nodes examined: <input type="number"
+                                                                              class="form-control form-control-sm col-sm-6 ml-3"
+                                                                              id="box17" style="width:100px"></label>
+                    <label class="m-2">Number of lymph nodes involved: <input type="number"
+                                                                              class="form-control form-control-sm col-sm-6 ml-3"
+                                                                              id="box18" style="width:100px"></label>
+                </form>
+                <div class="posnodes" style="display:none;">
+                    <h6 class="mt-3">Laterality of Lymph Nodes Involved</h6>
+                    <select id="box19" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option value="Ipsilateral">Ipsilateral (including midline)</option>
+                        <option>Contralateral</option>
+                        <option>Bilateral</option>
+                        <option>Cannot be determined</option>
+                    </select>
+
+                    <h6 class="mt-3">Size of Largest Metastatic Deposit (cm)</h6>
+                    <input type="text" class="form-control form-control-sm col-sm-6" id="box20" placeholder="">
+
+
+                    <h6 class="mt-3">Extranodal Extension</h6>
+                    <select id="box21" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>Not identified</option>
+                        <option>Present</option>
+                        <option>Cannot be determined</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <hr>
+            <h5>+ Additional Pathologic Findings (select all that apply)</h5>
+            <select multiple id="box22" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>None identified</option>
+                <option value="Dysplasia, low-grade">Dysplasia, low grade (includes hyperplasia, keratosis, and mild dysplasia)</option>
+                <option value="Dysplasia, high-grade">Dysplasia, high grade (includes moderate to severe dysplasia, and carcinoma in situ)</option>
+                <option>Squamous papilloma, solitary</option>
+                <option>Squamous papillomatosis</option>
+                <option>Inflammation </option>
+                <option>Squamous metaplasia</option>
+                <option>Colonization, fungal</option>
+                <option>Colonization, bacterial</option>
+                <option>Other</option>
+            </select>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box22_2' style='display:none;' placeholder='Specify Other'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box22_3' style='display:none;' placeholder='Specify Inflammation'>
+
+
+
+
+
+
+
+            <!-- end markup-->
+
+            <!-- close markup -->
+        </div>
+        {{> page-partials/cap-footer}}
+        <!-- close row -->
+    </div>
+    {{> page-partials/history-module}}
+    <!-- close container -->
+</div>
