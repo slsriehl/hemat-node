@@ -176,6 +176,12 @@ router.get('/cap/larynx-t', (req, res) => {
 ]);
 });
 
+router.get('/cap/perihilar-ducts', (req, res) => {
+    controller.userWall(req, res, './page-views/cap/perihilar-ducts.hbs', [
+    "/js/cap/perihilar-ducts-scripts.js",
+]);
+});
+
 router.get('/cap/pharynx-t', (req, res) => {
     controller.userWall(req, res, './page-views/cap/pharynx-t.hbs', [
     "/js/cap/pharynx-scripts.js",
