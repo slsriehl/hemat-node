@@ -176,6 +176,12 @@ router.get('/cap/larynx-t', (req, res) => {
 ]);
 });
 
+router.get('/cap/penis-t', (req, res) => {
+    controller.userWall(req, res, './page-views/cap/penis-t.hbs', [
+    "/js/cap/penis-scripts.js",
+]);
+});
+
 router.get('/cap/intrahepatic-ducts', (req, res) => {
     controller.userWall(req, res, './page-views/cap/intrahepatic-ducts.hbs', [
     "/js/cap/intrahepatic-ducts-scripts.js",

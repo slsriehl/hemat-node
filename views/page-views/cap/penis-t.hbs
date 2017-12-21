@@ -1,0 +1,385 @@
+<div class="container-fluid">
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+        <li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Penile carcinomas</li>
+    </ol>
+    {{> message-center this}}
+    {{> page-partials/cap-header}}
+
+    <div class="row">
+        {{> page-partials/cap-validate-alert}}
+        <div class="col col-md-8">
+
+            <!-- paste markup here-->
+            <hr class="mt-3" >
+            <h5>Procedure</h5>
+            <select id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Incisional biopsy</option>
+                <option>Excisional biopsy</option>
+                <option>Partial penectomy</option>
+                <option>Total penectomy</option>
+                <option>Circumcision</option>
+                <option>Other</option>
+                <option>Not specified</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr class="mt-3" >
+            <h5>Foreskin</h5>
+            <select id="box2" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Present (uncircumcised), Short</option>
+                <option>Present (uncircumcised), Medium</option>
+                <option>Present (uncircumcised), Long</option>
+                <option>Present (uncircumcised), Phimotic</option>
+                <option>Not identified (circumcised)</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+
+
+
+            <hr class="mt-3" >
+            <h5>Tumor Site</h5>
+            <select multiple id="box3" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Glans</option>
+                <option>Foreskin mucosal surface</option>
+                <option>Foreskin skin surface</option>
+                <option>Coronal sulcus (balanopreputial sulcus)</option>
+                <option>Skin of the shaft</option>
+                <option>Shaft</option>
+                <option>Penile urethra</option>
+                <option>Penis, NOS</option>
+            </select>
+
+
+
+
+
+            <hr class="mt-3" >
+            <h5>Tumor Size (cm)</h5>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box4" placeholder="">
+
+
+
+
+            <hr class="mt-3" >
+            <h5>+ Tumor Focality</h5>
+            <select id="box5" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Unifocal</option>
+                <option>Multifocal</option>
+            </select>
+
+
+
+
+
+            <hr class="mt-3" >
+            <h5>+ Tumor Macroscopic Features</h5>
+            <select multiple id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Flat</option>
+                <option>Ulcerated</option>
+                <option>Polypoid</option>
+                <option>Verruciform</option>
+                <option>Necrosis</option>
+                <option>Hemorrhage</option>
+                <option>Other</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box6_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr class="mt-3" >
+            <h5>Histologic Type</h5>
+            <select id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
+                <optgroup label="non-HPV-related squamous cell">
+                    <option>Squamous cell carcinoma, usual type</option>
+                    <option>Pseudohyperplastic carcinoma</option>
+                    <option>Pseudoglandular carcinoma</option>
+                    <option>Verrucous carcinoma</option>
+                    <option>Carcinoma cuniculatum</option>
+                    <option>Papillary squamous cell carcinoma, NOS</option>
+                    <option>Adenosquamous carcinoma</option>
+                    <option>Sarcomatoid squamous cell carcinoma</option>
+                </optgroup>
+                <optgroup label="HPV-related squamous cell carcinoma">
+                    <option>Basaloid squamous cell carcinoma</option>
+                    <option>Papillary-basaloid squamous cell carcinoma</option>
+                    <option>Warty carcinoma</option>
+                    <option>Warty-basaloid squamous cell carcinoma</option>
+                    <option>Clear cell squamous cell carcinoma</option>
+                    <option>Lymphoepithelioma-like carcinoma</option>
+                </optgroup>
+                <option>Paget disease</option>
+                <option>Adnexal carcinoma</option>
+                <option>Carcinoma, type cannot be determined</option>
+                <option>Other histologic type</option>
+            </select>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box7_2' style='display:none;' placeholder='Specify Adnexal tumor type'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box7_3' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr class="mt-3" >
+            <h5>Histologic Grade</h5>
+            <select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>G1: Well differentiated</option>
+                <option>G2: Moderately differentiated</option>
+                <option>G3: Poorly differentiated</option>
+                <option>GX: Cannot be assessed</option>
+                <option>Not applicable</option>
+            </select>
+
+
+
+
+
+            <hr class="mt-3" >
+            <h5>Tumor Extension (select all that apply)</h5>
+            <select multiple id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>No evidence of primary tumor</option>
+                <option>Carcinoma in situ</option>
+                <option>Noninvasive localized squamous cell carcinoma</option>
+                <option>Tumor invades lamina propria</option>
+                <option>Tumor invades dermis</option>
+                <option>Tumor invades dartos fascia</option>
+                <option>Tumor invades corpus spongiosum</option>
+                <option>Tumor invades corpus cavernosum</option>
+                <option>Tumor invades tunica albuginea</option>
+                <option>Tumor invades Buck’s fascia</option>
+                <option>Tumor invades penile (distal) urethra</option>
+                <option>Tumor invades regional skin (pubis, inguinal)</option>
+                <option>Tumor invades into adjacent structures </option>
+                <option>Tumor invades other structures </option>
+                <option>Cannot be assessed</option>
+            </select>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box9_2' style='display:none;' placeholder='Specify adjacent structures involved'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box9_3' style='display:none;' placeholder='Specify other structures involved'>
+
+
+
+
+
+            <hr class="mt-3" >
+            <h5>Margins
+            <!-- Button trigger modal -->
+            <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_penis">Some definitions of penectomy margins</button>
+
+            <!-- Histology help Modal -->
+            {{> page-modals/cap-helpers/penis-margins}}
+
+            </h5>
+            <select id="box10" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Cannot be assessed</option>
+                <option>Uninvolved</option>
+                <option>Involved</option>
+            </select>
+
+            <div id='box10_2' style='display:none;'>
+                <div class="penectomy" style='display:none'>
+                    <h6 class="mt-3" >
+                        Specify margin involved - For Penectomy specimens</h6>
+                    <select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>Not applicable</option>
+                        <option>Urethral</option>
+                        <option value="Periurethral tissues">Periurethral tissues (subepithelial connective tissue [lamina propria], corpus spongiosum, Buck’s fascia)</option>
+                        <option>Corpus cavernosum</option>
+                        <option>Buck’s fascia at penile shaft</option>
+                        <option>Skin</option>
+                        <option>Other</option>
+                    </select>
+
+                    <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box11_2' style='display:none;' placeholder='Specify Other'>
+                </div>
+
+                <div class="circ" style="display:none;">
+                    <h6 class="mt-3" >
+                        Specify margin involved - For circumcision specimens</h6>
+                        <select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
+                            <option>Not applicable</option>
+                            <option>Coronal sulcus mucosal margin</option>
+                            <option>Cutaneous margin</option>
+                        </select>
+                </div>
+
+            </div>
+
+
+
+
+            <hr class="mt-3" >
+            <h5>Lymphovascular Invasion</h5>
+            <select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+
+
+
+            <hr class="mt-3" >
+            <h5>Perineural Invasion</h5>
+            <select id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+
+
+
+            <hr class="mt-3" >
+            <h5>Pathologic Staging (pTNM)
+
+            </h5>
+
+            <h6>TNM Descriptors (select all that apply)</h6>
+            <select id="box15" class='form-control selectpicker form-control-sm col-sm-6' multiple>
+                <option selected value="Not applicable">Not applicable</option>
+                <option>m</option>
+                <option>r</option>
+                <option>y</option>
+            </select>
+            <h6 class='mt-2'>pT</h6>
+            <select id="box16" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pT0">pT0: No evidence of primary tumor</option>
+                <option value="pTis">pTis: Carcinoma in situ (penile intraepithelial neoplasia [PeIN])</option>
+                <option value="pTa">pTa: Noninvasive localized squamous cell carcinoma</option>
+                <option value="pT1a">pT1a: Glans: Tumor invades lamina propria; w/o LVI/PNI and not Grade 3</option>
+                <option value="pT1a">pT1a: Foreskin: Tumor invades dermis, lamina propria, or dartos fascia; w/o LVI/PNI and not Grade 3</option>
+                <option value="pT1a">pT1a: Shaft: Tumor invades connective tissue between epidermis and corpora regardless of location; w/o LVI/PNI and not Grade 3</option>
+                <option value="pT1b">pT1b: Glans: Tumor invades lamina propria; with LVI or PNI or Grade 3</option>
+                <option value="pT1b">pT1b: Foreskin: Tumor invades dermis, lamina propria, or dartos fascia; with LVI or PNI or Grade 3</option>
+                <option value="pT1b">pT1b: Shaft: Tumor invades connective tissue between epidermis and corpora regardless of location; with LVI or PNI or Grade 3</option>
+                <option value="pT2">pT2: Tumor invades into corpus spongiosum (either glans or ventral shaft) with or without urethral invasion</option>
+                <option value="pT3">pT3: Tumor invades into corpora cavernosum (including tunica albuginea) with or without urethral invasion</option>
+                <option value="pT4">pT4: Tumor invades into adjacent structures (ie, scrotum, prostate, pubic bone)</option>
+            </select>
+
+
+            <h6 class='mt-2'>pN</h6>
+            <select id="box17" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pNX">pNX: Lymph node metastasis cannot be established</option>
+                <option value="pN0">pN0: No lymph node metastasis</option>
+                <option value="pN1">pN1: ≤2 unilateral inguinal metastases, no ENE</option>
+                <option value="pN2">pN2: ≥3 unilateral inguinal metastases or bilateral metastases, no ENE</option>
+                <option value="pN3">pN3: ENE of lymph node metastases or pelvic lymph node metastases</option>
+            </select>
+
+
+            <h6 class='mt-2'>pM</h6>
+            <select id="box18" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option selected value='pMx'>pMx: Not applicable</option>
+                <option value="pM1">pM1: Distant metastasis present</option>
+            </select>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box18_2" style="display:none;" placeholder="Specify metastatic sites">
+
+            <form class="form-inline mt-2">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box19" >
+                </label>
+            </form>
+
+            <div class='lnchk' style='display:none;'>
+                <form class="form-inline mt-2 col-8">
+                    <label class="m-2">Number of lymph nodes examined: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box20" style="width:100px"></label>
+                    <label class="m-2">Number of lymph nodes involved: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box21" style="width:100px"></label>
+                    <label class="m-2">
+                        Lymph nodes location(s):
+                        <select multiple id="box22" class='form-control selectpicker form-control-sm col-sm-6'>
+                            <option>Sentinel</option>
+                            <option>Pelvic</option>
+                            <option>Inguinal (unilateral)</option>
+                            <option>Inguinal (bilateral)</option>
+                            <option>Other nodes</option>
+                        </select>
+
+                        <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box22_2' style='display:none;' placeholder='Specify Other'>
+
+                    </label>
+                    <label class="m-2">
+                        Number of inguinal nodes involved:
+                        <input type="text" class="form-control form-control-sm col-sm-6" id="box23" value="0">
+
+                    </label>
+                    <div class="ene" style="display: none;">
+                    <label class="m-2">
+                        Extranodal Extension:
+                        <select id="box24" class='form-control selectpicker form-control-sm col-sm-6'>
+                            <option>Not identified</option>
+                            <option>Present</option>
+                            <option>Cannot be determined</option>
+                        </select>
+
+                    </label>
+                    </div>
+                </form>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <hr class="mt-3" >
+            <h5>+ Additional Pathologic Findings</h5>
+            <select multiple id="box25" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>HPV-related penile intraepithelial neoplasia (PeIN), warty type</option>
+                <option>HPV-related penile intraepithelial neoplasia (PeIN), basaloid type</option>
+                <option>HPV-related penile intraepithelial neoplasia (PeIN), warty-basaloid type</option>
+                <option>Non-HPV-related PeIN (differentiated [simplex] penile intraepithelial neoplasia)</option>
+                <option>Pleomorphic PeIN</option>
+                <option>Spindle PeIN</option>
+                <option>Clear cell PEIN</option>
+                <option>Pagetoid PEIN</option>
+                <option>Lichen sclerosus</option>
+                <option>Squamous hyperplasia</option>
+                <option>Condyloma acuminatum</option>
+                <option>Other (</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box25_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+
+
+            <!-- end markup-->
+
+            <!-- close markup -->
+        </div>
+        {{> page-partials/cap-footer}}
+        <!-- close row -->
+    </div>
+    {{> page-partials/history-module}}
+    <!-- close container -->
+</div>
