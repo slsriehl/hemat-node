@@ -210,9 +210,6 @@ $(function () {
 
 //immuno/ihc box moved to ihc-script
 
-		// //initialize bootstrap select
-		// $('.selectpicker').selectpicker();
-
 		//dismiss messages: hide and ajax to add to dismissed messages table
 		$(document).off('click', '.message-dismiss h2').on('click', '.message-dismiss h2', function(event) {
 			console.log('foo');
@@ -386,16 +383,11 @@ $(function () {
 
         $(select).trigger("change").focus();
     }).mousemove(function(e){e.preventDefault()});
-	/*
-	$('option').mousedown(function(e){
-        e.preventDefault();
-        var select = this;
-        var scroll = select .scrollTop;
-        e.target.selected = !e.target.selected;
-        setTimeout(function(){select.scrollTop = scroll;}, 0);
-        $(select).trigger("change").focus(); // resume click event with 'change' listener
-    }).mousemove(function(e){e.preventDefault()});
-    */
+
+
+    // activate selectpicker
+    //$('.selectpicker').selectpicker({});
+
 
 
     /*/Google analytics
