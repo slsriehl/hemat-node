@@ -1,0 +1,275 @@
+<div class="container-fluid">
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+        <li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Intrahepatic Bile duct tumors</li>
+    </ol>
+    {{> message-center this}}
+    {{> page-partials/cap-header}}
+
+    <div class="row">
+        {{> page-partials/cap-validate-alert}}
+        <div class="col col-md-8">
+
+            <!-- paste markup here-->
+            <hr class="mt-3" >
+            <h5>Procedure
+            <!-- Button trigger modal -->
+            <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_intrahepatic">A word about when to use this protocol</button>
+
+            <!-- Histology help Modal -->
+            {{> page-modals/cap-helpers/intrahepatic-duct-use}}
+
+            </h5>
+            <select id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Wedge resection</option>
+                <option>Partial hepatectomy</option>
+                <option>Total hepatectomy</option>
+                <option>Other</option>
+                <option>Not specified</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr class="mt-3" >
+            <h5>Tumor Size (cm)</h5>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box2" placeholder="">
+
+
+
+
+            <hr class="mt-3" >
+            <h5>Tumor Focality</h5>
+            <select id="box3" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Solitary</option>
+                <option>Multiple</option>
+            </select>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box3_2'  placeholder='Specify location'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box3_3' style='display:none;' placeholder='Specify multiple locations'>
+
+
+
+
+
+            <hr class="mt-3" >
+            <h5>Histologic Type</h5>
+            <select id="box4" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Intrahepatic cholangiocarcinoma</option>
+                <option>Combined hepatocellular-cholangiocarcinoma</option>
+                <option>Intraductal papillary neoplasm with an associated invasive carcinoma</option>
+                <option>Mucinous cystic neoplasm with an associated invasive carcinoma</option>
+                <option>Large cell neuroendocrine carcinoma</option>
+                <option>Small cell neuroendocrine carcinoma</option>
+                <option>Neuroendocrine carcinoma (poorly differentiated)</option>
+                <option>Other histologic type</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box4_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr class="mt-3" >
+            <h5>Histologic Grade</h5>
+            <select id="box5" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>G1: Well-differentiated</option>
+                <option>G2: Moderately differentiated</option>
+                <option>G3: Poorly differentiated</option>
+                <option>Other </option>
+                <option>GX: Cannot be assessed</option>
+                <option>Not applicable</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box5_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr class="mt-3" >
+            <h5>Tumor Extension</h5>
+            <select multiple id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>No evidence of primary tumor</option>
+                <option>Tumor confined to the intrahepatic bile ducts (carcinoma in situ/high-grade dysplasia)</option>
+                <option>Tumor confined to hepatic parenchyma</option>
+                <option>Tumor involves visceral peritoneal surface</option>
+                <option>Tumor directly invades gallbladder</option>
+                <option>Tumor directly invades adjacent (not-gallbladder) organs </option>
+                <option>Cannot be assessed</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box6_2' style='display:none'; placeholder='Specify adjacent'>
+
+
+            <hr>
+            <h5>Margins</h5>
+
+
+            <h6 class="mt-3">Hepatic Parenchymal Margin</h6>
+
+            <select id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Cannot be assessed</option>
+                <option>Uninvolved by invasive carcinoma</option>
+                <option>Involved by invasive carcinoma</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box7_2' style='display:none;' placeholder='Specify distance of invasive carcinoma to margin (mm)'>
+
+
+
+
+
+
+
+
+
+
+            <h6 class="mt-3" >
+                Bile Duct Margin (if applicable)</h6>
+
+            <select multiple id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not applicable</option>
+                <option>Cannot be assessed</option>
+                <option>Uninvolved by invasive carcinoma and high-grade intraepithelial neoplasia</option>
+                <option>Uninvolved by invasive carcinoma</option>
+                <option>Involved by invasive carcinoma</option>
+                <option>Involved by high-grade intraepithelial neoplasia</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box8_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
+
+
+            <h6 class="mt-3" >
+                Margin - Other</h6>
+            <select id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option selected>Not applicable</option>
+                <option>Cannot be assessed</option>
+                <option>Uninvolved by invasive carcinoma</option>
+                <option>Involved by invasive carcinoma</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box9_2' style='display:none;' placeholder='Specify '>
+
+
+
+
+
+            <hr class="mt-3" >
+            <h5>Lymphovascular Invasion</h5>
+            <select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+
+
+
+            <hr class="mt-3" >
+            <h5>+ Perineural Invasion</h5>
+            <select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+
+
+
+            <hr class="mt-3" >
+            <h5>Pathologic Staging (pTNM)
+
+            </h5>
+
+            <h6>TNM Descriptors (select all that apply)</h6>
+            <select id="box13" class='form-control selectpicker form-control-sm col-sm-6' multiple>
+                <option selected value="Not applicable">Not applicable</option>
+                <option>m</option>
+                <option>r</option>
+                <option>y</option>
+            </select>
+            <h6 class='mt-2'>pT</h6>
+            <select id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pTX">pTX: Primary tumor cannot be assessed</option>
+                <option value="pT0">pT0: No evidence of primary tumor</option>
+                <option value="pTis">pTis: Carcinoma in situ (intraductal tumor)</option>
+                <option value="pT1">pT1: Solitary tumor without vascular invasion, ≤5 cm or >5 cm</option>
+                <option value="pT1a">pT1a: Solitary tumor ≤5 cm without vascular invasion</option>
+                <option value="pT1b">pT1b: Solitary tumor >5 cm without vascular invasion</option>
+                <option value="pT2">pT2: Solitary tumor with intrahepatic vascular invasion, or multiple tumors, with or without vascular invasion</option>
+                <option value="pT3">pT3: Tumor perforating the visceral peritoneum</option>
+                <option value="pT4">pT4: Tumor involving local extrahepatic structures by direct invasion</option>
+            </select>
+
+
+            <h6 class='mt-2'>pN</h6>
+            <select id="box15" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pNX">pNX: Regional lymph nodes cannot be assessed</option>
+                <option value="pN0">pN0: No regional lymph node metastasis</option>
+                <option value="pN1">pN1: Regional lymph node metastasis present</option>
+            </select>
+
+
+            <h6 class='mt-2'>pM</h6>
+            <select id="box16" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option selected value='pMx'>pMx: Not applicable</option>
+                <option value="pM1">pM1: Distant metastasis</option>
+            </select>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box16_2" style="display:none;" placeholder="Specify metastatic sites">
+
+            <form class="form-inline mt-2">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box17" >
+                </label>
+            </form>
+
+            <div class='lnchk' style='display:none;'>
+                <form class="form-inline mt-2 col-8">
+                    <label class="m-2">Number of lymph nodes examined: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box18" style="width:100px"></label>
+                    <label class="m-2">Number of lymph nodes involved: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box19" style="width:100px"></label>
+                </form>
+            </div>
+
+
+            <hr class="mt-3" >
+            <h5>+ Additional Pathologic Findings (select all that apply)</h5>
+            <select multiple id="box25" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>+ Fibrosis, stage 1</option>
+                <option>+ Fibrosis, stage 2</option>
+                <option>+ Fibrosis, stage 3</option>
+                <option>+ Fibrosis, cirrhosis</option>
+                <option>Primary sclerosing cholangitis</option>
+                <option>Biliary stones</option>
+                <option>Chronic hepatitis</option>
+                <option>Other</option>
+                <option>None identified</option>
+            </select>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box25_2' style='display:none;' placeholder='Specify hepatitis'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box25_3' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+
+
+            <!-- end markup-->
+
+            <!-- close markup -->
+        </div>
+        {{> page-partials/cap-footer}}
+        <!-- close row -->
+    </div>
+    {{> page-partials/history-module}}
+    <!-- close container -->
+</div>
