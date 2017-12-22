@@ -42,6 +42,7 @@ $(window).on('load', function() {
         function extractLast(term) {
             return split(term).pop();
         }
+
         $("input#box15").autocomplete({
             minLength: 1,
             source: function (request, response) {
@@ -72,307 +73,442 @@ $(window).on('load', function() {
 //                        Pop-ups                              //
 // *************************************************************/
 
-    $('#box1').change(function(){
-        var sel = $('#box1').val();
-        if ($.inArray('Other', sel) >-1) {
-            $('#box1_2').show();}
-        else {$('#box1_2').hide();}
+
+    $('#box2').on("change", function(){
+        var sel = $('#box2').val().toLowerCase();
+        console.log(sel);
+        if (sel.indexOf("other") > -1) {
+            console.log("Other chosen");
+            $('#box2_2').show();
+        }
+        else {
+            $('#box2_2').hide();
+            if ((sel.indexOf("whipple") < 0)){
+                $(".segmental").show();
+                $(".whipple").hide();
+            } else {
+                $(".segmental").hide();
+                $(".whipple").show();
+            }
+        }
     });
 
-    $('#box2').change(function(){
-        var sel = $('#box2').val();
-        if (sel == 'Other') {
-            $('#box_2').show();}
-        else {$('#box_2').hide();}
+    $('#box2_2').on("input", function() {
+        var sel = $('#box2_2').val().toLowerCase();
+        if ((sel.indexOf("whipple")< 0)){
+            $(".segmental").show();
+            $(".whipple").hide();
+        } else {
+            $(".segmental").hide();
+            $(".whipple").show();
+        }
     });
 
-    $('#box3').change(function(){
+    $('#box3').on("change", function () {
         var sel = $('#box3').val();
-        if ($.inArray('Other', sel) >-1) {
-            $('#box3_2').show();}
-        else {$('#box3_2').hide();}
+        if ($.inArray('Other', sel) > -1) {
+            $('#box3_2').show();
+        }
+        else {
+            $('#box3_2').hide();
+        }
     });
 
-    $('#box5').change(function(){
+    $('#box5').on("change", function () {
         var sel = $('#box5').val();
-        if ($.inArray('Other', sel) >-1) {
-            $('#box5_2').show();}
-        else {$('#box5_2').hide();}
+        if (sel.indexOf("Other") > -1) {
+
+            $('#box5_2').show();
+        }
+        else {
+            $('#box5_2').hide();
+        }
     });
 
-    $('#box6').change(function(){
+
+    $('#box6').on("change", function () {
         var sel = $('#box6').val();
         if (sel == 'Other') {
-            $('#box6_2').show();}
-        else {$('#box6_2').hide();}
+            $('#box6_2').show();
+        }
+        else {
+            $('#box6_2').hide();
+        }
     });
 
-    $('#box7').change(function(){
+    $('#box7').on("change", function () {
         var sela = $('#box7').val();
-        var selb = $('#box7').val();
-        if ($.inArray('Tumor invades other peripancreatic soft tissue', sela) >-1) {
-            $('#box7_2').show();}
-        else {$('#box7_2').hide();}
-        if ($.inArray('Tumor invades other adjacent organs or structures', selb) >-1) {
-            $('#box7_3').show();}
-        else {$('#box7_3').hide();}
-    });
+        var trig1 = sela.filter(el => el.indexOf('structures') > -1);
 
-    $('#box8').change(function(){
-        var sela = $('#box8').val();
-        if (sela == 'Margins uninvolved by invasive carcinoma') {
-            $('#box8_2').show();}
-        else {$('#box8_2').hide();}
-        if (sela == 'Margins involved by invasive carcinoma') {
-            $('.marginpos').show();}
-        else {$('.marginpos').hide();}
-    });
+        var trig2 = sela.filter(el => el.indexOf('soft tissue') > -1);
 
-    $('#box8a').change(function(){
-        var sel = $('#box8a').val();
-        if (sel == 'Uninvolved by pancreatic high-grade intraepithelial neoplasia or invasive carcinoma') {
-            $('#box8a_2').show();}
+        if (trig1.length > 0) {
+            $('#box7_2').show();
+        }
         else {
-            $('#box8a_2').hide();}
-    });
-
-    $('#box8b').change(function(){
-        var sel = $('#box8b').val();
-        if (sel == 'Uninvolved by pancreatic high-grade intraepithelial neoplasia or invasive carcinoma') {
-            $('#box8b_2').show();}
+            $('#box7_2').hide();
+        }
+        if (trig2.length > 0) {
+            $('#box7_3').show();
+        }
         else {
-            $('#box8b_2').hide();}
+            $('#box7_3').hide();
+        }
     });
 
-    $('#box8c').change(function(){
-        var sel = $('#box8c').val();
-        if (sel == 'Uninvolved by pancreatic high-grade intraepithelial neoplasia or invasive carcinoma') {
-            $('#box8c_2').show();}
-        else {
-            $('#box8c_2').hide();}
-    });
 
-    $('#box8d').change(function(){
-        var sel = $('#box8d').val();
-        if (sel == 'Uninvolved by pancreatic high-grade intraepithelial neoplasia or invasive carcinoma') {
-            $('#box8d_2').show();}
-        else {
-            $('#box8d_2').hide();}
-    });
-
-    $('#box8e').change(function(){
-        var sel = $('#box8e').val();
-        if (sel == 'Uninvolved by pancreatic high-grade intraepithelial neoplasia or invasive carcinoma') {
-            $('#box8e_2').show();}
-        else {
-            $('#box8e_2').hide();}
-    });
-
-    $('#box8f').change(function(){
-        var sel = $('#box8f').val();
-        if (sel == 'Uninvolved by pancreatic high-grade intraepithelial neoplasia or invasive carcinoma') {
-            $('#box8f_2').show();}
-        else {
-            $('#box8f_2').hide();}
-    });
-
-    $('#box8g').change(function(){
-        var sel = $('#box8g').val();
-        if (sel == 'Uninvolved by pancreatic high-grade intraepithelial neoplasia or invasive carcinoma') {
-            $('#box8g_2').show();}
-        else {
-            $('#box8g_2').hide();}
-    });
-
-    $('#box13').change(function(){
-        if ($(this).is(':checked')){
-            $('.lndiv').show();}
-        else {
-            $('.lndiv').hide();}
-    });
-
-    $('#box14').change(function(){
+    $('#box14').on("change", function () {
         var sel = $('#box14').val();
         if (sel == 'Other') {
-            $('#box14_2').show();}
-        else {$('#box14_2').hide();}
+            $('#box14_2').show();
+        }
+        else {
+            $('#box14_2').hide();
+        }
     });
 
 
-
-    $('#box16').change(function(){
+    $('#box16').on("change", function () {
         var sel = $('#box16').val();
         if (sel == 'Other') {
-            $('#box16_2').show();}
-        else {$('#box16_2').hide();}
+            $('#box16_2').show();
+        }
+        else {
+            $('#box16_2').hide();
+        }
     });
 
+    $('#box20').on("change", function () {
+        var sel = $('#box20').val();
+        if (sel.indexOf('uninvolved') > -1) {
+            $('#box20_2').show();
+        }
+        else {
+            $('#box20_2').hide();
+        }
+        if (sel.indexOf('involved') > -1) {
+            $('#box20_3').show();
+        }
+        else {
+            $('#box20_3').hide();
+        }
+    });
+
+    $('#box21').on("change", function () {
+        var sel = $('#box21').val();
+        var neg = sel.filter(el => el.indexOf('Other') > -1);
+        if (neg.length > 0) {
+            $('#box21_2').show();
+        }
+        else {
+            $('#box21_2').hide();
+        }
+    });
+
+    $('#box22').on("change", function(){
+        var sela = $('#box22').val();
+        var neg = sela.filter(el => el.indexOf('Uninvolved') > -1);
+        var pos = sela.filter(el => el.indexOf('Involved') > -1);
+        if (neg.length > 0) {
+            $('#box22_2').show();}
+        else {
+            $('#box22_2').hide();}
+    });
+
+    $('#box23').on("change", function(){
+        var sela = $('#box23').val();
+        var neg = sela.filter(el => el.indexOf('Uninvolved') > -1);
+        var pos = sela.filter(el => el.indexOf('Involved') > -1);
+        if (neg.length > 0) {
+            $('#box23_2').show();}
+        else {
+            $('#box23_2').hide();}
+    });
+
+    $('#box24').on("change", function(){
+        var sela = $('#box24').val();
+        var neg = sela.filter(el => el.indexOf('Uninvolved') > -1);
+        var pos = sela.filter(el => el.indexOf('Involved') > -1);
+        if (neg.length > 0) {
+            $('#box24_2').show();}
+        else {
+            $('#box24_2').hide();}
+
+    });
+
+    $('#box25').on("change", function(){
+        var sela = $('#box25').val();
+        if (sela.indexOf('Uninvolved') > -1){
+            $('#box25_2').show();}
+        else {
+            $('#box25_2').hide();}
+    });
+
+    $('#box26').on("change", function(){
+        var sela = $('#box26').val();
+        var neg = sela.filter(el => el.indexOf('Uninvolved') > -1);
+        var pos = sela.filter(el => el.indexOf('Involved') > -1);
+        if (neg.length > 0) {
+
+            $('#box26_2').show();}
+        else {
+            $('#box26_2').hide();}
+
+    });
+    
+    $("#box34").on("change", function(){
+        if ($(this).is(":checked")){
+            $(".lnchk").show();
+        }
+        else{
+            $(".lnchk").hide();
+        }
+    });
+
+    $('#box29').on("change", function(){
+        var sel = $('#box29').val();
+        if (sel.indexOf("Not") < 0) {
+
+            $('#box29_2').show();}
+        else {
+            $('#box29_2').hide();}
+    });
+
+    $("#box33").on("change", function(){
+        var sel = $("#box33").val();
+        if (sel != "pMx"){
+            $("#box33_2").show();
+        } else {
+            $("#box33_2").hide();
+        }
+    });
 
 //************************************************************//
 // Script to populate the template data in the output textarea//
 // *************************************************************/
     $('.writeReport').on('click', function () {
 
-        $('input[type="text"]').each(function () {
-            if ($(this).val().length < 1) {
-                $(this).val($(this).attr('placeholder'));
-            }
-            if ($(this).val().length < 1) {
-                $(this).addClass('empty')
+// ***************** INPUT VALIDATION ********************//
+        $('select[multiple]:visible').each(function () {
+            // Check if at least one selection is made
+            if ($(this).val().length > 0) {
+                $(this).removeClass('empty');
+            } else {
+                $(this).addClass('empty');
+                $('#cap-valid').show();
             }
         });
 
+        $('input[type="text"]:visible').each(function () {
+            // Check if at least one selection is made
+            if ($.trim($(this).val()).length > 0) {
+                $(this).removeClass('empty');
+            } else {
+                $(this).addClass('empty');
+                $('#cap-valid').show();
+            }
+        });
+
+        // ***************** END VALIDATION ********************//
+
         var captext = "Exocrine Pancreas Cancer Synoptic\nAJCC 2018 cancer staging version\n\n";
-        var box_1 = $("#box1").val();
-        var box_1_2 = $("#box1_2").val();
-        if ($.inArray('Other', box_1) >-1){
-            captext += "\nSpecimen:\n- "  + box_1.join('\n- ').replace(/Other/, box_1_2) + "\n";}
-        else {captext += "\nSpecimen:\n- "  + box_1.join('\n- ') + "\n";}
+
 
         var box_2 = $("#box2").val();
         var box__2 = $("#box_2").val();
-        if (box_2 == 'Other'){
-            captext += "\nProcedure:\n- "  + box__2+ "\n";}
-        else {captext += "\nProcedure:\n- "  + box_2+ "\n";}
+        if (box_2 == 'Other') {
+            captext += "\nProcedure:\n- " + box__2 + "\n";
+        }
+        else {
+            captext += "\nProcedure:\n- " + box_2 + "\n";
+        }
 
 
         var box_3 = $("#box3").val();
         var box_3_2 = $("#box3_2").val();
-        if ($.inArray('Other', box_3) >-1){
-            captext += "\nTumor Site:\n- "  + box_3.join('\n- ').replace(/Other/, box_3_2) + "\n";}
-        else {captext += "\nTumor Site:\n- "  + box_3.join('\n- ') + "\n";}
+        if ($.inArray('Other', box_3) > -1) {
+            captext += "\nTumor Site:\n- " + box_3.join('\n- ').replace(/Other/, box_3_2) + "\n";
+        }
+        else {
+            captext += "\nTumor Site:\n- " + box_3.join('\n- ') + "\n";
+        }
 
         var box_4 = $("#box4").val();
-        captext += "\nTumor Size (cm):\n- "  + box_4.replace(/cm/,'') + "cm\n";
+        captext += "\nTumor Size:\n- " + box_4.replace(/cm/, '') + "cm\n";
 
         var box_5 = $("#box5").val();
         var box_5_2 = $("#box5_2").val();
-        if ($.inArray('Other', box_5) >-1){
-            captext += "\nHistologic Type:\n- "  + box_5.join('\n- ').replace(/Other/, box_5_2) + "\n";}
-        else {captext += "\nHistologic Type:\n- "  + box_5.join('\n- ') + "\n";}
+        if (box_5.indexOf("Other") > -1) {
+            captext += "\nHistologic type:\n- " + box_5_2 + "\n";
+        }
+        else {
+            captext += "\nHistologic type:\n- " + box_5 + "\n";
+        }
 
         var box_6 = $("#box6").val();
         var box_6_2 = $("#box6_2").val();
-        if (box_6 != 'Not applicable'){
-            if (box_6 == 'Other'){
-                captext += "\nHistologic grade:\n- "  + box_6_2+ "\n";}
-            else {captext += "\nHistologic grade:\n- "  + box_6+ "\n";}
+        if (box_6 != 'Not applicable') {
+            if (box_6 == 'Other') {
+                captext += "\nHistologic grade:\n- " + box_6_2 + "\n";
+            }
+            else {
+                captext += "\nHistologic grade:\n- " + box_6 + "\n";
+            }
         }
-        else {captext += "\nTumor type not graded\n";}
+        else {
+            captext += "\nTumor type not graded\n";
+        }
 
         var box_7 = $("#box7").val();
         var box_7_2 = $("#box7_2").val();
         var box_7_3 = $("#box7_3").val();
-        if ($.inArray('Tumor invades other peripancreatic soft tissue', box_7) > -1 && $.inArray('Tumor invades other adjacent organs or structures', box_7) == -1) { captext += "\nMicroscopic Tumor Extension:\n- "+box_7.join("\n- ").replace(/Tumor invades other peripancreatic soft tissue/, box_7_2)+"\n";}
-        else if ($.inArray('Tumor invades other adjacent organs or structures', box_7) > -1 && $.inArray('Tumor invades other peripancreatic soft tissue', box_7) == -1) { captext += "\nMicroscopic Tumor Extension:\n- "+box_7.join("\n- ").replace(/;/, ': '+box_7_3)+"\n";}
-        else if ($.inArray('Tumor invades other peripancreatic soft tissue', box_7) > -1 && $.inArray('Tumor invades other adjacent organs or structures', box_7) > -1) { captext += "\nMicroscopic Tumor Extension:\n- "+box_7.join("\n- ").replace(/Tumor invades other peripancreatic soft tissue/, box_7_2).replace(/;/, ': '+box_7_3)+"\n";}
-        else {captext += "\nMicroscopic Tumor Extension:\n- "+box_7.join("\n- ")+"\n";}
+        var trig1_box_7 = box_7.filter(el => el.indexOf("structures") > -1);
+        var trig2_box_7 = box_7.filter(el => el.indexOf("soft tissue") > -1);
+        if ((trig1_box_7.length > 0 ) && (trig2_box_7.length == 0  )) {
+            captext += "\nTumor Extension:\n- " + box_7.join("\n- ").replace(/structures/, "structures: " + box_7_2) + "\n";
+        }
+        else if ((trig1_box_7.length == 0 ) && (trig2_box_7.length > 0  )) {
+            captext += "\nTumor Extension:\n- " + box_7.join("\n- ").replace(/soft tissue/, "soft tissues: " + box_7_3) + "\n";
+        }
+        else if ((trig1_box_7.length > 0 ) && (trig2_box_7.length > 0  )) {
+            captext += "\nTumor Extension:\n- " + box_7.join("\n- ").replace(/structures/, "structures: " + box_7_2).replace(/soft tissue/, "soft tissues: " + box_7_3) + "\n";
+        }
+        else {
+            captext += "\nTumor Extension:\n- " + box_7.join("\n- ") + "\n";
+        }
 
-        var box_8 = $("#box8").val();
-        var box_8_2 = $("#box8_2").val();
-        if (box_8 == 'Margins uninvolved by invasive carcinoma'){
-            captext += "\nMargins:\n- "+box_8+"\n- Distance to closest margin is "+box_8_2.replace(/cm/,'')+"cm\n";}
-        else if (box_8 = "Margins involved by invasive carcinoma"){
+        // margins
+        var box_20 = $("#box20").val();
+        var box_21 = $("#box21").val();
+        var box_21_2 = $("#box21_2").val();
 
-            var box_8a = $("#box8a").val();
-            var box_8a_2 = $("#box8a_2").val();
-            if (box_8a == 'Uninvolved by pancreatic high-grade intraepithelial neoplasia or invasive carcinoma'){
-                captext += "\nProximal Pancreatic Parenchymal Margin: "+box_8a+", Distance to margin: " + box_8a_2.replace(/mm/,'')+ "mm\n";}
-            else {captext += "\nProximal Pancreatic Parenchymal Margin:\n- "  + box_8a+ "\n";}
-
-
-            var box_8b = $("#box8b").val();
-            var box_8b_2 = $("#box8b_2").val();
-            if(box_8b != "Not applicable"){
-                if (box_8b == 'Uninvolved by pancreatic high-grade intraepithelial neoplasia or invasive carcinoma'){
-                    captext += "\nDistal Pancreatic Parenchymal Margin: "+box_8b+", Distance to margin: " + box_8b_2.replace(/mm/,'')+ "mm\n";}
-                else {captext += "\nDistal Pancreatic Parenchymal Margin:\n- "  + box_8b+ "\n";}
+        if (box_20.indexOf("uninvolved") > -1) {
+            captext += "\nMargins:\n- "+box_20;
+            if ($.inArray('Other', box_21) >-1){
+                captext += "\nMargins examined: "  + box_21.join(', ').replace(/Other/, box_21_2) + "\n";
+            } else {
+                captext += "\nMargins examined: "  + box_21.join(', ') + "\n";
             }
+        }
+        else if (box_20.indexOf("involved") > -1) {
+            captext += "\nMargins:\n";
 
-            var box_8c = $("#box8c").val();
-            var box_8c_2 = $("#box8c_2").val();
-            if(box_8c != "Not applicable"){
-                if (box_8c == 'Uninvolved by pancreatic high-grade intraepithelial neoplasia or invasive carcinoma'){
-                    captext += "\nPancreatic Neck/Parenchymal Margin: "+box_8c+", Distance to margin: " + box_8c_2.replace(/mm/,'')+ "mm\n";}
-                else {captext += "\nPancreatic Neck/Parenchymal Margin:\n- "  + box_8c+ "\n";}
+            // segemental
+            if (box_2.indexOf('Whipple') < 0){
+                var box_22 = $("#box22").val();
+                var box_22_2 = $("#box22_2").val();
+                var negbox_22 = box_22.filter(el => el.indexOf("Uninvolved") > -1);
+                var posbox_22 = box_22.filter(el => el.indexOf("Involved") > -1);
+                captext += "\nProximal Pancreatic Parenchymal:\n "
+                if (negbox_22.length > 0 ) {
+                    captext += "\t- "+negbox_22+"\n\t- Distance of invasive carcinoma to this margin: " + box_22_2.replace(/mm/,"")+"mm\n";}
+                else if (posbox_22.length > 0  ) {
+                    captext += "\t- "+box_22+"\n";}
+
+                var box_23 = $("#box23").val();
+                var box_23_2 = $("#box23_2").val();
+                var negbox_23 = box_23.filter(el => el.indexOf("Uninvolved") > -1);
+                var posbox_23 = box_23.filter(el => el.indexOf("Involved") > -1);
+                captext += "\nDistal Pancreatic Parenchymal Margin:\n";
+                if (negbox_23.length > 0 ) {
+                    captext += "\t- "+negbox_23+"\n\tDistance of invasive carcinoma to this margin: " + box_23_2.replace(/mm/,"")+"mm\n";}
+                if (posbox_23.length > 0  ) {
+                    captext += "\t- "+posbox_23+"\n";}
+            } else {
+            // whipple
+            var box_24 = $("#box24").val();
+            var box_24_2 = $("#box24_2").val();
+            var negbox_24 = box_24.filter(el => el.indexOf("Uninvolved") > -1);
+            var posbox_24 = box_24.filter(el => el.indexOf("Involved") > -1);
+            captext += "\n- Pancreatic Neck/Parenchymal Margin:\n";
+            if (negbox_24.length > 0 ) {
+                captext += "\t- "+negbox_24+"\n\t- Distance of invasive carcinoma to this margin: " + box_24_2.replace(/mm/,"")+"mm\n";}
+            else if (posbox_24.length > 0  ) {
+                captext += "\t- "+posbox_24+"\n";}
+
+            var box_25 = $("#box25").val();
+            var box_25_2 = $("#box25_2").val();
+            var negbox_25 = box_25.filter(el => el.indexOf("Uninvolved") > -1);
+            var posbox_25 = box_25.filter(el => el.indexOf("Involved") > -1);
+            captext += "\nUncinate Margin:\n";
+            if (negbox_25.length > 0 )  {
+                captext += "\t- "+negbox_25+"\n\t- Distance of invasive carcinoma to this margin: " + box_25_2.replace(/mm/,"")+"mm\n";}
+            else if (posbox_25.length > 0  ) {
+                captext += "\t- "+posbox_25+"\n";}
+
+            var box_26 = $("#box26").val();
+            var box_26_2 = $("#box26_2").val();
+            var negbox_26 = box_26.filter(el => el.indexOf("Uninvolved") > -1);
+            var posbox_26 = box_26.filter(el => el.indexOf("Involved") > -1);
+            captext += "\nBile Duct Margin:\n";
+            if (negbox_26.length > 0 )  {
+                captext += "\t- "+negbox_26+"\n\t- Distance of invasive carcinoma to this margin: " + box_26_2.replace(/mm/,"")+"mm\n";}
+            else if (posbox_26.length > 0  ) {
+                captext += "\t- "+posbox_26+"\n";}
+
+            var box_27 = $("#box27").val();
+            captext += "\nProximal Margin (Gastric or Duodenal):\n\t- "+box_27+"\n";
+
+            var box_28 = $("#box28").val();
+            captext += "\nDistal Margin (Distal Duodenal or Jejunal):\n\t- "+box_28+"\n";
             }
-
-            var box_8d = $("#box8d").val();
-            var box_8d_2 = $("#box8d_2").val();
-            if(box_8d != "Not applicable"){
-                if (box_8d == 'Uninvolved by pancreatic high-grade intraepithelial neoplasia or invasive carcinoma'){
-                    captext += "\nUncinate Margin: "+box_8d+", Distance to margin: " + box_8d_2.replace(/mm/,'')+ "mm\n";}
-                else {captext += "\nUncinate Margin:\n- "  + box_8d+ "\n";}
-            }
-
-            var box_8e = $("#box8e").val();
-            var box_8e_2 = $("#box8e_2").val();
-            if(box_8e != "Not applicable"){
-                if (box_8e == 'Uninvolved by pancreatic high-grade intraepithelial neoplasia or invasive carcinoma'){
-                    captext += "\nBile duct Margin: "+box_8e+", Distance to margin: " + box_8e_2.replace(/mm/,'')+ "mm\n";}
-                else {captext += "\nBile duct Margin:\n- "  + box_8e+ "\n";}
-            }
-
-            var box_8f = $("#box8f").val();
-            var box_8f_2 = $("#box8f_2").val();
-            if(box_8f != "Not applicable"){
-                if (box_8f == 'Uninvolved by pancreatic high-grade intraepithelial neoplasia or invasive carcinoma'){
-                    captext += "\nProximal Margi: "+box_8f+", Distance to margin: " + box_8f_2.replace(/mm/,'')+ "mm\n";}
-                else {captext += "\nProximal Margin:\n- "  + box_8f+ "\n";}
-            }
-
-            var box_8g = $("#box8g").val();
-            var box_8g_2 = $("#box8g_2").val();
-            if(box_8g != "Not applicable"){
-                if (box_8g == 'Uninvolved by pancreatic high-grade intraepithelial neoplasia or invasive carcinoma'){
-                    captext += "\nDistal Margin: "+box_8g+", Distance to margin: " + box_8g_2.replace(/mm/,'')+ "mm\n";}
-                else {captext += "\nDistal Margin:\n- "  + box_8g+ "\n";}
-            }
-
 
         }
-        else {captext += "\nMargins:\n- "+box_8+"\n";}
+        var box_29 = $("#box29").val();
+        var box_29_2 = $("#box29_2").val();
+        if (box_29.indexOf('Not') < 0){
+            captext += "\n- "+box_29_2+" Margin:\n\t- "  + box_29+ "\n";
+        }
+
+
+
+
 
         var box_9 = $("#box9").val();
-        if (box_9 != 'No prior treatment'){
-            captext += "\nTreatment effect:\n- "  + box_9+ "\n";}
+        if (box_9 != 'No prior treatment') {
+            captext += "\nTreatment effect:\n- " + box_9 + "\n";
+        }
 
 
         var box_10 = $("#box10").val();
-        captext += "\nLymph-vascular invasion:\n- "  + box_10+ "\n";
+        captext += "\nLymph-vascular invasion:\n- " + box_10 + "\n";
 
         var box_11 = $("#box11").val();
-        captext += "\nPerineural invasion:\n- "  + box_11+ "\n";
+        captext += "\nPerineural invasion:\n- " + box_11 + "\n";
 
-        var box_12_1 = $("#box12_1").val();
-        var box_12_2 = $("#box12_2").val();
-        var box_12_3 = $("#box12_3").val();
-        var box_12_4 = $("#box12_4").val();
+        var box_30 = $("#box30").val();
+        var box_31 = $("#box31").val();
+        var box_32 = $("#box32").val();
+        var box_33 = $("#box33").val();
+        var box_33_2 = $("#box33_2").val();
         captext += '\nPathologic Staging (pTNM):\n- ';
-        if (box_12_1 != "Not applicable"){captext += box_12_1.join("")+' '+box_12_2+" "+box_12_3+" "+box_12_4+"\n";}
-        else {captext += box_12_2+" "+box_12_3+" "+box_12_4+"\n";}
+        if (box_30 != "Not applicable"){
+            if (box_33 != "pMx"){
+                captext += box_30.join("")+" "+box_31+" "+box_32+" "+box_33+" (metastatic site(s): " + box_33_2 + ")\n";
+            } else {
+                captext += box_30.join("")+" "+box_31+" "+box_32+" "+box_33+"\n";
+            }
+        } else {
+            if (box_33 != "pMx"){
+                captext += box_31+" "+box_32+" "+box_33+" (metastatic site(s): " + box_33_2 + ")\n";
+            } else {
+                captext += box_31+" "+box_32+" "+box_33+"\n";
+            }
+        }
+        if ($("#box34").is(':checked')) {
+            var box_35 = $("#box35").val();
+            var box_36 = $("#box36").val();
+            captext += "\nLymph nodes:\n\tLymph Nodes Examined: "+box_35+"\n\tLymph nodes involved: "+box_36+"\n";} else {
+            captext += "\nLymph nodes: None submitted\n";}
 
-        if ($("#box13").is(':checked')) {
-            var box_13_2 = $("#box13_2").val();
-            var box_13_3 = $("#box13_3").val();
-            captext += "\nLymph nodes examined: "+box_13_2+"\nLymph nodes involved: "+box_13_3+"\n";}
 
         var box_14 = $("#box14").val();
         var box_14_2 = $("#box14_2").val();
-        if (box_14 == 'Other'){
-            captext += "\n+Additional pathologic findings (select all that apply):\n- "  + box_14_2+ "\n";}
-        else {captext += "\n+Additional pathologic findings (select all that apply):\n- "  + box_14+ "\n";}
-
-
-        var box_15 = $("#box15").val();
-        captext += "\n+Ancillary studies:\n- "  + box_15 + "\n";
-
-        var box_16 = $("#box16").val();
-        var box_16_2 = $("#box16_2").val();
-        if (box_16 != 'Not specified'){
-            if (box_16 == 'Other'){
-                captext += "\nClinical history:\n- "  + box_16_2+ "\n";}
-            else {captext += "\nClinical history:\n- "  + box_16+ "\n";}
+        if (box_14 == 'Other') {
+            captext += "\n+Additional pathologic findings:\n- " + box_14.join("\n-").replace(/Other/, box_14_2) + "\n";
+        }
+        else {
+            captext += "\n+Additional pathologic findings:\n- " + box_14.join("\n-") + "\n";
         }
 
 
@@ -380,10 +516,11 @@ $(window).on('load', function() {
         $('#outPut-1').val(captext);
 
 
-				dataObj.singleSection = $('#outPut-1').val();
-				makeCreatePdfBtn();
+        dataObj.singleSection = $('#outPut-1').val();
+        makeCreatePdfBtn();
     });
 });
+
 /**
  * Created by Chandra Krishnan on 8/16/2017.
  */
