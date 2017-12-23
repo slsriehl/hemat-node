@@ -176,6 +176,12 @@ router.get('/cap/larynx-t', (req, res) => {
 ]);
 });
 
+router.get('/cap/pancendo-t', (req, res) => {
+    controller.userWall(req, res, './page-views/cap/pancendo-t.hbs', [
+    "/js/cap/pancendo-scripts.js",
+]);
+});
+
 router.get('/cap/penis-t', (req, res) => {
     controller.userWall(req, res, './page-views/cap/penis-t.hbs', [
     "/js/cap/penis-scripts.js",
