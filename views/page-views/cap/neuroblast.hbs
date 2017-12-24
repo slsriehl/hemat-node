@@ -1,270 +1,217 @@
 <div class="container-fluid">
-		<!-- Breadcrumbs -->
-		<ol class="breadcrumb">
-				<li class="breadcrumb-item">
-						<a href="/">Home</a>
-				</li>
-				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
-				<li class="breadcrumb-item active" id="bc-jump"><i class="fa fa-flask mr-2"></i>Neuroblastoma</li>
-		</ol>
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+        <li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Neuroblastoma</li>
+    </ol>
+    {{> message-center this}}
+    {{> page-partials/cap-header}}
 
- {{> message-center this}}
+    <div class="row">
+        {{> page-partials/cap-validate-alert}}
+        <div class="col col-md-8">
 
-
-		{{> page-partials/cap-header}}
-
-	<div class="row">
-		<div class="col col-md-8">
-
+            <!-- paste markup here-->
+            <hr class="p-2" >
             <h5>Specimen</h5>
-
-            <select class="form-control selectpicker form-control-sm" id="box1">
-                <option selected>Adrenal/periadrenal </option>
-                <option>Retroperitoneal, nonadrenal </option>
-                <option>Thoracic paraspinal </option>
-                <option>Cervical </option>
-                <option>Other:</option>
-                <option>Not specified </option>
-            </select>
-            <input type="text" id="box1_2" placeholder="Enter Other specimen type"  style="display:none">
-
-            <hr>
-
-            <h5>Procedure (Note B) </h5>
-
-            <select class="form-control selectpicker form-control-sm" id="box2">
-                <option selected>Resection </option>
-                <option>Incisional biopsy </option>
-                <option>Other:</option>
-                <option>Not specified</option>
-            </select>
-            <input type="text" id="box2_2"  placeholder="Enter other procedure type"  style="display:none">
-
-            <hr>
-
-            <h5>Specimen Laterality (select all that apply)</h5>
-
-            <select class="form-control selectpicker form-control-sm" id="box3" multiple>
-                <option selected>Not specified</option>
-                <option>Right</option>
-                <option>Left</option>
-                <option>Midline</option>
+            <select id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Adrenal/periadrenal</option>
+                <option>Retroperitoneal, nonadrenal</option>
+                <option>Thoracic paraspinal</option>
+                <option>Cervical region</option>
                 <option>Other</option>
-            </select>
-            <input type="text" id="box3_2"  placeholder="Enter other specimen site"  style="display:none">
-
-            <hr>
-
-            <h5>Tumor Size</h5>
-
-            Greatest dimension (cm):
-
-            <input id="box4" placeholder="Cannot be assessed">
-
-            <hr>
-
-            <h5>Patient Age</h5>
-
-            <select class="form-control selectpicker form-control-sm" id="box6">
-                <option selected>Not specified </option>
-                <option><18 months </option>
-                <option>≥18 months and <5 years </option>
-                <option>≥5 years </option>
-            </select>
-
-            <hr>
-
-            <h5> Histologic Type (select all that apply) (Note C)</h5>
-
-            <small>#Note: For nodular (composite) ganglioneuroblastomas with more than 1 nodule, degree of differentiation and mitotic-karyorrhectic index (MKI) must be given for each nodule. Please indicate the differentiation and MKI for the least favorable nodule in the case summary below. Classification of additional nodules can be described in the Comment.  </small>
-
-            <select class="form-control selectpicker form-control-sm" id="box7" multiple>
-                <option selected>Neuroblastoma </option>
-                <option>Ganglioneuroblastoma; Nodular subtype:</option>
-                <option>Ganglioneuroblastoma; Intermixed subtype </option>
-                <option>Ganglioneuroma </option>
-                <option>Neuroblastic tumor, unclassifiable </option>
-                <option>Cannot be assessed </option>
-            </select>
-            <input type="text" id="box7_2"  placeholder="For GNB nodular, specify number of nodules"  style="display:none">
-
-            <hr>
-
-            <h5> Degree of Differentiation (neuroblastic component) (Note D) </h5>
-
-            <select class="form-control selectpicker form-control-sm" id="box8">
-                <option selected>Undifferentiated </option>
-                <option>Poorly differentiated </option>
-                <option>Differentiating </option>
-                <option>Cannot be assessed </option>
-                <option>Not applicable </option>
-            </select>
-
-            <hr>
-
-            <h5>Mitotic-Karyorrhectic Index (MKI) (neuroblastic component) (Note E)</h5>
-
-            <select class="form-control selectpicker form-control-sm" id="box9">
-                <option selected>Low (<100 per 5000 cells; <2%) </option>
-                <option>Intermediate (100-200 per 5000 cells; 2%-4%) </option>
-                <option>High (>200 per 5000 cells; >4%) </option>
-                <option>Indeterminate </option>
-                <option>Cannot be assessed </option>
-                <option>Not applicable</option>
-            </select>
-
-            <hr>
-
-            <h5>Treatment History </h5>
-
-            <select class="form-control selectpicker form-control-sm" id="box11">
-                <option selected>No known presurgical chemotherapy </option>
-                <option>Presurgical chemotherapy given </option>
                 <option>Not specified</option>
             </select>
 
-            <hr>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;' placeholder='Specify Other'>
 
-            <h5>+ Treatment effect</h5>
 
-            <select class="form-control selectpicker form-control-sm" id="box10">
+
+
+
+            <hr class="p-2" >
+            <h5>Procedure</h5>
+            <select id="box2" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Resection</option>
+                <option>Incisional biopsy</option>
+                <option>Other</option>
+                <option>Not specified</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box2_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Tumor Size (cm)</h5>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box3" placeholder="">
+
+
+
+
+            <hr class="p-2" >
+            <h5>Patient Age</h5>
+            <select id="box4" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option><18 months</option>
+                <option>≥18 months and <5 years</option>
+                <option>≥5 years</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Histologic Type (select all that apply)</h5>
+            <select multiple id="box5" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Neuroblastoma</option>
+                <option>Ganglioneuroblastoma,  Nodular</option>
+                <option>Ganglioneuroblastoma, Intermixed subtype</option>
+                <option>Ganglioneuroma, Maturing</option>
+                <option>Ganglioneuroma, Mature</option>
+                <option>Neuroblastic tumor, unclassifiable</option>
+                <option>Cannot be determined</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box5_2' style='display:none;' placeholder='Specify # of nodules'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Degree of Differentiation (neuroblastic component)</h5>
+            <select id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Undifferentiated</option>
+                <option>Poorly differentiated</option>
+                <option>Differentiating</option>
+                <option>Cannot be determined </option>
+                <option>Not applicable</option>
                 <option selected>Not applicable</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Mitotic-Karyorrhectic Index (neuroblastic component)</h5>
+            <select id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Low (<100 per 5000 cells; <2%)</option>
+                <option>Intermediate (100-200 per 5000 cells; 2%-4%)</option>
+                <option>High (>200 per 5000 cells; >4%)</option>
+                <option>Cannot be determined</option>
+                <option>Not applicable</option>
+                <option selected>Not applicable</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Treatment History</h5>
+            <select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>No known preoperative therapy</option>
+                <option>Preoperative therapy given</option>
+                <option>Not specified</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>+ Treatment Effect</h5>
+            <select id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>No known preoperative therapy (not applicable)</option>
                 <option>Not identified</option>
                 <option>Present</option>
-                <option>Not identified</option>
-                <option>Cannot be assessed</option>
+                <option>Cannot be determined</option>
             </select>
 
-            <hr>
-
-            <h5> International Neuroblastoma Pathology Classification (INPC) </h5>
-
-            <small>Note: INPC applies to untreated primary tumors and tumors in metastatic sites provided that there is sufficient material to classify histologically. Bone marrow biopsy is useful only for evaluation of degree of neuroblastic differentiation, but not eligible for MKI determination.</small>
+            <input type="number" class="form-control form-control-sm mt-3 col-sm-6" id='box9_2' style='display:none;' placeholder='Specify % tumor necrosi'>
 
 
 
-            <div data-target="collapse"><small><h5>-Click here for INPC classification Info-</h5></small></div>
-            <div class="collapse">
-                <img src="/img/INPC_favhist.png" alt="INPC favorable histology">
-                <img src="/img/INPC_unfavhist.png" alt="INPC favorable histology">
+            <hr class="p-2" >
+            <h5>International Neuroblastoma Pathology Classification
+            <!-- Button trigger modal -->
+            <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_inpc">
+                INPC classification</button>
+
+            <!-- Histology help Modal -->
+            {{> page-modals/cap-helpers/nb-inpc}}
+
+            </h5>
+            <select id="box10" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option selected>Favorable histopathology</option>
+                <option>Unfavorable histopathology</option>
+                <option>Multiple tumors present</option>
+                <option>Cannot be determined secondary to insufficient material</option>
+                <option>Not applicable due to previous therapy</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-10" id='box10_2' style='display:none;'
+                   placeholder='List tumor and INPC classifications, separated by comma'>
+
+
+            <hr class="p-2" >
+            <h5>Primary Tumor Extent</h5>
+            <select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Encapsulated</option>
+                <option>Extracapsular extension without adjacent organ involvement</option>
+                <option>Extension into adjacent organs</option>
+                <option>Extension into spinal canal</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Lymph Nodes</h5>
+
+
+            <div class='lnchk'>
+                <form class="form-inline mt-2 col-8">
+                    <label class="m-2">Number of lymph nodes examined:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box13" style="width:100px"></label>
+                    <label class="m-2">Number of lymph nodes involved:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box14" style="width:100px"></label>
+
+                    <label class="m-2 posnodes" style="display: none;">Specify involved lymph nodes
+                        <input type="text" class="form-control form-control-sm col-sm-6 ml-3" id="box15" placeholder="list involved sites"></label>
+                </form>
             </div>
 
-            <select class="form-control selectpicker form-control-sm" id="box12" >
-                <option>Cannot be determined secondary to insufficient material </option>
-                <option selected>Favorable Histology</option>
-                <option>Unfavorable Histology</option>
-                <option>Not applicable secondary to previous chemotherapy </option>
-                <option>Indeterminate due to insufficient material</option>
-            </select>
-            <hr>
 
-            <h5> Margins  </h5>
 
-            <select class="form-control selectpicker form-control-sm" id="box13" >
-                <option>Cannot be assessed </option>
-                <option>Margins uninvolved by tumor </option>
-                <option>Margin(s) involved by tumor</option>
-            </select>
-            <div class="margin" style="display:none">Specify margin:<input type="text" id="box13_2"></div>
 
-            <hr>
 
-            <h5>+ Lymph-Vascular Invasion</h5>
-
-            <select class="form-control selectpicker form-control-sm" id="box14" >
-                <option selected>Not identified
-                <option>Present
-                <option>Indeterminate</option>
+            <hr class="p-2" >
+            <h5>Distant Metastasis</h5>
+            <select id="box16" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present</option>
+                <option selected>Not applicable</option>
             </select>
 
-            <hr>
-
-            <h5>Extent of Tumor</h5>
-
-            Primary Tumor
-
-            <select class="form-control selectpicker form-control-sm" id="box15" >
-                <option selected>Cannot be assessed </option>
-                <option>Encapsulated </option>
-                <option>Extracapsular extension without adjacent organ involvement </option>
-                <option>Extension into adjacent organs </option>
-                <option>Extension into spinal canal</option>
-            </select>
-
-            <hr>
-
-            Regional Lymph Nodes
-
-            <select class="form-control selectpicker form-control-sm" id="box16">
-                <option selected>Cannot be assessed </option>
-                <option>Regional lymph node metastasis not identified </option>
-                <option>Regional lymph node metastasis present</option>
-            </select>
-            <div class="regln" style="display:none"> Specify site:<input type="text" id="box16_2"></div>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box16_2' style='display:none;' placeholder='Specify pathologically confirmed metastasis sites'>
 
 
-            Number of lymph nodes examined:
-
-            <input id="box17"  placeholder='No lymph nodes submitted' onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')">
-
-            Number of lymph nodes involved by tumor:
-
-            <input id="box18" placeholder ='0' onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')">
-
-
-            <hr>
-
-            Distant Metastasis
-
-            <select class="form-control selectpicker form-control-sm" id="box19">
-                <option>Cannot be assessed </option>
-                <option>Distant metastasis present</option>
-            </select>
-            <div class="distmet" style="display:none">
-                <input type="text" id="box19_2" placeholder="Specify sites, if known"> </div>
-
-            <hr>
-
-            <h5> International Neuroblastoma Staging System (INSS)# (Notes F and G)</h5>
-
-            <select class="form-control selectpicker form-control-sm" id="box20">
-                <option selected>Stage 1 </option>
-                <option>Stage 2A </option>
-                <option>Stage 2B </option>
-                <option>Stage 3 </option>
-                <option>Stage 4 </option>
-                <option>Stage 4S </option>
-            </select>
-
-            <hr>
-
-            <div data-targe="collapse"><span>-Click here for Staging Info-</span></div>
-            <div class="collapse"><small># Multifocal primary tumors (eg, bilateral adrenal primary tumors) should be staged according to the greatest extent of disease, as defined above, and followed by a subscript “M” (eg, 3M).
-
-                    ## The midline is defined as the vertebral column. Tumors originating on one side and crossing the midline must infiltrate to or beyond the opposite side of the vertebral column.
-
-                    ### Marrow involvement in stage 4S should be minimal (ie, less than 10% of total nucleated cells identified as malignant on bone marrow biopsy or marrow aspirate). More extensive marrow involvement would be considered stage 4. The meta-iodobenzylguanidine (MIBG) scan (if performed) should be negative in the marrow.</option>
-                </small>
-
-                Stage 1 = localized tumor with complete gross excision, with or without microscopic residual disease; representative ipsilateral nonadherent lymph nodes negative for tumor microscopically (nodes attached to and removed with the primary tumor may be positive)
-
-                Stage 2A = localized tumor with incomplete gross excision; representative ipsilateral nonadherent lymph nodes negative for tumor microscopically
-
-                Stage 2B = localized tumor with or without complete gross excision with ipsilateral nonadherent lymph nodes positive for tumor; enlarged contralateral lymph nodes must be negative microscopically
-
-                Stage 3 = unresectable unilateral tumor infiltrating across the midline,## with or without regional lymph node involvement; localized unilateral tumor with contralateral regional lymph node involvement; midline tumor with bilateral extension by infiltration (unresectable) or by lymph node involvement
-
-                Stage 4 = any primary tumor with dissemination to distant lymph nodes, bone, bone marrow, liver, skin, and/or other organs (except as defined for stage 4S###)
-
-                Stage 4S = localized primary tumor (as defined for stage 1, 2A, or 2B), with dissemination limited to skin, liver, and/or bone marrow### (limited to infants less than 1 year old)
-
-            </div><!--end staging div-->
-
-            <hr>
+            <hr class="p-2">
 
             <h5>Ancillary cytomolecular biomarker information</h5>
 
-            <h5>MYCN Status</h5>
+            <h6>MYCN Status</h6>
 
             <select class="form-control selectpicker form-control-sm" id="box21">
                 <option>Not amplified</option>
@@ -281,7 +228,7 @@
 
             <hr>
 
-            <h5>LOH Status</h5>
+            <h6>LOH Status</h6>
 
             <select class="form-control selectpicker form-control-sm" id="box22">
                 <option>No LOH at 1p or 11q</option>
@@ -299,7 +246,7 @@
 
             <hr>
 
-            <h5>Ploidy</h5>
+            <h6>Ploidy</h6>
 
             <select class="form-control selectpicker form-control-sm" id="box23">
                 <option>Diploid</option>
@@ -317,7 +264,7 @@
             <hr>
 
 
-            <h5>Alk status</h5>
+            <h6>Alk status</h6>
 
             <select class="form-control selectpicker form-control-sm" id="box24">
                 <option selected>Not applicable</option>
@@ -333,19 +280,32 @@
 
             <input id='box24_2' style='display:none;' placeholder='Specify'>
 
-<!-- close column -->
-		</div>
-		{{> page-partials/cap-footer}}
-<!-- close row -->
-	</div>
-	{{> page-partials/history-module}}
-<!-- close container -->
+
+            <hr class="p-2" >
+            <h5>INRG staging system
+            <!-- Button trigger modal -->
+            <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_inrg">INRG Staging System Explained</button>
+
+            <!-- Histology help Modal -->
+            {{> page-modals/cap-helpers/nb-inrg}}
+
+            </h5>
+            <select id="box25" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Stage L1</option>
+                <option>Stage L2</option>
+                <option>Stage M</option>
+                <option>Stage MS</option>
+                <option selected>Not applicable</option>
+            </select>
+
+
+            <!-- end markup-->
+
+            <!-- close markup -->
+        </div>
+        {{> page-partials/cap-footer}}
+        <!-- close row -->
+    </div>
+    {{> page-partials/history-module}}
+    <!-- close container -->
 </div>
-
-
-		<!--
-		"specificScripts":
-			[
-				"/js/cap/nb-scripts.js",
-			]
-	 -->
