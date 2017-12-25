@@ -1,0 +1,469 @@
+<div class="container-fluid">
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+        <li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Lip and Oral cavity tumors</li>
+    </ol>
+    {{> message-center this}}
+    {{> page-partials/cap-header}}
+
+    <div class="row">
+        {{> page-partials/cap-validate-alert}}
+        <div class="col col-md-8">
+
+            <!-- paste markup here-->
+            <hr class="p-2" >
+            <h5>Procedure</h5>
+            <select multiple id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Excision</option>
+                <option>Glossectomy, specify</option>
+                <option>Buccal mucosal resection, specify</option>
+                <option>Mandibulectomy, specify</option>
+                <option>Maxillectomy, specify</option>
+                <option>Palatectomy</option>
+                <option>Neck (lymph node) dissection, specify</option>
+                <option>Other, specify</option>
+                <option>Not specified</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;' placeholder='Specify nature of resction'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Tumor Site</h5>
+            <select id="box2" class='form-control selectpicker form-control-sm col-sm-6'>
+                <optgroup label="Lip">
+                    <option>External upper lip (exclude vermilion border)</option>
+                    <option>External lower lip (exclude vermilion border)</option>
+                    <option>Mucosa of upper lip</option>
+                    <option>Mucosa of lower lip</option>
+                    <option>Commissure of lip</option>
+                </optgroup>
+                <optgroup label="Oral cavity">
+                    <option>Lateral border of tongue</option>
+                    <option>Ventral surface of tongue</option>
+                    <option>Dorsal surface of tongue</option>
+                    <option>Anterior two-thirds of tongue</option>
+                    <option>Upper gingiva</option>
+                    <option>Lower gingiva</option>
+                    <option>Anterior floor of mouth</option>
+                    <option>Floor of mouth</option>
+                    <option>Hard palate</option>
+                    <option>Buccal mucosa</option>
+                    <option>Vestibule of mouth, maxillary</option>
+                    <option>Vestibule of mouth, mandibular</option>
+                    <option>Alveolar process, maxillary</option>
+                    <option>Alveolar process, mandibular</option>
+                    <option>Retromolar area</option>
+                    <option>Mandible</option>
+                    <option>Maxilla</option>
+                </optgroup>
+                <option>Other</option>
+                <option>Not specified</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box2_2' style='display:none;' placeholder='Specify Other site'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Tumor Laterality (select all that apply)</h5>
+            <select multiple id="box3" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Right</option>
+                <option>Left</option>
+                <option>Midline</option>
+                <option>Not specified</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Tumor Focality</h5>
+            <select id="box4" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Unifocal</option>
+                <option>Multifocal</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Tumor Size/ Thickness (cm)</h5>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box5" placeholder="">
+
+
+
+
+            <hr class="p-2" >
+            <h5>Tumor Depth of Invasion (mm)
+            <!-- Button trigger modal -->
+            <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_doi">A word about measuring depth of invasion</button>
+
+            <!-- Histology help Modal -->
+            {{> page-modals/cap-helpers/lip-doi}}
+
+            </h5>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box6" placeholder="">
+
+
+
+
+            <hr class="p-2" >
+            <h5>Histologic Type</h5>
+            <select id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
+                <optgroup label="Squamous cell + variants">
+                    <option>Squamous cell carcinoma, conventional</option>
+                    <option>Acantholytic squamous cell carcinoma</option>
+                    <option>Adenosquamous carcinoma</option>
+                    <option>Basaloid squamous cell carcinoma</option>
+                    <option>Carcinoma cuniculatum</option>
+                    <option>Papillary squamous cell carcinoma</option>
+                    <option>Spindle cell squamous cell carcinoma</option>
+                    <option>Verrucous squamous cell carcinoma</option>
+                    <option>Lymphoepithelial carcinoma</option>
+                </optgroup>
+                <optgroup label="Carcinomas of Minor Salivary Glands">
+                    <option>Mucoepidermoid carcinoma, low grade</option>
+                    <option>Mucoepidermoid carcinoma, intermediate grade</option>
+                    <option>Mucoepidermoid carcinoma, high grade</option>
+                    <option>Adenoid cystic carcinoma, tubular pattern</option>
+                    <option>Adenoid cystic carcinoma, cribriform pattern</option>
+                    <option>Adenoid cystic carcinoma, solid pattern</option>
+                    <option>Acinic cell carcinoma</option>
+                    <option>Polymorphous adenocarcinoma, classic, low grade</option>
+                    <option>Polymorphous adenocarcinoma, classic, intermediate grade</option>
+                    <option>Polymorphous adenocarcinoma, classic, high grade</option>
+                    <option>Polymorphous adenocarcinoma, cribriform, low grade</option>
+                    <option>Polymorphous adenocarcinoma, cribriform, intermediate grade</option>
+                    <option>Polymorphous adenocarcinoma, cribriform, high grade</option>
+                    <option>(Mammary analogue) Secretory carcinoma</option>
+                    <option>Salivary duct carcinoma</option>
+                    <option>Epithelial-myoepithelial carcinoma</option>
+                    <option>(Hyalinizing) clear cell carcinoma</option>
+                    <option>Adenocarcinoma, not otherwise specified, low grade</option>
+                    <option>Adenocarcinoma, not otherwise specified, intermediate grade</option>
+                    <option>Adenocarcinoma, not otherwise specified, high grade</option>
+                    <option>Basal cell adenocarcinoma</option>
+                    <option>Carcinosarcoma (true malignant mixed tumor)</option>
+                    <option>Intraductal carcinoma, low grade</option>
+                    <option>Intraductal carcinoma, high grade</option>
+                    <option>Myoepithelial carcinoma</option>
+                    <option>Oncocytic carcinoma</option>
+                    <option>Carcinoma ex pleomorphic adenoma, minimally invasive</option>
+                    <option>Carcinoma ex pleomorphic adenoma, invasive</option>
+                    <option>Carcinoma ex pleomorphic adenoma, intracapsular (noninvasive)</option>
+                </optgroup>
+                <optgroup label="Neuroendocrine Carcinoma">
+                    <option>Well differentiated neuroendocrine carcinoma (typical carcinoid tumor)</option>
+                    <option>Moderately differentiated neuroendocrine carcinoma (atypical carcinoid tumor)</option>
+                    <option>Poorly differentiated neuroendocrine carcinoma, small cell type</option>
+                    <option>Poorly differentiated neuroendocrine carcinoma, large cell type</option>
+                    <option>Combined neuroendocrine carcinoma</option>
+                </optgroup>
+                <option>Mucosal melanoma</option>
+                <option>Carcinoma, type cannot be determined</option>
+                <option>Other histologic type</option>
+            </select>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box7_2' style='display:none;' placeholder='Specify Other'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box7_3' style='display:none;' placeholder='Specify Combined'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Histologic Grade (required for squamous cell carcinoma only)</h5>
+            <select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>G1: Well differentiated</option>
+                <option>G2: Moderately differentiated</option>
+                <option>G3: Poorly differentiated</option>
+                <option>Other</option>
+                <option>GX: Cannot be assessed</option>
+                <option selected>Not applicable</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box8_2' style='display:none;' placeholder='Specify Other grade'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>+ Tumor Extension</h5>
+            <small>Specify any other structures involved</small>
+            <input type="text" class="form-control form-control-sm col-sm-10" id="box9" value="Not applicable">
+
+
+
+
+            <hr class="p-2" >
+            <h5>Margins - Invasive tumor</h5>
+
+            <select id="box10" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Cannot be assessed</option>
+                <option>Uninvolved by invasive tumor</option>
+                <option>Involved by invasive tumor</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box10_1' style='display:none;' placeholder='Specify closest margin'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box10_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box10_3' style='display:none;' placeholder='Specify involved margin'>
+
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Margins - In-situ tumor</h5>
+
+            <select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Cannot be assessed</option>
+                <option>No in-situ disease/high-grade dysplasia present</option>
+                <option>Uninvolved by high-grade dysplasia/in situ disease</option>
+                <option>Involved by high-grade dysplasia/in situ disease</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box11_1' style='display:none;' placeholder='Specify closest margin'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box11_2' style='display:none;' placeholder='Specify distance from closest margin (mm)'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box11_3' style='display:none;' placeholder='Specify involved margin'>
+
+
+
+
+
+
+            <h6 class="p-2" >
+            <h5>Separately Submitted Tumor Bed Margin Orientation
+            <!-- Button trigger modal -->
+            <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_tumorbed">A word about speartae tumor bed margins</button>
+
+            <!-- Histology help Modal -->
+            {{> page-modals/cap-helpers/lip-tumorbed}}
+
+            </h5>
+            <select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Oriented to true margin surface</option>
+                <option>Unoriented to true margin surface</option>
+                <option selected>Not applicable</option>
+            </select>
+
+
+
+            <div class="tumorbed p-2" style="display: none;">
+
+
+
+                <h6 class="mt-3" >
+                Margins - Separately Submitted Tumor Bed, Invasive</h6>
+
+                <select id="box13" class='form-control selectpicker form-control-sm col-sm-6 mt-2'>
+                    <option>Uninvolved by invasive tumor</option>
+                    <option>Involved by invasive tumor</option>
+                </select>
+
+                <input type="text" class="form-control form-control-sm col-sm-6" id='box13_2' placeholder='Specify distance to true margin (mm)'>
+                <input type="text" class="form-control form-control-sm col-sm-6" id='box13_3' style='display:none;' placeholder='Specify margin per orientation'>
+
+
+
+
+                <h6 class="mt-3" >
+                Margins - Separately Submitted Tumor Bed, In-Situ</h6>
+
+                <select id="box14" class='form-control selectpicker form-control-sm col-sm-6 mt-2'>
+                    <option>No in-situ disease/high-grade dysplasia present</option>
+                    <option>Uninvolved by in-situ disease/high-grade dysplasia</option>
+                    <option>Involved by in-situ disease/high-grade dysplasia</option>
+                </select>
+
+                <input type="text" class="form-control form-control-sm col-sm-6" id='box14_2'  style='display:none;' placeholder='Specify distance of in-situ from margin (mm)'>
+                <input type="text" class="form-control form-control-sm col-sm-6" id='box14_3' style='display:none;' placeholder='Specify involved margin'>
+
+
+            </div>
+
+
+
+
+            <hr class="p-2" >
+            <h5>Lymphovascular Invasion</h5>
+            <select id="box16" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+
+
+
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Perineural Invasion</h5>
+            <select id="box17" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present</option>
+                <option>Cannot be determined</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box17_2' style='display:none;' placeholder='Specify extent of PNI - focal, extensive...'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Pathologic Staging (pTNM)
+
+            </h5>
+
+            <h6>TNM Descriptors (select all that apply)</h6>
+            <select id="box18" class='form-control selectpicker form-control-sm col-sm-6' multiple>
+                <option selected value="Not applicable">Not applicable</option>
+                <option>m</option>
+                <option>r</option>
+                <option>y</option>
+            </select>
+            <h6 class='mt-2'>pT
+                <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip" data-html="true"
+                   title="
+                    <p>pT4a - Moderately advanced disease<p>
+                    <ul>
+                    <li>Lip: Tumor invades through cortical bone or involves the inferior alveolar nerve, floor of mouth, or skin of face (ie, chin or nose)</li>
+                    <li>Oral cavity: Tumor invades adjacent structures only (eg, through cortical bone of the mandible or maxilla, or involves the maxillary sinus or skin of the face)</li>
+                    </ul>
+                    <p>pT4b - Very advanced local disease</p>
+                    <ul>
+                    <li>
+                    Tumor invades masticator space, pterygoid plates, or skull base, and/or encases the internal carotid artery</li></ul>"
+                           aria-hidden="true">
+
+                </i>
+            </h6>
+            <select id="box19" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="null"></option>
+            </select>
+
+
+            <h6 class='mt-2'>pN</h6>
+            <select id="box20" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="null"></option>
+            </select>
+
+
+            <h6 class='mt-2'>pM</h6>
+            <select id="box21" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option selected value='pMx'>pMx: Not applicable</option>
+                <option value="pM1">pM1: Distant metastasis</option>
+            </select>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box21_2" style="display:none;" placeholder="Specify metastatic sites">
+
+            <form class="form-inline mt-2">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box22" >
+                </label>
+            </form>
+
+            <div class='lnchk' style='display:none;'>
+                <form class="form-inline mt-2 col-8">
+                    <label class="m-2">Number of lymph nodes examined:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box23" style="width:100px"></label>
+                    <label class="m-2">Number of lymph nodes involved:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box24" style="width:100px"></label>
+
+                <div class="posnodes" style="display:none;">
+                    <label class="m-2">
+                        Laterality of Lymph Nodes Involved
+                    <select id="box25" class='form-control selectpicker form-control-sm col-sm-6 ml-3'>
+                        <option>Ipsilateral (including midline)</option>
+                        <option>Contralateral</option>
+                        <option>Bilateral</option>
+                        <option>Cannot be determined</option>
+                    </select>
+                    </label>
+
+
+
+
+
+                    <label class="m-2">
+                        Size of Largest Metastatic Deposit:
+                        <input type="text" class="form-control form-control-sm col-sm-6 ml-3" id="boxx26" placeholder="">
+                    </label>
+
+
+
+
+                    <label class="m-2">
+                            Extranodal Extension:
+                            <select id="box27" class='form-control selectpicker form-control-sm col-sm-8 ml-3'>
+                                <option>Not identified</option>
+                                <option>Present, ENEma (>2 mm)</option>
+                                <option>Present, ENEmi (≤2 mm)</option>
+                                <option>Cannot be determined</option>
+                            </select>
+                    </label>
+                </form>
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>+ Additional Pathologic Findings (select all that apply)</h5>
+            <select multiple id="box28" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>None identified</option>
+                <option>Keratinizing dysplasia, mild</option>
+                <option>Keratinizing dysplasia, moderate</option>
+                <option>Keratinizing dysplasia, severe (carcinoma in situ)</option>
+                <option>Nonkeratinizing dysplasia, mild</option>
+                <option>Nonkeratinizing dysplasia, moderate</option>
+                <option>Nonkeratinizing dysplasia, severe (carcinoma in situ)</option>
+                <option>Inflammation, type</option>
+                <option>Epithelial hyperplasia</option>
+                <option>Colonization, fungal</option>
+                <option>Colonization, bacterial</option>
+                <option>Other</option>
+            </select>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box28_2' style='display:none;' placeholder='Specify Other'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box28_3' style='display:none;' placeholder='Specify type'>
+
+
+
+
+
+
+
+            <!-- end markup-->
+
+            <!-- close markup -->
+        </div>
+        {{> page-partials/cap-footer}}
+        <!-- close row -->
+    </div>
+    {{> page-partials/history-module}}
+    <!-- close container -->
+</div>

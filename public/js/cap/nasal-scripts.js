@@ -41,7 +41,7 @@ $(window).on('load', function() {
         },
         "Melanoma": {
             "pT3": "pT3: Tumors limited to the mucosa and immediately underlying soft tissue, regardless of thickness or greatest dimension",
-            "pT4a": "Moderately advanced disease. Tumor involving deep soft tissue, cartilage, bone, or overlying skin",
+            "pT4a": "pT4a: Moderately advanced disease. Tumor involving deep soft tissue, cartilage, bone, or overlying skin",
             "pT4b": "pT4b: Very advanced disease. Tumor involving brain, dura, skull base, lower cranial nerves (IX, X, XI, XII), masticator space, carotid artery, prevertebral space, or mediastinal structures"
         },
         "Melanoma-node": {
