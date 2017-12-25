@@ -176,6 +176,12 @@ router.get('/cap/larynx-t', (req, res) => {
 ]);
 });
 
+router.get('/cap/nasal-t', (req, res) => {
+    controller.userWall(req, res, './page-views/cap/nasal-t.hbs', [
+    "/js/cap/nasal-scripts.js",
+]);
+});
+
 router.get('/cap/pancendo-t', (req, res) => {
     controller.userWall(req, res, './page-views/cap/pancendo-t.hbs', [
     "/js/cap/pancendo-scripts.js",

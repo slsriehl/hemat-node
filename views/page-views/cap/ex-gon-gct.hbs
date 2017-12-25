@@ -23,7 +23,7 @@
 	<option>Postpubertal/adult (≥12 y)</option>
 	</select>
 
-<hr>
+<hr class="p-2">
 
 	<h5>Tumor Site</h5><br>
 	<select class="form-control selectpicker form-control-sm "  id="box2">
@@ -36,7 +36,7 @@
 	</select>
 	<input type="text" class="form-control form-control-sm" id="box2_2" style="display:none" placeholder='Enter other site' >
 
-<hr>
+<hr class="p-2">
 
 	<h5>+ Specimen Integrity</h5><br>
 	<select class="form-control selectpicker form-control-sm "  id="box3">
@@ -44,18 +44,18 @@
 	<option>Fragmented</option>
 	</select>
 
-<hr>
+<hr class="p-2">
 
 	<h5>Tumor Size (cm)</h5><br>
 	Greatest dimension tumor (cm):<br>
 	<input type="text" class="form-control form-control-sm" id="box4"  placeholder="Cannot be assessed">
 
-<hr>
+<hr class="p-2">
 
 	<h5>Tumor weight (g)</h5><br>
 	<input type="text" class="form-control form-control-sm" id="box5" placeholder='weight (g)'  onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')">
 
-<hr>
+<hr class="p-2">
 
 	<h5>Histologic Type</h5><br>
 	<input type="text" class="form-control form-control-sm" id="box6" size=60><br>
@@ -67,7 +67,7 @@
 	<input type="text" class="form-control form-control-sm" id="box6_7" style="display:none" placeholder='Describe type of sarcoma' >
 	<input type="text" class="form-control form-control-sm" id="box6_8" style="display:none" placeholder='Describe epithelial malignancy' >
 
-<hr>
+<hr class="p-2">
 
 	<h5>+ Histologic Grade (applicable to immature teratomas only) </h5><br>
 	<select class="form-control selectpicker form-control-sm "  id="box7">
@@ -79,7 +79,7 @@
 	</select>
 	<input type="text" class="form-control form-control-sm" id="box7_2" style="display:none" placeholder='% of teratoma composed of immature elements' >
 
-<hr>
+<hr class="p-2">
 
 	<h5>Microscopic Tumor Extension (applicable to sacrococcygeal teratoma only) </h5><br>
 	<select class="form-control selectpicker form-control-sm "  id="box8">
@@ -90,7 +90,7 @@
 	<option>Cannot be determined</option>
 	</select>
 
-<hr>
+<hr class="p-2">
 
 	<h5>Margins:</h5><br>
 	<select class="form-control selectpicker form-control-sm "  id="box9">
@@ -102,7 +102,7 @@
 	<input type="text" class="form-control form-control-sm" id="box9_3" style="display:none" placeholder='Specify nearest margin' >
 	<input type="text" class="form-control form-control-sm" id="box9_4" style="display:none" placeholder='Specify involved margin' >
 
-<hr>
+<hr class="p-2">
 
 	<h5>+ Treatment Effect</h5><br>
 	<select class="form-control selectpicker form-control-sm "  id="box10">
@@ -113,7 +113,7 @@
 	<option>Cannot be determined</option>
 	</select>
 
-<hr>
+<hr class="p-2">
 
 	<h5>+ Lymph-Vascular Invasion (Note E)</h5><br>
 	<select class="form-control selectpicker form-control-sm "  id="box11">
@@ -122,7 +122,7 @@
 	<option>Indeterminate</option>
 	</select>
 
-<hr>
+<hr class="p-2">
 
 	<h5>+ Perineural Invasion</h5><br>
 	<select class="form-control selectpicker form-control-sm "  id="box12">
@@ -130,7 +130,7 @@
 	<option>Present</option>
 	</select>
 
-<hr>
+<hr class="p-2">
 
 	<h5>Regional Lymph Nodes (pN)</h5><br>
 	<select class="form-control selectpicker form-control-sm "  id="box13">
@@ -145,7 +145,7 @@
 	<h5>Number of Lymph Nodes Examined:</h5><input type="text" class="form-control form-control-sm" id="box14"  placeholder='0'><br>
 	<h5>Number of Lymph Nodes Involved:</h5><input type="text" class="form-control form-control-sm" id="box15"  placeholder='0'><br>
 
-<hr>
+<hr class="p-2">
 
 	<h5>Distant Metastasis (pM)</h5><br>
 	<select class="form-control selectpicker form-control-sm "  id="box16">
@@ -153,12 +153,12 @@
 	<option value='pM1'> pM1: 	Distant metastasis present</option>
 	</select>
 
-<hr>
+<hr class="p-2">
 
 
 	<h5>Pathologic Staging (select all that apply)  (Note G)</h5>	<br>
 	* There is no offically chosen AJCC staging preference, so choose staging type according to site of invovlement:
-<hr>
+<hr class="p-2">
 
 	<label id='cog'><input class="form-check-input " type='checkbox' name='staging' id='box17_1'> COG Staging (for non-sacrococcygeal or mediastinal tumors)</label><br>
 	<label id='anat'><input class="form-check-input " type='checkbox' name='staging' id='box17_2'>+ Anatomic Classification of Sacrococcygeal Germ Cell Tumors</label><br>
@@ -172,7 +172,7 @@
 	<option value='Stage IV'>Stage IV: Distant metastases, including liver</option>
 	</select>
 
-<hr>
+<hr class="p-2">
 
 	</div><!--end COG staging div-->
 	<div class='sacro' style="display:none"><h5>+ Anatomic Classification of Sacrococcygeal Germ Cell Tumors</h5><br>
@@ -183,7 +183,7 @@
 	<option value='Type IV'>Type IV: Entirely presacral (no externalization)</option>
 	</select>
 
-<hr>
+<hr class="p-2">
 
 	</div><!-- end sacro div-->
 	<div class='moran' style="display:none"><h5>+ Moran and Suster Proposed Clinical Staging for Mediastinal Germ Cell Tumors</h5><br>
@@ -194,7 +194,7 @@
 	<option value='Stage IIIB'>Stage IIIB: With extrathoracic metastases</option>
 	</select>
 
-<hr>
+<hr class="p-2">
 
 	</div><!-- end of moran div-->
 	<h5>+ Additional Clinical or Laboratory Findings (select all that apply) </h5><br>
@@ -208,7 +208,7 @@
 	</select>
 	<input type="text" class="form-control form-control-sm" id="box20_2" style="display:none" placeholder='Enter karyotype summary' >
 
-<hr>
+<hr class="p-2">
 
 	+ Serum Tumor Markers<br>
 	<select class="form-control selectpicker form-control-sm "  id="box21" multiple>
@@ -219,7 +219,7 @@
 	<input type="text" class="form-control form-control-sm" id="box21_2" style="display:none" placeholder='Enter AFP level' >
 	<input type="text" class="form-control form-control-sm" id="box21_3" style="display:none" placeholder='Enter HCG level' >
 
-<hr>
+<hr class="p-2">
 
 	+ Associated syndromes<br>
 	<select class="form-control selectpicker form-control-sm "  id="box22">
@@ -230,7 +230,7 @@
 	</select>
 	<input type="text" class="form-control form-control-sm" id="box22_2" style="display:none" placeholder='Enter other findings' >
 
-<hr>
+<hr class="p-2">
 
 	+ Associated malignancy <br>
 	<select class="form-control selectpicker form-control-sm "  id="box23">
@@ -243,7 +243,7 @@
 	<input type="text" class="form-control form-control-sm" id="box23_3" style="display:none" placeholder='Enter MDS classification' >
 	<input type="text" class="form-control form-control-sm" id="box23_4" style="display:none" placeholder='Enter other findings' >
 
-<hr>
+<hr class="p-2">
 
 
 	<!-- close column -->
