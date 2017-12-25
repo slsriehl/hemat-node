@@ -1,0 +1,231 @@
+<div class="container-fluid">
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+        <li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Mesothelioma</li>
+    </ol>
+    {{> message-center this}}
+    {{> page-partials/cap-header}}
+
+    <div class="row">
+        {{> page-partials/cap-validate-alert}}
+        <div class="col col-md-8">
+
+            <!-- paste markup here-->
+            <hr class="p-2">
+            <h5>Procedure</h5>
+            <select id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Extrapleural pneumonectomy</option>
+                <option>Extended pleurectomy/ decortication</option>
+                <option>Pleurectomy/decortication</option>
+                <option>Partial pleurectomy</option>
+                <option>Other</option>
+                <option>Not specified</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr class="p-2">
+            <h5>Specimen Laterality</h5>
+            <select id="box2" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Right</option>
+                <option>Left</option>
+                <option>Not specified</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2">
+            <h5>Tumor Site</h5>
+            <select multiple id="box3" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Parietal pleura</option>
+                <option>Visceral pleura</option>
+                <option>Diaphragm</option>
+                <option>Other</option>
+                <option>Not specified</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box3_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr class="p-2">
+            <h5>Tumor Focality
+            <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
+               title="A small proportion of malignant mesotheliomas are sharply circumscribed. These are designated by the term “localized malignant mesothelioma.”
+               Localized malignant mesotheliomas appear to have a far better prognosis than their diffuse counterpart" aria-hidden="true"></i>
+            </h5>
+            <select id="box5" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Localized</option>
+                <option>Diffuse</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+
+
+            <hr class="p-2">
+            <h5>+ Tumor Size (for localized tumors only)</h5>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box4" value="Not applicable">
+
+
+
+
+
+            <hr class="p-2">
+            <h5>Histologic Type</h5>
+            <select id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Epithelioid mesothelioma</option>
+                <option>Sarcomatoid mesothelioma</option>
+                <option>Biphasic mesothelioma</option>
+                <option>Desmoplastic mesothelioma</option>
+                <option>Other histologic type</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box6_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr class="p-2">
+            <h5>Tumor Extension (select all that apply)</h5>
+            <select multiple id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Tumor limited to parietal pleura without involvement of ipsilateral visceral, mediastinal, or diaphragmatic pleura</option>
+                <option>Tumor limited to parietal pleura with focal involvement of ipsilateral visceral, mediastinal, or diaphragmatic pleura</option>
+                <option>Tumor involves all of the ipsilateral pleural surfaces (including fissure)</option>
+                <option>Tumor involves diaphragmatic muscle</option>
+                <option>Tumor extends into lung parenchyma</option>
+                <option>Tumor involves endothoracic fascia</option>
+                <option>Tumor extends into mediastinal fat</option>
+                <option>Solitary focus extends into the soft tissues of the chest wall</option>
+                <option>Diffuse or multiple foci extend into soft tissue of chest wall</option>
+                <option>Tumor extends into but not through the pericardium</option>
+                <option>Tumor involves rib(s)</option>
+                <option>Tumor involves mediastinal organ(s)</option>
+                <option>Other</option>
+                <option>Cannot be assessed</option>
+            </select>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box7_2' style='display:none;' placeholder='Specify Other site(s)'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box7_3' style='display:none;' placeholder='Specify organ(s) involved'>
+
+
+
+
+
+            <hr class="p-2">
+            <h5>Margins</h5>
+
+            <select id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Cannot be assessed</option>
+                <option>Uninvolved by mesothelioma</option>
+                <option>Involved by mesothelioma</option>
+                <option>Not applicable</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box9_3' style='display:none;' placeholder='Specify involved margin'>
+
+
+
+
+
+
+            <hr class="p-2">
+            <h5>Pathologic Staging (pTNM)
+
+            </h5>
+
+            <h6>TNM Descriptors (select all that apply)</h6>
+            <select id="box10" class='form-control selectpicker form-control-sm col-sm-6' multiple>
+                <option selected value="Not applicable">Not applicable</option>
+               <option>r</option>
+                <option>y</option>
+            </select>
+            <h6 class='mt-2'>pT
+            <!-- Button trigger modal -->
+            <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_meso-pt">Click for pT definitiions</button>
+
+            <!-- Histology help Modal -->
+            {{> page-modals/cap-helpers/mesothelioma-pt}}
+
+            </h6>
+            <select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pTX">pTX: Primary tumor cannot be assessed</option>
+                <option value="pT0">pT0: No evidence of primary tumor</option>
+                <option value="pT1">pT1: Tumor limited to the ipsilateral parietal pleura</option>
+                <option value="pT2">pT2: Tumor involving each of the ipsilateral pleural surfaces (parietal, mediastinal, diaphragmatic, and visceral pleura)</option>
+                <option value="pT3">pT3: Describes locally advanced but potentially resectable tumor</option>
+                <option value="pT4">pT4: Describes locally advanced technically unresectable tumor</option>
+            </select>
+
+
+            <h6 class='mt-2'>pN</h6>
+            <select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pNX">pNX: Regional lymph nodes cannot be assessed</option>
+                <option value="pN0">pN0: No regional lymph node metastases</option>
+                <option value="pN1">pN1: Metastases in the ipsilateral bronchopulmonary hilar or mediastinal (including the internal mammary, peridiaphragmatic, pericardial fat pad, or intercostal) lymph nodes</option>
+                <option value="pN2">pN2: Metastases in the contralateral mediastinal, ipsilateral, or contralateral supraclavicular lymph nodes</option>
+            </select>
+
+
+            <h6 class='mt-2'>pM</h6>
+            <select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option selected value='pMx'>pMx: Not applicable</option>
+                <option value="pM1">pM1: Distant metastasis present</option>
+            </select>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box13_2" style="display:none;" placeholder="Specify metastatic sites">
+
+            <form class="form-inline mt-2">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box14" >
+                </label>
+            </form>
+
+            <div class='lnchk' style='display:none;'>
+                <form class="form-inline mt-2 col-8">
+                    <label class="m-2">Number of lymph nodes examined: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box15" style="width:100px"></label>
+                    <label class="m-2">Number of lymph nodes involved: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box16" style="width:100px"></label>
+                </form>
+            </div>
+
+
+            <hr class="p-2">
+            <h5>+ Additional Pathologic Findings (select all that apply)</h5>
+            <select multiple id="box17" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>None identified</option>
+                <option>Asbestos bodies</option>
+                <option>Pleural plaque</option>
+                <option>Pulmonary interstitial fibrosis</option>
+                <option>Inflammation, type</option>
+                <option>Other</option>
+            </select>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box17_2' style='display:none;' placeholder='Specify Other'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box17_3' style='display:none;' placeholder='Specify type'>
+
+
+
+
+
+
+
+            <!-- end markup-->
+
+            <!-- close markup -->
+        </div>
+        {{> page-partials/cap-footer}}
+        <!-- close row -->
+    </div>
+    {{> page-partials/history-module}}
+    <!-- close container -->
+</div>
