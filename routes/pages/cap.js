@@ -170,6 +170,12 @@ router.get('/cap/melanoma-bx', (req, res) => {
 ]);
 });
 
+router.get('/cap/jejunal-t', (req, res) => {
+    controller.userWall(req, res, './page-views/cap/jejunal-t.hbs', [
+    "/js/cap/jejunal-scripts.js",
+]);
+});
+
 router.get('/cap/lip-oral-t', (req, res) => {
     controller.userWall(req, res, './page-views/cap/lip-oral-t.hbs', [
     "/js/cap/lip-oral-scripts.js",
