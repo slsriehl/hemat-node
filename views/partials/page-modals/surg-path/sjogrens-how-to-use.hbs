@@ -1,7 +1,7 @@
-<div aria-hidden="true" data-backdrop="false" aria-labelledby="modalLabel" class="modal fade" id="flipFlop"
-     role="dialog"
+<div aria-hidden="true" data-backdrop="false" aria-labelledby="modalLabel" data-backdrop="false"
+     class="modal fade" id="help-howto" role="dialog"
      tabindex="-1">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button aria-label="Close" class="close" data-dismiss="modal" type="button">
@@ -9,10 +9,47 @@
                 <h4 class="modal-title" id="modalLabel"> How to calculate the Focus Score </h4>
             </div>
             <div class="modal-body">
-                <ul class="list-group">
-                    <li class="list-group-item ">Start by typing in the first few letters of your stain</li>
+                <div class="card">
+                    <div class="card-header">
+                        How to estimate acinar surface area:
+                    </div>
+                    <div class="card-block">
+                        <p>For an Olympus BX41 (or similar) scope with 10x objective and 10 eyepiece:</p>
+                        <hr>
+                        <ul style="list-style: none;">
+                            <li> A 100x field is nearly 4 mm2 surface area </li>
+                            <li> Position each lobule to fill the 100x field, and count full fields as 4 mm2 </li>
+                            <li> Estimate partial fields as best you can </li>
+                            <li> Fudge the total area down 1 or 2 mm2 for excess connective tissue </li>
+                            <li><b> * Ignore atrophic or fibrotic/injured lobules *</b> </li>
+                        </ul>
+                        <hr>
+                        <p class="text-info">Some caveats</p>
+                        <hr>
+                        <ul style="line-height: 2em;">
+                            <li> At least 8 mm^2 of good quality glandular tissue be available to evaluate </li>
+                            <li> Cut several serial sections to follow foci through levels </li>
+                            <li> Non-specific chronic inflammation (NSCS) should be quantified and generally not counted in the FS, unless areas with unequivocally uninjured glands are nearby </li>
+                            <li> In partially atrophic/fibrotic glands, all of the gland surface area is counted in the denominator, but only FLS in uninjured acini are counted towards the focus score </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        The calculation
+                    </div>
+                    <div class="card-block">
+                        <p>(Total # of inflammatory foci / total surface area) * 4 = Focus Score</p>
 
-                </ul>
+                    </div>
+                    <div class="card-footer text-muted ">
+                        Original Reference:<br>
+                        Greenspan JS, et. al., "The histopathology of Sjorgren's syndrome in labial salivary gland biopsies", Oral Surgery 37(2):217-229, Feb. 1974.<br>
+                        <hr>
+                        Up to date consensus guidelines:<br>
+                        Sjögren's histopathology workshop group from ESSENTIAL (EULAR Sjögren's syndrome study group), et al. Standardisation of labial salivary gland histopathology in clinical trials in primary Sjögren's syndrome. Ann Rheum Dis. 2016 Dec 13. <br>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
