@@ -54,7 +54,7 @@ const tests = {
 	hepatoBlast: function(done) {
 		const pathTo = '/cap/hepatoblast';
 		const scripts = [
-			"/js/cap/hepato-scripts.js"
+			"/js/cap/hepatoblastoma-scripts.js"
 		];
 		wrongPromise(pathTo, scripts, done);
 	},

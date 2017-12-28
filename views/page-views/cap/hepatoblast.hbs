@@ -5,7 +5,7 @@
 						<a href="/">Home</a>
 				</li>
 				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
-				<li class="breadcrumb-item active" id="bc-jump"><i class="fa fa-flask mr-2"></i>Pediatric Hepatic tumors (Hepatoblastoma)</li>
+				<li class="breadcrumb-item active" id="bc-jump"><i class="fa fa-flask mr-2"></i>CNS tumors</li>
 		</ol>
 
  {{> message-center this}}
@@ -13,236 +13,318 @@
 
 		{{> page-partials/cap-header}}
 
-	<div class="row">
-		<div class="col col-md-8">
-	<h5>Procedure</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box2">
-	<option>Core biopsy</option>
-	<option>Incisional biopsy</option>
-	<option>Right lobectomy</option>
-	<option>Extended right lobectomy</option>
-	<option>Medial segmentectomy</option>
-	<option>Left lateral segmentectomy</option>
-	<option>Total left lobectomy</option>
-	<option>Explanted liver</option>
-	<option>Other</option>
-	</select><br>
-	<input type="text" class="form-control form-control-sm "  id='box2_2' style='display:none;' placeholder='Specify'>
+   <div class="row">
+        {{> page-partials/cap-validate-alert}}
+        <div class="col col-md-8">
+	        <!-- paste markup here-->
 
-<hr class="p-2">
+            <hr class="p-2" >
+            <h5>Procedure</h5>
+            <select id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Core biopsy</option>
+                <option>Incisional biopsy</option>
+                <option>Right lobectomy</option>
+                <option>Extended right lobectomy</option>
+                <option>Medial segmentectomy</option>
+                <option>Left lateral segmentectomy</option>
+                <option>Total left lobectomy</option>
+                <option>Explanted liver</option>
+                <option>Other</option>
+                <option>Not specified</option>
+                <option></option>
+            </select>
 
-
-	<h5>Tumor site</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box3">
-	<option>Right lobe</option>
-	<option>Left lobe</option>
-	<option>Right and left lobes</option>
-	<option>Other</option>
-	<option>Not specified</option>
-	</select><br>
-	<input type="text" class="form-control form-control-sm "  id='box3_2' style='display:none;' placeholder='Specify'>
-
-<hr class="p-2">
-
-
-	<h5>Tumor size:</h5><br>
-	<input type="text" class="form-control form-control-sm "  id="box4"  placeholder='cm'>
-
-<hr class="p-2">
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;' placeholder='Specify Other procedure'>
 
 
 
-	<h5>+ Tumor focality</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box5">
-	<option>Unifocal</option>
-	<option>Multifocal</option>
-	<option>Cannot be determined</option>
-	</select>
-
-<hr class="p-2">
 
 
-	<h5>+ Macroscopic extension of tumor</h5><br>
-	<select class="form-control selectpicker form-control-sm "  multiple id="box6">
-	<option>Tumor confined to liver</option>
-	<option>Tumor extends into adjacent organ(s)</option>
-	<option>Tumor extends into adjacent soft tissue</option>
-	<option>Diaphragm</option>
-	<option>Abdominal wall</option>
-	<option>Other</option>
-	<option>Intraoperative tumor spill</option>
-	<option>Gross tumor rupture, preoperative</option>
-	<option>Cannot be determined</option>
-	</select><br>
-	<input type="text" class="form-control form-control-sm "  id='box6_2' style='display:none;' placeholder='Specify'>
+            <hr class="p-2" >
+            <h5>Tumor Site</h5>
+            <select id="box2" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Right lobe</option>
+                <option>Left lobe</option>
+                <option>Right and left lobes</option>
+                <option>Other</option>
+                <option>Not specified</option>
+            </select>
 
-<hr class="p-2">
-
-
-	<h5>Preoperative Treatment</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box7">
-	<option>No known preoperative therapy</option>
-	<option>Preoperative therapy given</option>
-	<option>Not specified</option>
-	</select>
-
-<hr class="p-2">
-
-
-	<h5>Histologic Type (select all that apply)</h5><br>
-	<select class="form-control selectpicker form-control-sm "  multiple  id="box8">
-	<option>Hepatoblastoma, epithelial type, fetal pattern (mitotically inactive)</option>
-	<option>Hepatoblastoma, epithelial type, fetal pattern (mitotically active)</option>
-	<option>Hepatoblastoma, epithelial type, embryonal</option>
-	<option>Hepatoblastoma, epithelial type, pleomorphic (poorly differentiated)</option>
-	<option>Hepatoblastoma, epithelial type, macrotrabecular pattern</option>
-	<option>Hepatoblastoma, epithelial type, small cell undifferentiated pattern</option>
-	<option>Hepatoblastoma, mesenchymal type without teratoid features</option>
-	<option>Hepatoblastoma, mesenchymal type with teratoid features</option>
-	<option>Hepatoblastoma, other</option>
-	</select><br>
-	<input type="text" class="form-control form-control-sm "  id='box8_2' style='display:none;' placeholder='Specify'>
-
-<hr class="p-2">
-
-
-	<h5>+ Treatment Effect</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box9">
-	<option>No known preoperative therapy (not applicable)</option>
-	<option>Not identified</option>
-	<option>Present</option>
-	<option>Cannot be determined</option>
-	</select><br>
-	<input type="text" class="form-control form-control-sm "  id='box9_2' style='display:none;' placeholder='% necrosis'>
-
-<hr class="p-2">
-
-
-	<h5>Margin status (resection specimens only)</h5>
-	<br>
-	<h5>Resection Margin</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box10">
-	<option>Cannot be assessed</option>
-	<option>Uninvolved by tumor</option>
-	<option>Involved by tumor</option>
-	</select><br>
-	<input type="text" class="form-control form-control-sm "  id='box10_2' style='display:none;' placeholder='Specify closest margin and distance (cm)'><br>
-	<input type="text" class="form-control form-control-sm "  id='box10_3' style='display:none; ' placeholder='Specify margin'>
-
-<hr class="p-2">
-
-
-	<h5>Capsular surface margin</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box11">
-	<option>Cannot be assessed</option>
-	<option>Uninvolved by tumor</option>
-	<option>Involved by tumor</option>
-	</select><br>
-	<input type="text" class="form-control form-control-sm "  id='box11_3' style='display:none; ' placeholder='Specify distance (cm)'>
-
-<hr class="p-2">
-
-
-	<h5>+ Lymph-Vascular Invasion, Macroscopic (select all that apply)</h5><br>
-	<select class="form-control selectpicker form-control-sm "  multiple id="box12">
-	<option>Not identified</option>
-	<option>Portal vein invasion present</option>
-	<option>Hepatic vein invasion present</option>
-	<option>Cannot be determined</option>
-	</select>
-
-<hr class="p-2">
-
-
-	<h5>+ Lymph-Vascular Invasion, Microscopic</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box13">
-	<option>Absent</option>
-	<option>Present</option>
-	<option>Cannot be determined</option>
-	</select>
-
-<hr class="p-2">
-
-
-	Check here if any lymph nodes submitted? <input class="form-check-input " type="checkbox" id="box14" ><br><div class='lnchk' style='display:none;'><br>
-	Number of lymph nodes examined: <input type="text" class="form-control form-control-sm "  id="box14_2" ><br>
-	Number of lymph nodes involved: <input type="text" class="form-control form-control-sm "  id="box14_3" ></div>
-<hr class="p-2">
-
-
-	<h5>Distant Metastases (required only if confirmed pathologically in this case)</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box15">
-	<option selected>Not applicable</option>
-	<option>Present</option>
-	<option>Absent</option>
-	<option></option>
-	</select>
-
-<hr class="p-2">
-
-
-	<h5>+ Staging (COG)</h5><br>
-	<small>Performance of a biopsy prior to chemotherapy does
-	not upstage the tumor. Staging does not apply to post-therapy resections</small>
-	<select class="form-control selectpicker form-control-sm "   id="box16">
-	<option>Stage I</option>
-	<option>Stage II, Microscopic residual tumor present at hepatic resection margin</option>
-	<option>Stage II, Microscopic residual tumor present at extrahepatic resection margin</option>
-	<option>Stage II, Intraoperative tumor spill</option>
-	<option>Stage III, Macroscopic tumor visible at resection margin(s)</option>
-	<option>Stage III, Lymph node metastasis present</option>
-	<option>Stage IV, Complete resection of primary tumor</option>
-	<option>Stage IV, Incomplete resection of primary tumor</option>
-	<option>Staging not applicable - post-treatment specimen</option>
-	</select>
-
-<hr class="p-2">
-
-
-	<h5>+ Additional Pathologic Findings (select all that apply)</h5><br>
-	<select class="form-control selectpicker form-control-sm "  multiple id="box17">
-	<option>No background liver available for evaluation</option>
-	<option>None identified</option>
-	<option>Cirrhosis/fibrosis</option>
-	<option>Iron overload</option>
-	<option>Hepatitis</option>
-	<option>Other </option>
-	</select><br>
-	<input type="text" class="form-control form-control-sm "  id='box17_2' style='display:none;' placeholder='Specify'>
-
-<hr class="p-2">
-
-
-	<h5>Serum AFP level</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box18">
-	<option>less than 100 ng/mL</option>
-	<option>greater than 100 ng/mL</option>
-	<option>Not known</option>
-	<option></option>
-	</select>
-
-<hr class="p-2">
-
-
-	<h5>+ Ancillary Studies (select all that apply)</h5><br>
-	<select class="form-control selectpicker form-control-sm "  multiple id="box19">
-	<option selected>None performed</option>
-	<option>INI1 immunohistochemistry, expression retained</option>
-	<option>INI1 immunohistochemistry, expression lost</option>
-	<option>Glypican-3 immunohistochemistry, positive</option>
-	<option>Glypican-3 immunohistochemistry, negative</option>
-	<option>Beta-catenin immunohistochemistry, No nuclear staining</option>
-	<option>Beta-catenin immunohistochemistry, Nuclear staining present</option>
-	<option>Other</option>
-	<option></option>
-	</select><br>
-	<input type="text" class="form-control form-control-sm "  id='box19_2' style='display:none;' placeholder='Specify'>
-
-<hr class="p-2">
+            <input type="number" class="form-control form-control-sm mt-3 col-sm-6" id='box2_2' style='display:none;' placeholder='Specify Other site'>
 
 
 
-	<!-- close column -->
+
+            <div class="nod1">
+            <hr class="p-2" >
+            <h5>Tumor Size (cm)</h5>
+            <input type="number" class="form-control form-control-sm col-sm-6" id="box3_1" placeholder="Primary nodule">
+            <button class="add btn btn-sm btn-success p-1">Add nodule</button>
+            </div>
+
+
+            <div class="nod" style="display: none;">
+            <hr class="p-2" >
+            <h5>Tumor Size (cm), nodule #2 if needed</h5>
+            <input type="number" class="form-control form-control-sm col-sm-6" id="box3_2" placeholder="Nodule #2">
+
+                <button class="add btn btn-sm btn-success p-1">Add nodule</button>
+                <button class="remove btn btn-sm btn-danger p-1">Remove nodule</button>
+            </div>
+
+
+            <div class="nod" style="display: none;">
+            <hr class="p-2" >
+            <h5>Tumor Size (cm), nodule #3 if needed</h5>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box3_3" placeholder="Nodule #3">
+                <button class="remove btn btn-sm btn-danger p-1">Remove nodule</button>
+            </div>
+
+
+
+            <hr class="p-2" >
+            <h5>+ Tumor Focality</h5>
+            <select id="box4" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Unifocal</option>
+                <option>Multifocal</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>+ Macroscopic Extent of Tumor (select all that apply)</h5>
+            <select multiple id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Tumor confined to the liver</option>
+                <option>Tumor extends into adjacent organs</option>
+                <option>Tumor extends into diaphragm</option>
+                <option>Tumor extends into abdominal wall</option>
+                <option>Tumor with Intraoperative tumor spill</option>
+                <option>Gross tumor rupture, preoperative</option>
+                <option>Other</option>
+                <option>Cannot be determined</option>
+            </select>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box6_2' style='display:none;' placeholder='Specify organs involved'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box6_3' style='display:none;' placeholder='Specify Other site of extension'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Preoperative Treatment</h5>
+            <select id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>No known preoperative therapy</option>
+                <option>Preoperative therapy given</option>
+                <option>Not specified</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Histologic Type</h5>
+            <select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Hepatoblastoma, epithelial type, fetal pattern (mitotically inactive)</option>
+                <option>Hepatoblastoma, epithelial type, fetal pattern (mitotically active)</option>
+                <option>Hepatoblastoma, epithelial type, embryonal</option>
+                <option>Hepatoblastoma, epithelial type, pleomorphic (poorly differentiated)</option>
+                <option>Hepatoblastoma, epithelial type, macrotrabecular pattern</option>
+                <option>Hepatoblastoma, epithelial type, small cell undifferentiated pattern</option>
+                <option>Hepatoblastoma, mesenchymal type without teratoid features</option>
+                <option>Hepatoblastoma, mesenchymal type with teratoid features</option>
+                <option>Hepatoblastoma, other</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box8_2' style='display:none;' placeholder='Specify other'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>+ Treatment Effect</h5>
+            <select id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>No known preoperative therapy</option>
+                <option>Not identified</option>
+                <option>Present</option>
+                <option>Cannot be determined</option>
+                <option selected>Not applicable</option>
+            </select>
+
+            <input type="number" class="form-control form-control-sm mt-3 col-sm-6" id='box9_2' style='display:none;' placeholder='Specify % tumor necrosis'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Margins - Resection</h5>
+
+            <select id="box10" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Cannot be assessed</option>
+                <option>Uninvolved by tumor</option>
+                <option>Involved by tumor</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box10_1' style='display:none;' placeholder='Specify closest margin'>
+            <input type="number" class="form-control form-control-sm col-sm-6" id='box10_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box10_3' style='display:none;' placeholder='Specify involved margin'>
+
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Margins - Capsular Surface</h5>
+
+            <select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Cannot be assessed</option>
+                <option>Uninvolved by tumor</option>
+                <option>Involved by tumor</option>
+            </select>
+
+            <input type="number" class="form-control form-control-sm col-sm-6" id='box11_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
+
+
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>+ Lymph-Vascular Invasion, Macroscopic</h5>
+            <select multiple id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Portal vein invasion present</option>
+                <option>Hepatic vein invasion present</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Lymph-Vascular Invasion, Microscopic</h5>
+            <select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Absent</option>
+                <option>Present</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>+ Staging
+                <button type="button" class="btn btn-sm btn-info ml-2 p-1" data-toggle="modal" data-target="#modal-1">A word about staging</button>
+                <!-- help Modal -->
+                {{> page-modals/cap-helpers/hepatoblastoma-staging}}
+
+            </h5>
+            <select id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Stage I</option>
+                <option>Stage II</option>
+                <option>Stage III</option>
+                <option>Stage IV</option>
+                <option></option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+
+
+            <h5>Distant Metastasis
+
+            </h5>
+            <select id="box15" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option >Not known</option>
+                <option >Present</option>
+            </select>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box15_2" style="display:none;" placeholder="Specify metastatic sites">
+
+
+
+            <hr class="p-2" >
+
+
+            <form class="form-inline mt-2">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box16" >
+                </label>
+            </form>
+
+            <div class='lnchk' style='display:none;'>
+                <form class="form-inline mt-2 col-8">
+                    <label class="m-2">Number of lymph nodes examined:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box17" style="width:100px"></label>
+                    <label class="m-2">Number of lymph nodes involved:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box18" style="width:100px"></label>
+                    <div class="posnodes" style="display:none;">
+                        <label class="m-2">Specify involved nodes:
+                            <input type="text" class="form-control form-control-sm col-sm-8 ml-3" id="box19" placeholder=""></label>
+                    </div>
+                </form>
+            </div>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>+ Additional Pathologic Findings (select all that apply)</h5>
+            <select multiple id="box20" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>No background liver available for evaluation </option>
+                <option>None identified</option>
+                <option>Cirrhosis/fibrosis</option>
+                <option>Iron overload</option>
+                <option>Hepatitis</option>
+                <option>Other</option>
+            </select>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box20_2' style='display:none;' placeholder='Specify Hepatitis type'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box20_3' style='display:none;' placeholder='Specify Other finding'>
+
+
+
+            <hr class="p-2" >
+            <h5>Serum Alpha Fetoprotein Level</h5>
+            <select id="box21" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option><100 ng/mL</option>
+                <option>≥100 ng/mL</option>
+                <option>Not known</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>+ Ancillary Studies</h5>
+            <select multiple id="box22" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>None performed</option>
+                <option>INI1 expression retained</option>
+                <option>INI1 expression lost</option>
+                <option>Glypican 3 Positive</option>
+                <option>Glypican 3 Negative</option>
+                <option>Beta-cateninPositive (nuclear)</option>
+                <option>Beta-cateninNegative (nuclear)</option>
+                <option>Other</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box22_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+            <!-- close column -->
 			</div>
 			{{> page-partials/cap-footer}}
 	<!-- close row -->
@@ -251,10 +333,3 @@
 	<!-- close container -->
 	</div>
 
-
-			<!--
-			"specificScripts":
-				[
-					"/js/cap/hepato-scripts.js",
-				]
-		 -->

@@ -50,7 +50,7 @@ router.get('/cap/ex-gon-gct', (req, res) => {
 
 router.get('/cap/hepatoblast', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/hepatoblast.hbs', [
-		"/js/cap/hepato-scripts.js",
+		"/js/cap/hepatoblastoma-scripts.js",
 	]);
 });
 
