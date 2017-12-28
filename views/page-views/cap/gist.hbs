@@ -1,0 +1,291 @@
+<div class="container-fluid">
+		<!-- Breadcrumbs -->
+		<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+						<a href="/">Home</a>
+				</li>
+				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+				<li class="breadcrumb-item active" id="bc-jump"><i class="fa fa-flask mr-2"></i>CNS tumors</li>
+		</ol>
+
+ {{> message-center this}}
+
+
+		{{> page-partials/cap-header}}
+
+   <div class="row">
+        {{> page-partials/cap-validate-alert}}
+        <div class="col col-md-8">
+	        <!-- paste markup here-->
+
+            <hr class="p-2" >
+            <h5>Procedure</h5>
+            <select id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Local excision</option>
+                <option>Resection</option>
+                <option>Metastasectomy</option>
+                <option>Other </option>
+                <option>Not specified</option>
+            </select>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;' placeholder='Specify Other'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_3' style='display:none;' placeholder='Specify Resection type'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Tumor Site</h5>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box2" placeholder="">
+
+
+
+
+            <hr class="p-2" >
+            <h5>Tumor Size (cm)
+                <i href="#" data-toggle="tooltip" title="Primary/largest tumor, if multiple tumors are present"
+                 class="fa fa-question-circle ml-2" aria-hidden="true"></i>
+            </h5>
+                <input type="text" class="form-control form-control-sm col-sm-6" id="box3" placeholder="">
+
+
+
+
+                <hr class="p-2" >
+                <h5>Tumor Focality</h5>
+                <select id="box4" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Unifocal</option>
+                    <option>Multifocal</option>
+                </select>
+
+                <div id='box4_2' class="multifocal p-2" style='display:none;'>
+
+                    <h6>Specify number of additional tumors</h6>
+                    <input type="text" class="form-control form-control-sm col-sm-6" id="box4_3" placeholder="">
+
+
+
+
+                    <h6>Specify size of additional tumors (cm)</h6>
+                    <input type="text" class="form-control form-control-sm col-sm-6" id="box4_4" placeholder="">
+
+                </div>
+
+
+
+
+
+
+
+
+                <hr class="p-2" >
+                <h5>Histologic Type</h5>
+                <select id="box5" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Gastrointestinal stromal tumor, spindle cell type</option>
+                    <option>Gastrointestinal stromal tumor, epithelioid type </option>
+                    <option>Gastrointestinal stromal tumor, mixed</option>
+                    <option>Gastrointestinal stromal tumor, other</option>
+                </select>
+
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box5_2' style='display:none;' placeholder='Specify other'>
+
+
+
+
+
+                <hr class="p-2" >
+                <h5>Mitotic Rate</h5>
+                <form class="form-inline mt-2">
+                    <div class="form-group">
+                        <label for="">Specify:</label>
+                        <input type="number" class="form-control form-control-sm ml-2 mr-2" id="box6" style="width:100px" placeholder="0">			/5mm^2
+                    </div>
+                    <p class="w-100"><small>Note: The required total count of mitoses is per 5 mm2 on the glass slide section. With the use of older model microscopes, 50 HPF is equivalent to 5 mm2. Most modern microscopes with wider 40X lenses/fields require approximately 20 to 25 HPF to encompass 5 mm2. If necessary, please measure field of view to accurately determine actual number of fields required to be counted on individual microscopes to encompass 5 mm2.</small></p>
+                </form>
+
+
+
+
+
+
+                <hr class="p-2" >
+                <h5>+ Necrosis</h5>
+                <select id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Not identified</option>
+                    <option>Present</option>
+                    <option>Cannot be determined</option>
+                </select>
+
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box7_2' style='display:none;' placeholder='Specify % necrosis'>
+
+
+
+
+
+                <hr class="p-2" >
+                <h5>Histologic Grade</h5>
+                <select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>G1: Low grade; mitotic rate ≤5/5 mm2</option>
+                    <option>G2: High grade; mitotic rate >5/5 mm2</option>
+                    <option>GX: Grade cannot be assessed</option>
+                </select>
+
+
+
+
+
+                <hr class="p-2" >
+                <h5>Risk Assessment
+                    <button type="button" class="btn btn-sm btn-info ml-2 p-1" data-toggle="modal" data-target="#gist-risk">A word about GIST risk assessment</button>
+
+                                    <!-- help Modal -->
+                                    {{> page-modals/cap-helpers/gist-risk}}
+
+                </h5>
+                <select id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>None</option>
+                    <option>Very low risk</option>
+                    <option>Low risk</option>
+                    <option>Moderate risk</option>
+                    <option>High risk</option>
+                    <option>Overtly malignant/metastatic</option>
+                    <option>Cannot be determined</option>
+                </select>
+
+
+
+
+
+                <hr class="p-2" >
+                <h5>Margins</h5>
+
+                <select id="box10" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Cannot be assessed</option>
+                    <option>Uninvolved by GIST</option>
+                    <option>Involved by GIST</option>
+                </select>
+
+                <input type="text" class="form-control form-control-sm col-sm-6" id='box10_1' style='display:none;' placeholder='Specify closest margin'>
+                <input type="text" class="form-control form-control-sm col-sm-6" id='box10_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
+                <input type="text" class="form-control form-control-sm col-sm-6" id='box10_3' style='display:none;' placeholder='Specify involved margin'>
+
+
+
+
+
+
+                <hr class="p-2" >
+                <h5>Pathologic Staging (pTNM)
+
+                </h5>
+
+                <h6>TNM Descriptors (select all that apply)</h6>
+                <select id="box11" class='form-control selectpicker form-control-sm col-sm-6' multiple>
+                    <option selected value="Not applicable">Not applicable</option>
+                    <option>m</option>
+                    <option>r</option>
+                    <option>y</option>
+                </select>
+                <h6 class='mt-2'>pT</h6>
+                <select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option value="pTX">pTX: Primary tumor cannot be assessed</option>
+                    <option value="pT0">pT0: No evidence of primary tumor</option>
+                    <option value="pT1">pT1: Tumor 2 cm or less</option>
+                    <option value="pT2">pT2: Tumor more than 2 cm but not more than 5 cm</option>
+                    <option value="pT3">pT3: Tumor more than 5 cm but not more than 10 cm</option>
+                    <option value="pT4">pT4: Tumor more than 10 cm in greatest dimension</option>
+                </select>
+
+
+                <h6 class='mt-2'>pN</h6>
+                <select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option value="pN0">pN0: No regional lymph node metastasis or unknown lymph node status</option>
+                    <option value="pN1">pN1: Regional lymph node metastasis</option>
+                    <option value="null"></option>
+                </select>
+
+
+                <h6 class='mt-2'>pM</h6>
+                <select id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option selected value='pMx'>pMx: Not applicable</option>
+                    <option value="pM1">pM1: Distant metastasis</option>
+                </select>
+                <input type="text" class="form-control form-control-sm col-sm-6" id="box14_2" style="display:none;" placeholder="Specify metastatic sites">
+
+                <form class="form-inline mt-2">
+                    <label class="form-check-label">Check here if any lymph nodes submitted?
+                        <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box15" >
+                    </label>
+                </form>
+
+                <div class='lnchk' style='display:none;'>
+                    <form class="form-inline mt-2 col-8">
+                        <label class="m-2">Number of lymph nodes examined: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box16" style="width:100px"></label>
+                        <label class="m-2">Number of lymph nodes involved: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box17" style="width:100px"></label>
+                    </form>
+                </div>
+
+
+                <hr class="p-2" >
+                <h5>Ancillary Studies
+
+                </h5>
+
+                <h6 class="mt-3" >
+                    Immunohistochemical Studies</h6>
+                <select multiple id="box20" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>KIT (CD117), Positive</option>
+                    <option>KIT (CD117), Negative</option>
+                    <option>DOG1 (ANO1), Positive</option>
+                    <option>DOG1 (ANO1), Negative</option>
+                    <option>Other</option>
+                    <option>Pending</option>
+                    <option>Not performed</option>
+                </select>
+
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box20_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+                <h6 class="mt-3" >
+                    + Molecular Genetic Studies</h6>
+                <select id="box21" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Submitted for analysis; results pending</option>
+                    <option>Performed, see separate report</option>
+                    <option>Not performed</option>
+                </select>
+
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box21_2' style='display:none;' placeholder='Specify tests (ex: test1 - NGS; test-2 - FISH;)'>
+
+
+
+
+
+                <hr class="p-2" >
+                <h5>Treatment Effect</h5>
+                <select id="box22" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>No known presurgical therapy</option>
+                    <option>Not identified</option>
+                    <option>Present</option>
+                    <option>Cannot be determined</option>
+                </select>
+
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box22_2' style='display:none;' placeholder='Specify % of viable tumor'>
+
+
+
+
+
+
+
+                <!-- close column -->
+			</div>
+			{{> page-partials/cap-footer}}
+	<!-- close row -->
+		</div>
+		{{> page-partials/history-module}}
+	<!-- close container -->
+	</div>
+

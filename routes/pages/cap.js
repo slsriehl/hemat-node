@@ -48,8 +48,8 @@ router.get('/cap/ex-gon-gct', (req, res) => {
 	]);
 });
 
-router.get('/cap/hepatoblast', (req, res) => {
-	controller.userWall(req, res, './page-views/cap/hepatoblast.hbs', [
+router.get('/cap/hepatoblastoma', (req, res) => {
+	controller.userWall(req, res, './page-views/cap/hepatoblastoma.hbs', [
 		"/js/cap/hepatoblastoma-scripts.js",
 	]);
 });
@@ -144,6 +144,12 @@ router.get('/cap/esophagus', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/esophagus.hbs', [
 		"/js/cap/esophagus-scripts.js",
 	]);
+});
+
+router.get('/cap/gist', (req, res) => {
+    controller.userWall(req, res, './page-views/cap/gist.hbs', [
+    "/js/cap/gist-scripts.js",
+]);
 });
 
 router.get('/cap/kidney-rx', (req, res) => {
