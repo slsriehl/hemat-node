@@ -170,6 +170,12 @@ router.get('/cap/melanoma-bx', (req, res) => {
 ]);
 });
 
+router.get('/cap/hepatocellular', (req, res) => {
+    controller.userWall(req, res, './page-views/cap/hepatocellular', [
+    "/js/cap/hepatocellular-scripts.js",
+]);
+});
+
 router.get('/cap/jejunal-t', (req, res) => {
     controller.userWall(req, res, './page-views/cap/jejunal-t.hbs', [
     "/js/cap/jejunal-scripts.js",
