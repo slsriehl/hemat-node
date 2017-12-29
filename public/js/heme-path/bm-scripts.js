@@ -128,7 +128,11 @@ $("#CBCswitch").change(function() {
 
 
                         $("#"+que).prop("disabled", false); // undisable checkbox
-                        $("#"+que).trigger('click'); // resume click event
+                        setTimeout(function() {
+                            $("#"+que).trigger('click')
+                        }, 100); // resume click event
+
+
                     });
                 }
         });
@@ -244,7 +248,9 @@ $("#CBCswitch").change(function() {
                     dxOuts["dxOut" + i] = dxOuts["dxOut" + i].replace(/(?!-).*(?=marrow)/, ' ' + seltxt + ' ');
                 }
             }
-            $('#partType313').trigger('click'); // click to show clot header in micro
+            setTimeout(function() {
+                $("#partType313").trigger('click')
+            }, 100); // click to show clot header in micro
         }
     });
 
@@ -448,7 +454,9 @@ $("#CBCswitch").change(function() {
                         console.log(commLines.commLine2);
                         // reset checkmark status and clost dialog
                         $('#commLine2').prop('disabled', false);
-                        $('#commLine2').trigger('click');// complete the check
+                        setTimeout(function() {
+                            $("#commLine2").trigger('click')
+                        }, 100);// complete the check
                         $(".docinput").dialog('close');
                     }
                 }
