@@ -17,7 +17,204 @@
         {{> page-partials/cap-validate-alert}}
         <div class="col col-md-8">
 	        <!-- paste markup here-->
-	
+            <hr class="p-2" >
+            <h5>Procedure</h5>
+            <select id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Core needle biopsy</option>
+                <option>Incisional biopsy</option>
+                <option>Excisional biopsy</option>
+                <option>Resection</option>
+                <option>Amputation (type)</option>
+                <option>Limb salvage procedure (type)</option>
+                <option>Other</option>
+                <option>Not specified</option>
+                <option></option>
+            </select>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;' placeholder='Specify Other'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_3' style='display:none;' placeholder='Specify type of procedure'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Tumor site</h5>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box2" placeholder="Specify">
+
+
+
+
+            <hr class="p-2" >
+            <h5>Tumor Size (cm)</h5>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box3" placeholder="">
+
+
+
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>+ Extent of Tumor - for primary osseous tumors</h5>
+            <select multiple id="box4" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option selected>Not applicable</option>
+                <option>Diaphysis</option>
+                <option>Metaphysis</option>
+                <option>Medullary cavity</option>
+                <option>Tumor extension into soft tissue</option>
+                <option>Other</option>
+                <option>Not specified</option>
+                <option>Cannot be determined</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box4_2' style='display:none;' placeholder='Specify Other site'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>+ Extent of Tumor - for primary extra-osseous tumors</h5>
+            <select multiple id="box5" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option selected>Not applicable</option>
+                <option>Dermal</option>
+                <option>Subcutaneous/subfascial</option>
+                <option>Subfascial</option>
+                <option>Intramuscular</option>
+                <option>Intraabdominal/pelvic</option>
+                <option>Retroperitoneal</option>
+                <option>Other</option>
+                <option>Not specified</option>
+                <option>Cannot be determined</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box5_2' style='display:none;' placeholder='Specify Other site'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Margins</h5>
+
+            <select id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Cannot be assessed</option>
+                <option>Uninvolved by tumor</option>
+                <option>Involved by tumor</option>
+            </select>
+            <input type="number" class="form-control form-control-sm col-sm-6" id='box6_0' style='display:none;' placeholder='Specify distance from nearest bone margin (mm)'>
+            <input type="number" class="form-control form-control-sm col-sm-6" id='box6_1' style='display:none;' placeholder='Specify distance from nearest soft tissue margin (mm)'>
+            <input type="number" class="form-control form-control-sm col-sm-6" id='box6_2' style='display:none;' placeholder='Specify distance from nearest parenchymal margin (mm)'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box6_3' style='display:none;' placeholder='Specify involved margin'>
+
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>+ Lymph-Vascular Invasion</h5>
+            <select id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Preresection Treatment</h5>
+            <select multiple id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>No known preresection therapy</option>
+                <option>Chemotherapy performed</option>
+                <option>Radiation therapy performed</option>
+                <option>Therapy performed, type not specified</option>
+                <option>Not specified</option>
+            </select>
+
+
+
+
+            <hr class="p-2" >
+            <h5>Treatment effect</h5>
+            <select id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>No known preresection therapy (not applicable)</option>
+                <option>Necrosis not identified</option>
+                <option>Necrosis present</option>
+                <option>Percent tumor necrosis cannot be determined</option>
+                <option selected>Not applicable</option>
+            </select>
+
+            <input type="number" class="form-control form-control-sm mt-3 col-sm-6" id='box9_2' style='display:none;' placeholder='Specify % tumor necrosis'>
+
+
+
+
+<hr class="p-2">
+            <form class="form-inline mt-3">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box16" >
+                </label>
+            </form>
+
+            <div class='lnchk mt-3' style='display:none;'>
+                <h5>Lymph nodes</h5>
+                <form class="form-inline mt-2 col-8">
+                    <label class="m-2">Number of lymph nodes examined: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box17" style="width:100px"></label>
+                    <label class="m-2">Number of lymph nodes involved: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box18" style="width:100px"></label>
+                </form>
+            </div>
+
+
+            <hr class="p-2" >
+               <h5>Metastasis</h5>
+            <select id="box15" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option selected value='pMx'>pMx: Not applicable</option>
+                <option value="null">Present</option>
+            </select>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box15_2" style="display:none;" placeholder="Specify metastatic sites">
+
+
+
+
+            <hr class="p-2" >
+            <h5>+ Ancillary Studies</h5>
+
+            <h6 class="mt-3">+ Cyto-molecular Genetics</h6>
+            <select multiple id="box10" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not performed</option>
+                <option>Pending</option>
+                <option>EWSR1 rearrangement present</option>
+                <option>Fusion partner not known</option>
+                <option>Fusion partner: FLI1</option>
+                <option>Fusion partner: ERG</option>
+                <option>Fusion partner: Other</option>
+                <option>Other</option>
+                <option>No rearrangement identified</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-8" id='box10_2' style='display:none;' placeholder='Specify rearrangement or fusion partner'>
+
+
+
+
+
+            <h6 class="mt-4">+ Cyto-molecular Genetic Studies - method</h6>
+            <select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Conventional karyotyping</option>
+                <option>Fluorescent in situ hybridization (FISH)</option>
+                <option>Reverse transcriptase polymerase chain reaction (RT-PCR)</option>
+                <option>Other</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box11_2' style='display:none;' placeholder='Specify method'>
+
+
+
+
             <!-- close column -->
 			</div>
 			{{> page-partials/cap-footer}}
