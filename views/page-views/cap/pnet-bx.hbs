@@ -4,8 +4,8 @@
 				<li class="breadcrumb-item">
 						<a href="/">Home</a>
 				</li>
-				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>Cancer Synoptic Checklist</li>
-				<li class="breadcrumb-item active" id="bc-jump"><i class="fa fa-flask mr-2"></i>EWING SARCOMA/PRIMITIVE NEUROECTODERMAL TUMOR: Biopsy</li>
+				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+				<li class="breadcrumb-item active" id="bc-jump"><i class="fa fa-flask mr-2"></i>PNET / Ewing sarcoma - Biopsy</li>
 		</ol>
 
  {{> message-center this}}
@@ -13,147 +13,17 @@
 
 		{{> page-partials/cap-header}}
 
-	<div class="row">
-		<div class="col col-md-8">
-
-	<h5>Procedure (Note B) </h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box1">
-	<option selected>Not specified</option>
-	<option>Core needle biopsy </option>
-	<option>Incisional biopsy </option>
-	<option>Excisional biopsy </option>
-	<option>Other:</option>
-	</select>
-	<input type="text" class="form-control form-control-sm "  id="box1_2" style="display:none" placeholder="Enter procedure">
-
-<hr class="p-2">
-
-	<h5>Tumor Site</h5><br>
-	<input type="text" class="form-control form-control-sm "  id="box2"  placeholder="Not specified">
-
-<hr class="p-2">
-
-	<h5>Tumor Size (Greatest dimension (cm))</h5><br>
-	<input type="text" class="form-control form-control-sm "  id="box3"  placeholder="Cannot Be Determined">
-
-<hr class="p-2">
-
-	<h5>+ Extent of Osseous Tumors (select all that apply)</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box4" multiple>
-	<option selected value='Not applicable'>Not applicable - will not show in summary</option>
-	<option> Diaphysis</option>
-	<option> Metaphysis</option>
-	<option> Medullary cavity</option>
-	<option> Tumor extension into soft tissue</option>
-	<option> Other:</option>
-	<option> Cannot be determined</option>
-	</select>
-	<input type="text" class="form-control form-control-sm "  id="box4_2" style="display:none" placeholder="Enter tumor extent" >
-
-<hr class="p-2">
-
-	<h5>+  Extent of Primary Extraosseous Tumors (select all that apply)</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box5" multiple>
-	<option selected value='Not applicable'>Not applicable - will not show in summary</option>
-	<option>Dermal</option>
-	<option>Subcutaneous/suprafascial</option>
-	<option>Subfascial</option>
-	<option>Intramuscular</option>
-	<option>Intra-abdominal/pelvic</option>
-	<option>Retroperitoneal</option>
-	<option>Other:</option>
-	<option>Not specified</option>
-	<option>Cannot be determined</option>
-	</select>
-	<input type="text" class="form-control form-control-sm "  id="box5_2" style="display:none" placeholder="Enter extra-osseous tumor extent" >
-
-<hr class="p-2">
-
-	<h5>Margins (excision only)</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box6">
-	<option selected>Cannot be assessed</option>
-	<option>Margins negative for tumor</option>
-	<option>Margin(s) involved by sarcoma</option>
-	</select><br>
-	<input type="text" class="form-control form-control-sm "  id='box6_2' style='display:none;' placeholder='Dist to closest soft tissue margin (cm)'>
-	<input type="text" class="form-control form-control-sm "  id='box6_3' style='display:none;' placeholder='Dist to closest bone margin (cm)'>
-	<input type="text" class="form-control form-control-sm "  id='box6_4' style='display:none;' placeholder='Specify margin(s) involved'>
-
-<hr class="p-2">
-
-	<h5>+ Lymph-Vascular Invasion (Note D)</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box7">
-	<option selected> Not identified</option>
-	<option> Present</option>
-	<option> Indeterminate</option>
-	</select>
-
-<hr class="p-2">
-
-	<h5>Prebiopsy Treatment (select all that apply)</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box8" multiple>
-	<option selected>No known therapy</option>
-	<option>Chemotherapy performed</option>
-	<option>Radiation therapy performed</option>
-	<option>Therapy performed, type not specified</option>
-	<option>Unknown</option>
-	</select>
-
-<hr class="p-2">
-
-	<h5>Treatment Effect (Note E)</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box9">
-	<option selected>Not applicable</option>
-	<option>Necrosis not identified</option>
-	<option>Necrosis present</option>
-	<option>Cannot be determined</option>
-	</select>
-	<input type="text" class="form-control form-control-sm "  id="box9_2" style="display:none" placeholder="Enter % of necrosis seen">
-
-<hr class="p-2">
-
-	<h5>+ Additional Pathologic Findings</h5><br>
-	<input type="text" class="form-control form-control-sm "  id="box10"  placeholder='Not applicable'>
-
-<hr class="p-2">
-
-	<h5>Ancillary Studies (Note F)</h5>
-	<br>
-	<h5>+ Cytogenetics</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box11">
-	<option selected>Not performed</option>
-	<option>Karyotype pending</option>
-	<option>t(11;22) detected</option>
-	<option>Complex karyotype with t(11;22) detected</option>
-	</select>
-
-<hr class="p-2">
-
-	<h5>+ Molecular Pathology (select all that apply)</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box12" multiple>
-	<option selected>None performed</option>
-	<option>EWSR breakapart FISH pending</option>
-	<option>EWSR breakapart detected by FISH</option>
-	<option>EWSR fusion FISH pending </option>
-	<option>EWSR fusion detected by FISH </option>
-	<option>EWSR translocation by PCR pending </option>
-	<option>EWSR translocation by PCR detected </option>
-	</select>
-
-
-<!-- close column -->
+   <div class="row">
+        {{> page-partials/cap-validate-alert}}
+        <div class="col col-md-8">
+	        <!-- paste markup here-->
+	
+            <!-- close column -->
+			</div>
+			{{> page-partials/cap-footer}}
+	<!-- close row -->
 		</div>
-		{{> page-partials/cap-footer}}
-<!-- close row -->
+		{{> page-partials/history-module}}
+	<!-- close container -->
 	</div>
-	{{> page-partials/history-module}}
-<!-- close container -->
-</div>
 
-
-		<!--
-		"specificScripts":
-			[
-				"/js/cap/pnet-scripts.js",
-			]
-		-->

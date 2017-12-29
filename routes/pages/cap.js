@@ -39,13 +39,13 @@ router.get('/cap/neuro-t-biomarker', (req, res) => {
 
 router.get('/cap/pnet-bx', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/pnet-bx.hbs', [
-		"/js/cap/pnet-scripts.js",
+		"/js/cap/pnet-bx-scripts.js",
 	]);
 });
 
 router.get('/cap/pnet-rx', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/pnet-rx.hbs', [
-		"/js/cap/pnetrx-scripts.js",
+		"/js/cap/pnet-rx-scripts.js",
 	]);
 });
 

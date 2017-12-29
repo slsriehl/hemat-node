@@ -33,14 +33,14 @@ const tests = {
 	pnetBx: function(done) {
 		const pathTo = '/cap/pnet-bx';
 		const scripts = [
-			"/js/cap/pnet-scripts.js",
+			"/js/cap/pnet-bx-scripts.js",
 		];
 		failPromise(pathTo, scripts, done);
 	},
 	pnetRx: function(done) {
 		const pathTo = '/cap/pnet-rx';
 		const scripts = [
-			"/js/cap/pnetrx-scripts.js"
+			"/js/cap/pnet-rx-scripts.js"
 		];
 		failPromise(pathTo, scripts, done);
 	},
