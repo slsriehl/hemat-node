@@ -492,7 +492,7 @@ $(window).on('load', function(){
                             console.log('register un-disable');
                             setTimeout(function() {
                                 $("#"+esoid).trigger('click')
-                            }, 100);// complete the check
+                            }, 10);// complete the check
                             console.log('register dynamic click on: '+esoid);
 
                             $(".source").prop('checked', false) // reset eso list checks

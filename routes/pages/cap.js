@@ -176,6 +176,12 @@ router.get('/cap/melanoma-bx', (req, res) => {
 ]);
 });
 
+router.get('/cap/gallbladder', (req, res) => {
+    controller.userWall(req, res, './page-views/cap/gallbladder', [
+    "/js/cap/gallbladder-scripts.js",
+]);
+});
+
 router.get('/cap/hepatocellular', (req, res) => {
     controller.userWall(req, res, './page-views/cap/hepatocellular', [
     "/js/cap/hepatocellular-scripts.js",
