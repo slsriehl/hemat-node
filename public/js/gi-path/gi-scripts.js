@@ -154,7 +154,9 @@ $(window).on('load', function(){
 
                         // reset checkmark status and clost dialog
                         $('#dxLine111').prop('disabled', false);
-                        $('#dxLine111').trigger('click');// complete the check
+                        setTimeout(function() {
+                            $("#dxLine111").trigger('click')
+                        }, 100);// complete the check
                         $(".tuft_list").dialog('close');
                     }
 
@@ -183,7 +185,7 @@ $(window).on('load', function(){
             for (var i=100; i<113; i++){
                 mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/'(.*)'/, "'"+last_duo+"'");
             }
-            $('#partType105').trigger('click').prop( "checked", false ); // resume click event
+            $('#partType105').trigger('click').off().prop( "checked", false ); // resume click event .off() prevents double firing in firefox
 
         }
     });
@@ -266,7 +268,7 @@ $(window).on('load', function(){
 
                             $("#" + duoid).prop('disabled', false);
                             console.log('register un-disable');
-                            $("#" + duoid).trigger('click');// complete the check
+                            setTimeout(function() {$("#" + duoid).trigger('click')}, 100);// complete the check
                             console.log('register dynamic click on: ' + duoid);
 
                             $(".source").prop('checked', false) // reset duo list checks
@@ -305,7 +307,7 @@ $(window).on('load', function(){
             for (var i=150; i<169; i++){
                 mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/'(.*)'/, "'"+last_sto+"'");
             }
-            $('#partType156').trigger('click').prop( "checked", false ); // resume click event
+            $('#partType156').trigger('click').off().prop( "checked", false ); // resume click event
 
         }
     });
@@ -357,7 +359,7 @@ $(window).on('load', function(){
         console.log('feg checked');
         if (!$("#" + que).is(":checked")) {
             $('.feg_list').dialog('open').dialog({
-                title: "Secretory diarrhea workup",
+                title: "Focally Enhanced Gastritis",
                 modal: 'true',
                 width: 500,
                 buttons: {
@@ -381,7 +383,9 @@ $(window).on('load', function(){
 
                         // reset checkmark status and clost dialog
                         $('#mxLine162').prop('disabled', false);
-                        $('#mxLine162').trigger('click');// complete the check
+                        setTimeout(function() {
+                            $("#mxLine162").trigger('click')
+                        }, 100);
                         $(".feg_list").dialog('close');
                     }
 
@@ -411,9 +415,16 @@ $(window).on('load', function(){
             for (var i=200; i<217; i++){
                 mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/the .* biopsy/, "the '"+last_eso+" esophagus' biopsy");
             }
-            $('#partType204').trigger('click').prop( "checked", false ); // resume click event
+
+             $("#partType204").trigger('click');
+            $("#partType204").off().prop("checked", false);
+            //$("#partType204").trigger('click');// resume click event
+
+           // $('#partType204').prop( "checked", false );
 
         }
+        console.log('finish mousedown');
+
     });
 
     $('.espart').on('click', function() {
@@ -479,7 +490,9 @@ $(window).on('load', function(){
 
                             $("#"+esoid).prop('disabled', false);
                             console.log('register un-disable');
-                            $("#"+esoid).trigger('click');// complete the check
+                            setTimeout(function() {
+                                $("#"+esoid).trigger('click')
+                            }, 100);// complete the check
                             console.log('register dynamic click on: '+esoid);
 
                             $(".source").prop('checked', false) // reset eso list checks
@@ -508,14 +521,12 @@ $(window).on('load', function(){
         } // end brace for no shift click
     });
 
-    $('#_dxLine205').on('mousedown', function(){ // reactive lymphs, ask about eos
+    $('#_dxLine205').on('click', function(e){// reactive lymphs, ask about eos
         if (!$('#dxLine205').is(':checked')){
             if(confirm("Any eos as well?")) {
                 dxLines.dxLine205 = dxLines.dxLine205.replace(/lymphocytes/, 'lymphocytes and few eosinophils ');
                 mxLines.mxLine208 = mxLines.mxLine208.replace(/surface. /, 'surface. In addition, a mild increase in intraepithelial eosinophils is also present, and is enumerated at up to 5 in a representative field. ');
             }
-            $('#dxLine205').trigger('click').prop( "checked", false ); // resume click event
-
         }
     });
 
@@ -540,9 +551,9 @@ $(window).on('load', function(){
             }
             var last_col = colArr[colArr.length - 1];
             for (var i=300; i<336; i++){
-                mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/'(.*?)'/, "'"+last_col+"cm colon'");
+                mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/'(.*?)'/, "'"+last_col+" colon'");
             }
-            $('#partType310').trigger('click').prop( "checked", false ); // resume click event
+            $('#partType310').trigger('click').off().prop( "checked", false ); // resume click event
 
         }
     });
@@ -620,7 +631,9 @@ $(window).on('load', function(){
 
                             $("#"+colid).prop('disabled', false);
                             console.log('register un-disable');
-                            $("#"+colid).trigger('click');// complete the check
+                            setTimeout(function() {
+                                $("#"+colid).trigger('click')
+                            }, 100);// complete the check
                             console.log('register dynamic click on: '+colid);
 
                             $(".source").prop('checked', false) // reset col list checks
@@ -700,7 +713,7 @@ $(window).on('load', function(){
                         var e = jQuery.Event("keydown");
                         e.which = 32; // spacebar keycode value
                         $("#outPut-2").focus();
-                        $("#outPut-2").trigger(e);
+                        $("#outPut-2").trigger();
                         $('#outPut-2').val($('#outPut-2').val()+"\n\n");
                         // end simulation snippett
 
@@ -737,7 +750,9 @@ $(window).on('load', function(){
                         console.log(comLines.comLine100);
                         // reset checkmark status and clost dialog
                         $('#comLine100').prop('disabled', false);
-                        $('#comLine100').trigger('click');// complete the check
+                        setTimeout(function() {
+                            $("#comLine100").trigger('click')
+                        }, 50);// complete the check
                         $(".docinput").dialog('close');
                     }
                 }
@@ -754,6 +769,7 @@ $(window).on('load', function(){
 
 // fill final diagnosis textbox
     function print_final() {
+        console.log("print final");
         if (part_choice !== null) {
             final_text += partTypes[part_choice] + '';
             part_choice = null;
@@ -800,6 +816,7 @@ $(window).on('load', function(){
 
 // Micros: add new selection to list, unless unchecked
     $('input:checkbox').on('change', function () {
+        console.log("input:chk change");
         if ($(this).attr('id').indexOf('partType') > -1){
             if ($(this).is(':checked')) {
                 part_choice = $(this).attr('id');
