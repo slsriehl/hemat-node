@@ -4,6 +4,13 @@ const router = new express.Router;
 
 const controller = require('../../controllers/pages');
 
+
+router.get('/cap/checklist', (req, res) => {
+    controller.openAccess(req, res, './page-views/cap/checklist.hbs', [
+    "/js/cap/checklist-scripts.js"
+])
+})
+
 //pediatric, some crossover
 
 router.get('/cap/bone-t-bx', (req, res) => {

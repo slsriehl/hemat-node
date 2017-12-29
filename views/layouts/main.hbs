@@ -114,12 +114,40 @@
 							href="#collapseComponents"
 						>
 							<i class="fa fa-fw fa-flask"></i>
-							CAP Cancer Checklists
+							Cancer Synoptic Checklists
 						</a>
-<!-- CAP cancer checklists lists -->
+<!-- Cancer checklists lists -->
 						<ul class="sidebar-second-level collapse" id="collapseComponents">
+							<li class="nav-item">
+							<a href="/cap/checklist">
+								<i class="fa fa-list" aria-hidden="true"></i>
+								Full List of Synoptics
+							</a>
+							</li>
+							<!-- CAP: pediatric checklists label -->
+							<li class="nav-item">
+								<a
+										class="nav-link-collapse collapsed"
+										data-toggle="collapse"
+										href="#collapseMulti2"
+								>
+									Pediatric Checklists
+								</a>
 							{{> menus/cap-pediatric}}
+								<!-- end CAP: pediatric label -->
+							</li>
+							<!-- CAP: adult checklists label -->
+							<li class="nav-item">
+								<a
+										class="nav-link-collapse collapsed"
+										data-toggle="collapse"
+										href="#collapseMulti3"
+								>
+									Adult Checklists
+								</a>
 							{{> menus/cap-adult}}
+								<!-- end CAP: adult label -->
+							</li>
 <!-- end CAP list -->
 						</ul>
 <!-- end CAP label -->

@@ -1,0 +1,43 @@
+<div class="container-fluid">
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>Cancer Synoptic Checklists</li>
+    </ol>
+    {{> message-center this}}
+    {{> page-partials/cap-header}}
+
+    <div class="row chklist">
+        <!-- left-->
+        <div class="col">
+            <div class="card">
+                <div class="card-title bg-info p-3">
+                    <h5> Adult Cancer Synoptics</h5>
+                </div>
+                <div class="card-block">
+                    {{> menus/cap-adult}}
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- right-->
+        <div class="col ">
+            <div class="card">
+                <div class="card-title bg-success p-3">
+                    <h5> Pediatric Cancer Synoptics</h5>
+                </div>
+                <div class="card-block">
+                    {{> menus/cap-pediatric}}
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {{> page-partials/history-module}}
+    <!-- close container -->
+</div>
