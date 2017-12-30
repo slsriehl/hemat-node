@@ -194,7 +194,7 @@ $(document).ready(function() {
 
 // reset form button via quick page reload
     $('#Reset').on('click', function(){
-        location.reload();
+        location.reload(true);
     });
 
 // load tooltips
