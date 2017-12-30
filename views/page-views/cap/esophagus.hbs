@@ -1,334 +1,412 @@
 <div class="container-fluid">
-		<!-- Breadcrumbs -->
-		<ol class="breadcrumb">
-				<li class="breadcrumb-item">
-						<a href="/">Home</a>
-				</li>
-				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>Cancer Synoptic Checklist</li>
-				<li class="breadcrumb-item active" id="bc-jump"><i class="fa fa-flask mr-2"></i>Esophageal cancers (including cancers within 5 cm of the GEJ)</li>
-		</ol>
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+        <li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Esophagus carcinomas</li>
+    </ol>
+    {{> message-center this}}
+    {{> page-partials/cap-header}}
 
- {{> message-center this}}
+    <div class="row">
+        {{> page-partials/cap-validate-alert}}
+        <div class="col col-md-8">
 
+            <!-- paste markup here-->
+            <hr class="p-2" >
+            <h5>Procedure</h5>
+            <select id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Esophagectomy</option>
+                <option>Esophagogastrectomy</option>
+                <option>Endoscopic resection</option>
+                <option>Other</option>
+                <option>Not specified</option>
+            </select>
 
-		{{> page-partials/cap-header}}
-
-	<div class="row">
-		<div class="col col-md-8">
-	<h5>Specimen (select all that apply)</h5><br>
-<select class="form-control selectpicker form-control-sm "  multiple id="box1">
-<option>Esophagus</option>
-<option>Distal Esophagus</option>
-<option>Distal Esophagus and Proximal stomach</option>
-<option>Proximal stomach</option>
-<option>Other</option>
-<option>Not specified</option>
-</select><br>
-<input type="text" class="form-control form-control-sm "  id='box1_2' style='display:none;' placeholder='Specify'>
-
-<hr class="p-2">
-
-
-<h5>Procedure</h5><br>
-<select class="form-control selectpicker form-control-sm "  id="box2">
-<option>Endoscopic resection</option>
-<option>Esophagectomy</option>
-<option>Esophagogastrectomy</option>
-<option>Other</option>
-<option>Not specified</option>
-</select><br>
-<input type="text" class="form-control form-control-sm "  id='box2_2' style='display:none;' placeholder='Specify'>
-
-<hr class="p-2">
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6"
+                   id='box1_2' style='display:none;' placeholder='Specify esophagectomy variant'>
 
 
-<h5>Tumor Site (select all that apply)</h5><br>
-<select class="form-control selectpicker form-control-sm "  id="box3">
-<option>Cervical (proximal) esophagus</option>
-<option>Midesophagus</option>
-<option>Upper thoracic esophagus</option>
-<option>Midthoracic esophagus</option>
-<option>Distal esophagus (lower thoracic esophagus)</option>
-<option>Esophagogastric junction (EGJ)</option>
-<option>Proximal stomach and esophagogastric junction</option>
-<option>Other</option>
-<option>Not specified </option>
-</select><br>
-<input type="text" class="form-control form-control-sm "  id='box3_2' style='display:none;' placeholder='Specify'>
-
-<hr class="p-2">
 
 
-<h5>Relationship of Tumor to Esophagogastric Junction</h5><br>
-<select class="form-control selectpicker form-control-sm "  id="box4">
-<option></option>
-<option>Tumor is entirely located within the tubular esophagus and does not involve the esophagogastric junction</option>
-<option>Tumor midpoint lies in the distal esophagus and tumor involves the esophagogastric junction</option>
-<option>Tumor midpoint is located at the esophagogastric junction</option>
-<option>Tumor midpoint lies in the proximal stomach or cardia and tumor involves the esophagogastric junction</option>
-<option>Not specified</option>
-<option>Cannot be assessed</option>
-</select><br>
-<input type="text" class="form-control form-control-sm "  id='box4_2' style='display:none;' placeholder='Specify distance of tumor center from EGJ'>
 
-<hr class="p-2">
+            <hr class="p-2" >
+            <h5>Tumor Site
+            <!-- Button trigger modal -->
+            <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_location">A word about tumor location</button>
+
+            <!-- Histology help Modal -->
+            {{> page-modals/cap-helpers/esoph-site}}
+
+            </h5>
+            <select multiple id="box2" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Cervical (proximal) esophagus</option>
+                <option>Mid esophagus, upper thoracic esophagus</option>
+                <option>Mid esophagus, middle thoracic esophagus</option>
+                <option>Mid esophagus, not otherwise specified</option>
+                <option>Distal esophagus (low thoracic esophagus)</option>
+                <option>Esophagogastric junction (EGJ)</option>
+                <option>Proximal stomach/cardia</option>
+                <option>Other</option>
+                <option>Esophagus, not otherwise specified</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box2_2' style='display:none;' placeholder='Specify Other'>
 
 
-<h5>Tumor Size (cm):</h5><br>
-<input type="text" class="form-control form-control-sm "  id="box5"  placeholder='Cannot be determined '>
-
-<hr class="p-2">
 
 
-<h5>Histologic Type </h5><br>
-<select class="form-control selectpicker form-control-sm "  id="box6">
-<option></option>
-<option>Squamous cell carcinoma</option>
-<option>Verrucous (squamous) carcinoma</option>
-<option>Spindle cell (squamous) carcinoma</option>
-<option>Adenocarcinoma</option>
-<option>Adenosquamous carcinoma</option>
-<option>Mucoepidermoid carcinoma</option>
-<option>Adenoid cystic carcinoma</option>
-<option>Large cell neuroendocrine carcinoma</option>
-<option>Small cell neuroendocrine carcinoma</option>
-<option>Undifferentiated carcinoma</option>
-<option>Other</option>
-</select><br>
-<input type="text" class="form-control form-control-sm "  id='box6_2' style='display:none;' placeholder='Specify'>
 
-<hr class="p-2">
+            <hr class="p-2" >
+            <h5>Relationship of Tumor to Esophagogastric Junction</h5>
+            <select id="box3" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Tumor is entirely located within the tubular esophagus and does not involve the GEJ</option>
+                <option>Tumor midpoint lies in the distal esophagus and tumor involves GEJ</option>
+                <option>Tumor midpoint is located at GEJ</option>
+                <option>Tumor midpoint is 2 cm or less into the proximal stomach and tumor involves the GEJ</option>
+                <option>Not specified</option>
+                <option>Cannot be assessed</option>
+            </select>
 
-<div class="sccgrade" style="display:none">
-<h5>Histologic Grade (squamous cell carcinomas only)</h5><br>
-<select class="form-control selectpicker form-control-sm "  id="box7">
-<option>Not applicable</option>
-<option>Grade X 	Grade cannot be assessed</option>
-<option>Grade 1 	Well differentiated </option>
-<option>Grade 2 	Moderately differentiated </option>
-<option>Grade 3 	Poorly differentiated </option>
-<option>Grade 4 	Undifferentiated carcinoma </option>
-</select>
+
+
+
+
+            <hr class="p-2" >
+            <h5>Tumor Size (cm)</h5>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box4" placeholder="">
+
+
+
+
+            <hr class="p-2" >
+            <h5>Histologic Type</h5>
+            <select id="box5" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Adenocarcinoma</option>
+                <option>Adenoid cystic carcinoma</option>
+                <option>Mucoepidermoid carcinoma</option>
+                <option>Mixed adenoneuroendocrine carcinoma</option>
+                <option>Undifferentiated carcinoma with glandular component</option>
+                <option>Squamous cell carcinoma</option>
+                <option>Basaloid squamous cell carcinoma</option>
+                <option>Adenosquamous carcinoma</option>
+                <option>Spindle cell (squamous) carcinoma</option>
+                <option>Verrucous (squamous) carcinoma</option>
+                <option>Undifferentiated carcinoma with squamous component</option>
+                <option>Undifferentiated carcinoma</option>
+                <option>Large cell neuroendocrine carcinoma</option>
+                <option>Small cell neuroendocrine carcinoma</option>
+                <option>Neuroendocrine carcinoma (poorly differentiated)</option>
+                <option>G1: Well-differentiated neuroendocrine tumor</option>
+                <option>G2: Well-differentiated neuroendocrine tumor</option>
+                <option>G3: Well-differentiated neuroendocrine tumor</option>
+                <option>Other histologic</option>
+                <option>Carcinoma, type cannot be determined</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box5_2' style='display:none;' placeholder='Specify Other histology'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Histologic Grade
+                <i class="fa fa-question-circle ml-2"
+                   data-placement="right" data-toggle="tooltip"
+                   title="Histologic grade is not applicable to adenoid cystic carcinoma, mucoepidermoid carcinoma,
+                   well-differentiated neuroendocrine tumor, and high-grade neuroendocrine carcinoma" aria-hidden="true"></i>
+            </h5>
+            <select id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>G1: Well differentiated</option>
+                <option>G2: Moderately differentiated</option>
+                <option>G3: Poorly differentiated, undifferentiated</option>
+                <option>GX: Cannot be assessed</option>
+                <option selected>Not applicable</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Tumor Extension</h5>
+            <select id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>No evidence of primary tumor</option>
+                <option>High-grade dysplasia/carcinoma in situ</option>
+                <option>Tumor invades the lamina propria</option>
+                <option>Tumor invades the muscularis mucosae</option>
+                <option>Tumor invades the submucosa</option>
+                <option>Tumor invades the muscularis propria</option>
+                <option>Tumor invades adventitia</option>
+                <option>Tumor invades adjacent structures</option>
+                <option>Cannot be assessed</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box7_2' style='display:none;' placeholder='Specify structures involved'>
+
+
+
+
+            <hr class="p-2" >
+            <h5>Margins</h5>
+            <select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>All margins are uninvolved by invasive carcinoma, dysplasia, and intestinal metaplasia</option>
+                <option>At least one margin involved by neoplasm</option>
+            </select>
+
+
+            <div class="margins">
+
+                <div class="negmargin p-3 ml-2">
+                    <h6 class="mt-3">Margins examined</h6>
+                    <select multiple id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>proximal</option>
+                        <option>distal</option>
+                        <option>radial</option>
+                        <option>mucosal</option>
+                        <option>deep</option>
+                        <option>Other</option>
+                    </select>
+
+                    <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box9_2' style='display:none;' placeholder='Specify Other margins'>
+
+                    <h6 class="mt-3">Closest margin to invasive carcinoma and distance(mm)</h6>
+                    <input type="text" class="form-control form-control-sm col-sm-6" id="box10" placeholder="">
+
+
+
+
+                </div>
+                <div class="posmargin ml-3 " style="display:none;">
+                <div class="resection p-2">
+
+                    <h6 class="mt-3">Proximal Margin</h6>
+                    <select multiple id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>Cannot be assessed</option>
+                        <optgroup label="Invasive">
+                        <option>Involved by invasive carcinoma</option>
+                        <option>Uninvolved by invasive carcinoma</option>
+                        </optgroup>
+                        <optgroup label="Dysplasia">
+                        <option>Uninvolved by dysplasia</option>
+                        <option>Involved by low-grade squamous dysplasia</option>
+                        <option>Involved by high-grade squamous dysplasia</option>
+                        <option>Involved by low-grade glandular dysplasia</option>
+                        <option>Involved by high-grade glandular dysplasia</option>
+                        </optgroup>
+                        <optgroup label="Barrett">
+                        <option>Involved by intestinal metaplasia (Barrett esophagus) without dysplasia</option>
+                        </optgroup>
+                    </select>
+
+
+                    <h6 class="mt-3">Distal Margin</h6>
+                    <select multiple id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>Cannot be assessed</option>
+                        <optgroup label="Invasive">
+                            <option>Involved by invasive carcinoma</option>
+                            <option>Uninvolved by invasive carcinoma</option>
+                        </optgroup>
+                        <optgroup label="Dysplasia">
+                            <option>Uninvolved by dysplasia</option>
+                            <option>Involved by low-grade squamous dysplasia</option>
+                            <option>Involved by high-grade squamous dysplasia</option>
+                            <option>Involved by low-grade glandular dysplasia</option>
+                            <option>Involved by high-grade glandular dysplasia</option>
+                        </optgroup>
+                        <optgroup label="Barrett">
+                            <option>Involved by intestinal metaplasia (Barrett esophagus) without dysplasia</option>
+                        </optgroup>                    </select>
+
+
+                    <h6 class="mt-3">Radial Margin</h6>
+                    <select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>Cannot be assessed</option>
+                        <option>Uninvolved by invasive carcinoma</option>
+                        <option>Involved by invasive carcinoma</option>
+                    </select>
+
+
+                </div>
+
+                <div class="emr" style="display:none;">
+                    <h6 class="mt-3">Mucosal Margin</h6>
+                    <select multiple id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>Cannot be assessed</option>
+                        <optgroup label="Invasive">
+                            <option>Involved by invasive carcinoma</option>
+                            <option>Uninvolved by invasive carcinoma</option>
+                        </optgroup>
+                        <optgroup label="Dysplasia">
+                            <option>Uninvolved by dysplasia</option>
+                            <option>Involved by low-grade squamous dysplasia</option>
+                            <option>Involved by high-grade squamous dysplasia</option>
+                            <option>Involved by low-grade glandular dysplasia</option>
+                            <option>Involved by high-grade glandular dysplasia</option>
+                        </optgroup>
+                        <optgroup label="Barrett">
+                            <option>Involved by intestinal metaplasia (Barrett esophagus) without dysplasia</option>
+                        </optgroup>                    </select>
+
+
+                    <h6 class="mt-3">Deep Margin</h6>
+                    <select id="box15" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>Cannot be assessed</option>
+                        <option>Uninvolved by invasive carcinoma</option>
+                        <option>Involved by invasive carcinoma</option>
+                    </select>
+                </div>
+
+
+                <h6 class="mt-3 p-2">Other Margin</h6>
+                <select id="box16" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Cannot be assessed</option>
+                    <option>Uninvolved by invasive carcinoma</option>
+                    <option>Involved by invasive carcinoma</option>
+                    <option selected>Not applicable</option>
+                </select>
+
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box16_2' style='display:none;' placeholder='Specify margin'>
+                </div>
+
+            </div>
+
+
+            <hr class="p-2" >
+            <h5>Treatment Effect
+            <!-- Button trigger modal -->
+            <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_treat">A word about scoring treatment effect</button>
+
+            <!-- Histology help Modal -->
+            {{> page-modals/cap-helpers/esoph-treatment}}
+
+            </h5>
+            <select id="box17" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>No known presurgical therapy</option>
+                <option>Present (complete response, score 0)</option>
+                <option>Present (near complete response, score 1)</option>
+                <option>Present (partial response, score 2)</option>
+                <option>Absent (poor or no response, score 3)</option>
+                <option>Cannot be determined</option>
+            </select>
+            <p class="small">using the modified Ryan scoring system</p>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Lymphovascular Invasion</h5>
+            <select id="box18" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>+ Perineural Invasion</h5>
+            <select id="box19" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Pathologic Staging (pTNM)
+
+            </h5>
+
+            <h6>TNM Descriptors (select all that apply)</h6>
+            <select id="box20" class='form-control selectpicker form-control-sm col-sm-6' multiple>
+                <option selected value="Not applicable">Not applicable</option>
+                <option>m</option>
+                <option>r</option>
+                <option>y</option>
+            </select>
+            <h6 class='mt-2'>pT</h6>
+            <select id="box21" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pTX">pTX: Tumor cannot be assessed</option>
+                <option value="pT0">pT0: No evidence of primary tumor</option>
+                <option value="pTis">pTis: High-grade dysplasia, defined as malignant cells confined to the epithelium by </option>
+                <option value="pT1a">pT1a: Tumor invades the lamina propria or muscularis mucosae</option>
+                <option value="pT1b">pT1b: Tumor invades the submucosa</option>
+                <option value="pT3">pT3: Tumor invades adventitia</option>
+                <option value="pT4a">pT4a: Tumor invades the pleura, pericardium, azygos vein, diaphragm, or peritoneum</option>
+                <option value="pT4b">pT4b: Tumor invades other adjacent structures, such as aorta, vertebral body, or airway</option>
+            </select>
+
+
+            <h6 class='mt-2'>pN</h6>
+            <select id="box22" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pNX">pNX: Regional lymph nodes cannot be assessed</option>
+                <option value="pN0">pN0: No regional lymph node metastasis</option>
+                <option value="pN1">pN1: Metastasis in one or two regional lymph nodes</option>
+                <option value="pN2">pN2: Metastasis in three to six regional lymph nodes</option>
+                <option value="pN3">pN3: Metastasis in seven or more regional lymph nodes</option>
+            </select>
+
+
+            <h6 class='mt-2'>pM</h6>
+            <select id="box23" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option selected value='pMx'>pMx: Not applicable</option>
+                <option value="pM1">pM1: Distant metastasis</option>
+            </select>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box23_2" style="display:none;" placeholder="Specify metastatic sites">
+
+            <form class="form-inline mt-2">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box24" >
+                </label>
+            </form>
+
+            <div class='lnchk' style='display:none;'>
+                <form class="form-inline mt-2 col-8">
+                    <label class="m-2">Number of lymph nodes examined: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box25" style="width:100px"></label>
+                    <label class="m-2">Number of lymph nodes involved: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box26" style="width:100px"></label>
+                </form>
+            </div>
+
+
+            <hr class="p-2" >
+            <h5>+ Additional Pathologic Findings (select all that apply</h5>
+            <select multiple id="box27" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>None identified</option>
+                <option>Intestinal metaplasia (Barrett’s esophagus)</option>
+                <option>Low-grade squamous dysplasia</option>
+                <option>High-grade squamous dysplasia</option>
+                <option>Low-grade glandular dysplasia</option>
+                <option>High-grade glandular dysplasia</option>
+                <option>Esophagitis (type</option>
+                <option>Gastritis (type)</option>
+                <option>Other</option>
+            </select>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box27_2' style='display:none;' placeholder='Specify type'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box27_3' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+
+
+            <!-- end markup-->
+
+            <!-- close markup -->
+        </div>
+        {{> page-partials/cap-footer}}
+        <!-- close row -->
+    </div>
+    {{> page-partials/history-module}}
+    <!-- close container -->
 </div>
-<div class='adenograde' style='display:none;'>
-<h5>Histologic Grade (non-squamous cell carcinomas)</h5><br>
-<select class="form-control selectpicker form-control-sm "  id="box8">
-<option>Not applicable</option>
-<option>Grade X Grade cannot be assessed</option>
-<option>Grade 1	Well differentiated (greater than 95% of tumor composed of glands) </option>
-<option>Grade 2 Moderately differentiated (50% to 95% of tumor composed of glands)</option>
-<option>Grade 3	Poorly differentiated (49% or less of tumor composed of glands)</option>
-<option>Grade 4 	Undifferentiated carcinoma </option>
-</select>
-</div>
-
-<hr class="p-2">
-
-<h5>Microscopic Tumor Extension </h5><br>
-<select class="form-control selectpicker form-control-sm "  id="box9">
-<option>Cannot be assessed</option>
-<option>No evidence of primary tumor</option>
-<option>High-grade dysplasia (carcinoma in situ) </option>
-<option>Tumor invades lamina propria</option>
-<option>Tumor invades muscularis mucosae</option>
-<option>Tumor invades submucosa</option>
-<option>Tumor invades muscularis propria</option>
-<option>Tumor invades through the muscularis propria into the periesophageal soft tissue (adventitia)</option>
-<option>Tumor directly invades adjacent structures </option>
-</select><br>
-<input type="text" class="form-control form-control-sm "  id='box9_2' style='display:none;' placeholder='Specify'>
-
-<hr class="p-2">
-
-
-<h5 >Margins</h5><br>
-<input class="form-check-input " type="checkbox" id="box10"> Click if all margins are negative<br>
-
-<div id="marginneg" style="display:none;">
-<h5>All margins negative for carcinoma:</h5><br>
-<input type="text" class="form-control form-control-sm "  id="box11a"  placeholder='Specify closest margin'>
-<input type="text" class="form-control form-control-sm "  id="box11b"  placeholder='Specify distance to this margin (cm)'>
-</div>
-
-<hr class="p-2">
-
-
-<div id="marginpos">
-<h5>Proximal margin</h5><br>
-<select class="form-control selectpicker form-control-sm "  multiple id="box12">
-<option>Cannot be assessed</option>
-<option selected>Uninvolved by invasive carcinoma or dysplasia</option>
-<option>Involved by invasive carcinoma</option>
-<option>Uninvolved by dysplasia </option>
-<option>Involved by low grade squamous dysplasia</option>
-<option>Involved by high grade squamous dysplasia</option>
-<option>Involved by intestinal metaplasia (Barrett’s esophagus) with low grade dysplasia</option>
-<option>Involved by intestinal metaplasia (Barrett’s esophagus) with high grade dysplasia</option>
-<option>Involved by intestinal metaplasia (Barrett’s esophagus) without dysplasia</option>
-</select>
-
-<hr class="p-2">
-
-
-<h5>Distal margin</h5><br>
-<select class="form-control selectpicker form-control-sm "  multiple id="box13">
-<option>Cannot be assessed</option>
-<option selected>Uninvolved by invasive carcinoma or dysplasia</option>
-<option>Involved by invasive carcinoma</option>
-<option>Uninvolved by dysplasia </option>
-<option>Involved by low grade squamous dysplasia</option>
-<option>Involved by high grade squamous dysplasia</option>
-<option>Involved by intestinal metaplasia (Barrett’s esophagus) with low grade dysplasia</option>
-<option>Involved by intestinal metaplasia (Barrett’s esophagus) with high grade dysplasia</option>
-<option>Involved by intestinal metaplasia (Barrett’s esophagus) without dysplasia</option>
-</select>
-
-<hr class="p-2">
-
-
-<h5>Circumferential (for large resections) or Deep Margin (for endoscopic mucosal resection)</h5><br>
-<select class="form-control selectpicker form-control-sm "  multiple id="box14">
-<option>Not applicable</option>
-<option>Cannot be assessed</option>
-<option selected>Uninvolved by invasive carcinoma</option>
-<option>Involved by invasive carcinoma</option>
-</select>
-
-<hr class="p-2">
-
-
-<h5>Other Margin</h5><br>
-<select class="form-control selectpicker form-control-sm "  id="box15">
-<option selected>Not applicable</option>
-<option>Cannot be assessed</option>
-<option>Uninvolved by invasive carcinoma</option>
-<option>Involved by invasive carcinoma</option>
-</select><br>
-<input type="text" class="form-control form-control-sm "  id='box15_2' style='display:none;' placeholder='Specify other margin'>
-
-<hr class="p-2">
-
-</div>
-
-<h5>Treatment effect</h5><br>
-<select class="form-control selectpicker form-control-sm "  id="box16">
-<option>No prior treatment</option>
-<option>Grade 0: Present;  No residual tumor (no residual cancer)</option>
-<option>Grade 1: Present;  Marked response (minimal residual cancer)</option>
-<option>Grade 2: Present;  Moderate response (grade 2) </option>
-<option>Grade 4: No definite response identified (near total cancer viability remains)</option>
-<option>Treatment history not known</option>
-</select>
-
-<hr class="p-2">
-
-
-<h5>+ Perineural Invasion </h5><br>
-<select class="form-control selectpicker form-control-sm "  id="box17">
-<option>Not identified</option>
-<option>Present</option>
-<option>Indeterminate</option>
-</select>
-
-<hr class="p-2">
-
-
-<h5>Pathologic Staging (pTNM)</h5>
-<hr class="p-2">
-
-TNM Descriptors (select all that apply)<br><select class="form-control selectpicker form-control-sm "  id="box18" multiple>
-<option selected value="Not applicable">Not applicable</option>
-<option>m</option>
-<option>r</option>
-<option>y</option>
-</select>
-<hr class="p-2">
-
-
-<select class="form-control selectpicker form-control-sm "  id="box19">
-<option value="pTX">pTX:	Cannot be assessed</option>
-<option value="pT0">pT0:	No evidence of primary tumor</option>
-<option value="pTis">pTis:	High-grade dysplasia</option>
-<option value="pT1">pT1:	Tumor invades lamina propria, muscularis mucosae, or submucosa</option>
-<option value="pT1a">pT1a:  	Tumor invades lamina propria or muscularis mucosae</option>
-<option value="pT1b">pT1b:  	Tumor invades submucosa</option>
-<option value="pT2">pT2:	Tumor invades muscularis propria</option>
-<option value="pT3">pT3:	Tumor invades adventitia</option>
-<option value="pT4">pT4:	Tumor invades adjacent structures</option>
-<option value="pT4a">pT4a:  	Resectable tumor invading pleura, pericardium, or diaphragm</option>
-<option value="pT4b">pT4b: 	Unresectable tumor invading other adjacent structures, such as aorta, vertebral body, trachea, etc</option>
-</select><br>
-
-<select class="form-control selectpicker form-control-sm "  id="box20">
-<option value="pNX">pNX:	Cannot be assessed</option>
-<option value="pN0">pN0:	No regional lymph node metastasis</option>
-<option value="pN1">pN1:	Regional lymph node metastasis involving 1 to 2 nodes</option>
-<option value="pN2">pN2:	3 to 6 nodes involved</option>
-<option value="pN3">pN3:	7 or more nodes involved</option>
-</select><br>
-
-<select class="form-control selectpicker form-control-sm "  id="box21">
-<option value="pMX">pMX: Not applicable</option>
-<option value="pM1">pM1: Distant metastasis</option>
-</select><br>
-Check here if any lymph nodes submitted? <input class="form-check-input " type="checkbox" id="box22" ><br><div class='lnchk' style='display:none;'><br>
-Number of lymph nodes examined: <input type="text" class="form-control form-control-sm "  id="box23" ><br>
-Number of lymph nodes involved: <input type="text" class="form-control form-control-sm "  id="box24" ></div>
-
-<hr class="p-2">
-
-
-<h5>Additional Pathologic Findings (select all that apply) </h5><br>
-<select class="form-control selectpicker form-control-sm "  multiple id="box25">
-<option>None identified</option>
-<option>Intestinal metaplasia (Barrett’s esophagus)</option>
-<option>Low grade dysplasia present</option>
-<option>High grade dysplasia present</option>
-<option>Chronic lymphocytic esophagitis</option>
-<option>Acute neutrophilic esophagitis</option>
-<option>Eosinophilic esophagitis</option>
-<option>Chronic non-specific gastritis</option>
-<option>Acute and chronic gastritis</option>
-<option>Chemical gastritis</option>
-<option>Other</option>
-</select><br>
-<input type="text" class="form-control form-control-sm "  id='box25_2' style='display:none;' placeholder='Specify'>
-
-<hr class="p-2">
-
-
-
-<h5>+ Ancillary studies (IHCs, special stains):</h5><br>
-<input type="text" class="form-control form-control-sm "  id="box26"  placeholder='start typing here'>
-
-<hr class="p-2">
-
-
-<h5>+ Clinical history (select all that apply)</h5><br>
-<select class="form-control selectpicker form-control-sm "  multiple id="box27">
-<option>Barrett’s esophagus</option>
-<option>Other </option>
-<option>Not known</option>
-</select><br>
-<input type="text" class="form-control form-control-sm "  id='box27_2' style='display:none;' placeholder='Specify'>
-
-<hr class="p-2">
-
-
-
-<!-- close column -->
-		</div>
-		{{> page-partials/cap-footer}}
-<!-- close row -->
-	</div>
-	{{> page-partials/history-module}}
-<!-- close container -->
-</div>
-
-
-		<!--
-		"specificScripts":
-			[
-				"/js/cap/esophagus-scripts.js",
-			]
-	 -->
