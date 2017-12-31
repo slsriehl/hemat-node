@@ -190,7 +190,7 @@ $(window).on('load', function() {
 // *************************************************************/
     $('.writeReport').on('click', function () {
 
-    // ***************** INPUT VALIDATION ********************//
+        // ***************** INPUT VALIDATION ********************//
         $('select[multiple]:visible').each(function () {
             // Check if at least one selection is made
             if ($(this).val().length > 0) {
@@ -206,9 +206,9 @@ $(window).on('load', function() {
             if ($.trim($(this).val()).length > 0) {
                 $(this).removeClass('empty');
             } else {
-                    $(this).addClass('empty');
-                    $('#cap-valid').show();
-                }
+                $(this).addClass('empty');
+                $('#cap-valid').show();
+            }
         });
 
         // ***************** END VALIDATION ********************//
@@ -252,40 +252,25 @@ $(window).on('load', function() {
         captext += "\nDepth of Tumor Extension:\n- "  + box_7+ "\n";
 
         var box_8 = $("#box8").val();
-        var box_27 = $("#box27").val();
-        var box_27_2 = $("#box27_2").val();
+        var box_11 = $("#box11").val();
+        var box_11_2 = $("#box11_2").val();
         if (box_8.indexOf("uninvolved") > -1) {
             captext += "\nMargins:\n- "+box_8;
-                if ($.inArray('Other', box_27) >-1){
-                    captext += "\nMargins examined: "  + box_27.join(', ').replace(/Other/, box_27_2) + "\n";
-                } else {
-                    captext += "\nMargins examined: "  + box_27.join(', ') + "\n";
-                }
+            if ($.inArray('Other', box_11) >-1){
+                captext += "\nMargins examined: "  + box_11.join(', ').replace(/Other/, box_11_2) + "\n";
+            } else {
+                captext += "\nMargins examined: "  + box_11.join(', ') + "\n";
             }
-            else if (box_8.indexOf("involved") > -1) {
-                captext += "\nMargins:";
-                console.log("margins involved");
-                if (box_1.indexOf('Whipple') < 0) {// not whipple
-                    console.log("not whipple margins");
+        }
+        else if (box_8.indexOf("involved") > -1) {
+            captext += "\nMargins:";
+            console.log("margins involved");
+            if (box_1.indexOf('segmental resection') > -1) {// segmental resection
                 var box_9 = $("#box9").val();
-                var box_9_2 = $("#box9_2").val();
                 captext += "\n- Proximal Bile duct:\n";
-                var negbox_9 = box_9.filter(el => el.indexOf("Uninvolved") > -1);
-                var posbox_9 = box_9.filter(el => el.indexOf("Involved") > -1);
-                if (negbox_9.length > 0 ) {
-                    captext += "\t- "+negbox_9+"\n\t- Distance of invasive carcinoma to the margin: " + box_9_2.replace(/mm/,"")+"mm\n";}
-                if (posbox_9.length > 0  ) {
-                    captext += "\t- "+posbox_9+"\n";}
 
                 var box_10 = $("#box10").val();
-                var box_10_2 = $("#box10_2").val();
                 captext += "\n- Distal Bile duct:\n";
-                var negbox_10 = box_10.filter(el => el.indexOf("Uninvolved") > -1);
-                var posbox_10 = box_10.filter(el => el.indexOf("Involved") > -1);
-                if ((negbox_10.length > 0 ) && (posbox_10.length == 0  )) {
-                    captext += "\t- "+negbox_10+"\n\t- Distance of invasive carcinoma to this margin: " + box_10_2.replace(/mm/,"")+"mm\n";}
-                else if ((negbox_10.length == 0 ) && (posbox_10.length > 0  )) {
-                    captext += "\t- "+posbox_10+"\n";}
 
                 var box_16 = $("#box16").val();
                 var box_16_2 = $("#box16_2").val();
@@ -298,41 +283,39 @@ $(window).on('load', function() {
                     captext += "\t- "+posbox_16+"\n";}
 
             } else { // whipple procedure
-                    console.log("yes whipple margins");
-                    var box_11 = $("#box11").val();
-                    var box_11_2 = $("#box11_2").val();
-                    var negbox_11 = box_11.filter(el => el.indexOf("Uninvolved") > -1);
-                    var posbox_11 = box_11.filter(el => el.indexOf("Involved") > -1);
-                    captext += "\n- Pancreatic neck/parenchymal:\n";
-                    if (negbox_11.length > 0 ) {
-                        captext += "\t- "+negbox_11+"\n\t- Distance of invasive carcinoma to this margin: " + box_11_2.replace(/mm/,"")+"mm\n";}
-                    if (posbox_11.length > 0  ) {
-                        captext += "\t- "+posbox_11+"\n";}
+                console.log("yes whipple margins");
+                var negbox_11 = box_11.filter(el => el.indexOf("Uninvolved") > -1);
+                var posbox_11 = box_11.filter(el => el.indexOf("Involved") > -1);
+                captext += "\n- Pancreatic neck/parenchymal:\n";
+                if (negbox_11.length > 0 ) {
+                    captext += "\t- "+negbox_11+"\n\t- Distance of invasive carcinoma to this margin: " + box_11_2.replace(/mm/,"")+"mm\n";}
+                if (posbox_11.length > 0  ) {
+                    captext += "\t- "+posbox_11+"\n";}
 
-                    var box_12 = $("#box12").val();
-                    var box_12_2 = $("#box12_2").val();
-                    if (box_12.indexOf("Uninvolved") > -1) {
-                        captext += "\n - Uncinate:\n\t- "+box_12+"\n\t- Distance of invasive carcinoma to this margin: " + box_12_2.replace(/mm/,"")+"mm\n";}
-                    else if (box_12.indexOf("Involved") > -1) {
-                        captext += "\n- Uncinate:\n\t- "+box_12+"\n";}
-                    else {captext += "\n- Uncinate:\n\t- "+box_12+"\n";}
+                var box_12 = $("#box12").val();
+                var box_12_2 = $("#box12_2").val();
+                if (box_12.indexOf("Uninvolved") > -1) {
+                    captext += "\n - Uncinate:\n\t- "+box_12+"\n\t- Distance of invasive carcinoma to this margin: " + box_12_2.replace(/mm/,"")+"mm\n";}
+                else if (box_12.indexOf("Involved") > -1) {
+                    captext += "\n- Uncinate:\n\t- "+box_12+"\n";}
+                else {captext += "\n- Uncinate:\n\t- "+box_12+"\n";}
 
-                    var box_13 = $("#box13").val();
-                    var box_13_2 = $("#box13_2").val();
-                    captext += "\n- Bile duct:\n";
-                    var negbox_13 = box_13.filter(el => el.indexOf("Uninvolved") > -1);
-                    var posbox_13 = box_13.filter(el => el.indexOf("Involved") > -1);
-                    if (negbox_13.length > 0 ) {
-                        captext += "\t- "+negbox_13+"\n\t- Distance of invasive carcinoma to this margin: " + box_13_2.replace(/mm/,"")+"mm\n";}
-                    if (posbox_13.length > 0  ) {
-                        captext += "\t- "+posbox_13+"\n";}
+                var box_13 = $("#box13").val();
+                var box_13_2 = $("#box13_2").val();
+                captext += "\n- Bile duct:\n";
+                var negbox_13 = box_13.filter(el => el.indexOf("Uninvolved") > -1);
+                var posbox_13 = box_13.filter(el => el.indexOf("Involved") > -1);
+                if (negbox_13.length > 0 ) {
+                    captext += "\t- "+negbox_13+"\n\t- Distance of invasive carcinoma to this margin: " + box_13_2.replace(/mm/,"")+"mm\n";}
+                if (posbox_13.length > 0  ) {
+                    captext += "\t- "+posbox_13+"\n";}
 
-                    var box_14 = $("#box14").val();
-                    captext += "\n- Proximal Margin:\n\t- "  + box_14.join('\n\t- ') + "\n";
+                var box_14 = $("#box14").val();
+                captext += "\n- Proximal Margin:\n\t- "  + box_14.join('\n\t- ') + "\n";
 
-                    var box_15 = $("#box15").val();
-                    captext += "\n- Distal Margin:\n\t- "  + box_15.join('\n\t- ') + "\n";
-                }
+                var box_15 = $("#box15").val();
+                captext += "\n- Distal Margin:\n\t- "  + box_15.join('\n\t- ') + "\n";
+            }
         }
 
         var box_17 = $("#box17").val();

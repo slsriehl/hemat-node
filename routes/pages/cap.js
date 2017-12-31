@@ -50,6 +50,12 @@ router.get('/cap/ex-gon-gct', (req, res) => {
 	]);
 });
 
+router.get('/cap/duo-amp-net', (req, res) => {
+    controller.userWall(req, res, './page-views/cap/duo-amp-net.hbs', [
+    "/js/cap/duo-amp-net-scripts.js",
+]);
+});
+
 router.get('/cap/hepatoblastoma', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/hepatoblastoma.hbs', [
 		"/js/cap/hepatoblastoma-scripts.js",
