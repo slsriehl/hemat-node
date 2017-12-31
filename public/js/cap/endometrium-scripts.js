@@ -9,103 +9,164 @@ $(window).on('load', function() {
 //*************************************************************//
 //                        Pop-ups                              //
 // *************************************************************/
-    $('#box1').change(function(){
+
+    $('#box1').on("change", function(){
         var sel = $('#box1').val();
         if ($.inArray('Other', sel) >-1) {
             $('#box1_2').show();}
         else {$('#box1_2').hide();}
     });
 
-    $('#box2').change(function(){
+    $('#box2').on("change", function(){
         var sel = $('#box2').val();
-        if ($.inArray('Other', sel) >-1) {
+        if (sel.indexOf("Other") > -1) {
+
             $('#box2_2').show();}
-        else {$('#box2_2').hide();}
+        else {
+            $('#box2_2').hide();}
     });
 
-    $('#box3').change(function(){
-        var sel = $('#box3').val();
-        if ($.inArray('Other', sel) >-1) {
-            $('#box3_2').show();}
-        else {$('#box3_2').hide();}
+    $('#box4').on("change", function(){
+        var sel = $('#box4').val();
+        if (sel.indexOf("type") > -1) {
+
+            $('#box4_2').show();}
+        else {
+            $('#box4_2').hide();}
     });
 
-    $('#box5').change(function(){
+    $('#box5').on("change", function(){
         var sel = $('#box5').val();
-        if (sel == 'Other') {
-            $('#box5_1').show();}
+        if (sel.indexOf("Other") > -1) {
+
+            $('#box5_2').show();}
         else {
-            $('#box5_1').hide();}
+            $('#box5_2').hide();}
     });
 
-    $('#box7').change(function(){
-        var sel = $('#box7').val();
-        if (sel == 'Mixed carcinoma') {
-            $('#box7_1').show();}
-        else {$('#box7_1').hide();}
-        if (sel == 'Other') {
-            $('#box7_2').show();}
-        else {$('#box7_2').hide();}
-    });
+    $('#box6').on("change", function(){
+        var sel = $('#box6').val();
+        if (sel.indexOf("Present") > -1) {
+            if (sel.indexOf("measured") > -1){
+                $(".measure-inv").show();
+            }else{
+                $(".measure-inv").hide();
+            }
+            if (sel.indexOf("estimated") > -1){
+                $(".estimate-inv").show();
+            } else {
+                $(".estimate-inv").hide();
+            }
 
-    $('#box11').change(function(){
-        var sel = $('#box11').val();
-        if (sel == 'Other') {
-            $('#box11_2').show();}
+            $('#box6_2').show();
+        }
         else {
-            $('#box11_2').hide();}
+            $('#box6_2').hide();}
     });
 
-    $('#box12').change(function(){
-        var sel = $('#box12').val();
-        if (sel == 'Other') {
-            $('#box12_2').show();}
+    $('#box9').on("change", function(){
+        var sel = $('#box9').val();
+        if (sel.indexOf("cannot be determined") > -1) {
+            $('#box9_2').show();
+            $('.inv').hide();
+
+        }
         else {
-            $('#box12_2').hide();}
-    });
+            $('#box9_2').hide();
+            $('.inv').show();
 
-    $('#box13').change(function(){
+        }
+    });$('#box13').on("change", function(){
         var sel = $('#box13').val();
-        if (sel == 'Other') {
+        if ($.inArray('Other', sel) >-1) {
             $('#box13_2').show();}
-        else {
-            $('#box13_2').hide();}
+        else {$('#box13_2').hide();}
     });
 
-    $('#box14').change(function(){
+    $('#box14').on("change", function(){
         var sel = $('#box14').val();
-        if (sel == 'Other') {
+        if (sel.indexOf("explain") > -1) {
+
             $('#box14_2').show();}
         else {
             $('#box14_2').hide();}
     });
 
-    $('#box24').change(function(){
-        var sela = $('#box24').val();
-        var selb = $('#box24').val();
-        if (sela == "Uninvolved by invasive tumor"){
-            $('#box24_1').show();
-            $('#box24_2').show();}
-        else {$('#box24_1').hide();
-            $('#box24_2').hide();}
-        if (selb == "Involved by invasive tumor") {
-            $('#box24_3').show();}
-        else {$('#box24_3').hide();}
+    $('#box15').on("change", function(){
+        var sel = $('#box15').val();
+        if (sel.indexOf("Uninvolved") > -1) {
+
+            $('#box15_2').show();}
+        else {
+            $('#box15_2').hide();}
     });
 
-    $("#box30").change(function(){
+    $('#box16').on("change", function(){
+        var sel = $('#box16').val();
+        if (sel.indexOf("Uninvolved") > -1) {
+
+            $('#box16_2').show();}
+        else {
+            $('#box16_2').hide();}
+    });
+
+    $("#box21").on("change", function(){
         if ($(this).is(":checked")){
-            $(".lnchk").show();}
+            $(".lnchk").show();
+        }
         else{
-            $(".lnchk").hide();}
+            $(".lnchk").hide();
+        }
     });
 
-    $('#box35').change(function(){
-        var sel = $('#box35').val();
-        if ($.inArray('Other', sel) >-1) {
-            $('#box35_1').show();}
-        else {$('#box35_1').hide();}
+    $("#box20").on("change", function(){
+        var sel = $("#box20").val();
+        if (sel != "pMx"){
+            $("#box20_2").show();
+        } else {
+            $("#box20_2").hide();
+        }
     });
+    var pelnodes = 0;
+    $(".pelnode").on("input", function(){
+        pelnodes = pelnodes + parseInt($(this).val(), 10);
+        console.log("# pos pelvic nodes: "+pelnodes);
+        if (pelnodes > 0){
+            $(".pelnodes").show();
+        } else {
+            $(".pelnodes").hide();
+        }
+    });
+
+    var paranodes = 0;
+    $(".paranode").on("input", function(){
+        paranodes = paranodes + parseInt($(this).val(), 10);
+        console.log("# pos paravic nodes: "+paranodes);
+        if (paranodes > 0){
+            $(".paranodes").show();
+        } else {
+            $(".paranodes").hide();
+        }
+    });
+    
+    $('#box40').on("change", function(){
+        var sel = $('#box40').val();
+        if (sel.indexOf("Other") > -1) {
+
+            $('#box40_2').show();}
+        else {
+            $('#box40_2').hide();}
+    });
+
+    $('#box41').on("change", function(){
+        var sel = $('#box41').val();
+        if (sel.indexOf("Other") > -1) {
+
+            $('#box41_2').show();}
+        else {
+            $('#box41_2').hide();}
+    });
+
 
 
 
@@ -114,171 +175,240 @@ $(window).on('load', function() {
 // *************************************************************/
     $('.writeReport').on('click', function () {
 
-        $('input[type="text"]').each(function () {
-            if ($(this).val().length < 1) {
-                $(this).val($(this).attr('placeholder'));
-            }
-            if ($(this).val().length < 1) {
-                $(this).addClass('empty')
+    // ***************** INPUT VALIDATION ********************//
+        $('select[multiple]:visible').each(function () {
+            // Check if at least one selection is made
+            if ($(this).val().length > 0) {
+                $(this).removeClass('empty');
+            } else {
+                $(this).addClass('empty');
+                $('#cap-valid').show();
             }
         });
 
-        var captext = "Endometrium Cancer Synoptic\nAJCC 2018 cancer staging version\n\n";
+        $('input:visible').each(function () {
+            // Check if at least one selection is made
+            if ($.trim($(this).val()).length > 0) {
+                $(this).removeClass('empty');
+            } else {
+                    $(this).addClass('empty');
+                    $('#cap-valid').show();
+                }
+        });
+
+        // ***************** END VALIDATION ********************//
+
+        var captext = "Endometrial Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
 
         var box_1 = $("#box1").val();
         var box_1_2 = $("#box1_2").val();
         if ($.inArray('Other', box_1) >-1){
-            captext += "\nSpecimen:\n- "  + box_1.join('\n- ').replace(/Other/, box_1_2) + "\n";}
-        else {captext += "\nSpecimen:\n- "  + box_1.join('\n- ') + "\n";}
+            captext += "\nProcedure:\n- "  + box_1.join('\n- ').replace(/Other/, box_1_2) + "\n";}
+        else {captext += "\nProcedure:\n- "  + box_1.join('\n- ') + "\n";}
 
         var box_2 = $("#box2").val();
         var box_2_2 = $("#box2_2").val();
-        if ($.inArray('Other', box_2) >-1){
-            captext += "\nProcedure:\n- "  + box_2.join('\n- ').replace(/Other/, box_2_2) + "\n";}
-        else {captext += "\nProcedure:\n- "  + box_2.join('\n- ') + "\n";}
+        if (box_2.indexOf("Other") > -1) {
+            captext += "\n+Specimen Integrity:\n- "  + box_2_2+ "\n";}
+        else {captext += "\n+Specimen Integrity:\n- "  + box_2+ "\n";}
+
 
         var box_3 = $("#box3").val();
-        var box_3_2 = $("#box3_2").val();
-        if ($.inArray('Other', box_3) >-1){
-            captext += "\nLymph Node Sampling:\n- "  + box_3.join('\n- ').replace(/Other/, box_3_2) + "\n";}
-        else {captext += "\nLymph Node Sampling:\n- "  + box_3.join('\n- ') + "\n";}
+        captext += "\n+ Tumor Size:\n- "  + box_3.replace(/cm/,'') + "cm\n";
 
         var box_4 = $("#box4").val();
-        captext += "\nSpecimen Integrity:\n- "  + box_4+ "\n";
+        var box_4_2 = $("#box4_2").val();
+        if (box_4.indexOf("type") > -1) {
+            captext += "\nHistologic Type:\n- "  + box_4.replace(/,.*type/, ": "+box_4_2)+ "\n";}
+        else {captext += "\nHistologic Type:\n- "  + box_4+ "\n";}
+
 
         var box_5 = $("#box5").val();
-        var box_5_1 = $("#box5_1").val();
-        if (box_5 == 'Other'){
-            captext += "\n+ Tumor Site:\n- "  + box_5_1+ "\n";}
-        else {captext += "\n+ Tumor Site:\n- "  + box_5+ "\n";}
+        var box_5_2 = $("#box5_2").val();
+        if(box_5 != "Not applicable"){
+            if (box_5.indexOf("Other") > -1) {
+                captext += "\nHistologic Grade:\n- "  + box_5_2+ "\n";}
+            else {captext += "\nHistologic Grade:\n- "  + box_5+ "\n";}
+        }
 
 
         var box_6 = $("#box6").val();
-        captext += "\nTumor Size:\n- "  + box_6.replace(/cm/,'') + "cm\n";
+        var box_6_2 = $("#box6_2").val();
+        if (box_6.indexOf("Present") > -1) {
+            captext += "\nMyometrial Invasion:\n- Present";
 
-        var box_7 = $("#box7").val();
-        var box_7_1 = $("#box7_1").val();
-        var box_7_2 = $("#box7_2").val();
-        if (box_7 == 'Mixed carcinoma') { captext += "\nHistologic Type:\n- "+box_7+"\n- "+box_7_1+"\n";}
-        else if (box_7 == 'Other'){ captext += "\nHistologic Type:\n- "+box_7+"\n- "+box_7_2+"\n";}
-        else {captext += "\nHistologic Type:\n- "+box_7+"\n";}
+            if (box_6.indexOf('measured') >-1) {
+                var box_7 = parseInt($("#box7").val(), 10);
+                captext += "\n\tDepth of invasion: " + box_7 + "mm\n";
 
-        var box_8 = $("#box8").val();
-        captext += "\nHistologic Grade:\n- "  + box_8+ "\n";
+                var box_8 = parseInt($("#box8").val(), 10);
+                var pct = (box_7/box_8)*100;
+                captext += "\tMyometrial thickness: " + box_8 + "mm\n\tPercentage of myometrial invasion: "+pct.toFixed(1)+"%\n";
 
-        var box_9 = $("#box9").val();
-        captext += "\nMyometrial Invasion:\n- "  + box_9+ "\n";
+            }
+            if (box_6.indexOf('estimated') >-1) {
+
+                var box_9 = $("#box9").val();
+                var box_9_2 = $("#box9_2").val();
+                if (box_9.indexOf("cannot be determined") > -1) {
+                    captext += "\n\tDepth of invasion and/or thickness cannot be determined, due to: " + box_9_2 + "\n";
+                }
+                else {
+                    captext += ": " + box_9 + "\n";
+                }
+            }
+
+        }
+        else {captext += "\nMyometrial Invasion:\n- "  + box_6+ "\n";}
 
         var box_10 = $("#box10").val();
-        captext += "\nInvolvement of Cervix:\n- "  + box_10.join('\n- ') + "\n";
+        captext += "\n+ Adenomyosis:\n- "  + box_10+ "\n";
 
         var box_11 = $("#box11").val();
-        var box_11_2 = $("#box11_2").val();
-        captext+="\nInvolvement of other Organs:";
-        if (box_11 == 'Other'){
-            captext += "\nRight ovary:\n- "  + box_11_2+ "\n";}
-        else {captext += "\nRight ovary:\n- "  + box_11+ "\n";}
-
+        captext += "\nUterine Serosa Involvement:\n- "  + box_11+ "\n";
 
         var box_12 = $("#box12").val();
-        var box_12_2 = $("#box12_2").val();
-        if (box_12 == 'Other'){
-            captext += "\nLeft ovary:\n- "  + box_12_2+ "\n";}
-        else {captext += "\nLeft ovary:\n- "  + box_12+ "\n";}
-
+        captext += "\nCervical Stromal Involvement:\n- "  + box_12+ "\n";
 
         var box_13 = $("#box13").val();
         var box_13_2 = $("#box13_2").val();
-        if (box_13 == 'Other'){
-            captext += "\nRight fallopian tube:\n- "  + box_13_2+ "\n";}
-        else {captext += "\nRight fallopian tube:\n- "  + box_13+ "\n";}
-
+        if ($.inArray('Other', box_13) >-1){
+            captext += "\nOther Tissue/Organ Involvement:\n- "  + box_13.join('\n- ').replace(/Other/, box_13_2) + "\n";}
+        else {captext += "\nOther Tissue/Organ Involvement:\n- "  + box_13.join('\n- ') + "\n";}
 
         var box_14 = $("#box14").val();
         var box_14_2 = $("#box14_2").val();
-        if (box_14 == 'Other'){
-            captext += "\nLeft fallopian tube:\n- "  + box_14_2+ "\n";}
-        else {captext += "\nLeft fallopian tube:\n- "  + box_14+ "\n";}
+        if (box_14.indexOf("explain") > -1) {
+            captext += "\n+ Peritoneal/ Ascitic Fluid:\n- "  + box_14.replace(/\ (explain\)/, ", reason: "+box_14_2)+ "\n";}
+        else {captext += "\n+ Peritoneal/ Ascitic Fluid:\n- "  + box_14+ "\n";}
 
 
         var box_15 = $("#box15").val();
+        var box_15_2 = $("#box15_2").val();
         if(box_15 != "Not applicable"){
-            captext += "\nVagina:\n- "  + box_15+ "\n";}
+            if (box_15.indexOf("Uninvolved") > -1) {
+                captext += "\nEctocervical/Vaginal Cuff Margin:\n- Uninvolved by carcinoma\n- Distance of invasive carcinoma to margin: "  + box_15_2+ "cm\n";}
+            else {captext += "\nEctocervical/Vaginal Cuff Margin:\n- "  + box_15+ "\n";}
+        }
+
 
         var box_16 = $("#box16").val();
+        var box_16_2 = $("#box16_2").val();
         if(box_16 != "Not applicable"){
-            captext += "\nRight parametrium:\n- "  + box_16+ "\n";}
+            if (box_16.indexOf("Uninvolved") > -1) {
+                captext += "\nParametrial/Paracervical Margin:\n- Uninvolved by carcinoma\n- Distance of invasive carcinoma to margin: "  + box_16_2+ "cm\n";}
+            else {captext += "\nParametrial/Paracervical Margin:\n- "  + box_16+ "\n";}
+        }
+
 
         var box_17 = $("#box17").val();
-        if(box_17 != "Not applicable"){
-            captext += "\nLeft parametrium:\n- "  + box_17+ "\n";}
-
         var box_18 = $("#box18").val();
-        if(box_18 != "Not applicable"){
-            captext += "\nOmentum:\n- "  + box_18+ "\n";}
-
         var box_19 = $("#box19").val();
-        if(box_19 != "Not applicable"){
-            captext += "\nRectal wall:\n- "  + box_19+ "\n";}
-
         var box_20 = $("#box20").val();
-        if(box_20 != "Not applicable"){
-            captext += "\nBladder wall:\n- "  + box_20+ "\n";}
-
-        var box_21 = $("#box21").val();
-        if(box_21 != "Not applicable"){
-            captext += "\nPelvic wall:\n- "  + box_21+ "\n";}
-
-        var box_22 = $("#box22").val();
-        if(box_22 != "Not applicable"){
-            captext += "\nBladder/bowel mucosa:\n- "  + box_22+ "\n";}
-
-        var box_23 = $("#box23").val();
-        if(box_23 != "Not applicable"){
-            captext += "\n+ Peritoneal Ascitic Fluid:\n- "  + box_23+ "\n";}
-
-        var box_24 = $("#box24").val();
-        var box_24_1 = $("#box24_1").val();
-        var box_24_2 = $("#box24_2").val();
-        var box_24_3 = $("#box24_3").val();
-        if (box_24 == 'Uninvolved by invasive tumor') {
-            captext += "\n+ Margins:\n- Margins uninvolved by tumor:\n- Nearest margin: "+box_24_1+"\n- Distance to this margin: " + box_24_2.replace(/mm/,"")+"mm\n";}
-        else if (box_24 == 'Involved by invasive tumor'){
-            captext += "\n+ Margins:\n- Margins involved by tumor:\n- Margin involved: "+box_24_3+"mm\n";}
-        else {captext += "\n+ Margins:\n- "+box_24+"\n";}
-
-        var box_25 = $("#box25").val();
-        captext += "\nLymph-Vascular Invasion:\n- "  + box_25+ "\n";
-
-        var box_26 = $("#box26").val();
-        var box_27 = $("#box27").val();
-        var box_28 = $("#box28").val();
-        var box_29 = $("#box29").val();
+        var box_20_2 = $("#box20_2").val();
         captext += '\nPathologic Staging (pTNM):\n- ';
-        if (box_26 != "Not applicable"){captext += box_26.join("")+' '+box_27+" "+box_28+" "+box_29+"\n";}
-        else {captext += box_27+" "+box_28+" "+box_29+"\n";}
-
-        if ($("#box30").is(':checked')) {
-            var box_31 = $("#box31").val();
-            var box_32 = $("#box32").val();
-            var box_33 = $("#box33").val();
-            var box_34 = $("#box34").val();
-            captext += "\nPelvic Lymph nodes examined: "+box_31+"\nPelvic Lymph nodes involved: "+box_32+"\n\nPara-aortic Lymph nodes examined: "+box_32+"\nPara-aortic Lymph nodes invovled: "+box_34+"\n";}
-
-        var box_35 = $("#box35").val();
-        var box_35_1 = $("#box35_1").val();
-        if($.inArray("None identified", box_35) == -1){
-            if ($.inArray('Other', box_35) >-1){
-                captext += "\n+ Additional Pathologic Findings:\n- "  + box_35.join('\n- ').replace(/Other/, box_35_1) + "\n";}
-            else {captext += "\n+ Additional Pathologic Findings:\n- "  + box_35.join('\n- ') + "\n";}
+        if ($("#box21").is(':checked')) { // check if nodes are present
+            var pelsen = parseInt($("#box22").val(), 10) - parseInt($("#box23").val(), 10);
+            console.log("pel: "+pelsen);
+            var parasen = parseInt($("#box30").val(), 10) - parseInt($("#box31").val(), 10);
+            console.log("para: "+parasen);
+            console.log("pel+para:"+(pelsen + parasen));
+            if ((pelsen + parasen) === 0) { // check if only sentinel nodes are sampled, total - sentinel should be 0
+                box_19 = box_19.concat("(sn)");
+                console.log("sn applied");
+            } else {
+                box_19 = box_19.replace("(sn)", "");
+                console.log("sn not applied");
+            }
         }
+
+        if (box_17 != "Not applicable"){
+            if (box_20 != "pMx"){
+                captext += box_17.join("")+" "+box_18+" "+box_19+" "+box_20+" (metastatic site(s): " + box_20_2 + ")\n";
+            } else {
+                captext += box_17.join("")+" "+box_18+" "+box_19+" "+box_20+"\n";
+            }
+        } else {
+            if (box_20 != "pMx"){
+                captext += box_18+" "+box_19+" "+box_20+" (metastatic site(s): " + box_20_2 + ")\n";
+            } else {
+                captext += box_18+" "+box_19+" "+box_20+"\n";
+            }
+        }
+
+
+        if ($("#box21").is(':checked')) {
+            var box_22 = parseInt($("#box22").val(), 10);
+            var box_23 = parseInt($("#box23").val(), 10);
+            var box_24 = $("#box24").val();
+            var box_25 = parseInt($("#box25").val(), 10);
+            var box_26 = parseInt($("#box26").val(), 10);
+            var box_27 = parseInt($("#box27").val(), 10);
+            var box_28 =$("#box28").val();
+            captext += "\nLymph nodes: Pelvic" +
+                        "\n\tTotal Pelvic Nodes Examined: "+box_22;
+                        if (box_22 > 0) {
+
+                            captext+="\n\tTotal Pelvic Sentinel Nodes Examined: " + box_23 +
+                            "\n\tLaterality of Pelvic Node(s) Examined: " + box_24 +
+                            "\n\tPelvic Nodes with Macrometastasis: " + box_25 +
+                            "\n\tPelvic Nodes with Micrometastasis: " + box_26 +
+                            "\n\tPelvic Nodes with Isolated Tumor Cells: " + box_27;
+                            if (pelnodes > 0){
+                                captext+= "\n\tLaterality of Pelvic Node(s) with Tumor: "+box_28+"\n";
+                            }
+                        }
+
+            var box_30 = parseInt($("#box30").val(), 10);
+            var box_31 = parseInt($("#box31").val(), 10);
+            var box_32 = $("#box32").val();
+            var box_33 = parseInt($("#box33").val(), 10);
+            var box_34 = parseInt($("#box34").val(), 10);
+            var box_35 = parseInt($("#box35").val(), 10);
+            var box_36 = $("#box36").val();
+            captext += "\n\nLymph nodes: Para-Aortic" +
+                "\n\tTotal Para-Aortic Nodes Examined: "+box_30;
+            if (box_30 > 0) {
+
+                captext+="\n\tTotal Para-Aortic Sentinel Nodes Examined: " + box_31 +
+                    "\n\tLaterality of Para-Aortic Node(s) Examined: " + box_32 +
+                    "\n\tPara-Aortic Nodes with Macrometastasis: " + box_33 +
+                    "\n\tPara-Aortic Nodes with Micrometastasis: " + box_34 +
+                    "\n\tPara-Aortic Nodes with Isolated Tumor Cells: " + box_35;
+                if (paranodes > 0){
+                    captext+= "\n\tLaterality of Para-Aortic Node(s) with Tumor: "+box_36+"\n";
+                }
+            }           
+                        
+                        
+                        
+        } else {
+            captext += "\nLymph nodes: None submitted\n";
+        }
+
+        var box_40 = $("#box40").val();
+        var box_40_2 = $("#box40_2").val();
+        if (box_40.indexOf("Other") > -1) {
+            captext += "\n\n+ Additional Pathologic Findings:\n- "  + box_40_2+ "\n";}
+        else {captext += "\n\n+ Additional Pathologic Findings:\n- "  + box_40+ "\n";}
+
+
+
+        var box_41 = $("#box41").val();
+        var box_41_2 = $("#box41_2").val();
+        if (box_41.indexOf("Other") > -1) {
+            captext += "\n+ Clinical History:\n- "  + box_41_2+ "\n";}
+        else {captext += "\n+ Clinical History:\n- "  + box_41+ "\n";}
+
+
 
 
 
         $('#outPut-1').val(captext);
 
-				dataObj.singleSection = $('#outPut-1').val();
-				makeCreatePdfBtn();
-
+        dataObj.singleSection = $('#outPut-1').val();
+        makeCreatePdfBtn();
     });
 });
+
+
