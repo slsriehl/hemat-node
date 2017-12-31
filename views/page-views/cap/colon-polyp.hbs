@@ -1,192 +1,224 @@
 <div class="container-fluid">
-		<!-- Breadcrumbs -->
-		<ol class="breadcrumb">
-				<li class="breadcrumb-item">
-						<a href="/">Home</a>
-				</li>
-				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>Cancer Synoptic Checklist</li>
-				<li class="breadcrumb-item active" id="bc-jump"><i class="fa fa-flask mr-2"></i>Colon polyps - in-situ carcinoma</li>
-		</ol>
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+        <li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Colon Cancer (Polypectomy)</li>
+    </ol>
+    {{> message-center this}}
+    {{> page-partials/cap-header}}
 
- {{> message-center this}}
+    <div class="row">
+        {{> page-partials/cap-validate-alert}}
+        <div class="col col-md-8">
 
+            <!-- paste markup here-->
+            <hr class="p-2" >
+            <h5>Tumor Site</h5>
+            <select id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Cecum</option>
+                <option>Ileocecal valve</option>
+                <option>Right (ascending) colon</option>
+                <option>Hepatic flexure</option>
+                <option>Transverse colon</option>
+                <option>Splenic flexure</option>
+                <option>Left (descending) colon</option>
+                <option>Sigmoid colon</option>
+                <option>Rectosigmoid region</option>
+                <option>Rectum</option>
+                <option>Other</option>
+                <option>Not specified</option>
+            </select>
 
-		{{> page-partials/cap-header}}
-
-	<div class="row">
-		<div class="col col-md-8">
-
-	<h5>Tumor Site </h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box1">
-	<option selected>Not specified</option>
-	<option>Cecum</option>
-	<option>Right (ascending) colon</option>
-	<option>Hepatic flexure</option>
-	<option>Transverse colon</option>
-	<option>Splenic flexure</option>
-	<option>Left (descending) colon</option>
-	<option>Sigmoid colon</option>
-	<option>Rectum</option>
-	<option>Other:</option>
-	</select>
-	<input type="text" class="form-control form-control-sm "  id="box1_2" style="display:none" placeholder="Enter site of tumor">
-
-<hr class="p-2">
-
-	<h5>+ Specimen Integrity</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box2">
-	<option selected>Intact</option>
-	<option>Fragmented</option>
-	</select>
-
-<hr class="p-2">
-
-	<h5>+ Polyp Size</h5><br>
-	Greatest dimension of polyp (cm):<br><input type="text" class="form-control form-control-sm "  id="box3" placeholder="Cannot be assessed">
-
-<hr class="p-2">
-
-	<h5>+ Polyp Configuration</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box4">
-	<option>Pedunculated with stalk</option>
-	<option> Sessile</option>
-	<option selected> Cannot be determined </option>
-	</select><br>
-	<input type="text" class="form-control form-control-sm "  id="box4_2" style="display:none" placeholder="Enter stalk length in cm">
-
-<hr class="p-2">
-
-	<h5>Size of Invasive Carcinoma (cm)</h5><br>
-	<input type="text" class="form-control form-control-sm "  id="box5" placeholder="Cannot be determined">
-
-<hr class="p-2">
-
-	<h5>Histologic Type </h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box6">
-	<option selected> Adenocarcinoma</option>
-	<option>Mucinous adenocarcinoma </option>
-	<option>Signet-ring cell carcinoma </option>
-	<option>High-grade neuroendocrine carcinoma</option>
-	<option>Large cell neuroendocrine carcinoma</option>
-	<option>Small cell neuroendocrine carcinoma </option>
-	<option>Squamous cell carcinoma </option>
-	<option>Adenosquamous carcinoma</option>
-	<option>Medullary carcinoma</option>
-	<option>Undifferentiated carcinoma</option>
-	<option>Other:</option>
-	<option> Carcinoma, type cannot be determined</option>
-	</select>
-<br>	<input type="text" class="form-control form-control-sm "  id="box6_2" style="display:none" placeholder="Enter tumor type">
-
-<hr class="p-2">
-
-	<h5> Histologic Grade </h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box7">
-	<option selected> Not applicable</option>
-	<option> Cannot be determined</option>
-	<option> Low-grade (well-differentiated to moderately differentiated)</option>
-	<option> High-grade (poorly differentiated to undifferentiated)</option>
-	</select>
-
-<hr class="p-2">
-
-	<h5>Microscopic Tumor Extension</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box8">
-	<option> Cannot be determined</option>
-	<optgroup label="Invasion (deepest):">
-	<option> Lamina propria</option>
-	<option> Muscularis mucosae</option>
-	<option> Submucosa</option>
-	<option> Muscularis propria</option>
-	</optgroup>
-	</select>
-
-<hr class="p-2">
-
-	<h5>Margins (select all that apply) </h5><br>
-	Deep Stalk Margin:<br>
-	<input type="text" class="form-control form-control-sm "  type="radio" id="box9" name="margin_radio" value="Cannot be assessed" checked> Cannot be assessed <br>
-	<input type="text" class="form-control form-control-sm "  type="radio" id="box9_1" name="margin_radio" value="Uninvolved by invasive carcinoma;"> Uninvolved by invasive carcinoma; Distance of invasive carcinoma from margin (cm):<input type="text" class="form-control form-control-sm "  id="box9_2" size="3"><br>
-	<input type="text" class="form-control form-control-sm "  type="radio" id="box9_3" name="margin_radio" value="Involved by invasive carcinoma"> Involved by invasive carcinoma<br>
-
-<hr class="p-2">
-
-	Mucosal Margin (required only if applicable) <br>
-	<select class="form-control selectpicker form-control-sm "  id="box10">
-	<option selected> Not applicable</option>
-	<option> Cannot be assessed</option>
-	<option> Uninvolved by invasive carcinoma</option>
-	<option> Involved by invasive carcinoma</option>
-	<option> Involved by adenoma</option>
-	</select>
-
-<hr class="p-2">
-
-	<h5>TNM designation</h5><br>
-	<em>pTIS: invasion into the mucosal lamina propria.</em> <br>
-	<em>pT1: invasion through the muscularis mucosa, into the submucosa.</em><br>
-	<select class="form-control selectpicker form-control-sm "  id="box11_5">
-	<option selected> pTis</option>
-	<option> pT1</option>
-	</select>
-
-<hr class="p-2">
-
-	<h5>Lymph-Vascular Invasion</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box11">
-	<option selected> Not identified</option>
-	<option> Present</option>
-	<option> Indeterminate</option>
-	</select>
-
-<hr class="p-2">
-
-	<h5>+ Type of Polyp in Which Invasive Carcinoma Arose </h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box12">
-	<option selected> Tubular adenoma</option>
-	<option> Villous adenoma</option>
-	<option> Tubulovillous adenoma</option>
-	<option> Traditional serrated adenoma</option>
-	<option> Sessile serrated adenoma</option>
-	<option> Hamartomatous polyp</option>
-	<option> Indeterminate</option>
- 	</select>
-
-<hr class="p-2">
-
-	<h5>Additional Pathologic Findings</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box13">
-	<option selected>None identified</option>
-	<option>Active Inflammatory bowel disease</option>
-	<option>Quiescent Inflammatory bowel disease</option>
-	<option>Other:</option>
-	</select><br>
-	<input type="text" class="form-control form-control-sm "  id="box13_2" style="display:none" placeholder="Enter other pathologic findings">
-
-<hr class="p-2">
-
-	<h5>+ Ancillary Studies</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box14" multiple>
-	<option selected> Not performed</option>
-	<option> Immunohistochemistry: </option>
-	<option> Molecular testing: </option>
-	</select>
-
-<hr class="p-2">
-
-	<!-- close column -->
-			</div>
-			{{> page-partials/cap-footer}}
-	<!-- close row -->
-		</div>
-		{{> page-partials/history-module}}
-	<!-- close container -->
-	</div>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;' placeholder='Specify Other'>
 
 
-			<!--
-			"specificScripts":
-				[
-					"/js/cap/colonpolyp-scripts.js",
-				]
-		 -->
+
+
+
+            <hr class="p-2" >
+            <h5>+ Specimen Integrity</h5>
+            <select id="box2" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Intact</option>
+                <option>Fragmented</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>+ Polyp Size (cm) (if measurable)</h5>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box3" value="n/a">
+
+
+
+
+            <hr class="p-2" >
+            <h5>+ Size of Invasive Carcinoma (cm)</h5>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box4" value="n/a">
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Histologic Type</h5>
+            <select id="box5" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Adenocarcinoma</option>
+                <option>Mucinous adenocarcinoma</option>
+                <option>Signet-ring cell carcinoma</option>
+                <option>Medullary carcinoma</option>
+                <option>Micropapillary carcinoma</option>
+                <option>Serrated adenocarcinoma</option>
+                <option>Large cell neuroendocrine carcinoma</option>
+                <option>Small cell neuroendocrine carcinoma</option>
+                <option>Neuroendocrine carcinoma (poorly differentiated)</option>
+                <option>Squamous cell carcinoma</option>
+                <option>Adenosquamous carcinoma</option>
+                <option>Spindle cell carcinoma</option>
+                <option>Mixed adenoneuroendocrine carcinoma</option>
+                <option>Undifferentiated carcinoma</option>
+                <option>Other histologic type </option>
+                <option>Carcinoma, type cannot be determined</option>
+                <option></option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box5_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Histologic Grade</h5>
+            <select id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>G1: Well differentiated</option>
+                <option>G2: Moderately differentiated</option>
+                <option>G3: Poorly differentiated</option>
+                <option>G4: Undifferentiated</option>
+                <option>Other </option>
+                <option>GX: Cannot be assessed</option>
+                <option>Not applicable</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box6_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Tumor Extension</h5>
+            <select id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Tumor invades lamina propria</option>
+                <option>Tumor invades muscularis mucosae</option>
+                <option>Tumor invades submucosa</option>
+                <option>Tumor invades muscularis propria</option>
+                <option>Cannot be assessed</option>
+            </select>
+
+
+            <hr class="p-2" >
+            <h5>TNM designation: pT</h5>
+            <select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pTx">pTX: Primary tumor cannot be assessed</option>
+                <option value="pT0">pT0: No evidence of primary tumor</option>
+                <option value="pTis">pTis: Carcinoma in situ, intramucosal carcinoma (involvement of lamina propria with no extension through muscularis mucosae)</option>
+                <option value="pT1">pT1: Tumor invades the submucosa (through the muscularis mucosa but not into the muscularis propria)</option>
+            </select>
+
+
+
+            <hr class="p-2">
+            <h5>Margins</h5>
+
+            <div class="p=2">
+                <h6 class="mt-2">Deep Margin</h6>
+
+                <select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Cannot be assessed</option>
+                    <option>Uninvolved by invasive carcinoma</option>
+                    <option>Involved by invasive carcinoma</option>
+                </select>
+
+                <input type="number" class="form-control form-control-sm col-sm-6" id='box8_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
+
+
+                <h6 class="mt-2">Mucosal Margin</h6>
+                <select id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Cannot be assessed</option>
+                    <option>Uninvolved by invasive carcinoma</option>
+                    <option>Involved by invasive carcinoma</option>
+                    <option>Involved by adenoma</option>
+                    <option selected>Not applicable</option>
+                </select>
+
+            </div>
+
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Lymphovascular Invasion</h5>
+            <select id="box10" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present, Small vessel lymphovascular invasion</option>
+                <option>Present, Large vessel (venous) invasion</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>+ Type of Polyp in Which Invasive Carcinoma Arose</h5>
+            <select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Tubular adenoma</option>
+                <option>Villous adenoma</option>
+                <option>Tubulovillous adenoma</option>
+                <option>Traditional serrated adenoma</option>
+                <option>Sessile serrated adenoma/sessile serrated polyp</option>
+                <option>Hamartomatous polyp</option>
+                <option>Other</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box11_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>+ Additional Pathologic Findings (select all that apply)</h5>
+            <select multiple id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>None identified</option>
+                <option>Ulcerative colitis</option>
+                <option>Crohn disease</option>
+                <option>Polyps, specify </option>
+                <option>Other</option>
+            </select>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box12_2' style='display:none;' placeholder='Specify polyp type'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box12_3' style='display:none;' placeholder='Specify Other findings'>
+
+
+
+
+
+
+
+            <!-- end markup-->
+
+            <!-- close markup -->
+        </div>
+        {{> page-partials/cap-footer}}
+        <!-- close row -->
+    </div>
+    {{> page-partials/history-module}}
+    <!-- close container -->
+</div>
