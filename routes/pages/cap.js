@@ -44,6 +44,12 @@ router.get('/cap/pnet-rx', (req, res) => {
 	]);
 });
 
+router.get('/cap/colon-net', (req, res) => {
+    controller.userWall(req, res, './page-views/cap/colon-net.hbs', [
+    "/js/cap/colon-net-scripts.js",
+]);
+});
+
 router.get('/cap/ex-gon-gct', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/ex-gon-gct.hbs', [
 		"/js/cap/exgct-scripts.js",
@@ -68,11 +74,6 @@ router.get('/cap/neuroblast', (req, res) => {
 	]);
 });
 
-router.get('/cap/neuroend-t', (req, res) => {
-	controller.userWall(req, res, './page-views/cap/neuroend-t.hbs', [
-		"/js/cap/net-scripts.js",
-	]);
-});
 
 router.get('/cap/ovary-t', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/ovary-t.hbs', [

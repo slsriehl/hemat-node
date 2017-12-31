@@ -1,0 +1,345 @@
+<div class="container-fluid">
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+        <li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Colon Neuroendocrine Tumors</li>
+    </ol>
+    {{> message-center this}}
+    {{> page-partials/cap-header}}
+
+    <div class="row">
+        {{> page-partials/cap-validate-alert}}
+        <div class="col col-md-8">
+
+            <!-- paste markup here-->
+
+            <hr class="p-2" >
+            <h5>Procedure</h5>
+            <select id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option data-location="resection">Right hemicolectomy</option>
+                <option data-location="resection">Transverse colectomy</option>
+                <option data-location="resection">Left hemicolectomy</option>
+                <option data-location="resection">Sigmoidectomy</option>
+                <option data-location="resection">Low anterior resection</option>
+                <option data-location="resection">Total abdominal colectomy</option>
+                <option data-location="resection">Abdominoperineal resection</option>
+                <option data-location="emr">Transanal disk excision (mucosal resection)</option>
+                <option data-location="emr">Polypectomy</option>
+                <option>Not specified</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Tumor Site</h5>
+            <select multiple id="box2" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Cecum</option>
+                <option>Right (ascending) colon</option>
+                <option>Hepatic flexure</option>
+                <option>Transverse colon</option>
+                <option>Splenic flexure</option>
+                <option>Left (descending) colon</option>
+                <option>Sigmoid colon</option>
+                <option>Rectosigmoid junction</option>
+                <option>Rectum</option>
+                <option>Ileocecal valve</option>
+                <option>Colon, not otherwise specified</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Tumor Size (cm)</h5>
+            <input type="text" class="form-control form-control-sm col-sm-8" id="box3" placeholder="largest tumor, if multiple present">
+
+
+
+
+            <hr class="p-2" >
+            <h5>Tumor Focality</h5>
+            <select id="box4" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Unifocal</option>
+                <option>Multifocal</option>
+                <option>Cannot be determined</option>
+            </select>
+
+            <input type="number" class="form-control form-control-sm mt-3 col-sm-6" id='box4_2' style='display:none;' placeholder='Specify # of tumors'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Histologic Type and Grade
+            <!-- Button trigger modal -->
+            <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal"
+                    data-target="#help_stom_grades">A word about grading NETs</button>
+
+            <!-- Histology help Modal -->
+            {{> page-modals/cap-helpers/stomach-net-grading}}
+
+            </h5>
+            <select id="box5" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>G1: Well-differentiated neuroendocrine tumor</option>
+                <option>G2: Well-differentiated neuroendocrine tumor</option>
+                <option>G3: Well-differentiated neuroendocrine tumor</option>
+                <option>Other</option>
+                <option>GX: Well-differentiated neuroendocrine tumor, grade cannot be assessed</option>
+                <option>Not applicable</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box5_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+            <hr class="p-2" >
+            <h5>Mitotic Rate
+                <!-- Question trigger modal -->
+                <i class="fa fa-question-circle ml-2" data-backdrop="false"  data-toggle="modal" data-target="#help_mitoses"></i>
+                <!-- Histology help Modal -->
+                {{> page-modals/cap-helpers/stomach-net-mitoses}}
+
+            </h5>
+            <div class="smaller m-3">
+                Mitotic rate should be reported as number of mitoses per 2 mm2, by evaluating at least 10 mm2 in the
+                most mitotically active part of the tumor (eg, if using a microscope with a field diameter of 0.55 mm,
+                count 42 high-power fields [10 mm2] and divide
+                the resulting number of mitoses by 5 to determine the number of mitoses per 2 mm2 needed to assign tumor grade)
+            </div>
+            <select id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option><2 mitoses/2 mm2</option>
+                <option>2-20 mitoses/2 mm2</option>
+                <option>>20 mitoses per 2 mm2</option>
+                <option>Cannot be determined</option>
+                <option>Not applicable</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box6_2'  placeholder='Specify mitotic rate per 2mm^2 '>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Ki-67 Labeling Index</h5>
+            <select id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option><3%</option>
+                <option>3% to 20%</option>
+                <option>>20%</option>
+                <option>Cannot be determined </option>
+                <option>Not applicable</option>
+            </select>
+
+            <input type="number" class="form-control form-control-sm mt-3 col-sm-6" id='box7_2'  placeholder='Specify proliferation index'>
+
+
+            <hr class="p-2" >
+            <h5>Tumor Extension</h5>
+            <select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>No evidence of primary tumor</option>
+                <option>Tumor invades the lamina propria</option>
+                <option>Tumor invades the submucosa</option>
+                <option>Tumor invades the muscularis propria</option>
+                <option>Tumor invades through the muscularis propria into subserosal tissue without penetration of overlying serosa</option>
+                <option>Tumor invades the visceral peritoneum (serosa)</option>
+                <option>Tumor invades other organs or adjacent structures</option>
+                <option>Cannot be assessed</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box8_2' style='display:none;' placeholder='Specify structures involved'>
+
+
+
+            <hr class="p-2">
+            <h5>Margins</h5>
+            <select id="box10" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>All margins are uninvolved by tumor </option>
+                <option>One or more margins involved by neoplasia</option>
+            </select>
+            <div class="negmargins ml-3">
+                <h6 class="mt-3">Choose margins examined</h6>
+                <select multiple id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>proximal</option>
+                    <option>distal</option>
+                    <option>radial</option>
+                    <option>mesenteric</option>
+                    <option>mucosal</option>
+                    <option>deep</option>
+                    <option>Other</option>
+                </select>
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box11_2' style='display:none;' placeholder='Specify Other'>
+            </div>
+
+
+            <hr class="p-2">
+            <div class="posmargins ml-3" style="display: none;" >
+                <div class="segmental p-2" >
+                    <h6 class="mt-2">Proximal Margin</h6>
+                    <select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>Cannot be assessed</option>
+                        <option>Uninvolved by tumor</option>
+                        <option>Involved by tumor</option>
+                    </select>
+
+
+                    <h6 class="mt-3">Distal Margin</h6>
+                    <select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>Cannot be assessed</option>
+                        <option>Uninvolved by tumor</option>
+                        <option>Involved by tumor</option>
+                    </select>
+
+
+                    <h6 class="mt-3">Radial Margin</h6>
+                    <select id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>Cannot be assessed</option>
+                        <option>Uninvolved by tumor</option>
+                        <option>Involved by tumor</option>
+                    </select>
+
+                </div><!-- end segmental margins-->
+
+                <div class="emr p-2" style="display: none;">
+                    <h6 class="mt-2">Mucosal Margin</h6>
+                    <select id="box20" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>Cannot be assessed</option>
+                        <option>Uninvolved by tumor</option>
+                        <option>Involved by tumor</option>
+                    </select>
+
+                    <h6 class="mt-3">Deep Margin</h6>
+                    <select id="box21" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>Cannot be assessed</option>
+                        <option>Uninvolved by tumor</option>
+                        <option>Involved by tumor</option>
+                    </select>
+                </div>
+
+                <div class="other p-2">
+                    <h6 class="mt-4">Other Margin</h6>
+                    <select id="box22" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option selected>Not applicable</option>
+                        <option>Cannot be assessed</option>
+                        <option>Uninvolved by tumor</option>
+                        <option>Involved by tumor</option>
+                    </select>
+                    <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box22_2' style='display:none;' placeholder='Specify '>
+                </div>
+
+
+            </div><!-- end hidden positive margins-->
+
+
+
+            <hr class="p-2" >
+            <h5>Lymphovascular Invasion</h5>
+            <select id="box23" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>+ Perineural Invasion</h5>
+            <select id="box24" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Pathologic Staging (pTNM)
+
+            </h5>
+
+            <h6>TNM Descriptors (select all that apply)</h6>
+            <select id="box25" class='form-control selectpicker form-control-sm col-sm-6' multiple>
+                <option selected value="Not applicable">Not applicable</option>
+                <option>m</option>
+                <option>r</option>
+                <option>y</option>
+            </select>
+            <h6 class='mt-2'>pT</h6>
+            <select id="box26" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pTX">pTX: Primary tumor cannot be assessed</option>
+                <option value="pT0">pT0: No evidence of primary tumor</option>
+                <option value="pT1a">pT1a: Tumor <1 cm in greatest dimension</option>
+                <option value="pT1b">pT1b: Tumor 1-2 cm in greatest dimension</option>
+                <option value="pT2">pT2: Tumor invades the muscularis propria or is >2 cm with invasion of the lamina propria or submucosa</option>
+                <option value="pT3">pT3: Tumor invades through the muscularis propria into subserosal tissue without penetration of overlying serosa</option>
+                <option value="pT4">pT4: Tumor invades visceral peritoneum (serosa) or other organs/structures</option>
+            </select>
+
+
+            <h6 class='mt-2'>pN</h6>
+            <select id="box27" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pNX">pNX: Regional lymph nodes cannot be assessed</option>
+                <option value="pN0">pN0: No regional lymph node metastasis has occurred</option>
+                <option value="pN1">pN1: Regional lymph node metastasis</option>
+            </select>
+
+
+            <h6 class='mt-2'>pM</h6>
+            <select id="box28" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option selected value='pMx'>pMx: Not applicable</option>
+                <option value="pM1a">pM1a: Metastasis confined to liver</option>
+                <option value="pM1b">pM1b: Metastasis in at least one extrahepatic site</option>
+                <option value="pM1c">pM1c: Both hepatic and extrahepatic metastases</option>
+            </select>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box28_2" style="display:none;" placeholder="Specify metastatic sites">
+
+            <form class="form-inline mt-2">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box29" >
+                </label>
+            </form>
+
+            <div class='lnchk' style='display:none;'>
+                <form class="form-inline mt-2 col-8">
+                    <label class="m-2">Number of lymph nodes examined: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box30" style="width:100px"></label>
+                    <label class="m-2">Number of lymph nodes involved: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box31" style="width:100px"></label>
+                </form>
+            </div>
+
+
+            <hr class="p-2" >
+            <h5>+ Additional Pathologic Findings</h5>
+            <select id="box32" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>None identified</option>
+                <option>Tumor necrosis</option>
+                <option>Other</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box32_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+
+            <!-- end markup-->
+
+            <!-- close markup -->
+        </div>
+        {{> page-partials/cap-footer}}
+        <!-- close row -->
+    </div>
+    {{> page-partials/history-module}}
+    <!-- close container -->
+</div>
