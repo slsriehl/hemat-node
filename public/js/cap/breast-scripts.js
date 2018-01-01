@@ -1,651 +1,802 @@
-$(window).on('load', function(){
+$(window).on('load', function() {
+//*************************************************************//
+//                        Autocomplete                         //
+// *************************************************************/
 
-//**************POP UPS ******************//
-    $("input#box5").autocomplete({
-        source: ['Microinvasive carcinoma', 'Invasive ductal carcinoma, (NOS)', 'Invasive ductal, Mixed type carcinoma', 'Invasive ductal, Pleomorphic carcinoma', 'Invasive ductal, Carcinoma with osteoclastic giant cells', 'Invasive ductal, Carcinoma with choriocarcinomatous features', 'Invasive ductal, Carcinoma with melanotic features', 'Invasive lobular carcinoma', 'Tubular carcinoma', 'Invasive cribriform carcinoma', 'Medullary carcinoma', 'Mucinous carcinoma', 'Cystadenocarcinoma and columnar cell mucinous carcinoma', 'Signet-ring cell carcinoma', 'Solid neuroendocrine carcinoma', 'Atypical carcinoid tumor', 'Small cell/oat cell carcinoma', 'Large cell neuroendocrine carcinoma', 'Invasive papillary carcinoma', 'Invasive micropapillary carcinoma', 'Apocrine carcinoma', 'Squamous cell carcinoma (metaplastic carcinoma)', 'Adenocarcinoma with spindle cell metaplasia  (metaplastic carcinoma)', 'Adenosquamous carcinoma  (metaplastic carcinoma)', 'Mucoepidermoid carcinoma  (metaplastic carcinoma)', 'Mixed epithelial/mesenchymal metaplastic carcinomas', 'Lipid-rich carcinoma', 'Secretory carcinoma', 'Oncocytic carcinoma', 'Adenoid cystic carcinoma', 'Acinic cell carcinoma', 'Glycogen-rich clear cell carcinoma', 'Sebaceous carcinoma', 'Inflammatory carcinoma', 'Other'
-        ],
-        appendTo: '#Leftpanel'
-    });
 
-    $('#box41_4').on('change', function() {
-        var Her2 = $('#box41_3').val();
-        var Chr17 = $('#box41_4').val();
-        var herratio = Her2 / Chr17;
-        $("#box41_5").val(herratio.toFixed(2));
-    });
-    $('#box14').on('click', function() {
-        $('.optDCIS').toggle();
-    });
 
-    $('.lnchk').on('change', function() {
-        $('.lndiv').toggle();
-    });
 
-    $('#box1').on('change', function () {
+//*************************************************************//
+//                        Pop-ups                              //
+// *************************************************************/
+
+
+    $('#box1').on("change", function(){
         var sel = $('#box1').val();
-        if (sel == 'Other:') {
-            $('input[id=box1_2]').show();
-        } else if (sel != 'Other:') {
-            $('input[id=box1_2]').hide();
-        }
+        if (sel.indexOf("Other") > -1) {
+
+            $('#box1_2').show();}
+        else {
+            $('#box1_2').hide();}
     });
 
-    $('#box2').on('change', function () {
-        var sel = $('#box2').val();
-        if (sel.indexOf('Other lymph nodes') > -1) {
-            $('input[id=box2_2]').show();
-        } else if (sel != 'Other lymph nodes') {
-            $('input[id=box2_2]').hide();
-        }
+    $('#box3').on("change", function(){
+        var sel = $('#box3').val();
+        if (sel.indexOf("Size") > -1) {
+
+            $('#box3_2').show();}
+        else {
+            $('#box3_2').hide();}
     });
 
-    $('#box4').on('change', function () {
-        var sel = $('#box4').val();
-        if ($.inArray('Other:', sel) > -1) {
-            $('input[id=box4_3]').show();
-        } else {
-            $('input[id=box4_3]').hide();
-        }
-
-    });
-
-    $('#box5').on('blur', function () {
+    $('#box5').on("change", function(){
         var sel = $('#box5').val();
-        if (sel == 'Other') {
-            $('input[id=box5_2]').show();
-        } else if (sel != 'Other') {
-            $('input[id=box5_2]').hide();
-        }
+        if ($.inArray('Other', sel) >-1) {
+            $('#box5_2').show();}
+        else {$('#box5_2').hide();}
     });
 
-    $('#box6').on('input', function () {
-        var sel = $('#box6').val();
-        if (sel == 'Largest focus of invasion >1 mm') {
-            $('input[id=box6_2]').show();
+    $('#box8').on("change", function(){
+        var sela = $('#box8').val();
+        if (sela != "Cannot be assessed"){
+            $(".margins").show();
         } else {
-            $('input[id=box6_2]').hide();
+            $(".margins").hide();
         }
-    });
-
-    $('#box12').on('change', function () {
-        var sel = $('#box12').val();
-        if (sel == 'Multiple foci of invasive carcinoma') {
-            $('#box12_2').show();
-            $('#box12_3').show();
-        } else {
-            $('#box12_2').hide();
-            $('#box12_3').hide();
-        }
-    });
-
-    $('#box15').on('change', function () {
-        var sel = $('#box15').val();
-        if ($.inArray('Other:', sel) >-1) {
-            $('#box15_2').show();
-        } else {
-            $('#box15_2').hide();
-        }
-    });
-
-    $('#box20').on('change', function () {
-        var sel = $('#box20').val();
-        if (sel == 'Margins uninvolved by invasive carcinoma') {
-            $('#box20_2').show();
-            $('#box20_3').show();
-        } else {
-            $('#box20_2').hide();
-            $('#box20_3').hide();
-        }
-        if (sel == 'Margin(s) positive for invasive carcinoma') {
-            $('#box20_4').show();
-        } else {
-            $('#box20_4').hide();
-        }
+        if (sela.indexOf('Uninvolved') > -1){
+            $('#box8_1').show();
+            $('#box8_2').show();}
+        else {$('#box8_1').hide();
+            $('#box8_2').hide();}
+        if (sela.indexOf("Involved") > -1) {
+            $('#box8_3').show();}
+        else {$('#box8_3').hide();}
 
     });
 
-    $('#box20_5').on('change', function () {
-        var sel = $('#box20_5').val();
-        if ($.inArray('Other:', sel) >-1) {
-            $('#box20_6').show();
-        } else {
-            $('#box20_6').hide();
+    $("#box14").on("change", function(){
+        if ($(this).is(":checked")){
+            $(".lnchk").show();
+        }
+        else{
+            $(".lnchk").hide();
         }
     });
 
-    $('#box22').on('change', function () {
-        var sel = $('#box22').val();
-        if (sel == 'Margins uninvolved by DCIS') {
-            $('#box22_2').show();
-            $('#box22_3').show();
+    $("#box13").on("change", function(){
+        var sel = $("#box13").val();
+        if (sel != "pMx"){
+            $("#box13_2").show();
         } else {
-            $('#box22_2').hide();
-            $('#box22_3').hide();
+            $("#box13_2").hide();
         }
-        if (sel == 'Margin(s) positive for DCIS') {
-            $('#box22_4').show();
+    });
+
+
+    $("#box18, #box17").on("input", function(){
+        var ln_itc = parseInt($("#box17").val(), 10) + parseInt($("#box18").val(), 10);
+        console.log("ln_itc:"+ln_itc);
+        if (ln_itc == 0){
+            $(".itc").show();
         } else {
-            $('#box22_4').hide();
+            $(".itc").hide();
+        }
+
+        if (ln_itc > 0){
+            $(".posnodes").show();
+        } else {
+            $(".posnodes").hide();
         }
 
     });
 
-    $('#box22_5').on('change', function () {
-        var sel = $('#box22_5').val();
-        if ($.inArray('Other:', sel) >-1) {
-            $('#box22_6').show();
-        } else {
-            $('#box22_6').hide();
-        }
+    $('#box30').on("change", function(){
+        var sel = $('#box30').val();
+        if ($.inArray('Other', sel) >-1) {
+            $('#box30_2').show();}
+        else {$('#box30_2').hide();}
     });
 
-    $('#box36').on('change', function () {
-        var sel = $('#box36').val();
-        if (sel == 'Positive') {
-            $('#box36_2').show();
-            $('.Erint').show();
-        } else {
-            $('#box36_2').hide();
-            $('.Erint').hide();
-        }
-        if (sel == 'Other:') {
-            $('#box36_3').show();
-        } else {
-            $('#box36_3').hide();
-        }
-
-    });
-
-    $('#box38').on('change', function () {
-        var sel = $('#box38').val();
-        if (sel == 'Positive') {
-            $('#box38_2').show();
-            $('.Print').show();
-        } else {
-            $('#box38_2').hide();
-            $('.Print').hide();
-        }
-        if (sel == 'Other:') {
-            $('#box38_3').show();
-        } else {
-            $('#box38_3').hide();
-        }
-
-    });
-
-    $('#box40').on('change', function () {
+    $('#box40').on("change", function(){
         var sel = $('#box40').val();
-        if (sel == 'Indeterminate:') {
+        if (sel.indexOf("Positive") > -1) {
             $('#box40_2').show();
-        } else {
+            $('#box40_3').show();
+
+        }
+        else {
             $('#box40_2').hide();
+            $('#box40_3').hide();
         }
     });
 
-    $('#box41').on('change', function () {
+    $('#box41').on("change", function(){
         var sel = $('#box41').val();
-        if (sel == 'Equivocal' || sel == 'Positive (amplified)') {
-            $('#box41_3').show();
-            $('#box41_4').show();
-            $('.Her2rat').show();
-        } else {
-            $('#box41_3').hide();
-            $('#box41_4').hide();
-            $('.Her2rat').hide();
-        }
-        if (sel == 'Indeterminate:') {
+        if (sel.indexOf("Positive") > -1) {
             $('#box41_2').show();
-        } else {
-            $('#box41_2').hide();
+            $('#box41_3').show();
+
         }
+        else {
+            $('#box41_2').hide();
+            $('#box41_3').hide();
+        }
+    });
+
+    $('#box43').on("change", function(){
+        var sel = $('#box43').val();
+        if (sel.indexOf("indeterminate") > -1) {
+            $('#box43_2').show();}
+        else {
+            $('#box43_2').hide();}
+        if (sel.indexOf("Not") <0) {
+            $('#box43_1').show();}
+        else {
+            $('#box43_1').hide();}
+    });
+
+    $('#box44').on("change", function(){
+        var sel = $('#box44').val();
+        var fish = $('#box44').find(":selected").data("fish");
+        if (sel.indexOf("indeterminate") > -1) {
+            $('#box44_2').show();
+        }
+        else {
+            $('#box44_2').hide();
+        }
+        if (fish == "performed"){
+            $(".her2f").show();
+        } else {
+            $(".her2f").hide();
+        }
+    });
+
+    $('#box45_3').on("change", function(){
+        var sel = $('#box45_3').val();
+        if (sel.indexOf('Dual') > -1){
+            $('#box45_3_2').show();}
+        else {$('#box45_3_2').hide();}
+        if (sel.indexOf('Single') > -1){
+            $('#box45_3_3').show();}
+        else {$('#box45_3_3').hide();}
+    });
+
+    $('#box51').on("change", function(){
+        var sel = $('#box51').val();
+        if (sel.indexOf("Other") > -1) {
+
+            $('#box51_2').show();}
+        else {
+            $('#box51_2').hide();}
+    });
+
+    $('#box52').on("change", function(){
+        var sel = $('#box52').val();
+        if (sel.indexOf('Food') > -1){
+            $('#box52_2').show();}
+        else {$('#box52_2').hide();}
+        if (sel.indexOf('Laboratory') > -1){
+            $('#box52_3').show();}
+        else {$('#box52_3').hide();}
+    });
+
+    $('#box52_4').on("change", function(){
+        var sel = $('#box52_4').val();
+        if (sel.indexOf("Other") > -1) {
+
+            $('#box52_4_2').show();}
+        else {
+            $('#box52_4_2').hide();}
+    });
+
+    $('#box53').on("change", function(){
+        var sel = $('#box53').val();
+        if (sel.indexOf('Food') > -1){
+            $('#box53_2').show();}
+        else {$('#box53_2').hide();}
+        if (sel.indexOf('Laboratory') > -1){
+            $('#box53_3').show();}
+        else {$('#box53_3').hide();}
+    });
+
+    $('#box54_4').on("change", function(){
+        var sel = $('#box54_4').val();
+        if (sel.indexOf("Other") > -1) {
+
+            $('#box54_4_2').show();}
+        else {
+            $('#box54_4_2').hide();}
+    });
+
+    $('#box54').on("change", function(){
+        var sel = $('#box54').val();
+        if (sel.indexOf('Food') > -1){
+            $('#box54_2').show();}
+        else {$('#box54_2').hide();}
+        if (sel.indexOf('Laboratory') > -1){
+            $('#box54_3').show();}
+        else {$('#box54_3').hide();}
+    });
+
+    $('#box53_4').on("change", function(){
+        var sel = $('#box53_4').val();
+        if (sel.indexOf("Other") > -1) {
+
+            $('#box53_4_2').show();}
+        else {
+            $('#box53_4_2').hide();}
+    });
+
+    $('#box55').on("change", function(){
+        var sel = $('#box55').val();
+        if (sel.indexOf("Food") > -1) {
+            $('#box55_2').show();}
+        else {
+            $('#box55_2').hide();}
+    });
+
+    $('#box56').on("change", function(){
+        var sel = $('#box56').val();
+        if (sel.indexOf("Performed") > -1) {
+
+            $('#box56_2').show();}
+        else {
+            $('#box56_2').hide();}
+    });
+
+    $('#box105').on("change", function(){
+        var sel = $('#box105').val();
+        if (sel.indexOf("Multiple") > -1) {
+
+            $('#box105_2').show();}
+        else {
+            $('#box105_2').hide();}
+    });
+
+    $('#box106').on("change", function(){
+        var sel = $('#box106').val();
+        if (sel.indexOf("present") > -1) {
+
+            $('.dcis').show();}
+        else {
+            $('.dcis').hide();}
+    });
+
+    $('#box108').on("change", function(){
+        var sela = $('#box108').val();
+        if (sela != "Cannot be assessed"){
+            $(".margins-inv").show();
+        } else {
+            $(".margins-inv").hide();
+        }
+        if (sela.indexOf('Uninvolved') > -1){
+            $('#box108_1').show();
+            $('#box108_2').show();}
+        else {$('#box108_1').hide();
+            $('#box108_2').hide();}
+        if (sela.indexOf("Involved") > -1) {
+            $('#box108_3').show();}
+        else {$('#box108_3').hide();}
 
     });
 
-    $('#singlechk').on('change', function(){
-        $('.singleprobe').toggle();
-        if ($(this).is(':checked')){
-            $('#dualchk').prop('disabled', true);}
-        else {$('#dualchk').prop('disabled', false);}
+    $('#box110').on("change", function(){
+        var sel = $('#box110').val();
+        if (sel.indexOf("given") > -1) {
+
+            $('#box110_2').show();}
+        else {
+            $('#box110_2').hide();}
     });
 
-    $('#dualchk').on('change', function(){
-        $('.dualprobe').toggle();
-        if ($(this).is(':checked')){
-            $('#singlechk').prop('disabled', true);}
-        else {$('#singlechk').prop('disabled', false);}
-    });
 
-    $('#box37_2').on('change', function(){
-        if ($(this).is(':checked')){
-            $('#box37_5').select2('val', '6F11');}
-        else {$('#box37_5').select2('val', 'SP1');}
-    });
 
-    $('#box37_3').on('change', function(){
-        var sel = $(this).val();
-        if (sel == 'FDA cleared'){
-            $('#box37_4').show();}
-        else{$('#box37_4').hide();}
-    });
-
-    $('#box37_5').on('change', function(){
-        var sel = $(this).val();
-        if (sel == 'Other'){
-            $('#box37_6').show();}
-        else{$('#box37_6').hide();}
-    });
-
-    $('#box39_2').on('change', function(){
-        if ($(this).is(':checked')){
-            $('#box39_5').select2('val', '1294');}
-        else {$('#box39_5').prop('val', '1E2');}
-    });
-
-    $('#box39_3').on('change', function(){
-        var sel = $(this).val();
-        if (sel == 'FDA cleared'){
-            $('#box39_4').show();}
-        else{$('#box39_4').hide();}
-    });
-
-    $('#box39_5').on('change', function(){
-        var sel = $(this).val();
-        if (sel == 'Other'){
-            $('#box39_6').show();}
-        else{$('#box39_6').hide();}
-    });
-
-//**************Synoptic\nAJCC 2018 cancer staging version\n\nS****************//
+//************************************************************//
+// Script to populate the template data in the output textarea//
+// *************************************************************/
     $('.writeReport').on('click', function () {
 
-        $('input[type="text"]').each(function () {
-            if ($(this).val().length < 1) {
-                $(this).val($(this).attr('placeholder'));
-            }
-            if ($(this).val().length < 1) {
-                $(this).addClass('empty')
+        // ***************** INPUT VALIDATION ********************//
+        $('select[multiple]:visible').each(function () {
+            // Check if at least one selection is made
+            if ($(this).val().length > 0) {
+                $(this).removeClass('empty');
+            } else {
+                $(this).addClass('empty');
+                $('#cap-valid').show();
             }
         });
 
+        $('input[type="text"]:visible').each(function () {
+            // Check if at least one selection is made
+            if ($.trim($(this).val()).length > 0) {
+                $(this).removeClass('empty');
+            } else {
+                $(this).addClass('empty');
+                $('#cap-valid').show();
+            }
+        });
 
-        var captext = "Breast Cancer Synoptic\nAJCC 2018 cancer staging version\n\n";
-// Checklist variables
+        // ***************** END VALIDATION ********************//
 
-    var box_1 = $("#box1").val();
-    if (box_1 == 'Other:') {
+
+
+        var captext = "Invasive Breast Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
+
+        var box_1 = $("#box1").val();
         var box_1_2 = $("#box1_2").val();
-        captext += "Specimen Identification:\n- " + box_1_2 + "\n";
-    }
-    else {
-        captext += "Specimen Identification:\n- " + box_1 + "\n";
-    }
+        if (box_1.indexOf("Other") > -1) {
+            captext += "\nProcedure:\n- "  + box_1_2+ "\n";}
+        else {captext += "\nProcedure:\n- "  + box_1+ "\n";}
 
-    var box_2 = $("#box2").val();
-    if ($.inArray('Other lymph nodes', box_2) > -1) {
-        var box_2_2 = $("#box2_2").val();
-        captext += "\nLymph Node sampling:\n- " + box_2.join("\n- ").replace(/Other lymph nodes/, box_2_2) + "\n";
-    }
-    else {
-        captext += "\nLymph Node sampling:\n- " + box_2.join("\n- ") + "\n";
-    }
 
-    var box_3 = $("#box3").val();
-    if (box_3 == 'Not specified') {
-        alert('Please select specimen laterality');
-        $('#box3').focus();
-        return;
-    }
-    else {
-        captext += "\nSpecimen Laterality:\n- " + box_3 + "\n";
-    }
+        var box_2 = $("#box2").val();
+        captext += "\nSpecimen Laterality:\n- "  + box_2+ "\n";
 
-    var box_4 = $("#box4").val();
-    if (box_4 != 'Not applicable') {
-        if (($.inArray('Position', box_4) > -1) && ($.inArray('Other:', box_4) <= -1)) {
+        var box_3 = $("#box3").val();
+        var box_3_2 = $("#box3_2").val();
+        if (box_3.indexOf("Size") > -1) {
+            captext += "\nTumor Size: "  + box_3_2+ "mm\n";}
+        else {captext += "\nTumor Size: "  + box_3+ "mm\n";}
+
+        var box_100 = $("#box100").val();
+        var box_100_2 = $("#box100_2").val();
+        if (box_100.indexOf("Other") > -1) {
+            captext += "\nHistologic Type:\n- "  + box_100_2+ "\n";}
+        else {captext += "\nHistologic Type:\n- "  + box_100+ "\n";}
+
+        captext += "\nHistologic Grade (Nottingham Histologic Score)\n";
+        var box_101 = $("#box101").val(); // T score
+        var num_t = parseInt($("#box101").find(":selected").data("t") ,10);
+        console.log("T:"+num_t);
+        captext += "\tGlandular/Tubular Differentiation: "  + box_101+ "\n";
+
+        var box_102 = $("#box102").val();
+        var num_n = parseInt($("#box102").find(":selected").data("n") ,10);
+        console.log("N:"+num_n);
+        captext += "\tNuclear Pleomorphism: "  + box_102+ "\n";
+
+        var box_103 = $("#box103").val();
+        var num_m = parseInt($("#box103").find(":selected").data("m") ,10);
+        console.log("M:"+num_m);
+        captext += "\tMitotic Rate: "  + box_103+ "\n";
+
+        var box_104 = $("#box104").val();
+        captext += "\tMitoses per 10 hpf: "  + box_104 + "\n";
+
+        var brs_score = num_t+num_n+num_m;
+        console.log("brs score:"+brs_score);
+        if (brs_score < 10) {
+            if (brs_score < 6) {
+                captext += "\tOverall Grade: Grade 1 (score - " + brs_score + ")\n";
+            } else if (brs_score > 7) {
+                captext += "\tOverall Grade: Grade 3 (score - " + brs_score + ")\n";
+            } else {
+                captext += "\tOverall Grade: Grade 2 (score - " + brs_score + ")\n";
+            }
+        } else {
+            captext += "\tOverall Grade: Not applicable due to absence of macroinvasive tumor\n";
+        }
+
+        var box_105 = $("#box105").val();
+        var box_105_2 = $("#box105_2").val();
+        if (box_105.indexOf("Multiple") > -1) {
+            captext += "\n+ Tumor Focality:\n- Multiple foci of invasive carcinoma\n- Additional Foci/Size(s): " + box_105_2+ "\n";}
+        else {captext += "\n+ Tumor Focality:\n- "  + box_105+ "\n";}
+
+        var box_107 = $("#box107").val();
+        if(box_107 != "Not applicable"){
+            captext += "\nTumor Extension:\n- "  + box_107+ "\n";}
+
+            
+// INVASIVE MARGINS -----------------------------------------------//
+        var box_108 = $("#box108").val();
+        var box_108_1 = $("#box108_1").val();
+        var box_108_2 = $("#box108_2").val();
+        var box_108_3 = $("#box108_3").val();
+        if (box_108.indexOf("Uninvolved") > -1) {
+            captext += "\nMargins - Invasive carcinoma:\n- "+box_108+"\n- Nearest margin: "+box_108_1+"\n- Distance of invasive carcinoma to this margin: " + box_108_2.replace(/mm/,"")+"mm\n";}
+        else if (box_108.indexOf("Involved") > -1) {
+            captext += "\nMargins - Invasive carcinoma:\n- "+box_108+"\n- Margin involved: "+box_108_3+"\n";}
+        else {captext += "\nMargins - Invasive carcinoma:\n- "+box_108+"\n";}
+
+        if (box_108 != "Cannot be assessed") {
+            captext += "\nDistance of invasive carcinoma to other margins\n";
+            var box_109_1 = $("#box109_1").val();
+            if (box_109_1 != 0) {
+                captext += "\tDistance from superior margin: " + box_109_1.replace(/mm/, '') + "mm\n";
+            } else {
+                captext += "\tSuperior margin: Involved\n";
+
+            }
+
+            var box_109_2 = $("#box109_2").val();
+            if (box_109_2 != 0) {
+                captext += "\tDistance from inferior margin: " + box_109_2.replace(/mm/, '') + "mm\n";
+            } else {
+                captext += "\tInferior margin: Involved\n";
+
+            }
+
+            var box_109_3 = $("#box109_3").val();
+            if (box_109_3 != 0) {
+                captext += "\tDistance from medial margin: " + box_109_3.replace(/mm/, '') + "mm\n";
+            } else {
+                captext += "\tMedial margin: Involved\n";
+
+            }
+
+            var box_109_4 = $("#box109_4").val();
+            if (box_109_4 != 0) {
+                captext += "\tDistance from lateral margin: " + box_109_4.replace(/mm/, '') + "mm\n";
+            } else {
+                captext += "\tLateral margin: Involved\n";
+
+            }
+
+            var box_109_5 = $("#box109_5").val();
+            if (box_109_5 != 0) {
+                captext += "\tDistance from anterior margin: " + box_109_5.replace(/mm/, '') + "mm\n";
+            } else {
+                captext += "\tAnterior margin: Involved\n";
+
+            }
+
+            var box_109_6 = $("#box109_6").val();
+            if (box_109_6 != 0) {
+                captext += "\tDistance from posterior margin: " + box_109_6.replace(/mm/, '') + "mm\n";
+            } else {
+                captext += "\tPosterior margin: Involved\n";
+            }
+        }
+
+
+        var box_10 = $("#box10").val();
+        var box_11 = $("#box11").val();
+        var box_12 = $("#box12").val();
+        var box_12_0 = $("#box12_0").val();
+        var box_13 = $("#box13").val();
+        var box_13_2 = $("#box13_2").val();
+        var nmod = '';
+        captext += '\nPathologic Staging (pTNM):\n- ';
+        if (box_12_0.indexOf("Not") < 0){
+            if (box_12_0 == "sn"){
+                nmod = " (sn)";
+                console.log(nmod);
+            } else {
+                nmod = " (fn)";
+                console.log(nmod);
+            }
+        }
+        if (box_10 != "Not applicable"){
+            if (box_13 != "pMx"){
+                captext += box_10.join("")+" "+box_11+" "+box_12+nmod+" "+box_13+" (metastatic site(s): " + box_13_2 + ")\n";
+            } else {
+                captext += box_10.join("")+" "+box_11+" "+box_12+nmod+" "+box_13+"\n";
+            }
+        } else {
+            if (box_13 != "pMx"){
+                captext += box_11+" "+box_12+nmod+" "+box_13+" (metastatic site(s): " + box_13_2 + ")\n";
+            } else {
+                captext += box_11+" "+box_12+nmod+" "+box_13+"\n";
+            }
+        }
+        if ($("#box14").is(':checked')) {
+            var box_15 = $("#box15").val();
+            var box_16 = $("#box16").val();
+            captext += "\nLymph nodes:\n\tLymph Nodes Examined: "+box_15+"\n\tSentinel nodes involved: "+box_16+"\n";
+
+            var box_17 = $("#box17").val();
+            captext += "\tNumber of Lymph Nodes with Macrometastases: "  + box_17 + "\n";
+
+            var box_18 = $("#box18").val();
+            captext += "\tNumber of Lymph Nodes with Micrometastases: "  + box_18 + "\n";
+
+            var ln_itc = parseInt($("#box17").val(), 10) + parseInt($("#box18").val(), 10);
+            var box_19 = $("#box19").val();
+            if (ln_itc == 0){
+                captext += "\tNumber of Lymph Nodes with Isolated Tumor Cells: "  + box_19 + "\n";
+            }
+            if (ln_itc > 0){
+                var box_20 = $("#box20").val();
+                captext += "\t+ Size of Largest Metastatic Deposit: "  + box_20.replace(/mm/,'') + "mm\n";
+
+                var box_21 = $("#box21").val();
+                captext += "\t+ Extranodal Extension: "  + box_21+ "\n";
+            }
+
+        } else {
+            captext += "\nLymph nodes: None submitted\n";}
+
+
+        var box_110 = $("#box110").val();
+        if (box_110.indexOf("given") > -1) {
+            var box_111 = $("#box111").val();
+            captext += "\nTreatment Effect in the Breast:\n- "  + box_111+ "\n";
+
+            var box_112 = $("#box112").val();
+            captext += "\nTreatment Effect in the Lymph Nodes:\n- "  + box_112+ "\n";
+        }
+        else {captext += "\nTreatment Effect:\n- "  + box_110+ "\n";}
+
+        var box_113 = $("#box113").val();
+        captext += "\n+ Lymphovascular Invasion:\n- "  + box_113+ "\n";
+
+// DCIS segment --------------------------------------------------//
+        var box_106 = $("#box106").val();
+        if (box_106.indexOf("present") > -1) {
+            captext += "\n------------------------\n\nDuctal Carcinoma In Situ:\n- "  + box_106;
+
+            var box_4_1 = $("#box4_1").val();
+            captext += "\n\t+ Number of blocks with DCIS: "  + box_4_1 + "\n";
+
             var box_4_2 = $("#box4_2").val();
-            captext += "\nTumor Site(s) of invasive carcinoma:\n- " + box_4.join("\n- ").replace(/Position/, 'Position: ' + box_4_2) + "\n";
-        }
-        if (($.inArray('Position', box_4) == -1) && ($.inArray('Other:', box_4) > -1)) {
-            var box_4_3 = $("#box4_3").val();
-            captext += "\nTumor Site(s) of invasive carcinoma:\n- " + box_4.join("\n- ").replace(/Other:/, box_4_3) + "\n";
-        }
-        if (($.inArray('Position', box_4) > -1) && ($.inArray('Other:', box_4) > -1)) {
-            var box_4_2 = $("#box4_2").val();
-            var box_4_3 = $("#box4_3").val();
-            captext += "\nTumor Site(s) of invasive carcinoma:\n- " + box_4.join("\n- ").replace(/Position/, 'Position: ' + box_4_2).replace(/Other:/, box_4_3) + "\n";
+            captext += "\t+ Number of blocks examined: "  + box_4_2 + "\n";
+
+            var box_5 = $("#box5").val();
+            var box_5_2 = $("#box5_2").val();
+            if ($.inArray('Other', box_5) >-1){
+                captext += "\t+ Architectural Patterns: "  + box_5.join(', ').replace(/Other/, box_5_2) + "\n";}
+            else {captext += "\t+ Architectural Patterns: "  + box_5.join(', ') + "\n";}
+
+            var box_6 = $("#box6").val();
+            captext += "\t+ Nuclear Grade: "  + box_6+ "\n";
+
+            var box_7 = $("#box7").val();
+            captext += "\t+ Necrosis: "  + box_7+ "\n";
+
+            // DCIS MARGINS ---------------------------------------------------//
+            var box_8 = $("#box8").val();
+            var box_8_1 = $("#box8_1").val();
+            var box_8_2 = $("#box8_2").val();
+            var box_8_3 = $("#box8_3").val();
+            if (box_8.indexOf("Uninvolved") > -1) {
+                captext += "\nMargins - DCIS:\n- "+box_8+"- Nearest margin: "+box_8_1+"\n- Distance of DCIS to this margin: " + box_8_2.replace(/mm/,"")+"mm\n";}
+            else if (box_8.indexOf("Involved") > -1) {
+                captext += "\nMargins- DCIS:\n- "+box_8+"\n- Margin involved: "+box_8_3+"\n";}
+            else {captext += "\nMargins- DCIS:\n- "+box_8+"\n";}
+
+            if (box_8 != "Cannot be assessed") {
+                captext += "\nDistance of DICS to other margins\n";
+                var box_9_1 = $("#box9_1").val();
+                if (box_9_1 != 0) {
+                    captext += "\tDistance from superior margin: " + box_9_1.replace(/mm/, '') + "mm\n";
+                } else {
+                    captext += "\tSuperior margin: Involved\n";
+
+                }
+
+                var box_9_2 = $("#box9_2").val();
+                if (box_9_2 != 0) {
+                    captext += "\tDistance from inferior margin: " + box_9_2.replace(/mm/, '') + "mm\n";
+                } else {
+                    captext += "\tInferior margin: Involved\n";
+
+                }
+
+                var box_9_3 = $("#box9_3").val();
+                if (box_9_3 != 0) {
+                    captext += "\tDistance from medial margin: " + box_9_3.replace(/mm/, '') + "mm\n";
+                } else {
+                    captext += "\tMedial margin: Involved\n";
+
+                }
+
+                var box_9_4 = $("#box9_4").val();
+                if (box_9_4 != 0) {
+                    captext += "\tDistance from lateral margin: " + box_9_4.replace(/mm/, '') + "mm\n";
+                } else {
+                    captext += "\tLateral margin: Involved\n";
+
+                }
+
+                var box_9_5 = $("#box9_5").val();
+                if (box_9_5 != 0) {
+                    captext += "\tDistance from anterior margin: " + box_9_5.replace(/mm/, '') + "mm\n";
+                } else {
+                    captext += "\tAnterior margin: Involved\n";
+
+                }
+
+                var box_9_6 = $("#box9_6").val();
+                if (box_9_6 != 0) {
+                    captext += "\tDistance from posterior margin: " + box_9_6.replace(/mm/, '') + "mm\n";
+                } else {
+                    captext += "\tPosterior margin: Involved\n";
+                }
+            }
+
+            captext += "\n\n----------------------\n";
+
         }
         else {
-            captext += "\nTumor Site(s) of invasive carcinoma:\n- " + box_4.join("\n- ") + "\n";
+            captext += "\n------------------------\n\nDuctal Carcinoma In Situ:\n- "  + box_106+ "\n\n----------------------\n";;
         }
-    }
-
-    var box_5 = $("#box5").val();
-    if (box_5 == 'Other') {
-        var box_5_2 = $("#box5_2").val();
-        captext += "\nHistologic Type of Invasive Carcinoma:\n- " + box_5_2 + "\n";
-    }
-    else {
-        captext += "\nHistologic Type of Invasive Carcinoma:\n- " + box_5 + "\n";
-    }
-
-    var box_6 = $("#box6").val();
-    if (box_6 == 'Largest focus of invasion >1 mm') {
-        var box_6_2 = $("#box6_2").val();
-        captext += "\nTumor Size (invasive carcinoma): " + box_6_2.replace(/mm/, '') + "mm\n";
-    }
-    else {
-        captext += "\nTumor Size (invasive carcinoma):\n- " + box_6 + "\n";
-    }
 
 
-    var box_7 = $("#box7").val();
-    var box_8 = $("#box8").val();
-    var box_9 = $("#box9").val();
-    var box_10 = $("#box10").val();
-    var box_11 = $("#box11").val();
-    captext += "\nHistologic Grade (Nottingham Histologic Score):";
-    if (box_7 != 'No residual carcinoma' && box_7 != 'Only microinvasion present' && box_7 != 'Score cannot be determined') {
-        var BRS_score = parseInt(box_7, 10) + parseInt(box_8, 10) + parseInt(box_9, 10);
-        captext += "\nTubular Differentiation\n- " + box_7 + "\n";
-        captext += "\nNuclear Pleomorphism:\n- " + box_8 + "\n";
-        captext += "\nMitotic Rate:\n- " + box_9 + "\n";
-        captext += "\nMitoses per 10 high-power fields:\n- " + box_10 + "\n";
-        if (BRS_score <= 5) {
-            captext += "\nOverall (Nottingham) Grade = 1\n";
-        }
-        else if (BRS_score == 6 || BRS_score == 7) {
-            captext += "\nOverall (Nottingham) Grade = 2\n";
-        }
-        else if (BRS_score >= 8) {
-            captext += "\nOverall (Nottingham) Grade = 3\n";
-        }
-    }
-    else {
-        captext += "\n- " + box_7 + "\n";
-    }
 
-    var box_12 = $("#box12").val();
-    var box_12_2 = $("#box12_2").val();
-    var box_12_3 = $("#box12_3").val();
-    if (box_12 != 'Single focus of invasive') {
-        if (box_12 == 'Multiple foci of invasive carcinoma') {
-            captext += "\nTumor Focality:\n- " + box_12 + "\n  Number of foci: " + box_12_2 + ", Sizes of foci: " + box_12_3 + "\n";
-        }
-        else {
-            captext += "\nTumor Focality:\n- " + box_12 + "\n";
-        }
-    }
-    var box_13 = $("#box13").val();
-    captext += "\nDCIS Component:\n- " + box_13.join("\n- ") + "\n";
+// END DCIS segment --------------------------------------------------//
 
-    if ($('#box14').is(':checked')) {
-        var box_14_1 = $("#box14_1").val();
-        var box_14_2 = $("#box14_2").val();
-        var box_14_3 = $("#box14_3").val();
-        captext += "\nSize (Extent) of DCIS: " + box_14_1 + "mm\n- Blocks with DCIS: " + box_14_2 + ", total blocks examined: " + box_14_3 + "\n";
-        var box_15 = $("#box15").val();
-        var box_15_2 = $("#box15_2").val();
-        if ($.inArray('Other:', box_15) > -1) {
-            captext += "\nDCIS Architectural Patterns:\n- " + box_15.join("\n- ").replace(/Other:/, box_15_2) + "\n";
-        }
-        else {
-            captext += "\nDCIS Architectural Patterns:\n- " + box_15.join("\n- ") + "\n";
-        }
-        var box_16 = $("#box16").val();
-        captext += "\nDCIS Nuclear Grade\n- " + box_16 + "\n";
-        var box_17 = $("#box17").val();
-        captext += "\nDCIS Necrosis:\n- " + box_17 + "\n";
-        var box_18 = $("#box18").val();
-        captext += "\nLCIS Component:\n- " + box_18 + "\n";
-    } // end optional CIS part
 
-    var box_19 = $("#box19").val();
-    captext += "\nMacroscopic and Microscopic Extent of Tumor:\n- " + box_19.join("\n- ") + "\n";
+// HORMONE BIO-MARKERS -----------------------------------------------//
 
-    var box_20 = $("#box20").val();
-    var box_20_2 = $("#box20_2").val();
-    var box_20_3 = $("#box20_3").val();
-    var box_20_5 = $("#box20_5").val();
-    var box_20_6 = $("#box20_6").val();
-    var box_21 = $("#box21").val();
-    if (box_20 != 'Margins cannot be assessed') {
-        if (box_20 == 'Margins uninvolved by invasive carcinoma') {
-            captext += "\nMargins uninvolved by invasive carcinoma:\n- Closest margin: " + box_20_2 + ", distance from: " + box_20_3 + "mm\n";
+        captext +="\n--- ANCILLARY HORMONE RECEPTOR STUDIES ---\n";
+        var box_40 = $("#box40").val();
+        var box_40_2 = $("#box40_2").val();
+        var box_40_3 = $("#box40_3").val();
+        if (box_40.indexOf("Positive") > -1) {
+            captext += "\nEstrogen Receptor Status: Positive, "  + box_40_2+ "("+box_40_3+  ")\n";}
+        else {captext += "\nEstrogen Receptor Status: "  + box_40+ "\n";}
+
+
+        var box_41 = $("#box41").val();
+        var box_41_2 = $("#box41_2").val();
+        var box_41_3 = $("#box41_3").val();
+        if (box_41.indexOf("Positive") > -1) {
+            captext += "\nProgesterone Receptor Status: Positive, "  + box_41_2+ "("+box_41_3+  ")\n";}
+        else {captext += "\nProgesterone Receptor Status: "  + box_41+ "\n";}
+
+
+        var box_43 = $("#box43").val();
+        var box_43_1 = $("#box43_1").val();
+        var box_43_2 = $("#box43_2").val();
+        if(box_43 != "Not applicable"){
+            if (box_43.indexOf("indeterminate") > -1) {
+                captext += "\nHER2 Immunohistochemistry:\n- "  + box_43_2+ "\n";}
+            else {captext += "\nHER2 Immunohistochemistry:\n- "  + box_43+ "\n- % cells with intense membranous staining: "+box_43_1+"%\n";}
         }
-        if (box_20 == 'Margin(s) positive for invasive carcinoma') {
-            if ($.inArray('Other:', box_20_5) > -1) {
-                captext += "\nMargin(s) involved by invasive carcinoma:\n- " + box_20_5.join('\n- ').replace(/Other:/, box_20_6) + "\n- Extent of involvement: " + box_21 + "\n";
+
+
+        var box_44 = $("#box44").val();
+        var box_44_2 = $("#box44_2").val();
+        var fish = $("#box44").find(":selected").data("fish");
+        if(box_44 != "Not applicable"){
+            if (box_44.indexOf("indeterminate") > -1) {
+                captext += "\nHER2 FISH: Cannot be determined, due to: "  + box_44_2;
             }
             else {
-                captext += "\nMargin(s) involved by invasive carcinoma:\n- " + box_20_5.join('\n- ') + "\n- Extent of involvement: " + box_21 + "\n";
-            }
-        }
-    }
-    else {
-        captext += "\nMargin Status, Invasive carcinoma:\n- " + box_20 + "\n";
-    }
+                if (fish == "performed"){
+                    captext += "\nHER2 FISH: " + box_44;
+                    var box_45_1 = $("#box45_1").val();
+                    captext += "\n\tNumber of observers: "  + box_45_1;
 
-    var box_22 = $("#box22").val();
-    var box_22_2 = $("#box22_2").val();
-    var box_22_3 = $("#box22_3").val();
-    var box_22_5 = $("#box22_5").val();
-    var box_22_6 = $("#box22_6").val();
-    var box_23 = $("#box23").val();
-    if (box_22 != 'DCIS not present') {
-        if (box_22 == 'Margins uninvolved by DCIS') {
-            captext += "\nMargins uninvolved by DCIS:\n- Closest margin: " + box_22_2 + ", distance from: " + box_22_3 + "mm\n";
-        }
-        if (box_22 == 'Margin(s) positive for DCIS') {
-            if ($.inArray('Other:', box_22_5) > -1) {
-                captext += "\nMargin(s) involved by DCIS:\n- " + box_22_5.join('\n- ').replace(/Other:/, box_22_6) + "\n- Extent of involvement: " + box_23 + "\n";
-            }
-            else {
-                captext += "\nMargin(s) involved by DCIS:\n- " + box_22_5.join('\n- ') + "\n- Extent of involvement: " + box_23 + "\n";
-            }
-        }
-    }
+                    var box_45_2 = $("#box45_2").val();
+                    captext += "\n\tNumber of invasive tumor cells counted: "  + box_45_2;
 
-    var box_24 = $("#box24").val();
-    var box_25 = $("#box25").val();
-    var box_26_1 = $("#box26_1").val();
-    var box_26_2 = $("#box26_2").val();
-    var box_26_3 = $("#box26_3").val();
-    var box_26_4 = $("#box26_4").val();
-    var ln_sum = parseInt(box_26_1, 10) + parseInt(box_26_2, 10) + parseInt(box_26_3, 10) + parseInt(box_26_4, 10);
-    var box_26_5 = $("#box26_5").val();
-    if ($('.lnchk').is(':checked')) {
-        captext += "\nLymph Nodes:\n- Number of Sentinel Nodes Examined: " + box_24;
-        captext += "\n- Total Examined: " + box_25;
-        if ((parseInt(box_25, 10) < parseInt(box_24, 10)) || (parseInt(box_25, 10) < ln_sum)) {
-            alert('Lymph nodes do not add up correctly, please check your entries');
-            $('#box25').focus();
-            return;
-        }
-        if (box_26_1 != '0') {
-            captext += '\n- # Lymph nodes with macrometastases: ' + box_26_1;
-        }
-        if (box_26_2 != '0') {
-            captext += '\n- # Lymph nodes with micrometastases: ' + box_26_2;
-        }
-        if (box_26_3 != '0') {
-            captext += '\n- # Lymph nodes with isolated tumor cells: ' + box_26_3;
-        }
-        if (box_26_4 != '0') {
-            captext += '\n- # Lymph nodes without tumor cells: ' + box_26_4;
-        }
-        if (box_26_5 != 'NA') {
-            captext += '\n- Size of largest metastatic deposit: ' + box_26_5 + 'mm\n';
+                    var box_45_3 = $("#box45_3").val();
+                    var box_45_4 = $("#box45_4").val();
+                    var box_45_5 = $("#box45_5").val();
+                    var her_sig = (parseInt($("#box45_4").val(), 10) / parseInt($("#box45_5").val(), 10));
+                    console.log("her sig%:"+her_sig);
+                    if (box_45_3.indexOf("Dual") > -1) {
+                        captext += "\n\tHER2 FISH assay type: "+box_45_3;
+                        captext += "\n\tAverage number of HER2 signals per cell: "  + box_45_4 ;
+                        captext += "\n\tAverage number of CEP17 signals per cell: "  + box_45_5 ;
+                        captext += "\n\tHER2/CEP17 Ratio: "+her_sig.toFixed(2)+"\n";
+
+                    }
+                    else if (box_45_3.indexOf("Single") > -1) {
+                        captext += "\n\tHER2 FISH assay type: "+box_45_3;
+                        captext += "\n\tAverage number of HER2 signals per cell: "  + box_45_4 + "\n";
+
+                    }else{
+                        captext += "\n\tHER2 FISH assay type: Assay type unknown\n";
+                    }
+
+                }else {
+                    captext += "\nHER2 FISH: "+box_44+"\n";
+                }
+           }
         }
 
-        var box_27 = $("#box27").val();
-        captext += "\n\n- Extranodal Extension: " + box_27 + "\n";
-        var box_28 = $("#box28").val();
-        captext += "\nMethod of Evaluation of Sentinel Nodes:\n- " + box_28.join("\n- ") + "\n";
-    }
-
-    var box_29_1 = $("#box29_1").val();
-    var box_29_2 = $("#box29_2").val();
-    if (box_29_2 != 'No known presurgical therapy') {
-        captext += "\nPre-surgical Treatment Effect:\n- (Breast): " + box_29_1 + "\n- (Lymph node): " + box_29_2 + "\n";
-    }
-
-    var box_30 = $("#box30").val();
-    captext += "\nLymph-Vascular Invasion:\n- " + box_30 + "\n";
-
-    var box_31 = $("#box31").val();
-    if (box_31 != 'No skin present') {
-        captext += "\nDermal Lymph-Vascular Invasion:\n- " + box_31 + "\n";
-    }
-
-    var box_32 = $("#box32").val();
-    var box_33 = $("#box33").val();
-    var box_34 = $("#box34").val();
-    var box_35 = $("#box35").val();
-    captext += "\nPathologic Staging (pTNM):\n- ";
-    if (box_32 != 'N/A') {
-        captext += box_32.join('');
-    }
-    captext += box_33 + ' ' + box_34 + ' ' + box_35 + '\n';
-
-    var box_42 = $("#box42").val();
-    captext += "\nMicrocalcifications:\n- " + box_42.join("\n- ") + "\n";
 
 
-    captext += "\n\nCAP BREAST BIOMARKER REPORTING\n";
-    var box_51 = $("#box51").val();
-    if (box_51 == 'Yes') {
-        captext += '{Cold ischemia and fixation times meet the requirements specified in the latest version of the ASCO/CAP Guidelines}\n';
-    }
-    else {
-        captext += '{Cold ischemia and fixation times do not meet the requirements specified in the latest version of the ASCO/CAP Guidelines\n}';
-    }
-    var box_36 = $("#box36").val();
-    var box_36_2 = $("#box36_2").val();
-    var box_36_3 = $("#box36_3").val();
-    var box_37 = $("#box37").val();
-    var box_37_2 = $('#box37_2').val();
-    var box_37_3 = $('#box37_3').val();
-    var box_37_4 = $('#box37_4').val();
-    var box_37_5 = $('#box37_5').val();
-    var box_37_6 = $('#box37_6').val();
-    if (box_36 != 'N/A') {
-        if (box_36 == 'Positive') {
-            captext += "\nEstrogen Receptor:\n- " + box_36 + " in " + box_36_2 + "% of tumor cells\n";
-            captext += "- ER nuclear staining intensity: " + box_37 + "\n";
-            if ($('#box37_2').is(':checked')) {
-                captext += "- ER status quantified using automated image analysis\n";
+
+
+        var box_46 = $("#box46").val();
+        captext += "\nKi-67: "  + box_46 + "%\n";
+
+
+        captext += "\n--- BIO-MARKER METHODOLOGY ---\n";
+
+
+        var box_50 = $("#box50").val();
+        captext += "\n+ Testing Performed on Block Number(s): "  + box_50 + "\n";
+
+        var box_51 = $("#box51").val();
+        var box_51_2 = $("#box51_2").val();
+        if (box_51.indexOf("Other") > -1) {
+            captext += "\nFixative:\n- "  + box_51_2+ "\n";}
+        else {captext += "\nFixative:\n- "  + box_51+ "\n";}
+
+
+        var box_52 = $("#box52").val();
+        var box_52_2 = $("#box52_2").val();
+        var box_52_3 = $("#box52_3").val();
+        var box_52_4 = $("#box52_4").val();
+        var box_52_4_2 = $("#box52_4_2").val();
+        if (box_52.indexOf("Food") > -1) {
+            captext += "\nEstrogen Receptor:\n- "+box_52+"\n- Test/Vendor: "+box_52_2+"\n";
+
+        }
+        else if (box_52.indexOf("Laboratory") > -1) {
+            captext += "\nEstrogen Receptor:\n- "+box_52+"\n";
+
+            if (box_52_4.indexOf("Other") > -1) {
+                captext += "- Primary ER Antibody Clone: "  + box_52_4_2+ "\n";}
+            else {captext += "- Primary ER Antibody Clone: "  + box_52_4+ "\n";}
+
+        }
+
+
+        var box_53 = $("#box53").val();
+        var box_53_2 = $("#box53_2").val();
+        var box_53_3 = $("#box53_3").val();
+        var box_53_4 = $("#box53_4").val();
+        var box_53_4_2 = $("#box53_4_2").val();
+        if (box_53.indexOf("Food") > -1) {
+            captext += "\nProgesterone Receptor:\n- "+box_53+"\n- Test/Vendor: "+box_53_2+"\n";
+
+        }
+        else if (box_53.indexOf("Laboratory") > -1) {
+            captext += "\nProgesterone Receptor:\n- "+box_53+"\n";
+
+            if (box_53_4.indexOf("Other") > -1) {
+                captext += "- Primary PR Antibody Clone: "  + box_53_4_2+ "\n";}
+            else {captext += "- Primary PR Antibody Clone: "  + box_53_4+ "\n";}
+
+        }
+
+
+        var box_54 = $("#box54").val();
+        var box_54_2 = $("#box54_2").val();
+        var box_54_3 = $("#box54_3").val();
+        var box_54_4 = $("#box54_4").val();
+        var box_54_4_2 = $("#box54_4_2").val();
+        if (box_54.indexOf("Food") > -1) {
+            captext += "\nHER2 (IHC) Receptor:\n- " + box_54 + "\n- Test/Vendor: " + box_54_2 + "\n";
+        }
+        else if (box_54.indexOf("Laboratory") > -1) {
+            captext += "\nHER2 (IHC) Receptor:\n- " + box_54 + "\n";
+
+            if (box_54_4.indexOf("Other") > -1) {
+                captext += "- Primary HER2 Antibody Clone: " + box_54_4_2 + "\n";
             }
             else {
-                captext += "- Quantified Image analysis not performed\n";
-            }
-
-            if (box_37_3 == 'FDA cleared') {
-                captext += '- Antibody type: FDA cleared - ' + box_37_4 + '\n';
-            }
-            else {
-                captext += '- Antibody type: ' + box_37_3 + ', clone: ' + box_37_5 + '\n';
+                captext += "- Primary HER2 Antibody Clone: " + box_54_4 + "\n";
             }
         }
-        else if (box_36 == 'Other:') {
-            captext += "\nEstrogen Receptor:\n- " + box_36_3 + "\n";
-        }
-        else {
-            captext += "\nEstrogen Receptor:\n- " + box_36 + "\n";
-        }
 
-    }
-
-    var box_38 = $("#box38").val();
-    var box_38_2 = $("#box38_2").val();
-    var box_38_3 = $("#box38_3").val();
-    var box_39 = $("#box39").val();
-    var box_39_2 = $('#box39_2').val();
-    var box_39_3 = $('#box39_3').val();
-    var box_39_4 = $('#box39_4').val();
-    var box_39_5 = $('#box39_5').val();
-    var box_39_6 = $('#box39_6').val();
-    if (box_38 != 'N/A') {
-        if (box_38 == 'Positive') {
-            captext += "\nProgesterone Receptor:\n- " + box_38 + " in " + box_38_2 + "% of tumor cells\n";
-            captext += "- PR nuclear staining intensity: " + box_39 + "\n";
-            if ($('#box39_2').is(':checked')) {
-                captext += "- PR status quantified using automated image analysis\n";
+        var box_55 = $("#box55").val();
+        var box_55_2 = $("#box55_2").val();
+        if (box_55.indexOf("Not") < 0) {
+            if (box_55.indexOf("FDA") > -1) {
+                captext += "\nHER2 FISH:\n- FDA Approved Test\n- Test Vendor:" + box_55_2 + "\n";
             }
             else {
-                captext += "- Quantified Image analysis not performed\n";
-            }
-
-            if (box_39_3 == 'FDA cleared') {
-                captext += '- Antibody type: FDA cleared - ' + box_39_4 + '\n';
-            }
-            else {
-                captext += '- Antibody type: ' + box_39_3 + ', clone: ' + box_39_5 + '\n';
+                captext += "\nHER2 FISH:\n- " + box_55 + "\n";
             }
         }
-        else if (box_38 == 'Other:') {
-            captext += "\nProgesterone Receptor:\n- " + box_38_3 + "\n";
-        }
-        else {
-            captext += "\nProgesterone Receptor:\n- " + box_38 + "\n";
-        }
-    }
 
-    var box_40 = $("#box40").val();
-    var box_40_2 = $("#box40_2").val();
-    var box_40_3 = $("#box40_3").val();
-    var box_41 = $("#box41").val();
-    var box_41_2 = $("#box41_2").val();
-    var box_41_3 = $("#box41_3").val();
-    var box_41_4 = $("#box41_4").val();
-    var box_41_5 = $("#box41_5").val();
-    var box_41_6 = $("#box41_6").val();
-    var box_41_7 = $("#box41_6").val();
-    var box_41_8 = $("#box41_6").val();
 
-// HER2 by IHC
-    if (box_40 != 'Not performed') {
-        if (box_40 == 'Indeterminate:') {
-            captext += "\nHER2, Immunohistochemistry Studies:\n- Indeterminate score: " + box_40_2 + "\n% of cells with uniform intense complete membrane staining: " + box_40_3.replace(/%/, '') + "%\n";
-        }
-        else {
-            captext += "\nHER2, Immunohistochemistry Studies:\n- " + box_40 + "\n% of cells with uniform intense complete membrane staining: " + box_40_3.replace(/%/, '') + "%\n";
-        }
-        if ($('#box41_8').is(':checked')) {
-            captext += '- HER2 scored using quantitative image analysis\n';
-        }
-    }
+        var box_56 = $("#box56").val();
+        var box_56_3 = $("#box56_3").val();
+        if (box_56.indexOf("Performed") > -1) {
+            captext += "\n+ Image Analysis:\n- Performed\n- Biomarkers scored by QIA: "  + box_56_3.join(", ")+ "\n";}
+        else {captext += "\n+ Image Analysis:\n- "  + box_56+ "\n";}
 
-// HER2 by ISH
-    if (box_41 != 'Not performed') {
-        if (box_41 == 'Equivocal' || box_41 == 'Positive (amplified)') {
-            captext += "\nHER2, ISH Results:\n- " + box_41 + "\n- Number of observers: " + box_41_6 + "\n- Number of invasive tumor cells counted: " + box_41_7 + "\n";
-            if ($('#singlechk').is(':checked')) {
-                captext += "- Average # of Her2 signals per cell: " + box_41_3 + '\n';
-            }
-            else if ($('#dualchk').is(':checked')) {
-                captext += "- Average # of Her2 signals per cell: " + box_41_3 + '\n- Average # of CEP17 signals per cell: ' + box_41_4 + '\n- HER2/CEP17 ratio: ' + box_41_5 + '\n';
-            }
-            if ($('#box41_8').is(':checked')) {
-                captext += '- HER2 scored using quantitative image analysis\n';
-            }
-        }
-        else if (box_41 == 'Indeterminate:') {
-            captext += "\nHER2, ISH Results:\n- " + box_41_2 + "\n";
-        }
-        else {
-            captext += "\nHER2, ISH Results:\n- " + box_41 + "\n";
-        }
-    }
 
-    var box_50 = $("#box50").val();
-    if (box_50 != '') {
-        captext += '\n- Ki67%: ' + box_50 + '%\n';
-    }
 
-    $('#outPut-1').val(captext);
 
-		dataObj.singleSection = $('#outPut-1').val();
-		makeCreatePdfBtn();
+
+        $('#outPut-1').val(captext);
+
+        dataObj.singleSection = $('#outPut-1').val();
+        makeCreatePdfBtn();
+    });
 });
 
-});
+
+/**
+ * Created by Chandra Krishnan on 12/31/2017.
+ */

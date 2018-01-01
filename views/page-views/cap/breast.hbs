@@ -1,814 +1,740 @@
 <div class="container-fluid">
-		<!-- Breadcrumbs -->
-		<ol class="breadcrumb">
-				<li class="breadcrumb-item">
-						<a href="/">Home</a>
-				</li>
-				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>Cancer Synoptic Checklist</li>
-				<li class="breadcrumb-item active" id="bc-jump"><i class="fa fa-flask mr-2"></i>Breast Cancer Excisions</li>
-		</ol>
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+        <li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Breast - Invasive Cancer excision</li>
+    </ol>
+    {{> message-center this}}
+    {{> page-partials/cap-header}}
 
- {{> message-center this}}
+    <div class="row">
+        {{> page-partials/cap-validate-alert}}
+        <div class="col col-md-8">
+
+            <!-- paste markup here-->
+            <hr class="p-2" >
+            <h5>Procedure</h5>
+            <select id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="Excision">Excision (or subtotal mastectomy)</option>
+                <option>Total mastectomy </option>
+                <option>Nipple sparing mastectomy </option>
+                <option>Modified radical mastectomy </option>
+                <option>Radical mastectomy </option>
+                <option>Other</option>
+                <option>Not specified</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;' placeholder='Specify Other'>
 
 
-		{{> page-partials/cap-header}}
 
-	<div class="row">
-		<div class="col col-md-8">
-	<br>
-	<h5>Procedure</h5>
 
-	<select class="form-control selectpicker form-control-sm "  id="box1">
-	<option selected>Excision without image-guided localization</option>
-	<option> Excision with image-guided localization</option>
-	<option> Total mastectomy (including nipple and skin)</option>
-	<option> Other:</option>
-	<option> Not specified</option>
-	</select>
-	<input class="form-control form-control-sm " id="box1_2" style="display: none;" placeholder="Enter other procedure" size="30" type="text">
+
+            <hr class="p-2" >
+            <h5>Specimen Laterality</h5>
+            <select id="box2" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Right</option>
+                <option>Left</option>
+                <option>Not specified</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Tumor Size</h5>
+            <select id="box3" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Microinvasion only (≤1 mm)</option>
+                <option>Size > 1 mm</option>
+                <option>No residual invasive carcinoma</option>
+                <option>Size of largest invasive focus cannot be determined </option>
+            </select>
+
+            <input type="number" class="form-control form-control-sm mt-3 col-sm-6" id='box3_2' style='display:none;' placeholder='Specify size (mm)'>
+
+
+
+            <hr class="p-2" >
+            <h5>Histologic Type</h5>
+            <select id="box100" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Invasive ductal carcinoma of no special type </option>
+                <option>Micro-invasive carcinoma</option>
+                <option>Invasive lobular carcinoma</option>
+                <option>Invasive carcinoma with lobular features</option>
+                <option>Invasive carcinoma with ductal and lobular features (“mixed type carcinoma”)</option>
+                <option>Mucinous carcinoma</option>
+                <option>Tubular carcinoma</option>
+                <option>Invasive carcinoma, tubulo-lobular variant</option>
+                <option>Invasive cribriform carcinoma</option>
+                <option>Invasive micropapillary carcinoma</option>
+                <option>Invasive papillary carcinoma</option>
+                <option>Medullary carcinoma</option>
+                <option>Invasive carcinoma with medullary features</option>
+                <option>Metaplastic carcinoma</option>
+                <option>Low-grade adenosquamous carcinoma</option>
+                <option>Fibromatosis-like metaplastic carcinoma</option>
+                <option>Metaplastic carcinoma, spindle cell type</option>
+                <option>Metaplastic carcinoma, mixed epithelial and mesenchymal type</option>
+                <option>Invasive carcinoma with metaplastic features</option>
+                <option>Squamous cell carcinoma</option>
+                <option>Adenoid cystic carcinoma</option>
+                <option>Invasive carcinoma with apocrine features</option>
+                <option>Invasive carcinoma with clear cell (glycogen rich) features</option>
+                <option>Invasive carcinoma with neuroendocrine features</option>
+                <option>Invasive carcinoma, with signet-ring cell features</option>
+                <option>Secretory carcinoma</option>
+                <option>Invasive carcinoma, type cannot be determined</option>
+                <option>No residual invasive carcinoma</option>
+                <option>Other histologic type</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box100_2' style='display:none;' placeholder='Specify Other'>
+
 
 <hr class="p-2">
+            <h5>Histologic Grade</h5>
+<div class="py-2 w-100 ml-2"></div>
 
-	<h5>Lymph Node Sampling (select all that apply) <i class="fa fa-question-circle ml-2" data-toggle="tooltip" title="Required only if lymph nodes are present in the specimen" aria-hidden="true"></i></h5>
+            <h6>Glandular/Tubular Differentiation</h6>
+            <select id="box101" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option data-t="1" value="Score 1">Score 1 (>75% of tumor area forming glandular/tubular structures)</option>
+                <option data-t="2" value="Score 2">Score 2 (10% to 75% of tumor area forming glandular/tubular structures)</option>
+                <option data-t="3" value="Score 3">Score 3 (<10% of tumor area forming glandular/tubular structures)</option>
+                <option data-t="10">Only microinvasion present (not graded)</option>
+                <option data-t="10">No residual invasive carcinoma</option>
+                <option data-t="10">Score cannot be determined</option>
+            </select>
 
-	<select class="form-control selectpicker form-control-sm "  id="box2" multiple>
-	<option selected>Sentinel lymph node(s) </option>
-	<option>Axillary dissection (partial or complete dissection) </option>
-	<option>Lymph nodes present within the breast specimen </option>
-	<option>Other lymph nodes</option>
-	<option>No lymph nodes sampled</option>
-	</select>
-	<input class="form-control form-control-sm " id="box2_2" style="display: none;" placeholder="Enter other lymph node site" size="30" type="text">
+<div class="py-2 w-100"></div>
+            <h6>Nuclear Pleomorphism</h6>
+                <select id="box102" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option data-n="1" value="Score 1">Score 1 </option>
+                    <option data-n="2" value="Score 2">Score 2 </option>
+                    <option data-n="3" value="Score 3">Score 3 </option>
+                    <option data-n="10">Only microinvasion present (not graded)</option>
+                    <option data-n="10">No residual invasive carcinoma</option>
+                    <option data-n="10">Score cannot be determined</option>
+                </select>
 
-<hr class="p-2">
+<div class="py-2 w-100"></div>
+                <h6>Mitotic Rate
+                <!-- Button trigger modal -->
+                <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_mites">A word about scoring mitoses</button>
 
-	<h5>Specimen Laterality</h5>
+                <!-- Histology help Modal -->
+                {{> page-modals/cap-helpers/breast-mitosis}}
 
-	<select class="form-control selectpicker form-control-sm "  id="box3">
-	<option >Not specified </option>
-	<option selected> Right </option>
-	<option> Left </option>
-	<option> Unknown </option>
-	</select>
+                </h6>
+                    <select id="box103" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option data-m="1" value="Score 1">Score 1 (≤3 mitoses per mm2) </option>
+                        <option data-m="2" value="Score 2">Score 2 (4-7 mitoses per mm2)</option>
+                        <option data-m="3" value="Score 3">Score 3 (≥8 mitoses per mm2)</option>
+                        <option data-m="10">Only microinvasion present (not graded)</option>
+                        <option data-m="10">No residual invasive carcinoma</option>
+                        <option data-m="10">Score cannot be determined</option>
+                    </select>
 
-<hr class="p-2">
+<div class="py-2 w-100"></div>
+                    <h6>+ Number of mitoses per 10 high-power fields</h6>
+                        <input type="number" class="form-control form-control-sm col-sm-6" id="box104">
 
-	<h5>+ Tumor Site: Invasive Carcinoma (select all that apply)</h5>
 
-	<select class="form-control selectpicker form-control-sm "  id="box4" multiple >
-	<option>Not applicable</option>
-	<option>Not specified</option>
-	<option>Upper outer quadrant</option>
-	<option>Lower outer quadrant</option>
-	<option>Upper inner quadrant</option>
-	<option>Lower inner quadrant</option>
-	<option>Central</option>
-	<option>Nipple</option>
-	<option>Position</option>
-	<option>Other:</option>
-	</select>
-	<input class="form-control form-control-sm " id="box4_3" style="display: none;" placeholder="Enter other site of invasive carcinoma" size="40" type="text">
 
-<hr class="p-2">
 
-	<label><h5>Tumor Size: Size of Largest Invasive Carcinoma
-        <!-- Button trigger modal -->
-        <i class="fa fa-question-circle ml-2" data-toggle="modal" data-target="#tumorsize"></i></h5>
-    </label>
-        <!-- Tumor size Modal -->
-        <div class="modal fade" id="tumorsize" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <h4 class="modal-title" id="modelTitleId">A note about sizing breast tumors</h4>
+            <hr class="p-2" >
+            <h5>+ Tumor Focality</h5>
+            <select id="box105" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Single focus of invasive carcinoma</option>
+                <option>Multiple foci of invasive carcinoma</option>
+                <option>Cannot be determined</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box105_2' style='display:none;' placeholder='Specify # of additional foci and their sizes'>
+
+
+            <hr class="p-2" >
+            <h5>Ductal Carcinoma In Situ</h5>
+            <select id="box106" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>No DCIS in specimen</option>
+                <option>DCIS is present in specimen</option>
+                <option>Only DCIS is present after presurgical (neoadjuvant) therapy</option>
+            </select>
+            
+            <div class="dcis py-2 ml-3" style="display: none;">
+
+            <h6>+ Number of blocks with DCIS:</h6>
+                <input type="number" class="form-control form-control-sm col-sm-6" id="box4_1" placeholder="">
+
+<div class="py-2 w-100"></div>
+
+                <h6>+ Number of blocks examined</h6>
+                <input type="number" class="form-control form-control-sm col-sm-6" id="box4_2" placeholder="">
+
+
+                <div class="py-2 w-100"></div>
+
+                <h6>+ Architectural Patterns</h6>
+                <select multiple id="box5" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Comedo</option>
+                    <option>Paget disease (DCIS involving nipple skin)</option>
+                    <option>Cribriform</option>
+                    <option>Micropapillary</option>
+                    <option>Papillary</option>
+                    <option>Solid</option>
+                    <option>Other</option>
+                </select>
+
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box5_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+                <div class="py-2 w-100"></div>
+
+                <h6>Nuclear Grade</h6>
+                <select id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Grade I (low)</option>
+                    <option>Grade II (intermediate)</option>
+                    <option>Grade III (high)</option>
+                </select>
+
+
+                <div class="py-2 w-100"></div>
+
+                <h6>Necrosis</h6>
+                <select id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Not identified</option>
+                    <option>Present, focal</option>
+                    <option>Present, central </option>
+                </select>
+
+
+            </div>
+            <!-- end dcis-->
+
+
+            <hr class="p-2" >
+            <h5>Tumor Extension</h5>
+            <select id="box107" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>No skin, nipple or skeletal muscle involvement</option>
+                <optgroup label="Skin">
+                <option>Invasive carcinoma directly invades into the dermis or epidermis without skin ulceration</option>
+                <option>Invasive carcinoma directly invades into the dermis or epidermis with skin ulceration</option>
+                <option>Satellite skin foci of invasive carcinoma are present</option>
+                </optgroup>
+                <optgroup label="Nipple">
+                <option>DCIS involves nipple epidermis</option>
+                </optgroup>
+                <optgroup label="Skeletal muscle">
+                <option>Carcinoma invades skeletal muscle</option>
+                <option>Carcinoma invades into skeletal muscle and into the chest wall</option>
+                </optgroup>
+                <option selected>Not applicable</option>
+            </select>
+
+
+
+            <hr class="p-2" >
+            <h5>Margins - Invasive carcinoma</h5>
+
+            <select id="box108" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Cannot be assessed</option>
+                <option>Uninvolved by invasive carcinoma</option>
+                <option>Involved by invasive carcinoma</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box108_1' style='display:none;' placeholder='Specify closest margin'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box108_2' style='display:none;' placeholder='Specify distance of invasive tumor from margin (mm)'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box108_3' style='display:none;' placeholder='Specify involved margin'>
+
+
+            <div class="margins-inv ml-3" style="display: none;">
+                <h6 class="p-2" >
+                    Distance of invasive tumor from superior margin (mm)</h6>
+                <input type="text" class="form-control form-control-sm col-sm-6" id="box109_1" placeholder="enter 0, if margin is involved">
+
+                <h6 class="p-2" >
+                    Distance of invasive tumor from inferior margin (mm)</h6>
+                <input type="text" class="form-control form-control-sm col-sm-6" id="box109_2" placeholder="enter 0, if margin is involved">
+
+                <h6 class="p-2" >
+                    Distance of invasive tumor from medial margin (mm)</h6>
+                <input type="text" class="form-control form-control-sm col-sm-6" id="box109_3" placeholder="enter 0, if margin is involved">
+
+                <h6 class="p-2" >
+                    Distance of invasive tumor from lateral margin (mm)</h6>
+                <input type="text" class="form-control form-control-sm col-sm-6" id="box109_4" placeholder="enter 0, if margin is involved">
+
+                <h6 class="p-2" >
+                    Distance of invasive tumor from anterior margin (mm)</h6>
+                <input type="text" class="form-control form-control-sm col-sm-6" id="box109_5" placeholder="enter 0, if margin is involved">
+
+                <h6 class="p-2" >
+                    Distance of invasive tumor from posterior margin (mm)</h6>
+                <input type="text" class="form-control form-control-sm col-sm-6" id="box109_6" placeholder="enter 0, if margin is involved">
+
+            </div>
+
+
+
+            <hr class="p-2" >
+            <h5>Margins - DCIS</h5>
+
+            <select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Cannot be assessed</option>
+                <option>Uninvolved by invasive carcinoma</option>
+                <option>Involved by invasive carcinoma</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box8_1' style='display:none;' placeholder='Specify closest margin'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box8_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box8_3' style='display:none;' placeholder='Specify involved margin'>
+
+
+            <div class="margins ml-3" style="display: none;">
+                <h6 class="p-2" >
+                    Distance of DCIS from superior margin (mm)</h6>
+                <input type="text" class="form-control form-control-sm col-sm-6" id="box9_1" placeholder="enter 0, if margin is involved">
+
+                <h6 class="p-2" >
+                    Distance of DCIS from inferior margin (mm)</h6>
+                <input type="text" class="form-control form-control-sm col-sm-6" id="box9_2" placeholder="enter 0, if margin is involved">
+
+                <h6 class="p-2" >
+                    Distance of DCIS from medial margin (mm)</h6>
+                <input type="text" class="form-control form-control-sm col-sm-6" id="box9_3" placeholder="enter 0, if margin is involved">
+
+                <h6 class="p-2" >
+                    Distance of DCIS from lateral margin (mm)</h6>
+                <input type="text" class="form-control form-control-sm col-sm-6" id="box9_4" placeholder="enter 0, if margin is involved">
+
+                <h6 class="p-2" >
+                    Distance of DCIS from anterior margin (mm)</h6>
+                <input type="text" class="form-control form-control-sm col-sm-6" id="box9_5" placeholder="enter 0, if margin is involved">
+
+                <h6 class="p-2" >
+                    Distance of DCIS from posterior margin (mm)</h6>
+                <input type="text" class="form-control form-control-sm col-sm-6" id="box9_6" placeholder="enter 0, if margin is involved">
+
+            </div>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Pathologic Staging (pTNM)
+
+            </h5>
+
+            <h6>TNM Descriptors (select all that apply)</h6>
+            <select id="box10" class='form-control selectpicker form-control-sm col-sm-6' multiple>
+                <option selected value="Not applicable">Not applicable</option>
+                <option>m</option>
+                <option>r</option>
+                <option>y</option>
+            </select>
+            <div class="py-2 w-100"></div>
+            <h6 class='mt-2'>pT</h6>
+            <select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pT0">pT0: No evidence of primary tumor#</option>
+                <option value="pTis (DCIS)">pTis (DCIS): Ductal carcinoma in situ#</option>
+                <option value="pTis (Paget)">pTis (Paget): Paget disease of the nipple not associated with invasive carcinoma and/or DCIS in the underlying breast parenchyma##</option>
+                <option value="pT1mi">pT1mi: Tumor ≤1 mm in greatest dimension</option>
+                <option value="pT1a">pT1a: Tumor >1 mm but ≤5 mm in greatest dimension </option>
+                <option value="pT1b">pT1b: Tumor >5 mm but ≤10 mm in greatest dimension</option>
+                <option value="pT1c">pT1c: Tumor >10 mm but ≤20 mm in greatest dimension</option>
+                <option value="pT2">pT2: Tumor >20 mm but ≤50 mm in greatest dimension</option>
+                <option value="pT3">pT3: Tumor >50 mm in greatest dimension</option>
+                <option value="pT4a">pT4a: Extension (invasion) to the chest wall</option>
+                <option value="pT4b">pT4b: Ulceration and/or ipsilateral macroscopic satellite nodules and/or edema (including peau d’orange) of the skin that does not meet the criteria for inflammatory carcinoma</option>
+                <option value="pT4c">pT4c: Both T4a and T4b are present</option>
+                <option value="pT4d">pT4d: Inflammatory carcinoma</option>
+            </select>
+
+            <div class="py-3 w-100"></div>
+
+            <h6 class='mt-2'>pN</h6>
+            <div class="py-2">
+                <small>pN modifiers</small>
+                <select id="box12_0" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option value="sn">(sn) : Sentinel node(s) are evaluated (use this only if <6 total nodes are sampled)</option>
+                    <option value="fn">(fn): Nodal metastasis confirmed by fine needle aspiration or core needle biopsy.</option>
+                    <option selected>Not applicable</option>
+                </select>
+            </div>
+
+            <select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pNX">pNX: Regional lymph nodes cannot be assessed</option>
+                <option value="pN0">pN0: No regional lymph node metastasis identified </option>
+                <option value="pN0 (i+)">pN0 (i+): ITCs only (malignant cell clusters no larger than 0.2 mm) in regional lymph node(s)</option>
+                <option value="pN0 (mol+)">pN0 (mol+): Positive molecular findings (RT-PCR), but no ITCs detected</option>
+                <option value="pN1mi">pN1mi: Micrometastases (larger than 0.2 mm, but none larger than 2.0 mm)</option>
+                <option value="pN1a">pN1a: Metastases in 1 to 3 axillary lymph nodes, at least 1 metastasis larger than 2.0 mm</option>
+                <option value="pN1b">pN1b: Metastases in ipsilateral internal mammary sentinel nodes, excluding ITCs</option>
+                <option value="pN1c">pN1c: pN1a and pN1b combined</option>
+                <option value="pN2a">pN2a: Metastases in 4 to 9 axillary lymph nodes (at least 1 tumor deposit larger than 2.0 mm)</option>
+                <option value="pN2b">pN2b: Metastases in clinically detected internal mammary lymph nodes with or without microscopic confirmation; with pathologically negative axillary nodes</option>
+                <option value="pN3a">pN3a: Metastases in 10 or more axillary lymph nodes (at least 1 tumor deposit larger than 2.0 mm)</option>
+                <option value="pN3a">pN3a: Metastases to the infraclavicular (Level III axillary lymph) nodes</option>
+                <option value="pN3b">pN3b: pN1a or pN2a in the presence of cN2b</option>
+                <option value="pN3b">pN3b: pN2a in the presence of pN1b</option>
+                <option value="pN3c">pN3c: Metastases in ipsilateral supraclavicular lymph nodes</option>
+            </select>
+
+            <div class="py-3 w-100"></div>
+
+
+            <h6 class='mt-2'>pM</h6>
+            <select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option selected value='pMx'>pMx: Not applicable</option>
+                <option value="pM1">pM1: Histologically proven metastases larger than 0.2 mm</option>
+            </select>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box13_2" style="display:none;" placeholder="Specify metastatic sites">
+<div class="py-2 w-100"></div>
+            <form class="form-inline mt-2">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box14" >
+                </label>
+            </form>
+
+            <div class='lnchk' style='display:none;'>
+                <form class="form-inline mt-2 col-8">
+                    <label class="m-2">Number of lymph nodes examined:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box15" style="width:100px"></label>
+                    <label class="m-2">Number of sentinel nodes examined:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box16" style="width:100px"></label>
+
+                    <label class="m-2">Number of Lymph Nodes with Macrometastases (>2 mm):
+                        <input type="text" class="form-control form-control-sm col-sm-6 ml-3" id="box17" style="width:100px"></label>
+
+
+                    <label class="m-2">Number of Lymph Nodes with Micrometastases (>0.2 mm to 2 mm and/or >200 cells):
+                        <input type="text" class="form-control form-control-sm col-sm-6 ml-3" id="box18" style="width:100px"></label>
+
+                    <div class="itc" style="display:none;">
+                        <label class="m-2">Number of Lymph Nodes with Isolated Tumor Cells (≤0.2 mm and ≤200 cells):<input type="text" class="form-control form-control-sm col-sm-6 ml-3" id="box19" style="width:100px">
+                        </label>
                     </div>
-                    <div class="modal-body">
-                       <p>The size of the invasive carcinoma should take into consideration the
-                           gross findings correlated with the microscopic examination.</p>
 
-                        <p>In some cases, it may be helpful to use information about tumor size from imaging studies.
-                        If multiple foci of invasion are present, the size listed is the size
-                        of the largest contiguous area of invasion. The size of multiple
-                        invasive carcinomas should not be added together. The size does not
-                           include adjacent DCIS.</p>
-                        <p>
-                        If there has been a prior core needle biopsy or incisional biopsy
-                        showing a larger area of invasion than in the excisional specimen, the
-                        largest dimension of the invasive carcinoma in the prior specimen
-                            should be used for T classification, if known.</p>
-                        <p>
-                        If there has been prior treatment and no invasive carcinoma is present,
-                        the cancer is classified as Tis if there is residual DCIS and T0 if
-                            there is no remaining carcinoma.</p>
+                    <div class="posnodes" style="display:none;">
+
+                        <label class="mt-2">+ Size of Largest Metastatic Deposit (mm):
+                            <input type="number" class="form-control form-control-sm col-sm-6 ml3" id="box20"> </label>
+
+
+                        <label class="mt-2">+ Extranodal Extension:
+                            <select id="box21" class='form-control selectpicker form-control-sm col-sm-6 ml-3'>
+                                <option>Not identified</option>
+                                <option>Present</option>
+                                <option>Cannot be determined</option>
+                            </select>
+                        </label>
+                    </div>
+
+                </form>
+            </div>
+
+            <hr class="p-2" >
+            <h5>Treatment Effect</h5>
+            <select id="box110" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>No known presurgical therapy</option>
+                <option>Pre-surgical therapy given</option>
+            </select>
+
+            <div class="ml-3" id='box110_2' style='display:none;'>
+                <h6>Treatment Effect in the Breast</h6>
+                <select id="box111" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>No definite response to presurgical therapy in the invasive carcinoma</option>
+                    <option>Probable or definite response to presurgical therapy in the invasive carcinoma</option>
+                    <option>No residual invasive carcinoma is present in the breast after presurgical therapy</option>
+                </select>
+<div class="py-2 w-100"></div>
+                <h6>Treatment Effect in the Lymph Nodes</h6>
+                <select id="box112" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>No lymph nodes removed</option>
+                    <option>No definite response to presurgical therapy in metastatic carcinoma</option>
+                    <option>Probable or definite response to presurgical therapy in metastatic carcinoma</option>
+                    <option>No lymph node metastases. Fibrous scarring, possibly related to prior lymph node metastases with pathologic complete response</option>
+                    <option>No lymph node metastases and no prominent fibrous scarring in the nodes</option>
+                </select>
+
+            </div>
+
+            <hr class="p-2" >
+            <h5>+ Lymphovascular Invasion</h5>
+            <select id="box113" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present</option>
+                <option>Cannot be determined</option>
+            </select>
+
+            <hr class="p-2" >
+            <h5>- ANCILLARY HORMONE RECEPTOR STUDIES -</h5>
+            <div class="ml-3" style="background-color: #d0ecff">
+                <h6>
+                    Estrogen Receptor Status </h6>
+                <select id="box40" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Positive</option>
+                    <option>Negative (internal control cells present and stain as expected)</option>
+                    <option>Negative (Internal control cells absent)</option>
+                    <option>Cannot be determined (Internal control cells present; no immunoreactivity of either tumor cells or internal controls)</option>
+                </select>
+
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box40_2' style='display:none;' placeholder='Specify % Positive'>
+                <select id="box40_3" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option hidden>Specify Staining intensity</option>
+                    <option>Weak (1+)</option>
+                    <option>Moderate (2+)</option>
+                    <option>Strong (3+)</option>
+                </select>
+
+
+                <div class="py-3 w-100"></div>
+
+
+
+                <h6>
+                    Progesterone Receptor Status</h6>
+                <select id="box41" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Positive</option>
+                    <option>Negative (internal control cells present and stain as expected)</option>
+                    <option>Negative (Internal control cells absent)</option>
+                    <option>Cannot be determined (Internal control cells present; no immunoreactivity of either tumor cells or internal controls)</option>
+                </select>
+
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box41_2' style='display:none;' placeholder='Specify Positive'>
+
+                <select id="box41_3" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option hidden>Specify Staining intensity</option>
+                    <option>Weak (1+)</option>
+                    <option>Moderate (2+)</option>
+                    <option>Strong (3+)</option>
+                </select>
+
+
+                <div class="py-3 w-100"></div>
+
+
+                <h6 >
+                    HER2 - IHC </h6>
+                <select id="box43" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Negative (Score 0)</option>
+                    <option>Negative (Score 1+)</option>
+                    <option>Equivocal (Score 2+)</option>
+                    <option>Positive (Score 3+)</option>
+                    <option>Cannot be determined (indeterminate)</option>
+                    <option>Not performed</option>
+                    <option selected>Not applicable</option>
+                </select>
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-8" id='box43_1' style='display:none;' placeholder='Specify % of cells with uniform membrane staining'>
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6 mt-3" id='box43_2' style='display:none;' placeholder='Specify indeterminate'>
+
+
+                <div class="py-3 w-100"></div>
+
+
+
+                <h6 >
+                    HER2 - FISH</h6>
+                <select id="box44" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option data-fish="performed">Negative (not amplified)</option>
+                    <option data-fish="performed">Equivocal</option>
+                    <option data-fish="performed">Positive (amplified) </option>
+                    <option data-fish="performed">Cannot be determined (indeterminate)</option>
+                    <option>Not performed</option>
+                    <option>Pending</option>
+                    <option selected>Not applicable</option>
+                </select>
+
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box44_2' style='display:none;' placeholder='Specify indeterminate'>
+
+                <div class="py-3 w-100"></div>
+
+                <div class="her2f ml-3" style="display: none;">
+                    <h6>Number of observers</h6>
+                    <input type="text" class="form-control form-control-sm col-sm-6" id="box45_1" value="2">
+
+
+                    <h6 class="mt-2" >Number of invasive tumor cells counted</h6>
+                    <input type="text" class="form-control form-control-sm col-sm-6" id="box45_2" value="200">
+
+                    <div class="py-3 w-100"></div>
+
+                    <h6 >
+                        HER2 FISH assay type</h6>
+                    <select id="box45_3" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>Dual probe assay</option>
+                        <option>Single probe assay</option>
+                    </select>
+
+                    <div class="py-3 w-100"></div>
+
+                    <h6 class="mt-2">Average number of HER2 signals per cell:</h6>
+                    <input type="text" class="form-control form-control-sm col-sm-6" id="box45_4" placeholder="">
+
+                    <div class="mt-2" id='box45_3_2'  >
+
+                        <h6>Average number of CEP17 signals per cell:</h6>
+                        <input type="text" class="form-control form-control-sm col-sm-6" id="box45_5" placeholder="">
                     </div>
                 </div>
+
+                <div class="py-3 w-100"></div>
+
+                <h6>
+                    Ki67%</h6>
+                <input type="number" class="form-control form-control-sm col-sm-6" id="box46" placeholder="% positive nuclei">
+
             </div>
-        </div>
 
 
-	<select class="form-control selectpicker form-control-sm "  id="box6">
-	<option>Microinvasion only (≤1 mm) </option>
-	<option selected>Largest focus of invasion &gt;1 mm</option>
-	<option>No residual invasive carcinoma after presurgical (neoadjuvant) therapy </option>
-	<option>Cannot be determined </option>
-	</select>
-	<input class="form-control form-control-sm " id="box6_2" placeholder="Size of invasive focus (mm)" size="40" type="text">
-
-<hr class="p-2">
-
-	<h5>Histologic Type of Invasive Carcinoma
-        <i class="fa fa-question-circle ml-2" data-toggle="modal" data-target="#help_histo"></i></h5>
-    <!-- Histology help Modal -->
-    <div class="modal fade" id="help_histo" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title" id="modelTitleId">A note about invasive carcioma histology</h4>
-            </div>
-            <div class="modal-body">
-                <p>The histologic type corresponds to the largest carcinoma. If there are
-                smaller carcinomas of a different type, this information should be
-                    included under “Additional Pathologic Findings.”</p>
-
-                <p>Inflammatory
-                carcinoma requires the presence of clinical findings of erythema and
-                edema involving at least one-third or more of the skin of the breast
-                    (see explanation under “Pathologic Staging”).</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-    <input type='text' class="form-control form-control-sm " id="box5" placeholder="Enter histology and choose from list">
-	<input type='text' class="form-control form-control-sm " id="box5_2" style="display: none;" placeholder="Enter other histology type">
-
-<hr class="p-2">
 
 
-	<h5> Histologic Grade: Nottingham Histologic Score </h5>
 
-	<table class="table table-striped" >
-	<tbody>
-    <tr>
-    <td >
-	Glandular/Tubular Differentiation
-        <i class="fa fa-question-circle ml-2" data-toggle="tooltip"
-           title="The grade corresponds to the largest area of invasion. If there are
-	smaller foci of invasion of a different grade, this information should
-	be included under “Additional Pathologic Findings.” "
-           aria-hidden="true"></i>
-	</td>
-    <td >
-    <select class="form-control selectpicker form-control-sm "  id="box7" >
-	<option value="1"> Score 1: &gt;75% of tumor area forming glandular/tubular structures </option>
-	<option value="2"> Score 2: 10% to 75% of tumor area forming glandular/tubular structures </option>
-	<option value="3"> Score 3: &lt;10% of tumor area forming glandular/tubular structures </option>
-	<option value="Only microinvasion present"> Only microinvasion present (not graded) </option>
-	<option value='No residual carcinoma'> No residual invasive carcinoma after presurgical (neoadjuvant) therapy </option>
-	<option value="Score cannot be determined"> Score cannot be determined </option>
-	</select>
-    </td>
-    </tr>
-    <tr>
-      <td >
-	Nuclear Pleomorphism
-	</td>
-	<td >
-	<select class="form-control selectpicker form-control-sm "  id="box8">
-	<option value="1">
-	Score 1: Nuclei small with little increase in size in comparison with
-	normal breast epithelial cells, regular outlines, uniform nuclear
-	chromatin, little variation in size </option>
-	<option value="2"> Score 2:
-	Cells larger than normal with open vesicular nuclei, visible nucleoli,
-	and moderate variability in both size and shape </option>
-	<option value="3">
-	Score 3: Vesicular nuclei, often with prominent nucleoli, exhibiting
-	marked variation in size and shape, occasionally with very large and
-	bizarre forms </option>
-	<option> Only microinvasion present (not graded) </option>
-	<option> No residual invasive carcinoma after presurgical (neoadjuvant) therapy </option>
-	<option> Score cannot be determined </option>
-	</select>
-	</td>
-    </tr>
-    <tr>
-	<td >
-	Mitotic Rate
-	</td>
-	<td style="vertical-align: top;">
-	<select class="form-control selectpicker form-control-sm "  id="box9" >
-	<option value="1"> Score 1</option>
-	<option value="2"> Score 2</option>
-	<option value="3"> Score 3</option>
-	<option> Only microinvasion present (not graded) </option>
-	<option> No residual invasive carcinoma after presurgical (neoadjuvant) therapy </option>
-	<option> Score cannot be determined </option>
-	</select>
-	</td>
-	</tr><tr>
-      <td style="vertical-align: top;">
-	Number of mitoses per 10 high-power fields
-	</td>
-    <td style="vertical-align: top;">
-	<input class="form-control form-control-sm " id="box10"  value="0">
-	</td>
-    </tr>
-	</tbody>
-	</table>
-	<div class="trigger">
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-secondary btn-sm p-1" data-toggle="modal" data-target="#help_mitoses">
-            Click to learn about how to score mitotic figures with different 40x field of views
-        </button>
+            <hr class="p-2" >
+            <h5>- BIOMARKER METHODOLOGY -</h5>
+            <div class="ml-3 bg-faded">
+                <h6>+ Testing Performed on Block Number(s)</h6>
+                <input type="text" class="form-control form-control-sm col-sm-6" id="box50" placeholder="">
 
-        <!-- Mitoses Modal -->
-        <div class="modal fade" id="help_mitoses" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
-             aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <h4 class="modal-title" id="modelTitle__mitoses">Counting mitoses with different field of views</h4>
-                    </div>
-                    <div class="modal-body">
-                        <img class="img"  src="/img/CAP_breast_mit.png">
-                    </div>
+
+                <div class="py-3 w-100"></div>
+
+
+                <h6>Fixative</h6>
+                <select id="box51" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Formalin</option>
+                    <option>Other </option>
+                </select>
+
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box51_2' style='display:none;' placeholder='Specify Other'>
+
+
+                <div class="py-3 w-100"></div>
+
+
+
+                <h6>Estrogen Receptor</h6>
+                <select id="box52" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Food and Drug Administration (FDA) cleared </option>
+                    <option>Laboratory-developed test</option>
+                </select>
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box52_2'  placeholder='Specify FDA test/vendor'>
+
+                <div class="ml-3" id='box52_3' style='display:none;'>
+                    <h6>Primary Antibody Clone</h6>
+                    <select id="box52_4" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>SP1</option>
+                        <option>6F11</option>
+                        <option>1D5</option>
+                        <option>Other </option>
+                    </select>
+
+                    <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box52_4_2' style='display:none;' placeholder='Specify Other clone'>
+                </div>
+
+                <div class="py-3 w-100"></div>
+
+                <h6>Progesterone Receptor</h6>
+                <select id="box53" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Food and Drug Administration (FDA) cleared </option>
+                    <option>Laboratory-developed test</option>
+                </select>
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box53_2' placeholder='Specify FDA test/vendor'>
+
+                <div class="ml-3" id='box53_3' style='display:none;'>
+                    <h6>Primary Antibody Clone</h6>
+                    <select id="box53_4" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>1E2</option>
+                        <option>636</option>
+                        <option>16</option>
+                        <option>SP2</option>
+                        <option>1A6</option>
+                        <option>1294</option>
+                        <option>312</option>
+                        <option>Other </option>
+                    </select>
+
+                    <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box53_4_2' style='display:none;' placeholder='Specify Other clone'>
+                </div>
+
+                <div class="py-3 w-100"></div>
+
+                <h6>HER2 (IHC) Receptor - Method</h6>
+                <select id="box54" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Not applicable</option>
+                    <option>Food and Drug Administration (FDA) cleared </option>
+                    <option>Laboratory-developed test</option>
+                </select>
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box54_2' style='display:none;' placeholder='Specify FDA test/vendor'>
+
+                <div class="ml-3" id='box54_3' style='display:none;'>
+                    <h6>Primary Antibody Clone</h6>
+                    <select id="box54_4" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>4B5</option>
+                        <option>HercepTest</option>
+                        <option>A0485</option>
+                        <option>SP3</option>
+                        <option>CB11</option>
+                        <option>Other </option>
+                    </select>
+
+                    <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box54_4_2' style='display:none;' placeholder='Specify Other clone'>
+                </div>
+
+                <div class="py-3 w-100"></div>
+
+                <h6>HER2 FISH  - Method</h6>
+                <select id="box55" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Not applicable</option>
+                    <option>Food and Drug Administration (FDA) cleared </option>
+                    <option>Laboratory-developed test</option>
+
+                </select>
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box55_2' style='display:none;' placeholder='Specify FDA test/vendor'>
+
+
+                <div class="py-3 w-100"></div>
+
+
+
+                <h6>+ Image Analysis</h6>
+                <select id="box56" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Not performed</option>
+                    <option>Performed </option>
+                </select>
+                <div class="py-2 w-100"></div>
+                <div class="ml-3" id='box56_2' style='display:none;' >
+                    <h6>Biomarkers scored by image analysis (select all that apply)</h6>
+                    <select multiple id="box56_3" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>ER</option>
+                        <option>PgR</option>
+                        <option>HER2 by IHC</option>
+                        <option>HER2 (ERBB2) by ISH</option>
+                        <option>Ki-67</option>
+                    </select>
+
                 </div>
             </div>
+
+
+
+
+
+
+
+
+            <!-- end markup-->
+
+            <!-- close markup -->
         </div>
+        {{> page-partials/cap-footer}}
+        <!-- close row -->
     </div>
-
-<hr class="p-2">
-
-	<h5> Tumor Focality
-        <!-- Question trigger modal -->
-        <i class="fa fa-question-circle ml-2" data-toggle="modal" data-target="#help_focality"></i>
-    </h5>
-
-<!-- Focality help Modal -->
-<div class="modal fade" id="help_focality" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title" id="modaltitle_focality">A note about tumor focality</h4>
-            </div>
-            <div class="modal-body">
-                <p>
-                    If there are multiple invasive carcinomas, size, grade, histologic
-                    type, and the results of studies for estrogen receptor (ER),
-                    progesterone receptor (PgR), and HER2 should pertain to the largest
-                    invasive carcinoma. If smaller invasive carcinomas differ in any of
-                    these features, this information may be included in the “Comments”
-                    section.
-                </p>
-            </div>
-        </div>
-    </div>
+    {{> page-partials/history-module}}
+    <!-- close container -->
 </div>
-
-<select class="form-control selectpicker form-control-sm "  id="box12">
-	<option> Single focus of invasive </option>
-	<option> Multiple foci of invasive carcinoma</option>
-	<option> No residual invasive carcinoma after presurgical (neoadjuvant) therapy</option>
-	<option> Indeterminate</option>
-	</select><br>
-	<input type="text" class="form-control form-control-sm " id="box12_2" style="display:none" placeholder='Enter # of foci' >
-	<input type="text" class="form-control form-control-sm " id="box12_3" style="display:none" placeholder='Enter sizes of foci' >
-
-<hr class="p-2">
-
-	<h5> Ductal Carcinoma In Situ (DCIS) (select all that apply)</h5>
-
-	<select class="form-control selectpicker form-control-sm "  id="box13" multiple>
-	<option selected>No DCIS is present</option>
-	<option> DCIS is present</option>
-	<option> Negative for extensive intraductal component</option>
-	<option> Positive for extensive intraductal component</option>
-	<option> Only DCIS is present after presurgical (neoadjuvant) therapy</option>
-	</select>
-
-<hr class="p-2">
-
-<button type="button" class="btn btn-sm btn-primary p-1" data-toggle="collapse" href="#optDCIS" id="box14">Click if you want to include this optional section on DCIS/LCIS characteristics</button>
-
-<div class="collapse mb-2" id="optDCIS">
-	<h6>+ Size (Extent) of DCIS
-        <!-- Question trigger modal -->
-        <i class="fa fa-question-circle ml-2" data-toggle="modal" data-target="#help_sizedcis"></i>
-    </h6>
-
-        <!-- DCIS Size help Modal -->
-        <div class="modal fade" id="help_sizedcis" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <h4 class="modal-title" id="modaltitle_sizedcis">A note about DCIS size</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p>
-                            The size (extent) of DCIS is an estimation of the volume of breast
-                            tissue occupied by DCIS. This information may be helpful for cases with
-                            a predominant component of DCIS (eg, DCIS with microinvasion) but may
-                            not be necessary for cases of EIC-negative invasive carcinomas.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-	Estimated size (extent) of DCIS (greatest dimension using gross and microscopic evaluation):<input type="text" class="form-control form-control-sm " id="box14_1"  placeholder="Enter size in mm"><br>
-	Number of blocks with DCIS:<input type="text" class="form-control form-control-sm " id="box14_2" ><br>
-	Number of blocks examined:<input type="text" class="form-control form-control-sm " id="box14_3" ><br>
-
-<hr class="p-2">
-
-	<h6>+ Architectural Patterns (select all that apply)</h6>
-	<select class="form-control selectpicker form-control-sm "  id="box15" multiple>
-	<option selected>  Comedo </option>
-	<option>  Paget disease (DCIS involving nipple skin)</option>
-	<option>  Cribriform</option>
-	<option>  Micropapillary</option>
-	<option>  Papillary</option>
-	<option>  Solid</option>
-	<option>  Other:</option>
-	</select>
-<br><input type="text" class="form-control form-control-sm " id="box15_2" style="display:none" placeholder='Enter other architectural pattern' size='30'>
-
-<hr class="p-2">
-
-	<h6>+ Nuclear Grade</h6>
-	<select class="form-control selectpicker form-control-sm "  id="box16">
-	<option>  Grade I (low)</option>
-	<option>  Grade II (intermediate)</option>
-	<option>  Grade III (high)</option>
-	</select>
-
-<hr class="p-2">
-
-	<h6>+ Necrosis</h6>
-	<select class="form-control selectpicker form-control-sm "  id="box17">
-	<option>  Not identified</option>
-	<option value='Present, focal'>  Present, focal (small foci or single cell necrosis)</option>
-	<option value='Present, central'>  Present, central (expansive “comedo” necrosis)</option>
-	</select>
-
-<hr class="p-2">
-
-	<h5> + Lobular Carcinoma In Situ (LCIS) </h5>
-
-	<select class="form-control selectpicker form-control-sm "  id="box18">
-	<option>  Not identified</option>
-	<option>  Present</option>
-	</select>
-
-
-</div>
-<!-- End hidden optional DCIS/LCIS div-->
-<hr class="p-2">
-
-	<h5>
-Macroscopic and Microscopic Extent of Tumor (required only if the
-structures are present and involved) (select all that apply) (Note I) </h5>
-
-	<small>Note:
-Satellite skin foci are typically due to dermal lymph-vascular
-invasion. The original definition referred to macroscopically
-clinically evident foci. The clinical significance of satellite skin
-foci only identified microscopically has not been studied.<br> Note:
-Invasion into pectoralis muscle is not considered chest wall invasion,
-and cancers are not classified as T4a unless there is invasion deeper
-than this muscle.</small><br>
-	<select class="form-control selectpicker form-control-sm "  id="box19" multiple>
-	<option selected> N/A </option>
-	<optgroup label="Skin">
-	<option value='Invasive carcinoma directly invades into the dermis or epidermis without skin ulceration'> Invasive carcinoma directly invades into the dermis or epidermis without skin ulceration (this does not change the T stage)</option>
-	<option value='Invasive carcinoma directly invades into the dermis or epidermis with skin ulceration'> Invasive carcinoma directly invades into the dermis or epidermis with skin ulceration (classified as T4b)</option>
-	<option value='Satellite skin foci of invasive carcinoma are present'>Satellite skin foci of invasive carcinoma are present (ie, not contiguous with the invasive carcinoma in the breast) (classified as T4b)</option>
-	</optgroup>
-	<optgroup label="Nipple">
-	<option value='Paget disease of the nipple'> DCIS involves nipple epidermis (Paget disease of the nipple)</option>
-	</optgroup>
-	<optgroup label="Skeletal Muscle">
-	<option> Carcinoma invades skeletal muscle</option>
-	<option value='Carcinoma invades into skeletal muscle and into the chest wall'> Carcinoma invades into skeletal muscle and into the chest wall (classified as T4a)</option>
-	</optgroup>
-	</select>
-
-<hr class="p-2">
-
-	<h5> Margins (select all that apply) (Note J)  </h5>
-
-	<small>Note:
-Margin status is listed as “positive” if there is ink on carcinoma (ie,
-the distance is 0 mm). If the margin is not positive, then a distance
-from the margin may be listed. Distances can be specific measurements
-or expressed as greater than or less than a measurement. </small><br>
-	<br>Invasive Carcinoma<br>
-	<select class="form-control selectpicker form-control-sm "  id="box20">
-	<option> Margins cannot be assessed </option>
-	<option> Margins uninvolved by invasive carcinoma</option>
-	<option> Margin(s) positive for invasive carcinoma</option>
-	</select>
-<br>	<input type="text" class="form-control form-control-sm " id="box20_2" style="display:none" placeholder='Specify closest margin' size='30'>
-	<input type="text" class="form-control form-control-sm " id="box20_3" style="display:none" placeholder='Distance to closest margin (mm)' size='30'>
-	<div id="box20_4" style="display:none">Select all involved margins and select extent of involvement<br>
-	<select class="form-control selectpicker form-control-sm "  id="box20_5" multiple>
-	<option selected>Anterior</option>
-	<option>Posterior</option>
-	<option>Superior</option>
-	<option>Inferior</option>
-	<option>Medial</option>
-	<option>Lateral</option>
-	<option>Deep</option>
-	<option>Other:</option>
-	</select>
-<br><input type="text" class="form-control form-control-sm " id="box20_6" style="display:none" placeholder='Specify other margin' size='40'>
-	<br>
-	<select class="form-control selectpicker form-control-sm "  id="box21" >
-	<option>Focal involvement</option>
-	<option>Moderate involvement</option>
-	<option>Extensive involvement</option>
-	</select><br>
-	</div><!-- end invasive carcinoma pos margins hidden div-->
-
-<hr class="p-2">
-
-	DCIS (margin)<br>
-	<select class="form-control selectpicker form-control-sm "  id="box22">
-	<option selected value='DCIS not present'> DCIS not present - skip section </option>
-	<option> Margins uninvolved by DCIS</option>
-	<option> Margin(s) positive for DCIS</option>
-	</select>
-<br><input type="text" class="form-control form-control-sm " id="box22_2" style="display:none" placeholder='Specify closest margin' size='30'>
-	<input type="text" class="form-control form-control-sm " id="box22_3" style="display:none" placeholder='Distance to closest margin (mm)' size='30'>
-	<div id="box22_4" style="display:none">Select all involved margins and select extent of involvement<br>
-	<select class="form-control selectpicker form-control-sm "  id="box22_5" multiple>
-	<option selected>Anterior</option>
-	<option>Posterior</option>
-	<option>Superior</option>
-	<option>Inferior</option>
-	<option>Medial</option>
-	<option>Lateral</option>
-	<option>Deep</option>
-	<option>Other:</option>
-	</select>
-<br><input type="text" class="form-control form-control-sm " id="box22_6" style="display:none" placeholder='Specify other margin' size='40'>
-	<br>
-	<select class="form-control selectpicker form-control-sm "  id="box23" >
-	<option>Focal involvement</option>
-	<option>Moderate involvement</option>
-	<option>Extensive involvement</option>
-	</select><br>
-	</div><!-- end DCIS pos margins hidden div-->
-
-<hr class="p-2">
-
-	<h5> Lymph Nodes </h5>
-
-	<input class="lnchk" type="checkbox"><font color="white"> Check this box if lymph nodes are available for evaluation (Note B)</font> <br>
-	<small>Note:
-The sentinel node is usually the first involved lymph node. In the
-unusual situation in which a sentinel node is not involved by
-metastatic carcinoma, but a nonsentinel node is involved, this
-information should be included in a note. </small><br>
-	<div class='lndiv' style="display:none">
-	<table class="table"  border="0" cellpadding="2" cellspacing="2">
-	<tbody>
-	<tr><td>Number of sentinel lymph nodes examined:</td><td style="text-align: left;"> <input class="form-control form-control-sm " id="box24"  placeholder='0'></td></tr>
-	<tr><td>Total number of lymph nodes examined (sentinel and nonsentinel):</td><td style="text-align: left;"> <input class="form-control form-control-sm " id="box25"  placeholder='0'></td></tr>
-	<tr><td>Number of lymph nodes with macrometastases (&gt;2 mm):</td><td style="text-align: left;"> <input class="form-control form-control-sm " id='box26_1' placeholder='0' size='4'></td></tr>
-    <tr><td>Number of lymph nodes with micrometastases (&gt;0.2 mm to 2 mm and/or &gt;200 cells):</td><td style="text-align: left;"> <input class="form-control form-control-sm " id='box26_2' placeholder='0' size='4'></td></tr>
-    <tr><td>Number of lymph nodes with isolated tumor cells (≤0.2 mm and ≤200 cells):</td><td style="text-align: left;"> <input class="form-control form-control-sm " id='box26_3' placeholder='0' size='4'></td></tr>
-    <tr><td>Number of lymph nodes without tumor cells identified:</td><td style="text-align: left;"> <input class="form-control form-control-sm " id='box26_4' placeholder='0' size='4'></td></tr>
-	<tr><td>+ Size of largest metastatic deposit (if present, in mm):</td><td style="text-align: left;"> <input class="form-control form-control-sm " id='box26_5' placeholder='NA' size='4'></td></tr>
-	<tr><td>+ Extranodal Extension</td>
-	<td style="text-align: left;">
-	<select class="form-control selectpicker form-control-sm "  id="box27">
-	<option selected> Not identified</option>
-	<option> Present</option>
-	<option> Indeterminate</option>
-	</select>
-	</td></tr>
-	<tr><td>+ Method of Evaluation of Sentinel Lymph Nodes (select all that apply)
-	</td><td style="text-align: left;">
-	<select class="form-control selectpicker form-control-sm "  id="box28" multiple>
-	<option selected>  Sentinel lymph node biopsy not performed</option>
-	<option>  Hematoxylin and eosin (H&amp;E), 1 level</option>
-	<option>  H&amp;E, multiple levels</option>
-	<option>  Immunohistochemistry</option>
-	<option>  Other </option>
-	</select>
-	</td></tr>
-	</tbody>
-	</table>
-	</div><!-- end hidden ln section-->
-
-<hr class="p-2">
-
-	<h5> + Treatment Effect: Response to Presurgical (Neoadjuvant) Therapy (Note K)  </h5>
-
-	In the Breast tissue<br>
-	<select class="form-control selectpicker form-control-sm "  id="box29_1">
-	<option selected>  No known presurgical therapy</option>
-	<option>  No definite response to presurgical therapy in the invasive carcinoma</option>
-	<option>  Probable or definite response to presurgical therapy in the invasive carcinoma</option>
-	<option>  No residual invasive carcinoma is present in the breast after presurgical therapy</option>
-	</select><br>
-	In the Lymph Nodes<br>
-	<select class="form-control selectpicker form-control-sm "  id="box29_2">
-	<option selected>  No known presurgical therapy</option>
-	<option>  No lymph nodes removed</option>
-	<option>  No definite response to presurgical therapy in metastatic carcinoma</option>
-	<option>  Probable or definite response to presurgical therapy in metastatic carcinoma</option>
-	<option>  No lymph node metastases. Fibrous scarring, possibly related to prior lymph node metastases with pathologic complete response</option>
-	<option>  No lymph node metastases and no prominent fibrous scarring in the nodes</option>
-	</select>
-
-<hr class="p-2">
-
-	<h5> + Lymph-Vascular Invasion (Note L)  </h5>
-
-	<select class="form-control selectpicker form-control-sm "  id="box30">
-	<option selected>  Not identified</option>
-	<option>  Present</option>
-	<option>  Indeterminate</option>
-	</select>
-
-<hr class="p-2">
-
-	+ Dermal Lymph-Vascular Invasion<br>
-	<select class="form-control selectpicker form-control-sm "  id="box31">
-	<option selected>  No skin present</option>
-	<option>  Not identified</option>
-	<option>  Present</option>
-	<option>  Indeterminate</option>
-	</select>
-<hr class="p-2">
-
-	<h5> Pathologic Staging (based on information available to the pathologist) (pTNM) (Note M)  </h5>
-
-	TNM Descriptors (required only if applicable) (select all that apply)<br>
-	<select class="form-control selectpicker form-control-sm "  id="box32" multiple>
-	<option selected>N/A</option>
-	<option value='m'> m (multiple foci of invasive carcinoma)</option>
-	<option value='r'> r (recurrent)</option>
-	<option value='y'> y (posttreatment)</option>
-	</select>
-
-<hr class="p-2">
-
-	Primary Tumor (Invasive Carcinoma) (pT)<br>
-	<select class="form-control selectpicker form-control-sm "  id="box33" >
-	<option value='pTX'> pTX: Primary tumor cannot be assessed</option>
-	<option value='pT0'> pT0: No evidence of primary tumor#</option>
-	<option value='pTis'> pTis (DCIS): Ductal carcinoma in situ#</option>
-	<option value='pTis'> pTis (LCIS): Lobular carcinoma in situ#</option>
-	<option value='pTis'> pTis (Paget): Paget disease of the nipple not associated with invasive
-			 carcinoma and/or carcinoma in situ (DCIS and/or LCIS) in the underlying
-			 breast parenchyma#</option>
-	<option value='pT1mi'> pT1mi: Tumor ≤1 mm in greatest dimension (microinvasion)</option>
-	<option value='pT1a'> pT1a: Tumor &gt;1 mm but ≤5 mm in greatest dimension</option>
-	<option value='pT1b'> pT1b: Tumor &gt;5 mm but ≤10 mm in greatest dimension</option>
-	<option value='pT1c'> pT1c: Tumor &gt;10 mm but ≤20 mm in greatest dimension</option>
-	<option value='pT2'> pT2: Tumor &gt;20 mm but ≤50 mm in greatest dimension</option>
-	<option value='pT3'> pT3: Tumor &gt;50 mm in greatest dimension</option>
-	<option value='pT4a'> pT4a: Extension to chest wall, not including only pectoralis muscle adherence/invasion</option>
-	<option value='pT4b'> pT4b: Ulceration and/or ipsilateral satellite nodules and/or edema
-			 (including peau d’orange) of the skin which do not meet the criteria
-			 for inflammatory carcinoma</option>
-	<option value='pT4c'> pT4c: Both T4a and T4b</option>
-	<option value='pT4d'> pT4d: Inflammatory carcinoma</option>
-	</select>
-
-<hr class="p-2">
-
-	Regional Lymph Nodes (pN)<br>
-	<small>(choose a category based on lymph nodes received with the specimen;
-immunohistochemistry and/or molecular studies are not required)<br>
-# Nodes containing only ITCs are excluded from the total positive node count for purposes of N classification but
-should be included in the total number of nodes evaluated. </small><br>
-	<select class="form-control selectpicker form-control-sm "  id="box34">
-	<optgroup label="Modifier (required only if applicable)">
-	</optgroup>
-	<option value='pNX' selected> pNX: Regional lymph nodes cannot be assessed (eg, previously removed, or not removed for pathologic study)</option>
-	<option value='pN0'> pN0: No regional lymph node metastasis identified histologically</option>
-	<option value='pN0 (i-)'> pN0 (i-): No regional lymph node metastases histologically, negative IHC</option>
-	<option value='pN0 (i+)'> pN0 (i+): Malignant cells in regional lymph node(s) no greater than 0.2
-			mm and no more than 200 cells (detected by H&amp;E or IHC including ITC)</option>
-	<option value='pN0 (mol-)'> pN0 (mol-): No regional lymph node metastases histologically, negative
-			molecular findings (reverse transcriptase polymerase chain reaction
-			[RT-PCR])</option>
-	<option value='pN0 (mol+)'> pN0 (mol+): Positive molecular findings (RT-PCR), but no regional lymph node metastases detected by histology or IHC</option>
-	<option value='pN1mi'> pN1mi: Micrometastases (greater than 0.2 mm and/or more than 200 cells, but none greater than 2.0 mm)</option>
-	<option value='pN1a'> pN1a: Metastases in 1 to 3 axillary lymph nodes, (at least 1 metastasis greater than 2.0 mm)</option>
-	<option value='pN2a'> pN2a: Metastases in 4 to 9 axillary lymph nodes (at least 1 tumor deposit greater than 2.0 mm)</option>
-	<option value='pN3a'> pN3a: Metastases in 10 or more axillary lymph nodes (at least 1 tumor deposit greater than 2.0 mm)</option>
-	</select>
-
-<hr class="p-2">
-
-	Distant Metastasis (pM) (required only if present)<br>
-	<select class="form-control selectpicker form-control-sm "  id="box35">
-	<option selected value='pMX'> Not applicable</option>
-	<option value='pM1'> pM1:  Distant detectable metastasis as histologically proven larger than 0.2 mm</option>
-	</select>
-
-<hr class="p-2">
-
-	<br>
-	<h5> Ancillary Studies (required only if available at time of report completion) (select all that apply) (Note O)  </h5>
-
-	<small>Note: If these studies were performed on a different specimen, the prior specimen number should be provided. </small><br>
-	<h5> + Microcalcifications (select all that apply) (Note P)  </h5>
-
-	<select class="form-control selectpicker form-control-sm "  id="box42" multiple>
-	<option selected>  Not identified</option>
-	<option>  Present in DCIS</option>
-	<option>  Present in invasive carcinoma</option>
-	<option>  Present in nonneoplastic tissue</option>
-	</select>
-
-<hr class="p-2">
-
-
-	<h5 style="color:white; font-size: x-large;">
-	CAP BREAST BIOMARKER SECTION</h5>
-
-	<small>Optional items will not be included in the final summary text unless a value is provided</small><br>
-	<br>
-	<h5 >Estrogen Receptor (ER)</h5>
-
-	<select class="form-control selectpicker form-control-sm "  id="box36">
-	<option selected>N/A </option>
-	<option> Positive </option>
-   	<option> Negative (&lt;1% of tumor cells with nuclear positivity)</option>
-	<option> Negative (no tumor cells with nuclear positivity)</option>
-	<option> Results unknown</option>
-	<option> Other: </option>
-	</select>
-	<br>
-	<input type="text" class="form-control form-control-sm " id="box36_2" style="display:none; width:75px;" placeholder='Specify % positive cells' size='30'>
-	<input type="text" class="form-control form-control-sm " id="box36_3" style="display:none" placeholder='Specify other designation' size='30'><br>
-	<div class='Erint' style="display:none;">
-	Average intensity of tumor cell nuclei staining:<br>
-		<select class="form-control selectpicker form-control-sm "  id="box37">
-			<option> Weak </option>
-			<option> Moderate</option>
-			<option> Strong</option>
-			</select><br>
-	<input type="checkbox" class="form-checkbox-input" id="box37_2"> Quantification by image analysis?<br>
-	Antibody type (ER):
-	<select class="form-control selectpicker form-control-sm "  id="box37_3">
-		<option selected>Laboratory developed test</option>
-		<option>FDA cleared</option>
-	</select>
-	<input type="text" class="form-control form-control-sm " id="box37_4" style="display:none;" placeholder="Specify test/vendor"><br>
-	Select ER antibody clone:
-	<select class="form-control selectpicker form-control-sm "  id="box37_5">
-		<option>SP1</option>
-		<option>6F11</option>
-		<option>1D5</option>
-		<option>Other</option>
-	</select>
-	<input type="text" class="form-control form-control-sm " id="box37_6" style="display:none;" placeholder="Specify Ab clone">
-	</div>
-
-<hr class="p-2">
-
-	<h5 >Progesterone Receptor (PgR)</h5>
-
-	<select class="form-control selectpicker form-control-sm "  id="box38">
-	<option selected>N/A </option>
-	<option> Positive </option>
-   	<option> Negative (&lt;1% of tumor cells with nuclear positivity)</option>
-	<option> Negative (no tumor cells with nuclear positivity)</option>
-	<option> Results unknown</option>
-	<option> Other: </option>
-	</select><br>
-	<input type="text" class="form-control form-control-sm " id="box38_2" style="display:none; width:75px;" placeholder='Specify % positive cells' size='30'>
-	<input type="text" class="form-control form-control-sm " id="box38_3" style="display:none" placeholder='Specify other designation' size='30'>
-	<div class='Print' style="display:none;"> Average intensity of tumor cell nuclei staining:<br>
-		<select class="form-control selectpicker form-control-sm "  id="box39">
-		<option> Weak </option>
-		<option> Moderate</option>
-		<option> Strong</option>
-		</select><br>
-		<input type="checkbox" class="form-checkbox-input" id="box39_2"> Quantification by image analysis?<br>
-		Antibody type (PR):
-		<select class="form-control selectpicker form-control-sm "  id="box39_3">
-			<option selected>Laboratory developed test</option>
-			<option>FDA cleared</option>
-		</select>
-		<input type="text" class="form-control form-control-sm " id="box39_4" style="display:none;" placeholder="Specify test/vendor"><br>
-	Select PR antibody clone:
-	<select class="form-control selectpicker form-control-sm "  id="box39_5">
-		<option>1E2</option>
-		<option>636</option>
-		<option>16</option>
-		<option>SP2</option>
-		<option>1A6</option>
-		<option>1294</option>
-		<option>Other</option>
-	</select>
-	<input type="text" class="form-control form-control-sm " id="box39_6" style="display:none;" placeholder="Specify Ab clone">
-	</div>
-
-
-<hr class="p-2">
-
-	<h5 >HER2 </h5>
-
-	<small>(results for invasive carcinoma performed on this specimen or a prior core needle biopsy or incisional biopsy) </small><br>
-	<input type="checkbox" class="form-checkbox-input" id="box41_8"> <span style="color:white">Quantification of HER2 by image analysis?</span><br>
-	<br>
-	<span >Immunohistochemistry Studies, results: </span><br>
-	<select class="form-control selectpicker form-control-sm "  id="box40">
-	<option selected> Not performed </option>
-	<option> Negative (Score 0)</option>
-	<option> Negative (Score 1+)</option>
-	<option> Equivocal (Score 2+)</option>
-	<option> Positive (Score 3+)</option>
-	<option> Indeterminate:</option>
-	<option> Results unknown</option>
-	</select>
-	<input type="text" class="form-control form-control-sm " id="box40_2" style="display:none" placeholder='Explain indeterminate value' size='30'><br>
-	Percentage of cells with uniform intense complete membrane staining:<input type="text" class="form-control form-control-sm " style="width:75px;" id="box40_3">%
-
-<hr class="p-2">
-
-	<span >In Situ Hybridization (FISH or CISH) for HER2, results:</span><br>
-	<select class="form-control selectpicker form-control-sm "  id="box41" >
-	<option> Not performed </option>
-	<option value='Negative (not amplified)'> Negatve / Not amplified (HER2 gene copy &lt;4.0 or ratio &lt;1.8)</option>
-	<option value='Equivocal'> Equivocal (HER2 gene copy 4.0 to 6.0 or ratio 1.8 to 2.2)</option>
-	<option value='Positive (amplified)'> Positive / Amplified (HER2 gene copy &gt;6.0 or ratio &gt;2.2)</option>
-	<option> Pending</option>
-	<option> Indeterminate:</option>
-	</select>
-	<br>
-	<input type="text" class="form-control form-control-sm " id="box41_2" style="display:none" placeholder='Explain indeterminate value' size='30'>
-	<div class='Her2rat' style="display:none">
-	<br>Number of Observers: <input class="form-control form-control-sm " id="box41_6" type="text" style="width:75px;">
-	<br>Number of invasive tumor cells counted: <input class="form-control form-control-sm " id="box41_7" type="text" style="width:75px;">
-	<br>
-	Select probe type: Single probe <input type="checkbox" class="form-checkbox-input" id="singlechk"> Dual probe <input type="checkbox" class="form-checkbox-input" id="dualchk">
-	<br>
-	<div class='singleprobe dualprobe' style="display:none">
-	<input type="text" class="form-control form-control-sm " id="box41_3" style="display:none" placeholder='Specify #HER2 copies' size='20'>
-	</div><!--end single probe HER2 sub biomarker-->
-	<div class='dualprobe' style="display:none">
-	<input type="text" class="form-control form-control-sm " id="box41_4" style="display:none" placeholder='Specify #Chr17 copies' size='20'>
-	<br>Her2/Chr17 ratio:<input class="form-control form-control-sm " id="box41_5" style='width:75px'>
-	</div><!--end dual probe HER2 sub biomarker-->
-	</div>
-
-<hr class="p-2">
-
-	<h5 >Ki67, % positive nuclei: </h5>
-<input class="form-control form-control-sm " id="box50" style="width:75px;"><span>(optional)</span>
-
-<hr class="p-2">
-
-	<h5 >Cold Ischemia and Fixation Times Meet the Requirements Specified in the Latest Version of the
-ASCO/CAP Guidelines?</h5>
-
-	<select class="form-control selectpicker form-control-sm "  id="box51" style="width:100px">
-	<option selected>Yes</option>
-	<option>No</option>
-	</select>
-
-<hr class="p-2">
-
-<!-- close column -->
-		</div>
-		{{> page-partials/cap-footer}}
-<!-- close row -->
-	</div>
-	{{> page-partials/history-module}}
-<!-- close container -->
-</div>
-
-
-		<!--
-
-		"specificScripts":
-			[
-				"/js/cap/breast-scripts.js",
-			]
-		 -->
