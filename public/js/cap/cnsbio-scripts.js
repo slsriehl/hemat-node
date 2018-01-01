@@ -10,278 +10,161 @@ $(window).on('load', function() {
 //                        Pop-ups                              //
 // *************************************************************/
 
-    $('select[id*="box"]').on('change', function(){
-        var itemid = this.id;  // get select id
-        var itemnum = parseFloat(itemid.match(/\d+/)); // get numeric value from above
-        itemnum ++
-        $('#s2id_box'+itemnum).show();
-        $('#s2id_box'+itemnum).closest('div .test').show(); // show next select box
-    });
+$("#box1").on('change', function(){
+   var sel = $(this).val();
+   if (sel.indexOf('Embryonal') > -1){
+       $(".embryonal").show();
+       $(".glioma").hide();
+   } else {
+       $(".embryonal").hide();
+       $(".glioma").show();
+   }
+});
 
-    $('.embryonal').hide();
-    $('.test').hide();
-    for (var i=1; i<20; i++){
-        $('#s2id_box'+[2*i]).hide();
-    }
-
-    $('#type').on('change', function(){
-        var sel = $(this).val();
-        if (sel == 'Glioma'){
-            $('.gliomas').show();
-            $('.embryonal').hide();
-        } else {
-            $('.gliomas').hide();
-            $('.embryonal').show();
-        }
-    });
-
-
-    $('#box1').change(function(){
-        var sel = $('#box1').val();
-        if (sel == 'Present') {
-            $('#box1_2').show();}
-        else {
-            $('#box1_2').hide();}
-    });
-
-    $('#box2').change(function(){
-        var sel = $('#box2').val();
-        if (sel == 'Other') {
-            $('#box2_2').show();}
-        else {
-            $('#box2_2').hide();}
-    });
-
-    $('#box4').change(function(){
-        var sel = $('#box4').val();
-        if (sel == 'Other') {
-            $('#box4_2').show();}
-        else {
-            $('#box4_2').hide();}
-    });
-
-    $('#box5').change(function(){
-        var sel = $('#box5').val();
-        if (sel == 'Polysomy') {
-            $('#box5_2').show();}
-        else {$('#box5_2').hide();}
-        if (sel == 'Monosomy') {
-            $('#box5_3').show();}
-        else {$('#box5_3').hide();}
-    });
-
-    $('#box6').change(function(){
-        var sel = $('#box6').val();
-        if (sel == 'Other') {
-            $('#box6_2').show();}
-        else {
-            $('#box6_2').hide();}
-    });
-
-    $('#box8').change(function(){
-        var sel = $('#box8').val();
-        if (sel == 'Other') {
-            $('#box8_2').show();}
-        else {
-            $('#box8_2').hide();}
-    });
-
-    $('#box9').change(function(){
-        var sel = $('#box9').val();
-        if (sel == 'Present') {
-            $('#box9_2').show();}
-        else {
-            $('#box9_2').hide();}
-    });
-
-    $('#box10').change(function(){
-        var sel = $('#box10').val();
-        if (sel == 'IHC') {
-            $('#box10_2').show();}
-        else {$('#box10_2').hide();}
-        if (sel == 'Other') {
-            $('#box10_3').show();}
-        else {$('#box10_3').hide();}
-    });
-
-
-    $('#box12').change(function(){
-        var sel = $('#box12').val();
-        if (sel == 'Other') {
-            $('#box12_2').show();}
-        else {
-            $('#box12_2').hide();}
-    });
-
-    $('#box13').change(function(){
-        var sel = $('#box13').val();
-        if (sel == 'Polysomy') {
-            $('#box13_2').show();}
-        else {$('#box13_2').hide();}
-        if (sel == 'Monosomy') {
-            $('#box13_3').show();}
-        else {$('#box13_3').hide();}
-    });
-
-    $('#box14').change(function(){
-        var sel = $('#box14').val();
-        if (sel == 'Other') {
-            $('#box14_2').show();}
-        else {
-            $('#box14_2').hide();}
-    });
-
-    $('#box15').change(function(){
-        var sel = $('#box15').val();
-        if (sel == 'Present') {
-            $('#box15_2').show();}
-        else {
-            $('#box15_2').hide();}
-    });
-
-    $('#box16').change(function(){
-        var sel = $('#box16').val();
-        if (sel == 'Other') {
-            $('#box16_2').show();}
-        else {
-            $('#box16_2').hide();}
-    });
-
-    $('#box18').change(function(){
-        var sel = $('#box18').val();
-        if (sel == 'Other') {
-            $('#box18_2').show();}
-        else {
-            $('#box18_2').hide();}
-    });
-
-    $('#box19').change(function(){
-        var sel = $('#box19').val();
-        if (sel == 'Other mutation') {
-            $('#box19_2').show();}
-        else {
-            $('#box19_2').hide();}
-    });
-
-    $('#box20').change(function(){
-        var sel = $('#box20').val();
-        if (sel == 'Other method') {
-            $('#box20_2').show();}
-        else {$('#box20_2').hide();}
-        if (sel == 'Other antibody clone') {
-            $('#box20_3').show();}
-        else {$('#box20_3').hide();}
-    });
-
-    $('#box22').change(function(){
-        var sel = $('#box22').val();
-        if (sel == 'Other') {
-            $('#box22_2').show();}
-        else {
-            $('#box22_2').hide();}
-    });
-
-    $('#box24').change(function(){
-        var sel = $('#box24').val();
-        if (sel == 'Other') {
-            $('#box24_2').show();}
-        else {
-            $('#box24_2').hide();}
-    });
-
-
-    $('#box26').change(function(){
-        var sel = $('#box26').val();
-        if (sel == 'Other') {
-            $('#box26_2').show();}
-        else {
-            $('#box26_2').hide();}
-    });
-
-    $('#box28').change(function(){
-        var sel = $('#box28').val();
-        if (sel == 'Other') {
-            $('#box28_2').show();}
-        else {
-            $('#box28_2').hide();}
-    });
-
-    $('#box30').change(function(){
-        var sel = $('#box30').val();
-        if (sel == 'Clone') {
-            $('#box30_2').show();}
-        else {
-            $('#box30_2').hide();}
-    });
-
-    $('#box32').change(function(){
-        var sel = $('#box32').val();
-        if (sel == 'Other') {
-            $('#box32_2').show();}
-        else {
-            $('#box32_2').hide();}
-    });
-
-    $('#box34').change(function(){
-        var sel = $('#box34').val();
-        if (sel == 'Other') {
-            $('#box34_2').show();}
-        else {
-            $('#box34_2').hide();}
-    });
-
-    $('#box36').change(function(){
-        var sel = $('#box36').val();
-        if (sel == 'Other') {
-            $('#box36_2').show();}
-        else {
-            $('#box36_2').hide();}
-    });
-
-    $('#box38').change(function(){
-        var sel = $('#box38').val();
-        if (sel == 'Other') {
-            $('#box38_2').show();}
-        else {
-            $('#box38_2').hide();}
-    });
-
-    $('#box40').change(function(){
-        var sel = $('#box40').val();
-        if (sel == 'Present') {
-            $('#box40_2').show();}
-        else {
-            $('#box40_2').hide();}
-    });
-
-    $('#box41').change(function(){
-        var sel = $('#box41').val();
-        if (sel == 'Other') {
-            $('#box41_2').show();}
-        else {
-            $('#box41_2').hide();}
-    });
 
 //************************************************************//
 // Script to populate the template data in the output textarea//
 // *************************************************************/
     $('.writeReport').on('click', function () {
 
-        $('input[type="text"]').each(function () {
-            if ($(this).val().length < 1) {
-                $(this).val($(this).attr('placeholder'));
-            }
-            if ($(this).val().length < 1) {
-                $(this).addClass('empty')
+    // ***************** INPUT VALIDATION ********************//
+        $('select[multiple]:visible').each(function () {
+            // Check if at least one selection is made
+            if ($(this).val().length > 0) {
+                $(this).removeClass('empty');
+            } else {
+                $(this).addClass('empty');
+                $('#cap-valid').show();
             }
         });
+
+        $('input[type="text"]:visible').each(function () {
+            // Check if at least one selection is made
+            if ($.trim($(this).val()).length > 0) {
+                $(this).removeClass('empty');
+            } else {
+                    $(this).addClass('empty');
+                    $('#cap-valid').show();
+                }
+        });
+
+        // ***************** END VALIDATION ********************//
+
+
+
+        var captext = "CNS Cyto-Molecular Biomarker Results\n\n";
+
+        var box_1 = $('#box1').val();
+
+        if (box_1.indexOf('Embryonal') > -1){
+
+            var box_2 = $("#box2").val();
+            if(box_2 != "Not applicable"){
+                captext += "\nNuclear Beta-Catenin Immunohistochemistry: "  + box_2+ "\n";}
+
+            var box_3 = $("#box3").val();
+            if(box_3 != "Not applicable"){
+                captext += "\nMonosomy 6: "  + box_3+ "\n";}
+
+            var box_4 = $("#box4").val();
+            if(box_4 != "Not applicable"){
+                captext += "\nGAB1 Immunohistochemistry: "  + box_4+ "\n";}
+
+            var box_5 = $("#box5").val();
+            if(box_5 != "Not applicable"){
+                captext += "\nMYC Amplification: "  + box_5+ "\n";}
+
+            var box_6 = $("#box6").val();
+            if(box_6 != "Not applicable"){
+                captext += "\nMYCN Amplification: "  + box_6+ "\n";}
+
+            var box_7 = $("#box7").val();
+            if(box_7 != "Not applicable"){
+                captext += "\nIsochromosome 17: "  + box_7+ "\n";}
+
+            var box_8 = $("#box8").val();
+            if(box_8 != "Not applicable"){
+                captext += "\nINI1 Immunohistochemistry: "  + box_8+ "\n";}
+
+            var box_9 = $("#box9").val();
+            if(box_9 != "Not applicable"){
+                captext += "\n+ SMARCB1/INI1/HNSF5 Mutation: "  + box_9+ "\n";}
+
+        }
+
+        if (box_1.indexOf('Glioma') > -1) {
+
+            var box_20 = $("#box20").val();
+            if(box_20 != "Not applicable"){
+                captext += "\nIDH1/2 Mutation: "  + box_20+ "\n";}
+
+            var box_21 = $("#box21").val();
+            if(box_21 != "Not applicable"){
+                captext += "\nIDH1 R132H Immunohistochemistry: "  + box_21+ "\n";}
+
+            var box_22 = $("#box22").val();
+            if(box_22 != "Not applicable"){
+                captext += "\n1p/19q Deletion: "  + box_22+ "\n";}
+
+            var box_23 = $("#box23").val();
+            if(box_23 != "Not applicable"){
+                captext += "\nTP53 Mutation: "  + box_23+ "\n";}
+
+            var box_24 = $("#box24").val();
+            if(box_24 != "Not applicable"){
+                captext += "\nATRX Mutation: "  + box_24+ "\n";}
+
+            var box_25 = $("#box25").val();
+            if(box_25 != "Not applicable"){
+                captext += "\nATRX Immunohistochemistry: "  + box_25+ "\n";}
+
+            var box_26 = $("#box26").val();
+            if(box_26 != "Not applicable"){
+                captext += "\nEGFR Amplification: "  + box_26+ "\n";}
+
+            var box_27 = $("#box27").val();
+            if(box_27 != "Not applicable"){
+                captext += "\n10q23 Deletion: "  + box_27+ "\n";}
+
+            var box_28 = $("#box28").val();
+            if(box_28 != "Not applicable"){
+                captext += "\nPTEN Mutatio: "  + box_28+ "\n";}
+
+            var box_29 = $("#box29").val();
+            if(box_29 != "Not applicable"){
+                captext += "\nMGMT Promoter Methylation: "  + box_29+ "\n";}
+
+            var box_30 = $("#box30").val();
+            if(box_30 != "Not applicable"){
+                captext += "\nBRAF Mutation: "  + box_30+ "\n";}
+
+            var box_31 = $("#box31").val();
+            if(box_31 != "Not applicable"){
+                captext += "\nBRAF V600E Immunohistochemistry: "  + box_31+ "\n";}
+
+            var box_32 = $("#box32").val();
+            if(box_32 != "Not applicable"){
+                captext += "\nBRAF Rearrangement: "  + box_32+ "\n";}
+
+            var box_33 = $("#box33").val();
+            captext += "\nKi-67%: "  + box_33 + "%\n";
+
+        }
+
+
+
+
+        var box_40 = $("#box40").val();
+        captext += "\nOther cyto-molecular results:\n- "  + box_40 + "\n";
+
 
 
 
         $('#outPut-1').val(captext);
 
-				dataObj.singleSection = $('#outPut-1').val();
-				makeCreatePdfBtn();
-
+        dataObj.singleSection = $('#outPut-1').val();
+        makeCreatePdfBtn();
     });
 });
+
+
