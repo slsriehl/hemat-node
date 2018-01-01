@@ -1,0 +1,547 @@
+<div class="container-fluid">
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+        <li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Breast - DCIS excision</li>
+    </ol>
+    {{> message-center this}}
+    {{> page-partials/cap-header}}
+
+    <div class="row">
+        {{> page-partials/cap-validate-alert}}
+        <div class="col col-md-8">
+
+            <!-- paste markup here-->
+            <hr class="p-2" >
+            <h5>Procedure</h5>
+            <select id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="Excision">Excision (or subtotal mastectomy)</option>
+                <option>Total mastectomy </option>
+                <option>Other</option>
+                <option>Not specified</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Specimen Laterality</h5>
+            <select id="box2" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Right</option>
+                <option>Left</option>
+                <option>Not specified</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Size (Extent) of DCIS (mm)</h5>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box3" placeholder="using gross and microscopic evaluation">
+
+
+
+
+            <hr class="p-2" >
+            <h5>+ Number of blocks with DCIS:</h5>
+            <input type="number" class="form-control form-control-sm col-sm-6" id="box4_1" placeholder="">
+
+
+
+
+            <hr class="p-2" >
+            <h5>+ Number of blocks examined</h5>
+            <input type="number" class="form-control form-control-sm col-sm-6" id="box4_2" placeholder="">
+
+
+
+
+            <hr class="p-2" >
+            <h5>+ Architectural Patterns</h5>
+            <select multiple id="box5" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Comedo</option>
+                <option>Paget disease (DCIS involving nipple skin)</option>
+                <option>Cribriform</option>
+                <option>Micropapillary</option>
+                <option>Papillary</option>
+                <option>Solid</option>
+                <option>Other</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box5_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Nuclear Grade</h5>
+            <select id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Grade I (low)</option>
+                <option>Grade II (intermediate)</option>
+                <option>Grade III (high)</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Necrosis</h5>
+            <select id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present, focal</option>
+                <option>Present, central </option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Margins</h5>
+
+            <select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Cannot be assessed</option>
+                <option>Uninvolved by DCIS</option>
+                <option>Involved by DCIS</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box8_1' style='display:none;' placeholder='Specify closest margin'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box8_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box8_3' style='display:none;' placeholder='Specify involved margin'>
+
+
+            <div class="margins ml-3" style="display: none;">
+                <h6 class="p-2" >
+                Distance from superior margin (mm)</h6>
+                <input type="text" class="form-control form-control-sm col-sm-6" id="box9_1" placeholder="enter 0, if margin is involved">
+
+
+
+
+                <h6 class="p-2" >
+                Distance from inferior margin (mm)</h6>
+                <input type="text" class="form-control form-control-sm col-sm-6" id="box9_2" placeholder="enter 0, if margin is involved">
+
+
+
+
+                <h6 class="p-2" >
+                Distance from medial margin (mm)</h6>
+                <input type="text" class="form-control form-control-sm col-sm-6" id="box9_3" placeholder="enter 0, if margin is involved">
+
+
+
+
+                <h6 class="p-2" >
+                Distance from lateral margin (mm)</h6>
+                <input type="text" class="form-control form-control-sm col-sm-6" id="box9_4" placeholder="enter 0, if margin is involved">
+
+
+
+
+                <h6 class="p-2" >
+                Distance from anterior margin (mm)</h6>
+                <input type="text" class="form-control form-control-sm col-sm-6" id="box9_5" placeholder="enter 0, if margin is involved">
+
+
+
+
+                <h6 class="p-2" >
+                Distance from posterior margin (mm)</h6>
+                <input type="text" class="form-control form-control-sm col-sm-6" id="box9_6" placeholder="enter 0, if margin is involved">
+
+
+
+
+            </div>
+
+
+
+           
+
+            <hr class="p-2" >
+            <h5>Pathologic Staging (pTNM)
+
+            </h5>
+
+            <h6>TNM Descriptors (select all that apply)</h6>
+            <select id="box10" class='form-control selectpicker form-control-sm col-sm-6' multiple>
+                <option selected value="Not applicable">Not applicable</option>
+                <option>r</option>
+                <option>y</option>
+            </select>
+            <h6 class='mt-2'>pT</h6>
+            <select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pTis (DCIS)">pTis (DCIS): Ductal carcinoma in situ</option>
+                <option value="pTis (Paget)">pTis (Paget): Paget disease of the nipple not associated with invasive carcinoma and/or DCIS in the breast</option>
+            </select>
+
+            <div class="py-3 w-100"></div>
+
+            <h6 class='mt-2'>pN</h6>
+                <div class="py-2">
+                    <small>pN modifiers</small>
+                    <select id="box12_0" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option value="sn">(sn) : Sentinel node(s) are evaluated (use this only if <6 total nodes are sampled)</option>
+                        <option value="fn">(fn): Nodal metastasis confirmed by fine needle aspiration or core needle biopsy.</option>
+                        <option selected>Not applicable</option>
+                    </select>
+                </div>
+
+            <select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pNX">pNX: Regional lymph nodes cannot be assessed</option>
+                <option value="pN0">pN0: No regional lymph node metastasis identified </option>
+                <option value="pN0 (i+)">pN0 (i+): ITCs only (malignant cell clusters no larger than 0.2 mm) in regional lymph node(s)</option>
+                <option value="pN0 (mol+)">pN0 (mol+): Positive molecular findings (RT-PCR), but no ITCs detected</option>
+                <option value="pN1mi">pN1mi: Micrometastases (larger than 0.2 mm, but none larger than 2.0 mm)</option>
+                <option value="pN1a">pN1a: Metastases in 1 to 3 axillary lymph nodes, at least 1 metastasis larger than 2.0 mm</option>
+                <option value="pN1b">pN1b: Metastases in ipsilateral internal mammary sentinel nodes, excluding ITCs</option>
+                <option value="pN1c">pN1c: pN1a and pN1b combined</option>
+                <option value="pN2a">pN2a: Metastases in 4 to 9 axillary lymph nodes (at least 1 tumor deposit larger than 2.0 mm)</option>
+                <option value="pN2b">pN2b: Metastases in clinically detected internal mammary lymph nodes with or without microscopic confirmation; with pathologically negative axillary nodes</option>
+                <option value="pN3a">pN3a: Metastases in 10 or more axillary lymph nodes (at least 1 tumor deposit larger than 2.0 mm)</option>
+                <option value="pN3a">pN3a: Metastases to the infraclavicular (Level III axillary lymph) nodes</option>
+                <option value="pN3b">pN3b: pN1a or pN2a in the presence of cN2b</option>
+                <option value="pN3b">pN3b: pN2a in the presence of pN1b</option>
+                <option value="pN3c">pN3c: Metastases in ipsilateral supraclavicular lymph nodes</option>
+            </select>
+
+            <div class="py-3 w-100"></div>
+
+
+            <h6 class='mt-2'>pM</h6>
+            <select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option selected value='pMx'>pMx: Not applicable</option>
+                <option value="pM1">pM1: Histologically proven metastases larger than 0.2 mm</option>
+            </select>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box13_2" style="display:none;" placeholder="Specify metastatic sites">
+
+            <form class="form-inline mt-2">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box14" >
+                </label>
+            </form>
+
+            <div class='lnchk' style='display:none;'>
+                <form class="form-inline mt-2 col-8">
+                    <label class="m-2">Number of lymph nodes examined:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box15" style="width:100px"></label>
+                    <label class="m-2">Number of sentinel nodes examined:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box16" style="width:100px"></label>
+
+                    <label class="m-2">Number of Lymph Nodes with Macrometastases (>2 mm):
+                        <input type="text" class="form-control form-control-sm col-sm-6 ml-3" id="box17" style="width:100px"></label>
+
+
+                    <label class="m-2">Number of Lymph Nodes with Micrometastases (>0.2 mm to 2 mm and/or >200 cells):
+                        <input type="text" class="form-control form-control-sm col-sm-6 ml-3" id="box18" style="width:100px"></label>
+
+                    <div class="itc" style="display:none;">
+                        <label class="m-2">Number of Lymph Nodes with Isolated Tumor Cells (≤0.2 mm and ≤200 cells):<input type="text" class="form-control form-control-sm col-sm-6 ml-3" id="box19" style="width:100px">
+                        </label>
+                    </div>
+
+                    <div class="posnodes" style="display:none;">
+
+                        <label class="mt-2">+ Size of Largest Metastatic Deposit (mm):
+                            <input type="number" class="form-control form-control-sm col-sm-6 ml3" id="box20"> </label>
+
+
+                        <label class="mt-2">+ Extranodal Extension:
+                            <select id="box21" class='form-control selectpicker form-control-sm col-sm-6 ml-3'>
+                                <option>Not identified</option>
+                                <option>Present</option>
+                                <option>Cannot be determined</option>
+                            </select>
+                        </label>
+                    </div>
+
+                </form>
+            </div>
+            
+            <hr class="p-2" >
+            <h5>+ Microcalcifications</h5>
+            <select multiple id="box30" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present in DCIS</option>
+                <option>Present in nonneoplastic tissue</option>
+                <option>Other</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box30_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+            <hr class="p-2" >
+            <h5>- ANCILLARY HORMONE RECEPTOR STUDIES -</h5>
+            <div class="ml-3" style="background-color: #d0ecff">
+                <h6>
+                Estrogen Receptor Status </h6>
+                <select id="box40" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Positive</option>
+                    <option>Negative (internal control cells present and stain as expected)</option>
+                    <option>Negative (Internal control cells absent)</option>
+                    <option>Cannot be determined (Internal control cells present; no immunoreactivity of either tumor cells or internal controls)</option>
+                </select>
+
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box40_2' style='display:none;' placeholder='Specify % Positive'>
+                <select id="box40_3" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option hidden>Specify Staining intensity</option>
+                    <option>Weak (1+)</option>
+                    <option>Moderate (2+)</option>
+                    <option>Strong (3+)</option>
+                </select>
+
+
+                <div class="py-3 w-100"></div>
+
+
+
+                <h6>
+                Progesterone Receptor Status</h6>
+                <select id="box41" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Positive</option>
+                    <option>Negative (internal control cells present and stain as expected)</option>
+                    <option>Negative (Internal control cells absent)</option>
+                    <option>Cannot be determined (Internal control cells present; no immunoreactivity of either tumor cells or internal controls)</option>
+                </select>
+
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box41_2' style='display:none;' placeholder='Specify Positive'>
+
+                <select id="box41_3" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option hidden>Specify Staining intensity</option>
+                    <option>Weak (1+)</option>
+                    <option>Moderate (2+)</option>
+                    <option>Strong (3+)</option>
+                </select>
+
+
+                <div class="py-3 w-100"></div>
+
+
+                <h6 >
+                HER2 - IHC </h6>
+                <select id="box43" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Negative (Score 0)</option>
+                    <option>Negative (Score 1+)</option>
+                    <option>Equivocal (Score 2+)</option>
+                    <option>Positive (Score 3+)</option>
+                    <option>Cannot be determined (indeterminate)</option>
+                    <option>Not performed</option>
+                    <option selected>Not applicable</option>
+                </select>
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-8" id='box43_1' style='display:none;' placeholder='Specify % of cells with uniform membrane staining'>
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6 mt-3" id='box43_2' style='display:none;' placeholder='Specify indeterminate'>
+
+
+                <div class="py-3 w-100"></div>
+
+
+
+                <h6 >
+                HER2 - FISH</h6>
+                <select id="box44" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Negative (not amplified)</option>
+                    <option>Equivocal</option>
+                    <option>Positive (amplified) </option>
+                    <option>Cannot be determined (indeterminate)</option>
+                    <option>Not performed</option>
+                    <option>Pending</option>
+                    <option selected>Not applicable</option>
+                </select>
+
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box44_2' style='display:none;' placeholder='Specify indeterminate'>
+                <div class="py-3 w-100"></div>
+
+                <h6>Number of observers</h6>
+                <input type="text" class="form-control form-control-sm col-sm-6" id="box45_1" value="2">
+
+
+                <h6 class="mt-2" >Number of invasive tumor cells counted</h6>
+                <input type="text" class="form-control form-control-sm col-sm-6" id="box45_2" value="200">
+
+                <div class="py-3 w-100"></div>
+
+                <h6 >
+                HER2 FISH assay type</h6>
+                <select id="box45_3" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Dual probe assay</option>
+                    <option>Single probe assay</option>
+                </select>
+
+                <div class="py-3 w-100"></div>
+
+                <h6 class="mt-2">Average number of HER2 signals per cell:</h6>
+                    <input type="text" class="form-control form-control-sm col-sm-6" id="box45_4" placeholder="">
+
+                    <div class="mt-2" id='box45_3_2'  >
+
+                        <h6>Average number of CEP17 signals per cell:</h6>
+                        <input type="text" class="form-control form-control-sm col-sm-6" id="box45_5" placeholder="">
+                    </div>
+
+                <div class="py-3 w-100"></div>
+
+                <h6>
+                Ki67%</h6>
+                <input type="number" class="form-control form-control-sm col-sm-6" id="box46" placeholder="% positive nuclei">
+
+            </div>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>- BIOMARKER METHODOLOGY -</h5>
+            <div class="ml-3 bg-faded">
+                <h6>+ Testing Performed on Block Number(s)</h6>
+                <input type="text" class="form-control form-control-sm col-sm-6" id="box50" placeholder="">
+
+
+                <div class="py-3 w-100"></div>
+
+
+                <h6>Fixative</h6>
+                <select id="box51" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Formalin</option>
+                    <option>Other </option>
+                </select>
+
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box51_2' style='display:none;' placeholder='Specify Other'>
+
+
+                <div class="py-3 w-100"></div>
+
+
+
+                <h6>Estrogen Receptor</h6>
+                <select id="box52" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Food and Drug Administration (FDA) cleared </option>
+                    <option>Laboratory-developed test</option>
+                </select>
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box52_2'  placeholder='Specify FDA test/vendor'>
+
+                <div class="ml-3" id='box52_3' style='display:none;'>
+                    <h6>Primary Antibody Clone</h6>
+                    <select id="box52_4" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>SP1</option>
+                        <option>6F11</option>
+                        <option>1D5</option>
+                        <option>Other </option>
+                    </select>
+
+                    <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box52_4_2' style='display:none;' placeholder='Specify Other clone'>
+                </div>
+
+                <div class="py-3 w-100"></div>
+
+                <h6>Progesterone Receptor</h6>
+                <select id="box53" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Food and Drug Administration (FDA) cleared </option>
+                    <option>Laboratory-developed test</option>
+                </select>
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box53_2' placeholder='Specify FDA test/vendor'>
+
+                <div class="ml-3" id='box53_3' style='display:none;'>
+                    <h6>Primary Antibody Clone</h6>
+                    <select id="box53_4" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>1E2</option>
+                        <option>636</option>
+                        <option>16</option>
+                        <option>SP2</option>
+                        <option>1A6</option>
+                        <option>1294</option>
+                        <option>312</option>
+                        <option>Other </option>
+                    </select>
+
+                    <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box53_4_2' style='display:none;' placeholder='Specify Other clone'>
+                </div>
+
+                <div class="py-3 w-100"></div>
+
+                <h6>HER2 (IHC) Receptor - Method</h6>
+                <select id="box54" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Not applicable</option>
+                    <option>Food and Drug Administration (FDA) cleared </option>
+                    <option>Laboratory-developed test</option>
+                </select>
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box54_2' style='display:none;' placeholder='Specify FDA test/vendor'>
+
+                <div class="ml-3" id='box54_3' style='display:none;'>
+                    <h6>Primary Antibody Clone</h6>
+                    <select id="box54_4" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>4B5</option>
+                        <option>HercepTest</option>
+                        <option>A0485</option>
+                        <option>SP3</option>
+                        <option>CB11</option>
+                        <option>Other </option>
+                    </select>
+
+                    <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box54_4_2' style='display:none;' placeholder='Specify Other clone'>
+                </div>
+
+                <div class="py-3 w-100"></div>
+
+                <h6>HER2 FISH  - Method</h6>
+                <select id="box55" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Not applicable</option>
+                    <option>Food and Drug Administration (FDA) cleared </option>
+                    <option>Laboratory-developed test</option>
+
+                </select>
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box55_2' style='display:none;' placeholder='Specify FDA test/vendor'>
+
+
+                <div class="py-3 w-100"></div>
+
+
+
+                <h6>+ Image Analysis</h6>
+                <select id="box56" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Not performed</option>
+                    <option>Performed </option>
+                </select>
+                <div class="py-2 w-100"></div>
+                <div class="ml-3" id='box56_2' style='display:none;' >
+                    <h6>Biomarkers scored by image analysis (select all that apply)</h6>
+                    <select multiple id="box56_3" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>ER</option>
+                        <option>PgR</option>
+                        <option>HER2 by IHC</option>
+                        <option>HER2 (ERBB2) by ISH</option>
+                        <option>Ki-67</option>
+                    </select>
+
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+            <!-- end markup-->
+
+            <!-- close markup -->
+        </div>
+        {{> page-partials/cap-footer}}
+        <!-- close row -->
+    </div>
+    {{> page-partials/history-module}}
+    <!-- close container -->
+</div>
