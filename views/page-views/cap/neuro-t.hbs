@@ -1,202 +1,267 @@
 <div class="container-fluid">
-		<!-- Breadcrumbs -->
-		<ol class="breadcrumb">
-				<li class="breadcrumb-item">
-						<a href="/">Home</a>
-				</li>
-				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>Cancer Synoptic Checklist</li>
-				<li class="breadcrumb-item active" id="bc-jump"><i class="fa fa-flask mr-2"></i>CNS tumors</li>
-		</ol>
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+        <li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>CNS Tumors</li>
+    </ol>
+    {{> message-center this}}
+    {{> page-partials/cap-header}}
 
- {{> message-center this}}
+    <div class="row">
+        {{> page-partials/cap-validate-alert}}
+        <div class="col col-md-8">
 
+            <!-- paste markup here-->
+            <hr class="p-2" >
+            <h5>Tumor Site</h5>
+            <select id="box1" multiple class='form-control selectpicker form-control-sm col-sm-6'>
+                    <optgroup label="Skull">
+                        <option>Frontal bone</option>
+                        <option>Parietal bone</option>
+                        <option>Temporal bone</option>
+                        <option>Occipital bone</option>
+                        <option>Sphenoid bone</option>
+                        <option>Ethmoid bone</option>
+                    </optgroup>
+                    <option>Dura, falx </option>
+                    <option>Dura, tentorium </option>
+                    <option>Dura, calvarial </option>
+                    <option>Leptomeninges </option>
+                    <optgroup label="Brain">
+                        <option>Cerebral lobe, Frontal</option>
+                        <option>Cerebral lobe, Parietal</option>
+                        <option>Cerebral lobe, Occipital</option>
+                        <option>Cerebral lobe, Temporal</option>
+                        <option>Basal ganglia</option>
+                        <option>Thalamus</option>
+                        <option>Hypothalamus</option>
+                        <option>Pineal</option>
+                        <option>Cerebellum </option>
+                        <option>Cerebellopontine angle</option>
+                    </optgroup>
+                    <option>Sellar/suprasellar/pituitary</option>
+                    <option>Cranial nerve </option>
+                    <option>Ventricle, lateral</option>
+                    <option>Ventricle, 3rd</option>
+                    <option>Ventricle, 4th</option>
+                    <option>Brain stem, midbrain</option>
+                    <option>Brain stem, pons</option>
+                    <option>Brain stem, medulla</option>
+                    <option>Spine (vertebral column)</option>
+                    <option>Spinal Cord</option>
+                    <option>Spinal nerve root(s) </option>
+                    <option>Peripheral nerve </option>
+                    <option>Ganglion </option>
+                    <option>Other</option>
+                    <option>Not specified</option>
+                </select>
+            </select>
 
-		{{> page-partials/cap-header}}
-
-	<div class="row">
-		<div class="col col-md-8">
-	<h5>Tumor Site (select all that apply) </h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box1" multiple >
-	<option>Skull </option>
-	<option>Dura </option>
-	<option>Leptomeninges </option>
-	<optgroup label="Brain"></option>
-	<option>Cerebral lobe, Frontal</option>
-	<option>Cerebral lobe, Parietal</option>
-	<option>Cerebral lobe, Occipital</option>
-	<option>Cerebral lobe, Temporal</option>
-	<option>Basal ganglia</option>
-	<option>Thalamus</option>
-	<option>Hypothalamus</option>
-	<option>Pineal</option>
-	<option>Cerebellum </option>
-	<option>Cerebellopontine angle</option>
-	</optgroup>
-	<option>Sellar/suprasellar/pituitary</option>
-	<option>Cranial nerve </option>
-	<option>Ventricle, lateral</option>
-	<option>Ventricle, 3rd</option>
-	<option>Ventricle, 4th</option>
-	<option>Brain stem</option>
-	<option>Spine (vertebral column)</option>
-	<option>Spinal Cord</option>
-	<option>Spinal nerve root(s) </option>
-	<option>Peripheral nerve </option>
-	<option>Ganglion </option>
-	<option>Other:</option>
-	<option>Not specified</option>
-	</select>
-	<input type="text" class="form-control form-control-sm "  id="box1_2" style="display:none" placeholder="Enter other site">
-
-<hr class="p-2">
-
-	<h5>Laterality</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box2">
-	<option selected>Not specified</option>
-	<option>Right</option>
-	<option>Left</option>
-	<option>Midline</option>
-	<option>Bilateral</option>
-	<option>Not applicable</option>
-	</select>
-
-<hr class="p-2">
-
-	<h5>Procedure (Note B)</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box3">
-	<option selected> Not Specified </option>
-	<option>Open biopsy</option>
-	<option>Resection</option>
-	<option>Stereotactic biopsy</option>
-	<option>Other:</option>
-	</select>
-	<input type="text" class="form-control form-control-sm "  id="box3_2" style="display:none" placeholder="Enter Procedure">
-
-<hr class="p-2">
-
-	<h5>Histologic Type (WHO classification of tumors of the central nervous system) (Note C)</h5><br>
-	<input type="text" class="form-control form-control-sm "  id="box4" >
-
-<hr class="p-2">
-
-	<h5>Histologic Grade (WHO histologic grade) (Note D)</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box5">
-	<option selected>Not Applicable</option>
-	<option>WHO Grade I</option>
-	<option>WHO Grade II</option>
-	<option>WHO Grade III</option>
-	<option>WHO Grade IV</option>
-	<option>Cannot be determined</option>
-	</select>
-
-<hr class="p-2">
-
-	<h5>+ Specimen Handling (select all that apply) (Note F)</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box6" multiple>
-	<option selected>Squash/smear/touch preparation</option>
-	<option selected>Frozen section</option>
-	<option selected>Unfrozen, formalin-fixed for permanent paraffin sections</option>
-	<option>Tissue for electron microscopy</option>
-	<option>Frozen tissue</option>
-	<option>Tissue for karyotype</option>
-	<option>Tissue for cyto-molecular studies</option>
-	<option>Not specified</option>
-	</select>
-
-<hr class="p-2">
-
-	<h5> + Margins (malignant peripheral nerve sheath tumor only) (Note G)</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box7">
-	<option selected>Not Applicable</option>
-	<option>Cannot be assessed</option>
-	<option>Margins not involved by tumor</option>
-	<option>Margins involved by tumor</option>
-	</select>
-	<input type="text" class="form-control form-control-sm "  id="box7_2" style="display:none" placeholder="Dist to margin (cm)" >
-	<input type="text" class="form-control form-control-sm "  id="box7_3" style="display:none" placeholder="Closest margin designation?" >
-	<input type="text" class="form-control form-control-sm "  id="box7_4" style="display:none" placeholder="Which margin involved by tumor?" >
-
-<hr class="p-2">
-
-	<h5> + Ancillary Studies, if applicable (select all that apply) (Note H)</h5><br>
-	Designated block for future studies:<br>
-	<input type="text" class="form-control form-control-sm "  id="box8"  placeholder="Not applicable">
-
-<hr class="p-2">
-
-	<h5>+ Special Stains (select all that apply)</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box9" multiple>
-	<option selected>None performed</option>
-	<option>GMS</option>
-	<option>AFB</option>
-	<option>Gram</option>
-	<option>EVG</option>
-	<option>PAS-d</option>
-	<option>Reticulin</option>
-	</select>
-
-<hr class="p-2">
-
-	<h5>+ Immunohistochemistry: </h5><br>
-            <input type="text" class="form-control form-control-sm "  id="box10"  placeholder="None performed">
-
-<hr class="p-2">
-
-	<h5>+ Electron Microscopy </h5><br>
-    <input type="text" class="form-control form-control-sm "  id="box11"  placeholder="None performed">
-
-<hr class="p-2">
-
-	<h5>+ Molecular Genetic Studies </h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box12" multiple >
-	<option selected>None performed</option>
-	<option value="Array CGH pending; see addendum">array CGH</option>
-	<option value="Solid tumor mutation panel pending; see addendum">NGS mutation panel</option>
-	<option>Karyotype</option>
-	<option>1p/19q FISH</option>
-	<option>BRAF V600E </option>
-	<option>NMYC amplification </option>
-	<option>IDH1/2 mutation </option>
-	<option>MGMT status </option>
-	</select>
-
-<hr class="p-2">
-
-	<h5>The following sections will be appended only if applicable</h5><br>
-	<h5>+ Preresection Treatment (select all that apply) (Note K)</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box13" multiple >
-	<option selected>Unknown</option>
-	<option>Chemotherapy</option>
-	<option>Radiation therapy</option>
-	<option>Corticosteroids</option>
-	<option>Embolization</option>
-	<option>Thermal ablastion</option>
-	<option>Therapy performed, type not specified</option>
-	</select>
-
-<hr class="p-2">
-
-	<h5>+ Treatment Effect (Note K)</h5><br>
-	<select class="form-control selectpicker form-control-sm "  id="box14" >
-	<option selected>Not identified</option>
-	<option>Present</option>
-	<option>Cannot be determined</option>
-	</select>
-	<input type="text" class="form-control form-control-sm "  id="box14_2" style="display:none" placeholder='Enter % necrosis seen' >
-
-            <!-- close column -->
-			</div>
-			{{> page-partials/cap-footer}}
-	<!-- close row -->
-		</div>
-		{{> page-partials/history-module}}
-	<!-- close container -->
-	</div>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;' placeholder='Specify Other'>
 
 
-			<!--
-			"specificScripts":
-				[
-					"/js/cap/neuro-scripts.js",
-				]
-		 -->
+
+
+
+            <hr class="p-2" >
+            <h5>Laterality</h5>
+            <select id="box2" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Right</option>
+                <option>Left</option>
+                <option>Midline</option>
+                <option>Bilateral</option>
+                <option>Not specified</option>
+                <option>Not applicable</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Procedure</h5>
+            <select id="box3" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Open biopsy</option>
+                <option>Resection</option>
+                <option>Stereotactic biopsy</option>
+                <option>Other</option>
+                <option>Not specified</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box3_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Histologic Type</h5>
+            <input type="text" class="form-control form-control-sm col-sm-10" id="box4" placeholder="Start typing then choose">
+
+
+
+
+            <hr class="p-2" >
+            <h5>Histologic Grade</h5>
+            <select id="box5" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>WHO grade I</option>
+                <option>WHO grade II</option>
+                <option>WHO grade III</option>
+                <option>WHO grade IV</option>
+                <option>WHO grade not assigned</option>
+                <option>Not applicable</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>+ Specimen Handling</h5>
+            <select multiple id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Squash/smear/touch preparation</option>
+                <option>Frozen section</option>
+                <option>Tissue for electron microscopy</option>
+                <option>Tissue for cytogenetics</option>
+                <option>Tissue for molecular testing</option>
+                <option>Frozen tissue</option>
+                <option>Unfrozen, formalin-fixed for permanent paraffin sections</option>
+                <option>Other</option>
+                <option>Not specified</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box6_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>+ Margins (malignant peripheral nerve sheath tumor only)</h5>
+
+            <select id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option selected>Not Applicable</option>
+                <option>Cannot be assessed</option>
+                <option>Margins not involved by tumor</option>
+                <option>Margins involved by tumor</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box7_1' style='display:none;' placeholder='Specify closest margin'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box7_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box7_3' style='display:none;' placeholder='Specify involved margin'>
+
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>+ Preresection Treatment</h5>
+            <select multiple id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option selected>No therapy</option>
+                <option>Chemotherapy</option>
+                <option>Radiation therapy</option>
+                <option>Corticosteroids</option>
+                <option>Embolization</option>
+                <option>Therapy performed, type not specified</option>
+                <option>Unknown</option>
+            </select>
+
+
+
+
+            <div class="treated" style="display: none;">
+            <hr class="p-2" >
+            <h5>+ Treatment Effect</h5>
+            <select id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present</option>
+                <option>Cannot be determined</option>
+                <option selected>Not applicable</option>
+            </select>
+
+            <input type="number" class="form-control form-control-sm mt-3 col-sm-6" id='box14_2' style='display:none;' placeholder='Specify % tumor necrosis'>
+            </div>
+
+
+
+            <hr class="p-2" >
+            <h5>+ Ancillary Studies</h5>
+
+            <div class="ml-3">
+
+                <h6 class="mt-2">Designated block for future studies</h6>
+                <input type="text" class="form-control form-control-sm col-sm-6" id="box8" placeholder="Not applicable">
+
+
+
+
+
+
+                <h6 class="mt-2">Special Stains</h6>
+                <select multiple id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Reticulin</option>
+                    <option>GMS</option>
+                    <option>Gram</option>
+                    <option>PAS</option>
+                    <option>PAS-d</option>
+                    <option>EVG</option>
+                    <option selected>None performed</option>
+                </select>
+
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box9_2' style='display:none;' placeholder='Specify Other stain'>
+
+
+
+
+
+                <h6 class="mt-2">+ Immunohistochemistry</h6>
+                <input type="text" class="form-control form-control-sm col-sm-6" id="box10" placeholder="Not applicable">
+
+
+
+
+                <h6 class="mt-2">+ Electron Microscopy</h6>
+                <select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Not performed</option>
+                    <option>Performed</option>
+                    <option selected>Not applicable</option>
+                </select>
+
+
+
+
+
+                <hr class="p-2" >
+                <h5>+ Molecular Genetic Studies</h5>
+                <select multiple id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option selected>None performed</option>
+                    <option>Karyotype performed</option>
+                    <option>aCGH performed</option>
+                    <option>1p/19q FISH performed</option>
+                    <option>BRAF FISH performed</option>
+                    <option>NGS molecular panel performed</option>
+                    <option>Other</option>
+                </select>
+
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box12_2' style='display:none;' placeholder='Specify Other test'>
+
+
+
+
+            </div>
+
+
+            <!-- end markup-->
+
+            <!-- close markup -->
+        </div>
+        {{> page-partials/cap-footer}}
+        <!-- close row -->
+    </div>
+    {{> page-partials/history-module}}
+    <!-- close container -->
+</div>
