@@ -12,6 +12,11 @@ router.get('/cap/checklist', (req, res) => {
 })
 
 //pediatric, some crossover
+router.get('/cap/appy-net', (req, res) => {
+    controller.userWall(req, res, './page-views/cap/appy-net.hbs', [
+    "/js/cap/appy-net-scripts.js",
+]);
+});
 
 router.get('/cap/bone-t-rx', (req, res) => {
 	controller.userWall(req, res, './page-views/cap/bone-t-rx.hbs', [
