@@ -3,121 +3,212 @@ $(window).on('load', function() {
 //                        Autocomplete                         //
 // *************************************************************/
 
-    // bone list
-    $("input#box1").autocomplete({
-        source: ['Skull,Nasal', 'Skull,Lacrimal', 'Skull,Inferior Nasal Concha', 'Skull,Maxiallary',  'Skull,Zygomatic',  'Skull,Temporal',  'Skull,Palatine',  'Skull,Parietal',  'Skull,Malleus',  'Skull,Incus',  'Skull,Stapes',  'Skull,Frontal',  'Skull,Ethmoid',  'Skull,Vomer',  'Skull,Sphenoid',  'Skull,Mandible',  'Skull,Occipital',  'Rib 1',  'Rib 2',  'Rib 3',  'Rib 4',  'Rib 5',  'Rib 6',  'Rib 7',  'Rib 8 ',  'Rib 9 ',  'Rib 10 ',  'Rib 11 ',  'Rib 12 ',  'Scapula',  'Clavicle',  'Humerus',  'Radius',  'Ulna',  'Scaphoid',  'Lunate',  'Traquetrum',  'Pisiform',  'Hamate',  'Capitate',  'Trapezoid',  'Trapezium',  'Metacarpal 1',  'Proximal Phalange 1',  'Distal Phalange 1',  'Metacarpal 2',  'Proximal Phalange 2',  'Middle Phalange 2',  'Distal Phalange 2',  'Metacarpal 3',  'Proximal Phalange 3',  'Middle Phalange 3',  'Distal Phalange 3',  'Metacarpal 4',  'Proximal Phalange 4',  'Middle Phalange 4',  'Distal Phalange 4',  'Metacarpal 5',  'Proximal Phalange 5',  'Middle Phalange 5',  'Distal Phalange 5',  'Hip (Ilium, Ischium, Pubis)',  'Femur',  'Patella',  'Tibia',  'Fibula',  'Talus',  'Calcaneus',  'Navicular',  'Medial Cuneiform',  'Middle Cuneiform',  'Lateral Cuneiform',  'Cuboid',  'Metacarpal 1',  'Proximal Phalange 1',  'Distal Phalange 1',  'Metacarpal 2',  'Proximal Phalange 2',  'Middle Phalange 2',  'Distal Phalange 2',  'Metacarpal 3',  'Proximal Phalange 3',  'Middle Phalange 3',  'Distal Phalange 3',  'Metacarpal 4',  'Proximal Phalange 4',  'Middle Phalange 4',  'Distal Phalange 4',  'Metacarpal 5',  'Proximal Phalange 5',  'Middle Phalange 5',  'Distal Phalange 5',  'Hyoid',  'Sternum',  'C1 Vertebra',  'C2 Vertebra',  'C3 Vertebra',  'C4 Vertebra',  'C5 Vertebra',  'C6 Vertebra',  'C7 Vertebra',  'T1 Vertebra',  'T2 Vertebra',  'T3 Vertebra',  'T4 Vertebra',  'T5 Vertebra',  'T6 Vertebra',  'T7 Vertebra',  'T8 Vertebra',  'T9 Vertebra',  'T10 Vertebra',  'T11 Vertebra',  'T12 Vertebra',  'L1 Vertebra',  'L2 Vertebra',  'L3 Vertebra',  'L4 Vertebra',  'L5 Vertebra',  'Sacrum',  'Coccyx']
-    });
+
 // WHO tumor list
     $("input#box5").autocomplete({
         source: ["Chondrosarcoma, Central, primary, and secondary", "Chondrosarcoma, Peripheral", "Chondrosarcoma, Dedifferentiated", "Chondrosarcoma, Mesenchymal", "Chondrosarcoma, Clear cell", "Osteosarcoma, Conventional", "Osteosarcoma, Chondroblastic", "Osteosarcoma, Fibroblastic", "Osteosarcoma, Osteoblastic", "Osteosarcoma, Telangiectatic", "Osteosarcoma, Small cell", "Osteosarcoma, Low grade central", "Osteosarcoma, Secondary", "Osteosarcoma, Parosteal", "Osteosarcoma, Periosteal", "Osteosarcoma, High grade surface", "Fibrosarcoma", "Malignant fibrous histiocytoma (undifferentiated pleomorphic sarcoma)", "Ewing sarcoma/PNET", "Plasma cell myeloma", "Malignant lymphoma, NOS", "Malignancy in giant cell tumor", "Chordoma", "Angiosarcoma", "Leiomyosarcoma", "Liposarcoma", "Adamantinoma", "Metastatic malignancy", "Sarcoma, NOS", "Malignant neoplasm"]
     });
 
-    $(function() {
-        var availableTags = ["ACTH","Adenovirus","ALK-1","A1-AT","AFP","Amyloid-A","APP","B72.3","INI1","BCL2","BCL6","BER-Ep","Beta-catenin","Ber-EP4","BKVirus","C4d","CA125","Calcitonin","Calponin","Calretinin","CD1a","CD2","CD3","CD4","CD5","CD7","CD8","CD10","CD15","CD20","CD21","CD23","CD25","CD30","CD34","CD43","CD44","CD45","CD45RO","CD56","CD57","CD61","CD68","CD71","CD79a","CD99","CD117","CD123","CD138","CDX2","CEA-mono","CEA-poly","Chromogranin","CMV","ColIV","CyclinD1","CDK4","CK34BE12","CK8","CK5/6","CK7","CKAE1/3","CKCam5.2","CK17","CK19","CK20","CKMAK-6","D2-40","DOG-1","Desmin","E-cad","EBV-LMP","EBV-ISH","EMA","ER","FactorXIIIa","FSH","Galectin-3","Gastrin","GCDFP","GFAP","Glucagon","GLUT-1","Glut-Synth","GlycophorinA","Glypican-3","GH","H.P.","HBME-1","HBcore","HBsurface","HCG","HepPar1","HER2/Neu(IHC)","HSVI&II","Actin,muscle","HHV-8","HMB45","HPV-HR(ISH)","HMB45","HPL","IDH-1","IgA","IgG","IgM","Inhibin","Insulin","JCVirus","Kappa(IHC)","Lambda(IHC)","Kappa(ISH)","Lambda(ISH)","Ki-67(MIB1)","LH","Lysozyme","Mast-celltrypt","MelanA","MelanomaAA","Mammaglobin","MAP-2","MITF","MLH-1","MOC-31","MSH-2","MSH-6","MUM-1","MPO","Myogenin","Neu-N","NF","NSE","OCT-2","OCT3/4","p16","p504s","p53","p63","Parainfluenza","ParvoB19","PAX-5","PAX-8","PDGF-b","PE10","Perforin","pHH3","PLAP","PMS-2","PR","Prolactin","PTH","Prostate triple stain","PSA","PSAP","RCC","RSV","S100","SALL4","SMA","SMMHC","Smoothelin","Somatostatin","SurfactantA","SurfactantB","Synaptophysin","Tau","TdT","Thyroglobulin","Toxoplasma","Transthyretin","Trypsin","TSH","TTF-1","Tubulin","Tyrosinase","Ubiquitin","Uroplakin","Varicella","Villin","WT-1"];
+//IHCs
+    $(function () {
+        var availableTags = ["ACTH", "Adenovirus", "ALK-1", "A1-AT", "AFP",
+            "Amyloid-A", "APP", "B72.3", "INI1", "BCL2", "BCL6", "BER-Ep",
+            "Beta-catenin", "Ber-EP4", "BKVirus", "C4d", "CA125", "Calcitonin",
+            "Calponin", "Calretinin", "CD1a", "CD2", "CD3", "CD4", "CD5", "CD7",
+            "CD8", "CD10", "CD15", "CD20", "CD21", "CD23", "CD25", "CD30",
+            "CD34", "CD43", "CD44", "CD45", "CD45RO", "CD56", "CD57", "CD61",
+            "CD68", "CD71", "CD79a", "CD99", "CD117", "CD123", "CD138", "CDX2",
+            "CEA-mono", "CEA-poly", "Chromogranin", "CMV", "ColIV", "CyclinD1",
+            "CDK4", "CK34BE12", "CK8", "CK5/6", "CK7", "CKAE1/3", "CKCam5.2",
+            "CK17", "CK19", "CK20", "CKMAK-6", "D2-40", "DOG-1", "Desmin",
+            "E-cad", "EBV-LMP", "EBV-ISH", "EMA", "ER", "FactorXIIIa", "FSH",
+            "Galectin-3", "Gastrin", "GCDFP", "GFAP", "Glucagon", "GLUT-1",
+            "Glut-Synth", "GlycophorinA", "Glypican-3", "GH", "H.P.", "HBME-1",
+            "HBcore", "HBsurface", "HCG", "HepPar1", "HER2/Neu(IHC)", "HSVI&II",
+            "Actin,muscle", "HHV-8", "HMB45", "HPV-HR(ISH)", "HMB45", "HPL",
+            "IDH-1", "IgA", "IgG", "IgM", "Inhibin", "Insulin", "JCVirus",
+            "Kappa(IHC)", "Lambda(IHC)", "Kappa(ISH)", "Lambda(ISH)",
+            "Ki-67(MIB1)", "LH", "Lysozyme", "Mast-celltrypt", "MelanA",
+            "MelanomaAA", "Mammaglobin", "MAP-2", "MITF", "MLH-1", "MOC-31",
+            "MSH-2", "MSH-6", "MUM-1", "MPO", "Myogenin", "Neu-N", "NF", "NSE",
+            "OCT-2", "OCT3/4", "p16", "p504s", "p53", "p63", "p57", "Parainfluenza",
+            "ParvoB19", "PAX-5", "PAX-8", "PDGF-b", "PE10", "Perforin", "pHH3",
+            "PLAP", "PMS-2", "PR", "Prolactin", "PTH", "Prostate triple stain",
+            "PSA", "PSAP", "RCC", "RSV", "S100", "SALL4", "SMA", "SMMHC",
+            "Smoothelin", "Somatostatin", "SurfactantA", "SurfactantB",
+            "Synaptophysin", "Tau", "TdT", "Thyroglobulin", "Toxoplasma",
+            "Transthyretin", "Trypsin", "TSH", "TTF-1", "Tubulin", "Tyrosinase",
+            "Ubiquitin", "Uroplakin", "Varicella", "Villin", "WT-1", "HR HPV in-situ", 
+            "FISH", "NGS", "Karyotype", "array CGH"
+        ];
 
-        function split( val ) {
-            return val.split( /,\s*/ );
+        function split(val) {
+            return val.split(/,\s*/);
         }
 
-        function extractLast( term ) {
-            return split( term ).pop();
+        function extractLast(term) {
+            return split(term).pop();
         }
-
-        $("input#box11").autocomplete({
+        $("input#box20").autocomplete({
             minLength: 1,
-            source: function( request, response ) {
+            source: function (request, response) {
                 // delegate back to autocomplete, but extract the last term
-                response( $.ui.autocomplete.filter(
-                    availableTags, extractLast( request.term ) ) );
+                response($.ui.autocomplete.filter(
+                    availableTags, extractLast(request.term)));
             },
-            focus: function() {
+            focus: function () {
                 // prevent value inserted on focus
                 return false;
             },
-            select: function( event, ui ) {
-                var terms = split( this.value );
+            select: function (event, ui) {
+                var terms = split(this.value);
                 // remove the current input
                 terms.pop();
                 // add the selected item
-                terms.push( ui.item.value );
+                terms.push(ui.item.value);
                 // add placeholder to get the comma-and-space at the end
-                terms.push( "" );
-                this.value = terms.join( ", " );
+                terms.push("");
+                this.value = terms.join(", ");
                 return false;
             }
         });
     });
 
+// populate pT select box
+    var jsonData = {
+        "appendicular" : {
+            "pTx" : "pTX: Primary tumor cannot be assessed",
+            "pT0" : "pT0: No evidence of primary tumor",
+            "pT1": "pT1: Tumor ≤8 cm in greatest dimension",
+            "pT2": "pT2: Tumor > 8 cm in greatest dimension",
+            "pT3": "pT3: Discontinuous tumors in the primary bone site"
+            },
+        "spine" : {
+            "pTx" : "pTX: Primary tumor cannot be assessed",
+            "pT0" : "pT0: No evidence of primary tumor",
+            "pT1": "pT1: Tumor confined to one vertebral segment or two adjacent vertebral segments",
+            "pT2": "pT2: Tumor confined to three adjacent vertebral segments",
+            "pT3": "pT3: Tumor confined to four or more adjacent vertebral segments, or any nonadjacent vertebral segments",
+            "pT4a": "pT4a: Extension into the spinal canal",
+            "pT4b": "pT4b: Evidence of gross vascular invasion or tumor thrombus in the great vessels"
+            },
+        "pelvis" : {
+            "pTx" : "pTX: Primary tumor cannot be assessed",
+            "pT0" : "pT0: No evidence of primary tumor",
+            "pT1a": "pT1a: Tumor ≤8 cm in greatest dimension",
+            "pT1b": "pT1b: Tumor >8 cm in greatest dimension",
+            "pT2a": "pT2a: Tumor ≤8 cm in greatest dimens",
+            "pT2b": "pT2b: Tumor >8 cm in greatest dimension",
+            "pT3a": "Tumor ≤8 cm in greatest dimensionn",
+            "pT3b": "Tumor >8 cm in greatest dimens",
+            "pT4a": "Tumor involves sacroiliac joint and extends medial to the sacral neurofo",
+            "pT4b": "Tumor encasement of external iliac vessels or presence of gross tumor thrombus in major pelvic vessels"
+            },
+        "none" : {
+            "pTx" : "pTX: Primary tumor cannot be assessed"
+            }
+    }
+
+    $('#box12').find('option').remove();
+    $.each(jsonData['appendicular'], function(val, text) {
+        $('#box12').append( $('<option></option>').val(val).html(text) )
+    });
 
 //*************************************************************//
 //                        Pop-ups                              //
 // *************************************************************/
 
-    $("#box12_1").change(function() {
-        $(".nodes").toggle();
-    });
-
-
-
-    $('#box2').change(function () {
-        var sel = $('#box2').val();
-        if (sel == 'Other:') {
-            $('#box2_2').show();
-        } else {
-            $('#box2_2').hide();
+    $('#box1, #box1_3').on("change", function(){
+        var sel = $('#box1').val();
+        console.log("sel: "+sel);
+        if (sel.indexOf("Other") > -1) {
+            $('#box1_2').show();
+            $('#box1_3').show();
         }
-    });
-
-    $('#box7').change(function () {
-        var sel = $('#box7').val();
-        if (sel == 'Present') {
-            $('#box7_2').show();
-        } else {
-            $('#box7_2').hide();
-        }
-    });
-
-    $('#box21').change(function(){
-        var sel = $('#box21').val();
-        if (sel == 'Margins uninvolved by sarcoma') {
-            $('#box21_1').show();
-            $('#box21_2').show()}
         else {
-            $('#box21_1').hide();
-            $('#box21_2').hide();
+            $('#box1_2').hide();
+            $('#box1_3').hide();
         }
-        if (sel == 'Margins involved by sarcoma') {
-            $('#box21_3').show();}
-        else {$('#box21_3').hide();}
-    });
-
-
-    $('#box13').change(function () {
-        var sel = $('#box13').val();
-        if (sel == 'pM1b') {
-            $('#box13_2').show();
+        var site = $("#box1").find(":selected").data("proc");
+        console.log("site:"+site);
+        if (site == 'resection'){
+            $(".resection").show();
         } else {
-            $('#box13_2').hide();
+            var box_1_3 = $("#box1_3").val();
+            if ( (site.indexOf('other') > -1) && (box_1_3 == 'resection') ) {
+                $(".resection").show();
+            } else {
+                $(".resection").hide();
+            }
         }
     });
 
-    $('#box16').change(function () {
-        var sel = $('#box16').val();
-        if (sel == 'Translocation detected') {
-            $('#box16_2').show();
-        } else {
-            $('#box16_2').hide();
+    $('#box2').on("change", function(){
+        var selection = $('#box2').find(":selected").data("site");
+        $('#box12').find('option').remove();
+        $.each(jsonData[selection], function(val, text) {
+            $('#box12').append( $('<option></option>').val(val).html(text) )
+        });
+        var sel = $('#box2').val();
+        if (sel.indexOf("specify") > -1) {
+            $('#box2_2').show();}
+        else {
+            $('#box2_2').hide();}
+
+    });
+
+
+    $('#box7').on("change", function(){
+        var sel = $('#box7').val();
+        if (sel.indexOf("Present") > -1) {
+
+            $('#box7_2').show();}
+        else {
+            $('#box7_2').hide();}
+    });
+
+    $('#box10').on("change", function(){
+        var sela = $('#box10').val();
+        if (sela.indexOf('Uninvolved') > -1){
+            $('#box10_1').show();
+            $('#box10_2').show();}
+        else {$('#box10_1').hide();
+            $('#box10_2').hide();}
+        if (sela.indexOf("Involved") > -1) {
+            $('#box10_3').show();}
+        else {$('#box10_3').hide();}
+    });
+
+    $("#box15").on("change", function(){
+        if ($(this).is(":checked")){
+            $(".lnchk").show();
+        }
+        else{
+            $(".lnchk").hide();
         }
     });
 
-    $('#box20').change(function () {
-        var sel = $('#box20').val();
-        if (sel == 'Present') {
-            $('#box20_2').show();
+    $("#box14").on("change", function(){
+        var sel = $("#box14").val();
+        if (sel != "pMx"){
+            $("#box14_2").show();
         } else {
-            $('#box20_2').hide();
+            $("#box14_2").hide();
         }
     });
+
+
+
+    $('#box24').on("change", function(){
+        var sel = $('#box24').val();
+        if (sel.indexOf("Present") > -1) {
+
+            $('#box24_2').show();}
+        else {
+            $('#box24_2').hide();}
+    });
+
+
 
 
 //************************************************************//
@@ -125,118 +216,153 @@ $(window).on('load', function() {
 // *************************************************************/
     $('.writeReport').on('click', function () {
 
-        $('input[type="text"]').each(function () {
-            if ($(this).val().length < 1) {
-                $(this).val($(this).attr('placeholder'));
-            }
-            if ($(this).val().length < 1) {
-                $(this).addClass('empty')
+    // ***************** INPUT VALIDATION ********************//
+        $('select[multiple]:visible').each(function () {
+            // Check if at least one selection is made
+            if ($(this).val().length > 0) {
+                $(this).removeClass('empty');
+            } else {
+                $(this).addClass('empty');
+                $('#cap-valid').show();
             }
         });
 
-        var captext = "Bone Cancer (Resection) Synoptic\nAJCC 2018 cancer staging version\n\n";
-// Checklist variables
-        var box_0 = $("#box0").val();
+        $('input[type="text"]:visible').each(function () {
+            // Check if at least one selection is made
+            if ($.trim($(this).val()).length > 0) {
+                $(this).removeClass('empty');
+            } else {
+                    $(this).addClass('empty');
+                    $('#cap-valid').show();
+                }
+        });
+
+        // ***************** END VALIDATION ********************//
+
+        var site = $("#box1").find(":selected").data("proc");
+
+
+        var captext = "Bone Tumor Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
+
         var box_1 = $("#box1").val();
-        captext += "Specimen:\n- Side: "+box_0+"\n- Site: "+box_1+"\n";
+        var box_1_2 = $("#box1_2").val();
+        var box_1_3 = $("#box1_3").val(); // biopsy vs resection on other
+        if (box_1.indexOf("Other") > -1) {
+            captext += "\nProcedure:\n- "  + box_1_2+ "\n";}
+        else {captext += "\nProcedure:\n- "  + box_1+ "\n";}
+
 
         var box_2 = $("#box2").val();
         var box_2_2 = $("#box2_2").val();
-        if (box_2 == 'Other:'){
-            captext += "\nProcedure:\n- "+box_2_2+"\n";}
-        else {captext += "\nProcedure:\n- "+box_2+"\n";}
+        if (box_2.indexOf("specify") > -1) {
+            captext += "\nTumor Site:\n- "  + box_2.replace(/, specify/, ": "+box_2_2)+ "\n";}
+        else {captext += "\nTumor Site:\n- "  + box_2+ "\n";}
 
         var box_3 = $("#box3").val();
-        captext += "\nTumor Site:\n- "+box_3.join("\n- ")+"\n";
-        var box_4 = $("#box4").val();
-        captext += "\nGreatest dimension of main tumor mass (cm):\n- "+box_4+"\n";
+        captext += "\nTumor Location and Extent:\n- "  + box_3.join('\n- ') + "\n";
+
+// resection ------------------------------------------------------------//
+        if ( (site.indexOf('other') > -1) && (box_1_3 == 'resection') || (site.indexOf('resection') > -1) ){
+            var box_4 = $("#box4").val();
+            captext += "\nTumor Size:\n- "  + box_4 + "cm\n";
+        }
+// end resection ------------------------------------------------------------//
+
         var box_5 = $("#box5").val();
-        captext += "\nHistologic Type:\n- "+box_5+"\n";
+        captext += "\nHistologic Type:\n- "  + box_5 + "\n";
+
         var box_6 = $("#box6").val();
-        captext += "\n+ Mitotic Rate:\n- "+box_6+"/10 high-power fields\n";
+        captext += "\nMitotic Rate:\n- "  + box_6 + " per 10 hpf\n";
 
         var box_7 = $("#box7").val();
         var box_7_2 = $("#box7_2").val();
-        if (box_7 == 'Present'){
-            captext += "\nNecrosis:\n- "+box_7+", "+box_7_2+"% necrosis\n";}
-        else {
-            captext += "\nNecrosis:\n- "+box_7+"\n";}
+        if (box_7.indexOf("Present") > -1) {
+            captext += "\nNecrosis:\n- Present, "  + box_7_2+ "5 necrosis\n";}
+        else {captext += "\nNecrosis:\n- "  + box_7+ "\n";}
+
 
         var box_8 = $("#box8").val();
-        captext += "\nHistologic Grade:\n- "+box_8+"\n";
-
-        var box_21 = $("#box21").val();
-        var box_21_1 = $("#box21_1").val();
-        var box_21_2 = $("#box21_2").val();
-        var box_21_3 = $("#box21_3").val();
-        if (box_21 == 'Margins uninvolved by sarcoma') {
-            captext += "\nMargins uninvolved by sarcoma:\n- Nearest margin: "+box_21_1+"\n- Distance to this margin: "+box_21_2.replace(/cm/,'')+"cm\n";}
-        else if (box_21 == 'Margins involved by sarcoma'){
-            captext += "\nMargins involved by sarcoma:\n- Margin involved: "+box_21_3+"\n";}
-        else {captext += "\nMargins:\n- "+box_21+"\n";}
+        captext += "\nHistologic Grade:\n- "  + box_8+ "\n";
 
         var box_9 = $("#box9").val();
-        captext += "\n+ Lymph-Vascular Invasion:\n- "+box_9+"\n";
+        captext += "\n+ Lymphovascular Invasion:\n- "  + box_9+ "\n";
 
-        var box_10 = $("#box10").val();
-        var box_11 = $("#box11").val();
-        var box_12 = $("#box12").val();
-        var box_13 = $("#box13").val();
-        captext += '\nPathologic Staging (pTNM):\n- ';
-        if (box_10 != "Not applicable"){
-            captext += box_10.join("")+' ';}
-        if (box_13 =='pM1b'){
-            captext += box_11+" "+box_12+" "+box_13+'('+box_13_2+')'+"\n";}
-        else {captext += box_11+" "+box_12+" "+box_13+"\n";}
 
-        if ($("#box12_1").is(':checked')) {
-            var box12_2 = $("#box12_2").val();
-            var box12_3 = $("#box12_3").val();
-            captext += "\nLymph nodes examined: "+box12_2+"\nLymph nodes involved: "+box12_3+"\n";
-        }
+// resection ------------------------------------------------------------//
 
-        var box_14 = $("#box14").val();
-        if (box_14 !== "") {
-            captext += "\n+ Additional Pathologic Findings:\n- "+box_14+"\n";}
-        var box_15 = $("#box15").val();
-        if (box_15.length >0){
-            captext += "\nImmunohistochemistry:\n- "+box_15+"\n";}
+        if ( (site.indexOf('other') > -1) && (box_1_3 == 'resection') || (site.indexOf('resection') > -1) ) {
+            var box_10 = $("#box10").val();
+            var box_10_1 = $("#box10_1").val();
+            var box_10_2 = $("#box10_2").val();
+            var box_10_3 = $("#box10_3").val();
+            if (box_10.indexOf("Uninvolved") > -1) {
+                captext += "\nMargins:\n- " + box_10 + "\n- Nearest margin: " + box_10_1 + "\n- Distance to this margin: " + box_10_2.replace(/mm/, "") + "mm\n";
+            }
+            else if (box_10.indexOf("Involved") > -1) {
+                captext += "\nMargins:\n- " + box_10 + "\n- Margin involved: " + box_10_3 + "\n";
+            }
             else {
-            captext += "\nImmunohistochemistry:\n- None performed\n";
+                captext += "\nMargins:\n- " + box_10 + "\n";
+            }
+
+            var box_11 = $("#box11").val();
+            var box_12 = $("#box12").val();
+            var box_13 = $("#box13").val();
+            var box_14 = $("#box14").val();
+            var box_14_2 = $("#box14_2").val();
+            captext += '\nPathologic Staging (pTNM):\n- ';
+            if (box_11 != "Not applicable") {
+                if (box_14 != "pMx") {
+                    captext += box_11.join("") + " " + box_12 + " " + box_13 + " " + box_14 + " (metastatic site(s): " + box_14_2 + ")\n";
+                } else {
+                    captext += box_11.join("") + " " + box_12 + " " + box_13 + " " + box_14 + "\n";
+                }
+            } else {
+                if (box_14 != "pMx") {
+                    captext += box_12 + " " + box_13 + " " + box_14 + " (metastatic site(s): " + box_14_2 + ")\n";
+                } else {
+                    captext += box_12 + " " + box_13 + " " + box_14 + "\n";
+                }
+            }
+            if ($("#box15").is(':checked')) {
+                var box_16 = $("#box16").val();
+                var box_17 = $("#box17").val();
+                captext += "\nLymph nodes:\n\tLymph Nodes Examined: " + box_16 + "\n\tLymph nodes involved: " + box_17 + "\n";
+            } else {
+                captext += "\nLymph nodes: None submitted\n";
+            }
         }
+// end resection ------------------------------------------------------------//
 
-        var box_16 = $("#box16").val();
-        if (box_16 != "Not performed") {
-            if (box_16 == 'Translocation detected'){
-                captext += "\nCytogenetics:\n- "+box_16+": "+box_16_2+"\n";}
-            else {captext += "\nCytogenetics:\n- "+box_16+"\n";}
+        captext += "\n-- ANCILLARY STUDIES --\n";
 
-        }
+        var box_20 = $("#box20").val();
+        captext += "\nImmunohistochemistry:\n- "  + box_20 + "\n";
 
-        var box_17 = $("#box17").val();
-        if (box_17 != '') {
-            captext += "\nMolecular Pathology:\n- "+box_17+"\n";}
-            else {captext += "\nMolecular Pathology:\n- Not performed\n"};
+        var box_21 = $("#box21").val();
+        captext += "\nCytogenetics:\n- "  + box_21 + "\n";
 
-        var box_18 = $("#box18").val();
-        if (box_18.length > 0) {
-        captext += "\nRadiographic Findings:\n- "+box_18+"\n";}
+        var box_22 = $("#box22").val();
+        captext += "\nMolecular genetics:\n- "  + box_22 + "\n";
 
-        var box_19 = $("#box19").val();
-        captext += "\nPreresection Treatment:\n- "+box_19.join("\n ")+"\n";
+        var box_23 = $("#box23").val();
+        captext += "\nPreresection Treatment:\n- "  + box_23.join('\n- ') + "\n";
 
-        var box_20 = $('#box20').val();
-        var box_20_2 = $('#box20_2').val();
-        if (box_20 == 'Present'){
-            captext += "\nTreatment Effect:\n- "+box_20+", "+box_20_2+"% necrosis\n";}
-        else {captext += "\nTreatment Effect:\n- "+box_20+"\n" ;}
-// assign the values from each text input
+        var box_24 = $("#box24").val();
+        var box_24_2 = $("#box24_2").val();
+        if (box_24.indexOf("Present") > -1) {
+            captext += "\nTreatment Effect:\n- Present, "  + box_24_2+ "% tumor necrosis\n";}
+        else {captext += "\nTreatment Effect:\n- "  + box_24+ "\n";}
+
+
+
 
 
         $('#outPut-1').val(captext);
 
-				dataObj.singleSection = $('#outPut-1').val();
-				makeCreatePdfBtn();
-
+        dataObj.singleSection = $('#outPut-1').val();
+        makeCreatePdfBtn();
     });
 });
+
+
