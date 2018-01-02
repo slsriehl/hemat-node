@@ -111,6 +111,13 @@ router.get('/cap/soft-t-rx', (req, res) => {
 });
 
 //adult only
+
+router.get('/cap/appy-t', (req, res) => {
+    controller.userWall(req, res, './page-views/cap/appy-t.hbs', [
+    "/js/cap/appy-t-scripts.js",
+]);
+});
+
 router.get('/cap/breast-dcis', (req, res) => {
     controller.userWall(req, res, './page-views/cap/breast-dcis.hbs', [
     "/js/cap/breast-dcis-scripts.js",

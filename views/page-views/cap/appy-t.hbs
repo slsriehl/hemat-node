@@ -1,0 +1,309 @@
+<div class="container-fluid">
+		<!-- Breadcrumbs -->
+		<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+						<a href="/">Home</a>
+				</li>
+				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+				<li class="breadcrumb-item active" id="bc-jump"><i class="fa fa-flask mr-2"></i>Appendix Carcinomas</li>
+		</ol>
+
+ {{> message-center this}}
+
+
+		{{> page-partials/cap-header}}
+
+   <div class="row">
+        {{> page-partials/cap-validate-alert}}
+        <div class="col col-md-8">
+	        <!-- paste markup here-->
+            <hr class="p-2" >
+            <h5>Procedure</h5>
+            <select id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Appendectomy</option>
+                <option>Appendectomy and right colectomy</option>
+                <option>Other</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>+ Tumor Site</h5>
+            <select multiple id="box2" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Proximal half of appendix</option>
+                <option>Base of appendix involved by tumor</option>
+                <option>Base of appendix uninvolved by tumor</option>
+                <option>Involvement of base of appendix cannot be assessed</option>
+                <option>Distal half of appendix</option>
+                <option>Diffusely involving appendix</option>
+                <option>Appendix, not otherwise specified</option>
+                <option>Other</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box2_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Tumor Size (cm)</h5>
+            <input type="number" class="form-control form-control-sm col-sm-6" id="box3" placeholder="">
+
+
+
+
+            <hr class="p-2" >
+            <h5>Histologic Type</h5>
+            <select id="box4" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Adenocarcinoma</option>
+                <option>Mucinous adenocarcinoma</option>
+                <option>Low-grade appendiceal mucinous neoplasm</option>
+                <option>High-grade appendiceal mucinous neoplasm</option>
+                <option>Signet-ring cell carcinoma</option>
+                <option>Goblet cell carcinoid</option>
+                <option>Mixed goblet cell carcinoid-adenocarcinoma (adenocarcinoma ex goblet cell carcinoid)</option>
+                <option>Large cell neuroendocrine carcinoma</option>
+                <option>Small cell neuroendocrine carcinoma</option>
+                <option>Neuroendocrine carcinoma (poorly differentiated)#</option>
+                <option>Mixed adenoneuroendocrine carcinoma</option>
+                <option>Medullary carcinoma</option>
+                <option>Adenosquamous carcinoma</option>
+                <option>Undifferentiated carcinoma</option>
+                <option>Other histologic type </option>
+                <option>Carcinoma, type cannot be determined</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box4_2' style='display:none;' placeholder='Specify Other histology'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Histologic Grade
+            <!-- Button trigger modal -->
+            <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_grading">A word about grading mucinous and non-mucinous tumors</button>
+
+            <!-- Histology help Modal -->
+            {{> page-modals/cap-helpers/appy-grading}}
+
+            </h5>
+            <select id="box5" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>G1: Well differentiated</option>
+                <option>G2: Moderately differentiated</option>
+                <option>G3: Poorly differentiated</option>
+                <option>Other</option>
+                <option>GX: Cannot be assessed</option>
+                <option>Not applicable</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box5_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Tumor Extension</h5>
+            <select multiple id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>No evidence of primary tumor</option>
+                <option>Tumor invades lamina propria or muscularis mucosa</option>
+                <option>Tumor invades submucosa</option>
+                <option>Tumor invades muscularis propria</option>
+                <option>Acellular mucin invades subserosa or mesoappendix but does not extend to the serosal surface</option>
+                <option>Tumor invades through the muscularis propria into the subserosa or mesoappendix but does not extend to the serosal surface</option>
+                <option>Acellular mucin invades the visceral peritoneum (serosa)</option>
+                <option>Tumor invades the visceral peritoneum (serosa)</option>
+                <option>Tumor directly invades adjacent organs</option>
+                <option>Cannot be assessed</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box6_2' style='display:none;' placeholder='Specify organs'>
+
+
+
+
+            <hr class="p-2" >
+            <h5>Margins</h5>
+
+            <div class="ml-3">
+
+                <h6>Proximal Margin</h6>
+                <select multiple id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Cannot be assessed</option>
+                    <option>Uninvolved by invasive carcinoma</option>
+                    <option>Involved by invasive carcinoma</option>
+                    <option>Involved by high-grade dysplasia</option>
+                    <option>Uninvolved by appendiceal mucinous neoplasm</option>
+                    <option>Involved by low-grade appendiceal mucinous neoplasm</option>
+                    <option>Involved by high-grade appendiceal mucinous neoplasm</option>
+                    <option>Involved by acellular mucin</option>
+                </select>
+
+
+
+
+                <div class="py-2 w-100"></div>
+                <h6>Mesenteric Margin</h6>
+                <select multiple id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option >Not applicable</option>
+                    <option>Cannot be assessed</option>
+                    <option>Uninvolved by invasive carcinoma</option>
+                    <option>Involved by invasive carcinoma</option>
+                    <option>Uninvolved by appendiceal mucinous neoplasm</option>
+                    <option>Involved by low-grade appendiceal mucinous neoplasm</option>
+                    <option>Involved by high-grade appendiceal mucinous neoplasm</option>
+                    <option>Involved by acellular mucin</option>
+                </select>
+
+                <input type="number" class="form-control form-control-sm mt-3 col-sm-8" id='box8_2' style='display:none;' placeholder='Specify distance of carcinoma to mesenteric margin'>
+
+
+
+                <div class="py-2 w-100"></div>
+                <h6>Other Margin</h6>
+                <select id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option selected>Not applicable</option>
+                    <option>Cannot be assessed</option>
+                    <option>Uninvolved by tumor</option>
+                    <option>Involved by tumor</option>
+                </select>
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box9_2' style='display:none;' placeholder='Specify '>
+
+
+            </div>
+
+
+
+            <hr class="p-2" >
+            <h5>Lymphovascular Invasion</h5>
+            <select id="box10" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Tumor Deposits</h5>
+            <select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present</option>
+                <option>Cannot be determined</option>
+            </select>
+
+            <input type="number" class="form-control form-control-sm mt-3 col-sm-6" id='box11_2' style='display:none;' placeholder='Specify # of deposits'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>+ Perineural Invasion</h5>
+            <select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Pathologic Staging (pTNM)
+
+            </h5>
+
+            <h6>TNM Descriptors (select all that apply)</h6>
+            <select id="box13" class='form-control selectpicker form-control-sm col-sm-6' multiple>
+                <option selected value="Not applicable">Not applicable</option>
+                <option>m</option>
+                <option>r</option>
+                <option>y</option>
+            </select>
+            <h6 class='mt-2'>pT</h6>
+            <select id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pTX">pTX: Primary tumor cannot be assessed</option>
+                <option value="pT0">pT0: No evidence of primary tumor</option>
+                <option value="pTis">pTis: Carcinoma in situ (intramucosal carcinoma; invasion of the lamina propria or extension into but not through the muscularis mucosae)</option>
+                <option value="pTis(LAMN)">pTis(LAMN): Low-grade appendiceal mucinous neoplasm confined by the muscularis propria. (Acellular mucin or mucinous epithelium may invade into the muscularis propria)</option>
+                <option value="pT1">pT1: Tumor invades the submucosa (through the muscularis mucosa but not into the muscularis propria)</option>
+                <option value="pT2">pT2: Tumor invades the muscularis propria</option>
+                <option value="pT3">pT3: Tumor invades through the muscularis propria into the subserosa or mesoappendix</option>
+                <option value="pT4a">pT4a: Tumor invades through the visceral peritoneum, including the acellular mucin or mucinous epithelium involving the serosa of the appendix or serosa of the mesoappendix</option>
+                <option value="pT4b">pT4b: Tumor directly invades or adheres to adjacent organs or structures</option>
+            </select>
+
+
+            <h6 class='mt-2'>pN</h6>
+            <select id="box15" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pNX">pNX: Regional lymph nodes cannot be assessed</option>
+                <option value="pN0">pN0: No regional lymph node metastasis</option>
+                <option value="pN1a">pN1a: One regional lymph node is positive</option>
+                <option value="pN1b">pN1b: Two or three regional lymph nodes are positive</option>
+                <option value="pN1c">pN1c: No regional lymph nodes are positive, but there are tumor deposits in the subserosa or mesentery</option>
+                <option value="pN2">pN2: Four or more regional lymph nodes are positive</option>
+                <option value="null"></option>
+            </select>
+
+
+            <h6 class='mt-2'>pM</h6>
+            <select id="box16" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option selected value='pMx'>pMx: Not applicable</option>
+                <option value="pM1a">pM1a: Intraperitoneal acellular mucin, without identifiable tumor cells in the disseminated peritoneal mucinous deposits#</option>
+                <option value="pM1b">pM1b: Intraperitoneal metastasis only, including peritoneal mucinous deposits containing tumor cells</option>
+                <option value="pM1c">pM1c: Metastasis to sites other than peritoneum</option>
+            </select>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box16_2" style="display:none;" placeholder="Specify metastatic sites">
+
+            <form class="form-inline mt-2">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box17" >
+                </label>
+            </form>
+
+            <div class='lnchk' style='display:none;'>
+                <form class="form-inline mt-2 col-8">
+                    <label class="m-2">Number of lymph nodes examined: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box18" style="width:100px"></label>
+                    <label class="m-2">Number of lymph nodes involved: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box19" style="width:100px"></label>
+                </form>
+            </div>
+
+
+            <hr class="p-2" >
+            <h5>+ Additional Pathologic Findings</h5>
+            <select multiple id="box20" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>None identified</option>
+                <option>Appendicitis</option>
+                <option>Perforation, not at tumor</option>
+                <option>Ulcerative colitis</option>
+                <option>Crohn disease</option>
+                <option>Diverticulosis</option>
+                <option>Other</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box20_2' style='display:none;' placeholder='Specify Present'>
+
+
+
+
+
+
+            <!-- close column -->
+			</div>
+			{{> page-partials/cap-footer}}
+	<!-- close row -->
+		</div>
+		{{> page-partials/history-module}}
+	<!-- close container -->
+	</div>
+
