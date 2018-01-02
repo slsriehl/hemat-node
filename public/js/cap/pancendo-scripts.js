@@ -111,6 +111,23 @@ $(window).on('load', function() {
             $('#box5_2').hide();}
     });
 
+    $('#box6').on("change", function(){
+        var sel = $('#box6').val();
+        if (sel.indexOf("Cannot") < 0) {
+            $('#box6_2').show();}
+        else {
+            $('#box6_2').hide();}
+    });
+
+    $('#box7').on("change", function(){
+        var sel = $('#box7').val();
+        if (sel.indexOf("Cannot") < 0) {
+            $('#box7_2').show();}
+        else {
+            $('#box7_2').hide();}
+    });
+
+
     $('#box9').on("change", function(){
         var sela = $('#box9').val();
         var trig1 = sela.filter(el => el.indexOf('organs') > -1);
@@ -258,10 +275,21 @@ $(window).on('load', function() {
 
 
         var box_6 = $("#box6").val();
-        captext += "\nMitotic Rate:\n- "  + box_6+ "\n";
+        var box_6_2 = $("#box6_2").val();
+        if (box_6.indexOf("Cannot") < 0){
+            captext += "\nMitotic Rate:\n- "  + box_6+ " (enumerated at "+box_6_2+" per 2 mm^2)\n";
+        } else {
+            captext += "\nMitotic Rate:\n- "  + box_6+ "\n";
+
+        }
 
         var box_7 = $("#box7").val();
-        captext += "\nKi-67 Labeling Index:\n- "  + box_7+ "\n";
+        var box_7_2 = $("#box7_2").val();
+        if (box_7.indexOf("Cannot") < 0){
+            captext += "\nKi-67 Labeling Index:\n- "  + box_7+ " (enumerated at "+box_7_2+" %)\n";
+        } else {
+            captext += "\nKi-67 Labeling Index:\n- "  + box_7+ "\n";
+        }
 
         var box_8 = $("#box8").val();
         captext += "\n+ Tumor Necrosis:\n- "  + box_8+ "\n";

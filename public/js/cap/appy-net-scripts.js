@@ -48,31 +48,6 @@ $(window).on('load', function() {
             $('#box2_2').hide();}
     });
 
-
-    $('#box10').on("change", function(){
-        var sel = $('#box10').val();
-        if (sel.indexOf('uninvolved') > -1){
-            $('.negmargins').show();
-            $('.posmargins').hide();
-        }
-        else {
-            $('.negmargins').hide();
-            $('.posmargins').show();
-        }
-    });
-
-
-    $('#box22').on("change", function(){
-        var sel = $('#box22').val();
-        if (sel.indexOf("Not") < 0) {
-
-            $('#box22_2').show();}
-        else {
-            $('#box2_2').hide();}
-    });
-
-
-
     $('#box2').on("change", function(){
         var sel = $('#box2').val();
         if ($.inArray('Other', sel) >-1) {
@@ -114,13 +89,20 @@ $(window).on('load', function() {
             $('#box8_2').hide();}
     });
 
-    $('#box8').on("change", function(){
-        var sel = $('#box8').val();
-        if (sel.indexOf("organs") > -1) {
-            $('#box8_2').show();}
+
+
+    $('#box10').on("change", function(){
+        var sel = $('#box10').val();
+        if (sel.indexOf('uninvolved') > -1){
+            $('.negmargins').show();
+            $('.posmargins').hide();
+        }
         else {
-            $('#box8_2').hide();}
+            $('.negmargins').hide();
+            $('.posmargins').show();
+        }
     });
+
 
     $('#box11').on("change", function(){
         var sel = $('#box11').val();
@@ -129,6 +111,15 @@ $(window).on('load', function() {
             $('#box11_2').show();}
         else {
             $('#box11_2').hide();}
+    });
+
+    $('#box22').on("change", function(){
+        var sel = $('#box22').val();
+        if (sel.indexOf("Not") < 0) {
+
+            $('#box22_2').show();}
+        else {
+            $('#box2_2').hide();}
     });
 
     $("#box29").on("change", function(){
@@ -227,9 +218,9 @@ $(window).on('load', function() {
         var box_7 = $("#box7").val();
         var box_7_2 = $("#box7_2").val();
         if (box_7.indexOf("Cannot") < 0){
-            captext += "\nKi-67 Proliferation Index:\n- "  + box_7+ " (enumerated at "+box_7_2+" %)\n";
+            captext += "\nKi-67 Labeling Index:\n- "  + box_7+ " (enumerated at "+box_7_2+" %)\n";
         } else {
-            captext += "\nKi-67 Proliferation Index:\n- "  + box_7+ "\n";
+            captext += "\nKi-67 Labeling Index:\n- "  + box_7+ "\n";
         }
 
 
@@ -237,7 +228,7 @@ $(window).on('load', function() {
         var box_8_2 = $("#box8_2").val();
         if(box_8 != "Not applicable"){
             if (box_8.indexOf("organs") > -1) {
-                captext += "\nTumor Extension:\n- "  + box_8_2+ "\n";}
+                captext += "\nTumor Extension:\n- Tumor invades the following organ(s): "  + box_8_2+ "\n";}
             else {captext += "\nTumor Extension:\n- "  + box_8+ "\n";}
         }
 
@@ -279,7 +270,7 @@ $(window).on('load', function() {
         var box_22 = $("#box22").val();
         var box_22_2 = $("#box22_2").val();
         if (box_22.indexOf('Not') < 0){
-            captext += "- "+box_22_2+" Margin: "  + box_22+ "\n";
+            captext += "- "+box_22_2+": "  + box_22+ "\n";
         }
 
 

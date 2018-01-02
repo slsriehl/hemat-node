@@ -66,6 +66,21 @@ $(window).on('load', function() {
         else {$('#box9_3').hide();}
     });
 
+    $('#box6').on("change", function(){
+        var sel = $('#box6').val();
+        if (sel.indexOf("Cannot") < 0) {
+            $('#box6_2').show();}
+        else {
+            $('#box6_2').hide();}
+    });
+
+    $('#box7').on("change", function(){
+        var sel = $('#box7').val();
+        if (sel.indexOf("Cannot") < 0) {
+            $('#box7_2').show();}
+        else {
+            $('#box7_2').hide();}
+    });
 
 
     $('#box10').on("change", function(){
@@ -188,13 +203,20 @@ $(window).on('load', function() {
 
         var box_6 = $("#box6").val();
         var box_6_2 = $("#box6_2").val();
-        captext += "\nMitotic Rate:\n- "  + box_6+ " (enumerated at "+box_6_2+" per 2 mm^2)\n";
+        if (box_6.indexOf("Cannot") < 0){
+            captext += "\nMitotic Rate:\n- "  + box_6+ " (enumerated at "+box_6_2+" per 2 mm^2)\n";
+        } else {
+            captext += "\nMitotic Rate:\n- "  + box_6+ "\n";
 
+        }
 
         var box_7 = $("#box7").val();
         var box_7_2 = $("#box7_2").val();
-        captext += "\nKi-67 Labeling Index:\n- "  + box_7+ " (enumerated at "+box_7_2.replace(/\%/, '')+"%)\n";
-
+        if (box_7.indexOf("Cannot") < 0){
+            captext += "\nKi-67 Labeling Index:\n- "  + box_7+ " (enumerated at "+box_7_2+" %)\n";
+        } else {
+            captext += "\nKi-67 Labeling Index:\n- "  + box_7+ "\n";
+        }
 
         var box_8 = $("#box8").val();
         var box_8_2 = $("#box8_2").val();
