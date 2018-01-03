@@ -12,6 +12,8 @@ router.get('/cap/checklist', (req, res) => {
 })
 
 //pediatric, some crossover
+
+
 router.get('/cap/appy-net', (req, res) => {
     controller.userWall(req, res, './page-views/cap/appy-net.hbs', [
     "/js/cap/appy-net-scripts.js",
@@ -111,6 +113,12 @@ router.get('/cap/soft-t-rx', (req, res) => {
 });
 
 //adult only
+router.get('/cap/anal-t', (req, res) => {
+    controller.userWall(req, res, './page-views/cap/anal-t.hbs', [
+    "/js/cap/anal-scripts.js",
+]);
+});
+
 
 router.get('/cap/appy-t', (req, res) => {
     controller.userWall(req, res, './page-views/cap/appy-t.hbs', [

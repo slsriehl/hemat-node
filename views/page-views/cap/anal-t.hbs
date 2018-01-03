@@ -1,0 +1,413 @@
+<div class="container-fluid">
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+        <li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Anal carcinomas</li>
+    </ol>
+    {{> message-center this}}
+    {{> page-partials/cap-header}}
+
+    <div class="row">
+        {{> page-partials/cap-validate-alert}}
+        <div class="col col-md-8">
+
+    <!-- paste markup here-->
+        <hr class="p-2" >
+        <h5>Procedure</h5>
+        <select id="box2" class='form-control selectpicker form-control-sm col-sm-6'>
+            <option data-proc="resection">Abdominoperineal resection</option>
+            <option data-proc="emr">Excisional biopsy (polypectomy)</option>
+            <option data-proc="emr">Local (transanal disk) excision</option>
+            <option>Other</option>
+            <option>Not specified</option>
+        </select>
+
+        <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box2_2' style='display:none;' placeholder='Specify Other'>
+
+
+        <div class="emr" style="display: none;">
+        <hr class="p-2" >
+        <h5>Specimen</h5>
+        <select multiple id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
+            <option>Anal canal</option>
+            <option>Anorectal junction</option>
+            <option>Rectum</option>
+            <option>Perianal skin</option>
+            <option>Other</option>
+            <option>Not specified</option>
+        </select>
+
+        <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;' placeholder='Specify Other'>
+        </div>
+
+
+        <hr class="p-2" >
+        <h5>Specimen Integrity</h5>
+        <select id="box3" class='form-control selectpicker form-control-sm col-sm-6'>
+            <option>Intact</option>
+            <option>Fragmented</option>
+            <option>Other</option>
+        </select>
+
+        <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box3_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+        <hr class="p-2" >
+        <h5>Tumor Site</h5>
+        <select id="box4" class='form-control selectpicker form-control-sm col-sm-6'>
+            <option>Anal canal</option>
+            <option>Perianal region</option>
+            <option>Anus, not otherwise specified</option>
+            <option>Unknown</option>
+            <option>Other</option>
+        </select>
+
+        <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box4_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+        <hr class="p-2" >
+        <h5>Tumor Size (cm)</h5>
+        <input type="number" class="form-control form-control-sm col-sm-6" id="box5" placeholder="">
+
+
+
+
+        <hr class="p-2" >
+        <h5>Histologic Type</h5>
+        <select id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
+            <option>Squamous cell carcinoma</option>
+            <option>Verrucous carcinoma</option>
+            <option>Basal cell carcinoma</option>
+            <option>Adenocarcinoma</option>
+            <option>Mucinous adenocarcinoma</option>
+            <option>Large cell neuroendocrine carcinoma</option>
+            <option>Small cell neuroendocrine carcinoma</option>
+            <option>Neuroendocrine carcinoma (poorly differentiated)</option>
+            <option>Mixed adenoneuroendocrine carcinoma</option>
+            <option>Undifferentiated carcinoma</option>
+            <option>Paget disease</option>
+            <option>Carcinoma, type cannot be determined</option>
+            <option>Other histologic type</option>
+            <option></option>
+        </select>
+
+        <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box6_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+        <hr class="p-2" >
+        <h5>Histologic Grade</h5>
+        <select id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
+            <option>G1: Well differentiated</option>
+            <option>G2: Moderately differentiated</option>
+            <option>G3: Poorly differentiated</option>
+            <option>G4: Undifferentiated</option>
+            <option>Other </option>
+            <option>GX: Cannot be assessed</option>
+            <option>Not applicable</option>
+        </select>
+
+        <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box7_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+        <hr class="p-2" >
+        <h5>Tumor Extension</h5>
+        <select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
+            <option>No evidence of primary tumor</option>
+            <option>Carcinoma in situ</option>
+            <option>Tumor invades lamina propria</option>
+            <option>Tumor invades muscularis mucosae</option>
+            <option>Tumor invades submucosa</option>
+            <option>Tumor invades anal sphincter muscle</option>
+            <option>Tumor invades perianal skin</option>
+            <option>Cannot be assessed</option>
+        </select>
+
+
+
+        <hr class="p-2">
+        <h5>Margins</h5>
+            <div class="py-2 w-100"></div>
+
+            <div class="resection">
+            <select id="box10" class='form-control selectpicker form-control-sm col-sm-12'>
+                <option>All margins are uninvolved by invasive carcinoma, intramucosal adenocarcinoma, high-grade dysplasia, and adenoma </option>
+                <option>One or more margins involved by neoplasia</option>
+            </select>
+
+            <div class="negmargins ml-3">
+
+                <h6 class="mt-3">Choose margins examined</h6>
+                <select multiple id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>proximal</option>
+                    <option>distal</option>
+                    <option>circumferential</option>
+                    <option>mucosal</option>
+                    <option>deep</option>
+                    <option>Other</option>
+                </select>
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box11_2' style='display:none;' placeholder='Specify Other'>
+            </div>
+
+            <div class="posmargins ml-3" style="display: none;" >
+                    <h6>Proximal Margin</h6>
+                    <select multiple id="box12" class='form-control selectpicker form-control-sm col-sm-9'>
+                        <option>Cannot be assessed</option>
+                        <option>Uninvolved by invasive carcinoma and high-grade intraepithelial neoplasia</option>
+                        <option>Uninvolved by invasive carcinoma</option>
+                        <option>Involved by invasive carcinoma</option>
+                        <option>Involved by high-grade intraepithelial neoplasia</option>
+                    </select>
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Distal Margin</h6>
+                    <select multiple id="box13" class='form-control selectpicker form-control-sm col-sm-9'>
+                        <option>Cannot be assessed</option>
+                        <option>Uninvolved by invasive carcinoma and high-grade intraepithelial neoplasia</option>
+                        <option>Uninvolved by invasive carcinoma</option>
+                        <option>Involved by invasive carcinoma</option>
+                        <option>Involved by high-grade intraepithelial neoplasia</option>
+                    </select>
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Radial Margin</h6>
+                    <select id="box14" class='form-control selectpicker form-control-sm col-sm-9'>
+                        <option>Cannot be assessed</option>
+                        <option>Uninvolved by invasive carcinoma</option>
+                        <option>Involved by invasive carcinoma</option>
+                    </select>
+
+                <div class="py-2 w-100"></div>
+
+                    <h6>Other Margin</h6>
+                    <select id="box15" class='form-control selectpicker form-control-sm col-sm-9'>
+                        <option selected>Not applicable</option>
+                        <option>Cannot be assessed</option>
+                        <option>Uninvolved by invasive carcinoma</option>
+                        <option>Involved by invasive carcinoma</option>
+                    </select>
+                    <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box15_2' style='display:none;' placeholder='Specify '>
+            </div>
+
+
+        </div><!-- end hidden resection margins-->
+
+
+        <div class="emr ml-3" style="display:none;">
+            <h6>Deep Margin</h6>
+
+            <select id="box16" class='form-control selectpicker form-control-sm col-sm-9'>
+                <option>Cannot be assessed</option>
+                <option>Uninvolved by invasive carcinoma</option>
+                <option>Involved by invasive carcinoma</option>
+            </select>
+
+            <input type="number" class="form-control form-control-sm col-sm-6" id='box16_2' style='display:none;' placeholder='Specify distance from deep margin (mm)'>
+
+
+
+            <div class="py-2 w-100"></div>
+
+
+            <h6>Mucosal Margin</h6>
+
+            <select id="box17" class='form-control selectpicker form-control-sm col-sm-12'>
+                <option>Cannot be assessed</option>
+                <option>Uninvolved by invasive carcinoma, intramucosal adenocarcinoma, high-grade dysplasia, and adenoma</option>
+                <option>Uninvolved by invasive carcinoma</option>
+                <option>Involved by invasive carcinoma</option>
+            </select>
+
+            <input type="number" class="form-control form-control-sm col-sm-6" id='box17_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
+            <!-- other mucosal neoplasia-->
+            <div class="ml-3" id='box17_3' style='display:none;'>
+                <h6>Mucosal margin involved by any other type of neoplasia?</h6>
+                    <select multiple id="box18" class='form-control selectpicker form-control-sm col-sm-9'>
+                        <option>Uninvolved by intramucosal adenocarcinoma, high-grade dysplasia or adenoma</option>
+                        <option>intramucosal adenocarcinoma</option>
+                        <option>high-grade dysplasia</option>
+                        <option>adenoma</option>
+                    </select>
+
+            </div>
+
+        </div>
+
+        <hr class="p-2" >
+        <h5>Treatment Effect
+        <!-- Button trigger modal -->
+        <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_treat">A word about scoring treatment effect</button>
+
+        <!-- Histology help Modal -->
+        {{> page-modals/cap-helpers/esoph-treatment}}
+
+        </h5>
+        <select id="box19" class='form-control selectpicker form-control-sm col-sm-6'>
+            <option>No known presurgical therapy</option>
+            <option>Present, complete response, score 0</option>
+            <option>Present, near complete response, score 1</option>
+            <option>Present, partial response, score 2</option>
+            <option>Absent, poor or no response, score 3</option>
+            <option>Cannot be determined</option>
+        </select>
+
+
+
+
+
+        <hr class="p-2" >
+        <h5>+ Lymphovascular Invasion</h5>
+        <select id="box20" class='form-control selectpicker form-control-sm col-sm-6'>
+            <option>Not identified</option>
+            <option>Present</option>
+            <option>Cannot be determined</option>
+        </select>
+
+
+
+
+
+        <hr class="p-2" >
+        <h5>+ Perineural Invasion</h5>
+        <select id="box21" class='form-control selectpicker form-control-sm col-sm-6'>
+            <option>Not identified</option>
+            <option>Present</option>
+            <option>Cannot be determined</option>
+        </select>
+
+
+
+
+
+        <hr class="p-2" >
+        <h5>Pathologic Staging (pTNM)
+
+        </h5>
+
+        <h6>TNM Descriptors (select all that apply)</h6>
+        <select id="box22" class='form-control selectpicker form-control-sm col-sm-6' multiple>
+            <option selected value="Not applicable">Not applicable</option>
+            <option>m</option>
+            <option>r</option>
+            <option>y</option>
+        </select>
+        <h6 class='mt-2'>pT</h6>
+        <select id="box23" class='form-control selectpicker form-control-sm col-sm-6'>
+            <option value="pTX">pTX: Primary tumor not assessed</option>
+            <option value="pT0">pT0: No evidence of primary tumor</option>
+            <option value="pTis">pTis: High-grade squamous intraepithelial lesion</option>
+            <option value="pT1">pT1: Tumor ≤2 cm</option>
+            <option value="pT2">pT2: Tumor >2 cm but ≤5 cm</option>
+            <option value="pT3">pT3: Tumor >5 cm</option>
+            <option value="pT4">pT4: Tumor of any size invading adjacent organ(s)</option>
+        </select>
+
+
+        <h6 class='mt-2'>pN</h6>
+        <select id="box24" class='form-control selectpicker form-control-sm col-sm-6'>
+            <option value="pNX">pNX: Regional lymph nodes cannot be assessed</option>
+            <option value="pN0">pN0: No regional lymph node metastasis</option>
+            <option value="pN1a">pN1a: Metastasis in inguinal, mesorectal, or internal iliac lymph nodes</option>
+            <option value="pN1b">pN1b: Metastasis in external iliac lymph nodes</option>
+            <option value="pN1c">pN1c: Metastasis in external iliac with any N1a nodes</option>
+        </select>
+
+
+        <h6 class='mt-2'>pM</h6>
+        <select id="box25" class='form-control selectpicker form-control-sm col-sm-6'>
+            <option selected value='pMx'>pMx: Not applicable</option>
+            <option value="pM1">pM1: Distant metastasis</option>
+        </select>
+        <input type="text" class="form-control form-control-sm col-sm-6" id="box25_2" style="display:none;" placeholder="Specify metastatic sites">
+        <div class="py-2 w-100"></div>
+        <form class="form-inline mt-2">
+            <label class="form-check-label">Check here if any lymph nodes submitted?
+                <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box26" >
+            </label>
+        </form>
+
+        <div class='lnchk' style='display:none;'>
+            <form class="form-inline mt-2 col-8">
+                <label class="m-2">Number of External Iliac lymph nodes examined:
+                    <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box27" style="width:100px"></label>
+                <div class="py-2 w-100"></div>
+                <label class="m-2">Number of External Iliac lymph nodes involved:
+                    <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box28" style="width:100px"></label>
+                <div class="py-2 w-100"></div>
+                <label class="m-2">Number of Other Regional lymph nodes examined:
+                    <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box29" style="width:100px"></label>
+                <div class="py-2 w-100"></div>
+                <label class="m-2">Number of Other Regional lymph nodes involved:
+                    <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box30" style="width:100px"></label>
+                <div class="posnodes" style="display:none;">
+                    <div class="py-2 w-100"></div>
+                        Specify Other Nodes Examined:
+                        <select multiple id="box31" class='form-control selectpicker form-control-sm col-sm-6'>
+                            <option>inguinal</option>
+                            <option>mesorectal</option>
+                            <option>internal iliac</option>
+                            <option>Other</option>
+                        </select>
+                        <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box31_2' style='display:none;' placeholder='Specify Other sites'>
+                </div>
+
+            </form>
+        </div>
+
+
+        <hr class="p-2" >
+        <h5>+ Additional Pathologic Findings</h5>
+        <select multiple id="box32" class='form-control selectpicker form-control-sm col-sm-6'>
+            <option>None identified</option>
+            <option>Crohn disease</option>
+            <option>Condyloma acuminatum</option>
+            <option>Anal fistula</option>
+            <option>Dysplasia</option>
+            <option>Associated rectal carcinoma (Paget disease)</option>
+            <option>Other</option>
+        </select>
+
+        <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box32_2' style='display:none;' placeholder='Specify Other'>
+
+
+            <hr class="p-2" >
+            <h5>+ Clinical History (select all that apply)</h5>
+            <select multiple id="box33" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Solid organ transplantation</option>
+                <option>HIV/AIDS</option>
+                <option>Human papillomavirus infection</option>
+                <option>Crohn disease</option>
+                <option>Neoadjuvant therapy</option>
+                <option>Other</option>
+                <option>Not known</option>
+            </select>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box33_2' style='display:none;' placeholder='Specify Other'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box33_3' style='display:none;' placeholder='Specify type of therapy'>
+
+
+        <!-- end markup-->
+
+            <!-- close markup -->
+        </div>
+        {{> page-partials/cap-footer}}
+        <!-- close row -->
+    </div>
+    {{> page-partials/history-module}}
+    <!-- close container -->
+</div>
