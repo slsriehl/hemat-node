@@ -4,7 +4,6 @@ const util		= require('util'),
 
 // ++++++ General Express config ++++++
 const express         = require('express'),
-			compression			= require('compression'),
       bodyParser      = require('body-parser'),
       logger          = require('morgan'),
 			cookieParser		= require('cookie-parser'),
@@ -20,7 +19,6 @@ if(process.env.SECRET) {
 
 app.use(express.static(__dirname + '/public'));
 app.use(logger("dev"));
-app.use(compression());
 app.use(bodyParser.urlencoded({
   extended: false
 }));
