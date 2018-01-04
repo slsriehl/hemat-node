@@ -196,8 +196,8 @@ $(window).on("load", function(){
         this.counter = this.counter || 0;
         this.counter++;
         // setting field variables
-        var item_pct = {};
-        var item_name = {};
+        var item_pct = [];
+        var item_name = [];
         for (var i=1; i<16; i++){
             item_pct[i] = $('#box_'+i+'_pct').val();
             item_name[i]= $('#box'+i).val();
@@ -210,10 +210,11 @@ $(window).on("load", function(){
             if (item_name[i] != ''){
                 diffStr += item_name[i]+': ' +item_pct[i]+'%\n'
             }
-            /*else if (item_name[i] == ''){
-             diffStr += "Item"+i+': ' +item_pct[i]+'%\n'
-             }*/
-        } // end for
+        }
+
+        if (diffStr.length < 25){
+            alert("You forgot to set any counting labels")
+        }
 
         $('#diffOut').val(diffStr);
 
@@ -270,7 +271,7 @@ $(window).on("load", function(){
 				makeCreatePdfBtn();
     });
 
-    $('#resetDiff').click(function(){
+    $('#resetDiff').on("click", function(){
         $('#diffOut').val('');
         $('#counter').val('');
         $('#textarea').val('');
