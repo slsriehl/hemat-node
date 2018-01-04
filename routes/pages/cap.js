@@ -113,6 +113,13 @@ router.get('/cap/soft-t-rx', (req, res) => {
 });
 
 //adult only
+router.get('/cap/ampulla-t', (req, res) => {
+    controller.userWall(req, res, './page-views/cap/ampulla-t.hbs', [
+    "/js/cap/ampulla-scripts.js",
+]);
+});
+
+
 router.get('/cap/anal-t', (req, res) => {
     controller.userWall(req, res, './page-views/cap/anal-t.hbs', [
     "/js/cap/anal-scripts.js",

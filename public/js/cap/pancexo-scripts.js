@@ -365,7 +365,6 @@ $(window).on('load', function() {
             var box_25 = $("#box25").val();
             var box_25_2 = $("#box25_2").val();
             var negbox_25 = box_25.filter(el => el.indexOf("Uninvolved") > -1);
-            var posbox_25 = box_25.filter(el => el.indexOf("Involved") > -1);
             captext += "\nUncinate Margin:\n";
             if (negbox_25.length > 0 )  {
                 captext += "\t- "+negbox_25+"\n\t- Distance of invasive carcinoma to this margin: " + box_25_2.replace(/mm/,"")+"mm\n";}
