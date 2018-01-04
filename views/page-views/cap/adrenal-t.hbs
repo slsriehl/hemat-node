@@ -1,0 +1,246 @@
+<div class="container-fluid">
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+        <li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Adrenal carcinomas</li>
+    </ol>
+    {{> message-center this}}
+    {{> page-partials/cap-header}}
+
+    <div class="row">
+        {{> page-partials/cap-validate-alert}}
+        <div class="col col-md-8">
+
+            <!-- paste markup here-->
+            <hr class="p-2" >
+            <h5>Procedure</h5>
+            <select id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Percutaneous needle biopsy</option>
+                <option>Endoscopic directed biopsy</option>
+                <option>Adrenalectomy, total</option>
+                <option>Adrenalectomy, partial</option>
+                <option>Other</option>
+                <option>Not specified</option>
+            </select>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;' placeholder='Specify directed biopsy technique'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_3' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Specimen Laterality</h5>
+            <select id="box2" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Right</option>
+                <option>Left</option>
+                <option>Bilateral</option>
+                <option>Not specified</option>
+                <option>Other</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box2_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Tumor Size (cm)</h5>
+            <input type="number" class="form-control form-control-sm col-sm-6" id="box3" placeholder="">
+
+
+
+
+            <hr class="p-2" >
+            <h5>Tumor Weight (g)</h5>
+            <input type="number" class="form-control form-control-sm col-sm-6" id="box4" placeholder="">
+
+
+
+
+            <hr class="p-2" >
+            <h5>Histologic Type</h5>
+            <select id="box5" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Adrenal cortical carcinoma</option>
+                <option>Adrenal cortical carcinoma, oncocytic type</option>
+                <option>Adrenal cortical carcinoma, myxoid type</option>
+                <option>Adrenal cortical carcinoma, sarcomatoid type</option>
+                <option>Carcinoma, type cannot be determined</option>
+                <option>Other histologic type</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box5_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Histologic Grade</h5>
+            <select id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Low grade (≤20 mitoses/50 high-power fields)</option>
+                <option>High grade (>20 mitoses/50 high-power fields)</option>
+                <option>Cannot be assessed</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Lymphovascular Invasion</h5>
+            <select multiple id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Large vessel, renal vein </option>
+                <option>Large vessel, vena cava</option>
+                <option>Small vessel (capillary lymphatic)</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Tumor Extension</h5>
+            <select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Tumor confined to adrenal cortex without invasion through tumor capsule</option>
+                <option>Tumor invades into or through the adrenal capsule</option>
+                <option>Tumor invades into extra-adrenal organs / structures</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box8_2' style='display:none;' placeholder='Specify structures'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Margins</h5>
+
+            <select id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Cannot be assessed</option>
+                <option>Uninvolved by tumor</option>
+                <option>Involved by tumor</option>
+                <option>Not applicable</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box9_1' style='display:none;' placeholder='Specify closest margin'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box9_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box9_3' style='display:none;' placeholder='Specify involved margin'>
+
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Pathologic Staging (pTNM)
+
+            </h5>
+
+            <h6>TNM Descriptors (select all that apply)</h6>
+            <select id="box10" class='form-control selectpicker form-control-sm col-sm-6' multiple>
+                <option selected value="Not applicable">Not applicable</option>
+                <option>m</option>
+                <option>r</option>
+                <option>y</option>
+            </select>
+            <h6 class='mt-2'>pT</h6>
+            <select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pTX">pTX: Primary tumor cannot be assessed</option>
+                <option value="pT0">pT0: No evidence of primary tumor</option>
+                <option value="pT1">pT1: Tumor ≤5 cm in greatest dimension, no extra-adrenal invasion</option>
+                <option value="pT2">pT2: Tumor >5 cm, no extra-adrenal invasion</option>
+                <option value="pT3">pT3: Tumor of any size with local invasion but not invading adjacent organs</option>
+                <option value="pT4">pT4: Tumor of any size that invades adjacent organs or large blood vessels </option>
+            </select>
+
+
+            <h6 class='mt-2'>pN</h6>
+            <select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pNX">pNX: Regional lymph nodes cannot be assessed</option>
+                <option value="pN0">pN0: No regional lymph node metastasis</option>
+                <option value="pN1">pN1: Metastasis in regional lymph node(s)</option>
+            </select>
+
+
+            <h6 class='mt-2'>pM</h6>
+            <select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option selected value='pMx'>pMx: Not applicable</option>
+                <option value="pM1">pM1: Distant metastasis</option>
+            </select>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box13_2" style="display:none;" placeholder="Specify metastatic sites">
+
+            <form class="form-inline mt-2">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box14" >
+                </label>
+            </form>
+
+            <div class='lnchk' style='display:none;'>
+                <form class="form-inline mt-2 col-8">
+                    <label class="m-2">Number of lymph nodes examined: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box15" style="width:100px"></label>
+                    <label class="m-2">Number of lymph nodes involved: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box16" style="width:100px"></label>
+                </form>
+            </div>
+
+
+            <hr class="p-2" >
+            <h5>+ Additional Pathologic Findings</h5>
+            <select multiple id="box17" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>None identified</option>
+                <option>Hemorrhage</option>
+                <option>Cystic change</option>
+                <option>Calcifications</option>
+                <option>Other</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box17_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>+ Functional Status (select all that apply</h5>
+            <select multiple id="box18" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Urinary 17-ketosteroids increased </option>
+                <option>Cushing syndrome</option>
+                <option>Conn syndrome</option>
+                <option>Virilization</option>
+                <option>Feminization</option>
+                <option>Weight loss</option>
+                <option>Other</option>
+                <option selected>Not applicable</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box18_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>+ Ki67 proliferaiton index (%)</h5>
+            <input type="number" class="form-control form-control-sm col-sm-6" id="box19" placeholder="">
+
+
+
+
+
+
+            <!-- end markup-->
+
+            <!-- close markup -->
+        </div>
+        {{> page-partials/cap-footer}}
+        <!-- close row -->
+    </div>
+    {{> page-partials/history-module}}
+    <!-- close container -->
+</div>
