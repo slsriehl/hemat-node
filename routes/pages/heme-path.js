@@ -37,7 +37,7 @@ router.get('/heme-path/counter', (req, res) => {
 });
 
 router.get('/heme-path/dlbcl', (req, res) => {
-	controller.userWall(req, res, './page-views/heme-path/dlbcl.hbs', [
+	controller.openAccess(req, res, './page-views/heme-path/dlbcl.hbs', [
 		"/js/heme-path/dlbcl-scripts.js"
 	]);
 });

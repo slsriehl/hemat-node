@@ -7,7 +7,7 @@ const controller = require('../../controllers/pages');
 
 //needs database connection
 router.get('/surg-path/ihc-table', (req, res) => {
-	controller.userWall(req, res, './page-views/surg-path/ihc-table.hbs', [
+	controller.openAccess(req, res, './page-views/surg-path/ihc-table.hbs', [
 		"/js/surg-path/ihc-scripts.js"
 	])
 })
