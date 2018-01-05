@@ -1,0 +1,464 @@
+<div class="container-fluid">
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>CAP Cancer Checklist</li>
+        <li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Prostate carcinomas (prostatectomy)</li>
+    </ol>
+    {{> message-center this}}
+    {{> page-partials/cap-header}}
+
+    <div class="row">
+        {{> page-partials/cap-validate-alert}}
+        <div class="col col-md-8">
+
+            <!-- paste markup here-->
+            <hr class="p-2" >
+            <h5>Procedure</h5>
+            <select id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Radical prostatectomy</option>
+                <option>Other</option>
+                <option>Not specif</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;' placeholder='Specify Other'>
+
+
+            <hr class="p-2" >
+            <h5>+ Prostate Size</h5>
+            <div class="ml-3">
+
+
+                <h6>+ Weight</h6>
+                <input type="number" class="form-control form-control-sm col-sm-6" id="box2" placeholder="">
+
+
+                <div class="py-2 w-100"></div>
+
+                <h6>+ Size (cm)</h6>
+                <input type="text" class="form-control form-control-sm col-sm-6" id="box3" placeholder="">
+
+
+            </div>
+
+
+            <hr class="p-2" >
+            <h5>Histologic Type</h5>
+            <select id="box4" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Acinar adenocarcinoma</option>
+                <option>Ductal adenocarcinoma</option>
+                <option>Small-cell neuroendocrine carcinoma</option>
+                <option>Other histologic type</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box4_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+            <hr class="p-2" >
+            <h5>Histologic Grade
+            <!-- Button trigger modal -->
+            <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_grading">A word about grading in prostatectomies</button>
+
+            <!-- Histology help Modal -->
+            {{> page-modals/cap-helpers/prostate-grading}}
+
+            </h5>
+            <div class="ml-3">
+                <div class="py-2 w-100"></div>
+                <h6>Primary Gleason Pattern</h6>
+                <select id="box5" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option data-gleas="1">Pattern 1</option>
+                    <option data-gleas="2">Pattern 2</option>
+                    <option data-gleas="3">Pattern 3</option>
+                    <option data-gleas="4">Pattern 4</option>
+                    <option data-gleas="5">Pattern 5</option>
+                </select>
+
+
+                <div class="py-2 w-100"></div>
+
+
+                <h6>Secondary Gleason Pattern</h6>
+                <select id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option data-gleas="1">Pattern 1</option>
+                    <option data-gleas="2">Pattern 2</option>
+                    <option data-gleas="3">Pattern 3</option>
+                    <option data-gleas="4">Pattern 4</option>
+                    <option data-gleas="5">Pattern 5</option>
+                </select>
+
+
+                <div class="py-2 w-100"></div>
+
+
+                <h6>Tertiary Gleason Pattern</h6>
+                <select id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option data-gleas="3">Pattern 3</option>
+                    <option data-gleas="4">Pattern 4</option>
+                    <option data-gleas="5">Pattern 5</option>
+                    <option selected>Not applicable</option>
+                </select>
+
+
+                <div class="py-2 w-100"></div>
+
+                <div class="pct-4" style="display: none;">
+                <h6>+ Percentage of pattern 4</h6>
+                    <input type="number" class="form-control form-control-sm col-sm-6" id="box8" placeholder="">
+                </div>
+
+
+                <div class="pct-5" style="display: none;">
+                <div class="py-2 w-100"></div>
+
+                <h6>+ Percentage of pattern 5</h6>
+                    <input type="number" class="form-control form-control-sm col-sm-6" id="box9" placeholder="">
+                </div>
+            </div>
+
+
+            <hr class="p-2" >
+            <h5>+ Intraductal Carcinoma</h5>
+            <select id="box10" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Tumor Quantitation</h5>
+            <input type="number" class="form-control form-control-sm col-sm-8" id="box11" placeholder="Estimated percentage of prostate involved by tumor:">
+
+
+
+
+            <hr class="p-2" >
+            <h5>Extraprostatic Extension
+            <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip" data-html="true"
+               title="<p>Focal EPE equates with only a few neoplastic glands being outside the prostate or a tumor involving less than 1 high-power field in 1 or 2 sections</p>
+                </p>More than focal EPE is more extensively spread beyond the prostatic edge</p>" aria-hidden="true"></i>
+            </h5>
+            <select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present, focal</option>
+                <option>Present, more than focal</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+
+            <div class="epe-site" style="display: none;">
+
+                <hr class="p-2" >
+                <h5>+ Location of Extraprostatic Extension</h5>
+                <select multiple id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Right apical</option>
+                    <option>Right bladder neck</option>
+                    <option>Right anterior</option>
+                    <option>Right lateral</option>
+                    <option>Right postero-lateral (neurovascular bundle)</option>
+                    <option>Right posterior</option>
+                    <option>Left apical</option>
+                    <option>Left bladder neck</option>
+                    <option>Left anterior</option>
+                    <option>Left lateral</option>
+                    <option>Left postero-lateral (neurovascular bundle)</option>
+                    <option>Left posterior</option>
+                    <option>Other</option>
+                </select>
+
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box13_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+            </div>
+
+
+
+
+            <hr class="p-2" >
+            <h5>Urinary Bladder Neck Invasion</h5>
+            <select id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Seminal Vesicle Invasion</h5>
+            <select id="box15" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present,  Right</option>
+                <option>Present, Left</option>
+                <option>Present, Bilateral</option>
+                <option>No seminal vesicle present</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Margins</h5>
+
+            <select id="box16" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Cannot be assessed</option>
+                <option>Uninvolved by invasive carcinoma</option>
+                <option>Involved by invasive carcinoma</option>
+            </select>
+
+            <div class="ml-3" id='box16_3' style='display:none;'>
+
+                <div class="py-2 w-100"></div>
+
+                <h6>Extent of margin positivity</h6>
+                <select id="box17" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Limited (<3 mm)</option>
+                    <option>Non-limited (≥3 mm)</option>
+                </select>
+
+
+                <div class="py-2 w-100"></div>
+
+
+                <h6>+ Focality of margin involvement</h6>
+                <select id="box18" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Unifocal</option>
+                    <option>Multifocal</option>
+                </select>
+
+
+                <div class="py-2 w-100"></div>
+
+
+                <h6>Location of Positive Margins</h6>
+                <select multiple id="box19" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Right apical</option>
+                    <option>Right bladder neck</option>
+                    <option>Right anterior</option>
+                    <option>Right lateral</option>
+                    <option>Right postero-lateral (neurovascular bundle)</option>
+                    <option>Right posterior</option>
+                    <option>Left apical</option>
+                    <option>Left bladder neck</option>
+                    <option>Left anterior</option>
+                    <option>Left lateral</option>
+                    <option>Left postero-lateral (neurovascular bundle)</option>
+                    <option>Left posterior</option>
+                    <option>Other</option>
+                </select>
+
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box19_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+            </div>
+
+            <hr class="p-2" >
+            <h5>+ Margin Positivity in Area of Extraprostatic Extension</h5>
+            <select id="box20" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box20_2' style='display:none;' placeholder='Specify locations'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>+ Gleason Pattern at Positive Margin(s)</h5>
+            <select id="box21" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Pattern 3</option>
+                <option>Pattern 4 or 5</option>
+                <option selected>Not applicable</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Treatment Effect</h5>
+            <select multiple id="box22" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>No known presurgical therapy</option>
+                <option>Not identified</option>
+                <option>Radiation therapy effect present</option>
+                <option>Hormonal therapy effect present</option>
+                <option>Other therapy effects</option>
+                <option>Cannot be determined</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box22_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>+ Lymphovascular Invasion</h5>
+            <select id="box23" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>+ Perineural Invasion</h5>
+            <select id="box24" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present</option>
+                <option>Cannot be determined</option>
+            </select>
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>Pathologic Staging (pTNM)
+
+            </h5>
+
+            <h6>TNM Descriptors (select all that apply)</h6>
+            <select id="box25" class='form-control selectpicker form-control-sm col-sm-6' multiple>
+                <option selected value="Not applicable">Not applicable</option>
+                <option>m</option>
+                <option>r</option>
+                <option>y</option>
+            </select>
+            <h6 class='mt-2'>pT</h6>
+            <select id="box26" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pT2">pT2: Organ confined</option>
+                <option value="pT3a">pT3a: Extraprostatic extension (unilateral or bilateral) </option>
+                <option value="pT3a">pT3a: Microscopic invasion of bladder neck</option>
+                <option value="pT3b">pT3b: Tumor invades seminal vesicle(s)</option>
+                <option value="pT4">pT4: Tumor is fixed or invades adjacent structures other than seminal vesicles</option>
+            </select>
+
+
+            <h6 class='mt-2'>pN</h6>
+            <select id="box27" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pNX">pNX: Regional lymph nodes cannot be assessed</option>
+                <option value="pN0">pN0: No positive regional nodes</option>
+                <option value="pN1">pN1: Metastases in regional node(s)</option>
+            </select>
+
+
+            <h6 class='mt-2'>pM</h6>
+            <select id="box28" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option selected value='pMx'>pMx: Not applicable</option>
+                <option value="pM1a">pM1a: Nonregional lymph nodes(s)</option>
+                <option value="pM1b">pM1b: Bone(s)</option>
+                <option value="pM1c">pM1c: Other site(s) with or without bone disease</option>
+            </select>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box28_2" style="display:none;" placeholder="Specify metastatic sites">
+
+            <form class="form-inline mt-2">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box29" >
+                </label>
+            </form>
+
+            <div class='lnchk' style='display:none;'>
+                <form class="form-inline mt-2 col-8">
+                    <label class="m-2">
+                        Number of lymph nodes examined: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box30" style="width:100px"></label>
+                    <label class="m-2">
+                        Number of lymph nodes involved: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box31" style="width:100px"></label>
+
+                </form>
+                <div class="py-2 w-100"></div>
+                <div class="posnodes" style="display: none";>
+                    Specify involved nodes:
+                    <select multiple id="box32" class='form-control selectpicker form-control-sm col-sm-6 ml-2'>
+                        <option>hypogastric</option>
+                        <option>obturator</option>
+                        <option>internal iliac</option>
+                        <option>external iliac</option>
+                        <option>iliac NOS</option>
+                        <option>lateral sacral</option>
+                        <option>presacral</option>
+                        <option>promontory</option>
+                        <option>sacral NOS</option>
+                        <option>Other</option>
+                    </select>
+
+                    <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box32_2' style='display:none;' placeholder='Specify Other nodes'>
+
+                    <div class="py-2 w-100"></div>
+
+                    + Size of Largest Metastatic Deposit (cm)
+                    <input type="text" class="form-control form-control-sm col-sm-6 ml-2" id="box33" placeholder="">
+
+                    <div class="py-2 w-100"></div>
+
+
+                    + Extranodal Extension:
+                    <select id="box34" class='form-control selectpicker form-control-sm col-sm-6 ml-2'>
+                        <option>Not identified</option>
+                        <option>Present</option>
+                        <option>Cannot be determined</option>
+                    </select>
+
+
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <hr class="p-2" >
+            <h5>+ Additional Pathologic Findings (select all that apply)</h5>
+            <select multiple id="box35" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>None identified</option>
+                <option>High-grade prostatic intraepithelial neoplasia (PIN)</option>
+                <option>Inflammation</option>
+                <option>Atypical adenomatous hyperplasia (adenosis)</option>
+                <option>Nodular prostatic hyperplasia</option>
+                <option>Other</option>
+            </select>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box35_2' style='display:none;' placeholder='Specify Inflammation type'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box35_3' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+
+
+            <!-- end markup-->
+
+            <!-- close markup -->
+        </div>
+        {{> page-partials/cap-footer}}
+        <!-- close row -->
+    </div>
+    {{> page-partials/history-module}}
+    <!-- close container -->
+</div>
