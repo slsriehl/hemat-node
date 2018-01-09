@@ -172,7 +172,7 @@ $(window).on('load', function () {
         captext += "\nMuscularis Propria Presence:\n- "  + box_9+ "\n";
 
         var box_10 = $("#box10").val();
-        captext += "\nTumor Extension:\n- "  + box_10.join('\n- ') + "\n";
+        captext += "\nTumor Extension:\n- "  + box_10 + "\n";
 
 
         var box_11 = $("#box11").val();
