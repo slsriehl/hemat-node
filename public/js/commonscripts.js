@@ -348,6 +348,8 @@ $(function () {
 			$('#previous-reports').toggle();
 		});
 
+
+
     // show/hide cap validation alert, instead of destroying with close
     $(function () {
         $("[data-hide]").on("click", function () {
@@ -360,30 +362,47 @@ $(function () {
         $("html, body").animate({scrollTop: 125}, 600);
     });
 
-    // Expand select[multiple] for option.length > 6
-    $('select[multiple]').each(function() {
-    	if (this.options.length > 6){
-    		$(this).attr('size', "8");
-    	} else {
-            $(this).attr('size', "6");
-            $(this).css("overflow", "hidden");
-		}
-    });
+        // Expand select[multiple] for option.length > 6
+        $('select[multiple]').each(function () {
+            if (this.options.length > 6) {
+                $(this).attr('size', "8");
+            } else {
+                $(this).attr('size', "6");
+                $(this).css("overflow", "hidden");
+            }
+        });
 
-    // Make multiple select options without need for ctrl or shift
-    $("select[multiple]").mousedown(function(e){
-        e.preventDefault();
 
-        var select = this;
-        var scroll = select.scrollTop;
+    // Check if IE11 or less
+    function isIE()
+    {
+        var isIE11 = navigator.userAgent.indexOf(".NET CLR") > -1;
+        var isIE11orLess = isIE11 || navigator.appVersion.indexOf("MSIE") != -1;
+        return isIE11orLess;
+    }
 
-        e.target.selected = !e.target.selected;
+    if (!isIE()) { // check to make sure it is not IE11
+        // Make multiple select options without need for ctrl or shift
+        $("select[multiple]").mousedown(function (e) {
+            e.preventDefault();
 
-        setTimeout(function(){select.scrollTop = scroll;}, 0);
+            var select = this;
+            var scroll = select.scrollTop;
 
-        $(select).trigger("change").focus();
-    }).mousemove(function(e){e.preventDefault()});
+            e.target.selected = !e.target.selected;
 
+            setTimeout(function () {
+                select.scrollTop = scroll;
+            }, 0);
+
+            $(select).trigger("change").focus();
+        }).mousemove(function (e) {
+            e.preventDefault()
+        });
+        console.log("isIE?:"+isIE());
+    } else {
+        console.log("isIE?:"+isIE());
+    }
 
     // activate selectpicker
     //$('.selectpicker').selectpicker({});
