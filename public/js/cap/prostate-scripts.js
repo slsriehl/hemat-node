@@ -167,7 +167,7 @@ $(window).on('load', function() {
             }
         });
 
-        $('input[type="text"]:visible').each(function () {
+        $('input:visible').each(function () {
             // Check if at least one selection is made
             if ($.trim($(this).val()).length > 0) {
                 $(this).removeClass('empty');
