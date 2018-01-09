@@ -258,10 +258,13 @@ $(window).on('load', function() {
         if ($("#box18").is(':checked')) {
             var box_19 = $("#box19").val();
             var box_20 = $("#box20").val();
-            captext += "\nLymph nodes:\n\tLymph Nodes Examined: "+box_19+"\n\tLymph nodes involved: "+box_20+"\n";} else {
+            captext += "\nLymph nodes:\n\tLymph Nodes Examined: "+box_19+"\n\tLymph nodes involved: "+box_20+"\n";
+            
+            var box_21 = $("#box21").val();
+            captext += "\n+ Size of Largest Metastatic Deposit:\n- "  + box_21.replace(/cm/,'') + "cm\n";
+            } else {
             captext += "\nLymph nodes: None submitted\n";
-                    var box_21 = $("#box21").val();
-        captext += "\n+ Size of Largest Metastatic Deposit:\n- "  + box_21.replace(/cm/,'') + "cm\n";
+                   
             }
 
         var box_22 = $("#box22").val();
