@@ -1,304 +1,436 @@
-		<div class="container-fluid" id="myForm">
-				<!-- Breadcrumbs -->
-				<ol class="breadcrumb">
-						<li class="breadcrumb-item">
-								<a href="/">Home</a>
-						</li>
-						<li class="breadcrumb-item">
-							Hemepath Tools
-						</li>
-						<li class="breadcrumb-item active" id="bc-jump"><i class="fa fa-battery-3 mr-2"></i> Peripheral Blood Smear authorship tool</li>
-				</ol>
+<div class="container-fluid" id="myForm">
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+            Hemepath Tools
+        </li>
+        <li class="breadcrumb-item active" id="bc-jump"><i class="fa fa-battery-3 mr-2"></i> Peripheral Blood Smear
+            authorship tool
+        </li>
+    </ol>
 
- {{> message-center this}}
+    {{> message-center this}}
 
-				<div class="row-fluid">
-						<!-- top card-->
-						<div class="card">
-								<div class="card-header">
-										<!-- inline header form-->
-										<form class="form-inline">
-											<div class="col col-sm-3 text-center">
-												<label class="sr-only" for="date">Date - Hidden</label>
-													<div class="input-group date my-date-picker">
-															<input type="text" class="form-control form-control-sm" placeholder="Enter Date" id="date-pick" />
-															<span class="input-group-addon">
+    <div class="row-fluid">
+        <!-- top card-->
+        <div class="card">
+            <div class="card-header">
+                <!-- inline header form-->
+                <form class="form-inline">
+                    <div class="col col-sm-3 text-center">
+                        <label class="sr-only" for="date">Date - Hidden</label>
+                        <div class="input-group date my-date-picker">
+                            <input type="text" class="form-control form-control-sm" placeholder="Enter Date"
+                                   id="date-pick"/>
+                            <span class="input-group-addon">
 																	<span class="fa fa-calendar-plus-o"></span>
 															</span>
-													</div>
-												</div>
+                        </div>
+                    </div>
 
-												<div class="col col-sm-3 text-center">
-														<div class="input-group">
-																<input class="form-control form-control-sm" type="text" name="site" id="site" list="site_list" />
-																<datalist id="site_list">
-																		<option value="No site specified ">
-																		<option value="DCMC">
-																		<option value="DSMC-UT">
-																		<option value="SMC">
-																		<option value="SNW">
-																		<option value="SSW">
-																		<option value="SMCW">
-																		<option value="SMCH">
-																		<option value="SHL">
-																		<option value="SD Main">
-																		<option value="RR">
-																		<option value="CPL">
-																		<option value="Texas Oncology">
-																		<option value="ARC">
-																		<option value="Baptist">
-																</datalist>
-																<i class="input-group-addon fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="Choose from dropdown or type in site" ></i>
-														</div>
-												</div>
-
-
-												<div class="col col-sm-3 text-center">
-													<div class="input-group">
-														<label class="sr-only" for="agerange">Age - Hidden</label>
-
-														<select id="agerange" class="form-control form-control-sm" placeholder="Choose Age Range">
-																<option value="3" selected="selected" hidden="">Choose Age range</option>
-																<option value="1">&lt;3 mo</option>
-																<option value="2">3-12mo</option>
-																<option value="3">&gt;12mo  - adult</option>
-														</select>
-													</div>
-												</div>
-
-												<div class="col col-sm-3">
-														<button type="button" class="btn btn-primary btn-md p-1" data-toggle="modal" data-target="#cbchelp">Reference Ranges</button>
-												</div>
-
-										</form>
-<!-- CBC Help Modal -->
-{{> page-modals/heme-path/cbc-help}}
-
-										<!--Date-->
-
-								</div>
-								<div class="card-block">
-										<p class="card-text">Enter CBC Data</p>
-										<div class="row">
-												<table class="table">
-														<thead class="thead-default">
-														<tr>
-																<th>WBC:</th>
-																<th>RBC:</th>
-																<th>HB:</th>
-																<th>HCT:</th>
-																<th>MCV:</th>
-																<th>MCHC:</th>
-																<th>RDW:</th>
-																<th>PLT:</th>
-														</tr>
-														</thead>
-														<tbody><tr class="bg-info">
-																<td><input type="text" class="form-control form-control-sm cbcval" id="WBC"></td>
-																<td><input type="text" class="form-control form-control-sm cbcval" id="RBC"> </td>
-																<td><input type="text" class="form-control form-control-sm cbcval" id="HB"> </td>
-																<td><input type="text" class="form-control form-control-sm cbcval" id="HCT"> </td>
-																<td><input type="text" class="form-control form-control-sm cbcval" id="MCV"> </td>
-																<td><input type="text" class="form-control form-control-sm cbcval" id="MCHC"> </td>
-																<td><input type="text" class="form-control form-control-sm cbcval" id="RDW"> </td>
-																<td><input type="text" class="form-control form-control-sm cbcval" id="PLT"> </td>
-
-														</tr></tbody><thead class="thead-default">
-														<tr>
-																<th>ABS NEUT:</th>
-																<th>ABS LYM:</th>
-																<th>ABS MONO:</th>
-																<th>ABS EOS </th>
-																<th> </th>
-																<th>%NEUT:</th>
-																<th>%LYM:</th>
-																<th>%MONO:</th>
-														</tr>
-														</thead>
-														<tbody><tr class="bg-info">
-																<td><input type="text" class="form-control form-control-sm cbcval" id="NEUT"> </td>
-																<td><input type="text" class="form-control form-control-sm cbcval" id="LYMPH"> </td>
-																<td><input type="text" class="form-control form-control-sm cbcval" id="MONO"> </td>
-																<td><input type="text" class="form-control form-control-sm cbcval" id="EOS" placeholder="n/a"> </td>
-																<td><input type="checkbox" class="form-check-input" id="CBCswitch"><p>Check to use %values</p>  </td>
-																<td><input type="text" class="form-control form-control-sm cbcval" id="PNEUT" placeholder="0" disabled=""> </td>
-																<td><input type="text" class="form-control form-control-sm cbcval" id="PLYMPH" placeholder="0" disabled=""> </td>
-																<td><input type="text" class="form-control form-control-sm cbcval" id="PMONO" placeholder="0" disabled=""> </td>
-														</tr>
-														</tbody></table>
-										</div>
-										<div class="row">
-												<button class="btn btn-outline-primary p-1" id="cbcWrite">Print CBC</button>
-
-										</div>
-										<!-- silent alert for erroneous CBC data, fired from pbrules.js-->
-										<div class="alert alert-warning alert-dismissible collapse" id="cbcerror" role="alert">
-												<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-														<span aria-hidden="true">×</span>
-												</button>
-												<strong>Uh Oh!</strong> You should check your CBC data, something doesn't look right.
-										</div>
-								</div>
+                    <div class="col col-sm-3 text-center">
+                        <div class="input-group">
+                            <input class="form-control form-control-sm" type="text" name="site" id="site"
+                                   list="site_list"/>
+                            <datalist id="site_list">
+                                <option value="No site specified ">
+                                <option value="DCMC">
+                                <option value="DSMC-UT">
+                                <option value="SMC">
+                                <option value="SNW">
+                                <option value="SSW">
+                                <option value="SMCW">
+                                <option value="SMCH">
+                                <option value="SHL">
+                                <option value="SD Main">
+                                <option value="RR">
+                                <option value="CPL">
+                                <option value="Texas Oncology">
+                                <option value="ARC">
+                                <option value="Baptist">
+                            </datalist>
+                            <i class="input-group-addon fa fa-question-circle" data-toggle="tooltip"
+                               data-placement="right" title="Choose from dropdown or type in site"></i>
+                        </div>
+                    </div>
 
 
-						</div>
-				</div>
-				<div class="row top-buffer">
-						<div class="col-md-8"><!-- left column-->
+                    <div class="col col-sm-3 text-center">
+                        <div class="input-group">
+                            <label class="sr-only" for="agerange">Age - Hidden</label>
+
+                            <select id="agerange" class="form-control form-control-sm" placeholder="Choose Age Range">
+                                <option value="3" selected="selected" hidden="">Choose Age range</option>
+                                <option value="1">&lt;3 mo</option>
+                                <option value="2">3-12mo</option>
+                                <option value="3">&gt;12mo - adult</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col col-sm-3">
+                        <button type="button" class="btn btn-primary btn-md p-1" data-toggle="modal"
+                                data-target="#cbchelp">Reference Ranges
+                        </button>
+                    </div>
+
+                </form>
+                <!-- CBC Help Modal -->
+                {{> page-modals/heme-path/cbc-help}}
+
+                <!--Date-->
+
+            </div>
+            <div class="card-block">
+                <p class="card-text">Enter CBC Data</p>
+                <div class="row">
+                    <table class="table">
+                        <thead class="thead-default">
+                        <tr>
+                            <th>WBC:</th>
+                            <th>RBC:</th>
+                            <th>HB:</th>
+                            <th>HCT:</th>
+                            <th>MCV:</th>
+                            <th>MCHC:</th>
+                            <th>RDW:</th>
+                            <th>PLT:</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="bg-info">
+                            <td><input type="text" class="form-control form-control-sm cbcval" id="WBC"></td>
+                            <td><input type="text" class="form-control form-control-sm cbcval" id="RBC"></td>
+                            <td><input type="text" class="form-control form-control-sm cbcval" id="HB"></td>
+                            <td><input type="text" class="form-control form-control-sm cbcval" id="HCT"></td>
+                            <td><input type="text" class="form-control form-control-sm cbcval" id="MCV"></td>
+                            <td><input type="text" class="form-control form-control-sm cbcval" id="MCHC"></td>
+                            <td><input type="text" class="form-control form-control-sm cbcval" id="RDW"></td>
+                            <td><input type="text" class="form-control form-control-sm cbcval" id="PLT"></td>
+
+                        </tr>
+                        </tbody>
+                        <thead class="thead-default">
+                        <tr>
+                            <th>ABS NEUT:</th>
+                            <th>ABS LYM:</th>
+                            <th>ABS MONO:</th>
+                            <th>ABS EOS</th>
+                            <th></th>
+                            <th>%NEUT:</th>
+                            <th>%LYM:</th>
+                            <th>%MONO:</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="bg-info">
+                            <td><input type="text" class="form-control form-control-sm cbcval" id="NEUT"></td>
+                            <td><input type="text" class="form-control form-control-sm cbcval" id="LYMPH"></td>
+                            <td><input type="text" class="form-control form-control-sm cbcval" id="MONO"></td>
+                            <td><input type="text" class="form-control form-control-sm cbcval" id="EOS"
+                                       placeholder="n/a"></td>
+                            <td><input type="checkbox" class="form-check-input" id="CBCswitch">
+                                <p>Check to use %values</p></td>
+                            <td><input type="text" class="form-control form-control-sm cbcval" id="PNEUT"
+                                       placeholder="0" disabled=""></td>
+                            <td><input type="text" class="form-control form-control-sm cbcval" id="PLYMPH"
+                                       placeholder="0" disabled=""></td>
+                            <td><input type="text" class="form-control form-control-sm cbcval" id="PMONO"
+                                       placeholder="0" disabled=""></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <button class="btn btn-outline-primary p-1" id="cbcWrite">Print CBC</button>
+
+                </div>
+                <!-- silent alert for erroneous CBC data, fired from pbrules.js-->
+                <div class="alert alert-warning alert-dismissible collapse" id="cbcerror" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <strong>Uh Oh!</strong> You should check your CBC data, something doesn't look right.
+                </div>
+            </div>
 
 
-								<!-- left column accordion-->
-								<div id="accordion" role="tablist" aria-multiselectable="true">
-									{{> page-partials/pb-parts}}
-										<!-- FINALS card-->
-										<div class="card">
-												<div class="card-header" role="tab" id="headingFour">
-														<h5 class="mb-0">
-																<a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-																		Final Diagnoses
-																</a>
-														</h5>
-												</div>
-												<div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour">
-														<div class="card-block chkboxes">
-																<div class="card-group">
-																		<div class="card">
-																				<div class="card-header">
-																						RBC Finals
-																				</div>
-																				<div class="card-block chkboxes">
-																						<div style="font-size: 0.66em;" class="content form-check" id="column1f">
-																								<label class="form-check-label" id="_dxOut100"><input id="dxOut100" name="dxOut" type="checkbox"> NORMAL RBCS </label> <br>
-																								<label class="form-check-label" id="_dxOut101"><input id="dxOut101" name="dxOut" type="checkbox"> NNA </label> <br>
-																								<label class="form-check-label" id="_dxOut114"><input id="dxOut114" name="dxOut" type="checkbox"> HYPO MICRO RED CELLS </label> <br>
-																								<label class="form-check-label" id="_dxOut102"><input id="dxOut102" name="dxOut" type="checkbox"> HYPO MICRO ANEMIA </label> <br>
-																								<label class="form-check-label" id="_dxOut103"><input id="dxOut103" name="dxOut" type="checkbox"> HYPO MICRO ANEMIA W/ &#8593;ANISO </label> <br>
-																								<label class="form-check-label" id="_dxOut104"><input id="dxOut104" name="dxOut" type="checkbox"> NORMO MACRO ANEMIA </label> <br>
-																								<label class="form-check-label" id="_dxOut105"><input id="dxOut105" name="dxOut" type="checkbox"> HYPO MICRO ERYTHROCYTOSIS & &#8593;ANISO</label> <br>
-																								<label class="form-check-label" id="_dxOut106"><input id="dxOut106" name="dxOut" type="checkbox"> NORMO NORMO ERYTHROCYTOSIS</label> <br>
-																								<label class="form-check-label" id="_dxOut107"><input id="dxOut107" name="dxOut" type="checkbox"> NNA W MILD ROULEAUX </label> <br>
-																								<label class="form-check-label" id="_dxOut108"><input id="dxOut108" name="dxOut" type="checkbox"> NNA W SIGNIFICANT ROULEAUX </label> <br>
-																								<label class="form-check-label" id="_dxOut109"><input id="dxOut109" name="dxOut" type="checkbox"> NNA W INCREASED SCHISTS</label> <br>
-																								<label class="form-check-label" id="_dxOut110"><input id="dxOut110" name="dxOut" type="checkbox"> NNA W INCREASED TARGETS</label> <br>
-																								<label class="form-check-label" id="_dxOut111"><input id="dxOut111" name="dxOut" type="checkbox"> NNA W INCREASED SPHEROCYTES</label> <br>
-																								<label class="form-check-label" id="_dxOut112"><input id="dxOut112" name="dxOut" type="checkbox"> NNA W OXIDATION INJURY</label> <br>
-																								<label class="form-check-label" id="_dxOut113"><input id="dxOut113" name="dxOut" type="checkbox"> NNA W TEARDROPS</label> <br>
-																						</div>
-																				</div>
-																		</div>
-																		<div class="card">
-																				<div class="card-header">
-																						WBC Finals
-																				</div>
-																				<div class="card-block chkboxes">
-																						<div style="font-size: 0.66em;" class="content form-check" id="column2f">
-																								<label class="form-check-label" id="_dxOut150"><input class="form-check-input" id="dxOut150" name="dxOut" type="checkbox"> NORMAL WBCs </label><br>
-																								<label class="form-check-label" id="_dxOut151"><input class="form-check-input" id="dxOut151" name="dxOut" type="checkbox"> MILD LEUKOPENIA </label><br>
-																								<label class="form-check-label" id="_dxOut152"><input class="form-check-input" id="dxOut152" name="dxOut" type="checkbox"> MARKED LEUKOPENIA </label><br>
-																								<label class="form-check-label" id="_dxOut153"><input class="form-check-input" id="dxOut153" name="dxOut" type="checkbox"> MILD LEUKOCYTOSIS </label><br>
-																								<label class="form-check-label" id="_dxOut154"><input class="form-check-input" id="dxOut154" name="dxOut" type="checkbox"> MARKED LEUKOCYTOSIS </label><br>
-																								<label class="form-check-label" id="_dxOut155"><input class="form-check-input" id="dxOut155" name="dxOut" type="checkbox"> MILD NEUTROPENIA </label><br>
-																								<label class="form-check-label" id="_dxOut156"><input class="form-check-input" id="dxOut156" name="dxOut" type="checkbox"> MARKED NEUTROPENIA </label><br>
-																								<label class="form-check-label" id="_dxOut157"><input class="form-check-input" id="dxOut157" name="dxOut" type="checkbox"> MILD NEUTROPHILIA NO ACTIVATION </label><br>
-																								<label class="form-check-label" id="_dxOut158"><input class="form-check-input" id="dxOut158" name="dxOut" type="checkbox"> NEUTROPHILIA NO ACTIVATION </label><br>
-																								<label class="form-check-label" id="_dxOut159"><input class="form-check-input" id="dxOut159" name="dxOut" type="checkbox"> NEUTROPHILIA WITH ACTIVATION </label><br>
-																								<label class="form-check-label" id="_dxOut160"><input class="form-check-input" id="dxOut160" name="dxOut" type="checkbox"> MILD LYMPHOPENIA ONLY </label><br>
-																								<label class="form-check-label" id="_dxOut161"><input class="form-check-input" id="dxOut161" name="dxOut" type="checkbox"> MARKED LYMPHOPENIA </label><br>
-																								<label class="form-check-label" id="_dxOut175"><input class="form-check-input" id="dxOut175" name="dxOut" type="checkbox"> SOME REACTIVE LYMPHOCYTES </label><br>
-																								<label class="form-check-label" id="_dxOut162"><input class="form-check-input" id="dxOut162" name="dxOut" type="checkbox"> MILD REACTIVE LYMPHOCYTOSIS </label><br>
-																								<label class="form-check-label" id="_dxOut163"><input class="form-check-input" id="dxOut163" name="dxOut" type="checkbox"> REACTIVE LYMPHS W LGLS </label><br>
-																								<label class="form-check-label" id="_dxOut172"><input class="form-check-input" id="dxOut172" name="dxOut" type="checkbox"> NEUTROPHIL DYSPLASIA </label><br>
-																								<label class="form-check-label" id="_dxOut164"><input class="form-check-input" id="dxOut164" name="dxOut" type="checkbox"> MILD INCREASE IN MONOCYTES </label><br>
-																								<label class="form-check-label" id="_dxOut165"><input class="form-check-input" id="dxOut165" name="dxOut" type="checkbox"> MILD PROMINENCE OF EOS </label><br>
-																								<a class="btn btn-sm mt-1" data-toggle="collapse" href="#maligwbc" aria-expanded="false" aria-controls="collapsediv"> Malignant Diagnoses </a>
-																								<div class="collapse divshow" id="maligwbc">
-																										<label class="form-check-label" id="_dxOut174"><input class="form-check-input" id="dxOut174" name="dxOut" type="checkbox"> LOW GRADE MDS </label><br>
-																										<label class="form-check-label" id="_dxOut166"><input class="form-check-input" id="dxOut166" name="dxOut" type="checkbox"> CMPD </label><br>
-																										<label class="form-check-label" id="_dxOut167"><input class="form-check-input" id="dxOut167" name="dxOut" type="checkbox"> AML </label><br>
-																										<label class="form-check-label" id="_dxOut168"><input class="form-check-input" id="dxOut168" name="dxOut" type="checkbox"> APL </label><br>
-																										<label class="form-check-label" id="_dxOut169"><input class="form-check-input" id="dxOut169" name="dxOut" type="checkbox"> ALL </label><br>
-																										<label class="form-check-label" id="_dxOut170"><input class="form-check-input" id="dxOut170" name="dxOut" type="checkbox"> CLL </label><br>
-																										<label class="form-check-label" id="_dxOut171"><input class="form-check-input" id="dxOut171" name="dxOut" type="checkbox"> SMALL LYMPHOMA  </label><br>
-																										<label class="form-check-label" id="_dxOut173"><input class="form-check-input" id="dxOut173" name="dxOut" type="checkbox"> GENERIC CIRCULATING BLASTS </label><br>
-																								</div>
-																						</div>
-																				</div>
-																		</div>
-																		<div class="card">
-																				<div class="card-header">
-																						PLT Finals
-																				</div>
-																				<div class="card-block chkboxes">
-																						<div style="font-size: 0.66em;" class="content form-check" id="column3f">
-																								<label class="form-check-label" id="_dxOut200"><input class="form-check-input" id="dxOut200" name="dxOut" type="checkbox"> NORMAL PLATELETS </label><br>
-																								<label class="form-check-label" id="_dxOut201"><input class="form-check-input" id="dxOut201" name="dxOut" type="checkbox"> MILD &#8595; </label><br>
-																								<label class="form-check-label" id="_dxOut202"><input class="form-check-input" id="dxOut202" name="dxOut" type="checkbox"> MARKED &#8595; </label><br>
-																								<label class="form-check-label" id="_dxOut203"><input class="form-check-input" id="dxOut203" name="dxOut" type="checkbox"> MILD &#8593; </label><br>
-																								<label class="form-check-label" id="_dxOut204"><input class="form-check-input" id="dxOut204" name="dxOut" type="checkbox"> MARKED THROMBOCYTOSIS </label><br>
-																								<label class="form-check-label" id="_dxOut205"><input class="form-check-input" id="dxOut205" name="dxOut" type="checkbox"> SOME DYSPLASTIC PLATELETS </label><br>
-																						</div>
-																				</div>
-																		</div>
-																</div>
-														</div>
-												</div>
-										</div>
-										<!-- end accordion cards-->
-								</div>
-								<!-- end left column-->
-						</div>
-						<div class="col col-md-4"><!-- right column-->
-							<div class="card text-center">
-									<div class="card-header button-box">
-											<ul class="nav nav-pills standard-button-box">
-												<a class="btn btn-outline-success p-1 mb-2" id="writeReport" >Write Report</a>
+        </div>
+    </div>
+    <div class="row top-buffer">
+        <div class="col-md-8"><!-- left column-->
 
-												<a class="btn btn-outline-info p-1 mb-2 ml-4" id="mysisReport" >Mysis Report</a>
 
-												<a class="btn btn-outline-danger p-1 mb-2 ml-4" id="Reset" >Reset</a>
-											</ul>
-								<!-- /card header -->
-										</div>
+            <!-- left column accordion-->
+            <div id="accordion" role="tablist" aria-multiselectable="true">
+                {{> page-partials/pb-parts}}
+                <!-- FINALS card-->
+                <div class="card">
+                    <div class="card-header" role="tab" id="headingFour">
+                        <h5 class="mb-0">
+                            <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Final Diagnoses
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour">
+                        <div class="card-block chkboxes">
+                            <div class="card-group">
+                                <div class="card">
+                                    <div class="card-header">
+                                        RBC Finals
+                                    </div>
+                                    <div class="card-block chkboxes">
+                                        <div style="font-size: 0.66em;" class="content form-check" id="column1f">
+                                            <label class="form-check-label" id="_dxOut100"><input id="dxOut100"
+                                                                                                  name="dxOut"
+                                                                                                  type="checkbox">
+                                                NORMAL RBCS </label> <br>
+                                            <label class="form-check-label" id="_dxOut101"><input id="dxOut101"
+                                                                                                  name="dxOut"
+                                                                                                  type="checkbox"> NNA
+                                            </label> <br>
+                                            <label class="form-check-label" id="_dxOut114"><input id="dxOut114"
+                                                                                                  name="dxOut"
+                                                                                                  type="checkbox"> HYPO
+                                                MICRO RED CELLS </label> <br>
+                                            <label class="form-check-label" id="_dxOut102"><input id="dxOut102"
+                                                                                                  name="dxOut"
+                                                                                                  type="checkbox"> HYPO
+                                                MICRO ANEMIA </label> <br>
+                                            <label class="form-check-label" id="_dxOut103"><input id="dxOut103"
+                                                                                                  name="dxOut"
+                                                                                                  type="checkbox"> HYPO
+                                                MICRO ANEMIA W/ &#8593;ANISO </label> <br>
+                                            <label class="form-check-label" id="_dxOut104"><input id="dxOut104"
+                                                                                                  name="dxOut"
+                                                                                                  type="checkbox"> NORMO
+                                                MACRO ANEMIA </label> <br>
+                                            <label class="form-check-label" id="_dxOut105"><input id="dxOut105"
+                                                                                                  name="dxOut"
+                                                                                                  type="checkbox"> HYPO
+                                                MICRO ERYTHROCYTOSIS & &#8593;ANISO</label> <br>
+                                            <label class="form-check-label" id="_dxOut106"><input id="dxOut106"
+                                                                                                  name="dxOut"
+                                                                                                  type="checkbox"> NORMO
+                                                NORMO ERYTHROCYTOSIS</label> <br>
+                                            <label class="form-check-label" id="_dxOut107"><input id="dxOut107"
+                                                                                                  name="dxOut"
+                                                                                                  type="checkbox"> NNA W
+                                                MILD ROULEAUX </label> <br>
+                                            <label class="form-check-label" id="_dxOut108"><input id="dxOut108"
+                                                                                                  name="dxOut"
+                                                                                                  type="checkbox"> NNA W
+                                                SIGNIFICANT ROULEAUX </label> <br>
+                                            <label class="form-check-label" id="_dxOut109"><input id="dxOut109"
+                                                                                                  name="dxOut"
+                                                                                                  type="checkbox"> NNA W
+                                                INCREASED SCHISTS</label> <br>
+                                            <label class="form-check-label" id="_dxOut110"><input id="dxOut110"
+                                                                                                  name="dxOut"
+                                                                                                  type="checkbox"> NNA W
+                                                INCREASED TARGETS</label> <br>
+                                            <label class="form-check-label" id="_dxOut111"><input id="dxOut111"
+                                                                                                  name="dxOut"
+                                                                                                  type="checkbox"> NNA W
+                                                INCREASED SPHEROCYTES</label> <br>
+                                            <label class="form-check-label" id="_dxOut112"><input id="dxOut112"
+                                                                                                  name="dxOut"
+                                                                                                  type="checkbox"> NNA W
+                                                OXIDATION INJURY</label> <br>
+                                            <label class="form-check-label" id="_dxOut113"><input id="dxOut113"
+                                                                                                  name="dxOut"
+                                                                                                  type="checkbox"> NNA W
+                                                TEARDROPS</label> <br>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        WBC Finals
+                                    </div>
+                                    <div class="card-block chkboxes">
+                                        <div style="font-size: 0.66em;" class="content form-check" id="column2f">
+                                            <label class="form-check-label" id="_dxOut150"><input
+                                                    class="form-check-input" id="dxOut150" name="dxOut" type="checkbox">
+                                                NORMAL WBCs </label><br>
+                                            <label class="form-check-label" id="_dxOut151"><input
+                                                    class="form-check-input" id="dxOut151" name="dxOut" type="checkbox">
+                                                MILD LEUKOPENIA </label><br>
+                                            <label class="form-check-label" id="_dxOut152"><input
+                                                    class="form-check-input" id="dxOut152" name="dxOut" type="checkbox">
+                                                MARKED LEUKOPENIA </label><br>
+                                            <label class="form-check-label" id="_dxOut153"><input
+                                                    class="form-check-input" id="dxOut153" name="dxOut" type="checkbox">
+                                                MILD LEUKOCYTOSIS </label><br>
+                                            <label class="form-check-label" id="_dxOut154"><input
+                                                    class="form-check-input" id="dxOut154" name="dxOut" type="checkbox">
+                                                MARKED LEUKOCYTOSIS </label><br>
+                                            <label class="form-check-label" id="_dxOut155"><input
+                                                    class="form-check-input" id="dxOut155" name="dxOut" type="checkbox">
+                                                MILD NEUTROPENIA </label><br>
+                                            <label class="form-check-label" id="_dxOut156"><input
+                                                    class="form-check-input" id="dxOut156" name="dxOut" type="checkbox">
+                                                MARKED NEUTROPENIA </label><br>
+                                            <label class="form-check-label" id="_dxOut157"><input
+                                                    class="form-check-input" id="dxOut157" name="dxOut" type="checkbox">
+                                                MILD NEUTROPHILIA NO ACTIVATION </label><br>
+                                            <label class="form-check-label" id="_dxOut158"><input
+                                                    class="form-check-input" id="dxOut158" name="dxOut" type="checkbox">
+                                                NEUTROPHILIA NO ACTIVATION </label><br>
+                                            <label class="form-check-label" id="_dxOut159"><input
+                                                    class="form-check-input" id="dxOut159" name="dxOut" type="checkbox">
+                                                NEUTROPHILIA WITH ACTIVATION </label><br>
+                                            <label class="form-check-label" id="_dxOut160"><input
+                                                    class="form-check-input" id="dxOut160" name="dxOut" type="checkbox">
+                                                MILD LYMPHOPENIA ONLY </label><br>
+                                            <label class="form-check-label" id="_dxOut161"><input
+                                                    class="form-check-input" id="dxOut161" name="dxOut" type="checkbox">
+                                                MARKED LYMPHOPENIA </label><br>
+                                            <label class="form-check-label" id="_dxOut175"><input
+                                                    class="form-check-input" id="dxOut175" name="dxOut" type="checkbox">
+                                                SOME REACTIVE LYMPHOCYTES </label><br>
+                                            <label class="form-check-label" id="_dxOut162"><input
+                                                    class="form-check-input" id="dxOut162" name="dxOut" type="checkbox">
+                                                MILD REACTIVE LYMPHOCYTOSIS </label><br>
+                                            <label class="form-check-label" id="_dxOut163"><input
+                                                    class="form-check-input" id="dxOut163" name="dxOut" type="checkbox">
+                                                REACTIVE LYMPHS W LGLS </label><br>
+                                            <label class="form-check-label" id="_dxOut172"><input
+                                                    class="form-check-input" id="dxOut172" name="dxOut" type="checkbox">
+                                                NEUTROPHIL DYSPLASIA </label><br>
+                                            <label class="form-check-label" id="_dxOut164"><input
+                                                    class="form-check-input" id="dxOut164" name="dxOut" type="checkbox">
+                                                MILD INCREASE IN MONOCYTES </label><br>
+                                            <label class="form-check-label" id="_dxOut165"><input
+                                                    class="form-check-input" id="dxOut165" name="dxOut" type="checkbox">
+                                                MILD PROMINENCE OF EOS </label><br>
+                                            <a class="btn btn-sm mt-1" data-toggle="collapse" href="#maligwbc"
+                                               aria-expanded="false" aria-controls="collapsediv"> Malignant
+                                                Diagnoses </a>
+                                            <div class="collapse divshow" id="maligwbc">
+                                                <label class="form-check-label" id="_dxOut174"><input
+                                                        class="form-check-input" id="dxOut174" name="dxOut"
+                                                        type="checkbox"> LOW GRADE MDS </label><br>
+                                                <label class="form-check-label" id="_dxOut166"><input
+                                                        class="form-check-input" id="dxOut166" name="dxOut"
+                                                        type="checkbox"> CMPD </label><br>
+                                                <label class="form-check-label" id="_dxOut167"><input
+                                                        class="form-check-input" id="dxOut167" name="dxOut"
+                                                        type="checkbox"> AML </label><br>
+                                                <label class="form-check-label" id="_dxOut168"><input
+                                                        class="form-check-input" id="dxOut168" name="dxOut"
+                                                        type="checkbox"> APL </label><br>
+                                                <label class="form-check-label" id="_dxOut169"><input
+                                                        class="form-check-input" id="dxOut169" name="dxOut"
+                                                        type="checkbox"> ALL </label><br>
+                                                <label class="form-check-label" id="_dxOut170"><input
+                                                        class="form-check-input" id="dxOut170" name="dxOut"
+                                                        type="checkbox"> CLL </label><br>
+                                                <label class="form-check-label" id="_dxOut171"><input
+                                                        class="form-check-input" id="dxOut171" name="dxOut"
+                                                        type="checkbox"> SMALL LYMPHOMA </label><br>
+                                                <label class="form-check-label" id="_dxOut173"><input
+                                                        class="form-check-input" id="dxOut173" name="dxOut"
+                                                        type="checkbox"> GENERIC CIRCULATING BLASTS </label><br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        PLT Finals
+                                    </div>
+                                    <div class="card-block chkboxes">
+                                        <div style="font-size: 0.66em;" class="content form-check" id="column3f">
+                                            <label class="form-check-label" id="_dxOut200"><input
+                                                    class="form-check-input" id="dxOut200" name="dxOut" type="checkbox">
+                                                NORMAL PLATELETS </label><br>
+                                            <label class="form-check-label" id="_dxOut201"><input
+                                                    class="form-check-input" id="dxOut201" name="dxOut" type="checkbox">
+                                                MILD &#8595; </label><br>
+                                            <label class="form-check-label" id="_dxOut202"><input
+                                                    class="form-check-input" id="dxOut202" name="dxOut" type="checkbox">
+                                                MARKED &#8595; </label><br>
+                                            <label class="form-check-label" id="_dxOut203"><input
+                                                    class="form-check-input" id="dxOut203" name="dxOut" type="checkbox">
+                                                MILD &#8593; </label><br>
+                                            <label class="form-check-label" id="_dxOut204"><input
+                                                    class="form-check-input" id="dxOut204" name="dxOut" type="checkbox">
+                                                MARKED THROMBOCYTOSIS </label><br>
+                                            <label class="form-check-label" id="_dxOut205"><input
+                                                    class="form-check-input" id="dxOut205" name="dxOut" type="checkbox">
+                                                SOME DYSPLASTIC PLATELETS </label><br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end accordion cards-->
+            </div>
+            <!-- end left column-->
+        </div>
+        <div class="col col-md-4"><!-- right column-->
+            <div class="card text-center">
+                <div class="card-header button-box">
+                    <ul class="nav nav-pills standard-button-box">
+                        <a class="btn btn-outline-success p-1 mb-2" id="writeReport">Write Report</a>
 
-									<div class="card-block">
+                        <a class="btn btn-outline-info p-1 mb-2 ml-4" id="mysisReport">Mysis Report</a>
 
-										<form>
-												<div class="form-group">
-														<textarea class="form-control" id="outPut-1" rows="5" placeholder="CBC Data"></textarea>
-														<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-1">Copy to Clipboard</span>
-												</div>
+                        <a class="btn btn-outline-danger p-1 mb-2 ml-4" id="Reset">Reset</a>
+                    </ul>
+                    <!-- /card header -->
+                </div>
 
-												<div class="form-group">
-														<textarea class="form-control" id="outPut-2" rows="15" placeholder="Example Micro"></textarea>
-														<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-2">Copy to Clipboard</span>
-												</div>
-												<div class="form-group">
-														<textarea class="form-control" id="outPut-3" rows="10" placeholder="Example Final"></textarea>
-														<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-3">Copy to Clipboard</span>
-												</div>
-												<div class="form-group">
-														<textarea class="form-control" id="outPut-4" rows="5" placeholder="Example Comment"></textarea>
-														<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-4">Copy to Clipboard</span>
-												</div>
-										</form>
-										<!-- / card block -->
-									</div>
-									<!-- /card -->
-								</div>
-						</div>
-				</div>
-				{{> page-modals/combined-report}}
-				{{> page-modals/new-case-reference}}
-				{{> page-partials/history-module}}
-		</div>
-		<!--end container wrapper-->
+                <div class="card-block">
 
-		<!--
-		{"specificScripts":
-			[
-				"/json/json-pbsmears.js",
-				"/js/heme-diff/pb-rules.js",
-				"/js/heme-diff/pb-scripts.js"
-			]
-		}
-		-->
+                    <form>
+                        <div class="form-group">
+                            <textarea class="form-control" id="outPut-1" rows="5" placeholder="CBC Data"></textarea>
+                            <span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-1">Copy to Clipboard</span>
+                        </div>
+
+                        <div class="form-group">
+                            <textarea class="form-control" id="outPut-2" rows="15"
+                                      placeholder="Example Micro"></textarea>
+                            <span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-2">Copy to Clipboard</span>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" id="outPut-3" rows="10"
+                                      placeholder="Example Final"></textarea>
+                            <span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-3">Copy to Clipboard</span>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" id="outPut-4" rows="5"
+                                      placeholder="Example Comment"></textarea>
+                            <span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-4">Copy to Clipboard</span>
+                        </div>
+                    </form>
+                    <!-- / card block -->
+                </div>
+                <!-- /card -->
+            </div>
+        </div>
+    </div>
+    {{> page-modals/combined-report}}
+    {{> page-modals/new-case-reference}}
+    {{> page-partials/history-module}}
+</div>
+<!--end container wrapper-->
+
+<!--
+{"specificScripts":
+    [
+        "/json/json-pbsmears.js",
+        "/js/heme-diff/pb-rules.js",
+        "/js/heme-diff/pb-scripts.js"
+    ]
+}
+-->

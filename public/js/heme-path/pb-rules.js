@@ -748,8 +748,8 @@ $('#_dxOut100').addClass('helpful');
 });
 
 // CHANGE DX TO MATCH RED CELL INDICES
-$('#partType102').on('change', function(){ 
-	if ($('#partType102').is(':checked')){
+$('#partType102, #partType106').on('change', function(){
+	if ($(this).is(':checked')){
 		for (var i=100; i<114; i++){
 			dxOuts['dxOut'+i] = dxOuts['dxOut'+i].replace(/Normochromic, normocytic /, 'Hypochromic, microcytic ');
 			}
