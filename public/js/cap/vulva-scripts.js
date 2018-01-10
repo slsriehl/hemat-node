@@ -43,53 +43,35 @@ $(window).on('load', function () {
         }
     });
 
-    $('#box9').on("change", function () {
+    $('#box9').on("change", function(){
         var sela = $('#box9').val();
-        var neg = sela.filter(el => el.indexOf('Uninvolved') > -1
-        )
-        ;
-        var pos = sela.filter(el => el.indexOf('Involved') > -1
-        )
-        ;
+        var neg = sela.filter(el => el.indexOf('Uninvolved by invasive') > -1);
+        var pos = sela.filter(el => el.indexOf('Involved by invasive') > -1);
         if ((neg.length > 0) && (pos.length == 0)) {
             $('#box9_1').show();
-            $('#box9_2').show();
-        }
-        else {
-            $('#box9_1').hide();
-            $('#box9_2').hide();
-        }
+            $('#box9_2').show();}
+        else {$('#box9_1').hide();
+            $('#box9_2').hide();}
         if ((neg.length == 0) && (pos.length > 0)) {
-            $('#box9_3').show();
-        }
-        else {
-            $('#box9_3').hide();
-        }
+            $('#box9_3').show();}
+        else {$('#box9_3').hide();}
     });
 
-    $('#box10').on("change", function () {
+
+    $('#box10').on("change", function(){
         var sela = $('#box10').val();
-        var neg = sela.filter(el => el.indexOf('Uninvolved') > -1
-        )
-        ;
-        var pos = sela.filter(el => el.indexOf('Involved') > -1
-        )
-        ;
+        var neg = sela.filter(el => el.indexOf('Uninvolved by invasive') > -1);
+        var pos = sela.filter(el => el.indexOf('Involved by invasive') > -1);
         if ((neg.length > 0) && (pos.length == 0)) {
             $('#box10_1').show();
-            $('#box10_2').show();
-        }
-        else {
-            $('#box10_1').hide();
-            $('#box10_2').hide();
-        }
+            $('#box10_2').show();}
+        else {$('#box10_1').hide();
+            $('#box10_2').hide();}
         if ((neg.length == 0) && (pos.length > 0)) {
-            $('#box10_3').show();
-        }
-        else {
-            $('#box10_3').hide();
-        }
+            $('#box10_3').show();}
+        else {$('#box10_3').hide();}
     });
+    
 
     $("#box15").on("change", function(){
         var sel = $("#box15").val();
@@ -109,6 +91,15 @@ $(window).on('load', function () {
         }
     });
 
+    $("#box18").on("input", function () {
+        var num = parseInt($(this).val(), 10);
+        if (num > 0) {
+            $(".posnodes").show();
+        }
+        else {
+            $(".posnodes").hide();
+        }
+    });
 
     $('#box25').on("change", function () {
         var sel = $('#box25').val();
@@ -211,36 +202,25 @@ $(window).on('load', function () {
         var box_9_1 = $("#box9_1").val();
         var box_9_2 = $("#box9_2").val();
         var box_9_3 = $("#box9_3").val();
-        var negbox_9 = box_9.filter(el => el.indexOf("Uninvolved") > -1
-        )
-        ;
-        var posbox_9 = box_9.filter(el => el.indexOf("Involved") > -1
-        )
-        ;
+        var negbox_9 = box_9.filter(el => el.indexOf("Uninvolved by invasive") > -1);
+        var posbox_9 = box_9.filter(el => el.indexOf("Involved by invasive") > -1);
         if ((negbox_9.length > 0 ) && (posbox_9.length == 0  )) {
-            captext += "\nMargins - Peripheral:\n- " + box_9 + "\n- Nearest margin: " + box_9_1 + "\n- Distance to this margin: " + box_9_2.replace(/mm/, "") + "mm\n";
-        }
+            captext += "\nMargins - Peripheral:\n- "+box_9.join("\n- ")+"\n- Nearest margin to invasive carcinoma: "+box_9_1+"\n- Distance to this margin: " + box_9_2.replace(/mm/,"")+"mm\n";}
         else if ((negbox_9.length == 0 ) && (posbox_9.length > 0  )) {
-            captext += "\nMargins - Peripheral:\n- " + box_9 + "\n- Margin involved: " + box_9_3 + "\n";
-        }
+            captext += "\nMargins - Peripheral:\n- "+box_9.join("\n- ")+"\n- Margin involved by invasive carcinoma: "+box_9_3+"\n";}
 
         var box_10 = $("#box10").val();
         var box_10_1 = $("#box10_1").val();
         var box_10_2 = $("#box10_2").val();
         var box_10_3 = $("#box10_3").val();
-        var negbox_10 = box_10.filter(el => el.indexOf("Uninvolved") > -1
-        )
-        ;
-        var posbox_10 = box_10.filter(el => el.indexOf("Involved") > -1
-        )
-        ;
+        var negbox_10 = box_10.filter(el => el.indexOf("Uninvolved by invasive") > -1);
+        var posbox_10 = box_10.filter(el => el.indexOf("Involved by invasive") > -1);
         if ((negbox_10.length > 0 ) && (posbox_10.length == 0  )) {
-            captext += "\nMargins - Deep:\n- " + box_10 + "\n- Nearest margin: " + box_10_1 + "\n- Distance to this margin: " + box_10_2.replace(/mm/, "") + "mm\n";
-        }
+            captext += "\nMargins - Deep:\n- "+box_10+"\n- Nearest margin to invasive carcinoma: "+box_10_1+"\n- Distance to this margin: " + box_10_2.replace(/mm/,"")+"mm\n";}
         else if ((negbox_10.length == 0 ) && (posbox_10.length > 0  )) {
-            captext += "\nMargins - Deep:\n- " + box_10 + "\n- Margin involved: " + box_10_3 + "\n";
-        }
+            captext += "\nMargins - Deep:\n- "+box_10+"\n- Margin involved by invasive carcinoma: "+box_10_3+"\n";}
 
+            
         var box_11 = $("#box11").val();
         captext += "\nLymphovascular Invasion:\n- " + box_11 + "\n";
 
@@ -267,10 +247,13 @@ $(window).on('load', function () {
         if ($("#box16").is(':checked')) {
             var box_17 = $("#box17").val();
             var box_18 = $("#box18").val();
-            captext += "\nLymph Nodes:\n\tTotal Lymph nodes examined: " + box_17 + "\n\tLymph nodes involved: " + box_18 + "\n";
-
+            captext += "\nLymph Nodes:\n\tTotal Lymph nodes examined: " + box_17 + "\n";
             var box_19 = $("#box19").val();
             captext += "\tNumber of Sentinel Nodes Examined: " + box_19 + "\n";
+
+            captext += "\tLymph nodes involved: " + box_18 + "\n";
+
+            if (box_18 != "0") {
 
             var box_20 = $("#box20").val();
             captext += "\tNumber of Nodes with Metastasis 5 mm or Greater: " + box_20 + "\n";
@@ -279,11 +262,10 @@ $(window).on('load', function () {
             captext += "\tNumber of Nodes with Metastasis Less than 5 mm: " + box_21 + "\n";
 
             var box_22 = $("#box22").val();
-            captext += "\tNumber of Nodes with Isolated Tumor Cells (ITCs) (0.2 mm or less): " + box_22 + "\n";
+            captext += "\tNumber of Nodes with Isolated Tumor Cells: " + box_22 + "\n";
 
             var box_23 = $("#box23").val();
-            if (box_23 != "Not applicable") {
-                captext += "\tSpecify Lymph Node(s) involved by Tumor:\n- " + box_23 + "\n";
+                captext += "\tLymph Node(s) involved by Tumor: " + box_23 + "\n";
             }
 
             var box_24 = $("#box24").val();
