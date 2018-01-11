@@ -5,7 +5,7 @@
             <a href="/">Home</a>
         </li>
         <li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>Cancer Synoptic Checklist</li>
-        <li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>$</li>
+        <li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Pediatric Renal tumor (Wilms)</li>
     </ol>
     {{> message-center this}}
     {{> page-partials/cap-header}}
@@ -17,24 +17,24 @@
             <!-- paste markup here-->
             <h5>Procedure</h5>
             <select id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
-                <option>Core biopsy</option>
-                <option>Incisional biopsy</option>
-                <option>Excisional biopsy</option>
-                <option>Partial nephrectomy</option>
-                <option>Radical nephrectomy</option>
+                <option data-proc="bx">Core biopsy</option>
+                <option data-proc="bx">Incisional biopsy</option>
+                <option data-proc="exc">Excisional biopsy</option>
+                <option data-proc="exc">Partial nephrectomy</option>
+                <option data-proc="exc">Radical nephrectomy</option>
                 <option>Other</option>
                 <option>Not specified</option>
             </select>
-            <br>
+            
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;'
                    placeholder='Specify Other'>
 
-
+            <div class="weight" style="display: none;">
             <hr class="p-2">
             <h5>Specimen Weight (g)</h5>
             <input type="text" class="form-control form-control-sm col-sm-6" id="box2"
                    placeholder="(applicable to resection specimens only)">
-
+            </div>
 
             <hr class="p-2">
             <h5>Specimen Laterality</h5>
@@ -72,16 +72,14 @@
                 <option>Multifocal</option>
                 <option>Cannot be determined</option>
             </select>
-            <br>
+            
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box6_2' style='display:none;'
                    placeholder='Specify number of tumors'>
 
 
             <hr class="p-2">
             <h5>Tumor Extent (applicable to resection specimens only) (select all that apply)</h5>
-
-
-            <hr class="p-2">
+            <div class="ml-3 py-2">
             <h6>Gerota’s Fascia</h6>
             <select id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option>Gerota’s fascia intact</option>
@@ -89,8 +87,8 @@
                 <option>Cannot be determined</option>
             </select>
 
+                <div class="py-2 w-100"></div>
 
-            <hr class="p-2">
             <h6>Renal Sinus</h6>
             <select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option>No renal sinus involvement by tumor identified</option>
@@ -100,8 +98,8 @@
                 <option>Cannot be determined</option>
             </select>
 
+            <div class="py-2 w-100"></div>
 
-            <hr class="p-2">
             <h6>Renal Vein</h6>
             <select id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option>No renal vein invasion identified</option>
@@ -110,7 +108,8 @@
             </select>
 
 
-            <hr class="p-2">
+            <div class="py-2 w-100"></div>
+
             <h6>Renal Capsule</h6>
             <select id="box20" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option>No extension beyond renal capsule</option>
@@ -119,17 +118,19 @@
             </select>
 
 
-            <hr class="p-2">
+            <div class="py-2 w-100"></div>
+
             <h6>Adjacent Organ Involvement</h6>
             <select id="box21" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option>No tumor extension into adjacent organs identified</option>
                 <option>Tumor extension into adjacent organ present</option>
                 <option>Cannot be determined</option>
             </select>
-            <br>
+            
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box21_2' style='display:none;'
                    placeholder='Specify present'>
 
+            </div>
 
             <hr class="p-2">
             <h5>Margins</h5>
@@ -139,9 +140,9 @@
                 <option>Uninvolved by tumor</option>
                 <option>Involved by tumor</option>
             </select>
-            <br>
+            
             <input type="text" class="form-control form-control-sm col-sm-6" id='box10_1' style='display:none;'
-                   placeholder='Specify closest margin'><br>
+                   placeholder='Specify closest margin'>
             <input type="text" class="form-control form-control-sm col-sm-6" id='box10_2' style='display:none;'
                    placeholder='Specify distance from margin (mm)'>
             <input type="text" class="form-control form-control-sm col-sm-6" id='box10_3' style='display:none;'
@@ -163,19 +164,20 @@
                 <option>Other</option>
                 <option>Malignant neoplasm</option>
             </select>
-            <br>
+            
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box11_2' style='display:none;'
                    placeholder='Specify Other'>
 
 
             <hr class="p-2">
-            <h5>+ Nephrogenic Rests</h5>
+            <h5>+ Nephrogenic Rests
             <!-- Button trigger modal -->
-            <button class="btn btn-sm btn-info ml-2 mb-2" data-toggle="modal" data-target="#help_nephrogenic">About
+            <button class="btn btn-info p-1 ml-2" data-toggle="modal" data-target="#help_nephrogenic">About
                 nephrogenic rests
             </button>
+            </h5>
 
-            <br>
+            
             <select multiple id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option>No nephrogenic rests identified</option>
                 <option>Intralobar nephrogenic rests present</option>
@@ -212,7 +214,7 @@
                 <option selected>Not applicable</option>
                 <option>Present</option>
             </select>
-            <br>
+            
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box16_2' style='display:none;'
                    placeholder='Specify site(s)'>
 
@@ -222,13 +224,8 @@
                 <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
                    title="For Pediatric Renal Tumors Other Than Renal Cell Carcinoma" aria-hidden="true"></i>
             </h5>
-            <!-- Button trigger modal -->
-            <button class="btn btn-sm btn-info ml-3 mb-2" data-toggle="modal" data-target="#help_wilms-staging">About
-                tumor staging
-            </button>
 
-            <br>
-            <select multiple id="box17" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select id="box17" class='form-control selectpicker form-control-sm col-sm-8'>
                 <option>Not applicable (nephrogenic rests only)</option>
                 <option>Local Stage I: Tumor limited to kidney and completely resected</option>
                 <option>Local Stage II: Tumor extends beyond kidney but is completely resected, with negative surgical
@@ -238,7 +235,10 @@
                 <option>Stage IV: Metastatic disease</option>
                 <option>Stage V: Bilateral renal involvement at diagnosis</option>
             </select>
-
+            <!-- Button trigger modal -->
+            <button class="btn btn-info p-1 mt-1" data-toggle="modal" data-target="#help_wilms-staging">About
+                tumor staging
+            </button>
 
             <hr class="p-2">
             <h5>Lymph nodes</h5>
@@ -267,7 +267,7 @@
                 <option>22q11.2/INI FISH pending; see addendum</option>
                 <option>Other</option>
             </select>
-            <br>
+            
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box18_2' style='display:none;'
                    placeholder='Specify other test'>
 
