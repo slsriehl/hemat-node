@@ -16,7 +16,7 @@
 
             <!-- paste markup here-->
             <hr class="p-2">
-            <h5>Procedure</h5><br>
+            <h5>Procedure</h5>
             <select id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option>Local resection</option>
                 <option>Enucleation</option>
@@ -25,13 +25,13 @@
                 <option>Other</option>
                 <option>Not specified</option>
             </select>
-            <br>
+            
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;'
                    placeholder='Specify Other'>
 
 
             <hr class="p-2">
-            <h5>Specimen Laterality</h5><br>
+            <h5>Specimen Laterality</h5>
             <select id="box2" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option>Right</option>
                 <option>Left</option>
@@ -40,34 +40,34 @@
 
 
             <hr class="p-2">
-            <h5>Tumor Site - macroscopic examination/transillumination (select all that apply)</h5><br>
+            <h5>Tumor Site - macroscopic examination/transillumination (select all that apply)</h5>
             <select multiple id="box3" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option>Superotemporal quadrant of globe</option>
                 <option>Superonasal quadrant of globe</option>
                 <option>Inferotemporal quadrant of globe</option>
                 <option>Inferonasal quadrant of globe</option>
                 <option>Anterior chamber</option>
-                <option>o’clock</option>
+                <option>Between x and y o'clock</option>
                 <option>Other</option>
             </select>
-            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box3_2' style='display:none;'
-                   placeholder='Specify between clock designations'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-8" id='box3_2' style='display:none;'
+                   placeholder="Specify clock designation (ie. between 3 and 6 o'clock">
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box3_3' style='display:none;'
                    placeholder='Specify Other'>
 
 
             <hr class="p-2">
-            <h5>Tumor Size After Sectioning - Greatest basal diameter (mm)</h5><br>
+            <h5>Tumor Size After Sectioning - Greatest basal diameter (mm)</h5>
             <input type="number" class="form-control form-control-sm col-sm-6" id="box4" placeholder="">
 
 
             <hr class="p-2">
-            <h5>Tumor Size After Sectioning - Greatest thickness (mm) </h5><br>
+            <h5>Tumor Size After Sectioning - Greatest thickness (mm) </h5>
             <input type="number" class="form-control form-control-sm col-sm-6" id="box5" placeholder="">
 
 
             <hr class="p-2">
-            <h5>Tumor Site After Sectioning</h5><br>
+            <h5>Tumor Site After Sectioning</h5>
             <select id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option>Cannot be determined</option>
                 <option>Superonasal</option>
@@ -78,7 +78,7 @@
 
 
             <hr class="p-2">
-            <h5>Tumor Involvement of Other Ocular Structures</h5><br>
+            <h5>Tumor Involvement of Other Ocular Structures</h5>
             <select id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option>Sclera</option>
                 <option>Vortex vein(s)</option>
@@ -98,13 +98,13 @@
                 <option>Other</option>
                 <option>Cannot be assessed</option>
             </select>
-            <br>
+            
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box7_2' style='display:none;'
                    placeholder='Specify Other'>
 
 
             <hr class="p-2">
-            <h5>Growth Pattern</h5><br>
+            <h5>Growth Pattern</h5>
             <select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option>Cannot be determined</option>
                 <option>Solid mass</option>
@@ -116,7 +116,7 @@
 
 
             <hr class="p-2">
-            <h5>Histologic Type</h5><br>
+            <h5>Histologic Type</h5>
             <select id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option>Spindle cell melanoma (>90% spindle cells)</option>
                 <option>Mixed cell melanoma (>10% epithelioid cells and <90% spindle cells)</option>
@@ -125,7 +125,7 @@
 
 
             <hr class="p-2">
-            <h5>Scleral Involvement</h5><br>
+            <h5>Scleral Involvement</h5>
             <select id="box10" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option>None</option>
                 <option>Intrascleral</option>
@@ -136,14 +136,14 @@
 
 
             <hr class="p-2">
-            <h5>Margins</h5><br>
+            <h5>Margins</h5>
             <select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option>Cannot be assessed</option>
                 <option>No melanoma at margins</option>
                 <option>Extrascleral extension (for enucleation specimens)</option>
                 <option>Other margin(s) involved</option>
             </select>
-            <br>
+            
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box11_2' style='display:none;'
                    placeholder='Specify Other'>
 
@@ -158,29 +158,24 @@
             <!-- Histology help Modal -->
             {{> page-modals/cap-helpers/uveal-tnm-help}}
 
-            <h6>TNM Descriptors (select all that apply)</h6><br>
+            <h6>TNM Descriptors (select all that apply)</h6>
             <select id="box12" class='form-control selectpicker form-control-sm col-sm-6' multiple>
                 <option selected value="Not applicable">Not applicable</option>
                 <option>m</option>
                 <option>r</option>
                 <option>y</option>
             </select>
-            <br>
-            <h6>pT</h6><br>
+            <div class="py-2 w-100"></div>
+            <h6>pT</h6>
             <select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
                 <optgroup label="Iris">
                     <option value="(Iris) pTX">pTX: Primary tumor cannot be assessed</option>
                     <option value="(Iris) pT0">pT0: No evidence of primary tumor</option>
-                    <option value="(Iris) pT1">pT1: Tumor limited to the iris</option>
                     <option value="(Iris) pT1a">pT1a: Tumor limited to the iris not more than 3 clock hours in size
                     </option>
                     <option value="(Iris) pT1b">pT1b: Tumor limited to the iris more than 3 clock hours in size</option>
                     <option value="(Iris) pT1c">pT1c: Tumor limited to the iris with secondary glaucoma</option>
-                    <option value="(Iris) pT2">pT2: Tumor confluent with or extending into the ciliary body, choroid, or
-                        both
-                    </option>
-                    <option value="(Iris) pT2a">pT2a: Tumor confluent with or extending into the ciliary body, without
-                        secondary glaucoma
+                    <option value="(Iris) pT2a">pT2a: Tumor confluent with or extending into the ciliary body, without secondary glaucoma
                     </option>
                     <option value="(Iris) pT2b">pT2b: Tumor confluent with or extending into the ciliary body and
                         choroid, without secondary glaucoma
@@ -191,15 +186,14 @@
                     <option value="(Iris) pT3">pT3: Tumor confluent with or extending into the ciliary body, choroid, or
                         both, with scleral extension
                     </option>
-                    <option value="(Iris) pT4">pT4: Tumor with extrascleral extension</option>
                     <option value="(Iris) pT4a">pT4a: Tumor with extrascleral extension ≤5 mm in largest diameter
                     </option>
                     <option value="(Iris) pT4b">pT4b: Tumor with extrascleral extension >5 mm in largest diameter
                     </option>
-                    <optgroup label="Ciliary Body and Choroid">
+                </optgroup>
+                <optgroup label="Ciliary Body and Choroid">
                         <option value="(Ciliary Body/Choroid) pTX">pTX: Primary tumor cannot be assessed</option>
                         <option value="(Ciliary Body/Choroid) pT0">pT0: No evidence of primary tumor</option>
-                        <option value="(Ciliary Body/Choroid) pT1">pT1: Tumor size category 1</option>
                         <option value="(Ciliary Body/Choroid) pT1a">pT1a: Tumor size category 1 without ciliary body
                             involvement and extraocular extension
                         </option>
@@ -212,7 +206,6 @@
                         <option value="(Ciliary Body/Choroid) pT1d">pT1d: Tumor size category 1 with ciliary body
                             involvement and extraocular extension ≤5 mm in largest diameter
                         </option>
-                        <option value="(Ciliary Body/Choroid) pT2">pT2: Tumor size category 2</option>
                         <option value="(Ciliary Body/Choroid) pT2a">pT2a: Tumor size category 2 without ciliary body
                             involvement and extraocular extension
                         </option>
@@ -237,7 +230,6 @@
                         <option value="(Ciliary Body/Choroid) pT3d">pT3d: Tumor size category 3 with ciliary body
                             involvement and extraocular extension ≤5 mm in largest diameter
                         </option>
-                        <option value="(Ciliary Body/Choroid) pT4">pT4: Tumor size category 4</option>
                         <option value="(Ciliary Body/Choroid) pT4a">pT4a: Tumor size category 4 without ciliary body
                             involvement and extraocular extension
                         </option>
@@ -255,9 +247,9 @@
                         </option>
                     </optgroup>
             </select>
-            <br>
-
-            <h6>pN</h6><br>
+            
+            <div class="py-2 w-100"></div>
+            <h6>pN</h6>
             <select id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option value="pNX">pNX: Regional lymph nodes cannot be assessed</option>
                 <option value="pN0">pN0: No regional lymph node metastasis</option>
@@ -267,9 +259,9 @@
                     in the orbit that are not contiguous to the eye. (choroidal and ciliary body)
                 </option>
             </select>
-            <br>
-
-            <h6>pM</h6><br>
+            
+            <div class="py-2 w-100"></div>
+            <h6>pM</h6>
             <select id="box15" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option value="pMx">pMx: Not applicable</option>
                 <option value="pM1">pM1: Distant metastasis</option>
@@ -278,13 +270,13 @@
                 <option value="pM1c">pM1c: Largest diameter of the largest metastasis ≥8.1 cm</option>
             </select>
             <input type="text" class="form-control form-control-sm col-sm-6" id="box15_2" style="display:none;" placeholder="Specify metastatic sites">
-            <br>
+            <div class="py-2 w-100"></div>
             <form class="form-inline">
                 <label class="form-check-label">Check here if any lymph nodes submitted?
                     <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box16">
                 </label>
             </form>
-            <div class='lnchk' style='display:none;'><br>
+            <div class='lnchk' style='display:none;'>
                 <form class="form-inline col-8">
                     <label class="m-2">Number of lymph nodes examined: <input type="number"
                                                                               class="form-control form-control-sm col-sm-6 ml-3"
@@ -297,7 +289,7 @@
 
 
             <hr class="p-2">
-            <h5>+ Additional Pathologic Findings (select all that apply)</h5><br>
+            <h5>+ Additional Pathologic Findings (select all that apply)</h5>
             <select multiple id="box19" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option selected>None identified</option>
                 <option>Mitotic rate</option>
