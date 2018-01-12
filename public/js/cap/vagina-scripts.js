@@ -317,7 +317,7 @@ $(window).on("load", function() {
                 "\tTotal Number of Nodes Examined: " +
                 box_18 +
                 "\n" +
-                "\tNumber of Nodes with Metastasis (excludes ITCs): " +
+                "\tNumber of Nodes with Metastasis: " +
                 box_15 +
                 "\n";
 
