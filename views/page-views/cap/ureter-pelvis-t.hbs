@@ -315,16 +315,20 @@
             <hr class="p-2">
             <h5>Pathologic Findings in Ipsilateral Nonneoplastic Renal Tissue </h5>
             <select multiple id="box23" class='form-control selectpicker form-control-sm col-sm-6'>
-                <option>No or insufficient renal parenchyma</option>
-                <option>None identified</option>
-                <option>Glomerular disease (specify):</option>
-                <option>Tubulointerstitial disease (specify):</option>
-                <option>Vascular disease (specify):</option>
-                <option>Inflammation (specify):</option>
-                <option>Other (specify):</option>
+                <option data-type="none">No or insufficient renal parenchyma</option>
+                <option data-type="none">None identified</option>
+                <option data-type="glom">Glomerular disease (specify):</option>
+                <option data-type="tubulo">Tubulointerstitial disease (specify):</option>
+                <option data-type="vasc">Vascular disease (specify):</option>
+                <option data-type="infl">Inflammation (specify):</option>
+                <option data-type="other">Other (specify):</option>
             </select>
-            
-            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box23_2' style='display:none;' placeholder='Specify specify'>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box23_2' style='display:none;' placeholder='Specify glomerular disease'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box23_3' style='display:none;' placeholder='Specify interstitial disease'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box23_4' style='display:none;' placeholder='Specify vascular disease'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box23_5' style='display:none;' placeholder='Specify inflammation type'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box23_6' style='display:none;' placeholder='Specify other findings'>
 
             <hr class="p-2">
             <h5>+ Additional Pathologic Findings (select all that apply)</h5>

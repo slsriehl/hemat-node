@@ -167,11 +167,34 @@ $(window).on("load", function() {
     });
 
     $("#box23").on("change", function() {
-        var sel = $("#box23").val();
-        if ($.inArray("specify", sel) > -1) {
+        var box23arr = [];
+        $("#box23 :selected").each(function(i, sel){
+            box23arr.push($(sel).data("type"));
+        });
+        if ($.inArray("glom", box23arr) > -1){
             $("#box23_2").show();
         } else {
             $("#box23_2").hide();
+        }
+        if ($.inArray("tubulo", box23arr) > -1){
+            $("#box23_3").show();
+        } else {
+            $("#box23_3").hide();
+        }
+        if ($.inArray("vasc", box23arr) > -1){
+            $("#box23_4").show();
+        } else {
+            $("#box23_4").hide();
+        }
+        if ($.inArray("infl", box23arr) > -1){
+            $("#box23_5").show();
+        } else {
+            $("#box23_5").hide();
+        }
+        if ($.inArray("other", box23arr) > -1){
+            $("#box23_6").show();
+        } else {
+            $("#box23_6").hide();
         }
     });
 
@@ -368,18 +391,36 @@ $(window).on("load", function() {
 
 
         var box_23 = $("#box23").val();
-        var box_23_2 = $("#box23_2").val();
-        if ($.inArray("specify", box_23) > -1) {
-            captext +=
-                "\nPathologic Findings in Ipsilateral Nonneoplastic Renal Tissue:\n- " +
-                box_23.join("\n- ").replace(/specify/, box_23_2) +
-                "\n";
+        var box23arr = [];
+        $("#box23 :selected").each(function(i, sel){
+            box23arr.push($(sel).data("type"));
+        });
+        var box_23_2 = $("#box23_2").val(); //glom
+        var box_23_3 = $("#box23_3").val(); //tubulo
+        var box_23_4 = $("#box23_4").val(); //vasc
+        var box_23_5 = $("#box23_5").val(); //infl
+        var box_23_6 = $("#box23_6").val(); //other
+            captext += "\nPathologic Findings in Ipsilateral Nonneoplastic Renal Tissue:";
+        if ($.inArray("none", box23arr) < 0) {
+            if ($.inArray("glom", box23arr) > -1) {
+                captext += "\n- Glomerular disease: " + box_23_2;
+            }
+            if ($.inArray("tubulo", box23arr) > -1) {
+                captext += "\n- Tubulointerstitial disease: " + box_23_3;
+            }
+            if ($.inArray("vasc", box23arr) > -1) {
+                captext += "\n- Vascular disease: " + box_23_4;
+            }
+            if ($.inArray("infl", box23arr) > -1) {
+                captext += "\n- Inflammation: " + box_23_5;
+            }
+            if ($.inArray("other", box23arr) > -1) {
+                captext += "\n- " + box_23_6;
+            }
         } else {
-            captext +=
-                "\nPathologic Findings in Ipsilateral Nonneoplastic Renal Tissue:\n- " +
-                box_23.join("\n- ") +
-                "\n";
+            captext += "- " + box_23;
         }
+
 
         var box_20 = $("#box20").val();
         var box_20_2 = $("#box20_2").val();
@@ -392,17 +433,17 @@ $(window).on("load", function() {
         });
         if (trig1_box_20.length > 0 && trig2_box_20.length == 0) {
             captext +=
-                "\n+ Additional Pathologic Findings:\n- " +
+                "\n\n+ Additional Pathologic Findings:\n- " +
                 box_20.join("\n- ").replace(/Therapy/, box_20_2) +
                 "\n";
         } else if (trig1_box_20.length == 0 && trig2_box_20.length > 0) {
             captext +=
-                "\n+ Additional Pathologic Findings:\n- " +
+                "\n\n+ Additional Pathologic Findings:\n- " +
                 box_20.join("\n- ").replace(/Other/, box_20_3) +
                 "\n";
         } else if (trig1_box_20.length > 0 && trig2_box_20.length > 0) {
             captext +=
-                "\n+ Additional Pathologic Findings:\n- " +
+                "\n\n+ Additional Pathologic Findings:\n- " +
                 box_20
                     .join("\n- ")
                     .replace(/Therapy/, box_20_2)
@@ -410,7 +451,7 @@ $(window).on("load", function() {
                 "\n";
         } else {
             captext +=
-                "\n+ Additional Pathologic Findings:\n- " + box_20.join("\n- ") + "\n";
+                "\n\n+ Additional Pathologic Findings:\n- " + box_20.join("\n- ") + "\n";
         }
 
         $("#outPut-1").val(captext);
