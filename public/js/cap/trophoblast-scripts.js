@@ -254,13 +254,13 @@ $(window).on('load', function () {
                 return el.indexOf("Other") > -1;
             });
             if (trig1_box_16.length > 0 && trig2_box_16.length == 0) {
-                captext += "\nMetastatic sites:\n- " + box_16.join("\n- ").replace(/Lymph node\(s\)/, "Lymph nodes: " + box_16_2) + "\n";
+                captext += "\nMetastatic sites:\n- " + box_16.join(", ").replace(/Lymph node\(s\)/, "Lymph nodes: " + box_16_2) + "\n";
             } else if (trig1_box_16.length == 0 && trig2_box_16.length > 0) {
-                captext += "\nMetastatic sites:\n- " + box_16.join("\n- ").replace(/Other/, box_16_3) + "\n";
+                captext += "\nMetastatic sites:\n- " + box_16.join(", ").replace(/Other/, box_16_3) + "\n";
             } else if (trig1_box_16.length > 0 && trig2_box_16.length > 0) {
-                captext += "\nMetastatic sites:\n- " + box_16.join("\n- ").replace(/Lymph node\(s\)/, "Lymph nodes: " + box_16_2).replace(/Other/, box_16_3) + "\n";
+                captext += "\nMetastatic sites:\n- " + box_16.join(", ").replace(/Lymph node\(s\)/, "Lymph nodes: " + box_16_2).replace(/Other/, box_16_3) + "\n";
             } else {
-                captext += "\nMetastatic sites:\n- " + box_16.join("\n- ") + "\n";
+                captext += "\nMetastatic sites:\n- " + box_16.join(", ") + "\n";
             }
         }
 

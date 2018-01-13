@@ -25,7 +25,7 @@
                 <option>Pelvic exenteration</option>
                 <option>Other</option>
             </select>
-            <br>
+            
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;' placeholder='Specify Other'>
 
 
@@ -41,7 +41,7 @@
                 <option>Other</option>
                 <option selected>Not applicable</option>
             </select>
-            <br>
+            
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box2_2' style='display:none;' placeholder='Specify Other'>
 
 
@@ -56,7 +56,7 @@
                 <option>Other</option>
                 <option>Cannot be determined</option>
             </select>
-            <br>
+            
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box3_2' style='display:none;' placeholder='Specify Other'>
 
 
@@ -65,7 +65,7 @@
 
             <hr class="p-2">
             <h5>Tumor Size (cm)</h5>
-            <input type="text" class="form-control form-control-sm col-sm-6" id="box4" placeholder="">
+            <input type="number" class="form-control form-control-sm col-sm-6" id="box4" placeholder="">
 
 
 
@@ -83,7 +83,7 @@
                 <option>Malignant trophoblastic tumor, type cannot be determined</option>
                 <option>Other histologic type not listed</option>
             </select>
-            <br>
+            
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box5_2' style='display:none;' placeholder='Specify Other'>
 
 
@@ -107,7 +107,7 @@
                 <option>Other organs/tissue</option>
                 <option>Cannot be determined</option>
             </select>
-            <br>
+            
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box6_2' style='display:none;' placeholder='Specify Other'>
 
 
@@ -122,8 +122,8 @@
                 <option>Uninvolved by tumor</option>
                 <option>Involved by tumor</option>
             </select>
-            <br>
-            <input type="text" class="form-control form-control-sm col-sm-6" id='box7_1' style='display:none;' placeholder='Specify closest margin'><br>
+            
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box7_1' style='display:none;' placeholder='Specify closest margin'>
             <input type="text" class="form-control form-control-sm col-sm-6" id='box7_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
             <input type="text" class="form-control form-control-sm col-sm-6" id='box7_3' style='display:none;' placeholder='Specify involved margin'>
 
@@ -152,13 +152,16 @@
                     Nodal metastases should be classified as metastatic M1b disease." aria-hidden="true"></i>
             </h5>
 
-            <h6>TNM Descriptors (select all that apply)</h6><br>
+            <h6>TNM Descriptors (select all that apply)</h6>
             <select id="box9" class='form-control selectpicker form-control-sm col-sm-6' multiple>
                 <option selected value="Not applicable">Not applicable</option>
                 <option>m</option>
                 <option>r</option>
                 <option>y</option>
             </select>
+
+            <div class="py-2 w-100"></div>
+
             <h6 class='mt-2'>pT</h6>
             <select id="box10" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option value="pTX">pTX: Primary tumor cannot be assessed</option>
@@ -166,7 +169,8 @@
                 <option value="pT1">pT1: Tumor confined to uterus</option>
                 <option value="pT2">pT2: Tumor extends to other genital structures by metastasis or direct extension</option>
             </select>
-            <br>
+
+            <div class="py-2 w-100"></div>
 
             <h6 class='mt-2'>pM
             <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
@@ -180,7 +184,7 @@
                 <option value="pM1a">pM1a: Lung metastasis only</option>
                 <option value="pM1b">pM1b: All other distant metastasis</option>
             </select>
-            <br>
+            
 
             <div class="met-sites" style="display: none;">
             <h6>Specify metastatic sites (select all that apply)</h6>
