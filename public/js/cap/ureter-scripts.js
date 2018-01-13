@@ -80,15 +80,15 @@ $(window).on("load", function() {
 
     $("#box10").on("change", function() {
         var sel = $("#box10").val();
-        if (sel.indexOf("Invasive") > -1) {
+        if (sel.indexOf("involving") > -1) {
             $(".margin_hid").show();
         } else {
             $(".margin_hid").hide();
         }
-        if (sel.indexOf("Non-invasive") > -1) {
-            $(".margin2_hid").show();
+        if (sel.indexOf("and")<0){
+            $(".dys").show();
         } else {
-            $(".margin2_hid").hide();
+            $(".dys").hide();
         }
     });
 
@@ -100,14 +100,25 @@ $(window).on("load", function() {
             $("#box10_3").hide();
         }
     });
-    $("#box10_4").on("change", function() {
-        var sel = $("#box10_4").val();
-        if (sel.indexOf("Other") > -1) {
-            $("#box10_5").show();
+
+    $("#box50").on("change", function() {
+        var sel = $("#box50").val();
+        if (sel.indexOf("involving") > -1) {
+            $(".situ_hid").show();
         } else {
-            $("#box10_5").hide();
+            $(".situ_hid").hide();
         }
     });
+
+    $("#box50_2").on("change", function() {
+        var sel = $("#box50_2").val();
+        if (sel.indexOf("Other") > -1) {
+            $("#box50_3").show();
+        } else {
+            $("#box50_3").hide();
+        }
+    });
+
 
     $("#box15").on("change", function() {
         var sel = $("#box15").val();
@@ -123,6 +134,15 @@ $(window).on("load", function() {
             $(".lnchk").show();
         } else {
             $(".lnchk").hide();
+        }
+    });
+
+    $("#box18").on("input", function() {
+        var num = parseInt($(this).val(), 10);
+        if (num > 0) {
+            $(".posnodes").show();
+        } else {
+            $(".posnodes").hide();
         }
     });
 
@@ -255,26 +275,10 @@ $(window).on("load", function() {
         var box_10 = $("#box10").val();
         var box_10_2 = $("#box10_2").val();
         var box_10_3 = $("#box10_3").val();
-        var box_10_4 = $("#box10_2").val();
-        var box_10_5 = $("#box10_3").val();
-        if (box_10.indexOf("Invasive") > -1) {
-            if ($.inArray("Other", box_10_4) > -1) {
-                captext +=
-                    "\nMargins:\n- " +
-                    box_10 +
-                    " " +
-                    box_10_4.join(", ").replace(/Other/, box_10_5) +
-                    "\n";
-            } else {
-                captext += "\nMargins:\n- " + box_10 + " " + box_10_4.join(", ") + "\n";
-            }
-        } else if (box_10.indexOf("Non-invasive") > -1) {
+        if (box_10.indexOf("involving") > -1) {
             if ($.inArray("Other", box_10_2) > -1) {
                 captext +=
-                    "\nMargins:\n- " +
-                    box_10 +
-                    " " +
-                    box_10_2.join(", ").replace(/Other/, box_10_3) +
+                    "\nMargins:\n- " + box_10 +  " " + box_10_2.join(", ").replace(/Other/, box_10_3) +
                     "\n";
             } else {
                 captext += "\nMargins:\n- " + box_10 + " " + box_10_2.join(", ") + "\n";
@@ -282,6 +286,21 @@ $(window).on("load", function() {
         } else {
             captext += "\nMargins:\n- " + box_10 + "\n";
         }
+
+        var box_50 = $("#box50").val();
+        var box_50_2 = $("#box50_2").val();
+        var box_50_3 = $("#box50_3").val();
+        if (box_10.indexOf("and") < 0){
+            if (box_50.indexOf("involving") > -1) {
+                if ($.inArray("Other", box_50_2) > -1) {
+                    captext += "- " +  box_50 + " " + box_50_2.join(", ").replace(/Other/, box_50_3) +
+                        "\n";
+                } else {
+                    captext += "- " + box_50 + " " + box_50_2.join(", ") + "\n";
+                }
+            }
+        }
+
 
         var box_11 = $("#box11").val();
         captext += "\nLymphovascular Invasion:\n- " + box_11 + "\n";
@@ -328,31 +347,36 @@ $(window).on("load", function() {
         if ($("#box16").is(":checked")) {
             var box_17 = $("#box17").val();
             var box_18 = $("#box18").val();
+            var box_60 = $("#box60").val();
             captext +=
                 "\nLymph nodes:\n\tLymph Nodes Examined: " +
                 box_17 +
                 "\n\tLymph nodes involved: " +
-                box_18 +
-                "\n";
+                box_18 +"\n";
+            if (box_18.indexOf("0") < 0){
+                captext += "\t+ Size of Largest Deposit: "+box_60+"cm\n";
+
+                var box_19 = $("#box19").val();
+                if (box_19 != "Not applicable") {
+                    captext += "\t+ Extranodal Extension: " + box_19 + "\n";
+                }
+            }
         } else {
             captext += "\nLymph nodes: None submitted\n";
         }
 
-        var box_19 = $("#box19").val();
-        if (box_19 != "Not applicable") {
-            captext += "\n+ Extranodal Extension:\n- " + box_19 + "\n";
-        }
+
 
         var box_23 = $("#box23").val();
         var box_23_2 = $("#box23_2").val();
         if ($.inArray("specify", box_23) > -1) {
             captext +=
-                "\nPathologic Findings in Ipsilateral Nonneoplastic Renal Tissue :\n- " +
+                "\nPathologic Findings in Ipsilateral Nonneoplastic Renal Tissue:\n- " +
                 box_23.join("\n- ").replace(/specify/, box_23_2) +
                 "\n";
         } else {
             captext +=
-                "\nPathologic Findings in Ipsilateral Nonneoplastic Renal Tissue :\n- " +
+                "\nPathologic Findings in Ipsilateral Nonneoplastic Renal Tissue:\n- " +
                 box_23.join("\n- ") +
                 "\n";
         }
