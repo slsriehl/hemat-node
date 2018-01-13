@@ -5,43 +5,43 @@ $(window).on('load', function() {
 
     $("input#box5").autocomplete({
         source: [
-                "Germ cell neoplasia in situ (GCNIS)",
-                "Intratubular seminoma",
-                "Intratubular embryonal carcinoma",
-                "Seminoma, classic type",
-                "Seminoma with associated scar",
-                "Seminoma with syncytiotrophoblastic cells",
-                "Mixed germ cell tumor",
-                "Embryonal carcinoma",
-                "Yolk sac tumor, post-pubertal type",
-                "Choriocarcinoma",
-                "Non-choriocarcinomatous trophoblastic tumor, NOS",
-                "Placental site trophoblastic tumor",
-                "Epithelioid trophoblastic tumor",
-                "Cystic trophoblastic tumor",
-                "Teratoma, post-pubertal type",
-                "Teratoma, pre-pubertal type (Epidermoid cyst)",
-                "Teratoma, pre-pubertal type (Dermoid cyst)",
-                "Teratoma, pre-puberal type (Monodermal teratoma)",
-                "Teratoma with somatic malignancy",
-                "Scar diagnostic of regressed germ cell tumor",
-                "Scar suspicious for regressed germ cell tumor",
-                "Spermatocytic tumor",
-                "Spermatocytic tumor with a sarcomatous component",
-                "Mixed germ cell-sex cord-stromal tumor, gonadoblastoma",
-                "Sex cord-stromal tumor",
-                "Leydig cell tumor",
-                "Malignant Leydig cell tumor",
-                "Sertoli cell tumor, NOS",
-                "Sertoli cell tumor, malignant",
-                "Sertoli cell tumor, large cell calcifying",
-                "Sertoli cell tumor, intratubular large cell hyalinizing",
-                "Granulosa cell tumor, adult type",
-                "Granulosa cell tumor, juvenile type",
-                "Fibroma-thecoma",
-                "Mixed Sex-cord stromal tumor, with following components:",
-                "Sex-cord stromal tumor, unclassified",
-                "Other histologic type"],
+            "Germ cell neoplasia in situ (GCNIS)",
+            "Intratubular seminoma",
+            "Intratubular embryonal carcinoma",
+            "Seminoma, classic type",
+            "Seminoma with associated scar",
+            "Seminoma with syncytiotrophoblastic cells",
+            "Mixed germ cell tumor",
+            "Embryonal carcinoma",
+            "Yolk sac tumor, post-pubertal type",
+            "Choriocarcinoma",
+            "Non-choriocarcinomatous trophoblastic tumor, NOS",
+            "Placental site trophoblastic tumor",
+            "Epithelioid trophoblastic tumor",
+            "Cystic trophoblastic tumor",
+            "Teratoma, post-pubertal type",
+            "Teratoma, pre-pubertal type (Epidermoid cyst)",
+            "Teratoma, pre-pubertal type (Dermoid cyst)",
+            "Teratoma, pre-puberal type (Monodermal teratoma)",
+            "Teratoma with somatic malignancy",
+            "Scar diagnostic of regressed germ cell tumor",
+            "Scar suspicious for regressed germ cell tumor",
+            "Spermatocytic tumor",
+            "Spermatocytic tumor with a sarcomatous component",
+            "Mixed germ cell-sex cord-stromal tumor, gonadoblastoma",
+            "Sex cord-stromal tumor",
+            "Leydig cell tumor",
+            "Malignant Leydig cell tumor",
+            "Sertoli cell tumor, NOS",
+            "Sertoli cell tumor, malignant",
+            "Sertoli cell tumor, large cell calcifying",
+            "Sertoli cell tumor, intratubular large cell hyalinizing",
+            "Granulosa cell tumor, adult type",
+            "Granulosa cell tumor, juvenile type",
+            "Fibroma-thecoma",
+            "Mixed Sex-cord stromal tumor, with following components:",
+            "Sex-cord stromal tumor, unclassified",
+            "Other histologic type"],
         appendTo: '#Leftpanel',
         select: function(event, ui){
             var choice = ui.item;
@@ -82,7 +82,7 @@ $(window).on('load', function() {
 
         }
     });
-    
+
 //IHCs
     $(function () {
         var availableTags = [ "interaortocaval", "paraaortic", "paracaval", "preaortic", "precaval", "retroaortic", "retrocaval"  ];
@@ -118,7 +118,7 @@ $(window).on('load', function() {
             }
         });
     });
-    
+
 
 
 
@@ -248,7 +248,7 @@ $(window).on('load', function() {
             captext += "\nHistologic Type:\n- " + box_5 + " " + box_5_9 + "\n";
         }
         else {
-                captext += "\nHistologic Type:\n- "+box_5+"\n";
+            captext += "\nHistologic Type:\n- "+box_5+"\n";
         }
 
         var box_6 = $("#box6").val();
@@ -284,7 +284,7 @@ $(window).on('load', function() {
 
         var box_23 = $("#box23").val();
         if (box_23 != "Not applicable")
-        captext += "\n+ Modified Royal Marsden Staging System:\n- "  + box_23+ "\n";
+            captext += "\n+ Modified Royal Marsden Staging System:\n- "  + box_23+ "\n";
 
         if ($("#box14").is(':checked')) {
             var box_15 = $("#box15").val();

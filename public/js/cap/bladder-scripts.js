@@ -1,20 +1,21 @@
+'use strict';
+
 $(window).on('load', function () {
-//*************************************************************//
-//                        Autocomplete                         //
-// *************************************************************/
+    //*************************************************************//
+    //                        Autocomplete                         //
+    // *************************************************************/
 
 
-//*************************************************************//
-//                        Pop-ups                              //
-// *************************************************************/
+    //*************************************************************//
+    //                        Pop-ups                              //
+    // *************************************************************/
 
     $('#box1').on("change", function () {
         var sel = $('#box1').val();
         if (sel.indexOf("Other") > -1) {
 
             $('#box1_2').show();
-        }
-        else {
+        } else {
             $('#box1_2').hide();
         }
     });
@@ -23,16 +24,19 @@ $(window).on('load', function () {
         var sel = $('#box2').val();
         if ($.inArray('Other', sel) > -1) {
             $('#box2_2').show();
-        }
-        else {
+        } else {
             $('#box2_2').hide();
         }
     });
 
     $('#box4').on("change", function () {
         var sel = $('#box4').val();
-        var sq = sel.filter(el => el.indexOf('Squamous cell') > -1);
-        var ad = sel.filter(el => el.indexOf('Adenocarcinoma') > -1);
+        var sq = sel.filter(function (el) {
+            return el.indexOf('Squamous cell') > -1;
+        });
+        var ad = sel.filter(function (el) {
+            return el.indexOf('Adenocarcinoma') > -1;
+        });
         var diff = $(sel).not(sq).not(ad).get();
         console.log("sq:" + sq.length);
         console.log("ad:" + ad.length);
@@ -62,8 +66,7 @@ $(window).on('load', function () {
         var sel = $('#box6').val();
         if (sel.indexOf('Other') > -1) {
             $('#box6_2').show();
-        }
-        else {
+        } else {
             $('#box6_2').hide();
         }
     });
@@ -73,8 +76,7 @@ $(window).on('load', function () {
         if (sel.indexOf("Other") > -1) {
 
             $('#box7_2').show();
-        }
-        else {
+        } else {
             $('#box7_2').hide();
         }
     });
@@ -83,34 +85,34 @@ $(window).on('load', function () {
         var sel = $('#box8').val();
         if ($.inArray('Other', sel) > -1) {
             $('#box8_2').show();
-        }
-        else {
+        } else {
             $('#box8_2').hide();
         }
     });
 
-    $('#box9').on("change", function(){
+    $('#box9').on("change", function () {
         var sel = $('#box9').val();
-        if (sel.indexOf('adjacent') > -1){
+        if (sel.indexOf('adjacent') > -1) {
             $('.invade1_hid').show();
+        } else {
+            $('.invade1_hid').hide();
         }
-        else {$('.invade1_hid').hide();}
     });
 
-    $('#box9_2').on("change", function(){
+    $('#box9_2').on("change", function () {
         var sel = $('#box9_2').val();
-        if ($.inArray('Other', sel) >-1) {
+        if ($.inArray('Other', sel) > -1) {
             $('#box9_3').show();
+        } else {
+            $('#box9_3').hide();
         }
-        else {$('#box9_3').hide();}
     });
 
     $('#box10').on("change", function () {
         var sel = $('#box10').val();
         if (sel.indexOf('involving') > -1) {
             $('.margin_hid').show();
-        }
-        else {
+        } else {
             $('.margin_hid').hide();
         }
     });
@@ -119,8 +121,7 @@ $(window).on('load', function () {
         var sel = $('#box10_2').val();
         if (sel.indexOf('Other') > -1) {
             $('#box10_3').show();
-        }
-        else {
+        } else {
             $('#box10_3').hide();
         }
     });
@@ -128,38 +129,34 @@ $(window).on('load', function () {
     $("#box16").on("change", function () {
         if ($(this).is(":checked")) {
             $(".lnchk").show();
-        }
-        else {
+        } else {
             $(".lnchk").hide();
         }
     });
 
     $('#box20').on("change", function () {
         var sela = $('#box20').val();
-        var trig1 = sela.filter(el => el.indexOf('Therapy') > -1
-        )
-        ;
-        var trig2 = sela.filter(el => el.indexOf('Other') > -1
-        )
-        ;
+        var trig1 = sela.filter(function (el) {
+            return el.indexOf('Therapy') > -1;
+        });
+        var trig2 = sela.filter(function (el) {
+            return el.indexOf('Other') > -1;
+        });
         if (trig1.length > 0) {
             $('#box20_2').show();
-        }
-        else {
+        } else {
             $('#box20_2').hide();
         }
         if (trig2.length > 0) {
             $('#box20_3').show();
-        }
-        else {
+        } else {
             $('#box20_3').hide();
         }
     });
 
-
-//************************************************************//
-// Script to populate the template data in the output textarea//
-// *************************************************************/
+    //************************************************************//
+    // Script to populate the template data in the output textarea//
+    // *************************************************************/
     $('.writeReport').on('click', function () {
 
         // ***************** INPUT VALIDATION ********************//
@@ -194,18 +191,15 @@ $(window).on('load', function () {
         var box_1_2 = $("#box1_2").val();
         if (box_1 == 'Other') {
             captext += "\nProcedure:\n- " + box_1_2 + "\n";
-        }
-        else {
+        } else {
             captext += "\nProcedure:\n- " + box_1 + "\n";
         }
-
 
         var box_2 = $("#box2").val();
         var box_2_2 = $("#box2_2").val();
         if ($.inArray('Other', box_2) > -1) {
             captext += "\nTumor Site:\n- " + box_2.join('\n- ').replace(/Other/, box_2_2) + "\n";
-        }
-        else {
+        } else {
             captext += "\nTumor Site:\n- " + box_2.join('\n- ') + "\n";
         }
 
@@ -216,8 +210,7 @@ $(window).on('load', function () {
         var box_4_2 = $("#box4_2").val();
         if ($.inArray('Other', box_4) > -1) {
             captext += "\nHistologic Type:\n- " + box_4.join('\n- ').replace(/Other/, box_4_2) + "\n";
-        }
-        else {
+        } else {
             captext += "\nHistologic Type:\n- " + box_4.join('\n- ') + "\n";
         }
 
@@ -229,60 +222,56 @@ $(window).on('load', function () {
         if (box_6 != "Not applicable") {
             if (box_6.indexOf("Other") > -1) {
                 captext += "\nHistologic Grade:\n- " + box_6_2 + "\n";
-            }
-            else {
+            } else {
                 captext += "\nHistologic Grade:\n- " + box_6 + "\n";
             }
         }
-
 
         var box_7 = $("#box7").val();
         var box_7_2 = $("#box7_2").val();
         if (box_7 != "Not applicable") {
             if (box_7.indexOf("Other") > -1) {
                 captext += "\nHistologic Grade:\n- " + box_7_2 + "\n";
-            }
-            else {
+            } else {
                 captext += "\nHistologic Grade:\n- " + box_7 + "\n";
             }
         }
-
 
         var box_8 = $("#box8").val();
         var box_8_2 = $("#box8_2").val();
         if ($.inArray('Other', box_8) > -1) {
             captext += "\n+ Tumor Configuration:\n- " + box_8.join('\n- ').replace(/Other/, box_8_2) + "\n";
-        }
-        else {
+        } else {
             captext += "\n+ Tumor Configuration:\n- " + box_8.join('\n- ') + "\n";
         }
 
         captext += "\nTumor Extension:\n";
-        
-                var box_9 = $("#box9").val();
-                var box_9_2 = $("#box9_2").val();
-                var box_9_3 = $("#box9_3").val();
-                if (box_9.indexOf('adjacent') > -1){
-                    if ($.inArray('Other', box_9_2) > -1){
-                        captext += "- Tumor invades the following adjacent structures: " + box_9_2.join(', ').replace(/Other/, box_9_3) + "\n";
-                    }else {
-                        captext += "- Tumor invades the following adjacent structures: " + box_9_2.join(', ') + "\n";
-                    }
-                }
-                else {captext += "- "  + box_9 + "\n";}
-                
+
+        var box_9 = $("#box9").val();
+        var box_9_2 = $("#box9_2").val();
+        var box_9_3 = $("#box9_3").val();
+        if (box_9.indexOf('adjacent') > -1) {
+            if ($.inArray('Other', box_9_2) > -1) {
+                captext += "- Tumor invades the following adjacent structures: " + box_9_2.join(', ').replace(/Other/, box_9_3) + "\n";
+            } else {
+                captext += "- Tumor invades the following adjacent structures: " + box_9_2.join(', ') + "\n";
+            }
+        } else {
+            captext += "- " + box_9 + "\n";
+        }
+
         var box_10 = $("#box10").val();
         var box_10_2 = $("#box10_2").val();
         var box_10_3 = $("#box10_3").val();
-        if (box_10.indexOf('involving') > -1){
-            if ($.inArray('Other', box_10_2) > -1){
-                captext += "\nMargins:\n- " + box_10 + " "+ box_10_2.join(', ').replace(/Other/, box_10_3) + "\n";
-            }else {
-                captext += "\nMargins:\n- " + box_10 + " "+ box_10_2.join(', ') + "\n";
+        if (box_10.indexOf('involving') > -1) {
+            if ($.inArray('Other', box_10_2) > -1) {
+                captext += "\nMargins:\n- " + box_10 + " " + box_10_2.join(', ').replace(/Other/, box_10_3) + "\n";
+            } else {
+                captext += "\nMargins:\n- " + box_10 + " " + box_10_2.join(', ') + "\n";
             }
+        } else {
+            captext += "\nMargins:\n- " + box_10 + "\n";
         }
-        else {captext += "\nMargins:\n- "  + box_10 + "\n";}
-
 
         var box_11 = $("#box11").val();
         captext += "\nLymphovascular Invasion:\n- " + box_11 + "\n";
@@ -294,8 +283,7 @@ $(window).on('load', function () {
         captext += '\nPathologic Staging (pTNM):\n- ';
         if (box_12 != "Not applicable") {
             captext += box_12.join("") + ' ' + box_13 + " " + box_14 + " " + box_15 + "\n";
-        }
-        else {
+        } else {
             captext += box_13 + " " + box_14 + " " + box_15 + "\n";
         }
 
@@ -315,25 +303,21 @@ $(window).on('load', function () {
         var box_20 = $("#box20").val();
         var box_20_2 = $("#box20_2").val();
         var box_20_3 = $("#box20_3").val();
-        var trig1_box_20 = box_20.filter(el => el.indexOf("Therapy") > -1
-        )
-        ;
-        var trig2_box_20 = box_20.filter(el => el.indexOf("Other") > -1
-        )
-        ;
-        if ((trig1_box_20.length > 0 ) && (trig2_box_20.length == 0  )) {
+        var trig1_box_20 = box_20.filter(function (el) {
+            return el.indexOf("Therapy") > -1;
+        });
+        var trig2_box_20 = box_20.filter(function (el) {
+            return el.indexOf("Other") > -1;
+        });
+        if (trig1_box_20.length > 0 && trig2_box_20.length == 0) {
             captext += "\n+ Additional Pathologic Findings:\n- " + box_20.join("\n- ").replace(/Therapy/, box_20_2) + "\n";
-        }
-        else if ((trig1_box_20.length == 0 ) && (trig2_box_20.length > 0  )) {
+        } else if (trig1_box_20.length == 0 && trig2_box_20.length > 0) {
             captext += "\n+ Additional Pathologic Findings:\n- " + box_20.join("\n- ").replace(/Other/, box_20_3) + "\n";
-        }
-        else if ((trig1_box_20.length > 0 ) && (trig2_box_20.length > 0  )) {
+        } else if (trig1_box_20.length > 0 && trig2_box_20.length > 0) {
             captext += "\n+ Additional Pathologic Findings:\n- " + box_20.join("\n- ").replace(/Therapy/, box_20_2).replace(/Other/, box_20_3) + "\n";
-        }
-        else {
+        } else {
             captext += "\n+ Additional Pathologic Findings:\n- " + box_20.join("\n- ") + "\n";
         }
-
 
         $('#outPut-1').val(captext);
 
@@ -341,7 +325,6 @@ $(window).on('load', function () {
         makeCreatePdfBtn();
     });
 });
-
 
 /**
  * Created by Chandra Krishnan on 11/23/2017.
