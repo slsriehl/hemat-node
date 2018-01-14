@@ -117,28 +117,35 @@ $(window).on("load", function() {
     // Script to populate the template data in the output textarea//
     // *************************************************************/
     $(".writeReport").on("click", function() {
+
         // ***************** INPUT VALIDATION ********************//
-        $("select[multiple]:visible").each(function() {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass("empty");
-            } else {
-                $(this).addClass("empty");
-                $("#cap-valid").show();
-            }
-        });
+                $('select[multiple]:visible').each(function () {
+                    // ignore class=opt
+                    if (!$(this).hasClass("opt")) {
+                        // Check if at least one selection is made
+                        if ($(this).val().length > 0) {
+                            $(this).removeClass('empty');
+                        } else {
+                            $(this).addClass('empty');
+                            $('#cap-valid').show();
+                        }
+                    }
+                });
 
-        $('input[type="text"]:visible').each(function() {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass("empty");
-            } else {
-                $(this).addClass("empty");
-                $("#cap-valid").show();
-            }
-        });
+                $('input[type="text"]:visible').each(function () {
+                    // ignore class=opt
+                    if (!$(this).hasClass("opt")) {
+                        // Check if at least one selection is made
+                        if ($.trim($(this).val()).length > 0) {
+                            $(this).removeClass('empty');
+                        } else {
+                            $(this).addClass('empty');
+                            $('#cap-valid').show();
+                        }
+                    }
+                });
 
-        // ***************** END VALIDATION ********************//
+                // ***************** END VALIDATION ********************//
 
         var captext =
             "Pediatric Renal Tumors Cancer Synoptic\n(2016 update, COG staging system)\n\n";
@@ -272,14 +279,18 @@ $(window).on("load", function() {
         }
 
         var box_12 = $("#box12").val();
-        captext += "\n+ Nephrogenic Rests:\n- " + box_12.join("\n- ") + "\n";
+        if (box_12.length > 0){
+            captext += "\n+ Nephrogenic Rests:\n- " + box_12.join("\n- ") + "\n";
+        }
 
         var box_13 = $("#box13").val();
-        if ($.inArray("Not applicable", box_13) == -1) {
-            captext +=
-                "\n+ Posttherapy Histologic Classification:\n- " +
-                box_13.join("\n- ") +
-                "\n";
+        if (box_13.length > 0){
+            if ($.inArray("Not applicable", box_13) == -1) {
+                captext +=
+                    "\n+ Posttherapy Histologic Classification:\n- " +
+                    box_13.join("\n- ") +
+                    "\n";
+            }
         }
 
         var box_14 = $("#box14").val();
@@ -313,20 +324,26 @@ $(window).on("load", function() {
 
         var box_18 = $("#box18").val();
         var box_18_2 = $("#box18_2").val();
-        if ($.inArray("Other", box_18) > -1) {
-            captext +=
-                "\n+ Ancillary Molecular/Genetic Studies:\n- " +
-                box_18.join("\n- ").replace(/Other/, box_18_2) +
-                "\n";
-        } else {
-            captext +=
-                "\n+ Ancillary Molecular/Genetic Studies:\n- " +
-                box_18.join("\n- ") +
-                "\n";
+        if (box_18.length > 0){
+            if ($.inArray("Other", box_18) > -1) {
+                captext +=
+                    "\n+ Ancillary Molecular/Genetic Studies:\n- " +
+                    box_18.join("\n- ").replace(/Other/, box_18_2) +
+                    "\n";
+            } else {
+                captext +=
+                    "\n+ Ancillary Molecular/Genetic Studies:\n- " +
+                    box_18.join("\n- ") +
+                    "\n";
+            }
+
         }
 
         var box_19 = $("#box19").val();
-        captext += "\n+ Known Underlying Genetic Syndrome:\n- " + box_19 + "\n";
+        if (box_19.length > 0){
+            captext += "\n+ Known Underlying Genetic Syndrome:\n- " + box_19 + "\n";
+
+        }
 
         $("#outPut-1").val(captext);
 
