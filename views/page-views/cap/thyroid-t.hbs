@@ -14,6 +14,8 @@
 		{{> page-partials/cap-header}}
 
 	<div class="row">
+		{{> page-partials/cap-validate-alert}}
+
 		<div class="col col-md-8">
 			<hr class="p-2">
 			<h5>Procedure</h5>
@@ -280,7 +282,7 @@
 
 			<hr class="p-2">
 			<h5>+ Additional Pathologic Findings (select all that apply)</h5>
-			<select multiple id="box23" class='form-control selectpicker form-control-sm col-sm-6'>
+			<select multiple id="box23" class='form-control selectpicker form-control-sm col-sm-6 opt'>
 				<option>Adenoma</option>
 				<option>Adenomatoid nodule(s) or nodular follicular disease</option>
 				<option>Diffuse hyperplasia (Graves’ disease)</option>
@@ -299,7 +301,7 @@
 
 			<hr class="p-2">
 			<h5>+ Clinical History (select all that apply)</h5>
-			<select multiple id="box24" class='form-control selectpicker form-control-sm col-sm-6'>
+			<select multiple id="box24" class='form-control selectpicker form-control-sm col-sm-6 opt'>
 				<option>Radiation exposure</option>
 				<option>No known radiation exposure</option>
 				<option>Family history</option>

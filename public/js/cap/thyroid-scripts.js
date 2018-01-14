@@ -163,22 +163,28 @@ $(window).on('load', function () {
 
         // ***************** INPUT VALIDATION ********************//
         $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
+            // ignore class=opt
+            if (!$(this).hasClass("opt")) {
+                // Check if at least one selection is made
+                if ($(this).val().length > 0) {
+                    $(this).removeClass('empty');
+                } else {
+                    $(this).addClass('empty');
+                    $('#cap-valid').show();
+                }
             }
         });
 
         $('input[type="text"]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
+            // ignore class=opt
+            if (!$(this).hasClass("opt")) {
+                // Check if at least one selection is made
+                if ($.trim($(this).val()).length > 0) {
+                    $(this).removeClass('empty');
+                } else {
+                    $(this).addClass('empty');
+                    $('#cap-valid').show();
+                }
             }
         });
 
@@ -296,15 +302,17 @@ $(window).on('load', function () {
         var trig2_box_23 = box_23.filter(function (el) {
             return el.indexOf("Other") > -1;
         });
-        if (trig1_box_23.length > 0 && trig2_box_23.length == 0) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_23.join("\n- ").replace(/Parathyroid gland(s) present/, "Parathyroid gland(s) identified: " + box_23_2 + " in total") + "\n";
-        } else if (trig1_box_23.length == 0 && trig2_box_23.length > 0) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_23.join("\n- ").replace(/Other/, box_23_3) + "\n";
-        } else if (trig1_box_23.length > 0 && trig2_box_23.length > 0) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_23.join("\n- ").replace(/Parathyroid gland(s) present/, "Parathyroid gland(s) identified: " + box_23_2 + " in total").replace(/Other/, box_23_3) + "\n";
-        } else {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_23.join("\n- ") + "\n";
-        }
+       if (box_23.length > 0){
+           if (trig1_box_23.length > 0 && trig2_box_23.length == 0) {
+               captext += "\n+ Additional Pathologic Findings:\n- " + box_23.join("\n- ").replace(/Parathyroid gland(s) present/, "Parathyroid gland(s) identified: " + box_23_2 + " in total") + "\n";
+           } else if (trig1_box_23.length == 0 && trig2_box_23.length > 0) {
+               captext += "\n+ Additional Pathologic Findings:\n- " + box_23.join("\n- ").replace(/Other/, box_23_3) + "\n";
+           } else if (trig1_box_23.length > 0 && trig2_box_23.length > 0) {
+               captext += "\n+ Additional Pathologic Findings:\n- " + box_23.join("\n- ").replace(/Parathyroid gland(s) present/, "Parathyroid gland(s) identified: " + box_23_2 + " in total").replace(/Other/, box_23_3) + "\n";
+           } else {
+               captext += "\n+ Additional Pathologic Findings:\n- " + box_23.join("\n- ") + "\n";
+           }
+       }
 
         var box_24 = $("#box24").val();
         var box_24_2 = $("#box24_2").val();
@@ -315,14 +323,17 @@ $(window).on('load', function () {
         var trig2_box_24 = box_24.filter(function (el) {
             return el.indexOf("Other") > -1;
         });
-        if (trig1_box_24.length > 0 && trig2_box_24.length == 0) {
-            captext += "\n+ Clinical History:\n- " + box_24.join("\n- ").replace(/marker/, "marker: " + box_24_2) + "\n";
-        } else if (trig1_box_24.length == 0 && trig2_box_24.length > 0) {
-            captext += "\n+ Clinical History:\n- " + box_24.join("\n- ").replace(/Other/, box_24_3) + "\n";
-        } else if (trig1_box_24.length > 0 && trig2_box_24.length > 0) {
-            captext += "\n+ Clinical History:\n- " + box_24.join("\n- ").replace(/marker/, "marker: " + box_24_2).replace(/Other/, box_24_3) + "\n";
-        } else {
-            captext += "\n+ Clinical History:\n- " + box_24.join("\n- ") + "\n";
+
+        if (box_24.length > 0){
+            if (trig1_box_24.length > 0 && trig2_box_24.length == 0) {
+                captext += "\n+ Clinical History:\n- " + box_24.join("\n- ").replace(/marker/, "marker: " + box_24_2) + "\n";
+            } else if (trig1_box_24.length == 0 && trig2_box_24.length > 0) {
+                captext += "\n+ Clinical History:\n- " + box_24.join("\n- ").replace(/Other/, box_24_3) + "\n";
+            } else if (trig1_box_24.length > 0 && trig2_box_24.length > 0) {
+                captext += "\n+ Clinical History:\n- " + box_24.join("\n- ").replace(/marker/, "marker: " + box_24_2).replace(/Other/, box_24_3) + "\n";
+            } else {
+                captext += "\n+ Clinical History:\n- " + box_24.join("\n- ") + "\n";
+            }
         }
 
         $('#outPut-1').val(captext);
