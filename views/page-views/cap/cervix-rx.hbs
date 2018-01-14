@@ -87,7 +87,7 @@
                 <option>Other</option>
                 <option>Carcinoma, type cannot be determined</option>
             </select>
-            <br>
+
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box3_2' style='display:none;'
                    placeholder='Specify Other'>
 
@@ -144,7 +144,7 @@
                 <option>Other</option>
                 <option>Cannot be determined</option>
             </select>
-            <br>
+
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box8_2' style='display:none;'
                    placeholder='Specify Other'>
 
@@ -160,9 +160,9 @@
                 <option>Involved by high-grade squamous intraepithelial lesion (CIN 2-3)</option>
                 <option>Involved by adenocarcinoma in situ (AIS)</option>
             </select>
-            <br>
+
             <input type="text" class="form-control form-control-sm col-sm-6" id='box9_1' style='display:none;'
-                   placeholder='Specify closest margin'><br>
+                   placeholder='Specify closest margin'>
             <input type="text" class="form-control form-control-sm col-sm-6" id='box9_2' style='display:none;'
                    placeholder='Specify distance from margin (mm)'>
             <input type="text" class="form-control form-control-sm col-sm-6" id='box9_3' style='display:none;'
@@ -177,9 +177,9 @@
                 <option>Uninvolved by invasive carcinoma</option>
                 <option>Involved by invasive carcinoma</option>
             </select>
-            <br>
+
             <input type="text" class="form-control form-control-sm col-sm-6" id='box10_1' style='display:none;'
-                   placeholder='Specify closest margin'><br>
+                   placeholder='Specify closest margin'>
             <input type="text" class="form-control form-control-sm col-sm-6" id='box10_2' style='display:none;'
                    placeholder='Specify distance from margin (mm)'>
             <input type="text" class="form-control form-control-sm col-sm-6" id='box10_3' style='display:none;'
@@ -200,7 +200,7 @@
 
             </h5>
 
-            <h6>TNM Descriptors (select all that apply)</h6><br>
+            <h6>TNM Descriptors (select all that apply)</h6>
             <select id="box12" class='form-control selectpicker form-control-sm col-sm-6' multiple>
                 <option selected value="Not applicable">Not applicable</option>
                 <option>m</option>
@@ -282,7 +282,7 @@
                     true pelvis (bullous edema is not sufficient to classify a tumor as T4)
                 </option>
             </select>
-            <br>
+
 
             <h6 class='mt-2'>pN
                 <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
@@ -296,20 +296,20 @@
                 </option>
                 <option value="pN1">pN1: Regional lymph node metastasis</option>
             </select>
-            <br>
+
 
             <h6 class='mt-2'>pM</h6>
             <select id="box15" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option selected value='pMx'>pMx: Not applicable</option>
                 <option value="pM1">pM1: Distant metastasis</option>
             </select>
-            <br>
+
             <form class="form-inline">
                 <label class="form-check-label">Check here if any lymph nodes submitted?
                     <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box16">
                 </label>
             </form>
-            <div class='lnchk' style='display:none;'><br>
+            <div class='lnchk' style='display:none;'>
                 Total lymph nodes (sentinel and non-sentinel) examined:
                 <input type="number" class="form-control form-control-sm col-sm-6" id="box17" style="width:100px">
 
@@ -339,30 +339,29 @@
 
             <hr class="p-2">
             <h5>+ Additional Pathologic Findings</h5>
-            <select multiple id="box25" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select multiple id="box25" class='form-control selectpicker form-control-sm col-sm-6 opt'>
                 <option>None identified</option>
                 <option>Low-grade squamous intraepithelial lesion (CIN 1)</option>
                 <option>High-grade squamous intraepithelial lesion (CIN 2 or 3)</option>
                 <option>Inflammation</option>
                 <option>Other</option>
             </select>
-            <br>
+
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box25_2' style='display:none;'
                    placeholder='Specify Other'>
 
 
             <hr class="p-2">
             <h5>+ p16 Immunohistochemistry</h5>
-            <select id="box26" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select id="box26" class='form-control selectpicker form-control-sm col-sm-6 opt'>
                 <option>Positive</option>
                 <option>Negative</option>
-                <option selected>Not applicable</option>
             </select>
 
 
             <hr class="p-2">
             <h5>+ Ancillary Studies</h5>
-            <input type="text" class="form-control form-control-sm col-sm-6" id="box27" placeholder="if applicable">
+            <input type="text" class="form-control form-control-sm col-sm-6 opt" id="box27" placeholder="if applicable">
 
 
             <!-- end markup-->

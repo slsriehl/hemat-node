@@ -59,7 +59,7 @@
 			<hr class="p-2">
 			<h5>Histologic Type</h5>
 			<input type="text" class="form-control form-control-sm col-sm-6" id="box5" placeholder="Start typing and then choose from list">
-			<br>
+
 			<label class="form-control-label"><input type="number" class="form-control form-control-sm col-sm-6 "  id="box5_2" style="display:none" placeholder='Enter %Seminoma' ></label>
 			<label class="form-control-label"><input type="number" class="form-control form-control-sm col-sm-6 "  id="box5_3" style="display:none" placeholder='Enter %Yolk Sac tumor' ></label>
 				<label class="form-control-label"><input type="number" class="form-control form-control-sm col-sm-6 "  id="box5_4" style="display:none" placeholder='Enter %Choriocarcinoma' ></label>
@@ -87,7 +87,7 @@
 				<option>Tumor invades other structures</option>
 				<option>Cannot be assessed</option>
 			</select>
-			<br>
+
 			<input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box6_2' style='display:none;' placeholder='Specify other'>
 
 
@@ -115,8 +115,8 @@
 				<option>Uninvolved by tumor</option>
 				<option>Involved by tumor</option>
 			</select>
-			<br>
-			<input type="text" class="form-control form-control-sm col-sm-6" id='box8_1' style='display:none;' placeholder='Specify margin'><br>
+
+			<input type="text" class="form-control form-control-sm col-sm-6" id='box8_1' style='display:none;' placeholder='Specify margin'>
 			<input type="text" class="form-control form-control-sm col-sm-6" id='box8_3' style='display:none;' placeholder='Specify involved margin'>
 
 
@@ -141,7 +141,7 @@
 
 			</h5>
 
-			<h6>TNM Descriptors (select all that apply)</h6><br>
+			<h6>TNM Descriptors (select all that apply)</h6>
 			<select id="box10" class='form-control selectpicker form-control-sm col-sm-6' multiple>
 				<option selected value="Not applicable">Not applicable</option>
 				<option>m</option>
@@ -159,7 +159,7 @@
 				<option value="pT3">pT3: Tumor directly invades spermatic cord soft tissue with or without lymphovascular invasion</option>
 				<option value="pT4">pT4: Tumor invades scrotum with or without lymphovascular invasion</option>
 			</select>
-			<br>
+
 
 			<h6 class='mt-2'>pN</h6>
 			<select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -169,7 +169,7 @@
 				<option value="pN2">pN2: Metastasis with a lymph node mass larger than 2 cm but not larger than 5 cm in greatest dimension; or more than five nodes positive, none larger than 5 cm; or evidence of extranodal extension of tumor</option>
 				<option value="pN3">pN3: Metastasis with a lymph node mass larger than 5 cm in greatest dimension</option>
 			</select>
-			<br>
+
 
 			<h6 class='mt-2'>pM</h6>
 			<select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -178,31 +178,31 @@
 				<option value="pM1a">pM1a: Nonretroperitoneal nodal or pulmonary metastases</option>
 				<option value="pM1b">pM1b: Nonpulmonary visceral metastases</option>
 			</select>
-			<br>
+
 			<form class="form-inline">
 				<label class="form-check-label">Check here if any lymph nodes submitted?
 					<input class="form-control form-control-sm col-sm-6" type="checkbox" id="box14" >
 				</label>
 			</form>
-			<div class='lnchk' style='display:none;'><br>
+			<div class='lnchk' style='display:none;'>
 				<form class="form-inline col-8">
 					<label class="m-2">Number of lymph nodes examined: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box15" style="width:100px"></label>
 					<label class="m-2">Number of lymph nodes involved: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box16" style="width:100px"></label>
 				</form>
-				<br>
+
 				<h6>Specify lymph node sites examined</h6>
 				<input type="text" class="form-control form-control-sm col-sm-6" id="box17" placeholder="">
-				<br>
+
 				<h6>Size of Largest Lymph Node (or Nodal Mass) Involved (cm)</h6>
 				<input type="text" class="form-control form-control-sm col-sm-6" id="box18" placeholder="">
-				<br>
+
 				<h6>Extranodal Extension</h6>
 				<select id="box19" class='form-control selectpicker form-control-sm col-sm-6'>
 					<option>Not identified</option>
 					<option>Present</option>
 					<option>Cannot be determined</option>
 				</select>
-				<br>
+
 				<h6>Histologic subtype of germ cell tumor in involved lymph nodes</h6>
 				<select id="box20" class='form-control selectpicker form-control-sm col-sm-6'>
 					<option>Seminoma</option>
@@ -216,7 +216,7 @@
 					<option>Sex Cord-Stromal Tumor</option>
 					<option>Other</option>
 				</select>
-				<br>
+
 				<input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box20_2' style='display:none;' placeholder='Specify Other'>
 
 
@@ -225,7 +225,7 @@
 
 			<hr class="p-2">
 			<h5>+ Serum Tumor Markers</h5>
-			<select id="box21" class='form-control selectpicker form-control-sm col-sm-6'>
+			<select id="box21" class='form-control selectpicker form-control-sm col-sm-6 opt'>
 				<option value="SX">SX: Serum marker studies not available or performed</option>
 				<option value="S0">S0: Serum marker study levels within normal limits</option>
 				<option value="S1">S1: LDH <1.5x normal  and HCG <5,000 mIU/ml and AFP <1,000 ng/ml</option>
@@ -239,7 +239,7 @@
 
 			<hr class="p-2">
 			<h5>+ Additional Pathologic Findings (select all that apply</h5>
-			<select multiple id="box22" class='form-control selectpicker form-control-sm col-sm-6'>
+			<select multiple id="box22" class='form-control selectpicker form-control-sm col-sm-6 opt'>
 				<option>None identified</option>
 				<option>Germ cell neoplasia in situ (GCNIS)</option>
 				<option>Microlith</option>
@@ -247,7 +247,7 @@
 				<option>Atrophy</option>
 				<option>Other</option>
 			</select>
-			<br>
+
 			<input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box22_2' style='display:none;' placeholder='Specify Other'>
 
 
@@ -262,7 +262,7 @@
 			</p>
 			</small>
 
-			<select id="box23" class='form-control selectpicker form-control-sm col-sm-6'>
+			<select id="box23" class='form-control selectpicker form-control-sm col-sm-6 opt'>
 				<option selected>Not applicable</option>
 				<option>Stage I: Tumor confined to the testis</option>
 				<option>Stage IIA: Infradiaphragmatic nodal involvement, greatest dimension of involved nodes less than 2 cm</option>

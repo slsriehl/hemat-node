@@ -168,7 +168,7 @@
 			<small>
 				Note: Grade based on the highest level of anaplasia in the tumor, with at least 30% of the tumor being able to be graded.
 			</small>
-			<select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
+			<select id="box11" class='form-control selectpicker form-control-sm col-sm-6 opt'>
 				<option>Mild</option>
 				<option>Moderate</option>
 				<option>Severe</option>
@@ -182,7 +182,7 @@
 			<hr class="p-2">
 			<h5>+ Cytologic Features Suggesting MYCN Amplification</h5>
 			<small>Note: Unilateral retinoblastoma with a loose cellular pattern, round nuclei, and prominent multiple nucleoli</small>
-			<select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
+			<select id="box12" class='form-control selectpicker form-control-sm col-sm-6 opt'>
 				<option>Absent</option>
 				<option>Present</option>
 			</select>
@@ -211,7 +211,7 @@
 
 			</h5>
 
-			<h6>TNM Descriptors (select all that apply)</h6><br>
+			<h6>TNM Descriptors (select all that apply)</h6>
 			<select id="box14" class='form-control selectpicker form-control-sm col-sm-6' multiple>
 				<option selected value="Not applicable">Not applicable</option>
 				<option>m</option>
@@ -233,7 +233,7 @@
 				<option value="pT3d">pT3d: Full-thickness invasion into the outer third of the sclera and/or invasion into or around emissary channels</option>
 				<option value="pT4">pT4: Evidence of extraocular tumor: tumor at the transected end of the optic nerve, tumor in the meningeal spaces around the optic nerve, full-thickness invasion of the sclera with invasion of the episclera, adjacent adipose tissue, extraocular muscle, bone, conjunctiva, or eyelids</option>
 			</select>
-			<br>
+
 
 			<h6 class='mt-2'>pN</h6>
 			<select id="box16" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -241,7 +241,7 @@
 				<option value="pN0">pN0: No regional lymph node involvement</option>
 				<option value="pN1">pN1: Regional lymph node involvement</option>
 			</select>
-			<br>
+
 
 			<h6 class='mt-2'>pM</h6>
 			<select id="box17" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -251,14 +251,14 @@
 				<option value="pM1b">pM1b: Histopathologic confirmation of tumor in the cerebrospinal fluid or CNS parenchyma</option>
 			</select>
 			<input type="text" class="form-control form-control-sm col-sm-6" id="box17_2" style="display:none;" placeholder="Specify metastatic sites">
-			<br>
+
 			<form class="form-inline">
 				<label class="form-check-label">Check here if any lymph nodes submitted?
 					<input class="form-control form-control-sm col-sm-6" type="checkbox" id="box18" >
 				</label>
 			</form>
-			<br>
-			<div class='lnchk' style='display:none;'><br>
+
+			<div class='lnchk' style='display:none;'>
 				<form class="form-inline col-8">
 					<label class="m-2">Number of lymph nodes examined: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box19" style="width:100px"></label>
 					<label class="m-2">Number of lymph nodes involved: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box20" style="width:100px"></label>
@@ -268,7 +268,7 @@
 
 			<hr class="p-2">
 			<h5>+ Additional Pathologic Findings (select all that apply)</h5>
-			<select multiple id="box21" class='form-control selectpicker form-control-sm col-sm-6'>
+			<select multiple id="box21" class='form-control selectpicker form-control-sm col-sm-6 opt'>
 				<option>None identified</option>
 				<option>Calcifications</option>
 				<option>Apoptosis</option>

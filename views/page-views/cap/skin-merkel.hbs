@@ -50,7 +50,7 @@
             <div class="card-block">There are published and unpublished data from 3 independent prospective cohorts of
                 Merkel cell carcinoma (MCC) patients examining tumor thickness (measured in millimeters from the stratum granulosum
                 to the deepest infiltrating tumor cells) as a prognostic indicator for outcome.</div>
-            <input type="text" class="form-control form-control-sm col-sm-6" id="box18" placeholder="if transected, indicate 'at least x mm' ">
+            <input type="text" class="form-control form-control-sm col-sm-6 opt" id="box18" placeholder="if transected, indicate 'at least x mm' ">
 
 
 
@@ -62,8 +62,8 @@
                 <option>Uninvolved by carcinoma</option>
                 <option>Involved by carcinoma</option>
             </select>
-            <br>
-            <input type="text" class="form-control form-control-sm col-sm-6" id='box4_1' style='display:none;' placeholder='Specify closest margin'><br>
+
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box4_1' style='display:none;' placeholder='Specify closest margin'>
             <input type="text" class="form-control form-control-sm col-sm-6" id='box4_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
             <input type="text" class="form-control form-control-sm col-sm-6" id='box4_3' style='display:none;' placeholder='Specify involved margin'>
 
@@ -80,8 +80,8 @@
                 <option>Uninvolved by carcinoma</option>
                 <option>Involved by carcinoma</option>
             </select>
-            <br>
-            <input type="text" class="form-control form-control-sm col-sm-6" id='box5_1' style='display:none;' placeholder='Specify closest margin'><br>
+
+            <input type="text" class="form-control form-control-sm col-sm-6" id='box5_1' style='display:none;' placeholder='Specify closest margin'>
             <input type="text" class="form-control form-control-sm col-sm-6" id='box5_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
             <input type="text" class="form-control form-control-sm col-sm-6" id='box5_3' style='display:none;' placeholder='Specify involved margin'>
 
@@ -114,7 +114,7 @@
                 <option>Cannot be assessed</option>
                 <option>Not applicable</option>
             </select>
-            <br>
+
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box7_2' style='display:none;' placeholder='Specify Other'>
 
 
@@ -126,7 +126,7 @@
             <!-- Button trigger modal -->
             <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_til">About TILs</button>
             </h5>
-            <select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select id="box8" class='form-control selectpicker form-control-sm col-sm-6 opt'>
                 <option>Not identified</option>
                 <option>Present, nonbrisk</option>
                 <option>Present, brisk</option>
@@ -138,7 +138,7 @@
 
             <hr class="p-2">
             <h5>+ Tumor Growth Pattern</h5>
-            <select id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select id="box9" class='form-control selectpicker form-control-sm col-sm-6 opt'>
                 <option>Nodular</option>
                 <option>Infiltrative</option>
             </select>
@@ -152,7 +152,7 @@
 
             </h5>
 
-            <h6>TNM Descriptors (select all that apply)</h6><br>
+            <h6>TNM Descriptors (select all that apply)</h6>
             <select id="box10" class='form-control selectpicker form-control-sm col-sm-6' multiple>
                 <option selected value="Not applicable">Not applicable</option>
                 <option>m</option>
@@ -169,7 +169,7 @@
                 <option value="pT3">pT3: Maximum clinical tumor diameter >5 cm</option>
                 <option value="pT4">pT4: Primary tumor invades bone, muscle, fascia, or cartilage</option>
             </select>
-            <br>
+
 
             <h6 class='mt-2'>pN</h6>
             <select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -182,7 +182,7 @@
                 <option value="pN2">pN2: In transit metastasis (discontinuous from primary tumor; located between primary tumor and draining regional nodal basin, or distal to the primary tumor) without lymph node metastasis</option>
                 <option value="pN3">pN3: In transit metastasis (discontinuous from primary tumor; located between primary tumor and draining regional nodal basin, or distal to the primary tumor) with lymph node metastasis</option>
             </select>
-            <br>
+
 
             <h6 class='mt-2'>pM</h6>
             <select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -192,13 +192,13 @@
                 <option value="pM1c">pM1c: Metastasis to all other distant sites, microscopically confirmed</option>
             </select>
             <input type="text" class="form-control form-control-sm col-sm-6" id="box13_2" style="display:none;" placeholder="Specify metastatic sites">
-            <br>
+
             <form class="form-inline">
                 <label class="form-check-label">Check here if any lymph nodes submitted?
                     <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box14" >
                 </label>
             </form>
-            <div class='lnchk' style='display:none;'><br>
+            <div class='lnchk' style='display:none;'>
                 <form class="form-inline col-8">
                     <label class="m-2">Number of lymph nodes examined: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box15" style="width:100px"></label>
                     <label class="m-2">Number of Sentinel Nodes Examined: <input type="text" class="form-control form-control-sm col-sm-6" id="box17" placeholder=""> </label>

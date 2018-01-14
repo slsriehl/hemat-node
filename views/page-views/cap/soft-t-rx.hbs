@@ -27,7 +27,7 @@
                 <option>Other</option>
                 <option>Not specified</option>
             </select>
-            <br>
+
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;' placeholder='Specify Other'>
 
 
@@ -45,7 +45,7 @@
                 <option>Orbit</option>
                 <option>Not specified</option>
             </select>
-            <br>
+
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box2_2' placeholder='Specify site'>
 
 
@@ -85,7 +85,7 @@
                 <option>Not identified</option>
                 <option>Present</option>
             </select>
-            <br>
+
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box6_2' style='display:none;' placeholder='Specify % necrosis'>
 
 
@@ -116,7 +116,7 @@
                 <option>Uninvolved by sarcoma</option>
                 <option>Involved by sarcoma</option>
             </select>
-            <br>
+
             <input type="text" class="form-control form-control-sm col-sm-6" id='box8_1' style='display:none;' placeholder='Specify close (<2.0 cm from tumor) margins'>
             <input type="text" class="form-control form-control-sm col-sm-6" id='box8_2' style='display:none;' placeholder='Specify distance from closest margin (cm)'>
             <input type="text" class="form-control form-control-sm col-sm-6" id='box8_3' style='display:none;' placeholder='Specify involved margin(s)'>
@@ -128,7 +128,7 @@
 
             <hr class="p-2">
             <h5>+ Lymphovascular Invasion</h5>
-            <select id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select id="box9" class='form-control selectpicker form-control-sm col-sm-6 opt'>
                 <option>Not identified</option>
                 <option>Present</option>
                 <option>Cannot be determined</option>
@@ -143,7 +143,7 @@
 
             </h5>
 
-            <h6>TNM Descriptors (select all that apply)</h6><br>
+            <h6>TNM Descriptors (select all that apply)</h6>
             <select id="box10" class='form-control selectpicker form-control-sm col-sm-6' multiple>
                 <option selected value="Not applicable">Not applicable</option>
                 <option>m</option>
@@ -159,14 +159,14 @@
                 <option value="pT3">pT3: Tumor more than 10 cm and less than or equal to 15 cm in greatest dimension</option>
                 <option value="pT4">pT4: Tumor more than 15 cm in greatest dimension</option>
             </select>
-            <br>
+
 
             <h6 class='mt-2'>pN</h6>
             <select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option value="pN0">pN0: No regional lymph node metastasis or unknown lymph node status</option>
                 <option value="pN1">pN1: Regional lymph node metastasis</option>
             </select>
-            <br>
+
 
             <h6 class='mt-2'>pM</h6>
             <select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -175,13 +175,13 @@
             </select>
             <input type="text" class="form-control form-control-sm col-sm-6" id='box13_2' style='display:none;' placeholder='Specify metastatic sites'>
 
-            <br>
+
             <form class="form-inline">
                 <label class="form-check-label">Check here if any lymph nodes submitted?
                     <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box14" >
                 </label>
             </form>
-            <div class='lnchk' style='display:none;'><br>
+            <div class='lnchk' style='display:none;'>
                 <form class="form-inline col-8">
                     <label class="m-2">Number of lymph nodes examined: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box15" style="width:100px"></label>
                     <label class="m-2">Number of lymph nodes involved: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box16" style="width:100px"></label>
@@ -189,7 +189,7 @@
             </div>
 
             <hr class="p-2">
-            <h5>Ancillary Studies</h5><br>
+            <h5>Ancillary Studies</h5>
 
             <h6>Immunohistochemistry</h6>
             <input type="text" class="form-control form-control-sm col-sm-6 mb-3" id="box17" placeholder="Start typing and choose from list...">
@@ -207,7 +207,7 @@
 
             <hr class="p-2">
             <h5>+ Preresection Treatment</h5>
-            <select id="box20" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select id="box20" class='form-control selectpicker form-control-sm col-sm-6 opt'>
                 <option>No known preresection therapy</option>
                 <option>Chemotherapy performed</option>
                 <option>Radiation therapy performed</option>

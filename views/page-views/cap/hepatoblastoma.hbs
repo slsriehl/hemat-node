@@ -84,7 +84,7 @@
 
             <hr class="p-2" >
             <h5>+ Tumor Focality</h5>
-            <select id="box4" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select id="box4" class='form-control selectpicker form-control-sm col-sm-6 opt'>
                 <option>Unifocal</option>
                 <option>Multifocal</option>
                 <option>Cannot be determined</option>
@@ -96,7 +96,7 @@
 
             <hr class="p-2" >
             <h5>+ Macroscopic Extent of Tumor (select all that apply)</h5>
-            <select multiple id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select multiple id="box6" class='form-control selectpicker form-control-sm col-sm-6 opt'>
                 <option>Tumor confined to the liver</option>
                 <option>Tumor extends into adjacent organs</option>
                 <option>Tumor extends into diaphragm</option>
@@ -147,12 +147,11 @@
 
             <hr class="p-2" >
             <h5>+ Treatment Effect</h5>
-            <select id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select id="box9" class='form-control selectpicker form-control-sm col-sm-6 opt'>
                 <option>No known preoperative therapy</option>
                 <option>Not identified</option>
                 <option>Present</option>
                 <option>Cannot be determined</option>
-                <option selected>Not applicable</option>
             </select>
 
             <input type="number" class="form-control form-control-sm mt-3 col-sm-6" id='box9_2' style='display:none;' placeholder='Specify % tumor necrosis'>
@@ -198,7 +197,7 @@
 
             <hr class="p-2" >
             <h5>+ Lymph-Vascular Invasion, Macroscopic</h5>
-            <select multiple id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select multiple id="box12" class='form-control selectpicker form-control-sm col-sm-6 opt'>
                 <option>Not identified</option>
                 <option>Portal vein invasion present</option>
                 <option>Hepatic vein invasion present</option>
@@ -222,7 +221,7 @@
 
 
             <hr class="p-2" >
-            <h5>+ Staging
+            <h5>Staging
                 <button type="button" class="btn btn-sm btn-info ml-2 p-1" data-toggle="modal" data-target="#modal-1">A word about staging</button>
                 <!-- help Modal -->
                 {{> page-modals/cap-helpers/hepatoblastoma-staging}}
@@ -282,7 +281,7 @@
 
             <hr class="p-2" >
             <h5>+ Additional Pathologic Findings (select all that apply)</h5>
-            <select multiple id="box20" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select multiple id="box20" class='form-control selectpicker form-control-sm col-sm-6 opt'>
                 <option>No background liver available for evaluation </option>
                 <option>None identified</option>
                 <option>Cirrhosis/fibrosis</option>
@@ -309,7 +308,7 @@
 
             <hr class="p-2" >
             <h5>+ Ancillary Studies</h5>
-            <select multiple id="box22" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select multiple id="box22" class='form-control selectpicker form-control-sm col-sm-6 opt'>
                 <option>None performed</option>
                 <option>INI1 expression retained</option>
                 <option>INI1 expression lost</option>

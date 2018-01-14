@@ -28,7 +28,7 @@
 				<option>Other</option>
 				<option>Not specified</option>
 			</select>
-			<br>
+
 			<input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;' placeholder='Specify Other'>
 
 
@@ -46,7 +46,7 @@
 				<option>Other</option>
 				<option>Not specified</option>
 			</select>
-			<br>
+
 			<input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box2_2' style='display:none;' placeholder='Specify Other'>
 
 
@@ -80,7 +80,7 @@
 				<option>Other histologic type</option>
 				<option></option>
 			</select>
-			<br>
+
 			<input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box4_2' style='display:none;' placeholder='Specify Other histologic type'>
 
 
@@ -97,7 +97,7 @@
 				<option>GX: Cannot be assessed</option>
 				<option>Not applicable</option>
 			</select>
-			<br>
+
 			<input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box5_2' style='display:none;' placeholder='Specify Other'>
 
 
@@ -118,7 +118,7 @@
 				<option>Tumor invades adjacent structures</option>
 				<option>Cannot be assessed</option>
 			</select>
-			<br>
+
 			<input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box6_2' style='display:none;' placeholder='Specify adjacent structures'>
 
 
@@ -132,8 +132,8 @@
 				<option>One or more margins involved by tumor</option>
 				<option>Cannot be assessed</option>
 			</select>
-			<br>
-			<input type="text" class="form-control form-control-sm col-sm-6" id='box7_1'  value='Proximal, distal and radial'><br>
+
+			<input type="text" class="form-control form-control-sm col-sm-6" id='box7_1'  value='Proximal, distal and radial'>
 			<input type="text" class="form-control form-control-sm col-sm-6" id='box7_2'  placeholder='Specify distance from closest margin (mm)'>
 
 
@@ -150,14 +150,14 @@
 						<option>Uninvolved by tumor</option>
 						<option>Involved by tumor</option>
 					</select>
-					<br>
+
 					<h6>Distal Margin</h6>
 					<select id="box7_4" class='form-control selectpicker form-control-sm col-sm-6'>
 						<option>Cannot be assessed</option>
 						<option>Uninvolved by tumor</option>
 						<option>Involved by tumor</option>
 					</select>
-					<br>
+
 					<h6>Omental Margin</h6>
 					<select id="box7_5" class='form-control selectpicker form-control-sm col-sm-6'>
 						<option>Cannot be assessed</option>
@@ -179,7 +179,7 @@
 						<option>Uninvolved by tumor</option>
 						<option>Involved by tumor</option>
 					</select>
-					<br>
+
 					<h6>Mucosal Margin</h6>
 					<select id="box7_7" class='form-control selectpicker form-control-sm col-sm-6'>
 						<option>Cannot be assessed</option>
@@ -187,7 +187,7 @@
 						<option>Involved by tumor</option>
 					</select>
 				</div>
-				<br>
+
 				<h6>Other margin</h6>
 				<select id="box7_8" class='form-control selectpicker form-control-sm col-sm-6'>
 					<option>Cannot be assessed</option>
@@ -227,7 +227,7 @@
 
 			<hr class="p-2">
 			<h5>+ Perineural Invasion</h5>
-			<select id="box10" class='form-control selectpicker form-control-sm col-sm-6'>
+			<select id="box10" class='form-control selectpicker form-control-sm col-sm-6 opt'>
 				<option>Not identified</option>
 				<option>Present</option>
 				<option>Cannot be determined</option>
@@ -242,7 +242,7 @@
 
 			</h5>
 
-			<h6>TNM Descriptors (select all that apply)</h6><br>
+			<h6>TNM Descriptors (select all that apply)</h6>
 			<select id="box11" class='form-control selectpicker form-control-sm col-sm-6' multiple>
 				<option selected value="Not applicable">Not applicable</option>
 				<option>m</option>
@@ -262,7 +262,7 @@
 				<option value="pT4a">pT4a: Tumor invades the serosa (visceral peritoneum)</option>
 				<option value="pT4b">pT4b: Tumor invades adjacent structures/organs</option>
 			</select>
-			<br>
+
 
 			<h6 class='mt-2'>pN</h6>
 			<select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -274,7 +274,7 @@
 				<option value="pN3a">pN3a: Metastasis in seven to 15 regional lymph nodes</option>
 				<option value="pN3b">pN3b: Metastasis in 16 or more regional lymph nodes</option>
 			</select>
-			<br>
+
 
 			<h6 class='mt-2'>pM</h6>
 			<select id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -282,13 +282,13 @@
 				<option value="pM1">pM1: Distant metastasis</option>
 			</select>
 			<input type="text" class="form-control form-control-sm col-sm-6" id="box14_2" style="display:none;" placeholder="Specify metastatic sites">
-			<br>
+
 			<form class="form-inline">
 				<label class="form-check-label">Check here if any lymph nodes submitted?
 					<input class="form-control form-control-sm col-sm-6" type="checkbox" id="box15" >
 				</label>
 			</form>
-			<div class='lnchk' style='display:none;'><br>
+			<div class='lnchk' style='display:none;'>
 				<form class="form-inline col-8">
 					<label class="m-2">Number of lymph nodes examined: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box16" style="width:100px"></label>
 					<label class="m-2">Number of lymph nodes involved: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box17" style="width:100px"></label>
@@ -298,7 +298,7 @@
 
 			<hr class="p-2">
 			<h5>+ Additional Pathologic Findings (select all that apply</h5>
-			<select multiple id="box18" class='form-control selectpicker form-control-sm col-sm-6'>
+			<select multiple id="box18" class='form-control selectpicker form-control-sm col-sm-6 opt'>
 				<option>None identified</option>
 				<option>Intestinal metaplasia</option>
 				<option>Low-grade dysplasia</option>
@@ -313,14 +313,14 @@
 
 			<hr class="p-2">
 
-			<h5>+ Ancillary Studies:</h5><br>
+			<h5>+ Ancillary Studies:</h5>
 			<h6>Immunohistochemistry</h6>
-			<input type="text" class="form-control form-control-sm "  id="box27"  placeholder='enter IHCs, if performed'>
+			<input type="text" class="form-control form-control-sm  opt"  id="box27"  placeholder='enter IHCs, if performed'>
 
-			<br>
+
 
 			<h6 class="mt-2">Choose HER2 Testing - If performed</h6>
-			<br>
+
 
 			<h6>HER2 Testing</h6>
 			<select class="form-control selectpicker form-control-sm "  id="box29">
@@ -329,10 +329,10 @@
 			<option>HER2 by FISH</option>
 			</select>
 
-			<br>
 
 
-			<div id="her2ihc" style="display:none;"><br>
+
+			<div id="her2ihc" style="display:none;">
 
 			<b class="w-100">+ HER2 by immunohistochemistry</b>
 			<select class="form-control selectpicker form-control-sm "  id="box30">
@@ -344,7 +344,7 @@
 			<option>Indeterminate – poor technical study</option>
 			</select>
 
-			<br>
+
 
 
 				<b class="w-100">+ HER2 - immunohistochemistry clone</b>
@@ -355,7 +355,7 @@
 			<option>SP3 </option>
 			<option>CB11</option>
 			<option>Other</option>
-			</select><br>
+			</select>
 			<input type="text" class="form-control form-control-sm "  id='box30b_2' style='display:none;' placeholder='Specify'>
 
 			</div>
@@ -370,7 +370,7 @@
 			<option>Indeterminate – poor technical study</option>
 			</select>
 
-			<br>
+
 
 
 				<b class="w-100 mt-2">Number of observers:</b>
@@ -390,7 +390,7 @@
 			<option>FDA cleared</option>
 			<option>Laboratory-developed test</option>
 			</select>
-			<input type="text" class="form-control form-control-sm "  id='box36_1' placeholder='Specify vendor'><br>
+			<input type="text" class="form-control form-control-sm "  id='box36_1' placeholder='Specify vendor'>
 			<input type="text" class="form-control form-control-sm "  id='box36_2' style='display:none;' placeholder='Specify probe'>
 				
 
