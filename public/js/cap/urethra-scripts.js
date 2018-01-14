@@ -196,28 +196,44 @@ $(window).on("load", function() {
     // Script to populate the template data in the output textarea//
     // *************************************************************/
     $(".writeReport").on("click", function() {
+
         // ***************** INPUT VALIDATION ********************//
-        $("select[multiple]:visible").each(function() {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass("empty");
-            } else {
-                $(this).addClass("empty");
-                $("#cap-valid").show();
-            }
-        });
+                            // reset validation alert, if all goes to plan, it won't show
+                            $('#cap-valid').hide();
 
-        $('input[type="text"]:visible').each(function() {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass("empty");
-            } else {
-                $(this).addClass("empty");
-                $("#cap-valid").show();
-            }
-        });
 
-        // ***************** END VALIDATION ********************//
+                                $('select[multiple]:visible').each(function () {
+                                    // ignore class=opt
+                                    if (!$(this).hasClass("opt")) {
+                                        // Check if at least one selection is made
+                                        if ($(this).val().length > 0) {
+                                            $(this).removeClass('empty');
+                                        } else {
+                                            $(this).addClass('empty');
+                                            $('#cap-valid').show();
+                                        }
+                                    }
+                                });
+
+                                $('input:visible').each(function () {
+                                    // ignore search bar in menu
+                                    if ($(this).prop('type') != "search"){
+                                        // ignore class=opt
+                                        if (!$(this).hasClass("opt")) {
+                                            // Check if at least one selection is made
+                                            if ($.trim($(this).val()).length > 0) {
+                                                $(this).removeClass('empty');
+                                            } else {
+                                                $(this).addClass('empty');
+                                                $('#cap-valid').show();
+                                            }
+                                        }
+                                    }
+
+                                });
+
+        // *************************** END VALIDATION ******************************//
+
         var captext =
             "Urethral Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
 

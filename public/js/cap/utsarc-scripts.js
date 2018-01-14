@@ -129,28 +129,44 @@ $(window).on("load", function() {
     // Script to populate the template data in the output textarea//
     // *************************************************************/
     $(".writeReport").on("click", function() {
+
+
         // ***************** INPUT VALIDATION ********************//
-        $("select[multiple]:visible").each(function() {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass("empty");
-            } else {
-                $(this).addClass("empty");
-                $("#cap-valid").show();
+        // reset validation alert, if all goes to plan, it won't show
+        $('#cap-valid').hide();
+
+
+        $('select[multiple]:visible').each(function () {
+            // ignore class=opt
+            if (!$(this).hasClass("opt")) {
+                // Check if at least one selection is made
+                if ($(this).val().length > 0) {
+                    $(this).removeClass('empty');
+                } else {
+                    $(this).addClass('empty');
+                    $('#cap-valid').show();
+                }
             }
         });
 
-        $('input[type="text"]:visible').each(function() {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass("empty");
-            } else {
-                $(this).addClass("empty");
-                $("#cap-valid").show();
+        $('input:visible').each(function () {
+            // ignore search bar in menu
+            if ($(this).prop('type') != "search"){
+                // ignore class=opt
+                if (!$(this).hasClass("opt")) {
+                    // Check if at least one selection is made
+                    if ($.trim($(this).val()).length > 0) {
+                        $(this).removeClass('empty');
+                    } else {
+                        $(this).addClass('empty');
+                        $('#cap-valid').show();
+                    }
+                }
             }
+
         });
 
-        // ***************** END VALIDATION ********************//
+        // *************************** END VALIDATION ******************************//
 
         var captext =
             "Uterine Sarcoma Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
@@ -254,13 +270,13 @@ $(window).on("load", function() {
         captext += "\nLymphovascular Invasion:\n- " + box_9 + "\n";
 
         var box_10 = $("#box10").val();
-        captext += "\n+ Peritoneal/Ascitic Fluid:\n- " + box_10 + "\n";
+        if (box_10.length > 0){
+            captext += "\n+ Peritoneal/Ascitic Fluid:\n- " + box_10 + "\n";
+        }
 
         var box_21 = $("#box21").val();
         if (box_21.length > 0) {
             captext += "\n+ Ancillary Studies:\n- " + box_21 + "\n";
-        } else {
-            captext += "\n+ Ancillary Studies:\n- None performed\n";
         }
 
         var box_11 = $("#box11").val();
@@ -326,7 +342,7 @@ $(window).on("load", function() {
 
                 var box_20 = $("#box20").val();
                 var box_20_2 = $("#box20_2").val();
-                if (box_20 != "Not applicable") {
+                if (box_20.length  > 0) {
                     if (box_20 == "Other") {
                         captext +=
                             "\t+ Additional Lymph Node Findings:\n\t- " + box_20_2 + "\n";

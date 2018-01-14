@@ -97,28 +97,43 @@ $(window).on("load", function() {
     // Script to populate the template data in the output textarea//
     // *************************************************************/
     $(".writeReport").on("click", function() {
-        // ***************** INPUT VALIDATION ********************//
-        $("select[multiple]:visible").each(function() {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass("empty");
-            } else {
-                $(this).addClass("empty");
-                $("#cap-valid").show();
-            }
-        });
 
-        $('input[type="text"]:visible').each(function() {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass("empty");
-            } else {
-                $(this).addClass("empty");
-                $("#cap-valid").show();
-            }
-        });
+    // ***************** INPUT VALIDATION ********************//
+                        // reset validation alert, if all goes to plan, it won't show
+                        $('#cap-valid').hide();
 
-        // ***************** END VALIDATION ********************//
+
+                            $('select[multiple]:visible').each(function () {
+                                // ignore class=opt
+                                if (!$(this).hasClass("opt")) {
+                                    // Check if at least one selection is made
+                                    if ($(this).val().length > 0) {
+                                        $(this).removeClass('empty');
+                                    } else {
+                                        $(this).addClass('empty');
+                                        $('#cap-valid').show();
+                                    }
+                                }
+                            });
+
+                            $('input:visible').each(function () {
+                                // ignore search bar in menu
+                                if ($(this).prop('type') != "search"){
+                                    // ignore class=opt
+                                    if (!$(this).hasClass("opt")) {
+                                        // Check if at least one selection is made
+                                        if ($.trim($(this).val()).length > 0) {
+                                            $(this).removeClass('empty');
+                                        } else {
+                                            $(this).addClass('empty');
+                                            $('#cap-valid').show();
+                                        }
+                                    }
+                                }
+
+                            });
+
+    // *************************** END VALIDATION ******************************//
 
         var captext =
             "Uveal Melanoma Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
@@ -271,28 +286,31 @@ $(window).on("load", function() {
         var trig2_box_19 = box_19.filter(function(el) {
             return el.indexOf("Other") > -1;
         });
-        if (trig1_box_19.length > 0 && trig2_box_19.length == 0) {
-            captext +=
-                "\n+ Additional Pathologic Findings:\n- " +
-                box_19.join("\n- ").replace(/Mitotic/, box_19_2) +
-                " per 10 hpf\n";
-        } else if (trig1_box_19.length == 0 && trig2_box_19.length > 0) {
-            captext +=
-                "\n+ Additional Pathologic Findings:\n- " +
-                box_19.join("\n- ").replace(/Other/, box_19_3) +
-                "\n";
-        } else if (trig1_box_19.length > 0 && trig2_box_19.length > 0) {
-            captext +=
-                "\n+ Additional Pathologic Findings:\n- " +
-                box_19
-                    .join("\n- ")
-                    .replace(/Mitotic/, box_19_2 + "per 10 hpf ")
-                    .replace(/Other/, box_19_3) +
-                "\n";
-        } else {
-            captext +=
-                "\n+ Additional Pathologic Findings:\n- " + box_19.join("\n- ") + "\n";
+        if (box_19.length > 0){
+            if (trig1_box_19.length > 0 && trig2_box_19.length == 0) {
+                captext +=
+                    "\n+ Additional Pathologic Findings:\n- " +
+                    box_19.join("\n- ").replace(/Mitotic/, box_19_2) +
+                    " per 10 hpf\n";
+            } else if (trig1_box_19.length == 0 && trig2_box_19.length > 0) {
+                captext +=
+                    "\n+ Additional Pathologic Findings:\n- " +
+                    box_19.join("\n- ").replace(/Other/, box_19_3) +
+                    "\n";
+            } else if (trig1_box_19.length > 0 && trig2_box_19.length > 0) {
+                captext +=
+                    "\n+ Additional Pathologic Findings:\n- " +
+                    box_19
+                        .join("\n- ")
+                        .replace(/Mitotic/, box_19_2 + "per 10 hpf ")
+                        .replace(/Other/, box_19_3) +
+                    "\n";
+            } else {
+                captext +=
+                    "\n+ Additional Pathologic Findings:\n- " + box_19.join("\n- ") + "\n";
+            }
         }
+
 
         $("#outPut-1").val(captext);
 

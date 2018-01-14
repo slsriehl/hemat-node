@@ -128,28 +128,43 @@ $(window).on("load", function() {
     // Script to populate the template data in the output textarea//
     // *************************************************************/
     $(".writeReport").on("click", function() {
+
         // ***************** INPUT VALIDATION ********************//
-        $("select[multiple]:visible").each(function() {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass("empty");
-            } else {
-                $(this).addClass("empty");
-                $("#cap-valid").show();
+        // reset validation alert, if all goes to plan, it won't show
+        $('#cap-valid').hide();
+
+
+        $('select[multiple]:visible').each(function () {
+            // ignore class=opt
+            if (!$(this).hasClass("opt")) {
+                // Check if at least one selection is made
+                if ($(this).val().length > 0) {
+                    $(this).removeClass('empty');
+                } else {
+                    $(this).addClass('empty');
+                    $('#cap-valid').show();
+                }
             }
         });
 
-        $('input[type="text"]:visible').each(function() {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass("empty");
-            } else {
-                $(this).addClass("empty");
-                $("#cap-valid").show();
+        $('input:visible').each(function () {
+            // ignore search bar in menu
+            if ($(this).prop('type') != "search"){
+                // ignore class=opt
+                if (!$(this).hasClass("opt")) {
+                    // Check if at least one selection is made
+                    if ($.trim($(this).val()).length > 0) {
+                        $(this).removeClass('empty');
+                    } else {
+                        $(this).addClass('empty');
+                        $('#cap-valid').show();
+                    }
+                }
             }
+
         });
 
-        // ***************** END VALIDATION ********************//
+        // *************************** END VALIDATION ******************************//
 
         var captext =
             "Vulvar Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
@@ -199,7 +214,10 @@ $(window).on("load", function() {
         captext += "\nDepth of Invasion:\n- " + box_7.replace(/mm/, "") + "mm\n";
 
         var box_8 = $("#box8").val();
-        captext += "\n+ Tumor Border:\n- " + box_8 + "\n";
+        if (box_8.length >0){
+            captext += "\n+ Tumor Border:\n- " + box_8 + "\n";
+
+        }
 
         var box_9 = $("#box9").val();
         var box_9_1 = $("#box9_1").val();
@@ -347,10 +365,13 @@ $(window).on("load", function() {
 
         var box_25 = $("#box25").val();
         var box_25_2 = $("#box25_2").val();
-        if (box_25 == "Other") {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_25_2 + "\n";
-        } else {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_25 + "\n";
+        if (box_25.length > 0){
+            if (box_25 == "Other") {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_25_2 + "\n";
+            } else {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_25 + "\n";
+            }
+
         }
 
         $("#outPut-1").val(captext);
