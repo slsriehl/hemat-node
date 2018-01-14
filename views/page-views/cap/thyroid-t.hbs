@@ -56,7 +56,7 @@
 				<option>Pyramidal lobe</option>
 				<option>Other</option>
 			</select>
-			<br>
+			
 			<input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box3_2' style='display:none;' placeholder='Specify Other'>
 
 
@@ -73,7 +73,7 @@
 			<hr class="p-2">
 			<h5>Histologic Type</h5>
 			<input type="text" class="form-control form-control-sm col-sm-6" id="box5" placeholder="Start typing and choose match">
-			<br>
+			
 
 
 
@@ -85,7 +85,7 @@
 				<option>Uninvolved by carcinoma</option>
 				<option>Involved by carcinoma</option>
 			</select>
-			<br>
+			
 			<input type="text" class="form-control form-control-sm col-sm-6" id='box6_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
 			<input type="text" class="form-control form-control-sm col-sm-6" id='box6_3' style='display:none;' placeholder='Specify involved margin'>
 
@@ -166,13 +166,14 @@
 
 			</h5>
 
-			<h6>TNM Descriptors (select all that apply)</h6><br>
+			<h6>TNM Descriptors (select all that apply)</h6>
 			<select id="box12" class='form-control selectpicker form-control-sm col-sm-6' multiple>
 				<option selected value="Not applicable">Not applicable</option>
 				<option>m</option>
 				<option>r</option>
 				<option>y</option>
 			</select>
+			<div class="py-2 w-100"></div>
 			<h6 class='mt-2'>pT</h6>
 			<select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
 				<optgroup label="Papillary, Follicular, Poorly Differentiated, Hurthle Cell and Anaplastic">
@@ -198,8 +199,8 @@
 				<option value="pT4b">pT4b: Very advanced disease; tumor of any size with extension toward the spine or into nearby large blood vessels, gross extrathyroidal extension invading the prevertebral fascia, or encasing the carotid artery or mediastinal vessels</option>
 				</optgroup>
 			</select>
-			<br>
-
+			
+			<div class="py-2 w-100"></div>
 			<h6 class='mt-2'>pN</h6>
 			<select id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
 				<option value="pNX">pNX: Regional lymph nodes cannot be assessed</option>
@@ -209,62 +210,63 @@
 				<option value="pN1a">pN1a: Metastasis to level VI or VII (pretracheal, paratracheal, or prelaryngeal/Delphian, or upper mediastinal) lymph nodes. This can be unilateral or bilateral disease.</option>
 				<option value="pN1b">pN1b: Metastasis to unilateral, bilateral, or contralateral lateral neck lymph nodes (levels I, II, III, IV, or V) or retropharyngeal lymph nodes</option>
 			</select>
-			<br>
-
+			
+			<div class="py-2 w-100"></div>
 			<h6 class='mt-2'>pM</h6>
 			<select id="box15" class='form-control selectpicker form-control-sm col-sm-6'>
 				<option selected value='pMx'>pMx: Not applicable</option>
 				<option value="pM1">pM1: Distant metastasis</option>
 			</select>
 			<input type="text" class="form-control form-control-sm col-sm-6" id="box15_2" style="display:none;" placeholder="Specify metastatic sites">
-			<br>
+			<div class="py-2 w-100"></div>
 			<form class="form-inline">
 				<label class="form-check-label">Check here if any lymph nodes submitted?
 					<input class="form-control form-control-sm col-sm-6" type="checkbox" id="box16" >
 				</label>
 			</form>
-			<div class='lnchk' style='display:none;'><br>
+			<div class='lnchk' style='display:none;'>
 				<!-- Button trigger modal -->
 				<button class="btn btn-sm btn-info m-3"  data-toggle="modal" data-target="#help_thyroid_node">Some information about lymph node levels</button>
 
 				<form class="form-inline col-8">
 					<label class="m-2">Number of lymph nodes examined: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box17" style="width:100px"></label>
-				</form>
-					<h6 class="m-2">Specify Nodal Levels examined</h6>
+					<label class="m-2">Number of lymph nodes involved: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box18" style="width:100px"></label>
+					<div class="py-2 w-100"></div>
+					Specify Nodal Levels examined
 					<select multiple id="box20" class='form-control selectpicker form-control-sm col-sm-6 m-2'>
 						<option>Level VI - (central compartment dissection)</option>
 						<option>Level VII (superior mediastinal lymph nodes)</option>
 						<option>Level I-V (lateral neck dissection)</option>
 						<option>Other</option>
 					</select>
-					<br>
+
 					<input type="text" class="form-control form-control-sm mt-3 col-sm-6 m-2" id='box20_2' style='display:none;' placeholder='Specify Other'>
-				<form class="form-inline col-8">
-					<label class="m-2">Number of lymph nodes involved: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box18" style="width:100px"></label>
+					<div class="py-2 w-100"></div>
+					<div class="node-involved" style="display: none;">
+
+						Specify Nodal Levels involved
+						<select multiple id="box19" class='form-control selectpicker form-control-sm col-sm-6 ml-3'>
+							<option>Level VI - (central compartment dissection)</option>
+							<option>Level VII (superior mediastinal lymph nodes)</option>
+							<option>Level I-V (lateral neck dissection)</option>
+							<option>Other</option>
+						</select>
+
+						<input type="text" class="form-control form-control-sm mt-3 col-sm-6 ml-3" id='box19_2' style='display:none;' placeholder='Specify Other'>
+
+						<div class="py-2 w-100"></div>
+						Size of Largest Metastatic Deposit (cm)
+						<input type="text" class="form-control form-control-sm col-sm-6 ml-3" id="box21" placeholder="">
+						<div class="py-2 w-100"></div>
+						Extranodal Extension
+						<select id="box22" class='form-control selectpicker form-control-sm col-sm-6 ml-3'>
+							<option>Not identified</option>
+							<option>Present</option>
+							<option>Cannot be determined</option>
+						</select>
+					</div>
 				</form>
-				<div class="node-involved" style="display: none";>
 
-					<h6 class="m-2">Specify Nodal Levels involved</h6>
-					<select multiple id="box19" class='form-control selectpicker form-control-sm col-sm-6 m-2'>
-						<option>Level VI - (central compartment dissection)</option>
-						<option>Level VII (superior mediastinal lymph nodes)</option>
-						<option>Level I-V (lateral neck dissection)</option>
-						<option>Other</option>
-					</select>
-					<br>
-					<input type="text" class="form-control form-control-sm mt-3 col-sm-6 m-2" id='box19_2' style='display:none;' placeholder='Specify Other'>
-
-
-					<h6 class="m-2">Size of Largest Metastatic Deposit (cm)</h6>
-					<input type="text" class="form-control form-control-sm col-sm-6 m-2" id="box21" placeholder="">
-
-					<h6 class="m-2">Extranodal Extension</h6>
-					<select id="box22" class='form-control selectpicker form-control-sm col-sm-6 m-2'>
-						<option>Not identified</option>
-						<option>Present</option>
-						<option>Cannot be determined</option>
-					</select>
-				</div>
 			</div>
 
 
