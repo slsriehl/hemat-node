@@ -46,12 +46,27 @@ $(window).on('load', function () {
 
     $('#box1').on("change", function () {
         var sel = $('#box1').val();
+        var site = $('#box1').find(":selected").data("proc");
         if (sel.indexOf("Other") > -1) {
-
             $('#box1_2').show();
         } else {
             $('#box1_2').hide();
+            $(".gastrectomy").hide();
+            $(".emr").hide();
+            if (site == "resection") {
+                // resection
+                $(".gastrectomy").show();
+            } else {
+                $(".gastrectomy").hide();
+            }
+            if (site == "emr") {
+                // emr
+                $(".emr").show();
+            } else {
+                $(".emr").hide();
+            }
         }
+
     });
 
     $('#box2').on("change", function () {
@@ -93,31 +108,19 @@ $(window).on('load', function () {
         }
     });
 
+
     $('#box7').on("change", function () {
-        var sela = $('#box7').val();
-        var proc = $('#box1').val();
-        if (sela.indexOf('uninvolved') > -1) {
-            $('#box7_1').show();
-            $('#box7_2').show();
+        var sel = $('#box7').val();
+        if (sel.indexOf('uninvolved') > -1) {
+            $('.negmargins').show();
+            $('.posmargins').hide();
         } else {
-            $('#box7_1').hide();
-            $('#box7_2').hide();
-        }
-        if (sela.indexOf("margins involved") > -1) {
-            $('.margins').show();
-            if (proc != "Endoscopic resection") {
-                $(".gastrectomy").show();
-                $(".emr").hide();
-            } else {
-                $(".gastrectomy").hide();
-                $(".emr").show();
-            }
-        } else {
-            $('.margin').hide();
-            $(".gastrectomy").hide();
-            $(".emr").hide();
+            $('.negmargins').hide();
+            $('.posmargins').show();
         }
     });
+
+
 
     $("#box14").on("change", function () {
         var sel = $("#box14").val();
@@ -191,66 +194,84 @@ $(window).on('load', function () {
         }
     });
 
+    $("#box50").on("change", function () {
+        var sel = $("#box50").val();
+        if ($.inArray("Other", sel) > -1) {
+            $("#box50_2").show();
+        } else {
+            $("#box50_2").hide();
+        }
+    });
+
+    $("#box65").on("change", function () {
+        var sel = $("#box65").val();
+        if (sel != "pMx") {
+            $("#box65_2").show();
+        } else {
+            $("#box65_2").hide();
+        }
+    });
+
     //************************************************************//
     // Script to populate the template data in the output textarea//
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
 // ***************** INPUT VALIDATION ********************//
-    // reset validation alert, if all goes to plan, it won't show
-    $('#cap-valid').hide();
-    $('#opt-valid').hide();
+            // reset validation alert, if all goes to plan, it won't show
+            $('#cap-valid').hide();
+            $('#opt-valid').hide();
 
 
-    $('select[multiple]:visible').each(function () {
-        // ignore class=opt
-        if (!$(this).hasClass("opt")) {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        }
-        if ($(this).hasClass("opt")) {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty-opt');
-            } else {
-                $(this).addClass('empty-opt');
-                $('#opt-valid').show();
-            }
-        }
-    });
-
-    $('input:visible').each(function () {
-        // ignore search bar in menu
-        if ($(this).prop('type') != "search"){
-            // ignore class=opt
-            if (!$(this).hasClass("opt")) {
-                // Check if at least one selection is made
-                if ($.trim($(this).val()).length > 0) {
-                    $(this).removeClass('empty');
-                } else {
-                    $(this).addClass('empty');
-                    $('#cap-valid').show();
+            $('select:visible').each(function () {
+                // ignore class=opt
+                if (!$(this).hasClass("opt")) {
+                    // Check if at least one selection is made
+                    if ($(this).val().length > 0) {
+                        $(this).removeClass('empty');
+                    } else {
+                        $(this).addClass('empty');
+                        $('#cap-valid').show();
+                    }
                 }
-            }
-            if ($(this).hasClass("opt")) {
-                // Check if at least one selection is made
-                if ($.trim($(this).val()).length > 0) {
-                    $(this).removeClass('empty-opt');
-                } else {
-                    $(this).addClass('empty-opt');
-                    $('#opt-valid').show();
+                if ($(this).hasClass("opt")) {
+                    // Check if at least one selection is made
+                    if ($.trim($(this).val()).length > 0) {
+                        $(this).removeClass('empty-opt');
+                    } else {
+                        $(this).addClass('empty-opt');
+                        $('#opt-valid').show();
+                    }
                 }
-            }
-        }
+            });
 
-    });
+            $('input:visible').each(function () {
+                // ignore search bar in menu
+                if ($(this).prop('type') != "search"){
+                    // ignore class=opt
+                    if (!$(this).hasClass("opt")) {
+                        // Check if at least one selection is made
+                        if ($.trim($(this).val()).length > 0) {
+                            $(this).removeClass('empty');
+                        } else {
+                            $(this).addClass('empty');
+                            $('#cap-valid').show();
+                        }
+                    }
+                    if ($(this).hasClass("opt")) {
+                        // Check if at least one selection is made
+                        if ($.trim($(this).val()).length > 0) {
+                            $(this).removeClass('empty-opt');
+                        } else {
+                            $(this).addClass('empty-opt');
+                            $('#opt-valid').show();
+                        }
+                    }
+                }
 
-    // *************************** END VALIDATION ******************************//
+            });
+
+            // *************************** END VALIDATION ******************************//
 
         var captext = "Gastric Carcinoma Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
 
@@ -298,35 +319,42 @@ $(window).on('load', function () {
         }
 
         var box_7 = $("#box7").val();
-        var box_7_1 = $("#box7_1").val();
-        var box_7_2 = $("#box7_2").val();
+        var box_50 = $("#box50").val();
+        var box_50_2 = $("#box50_2").val();
+        var box_50_3 = $("#box50_3").val();
+        var box_60 = $("#box60").val(); // prox
+        var box_61 = $("#box61").val(); // dist
+        var box_62 = $("#box62").val(); // omental
+        var box_63 = $("#box63").val(); // deep
+        var box_64 = $("#box64").val(); // mucosal
+        var box_65 = $("#box65").val(); // other
+        var box_65_2 = $("#box65_2").val(); // other label
+        var site = $("#box1").find(":selected").data("proc");
+        captext += "\nMargins:";
         if (box_7.indexOf("uninvolved") > -1) {
-            captext += "\nMargins:\n- " + box_7 + "\n- Margins assesed: " + box_7_1 + "\n- Distance to closest margin: " + box_7_2.replace(/mm/, "") + "mm\n";
-        } else if (box_7.indexOf("margins involved") > -1) {
+                if ($.inArray('Other', box_50) > -1) {
+                    captext += "\n- " + box_7 + "\n- Margins assesed: " + box_50.join(", ").replace(/Other/, box_50_2) + "\n- Distance of carcinoma to closest margin: " + box_50_3 + "mm\n";
+                } else {
+                    captext += "\n- " + box_7 + "\n- Margins assesed: " + box_50.join(", ") + "\n- Distance of carcinoma to closest margin: " + box_50_3 + "mm\n";
+                }
+            } else  {
+                    if (site == "resection"){
+                        captext += "\n\tProximal Margin:\n\t- " + box_60.join("\n\t- ") + "\n";
 
-            var box_7_3 = $("#box7_3").val();
-            captext += "\nProximal Margin:\n- " + box_7_3 + "\n";
+                        captext += "\n\tDistal Margin:\n\t- " + box_61.join("\n\t- ") + "\n";
 
-            var box_7_4 = $("#box7_4").val();
-            captext += "\nDistal Margin:\n- " + box_7_4 + "\n";
+                        captext += "\n\tOmental Margin:\n\t- " + box_62.join("\n\t- ") + "\n";
+                    } else if (site == "emr"){
+                        captext += "\n\tDeep Margin:\n\t- " + box_63 + "\n";
 
-            var box_7_5 = $("#box7_5").val();
-            captext += "\nOmental Margin:\n- " + box_7_5 + "\n";
+                        captext += "\n\tMucosal Margin:\n\t- " + box_64.join("\n\t- ") + "\n";
 
-            var box_7_6 = $("#box7_6").val();
-            captext += "\nDeep Margin:\n- " + box_7_6 + "\n";
-
-            var box_7_7 = $("#box7_7").val();
-            captext += "\nMucosal Margin:\n- " + box_7_7 + "\n";
-
-            var box_7_8 = $("#box7_8").val();
-            var box_7_8_2 = $("#box7_8_2").val();
-            if (box_7_8 == 'Specify margin') {
-                captext += "\nOther margin:\n- " + box_7_8_2 + "\n";
-            } else {
-                captext += "\nOther margin:\n- " + box_7_8 + "\n";
+                    }
             }
-        }
+
+            if (box_65 != 'Not applicable') {
+                captext += "\n\t"+box_65_2+" margin:\n\t- " + box_65 + "\n";
+            }
 
         var box_8 = $("#box8").val();
         captext += "\nTreatment Effect:\n- " + box_8 + "\n";
@@ -390,7 +418,7 @@ $(window).on('load', function () {
         }
 
         var box_27 = $("#box27").val();
-        if (box_27 != 'enter IHCs, if performed') {
+        if (box_27.length  > 0) {
             captext += "\n+ Ancillary Studies:\n- Immunohistochemistry: " + box_27 + "\n";
         } else {
             captext += "\n+ Ancillary Studies:\n- None performed\n";
@@ -418,16 +446,16 @@ $(window).on('load', function () {
             captext += "\n+ HER2 by in-situ hybridization:\n- " + box_31 + "\n";
 
             var box_32 = $("#box32").val();
-            captext += "\nNumber of observers: " + box_32 + "\n";
+            captext += "\tNumber of observers: " + box_32 + "\n";
 
             var box_33 = $("#box33").val();
-            captext += "\nNumber of invasive cancer cells counted: " + box_33 + "\n";
+            captext += "\tNumber of invasive cancer cells counted: " + box_33 + "\n";
 
             var box_34 = $("#box34").val();
-            captext += "\nAverage number of HER2 (ERBB2) signals per cancer cell: " + box_34 + "\n";
+            captext += "\tAverage number of HER2 signals per cancer cell: " + box_34 + "\n";
 
             var box_35 = $("#box35").val();
-            captext += "\nAverage number of CEP17 signals per cancer cell: " + box_35 + "\n";
+            captext += "\tAverage number of CEP17 signals per cancer cell: " + box_35 + "\n";
 
             var box_36 = $("#box36").val();
             var box_36_1 = $("#box36_1").val();

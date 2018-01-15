@@ -105,13 +105,13 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
-        // ***************** INPUT VALIDATION ********************//
+// ***************** INPUT VALIDATION ********************//
             // reset validation alert, if all goes to plan, it won't show
             $('#cap-valid').hide();
             $('#opt-valid').hide();
 
 
-            $('select[multiple]:visible').each(function () {
+            $('select:visible').each(function () {
                 // ignore class=opt
                 if (!$(this).hasClass("opt")) {
                     // Check if at least one selection is made
@@ -245,13 +245,11 @@ $(window).on('load', function () {
         var box_16 = $("#box16").val();
         var box_16_2 = $("#box16_2").val();
         if (box_16.length > 0) {
-            if (box_16 != "Not applicable") {
                 if (box_16.indexOf("Present") > -1) {
                     captext += "\n+ Treatment Effect:\n- Present: " + box_16_2.replace(/%/, '') + "% necrosis\n";
                 } else {
                     captext += "\n+ Treatment Effect:\n- " + box_16 + "\n";
                 }
-            }
         }
 
         var box_17 = $("#box17").val();

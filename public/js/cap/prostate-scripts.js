@@ -176,7 +176,7 @@ $(window).on('load', function () {
             $('#opt-valid').hide();
 
 
-            $('select[multiple]:visible').each(function () {
+            $('select:visible').each(function () {
                 // ignore class=opt
                 if (!$(this).hasClass("opt")) {
                     // Check if at least one selection is made
@@ -364,7 +364,7 @@ $(window).on('load', function () {
         }
 
         var box_21 = $("#box21").val();
-        if (box_21 != "Not applicable") {
+        if (box_21.length > 0 ) {
             captext += "\n+ Gleason Pattern at Positive Margin(s):\n- " + box_21 + "\n";
         }
 

@@ -46,6 +46,15 @@ $(window).on('load', function () {
         }
     });
 
+    $('#box9').on("change", function () {
+        var sel = $('#box9').val();
+        if (sel == "Other") {
+            $('#box9_2').show();
+        } else {
+            $('#box9_2').hide();
+        }
+    });
+
     $('#box14').on("change", function () {
         var sel = $('#box14').val();
         if (sel.indexOf('Uninvolved') > -1) {
