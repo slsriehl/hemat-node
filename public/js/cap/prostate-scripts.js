@@ -238,11 +238,14 @@ $(window).on('load', function () {
         }
 
         captext += "\n+ Prostate Size:\n";
-        if (box_2.length > 0) {
-            var box_2 = $("#box2").val();
-            captext += "\t+ Weight: " + box_2 + "g\n";
 
+            var box_2 = $("#box2").val();
             var box_3 = $("#box3").val();
+
+        if (box_2.length > 0) {
+            captext += "\t+ Weight: " + box_2 + "g\n";
+        }
+        if (box_3.length > 0) {
             captext += "\t+ Size: " + box_3.replace(/cm/g, '') + "cm\n";
         }
 
