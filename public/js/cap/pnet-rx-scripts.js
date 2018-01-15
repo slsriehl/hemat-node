@@ -114,28 +114,61 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
-        // ***************** INPUT VALIDATION ********************//
-        $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
+       // ***************** INPUT VALIDATION ********************//
+           // reset validation alert, if all goes to plan, it won't show
+           $('#cap-valid').hide();
+           $('#opt-valid').hide();
 
-        $('input[type="text"]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
 
-        // ***************** END VALIDATION ********************//
+           $('select[multiple]:visible').each(function () {
+               // ignore class=opt
+               if (!$(this).hasClass("opt")) {
+                   // Check if at least one selection is made
+                   if ($(this).val().length > 0) {
+                       $(this).removeClass('empty');
+                   } else {
+                       $(this).addClass('empty');
+                       $('#cap-valid').show();
+                   }
+               }
+               if ($(this).hasClass("opt")) {
+                   // Check if at least one selection is made
+                   if ($.trim($(this).val()).length > 0) {
+                       $(this).removeClass('empty-opt');
+                   } else {
+                       $(this).addClass('empty-opt');
+                       $('#opt-valid').show();
+                   }
+               }
+           });
+
+           $('input:visible').each(function () {
+               // ignore search bar in menu
+               if ($(this).prop('type') != "search"){
+                   // ignore class=opt
+                   if (!$(this).hasClass("opt")) {
+                       // Check if at least one selection is made
+                       if ($.trim($(this).val()).length > 0) {
+                           $(this).removeClass('empty');
+                       } else {
+                           $(this).addClass('empty');
+                           $('#cap-valid').show();
+                       }
+                   }
+                   if ($(this).hasClass("opt")) {
+                       // Check if at least one selection is made
+                       if ($.trim($(this).val()).length > 0) {
+                           $(this).removeClass('empty-opt');
+                       } else {
+                           $(this).addClass('empty-opt');
+                           $('#opt-valid').show();
+                       }
+                   }
+               }
+
+           });
+
+           // *************************** END VALIDATION ******************************//
 
 
         var captext = "Ewing Sarcoma Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
@@ -159,22 +192,28 @@ $(window).on('load', function () {
 
         var box_4 = $("#box4").val();
         var box_4_2 = $("#box4_2").val();
-        if ($.inArray("Not applicable", box_4) == -1) {
-            if ($.inArray('Other', box_4) > -1) {
-                captext += "\n+ Extent of Osseous Tumor:\n- " + box_4.join('\n- ').replace(/Other/, box_4_2) + "\n";
-            } else {
-                captext += "\n+ Extent of Osseous Tumor:\n- " + box_4.join('\n- ') + "\n";
+        if (box_4.length > 0) {
+            if ($.inArray("Not applicable", box_4) == -1) {
+                if ($.inArray('Other', box_4) > -1) {
+                    captext += "\n+ Extent of Osseous Tumor:\n- " + box_4.join('\n- ').replace(/Other/, box_4_2) + "\n";
+                } else {
+                    captext += "\n+ Extent of Osseous Tumor:\n- " + box_4.join('\n- ') + "\n";
+                }
             }
+
         }
 
         var box_5 = $("#box5").val();
         var box_5_2 = $("#box5_2").val();
-        if ($.inArray("Not applicable", box_5) == -1) {
-            if ($.inArray('Other', box_5) > -1) {
-                captext += "\n+ Extent of Extra-osseous Tumor:\n- " + box_5.join('\n- ').replace(/Other/, box_5_2) + "\n";
-            } else {
-                captext += "\n+ Extent of Extra-osseous Tumor:\n- " + box_5.join('\n- ') + "\n";
+        if (box_5.length > 0) {
+            if ($.inArray("Not applicable", box_5) == -1) {
+                if ($.inArray('Other', box_5) > -1) {
+                    captext += "\n+ Extent of Extra-osseous Tumor:\n- " + box_5.join('\n- ').replace(/Other/, box_5_2) + "\n";
+                } else {
+                    captext += "\n+ Extent of Extra-osseous Tumor:\n- " + box_5.join('\n- ') + "\n";
+                }
             }
+
         }
 
         var box_6 = $("#box6").val();
@@ -200,7 +239,10 @@ $(window).on('load', function () {
         }
 
         var box_7 = $("#box7").val();
-        captext += "\n+ Lymph-Vascular Invasion:\n- " + box_7 + "\n";
+        if (box_7.length > 0) {
+            captext += "\n+ Lymph-Vascular Invasion:\n- " + box_7 + "\n";
+
+        }
 
         var box_8 = $("#box8").val();
         captext += "\nPreresection Treatment:\n- " + box_8.join('\n- ') + "\n";

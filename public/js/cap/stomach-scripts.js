@@ -196,8 +196,15 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
-        // ***************** INPUT VALIDATION ********************//
-        $('select[multiple]:visible').each(function () {
+// ***************** INPUT VALIDATION ********************//
+    // reset validation alert, if all goes to plan, it won't show
+    $('#cap-valid').hide();
+    $('#opt-valid').hide();
+
+
+    $('select[multiple]:visible').each(function () {
+        // ignore class=opt
+        if (!$(this).hasClass("opt")) {
             // Check if at least one selection is made
             if ($(this).val().length > 0) {
                 $(this).removeClass('empty');
@@ -205,19 +212,45 @@ $(window).on('load', function () {
                 $(this).addClass('empty');
                 $('#cap-valid').show();
             }
-        });
-
-        $('input[type="text"]:visible').each(function () {
+        }
+        if ($(this).hasClass("opt")) {
             // Check if at least one selection is made
             if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
+                $(this).removeClass('empty-opt');
             } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
+                $(this).addClass('empty-opt');
+                $('#opt-valid').show();
             }
-        });
+        }
+    });
 
-        // ***************** END VALIDATION ********************//
+    $('input:visible').each(function () {
+        // ignore search bar in menu
+        if ($(this).prop('type') != "search"){
+            // ignore class=opt
+            if (!$(this).hasClass("opt")) {
+                // Check if at least one selection is made
+                if ($.trim($(this).val()).length > 0) {
+                    $(this).removeClass('empty');
+                } else {
+                    $(this).addClass('empty');
+                    $('#cap-valid').show();
+                }
+            }
+            if ($(this).hasClass("opt")) {
+                // Check if at least one selection is made
+                if ($.trim($(this).val()).length > 0) {
+                    $(this).removeClass('empty-opt');
+                } else {
+                    $(this).addClass('empty-opt');
+                    $('#opt-valid').show();
+                }
+            }
+        }
+
+    });
+
+    // *************************** END VALIDATION ******************************//
 
         var captext = "Gastric Carcinoma Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
 
@@ -302,7 +335,9 @@ $(window).on('load', function () {
         captext += "\nLymphovascular Invasion:\n- " + box_9 + "\n";
 
         var box_10 = $("#box10").val();
-        captext += "\n+ Perineural Invasion:\n- " + box_10 + "\n";
+        if (box_10.length > 0) {
+            captext += "\n+ Perineural Invasion:\n- " + box_10 + "\n";
+        }
 
         var box_11 = $("#box11").val();
         var box_12 = $("#box12").val();
@@ -341,14 +376,17 @@ $(window).on('load', function () {
         var trig2_box_18 = box_18.filter(function (el) {
             return el.indexOf("Other") > -1;
         });
-        if (trig1_box_18.length > 0 && trig2_box_18.length == 0) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_18.join("\n- ").replace(/Polyps/, box_18_2) + "\n";
-        } else if (trig1_box_18.length == 0 && trig2_box_18.length > 0) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_18.join("\n- ").replace(/Other/, box_18_3) + "\n";
-        } else if (trig1_box_18.length > 0 && trig2_box_18.length > 0) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_18.join("\n- ").replace(/Polyps/, box_18_2).replace(/Other/, box_18_3) + "\n";
-        } else {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_18.join("\n- ") + "\n";
+        if (box_18.length > 0) {
+            if (trig1_box_18.length > 0 && trig2_box_18.length == 0) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_18.join("\n- ").replace(/Polyps/, box_18_2) + "\n";
+            } else if (trig1_box_18.length == 0 && trig2_box_18.length > 0) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_18.join("\n- ").replace(/Other/, box_18_3) + "\n";
+            } else if (trig1_box_18.length > 0 && trig2_box_18.length > 0) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_18.join("\n- ").replace(/Polyps/, box_18_2).replace(/Other/, box_18_3) + "\n";
+            } else {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_18.join("\n- ") + "\n";
+            }
+
         }
 
         var box_27 = $("#box27").val();

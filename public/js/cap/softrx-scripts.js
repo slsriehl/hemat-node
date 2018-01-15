@@ -208,28 +208,62 @@ $(window).on('load', function () {
     // Script to populate the template data in the output textarea//
     // *************************************************************/
     $('.writeReport').on('click', function () {
+
         // ***************** INPUT VALIDATION ********************//
+        // reset validation alert, if all goes to plan, it won't show
+        $('#cap-valid').hide();
+        $('#opt-valid').hide();
+
+
         $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
+            // ignore class=opt
+            if (!$(this).hasClass("opt")) {
+                // Check if at least one selection is made
+                if ($(this).val().length > 0) {
+                    $(this).removeClass('empty');
+                } else {
+                    $(this).addClass('empty');
+                    $('#cap-valid').show();
+                }
+            }
+            if ($(this).hasClass("opt")) {
+                // Check if at least one selection is made
+                if ($.trim($(this).val()).length > 0) {
+                    $(this).removeClass('empty-opt');
+                } else {
+                    $(this).addClass('empty-opt');
+                    $('#opt-valid').show();
+                }
             }
         });
 
-        $('input[type="text"]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
+        $('input:visible').each(function () {
+            // ignore search bar in menu
+            if ($(this).prop('type') != "search"){
+                // ignore class=opt
+                if (!$(this).hasClass("opt")) {
+                    // Check if at least one selection is made
+                    if ($.trim($(this).val()).length > 0) {
+                        $(this).removeClass('empty');
+                    } else {
+                        $(this).addClass('empty');
+                        $('#cap-valid').show();
+                    }
+                }
+                if ($(this).hasClass("opt")) {
+                    // Check if at least one selection is made
+                    if ($.trim($(this).val()).length > 0) {
+                        $(this).removeClass('empty-opt');
+                    } else {
+                        $(this).addClass('empty-opt');
+                        $('#opt-valid').show();
+                    }
+                }
             }
+
         });
 
-        // ***************** END VALIDATION ********************//
+        // *************************** END VALIDATION ******************************//
 
         var captext = "Soft tissue (Resection) Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
 
@@ -278,7 +312,10 @@ $(window).on('load', function () {
         }
 
         var box_9 = $("#box9").val();
-        captext += "\n+ Lymphovascular Invasion:\n- " + box_9 + "\n";
+        if (box_9.length > 0) {
+            captext += "\n+ Lymphovascular Invasion:\n- " + box_9 + "\n";
+
+        }
 
         var box_10 = $("#box10").val();
         var box_11 = $("#box11").val();
@@ -316,7 +353,10 @@ $(window).on('load', function () {
         captext += "\nMolecular Pathology:\n- " + box_19 + "\n";
 
         var box_20 = $("#box20").val();
-        captext += "\n+ Preresection Treatment:\n- " + box_20 + "\n";
+        if (box_20.length > 0) {
+            captext += "\n+ Preresection Treatment:\n- " + box_20 + "\n";
+
+        }
 
         var box_21 = $("#box21").val();
         captext += "\nTreatment Effect:\n- " + box_21 + "\n";

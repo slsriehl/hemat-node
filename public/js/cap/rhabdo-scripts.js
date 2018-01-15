@@ -106,27 +106,60 @@ $(window).on('load', function () {
     $('.writeReport').on('click', function () {
 
         // ***************** INPUT VALIDATION ********************//
-        $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
+            // reset validation alert, if all goes to plan, it won't show
+            $('#cap-valid').hide();
+            $('#opt-valid').hide();
 
-        $('input[type="text"]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
 
-        // ***************** END VALIDATION ********************//
+            $('select[multiple]:visible').each(function () {
+                // ignore class=opt
+                if (!$(this).hasClass("opt")) {
+                    // Check if at least one selection is made
+                    if ($(this).val().length > 0) {
+                        $(this).removeClass('empty');
+                    } else {
+                        $(this).addClass('empty');
+                        $('#cap-valid').show();
+                    }
+                }
+                if ($(this).hasClass("opt")) {
+                    // Check if at least one selection is made
+                    if ($.trim($(this).val()).length > 0) {
+                        $(this).removeClass('empty-opt');
+                    } else {
+                        $(this).addClass('empty-opt');
+                        $('#opt-valid').show();
+                    }
+                }
+            });
+
+            $('input:visible').each(function () {
+                // ignore search bar in menu
+                if ($(this).prop('type') != "search"){
+                    // ignore class=opt
+                    if (!$(this).hasClass("opt")) {
+                        // Check if at least one selection is made
+                        if ($.trim($(this).val()).length > 0) {
+                            $(this).removeClass('empty');
+                        } else {
+                            $(this).addClass('empty');
+                            $('#cap-valid').show();
+                        }
+                    }
+                    if ($(this).hasClass("opt")) {
+                        // Check if at least one selection is made
+                        if ($.trim($(this).val()).length > 0) {
+                            $(this).removeClass('empty-opt');
+                        } else {
+                            $(this).addClass('empty-opt');
+                            $('#opt-valid').show();
+                        }
+                    }
+                }
+
+            });
+
+            // *************************** END VALIDATION ******************************//
 
 
         var captext = "Rhabdomyosarcoma Cancer Synoptic\n\n";
@@ -205,15 +238,19 @@ $(window).on('load', function () {
         }
 
         var box_2 = $("#box2").val();
-        captext += "\n+ Preoperative Treatment:\n- " + box_2 + "\n";
+        if (box_2.length > 0) {
+            captext += "\n+ Preoperative Treatment:\n- " + box_2 + "\n";
+        }
 
         var box_16 = $("#box16").val();
         var box_16_2 = $("#box16_2").val();
-        if (box_16 != "Not applicable") {
-            if (box_16.indexOf("Present") > -1) {
-                captext += "\n+ Treatment Effect:\n- Present: " + box_16_2.replace(/%/, '') + "% necrosis\n";
-            } else {
-                captext += "\n+ Treatment Effect:\n- " + box_16 + "\n";
+        if (box_16.length > 0) {
+            if (box_16 != "Not applicable") {
+                if (box_16.indexOf("Present") > -1) {
+                    captext += "\n+ Treatment Effect:\n- Present: " + box_16_2.replace(/%/, '') + "% necrosis\n";
+                } else {
+                    captext += "\n+ Treatment Effect:\n- " + box_16 + "\n";
+                }
             }
         }
 

@@ -107,28 +107,61 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
-        // ***************** INPUT VALIDATION ********************//
-        $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
+       // ***************** INPUT VALIDATION ********************//
+           // reset validation alert, if all goes to plan, it won't show
+           $('#cap-valid').hide();
+           $('#opt-valid').hide();
 
-        $('input[type="text"]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
 
-        // ***************** END VALIDATION ********************//
+           $('select[multiple]:visible').each(function () {
+               // ignore class=opt
+               if (!$(this).hasClass("opt")) {
+                   // Check if at least one selection is made
+                   if ($(this).val().length > 0) {
+                       $(this).removeClass('empty');
+                   } else {
+                       $(this).addClass('empty');
+                       $('#cap-valid').show();
+                   }
+               }
+               if ($(this).hasClass("opt")) {
+                   // Check if at least one selection is made
+                   if ($.trim($(this).val()).length > 0) {
+                       $(this).removeClass('empty-opt');
+                   } else {
+                       $(this).addClass('empty-opt');
+                       $('#opt-valid').show();
+                   }
+               }
+           });
+
+           $('input:visible').each(function () {
+               // ignore search bar in menu
+               if ($(this).prop('type') != "search"){
+                   // ignore class=opt
+                   if (!$(this).hasClass("opt")) {
+                       // Check if at least one selection is made
+                       if ($.trim($(this).val()).length > 0) {
+                           $(this).removeClass('empty');
+                       } else {
+                           $(this).addClass('empty');
+                           $('#cap-valid').show();
+                       }
+                   }
+                   if ($(this).hasClass("opt")) {
+                       // Check if at least one selection is made
+                       if ($.trim($(this).val()).length > 0) {
+                           $(this).removeClass('empty-opt');
+                       } else {
+                           $(this).addClass('empty-opt');
+                           $('#opt-valid').show();
+                       }
+                   }
+               }
+
+           });
+
+           // *************************** END VALIDATION ******************************//
 
 
         var captext = "Retinoblastoma Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
@@ -193,10 +226,16 @@ $(window).on('load', function () {
         captext += "\nHistologic Grade:\n- " + box_10 + "\n";
 
         var box_11 = $("#box11").val();
-        captext += "\n+ Anaplasia Grade:\n- " + box_11 + "\n";
+        if (box_11.length > 0) {
+            captext += "\n+ Anaplasia Grade:\n- " + box_11 + "\n";
+
+        }
 
         var box_12 = $("#box12").val();
-        captext += "\n+ Cytologic Features Suggesting MYCN Amplification:\n- " + box_12 + "\n";
+        if (box_12.length > 0) {
+            captext += "\n+ Cytologic Features Suggesting MYCN Amplification:\n- " + box_12 + "\n";
+
+        }
 
         var box_13 = $("#box13").val();
         var box_13_2 = $("#box13_2").val();
@@ -242,14 +281,17 @@ $(window).on('load', function () {
         var trig2_box_21 = box_21.filter(function (el) {
             return el.indexOf("Other") > -1;
         });
-        if (trig1_box_21.length > 0 && trig2_box_21.length == 0) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_21.join("\n- ").replace(/rate/, "rate: " + box_21_2 + " per 10 hpf") + "\n";
-        } else if (trig1_box_21.length == 0 && trig2_box_21.length > 0) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_21.join("\n- ").replace(/Other/, box_21_3) + "\n";
-        } else if (trig1_box_21.length > 0 && trig2_box_21.length > 0) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_21.join("\n- ").replace(/rate/, "rate: " + box_21_2 + " per 10 hpf").replace(/Other/, box_21_3) + "\n";
-        } else {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_21.join("\n- ") + "\n";
+        if (box_21.length > 0) {
+            if (trig1_box_21.length > 0 && trig2_box_21.length == 0) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_21.join("\n- ").replace(/rate/, "rate: " + box_21_2 + " per 10 hpf") + "\n";
+            } else if (trig1_box_21.length == 0 && trig2_box_21.length > 0) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_21.join("\n- ").replace(/Other/, box_21_3) + "\n";
+            } else if (trig1_box_21.length > 0 && trig2_box_21.length > 0) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_21.join("\n- ").replace(/rate/, "rate: " + box_21_2 + " per 10 hpf").replace(/Other/, box_21_3) + "\n";
+            } else {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_21.join("\n- ") + "\n";
+            }
+
         }
 
         $('#outPut-1').val(captext);

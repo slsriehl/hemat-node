@@ -95,27 +95,60 @@ $(window).on('load', function () {
     $('.writeReport').on('click', function () {
 
         // ***************** INPUT VALIDATION ********************//
+        // reset validation alert, if all goes to plan, it won't show
+        $('#cap-valid').hide();
+        $('#opt-valid').hide();
+
+
         $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
+            // ignore class=opt
+            if (!$(this).hasClass("opt")) {
+                // Check if at least one selection is made
+                if ($(this).val().length > 0) {
+                    $(this).removeClass('empty');
+                } else {
+                    $(this).addClass('empty');
+                    $('#cap-valid').show();
+                }
+            }
+            if ($(this).hasClass("opt")) {
+                // Check if at least one selection is made
+                if ($.trim($(this).val()).length > 0) {
+                    $(this).removeClass('empty-opt');
+                } else {
+                    $(this).addClass('empty-opt');
+                    $('#opt-valid').show();
+                }
             }
         });
 
-        $('input[type="text"]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
+        $('input:visible').each(function () {
+            // ignore search bar in menu
+            if ($(this).prop('type') != "search"){
+                // ignore class=opt
+                if (!$(this).hasClass("opt")) {
+                    // Check if at least one selection is made
+                    if ($.trim($(this).val()).length > 0) {
+                        $(this).removeClass('empty');
+                    } else {
+                        $(this).addClass('empty');
+                        $('#cap-valid').show();
+                    }
+                }
+                if ($(this).hasClass("opt")) {
+                    // Check if at least one selection is made
+                    if ($.trim($(this).val()).length > 0) {
+                        $(this).removeClass('empty-opt');
+                    } else {
+                        $(this).addClass('empty-opt');
+                        $('#opt-valid').show();
+                    }
+                }
             }
+
         });
 
-        // ***************** END VALIDATION ********************//
+        // *************************** END VALIDATION ******************************//
 
 
         var captext = "Merkel Cell Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
@@ -146,7 +179,10 @@ $(window).on('load', function () {
         captext += "\nTumor Size:\n- " + box_3.replace(/cm/, '') + "cm\n";
 
         var box_18 = $("#box18").val();
-        captext += "\n+ Tumor thickness:\n- " + box_18.replace(/mm/, '') + "mm\n";
+        if (box_18.length > 0) {
+            captext += "\n+ Tumor thickness:\n- " + box_18.replace(/mm/, '') + "mm\n";
+
+        }
 
         var box_4 = $("#box4").val();
         var box_4_1 = $("#box4_1").val();
@@ -184,10 +220,16 @@ $(window).on('load', function () {
         }
 
         var box_8 = $("#box8").val();
-        captext += "\n+ Tumor-Infiltrating Lymphocytes:\n- " + box_8 + "\n";
+        if (box_8.length > 0) {
+            captext += "\n+ Tumor-Infiltrating Lymphocytes:\n- " + box_8 + "\n";
+
+        }
 
         var box_9 = $("#box9").val();
-        captext += "\n+ Tumor Growth Pattern:\n- " + box_9 + "\n";
+        if (box_9.length > 0) {
+            captext += "\n+ Tumor Growth Pattern:\n- " + box_9 + "\n";
+
+        }
 
         var box_10 = $("#box10").val();
         var box_11 = $("#box11").val();

@@ -104,28 +104,61 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
-        // ***************** INPUT VALIDATION ********************//
-        $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
+       // ***************** INPUT VALIDATION ********************//
+           // reset validation alert, if all goes to plan, it won't show
+           $('#cap-valid').hide();
+           $('#opt-valid').hide();
 
-        $('input[type="text"]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
 
-        // ***************** END VALIDATION ********************//
+           $('select[multiple]:visible').each(function () {
+               // ignore class=opt
+               if (!$(this).hasClass("opt")) {
+                   // Check if at least one selection is made
+                   if ($(this).val().length > 0) {
+                       $(this).removeClass('empty');
+                   } else {
+                       $(this).addClass('empty');
+                       $('#cap-valid').show();
+                   }
+               }
+               if ($(this).hasClass("opt")) {
+                   // Check if at least one selection is made
+                   if ($.trim($(this).val()).length > 0) {
+                       $(this).removeClass('empty-opt');
+                   } else {
+                       $(this).addClass('empty-opt');
+                       $('#opt-valid').show();
+                   }
+               }
+           });
+
+           $('input:visible').each(function () {
+               // ignore search bar in menu
+               if ($(this).prop('type') != "search"){
+                   // ignore class=opt
+                   if (!$(this).hasClass("opt")) {
+                       // Check if at least one selection is made
+                       if ($.trim($(this).val()).length > 0) {
+                           $(this).removeClass('empty');
+                       } else {
+                           $(this).addClass('empty');
+                           $('#cap-valid').show();
+                       }
+                   }
+                   if ($(this).hasClass("opt")) {
+                       // Check if at least one selection is made
+                       if ($.trim($(this).val()).length > 0) {
+                           $(this).removeClass('empty-opt');
+                       } else {
+                           $(this).addClass('empty-opt');
+                           $('#opt-valid').show();
+                       }
+                   }
+               }
+
+           });
+
+           // *************************** END VALIDATION ******************************//
 
 
         var captext = "Salivary Gland Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
@@ -234,10 +267,13 @@ $(window).on('load', function () {
 
         var box_21 = $("#box21").val();
         var box_21_2 = $("#box21_2").val();
-        if ($.inArray('Other', box_21) > -1) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_21.join('\n- ').replace(/Other/, box_21_2) + "\n";
-        } else {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_21.join('\n- ') + "\n";
+        if (box_21.length > 0) {
+            if ($.inArray('Other', box_21) > -1) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_21.join('\n- ').replace(/Other/, box_21_2) + "\n";
+            } else {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_21.join('\n- ') + "\n";
+            }
+
         }
 
         $('#outPut-1').val(captext);

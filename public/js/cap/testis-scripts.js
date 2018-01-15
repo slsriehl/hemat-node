@@ -185,8 +185,15 @@ $(window).on('load', function() {
 // *************************************************************/
     $('.writeReport').on('click', function () {
 
-        // ***************** INPUT VALIDATION ********************//
-        $('select[multiple]:visible').each(function () {
+// ***************** INPUT VALIDATION ********************//
+    // reset validation alert, if all goes to plan, it won't show
+    $('#cap-valid').hide();
+    $('#opt-valid').hide();
+
+
+    $('select[multiple]:visible').each(function () {
+        // ignore class=opt
+        if (!$(this).hasClass("opt")) {
             // Check if at least one selection is made
             if ($(this).val().length > 0) {
                 $(this).removeClass('empty');
@@ -194,19 +201,45 @@ $(window).on('load', function() {
                 $(this).addClass('empty');
                 $('#cap-valid').show();
             }
-        });
-
-        $('input[type="text"]:visible').each(function () {
+        }
+        if ($(this).hasClass("opt")) {
             // Check if at least one selection is made
             if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
+                $(this).removeClass('empty-opt');
             } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
+                $(this).addClass('empty-opt');
+                $('#opt-valid').show();
             }
-        });
+        }
+    });
 
-        // ***************** END VALIDATION ********************//
+    $('input:visible').each(function () {
+        // ignore search bar in menu
+        if ($(this).prop('type') != "search"){
+            // ignore class=opt
+            if (!$(this).hasClass("opt")) {
+                // Check if at least one selection is made
+                if ($.trim($(this).val()).length > 0) {
+                    $(this).removeClass('empty');
+                } else {
+                    $(this).addClass('empty');
+                    $('#cap-valid').show();
+                }
+            }
+            if ($(this).hasClass("opt")) {
+                // Check if at least one selection is made
+                if ($.trim($(this).val()).length > 0) {
+                    $(this).removeClass('empty-opt');
+                } else {
+                    $(this).addClass('empty-opt');
+                    $('#opt-valid').show();
+                }
+            }
+        }
+
+    });
+
+    // *************************** END VALIDATION ******************************//
 
 
 
@@ -283,8 +316,10 @@ $(window).on('load', function() {
         else {captext += box_11+" "+box_12+" "+box_13+"\n";}
 
         var box_23 = $("#box23").val();
-        if (box_23 != "Not applicable")
+        if (box_23.length > 0){
             captext += "\n+ Modified Royal Marsden Staging System:\n- "  + box_23+ "\n";
+
+        }
 
         if ($("#box14").is(':checked')) {
             var box_15 = $("#box15").val();
@@ -314,13 +349,21 @@ $(window).on('load', function() {
 
 
         var box_21 = $("#box21").val();
-        captext += "\n+ Serum Tumor Markers:\n- "  + box_21+ "\n";
+        if (box_21.length > 0) {
+            captext += "\n+ Serum Tumor Markers:\n- "  + box_21+ "\n";
+
+        }
 
         var box_22 = $("#box22").val();
         var box_22_2 = $("#box22_2").val();
-        if ($.inArray('Other', box_22) >-1){
-            captext += "\n+ Additional Pathologic Findings:\n- "  + box_22.join('\n- ').replace(/Other/, box_22_2) + "\n";}
-        else {captext += "\n+ Additional Pathologic Findings:\n- "  + box_22.join('\n- ') + "\n";}
+        if (box_22.length > 0) {
+            if ($.inArray('Other', box_22) >-1){
+                captext += "\n+ Additional Pathologic Findings:\n- "  + box_22.join('\n- ').replace(/Other/, box_22_2) + "\n";}
+            else {
+                captext += "\n+ Additional Pathologic Findings:\n- "  + box_22.join('\n- ') + "\n";
+            }
+
+        }
 
 
 
