@@ -237,16 +237,15 @@ $(window).on('load', function () {
             captext += "\nProcedure:\n- " + box_1 + "\n";
         }
 
-        captext += "\n+ Prostate Size:\n";
 
             var box_2 = $("#box2").val();
             var box_3 = $("#box3").val();
 
         if (box_2.length > 0) {
-            captext += "\t+ Weight: " + box_2 + "g\n";
+            captext += "\n+ Prostate Weight: " + box_2 + "g\n";
         }
         if (box_3.length > 0) {
-            captext += "\t+ Size: " + box_3.replace(/cm/g, '') + "cm\n";
+            captext += "\n+ Prostate Size: " + box_3.replace(/cm/g, '') + "cm\n";
         }
 
         var box_4 = $("#box4").val();
