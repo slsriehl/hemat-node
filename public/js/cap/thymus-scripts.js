@@ -139,28 +139,61 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
-        // ***************** INPUT VALIDATION ********************//
+    // ***************** INPUT VALIDATION ********************//
+        // reset validation alert, if all goes to plan, it won't show
+        $('#cap-valid').hide();
+        $('#opt-valid').hide();
+
+
         $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
+            // ignore class=opt
+            if (!$(this).hasClass("opt")) {
+                // Check if at least one selection is made
+                if ($(this).val().length > 0) {
+                    $(this).removeClass('empty');
+                } else {
+                    $(this).addClass('empty');
+                    $('#cap-valid').show();
+                }
+            }
+            if ($(this).hasClass("opt")) {
+                // Check if at least one selection is made
+                if ($.trim($(this).val()).length > 0) {
+                    $(this).removeClass('empty-opt');
+                } else {
+                    $(this).addClass('empty-opt');
+                    $('#opt-valid').show();
+                }
             }
         });
 
-        $('input[type="text"]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
+        $('input:visible').each(function () {
+            // ignore search bar in menu
+            if ($(this).prop('type') != "search"){
+                // ignore class=opt
+                if (!$(this).hasClass("opt")) {
+                    // Check if at least one selection is made
+                    if ($.trim($(this).val()).length > 0) {
+                        $(this).removeClass('empty');
+                    } else {
+                        $(this).addClass('empty');
+                        $('#cap-valid').show();
+                    }
+                }
+                if ($(this).hasClass("opt")) {
+                    // Check if at least one selection is made
+                    if ($.trim($(this).val()).length > 0) {
+                        $(this).removeClass('empty-opt');
+                    } else {
+                        $(this).addClass('empty-opt');
+                        $('#opt-valid').show();
+                    }
+                }
             }
+
         });
 
-        // ***************** END VALIDATION ********************//
+        // *************************** END VALIDATION ******************************//
 
 
         var captext = "Thymic Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
@@ -258,14 +291,19 @@ $(window).on('load', function () {
 
         var box_16 = $("#box16").val();
         var box_16_2 = $("#box16_2").val();
-        if ($.inArray('Other ', box_16) > -1) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_16.join('\n- ').replace(/Other /, box_16_2) + "\n";
-        } else {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_16.join('\n- ') + "\n";
+        if (box_16.length > 0){
+            if ($.inArray('Other ', box_16) > -1) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_16.join('\n- ').replace(/Other /, box_16_2) + "\n";
+            } else {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_16.join('\n- ') + "\n";
+            }
         }
 
         var box_17 = $("#box17").val();
-        captext += "\n+ Ancillary Studies - Immunohistochemistry:\n- " + box_17.replace(/\,$/, '') + "\n";
+        if (box_17.length > 0){
+            captext += "\n+ Ancillary Studies - Immunohistochemistry:\n- " + box_17.replace(/\,$/, '') + "\n";
+
+        }
 
         $('#outPut-1').val(captext);
 

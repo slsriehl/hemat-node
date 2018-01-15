@@ -197,40 +197,59 @@ $(window).on("load", function() {
     // *************************************************************/
     $(".writeReport").on("click", function() {
 
-        // ***************** INPUT VALIDATION ********************//
-                            // reset validation alert, if all goes to plan, it won't show
-                            $('#cap-valid').hide();
+// ***************** INPUT VALIDATION ********************//
+        // reset validation alert, if all goes to plan, it won't show
+        $('#cap-valid').hide();
+        $('#opt-valid').hide();
 
 
-                                $('select[multiple]:visible').each(function () {
-                                    // ignore class=opt
-                                    if (!$(this).hasClass("opt")) {
-                                        // Check if at least one selection is made
-                                        if ($(this).val().length > 0) {
-                                            $(this).removeClass('empty');
-                                        } else {
-                                            $(this).addClass('empty');
-                                            $('#cap-valid').show();
-                                        }
-                                    }
-                                });
+        $('select[multiple]:visible').each(function () {
+            // ignore class=opt
+            if (!$(this).hasClass("opt")) {
+                // Check if at least one selection is made
+                if ($(this).val().length > 0) {
+                    $(this).removeClass('empty');
+                } else {
+                    $(this).addClass('empty');
+                    $('#cap-valid').show();
+                }
+            }
+            if ($(this).hasClass("opt")) {
+                // Check if at least one selection is made
+                if ($.trim($(this).val()).length > 0) {
+                    $(this).removeClass('empty-opt');
+                } else {
+                    $(this).addClass('empty-opt');
+                    $('#opt-valid').show();
+                }
+            }
+        });
 
-                                $('input:visible').each(function () {
-                                    // ignore search bar in menu
-                                    if ($(this).prop('type') != "search"){
-                                        // ignore class=opt
-                                        if (!$(this).hasClass("opt")) {
-                                            // Check if at least one selection is made
-                                            if ($.trim($(this).val()).length > 0) {
-                                                $(this).removeClass('empty');
-                                            } else {
-                                                $(this).addClass('empty');
-                                                $('#cap-valid').show();
-                                            }
-                                        }
-                                    }
+        $('input:visible').each(function () {
+            // ignore search bar in menu
+            if ($(this).prop('type') != "search"){
+                // ignore class=opt
+                if (!$(this).hasClass("opt")) {
+                    // Check if at least one selection is made
+                    if ($.trim($(this).val()).length > 0) {
+                        $(this).removeClass('empty');
+                    } else {
+                        $(this).addClass('empty');
+                        $('#cap-valid').show();
+                    }
+                }
+                if ($(this).hasClass("opt")) {
+                    // Check if at least one selection is made
+                    if ($.trim($(this).val()).length > 0) {
+                        $(this).removeClass('empty-opt');
+                    } else {
+                        $(this).addClass('empty-opt');
+                        $('#opt-valid').show();
+                    }
+                }
+            }
 
-                                });
+        });
 
         // *************************** END VALIDATION ******************************//
 
@@ -246,7 +265,10 @@ $(window).on("load", function() {
         }
 
         var box_2 = $("#box2").val();
-        captext += "\n+ Tumor Size:\n- " + box_2 + "cm\n";
+        if (box_2.length > 0) {
+            captext += "\n+ Tumor Size:\n- " + box_2 + "cm\n";
+
+        }
 
         var box_3 = $("#box3").val();
         var box_3_2 = $("#box3_2").val();
@@ -260,7 +282,10 @@ $(window).on("load", function() {
         }
 
         var box_4 = $("#box4").val();
-        captext += "\n+ Associated Epithelial Lesions:\n- " + box_4 + "\n";
+        if (box_4.length > 0) {
+            captext += "\n+ Associated Epithelial Lesions:\n- " + box_4 + "\n";
+
+        }
 
         var box_5 = $("#box5").val();
         var box_5_2 = $("#box5_2").val();
@@ -425,14 +450,17 @@ $(window).on("load", function() {
 
         var box_19 = $("#box19").val();
         var box_19_2 = $("#box19_2").val();
-        if ($.inArray("Other", box_19) > -1) {
-            captext +=
-                "\n+ Additional Pathologic Findings:\n- " +
-                box_19.join("\n- ").replace(/Other/, box_19_2) +
-                "\n";
-        } else {
-            captext +=
-                "\n+ Additional Pathologic Findings:\n- " + box_19.join("\n- ") + "\n";
+        if (box_19.length > 0) {
+            if ($.inArray("Other", box_19) > -1) {
+                captext +=
+                    "\n+ Additional Pathologic Findings:\n- " +
+                    box_19.join("\n- ").replace(/Other/, box_19_2) +
+                    "\n";
+            } else {
+                captext +=
+                    "\n+ Additional Pathologic Findings:\n- " + box_19.join("\n- ") + "\n";
+            }
+
         }
 
         $("#outPut-1").val(captext);

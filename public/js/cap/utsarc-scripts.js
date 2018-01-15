@@ -134,6 +134,7 @@ $(window).on("load", function() {
         // ***************** INPUT VALIDATION ********************//
         // reset validation alert, if all goes to plan, it won't show
         $('#cap-valid').hide();
+        $('#opt-valid').hide();
 
 
         $('select[multiple]:visible').each(function () {
@@ -145,6 +146,15 @@ $(window).on("load", function() {
                 } else {
                     $(this).addClass('empty');
                     $('#cap-valid').show();
+                }
+            }
+            if ($(this).hasClass("opt")) {
+                // Check if at least one selection is made
+                if ($.trim($(this).val()).length > 0) {
+                    $(this).removeClass('empty-opt');
+                } else {
+                    $(this).addClass('empty-opt');
+                    $('#opt-valid').show();
                 }
             }
         });
@@ -160,6 +170,15 @@ $(window).on("load", function() {
                     } else {
                         $(this).addClass('empty');
                         $('#cap-valid').show();
+                    }
+                }
+                if ($(this).hasClass("opt")) {
+                    // Check if at least one selection is made
+                    if ($.trim($(this).val()).length > 0) {
+                        $(this).removeClass('empty-opt');
+                    } else {
+                        $(this).addClass('empty-opt');
+                        $('#opt-valid').show();
                     }
                 }
             }

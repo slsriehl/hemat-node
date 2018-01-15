@@ -5,7 +5,7 @@
             <a href="/">Home</a>
         </li>
         <li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>Cancer Synoptic Checklist</li>
-        <li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>thymus-t$</li>
+        <li class="breadcrumb-item active"><i class="fa fa-flask mr-2"></i>Thymic carcinomas and Thymomas</li>
     </ol>
     {{> message-center this}}
     {{> page-partials/cap-header}}
@@ -32,7 +32,7 @@
 
             <hr class="p-2">
             <h5>Tumor Size (cm)</h5>
-            <input type="text" class="form-control form-control-sm col-sm-6" id="box2" placeholder="Greatest dimension">
+            <input type="number" class="form-control form-control-sm col-sm-6" id="box2" placeholder="Greatest dimension">
 
 
 
@@ -115,7 +115,7 @@
                 <option>Involved by tumor</option>
             </select>
 
-            <input type="text" class="form-control form-control-sm col-sm-6" id='box6_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
+            <input type="number" class="form-control form-control-sm col-sm-6" id='box6_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
             <input type="text" class="form-control form-control-sm col-sm-6" id='box6_3' style='display:none;' placeholder='Specify involved margin'>
 
 
@@ -162,7 +162,10 @@
                 <option>r</option>
                 <option>y</option>
             </select>
-            <h6 class='mt-2'>pT</h6>
+
+            <div class="py-2 w-100"></div>
+
+            <h6>pT</h6>
             <select id="box10" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option value="pTX">pTX: Primary tumor cannot be assessed</option>
                 <option value="pT0">pT0: No evidence of primary tumor</option>
@@ -174,7 +177,9 @@
             </select>
 
 
-            <h6 class='mt-2'>pN</h6>
+            <div class="py-2 w-100"></div>
+
+            <h6>pN</h6>
             <select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option value="pNX">pNX: Regional lymph nodes cannot be assessed</option>
                 <option value="pN0">pN0: No regional lymph node metastasis</option>
@@ -183,7 +188,7 @@
             </select>
 
 
-            <h6 class='mt-2'>pM</h6>
+            <h6>pM</h6>
             <select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option selected value='pMx'>pMx: Not applicable</option>
                 <option value="pM1">pM1: Pleural, pericardial, or distant metastasis</option>
@@ -191,6 +196,8 @@
                 <option value="pM1b">pM1b: Pulmonary intraparenchymal nodule or distant organ metastasis</option>
             </select>
             <input type="text" class="form-control form-control-sm col-sm-6" id="box12_2" style="display:none;" placeholder="Specify metastatic sites">
+
+            <div class="py-2 w-100"></div>
 
             <form class="form-inline">
                 <label class="form-check-label">Check here if any lymph nodes submitted?
@@ -244,10 +251,3 @@
     <!-- close container -->
 </div>
 
-
-<!--
-			"specificScripts":
-				[
-					"/js/cap/$-scripts.js",
-				]
-		 -->

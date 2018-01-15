@@ -118,42 +118,61 @@ $(window).on("load", function() {
     // *************************************************************/
     $(".writeReport").on("click", function() {
 
-        // ***************** INPUT VALIDATION ********************//
-        // reset validation alert, if all goes to plan, it won't show
-        $('#cap-valid').hide();
+    // ***************** INPUT VALIDATION ********************//
+    // reset validation alert, if all goes to plan, it won't show
+    $('#cap-valid').hide();
+    $('#opt-valid').hide();
 
 
-        $('select[multiple]:visible').each(function () {
+    $('select[multiple]:visible').each(function () {
+        // ignore class=opt
+        if (!$(this).hasClass("opt")) {
+            // Check if at least one selection is made
+            if ($(this).val().length > 0) {
+                $(this).removeClass('empty');
+            } else {
+                $(this).addClass('empty');
+                $('#cap-valid').show();
+            }
+        }
+        if ($(this).hasClass("opt")) {
+            // Check if at least one selection is made
+            if ($.trim($(this).val()).length > 0) {
+                $(this).removeClass('empty-opt');
+            } else {
+                $(this).addClass('empty-opt');
+                $('#opt-valid').show();
+            }
+        }
+    });
+
+    $('input:visible').each(function () {
+        // ignore search bar in menu
+        if ($(this).prop('type') != "search"){
             // ignore class=opt
             if (!$(this).hasClass("opt")) {
                 // Check if at least one selection is made
-                if ($(this).val().length > 0) {
+                if ($.trim($(this).val()).length > 0) {
                     $(this).removeClass('empty');
                 } else {
                     $(this).addClass('empty');
                     $('#cap-valid').show();
                 }
             }
-        });
-
-        $('input:visible').each(function () {
-            // ignore search bar in menu
-            if ($(this).prop('type') != "search"){
-                // ignore class=opt
-                if (!$(this).hasClass("opt")) {
-                    // Check if at least one selection is made
-                    if ($.trim($(this).val()).length > 0) {
-                        $(this).removeClass('empty');
-                    } else {
-                        $(this).addClass('empty');
-                        $('#cap-valid').show();
-                    }
+            if ($(this).hasClass("opt")) {
+                // Check if at least one selection is made
+                if ($.trim($(this).val()).length > 0) {
+                    $(this).removeClass('empty-opt');
+                } else {
+                    $(this).addClass('empty-opt');
+                    $('#opt-valid').show();
                 }
             }
+        }
 
-        });
+    });
 
-        // *************************** END VALIDATION ******************************//
+    // *************************** END VALIDATION ******************************//
 
         var captext =
             "Pediatric Renal Tumors Cancer Synoptic\n(2016 update, COG staging system)\n\n";
@@ -287,17 +306,22 @@ $(window).on("load", function() {
         }
 
         var box_12 = $("#box12").val();
-        if (box_12.length > 0){
-            captext += "\n+ Nephrogenic Rests:\n- " + box_12.join("\n- ") + "\n";
+        if (box_12.length > 0) {
+            if (box_12.length > 0){
+                captext += "\n+ Nephrogenic Rests:\n- " + box_12.join("\n- ") + "\n";
+            }
+
         }
 
         var box_13 = $("#box13").val();
-        if (box_13.length > 0){
-            if ($.inArray("Not applicable", box_13) == -1) {
-                captext +=
-                    "\n+ Posttherapy Histologic Classification:\n- " +
-                    box_13.join("\n- ") +
-                    "\n";
+        if (box_13.length > 0) {
+            if (box_13.length > 0){
+                if ($.inArray("Not applicable", box_13) == -1) {
+                    captext +=
+                        "\n+ Posttherapy Histologic Classification:\n- " +
+                        box_13.join("\n- ") +
+                        "\n";
+                }
             }
         }
 
@@ -332,17 +356,20 @@ $(window).on("load", function() {
 
         var box_18 = $("#box18").val();
         var box_18_2 = $("#box18_2").val();
-        if (box_18.length > 0){
-            if ($.inArray("Other", box_18) > -1) {
-                captext +=
-                    "\n+ Ancillary Molecular/Genetic Studies:\n- " +
-                    box_18.join("\n- ").replace(/Other/, box_18_2) +
-                    "\n";
-            } else {
-                captext +=
-                    "\n+ Ancillary Molecular/Genetic Studies:\n- " +
-                    box_18.join("\n- ") +
-                    "\n";
+        if (box_18.length > 0) {
+            if (box_18.length > 0){
+                if ($.inArray("Other", box_18) > -1) {
+                    captext +=
+                        "\n+ Ancillary Molecular/Genetic Studies:\n- " +
+                        box_18.join("\n- ").replace(/Other/, box_18_2) +
+                        "\n";
+                } else {
+                    captext +=
+                        "\n+ Ancillary Molecular/Genetic Studies:\n- " +
+                        box_18.join("\n- ") +
+                        "\n";
+                }
+
             }
 
         }

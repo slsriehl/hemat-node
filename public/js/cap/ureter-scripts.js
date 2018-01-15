@@ -204,41 +204,60 @@ $(window).on("load", function() {
     $(".writeReport").on("click", function() {
 
 // ***************** INPUT VALIDATION ********************//
-                    // reset validation alert, if all goes to plan, it won't show
-                    $('#cap-valid').hide();
+        // reset validation alert, if all goes to plan, it won't show
+        $('#cap-valid').hide();
+        $('#opt-valid').hide();
 
 
-                        $('select[multiple]:visible').each(function () {
-                            // ignore class=opt
-                            if (!$(this).hasClass("opt")) {
-                                // Check if at least one selection is made
-                                if ($(this).val().length > 0) {
-                                    $(this).removeClass('empty');
-                                } else {
-                                    $(this).addClass('empty');
-                                    $('#cap-valid').show();
-                                }
-                            }
-                        });
+        $('select[multiple]:visible').each(function () {
+            // ignore class=opt
+            if (!$(this).hasClass("opt")) {
+                // Check if at least one selection is made
+                if ($(this).val().length > 0) {
+                    $(this).removeClass('empty');
+                } else {
+                    $(this).addClass('empty');
+                    $('#cap-valid').show();
+                }
+            }
+            if ($(this).hasClass("opt")) {
+                // Check if at least one selection is made
+                if ($.trim($(this).val()).length > 0) {
+                    $(this).removeClass('empty-opt');
+                } else {
+                    $(this).addClass('empty-opt');
+                    $('#opt-valid').show();
+                }
+            }
+        });
 
-                        $('input:visible').each(function () {
-                            // ignore search bar in menu
-                            if ($(this).prop('type') != "search"){
-                                // ignore class=opt
-                                if (!$(this).hasClass("opt")) {
-                                    // Check if at least one selection is made
-                                    if ($.trim($(this).val()).length > 0) {
-                                        $(this).removeClass('empty');
-                                    } else {
-                                        $(this).addClass('empty');
-                                        $('#cap-valid').show();
-                                    }
-                                }
-                            }
+        $('input:visible').each(function () {
+            // ignore search bar in menu
+            if ($(this).prop('type') != "search"){
+                // ignore class=opt
+                if (!$(this).hasClass("opt")) {
+                    // Check if at least one selection is made
+                    if ($.trim($(this).val()).length > 0) {
+                        $(this).removeClass('empty');
+                    } else {
+                        $(this).addClass('empty');
+                        $('#cap-valid').show();
+                    }
+                }
+                if ($(this).hasClass("opt")) {
+                    // Check if at least one selection is made
+                    if ($.trim($(this).val()).length > 0) {
+                        $(this).removeClass('empty-opt');
+                    } else {
+                        $(this).addClass('empty-opt');
+                        $('#opt-valid').show();
+                    }
+                }
+            }
 
-                        });
+        });
 
-// *************************** END VALIDATION ******************************//
+        // *************************** END VALIDATION ******************************//
 
         var captext =
             "Ureter/Renal Pelvis Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
@@ -272,8 +291,11 @@ $(window).on("load", function() {
         }
 
         var box_5 = $("#box5").val();
-        captext +=
-            "\n+ Associated Epithelial Lesions:\n- " + box_5.join("\n- ") + "\n";
+        if (box_5.length > 0) {
+            captext +=
+                "\n+ Associated Epithelial Lesions:\n- " + box_5.join("\n- ") + "\n";
+
+        }
 
         var box_6 = $("#box6").val();
         var box_6_2 = $("#box6_2").val();
@@ -300,13 +322,15 @@ $(window).on("load", function() {
 
         var box_8 = $("#box8").val();
         var box_8_2 = $("#box8_2").val();
-        if ($.inArray("Other", box_8) > -1) {
-            captext +=
-                "\n+ Tumor Configuration:\n- " +
-                box_8.join("\n- ").replace(/Other/, box_8_2) +
-                "\n";
-        } else {
-            captext += "\n+ Tumor Configuration:\n- " + box_8.join("\n- ") + "\n";
+        if (box_8.length > 0) {
+            if ($.inArray("Other", box_8) > -1) {
+                captext +=
+                    "\n+ Tumor Configuration:\n- " +
+                    box_8.join("\n- ").replace(/Other/, box_8_2) +
+                    "\n";
+            } else {
+                captext += "\n+ Tumor Configuration:\n- " + box_8.join("\n- ") + "\n";
+            }
         }
 
         var box_10 = $("#box10").val();
@@ -391,10 +415,12 @@ $(window).on("load", function() {
                 "\n\tLymph nodes involved: " +
                 box_18 +"\n";
             if (box_18.indexOf("0") < 0){
-                captext += "\t+ Size of Largest Deposit: "+box_60+"cm\n";
+                if (box_60.length > 0) {
+                    captext += "\t+ Size of Largest Deposit: "+box_60+"cm\n";
+                }
 
                 var box_19 = $("#box19").val();
-                if (box_19 != "Not applicable") {
+                if (box_19.length > 0) {
                     captext += "\t+ Extranodal Extension: " + box_19 + "\n";
                 }
             }
@@ -445,28 +471,31 @@ $(window).on("load", function() {
         var trig2_box_20 = box_20.filter(function(el) {
             return el.indexOf("Other") > -1;
         });
-        if (trig1_box_20.length > 0 && trig2_box_20.length == 0) {
-            captext +=
-                "\n\n+ Additional Pathologic Findings:\n- " +
-                box_20.join("\n- ").replace(/Therapy/, box_20_2) +
-                "\n";
-        } else if (trig1_box_20.length == 0 && trig2_box_20.length > 0) {
-            captext +=
-                "\n\n+ Additional Pathologic Findings:\n- " +
-                box_20.join("\n- ").replace(/Other/, box_20_3) +
-                "\n";
-        } else if (trig1_box_20.length > 0 && trig2_box_20.length > 0) {
-            captext +=
-                "\n\n+ Additional Pathologic Findings:\n- " +
-                box_20
-                    .join("\n- ")
-                    .replace(/Therapy/, box_20_2)
-                    .replace(/Other/, box_20_3) +
-                "\n";
-        } else {
-            captext +=
-                "\n\n+ Additional Pathologic Findings:\n- " + box_20.join("\n- ") + "\n";
+        if (box_20.length > 0) {
+            if (trig1_box_20.length > 0 && trig2_box_20.length == 0) {
+                captext +=
+                    "\n\n+ Additional Pathologic Findings:\n- " +
+                    box_20.join("\n- ").replace(/Therapy/, box_20_2) +
+                    "\n";
+            } else if (trig1_box_20.length == 0 && trig2_box_20.length > 0) {
+                captext +=
+                    "\n\n+ Additional Pathologic Findings:\n- " +
+                    box_20.join("\n- ").replace(/Other/, box_20_3) +
+                    "\n";
+            } else if (trig1_box_20.length > 0 && trig2_box_20.length > 0) {
+                captext +=
+                    "\n\n+ Additional Pathologic Findings:\n- " +
+                    box_20
+                        .join("\n- ")
+                        .replace(/Therapy/, box_20_2)
+                        .replace(/Other/, box_20_3) +
+                    "\n";
+            } else {
+                captext +=
+                    "\n\n+ Additional Pathologic Findings:\n- " + box_20.join("\n- ") + "\n";
+            }
         }
+
 
         $("#outPut-1").val(captext);
 

@@ -162,39 +162,58 @@ $(window).on('load', function () {
     $('.writeReport').on('click', function () {
 
         // ***************** INPUT VALIDATION ********************//
-                            // reset validation alert, if all goes to plan, it won't show
-                            $('#cap-valid').hide();
+        // reset validation alert, if all goes to plan, it won't show
+        $('#cap-valid').hide();
+        $('#opt-valid').hide();
 
 
-                                $('select[multiple]:visible').each(function () {
-                                    // ignore class=opt
-                                    if (!$(this).hasClass("opt")) {
-                                        // Check if at least one selection is made
-                                        if ($(this).val().length > 0) {
-                                            $(this).removeClass('empty');
-                                        } else {
-                                            $(this).addClass('empty');
-                                            $('#cap-valid').show();
-                                        }
-                                    }
-                                });
+        $('select[multiple]:visible').each(function () {
+            // ignore class=opt
+            if (!$(this).hasClass("opt")) {
+                // Check if at least one selection is made
+                if ($(this).val().length > 0) {
+                    $(this).removeClass('empty');
+                } else {
+                    $(this).addClass('empty');
+                    $('#cap-valid').show();
+                }
+            }
+            if ($(this).hasClass("opt")) {
+                // Check if at least one selection is made
+                if ($.trim($(this).val()).length > 0) {
+                    $(this).removeClass('empty-opt');
+                } else {
+                    $(this).addClass('empty-opt');
+                    $('#opt-valid').show();
+                }
+            }
+        });
 
-                                $('input:visible').each(function () {
-                                    // ignore search bar in menu
-                                    if ($(this).prop('type') != "search"){
-                                        // ignore class=opt
-                                        if (!$(this).hasClass("opt")) {
-                                            // Check if at least one selection is made
-                                            if ($.trim($(this).val()).length > 0) {
-                                                $(this).removeClass('empty');
-                                            } else {
-                                                $(this).addClass('empty');
-                                                $('#cap-valid').show();
-                                            }
-                                        }
-                                    }
+        $('input:visible').each(function () {
+            // ignore search bar in menu
+            if ($(this).prop('type') != "search"){
+                // ignore class=opt
+                if (!$(this).hasClass("opt")) {
+                    // Check if at least one selection is made
+                    if ($.trim($(this).val()).length > 0) {
+                        $(this).removeClass('empty');
+                    } else {
+                        $(this).addClass('empty');
+                        $('#cap-valid').show();
+                    }
+                }
+                if ($(this).hasClass("opt")) {
+                    // Check if at least one selection is made
+                    if ($.trim($(this).val()).length > 0) {
+                        $(this).removeClass('empty-opt');
+                    } else {
+                        $(this).addClass('empty-opt');
+                        $('#opt-valid').show();
+                    }
+                }
+            }
 
-                                });
+        });
 
         // *************************** END VALIDATION ******************************//
 
@@ -242,7 +261,10 @@ $(window).on('load', function () {
         captext += "\nMitotic Rate:\n- " + box_9 + " per 10 hpf\n";
 
         var box_10 = $("#box10").val();
-        captext += "\n+ Perineural Invasion:\n- " + box_10 + "\n";
+        if (box_10.length > 0) {
+            captext += "\n+ Perineural Invasion:\n- " + box_10 + "\n";
+
+        }
 
         var box_11 = $("#box11").val();
         captext += "\nExtrathyroidal Extension:\n- " + box_11 + "\n";
