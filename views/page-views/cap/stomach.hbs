@@ -349,6 +349,9 @@
 
 
 
+			<div class="py-2 w-100"></div>
+
+
 			<h6 class="mt-2">Choose HER2 Testing - If performed</h6>
 
 
@@ -392,36 +395,56 @@
 
 			<div id="her2fish" class="ml-3" style="display:none;">
 
+				<div class="py-2 w-100"></div>
+
+				<b>Number of observers:</b>
+				<input type="text" class="form-control form-control-sm "  id="box32"  value='2'>
+
+				<div class="py-2 w-100"></div>
+
+				<b>Number of invasive cancer cells counted:</b>
+				<input type="text" class="form-control form-control-sm "  id="box33"  value='200'>
+
+				<div class="py-2 w-100"></div>
+
+				<b>Average number of HER2 (ERBB2) signals per cancer cell:</b>
+				<input type="text" class="form-control form-control-sm "  id="box34"  placeholder=''>
+
+				<div class="py-2 w-100"></div>
+
+				<b>Average number of CEP17 signals per cancer cell:</b>
+				<input type="text" class="form-control form-control-sm "  id="box35"  placeholder=''>
+
+
+				<div class="py-2 w-100"></div>
+
+				<form class="form-inline">
+				            <div class="form-group">
+				                <label for="herrat">Her2 / CEP ratio: </label>
+								<input id="herrat" class="form-control form-control-sm ml-2" value="1">
+				            </div>
+				        </form>
+
+				<div class="py-2 w-100"></div>
 				<b class="w-100">HER2 by in-situ hybridization</b>
-			<select class="form-control selectpicker form-control-sm "  id="box31">
-			<option>Not applicable</option>
-			<option>Negative (not amplified)</option>
-			<option>Positive (amplified) </option>
-			<option>Indeterminate – poor technical study</option>
-			</select>
+				<select class="form-control selectpicker form-control-sm "  id="box31">
+				<option>Not applicable</option>
+				<option>Negative (not amplified)</option>
+				<option>Positive (amplified) </option>
+				<option>Indeterminate – poor technical study</option>
+				</select>
 
 
+				<div class="py-2 w-100"></div>
 
 
-				<b class="w-100 mt-2">Number of observers:</b>
-			<input type="text" class="form-control form-control-sm "  id="box32"  value='2'>
-
-				<b class="w-100 mt-2">Number of invasive cancer cells counted:</b>
-			<input type="text" class="form-control form-control-sm "  id="box33"  value='200'>
-				
-				<b class="w-100 mt-2">Average number of HER2 (ERBB2) signals per cancer cell:</b>
-			<input type="text" class="form-control form-control-sm "  id="box34"  placeholder=''>
-
-				<b class="w-100 mt-2">Average number of CEP17 signals per cancer cell:</b>
-			<input type="text" class="form-control form-control-sm "  id="box35"  placeholder=''>
-
-				<b class="w-100 mt-2">HER2 (ERBB2) - method used</b>
-			<select class="form-control selectpicker form-control-sm "  id="box36">
-			<option>FDA cleared</option>
-			<option>Laboratory-developed test</option>
-			</select>
-			<input type="text" class="form-control form-control-sm "  id='box36_1' placeholder='Specify vendor'>
-			<input type="text" class="form-control form-control-sm "  id='box36_2' style='display:none;' placeholder='Specify probe'>
+				<b>HER2 (ERBB2) - method used</b>
+				<select class="form-control selectpicker form-control-sm "  id="box36">
+				<option>FDA cleared</option>
+				<option>Laboratory-developed test</option>
+				</select>
+				<input type="text" class="form-control form-control-sm "  id='box36_1' placeholder='Specify vendor'>
+				<input type="text" class="form-control form-control-sm "  id='box36_2' style='display:none;' placeholder='Specify probe'>
 				
 
 </div>

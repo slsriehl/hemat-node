@@ -180,6 +180,22 @@ $(window).on('load', function () {
         }
     });
 
+    $("#box35").on("input", function(){
+       var her = parseFloat($("#box34").val(), 10);
+       var cep = parseFloat($("#box35").val(), 10);
+       console.log(her,cep);
+       var rat = Number(Math.round((her/cep)+'e2')+'e-2');
+       console.log(rat);
+       if (rat >= 2){
+           $("#box31").val("Positive (amplified)");
+           $("#herrat").val(rat);
+       }else {
+           $("#box31").val("Negative (not amplified)");
+           $("#herrat").val(rat);
+       }
+
+    });
+
     $('#box36').change(function () {
         var sel = $('#box36').val();
         if (sel == 'FDA cleared') {
@@ -217,7 +233,7 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
-// ***************** INPUT VALIDATION ********************//
+        // ***************** INPUT VALIDATION ********************//
             // reset validation alert, if all goes to plan, it won't show
             $('#cap-valid').hide();
             $('#opt-valid').hide();

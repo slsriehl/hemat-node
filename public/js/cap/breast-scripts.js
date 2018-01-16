@@ -694,7 +694,7 @@ $(window).on('load', function () {
                     var box_45_3 = $("#box45_3").val();
                     var box_45_4 = $("#box45_4").val();
                     var box_45_5 = $("#box45_5").val();
-                    var her_sig = parseInt($("#box45_4").val(), 10) / parseInt($("#box45_5").val(), 10);
+                    var her_sig = parseFloat($("#box45_4").val()) / parseFloat($("#box45_5").val());
                     console.log("her sig%:" + her_sig);
                     if (box_45_3.indexOf("Dual") > -1) {
                         captext += "\n\tHER2 FISH assay type: " + box_45_3;
