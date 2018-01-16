@@ -160,27 +160,60 @@ $(window).on('load', function () {
     $('.writeReport').on('click', function () {
 
         // ***************** INPUT VALIDATION ********************//
-        $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
+                    // reset validation alert, if all goes to plan, it won't show
+                    $('#cap-valid').hide();
+                    $('#opt-valid').hide();
 
-        $('input[type="text"]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
 
-        // ***************** END VALIDATION ********************//
+                    $('select:visible').each(function () {
+                        // ignore class=opt
+                        if (!$(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($(this).val().length > 0) {
+                                $(this).removeClass('empty');
+                            } else {
+                                $(this).addClass('empty');
+                                $('#cap-valid').show();
+                            }
+                        }
+                        if ($(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty-opt');
+                            } else {
+                                $(this).addClass('empty-opt');
+                                $('#opt-valid').show();
+                            }
+                        }
+                    });
+
+                    $('input:visible').each(function () {
+                        // ignore search bar in menu
+                        if ($(this).prop('type') != "search"){
+                            // ignore class=opt
+                            if (!$(this).hasClass("opt")) {
+                                // Check if at least one selection is made
+                                if ($.trim($(this).val()).length > 0) {
+                                    $(this).removeClass('empty');
+                                } else {
+                                    $(this).addClass('empty');
+                                    $('#cap-valid').show();
+                                }
+                            }
+                            if ($(this).hasClass("opt")) {
+                                // Check if at least one selection is made
+                                if ($.trim($(this).val()).length > 0) {
+                                    $(this).removeClass('empty-opt');
+                                } else {
+                                    $(this).addClass('empty-opt');
+                                    $('#opt-valid').show();
+                                }
+                            }
+                        }
+
+                    });
+
+                    // *************************** END VALIDATION ******************************//
 
 
         var captext = "Penis Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
@@ -203,14 +236,18 @@ $(window).on('load', function () {
         captext += "\nTumor Size:\n- " + box_4.replace(/cm/, '') + "cm\n";
 
         var box_5 = $("#box5").val();
-        captext += "\n+ Tumor Focality:\n- " + box_5 + "\n";
+        if (box_5.length > 0) {
+            captext += "\n+ Tumor Focality:\n- " + box_5 + "\n";
+        }
 
         var box_6 = $("#box6").val();
         var box_6_2 = $("#box6_2").val();
-        if ($.inArray('Other', box_6) > -1) {
-            captext += "\n+ Tumor Macroscopic Features:\n- " + box_6.join('\n- ').replace(/Other/, box_6_2) + "\n";
-        } else {
-            captext += "\n+ Tumor Macroscopic Features:\n- " + box_6.join('\n- ') + "\n";
+        if (box_6.length > 0) {
+            if ($.inArray('Other', box_6) > -1) {
+                captext += "\n+ Tumor Macroscopic Features:\n- " + box_6.join('\n- ').replace(/Other/, box_6_2) + "\n";
+            } else {
+                captext += "\n+ Tumor Macroscopic Features:\n- " + box_6.join('\n- ') + "\n";
+            }
         }
 
         var box_7 = $("#box7").val();
@@ -321,10 +358,12 @@ $(window).on('load', function () {
 
         var box_25 = $("#box25").val();
         var box_25_2 = $("#box25_2").val();
-        if ($.inArray('Other', box_25) > -1) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_25.join('\n- ').replace(/Other/, box_25_2) + "\n";
-        } else {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_25.join('\n- ') + "\n";
+        if (box_25.length > 0) {
+            if ($.inArray('Other', box_25) > -1) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_25.join('\n- ').replace(/Other/, box_25_2) + "\n";
+            } else {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_25.join('\n- ') + "\n";
+            }
         }
 
         $('#outPut-1').val(captext);

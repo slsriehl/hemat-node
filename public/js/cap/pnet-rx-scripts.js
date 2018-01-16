@@ -114,61 +114,62 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
-       // ***************** INPUT VALIDATION ********************//
-           // reset validation alert, if all goes to plan, it won't show
-           $('#cap-valid').hide();
-           $('#opt-valid').hide();
+
+        // ***************** INPUT VALIDATION ********************//
+                    // reset validation alert, if all goes to plan, it won't show
+                    $('#cap-valid').hide();
+                    $('#opt-valid').hide();
 
 
-           $('select[multiple]:visible').each(function () {
-               // ignore class=opt
-               if (!$(this).hasClass("opt")) {
-                   // Check if at least one selection is made
-                   if ($(this).val().length > 0) {
-                       $(this).removeClass('empty');
-                   } else {
-                       $(this).addClass('empty');
-                       $('#cap-valid').show();
-                   }
-               }
-               if ($(this).hasClass("opt")) {
-                   // Check if at least one selection is made
-                   if ($.trim($(this).val()).length > 0) {
-                       $(this).removeClass('empty-opt');
-                   } else {
-                       $(this).addClass('empty-opt');
-                       $('#opt-valid').show();
-                   }
-               }
-           });
+                    $('select:visible').each(function () {
+                        // ignore class=opt
+                        if (!$(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($(this).val().length > 0) {
+                                $(this).removeClass('empty');
+                            } else {
+                                $(this).addClass('empty');
+                                $('#cap-valid').show();
+                            }
+                        }
+                        if ($(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty-opt');
+                            } else {
+                                $(this).addClass('empty-opt');
+                                $('#opt-valid').show();
+                            }
+                        }
+                    });
 
-           $('input:visible').each(function () {
-               // ignore search bar in menu
-               if ($(this).prop('type') != "search"){
-                   // ignore class=opt
-                   if (!$(this).hasClass("opt")) {
-                       // Check if at least one selection is made
-                       if ($.trim($(this).val()).length > 0) {
-                           $(this).removeClass('empty');
-                       } else {
-                           $(this).addClass('empty');
-                           $('#cap-valid').show();
-                       }
-                   }
-                   if ($(this).hasClass("opt")) {
-                       // Check if at least one selection is made
-                       if ($.trim($(this).val()).length > 0) {
-                           $(this).removeClass('empty-opt');
-                       } else {
-                           $(this).addClass('empty-opt');
-                           $('#opt-valid').show();
-                       }
-                   }
-               }
+                    $('input:visible').each(function () {
+                        // ignore search bar in menu
+                        if ($(this).prop('type') != "search"){
+                            // ignore class=opt
+                            if (!$(this).hasClass("opt")) {
+                                // Check if at least one selection is made
+                                if ($.trim($(this).val()).length > 0) {
+                                    $(this).removeClass('empty');
+                                } else {
+                                    $(this).addClass('empty');
+                                    $('#cap-valid').show();
+                                }
+                            }
+                            if ($(this).hasClass("opt")) {
+                                // Check if at least one selection is made
+                                if ($.trim($(this).val()).length > 0) {
+                                    $(this).removeClass('empty-opt');
+                                } else {
+                                    $(this).addClass('empty-opt');
+                                    $('#opt-valid').show();
+                                }
+                            }
+                        }
 
-           });
+                    });
 
-           // *************************** END VALIDATION ******************************//
+                    // *************************** END VALIDATION ******************************//
 
 
         var captext = "Ewing Sarcoma Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
@@ -193,44 +194,38 @@ $(window).on('load', function () {
         var box_4 = $("#box4").val();
         var box_4_2 = $("#box4_2").val();
         if (box_4.length > 0) {
-            if ($.inArray("Not applicable", box_4) == -1) {
                 if ($.inArray('Other', box_4) > -1) {
                     captext += "\n+ Extent of Osseous Tumor:\n- " + box_4.join('\n- ').replace(/Other/, box_4_2) + "\n";
                 } else {
                     captext += "\n+ Extent of Osseous Tumor:\n- " + box_4.join('\n- ') + "\n";
                 }
-            }
-
         }
 
         var box_5 = $("#box5").val();
         var box_5_2 = $("#box5_2").val();
         if (box_5.length > 0) {
-            if ($.inArray("Not applicable", box_5) == -1) {
                 if ($.inArray('Other', box_5) > -1) {
                     captext += "\n+ Extent of Extra-osseous Tumor:\n- " + box_5.join('\n- ').replace(/Other/, box_5_2) + "\n";
                 } else {
                     captext += "\n+ Extent of Extra-osseous Tumor:\n- " + box_5.join('\n- ') + "\n";
                 }
-            }
-
         }
 
         var box_6 = $("#box6").val();
-        var box_6_0 = $("#box6_1").val();
+        var box_6_0 = $("#box6_0").val();
         var box_6_1 = $("#box6_1").val();
         var box_6_2 = $("#box6_2").val();
         var box_6_3 = $("#box6_3").val();
         if (box_6.indexOf("Uninvolved") > -1) {
             captext += "\nMargins:\n- " + box_6 + "\n";
             if (box_6_0.length > 0) {
-                captext += "\t- Distance to nearest bone margin: " + box_6_0.replace(/mm/, "") + "mm\n";
+                captext += "- Distance to nearest bone margin: " + box_6_0.replace(/mm/, "") + "mm\n";
             }
             if (box_6_1.length > 0) {
-                captext += "\t- Distance to nearest soft tissue margin: " + box_6_1.replace(/mm/, "") + "mm\n";
+                captext += "- Distance to nearest soft tissue margin: " + box_6_1.replace(/mm/, "") + "mm\n";
             }
             if (box_6_2.length > 0) {
-                captext += "\t- Distance to nearest parenchymal margin: " + box_6_2.replace(/mm/, "") + "mm\n";
+                captext += "- Distance to nearest parenchymal margin: " + box_6_2.replace(/mm/, "") + "mm\n";
             }
         } else if (box_6.indexOf("Involved") > -1) {
             captext += "\nMargins:\n- " + box_6 + ": " + box_6_3 + "\n";
@@ -282,18 +277,22 @@ $(window).on('load', function () {
             return el.indexOf('Other') > -1;
         });
         captext += "\n-ANCILLARY STUDIES-";
-        if (pos.length > 0) {
-            captext += "\n+ Cyto-molecular Genetics:\n- " + box_10.join('\n- ').replace(/Other/, box_10_2) + "\n";
-        } else {
-            captext += "\n+ Cyto-molecular Genetics:\n- " + box_10.join('\n- ') + "\n";
+        if (box_10.length > 0) {
+            if (pos.length > 0) {
+                captext += "\n+ Cyto-molecular Genetics:\n- " + box_10.join('\n- ').replace(/Other/, box_10_2) + "\n";
+            } else {
+                captext += "\n+ Cyto-molecular Genetics:\n- " + box_10.join('\n- ') + "\n";
+            }
         }
 
         var box_11 = $("#box11").val();
         var box_11_2 = $("#box11_2").val();
-        if (box_11.indexOf("Other") > -1) {
-            captext += "\n+ Cyto-molecular Genetics - method:\n- " + box_11_2 + "\n";
-        } else {
-            captext += "\n+ Cyto-molecular Genetics - method:\n- " + box_11 + "\n";
+        if (box_11.length > 0) {
+            if (box_11.indexOf("Other") > -1) {
+                captext += "\n+ Cyto-molecular Genetics - method:\n- " + box_11_2 + "\n";
+            } else {
+                captext += "\n+ Cyto-molecular Genetics - method:\n- " + box_11 + "\n";
+            }
         }
 
         $('#outPut-1').val(captext);

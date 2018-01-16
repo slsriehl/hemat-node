@@ -170,61 +170,62 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
+
         // ***************** INPUT VALIDATION ********************//
-            // reset validation alert, if all goes to plan, it won't show
-            $('#cap-valid').hide();
-            $('#opt-valid').hide();
+                    // reset validation alert, if all goes to plan, it won't show
+                    $('#cap-valid').hide();
+                    $('#opt-valid').hide();
 
 
-            $('select:visible').each(function () {
-                // ignore class=opt
-                if (!$(this).hasClass("opt")) {
-                    // Check if at least one selection is made
-                    if ($(this).val().length > 0) {
-                        $(this).removeClass('empty');
-                    } else {
-                        $(this).addClass('empty');
-                        $('#cap-valid').show();
-                    }
-                }
-                if ($(this).hasClass("opt")) {
-                    // Check if at least one selection is made
-                    if ($.trim($(this).val()).length > 0) {
-                        $(this).removeClass('empty-opt');
-                    } else {
-                        $(this).addClass('empty-opt');
-                        $('#opt-valid').show();
-                    }
-                }
-            });
-
-            $('input:visible').each(function () {
-                // ignore search bar in menu
-                if ($(this).prop('type') != "search"){
-                    // ignore class=opt
-                    if (!$(this).hasClass("opt")) {
-                        // Check if at least one selection is made
-                        if ($.trim($(this).val()).length > 0) {
-                            $(this).removeClass('empty');
-                        } else {
-                            $(this).addClass('empty');
-                            $('#cap-valid').show();
+                    $('select:visible').each(function () {
+                        // ignore class=opt
+                        if (!$(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($(this).val().length > 0) {
+                                $(this).removeClass('empty');
+                            } else {
+                                $(this).addClass('empty');
+                                $('#cap-valid').show();
+                            }
                         }
-                    }
-                    if ($(this).hasClass("opt")) {
-                        // Check if at least one selection is made
-                        if ($.trim($(this).val()).length > 0) {
-                            $(this).removeClass('empty-opt');
-                        } else {
-                            $(this).addClass('empty-opt');
-                            $('#opt-valid').show();
+                        if ($(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty-opt');
+                            } else {
+                                $(this).addClass('empty-opt');
+                                $('#opt-valid').show();
+                            }
                         }
-                    }
-                }
+                    });
 
-            });
+                    $('input:visible').each(function () {
+                        // ignore search bar in menu
+                        if ($(this).prop('type') != "search"){
+                            // ignore class=opt
+                            if (!$(this).hasClass("opt")) {
+                                // Check if at least one selection is made
+                                if ($.trim($(this).val()).length > 0) {
+                                    $(this).removeClass('empty');
+                                } else {
+                                    $(this).addClass('empty');
+                                    $('#cap-valid').show();
+                                }
+                            }
+                            if ($(this).hasClass("opt")) {
+                                // Check if at least one selection is made
+                                if ($.trim($(this).val()).length > 0) {
+                                    $(this).removeClass('empty-opt');
+                                } else {
+                                    $(this).addClass('empty-opt');
+                                    $('#opt-valid').show();
+                                }
+                            }
+                        }
 
-            // *************************** END VALIDATION ******************************//
+                    });
+
+                    // *************************** END VALIDATION ******************************//
 
 
         var captext = "Prostate Carcinoma Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
@@ -341,7 +342,9 @@ $(window).on('load', function () {
             captext += "\tExtent of margin involvement: " + box_17 + "\n";
 
             var box_18 = $("#box18").val();
-            captext += "\t+ Focality of margin involvement: " + box_18 + "\n";
+            if (box_18.length > 0){
+                captext += "\t+ Focality of margin involvement: " + box_18 + "\n";
+            }
 
             var box_19 = $("#box19").val();
             var box_19_2 = $("#box19_2").val();

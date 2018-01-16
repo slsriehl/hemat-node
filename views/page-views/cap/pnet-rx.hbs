@@ -58,7 +58,6 @@
             <hr class="p-2" >
             <h5>+ Extent of Tumor - for primary osseous tumors</h5>
             <select multiple id="box4" class='form-control selectpicker form-control-sm col-sm-6 opt'>
-                <option selected>Not applicable</option>
                 <option>Diaphysis</option>
                 <option>Metaphysis</option>
                 <option>Medullary cavity</option>
@@ -77,7 +76,6 @@
             <hr class="p-2" >
             <h5>+ Extent of Tumor - for primary extra-osseous tumors</h5>
             <select multiple id="box5" class='form-control selectpicker form-control-sm col-sm-6 opt'>
-                <option selected>Not applicable</option>
                 <option>Dermal</option>
                 <option>Subcutaneous/subfascial</option>
                 <option>Subfascial</option>
@@ -103,10 +101,10 @@
                 <option>Uninvolved by tumor</option>
                 <option>Involved by tumor</option>
             </select>
-            <input type="number" class="form-control form-control-sm col-sm-6" id='box6_0' style='display:none;' placeholder='Specify distance from nearest bone margin (mm)'>
-            <input type="number" class="form-control form-control-sm col-sm-6" id='box6_1' style='display:none;' placeholder='Specify distance from nearest soft tissue margin (mm)'>
-            <input type="number" class="form-control form-control-sm col-sm-6" id='box6_2' style='display:none;' placeholder='Specify distance from nearest parenchymal margin (mm)'>
-            <input type="text" class="form-control form-control-sm col-sm-6" id='box6_3' style='display:none;' placeholder='Specify involved margin'>
+            <input type="number" class="form-control form-control-sm col-sm-8 mt-2 opt" id='box6_0' style='display:none;' placeholder='Distance from nearest bone margin (mm) - if applicable'>
+            <input type="number" class="form-control form-control-sm col-sm-8 mt-2 opt" id='box6_1' style='display:none;' placeholder='Distance from nearest soft tissue margin (mm) - if applicable'>
+            <input type="number" class="form-control form-control-sm col-sm-8 mt-2 opt" id='box6_2' style='display:none;' placeholder='Distance from nearest parenchymal margin (mm) - if applicable'>
+            <input type="text" class="form-control form-control-sm col-sm-8" id='box6_3' style='display:none;' placeholder='Specify involved margin'>
 
 
 
@@ -116,6 +114,7 @@
             <hr class="p-2" >
             <h5>+ Lymph-Vascular Invasion</h5>
             <select id="box7" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                <option></option>
                 <option>Not identified</option>
                 <option>Present</option>
                 <option>Cannot be determined</option>
@@ -173,7 +172,7 @@
                <h5>Metastasis</h5>
             <select id="box15" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option selected value='pMx'>pMx: Not applicable</option>
-                <option value="null">Present</option>
+                <option>Present</option>
             </select>
             <input type="text" class="form-control form-control-sm col-sm-6" id="box15_2" style="display:none;" placeholder="Specify metastatic sites">
 
@@ -182,7 +181,7 @@
 
             <hr class="p-2" >
             <h5>+ Ancillary Studies</h5>
-
+            <div class="ml-3">
             <h6 class="mt-3">+ Cyto-molecular Genetics</h6>
             <select multiple id="box10" class='form-control selectpicker form-control-sm col-sm-6 opt opt'>
                 <option>Not performed</option>
@@ -198,12 +197,11 @@
 
             <input type="text" class="form-control form-control-sm mt-3 col-sm-8" id='box10_2' style='display:none;' placeholder='Specify rearrangement or fusion partner'>
 
-
-
-
+            <div class="py-2 w-100"></div>
 
             <h6 class="mt-4">+ Cyto-molecular Genetic Studies - method</h6>
             <select id="box11" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                <option></option>
                 <option>Conventional karyotyping</option>
                 <option>Fluorescent in situ hybridization (FISH)</option>
                 <option>Reverse transcriptase polymerase chain reaction (RT-PCR)</option>
@@ -211,7 +209,7 @@
             </select>
 
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box11_2' style='display:none;' placeholder='Specify method'>
-
+            </div>
 
 
 

@@ -105,6 +105,7 @@
                 <option>Cannot be determined</option>
                 <option>Not applicable</option>
             </select>
+            <input type="number" class="form-control form-control-sm mt-3 col-sm-6" id='box6_2' placeholder='Specify mitoses / 2mm^2'>
 
 
 
@@ -119,6 +120,7 @@
                 <option>Cannot be determined</option>
                 <option>Not applicable</option>
             </select>
+            <input type="number" class="form-control form-control-sm mt-3 col-sm-6" id='box7_2' placeholder='Specify Ki67%'>
 
 
 
@@ -127,6 +129,7 @@
             <hr class="p-2">
             <h5>+ Tumor Necrosis</h5>
             <select id="box8" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                <option></option>
                 <option>Not identified</option>
                 <option>Present</option>
                 <option>Not applicable</option>
@@ -166,7 +169,8 @@
                 <select multiple id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
                     <option>proximal pancreatic parenchymal</option>
                     <option>distal pancreatic parenchymal</option>
-                    <option>pancreatic neck/parenchymal, uncinate </option>
+                    <option>pancreatic neck/parenchymal</option>
+                    <option>uncinate </option>
                     <option>bile duct</option>
                     <option>proximal (gastric or duodenal)</option>
                     <option>distal (duodenal or jejunal)</option>
@@ -175,9 +179,12 @@
 
                 <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box11_2' style='display:none;' placeholder='Specify Other margins'>
             </div>
-            <div id='box10_3' class="posmargins" style='display:none;'>
+            <div id='box10_3' class="posmargins ml-3" style='display:none;'>
 
                 <div class="proximal" style="display: none;">
+
+                   <div class="py-2 w-100"></div>
+
                     <h6 class="mt-3" >
                         Margins - Proximal Pancreatic Parenchymal</h6>
 
@@ -187,10 +194,9 @@
                         <option>Involved by invasive carcinoma</option>
                     </select>
 
-
-
-
                     </div>
+
+                <div class="py-2 w-100"></div>
 
                 <div class="distal" style="display: none;">
                     <h6 class="mt-3" >
@@ -202,6 +208,9 @@
                         <option>Involved by invasive carcinoma</option>
                     </select>
                 </div>
+
+                <div class="py-2 w-100"></div>
+
                 <div class="parenchymal" >
                     <h6 class="mt-3">Margins - Pancreatic neck/parenchymal</h6>
 
@@ -211,12 +220,12 @@
                         <option>Involved by invasive carcinoma</option>
                     </select>
 
-
                 </div>
 
+                <div class="py-2 w-100"></div>
 
 
-                    <div class="whipple" >
+                <div class="whipple" >
                     <h6 class="mt-3">Margins - Uncinate</h6>
 
                     <select id="box15" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -226,9 +235,7 @@
                     </select>
 
 
-
-
-
+                    <div class="py-2 w-100"></div>
 
 
                     <h6 class="mt-3">Margins - Bile duct</h6>
@@ -240,9 +247,7 @@
                     </select>
 
 
-
-
-
+                    <div class="py-2 w-100"></div>
 
 
                     <h6 class="mt-3">Margins - Proximal Margin</h6>
@@ -253,7 +258,7 @@
                     </select>
 
 
-
+                    <div class="py-2 w-100"></div>
 
 
                     <h6 class="mt-3">Margins - Distal Margin</h6>
@@ -264,10 +269,9 @@
                     </select>
 
 
-
-
-
                 </div><!-- end whipple margins-->
+
+                <div class="py-2 w-100"></div>
 
                 <h6 class="mt-3">Margins - Other</h6>
                 <select id="box19" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -318,6 +322,9 @@
                 <option>r</option>
                 <option>y</option>
             </select>
+
+            <div class="py-2 w-100"></div>
+
             <h6 class='mt-2'>pT</h6>
             <select id="box23" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option value="pTX">pTX: Tumor cannot be assessed</option>
@@ -327,6 +334,7 @@
                 <option value="pT4">pT4: Tumor invading adjacent organs </option>
             </select>
 
+            <div class="py-2 w-100"></div>
 
             <h6 class='mt-2'>pN</h6>
             <select id="box24" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -335,6 +343,7 @@
                 <option value="pN1">pN1: Regional lymph node involvement</option>
             </select>
 
+            <div class="py-2 w-100"></div>
 
             <h6 class='mt-2'>pM</h6>
             <select id="box25" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -344,6 +353,8 @@
                 <option value="pM1c">pM1c: Both hepatic and extrahepatic metastases</option>
             </select>
             <input type="text" class="form-control form-control-sm col-sm-6" id="box25_2" style="display:none;" placeholder="Specify metastatic sites">
+
+            <div class="py-2 w-100"></div>
 
             <form class="form-inline mt-2">
                 <label class="form-check-label">Check here if any lymph nodes submitted?

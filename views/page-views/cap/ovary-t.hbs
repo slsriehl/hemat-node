@@ -49,69 +49,69 @@
             <hr class="p-2">
             <h5>Specimen Integrity</h5>
 
+            <div class="ml-3">
+                <h6 class="mt-3" >
+                    Integrity of Right Ovary</h6>
+                <select id="box2" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Capsule intact</option>
+                    <option>Capsule ruptured</option>
+                    <option>Fragmented</option>
+                    <option>Other</option>
+                    <option selected>Not applicable</option>
+                </select>
 
-            <h6 class="mt-3" >
-                Integrity of Right Ovary</h6>
-            <select id="box2" class='form-control selectpicker form-control-sm col-sm-6'>
-                <option>Capsule intact</option>
-                <option>Capsule ruptured</option>
-                <option>Fragmented</option>
-                <option>Other</option>
-                <option selected>Not applicable</option>
-            </select>
-
-            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box2_2' style='display:none;' placeholder='Specify Other'>
-
-
-
-
-
-            <h6 class="mt-3" >
-                Integrity of Left Ovary</h6>
-            <select id="box3" class='form-control selectpicker form-control-sm col-sm-6'>
-                <option>Capsule intact</option>
-                <option>Capsule ruptured</option>
-                <option>Fragmented</option>
-                <option>Other</option>
-                <option selected>Not applicable</option>
-            </select>
-
-            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box3_2' style='display:none;' placeholder='Specify Other'>
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box2_2' style='display:none;' placeholder='Specify Other'>
 
 
 
 
 
-            <h6 class="mt-3" >
-                Integrity of Right Fallopian Tube</h6>
-            <select id="box4" class='form-control selectpicker form-control-sm col-sm-6'>
-                <option>Capsule intact</option>
-                <option>Capsule ruptured</option>
-                <option>Fragmented</option>
-                <option>Other</option>
-                <option selected>Not applicable</option>
-            </select>
+                <h6 class="mt-3" >
+                    Integrity of Left Ovary</h6>
+                <select id="box3" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Capsule intact</option>
+                    <option>Capsule ruptured</option>
+                    <option>Fragmented</option>
+                    <option>Other</option>
+                    <option selected>Not applicable</option>
+                </select>
 
-            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box4_2' style='display:none;' placeholder='Specify Other'>
-
-
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box3_2' style='display:none;' placeholder='Specify Other'>
 
 
 
-            <h6 class="mt-3" >
-                Integrity of Left Fallopian Tube</h6>
-            <select id="box5" class='form-control selectpicker form-control-sm col-sm-6'>
-                <option>Capsule intact</option>
-                <option>Capsule ruptured</option>
-                <option>Fragmented</option>
-                <option>Other</option>
-                <option selected>Not applicable</option>
-            </select>
-
-            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box5_2' style='display:none;' placeholder='Specify Other'>
 
 
+                <h6 class="mt-3" >
+                    Integrity of Right Fallopian Tube</h6>
+                <select id="box4" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Serosa intact</option>
+                    <option>Serosa ruptured</option>
+                    <option>Fragmented</option>
+                    <option>Other</option>
+                    <option selected>Not applicable</option>
+                </select>
 
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box4_2' style='display:none;' placeholder='Specify Other'>
+
+
+
+
+
+                <h6 class="mt-3" >
+                    Integrity of Left Fallopian Tube</h6>
+                <select id="box5" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Serosa intact</option>
+                    <option>Serosa ruptured</option>
+                    <option>Fragmented</option>
+                    <option>Other</option>
+                    <option selected>Not applicable</option>
+                </select>
+
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box5_2' style='display:none;' placeholder='Specify Other'>
+
+
+            </div>
 
 
             <hr class="p-2">
@@ -184,30 +184,31 @@
             <hr class="p-2">
             <h5>Histologic Type (select all that apply)</h5>
             <select multiple id="box10" class='form-control selectpicker form-control-sm col-sm-10'>
+                <option></option>
                 <option>Serous tubal intraepithelial carcinoma (STIC)</option>
                 <option>Serous borderline tumor/atypical proliferative serous tumor</option>
-                <option>Serous borderline tumor/atypical proliferative serous tumor with microinvasion</option>
-                <option>Serous borderline tumor-micropapillary variant/noninvasive low-grade serous carcinoma</option>
-                <option>Serous carcinoma</option>
-                <option>Endometrioid borderline tumor/atypical proliferative endometrioid tumor</option>
-                <option>Endometrioid borderline tumor/atypical proliferative endometrioid tumor with microinvasion</option>
-                <option>Endometrioid carcinoma</option>
+                <option >Serous borderline tumor/atypical proliferative serous tumor with microinvasion</option>
+                <option >Serous borderline tumor-micropapillary variant/noninvasive low-grade serous carcinoma</option>
+                <option data-type="twotier">Serous carcinoma</option>
+                <option >Endometrioid borderline tumor/atypical proliferative endometrioid tumor</option>
+                <option >Endometrioid borderline tumor/atypical proliferative endometrioid tumor with microinvasion</option>
+                <option data-type="who">Endometrioid carcinoma</option>
                 <option>Clear cell borderline tumor/atypical proliferative clear cell tumor</option>
                 <option>Clear cell carcinoma</option>
                 <option>Mucinous borderline tumor/atypical proliferative mucinous tumor</option>
                 <option>Mucinous borderline tumor/atypical proliferative mucinous tumor with intraepithelial carcinoma</option>
                 <option>Mucinous borderline tumor/atypical proliferative mucinous tumor with microinvasion</option>
-                <option>Mucinous carcinoma</option>
-                <option>Mucinous carcinoma with expansile invasive pattern</option>
-                <option>Mucinous carcinoma with infiltrative invasive pattern</option>
+                <option data-type="who">Mucinous carcinoma</option>
+                <option data-type="who">Mucinous carcinoma with expansile invasive pattern</option>
+                <option data-type="who">Mucinous carcinoma with infiltrative invasive pattern</option>
                 <option>Seromucinous borderline tumor/atypical proliferative seromucinous tumor</option>
                 <option>Seromucinous borderline tumor/atypical proliferative seromucinous tumor with microinvasion</option>
-                <option>Seromucinous carcinoma</option>
+                <option data-type="who">Seromucinous carcinoma</option>
                 <option>Brenner tumor, borderline/atypical proliferative Brenner tumor</option>
                 <option>Brenner tumor, malignant</option>
                 <option>Carcinoma, subtype cannot be determined</option>
                 <option>Mixed epithelial borderline (atypical proliferative) tumor (specify types and percentages)</option>
-                <option>Mixed epithelial carcinoma (specify types and percentages)</option>
+                <option data-type="both">Mixed epithelial carcinoma (specify types and percentages)</option>
                 <option>Carcinosarcoma (malignant mixed Müllerian tumor)</option>
                 <option>Small cell carcinoma, pulmonary type</option>
                 <option>Small cell carcinoma, hypercalcemic type</option>
@@ -219,10 +220,10 @@
                 <option>Other sex cord-stromal tumor (specify type)</option>
                 <option>Dysgerminoma</option>
                 <option>Yolk sac tumor (endodermal sinus tumor)</option>
-                <option>Immature teratoma</option>
-                <option>Other Carcinoma arising from a teratoma (specify type)</option>
+                <option data-type="twotier">Immature teratoma</option>
+                <option data-type="both">Other Carcinoma arising from a teratoma (specify type)</option>
                 <option>Mixed malignant germ cell tumor (specify types and percentages)</option>
-                <option>Other histologic type (specify type)</option>
+                <option data-type="both">Other histologic type (specify type)</option>
             </select>
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box10_2' style='display:none;' placeholder='Specify types and percentages'>
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box10_3' style='display:none;' placeholder='Specify other type'>
@@ -236,6 +237,7 @@
             <small class="mt-2">
                 Note: Serous carcinomas are graded via a 2-tier system. Immature teratomas can be graded using a 2-tier or 3-tier system. Endometrioid and mucinous carcinomas are graded via a 3-tier system. Sertoli-Leydig cell tumors are graded via a modified 3-tier grading system with grade 2 tumors being termed “intermediate differentiated.” Clear cell carcinomas, borderline epithelial neoplasms, all other malignant sex-cord stromal and germ cell tumors are not graded.
             </small>
+            <div class="who">
             <h6 class="mt-3" >
                 WHO Grading System</h6>
             <select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -245,11 +247,11 @@
                 <option>GX: Cannot be assessed</option>
                 <option selected>Not applicable</option>
             </select>
+            </div>
 
 
 
-
-
+            <div class="twotier">
             <h6 class="mt-3" >
                 Two-Tier Grading System (required for immature teratomas and serous carcinomas only)</h6>
             <select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -257,7 +259,7 @@
                 <option>High grade</option>
                 <option selected>Not applicable</option>
             </select>
-
+            </div>
 
 
 

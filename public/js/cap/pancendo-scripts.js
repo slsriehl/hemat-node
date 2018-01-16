@@ -18,6 +18,10 @@ $(window).on('load', function () {
             $('#box1_2').show();
         } else {
             $('#box1_2').hide();
+            $(".parenchymal").hide();
+            $(".whipple").hide();
+            $(".proximal").hide();
+            $(".distal").hide();
             if (sel.indexOf("whipple") > -1) {
                 $(".parenchymal").show();
                 $(".whipple").show();
@@ -151,7 +155,7 @@ $(window).on('load', function () {
         } else {
             $('#box10_2').hide();
         }
-        if (sel.indexOf('involved') > -1) {
+        if (sel.indexOf('margin involved') > -1) {
             $('#box10_3').show();
         } else {
             $('#box10_3').hide();
@@ -219,28 +223,62 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
+
         // ***************** INPUT VALIDATION ********************//
-        $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
+                    // reset validation alert, if all goes to plan, it won't show
+                    $('#cap-valid').hide();
+                    $('#opt-valid').hide();
 
-        $('input[type="text"]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
 
-        // ***************** END VALIDATION ********************//
+                    $('select:visible').each(function () {
+                        // ignore class=opt
+                        if (!$(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($(this).val().length > 0) {
+                                $(this).removeClass('empty');
+                            } else {
+                                $(this).addClass('empty');
+                                $('#cap-valid').show();
+                            }
+                        }
+                        if ($(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty-opt');
+                            } else {
+                                $(this).addClass('empty-opt');
+                                $('#opt-valid').show();
+                            }
+                        }
+                    });
+
+                    $('input:visible').each(function () {
+                        // ignore search bar in menu
+                        if ($(this).prop('type') != "search"){
+                            // ignore class=opt
+                            if (!$(this).hasClass("opt")) {
+                                // Check if at least one selection is made
+                                if ($.trim($(this).val()).length > 0) {
+                                    $(this).removeClass('empty');
+                                } else {
+                                    $(this).addClass('empty');
+                                    $('#cap-valid').show();
+                                }
+                            }
+                            if ($(this).hasClass("opt")) {
+                                // Check if at least one selection is made
+                                if ($.trim($(this).val()).length > 0) {
+                                    $(this).removeClass('empty-opt');
+                                } else {
+                                    $(this).addClass('empty-opt');
+                                    $('#opt-valid').show();
+                                }
+                            }
+                        }
+
+                    });
+
+                    // *************************** END VALIDATION ******************************//
 
 
         var captext = "Pancreatic Endocrine Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
@@ -297,7 +335,9 @@ $(window).on('load', function () {
         }
 
         var box_8 = $("#box8").val();
-        captext += "\n+ Tumor Necrosis:\n- " + box_8 + "\n";
+        if (box_8.length > 0) {
+            captext += "\n+ Tumor Necrosis:\n- " + box_8 + "\n";
+        }
 
         var box_9 = $("#box9").val();
         var box_9_2 = $("#box9_2").val();
@@ -333,32 +373,33 @@ $(window).on('load', function () {
         if (box_10.indexOf("uninvolved") > -1) {
             captext += "\nMargins:\n- " + box_10;
             if ($.inArray('Other', box_11) > -1) {
-                captext += "\nMargins examined: " + box_11.join(', ').replace(/Other/, box_11_2) + "\n";
+                captext += "\n- Margins examined:\n\t" + box_11.join('\n\t').replace(/Other/, box_11_2) + "\n";
             } else {
-                captext += "\nMargins examined: " + box_11.join(', ') + "\n";
+                captext += "\n- Margins examined:\n\t" + box_11.join('\n\t') + "\n";
             }
-        } else if (box_10.indexOf("involved") > -1) {
+        } else if (box_10.indexOf("margin involved") > -1) {
+            console.log("pos margins");
             captext += "\nMargins:\n";
-            if (box_1.indexOf("whipple") > -1) {
-                captext += "\nProximal Parenchymal Pancreatic Margin:\n\t- " + box_12 + "\n";
-                captext += "\nDistal Parenchymal Pancreatic Margin:\n\t- " + box_13 + "\n";
-                captext += "\nPancreatic Neck/Parenchymal Margin:\n\t- " + box_14 + "\n";
-                captext += "\nUncinate Margin:\n\t- " + box_15 + "\n";
-                captext += "\nBile Duct Margin:\n\t- " + box_16 + "\n";
+            if (box_1.indexOf("Whipple") > -1) {
+                captext += "- Proximal Parenchymal Pancreatic Margin: " + box_12 + "\n";
+                captext += "- Distal Parenchymal Pancreatic Margin: " + box_13 + "\n";
+                captext += "- Pancreatic Neck/Parenchymal Margin: " + box_14 + "\n";
+                captext += "- Uncinate Margin: " + box_15 + "\n";
+                captext += "- Bile Duct Margin: " + box_16 + "\n";
             } else if (box_1.indexOf("tail") > -1) {
-                captext += "\nProximal Parenchymal Pancreatic Margin:\n\t- " + box_12 + "\n";
+                captext += "- Proximal Parenchymal Pancreatic Margin: " + box_12 + "\n";
             } else if (box_1.indexOf("body") > -1) {
-                captext += "\nProximal Parenchymal Pancreatic Margin:\n\t- " + box_12 + "\n";
-                captext += "\nDistal Parenchymal Pancreatic Margin:\n\t- " + box_13 + "\n";
+                captext += "-Proximal Parenchymal Pancreatic Margin: " + box_12 + "\n";
+                captext += "- Distal Parenchymal Pancreatic Margin: " + box_13 + "\n";
             } else if (box_1.indexOf("enucleation") > -1) {
-                captext += "\nPancreatic Neck/Parenchymal Margin:\n\t- " + box_14 + "\n";
+                captext += "- Pancreatic Neck/Parenchymal Margin: " + box_14 + "\n";
             }
         }
 
         var box_19 = $("#box19").val();
         var box_19_2 = $("#box19_2").val();
         if (box_19.indexOf('Not') < 0) {
-            captext += "\n- " + box_19_2 + " Margin:\n\t- " + box_19 + "\n";
+            captext += "- " + box_19_2 + " Margin: " + box_19 + "\n";
         }
         var box_20 = $("#box20").val();
         captext += "\nLymphovascular Invasion:\n- " + box_20 + "\n";
@@ -395,18 +436,22 @@ $(window).on('load', function () {
 
         var box_30 = $("#box30").val();
         var box_30_2 = $("#box30_2").val();
-        if ($.inArray('Other', box_30) > -1) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_30.join('\n- ').replace(/Other/, box_30_2) + "\n";
-        } else {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_30.join('\n- ') + "\n";
+        if (box_30.length > 0) {
+            if ($.inArray('Other', box_30) > -1) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_30.join('\n- ').replace(/Other/, box_30_2) + "\n";
+            } else {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_30.join('\n- ') + "\n";
+            }
         }
 
         var box_31 = $("#box31").val();
         var box_31_2 = $("#box31_2").val();
-        if ($.inArray('Other', box_31) > -1) {
-            captext += "\n+ Clinical History:\n- " + box_31.join('\n- ').replace(/Other/, box_31_2) + "\n";
-        } else {
-            captext += "\n+ Clinical History:\n- " + box_31.join('\n- ') + "\n";
+        if (box_31.length > 0) {
+            if ($.inArray('Other', box_31) > -1) {
+                captext += "\n+ Clinical History:\n- " + box_31.join('\n- ').replace(/Other/, box_31_2) + "\n";
+            } else {
+                captext += "\n+ Clinical History:\n- " + box_31.join('\n- ') + "\n";
+            }
         }
 
         $('#outPut-1').val(captext);

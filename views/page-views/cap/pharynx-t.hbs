@@ -73,16 +73,16 @@
             <h5>Histologic Type</h5>
             <select id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
                 <optgroup label="Oropharynx/Hypopharynx carcinomas">
-                    <option>Human papillomavirus (HPV)-mediated (positive) squamous cell carcinoma of oropharynx
+                    <option data-type="squam">Human papillomavirus (HPV)-mediated (positive) squamous cell carcinoma of oropharynx
                     </option>
-                    <option>HPV-unrelated (negative) squamous cell carcinoma of oropharynx</option>
-                    <option>Oropharyngeal squamous cell carcinoma, HPV status unknown</option>
-                    <option>Hypopharyngeal squamous cell carcinoma</option>
+                    <option data-type="squam">HPV-unrelated (negative) squamous cell carcinoma of oropharynx</option>
+                    <option data-type="squam">Oropharyngeal squamous cell carcinoma, HPV status unknown</option>
+                    <option data-type="squam">Hypopharyngeal squamous cell carcinoma</option>
                 </optgroup>
                 <optgroup label="Carcinomas of the Nasopharynx">
-                    <option>Keratinizing squamous cell carcinoma</option>
-                    <option>Nonkeratinizing squamous cell carcinoma</option>
-                    <option>Basaloid squamous cell carcinoma</option>
+                    <option data-type="squam">Keratinizing squamous cell carcinoma</option>
+                    <option data-type="squam">Nonkeratinizing squamous cell carcinoma</option>
+                    <option data-type="squam">Basaloid squamous cell carcinoma</option>
                 </optgroup>
                 <optgroup label="Carcinomas of Minor Salivary Glands">
                     <option>Mucoepidermoid carcinoma, low grade</option>
@@ -139,20 +139,20 @@
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box6_2' style='display:none;'
                    placeholder='Specify Other histology'>
 
-
-            <hr class="p-2">
-            <h5>Histologic Grade - required for squamous cell carcinomas only</h5>
-            <select id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
-                <option>G1: Well differentiated</option>
-                <option>G2: Moderately differentiated</option>
-                <option>G3: Poorly differentiated</option>
-                <option>Other</option>
-                <option>GX: Cannot be assessed</option>
-                <option selected>Not applicable</option>
-            </select>
-            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box7_2' style='display:none;'
-                   placeholder='Specify Other'>
-
+            <div class="squam">
+                <hr class="p-2">
+                <h5>Histologic Grade - required for squamous cell carcinomas only</h5>
+                <select id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>G1: Well differentiated</option>
+                    <option>G2: Moderately differentiated</option>
+                    <option>G3: Poorly differentiated</option>
+                    <option>Other</option>
+                    <option>GX: Cannot be assessed</option>
+                    <option selected>Not applicable</option>
+                </select>
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box7_2' style='display:none;'
+                       placeholder='Specify Other'>
+            </div>
 
             <hr class="p-2">
             <h5>Margins - Invasive tumor</h5>
@@ -220,15 +220,22 @@
                 <option>r</option>
                 <option>y</option>
             </select>
+
+            <div class="py-2 w-100"></div>
+
             <h6 class='mt-2'>pT</h6>
             <select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
 
             </select>
 
+            <div class="py-2 w-100"></div>
+
             <h6 class='mt-2'>pN</h6>
             <select id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
 
             </select>
+
+            <div class="py-2 w-100"></div>
 
             <h6 class='mt-2'>pM</h6>
             <select id="box15" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -237,6 +244,8 @@
             </select>
             <input type="text" class="form-control form-control-sm col-sm-6" id="box15_2" style="display:none;"
                    placeholder="Specify metastatic sites">
+
+            <div class="py-2 w-100"></div>
 
             <form class="form-inline mt-4">
                 <label class="form-check-label">Check here if any lymph nodes submitted?
@@ -251,27 +260,31 @@
                     <label class="m-2">Number of lymph nodes involved: <input type="number"
                                                                               class="form-control form-control-sm col-sm-6 ml-3"
                                                                               id="box18" style="width:100px"></label>
-                </form>
+
                         <div class="posnodes" style="display:none;">
-                            <h6 class="mt-3">Laterality of Lymph Nodes Involved</h6>
-                            <select id="box19" class='form-control selectpicker form-control-sm col-sm-6'>
+                            Laterality of Lymph Nodes Involved
+                            <select id="box19" class='form-control selectpicker form-control-sm col-sm-6 ml-3'>
                                 <option value="Ipsilateral">Ipsilateral (including midline)</option>
                                 <option>Contralateral</option>
                                 <option>Bilateral</option>
                                 <option>Cannot be determined</option>
                             </select>
 
-                            <h6 class="mt-3">Size of Largest Metastatic Deposit (cm)</h6>
-                            <input type="text" class="form-control form-control-sm col-sm-6" id="box20" placeholder="">
+                            <div class="py-2 w-100"></div>
 
+                            Size of Largest Metastatic Deposit (cm)
+                            <input type="text" class="form-control form-control-sm col-sm-6 ml-3" id="box20" placeholder="">
 
-                            <h6 class="mt-3">Extranodal Extension</h6>
-                            <select id="box21" class='form-control selectpicker form-control-sm col-sm-6'>
+                            <div class="py-2 w-100"></div>
+
+                           Extranodal Extension
+                            <select id="box21" class='form-control selectpicker form-control-sm col-sm-6 ml-3'>
                                 <option>Not identified</option>
                                 <option>Present</option>
                                 <option>Cannot be determined</option>
                             </select>
                         </div>
+                </form>
             </div>
 
 

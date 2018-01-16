@@ -34,14 +34,61 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
-        $('input[type="text"]').each(function () {
-            if ($(this).val().length < 1) {
-                $(this).val($(this).attr('placeholder'));
-            }
-            if ($(this).val().length < 1) {
-                $(this).addClass('empty');
-            }
-        });
+       // ***************** INPUT VALIDATION ********************//
+                   // reset validation alert, if all goes to plan, it won't show
+                   $('#cap-valid').hide();
+                   $('#opt-valid').hide();
+
+
+                   $('select:visible').each(function () {
+                       // ignore class=opt
+                       if (!$(this).hasClass("opt")) {
+                           // Check if at least one selection is made
+                           if ($(this).val().length > 0) {
+                               $(this).removeClass('empty');
+                           } else {
+                               $(this).addClass('empty');
+                               $('#cap-valid').show();
+                           }
+                       }
+                       if ($(this).hasClass("opt")) {
+                           // Check if at least one selection is made
+                           if ($.trim($(this).val()).length > 0) {
+                               $(this).removeClass('empty-opt');
+                           } else {
+                               $(this).addClass('empty-opt');
+                               $('#opt-valid').show();
+                           }
+                       }
+                   });
+
+                   $('input:visible').each(function () {
+                       // ignore search bar in menu
+                       if ($(this).prop('type') != "search"){
+                           // ignore class=opt
+                           if (!$(this).hasClass("opt")) {
+                               // Check if at least one selection is made
+                               if ($.trim($(this).val()).length > 0) {
+                                   $(this).removeClass('empty');
+                               } else {
+                                   $(this).addClass('empty');
+                                   $('#cap-valid').show();
+                               }
+                           }
+                           if ($(this).hasClass("opt")) {
+                               // Check if at least one selection is made
+                               if ($.trim($(this).val()).length > 0) {
+                                   $(this).removeClass('empty-opt');
+                               } else {
+                                   $(this).addClass('empty-opt');
+                                   $('#opt-valid').show();
+                               }
+                           }
+                       }
+
+                   });
+
+                   // *************************** END VALIDATION ******************************//
 
         var captext = "Plasmacytoma Cancer Synoptic\nAJCC 2018 cancer staging version\n\n";
 
@@ -58,31 +105,31 @@ $(window).on('load', function () {
         }
 
         var box_3 = $("#box3").val();
-        if (box_3 != 'n/a') {
+        if (box_3.length > 0) {
             captext += "\n+ Tumor size:\n- " + box_3.replace(/cm/, '') + "cm\n";
         } else {
-            captext += "\n+ Tumor size: Not known at this time\n";
+            captext += "\n+ Tumor size: Cannot be determined\n";
         }
 
         var box_4 = $("#box4").val();
-        captext += "\n+ Cytology:\n- " + box_4 + "\n";
+        captext += "\nCytology:\n- " + box_4 + "\n";
 
         var box_5 = $("#box5").val();
-        captext += "\n+ Immunoglobulin deposits:\n- " + box_5 + "\n";
+        captext += "\nImmunoglobulin deposits:\n- " + box_5 + "\n";
 
         var box_6 = $("#box6").val();
         var box_6_2 = $("#box6_2").val();
         if (box_6 == 'Other') {
-            captext += "\n+ WHO Classification Subtype:\n- " + box_6_2 + "\n";
+            captext += "\nWHO Classification Subtype:\n- " + box_6_2 + "\n";
         } else {
-            captext += "\n+ WHO Classification Subtype:\n- " + box_6 + "\n";
+            captext += "\nWHO Classification Subtype:\n- " + box_6 + "\n";
         }
 
         var box_7 = $("#box7").val();
-        captext += "\n+ Immunoglobulin light-chain type:\n- " + box_7 + "\n";
+        captext += "\nImmunoglobulin light-chain type:\n- " + box_7 + "\n";
 
         var box_8 = $("#box8").val();
-        if ($.inArray("Not applicable", box_8) == -1) {
+        if (box_8.length > 0) {
             captext += "\n+ Cytogenetic results:\n- " + box_8.join('\n- ') + "\n";
         }
 

@@ -106,7 +106,7 @@
 
             <hr class="p-2">
             <h5>+ Associated Epithelial Lesions</h5>
-            <select multiple id="box5" class='form-control selectpicker form-control-sm col-sm-10'>
+            <select multiple id="box5" class='form-control selectpicker form-control-sm col-sm-10 opt'>
                 <option>None identified</option>
                 <option>Urothelial papilloma</option>
                 <option>Urothelial papilloma, inverted type</option>
@@ -169,7 +169,7 @@
 
             <hr class="p-2">
             <h5>+ Tumor Configuration</h5>
-            <select multiple id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select multiple id="box8" class='form-control selectpicker form-control-sm col-sm-6 opt'>
                 <option>Papillary</option>
                 <option>Solid/nodule</option>
                 <option>Flat</option>
@@ -295,15 +295,15 @@
 
                     <div class="posnodes" style="display: none;">
                         <label class="m-2">+Size of largest metastatic deposit (cm): <input type="number"
-                                                                                  class="form-control form-control-sm col-sm-6 ml-3"
+                                                                                  class="form-control form-control-sm col-sm-6 ml-3 opt"
                                                                                   id="box60" style="width:100px"></label>
 
                         + Extranodal Extension
-                        <select id="box19" class='form-control selectpicker form-control-sm ml-3 col-sm-6'>
+                        <select id="box19" class='form-control selectpicker form-control-sm ml-3 col-sm-6 opt'>
+                            <option></option>
                             <option>Not identified</option>
                             <option>Present</option>
                             <option>Cannot be determined</option>
-                            <option selected>Not applicable</option>
                         </select>
                     </div>
                 </form>
@@ -332,7 +332,7 @@
 
             <hr class="p-2">
             <h5>+ Additional Pathologic Findings (select all that apply)</h5>
-            <select multiple id="box20" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select multiple id="box20" class='form-control selectpicker form-control-sm col-sm-6 opt'>
                 <option>Urothelial carcinoma in situ</option>
                 <option>Urothelial dysplasia, low-grade</option>
                 <option>Adenocarcinoma of prostate</option>

@@ -113,7 +113,7 @@ $(window).on("load", function() {
 
     $("#box25").on("change", function() {
         var sel = $("#box25").val();
-        if (sel == "Other") {
+        if ($.inArray("Other", sel) >-1) {
             $("#box25_2").show();
         } else {
             $("#box25_2").hide();
@@ -130,60 +130,60 @@ $(window).on("load", function() {
     $(".writeReport").on("click", function() {
 
         // ***************** INPUT VALIDATION ********************//
-        // reset validation alert, if all goes to plan, it won't show
-        $('#cap-valid').hide();
-        $('#opt-valid').hide();
+                    // reset validation alert, if all goes to plan, it won't show
+                    $('#cap-valid').hide();
+                    $('#opt-valid').hide();
 
 
-        $('select[multiple]:visible').each(function () {
-            // ignore class=opt
-            if (!$(this).hasClass("opt")) {
-                // Check if at least one selection is made
-                if ($(this).val().length > 0) {
-                    $(this).removeClass('empty');
-                } else {
-                    $(this).addClass('empty');
-                    $('#cap-valid').show();
-                }
-            }
-            if ($(this).hasClass("opt")) {
-                // Check if at least one selection is made
-                if ($.trim($(this).val()).length > 0) {
-                    $(this).removeClass('empty-opt');
-                } else {
-                    $(this).addClass('empty-opt');
-                    $('#opt-valid').show();
-                }
-            }
-        });
+                    $('select:visible').each(function () {
+                        // ignore class=opt
+                        if (!$(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($(this).val().length > 0) {
+                                $(this).removeClass('empty');
+                            } else {
+                                $(this).addClass('empty');
+                                $('#cap-valid').show();
+                            }
+                        }
+                        if ($(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty-opt');
+                            } else {
+                                $(this).addClass('empty-opt');
+                                $('#opt-valid').show();
+                            }
+                        }
+                    });
 
-        $('input:visible').each(function () {
-            // ignore search bar in menu
-            if ($(this).prop('type') != "search"){
-                // ignore class=opt
-                if (!$(this).hasClass("opt")) {
-                    // Check if at least one selection is made
-                    if ($.trim($(this).val()).length > 0) {
-                        $(this).removeClass('empty');
-                    } else {
-                        $(this).addClass('empty');
-                        $('#cap-valid').show();
-                    }
-                }
-                if ($(this).hasClass("opt")) {
-                    // Check if at least one selection is made
-                    if ($.trim($(this).val()).length > 0) {
-                        $(this).removeClass('empty-opt');
-                    } else {
-                        $(this).addClass('empty-opt');
-                        $('#opt-valid').show();
-                    }
-                }
-            }
+                    $('input:visible').each(function () {
+                        // ignore search bar in menu
+                        if ($(this).prop('type') != "search"){
+                            // ignore class=opt
+                            if (!$(this).hasClass("opt")) {
+                                // Check if at least one selection is made
+                                if ($.trim($(this).val()).length > 0) {
+                                    $(this).removeClass('empty');
+                                } else {
+                                    $(this).addClass('empty');
+                                    $('#cap-valid').show();
+                                }
+                            }
+                            if ($(this).hasClass("opt")) {
+                                // Check if at least one selection is made
+                                if ($.trim($(this).val()).length > 0) {
+                                    $(this).removeClass('empty-opt');
+                                } else {
+                                    $(this).addClass('empty-opt');
+                                    $('#opt-valid').show();
+                                }
+                            }
+                        }
 
-        });
+                    });
 
-        // *************************** END VALIDATION ******************************//
+                    // *************************** END VALIDATION ******************************//
 
         var captext =
             "Vulvar Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
@@ -279,7 +279,7 @@ $(window).on("load", function() {
         if (negbox_10.length > 0 && posbox_10.length == 0) {
             captext +=
                 "\nMargins - Deep:\n- " +
-                box_10 +
+                box_10.join("\n- ") +
                 "\n- Nearest margin to invasive carcinoma: " +
                 box_10_1 +
                 "\n- Distance to this margin: " +
@@ -288,7 +288,7 @@ $(window).on("load", function() {
         } else if (negbox_10.length == 0 && posbox_10.length > 0) {
             captext +=
                 "\nMargins - Deep:\n- " +
-                box_10 +
+                box_10.join("\n- ") +
                 "\n- Margin involved by invasive carcinoma: " +
                 box_10_3 +
                 "\n";
@@ -385,10 +385,10 @@ $(window).on("load", function() {
         var box_25 = $("#box25").val();
         var box_25_2 = $("#box25_2").val();
         if (box_25.length > 0){
-            if (box_25 == "Other") {
-                captext += "\n+ Additional Pathologic Findings:\n- " + box_25_2 + "\n";
+            if ($.inArray("Other", box_24) > -1) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_25.join("\n- ").replace(/Other/, box_25_2) + "\n";
             } else {
-                captext += "\n+ Additional Pathologic Findings:\n- " + box_25 + "\n";
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_25.join("\n- ") + "\n";
             }
 
         }

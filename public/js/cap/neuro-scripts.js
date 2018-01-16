@@ -136,33 +136,65 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
+
         // ***************** INPUT VALIDATION ********************//
-        $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
-
-        $('input[type="text"]:visible').each(function () {
-            if ($(this).attr('placeholder') != "Not applicable") {
-                // Check if at least one selection is made
-                if ($.trim($(this).val()).length > 0) {
-                    $(this).removeClass('empty');
-                } else {
-                    $(this).addClass('empty');
-                    $('#cap-valid').show();
-                }
-            }
-        });
-
-        // ***************** END VALIDATION ********************//
+                    // reset validation alert, if all goes to plan, it won't show
+                    $('#cap-valid').hide();
+                    $('#opt-valid').hide();
 
 
-        var captext = "CNS Tumor Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
+                    $('select:visible').each(function () {
+                        // ignore class=opt
+                        if (!$(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($(this).val().length > 0) {
+                                $(this).removeClass('empty');
+                            } else {
+                                $(this).addClass('empty');
+                                $('#cap-valid').show();
+                            }
+                        }
+                        if ($(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty-opt');
+                            } else {
+                                $(this).addClass('empty-opt');
+                                $('#opt-valid').show();
+                            }
+                        }
+                    });
+
+                    $('input:visible').each(function () {
+                        // ignore search bar in menu
+                        if ($(this).prop('type') != "search"){
+                            // ignore class=opt
+                            if (!$(this).hasClass("opt")) {
+                                // Check if at least one selection is made
+                                if ($.trim($(this).val()).length > 0) {
+                                    $(this).removeClass('empty');
+                                } else {
+                                    $(this).addClass('empty');
+                                    $('#cap-valid').show();
+                                }
+                            }
+                            if ($(this).hasClass("opt")) {
+                                // Check if at least one selection is made
+                                if ($.trim($(this).val()).length > 0) {
+                                    $(this).removeClass('empty-opt');
+                                } else {
+                                    $(this).addClass('empty-opt');
+                                    $('#opt-valid').show();
+                                }
+                            }
+                        }
+
+                    });
+
+                    // *************************** END VALIDATION ******************************//
+
+
+        var captext = "CNS Tumor Synoptic\n\n";
 
         var box_1 = $("#box1").val();
         var box_1_2 = $("#box1_2").val();
@@ -191,32 +223,38 @@ $(window).on('load', function () {
 
         var box_6 = $("#box6").val();
         var box_6_2 = $("#box6_2").val();
-        if ($.inArray('Other', box_6) > -1) {
-            captext += "\n+ Specimen Handling:\n- " + box_6.join('\n- ').replace(/Other/, box_6_2) + "\n";
-        } else {
-            captext += "\n+ Specimen Handling:\n- " + box_6.join('\n- ') + "\n";
+        if (box_6.length > 0) {
+            if ($.inArray('Other', box_6) > -1) {
+                captext += "\n+ Specimen Handling:\n- " + box_6.join('\n- ').replace(/Other/, box_6_2) + "\n";
+            } else {
+                captext += "\n+ Specimen Handling:\n- " + box_6.join('\n- ') + "\n";
+            }
         }
 
         var box_7 = $("#box7").val();
         var box_7_1 = $("#box7_1").val();
         var box_7_2 = $("#box7_2").val();
         var box_7_3 = $("#box7_3").val();
-        if (box_7.indexOf("Not") < 0) {
-            if (box_7.indexOf("Margins not involved") > -1) {
-                captext += "\n+ Margins:\n- " + box_7 + "\n- Nearest margin: " + box_7_1 + "\n- Distance to this margin: " + box_7_2.replace(/mm/, "") + "mm\n";
-            } else if (box_7.indexOf("Margins involved") > -1) {
-                captext += "\n+ Margins:\n- " + box_7 + "\n- Margin involved: " + box_7_3 + "\n";
-            } else {
-                captext += "\n+ Margins:\n- " + box_7 + "\n";
+        if (box_7.length > 0) {
+            if (box_7.indexOf("Not") < 0) {
+                if (box_7.indexOf("Margins not involved") > -1) {
+                    captext += "\n+ Margins:\n- " + box_7 + "\n- Nearest margin: " + box_7_1 + "\n- Distance to this margin: " + box_7_2.replace(/mm/, "") + "mm\n";
+                } else if (box_7.indexOf("Margins involved") > -1) {
+                    captext += "\n+ Margins:\n- " + box_7 + "\n- Margin involved: " + box_7_3 + "\n";
+                } else {
+                    captext += "\n+ Margins:\n- " + box_7 + "\n";
+                }
             }
         }
 
         var box_13 = $("#box13").val();
-        captext += "\n+ Preresection Treatment:\n- " + box_13.join('\n- ') + "\n";
+        if (box_13.length > 0) {
+            captext += "\n+ Preresection Treatment:\n- " + box_13.join('\n- ') + "\n";
+        }
 
         var box_14 = $("#box14").val();
         var box_14_2 = $("#box14_2").val();
-        if (box_14 != "Not applicable") {
+        if (box_14.length > 0) {
             if (box_14.indexOf("Present") > -1) {
                 captext += "\n+ Treatment Effect:\n- Present: " + box_14_2 + "% tumor necrosis\n";
             } else {
@@ -244,16 +282,18 @@ $(window).on('load', function () {
         }
 
         var box_11 = $("#box11").val();
-        if (box_11 != "Not applicable") {
+        if (box_11.length > 0) {
             captext += "\n+ Electron Microscopy:\n- " + box_11 + "\n";
         }
 
         var box_12 = $("#box12").val();
         var box_12_2 = $("#box12_2").val();
-        if ($.inArray('Other', box_12) > -1) {
-            captext += "\n+ Molecular Genetic Studies:\n- " + box_12.join('\n- ').replace(/Other/, box_12_2) + "\n";
-        } else {
-            captext += "\n+ Molecular Genetic Studies:\n- " + box_12.join('\n- ') + "\n";
+        if (box_12.length > 0) {
+            if ($.inArray('Other', box_12) > -1) {
+                captext += "\n+ Molecular Genetic Studies:\n- " + box_12.join('\n- ').replace(/Other/, box_12_2) + "\n";
+            } else {
+                captext += "\n+ Molecular Genetic Studies:\n- " + box_12.join('\n- ') + "\n";
+            }
         }
 
         $('#outPut-1').val(captext);
