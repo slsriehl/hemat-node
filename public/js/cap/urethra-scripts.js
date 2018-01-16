@@ -266,7 +266,7 @@ $(window).on("load", function() {
 
         var box_2 = $("#box2").val();
         if (box_2.length > 0) {
-            captext += "\n+ Tumor Size:\n- " + box_2 + "cm\n";
+            captext += "\n+ Tumor Size:\n- " + box_2.replace(/cm/, '') + "cm\n";
 
         }
 

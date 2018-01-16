@@ -32,6 +32,7 @@ $(window).on('load', function () {
     $('.remove').on('click', function () {
         $(this).closest('.pblock').remove();
         $(".text-info:last").remove();
+        $('.remove:last').show();
         count--;
     });
 
@@ -170,28 +171,63 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
+
         // ***************** INPUT VALIDATION ********************//
-        $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
+                // reset validation alert, if all goes to plan, it won't show
+                $('#cap-valid').hide();
+                $('#opt-valid').hide();
 
-        $('input[type="text"]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
 
-        // ***************** END VALIDATION ********************//
+                $('select:visible').each(function () {
+                    // ignore class=opt
+                    if (!$(this).hasClass("opt")) {
+                        // Check if at least one selection is made
+                        if ($(this).val().length > 0) {
+                            $(this).removeClass('empty');
+                        } else {
+                            $(this).addClass('empty');
+                            $('#cap-valid').show();
+                        }
+                    }
+                    if ($(this).hasClass("opt")) {
+                        // Check if at least one selection is made
+                        if ($.trim($(this).val()).length > 0) {
+                            $(this).removeClass('empty-opt');
+                        } else {
+                            $(this).addClass('empty-opt');
+                            $('#opt-valid').show();
+                        }
+                    }
+                });
+
+                $('input:visible').each(function () {
+                    // ignore search bar in menu
+                    if ($(this).prop('type') != "search"){
+                        // ignore class=opt
+                        if (!$(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty');
+                            } else {
+                                $(this).addClass('empty');
+                                $('#cap-valid').show();
+                            }
+                        }
+                        if ($(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty-opt');
+                            } else {
+                                $(this).addClass('empty-opt');
+                                $('#opt-valid').show();
+                            }
+                        }
+                    }
+
+                });
+
+        // *************************** END VALIDATION ******************************//
+
 
 
         var captext = "Hepatocellular Carcinoma Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
@@ -208,8 +244,6 @@ $(window).on('load', function () {
         captext += "\nTumor Focality:\n- " + box_2 + "\n";
 
         //--------------------------------------------------------------//
-
-        // Tumor nodule #1
 
         // Tumor nodule #1
 
@@ -232,10 +266,12 @@ $(window).on('load', function () {
         captext += "\tTreatment Effect: " + box_5_1 + "\n";
 
         var box_6_1 = $("#box6_1").val();
-        captext += "\t+ Satellitosis: " + box_6_1 + "\n";
+        if (box_6_1.length  > 0){
+            captext += "\t+ Satellitosis: " + box_6_1 + "\n";
+                }
 
         // nodule #2
-        if ($('.pblock').length == 2) {
+        if ($('.pblock').length > 1 && $('.pblock').length < 6 ) {
             var box_3_12 = $("#box3_12").val();
             var box_3_22 = $("#box3_22").val();
             var box_3_32 = $("#box3_32").val();
@@ -255,14 +291,16 @@ $(window).on('load', function () {
             captext += "\tTreatment Effect: " + box_5_12 + "\n";
 
             var box_6_12 = $("#box6_12").val();
-            captext += "\t+ Satellitosis: " + box_6_12 + "\n";
+            if (box_6_12.length  > 0){
+                captext += "\t+ Satellitosis: " + box_6_12 + "\n";
+            }
         }
 
         // nodule #3
-        if ($('.pblock').length == 3) {
+        if ($('.pblock').length > 2 && $('.pblock').length < 6 ) {
             var box_3_13 = $("#box3_13").val();
-            var box_3_23 = $("#box3_22").val();
-            var box_3_33 = $("#box3_32").val();
+            var box_3_23 = $("#box3_23").val();
+            var box_3_33 = $("#box3_33").val();
             captext += "\nTumor Characteristics: Tumor nodule #3\n";
             if (box_3_13.indexOf("Other") > -1) {
                 captext += "\tTumor Site: " + box_3_23 + "\n";
@@ -279,14 +317,16 @@ $(window).on('load', function () {
             captext += "\tTreatment Effect: " + box_5_13 + "\n";
 
             var box_6_13 = $("#box6_13").val();
-            captext += "\t+ Satellitosis: " + box_6_13 + "\n";
+            if (box_6_13.length  > 0){
+                captext += "\t+ Satellitosis: " + box_6_13 + "\n";
+            }
         }
 
         // nodule #4
-        if ($('.pblock').length == 4) {
+        if ($('.pblock').length > 3 && $('.pblock').length < 6 ) {
             var box_3_14 = $("#box3_14").val();
-            var box_3_24 = $("#box3_22").val();
-            var box_3_34 = $("#box3_32").val();
+            var box_3_24 = $("#box3_24").val();
+            var box_3_34 = $("#box3_34").val();
             captext += "\nTumor Characteristics: Tumor nodule #4\n";
             if (box_3_14.indexOf("Other") > -1) {
                 captext += "\tTumor Site: " + box_3_24 + "\n";
@@ -303,15 +343,17 @@ $(window).on('load', function () {
             captext += "\tTreatment Effect: " + box_5_14 + "\n";
 
             var box_6_14 = $("#box6_14").val();
-            captext += "\t+ Satellitosis: " + box_6_14 + "\n";
+            if (box_6_14.length  > 0){
+                captext += "\t+ Satellitosis: " + box_6_14 + "\n";
+            }
         }
 
         // nodule #5
-        if ($('.pblock').length == 5) {
+        if ($('.pblock').length > 4 && $('.pblock').length < 6 ) {
             var box_3_15 = $("#box3_15").val();
-            var box_3_25 = $("#box3_22").val();
-            var box_3_35 = $("#box3_32").val();
-            captext += "\nTumor Characteristics: Tumor nodule #2\n";
+            var box_3_25 = $("#box3_25").val();
+            var box_3_35 = $("#box3_35").val();
+            captext += "\nTumor Characteristics: Tumor nodule #5\n";
             if (box_3_15.indexOf("Other") > -1) {
                 captext += "\tTumor Site: " + box_3_25 + "\n";
             } else if (box_3_15.indexOf("location") > -1) {
@@ -327,7 +369,9 @@ $(window).on('load', function () {
             captext += "\tTreatment Effect: " + box_5_15 + "\n";
 
             var box_6_15 = $("#box6_15").val();
-            captext += "\t+ Satellitosis: " + box_6_15 + "\n";
+            if (box_6_15.length  > 0){
+                captext += "\t+ Satellitosis: " + box_6_15 + "\n";
+            }
         }
 
         //-----------------------------------------------//
@@ -359,18 +403,18 @@ $(window).on('load', function () {
         var box_10 = $("#box10").val();
         var box_10_2 = $("#box10_2").val();
         if (box_10.indexOf("Uninvolved") > -1) {
-            captext += "\nMargins - Parenchymal:\n\t- " + box_10 + "\n\t- Distance to this margin: " + box_10_2.replace(/mm/, "") + "mm\n";
+            captext += "\nMargins - Parenchymal:\n- " + box_10 + "\n- Distance of tumor to this margin: " + box_10_2.replace(/mm/, "") + "mm\n";
         } else {
-            captext += "\nMargins - Parenchymal:\n\t- " + box_10 + "\n";
+            captext += "\nMargins - Parenchymal:\n- " + box_10 + "\n";
         }
 
         var box_11 = $("#box11").val();
         var box_11_2 = $("#box11_2").val();
         if (box_11 != "Not applicable") {
             if (box_11.indexOf("Not") < 0) {
-                captext += "\nMargins - " + box_11_2 + ":\n\t- " + box_11 + "\n";
+                captext += "\nMargins - " + box_11_2 + ":\n- " + box_11 + "\n";
             } else {
-                captext += "\nMargins -" + box_11_2 + ":\n\t- " + box_11 + "\n";
+                captext += "\nMargins -" + box_11_2 + ":\n- " + box_11 + "\n";
             }
         }
 
@@ -378,7 +422,9 @@ $(window).on('load', function () {
         captext += "\nVascular Invasion:\n- " + box_12 + "\n";
 
         var box_13 = $("#box13").val();
-        captext += "\n+ Perineural Invasion:\n- " + box_13 + "\n";
+        if (box_13.length  > 0){
+            captext += "\n+ Perineural Invasion:\n- " + box_13 + "\n";
+                }
 
         var box_14 = $("#box14").val();
         var box_15 = $("#box15").val();

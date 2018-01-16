@@ -365,9 +365,9 @@ $(window).on('load', function () {
         var box_3 = $("#box3").val();
         var box_3_2 = $("#box3_2").val();
         if (box_3.indexOf("Size") > -1) {
-            captext += "\nTumor Size: " + box_3_2 + "mm\n";
+            captext += "\nTumor Size: " + box_3_2.replace(/mm/, '') + "mm\n";
         } else {
-            captext += "\nTumor Size: " + box_3 + "mm\n";
+            captext += "\nTumor Size: " + box_3.replace(/mm/, '') + "mm\n";
         }
 
         var box_100 = $("#box100").val();

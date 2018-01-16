@@ -152,28 +152,63 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
+
         // ***************** INPUT VALIDATION ********************//
-        $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
+                // reset validation alert, if all goes to plan, it won't show
+                $('#cap-valid').hide();
+                $('#opt-valid').hide();
 
-        $('input[type="text"]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
 
-        // ***************** END VALIDATION ********************//
+                $('select:visible').each(function () {
+                    // ignore class=opt
+                    if (!$(this).hasClass("opt")) {
+                        // Check if at least one selection is made
+                        if ($(this).val().length > 0) {
+                            $(this).removeClass('empty');
+                        } else {
+                            $(this).addClass('empty');
+                            $('#cap-valid').show();
+                        }
+                    }
+                    if ($(this).hasClass("opt")) {
+                        // Check if at least one selection is made
+                        if ($.trim($(this).val()).length > 0) {
+                            $(this).removeClass('empty-opt');
+                        } else {
+                            $(this).addClass('empty-opt');
+                            $('#opt-valid').show();
+                        }
+                    }
+                });
+
+                $('input:visible').each(function () {
+                    // ignore search bar in menu
+                    if ($(this).prop('type') != "search"){
+                        // ignore class=opt
+                        if (!$(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty');
+                            } else {
+                                $(this).addClass('empty');
+                                $('#cap-valid').show();
+                            }
+                        }
+                        if ($(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty-opt');
+                            } else {
+                                $(this).addClass('empty-opt');
+                                $('#opt-valid').show();
+                            }
+                        }
+                    }
+
+                });
+
+        // *************************** END VALIDATION ******************************//
+
 
 
         var captext = "Jejunal and Ileal Neuroendocrine Tumor Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
@@ -240,36 +275,38 @@ $(window).on('load', function () {
         var box_9 = $("#box9").val();
         var box_9_2 = $("#box9_2").val();
         var box_9_3 = $("#box9_3").val();
-        captext += "\nMargins:\n ";
+        captext += "\nMargins:\n";
         if (box_9.indexOf("uninvolved") > -1) {
 
             var box_10 = $("#box10").val();
             var box_10_2 = $("#box10_2").val();
             if ($.inArray('Other', box_10) > -1) {
-                captext += "\t-Margins examined: " + box_10.join(', ').replace(/Other/, box_10_2) + "\n";
+                captext += "- "+box_9+"\n- Margins examined: " + box_10.join(', ').replace(/Other/, box_10_2) + "\n";
             } else {
-                captext += "\t-Margins examined: " + box_10.join(', ') + "\n";
+                captext += "- "+box_9+"\n- Margins examined: " + box_10.join(', ') + "\n";
             }
 
             var box_11 = $("#box11").val();
-            captext += "\t+ Distance of tumor from closest margin: " + box_11.replace(/mm/, '') + "mm\n";
+            if (box_11.length  > 0){
+                captext += "\n+ Distance of tumor from closest margin: " + box_11.replace(/mm/, '') + "mm\n";
+                    }
         } else if (box_9.indexOf("involved") > -1) {
 
             var box_12 = $("#box12").val();
-            captext += "\t- Proximal Margin: " + box_12 + "\n";
+            captext += "- Proximal Margin: " + box_12 + "\n";
 
             var box_13 = $("#box13").val();
-            captext += "\n\t- Distal Margin: " + box_13 + "\n";
+            captext += "- Distal Margin: " + box_13 + "\n";
 
             var box_14 = $("#box14").val();
-            captext += "\n\t- Radial Margin: " + box_14 + "\n";
+            captext += "- Radial Margin: " + box_14 + "\n";
 
             var box_15 = $("#box15").val();
             var box_15_2 = $("#box15_2").val();
             if (box_15 != "Not applicable") {
-                captext += "\n\t- " + box_15_2 + " Margin: " + box_15 + "\n";
+                captext += "- " + box_15_2 + " Margin: " + box_15 + "\n";
             } else {
-                captext += "\n- " + box_9 + "\n";
+                captext += "- " + box_9 + "\n";
             }
         }
 
@@ -277,7 +314,9 @@ $(window).on('load', function () {
         captext += "\nLymphovascular Invasion:\n- " + box_16 + "\n";
 
         var box_17 = $("#box17").val();
-        captext += "\n+ Perineural Invasion:\n- " + box_17 + "\n";
+        if (box_17.length  > 0){
+            captext += "\n+ Perineural Invasion:\n- " + box_17 + "\n";
+                }
 
         var box_18 = $("#box18").val();
         var box_18_2 = $("#box18_2").val();
@@ -316,11 +355,13 @@ $(window).on('load', function () {
 
         var box_26 = $("#box26").val();
         var box_26_2 = $("#box26_2").val();
-        if ($.inArray('Other', box_26) > -1) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_26.join('\n- ').replace(/Other/, box_26_2) + "\n";
-        } else {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_26.join('\n- ') + "\n";
-        }
+        if (box_26.length  > 0){
+            if ($.inArray('Other', box_26) > -1) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_26.join('\n- ').replace(/Other/, box_26_2) + "\n";
+            } else {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_26.join('\n- ') + "\n";
+            }
+                }
 
         $('#outPut-1').val(captext);
 

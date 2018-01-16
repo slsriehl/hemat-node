@@ -80,17 +80,17 @@
 			<select id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
 				<option>No residual melanoma identified</option>
 				<optgroup label="Invasive Melanoma">
-				<option>Superficial spreading melanoma</option>
-				<option>Nodular melanoma</option>
-				<option>Lentigo maligna melanoma</option>
-				<option>Acral lentiginous melanoma</option>
-				<option>Desmoplastic melanoma</option>
-				<option>Melanoma arising from blue nevus</option>
-				<option>Melanoma arising in a giant congenital nevus</option>
-				<option>Melanoma of childhood</option>
-				<option>Nevoid melanoma</option>
-				<option>Persistent melanoma</option>
-				<option>Melanoma, not otherwise classified</option>
+				<option data-type="invasive">Superficial spreading melanoma</option>
+				<option data-type="invasive">Nodular melanoma</option>
+				<option data-type="invasive">Lentigo maligna melanoma</option>
+				<option data-type="invasive">Acral lentiginous melanoma</option>
+				<option data-type="invasive">Desmoplastic melanoma</option>
+				<option data-type="invasive">Melanoma arising from blue nevus</option>
+				<option data-type="invasive">Melanoma arising in a giant congenital nevus</option>
+				<option data-type="invasive">Melanoma of childhood</option>
+				<option data-type="invasive">Nevoid melanoma</option>
+				<option data-type="invasive">Persistent melanoma</option>
+				<option data-type="invasive">Melanoma, not otherwise classified</option>
 				</optgroup>
 				<optgroup label="Melanoma in-situ">
 				<option>Superficial spreading Melanoma in situ</option>
@@ -101,117 +101,129 @@
 				<option>Persistent Melanoma in situ</option>
 				<option>Melanoma in situ, not otherwise classified</option>
 				</optgroup>
-				<option>Other histologic type not listed</option>
+				<option data-type="invasive">Other invasive histologic type not listed</option>
 			</select>
 
 			<input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box6_2' style='display:none;' placeholder='Specify Other'>
 
+            <div class="invasive" style="display: none;">
+                <hr class="p-2">
+                <h5>Invasive tumor elements</h5>
+                <div class="ml-3">
+                    <h6 class="mt-3">Maximum Tumor (Breslow) Thickness (mm) </h6>
+                    <input type="text" class="form-control form-control-sm col-sm-6" id="box7" placeholder="Indicate 'at least' if incompletely excised">
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6 class="mt-3">+ Anatomic (Clark) Level</h6>
+                    <select id="box13" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                        <option></option>
+                        <option>At least level</option>
+                        <option>II (melanoma present in but does not fill and expand papillary dermis)</option>
+                        <option>III (melanoma fills and expands papillary dermis)</option>
+                        <option>IV (melanoma invades reticular dermis)</option>
+                        <option>V (melanoma invades subcutis)</option>
+                        <option>Cannot be determined</option>
+                    </select>
+                    <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box13_2' style="display: none;" placeholder='Specify best tumor level estimate'>
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6 class="mt-3">Ulceration</h6>
+                    <select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>Not identified</option>
+                        <option>Present</option>
+                        <option>Cannot be determined</option>
+                    </select>
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6 class="mt-3">Microsatellite(s)</h6>
+                    <select id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>Not identified</option>
+                        <option>Present</option>
+                        <option>Cannot be determined</option>
+                    </select>
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6 class="mt-3">Lymphovascular Invasion</h6>
+                    <select id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>Not identified</option>
+                        <option>Present</option>
+                        <option>Cannot be determined</option>
+                    </select>
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6 class="mt-3">Neurotropism</h6>
+                    <select id="box15" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>Not identified</option>
+                        <option>Present</option>
+                        <option>Cannot be determined</option>
+                    </select>
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6 class="mt-3">+ Tumor-Infiltrating Lymphocytes
+                        <!-- Button trigger modal -->
+                        <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_mel-til">A word about TILs</button>
+                    </h6>
+                    <select id="box16" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                        <option>Not identified</option>
+                        <option>Present, nonbrisk</option>
+                        <option>Present, brisk</option>
+                        <option>Cannot be determined</option>
+                    </select>
+                </div>
+            </div>
 
 
-			<hr class="p-2">
+
+
+            <hr class="p-2">
 			<h5>Margins</h5>
-			<h6 class="mt-3">Margins - Peripheral, Invasive component</h6>
 
-			<select id="box10" class='form-control selectpicker form-control-sm col-sm-6'>
-				<option>Cannot be assessed</option>
-				<option>Uninvolved by invasive melanoma</option>
-				<option>Involved by invasive melanoma</option>
-			</select>
-			<input type="text" class="form-control form-control-sm col-sm-6" id='box10_1' style='display:none;' placeholder='Specify closest margin'>
-			<input type="text" class="form-control form-control-sm col-sm-6" id='box10_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
-			<input type="text" class="form-control form-control-sm col-sm-6" id='box10_3' style='display:none;' placeholder='Specify involved margin'>
+            <div class="ml-3">
+                <h6 class="mt-3">Margins - Peripheral, Invasive component</h6>
 
+                <select id="box10" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Cannot be assessed</option>
+                    <option>Uninvolved by invasive melanoma</option>
+                    <option>Involved by invasive melanoma</option>
+                </select>
+                <input type="text" class="form-control form-control-sm col-sm-6" id='box10_1' style='display:none;' placeholder='Specify closest margin'>
+                <input type="text" class="form-control form-control-sm col-sm-6" id='box10_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
+                <input type="text" class="form-control form-control-sm col-sm-6" id='box10_3' style='display:none;' placeholder='Specify involved margin'>
 
+                <div class="py-2 w-100"></div>
 
-
-
-
-
-			<h6 class="mt-3">Margins - Peripheral, In-situ component</h6>
-			<select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
-				<option>Cannot be assessed</option>
-				<option>No in-situ component present</option>
-				<option>Uninvolved by in-situ melanoma</option>
-				<option>Involved by in-situ melanoma</option>
-			</select>
-			<input type="text" class="form-control form-control-sm col-sm-6" id='box11_1' style='display:none;' placeholder='Specify closest margin'>
-			<input type="text" class="form-control form-control-sm col-sm-6" id='box11_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
-			<input type="text" class="form-control form-control-sm col-sm-6" id='box11_3' style='display:none;' placeholder='Specify involved margin'>
+                <h6 class="mt-3">Margins - Peripheral, In-situ component</h6>
+                <select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Cannot be assessed</option>
+                    <option>No in-situ component present</option>
+                    <option>Uninvolved by in-situ melanoma</option>
+                    <option>Involved by in-situ melanoma</option>
+                </select>
+                <input type="text" class="form-control form-control-sm col-sm-6" id='box11_1' style='display:none;' placeholder='Specify closest margin'>
+                <input type="text" class="form-control form-control-sm col-sm-6" id='box11_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
+                <input type="text" class="form-control form-control-sm col-sm-6" id='box11_3' style='display:none;' placeholder='Specify involved margin'>
 
 
-			<div class="invasive" style="display: none;">
-			<h6 class="mt-3">Margins - Deep, Invasive component</h6>
-			<select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
-				<option>Cannot be assessed</option>
-				<option>Uninvolved by invasive melanoma</option>
-				<option>Involved by invasive melanoma</option>
-			</select>
-			<input type="text" class="form-control form-control-sm col-sm-6" id='box12_2' style='display:none;' placeholder='Specify distance from deep margin (mm)'>
+                <div class="invasive" style="display: none;">
 
+                    <div class="py-2 w-100"></div>
 
-			</div>
+                    <h6 class="mt-3">Margins - Deep, Invasive component</h6>
+                <select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Cannot be assessed</option>
+                    <option>Uninvolved by invasive melanoma</option>
+                    <option>Involved by invasive melanoma</option>
+                </select>
+                <input type="text" class="form-control form-control-sm col-sm-6" id='box12_2' style='display:none;' placeholder='Specify distance from deep margin (mm)'>
 
-			<div class="invasive" style="display: none;">
-				<h5>Invasive tumor elements</h5>
-				<h6 class="mt-3">Maximum Tumor (Breslow) Thickness (mm) </h6>
-				<input type="text" class="form-control form-control-sm col-sm-6" id="box7" placeholder="Indicate 'at least' if incompletely excised">
-
-				<h6 class="mt-3">+ Anatomic (Clark) Level</h6>
-				<select id="box13" class='form-control selectpicker form-control-sm col-sm-6 opt'>
-					<option>At least level</option>
-					<option>II (melanoma present in but does not fill and expand papillary dermis)</option>
-					<option>III (melanoma fills and expands papillary dermis)</option>
-					<option>IV (melanoma invades reticular dermis)</option>
-					<option>V (melanoma invades subcutis)</option>
-					<option>Cannot be determined</option>
-				</select>
-				<input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box13_2' placeholder='Specify best tumor level estimate'>
-
-				<h6 class="mt-3">Ulceration</h6>
-				<select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
-					<option>Not identified</option>
-					<option>Present</option>
-					<option>Cannot be determined</option>
-				</select>
-
-
-				<h6 class="mt-3">Microsatellite(s)</h6>
-				<select id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
-					<option>Not identified</option>
-					<option>Present</option>
-					<option>Cannot be determined</option>
-				</select>
-
-
-				<h6 class="mt-3">Lymphovascular Invasion</h6>
-				<select id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
-					<option>Not identified</option>
-					<option>Present</option>
-					<option>Cannot be determined</option>
-				</select>
-
-
-				<h6 class="mt-3">Neurotropism</h6>
-				<select id="box15" class='form-control selectpicker form-control-sm col-sm-6'>
-					<option>Not identified</option>
-					<option>Present</option>
-					<option>Cannot be determined</option>
-				</select>
-
-
-				<h6 class="mt-3">+ Tumor-Infiltrating Lymphocytes
-				<!-- Button trigger modal -->
-				<button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_mel-til">A word about TILs</button>
-				</h6>
-				<select id="box16" class='form-control selectpicker form-control-sm col-sm-6 opt'>
-					<option>Not identified</option>
-					<option>Present, nonbrisk</option>
-					<option>Present, brisk</option>
-					<option>Cannot be determined</option>
-				</select>
-
-
-			</div>
+                </div>
+            </div>
 
 
 			<hr class="p-2">
@@ -239,57 +251,56 @@
 				<option>r</option>
 				<option>y</option>
 			</select>
-			<h6 class='mt-2'>pT</h6>
+
+            <div class="py-2 w-100"></div>
+
+            <h6 class='mt-2'>pT</h6>
 			<select id="box19" class='form-control selectpicker form-control-sm col-sm-10'>
 				<option value="pT0">pT0: No evidence of primary tumor (eg, unknown primary or completely regressed melanoma)</option>
 				<option value="pTis">pTis: Melanoma in situ (ie, not an invasive tumor: anatomic level I)</option>
-				<option value="pT1">pT1: Melanoma 1.0 mm or less in thickness, ulceration status unknown or unspecified (see Note D)</option>
 				<option value="pT1a">pT1a: Melanoma <0.8 mm in thickness, no ulceration</option>
 				<option value="pT1b">pT1b: Melanoma <0.8 mm in thickness with ulceration OR melanoma 0.8 to 1.0 mm in thickness with or without ulceration</option>
-				<option value="pT2">pT2: Melanoma >1.0 to 2.0 mm in thickness, ulceration status unknown or unspecified</option>
 				<option value="pT2a">pT2a: Melanoma >1.0 to 2.0 mm in thickness, no ulceration</option>
 				<option value="pT2b">pT2b: Melanoma >1.0 to 2.0 mm in thickness, with ulceration</option>
-				<option value="pT3">pT3: Melanoma >2.0 to 4.0 mm in thickness, ulceration status unknown or unspecified</option>
 				<option value="pT3a">pT3a: Melanoma >2.0 to 4.0 mm in thickness, no ulceration</option>
 				<option value="pT3b">pT3b: Melanoma >2.0 to 4.0 mm in thickness, with ulceration</option>
-				<option value="pT4">pT4: Melanoma >4.0 mm in thickness, ulceration status unknown or unspecified</option>
 				<option value="pT4a">pT4a: Melanoma >4.0 mm in thickness, no ulceration</option>
 				<option value="pT4b">pT4b: Melanoma >4.0 mm in thickness, with ulceration</option>
 			</select>
 
+            <div class="py-2 w-100"></div>
 
-			<h6 class='mt-2'>pN
+            <h6 class='mt-2'>pN
 			<!-- Question trigger modal -->
 			<i class="fa fa-question-circle ml-2" data-backdrop="false"  data-toggle="modal" data-target="#help_ln"></i>
 			</h6>
 			<select id="box20" class='form-control selectpicker form-control-sm col-sm-10'>
 				<option value="pNX">pNX: Regional lymph nodes not assessed (e.g., SLN biopsy not performed, regional nodes previously removed for another reason)</option>
 				<option value="pN0">pN0: No regional lymph node metastasis detected</option>
-				<option value="pN1">pN1: One tumor-involved node or in-transit, satellite, and/or microsatellite metastases with no tumor-involved nodes</option>
 				<option value="pN1a">pN1a: One clinically occult tumor-involved node (ie, detected by sentinel node biopsy) with no in-transit, satellite and/or microsatellite metastases</option>
 				<option value="pN1b">pN1b: One clinically detected tumor-involved node with no in-transit, satellite and/or microsatellite metastases#</option>
 				<option value="pN1c">pN1c: Presence of in-transit, satellite and/or microsatellite metastases with no regional lymph node disease</option>
-				<option value="pN2">pN2: Metastasis in two to three regional nodes or in-transit, satellite, and/or microsatellite with one tumor-involved node</option>
 				<option value="pN2a">pN2a: Two to three clinically occult tumor-involved node (ie, detected by sentinel node biopsy) with no in-transit, satellite and/or microsatellite metastases</option>
 				<option value="pN2b">pN2b: Two to three tumor-involved nodes at least one of which was clinically detected with no in-transit, satellite and/or microsatellite metastases#</option>
 				<option value="pN2c">pN2c: One clinically occult or clinically apparent tumor-involved node with presence of in-transit, satellite and/or microsatellite metastases</option>
-				<option value="pN3">pN3: Metastasis in four or more regional lymph nodes, or in-transit, satellite or microsatellite metastases with two or more tumor-involved nodes or any number of matted nodes without or with in-transit, satellite or microsatellite metastases</option>
 				<option value="pN3a">pN3a: Four or more clinically occult tumor-involved nodes (ie, detected by sentinel node biopsy) with no in-transit, satellite and/or microsatellite metastases</option>
 				<option value="pN3b">pN3b: Four or more tumor-involved nodes, at least one of which was clinically detected, with no in-transit, satellite and/or microsatellite metastases#</option>
 				<option value="pN3c">pN3c: Two or more clinically occult or clinically detected tumor-involved nodes with in-transit, satellite and/or microsatellite metastases and/or any number of matted nodes with in-transit, satellite and/or microsatellite metastases</option>
 			</select>
 
+            <div class="py-2 w-100"></div>
 
-			<h6 class='mt-2'>pM</h6>
+            <h6 class='mt-2'>pM</h6>
 			<select id="box21" class='form-control selectpicker form-control-sm col-sm-10'>
 				<option selected value='pMx'>pMx: Not applicable</option>
-				<option value="pM1">pM1: Distant metastasis (documented in this specimen)</option>
 				<option value="pM1a">pM1a: Distant metastasis in skin, subcutaneous tissues, soft tissues including muscle and/or nonregional lymph nodes</option>
 				<option value="pM1b">pM1b: Distant metastasis to lung with or without M1a sites of disease</option>
 				<option value="pM1c">pM1c: Distant metastasis to non-CNS visceral sites with or without M1a or M1b sites of disease</option>
 				<option value="pM1d">pM1d: Distant metastasis to CNS with or without M1a, M1b or M1c sites of disease</option>
 			</select>
 			<input type="text" class="form-control form-control-sm col-sm-6" id="box21_2" style="display:none;" placeholder="Specify metastatic sites">
+
+            <div class="py-2 w-100"></div>
 
 			<form class="form-inline">
 				<label class="form-check-label">Check here if any lymph nodes submitted?
@@ -308,15 +319,16 @@
 					<label class="m-2">Number of lymph nodes involved:
 						<input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box24" style="width:100px">
 					</label>
-					<label class="m-2 sentinel" style="display: none;">Number of Sentinel Nodes Involved:
-						<input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box27" placeholder="0">
+                    <div class="posnodes" style="display: none;">
+					<label class="m-2">Number of Sentinel Nodes Involved:
+						<input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box27">
 					</label>
-					<label class="m-2 matted" style="display: none;">Matted Nodes:
-					<select id="box26" class='form-control selectpicker form-control-sm col-sm-6 ml-3'>
-						<option selected>Not identified</option>
-						<option>Present</option>
-					</select>
-					</label>
+					Matted Nodes:
+                        <select id="box26" class='form-control selectpicker form-control-sm col-sm-6 ml-3'>
+                            <option selected>Not identified</option>
+                            <option>Present</option>
+                        </select>
+                    </div>
 				</form>
 			</div>
 

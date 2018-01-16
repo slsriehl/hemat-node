@@ -83,6 +83,7 @@ $(window).on('load', function () {
 
     $('#box7').on("change", function () {
         var sel = $('#box7').val();
+        var type = $('#box7').find(":selected").data("type");
         if (sel.indexOf('Other') > -1) {
             $('#box7_2').show();
         } else {
@@ -111,6 +112,11 @@ $(window).on('load', function () {
             $.each(jsonData["Carcinoma-node"], function (val, text) {
                 $('#box20').append($('<option></option>').val(val).html(text));
             });
+        }
+        if (type == "squame") {
+            $(".grade").show();
+        } else {
+            $(".grade").hide();
         }
     });
 
@@ -253,28 +259,63 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
+
         // ***************** INPUT VALIDATION ********************//
-        $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
+                // reset validation alert, if all goes to plan, it won't show
+                $('#cap-valid').hide();
+                $('#opt-valid').hide();
 
-        $('input[type="text"]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
 
-        // ***************** END VALIDATION ********************//
+                $('select:visible').each(function () {
+                    // ignore class=opt
+                    if (!$(this).hasClass("opt")) {
+                        // Check if at least one selection is made
+                        if ($(this).val().length > 0) {
+                            $(this).removeClass('empty');
+                        } else {
+                            $(this).addClass('empty');
+                            $('#cap-valid').show();
+                        }
+                    }
+                    if ($(this).hasClass("opt")) {
+                        // Check if at least one selection is made
+                        if ($.trim($(this).val()).length > 0) {
+                            $(this).removeClass('empty-opt');
+                        } else {
+                            $(this).addClass('empty-opt');
+                            $('#opt-valid').show();
+                        }
+                    }
+                });
+
+                $('input:visible').each(function () {
+                    // ignore search bar in menu
+                    if ($(this).prop('type') != "search"){
+                        // ignore class=opt
+                        if (!$(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty');
+                            } else {
+                                $(this).addClass('empty');
+                                $('#cap-valid').show();
+                            }
+                        }
+                        if ($(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty-opt');
+                            } else {
+                                $(this).addClass('empty-opt');
+                                $('#opt-valid').show();
+                            }
+                        }
+                    }
+
+                });
+
+        // *************************** END VALIDATION ******************************//
+
 
 
         var captext = "Lip and Oral cavity Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
@@ -291,7 +332,7 @@ $(window).on('load', function () {
         if (oth.length > 0) {
             captext += "\nProcedure:\n- " + box_1_2 + "\n";
         } else if (filt.length > 0) {
-            captext += "\nProcedure:\n- " + box_1_2 + ", including: \n\t- " + box_1.join('\n\t- ').replace(/, specify/g, '') + "\n";
+            captext += "\nProcedure:\n- " + box_1.join('\n- ').replace(/, specify/g, ", including: "+box_1_2)+ "\n";
         } else {
             captext += "\nProcedure:\n- " + box_1.join('\n- ') + "\n";
         }
@@ -338,7 +379,7 @@ $(window).on('load', function () {
         }
 
         var box_9 = $("#box9").val();
-        if (box_9.indexOf("Not") < 0) {
+        if (box_9.length > 0) {
             captext += "\n+ Tumor Extension:\n- " + box_9 + "\n";
         }
 
@@ -347,11 +388,11 @@ $(window).on('load', function () {
         var box_10_2 = $("#box10_2").val();
         var box_10_3 = $("#box10_3").val();
         if (box_10.indexOf("Uninvolved") > -1) {
-            captext += "\nMargins - Invasive tumor:\n\t- " + box_10 + "\n\t- Nearest margin: " + box_10_1 + "\n\t- Distance of invasive carcinoma to this margin: " + box_10_2.replace(/mm/, "") + "mm\n";
+            captext += "\nMargins - Invasive tumor:\n- " + box_10 + "\n\t- Nearest margin: " + box_10_1 + "\n\t- Distance of invasive carcinoma to this margin: " + box_10_2.replace(/mm/, "") + "mm\n";
         } else if (box_10.indexOf("Involved") > -1) {
-            captext += "\nMargins - Invasive tumor:\n\t- " + box_10 + "\n\t- Margin involved: " + box_10_3 + "\n";
+            captext += "\nMargins - Invasive tumor:\n- " + box_10 + "\n\t- Margin involved: " + box_10_3 + "\n";
         } else {
-            captext += "\nMargins - Invasive tumor:\n\t- " + box_10 + "\n";
+            captext += "\nMargins - Invasive tumor:\n- " + box_10 + "\n";
         }
 
         var box_11 = $("#box11").val();
@@ -359,11 +400,11 @@ $(window).on('load', function () {
         var box_11_2 = $("#box11_2").val();
         var box_11_3 = $("#box11_3").val();
         if (box_11.indexOf("Uninvolved") > -1) {
-            captext += "\nMargins - In-situ tumor:\n\t- " + box_11 + "\n\t- Nearest margin: " + box_11_1 + "\n\t- Distance of in-situ disease to this margin: " + box_11_2.replace(/mm/, "") + "mm\n";
+            captext += "\nMargins - In-situ tumor:\n- " + box_11 + "\n\t- Nearest margin: " + box_11_1 + "\n\t- Distance of in-situ disease to this margin: " + box_11_2.replace(/mm/, "") + "mm\n";
         } else if (box_11.indexOf("Involved") > -1) {
-            captext += "\nMargins - In-situ tumor:\n\t- " + box_11 + "\n\t- Margin involved: " + box_11_3 + "\n";
+            captext += "\nMargins - In-situ tumor:\n- " + box_11 + "\n\t- Margin involved: " + box_11_3 + "\n";
         } else {
-            captext += "\nMargins - In-situ tumor:\n\t- " + box_11 + "\n";
+            captext += "\nMargins - In-situ tumor:\n- " + box_11 + "\n";
         }
 
         var box_12 = $("#box12").val();
@@ -426,19 +467,26 @@ $(window).on('load', function () {
         if ($("#box22").is(':checked')) {
             var box_23 = $("#box23").val();
             var box_24 = $("#box24").val();
+            var num = parseInt($("#box24").val(), 10);
             captext += "\nLymph nodes:\n\tLymph Nodes Examined: " + box_23 + "\n\tLymph nodes involved: " + box_24 + "\n";
+
+            if (num > 0){
+                var box_25 = $("#box25").val();
+                captext += "\tLaterality Nodes Involved: " + box_25 + "\n";
+
+                var box_x26 = $("#boxx26").val();
+                captext += "\tLargest Metastatic Deposit: " + box_x26.replace(/cm/, '') + "cm\n";
+
+                var box_27 = $("#box27").val();
+                captext += "\tExtranodal Extension: " + box_27 + "\n";
+            }
+
+
         } else {
             captext += "\nLymph nodes: None submitted\n";
         }
 
-        var box_25 = $("#box25").val();
-        captext += "\nLaterality of Lymph Nodes Involved:\n- " + box_25 + "\n";
 
-        var box_x26 = $("#boxx26").val();
-        captext += "\nSize of Largest Metastatic Deposit:\n- " + box_x26.replace(/cm/, '') + "cm\n";
-
-        var box_27 = $("#box27").val();
-        captext += "\nExtranodal Extension:\n- " + box_27 + "\n";
 
         var box_28 = $("#box28").val();
         var box_28_2 = $("#box28_2").val();
@@ -449,15 +497,17 @@ $(window).on('load', function () {
         var trig2_box_28 = box_28.filter(function (el) {
             return el.indexOf("type") > -1;
         });
-        if (trig1_box_28.length > 0 && trig2_box_28.length == 0) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_28.join("\n- ").replace(/Other/, box_28_2) + "\n";
-        } else if (trig1_box_28.length == 0 && trig2_box_28.length > 0) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_28.join("\n- ").replace(/type/, "type: " + box_28_3) + "\n";
-        } else if (trig1_box_28.length > 0 && trig2_box_28.length > 0) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_28.join("\n- ").replace(/Other/, box_28_2).replace(/type/, "type: " + box_28_3) + "\n";
-        } else {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_28.join("\n- ") + "\n";
-        }
+        if (box_28.length  > 0){
+            if (trig1_box_28.length > 0 && trig2_box_28.length == 0) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_28.join("\n- ").replace(/Other/, box_28_2) + "\n";
+            } else if (trig1_box_28.length == 0 && trig2_box_28.length > 0) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_28.join("\n- ").replace(/type/, "type: " + box_28_3) + "\n";
+            } else if (trig1_box_28.length > 0 && trig2_box_28.length > 0) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_28.join("\n- ").replace(/Other/, box_28_2).replace(/type/, "type: " + box_28_3) + "\n";
+            } else {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_28.join("\n- ") + "\n";
+            }
+                }
 
         $('#outPut-1').val(captext);
 

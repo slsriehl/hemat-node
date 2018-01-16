@@ -154,28 +154,63 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
+
         // ***************** INPUT VALIDATION ********************//
-        $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
+                // reset validation alert, if all goes to plan, it won't show
+                $('#cap-valid').hide();
+                $('#opt-valid').hide();
 
-        $('input[type="text"]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
 
-        // ***************** END VALIDATION ********************//
+                $('select:visible').each(function () {
+                    // ignore class=opt
+                    if (!$(this).hasClass("opt")) {
+                        // Check if at least one selection is made
+                        if ($(this).val().length > 0) {
+                            $(this).removeClass('empty');
+                        } else {
+                            $(this).addClass('empty');
+                            $('#cap-valid').show();
+                        }
+                    }
+                    if ($(this).hasClass("opt")) {
+                        // Check if at least one selection is made
+                        if ($.trim($(this).val()).length > 0) {
+                            $(this).removeClass('empty-opt');
+                        } else {
+                            $(this).addClass('empty-opt');
+                            $('#opt-valid').show();
+                        }
+                    }
+                });
+
+                $('input:visible').each(function () {
+                    // ignore search bar in menu
+                    if ($(this).prop('type') != "search"){
+                        // ignore class=opt
+                        if (!$(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty');
+                            } else {
+                                $(this).addClass('empty');
+                                $('#cap-valid').show();
+                            }
+                        }
+                        if ($(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty-opt');
+                            } else {
+                                $(this).addClass('empty-opt');
+                                $('#opt-valid').show();
+                            }
+                        }
+                    }
+
+                });
+
+        // *************************** END VALIDATION ******************************//
+
 
 
         var captext = "Renal Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
@@ -193,11 +228,13 @@ $(window).on('load', function () {
 
         var box_3 = $("#box3").val();
         var box_3_2 = $("#box3_2").val();
-        if ($.inArray('Other', box_3) > -1) {
-            captext += "\n+ Tumor Site:\n- " + box_3.join(', ').replace(/Other/, box_3_2) + "\n";
-        } else {
-            captext += "\n+ Tumor Site:\n- " + box_3.join(', ') + "\n";
-        }
+        if (box_3.length  > 0){
+            if ($.inArray('Other', box_3) > -1) {
+                captext += "\n+ Tumor Site:\n- " + box_3.join(', ').replace(/Other/, box_3_2) + "\n";
+            } else {
+                captext += "\n+ Tumor Site:\n- " + box_3.join(', ') + "\n";
+            }
+                }
 
         var box_4 = $("#box4").val();
         captext += "\nTumor Size:\n- " + box_4.replace(/cm/, '') + "cm\n";
@@ -245,20 +282,22 @@ $(window).on('load', function () {
 
         var box_12 = $("#box12").val();
         if (box_12.indexOf("Involved") > -1) {
-            captext += "\nMargins:\n- " + box_12 + "\n";
+            captext += "\nMargins:\n- Margins involved by carcinoma:\n";
             var box_50 = $("#box50").val();
             var box_50_2 = $("#box50_2").val();
             if ($.inArray('Other', box_50) > -1) {
-                captext += "\t- " + box_50.join('\n\t- ').replace(/Other/, box_50_2) + "\n";
+                captext += "\t" + box_50.join('\n\t').replace(/Other/, box_50_2) + "\n";
             } else {
-                captext += "\t- " + box_50.join('\n\t- ') + "\n";
+                captext += "\t" + box_50.join('\n\t') + "\n";
             }
         } else {
             captext += "\nMargins:\n- " + box_12 + "\n";
         }
 
         var box_13 = $("#box13").val();
-        captext += "\n+ Lymphovascular Invasion:\n- " + box_13 + "\n";
+        if (box_13.length  > 0){
+            captext += "\n+ Lymphovascular Invasion:\n- " + box_13 + "\n";
+                }
 
         var box_14 = $("#box14").val();
         var box_15 = $("#box15").val();
@@ -282,10 +321,14 @@ $(window).on('load', function () {
         if ($("#box18").is(':checked')) {
             var box_19 = $("#box19").val();
             var box_20 = $("#box20").val();
+            var box_21 = $("#box21").val();
+
             captext += "\nLymph nodes:\n\tLymph Nodes Examined: " + box_19 + "\n\tLymph nodes involved: " + box_20 + "\n";
 
-            var box_21 = $("#box21").val();
-            captext += "\n+ Size of Largest Metastatic Deposit:\n- " + box_21.replace(/cm/, '') + "cm\n";
+            if (box_21.length  > 0){
+                captext += "\t+ Largest Metastatic Deposit: " + box_21.replace(/cm/, '') + "cm\n";
+                    }
+
         } else {
             captext += "\nLymph nodes: None submitted\n";
         }

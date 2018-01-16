@@ -96,7 +96,7 @@
 
             <hr class="p-2">
             <h5>Tumor Extension</h5>
-            <select multiple id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select multiple id="box6" class='form-control selectpicker form-control-sm col-sm-9'>
                 <option>No evidence of primary tumor</option>
                 <option>Tumor confined to the intrahepatic bile ducts (carcinoma in situ/high-grade dysplasia)</option>
                 <option>Tumor confined to hepatic parenchyma</option>
@@ -106,12 +106,12 @@
                 <option>Cannot be assessed</option>
             </select>
 
-            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box6_2' style='display:none'; placeholder='Specify adjacent'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box6_2' style='display:none;' placeholder='Specify adjacent'>
 
 
             <hr class="p-2">
             <h5>Margins</h5>
-
+            <div class="ml-3">
 
             <h6 class="mt-3">Hepatic Parenchymal Margin</h6>
 
@@ -124,12 +124,7 @@
             <input type="text" class="form-control form-control-sm col-sm-6" id='box7_2' style='display:none;' placeholder='Specify distance of invasive carcinoma to margin (mm)'>
 
 
-
-
-
-
-
-
+            <div class="py-2 w-100"></div>
 
 
             <h6 class="mt-3" >
@@ -146,6 +141,7 @@
 
             <input type="text" class="form-control form-control-sm col-sm-6" id='box8_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
 
+            <div class="py-2 w-100"></div>
 
             <h6 class="mt-3" >
                 Margin - Other</h6>
@@ -159,7 +155,7 @@
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box9_2' style='display:none;' placeholder='Specify margin'>
 
 
-
+            </div>
 
 
             <hr class="p-2">
@@ -177,6 +173,7 @@
             <hr class="p-2">
             <h5>+ Perineural Invasion</h5>
             <select id="box12" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                <option></option>
                 <option>Not identified</option>
                 <option>Present</option>
                 <option>Cannot be determined</option>
@@ -198,6 +195,9 @@
                 <option>r</option>
                 <option>y</option>
             </select>
+
+            <div class="py-2 w-100"></div>
+
             <h6 class='mt-2'>pT</h6>
             <select id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option value="pTX">pTX: Primary tumor cannot be assessed</option>
@@ -211,6 +211,7 @@
                 <option value="pT4">pT4: Tumor involving local extrahepatic structures by direct invasion</option>
             </select>
 
+            <div class="py-2 w-100"></div>
 
             <h6 class='mt-2'>pN</h6>
             <select id="box15" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -219,6 +220,7 @@
                 <option value="pN1">pN1: Regional lymph node metastasis present</option>
             </select>
 
+            <div class="py-2 w-100"></div>
 
             <h6 class='mt-2'>pM</h6>
             <select id="box16" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -226,6 +228,8 @@
                 <option value="pM1">pM1: Distant metastasis</option>
             </select>
             <input type="text" class="form-control form-control-sm col-sm-6" id="box16_2" style="display:none;" placeholder="Specify metastatic sites">
+
+            <div class="py-2 w-100"></div>
 
             <form class="form-inline mt-2">
                 <label class="form-check-label">Check here if any lymph nodes submitted?

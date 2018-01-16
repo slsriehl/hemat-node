@@ -67,18 +67,18 @@
                Localized malignant mesotheliomas appear to have a far better prognosis than their diffuse counterpart" aria-hidden="true"></i>
             </h5>
             <select id="box5" class='form-control selectpicker form-control-sm col-sm-6'>
-                <option>Localized</option>
                 <option>Diffuse</option>
+                <option>Localized</option>
                 <option>Cannot be determined</option>
             </select>
 
 
 
-
-            <hr class="p-2">
-            <h5>+ Tumor Size (for localized tumors only)</h5>
-            <input type="text" class="form-control form-control-sm col-sm-6 opt" id="box4" value="Not applicable">
-
+            <div class="size" style="display: none;">
+                <hr class="p-2">
+                <h5>+ Tumor Size (for localized tumors only)</h5>
+                <input type="text" class="form-control form-control-sm col-sm-6 opt" id="box4" placeholder="Only for localized tumors, if applicable">
+            </div>
 
 
 
@@ -101,7 +101,7 @@
 
             <hr class="p-2">
             <h5>Tumor Extension (select all that apply)</h5>
-            <select multiple id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select multiple id="box7" class='form-control selectpicker form-control-sm col-sm-12'>
                 <option>Tumor limited to parietal pleura without involvement of ipsilateral visceral, mediastinal, or diaphragmatic pleura</option>
                 <option>Tumor limited to parietal pleura with focal involvement of ipsilateral visceral, mediastinal, or diaphragmatic pleura</option>
                 <option>Tumor involves all of the ipsilateral pleural surfaces (including fissure)</option>
@@ -152,6 +152,9 @@
                <option>r</option>
                 <option>y</option>
             </select>
+
+            <div class="py-2 w-100"></div>
+
             <h6 class='mt-2'>pT
             <!-- Button trigger modal -->
             <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_meso-pt">Click for pT definitiions</button>
@@ -169,6 +172,7 @@
                 <option value="pT4">pT4: Describes locally advanced technically unresectable tumor</option>
             </select>
 
+            <div class="py-2 w-100"></div>
 
             <h6 class='mt-2'>pN</h6>
             <select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -178,6 +182,7 @@
                 <option value="pN2">pN2: Metastases in the contralateral mediastinal, ipsilateral, or contralateral supraclavicular lymph nodes</option>
             </select>
 
+            <div class="py-2 w-100"></div>
 
             <h6 class='mt-2'>pM</h6>
             <select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -191,6 +196,8 @@
                     <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box14" >
                 </label>
             </form>
+
+            <div class="py-2 w-100"></div>
 
             <div class='lnchk' style='display:none;'>
                 <form class="form-inline mt-2 col-8">

@@ -116,50 +116,78 @@ $(window).on('load', function () {
     });
 
     $("#box24").on("input", function () {
-        var sel = $("#box24").val();
+        var sel = parseInt($("#box24").val(), 10);
         if (sel > 0) {
-            $(".matted").show();
+            $(".posnodes").show();
         } else {
-            $(".matted").hide();
+            $(".posnodes").hide();
         }
     });
 
-    $("#box27").on("input", function () {
-        var sel = $("#box27").val();
-        if (sel > 0) {
-            $(".sentinel").show();
-        } else {
-            $(".sentinel").hide();
-        }
-    });
+
 
     //************************************************************//
     // Script to populate the template data in the output textarea//
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
+
         // ***************** INPUT VALIDATION ********************//
-        $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
+                // reset validation alert, if all goes to plan, it won't show
+                $('#cap-valid').hide();
+                $('#opt-valid').hide();
 
-        $('input[type="text"]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
 
-        // ***************** END VALIDATION ********************//
+                $('select:visible').each(function () {
+                    // ignore class=opt
+                    if (!$(this).hasClass("opt")) {
+                        // Check if at least one selection is made
+                        if ($(this).val().length > 0) {
+                            $(this).removeClass('empty');
+                        } else {
+                            $(this).addClass('empty');
+                            $('#cap-valid').show();
+                        }
+                    }
+                    if ($(this).hasClass("opt")) {
+                        // Check if at least one selection is made
+                        if ($.trim($(this).val()).length > 0) {
+                            $(this).removeClass('empty-opt');
+                        } else {
+                            $(this).addClass('empty-opt');
+                            $('#opt-valid').show();
+                        }
+                    }
+                });
+
+                $('input:visible').each(function () {
+                    // ignore search bar in menu
+                    if ($(this).prop('type') != "search"){
+                        // ignore class=opt
+                        if (!$(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty');
+                            } else {
+                                $(this).addClass('empty');
+                                $('#cap-valid').show();
+                            }
+                        }
+                        if ($(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty-opt');
+                            } else {
+                                $(this).addClass('empty-opt');
+                                $('#opt-valid').show();
+                            }
+                        }
+                    }
+
+                });
+
+        // *************************** END VALIDATION ******************************//
+
 
 
         var captext = "Cutaneous Melanoma Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
@@ -203,14 +231,45 @@ $(window).on('load', function () {
             captext += "\nHistologic Type:\n- " + box_6 + "\n";
         }
 
-        var box_7 = $("#box7").val();
-        captext += "\nMaximum Tumor (Breslow) Thickness:\n- " + box_7.replace(/mm/, '') + "mm\n";
+        var type = $("#box6").find(":selected").data("type");
+        if (type == "invasive"){
+            captext += "\n-------------------------\n- Invasive Tumor Profile -\n";
 
-        var box_8 = $("#box8").val();
-        captext += "\nUlceration:\n- " + box_8 + "\n";
+            var box_7 = $("#box7").val();
+            captext += "\nMaximum Tumor (Breslow) Thickness: " + box_7.replace(/mm/, '') + "mm\n";
 
-        var box_9 = $("#box9").val();
-        captext += "\nMicrosatellite(s) (:\n- " + box_9 + "\n";
+            var box_13 = $("#box13").val();
+            var box_13_2 = $("#box13_2").val();
+            if (box_13.length  > 0){
+                if (box_13.indexOf("least") > -1) {
+                    captext += "\n+ Anatomic (Clark) Level: At least " + box_13_2 + ", (tumor transected)\n";
+                } else {
+                    captext += "\n+ Anatomic (Clark) Level: " + box_13 + "\n";
+                }
+            }
+
+            var box_8 = $("#box8").val();
+            captext += "\nUlceration: " + box_8 + "\n";
+
+            var box_9 = $("#box9").val();
+            captext += "\nMicrosatellite(s): " + box_9 + "\n";
+
+            var box_14 = $("#box14").val();
+            captext += "\nLymphovascular Invasion: " + box_14 + "\n";
+
+            var box_15 = $("#box15").val();
+            captext += "\nNeurotropism: " + box_15 + "\n";
+
+            var box_16 = $("#box16").val();
+            if (box_16.length  > 0){
+                captext += "\n+ Tumor-Infiltrating Lymphocytes: " + box_16 + "\n";
+            }
+
+
+            captext += "\n-------------------------\n";
+        }
+
+
 
         var box_10 = $("#box10").val();
         var box_10_1 = $("#box10_1").val();
@@ -244,22 +303,6 @@ $(window).on('load', function () {
             captext += "\nMargins - Deep, Invasive component:\n- " + box_12 + "\n";
         }
 
-        var box_13 = $("#box13").val();
-        var box_13_2 = $("#box13_2").val();
-        if (box_13.indexOf("least") > -1) {
-            captext += "\n+ Anatomic Level:\n- At least " + box_13_2 + ", (tumor transected)\n";
-        } else {
-            captext += "\n+ Anatomic Level:\n- " + box_13 + "\n";
-        }
-
-        var box_14 = $("#box14").val();
-        captext += "\nLymphovascular Invasion:\n- " + box_14 + "\n";
-
-        var box_15 = $("#box15").val();
-        captext += "\nNeurotropism:\n- " + box_15 + "\n";
-
-        var box_16 = $("#box16").val();
-        captext += "\n+ Tumor-Infiltrating Lymphocytes:\n- " + box_16 + "\n";
 
         var box_17 = $("#box17").val();
         captext += "\nTumor Regression:\n- " + box_17 + "\n";

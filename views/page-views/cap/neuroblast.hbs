@@ -129,6 +129,7 @@
             <hr class="p-2">
             <h5>+ Treatment Effect</h5>
             <select id="box9" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                <option></option>
                 <option>No known preoperative therapy (not applicable)</option>
                 <option>Not identified</option>
                 <option>Present</option>
@@ -138,27 +139,6 @@
             <input type="number" class="form-control form-control-sm mt-3 col-sm-6" id='box9_2' style='display:none;' placeholder='Specify % tumor necrosi'>
 
 
-
-            <hr class="p-2">
-            <h5>International Neuroblastoma Pathology Classification
-            <!-- Button trigger modal -->
-            <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_inpc">
-                INPC classification</button>
-
-            <!-- Histology help Modal -->
-            {{> page-modals/cap-helpers/nb-inpc}}
-
-            </h5>
-            <select id="box10" class='form-control selectpicker form-control-sm col-sm-6'>
-                <option selected>Favorable histopathology</option>
-                <option>Unfavorable histopathology</option>
-                <option>Multiple tumors present</option>
-                <option>Cannot be determined secondary to insufficient material</option>
-                <option>Not applicable due to previous therapy</option>
-            </select>
-
-            <input type="text" class="form-control form-control-sm mt-3 col-sm-10" id='box10_2' style='display:none;'
-                   placeholder='List tumor and INPC classifications, separated by comma'>
 
 
             <hr class="p-2">
@@ -170,10 +150,6 @@
                 <option>Extension into spinal canal</option>
                 <option>Cannot be determined</option>
             </select>
-
-
-
-
 
 
             <hr class="p-2">
@@ -205,6 +181,48 @@
             </select>
 
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box16_2' style='display:none;' placeholder='Specify pathologically confirmed metastasis sites'>
+
+
+            <hr class="p-2">
+            <h5>International Neuroblastoma Pathology Classification
+                <!-- Button trigger modal -->
+                <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_inpc">
+                    INPC classification</button>
+
+                <!-- Histology help Modal -->
+                {{> page-modals/cap-helpers/nb-inpc}}
+
+            </h5>
+            <select id="box10" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option selected>Favorable histopathology</option>
+                <option>Unfavorable histopathology</option>
+                <option>Multiple tumors present</option>
+                <option>Cannot be determined secondary to insufficient material</option>
+                <option>Not applicable due to previous therapy</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-10" id='box10_2' style='display:none;'
+                   placeholder='List tumor and INPC classifications, separated by comma'>
+
+
+
+
+            <hr class="p-2">
+            <h5>INRG staging system
+                <!-- Button trigger modal -->
+                <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_inrg">INRG Staging System Explained</button>
+
+                <!-- Histology help Modal -->
+                {{> page-modals/cap-helpers/nb-inrg}}
+
+            </h5>
+            <select id="box25" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Stage L1</option>
+                <option>Stage L2</option>
+                <option>Stage M</option>
+                <option>Stage MS</option>
+                <option selected>Not applicable</option>
+            </select>
 
 
             <hr class="p-2">
@@ -281,22 +299,6 @@
             <input id='box24_2' style='display:none;' placeholder='Specify'>
 
 
-            <hr class="p-2">
-            <h5>INRG staging system
-            <!-- Button trigger modal -->
-            <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_inrg">INRG Staging System Explained</button>
-
-            <!-- Histology help Modal -->
-            {{> page-modals/cap-helpers/nb-inrg}}
-
-            </h5>
-            <select id="box25" class='form-control selectpicker form-control-sm col-sm-6'>
-                <option>Stage L1</option>
-                <option>Stage L2</option>
-                <option>Stage M</option>
-                <option>Stage MS</option>
-                <option selected>Not applicable</option>
-            </select>
 
 
             <!-- end markup-->

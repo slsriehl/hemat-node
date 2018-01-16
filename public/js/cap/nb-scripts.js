@@ -130,28 +130,63 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
+
         // ***************** INPUT VALIDATION ********************//
-        $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
+                // reset validation alert, if all goes to plan, it won't show
+                $('#cap-valid').hide();
+                $('#opt-valid').hide();
 
-        $('input[type="text"]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
 
-        // ***************** END VALIDATION ********************//
+                $('select:visible').each(function () {
+                    // ignore class=opt
+                    if (!$(this).hasClass("opt")) {
+                        // Check if at least one selection is made
+                        if ($(this).val().length > 0) {
+                            $(this).removeClass('empty');
+                        } else {
+                            $(this).addClass('empty');
+                            $('#cap-valid').show();
+                        }
+                    }
+                    if ($(this).hasClass("opt")) {
+                        // Check if at least one selection is made
+                        if ($.trim($(this).val()).length > 0) {
+                            $(this).removeClass('empty-opt');
+                        } else {
+                            $(this).addClass('empty-opt');
+                            $('#opt-valid').show();
+                        }
+                    }
+                });
+
+                $('input:visible').each(function () {
+                    // ignore search bar in menu
+                    if ($(this).prop('type') != "search"){
+                        // ignore class=opt
+                        if (!$(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty');
+                            } else {
+                                $(this).addClass('empty');
+                                $('#cap-valid').show();
+                            }
+                        }
+                        if ($(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty-opt');
+                            } else {
+                                $(this).addClass('empty-opt');
+                                $('#opt-valid').show();
+                            }
+                        }
+                    }
+
+                });
+
+        // *************************** END VALIDATION ******************************//
+
 
 
         var captext = "Neuroblastoma Tumor Synoptic\n\n";
@@ -200,12 +235,18 @@ $(window).on('load', function () {
         captext += "\nTreatment History:\n- " + box_8 + "\n";
 
         var box_9 = $("#box9").val();
-        var box_9_2 = $("#box9_2").val();
-        if (box_9.indexOf("Present") > -1) {
-            captext += "\n+ Treatment Effect:\n- Present with: " + box_9_2 + "% tumor necrosis\n";
-        } else {
-            captext += "\n+ Treatment Effect:\n- " + box_9 + "\n";
-        }
+        if (box_9.length  > 0){
+            var box_9_2 = $("#box9_2").val();
+            if (box_9.indexOf("Present") > -1) {
+                captext += "\n+ Treatment Effect:\n- Present with: " + box_9_2 + "% tumor necrosis\n";
+            } else {
+                captext += "\n+ Treatment Effect:\n- " + box_9 + "\n";
+            }
+                }
+
+        var box_11 = $("#box11").val();
+        captext += "\nPrimary Tumor Extent:\n- " + box_11 + "\n";
+
 
         var box_10 = $("#box10").val();
         var box_10_2 = $("#box10_2").val();
@@ -216,8 +257,11 @@ $(window).on('load', function () {
             captext += "\nInternational Neuroblastoma Pathology Classification:\n- " + box_10 + "\n";
         }
 
-        var box_11 = $("#box11").val();
-        captext += "\nPrimary Tumor Extent:\n- " + box_11 + "\n";
+        var box_25 = $("#box25").val();
+        if (box_25 != "Not applicable") {
+            captext += "\nINRG staging system:\n- " + box_25 + "\n";
+        }
+
 
         var box_13 = $("#box13").val();
         var box_14 = $("#box14").val();
@@ -276,10 +320,6 @@ $(window).on('load', function () {
             }
         }
 
-        var box_25 = $("#box25").val();
-        if (box_25 != "Not applicable") {
-            captext += "\nINRG staging system:\n- " + box_25 + "\n";
-        }
 
         $('#outPut-1').val(captext);
 

@@ -30,6 +30,15 @@ $(window).on('load', function () {
         }
     });
 
+    $('#box5').on("change", function () {
+        var sel = $('#box5').val();
+        if (sel == "Localized") {
+            $('.size').show();
+        } else {
+            $('.size').hide();
+        }
+    });
+
     $('#box6').on("change", function () {
         var sel = $('#box6').val();
         if (sel.indexOf("Other") > -1) {
@@ -111,28 +120,63 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
+
         // ***************** INPUT VALIDATION ********************//
-        $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
+                // reset validation alert, if all goes to plan, it won't show
+                $('#cap-valid').hide();
+                $('#opt-valid').hide();
 
-        $('input[type="text"]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
 
-        // ***************** END VALIDATION ********************//
+                $('select:visible').each(function () {
+                    // ignore class=opt
+                    if (!$(this).hasClass("opt")) {
+                        // Check if at least one selection is made
+                        if ($(this).val().length > 0) {
+                            $(this).removeClass('empty');
+                        } else {
+                            $(this).addClass('empty');
+                            $('#cap-valid').show();
+                        }
+                    }
+                    if ($(this).hasClass("opt")) {
+                        // Check if at least one selection is made
+                        if ($.trim($(this).val()).length > 0) {
+                            $(this).removeClass('empty-opt');
+                        } else {
+                            $(this).addClass('empty-opt');
+                            $('#opt-valid').show();
+                        }
+                    }
+                });
+
+                $('input:visible').each(function () {
+                    // ignore search bar in menu
+                    if ($(this).prop('type') != "search"){
+                        // ignore class=opt
+                        if (!$(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty');
+                            } else {
+                                $(this).addClass('empty');
+                                $('#cap-valid').show();
+                            }
+                        }
+                        if ($(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty-opt');
+                            } else {
+                                $(this).addClass('empty-opt');
+                                $('#opt-valid').show();
+                            }
+                        }
+                    }
+
+                });
+
+        // *************************** END VALIDATION ******************************//
+
 
 
         var captext = "Mesothelioma Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
@@ -160,7 +204,7 @@ $(window).on('load', function () {
         captext += "\nTumor Focality:\n- " + box_5 + "\n";
 
         var box_4 = $("#box4").val();
-        if (box_4.indexOf('Not') < 0) {
+        if (box_4.length > 0) {
             captext += "\n+ Tumor Size:\n- " + box_4.replace(/cm/, '') + "cm\n";
         }
 
@@ -235,14 +279,16 @@ $(window).on('load', function () {
         var trig2_box_17 = box_17.filter(function (el) {
             return el.indexOf("type") > -1;
         });
-        if (trig1_box_17.length > 0 && trig2_box_17.length == 0) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_17.join("\n- ").replace(/Other/, box_17_2) + "\n";
-        } else if (trig1_box_17.length == 0 && trig2_box_17.length > 0) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_17.join("\n- ").replace(/type/, box_17_3) + "\n";
-        } else if (trig1_box_17.length > 0 && trig2_box_17.length > 0) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_17.join("\n- ").replace(/Other/, box_17_2).replace(/type/, box_17_3) + "\n";
-        } else {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_17.join("\n- ") + "\n";
+        if (box_17.length  > 0){
+            if (trig1_box_17.length > 0 && trig2_box_17.length == 0) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_17.join("\n- ").replace(/Other/, box_17_2) + "\n";
+            } else if (trig1_box_17.length == 0 && trig2_box_17.length > 0) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_17.join("\n- ").replace(/type/, box_17_3) + "\n";
+            } else if (trig1_box_17.length > 0 && trig2_box_17.length > 0) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_17.join("\n- ").replace(/Other/, box_17_2).replace(/type/, box_17_3) + "\n";
+            } else {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_17.join("\n- ") + "\n";
+            }
         }
 
         $('#outPut-1').val(captext);

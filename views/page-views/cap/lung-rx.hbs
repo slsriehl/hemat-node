@@ -168,6 +168,7 @@
             <hr class="p-2" >
             <h5>+ Histologic Grade</h5>
             <select id="box10" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                <option></option>
                 <option>G1: Well differentiated</option>
                 <option>G2: Moderately differentiated</option>
                 <option>G3: Poorly differentiated</option>
@@ -186,6 +187,7 @@
             <hr class="p-2" >
             <h5>+ Spread Through Air Spaces</h5>
             <select id="box11" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                <option></option>
                 <option>Not identified</option>
                 <option>Present</option>
             </select>
@@ -258,8 +260,9 @@
                 <option>One or more margins involved by carcinoma</option>
             </select>
 
+            <div class="py-2 w-100"></div>
 
-            <div id='box15_1' class="p-3" ><!-- margins negative-->
+            <div id='box15_1' class="ml-3" ><!-- margins negative-->
                 <h6 class="mt-2" >
                     Margins examined</h6>
                 <select multiple id="box16" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -271,37 +274,32 @@
 
                 <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box16_2' style='display:none;' placeholder='Specify Other margins'>
 
-
-
-
+                <div class="py-2 w-100"></div>
 
                 <h6 class="mt-2" >
                     Distance of invasive carcinoma from closest margin (cm)</h6>
                 <input type="text" class="form-control form-control-sm col-sm-6" id="box17" placeholder="">
 
-
-
+                <div class="py-2 w-100"></div>
 
                 <h6 class="mt-2" >
                     Specify closest margin</h6>
                 <input type="text" class="form-control form-control-sm col-sm-6" id="box18" placeholder="">
 
-
-
+                <div class="py-2 w-100"></div>
 
                 <h6 class="mt-2" >
                     Distance of carcinoma in situ from closest margin (cm)</h6>
                 <input type="text" class="form-control form-control-sm col-sm-6" id="box19" value="Not applicable">
 
-
-
+                <div class="py-2 w-100"></div>
 
                 <h6 class="mt-2" >
                     Specify closest margin to in-situ disease</h6>
                 <input type="text" class="form-control form-control-sm col-sm-6" id="box20" value="Not applicable">
             </div>
 
-            <div id='box15_3' class="p-3" style='display:none;' ><!-- margins positive-->
+            <div id='box15_3' class="ml-3" style='display:none;' ><!-- margins positive-->
                 <h6 class="mt-2" >
                     Bronchial Margin</h6>
                 <select multiple id="box21" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -314,7 +312,7 @@
                 </select>
 
 
-
+                <div class="py-2 w-100"></div>
 
 
                 <h6 class="mt-2" >
@@ -326,9 +324,7 @@
                     <option>Involved by carcinoma</option>
                 </select>
 
-
-
-
+                <div class="py-2 w-100"></div>
 
                 <h6 class="mt-2" >
                     Parenchymal Margin</h6>
@@ -343,9 +339,7 @@
                     <option>Involved by adenocarcinoma in situ</option>
                 </select>
 
-
-
-
+                <div class="py-2 w-100"></div>
 
                 <h6 class="mt-2" >
                     Other Attached Tissue Margin</h6>
@@ -400,6 +394,9 @@
                 <option>r</option>
                 <option>y</option>
             </select>
+
+            <div class="py-2 w-100"></div>
+
             <h6 class='mt-2'>pT
             <!-- Button trigger modal -->
             <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_lung-pt">pT definitions</button>
@@ -423,6 +420,7 @@
                 <option value="pT4">pT4: Tumor >7 cm in greatest dimension; or tumor of any with direct invasion</option>
             </select>
 
+            <div class="py-2 w-100"></div>
 
             <h6 class='mt-2'>pN</h6>
             <select id="box28" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -433,6 +431,7 @@
                 <option value="pN3">pN3: Metastasis in contralateral mediastinal, contralateral hilar, ipsilateral or contralateral scalene, or supraclavicular lymph node(s)</option>
             </select>
 
+            <div class="py-2 w-100"></div>
 
             <h6 class='mt-2'>pM</h6>
             <select id="box29" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -442,6 +441,9 @@
                 <option value="pM1c">pM1c: Multiple extrathoracic metastases in single organ or in multiple organs</option>
             </select>
             <input type="text" class="form-control form-control-sm col-sm-6" id="box29_2" style="display:none;" placeholder="Specify metastatic sites">
+
+            <div class="py-2 w-100"></div>
+
 
             <form class="form-inline mt-2">
                 <label class="form-check-label">Check here if any lymph nodes submitted?
@@ -458,6 +460,7 @@
                         <input type="text" class="form-control form-control-sm col-sm-6 ml-3" id="box33" placeholder=""></label>
                     <label class="m-2">+ Extranodal Extension:
                         <select id="box34" class='form-control selectpicker form-control-sm col-sm-6 ml-3 opt'>
+                            <option></option>
                             <option>Not identified</option>
                             <option>Present</option>
                             <option>Cannot be determined</option>

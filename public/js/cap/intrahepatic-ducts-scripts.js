@@ -146,28 +146,63 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
+
         // ***************** INPUT VALIDATION ********************//
-        $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
+                // reset validation alert, if all goes to plan, it won't show
+                $('#cap-valid').hide();
+                $('#opt-valid').hide();
 
-        $('input[type="text"]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
 
-        // ***************** END VALIDATION ********************//
+                $('select:visible').each(function () {
+                    // ignore class=opt
+                    if (!$(this).hasClass("opt")) {
+                        // Check if at least one selection is made
+                        if ($(this).val().length > 0) {
+                            $(this).removeClass('empty');
+                        } else {
+                            $(this).addClass('empty');
+                            $('#cap-valid').show();
+                        }
+                    }
+                    if ($(this).hasClass("opt")) {
+                        // Check if at least one selection is made
+                        if ($.trim($(this).val()).length > 0) {
+                            $(this).removeClass('empty-opt');
+                        } else {
+                            $(this).addClass('empty-opt');
+                            $('#opt-valid').show();
+                        }
+                    }
+                });
+
+                $('input:visible').each(function () {
+                    // ignore search bar in menu
+                    if ($(this).prop('type') != "search"){
+                        // ignore class=opt
+                        if (!$(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty');
+                            } else {
+                                $(this).addClass('empty');
+                                $('#cap-valid').show();
+                            }
+                        }
+                        if ($(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty-opt');
+                            } else {
+                                $(this).addClass('empty-opt');
+                                $('#opt-valid').show();
+                            }
+                        }
+                    }
+
+                });
+
+        // *************************** END VALIDATION ******************************//
+
 
 
         var captext = "Intrahepatic Bile duct Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
@@ -222,7 +257,7 @@ $(window).on('load', function () {
         var box_7_2 = $("#box7_2").val();
         captext += "\nMargins:\n";
         if (box_7.indexOf("Uninvolved") > -1) {
-            captext += "- Hepatic Parenchymal Margin:\n\t- " + box_7 + "\n\t- Distance to this margin: " + box_7_2.replace(/mm/, "") + "mm\n";
+            captext += "- Hepatic Parenchymal Margin:\n\t- " + box_7 + "\n\t- Distance of carcinoma to this margin: " + box_7_2.replace(/mm/, "") + "mm\n";
         } else {
             captext += "- Hepatic Parenchymal Margin:\n\t- " + box_7 + "\n";
         }
@@ -238,7 +273,7 @@ $(window).on('load', function () {
         if (box_8.indexOf('Not') < 0) {
             captext += "\n- Bile Duct Margin:\n";
             if (negbox_8.length > 0) {
-                captext += "\t- " + negbox_8 + "\n\t- Distance of invasive carcinoma to this margin: " + box_8_2.replace(/mm/, "") + "mm\n";
+                captext += "\t- " + negbox_8 + "\n\t- Distance of carcinoma to this margin: " + box_8_2.replace(/mm/, "") + "mm\n";
             }
             if (posbox_8.length > 0) {
                 captext += "\t- " + posbox_8 + "\n";
@@ -255,7 +290,9 @@ $(window).on('load', function () {
         captext += "\nLymphovascular Invasion:\n- " + box_11 + "\n";
 
         var box_12 = $("#box12").val();
-        captext += "\n+ Perineural Invasion:\n- " + box_12 + "\n";
+        if (box_12.length  > 0){
+            captext += "\n+ Perineural Invasion:\n- " + box_12 + "\n";
+                }
 
         var box_13 = $("#box13").val();
         var box_14 = $("#box14").val();
@@ -293,15 +330,17 @@ $(window).on('load', function () {
         var trig2_box_25 = box_25.filter(function (el) {
             return el.indexOf("Other") > -1;
         });
-        captext += "\n+ Additional Pathologic Findings:\n";
-        if (trig1_box_25.length > 0) {
-            captext += "- " + box_25.join("\n- ").replace(/hepatitis/, "hepatitis: " + box_25_2);
-        }
-        if (trig2_box_25.length > 0) {
-            captext += "- " + box_25.join("\n- ").replace(/Other/, box_25_3);
-        } else {
-            captext += "- " + box_25.join("\n- ");
-        }
+        if (box_25.length  > 0){
+            captext += "\n+ Additional Pathologic Findings:\n";
+            if (trig1_box_25.length > 0) {
+                captext += "- " + box_25.join("\n- ").replace(/hepatitis/, "hepatitis: " + box_25_2);
+            }
+            if (trig2_box_25.length > 0) {
+                captext += "- " + box_25.join("\n- ").replace(/Other/, box_25_3);
+            } else {
+                captext += "- " + box_25.join("\n- ");
+            }
+                }
 
         $('#outPut-1').val(captext);
 

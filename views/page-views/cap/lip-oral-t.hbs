@@ -124,15 +124,15 @@
             <h5>Histologic Type</h5>
             <select id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
                 <optgroup label="Squamous cell + variants">
-                    <option>Squamous cell carcinoma, conventional</option>
-                    <option>Acantholytic squamous cell carcinoma</option>
-                    <option>Adenosquamous carcinoma</option>
-                    <option>Basaloid squamous cell carcinoma</option>
-                    <option>Carcinoma cuniculatum</option>
-                    <option>Papillary squamous cell carcinoma</option>
-                    <option>Spindle cell squamous cell carcinoma</option>
-                    <option>Verrucous squamous cell carcinoma</option>
-                    <option>Lymphoepithelial carcinoma</option>
+                    <option data-type="squame">Squamous cell carcinoma, conventional</option>
+                    <option data-type="squame">Acantholytic squamous cell carcinoma</option>
+                    <option data-type="squame">Adenosquamous carcinoma</option>
+                    <option data-type="squame">Basaloid squamous cell carcinoma</option>
+                    <option data-type="squame">Carcinoma cuniculatum</option>
+                    <option data-type="squame">Papillary squamous cell carcinoma</option>
+                    <option data-type="squame">Spindle cell squamous cell carcinoma</option>
+                    <option data-type="squame">Verrucous squamous cell carcinoma</option>
+                    <option data-type="squame">Lymphoepithelial carcinoma</option>
                 </optgroup>
                 <optgroup label="Carcinomas of Minor Salivary Glands">
                     <option>Mucoepidermoid carcinoma, low grade</option>
@@ -174,7 +174,7 @@
                 </optgroup>
                 <option>Mucosal melanoma</option>
                 <option>Carcinoma, type cannot be determined</option>
-                <option>Other histologic type</option>
+                <option data-type="squame">Other histologic type</option>
             </select>
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box7_2' style='display:none;' placeholder='Specify Other'>
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box7_3' style='display:none;' placeholder='Specify Combined'>
@@ -182,7 +182,7 @@
 
 
 
-
+            <div class="grade">
             <hr class="p-2" >
             <h5>Histologic Grade (required for squamous cell carcinoma only)</h5>
             <select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -195,7 +195,7 @@
             </select>
 
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box8_2' style='display:none;' placeholder='Specify Other grade'>
-
+            </div>
 
 
 
@@ -203,7 +203,7 @@
             <hr class="p-2" >
             <h5>+ Tumor Extension</h5>
             <small>Specify any other structures involved</small>
-            <input type="text" class="form-control form-control-sm col-sm-10 opt" id="box9" value="Not applicable">
+            <input type="text" class="form-control form-control-sm col-sm-10 opt" id="box9" placeholder="If applicable">
 
 
 
@@ -245,7 +245,7 @@
 
 
 
-            <h6 class="p-2" >
+            <hr class="p-2" >
             <h5>Separately Submitted Tumor Bed Margin Orientation
             <!-- Button trigger modal -->
             <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_tumorbed">A word about speartae tumor bed margins</button>
@@ -262,9 +262,10 @@
 
 
 
-            <div class="tumorbed p-2" style="display: none;">
+            <div class="tumorbed ml-3" style="display: none;">
 
 
+                <div class="py-2 w-100"></div>
 
                 <h6 class="mt-3" >
                 Margins - Separately Submitted Tumor Bed, Invasive</h6>
@@ -278,6 +279,7 @@
                 <input type="text" class="form-control form-control-sm col-sm-6" id='box13_3' style='display:none;' placeholder='Specify margin per orientation'>
 
 
+                <div class="py-2 w-100"></div>
 
 
                 <h6 class="mt-3" >
@@ -309,12 +311,6 @@
 
 
 
-
-
-
-
-
-
             <hr class="p-2" >
             <h5>Perineural Invasion</h5>
             <select id="box17" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -341,7 +337,10 @@
                 <option>r</option>
                 <option>y</option>
             </select>
-            <h6 class='mt-2'>pT
+
+                <div class="py-2 w-100"></div>
+
+                <h6 class='mt-2'>pT
                 <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip" data-html="true"
                    title="
                     <p>pT4a - Moderately advanced disease<p>
@@ -358,24 +357,28 @@
                 </i>
             </h6>
             <select id="box19" class='form-control selectpicker form-control-sm col-sm-6'>
-                <option value="null"></option>
+
             </select>
 
+                <div class="py-2 w-100"></div>
 
-            <h6 class='mt-2'>pN</h6>
+                <h6 class='mt-2'>pN</h6>
             <select id="box20" class='form-control selectpicker form-control-sm col-sm-6'>
-                <option value="null"></option>
+
             </select>
 
+                <div class="py-2 w-100"></div>
 
-            <h6 class='mt-2'>pM</h6>
+                <h6 class='mt-2'>pM</h6>
             <select id="box21" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option selected value='pMx'>pMx: Not applicable</option>
                 <option value="pM1">pM1: Distant metastasis</option>
             </select>
             <input type="text" class="form-control form-control-sm col-sm-6" id="box21_2" style="display:none;" placeholder="Specify metastatic sites">
 
-            <form class="form-inline mt-2">
+                <div class="py-2 w-100"></div>
+
+                <form class="form-inline mt-2">
                 <label class="form-check-label">Check here if any lymph nodes submitted?
                     <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box22" >
                 </label>
@@ -392,24 +395,21 @@
                     <label class="m-2">
                         Laterality of Lymph Nodes Involved
                     <select id="box25" class='form-control selectpicker form-control-sm col-sm-6 ml-3'>
-                        <option>Ipsilateral (including midline)</option>
+                        <option>Ipsilateral/midline</option>
                         <option>Contralateral</option>
                         <option>Bilateral</option>
                         <option>Cannot be determined</option>
                     </select>
                     </label>
 
-
-
-
+                    <div class="py-2 w-100"></div>
 
                     <label class="m-2">
-                        Size of Largest Metastatic Deposit:
+                        Size of Largest Metastatic Deposit (cm):
                         <input type="text" class="form-control form-control-sm col-sm-6 ml-3" id="boxx26" placeholder="">
                     </label>
 
-
-
+                    <div class="py-2 w-100"></div>
 
                     <label class="m-2">
                             Extranodal Extension:
@@ -420,15 +420,9 @@
                                 <option>Cannot be determined</option>
                             </select>
                     </label>
-                </form>
                 </div>
-
+                </form>
             </div>
-
-
-
-
-
 
 
 
@@ -450,7 +444,6 @@
             </select>
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box28_2' style='display:none;' placeholder='Specify Other'>
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box28_3' style='display:none;' placeholder='Specify type'>
-
 
 
 

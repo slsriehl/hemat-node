@@ -153,7 +153,7 @@
                 <option>All margins are uninvolved by tumor</option>
                 <option>At least one margin involved by tumor</option>
             </select>
-            <div id='box9_2' >
+            <div id='box9_2' class="ml-3" >
 
                 <h6 class="mt-3" >
                     Margins examined</h6>
@@ -173,7 +173,7 @@
 
 
             </div>
-            <div id='box9_3' style='display:none;'>
+            <div id='box9_3' class="ml-3" style='display:none;'>
 
                 <h6 class="mt-3" >
                     Proximal Margin</h6>
@@ -183,9 +183,7 @@
                     <option>Involved by tumor</option>
                 </select>
 
-
-
-
+                <div class="py-2 w-100"></div>
 
                 <h6 class="mt-3" >
                     Distal Margin</h6>
@@ -195,9 +193,7 @@
                     <option>Involved by tumor</option>
                 </select>
 
-
-
-
+                <div class="py-2 w-100"></div>
 
                 <h6 class="mt-3" >
                     Radial Margin</h6>
@@ -207,9 +203,7 @@
                     <option>Involved by tumor</option>
                 </select>
 
-
-
-
+                <div class="py-2 w-100"></div>
 
                 <h6 class="mt-3" >
                     Other Margin</h6>
@@ -246,6 +240,7 @@
             <hr class="p-2" >
             <h5>+ Perineural Invasion</h5>
             <select id="box17" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                <option></option>
                 <option>Not identified</option>
                 <option>Present</option>
                 <option>Cannot be determined</option>
@@ -281,6 +276,9 @@
                 <option>r</option>
                 <option>y</option>
             </select>
+
+            <div class="py-2 w-100"></div>
+
             <h6 class='mt-2'>pT</h6>
             <select id="box20" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option value="pTX">pTX: Primary tumor cannot be assessed</option>
@@ -291,6 +289,7 @@
                 <option value="pT4">pT4: Invades visceral peritoneum (serosal) or other organs or adjacent structures</option>
             </select>
 
+            <div class="py-2 w-100"></div>
 
             <h6 class='mt-2'>pN</h6>
             <select id="box21" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -300,6 +299,7 @@
                 <option value="pN2">pN2: Large mesenteric masses (>2 cm) and/or extensive nodal deposits (12 or greater)</option>
             </select>
 
+            <div class="py-2 w-100"></div>
 
             <h6 class='mt-2'>pM</h6>
             <select id="box22" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -310,12 +310,13 @@
             </select>
             <input type="text" class="form-control form-control-sm col-sm-6" id="box22_2" style="display:none;" placeholder="Specify metastatic sites">
 
+            <div class="py-2 w-100"></div>
+
             <form class="form-inline mt-2">
                 <label class="form-check-label">Check here if any lymph nodes submitted?
                     <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box23" >
                 </label>
             </form>
-
             <div class='lnchk' style='display:none;'>
                 <form class="form-inline mt-2 col-8">
                     <label class="m-2">Number of lymph nodes examined: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box24" style="width:100px"></label>

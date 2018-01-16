@@ -92,6 +92,11 @@ $(window).on('load', function () {
         var site = sel.filter(function (el) {
             return el.indexOf('maxillary') > -1;
         });
+         if ($.inArray('Other', sel) > -1) {
+            $('#box2_2').show();
+        } else {
+             $('#box2_2').hide();
+        }
         console.log(site);
         if (site.length > 0) {
             console.log("maxillary choice");
@@ -103,8 +108,6 @@ $(window).on('load', function () {
             $.each(jsonData["Carcinoma-node"], function (val, text) {
                 $('#box14').append($('<option></option>').val(val).html(text));
             });
-        } else if ($.inArray('Other', sel) > -1) {
-            $('#box2_2').show();
         } else {
             $('#box13').find('option').remove();
             $.each(jsonData["Nasal"], function (val, text) {
@@ -114,19 +117,29 @@ $(window).on('load', function () {
             $.each(jsonData["Carcinoma-node"], function (val, text) {
                 $('#box14').append($('<option></option>').val(val).html(text));
             });
-
-            $('#box2_2').hide();
         }
     });
 
     $('#box2_2').on("input", function () {
         var sel = $('#box2_2').val().toLowerCase();
-        if (sel.indexOf("whipple") < 0) {
-            $(".segmental").show();
-            $(".whipple").hide();
+        if (sel.indexOf("maxillary") < 0) {
+            $('#box13').find('option').remove();
+            $.each(jsonData["Maxillary"], function (val, text) {
+                $('#box13').append($('<option></option>').val(val).html(text));
+            });
+            $('#box14').find('option').remove();
+            $.each(jsonData["Carcinoma-node"], function (val, text) {
+                $('#box14').append($('<option></option>').val(val).html(text));
+            });
         } else {
-            $(".segmental").hide();
-            $(".whipple").show();
+            $('#box13').find('option').remove();
+            $.each(jsonData["Nasal"], function (val, text) {
+                $('#box13').append($('<option></option>').val(val).html(text));
+            });
+            $('#box14').find('option').remove();
+            $.each(jsonData["Carcinoma-node"], function (val, text) {
+                $('#box14').append($('<option></option>').val(val).html(text));
+            });
         }
     });
 
@@ -162,8 +175,6 @@ $(window).on('load', function () {
                 $.each(jsonData["Carcinoma-node"], function (val, text) {
                     $('#box14').append($('<option></option>').val(val).html(text));
                 });
-            } else if ($.inArray('Other', site) > -1) {
-                $('#box2_2').show();
             } else {
                 $('#box13').find('option').remove();
                 $.each(jsonData["Nasal"], function (val, text) {
@@ -174,7 +185,6 @@ $(window).on('load', function () {
                     $('#box14').append($('<option></option>').val(val).html(text));
                 });
 
-                $('#box2_2').hide();
             }
         }
     });
@@ -263,28 +273,63 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
+
         // ***************** INPUT VALIDATION ********************//
-        $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
+                // reset validation alert, if all goes to plan, it won't show
+                $('#cap-valid').hide();
+                $('#opt-valid').hide();
 
-        $('input[type="text"]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
 
-        // ***************** END VALIDATION ********************//
+                $('select:visible').each(function () {
+                    // ignore class=opt
+                    if (!$(this).hasClass("opt")) {
+                        // Check if at least one selection is made
+                        if ($(this).val().length > 0) {
+                            $(this).removeClass('empty');
+                        } else {
+                            $(this).addClass('empty');
+                            $('#cap-valid').show();
+                        }
+                    }
+                    if ($(this).hasClass("opt")) {
+                        // Check if at least one selection is made
+                        if ($.trim($(this).val()).length > 0) {
+                            $(this).removeClass('empty-opt');
+                        } else {
+                            $(this).addClass('empty-opt');
+                            $('#opt-valid').show();
+                        }
+                    }
+                });
+
+                $('input:visible').each(function () {
+                    // ignore search bar in menu
+                    if ($(this).prop('type') != "search"){
+                        // ignore class=opt
+                        if (!$(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty');
+                            } else {
+                                $(this).addClass('empty');
+                                $('#cap-valid').show();
+                            }
+                        }
+                        if ($(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty-opt');
+                            } else {
+                                $(this).addClass('empty-opt');
+                                $('#opt-valid').show();
+                            }
+                        }
+                    }
+
+                });
+
+        // *************************** END VALIDATION ******************************//
+
 
 
         var captext = "Nasal and Paranasal Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
@@ -418,11 +463,13 @@ $(window).on('load', function () {
 
         var box_25 = $("#box25").val();
         var box_25_2 = $("#box25_2").val();
-        if ($.inArray('Other', box_25) > -1) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_25.join('\n- ').replace(/Other/, box_25_2) + "\n";
-        } else {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_25.join('\n- ') + "\n";
-        }
+        if (box_25.length  > 0){
+            if ($.inArray('Other', box_25) > -1) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_25.join('\n- ').replace(/Other/, box_25_2) + "\n";
+            } else {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_25.join('\n- ') + "\n";
+            }
+                }
 
         $('#outPut-1').val(captext);
 
