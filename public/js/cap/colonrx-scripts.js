@@ -35,6 +35,16 @@ $(window).on('load', function () {
         }
     });
 
+
+    $('#box2').on("change", function () {
+        var sel = $('#box2').val();
+        if (sel == "Rectum") {
+            $('.rect').show();
+        } else {
+            $('.rect').hide();
+        }
+    });
+    
     $('#box8').on("change", function () {
         var sel = $('#box8').val();
         if (sel.indexOf('uninvolved') > -1) {
@@ -48,7 +58,7 @@ $(window).on('load', function () {
 
     $('#box9').on("change", function () {
         var sel = $('#box9').val();
-        if (sel == "Other") {
+        if ($.inArray("Other", sel) > -1) {
             $('#box9_2').show();
         } else {
             $('#box9_2').hide();
@@ -167,28 +177,63 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
+
         // ***************** INPUT VALIDATION ********************//
-        $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
+                // reset validation alert, if all goes to plan, it won't show
+                $('#cap-valid').hide();
+                $('#opt-valid').hide();
 
-        $('input[type="text"]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
 
-        // ***************** END VALIDATION ********************//
+                $('select:visible').each(function () {
+                    // ignore class=opt
+                    if (!$(this).hasClass("opt")) {
+                        // Check if at least one selection is made
+                        if ($(this).val().length > 0) {
+                            $(this).removeClass('empty');
+                        } else {
+                            $(this).addClass('empty');
+                            $('#cap-valid').show();
+                        }
+                    }
+                    if ($(this).hasClass("opt")) {
+                        // Check if at least one selection is made
+                        if ($.trim($(this).val()).length > 0) {
+                            $(this).removeClass('empty-opt');
+                        } else {
+                            $(this).addClass('empty-opt');
+                            $('#opt-valid').show();
+                        }
+                    }
+                });
+
+                $('input:visible').each(function () {
+                    // ignore search bar in menu
+                    if ($(this).prop('type') != "search"){
+                        // ignore class=opt
+                        if (!$(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty');
+                            } else {
+                                $(this).addClass('empty');
+                                $('#cap-valid').show();
+                            }
+                        }
+                        if ($(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty-opt');
+                            } else {
+                                $(this).addClass('empty-opt');
+                                $('#opt-valid').show();
+                            }
+                        }
+                    }
+
+                });
+
+        // *************************** END VALIDATION ******************************//
+
 
 
         var captext = "Colon Cancer (Resection) Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
@@ -242,12 +287,14 @@ $(window).on('load', function () {
             } else {
                 captext += "\n- Margins examined: " + box_9.join(', ') + "\n";
             }
-            captext += "+ Distance of invasive carcinoma from closest margin: " + box_9_3.replace(/mm/, '') + "mm\n";
-            if (box_9_4 != "n/a") {
-                captext += "- Distance of tumor from radial margin: " + box_9_4.replace(/mm/, '') + "mm\n";
+            if (box_9_3.length  > 0){
+                captext += "+ Distance of invasive carcinoma from closest margin: " + box_9_3.replace(/mm/, '') + "mm\n";
             }
-            if (box_9_5 != "n/a") {
-                captext += "Distance of tumor from distal margin: " + box_9_5.replace(/mm/, '') + "mm\n";
+            if (box_9_4.length > 0) {
+                captext += "- Distance of tumor from radial margin: " + box_9_4 + "mm\n";
+            }
+            if (box_9_5.length > 0) {
+                captext += "Distance of tumor from distal margin: " + box_9_5 + "mm\n";
             }
         } else if (box_8.indexOf("involved") > -1) {
             var site = $('#box1').find(":selected").data("location");
@@ -276,7 +323,7 @@ $(window).on('load', function () {
                 if (box_12.indexOf("Uninvolved") > -1) {
                     captext += "\nRadial Margin:\n\t- " + box_12 + "\n\t- Distance of tumor from margin: " + box_12_2 + "mm\n";
                 } else {
-                    captext += "\nnRadial Margin:\n\t- " + box_12 + "\n";
+                    captext += "\nRadial Margin:\n\t- " + box_12 + "\n";
                 }
             } else if (site.indexOf('emr') > -1) {
                 // emr
@@ -322,8 +369,11 @@ $(window).on('load', function () {
         var box_15 = $("#box15").val();
         var box_15_2 = $("#box15_2").val();
         if (box_15.indexOf('Not') < 0) {
-            captext += "\n- " + box_15_2 + " Margin: " + box_15 + "\n";
-        }var box_16 = $("#box16").val();
+            captext += "\n" + box_15_2 + " Margin: " + box_15 + "\n";
+        }
+
+
+        var box_16 = $("#box16").val();
         captext += "\nTreatment Effect:\n- " + box_16 + "\n";
 
         var box_17 = $("#box17").val();
@@ -334,7 +384,9 @@ $(window).on('load', function () {
 
         var box_19 = $("#box19").val();
         var box_19_2 = $("#box19_2").val();
-        captext += "\n+ Tumor Budding:\n- # of buds in hotspot field: " + box_19_2 + "\n- " + box_19 + "\n";
+        if (box_19.length  > 0){
+            captext += "\n+ Tumor Budding:\n- # of buds in hotspot field: " + box_19_2 + "\n- " + box_19 + "\n";
+        }
 
         var box_20 = $("#box20").val();
         var box_20_2 = $("#box20_2").val();
@@ -380,14 +432,16 @@ $(window).on('load', function () {
         var trig2_box_28 = box_28.filter(function (el) {
             return el.indexOf("Other") > -1;
         });
-        if (trig1_box_28.length > 0 && trig2_box_28.length == 0) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_28.join("\n- ").replace(/type/, "type: " + box_28_2) + "\n";
-        } else if (trig1_box_28.length == 0 && trig2_box_28.length > 0) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_28.join("\n- ").replace(/Other/, box_28_3) + "\n";
-        } else if (trig1_box_28.length > 0 && trig2_box_28.length > 0) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_28.join("\n- ").replace(/type/, "type: " + box_28_2).replace(/Other/, box_28_3) + "\n";
-        } else {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_28.join("\n- ") + "\n";
+        if (box_28.length  > 0){
+            if (trig1_box_28.length > 0 && trig2_box_28.length == 0) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_28.join("\n- ").replace(/type/, "type: " + box_28_2) + "\n";
+            } else if (trig1_box_28.length == 0 && trig2_box_28.length > 0) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_28.join("\n- ").replace(/Other/, box_28_3) + "\n";
+            } else if (trig1_box_28.length > 0 && trig2_box_28.length > 0) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_28.join("\n- ").replace(/type/, "type: " + box_28_2).replace(/Other/, box_28_3) + "\n";
+            } else {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_28.join("\n- ") + "\n";
+            }
         }
 
         $('#outPut-1').val(captext);

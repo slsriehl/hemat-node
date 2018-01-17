@@ -147,6 +147,10 @@
                 <option>All margins are uninvolved by tumor </option>
                 <option>One or more margins involved by neoplasia</option>
             </select>
+
+            <div class="py-2 w-100"></div>
+
+
             <div class="negmargins ml-3">
                 <h6 class="mt-3">Choose margins examined</h6>
                 <select multiple id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -158,24 +162,31 @@
                     <option>deep</option>
                     <option>Other</option>
                 </select>
-                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box9_2' style='display:none;' placeholder='Specify Other'>
+                <input type="text" class="form-control form-control-sm mt-1 col-sm-6" id='box9_2' style='display:none;' placeholder='Specify Other margin'>
 
-                <h6 class="mt-2">Distance of invasive carcinoma from closest margin (mm)</h6>
-                <input type="number" class="form-control form-control-sm col-sm-6" id="box9_3" placeholder="">
+                <div class="py-2 w-100"></div>
 
-                <h6 class="mt-2">Distance of tumor from radial margin - required only for rectal tumors (mm)</h6>
-                <input type="text" class="form-control form-control-sm col-sm-6" id="box9_4" value="n/a">
 
-                <h6 class="mt-2">Distance of tumor from distal margin - recommended for rectal tumors (mm)</h6>
-                <input type="text" class="form-control form-control-sm col-sm-6" id="box9_5" value="n/a">
+                <h6 class="mt-2">+ Distance of invasive carcinoma from closest margin (mm)</h6>
+                <input type="number" class="form-control form-control-sm col-sm-6 opt" id="box9_3" placeholder="">
+
+                <div class="rect" style="display: none;">
+                    <h6 class="mt-2">Distance of tumor from radial margin - required only for rectal tumors (mm)</h6>
+                    <input type="number" class="form-control form-control-sm col-sm-6 " id="box9_4" >
+
+                    <h6 class="mt-2">+ Distance of tumor from distal margin - recommended for rectal tumors (mm)</h6>
+                    <input type="number" class="form-control form-control-sm col-sm-6 opt" id="box9_5">
+                </div>
             </div>
 
 
-            <hr class="p-2">
             <div class="posmargins ml-3" style="display: none;" >
 
-                <div class="segmental p-2">
-                    <h6 class="mt-1">Proximal Margin</h6>
+                <div class="segmental">
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Proximal Margin</h6>
                     <select id="box10" class='form-control selectpicker form-control-sm col-sm-6'>
                         <option>Cannot be assessed</option>
                         <option>Uninvolved by invasive carcinoma</option>
@@ -185,10 +196,10 @@
                     <input type="number" class="form-control form-control-sm mt-3 col-sm-6" id='box10_2' style='display:none;' placeholder='Specify Distance of tumor from margin (mm)'>
 
 
+                    <div class="py-2 w-100"></div>
 
 
-
-                    <h6 class="mt-3">Distal Margin</h6>
+                    <h6>Distal Margin</h6>
                     <select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
                         <option>Cannot be assessed</option>
                         <option>Uninvolved by invasive carcinoma</option>
@@ -198,10 +209,10 @@
                     <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box11_2' style='display:none;' placeholder='Specify Uninvolved'>
 
 
+                    <div class="py-2 w-100"></div>
 
 
-
-                    <h6 class="mt-3">Radial Margin</h6>
+                    <h6>Radial Margin</h6>
                     <select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
                         <option>Cannot be assessed</option>
                         <option>Uninvolved by invasive carcinoma</option>
@@ -211,8 +222,8 @@
                     <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box12_2' style='display:none;' placeholder='Specify Uninvolved'>
                 </div><!-- end segmental margins-->
 
-                <div class="emr p-2" style="display: none;">
-                    <h6 class="mt-1">Deep Margin</h6>
+                <div class="emr" style="display: none;">
+                    <h6>Deep Margin</h6>
                     <select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
                         <option>Cannot be assessed</option>
                         <option>Uninvolved by invasive carcinoma</option>
@@ -222,10 +233,10 @@
                     <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box13_2' style='display:none;' placeholder='Specify Uninvolved'>
 
 
+                    <div class="py-2 w-100"></div>
 
 
-
-                    <h6 class="mt-3">Mucosal Margin</h6>
+                    <h6>Mucosal Margin</h6>
 
                     <select id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
                         <option>Cannot be assessed</option>
@@ -239,7 +250,9 @@
                     <input type="text" class="form-control form-control-sm col-sm-6" id='box14_3' style='display:none;' placeholder='Specify involved margin'>
 
 
-                    <div class="insitu ml-2 p-2" style="display:none;">
+                    <div class="insitu" style="display:none;">
+
+                        <div class="py-2 w-100"></div>
 
                         <h6>Are any margins involved by pre-invasive tumor?</h6>
                         <select multiple id="box14_4" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -251,12 +264,15 @@
                             </optgroup>
                         </select>
 
-
                     </div>
                 </div>
 
-                <div class="other p-2">
-                    <h6 class="mt-4">Other Margin</h6>
+                <div class="other">
+
+                    <div class="py-2 w-100"></div>
+
+
+                    <h6>Other Margin</h6>
                     <select id="box15" class='form-control selectpicker form-control-sm col-sm-6'>
                         <option selected>Not applicable</option>
                         <option>Cannot be assessed</option>
@@ -330,6 +346,7 @@
                    placeholder='Specify # of buds'>
 
             <select id="box19" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                <option></option>
                 <option>Low score (0-4)</option>
                 <option>Intermediate score (5-9)</option>
                 <option>High score (10 or more)</option>
@@ -374,6 +391,9 @@
                 <option>r</option>
                 <option>y</option>
             </select>
+
+            <div class="py-2 w-100"></div>
+
             <h6 class='mt-2'>pT</h6>
             <select id="box22" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option value="pTX">pTX: Primary tumor cannot be assessed</option>
@@ -386,6 +406,7 @@
                 <option value="pT4b">pT4b: Tumor directly invades or adheres to adjacent organs or structures</option>
             </select>
 
+            <div class="py-2 w-100"></div>
 
             <h6 class='mt-2'>pN
                 <!-- Button trigger slider -->
@@ -416,6 +437,7 @@
                 <option value="pN2b">pN2b: Seven or more regional lymph nodes are positive</option>
             </select>
 
+            <div class="py-2 w-100"></div>
 
             <h6 class='mt-2'>pM</h6>
             <select id="box24" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -425,6 +447,8 @@
                 <option value="pM1c">pM1c: Metastasis to the peritoneal surface is identified alone or with other site or organ metastases</option>
             </select>
             <input type="text" class="form-control form-control-sm col-sm-6" id="box24_2" style="display:none;" placeholder="Specify metastatic sites">
+
+            <div class="py-2 w-100"></div>
 
             <form class="form-inline mt-2">
                 <label class="form-check-label">Check here if any lymph nodes submitted?

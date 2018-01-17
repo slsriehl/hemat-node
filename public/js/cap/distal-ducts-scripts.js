@@ -215,28 +215,63 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
+
         // ***************** INPUT VALIDATION ********************//
-        $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
+                // reset validation alert, if all goes to plan, it won't show
+                $('#cap-valid').hide();
+                $('#opt-valid').hide();
 
-        $('input[type="text"]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
 
-        // ***************** END VALIDATION ********************//
+                $('select:visible').each(function () {
+                    // ignore class=opt
+                    if (!$(this).hasClass("opt")) {
+                        // Check if at least one selection is made
+                        if ($(this).val().length > 0) {
+                            $(this).removeClass('empty');
+                        } else {
+                            $(this).addClass('empty');
+                            $('#cap-valid').show();
+                        }
+                    }
+                    if ($(this).hasClass("opt")) {
+                        // Check if at least one selection is made
+                        if ($.trim($(this).val()).length > 0) {
+                            $(this).removeClass('empty-opt');
+                        } else {
+                            $(this).addClass('empty-opt');
+                            $('#opt-valid').show();
+                        }
+                    }
+                });
+
+                $('input:visible').each(function () {
+                    // ignore search bar in menu
+                    if ($(this).prop('type') != "search"){
+                        // ignore class=opt
+                        if (!$(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty');
+                            } else {
+                                $(this).addClass('empty');
+                                $('#cap-valid').show();
+                            }
+                        }
+                        if ($(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty-opt');
+                            } else {
+                                $(this).addClass('empty-opt');
+                                $('#opt-valid').show();
+                            }
+                        }
+                    }
+
+                });
+
+        // *************************** END VALIDATION ******************************//
+
 
 
         var captext = "Distal Bile Duct Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
@@ -285,12 +320,13 @@ $(window).on('load', function () {
         var box_8 = $("#box8").val();
         var box_11 = $("#box11").val();
         var box_11_2 = $("#box11_2").val();
+        var box_27 = $("#box27").val();
         if (box_8.indexOf("uninvolved") > -1) {
             captext += "\nMargins:\n- " + box_8;
             if ($.inArray('Other', box_11) > -1) {
-                captext += "\nMargins examined: " + box_11.join(', ').replace(/Other/, box_11_2) + "\n";
+                captext += "\nMargins examined: " + box_27.join(', ').replace(/Other/, box_27_2) + "\n";
             } else {
-                captext += "\nMargins examined: " + box_11.join(', ') + "\n";
+                captext += "\nMargins examined: " + box_27.join(', ') + "\n";
             }
         } else if (box_8.indexOf("involved") > -1) {
             captext += "\nMargins:";
@@ -298,14 +334,14 @@ $(window).on('load', function () {
             if (box_1.indexOf('segmental resection') > -1) {
                 // segmental resection
                 var box_9 = $("#box9").val();
-                captext += "\n- Proximal Bile duct:\n";
+                captext += "\nProximal Bile Duct Margin:\n";
 
                 var box_10 = $("#box10").val();
-                captext += "\n- Distal Bile duct:\n";
+                captext += "\nDistal Bile Duct Margin:\n";
 
                 var box_16 = $("#box16").val();
                 var box_16_2 = $("#box16_2").val();
-                captext += "\n- Radial:\n";
+                captext += "\nRadial Margin:\n";
                 var negbox_16 = box_16.filter(function (el) {
                     return el.indexOf("Uninvolved") > -1;
                 });
@@ -327,7 +363,7 @@ $(window).on('load', function () {
                 var posbox_11 = box_11.filter(function (el) {
                     return el.indexOf("Involved") > -1;
                 });
-                captext += "\n- Pancreatic neck/parenchymal:\n";
+                captext += "\nPancreatic neck/parenchymal Margin:\n";
                 if (negbox_11.length > 0) {
                     captext += "\t- " + negbox_11 + "\n\t- Distance of invasive carcinoma to this margin: " + box_11_2.replace(/mm/, "") + "mm\n";
                 }
@@ -338,16 +374,14 @@ $(window).on('load', function () {
                 var box_12 = $("#box12").val();
                 var box_12_2 = $("#box12_2").val();
                 if (box_12.indexOf("Uninvolved") > -1) {
-                    captext += "\n - Uncinate:\n\t- " + box_12 + "\n\t- Distance of invasive carcinoma to this margin: " + box_12_2.replace(/mm/, "") + "mm\n";
-                } else if (box_12.indexOf("Involved") > -1) {
-                    captext += "\n- Uncinate:\n\t- " + box_12 + "\n";
+                    captext += "\nUncinate Margin:\n\t- " + box_12 + "\n\t- Distance of invasive carcinoma to this margin: " + box_12_2.replace(/mm/, "") + "mm\n";
                 } else {
-                    captext += "\n- Uncinate:\n\t- " + box_12 + "\n";
+                    captext += "\nUncinate Margin:\n\t- " + box_12 + "\n";
                 }
 
                 var box_13 = $("#box13").val();
                 var box_13_2 = $("#box13_2").val();
-                captext += "\n- Bile duct:\n";
+                captext += "\nBile Duct Margin:\n";
                 var negbox_13 = box_13.filter(function (el) {
                     return el.indexOf("Uninvolved") > -1;
                 });
@@ -362,17 +396,17 @@ $(window).on('load', function () {
                 }
 
                 var box_14 = $("#box14").val();
-                captext += "\n- Proximal Margin:\n\t- " + box_14.join('\n\t- ') + "\n";
+                captext += "\nProximal Margin:\n\t- " + box_14.join('\n\t- ') + "\n";
 
                 var box_15 = $("#box15").val();
-                captext += "\n- Distal Margin:\n\t- " + box_15.join('\n\t- ') + "\n";
+                captext += "\nDistal Margin:\n\t- " + box_15.join('\n\t- ') + "\n";
             }
         }
 
         var box_17 = $("#box17").val();
         var box_17_2 = $("#box17_2").val();
         if (box_17.indexOf('Not') < 0) {
-            captext += "\n- " + box_17_2 + " Margin:\n\t- " + box_17 + "\n";
+            captext += "\n" + box_17_2 + " Margin:\n\t- " + box_17 + "\n";
         }
 
         var box_18 = $("#box18").val();
@@ -410,10 +444,12 @@ $(window).on('load', function () {
 
         var box_28 = $("#box28").val();
         var box_28_2 = $("#box28_2").val();
-        if ($.inArray('Other', box_28) > -1) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_28.join('\n- ').replace(/Other/, box_28_2) + "\n";
-        } else {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_28.join('\n- ') + "\n";
+        if (box_28.length  > 0){
+            if ($.inArray('Other', box_28) > -1) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_28.join('\n- ').replace(/Other/, box_28_2) + "\n";
+            } else {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_28.join('\n- ') + "\n";
+            }
         }
 
         $('#outPut-1').val(captext);

@@ -28,7 +28,7 @@
                 <option data-location="resection">Abdominoperineal resection</option>
                 <option data-location="emr">Transanal disk excision (mucosal resection)</option>
                 <option data-location="emr">Polypectomy</option>
-                <option>Not specified</option>
+                <option data-location="resection">Not specified</option>
             </select>
 
 
@@ -165,6 +165,9 @@
                 <option>One or more margins involved by neoplasia</option>
             </select>
             <div class="negmargins ml-3">
+
+                <div class="py-2 w-100"></div>
+
                 <h6 class="mt-3">Choose margins examined</h6>
                 <select multiple id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
                     <option>proximal</option>
@@ -179,26 +182,30 @@
             </div>
 
 
-            <hr class="p-2">
             <div class="posmargins ml-3" style="display: none;" >
-                <div class="segmental p-2" >
-                    <h6 class="mt-2">Proximal Margin</h6>
+                <div class="segmental" >
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Proximal Margin</h6>
                     <select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
                         <option>Cannot be assessed</option>
                         <option>Uninvolved by tumor</option>
                         <option>Involved by tumor</option>
                     </select>
 
+                    <div class="py-2 w-100"></div>
 
-                    <h6 class="mt-3">Distal Margin</h6>
+                    <h6>Distal Margin</h6>
                     <select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
                         <option>Cannot be assessed</option>
                         <option>Uninvolved by tumor</option>
                         <option>Involved by tumor</option>
                     </select>
 
+                    <div class="py-2 w-100"></div>
 
-                    <h6 class="mt-3">Radial Margin</h6>
+                    <h6>Radial Margin</h6>
                     <select id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
                         <option>Cannot be assessed</option>
                         <option>Uninvolved by tumor</option>
@@ -207,15 +214,20 @@
 
                 </div><!-- end segmental margins-->
 
-                <div class="emr p-2" style="display: none;">
-                    <h6 class="mt-2">Mucosal Margin</h6>
+                <div class="emr" style="display: none;">
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Mucosal Margin</h6>
                     <select id="box20" class='form-control selectpicker form-control-sm col-sm-6'>
                         <option>Cannot be assessed</option>
                         <option>Uninvolved by tumor</option>
                         <option>Involved by tumor</option>
                     </select>
 
-                    <h6 class="mt-3">Deep Margin</h6>
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Deep Margin</h6>
                     <select id="box21" class='form-control selectpicker form-control-sm col-sm-6'>
                         <option>Cannot be assessed</option>
                         <option>Uninvolved by tumor</option>
@@ -223,8 +235,11 @@
                     </select>
                 </div>
 
-                <div class="other p-2">
-                    <h6 class="mt-4">Other Margin</h6>
+                <div class="other">
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Other Margin</h6>
                     <select id="box22" class='form-control selectpicker form-control-sm col-sm-6'>
                         <option selected>Not applicable</option>
                         <option>Cannot be assessed</option>
@@ -254,6 +269,7 @@
             <hr class="p-2" >
             <h5>+ Perineural Invasion</h5>
             <select id="box24" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                <option></option>
                 <option>Not identified</option>
                 <option>Present</option>
                 <option>Cannot be determined</option>
@@ -275,6 +291,9 @@
                 <option>r</option>
                 <option>y</option>
             </select>
+
+            <div class="py-2 w-100"></div>
+
             <h6 class='mt-2'>pT</h6>
             <select id="box26" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option value="pTX">pTX: Primary tumor cannot be assessed</option>
@@ -286,6 +305,7 @@
                 <option value="pT4">pT4: Tumor invades visceral peritoneum (serosa) or other organs/structures</option>
             </select>
 
+            <div class="py-2 w-100"></div>
 
             <h6 class='mt-2'>pN</h6>
             <select id="box27" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -294,6 +314,7 @@
                 <option value="pN1">pN1: Regional lymph node metastasis</option>
             </select>
 
+            <div class="py-2 w-100"></div>
 
             <h6 class='mt-2'>pM</h6>
             <select id="box28" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -303,6 +324,8 @@
                 <option value="pM1c">pM1c: Both hepatic and extrahepatic metastases</option>
             </select>
             <input type="text" class="form-control form-control-sm col-sm-6" id="box28_2" style="display:none;" placeholder="Specify metastatic sites">
+
+            <div class="py-2 w-100"></div>
 
             <form class="form-inline mt-2">
                 <label class="form-check-label">Check here if any lymph nodes submitted?
@@ -321,6 +344,7 @@
             <hr class="p-2" >
             <h5>+ Additional Pathologic Findings</h5>
             <select id="box32" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                <option></option>
                 <option>None identified</option>
                 <option>Tumor necrosis</option>
                 <option>Other</option>

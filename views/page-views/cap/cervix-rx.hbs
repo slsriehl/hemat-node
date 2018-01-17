@@ -105,17 +105,21 @@
             <hr class="p-2">
             <h5>Stromal invasion</h5>
 
-
+            <div class="ml-3">
             <h6>Depth of stromal invasion (mm)</h6>
             <input type="text" class="form-control form-control-sm col-sm-6" id="box5" placeholder="">
 
+            <div class="py-2 w-100"></div>
 
-            <h6>Horizontal extent longitudinal/length (mm)</h6>
-            <input type="text" class="form-control form-control-sm col-sm-6" id="box6" placeholder="if applicable">
+            <h6>+Horizontal extent longitudinal/length (mm)</h6>
+            <input type="text" class="form-control form-control-sm col-sm-6 opt" id="box6" placeholder="if applicable">
 
+            <div class="py-2 w-100"></div>
 
-            <h6>Horizontal extent circumferential/width (mm)</h6>
-            <input type="text" class="form-control form-control-sm col-sm-6" id="box7" placeholder="if applicable">
+            <h6>+Horizontal extent circumferential/width (mm)</h6>
+            <input type="text" class="form-control form-control-sm col-sm-6 opt" id="box7" placeholder="if applicable">
+
+            </div>
 
 
             <hr class="p-2">
@@ -152,7 +156,7 @@
             <hr class="p-2">
             <h5>Margins - Ectocervical</h5>
 
-            <select id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select multiple id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option>Cannot be assessed</option>
                 <option>Uninvolved by invasive carcinoma</option>
                 <option>Involved by invasive carcinoma</option>
@@ -207,6 +211,9 @@
                 <option>r</option>
                 <option>y</option>
             </select>
+
+            <div class="py-2 w-100"></div>
+
             <h6 class='mt-2'>pT</h6>
             <select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option value="pT0">pT0: No evidence of primary tumor</option>
@@ -283,6 +290,7 @@
                 </option>
             </select>
 
+            <div class="py-2 w-100"></div>
 
             <h6 class='mt-2'>pN
                 <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
@@ -297,6 +305,7 @@
                 <option value="pN1">pN1: Regional lymph node metastasis</option>
             </select>
 
+            <div class="py-2 w-100"></div>
 
             <h6 class='mt-2'>pM</h6>
             <select id="box15" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -304,36 +313,51 @@
                 <option value="pM1">pM1: Distant metastasis</option>
             </select>
 
+            <div class="py-2 w-100"></div>
+
             <form class="form-inline">
                 <label class="form-check-label">Check here if any lymph nodes submitted?
                     <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box16">
                 </label>
             </form>
-            <div class='lnchk' style='display:none;'>
+            <div class='lnchk form-inline' style='display:none;'>
                 Total lymph nodes (sentinel and non-sentinel) examined:
-                <input type="number" class="form-control form-control-sm col-sm-6" id="box17" style="width:100px">
+                <input type="number" class="form-control form-control-sm col-sm-3" id="box17" style="width:100px">
+
+                <div class="py-2 w-100"></div>
+
 
                 Number of Sentinel Nodes Examined:
-                <input type="number" class="form-control form-control-sm col-sm-6" id="box18" style="width:100px"
+                <input type="number" class="form-control form-control-sm col-sm-3" id="box18" style="width:100px"
                        placeholder="0">
 
+                <div class="py-2 w-100"></div>
+
+
                 Number of lymph nodes involved (> 0.2 mm metastasis):
-                <input type="number" class="form-control form-control-sm col-sm-6" id="box19" style="width:100px">
+                <input type="number" class="form-control form-control-sm col-sm-3" id="box19" style="width:100px">
+
+                <div class="py-2 w-100"></div>
+
 
                 Number of lymph nodes with Isolated Tumor Cells (ITCs) (0.2 mm or less)
                 <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
                    title="Reporting the number of lymph nodes with isolated tumor cells is required only in the absence of metastasis greater than 0.2 mm in other lymph nodes."
                    aria-hidden="true"></i>
-                <input type="text" class="form-control form-control-sm col-sm-6" id="box20" style="width:100px"
+                <input type="text" class="form-control form-control-sm col-sm-3" id="box20" style="width:100px"
                        placeholder="if applicable">
 
-                Specify Lymph Node(s) involved by Tumor:
-                <i class="fa fa-question-circle ml-2" data-toggle="tooltip"
-                   title="Note: Information should include location and laterality of sentinel or non-sentinel regional lymph nodes with tumor."
-                   aria-hidden="true"></i>
-                <input type="text" class="form-control form-control-sm col-sm-6" id="box21"
-                       placeholder="List nodes by designation">
+                <div class="py-2 w-100"></div>
 
+
+                <div class="posnodes" style="display: none;">
+                    Specify Lymph Node(s) involved by Tumor:
+                    <i class="fa fa-question-circle ml-2" data-toggle="tooltip"
+                       title="Note: Information should include location and laterality of sentinel or non-sentinel regional lymph nodes with tumor."
+                       aria-hidden="true"></i>
+                    <input type="text" class="form-control form-control-sm col-sm-3" id="box21"
+                           placeholder="List nodes by designation">
+                </div>
             </div>
 
 
@@ -354,6 +378,7 @@
             <hr class="p-2">
             <h5>+ p16 Immunohistochemistry</h5>
             <select id="box26" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                <option></option>
                 <option>Positive</option>
                 <option>Negative</option>
             </select>

@@ -86,14 +86,20 @@ $(window).on('load', function () {
 
     $('#box9').on("change", function () {
         var sela = $('#box9').val();
-        if (sela.indexOf('Uninvolved') > -1) {
+        var neg = sela.filter(function (el) {
+                    return el.indexOf('Uninvolved by invasive') > -1;
+                });
+        var pos = sela.filter(function (el) {
+                    return el.indexOf('Involved by invasive') > -1;
+                });
+        if (neg.length > 0) {
             $('#box9_1').show();
             $('#box9_2').show();
         } else {
             $('#box9_1').hide();
             $('#box9_2').hide();
         }
-        if (sela.indexOf("Involved") > -1) {
+        if (pos.length > 0) {
             $('#box9_3').show();
         } else {
             $('#box9_3').hide();
@@ -124,6 +130,16 @@ $(window).on('load', function () {
         }
     });
 
+    $("#box19, #box20").on("input", function(){
+        var num = parseInt($(this).val(), 10);
+        if (num > 0){
+            $(".posnodes").show();
+        } else {
+            $(".posnodes").hide();
+        }
+
+    });
+
     $('#box22').on("change", function () {
         var sel = $('#box22').val();
         if ($.inArray('Other', sel) > -1) {
@@ -138,33 +154,66 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
+
         // ***************** INPUT VALIDATION ********************//
-        $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
-
-        $('input[type="text"]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                if ($(this).attr('placeholder').indexOf('applicable') < 0) {
-                    $(this).addClass('empty');
-                    $('#cap-valid').show();
-                }
-            }
-        });
-
-        // ***************** END VALIDATION ********************//
+                // reset validation alert, if all goes to plan, it won't show
+                $('#cap-valid').hide();
+                $('#opt-valid').hide();
 
 
-        var captext = "_____ Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
+                $('select:visible').each(function () {
+                    // ignore class=opt
+                    if (!$(this).hasClass("opt")) {
+                        // Check if at least one selection is made
+                        if ($(this).val().length > 0) {
+                            $(this).removeClass('empty');
+                        } else {
+                            $(this).addClass('empty');
+                            $('#cap-valid').show();
+                        }
+                    }
+                    if ($(this).hasClass("opt")) {
+                        // Check if at least one selection is made
+                        if ($.trim($(this).val()).length > 0) {
+                            $(this).removeClass('empty-opt');
+                        } else {
+                            $(this).addClass('empty-opt');
+                            $('#opt-valid').show();
+                        }
+                    }
+                });
+
+                $('input:visible').each(function () {
+                    // ignore search bar in menu
+                    if ($(this).prop('type') != "search"){
+                        // ignore class=opt
+                        if (!$(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty');
+                            } else {
+                                $(this).addClass('empty');
+                                $('#cap-valid').show();
+                            }
+                        }
+                        if ($(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty-opt');
+                            } else {
+                                $(this).addClass('empty-opt');
+                                $('#opt-valid').show();
+                            }
+                        }
+                    }
+
+                });
+
+        // *************************** END VALIDATION ******************************//
+
+
+
+        var captext = "Cervical Cancer (resection) Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
 
         var box_1 = $("#box1").val();
         var box_1_2 = $("#box1_2").val();
@@ -199,17 +248,18 @@ $(window).on('load', function () {
         var box_4 = $("#box4").val();
         captext += "\nHistologic Grade:\n- " + box_4 + "\n";
 
+        captext += "\nStromal invasion:";
         var box_5 = $("#box5").val();
-        captext += "\nDepth of stromal invasion:\n- " + box_5.replace(/mm/, '') + "mm\n";
+        captext += "\nDepth of stromal invasion: " + box_5.replace(/mm/, '') + "mm\n";
 
         var box_6 = $("#box6").val();
         if (box_6.length > 0) {
-            captext += "\nHorizontal extent longitudinal/length:\n- " + box_6.replace(/mm/, '') + "mm\n";
+            captext += "Horizontal extent longitudinal/length: " + box_6.replace(/mm/, '') + "mm\n";
         }
 
         var box_7 = $("#box7").val();
         if (box_7.length > 0) {
-            captext += "\nHorizontal extent circumferential/width:\n- " + box_7.replace(/mm/, '') + "mm\n";
+            captext += "Horizontal extent circumferential/width: " + box_7.replace(/mm/, '') + "mm\n";
         }
 
         var box_8 = $("#box8").val();
@@ -224,9 +274,9 @@ $(window).on('load', function () {
         var box_9_1 = $("#box9_1").val();
         var box_9_2 = $("#box9_2").val();
         var box_9_3 = $("#box9_3").val();
-        if (box_9.indexOf("Uninvolved") > -1) {
+        if ($.inArray('Uninvolved by invasive', box_9) > -1) {
             captext += "\nMargins - Ectocervical:\n- " + box_9 + "\n- Nearest margin: " + box_9_1 + "\n- Distance to this margin: " + box_9_2.replace(/mm/, "") + "mm\n";
-        } else if (box_9.indexOf("Involved") > -1) {
+        } else if ($.inArray('Involved by invasive', box_9) > -1) {
             captext += "\nMargins - Ectocervical:\n- " + box_9 + "\n- Margin involved: " + box_9_3 + "\n";
         } else {
             captext += "\nMargins - Ectocervical:\n- " + box_9 + "\n";
@@ -262,17 +312,17 @@ $(window).on('load', function () {
             var box_17 = $("#box17").val();
             var box_18 = $("#box18").val();
             var box_19 = $("#box19").val();
-            captext += "\nLymph nodes:\n" + "\tTotal Number of Nodes Examined: " + box_17 + "\n" + "\tNumber of Sentinel Nodes Examined: " + box_18 + "\n";
+            captext += "\nLymph nodes:\n\tTotal Number of Nodes Examined: " + box_17 + "\n\tNumber of Sentinel Nodes Examined: " + box_18 + "\n";
             captext += "\tNumber of Nodes Involved: " + box_19 + "\n";
 
             var box_20 = $("#box20").val();
             if (box_20.length > 0) {
-                captext += "\tNumber of Nodes with Isolated Tumor Cells (ITCs): " + box_20 + "\n";
+                captext += "\tNumber of Nodes with Isolated Tumor Cells: " + box_20 + "\n";
             }
 
             var box_21 = $("#box21").val();
             if (box_21 != "Not applicable") {
-                captext += "\n\tSpecify Lymph Node(s) with Tumor :\n\t- " + box_21 + "\n";
+                captext += "\tLymph Node(s) with Tumor: " + box_21 + "\n";
             }
         } else {
             captext += "\nLymph nodes: None submitted\n";
@@ -280,20 +330,22 @@ $(window).on('load', function () {
 
         var box_25 = $("#box25").val();
         var box_25_2 = $("#box25_2").val();
-        if ($.inArray('Other', box_25) > -1) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_25.join('\n- ').replace(/Other/, box_25_2) + "\n";
-        } else {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_25.join('\n- ') + "\n";
+        if (box_25.length  > 0){
+            if ($.inArray('Other', box_25) > -1) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_25.join('\n- ').replace(/Other/, box_25_2) + "\n";
+            } else {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_25.join('\n- ') + "\n";
+            }
         }
 
-        var box_23 = $("#box26").val();
-        if (box_23 != "Not applicable") {
-            captext += "\n+ p16 Immunohistochemistry:\n- " + box_23 + "\n";
+        var box_26 = $("#box26").val();
+        if (box_26.length > 0) {
+            captext += "\n+ p16 Immunohistochemistry:\n- " + box_26 + "\n";
         }
 
-        var box_24 = $("#box27").val();
-        if (box_24.length > 0) {
-            captext += "\n+ Ancillary Studies:\n- " + box_24 + "\n";
+        var box_27 = $("#box27").val();
+        if (box_27.length > 0) {
+            captext += "\n+ Ancillary Studies:\n- " + box_27 + "\n";
         }
 
         $('#outPut-1').val(captext);

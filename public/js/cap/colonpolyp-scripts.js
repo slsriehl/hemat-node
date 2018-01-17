@@ -91,28 +91,63 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
+
         // ***************** INPUT VALIDATION ********************//
-        $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
+                // reset validation alert, if all goes to plan, it won't show
+                $('#cap-valid').hide();
+                $('#opt-valid').hide();
 
-        $('input[type="text"]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
 
-        // ***************** END VALIDATION ********************//
+                $('select:visible').each(function () {
+                    // ignore class=opt
+                    if (!$(this).hasClass("opt")) {
+                        // Check if at least one selection is made
+                        if ($(this).val().length > 0) {
+                            $(this).removeClass('empty');
+                        } else {
+                            $(this).addClass('empty');
+                            $('#cap-valid').show();
+                        }
+                    }
+                    if ($(this).hasClass("opt")) {
+                        // Check if at least one selection is made
+                        if ($.trim($(this).val()).length > 0) {
+                            $(this).removeClass('empty-opt');
+                        } else {
+                            $(this).addClass('empty-opt');
+                            $('#opt-valid').show();
+                        }
+                    }
+                });
+
+                $('input:visible').each(function () {
+                    // ignore search bar in menu
+                    if ($(this).prop('type') != "search"){
+                        // ignore class=opt
+                        if (!$(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty');
+                            } else {
+                                $(this).addClass('empty');
+                                $('#cap-valid').show();
+                            }
+                        }
+                        if ($(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty-opt');
+                            } else {
+                                $(this).addClass('empty-opt');
+                                $('#opt-valid').show();
+                            }
+                        }
+                    }
+
+                });
+
+        // *************************** END VALIDATION ******************************//
+
 
 
         var captext = "Colon Cancer (Polypectomy) Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
@@ -126,20 +161,18 @@ $(window).on('load', function () {
         }
 
         var box_2 = $("#box2").val();
-        captext += "\n+ Specimen Integrity:\n- " + box_2 + "\n";
+        if (box_2.length  > 0){
+            captext += "\n+ Specimen Integrity:\n- " + box_2 + "\n";
+        }
 
         var box_3 = $("#box3").val();
-        if (box_3.indexOf("n/a") < 0) {
+        if (box_3.length > 0) {
             captext += "\n+ Polyp Size:\n- " + box_3.replace(/cm/, '') + "cm\n";
-        } else {
-            captext += "\n+ Polyp Size: Cannot be determined\n";
         }
 
         var box_4 = $("#box4").val();
-        if (box_3.indexOf("n/a") < 0) {
+        if (box_4.length > 0) {
             captext += "\n+ Size of Invasive Carcinoma:\n- " + box_4.replace(/cm/, '') + "cm\n";
-        } else {
-            captext += "\n+ Size of Invasive Carcinoma: Cannot be determined\n";
         }
 
         var box_5 = $("#box5").val();
@@ -162,8 +195,9 @@ $(window).on('load', function () {
         captext += "\nTumor Extension:\n- " + box_7 + "\n";
 
         var box_13 = $("#box13").val();
-        captext += '\nPathologic Staging (pTNM): ' + box_13 + " pNx pMx";
+        captext += '\nPathologic Staging (pTNM): ' + box_13 + " pNx pMx"+"\n";
 
+        captext += "\nMargins:";
         var box_8 = $("#box8").val();
         var box_8_2 = $("#box8_2").val();
         if (box_8.indexOf("Uninvolved") > -1) {
@@ -182,10 +216,12 @@ $(window).on('load', function () {
 
         var box_11 = $("#box11").val();
         var box_11_2 = $("#box11_2").val();
-        if (box_11.indexOf("Other") > -1) {
-            captext += "\n+ Type of Polyp in Which Invasive Carcinoma Arose:\n- " + box_11_2 + "\n";
-        } else {
-            captext += "\n+ Type of Polyp in Which Invasive Carcinoma Arose:\n- " + box_11 + "\n";
+        if (box_11.length  > 0){
+            if (box_11.indexOf("Other") > -1) {
+                captext += "\n+ Type of Polyp in Which Invasive Carcinoma Arose:\n- " + box_11_2 + "\n";
+            } else {
+                captext += "\n+ Type of Polyp in Which Invasive Carcinoma Arose:\n- " + box_11 + "\n";
+            }
         }
 
         var box_12 = $("#box12").val();
@@ -197,14 +233,16 @@ $(window).on('load', function () {
         var trig2_box_12 = box_12.filter(function (el) {
             return el.indexOf("Other") > -1;
         });
-        if (trig1_box_12.length > 0 && trig2_box_12.length == 0) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_12.join("\n- ").replace(/, specify/, ": " + box_12_2) + "\n";
-        } else if (trig1_box_12.length == 0 && trig2_box_12.length > 0) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_12.join("\n- ").replace(/Other/, box_12_3) + "\n";
-        } else if (trig1_box_12.length > 0 && trig2_box_12.length > 0) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_12.join("\n- ").replace(/, specify/, ": " + box_12_2).replace(/Other/, box_12_3) + "\n";
-        } else {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_12.join("\n- ") + "\n";
+        if (box_12.length  > 0){
+            if (trig1_box_12.length > 0 && trig2_box_12.length == 0) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_12.join("\n- ").replace(/, specify/, ": " + box_12_2) + "\n";
+            } else if (trig1_box_12.length == 0 && trig2_box_12.length > 0) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_12.join("\n- ").replace(/Other/, box_12_3) + "\n";
+            } else if (trig1_box_12.length > 0 && trig2_box_12.length > 0) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_12.join("\n- ").replace(/, specify/, ": " + box_12_2).replace(/Other/, box_12_3) + "\n";
+            } else {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_12.join("\n- ") + "\n";
+            }
         }
 
         $('#outPut-1').val(captext);
