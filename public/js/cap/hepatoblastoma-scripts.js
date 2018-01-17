@@ -171,28 +171,62 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
+
         // ***************** INPUT VALIDATION ********************//
-        $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
+                    // reset validation alert, if all goes to plan, it won't show
+                    $('#cap-valid').hide();
+                    $('#opt-valid').hide();
 
-        $('input[type="text"]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
 
-        // ***************** END VALIDATION ********************//
+                    $('select:visible').each(function () {
+                        // ignore class=opt
+                        if (!$(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($(this).val().length > 0) {
+                                $(this).removeClass('empty');
+                            } else {
+                                $(this).addClass('empty');
+                                $('#cap-valid').show();
+                            }
+                        }
+                        if ($(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty-opt');
+                            } else {
+                                $(this).addClass('empty-opt');
+                                $('#opt-valid').show();
+                            }
+                        }
+                    });
+
+                    $('input:visible').each(function () {
+                        // ignore search bar in menu
+                        if ($(this).prop('type') != "search"){
+                            // ignore class=opt
+                            if (!$(this).hasClass("opt")) {
+                                // Check if at least one selection is made
+                                if ($.trim($(this).val()).length > 0) {
+                                    $(this).removeClass('empty');
+                                } else {
+                                    $(this).addClass('empty');
+                                    $('#cap-valid').show();
+                                }
+                            }
+                            if ($(this).hasClass("opt")) {
+                                // Check if at least one selection is made
+                                if ($.trim($(this).val()).length > 0) {
+                                    $(this).removeClass('empty-opt');
+                                } else {
+                                    $(this).addClass('empty-opt');
+                                    $('#opt-valid').show();
+                                }
+                            }
+                        }
+
+                    });
+
+                    // *************************** END VALIDATION ******************************//
 
 
         var captext = "Hepatoblastoma Tumor Synoptic\n\n";
@@ -227,7 +261,9 @@ $(window).on('load', function () {
         }
 
         var box_4 = $("#box4").val();
-        captext += "\n+ Tumor Focality:\n- " + box_4 + "\n";
+        if (box_4.length > 0) {
+            captext += "\n+ Tumor Focality:\n- " + box_4 + "\n";
+        }
 
         var box_6 = $("#box6").val();
         var box_6_2 = $("#box6_2").val();
@@ -238,14 +274,16 @@ $(window).on('load', function () {
         var trig2_box_6 = box_6.filter(function (el) {
             return el.indexOf("Other") > -1;
         });
-        if (trig1_box_6.length > 0 && trig2_box_6.length == 0) {
-            captext += "\n+ Macroscopic Extent of Tumor:\n- " + box_6.join("\n- ").replace(/organs/, "organs: " + box_6_2) + "\n";
-        } else if (trig1_box_6.length == 0 && trig2_box_6.length > 0) {
-            captext += "\n+ Macroscopic Extent of Tumor:\n- " + box_6.join("\n- ").replace(/Other/, box_6_3) + "\n";
-        } else if (trig1_box_6.length > 0 && trig2_box_6.length > 0) {
-            captext += "\n+ Macroscopic Extent of Tumor:\n- " + box_6.join("\n- ").replace(/organs/, "organs: " + box_6_2).replace(/Other/, box_6_3) + "\n";
-        } else {
-            captext += "\n+ Macroscopic Extent of Tumor:\n- " + box_6.join("\n- ") + "\n";
+        if (box_6.length > 0) {
+            if (trig1_box_6.length > 0 && trig2_box_6.length == 0) {
+                captext += "\n+ Macroscopic Extent of Tumor:\n- " + box_6.join("\n- ").replace(/organs/, "organs: " + box_6_2) + "\n";
+            } else if (trig1_box_6.length == 0 && trig2_box_6.length > 0) {
+                captext += "\n+ Macroscopic Extent of Tumor:\n- " + box_6.join("\n- ").replace(/Other/, box_6_3) + "\n";
+            } else if (trig1_box_6.length > 0 && trig2_box_6.length > 0) {
+                captext += "\n+ Macroscopic Extent of Tumor:\n- " + box_6.join("\n- ").replace(/organs/, "organs: " + box_6_2).replace(/Other/, box_6_3) + "\n";
+            } else {
+                captext += "\n+ Macroscopic Extent of Tumor:\n- " + box_6.join("\n- ") + "\n";
+            }
         }
 
         var box_7 = $("#box7").val();
@@ -261,7 +299,7 @@ $(window).on('load', function () {
 
         var box_9 = $("#box9").val();
         var box_9_2 = $("#box9_2").val();
-        if (box_9 != "Not applicable") {
+        if (box_9.length > 0) {
             if (box_9.indexOf("Present") > -1) {
                 captext += "\n+ Treatment Effect:\n- Present: " + box_9_2 + "% tumor necrosis\n";
             } else {
@@ -290,7 +328,9 @@ $(window).on('load', function () {
         }
 
         var box_12 = $("#box12").val();
-        captext += "\n+ Lymph-Vascular Invasion, Macroscopic:\n- " + box_12.join('\n- ') + "\n";
+        if (box_12.length > 0) {
+            captext += "\n+ Lymph-Vascular Invasion, Macroscopic:\n- " + box_12.join('\n- ') + "\n";
+        }
 
         var box_13 = $("#box13").val();
         captext += "\nLymph-Vascular Invasion, Microscopic:\n- " + box_13 + "\n";
@@ -327,14 +367,16 @@ $(window).on('load', function () {
         var trig2_box_20 = box_20.filter(function (el) {
             return el.indexOf("Other") > -1;
         });
-        if (trig1_box_20.length > 0 && trig2_box_20.length == 0) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_20.join("\n- ").replace(/Hepatitis/, "Hepatitis: " + box_20_2) + "\n";
-        } else if (trig1_box_20.length == 0 && trig2_box_20.length > 0) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_20.join("\n- ").replace(/Other/, box_20_3) + "\n";
-        } else if (trig1_box_20.length > 0 && trig2_box_20.length > 0) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_20.join("\n- ").replace(/Hepatitis/, "Hepatitis: " + box_20_2).replace(/Other/, box_20_3) + "\n";
-        } else {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_20.join("\n- ") + "\n";
+        if (box_20.length > 0) {
+            if (trig1_box_20.length > 0 && trig2_box_20.length == 0) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_20.join("\n- ").replace(/Hepatitis/, "Hepatitis: " + box_20_2) + "\n";
+            } else if (trig1_box_20.length == 0 && trig2_box_20.length > 0) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_20.join("\n- ").replace(/Other/, box_20_3) + "\n";
+            } else if (trig1_box_20.length > 0 && trig2_box_20.length > 0) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_20.join("\n- ").replace(/Hepatitis/, "Hepatitis: " + box_20_2).replace(/Other/, box_20_3) + "\n";
+            } else {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_20.join("\n- ") + "\n";
+            }
         }
 
         var box_21 = $("#box21").val();
@@ -342,10 +384,12 @@ $(window).on('load', function () {
 
         var box_22 = $("#box22").val();
         var box_22_2 = $("#box22_2").val();
-        if ($.inArray('Other', box_22) > -1) {
-            captext += "\n+ Ancillary Studies:\n- " + box_22.join('\n- ').replace(/Other/, box_22_2) + "\n";
-        } else {
-            captext += "\n+ Ancillary Studies:\n- " + box_22.join('\n- ') + "\n";
+        if (box_22.length > 0) {
+            if ($.inArray('Other', box_22) > -1) {
+                captext += "\n+ Ancillary Studies:\n- " + box_22.join('\n- ').replace(/Other/, box_22_2) + "\n";
+            } else {
+                captext += "\n+ Ancillary Studies:\n- " + box_22.join('\n- ') + "\n";
+            }
         }
 
         $('#outPut-1').val(captext);

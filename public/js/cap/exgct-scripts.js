@@ -30,6 +30,11 @@ $(window).on('load', function () {
         } else {
             $('#box3_2').hide();
         }
+        if (sel == "Sacrococcygeal") {
+            $(".sacro").show();
+        } else {
+            $(".sacro").hide();
+        }
     });
 
     $('#box5').on("change", function () {
@@ -43,6 +48,11 @@ $(window).on('load', function () {
             $('#box5_3').show();
         } else {
             $('#box5_3').hide();
+        }
+        if (sel.indexOf("Immature") > -1){
+            $(".it").show();
+        } else {
+            $(".it").hide();
         }
     });
 
@@ -98,28 +108,62 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
+
         // ***************** INPUT VALIDATION ********************//
-        $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
+                    // reset validation alert, if all goes to plan, it won't show
+                    $('#cap-valid').hide();
+                    $('#opt-valid').hide();
 
-        $('input[type="text"]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
 
-        // ***************** END VALIDATION ********************//
+                    $('select:visible').each(function () {
+                        // ignore class=opt
+                        if (!$(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($(this).val().length > 0) {
+                                $(this).removeClass('empty');
+                            } else {
+                                $(this).addClass('empty');
+                                $('#cap-valid').show();
+                            }
+                        }
+                        if ($(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty-opt');
+                            } else {
+                                $(this).addClass('empty-opt');
+                                $('#opt-valid').show();
+                            }
+                        }
+                    });
+
+                    $('input:visible').each(function () {
+                        // ignore search bar in menu
+                        if ($(this).prop('type') != "search"){
+                            // ignore class=opt
+                            if (!$(this).hasClass("opt")) {
+                                // Check if at least one selection is made
+                                if ($.trim($(this).val()).length > 0) {
+                                    $(this).removeClass('empty');
+                                } else {
+                                    $(this).addClass('empty');
+                                    $('#cap-valid').show();
+                                }
+                            }
+                            if ($(this).hasClass("opt")) {
+                                // Check if at least one selection is made
+                                if ($.trim($(this).val()).length > 0) {
+                                    $(this).removeClass('empty-opt');
+                                } else {
+                                    $(this).addClass('empty-opt');
+                                    $('#opt-valid').show();
+                                }
+                            }
+                        }
+
+                    });
+
+                    // *************************** END VALIDATION ******************************//
 
 
         var captext = "Extra-gonadal Germ Cell Tumor Synoptic\n(COG staging system)\n\n";
@@ -159,9 +203,9 @@ $(window).on('load', function () {
 
         var box_7 = $("#box7").val();
         var box_7_2 = $("#box7_2").val();
-        if (box_7.indexOf("Not") < 0) {
+        if (box_7.length > 0) {
             if (box_7.indexOf("Grade 3") > -1) {
-                captext += "\n+ Histologic Grade:\n- " + box_7 + "\n- % teratoma with immature elements: " + box_7_2 + "\n";
+                captext += "\n+ Histologic Grade:\n- " + box_7 + "\n- Percentage of immature elements: " + box_7_2 + "%\n";
             } else {
                 captext += "\n+ Histologic Grade:\n- " + box_7 + "\n";
             }
@@ -183,18 +227,21 @@ $(window).on('load', function () {
         }
 
         var box_10 = $("#box10").val();
-        captext += "\n+ Lymph-Vascular Invasion:\n- " + box_10 + "\n";
+        if (box_10.length > 0) {
+            captext += "\n+ Lymph-Vascular Invasion:\n- " + box_10 + "\n";
+        }
 
         var box_11 = $("#box11").val();
-        captext += "\n+ Perineural Invasion:\n- " + box_11 + "\n";
+        if (box_11.length > 0) {
+            captext += "\n+ Perineural Invasion:\n- " + box_11 + "\n";
+        }
 
         var box_15 = $("#box15").val();
         var box_15_2 = $("#box15_2").val();
-        captext += '\nDistant Metastasis: ';
         if (box_15 != "Not applicable") {
-
+            captext += '\nDistant Metastasis: ';
             if (box_15 == "Present") {
-                captext += "\n- " + box_15 + "\n- Metastatic site(s): " + box_15_2 + ")\n";
+                captext += "\n- " + box_15 + "\n- Metastatic site(s): " + box_15_2 + "\n";
             } else {
                 captext += "\n- " + box_15 + "\n";
             }

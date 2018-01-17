@@ -276,7 +276,7 @@ $(window).on('load', function () {
         var pos = box_10.filter(function (el) {
             return el.indexOf('Other') > -1;
         });
-        captext += "\n-ANCILLARY STUDIES-";
+        captext += "\n-- ANCILLARY STUDIES --";
         if (box_10.length > 0) {
             if (pos.length > 0) {
                 captext += "\n+ Cyto-molecular Genetics:\n- " + box_10.join('\n- ').replace(/Other/, box_10_2) + "\n";

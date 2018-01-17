@@ -90,38 +90,39 @@
 
 
 
+            <div class="it" style="display: none;">
+                <hr class="p-2" >
+                <h5>+ Histologic Grade (immature teratomas only)
+                <!-- Button trigger modal -->
+                <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_grade">A word about grading immature teratomas</button>
 
-            <hr class="p-2" >
-            <h5>+ Histologic Grade (immature teratomas only)
-            <!-- Button trigger modal -->
-            <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_grade">A word about grading immature teratomas</button>
+                </h5>
+                <!-- Histology help Modal -->
+                {{> page-modals/cap-helpers/exgct-grading}}
+                <select id="box7" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                    <option></option>
+                    <option>Not applicable</option>
+                    <option>Grade 1</option>
+                    <option>Grade 2</option>
+                    <option>Grade 3</option>
+                    <option>Cannot be determined</option>
+                </select>
 
-            </h5>
-            <!-- Histology help Modal -->
-            {{> page-modals/cap-helpers/exgct-grading}}
-            <select id="box7" class='form-control selectpicker form-control-sm col-sm-6 opt'>
-                <option>Not applicable</option>
-                <option>Grade 1</option>
-                <option>Grade 2</option>
-                <option>Grade 3</option>
-                <option>Cannot be determined</option>
-            </select>
-
-            <input type="number" class="form-control form-control-sm mt-3 col-sm-6" id='box7_2' style='display:none;' placeholder='Specify % of teratoma with immature elements'>
+                <input type="number" class="form-control form-control-sm mt-3 col-sm-6" id='box7_2' style='display:none;' placeholder='Specify % of teratoma with immature elements'>
+            </div>
 
 
 
-
-
-            <hr class="p-2" >
-            <h5>Microscopic Tumor Extension (applicable to sacrococcygeal resections only)</h5>
-            <select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
-                <option>Not applicable</option>
-                <option>Tumor involving coccyx identified</option>
-                <option>Coccyx uninvolved</option>
-                <option>Cannot be determined</option>
-            </select>
-
+            <div class="sacro" style="display: none;">
+                <hr class="p-2" >
+                <h5>Microscopic Tumor Extension (applicable to sacrococcygeal resections only)</h5>
+                <select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Not applicable</option>
+                    <option>Tumor involving coccyx identified</option>
+                    <option>Coccyx uninvolved</option>
+                    <option>Cannot be determined</option>
+                </select>
+            </div>
 
 
 
@@ -147,6 +148,7 @@
             <hr class="p-2" >
             <h5>+ Lymph-Vascular Invasion</h5>
             <select id="box10" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                <option></option>
                 <option>Not identified</option>
                 <option>Present</option>
                 <option>Cannot be determined</option>
@@ -159,6 +161,7 @@
             <hr class="p-2" >
             <h5>+ Perineural Invasion</h5>
             <select id="box11" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                <option></option>
                 <option>Not identified</option>
                 <option>Present</option>
                 <option>Cannot be determined</option>

@@ -49,6 +49,7 @@
             <hr class="p-2" >
             <h5>+Specimen Integrity</h5>
             <select id="box2" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                <option></option>
                 <option>Intact</option>
                 <option>Opened</option>
                 <option>Morcellated</option>
@@ -71,15 +72,15 @@
             <hr class="p-2" >
             <h5>Histologic Type</h5>
             <select id="box4" class='form-control selectpicker form-control-sm col-sm-6'>
-                <option>Endometrioid carcinoma, NOS</option>
-                <option>Endometrioid carcinoma with squamous differentiation</option>
-                <option>Endometrioid carcinoma, villoglandular variant</option>
-                <option>Endometrioid carcinoma with secretory differentiation</option>
-                <option>Endometrioid carcinoma, other type</option>
+                <option data-type="grade">Endometrioid carcinoma, NOS</option>
+                <option data-type="grade">Endometrioid carcinoma with squamous differentiation</option>
+                <option data-type="grade">Endometrioid carcinoma, villoglandular variant</option>
+                <option data-type="grade">Endometrioid carcinoma with secretory differentiation</option>
+                <option data-type="grade">Endometrioid carcinoma, other type</option>
                 <option>Serous endometrial intraepithelial carcinoma</option>
                 <option>Serous carcinoma</option>
                 <option>Carcinosarcoma (malignant mixed Müllerian tumor)</option>
-                <option>Mucinous carcinoma</option>
+                <option data-type="grade">Mucinous carcinoma</option>
                 <option>Clear cell carcinoma</option>
                 <option>Small cell neuroendocrine carcinoma</option>
                 <option>Large cell neuroendocrine carcinoma</option>
@@ -94,48 +95,32 @@
 
 
 
+            <div class="grade">
+                <hr class="p-2" >
+                <h5>Histologic Grade (if applicable)
+                <!-- Button trigger modal -->
+                <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_grading">A word about grading</button>
 
-            <hr class="p-2" >
-            <h5>Histologic Grade (if applicable)
-            <!-- Button trigger modal -->
-            <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_grading">A word about grading</button>
+                <!-- Histology help Modal -->
+                {{> page-modals/cap-helpers/endometrium-grading}}
 
-            <!-- Histology help Modal -->
-            {{> page-modals/cap-helpers/endometrium-grading}}
-
-            <div class="modal fade" id="help_grading" tabindex="-1" data-backdrop="false" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <h4 class="modal-title" id="modaltitle_grading">A word about grading</h4>
-                        </div>
-                        <div class="modal-body">
-                            <img class="img img-fluid" src="/img/cap/cap-endometrium-grading.png ">
-
-                        </div>
-                    </div>
+                </h5>
+                <div class="card-blockquote small mb-2">
+                    International Federation of Gynecology and Obstetrics (FIGO) Grading System applies to endometrioid and mucinous carcinomas only.
+                     Serous, clear cell, transitional, small cell and large cell neuroendocrine carcinomas, undifferentiated/ dedifferentiated
+                    carcinomas, and carcinosarcomas are generally considered to be high grade and it is not recommended to assign a histologic grade to these tumor types.
                 </div>
-            </div>
-            </h5>
-            <div class="card-blockquote small mb-2">
-                International Federation of Gynecology and Obstetrics (FIGO) Grading System applies to endometrioid and mucinous carcinomas only.
-                 Serous, clear cell, transitional, small cell and large cell neuroendocrine carcinomas, undifferentiated/ dedifferentiated
-                carcinomas, and carcinosarcomas are generally considered to be high grade and it is not recommended to assign a histologic grade to these tumor types.
-            </div>
-            <select id="box5" class='form-control selectpicker form-control-sm col-sm-6'>
-                <option>FIGO grade 1</option>
-                <option>FIGO grade 2</option>
-                <option>FIGO grade 3</option>
-                <option>Other</option>
-                <option>Cannot be assessed</option>
-                <option selected>Not applicable</option>
-            </select>
+                <select id="box5" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>FIGO grade 1</option>
+                    <option>FIGO grade 2</option>
+                    <option>FIGO grade 3</option>
+                    <option>Other</option>
+                    <option>Cannot be assessed</option>
+                    <option selected>Not applicable</option>
+                </select>
 
-            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box5_2' style='display:none;' placeholder='Specify Other'>
-
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box5_2' style='display:none;' placeholder='Specify Other'>
+            </div>
 
 
 
@@ -161,13 +146,13 @@
                 <div class="measure-inv">
 
                     <h6 class="mt-2">Depth of invasion (mm)</h6>
-                    <input type="number" class="form-control form-control-sm col-sm-10" id="box7" >
+                    <input type="number" class="form-control form-control-sm col-sm-2" id="box7" >
 
 
 
 
                     <h6 class="mt-2">Myometrial thickness (mm)</h6>
-                    <input type="number" class="form-control form-control-sm col-sm-10" id="box8" >
+                    <input type="number" class="form-control form-control-sm col-sm-2" id="box8" >
 
 
                 </div>
@@ -188,6 +173,7 @@
             <hr class="p-2" >
             <h5>+ Adenomyosis</h5>
             <select id="box10" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                <option></option>
                 <option>Not identified</option>
                 <option>Present, uninvolved by carcinoma</option>
                 <option>Present, involved by carcinoma</option>
@@ -255,7 +241,8 @@
 
             <hr class="p-2" >
             <h5>+ Peritoneal/ Ascitic Fluid</h5>
-            <select id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select id="box14" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                <option></option>
                 <option>Not submitted/unknown</option>
                 <option>Negative for malignancy (normal/benign)</option>
                 <option>Atypical and/or suspicious (explain)</option>
@@ -314,6 +301,9 @@
                 <option>r</option>
                 <option>y</option>
             </select>
+
+            <div class="py-2 w-100"></div>
+
             <h6 class='mt-2'>pT</h6>
             <select id="box18" class='form-control selectpicker form-control-sm col-sm-10'>
                 <option value="pTX">pTX: Primary tumor cannot be assessed</option>
@@ -327,6 +317,7 @@
                 <option value="pT4">pT4: Tumor invading the bladder mucosa and/or bowel mucosa (bullous edema is not sufficient to classify a tumor as T4)</option>
             </select>
 
+            <div class="py-2 w-100"></div>
 
             <h6 class='mt-2'>pN
             <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
@@ -343,6 +334,7 @@
                 <option value="pN2a">pN2a: Regional lymph node metastasis (greater than 2 mm in diameter) to para-aortic lymph nodes, +/- positive pelvic lymph nodes</option>
             </select>
 
+            <div class="py-2 w-100"></div>
 
             <h6 class='mt-2'>pM</h6>
             <select id="box20" class='form-control selectpicker form-control-sm col-sm-10'>
@@ -350,6 +342,8 @@
                 <option value="pM1">pM1: Distant metastasis (excludes: metastasis to pelvic or para-aortic lymph nodes, vagina, uterine serosa, or adnexa)</option>
             </select>
             <input type="text" class="form-control form-control-sm col-sm-6" id="box20_2" style="display:none;" placeholder="Specify metastatic sites">
+
+            <div class="py-2 w-100"></div>
 
             <form class="form-inline mt-2">
                 <label class="form-check-label">Check here if any lymph nodes submitted?
@@ -438,6 +432,7 @@
             <hr class="p-2" >
             <h5>+ Additional Pathologic Findings</h5>
             <select id="box40" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                <option></option>
                 <option>None identified</option>
                 <option>Atypical hyperplasia/endometrial intraepithelial neoplasia (EIN)</option>
                 <option>Other</option>
@@ -453,6 +448,7 @@
             <hr class="p-2" >
             <h5>+ Clinical History</h5>
             <select id="box41" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                <option></option>
                 <option>No predisposition syndrome apparent</option>
                 <option>Lynch syndrome</option>
                 <option>Other</option>

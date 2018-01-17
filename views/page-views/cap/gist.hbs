@@ -5,7 +5,7 @@
 						<a href="/">Home</a>
 				</li>
 				<li class="breadcrumb-item"><i class="fa fa-flask mr-2"></i>Cancer Synoptic Checklist</li>
-				<li class="breadcrumb-item active" id="bc-jump"><i class="fa fa-flask mr-2"></i>CNS tumors</li>
+				<li class="breadcrumb-item active" id="bc-jump"><i class="fa fa-flask mr-2"></i>GI Stromal Tumors</li>
 		</ol>
 
  {{> message-center this}}
@@ -97,7 +97,7 @@
                 <h5>Mitotic Rate</h5>
                 <form class="form-inline mt-2">
                     <div class="form-group">
-                        <label for="">Specify:</label>
+                        <label >Specify:</label>
                         <input type="number" class="form-control form-control-sm ml-2 mr-2" id="box6" style="width:100px" placeholder="0">			/5mm^2
                     </div>
                     <p class="w-100"><small>Note: The required total count of mitoses is per 5 mm2 on the glass slide section. With the use of older model microscopes, 50 HPF is equivalent to 5 mm2. Most modern microscopes with wider 40X lenses/fields require approximately 20 to 25 HPF to encompass 5 mm2. If necessary, please measure field of view to accurately determine actual number of fields required to be counted on individual microscopes to encompass 5 mm2.</small></p>
@@ -111,6 +111,7 @@
                 <hr class="p-2" >
                 <h5>+ Necrosis</h5>
                 <select id="box7" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                    <option></option>
                     <option>Not identified</option>
                     <option>Present</option>
                     <option>Cannot be determined</option>
@@ -186,7 +187,10 @@
                     <option>r</option>
                     <option>y</option>
                 </select>
-                <h6 class='mt-2'>pT</h6>
+
+            <div class="py-2 w-100"></div>
+
+            <h6 class='mt-2'>pT</h6>
                 <select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
                     <option value="pTX">pTX: Primary tumor cannot be assessed</option>
                     <option value="pT0">pT0: No evidence of primary tumor</option>
@@ -196,21 +200,24 @@
                     <option value="pT4">pT4: Tumor more than 10 cm in greatest dimension</option>
                 </select>
 
+            <div class="py-2 w-100"></div>
 
-                <h6 class='mt-2'>pN</h6>
+            <h6 class='mt-2'>pN</h6>
                 <select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
                     <option value="pN0">pN0: No regional lymph node metastasis or unknown lymph node status</option>
                     <option value="pN1">pN1: Regional lymph node metastasis</option>
-                    <option value="null"></option>
                 </select>
 
+            <div class="py-2 w-100"></div>
 
-                <h6 class='mt-2'>pM</h6>
+            <h6 class='mt-2'>pM</h6>
                 <select id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
                     <option selected value='pMx'>pMx: Not applicable</option>
                     <option value="pM1">pM1: Distant metastasis</option>
                 </select>
                 <input type="text" class="form-control form-control-sm col-sm-6" id="box14_2" style="display:none;" placeholder="Specify metastatic sites">
+
+                <div class="py-2 w-100"></div>
 
                 <form class="form-inline mt-2">
                     <label class="form-check-label">Check here if any lymph nodes submitted?
@@ -252,6 +259,7 @@
                 <h6 class="mt-3" >
                     + Molecular Genetic Studies</h6>
                 <select id="box21" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                    <option></option>
                     <option>Submitted for analysis; results pending</option>
                     <option>Performed, see separate report</option>
                     <option>Not performed</option>

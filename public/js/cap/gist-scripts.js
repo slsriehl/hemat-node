@@ -121,28 +121,62 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
+
         // ***************** INPUT VALIDATION ********************//
-        $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
+                    // reset validation alert, if all goes to plan, it won't show
+                    $('#cap-valid').hide();
+                    $('#opt-valid').hide();
 
-        $('input[type="text"]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
 
-        // ***************** END VALIDATION ********************//
+                    $('select:visible').each(function () {
+                        // ignore class=opt
+                        if (!$(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($(this).val().length > 0) {
+                                $(this).removeClass('empty');
+                            } else {
+                                $(this).addClass('empty');
+                                $('#cap-valid').show();
+                            }
+                        }
+                        if ($(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty-opt');
+                            } else {
+                                $(this).addClass('empty-opt');
+                                $('#opt-valid').show();
+                            }
+                        }
+                    });
+
+                    $('input:visible').each(function () {
+                        // ignore search bar in menu
+                        if ($(this).prop('type') != "search"){
+                            // ignore class=opt
+                            if (!$(this).hasClass("opt")) {
+                                // Check if at least one selection is made
+                                if ($.trim($(this).val()).length > 0) {
+                                    $(this).removeClass('empty');
+                                } else {
+                                    $(this).addClass('empty');
+                                    $('#cap-valid').show();
+                                }
+                            }
+                            if ($(this).hasClass("opt")) {
+                                // Check if at least one selection is made
+                                if ($.trim($(this).val()).length > 0) {
+                                    $(this).removeClass('empty-opt');
+                                } else {
+                                    $(this).addClass('empty-opt');
+                                    $('#opt-valid').show();
+                                }
+                            }
+                        }
+
+                    });
+
+                    // *************************** END VALIDATION ******************************//
 
 
         var captext = "GI Stromal Tumor Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
@@ -153,7 +187,7 @@ $(window).on('load', function () {
         if (box_1.indexOf("Other") > -1) {
             captext += "\nProcedure:\n- " + box_1 + "\n- " + box_1_2 + "\n";
         } else if (box_1.indexOf("Resection") > -1) {
-            captext += "\nProcedure:\n- " + box_1 + "\n- " + box_1_3 + "\n";
+            captext += "\nProcedure:\n- " + box_1 + " (" + box_1_3 + ")\n";
         } else {
             captext += "\nProcedure:\n- " + box_1 + "\n";
         }
@@ -191,10 +225,12 @@ $(window).on('load', function () {
 
         var box_7 = $("#box7").val();
         var box_7_2 = $("#box7_2").val();
-        if (box_7.indexOf("Present") > -1) {
-            captext += "\n+ Necrosis:\n- Present: " + box_7_2 + "% necrosis\n";
-        } else {
-            captext += "\n+ Necrosis:\n- " + box_7 + "\n";
+        if (box_7.length > 0) {
+            if (box_7.indexOf("Present") > -1) {
+                captext += "\n+ Necrosis:\n- Present: " + box_7_2 + "% necrosis\n";
+            } else {
+                captext += "\n+ Necrosis:\n- " + box_7 + "\n";
+            }
         }
 
         var box_8 = $("#box8").val();
@@ -242,7 +278,7 @@ $(window).on('load', function () {
             captext += "\nLymph nodes: None submitted\n";
         }
 
-        captext += "\nANCILLARY TESTING\n";
+        captext += "\n-- ANCILLARY TESTING --\n";
 
         var box_20 = $("#box20").val();
         var box_20_2 = $("#box20_2").val();
@@ -255,10 +291,12 @@ $(window).on('load', function () {
         var box_21 = $("#box21").val();
         var box_21_2 = $("#box21_2").val();
         var box_21_split = box_21_2.split("; ");
-        if (box_21.indexOf("Performed") > -1) {
-            captext += "\n+ Molecular Genetic Studies:\n- Performed:\n\t- " + box_21_split.join("\n\t- ") + "\n";
-        } else {
-            captext += "\n+ Molecular Genetic Studies:\n- " + box_21 + "\n";
+        if (box_21.length > 0) {
+            if (box_21.indexOf("Performed") > -1) {
+                captext += "\n+ Molecular Genetic Studies:\n- Performed:\n\t- " + box_21_split.join("\n\t- ") + "\n";
+            } else {
+                captext += "\n+ Molecular Genetic Studies:\n- " + box_21 + "\n";
+            }
         }
 
         var box_22 = $("#box22").val();

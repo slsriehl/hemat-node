@@ -31,11 +31,17 @@ $(window).on('load', function () {
 
     $('#box4').on("change", function () {
         var sel = $('#box4').val();
+        var type = $('#box4').find(":selected").data("type");
         if (sel.indexOf("type") > -1) {
 
             $('#box4_2').show();
         } else {
             $('#box4_2').hide();
+        }
+        if (type == "grade"){
+            $(".grade").show();
+        } else {
+            $(".grade").hide();
         }
     });
 
@@ -180,28 +186,62 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
+
         // ***************** INPUT VALIDATION ********************//
-        $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
+                    // reset validation alert, if all goes to plan, it won't show
+                    $('#cap-valid').hide();
+                    $('#opt-valid').hide();
 
-        $('input:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
 
-        // ***************** END VALIDATION ********************//
+                    $('select:visible').each(function () {
+                        // ignore class=opt
+                        if (!$(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($(this).val().length > 0) {
+                                $(this).removeClass('empty');
+                            } else {
+                                $(this).addClass('empty');
+                                $('#cap-valid').show();
+                            }
+                        }
+                        if ($(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty-opt');
+                            } else {
+                                $(this).addClass('empty-opt');
+                                $('#opt-valid').show();
+                            }
+                        }
+                    });
+
+                    $('input:visible').each(function () {
+                        // ignore search bar in menu
+                        if ($(this).prop('type') != "search"){
+                            // ignore class=opt
+                            if (!$(this).hasClass("opt")) {
+                                // Check if at least one selection is made
+                                if ($.trim($(this).val()).length > 0) {
+                                    $(this).removeClass('empty');
+                                } else {
+                                    $(this).addClass('empty');
+                                    $('#cap-valid').show();
+                                }
+                            }
+                            if ($(this).hasClass("opt")) {
+                                // Check if at least one selection is made
+                                if ($.trim($(this).val()).length > 0) {
+                                    $(this).removeClass('empty-opt');
+                                } else {
+                                    $(this).addClass('empty-opt');
+                                    $('#opt-valid').show();
+                                }
+                            }
+                        }
+
+                    });
+
+                    // *************************** END VALIDATION ******************************//
 
         var captext = "Endometrial Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
 
@@ -215,14 +255,18 @@ $(window).on('load', function () {
 
         var box_2 = $("#box2").val();
         var box_2_2 = $("#box2_2").val();
-        if (box_2.indexOf("Other") > -1) {
-            captext += "\n+Specimen Integrity:\n- " + box_2_2 + "\n";
-        } else {
-            captext += "\n+Specimen Integrity:\n- " + box_2 + "\n";
+        if (box_2.length > 0) {
+            if (box_2.indexOf("Other") > -1) {
+                captext += "\n+Specimen Integrity:\n- " + box_2_2 + "\n";
+            } else {
+                captext += "\n+Specimen Integrity:\n- " + box_2 + "\n";
+            }
         }
 
         var box_3 = $("#box3").val();
-        captext += "\n+ Tumor Size:\n- " + box_3.replace(/cm/, '') + "cm\n";
+        if (box_3.length > 0) {
+            captext += "\n+ Tumor Size:\n- " + box_3.replace(/cm/, '') + "cm\n";
+        }
 
         var box_4 = $("#box4").val();
         var box_4_2 = $("#box4_2").val();
@@ -248,11 +292,11 @@ $(window).on('load', function () {
             captext += "\nMyometrial Invasion:\n- Present";
 
             if (box_6.indexOf('measured') > -1) {
-                var box_7 = parseInt($("#box7").val(), 10);
+                var box_7 = parseFloat($("#box7").val());
                 captext += "\n\tDepth of invasion: " + box_7 + "mm\n";
 
-                var box_8 = parseInt($("#box8").val(), 10);
-                var pct = box_7 / box_8 * 100;
+                var box_8 = parseFloat($("#box8").val());
+                var pct = (box_7 / box_8) * 100;
                 captext += "\tMyometrial thickness: " + box_8 + "mm\n\tPercentage of myometrial invasion: " + pct.toFixed(1) + "%\n";
             }
             if (box_6.indexOf('estimated') > -1) {
@@ -270,7 +314,9 @@ $(window).on('load', function () {
         }
 
         var box_10 = $("#box10").val();
-        captext += "\n+ Adenomyosis:\n- " + box_10 + "\n";
+        if (box_10.length > 0) {
+            captext += "\n+ Adenomyosis:\n- " + box_10 + "\n";
+        }
 
         var box_11 = $("#box11").val();
         captext += "\nUterine Serosa Involvement:\n- " + box_11 + "\n";
@@ -288,10 +334,12 @@ $(window).on('load', function () {
 
         var box_14 = $("#box14").val();
         var box_14_2 = $("#box14_2").val();
-        if (box_14.indexOf("explain") > -1) {
-            captext += "\n+ Peritoneal/ Ascitic Fluid:\n- " + box_14.replace(/ \(explain\)/, ", reason: " + box_14_2) + "\n";
-        } else {
-            captext += "\n+ Peritoneal/ Ascitic Fluid:\n- " + box_14 + "\n";
+        if (box_14.length > 0) {
+            if (box_14.indexOf("explain") > -1) {
+                captext += "\n+ Peritoneal/ Ascitic Fluid:\n- " + box_14.replace(/ \(explain\)/, ", reason: " + box_14_2) + "\n";
+            } else {
+                captext += "\n+ Peritoneal/ Ascitic Fluid:\n- " + box_14 + "\n";
+            }
         }
 
         var box_15 = $("#box15").val();
@@ -389,18 +437,22 @@ $(window).on('load', function () {
 
         var box_40 = $("#box40").val();
         var box_40_2 = $("#box40_2").val();
-        if (box_40.indexOf("Other") > -1) {
-            captext += "\n\n+ Additional Pathologic Findings:\n- " + box_40_2 + "\n";
-        } else {
-            captext += "\n\n+ Additional Pathologic Findings:\n- " + box_40 + "\n";
+        if (box_40.length > 0) {
+            if (box_40.indexOf("Other") > -1) {
+                captext += "\n\n+ Additional Pathologic Findings:\n- " + box_40_2 + "\n";
+            } else {
+                captext += "\n\n+ Additional Pathologic Findings:\n- " + box_40 + "\n";
+            }
         }
 
         var box_41 = $("#box41").val();
         var box_41_2 = $("#box41_2").val();
-        if (box_41.indexOf("Other") > -1) {
-            captext += "\n+ Clinical History:\n- " + box_41_2 + "\n";
-        } else {
-            captext += "\n+ Clinical History:\n- " + box_41 + "\n";
+        if (box_41.length > 0) {
+            if (box_41.indexOf("Other") > -1) {
+                captext += "\n+ Clinical History:\n- " + box_41_2 + "\n";
+            } else {
+                captext += "\n+ Clinical History:\n- " + box_41 + "\n";
+            }
         }
 
         $('#outPut-1').val(captext);

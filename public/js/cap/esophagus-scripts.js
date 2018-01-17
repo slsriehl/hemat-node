@@ -12,13 +12,12 @@ $(window).on('load', function () {
 
     $('#box1').on("change", function () {
         var sel = $('#box1').val();
-        var site = sel.toLowerCase();
         if (sel.indexOf("Other") > -1) {
             $('#box1_2').show();
         } else {
             $('#box1_2').hide();
         }
-        if (sel.indexOf("endoscopic") > -1) {
+        if (sel.indexOf("Endoscopic") > -1) {
             $('.emr').show();
             $('.resection').hide();
         } else {
@@ -30,7 +29,7 @@ $(window).on('load', function () {
     $('#box1_2').on("input", function () {
         var sel = $(this).val();
         var site = sel.toLowerCase();
-        if (sel.indexOf("endoscopic") > -1) {
+        if (site.indexOf("endoscopic") > -1) {
             $('.emr').show();
             $('.resection').hide();
         } else {
@@ -141,28 +140,62 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
+
         // ***************** INPUT VALIDATION ********************//
-        $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
+                    // reset validation alert, if all goes to plan, it won't show
+                    $('#cap-valid').hide();
+                    $('#opt-valid').hide();
 
-        $('input[type="text"]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
 
-        // ***************** END VALIDATION ********************//
+                    $('select:visible').each(function () {
+                        // ignore class=opt
+                        if (!$(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($(this).val().length > 0) {
+                                $(this).removeClass('empty');
+                            } else {
+                                $(this).addClass('empty');
+                                $('#cap-valid').show();
+                            }
+                        }
+                        if ($(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty-opt');
+                            } else {
+                                $(this).addClass('empty-opt');
+                                $('#opt-valid').show();
+                            }
+                        }
+                    });
+
+                    $('input:visible').each(function () {
+                        // ignore search bar in menu
+                        if ($(this).prop('type') != "search"){
+                            // ignore class=opt
+                            if (!$(this).hasClass("opt")) {
+                                // Check if at least one selection is made
+                                if ($.trim($(this).val()).length > 0) {
+                                    $(this).removeClass('empty');
+                                } else {
+                                    $(this).addClass('empty');
+                                    $('#cap-valid').show();
+                                }
+                            }
+                            if ($(this).hasClass("opt")) {
+                                // Check if at least one selection is made
+                                if ($.trim($(this).val()).length > 0) {
+                                    $(this).removeClass('empty-opt');
+                                } else {
+                                    $(this).addClass('empty-opt');
+                                    $('#opt-valid').show();
+                                }
+                            }
+                        }
+
+                    });
+
+                    // *************************** END VALIDATION ******************************//
 
 
         var captext = "Esophageal Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
@@ -214,43 +247,44 @@ $(window).on('load', function () {
         captext += "\nMargins:\n";
 
         if (box_8.indexOf('uninvolved') > -1) {
+            captext += "- "+box_8;
             var box_9 = $("#box9").val();
             var box_9_2 = $("#box9_2").val();
             if ($.inArray('Other', box_9) > -1) {
-                captext += "\t- Margins examined: " + box_9.join(", ").replace(/Other/, box_9_2) + "\n";
+                captext += "\n- Margins examined: " + box_9.join(", ").replace(/Other/, box_9_2) + "\n";
             } else {
-                captext += "\t- Margins examined: " + box_9 + "\n";
+                captext += "\n- Margins examined: " + box_9.join(", ") + "\n";
             }
 
             var box_10 = $("#box10").val();
-            captext += "\t- Distance of invasive carcinoma from closest margin: " + box_10 + "\n";
-        } else if (box_8.indexOf(' involved') > -1) {
+            captext += "- Distance of invasive carcinoma from closest margin: " + box_10 + "\n";
+        } else if (box_8.indexOf('margin involved') > -1) {
             var site = (box_1 + box_1_2).toLowerCase();
             console.log(site);
             // emr
             if (site.indexOf('endoscopic') > -1) {
                 var box_14 = $("#box14").val();
-                captext += "\t -Mucosal Margin: " + box_14.join('\n\t- ') + "\n";
+                captext += "\n- Mucosal Margin:\n\t" + box_14.join('\n\t') + "\n";
 
                 var box_15 = $("#box15").val();
-                captext += "\n\t -Deep Margin: " + box_15 + "\n";
+                captext += "\n- Deep Margin:\n\t" + box_15 + "\n";
             } else {
                 // everything else
                 var box_11 = $("#box11").val();
-                captext += "\t- Proximal Margin: " + box_11.join('\n\t- ') + "\n";
+                captext += "\n- Proximal Margin:\n\t" + box_11.join('\n\t') + "\n";
 
                 var box_12 = $("#box12").val();
-                captext += "\n\t- Distal Margin: " + box_12.join('\n\t- ') + "\n";
+                captext += "\n- Distal Margin:\n\t" + box_12.join('\n\t') + "\n";
 
                 var box_13 = $("#box13").val();
-                captext += "\n\t- Radial Margin: " + box_13 + "\n";
+                captext += "\n- Radial Margin:\n\t" + box_13 + "\n";
             }
             // other
             var box_16 = $("#box16").val();
             var box_16_2 = $("#box16_2").val();
             if (box_16 != "Not applicable") {
                 if (box_16.indexOf("Not") < 0) {
-                    captext += "\n\t- " + box_16_2 + " Margin: " + box_16 + "\n";
+                    captext += "\n- " + box_16_2 + " Margin:\n\t" + box_16 + "\n";
                 }
             }
         } else {
@@ -264,7 +298,9 @@ $(window).on('load', function () {
         captext += "\nLymphovascular Invasion:\n- " + box_18 + "\n";
 
         var box_19 = $("#box19").val();
-        captext += "\n+ Perineural Invasion:\n- " + box_19 + "\n";
+        if (box_19.length > 0) {
+            captext += "\n+ Perineural Invasion:\n- " + box_19 + "\n";
+        }
 
         var box_20 = $("#box20").val();
         var box_21 = $("#box21").val();
@@ -302,14 +338,16 @@ $(window).on('load', function () {
         var trig2_box_27 = box_27.filter(function (el) {
             return el.indexOf("Other") > -1;
         });
-        if (trig1_box_27.length > 0 && trig2_box_27.length == 0) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_27.join("\n- ").replace(/type/, "type: " + box_27_2) + "\n";
-        } else if (trig1_box_27.length == 0 && trig2_box_27.length > 0) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_27.join("\n- ").replace(/Other/, box_27_3) + "\n";
-        } else if (trig1_box_27.length > 0 && trig2_box_27.length > 0) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_27.join("\n- ").replace(/type/, "type: " + box_27_2).replace(/Other/, box_27_3) + "\n";
-        } else {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_27.join("\n- ") + "\n";
+        if (box_27.length > 0) {
+            if (trig1_box_27.length > 0 && trig2_box_27.length == 0) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_27.join("\n- ").replace(/type/, "type: " + box_27_2) + "\n";
+            } else if (trig1_box_27.length == 0 && trig2_box_27.length > 0) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_27.join("\n- ").replace(/Other/, box_27_3) + "\n";
+            } else if (trig1_box_27.length > 0 && trig2_box_27.length > 0) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_27.join("\n- ").replace(/type/, "type: " + box_27_2).replace(/Other/, box_27_3) + "\n";
+            } else {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_27.join("\n- ") + "\n";
+            }
         }
 
         $('#outPut-1').val(captext);

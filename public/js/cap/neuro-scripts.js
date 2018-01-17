@@ -262,7 +262,7 @@ $(window).on('load', function () {
             }
         }
 
-        captext += "\n-ANCILLARY STUDIES-\n ";
+        captext += "\n-- ANCILLARY STUDIES --\n ";
         var box_8 = $("#box8").val();
         if (box_8.length > 1) {
             captext += "\nDesignated block for future studies:\n- " + box_8 + "\n";
