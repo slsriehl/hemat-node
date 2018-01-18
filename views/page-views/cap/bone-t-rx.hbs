@@ -130,6 +130,7 @@
 			<hr class="p-2" >
 			<h5>+ Lymphovascular Invasion</h5>
 			<select id="box9" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+				<option></option>
 				<option>Not identified</option>
 				<option>Present</option>
 				<option>Cannot be determined</option>
@@ -162,26 +163,33 @@
 					<option>r</option>
 					<option>y</option>
 				</select>
-				<h6 class='mt-2'>pT</h6>
+
+				<div class="py-2 w-100"></div>
+
+				<h6>pT</h6>
 				<select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
 				</select>
 
+				<div class="py-2 w-100"></div>
 
-				<h6 class='mt-2'>pN</h6>
+				<h6>pN</h6>
 				<select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
 					<option value="pNX">pNX: Regional lymph nodes cannot be assessed#</option>
 					<option value="pN0">pN0: No regional lymph node metastasis</option>
 					<option value="pN1">pN1: Regional lymph node metastasis</option>
 				</select>
 
+				<div class="py-2 w-100"></div>
 
-				<h6 class='mt-2'>pM</h6>
+				<h6>pM</h6>
 				<select id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
 					<option selected value='pMx'>pMx: Not applicable</option>
 					<option value="pM1a">pM1a: Lung</option>
 					<option value="pM1b">pM1b: Metastasis involving distant sites other than lung</option>
 				</select>
 				<input type="text" class="form-control form-control-sm col-sm-6" id="box14_2" style="display:none;" placeholder="Specify metastatic sites">
+
+				<div class="py-2 w-100"></div>
 
 				<form class="form-inline mt-2">
 					<label class="form-check-label">Check here if any lymph nodes submitted?
@@ -197,36 +205,6 @@
 				</div>
 			</div>
 
-			<hr class="p-2" >
-			<h5>Ancillary Studies
-
-			</h5>
-
-			<div class="ml-3">
-
-				<h6>Immunohistochemistry</h6>
-				<input type="text" class="form-control form-control-sm col-sm-6" id="box20" placeholder="Start typing...">
-
-
-<div class="py-2 w-100"></div>
-
-				<h6>Cytogenetics</h6>
-				<input type="text" class="form-control form-control-sm col-sm-6" id="box21" placeholder="If applicable">
-
-<div class="py-2 w-100"></div>
-
-
-				<h6>Molecular genetics</h6>
-				<input type="text" class="form-control form-control-sm col-sm-6" id="box22" placeholder="If applicable">
-
-
-
-			</div>
-
-
-
-
-
 
 			<hr class="p-2" >
 			<h5>Preresection Treatment</h5>
@@ -237,9 +215,6 @@
 				<option>Therapy performed, type not specified</option>
 				<option>Not specified</option>
 			</select>
-
-
-
 
 
 			<hr class="p-2" >
@@ -253,7 +228,31 @@
 
 			<input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box24_2' style='display:none;' placeholder='Specify Present'>
 
+			<hr class="p-2" >
+			<h5>+Ancillary Studies
 
+			</h5>
+
+			<div class="ml-3">
+
+				<h6>Immunohistochemistry</h6>
+				<input type="text" class="form-control form-control-sm col-sm-6 opt" id="box20" placeholder="Start typing...">
+
+
+				<div class="py-2 w-100"></div>
+
+				<h6>Cytogenetics</h6>
+				<input type="text" class="form-control form-control-sm col-sm-6 opt" id="box21" placeholder="If applicable">
+
+				<div class="py-2 w-100"></div>
+
+
+				<h6>Molecular genetics</h6>
+				<input type="text" class="form-control form-control-sm col-sm-6 opt" id="box22" placeholder="If applicable">
+
+
+
+			</div>
 
 
 

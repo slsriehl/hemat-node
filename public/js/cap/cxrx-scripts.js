@@ -270,16 +270,23 @@ $(window).on('load', function () {
             captext += "\nOther Tissue/ Organ Involvement:\n- " + box_8.join('\n- ') + "\n";
         }
 
+        captext += "\nMargins:\n";
         var box_9 = $("#box9").val();
         var box_9_1 = $("#box9_1").val();
         var box_9_2 = $("#box9_2").val();
         var box_9_3 = $("#box9_3").val();
-        if ($.inArray('Uninvolved by invasive', box_9) > -1) {
-            captext += "\nMargins - Ectocervical:\n- " + box_9 + "\n- Nearest margin: " + box_9_1 + "\n- Distance to this margin: " + box_9_2.replace(/mm/, "") + "mm\n";
-        } else if ($.inArray('Involved by invasive', box_9) > -1) {
-            captext += "\nMargins - Ectocervical:\n- " + box_9 + "\n- Margin involved: " + box_9_3 + "\n";
+        var negbox_9 = box_9.filter(function (el) {
+            return el.indexOf('Uninvolved by invasive') > -1;
+        });
+        var posbox_9 = box_9.filter(function (el) {
+            return el.indexOf('Involved by invasive') > -1;
+        });
+        if (negbox_9.length > 0) {
+            captext += "Ectocervical:\n- " + box_9.join("\n- ") + "\n- Nearest margin: " + box_9_1 + "\n- Distance to this margin: " + box_9_2.replace(/mm/, "") + "mm\n";
+        } else if (posbox_9.length > 0) {
+            captext += "Ectocervical:\n- " + box_9.join("\n- ") + "\n- Margin involved: " + box_9_3 + "\n";
         } else {
-            captext += "\nMargins - Ectocervical:\n- " + box_9 + "\n";
+            captext += "Ectocervical:\n- " + box_9.join("\n- ") + "\n";
         }
 
         var box_10 = $("#box10").val();
@@ -287,11 +294,11 @@ $(window).on('load', function () {
         var box_10_2 = $("#box10_2").val();
         var box_10_3 = $("#box10_3").val();
         if (box_10.indexOf("Uninvolved") > -1) {
-            captext += "\nMargins - Radial(Circumferential):\n- " + box_10 + "\n- Nearest margin: " + box_10_1 + "\n- Distance to this margin: " + box_10_2.replace(/mm/, "") + "mm\n";
+            captext += "\nRadial(Circumferential):\n- " + box_10 + "\n- Nearest margin: " + box_10_1 + "\n- Distance to this margin: " + box_10_2.replace(/mm/, "") + "mm\n";
         } else if (box_10.indexOf("Involved") > -1) {
-            captext += "\nMargins - Radial(Circumferential):\n- " + box_10 + "\n- Margin involved: " + box_10_3 + "\n";
+            captext += "\nRadial(Circumferential):\n- " + box_10 + "\n- Margin involved: " + box_10_3 + "\n";
         } else {
-            captext += "\nMargins - Radial(Circumferential):\n- " + box_10 + "\n";
+            captext += "\nRadial(Circumferential):\n- " + box_10 + "\n";
         }
 
         var box_11 = $("#box11").val();

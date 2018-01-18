@@ -121,28 +121,62 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
+
         // ***************** INPUT VALIDATION ********************//
-        $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
+                    // reset validation alert, if all goes to plan, it won't show
+                    $('#cap-valid').hide();
+                    $('#opt-valid').hide();
 
-        $('input[type="text"]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
 
-        // ***************** END VALIDATION ********************//
+                    $('select:visible').each(function () {
+                        // ignore class=opt
+                        if (!$(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($(this).val().length > 0) {
+                                $(this).removeClass('empty');
+                            } else {
+                                $(this).addClass('empty');
+                                $('#cap-valid').show();
+                            }
+                        }
+                        if ($(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty-opt');
+                            } else {
+                                $(this).addClass('empty-opt');
+                                $('#opt-valid').show();
+                            }
+                        }
+                    });
+
+                    $('input:visible').each(function () {
+                        // ignore search bar in menu
+                        if ($(this).prop('type') != "search"){
+                            // ignore class=opt
+                            if (!$(this).hasClass("opt")) {
+                                // Check if at least one selection is made
+                                if ($.trim($(this).val()).length > 0) {
+                                    $(this).removeClass('empty');
+                                } else {
+                                    $(this).addClass('empty');
+                                    $('#cap-valid').show();
+                                }
+                            }
+                            if ($(this).hasClass("opt")) {
+                                // Check if at least one selection is made
+                                if ($.trim($(this).val()).length > 0) {
+                                    $(this).removeClass('empty-opt');
+                                } else {
+                                    $(this).addClass('empty-opt');
+                                    $('#opt-valid').show();
+                                }
+                            }
+                        }
+
+                    });
+
+                    // *************************** END VALIDATION ******************************//
 
 
         var captext = "Appendix Carcinomas Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
@@ -157,10 +191,12 @@ $(window).on('load', function () {
 
         var box_2 = $("#box2").val();
         var box_2_2 = $("#box2_2").val();
-        if ($.inArray('Other', box_2) > -1) {
-            captext += "\n+ Tumor Site:\n- " + box_2.join('\n- ').replace(/Other/, box_2_2) + "\n";
-        } else {
-            captext += "\n+ Tumor Site:\n- " + box_2.join('\n- ') + "\n";
+        if (box_2.length > 0) {
+            if ($.inArray('Other', box_2) > -1) {
+                captext += "\n+ Tumor Site:\n- " + box_2.join('\n- ').replace(/Other/, box_2_2) + "\n";
+            } else {
+                captext += "\n+ Tumor Site:\n- " + box_2.join('\n- ') + "\n";
+            }
         }
 
         var box_3 = $("#box3").val();
@@ -190,17 +226,17 @@ $(window).on('load', function () {
             captext += "\nTumor Extension:\n- " + box_6.join('\n- ') + "\n";
         }
 
-        captext += "\nMargins:\n";
+        captext += "\nMargins:";
         var box_7 = $("#box7").val();
-        captext += "\t- Proximal Margin:" + box_7.join('\n- ') + "\n";
+        captext += "\nProximal Margin:\n- " + box_7.join('\n- ') + "\n";
 
         var box_8 = $("#box8").val();
         var box_8_2 = $("#box8_2").val();
         if ($.inArray("Not applicable", box_8) == -1) {
             if ($.inArray('Uninvolved by invasive carcinoma', box_8) > -1) {
-                captext += "\t- Mesenteric Margin: " + box_8.join('\n- ').replace(/invasive carcinoma/, "(Distance to mesenteric margin: " + box_8_2 + "mm)") + "\n";
+                captext += "\nMesenteric Margin:\n- " + box_8.join('\n- ')+ "\n- Distance of carcinoma to this margin: "+ box_8_2 + "mm\n";
             } else {
-                captext += "\t- Mesenteric Margin: " + box_8.join('\n- ') + "\n";
+                captext += "\n Mesenteric Margin:\n- " + box_8.join('\n- ') + "\n";
             }
         }
 
@@ -220,7 +256,9 @@ $(window).on('load', function () {
         }
 
         var box_12 = $("#box12").val();
-        captext += "\n+ Perineural Invasion:\n- " + box_12 + "\n";
+        if (box_12.length > 0) {
+            captext += "\n+ Perineural Invasion:\n- " + box_12 + "\n";
+        }
 
         var box_13 = $("#box13").val();
         var box_14 = $("#box14").val();
@@ -251,10 +289,12 @@ $(window).on('load', function () {
 
         var box_20 = $("#box20").val();
         var box_20_2 = $("#box20_2").val();
-        if ($.inArray('Present', box_20) > -1) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_20.join('\n- ').replace(/Present/, box_20_2) + "\n";
-        } else {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_20.join('\n- ') + "\n";
+        if (box_20.length > 0) {
+            if ($.inArray('Present', box_20) > -1) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_20.join('\n- ').replace(/Present/, box_20_2) + "\n";
+            } else {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_20.join('\n- ') + "\n";
+            }
         }
 
         $('#outPut-1').val(captext);

@@ -32,14 +32,20 @@ $(window).on('load', function () {
 
     $('#box8').on("change", function () {
         var sela = $('#box8').val();
-        if (sela.indexOf('Uninvolved') > -1) {
+        var neg = sela.filter(function (el) {
+            return el.indexOf('Uninvolved by invasive') > -1;
+        });
+        var pos = sela.filter(function (el) {
+            return el.indexOf('Involved by invasive') > -1;
+        });
+        if (neg.length > 0) {
             $('#box8_1').show();
             $('#box8_2').show();
         } else {
             $('#box8_1').hide();
             $('#box8_2').hide();
         }
-        if (sela.indexOf("Involved") > -1) {
+        if (pos.length > 0) {
             $('#box8_3').show();
         } else {
             $('#box8_3').hide();
@@ -48,14 +54,20 @@ $(window).on('load', function () {
 
     $('#box9').on("change", function () {
         var sela = $('#box9').val();
-        if (sela.indexOf('Uninvolved') > -1) {
+        var neg = sela.filter(function (el) {
+            return el.indexOf('Uninvolved by invasive') > -1;
+        });
+        var pos = sela.filter(function (el) {
+            return el.indexOf('Involved by invasive') > -1;
+        });
+        if (neg.length > 0) {
             $('#box9_1').show();
             $('#box9_2').show();
         } else {
             $('#box9_1').hide();
             $('#box9_2').hide();
         }
-        if (sela.indexOf("Involved") > -1) {
+        if (pos.length > 0) {
             $('#box9_3').show();
         } else {
             $('#box9_3').hide();
@@ -92,30 +104,62 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
+
         // ***************** INPUT VALIDATION ********************//
-        $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
+                    // reset validation alert, if all goes to plan, it won't show
+                    $('#cap-valid').hide();
+                    $('#opt-valid').hide();
 
-        $('input[type="text"]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                if ($(this).attr('placeholder').indexOf('applicable') < 0) {
-                    $(this).addClass('empty');
-                    $('#cap-valid').show();
-                }
-            }
-        });
 
-        // ***************** END VALIDATION ********************//
+                    $('select:visible').each(function () {
+                        // ignore class=opt
+                        if (!$(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($(this).val().length > 0) {
+                                $(this).removeClass('empty');
+                            } else {
+                                $(this).addClass('empty');
+                                $('#cap-valid').show();
+                            }
+                        }
+                        if ($(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty-opt');
+                            } else {
+                                $(this).addClass('empty-opt');
+                                $('#opt-valid').show();
+                            }
+                        }
+                    });
+
+                    $('input:visible').each(function () {
+                        // ignore search bar in menu
+                        if ($(this).prop('type') != "search"){
+                            // ignore class=opt
+                            if (!$(this).hasClass("opt")) {
+                                // Check if at least one selection is made
+                                if ($.trim($(this).val()).length > 0) {
+                                    $(this).removeClass('empty');
+                                } else {
+                                    $(this).addClass('empty');
+                                    $('#cap-valid').show();
+                                }
+                            }
+                            if ($(this).hasClass("opt")) {
+                                // Check if at least one selection is made
+                                if ($.trim($(this).val()).length > 0) {
+                                    $(this).removeClass('empty-opt');
+                                } else {
+                                    $(this).addClass('empty-opt');
+                                    $('#opt-valid').show();
+                                }
+                            }
+                        }
+
+                    });
+
+                    // *************************** END VALIDATION ******************************//
 
 
         var captext = "Cervical (LEEP/Excision) Cancer Synoptic\n(requirements from the 8th Edition, AJCC Staging Manual)\n\n";
@@ -142,41 +186,55 @@ $(window).on('load', function () {
         var box_4 = $("#box4").val();
         captext += "\nHistologic Grade:\n- " + box_4 + "\n";
 
+        captext += "\nStromal invasion:";
         var box_5 = $("#box5").val();
-        captext += "\nDepth of stromal invasion (mm):\n- " + box_5.replace(/mm/, '') + "mm\n";
+        captext += "\nDepth of stromal invasion (mm): " + box_5.replace(/mm/g, '') + "mm\n";
 
         var box_6 = $("#box6").val();
         if (box_6.length > 0) {
-            captext += "\nHorizontal extent longitudinal/length:\n- " + box_6.replace(/mm/, '') + "mm\n";
+            captext += "Horizontal extent longitudinal/length: " + box_6.replace(/mm/g, '') + "mm\n";
         }
 
         var box_7 = $("#box7").val();
         if (box_7.length > 0) {
-            captext += "\nHorizontal extent circumferential/width:\n- " + box_7.replace(/mm/, '') + "mm\n";
+            captext += "Horizontal extent circumferential/width: " + box_7.replace(/mm/g, '') + "mm\n";
         }
 
+        captext += "\nMargins:\n";
         var box_8 = $("#box8").val();
         var box_8_1 = $("#box8_1").val();
         var box_8_2 = $("#box8_2").val();
         var box_8_3 = $("#box8_3").val();
-        if (box_8.indexOf("Uninvolved") > -1) {
-            captext += "\nMargins - Endocervical:\n- " + box_8 + "\n- Nearest margin: " + box_8_1 + "\n- Distance to this margin: " + box_8_2.replace(/mm/, "") + "mm\n";
-        } else if (box_8.indexOf("Involved") > -1) {
-            captext += "\nMargins - Endocervical:\n- " + box_8 + "\n- Margin involved: " + box_8_3 + "\n";
+        var negbox_8 = box_8.filter(function (el) {
+            return el.indexOf('Uninvolved by invasive') > -1;
+        });
+        var posbox_8 = box_8.filter(function (el) {
+            return el.indexOf('Involved by invasive') > -1;
+        });
+        if (negbox_8.length > 0) {
+            captext += "Endocervical:\n- " + box_8.join("\n- ") + "\n- Nearest margin: " + box_8_1 + "\n- Distance to this margin: " + box_8_2.replace(/mm/, "") + "mm\n";
+        } else if (posbox_8.length > 0) {
+            captext += "Endocervical:\n- " + box_8.join("\n- ") + "\n- Margin involved: " + box_8_3 + "\n";
         } else {
-            captext += "\nMargins - Endocervical:\n- " + box_8 + "\n";
+            captext += "Endocervical:\n- " + box_8.join("\n- ") + "\n";
         }
 
         var box_9 = $("#box9").val();
         var box_9_1 = $("#box9_1").val();
         var box_9_2 = $("#box9_2").val();
         var box_9_3 = $("#box9_3").val();
-        if (box_9.indexOf("Uninvolved") > -1) {
-            captext += "\nMargins - Ectocervical:\n- " + box_9 + "\n- Nearest margin: " + box_9_1 + "\n- Distance to this margin: " + box_9_2.replace(/mm/, "") + "mm\n";
-        } else if (box_9.indexOf("Involved") > -1) {
-            captext += "\nMargins - Ectocervical:\n- " + box_9 + "\n- Margin involved: " + box_9_3 + "\n";
+        var negbox_9 = box_9.filter(function (el) {
+            return el.indexOf('Uninvolved by invasive') > -1;
+        });
+        var posbox_9 = box_9.filter(function (el) {
+            return el.indexOf('Involved by invasive') > -1;
+        });
+        if (negbox_9.length > 0) {
+            captext += "\nEctocervical:\n- " + box_9.join("\n- ") + "\n- Nearest margin: " + box_9_1 + "\n- Distance to this margin: " + box_9_2.replace(/mm/, "") + "mm\n";
+        } else if (posbox_9.length > 0) {
+            captext += "\nEctocervical:\n- " + box_9.join("\n- ") + "\n- Margin involved: " + box_9_3 + "\n";
         } else {
-            captext += "\nMargins - Ectocervical:\n- " + box_9 + "\n";
+            captext += "\nEctocervical:\n- " + box_9.join("\n- ") + "\n";
         }
 
         var box_10 = $("#box10").val();
@@ -184,19 +242,21 @@ $(window).on('load', function () {
         var box_10_2 = $("#box10_2").val();
         var box_10_3 = $("#box10_3").val();
         if (box_10.indexOf("Uninvolved") > -1) {
-            captext += "\nMargins - Deep:\n- Margins uninvolved by tumor\n- Nearest margin: " + box_10_1 + "\n- Distance to this margin: " + box_10_2.replace(/mm/, "") + "mm\n";
+            captext += "\n Deep:\n- Margins uninvolved by tumor\n- Nearest margin: " + box_10_1 + "\n- Distance to this margin: " + box_10_2.replace(/mm/, "") + "mm\n";
         } else if (box_10.indexOf("Involved") > -1) {
-            captext += "\nMargins - Deep:\n- Margins involved by tumor\n- Margin involved: " + box_10_3 + "\n";
+            captext += "\nDeep:\n- Margins involved by tumor\n- Margin involved: " + box_10_3 + "\n";
         } else {
-            captext += "\nMargins - Deep:\n- " + box_10 + "\n";
+            captext += "\nDeep:\n- " + box_10 + "\n";
         }
 
         var box_12 = $("#box12").val();
         var box_12_2 = $("#box12_2").val();
-        if ($.inArray('Other', box_12) > -1) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_12.join('\n- ').replace(/Other/, box_12_2) + "\n";
-        } else {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_12.join('\n- ') + "\n";
+        if (box_12.length > 0) {
+            if ($.inArray('Other', box_12) > -1) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_12.join('\n- ').replace(/Other/, box_12_2) + "\n";
+            } else {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_12.join('\n- ') + "\n";
+            }
         }
 
         $('#outPut-1').val(captext);

@@ -79,19 +79,18 @@ $(window).on('load', function () {
     });
 
     $("#box18, #box17").on("input", function () {
-        var ln_itc = parseInt($("#box17").val(), 10) + parseInt($("#box18").val(), 10);
-        console.log("ln_itc:" + ln_itc);
-        if (ln_itc == 0) {
+        var ln_itc = $("#box18").val() +
+            $("#box17").val();
+        if (parseFloat(ln_itc) > 0) {
             $(".itc").show();
+            $(".posnodes").show();
+
         } else {
             $(".itc").hide();
+            $(".posnodes").hide();
+
         }
 
-        if (ln_itc > 0) {
-            $(".posnodes").show();
-        } else {
-            $(".posnodes").hide();
-        }
     });
 
     $('#box30').on("change", function () {
@@ -106,22 +105,18 @@ $(window).on('load', function () {
     $('#box40').on("change", function () {
         var sel = $('#box40').val();
         if (sel.indexOf("Positive") > -1) {
-            $('#box40_2').show();
-            $('#box40_3').show();
+            $('.er').show();
         } else {
-            $('#box40_2').hide();
-            $('#box40_3').hide();
+            $('.er').hide();
         }
     });
 
     $('#box41').on("change", function () {
         var sel = $('#box41').val();
         if (sel.indexOf("Positive") > -1) {
-            $('#box41_2').show();
-            $('#box41_3').show();
+            $('.pr').show();
         } else {
-            $('#box41_2').hide();
-            $('#box41_3').hide();
+            $('#pr').hide();
         }
     });
 
@@ -325,28 +320,62 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
+
         // ***************** INPUT VALIDATION ********************//
-        $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
+                    // reset validation alert, if all goes to plan, it won't show
+                    $('#cap-valid').hide();
+                    $('#opt-valid').hide();
 
-        $('input[type="text"]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
 
-        // ***************** END VALIDATION ********************//
+                    $('select:visible').each(function () {
+                        // ignore class=opt
+                        if (!$(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($(this).val().length > 0) {
+                                $(this).removeClass('empty');
+                            } else {
+                                $(this).addClass('empty');
+                                $('#cap-valid').show();
+                            }
+                        }
+                        if ($(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty-opt');
+                            } else {
+                                $(this).addClass('empty-opt');
+                                $('#opt-valid').show();
+                            }
+                        }
+                    });
+
+                    $('input:visible').each(function () {
+                        // ignore search bar in menu
+                        if ($(this).prop('type') != "search"){
+                            // ignore class=opt
+                            if (!$(this).hasClass("opt")) {
+                                // Check if at least one selection is made
+                                if ($.trim($(this).val()).length > 0) {
+                                    $(this).removeClass('empty');
+                                } else {
+                                    $(this).addClass('empty');
+                                    $('#cap-valid').show();
+                                }
+                            }
+                            if ($(this).hasClass("opt")) {
+                                // Check if at least one selection is made
+                                if ($.trim($(this).val()).length > 0) {
+                                    $(this).removeClass('empty-opt');
+                                } else {
+                                    $(this).addClass('empty-opt');
+                                    $('#opt-valid').show();
+                                }
+                            }
+                        }
+
+                    });
+
+                    // *************************** END VALIDATION ******************************//
 
 
         var captext = "Invasive Breast Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
@@ -395,7 +424,9 @@ $(window).on('load', function () {
         captext += "\tMitotic Rate: " + box_103 + "\n";
 
         var box_104 = $("#box104").val();
-        captext += "\tMitoses per 10 hpf: " + box_104 + "\n";
+        if (box_104.length > 0) {
+            captext += "\tMitoses per 10 hpf: " + box_104 + "\n";
+        }
 
         var brs_score = num_t + num_n + num_m;
         console.log("brs score:" + brs_score);
@@ -413,10 +444,12 @@ $(window).on('load', function () {
 
         var box_105 = $("#box105").val();
         var box_105_2 = $("#box105_2").val();
-        if (box_105.indexOf("Multiple") > -1) {
-            captext += "\n+ Tumor Focality:\n- Multiple foci of invasive carcinoma\n- Additional Foci/Size(s): " + box_105_2 + "\n";
-        } else {
-            captext += "\n+ Tumor Focality:\n- " + box_105 + "\n";
+        if (box_105.length > 0) {
+            if (box_105.indexOf("Multiple") > -1) {
+                captext += "\n+ Tumor Focality:\n- Multiple foci of invasive carcinoma\n- Additional Foci/Size(s): " + box_105_2 + "\n";
+            } else {
+                captext += "\n+ Tumor Focality:\n- " + box_105 + "\n";
+            }
         }
 
         var box_107 = $("#box107").val();
@@ -515,26 +548,29 @@ $(window).on('load', function () {
         if ($("#box14").is(':checked')) {
             var box_15 = $("#box15").val();
             var box_16 = $("#box16").val();
-            captext += "\nLymph nodes:\n\tLymph Nodes Examined: " + box_15 + "\n\tSentinel nodes involved: " + box_16 + "\n";
+            captext += "\nLymph nodes:\n\tLymph Nodes Examined: " + box_15 + "\n\tSentinel nodes Examined: " + box_16 + "\n";
 
             var box_17 = $("#box17").val();
-            captext += "\tNumber of Lymph Nodes with Macrometastases: " + box_17 + "\n";
+            captext += "\tLymph Nodes with Macrometastases: " + box_17 + "\n";
 
             var box_18 = $("#box18").val();
-            captext += "\tNumber of Lymph Nodes with Micrometastases: " + box_18 + "\n";
+            captext += "\tLymph Nodes with Micrometastases: " + box_18 + "\n";
 
-            var ln_itc = parseInt($("#box17").val(), 10) + parseInt($("#box18").val(), 10);
             var box_19 = $("#box19").val();
-            if (ln_itc == 0) {
-                captext += "\tNumber of Lymph Nodes with Isolated Tumor Cells: " + box_19 + "\n";
+            if (box_19.length > 0) {
+                captext += "\tLymph Nodes with Isolated Tumor Cells: " + box_19 + "\n";
             }
-            if (ln_itc > 0) {
+
                 var box_20 = $("#box20").val();
-                captext += "\t+ Size of Largest Metastatic Deposit: " + box_20.replace(/mm/, '') + "mm\n";
+                if (box_20.length > 0) {
+                    captext += "\t+ Largest Metastatic Deposit: " + box_20.replace(/mm/, '') + "mm\n";
+                }
 
                 var box_21 = $("#box21").val();
-                captext += "\t+ Extranodal Extension: " + box_21 + "\n";
-            }
+                if (box_21.length > 0) {
+                    captext += "\t+ Extranodal Extension: " + box_21 + "\n";
+                }
+
         } else {
             captext += "\nLymph nodes: None submitted\n";
         }
@@ -551,32 +587,44 @@ $(window).on('load', function () {
         }
 
         var box_113 = $("#box113").val();
-        captext += "\n+ Lymphovascular Invasion:\n- " + box_113 + "\n";
+        if (box_113.length > 0) {
+            captext += "\n+ Lymphovascular Invasion:\n- " + box_113 + "\n";
+        }
 
         // DCIS segment --------------------------------------------------//
         var box_106 = $("#box106").val();
         if (box_106.indexOf("present") > -1) {
-            captext += "\n------------------------\n\nDuctal Carcinoma In Situ:\n- " + box_106;
+            captext += "\n----------------------------------------n\nDuctal Carcinoma In Situ:\n- " + box_106;
 
             var box_4_1 = $("#box4_1").val();
-            captext += "\n\t+ Number of blocks with DCIS: " + box_4_1 + "\n";
+            if (box_4_1.length > 0) {
+                captext += "\n\t+ Number of blocks with DCIS: " + box_4_1 + "\n";
+            }
 
             var box_4_2 = $("#box4_2").val();
-            captext += "\t+ Number of blocks examined: " + box_4_2 + "\n";
+            if (box_4_2.length > 0) {
+                captext += "\t+ Number of blocks examined: " + box_4_2 + "\n";
+            }
 
             var box_5 = $("#box5").val();
             var box_5_2 = $("#box5_2").val();
-            if ($.inArray('Other', box_5) > -1) {
-                captext += "\t+ Architectural Patterns: " + box_5.join(', ').replace(/Other/, box_5_2) + "\n";
-            } else {
-                captext += "\t+ Architectural Patterns: " + box_5.join(', ') + "\n";
+            if (box_5.length > 0) {
+                if ($.inArray('Other', box_5) > -1) {
+                    captext += "\t+ Architectural Patterns: " + box_5.join(', ').replace(/Other/, box_5_2) + "\n";
+                } else {
+                    captext += "\t+ Architectural Patterns: " + box_5.join(', ') + "\n";
+                }
             }
 
             var box_6 = $("#box6").val();
-            captext += "\t+ Nuclear Grade: " + box_6 + "\n";
+            if (box_6.length > 0) {
+                captext += "\t+ Nuclear Grade: " + box_6 + "\n";
+            }
 
             var box_7 = $("#box7").val();
-            captext += "\t+ Necrosis: " + box_7 + "\n";
+            if (box_7.length > 0) {
+                captext += "\t+ Necrosis: " + box_7 + "\n";
+            }
 
             // DCIS MARGINS ---------------------------------------------------//
             var box_8 = $("#box8").val();
@@ -636,9 +684,10 @@ $(window).on('load', function () {
                 }
             }
 
-            captext += "\n\n----------------------\n";
+            captext += "\n\n----------------------------------------\n";
         } else {
-            captext += "\n------------------------\n\nDuctal Carcinoma In Situ:\n- " + box_106 + "\n\n----------------------\n";;
+            captext += "\n----------------------------------------\n\nDuctal Carcinoma In Situ:\n- "
+                    + box_106 + "\n\n-----------------------------------------\n";;
         }
 
         // END DCIS segment --------------------------------------------------//
@@ -646,12 +695,12 @@ $(window).on('load', function () {
 
         // HORMONE BIO-MARKERS -----------------------------------------------//
 
-        captext += "\n--- ANCILLARY HORMONE RECEPTOR STUDIES ---\n";
+        captext += "\n-- ANCILLARY HORMONE RECEPTOR STUDIES --\n";
         var box_40 = $("#box40").val();
         var box_40_2 = $("#box40_2").val();
         var box_40_3 = $("#box40_3").val();
         if (box_40.indexOf("Positive") > -1) {
-            captext += "\nEstrogen Receptor Status: Positive, " + box_40_2 + "(" + box_40_3 + ")\n";
+            captext += "\nEstrogen Receptor Status: Positive, " + box_40_2 + "% (" + box_40_3 + ")\n";
         } else {
             captext += "\nEstrogen Receptor Status: " + box_40 + "\n";
         }
@@ -660,7 +709,7 @@ $(window).on('load', function () {
         var box_41_2 = $("#box41_2").val();
         var box_41_3 = $("#box41_3").val();
         if (box_41.indexOf("Positive") > -1) {
-            captext += "\nProgesterone Receptor Status: Positive, " + box_41_2 + "(" + box_41_3 + ")\n";
+            captext += "\nProgesterone Receptor Status: Positive, " + box_41_2 + "% (" + box_41_3 + ")\n";
         } else {
             captext += "\nProgesterone Receptor Status: " + box_41 + "\n";
         }
@@ -716,10 +765,12 @@ $(window).on('load', function () {
         var box_46 = $("#box46").val();
         captext += "\nKi-67: " + box_46 + "%\n";
 
-        captext += "\n--- BIO-MARKER METHODOLOGY ---\n";
+        captext += "\n-------- BIO-MARKER METHODOLOGY --------\n";
 
         var box_50 = $("#box50").val();
-        captext += "\n+ Testing Performed on Block Number(s): " + box_50 + "\n";
+        if (box_50.length > 0) {
+            captext += "\n+ Testing Performed on Block Number(s): " + box_50 + "\n";
+        }
 
         var box_51 = $("#box51").val();
         var box_51_2 = $("#box51_2").val();
@@ -792,10 +843,12 @@ $(window).on('load', function () {
 
         var box_56 = $("#box56").val();
         var box_56_3 = $("#box56_3").val();
-        if (box_56.indexOf("Performed") > -1) {
-            captext += "\n+ Image Analysis:\n- Performed\n- Biomarkers scored by QIA: " + box_56_3.join(", ") + "\n";
-        } else {
-            captext += "\n+ Image Analysis:\n- " + box_56 + "\n";
+        if (box_56.length > 0) {
+            if (box_56.indexOf("Performed") > -1) {
+                captext += "\n+ Image Analysis:\n- Performed\n- Biomarkers scored by QIA: " + box_56_3.join(", ") + "\n";
+            } else {
+                captext += "\n+ Image Analysis:\n- " + box_56 + "\n";
+            }
         }
 
         $('#outPut-1').val(captext);

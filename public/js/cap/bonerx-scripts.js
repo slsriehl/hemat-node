@@ -186,28 +186,62 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
+
         // ***************** INPUT VALIDATION ********************//
-        $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
+                    // reset validation alert, if all goes to plan, it won't show
+                    $('#cap-valid').hide();
+                    $('#opt-valid').hide();
 
-        $('input[type="text"]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
 
-        // ***************** END VALIDATION ********************//
+                    $('select:visible').each(function () {
+                        // ignore class=opt
+                        if (!$(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($(this).val().length > 0) {
+                                $(this).removeClass('empty');
+                            } else {
+                                $(this).addClass('empty');
+                                $('#cap-valid').show();
+                            }
+                        }
+                        if ($(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty-opt');
+                            } else {
+                                $(this).addClass('empty-opt');
+                                $('#opt-valid').show();
+                            }
+                        }
+                    });
+
+                    $('input:visible').each(function () {
+                        // ignore search bar in menu
+                        if ($(this).prop('type') != "search"){
+                            // ignore class=opt
+                            if (!$(this).hasClass("opt")) {
+                                // Check if at least one selection is made
+                                if ($.trim($(this).val()).length > 0) {
+                                    $(this).removeClass('empty');
+                                } else {
+                                    $(this).addClass('empty');
+                                    $('#cap-valid').show();
+                                }
+                            }
+                            if ($(this).hasClass("opt")) {
+                                // Check if at least one selection is made
+                                if ($.trim($(this).val()).length > 0) {
+                                    $(this).removeClass('empty-opt');
+                                } else {
+                                    $(this).addClass('empty-opt');
+                                    $('#opt-valid').show();
+                                }
+                            }
+                        }
+
+                    });
+
+                    // *************************** END VALIDATION ******************************//
 
         var site = $("#box1").find(":selected").data("proc");
 
@@ -258,7 +292,9 @@ $(window).on('load', function () {
         captext += "\nHistologic Grade:\n- " + box_8 + "\n";
 
         var box_9 = $("#box9").val();
-        captext += "\n+ Lymphovascular Invasion:\n- " + box_9 + "\n";
+        if (box_9.length > 0) {
+            captext += "\n+ Lymphovascular Invasion:\n- " + box_9 + "\n";
+        }
 
         // resection ------------------------------------------------------------//
 
@@ -304,18 +340,7 @@ $(window).on('load', function () {
         }
         // end resection ------------------------------------------------------------//
 
-        captext += "\n-- ANCILLARY STUDIES --\n";
-
-        var box_20 = $("#box20").val();
-        captext += "\nImmunohistochemistry:\n- " + box_20 + "\n";
-
-        var box_21 = $("#box21").val();
-        captext += "\nCytogenetics:\n- " + box_21 + "\n";
-
-        var box_22 = $("#box22").val();
-        captext += "\nMolecular genetics:\n- " + box_22 + "\n";
-
-        var box_23 = $("#box23").val();
+       var box_23 = $("#box23").val();
         captext += "\nPreresection Treatment:\n- " + box_23.join('\n- ') + "\n";
 
         var box_24 = $("#box24").val();
@@ -324,6 +349,27 @@ $(window).on('load', function () {
             captext += "\nTreatment Effect:\n- Present, " + box_24_2 + "% tumor necrosis\n";
         } else {
             captext += "\nTreatment Effect:\n- " + box_24 + "\n";
+        }
+
+        captext += "\n-- ANCILLARY STUDIES --\n";
+
+        var box_20 = $("#box20").val();
+        if (box_20.length > 0) {
+            captext += "\nImmunohistochemistry:\n- " + box_20 + "\n";
+        }
+
+        var box_21 = $("#box21").val();
+        if (box_21.length > 0) {
+            captext += "\nCytogenetics:\n- " + box_21 + "\n";
+        }
+
+        var box_22 = $("#box22").val();
+        if (box_22.length > 0) {
+            captext += "\nMolecular genetics:\n- " + box_22 + "\n";
+        }
+
+        if (box_20.length == 0 && box_21.length == 0 && box_21.length == 0){
+            captext+= "\nNo ancillary testing performed";
         }
 
         $('#outPut-1').val(captext);

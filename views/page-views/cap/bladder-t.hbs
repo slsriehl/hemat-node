@@ -199,7 +199,6 @@
                     <option>Abdominal wall</option>
                     <option>Rectum</option>
                     <option>Other</option>
-                    </optgroup>
                 </select>
                 <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box9_3' style='display:none;' placeholder='Specify Other'>
             </div>
@@ -216,7 +215,7 @@
                 <option value="Non-invasive low-grade dysplasia involving: ">Involved by noninvasive low-grade urothelial carcinoma/urothelial dysplasia</option>
             </select>
 
-            <div class='margin_hid' style='display: none;' >
+            <div class='margin_hid ml-4 mt-2' style='display: none;' >
                 <h6>Choose margins which are involved (select all that apply)</h6>
                 <select multiple id="box10_2" class='form-control selectpicker form-control-sm col-sm-6'>
                     <option>Right ureteral margin</option>
@@ -253,7 +252,10 @@
                 <option>r</option>
                 <option>y</option>
             </select>
-            <h6 class="mt-2">pT             <!-- Button trigger modal -->
+
+            <div class="py-2 w-100"></div>
+
+            <h6>pT             <!-- Button trigger modal -->
                 <button class="btn btn-sm btn-info ml-4 mt-2" data-toggle="modal" data-target="#help_blad-tnm">Staging
                     diagram
                 </button>
@@ -280,8 +282,9 @@
                 <option value="pT4b">pT4b: Extravesical tumor invades pelvic wall, abdominal wall</option>
             </select>
 
+            <div class="py-2 w-100"></div>
 
-            <h6 class='mt-2'>pN</h6>
+            <h6 >pN</h6>
             <select id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option value="pNX">pNX: Lymph nodes cannot be assessed</option>
                 <option value="pN0">pN0: No lymph node metastasis</option>
@@ -294,8 +297,9 @@
                 <option value="pN3">pN3: Lymph node metastasis to the common iliac lymph nodes</option>
             </select>
 
+            <div class="py-2 w-100"></div>
 
-            <h6 class='mt-2'>pM</h6>
+            <h6 >pM</h6>
             <select id="box15" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option selected value='pMx'>pMx: Not applicable</option>
                 <option value="pM1">pM1: Distant metastasis</option>
@@ -303,30 +307,36 @@
                 <option value="pM1b">pM1b: Non-lymph node distant metastases</option>
             </select>
 
+            <div class="py-2 w-100"></div>
+
             <form class="form-inline">
                 <label class="form-check-label">Check here if any lymph nodes submitted?
                     <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box16">
                 </label>
             </form>
+
             <div class='lnchk' style='display:none;'>
                 <form class="form-inline col-8">
-                    <label class="m-2">Number of lymph nodes examined: <input type="number"
-                                                                              class="form-control form-control-sm col-sm-6 ml-3"
-                                                                              id="box17" style="width:100px"></label>
-                    <label class="m-2">Number of lymph nodes involved: <input type="number"
-                                                                              class="form-control form-control-sm col-sm-6 ml-3"
-                                                                              id="box18" style="width:100px"></label>
+                    <label class="m-2">Number of lymph nodes examined:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box17" ></label>
+                    <label class="m-2">Number of lymph nodes involved:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box18" s></label>
+
+
+                    <div class="py-2 w-100"></div>
+
+                    + Extranodal Extension
+                    <select id="box19" class='form-control selectpicker form-control-sm col-sm-6 ml-3 opt'>
+                        <option></option>
+                        <option>Not identified</option>
+                        <option>Present</option>
+                        <option>Cannot be determined</option>
+                    </select>
                 </form>
             </div>
 
 
-            <hr class="p-2">
-            <h5>+ Extranodal Extension</h5>
-            <select id="box19" class='form-control selectpicker form-control-sm col-sm-6 opt'>
-                <option>Not identified</option>
-                <option>Present</option>
-                <option>Cannot be determined</option>
-            </select>
+
 
 
             <hr class="p-2">

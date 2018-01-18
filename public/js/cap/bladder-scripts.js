@@ -159,30 +159,62 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
+
         // ***************** INPUT VALIDATION ********************//
-        $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
+                    // reset validation alert, if all goes to plan, it won't show
+                    $('#cap-valid').hide();
+                    $('#opt-valid').hide();
 
-        $('input[type="text"]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                if ($(this).attr('placeholder').indexOf('applicable') < 0) {
-                    $(this).addClass('empty');
-                    $('#cap-valid').show();
-                }
-            }
-        });
 
-        // ***************** END VALIDATION ********************//
+                    $('select:visible').each(function () {
+                        // ignore class=opt
+                        if (!$(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($(this).val().length > 0) {
+                                $(this).removeClass('empty');
+                            } else {
+                                $(this).addClass('empty');
+                                $('#cap-valid').show();
+                            }
+                        }
+                        if ($(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty-opt');
+                            } else {
+                                $(this).addClass('empty-opt');
+                                $('#opt-valid').show();
+                            }
+                        }
+                    });
+
+                    $('input:visible').each(function () {
+                        // ignore search bar in menu
+                        if ($(this).prop('type') != "search"){
+                            // ignore class=opt
+                            if (!$(this).hasClass("opt")) {
+                                // Check if at least one selection is made
+                                if ($.trim($(this).val()).length > 0) {
+                                    $(this).removeClass('empty');
+                                } else {
+                                    $(this).addClass('empty');
+                                    $('#cap-valid').show();
+                                }
+                            }
+                            if ($(this).hasClass("opt")) {
+                                // Check if at least one selection is made
+                                if ($.trim($(this).val()).length > 0) {
+                                    $(this).removeClass('empty-opt');
+                                } else {
+                                    $(this).addClass('empty-opt');
+                                    $('#opt-valid').show();
+                                }
+                            }
+                        }
+
+                    });
+
+                    // *************************** END VALIDATION ******************************//
 
 
         var captext = "Urinary Bladder Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
@@ -215,15 +247,17 @@ $(window).on('load', function () {
         }
 
         var box_5 = $("#box5").val();
-        captext += "\n+ Associated Epithelial Lesions:\n- " + box_5.join('\n- ') + "\n";
+        if (box_5.length > 0) {
+            captext += "\n+ Associated Epithelial Lesions:\n- " + box_5.join('\n- ') + "\n";
+        }
 
         var box_6 = $("#box6").val();
         var box_6_2 = $("#box6_2").val();
         if (box_6 != "Not applicable") {
             if (box_6.indexOf("Other") > -1) {
-                captext += "\nHistologic Grade:\n- " + box_6_2 + "\n";
+                captext += "\nHistologic Grade (non-squamous):\n- " + box_6_2 + "\n";
             } else {
-                captext += "\nHistologic Grade:\n- " + box_6 + "\n";
+                captext += "\nHistologic Grade (non-squamous):\n- " + box_6 + "\n";
             }
         }
 
@@ -231,18 +265,20 @@ $(window).on('load', function () {
         var box_7_2 = $("#box7_2").val();
         if (box_7 != "Not applicable") {
             if (box_7.indexOf("Other") > -1) {
-                captext += "\nHistologic Grade:\n- " + box_7_2 + "\n";
+                captext += "\nHistologic Grade (Squamous component):\n- " + box_7_2 + "\n";
             } else {
-                captext += "\nHistologic Grade:\n- " + box_7 + "\n";
+                captext += "\nHistologic Grade (Squamous component):\n- " + box_7 + "\n";
             }
         }
 
         var box_8 = $("#box8").val();
         var box_8_2 = $("#box8_2").val();
-        if ($.inArray('Other', box_8) > -1) {
-            captext += "\n+ Tumor Configuration:\n- " + box_8.join('\n- ').replace(/Other/, box_8_2) + "\n";
-        } else {
-            captext += "\n+ Tumor Configuration:\n- " + box_8.join('\n- ') + "\n";
+        if (box_8.length > 0) {
+            if ($.inArray('Other', box_8) > -1) {
+                captext += "\n+ Tumor Configuration:\n- " + box_8.join('\n- ').replace(/Other/, box_8_2) + "\n";
+            } else {
+                captext += "\n+ Tumor Configuration:\n- " + box_8.join('\n- ') + "\n";
+            }
         }
 
         captext += "\nTumor Extension:\n";
@@ -265,9 +301,9 @@ $(window).on('load', function () {
         var box_10_3 = $("#box10_3").val();
         if (box_10.indexOf('involving') > -1) {
             if ($.inArray('Other', box_10_2) > -1) {
-                captext += "\nMargins:\n- " + box_10 + " " + box_10_2.join(', ').replace(/Other/, box_10_3) + "\n";
+                captext += "\nMargins:\n- " + box_10 + "\n\t" + box_10_2.join('\n\t').replace(/Other/, box_10_3) + "\n";
             } else {
-                captext += "\nMargins:\n- " + box_10 + " " + box_10_2.join(', ') + "\n";
+                captext += "\nMargins:\n- " + box_10 + "\n\t" + box_10_2.join('\n\t') + "\n";
             }
         } else {
             captext += "\nMargins:\n- " + box_10 + "\n";
@@ -279,26 +315,26 @@ $(window).on('load', function () {
         var box_12 = $("#box12").val();
         var box_13 = $("#box13").val();
         var box_14 = $("#box14").val();
-        var box_15 = $("#box15").val();
         captext += '\nPathologic Staging (pTNM):\n- ';
         if (box_12 != "Not applicable") {
-            captext += box_12.join("") + ' ' + box_13 + " " + box_14 + " " + box_15 + "\n";
+            captext += box_12.join("") + ' ' + box_13 + " " + box_14 + " " + "\n";
         } else {
-            captext += box_13 + " " + box_14 + " " + box_15 + "\n";
+            captext += box_13 + " " + box_14 + " "  + "\n";
         }
 
         if ($("#box16").is(':checked')) {
             var box_17 = $("#box17").val();
             var box_18 = $("#box18").val();
             captext += "\nLymph nodes:\n\tLymph Nodes Examined: " + box_17 + "\n\tLymph nodes involved: " + box_18 + "\n";
+
+            var box_19 = $("#box19").val();
+            if (box_19.length > 0) {
+                captext += "\t+ Extranodal Extension: " + box_19 + "\n";
+            }
         } else {
             captext += "\nLymph nodes: None submitted\n";
         }
 
-        var box_19 = $("#box19").val();
-        if (box_19 != "Not applicable") {
-            captext += "\n+ Extranodal Extension:\n- " + box_19 + "\n";
-        }
 
         var box_20 = $("#box20").val();
         var box_20_2 = $("#box20_2").val();
@@ -309,14 +345,16 @@ $(window).on('load', function () {
         var trig2_box_20 = box_20.filter(function (el) {
             return el.indexOf("Other") > -1;
         });
-        if (trig1_box_20.length > 0 && trig2_box_20.length == 0) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_20.join("\n- ").replace(/Therapy/, box_20_2) + "\n";
-        } else if (trig1_box_20.length == 0 && trig2_box_20.length > 0) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_20.join("\n- ").replace(/Other/, box_20_3) + "\n";
-        } else if (trig1_box_20.length > 0 && trig2_box_20.length > 0) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_20.join("\n- ").replace(/Therapy/, box_20_2).replace(/Other/, box_20_3) + "\n";
-        } else {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_20.join("\n- ") + "\n";
+        if (box_20.length > 0) {
+            if (trig1_box_20.length > 0 && trig2_box_20.length == 0) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_20.join("\n- ").replace(/Therapy/, box_20_2) + "\n";
+            } else if (trig1_box_20.length == 0 && trig2_box_20.length > 0) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_20.join("\n- ").replace(/Other/, box_20_3) + "\n";
+            } else if (trig1_box_20.length > 0 && trig2_box_20.length > 0) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_20.join("\n- ").replace(/Therapy/, box_20_2).replace(/Other/, box_20_3) + "\n";
+            } else {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_20.join("\n- ") + "\n";
+            }
         }
 
         $('#outPut-1').val(captext);

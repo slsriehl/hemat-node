@@ -86,30 +86,62 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
+
         // ***************** INPUT VALIDATION ********************//
-        $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
+                    // reset validation alert, if all goes to plan, it won't show
+                    $('#cap-valid').hide();
+                    $('#opt-valid').hide();
 
-        $('input[type="text"]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                if ($(this).attr('placeholder').indexOf('applicable') < 0) {
-                    $(this).addClass('empty');
-                    $('#cap-valid').show();
-                }
-            }
-        });
 
-        // ***************** END VALIDATION ********************//
+                    $('select:visible').each(function () {
+                        // ignore class=opt
+                        if (!$(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($(this).val().length > 0) {
+                                $(this).removeClass('empty');
+                            } else {
+                                $(this).addClass('empty');
+                                $('#cap-valid').show();
+                            }
+                        }
+                        if ($(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty-opt');
+                            } else {
+                                $(this).addClass('empty-opt');
+                                $('#opt-valid').show();
+                            }
+                        }
+                    });
+
+                    $('input:visible').each(function () {
+                        // ignore search bar in menu
+                        if ($(this).prop('type') != "search"){
+                            // ignore class=opt
+                            if (!$(this).hasClass("opt")) {
+                                // Check if at least one selection is made
+                                if ($.trim($(this).val()).length > 0) {
+                                    $(this).removeClass('empty');
+                                } else {
+                                    $(this).addClass('empty');
+                                    $('#cap-valid').show();
+                                }
+                            }
+                            if ($(this).hasClass("opt")) {
+                                // Check if at least one selection is made
+                                if ($.trim($(this).val()).length > 0) {
+                                    $(this).removeClass('empty-opt');
+                                } else {
+                                    $(this).addClass('empty-opt');
+                                    $('#opt-valid').show();
+                                }
+                            }
+                        }
+
+                    });
+
+                    // *************************** END VALIDATION ******************************//
 
 
         var captext = "Urinary Bladder (Biopsy/TURBT) Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
@@ -145,9 +177,9 @@ $(window).on('load', function () {
         var box_6_2 = $("#box6_2").val();
         if (box_6 != "Not applicable") {
             if (box_6.indexOf("Other") > -1) {
-                captext += "\nHistologic Grade:\n- " + box_6_2 + "\n";
+                captext += "\nHistologic Grade (non-squamous):\n- " + box_6_2 + "\n";
             } else {
-                captext += "\nHistologic Grade:\n- " + box_6 + "\n";
+                captext += "\nHistologic Grade (non-squamous):\n- " + box_6 + "\n";
             }
         }
 
@@ -155,9 +187,9 @@ $(window).on('load', function () {
         var box_7_2 = $("#box7_2").val();
         if (box_7 != "Not applicable") {
             if (box_7.indexOf("Other") > -1) {
-                captext += "\nHistologic Grade:\n- " + box_7_2 + "\n";
+                captext += "\nHistologic Grade (Squamous component):\n- " + box_7_2 + "\n";
             } else {
-                captext += "\nHistologic Grade:\n- " + box_7 + "\n";
+                captext += "\nHistologic Grade (Squamous component):\n- " + box_7 + "\n";
             }
         }
 

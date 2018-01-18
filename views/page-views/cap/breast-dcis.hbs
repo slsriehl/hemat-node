@@ -119,47 +119,37 @@
             <input type="text" class="form-control form-control-sm col-sm-6" id='box8_3' style='display:none;' placeholder='Specify involved margin'>
 
 
-            <div class="margins ml-3" style="display: none;">
-                <h6 class="p-2" >
-                Distance from superior margin (mm)</h6>
+            <div class="margins ml-5" style="display: none;">
+
+                <div class="py-2 w-100"></div>
+
+                <h6  > Distance from superior margin (mm)</h6>
                 <input type="text" class="form-control form-control-sm col-sm-6" id="box9_1" placeholder="enter 0, if margin is involved">
 
+                <div class="py-2 w-100"></div>
 
-
-
-                <h6 class="p-2" >
-                Distance from inferior margin (mm)</h6>
+                <h6  >Distance from inferior margin (mm)</h6>
                 <input type="text" class="form-control form-control-sm col-sm-6" id="box9_2" placeholder="enter 0, if margin is involved">
 
+                <div class="py-2 w-100"></div>
 
-
-
-                <h6 class="p-2" >
-                Distance from medial margin (mm)</h6>
+                <h6  >Distance from medial margin (mm)</h6>
                 <input type="text" class="form-control form-control-sm col-sm-6" id="box9_3" placeholder="enter 0, if margin is involved">
 
+                <div class="py-2 w-100"></div>
 
-
-
-                <h6 class="p-2" >
-                Distance from lateral margin (mm)</h6>
+                <h6  >Distance from lateral margin (mm)</h6>
                 <input type="text" class="form-control form-control-sm col-sm-6" id="box9_4" placeholder="enter 0, if margin is involved">
 
+                <div class="py-2 w-100"></div>
 
-
-
-                <h6 class="p-2" >
-                Distance from anterior margin (mm)</h6>
+                <h6  >Distance from anterior margin (mm)</h6>
                 <input type="text" class="form-control form-control-sm col-sm-6" id="box9_5" placeholder="enter 0, if margin is involved">
 
+                <div class="py-2 w-100"></div>
 
-
-
-                <h6 class="p-2" >
-                Distance from posterior margin (mm)</h6>
+                <h6  >Distance from posterior margin (mm)</h6>
                 <input type="text" class="form-control form-control-sm col-sm-6" id="box9_6" placeholder="enter 0, if margin is involved">
-
-
 
 
             </div>
@@ -225,6 +215,8 @@
             </select>
             <input type="text" class="form-control form-control-sm col-sm-6" id="box13_2" style="display:none;" placeholder="Specify metastatic sites">
 
+            <div class="py-2 w-100"></div>
+
             <form class="form-inline mt-2">
                 <label class="form-check-label">Check here if any lymph nodes submitted?
                     <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box14" >
@@ -238,26 +230,28 @@
                     <label class="m-2">Number of sentinel nodes examined:
                         <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box16" style="width:100px"></label>
 
-                    <label class="m-2">Number of Lymph Nodes with Macrometastases (>2 mm):
-                        <input type="text" class="form-control form-control-sm col-sm-6 ml-3" id="box17" style="width:100px"></label>
+                    <label class="m-2">Lymph Nodes with Macrometastases (>2 mm):
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box17" style="width:100px"></label>
 
 
-                    <label class="m-2">Number of Lymph Nodes with Micrometastases (>0.2 mm to 2 mm and/or >200 cells):
-                        <input type="text" class="form-control form-control-sm col-sm-6 ml-3" id="box18" style="width:100px"></label>
+                    <label class="m-2">Lymph Nodes with Micrometastases (>0.2 mm to 2 mm and/or >200 cells):
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box18" style="width:100px"></label>
 
                     <div class="itc" style="display:none;">
-                        <label class="m-2">Number of Lymph Nodes with Isolated Tumor Cells (≤0.2 mm and ≤200 cells):<input type="text" class="form-control form-control-sm col-sm-6 ml-3" id="box19" style="width:100px">
+                        <label class="m-2">+Lymph Nodes with Isolated Tumor Cells (≤0.2 mm and ≤200 cells):
+                            <input type="number" class="form-control form-control-sm col-sm-6 ml-3 opt" id="box19" style="width:100px">
                         </label>
                     </div>
 
                     <div class="posnodes" style="display:none;">
 
-                        <label class="mt-2">+ Size of Largest Metastatic Deposit (mm):
-                            <input type="number" class="form-control form-control-sm col-sm-6 ml3" id="box20"> </label>
+                        <label class="mt-2">+ Largest Metastatic Deposit (mm):
+                            <input type="number" class="form-control form-control-sm col-sm-6 ml-3 opt" id="box20"> </label>
 
 
                         <label class="mt-2">+ Extranodal Extension:
-                            <select id="box21" class='form-control selectpicker form-control-sm col-sm-6 ml-3'>
+                            <select id="box21" class='form-control selectpicker form-control-sm col-sm-6 ml-3 opt'>
+                                <option></option>
                                 <option>Not identified</option>
                                 <option>Present</option>
                                 <option>Cannot be determined</option>
@@ -286,7 +280,7 @@
             <h5>- ANCILLARY HORMONE RECEPTOR STUDIES -</h5>
             <div class="ml-3" style="background-color: #d0ecff">
                 <h6>
-                Estrogen Receptor Status </h6>
+                    Estrogen Receptor Status </h6>
                 <select id="box40" class='form-control selectpicker form-control-sm col-sm-6'>
                     <option>Positive</option>
                     <option>Negative (internal control cells present and stain as expected)</option>
@@ -294,21 +288,28 @@
                     <option>Cannot be determined (Internal control cells present; no immunoreactivity of either tumor cells or internal controls)</option>
                 </select>
 
-                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box40_2' style='display:none;' placeholder='Specify % Positive'>
-                <select id="box40_3" class='form-control selectpicker form-control-sm col-sm-6'>
-                    <option hidden>Specify Staining intensity</option>
-                    <option>Weak (1+)</option>
-                    <option>Moderate (2+)</option>
-                    <option>Strong (3+)</option>
-                </select>
+                <div class="er ml-5">
+                    <div class="py-2 w-100"></div>
 
+                    Specify % positive
+                    <input type="text" class="form-control form-control-sm col-sm-3" id='box40_2'  placeholder='% '>
 
+                    <div class="py-2 w-100"></div>
+
+                    Specify staining intensity
+                    <select id="box40_3" class='form-control selectpicker form-control-sm col-sm-3'>
+                        <option>Weak (1+)</option>
+                        <option>Moderate (2+)</option>
+                        <option>Strong (3+)</option>
+                    </select>
+
+                </div>
                 <div class="py-3 w-100"></div>
 
 
 
                 <h6>
-                Progesterone Receptor Status</h6>
+                    Progesterone Receptor Status</h6>
                 <select id="box41" class='form-control selectpicker form-control-sm col-sm-6'>
                     <option>Positive</option>
                     <option>Negative (internal control cells present and stain as expected)</option>
@@ -316,14 +317,22 @@
                     <option>Cannot be determined (Internal control cells present; no immunoreactivity of either tumor cells or internal controls)</option>
                 </select>
 
-                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box41_2' style='display:none;' placeholder='Specify Positive'>
+                <div class="er ml-5">
+                    <div class="py-2 w-100"></div>
 
-                <select id="box41_3" class='form-control selectpicker form-control-sm col-sm-6'>
-                    <option hidden>Specify Staining intensity</option>
-                    <option>Weak (1+)</option>
-                    <option>Moderate (2+)</option>
-                    <option>Strong (3+)</option>
-                </select>
+                    Specify % positive
+                    <input type="text" class="form-control form-control-sm col-sm-3" id='box41_2'  placeholder='% '>
+
+                    <div class="py-2 w-100"></div>
+
+                    Specify staining intensity
+                    <select id="box41_3" class='form-control selectpicker form-control-sm col-sm-3'>
+                        <option>Weak (1+)</option>
+                        <option>Moderate (2+)</option>
+                        <option>Strong (3+)</option>
+                    </select>
+
+                </div>
 
 
                 <div class="py-3 w-100"></div>
@@ -343,45 +352,44 @@
                 <input type="text" class="form-control form-control-sm mt-3 col-sm-8" id='box43_1' style='display:none;' placeholder='Specify % of cells with uniform membrane staining'>
                 <input type="text" class="form-control form-control-sm mt-3 col-sm-6 mt-3" id='box43_2' style='display:none;' placeholder='Specify indeterminate'>
 
-
                 <div class="py-3 w-100"></div>
 
-
-
                 <h6 >
-                HER2 - FISH</h6>
+                    HER2 - FISH</h6>
                 <select id="box44" class='form-control selectpicker form-control-sm col-sm-6'>
-                    <option>Negative (not amplified)</option>
-                    <option>Equivocal</option>
-                    <option>Positive (amplified) </option>
-                    <option>Cannot be determined (indeterminate)</option>
+                    <option data-fish="performed">Negative (not amplified)</option>
+                    <option data-fish="performed">Equivocal</option>
+                    <option data-fish="performed">Positive (amplified) </option>
+                    <option data-fish="performed">Cannot be determined (indeterminate)</option>
                     <option>Not performed</option>
                     <option>Pending</option>
                     <option selected>Not applicable</option>
                 </select>
 
                 <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box44_2' style='display:none;' placeholder='Specify indeterminate'>
-                <div class="py-3 w-100"></div>
-
-                <h6>Number of observers</h6>
-                <input type="text" class="form-control form-control-sm col-sm-6" id="box45_1" value="2">
-
-
-                <h6 class="mt-2" >Number of invasive tumor cells counted</h6>
-                <input type="text" class="form-control form-control-sm col-sm-6" id="box45_2" value="200">
 
                 <div class="py-3 w-100"></div>
 
-                <h6 >
-                HER2 FISH assay type</h6>
-                <select id="box45_3" class='form-control selectpicker form-control-sm col-sm-6'>
-                    <option>Dual probe assay</option>
-                    <option>Single probe assay</option>
-                </select>
+                <div class="her2f ml-3" style="display: none;">
+                    <h6>Number of observers</h6>
+                    <input type="text" class="form-control form-control-sm col-sm-6" id="box45_1" value="2">
 
-                <div class="py-3 w-100"></div>
 
-                <h6 class="mt-2">Average number of HER2 signals per cell:</h6>
+                    <h6 class="mt-2" >Number of invasive tumor cells counted</h6>
+                    <input type="text" class="form-control form-control-sm col-sm-6" id="box45_2" value="200">
+
+                    <div class="py-3 w-100"></div>
+
+                    <h6 >
+                        HER2 FISH assay type</h6>
+                    <select id="box45_3" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>Dual probe assay</option>
+                        <option>Single probe assay</option>
+                    </select>
+
+                    <div class="py-3 w-100"></div>
+
+                    <h6 class="mt-2">Average number of HER2 signals per cell:</h6>
                     <input type="text" class="form-control form-control-sm col-sm-6" id="box45_4" placeholder="">
 
                     <div class="mt-2" id='box45_3_2'  >
@@ -389,8 +397,10 @@
                         <h6>Average number of CEP17 signals per cell:</h6>
                         <input type="text" class="form-control form-control-sm col-sm-6" id="box45_5" placeholder="">
                     </div>
+                </div>
 
-                <div class="py-3 w-100"></div>
+
+                <div class="py-2 w-100"></div>
 
                 <h6>
                 Ki67%</h6>
