@@ -141,7 +141,9 @@ $(window).on('load', function () {
     });
     var pelnodes = 0;
     $(".pelnode").on("input", function () {
-        pelnodes = pelnodes + parseInt($(this).val(), 10);
+        pelnodes =  parseFloat($('#box25').val())
+                    + parseFloat($('#box26').val())
+                    + parseFloat($('#box27').val());
         console.log("# pos pelvic nodes: " + pelnodes);
         if (pelnodes > 0) {
             $(".pelnodes").show();
@@ -152,8 +154,10 @@ $(window).on('load', function () {
 
     var paranodes = 0;
     $(".paranode").on("input", function () {
-        paranodes = paranodes + parseInt($(this).val(), 10);
-        console.log("# pos paravic nodes: " + paranodes);
+        paranodes =  parseFloat($('#box33').val())
+            + parseFloat($('#box34').val())
+            + parseFloat($('#box35').val());
+        console.log("# pos para aortic nodes: " + paranodes);
         if (paranodes > 0) {
             $(".paranodes").show();
         } else {
