@@ -143,7 +143,7 @@
         <h5>Margins</h5>
             <div class="py-2 w-100"></div>
 
-            <div class="resection">
+        <div class="resection">
             <select id="box10" class='form-control selectpicker form-control-sm col-sm-12'>
                 <option>All margins are uninvolved by invasive carcinoma, intramucosal adenocarcinoma, high-grade dysplasia, and adenoma </option>
                 <option>One or more margins involved by neoplasia</option>
@@ -161,9 +161,17 @@
                     <option>Other</option>
                 </select>
                 <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box11_2' style='display:none;' placeholder='Specify Other'>
+
+                <div class="py-2 w-100"></div>
+
+                <input type="number" class="form-control form-control-sm mt-3 col-sm-4 opt" id='box11_3'  placeholder='+ Distance to closest margin (mm)'>
+
             </div>
 
             <div class="posmargins ml-3" style="display: none;" >
+
+                <div class="py-2 w-100"></div>
+
                     <h6>Proximal Margin</h6>
                     <select multiple id="box12" class='form-control selectpicker form-control-sm col-sm-9'>
                         <option>Cannot be assessed</option>
@@ -210,6 +218,9 @@
 
 
         <div class="emr ml-3" style="display:none;">
+
+            <div class="py-2 w-100"></div>
+
             <h6>Deep Margin</h6>
 
             <select id="box16" class='form-control selectpicker form-control-sm col-sm-9'>
@@ -222,7 +233,7 @@
 
 
 
-            <div class="py-2 w-100"></div>
+            <div class="py-3 w-100"></div>
 
 
             <h6>Mucosal Margin</h6>
@@ -235,6 +246,9 @@
             </select>
 
             <input type="number" class="form-control form-control-sm col-sm-6" id='box17_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
+
+            <div class="py-2 w-100"></div>
+
             <!-- other mucosal neoplasia-->
             <div class="ml-3" id='box17_3' style='display:none;'>
                 <h6>Mucosal margin involved by any other type of neoplasia?</h6>
@@ -274,6 +288,7 @@
         <hr class="p-2" >
         <h5>+ Lymphovascular Invasion</h5>
         <select id="box20" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+            <option></option>
             <option>Not identified</option>
             <option>Present</option>
             <option>Cannot be determined</option>
@@ -286,6 +301,7 @@
         <hr class="p-2" >
         <h5>+ Perineural Invasion</h5>
         <select id="box21" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+            <option></option>
             <option>Not identified</option>
             <option>Present</option>
             <option>Cannot be determined</option>
@@ -307,7 +323,10 @@
             <option>r</option>
             <option>y</option>
         </select>
-        <h6 class='mt-2'>pT</h6>
+
+            <div class="py-2 w-100"></div>
+
+            <h6>pT</h6>
         <select id="box23" class='form-control selectpicker form-control-sm col-sm-6'>
             <option value="pTX">pTX: Primary tumor not assessed</option>
             <option value="pT0">pT0: No evidence of primary tumor</option>
@@ -318,8 +337,9 @@
             <option value="pT4">pT4: Tumor of any size invading adjacent organ(s)</option>
         </select>
 
+            <div class="py-2 w-100"></div>
 
-        <h6 class='mt-2'>pN</h6>
+            <h6>pN</h6>
         <select id="box24" class='form-control selectpicker form-control-sm col-sm-6'>
             <option value="pNX">pNX: Regional lymph nodes cannot be assessed</option>
             <option value="pN0">pN0: No regional lymph node metastasis</option>
@@ -328,14 +348,17 @@
             <option value="pN1c">pN1c: Metastasis in external iliac with any N1a nodes</option>
         </select>
 
+            <div class="py-2 w-100"></div>
 
-        <h6 class='mt-2'>pM</h6>
+            <h6>pM</h6>
         <select id="box25" class='form-control selectpicker form-control-sm col-sm-6'>
             <option selected value='pMx'>pMx: Not applicable</option>
             <option value="pM1">pM1: Distant metastasis</option>
         </select>
         <input type="text" class="form-control form-control-sm col-sm-6" id="box25_2" style="display:none;" placeholder="Specify metastatic sites">
-        <div class="py-2 w-100"></div>
+
+            <div class="py-2 w-100"></div>
+
         <form class="form-inline mt-2">
             <label class="form-check-label">Check here if any lymph nodes submitted?
                 <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box26" >

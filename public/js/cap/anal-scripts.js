@@ -225,28 +225,63 @@ $(window).on('load', function () {
     // *************************************************************/
     $('.writeReport').on('click', function () {
 
+
         // ***************** INPUT VALIDATION ********************//
-        $('select[multiple]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($(this).val().length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
+                // reset validation alert, if all goes to plan, it won't show
+                $('#cap-valid').hide();
+                $('#opt-valid').hide();
 
-        $('input[type="text"]:visible').each(function () {
-            // Check if at least one selection is made
-            if ($.trim($(this).val()).length > 0) {
-                $(this).removeClass('empty');
-            } else {
-                $(this).addClass('empty');
-                $('#cap-valid').show();
-            }
-        });
 
-        // ***************** END VALIDATION ********************//
+                $('select:visible').each(function () {
+                    // ignore class=opt
+                    if (!$(this).hasClass("opt")) {
+                        // Check if at least one selection is made
+                        if ($(this).val().length > 0) {
+                            $(this).removeClass('empty');
+                        } else {
+                            $(this).addClass('empty');
+                            $('#cap-valid').show();
+                        }
+                    }
+                    if ($(this).hasClass("opt")) {
+                        // Check if at least one selection is made
+                        if ($.trim($(this).val()).length > 0) {
+                            $(this).removeClass('empty-opt');
+                        } else {
+                            $(this).addClass('empty-opt');
+                            $('#opt-valid').show();
+                        }
+                    }
+                });
+
+                $('input:visible').each(function () {
+                    // ignore search bar in menu
+                    if ($(this).prop('type') != "search"){
+                        // ignore class=opt
+                        if (!$(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty');
+                            } else {
+                                $(this).addClass('empty');
+                                $('#cap-valid').show();
+                            }
+                        }
+                        if ($(this).hasClass("opt")) {
+                            // Check if at least one selection is made
+                            if ($.trim($(this).val()).length > 0) {
+                                $(this).removeClass('empty-opt');
+                            } else {
+                                $(this).addClass('empty-opt');
+                                $('#opt-valid').show();
+                            }
+                        }
+                    }
+
+                });
+
+        // *************************** END VALIDATION ******************************//
+
 
 
         var captext = "Anal Carcinoma Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
@@ -307,36 +342,42 @@ $(window).on('load', function () {
         var box_8 = $("#box8").val();
         captext += "\nTumor Extension:\n- " + box_8 + "\n";
 
-        captext += "\nMargins:\n ";
+        captext += "\nMargins:";
         // resection vars-------------------------//
         var box_10 = $("#box10").val();
         var box_11 = $("#box11").val();
         var box_11_2 = $("#box11_2").val();
+        var box_11_3 = $("#box11_3").val();
         var proc = $("#box2").find(":selected").data("proc");
         if (proc == 'resection') {
             if (box_10.indexOf("uninvolved") > -1) {
                 captext += "- " + box_10 + "\n";
                 if ($.inArray('Other', box_11) > -1) {
                     captext += "- Margins examined: " + box_11.join(', ').replace(/Other/, box_11_2) + "\n";
+                    if (box_11_3.length  > 0){
+                        captext += "- Distance of invasive carcinoma to closest margin: " + box_11_3.replace(/mm/, "") + "mm\n";
+                    }
+
                 } else {
                     captext += "- Margins examined: " + box_11.join(', ') + "\n";
+                    if (box_11_3.length  > 0){
+                        captext += "- Distance of invasive carcinoma to closest margin: " + box_11_3.replace(/mm/, "") + "mm\n";
+                    }
                 }
             } else {
-                captext += "\nMargins:\n";
-                console.log("margins involved");
                 var box_12 = $("#box12").val();
-                captext += "- Proximal:\n\t " + box_12.join("\n\t- ") + "\n";
+                captext += "\nProximal Margin:\n- " + box_12.join("\n- ") + "\n";
 
                 var box_13 = $("#box13").val();
-                captext += "\n- Distal:\n\t " + box_13.join("\n\t- ") + "\n";
+                captext += "\nDistal Margin:\n- " + box_13.join("\n- ") + "\n";
 
                 var box_14 = $("#box14").val();
-                captext += "\n- Circumferential:\n\t " + box_14 + "\n";
+                captext += "\nCircumferential Margin:\n- " + box_14 + "\n";
 
                 var box_15 = $("#box15").val();
                 var box_15_2 = $("#box15_2").val();
                 if (box_15.indexOf('Not') < 0) {
-                    captext += "\n- " + box_15_2 + " Margin:\n\t " + box_15 + "\n";
+                    captext += "\n" + box_15_2 + " Margin:\n- " + box_15 + "\n";
                 }
             }
         } else {
@@ -345,25 +386,32 @@ $(window).on('load', function () {
             var box_16 = $("#box16").val();
             var box_16_2 = $("#box16_2").val();
             if (box_16.indexOf("Uninvolved") > -1) {
-                captext += "- Deep Margin:\n\t " + box_16 + "\n\t Distance of invasive carcinoma to deep margin: " + box_16_2.replace(/mm/, "") + "mm\n";
+                captext += "\nDeep Margin:\n- " + box_16 + "\n- Distance of invasive carcinoma to deep margin: " + box_16_2.replace(/mm/, "") + "mm\n";
             } else {
-                captext += "- Deep Margin:\n\t " + box_16 + "\n";
+                captext += "\nDeep Margin:\n-  " + box_16 + "\n";
             }
 
             var box_17 = $("#box17").val();
             var box_17_2 = $("#box17_2").val();
             var box_17_3 = $("#box17_3").val();
-            if (box_17.indexOf("Uninvolved") > -1) {
-                captext += "\n- Mucosal Margin:\n\t" + box_17 + "\n";
-                if (box_17.indexOf("Cannot") < 0) {
-                    if (box_17.indexOf("intramucosal") < 0) {
-                        var box_18 = $("#box18").val();
-                        captext += "\tInvolved by " + box_18.join('\n\tInvolved by ') + "\n";
+            var box_18 = $("#box18").val();
+            var dys = box_18.filter(function (el) {
+                        return el.indexOf('Uninvolved') > -1;
+                    });
+            if (box_17.indexOf("Cannot") < 0) {
+                captext += "\nMucosal Margin:\n- " + box_17 + "\n";
+                if (box_17.indexOf("intramucosal") < 0) {
+                    if (dys.length == 0) {
+                        captext += "- Involved by " + box_18.join(' and ') + "\n";
+                    } else {
+                        captext += "- " + box_18 + "\n";
                     }
+                    captext += "- Distance of invasive carcinoma to mucosal margin: " + box_17_2.replace(/mm/, "") + "mm\n";
+                } else {
+                    captext += "- Distance of invasive carcinoma to mucosal margin: " + box_17_2.replace(/mm/, "") + "mm\n";
                 }
-                captext += "\tDistance of invasive carcinoma to mucosal margin: " + box_17_2.replace(/mm/, "") + "mm\n";
             } else {
-                captext += "\n- Mucosal Margin:\n\t " + box_17 + "\n";
+                captext += "\nMucosal Margin:\n- " + box_17 + "\n";
             }
         }
 
@@ -371,10 +419,14 @@ $(window).on('load', function () {
         captext += "\nTreatment Effect:\n- " + box_19 + "\n";
 
         var box_20 = $("#box20").val();
-        captext += "\n+ Lymphovascular Invasion:\n- " + box_20 + "\n";
+        if (box_20.length  > 0){
+            captext += "\n+ Lymphovascular Invasion:\n- " + box_20 + "\n";
+        }
 
         var box_21 = $("#box21").val();
-        captext += "\n+ Perineural Invasion:\n- " + box_21 + "\n";
+        if (box_21.length  > 0){
+            captext += "\n+ Perineural Invasion:\n- " + box_21 + "\n";
+        }
 
         var box_22 = $("#box22").val();
         var box_23 = $("#box23").val();
@@ -417,10 +469,12 @@ $(window).on('load', function () {
 
         var box_32 = $("#box32").val();
         var box_32_2 = $("#box32_2").val();
-        if ($.inArray('Other', box_32) > -1) {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_32.join('\n- ').replace(/Other/, box_32_2) + "\n";
-        } else {
-            captext += "\n+ Additional Pathologic Findings:\n- " + box_32.join('\n- ') + "\n";
+        if (box_32.length  > 0){
+            if ($.inArray('Other', box_32) > -1) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_32.join('\n- ').replace(/Other/, box_32_2) + "\n";
+            } else {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_32.join('\n- ') + "\n";
+            }
         }
 
         var box_33 = $("#box33").val();
@@ -432,14 +486,16 @@ $(window).on('load', function () {
         var trig2_box_33 = box_33.filter(function (el) {
             return el.indexOf("therapy") > -1;
         });
-        if (trig1_box_33.length > 0 && trig2_box_33.length == 0) {
-            captext += "\n+ Clinical History:\n- " + box_33.join("\n- ").replace(/Other/, box_33_2) + "\n";
-        } else if (trig1_box_33.length == 0 && trig2_box_33.length > 0) {
-            captext += "\n+ Clinical History:\n- " + box_33.join("\n- ").replace(/therapy/, box_33_3) + "\n";
-        } else if (trig1_box_33.length > 0 && trig2_box_33.length > 0) {
-            captext += "\n+ Clinical History:\n- " + box_33.join("\n- ").replace(/Other/, box_33_2).replace(/therapy/, box_33_3) + "\n";
-        } else {
-            captext += "\n+ Clinical History:\n- " + box_33.join("\n- ") + "\n";
+        if (box_33.length  > 0){
+            if (trig1_box_33.length > 0 && trig2_box_33.length == 0) {
+                captext += "\n+ Clinical History:\n- " + box_33.join("\n- ").replace(/Other/, box_33_2) + "\n";
+            } else if (trig1_box_33.length == 0 && trig2_box_33.length > 0) {
+                captext += "\n+ Clinical History:\n- " + box_33.join("\n- ").replace(/therapy/, box_33_3) + "\n";
+            } else if (trig1_box_33.length > 0 && trig2_box_33.length > 0) {
+                captext += "\n+ Clinical History:\n- " + box_33.join("\n- ").replace(/Other/, box_33_2).replace(/therapy/, box_33_3) + "\n";
+            } else {
+                captext += "\n+ Clinical History:\n- " + box_33.join("\n- ") + "\n";
+            }
         }
 
         $('#outPut-1').val(captext);

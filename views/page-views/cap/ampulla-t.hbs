@@ -133,7 +133,7 @@
                 <option>All margins are uninvolved by tumor </option>
                 <option>One or more margins involved by neoplasia</option>
             </select>
-            <div class="negmargins">
+            <div class="negmargins ml-4">
                 <h6 class="mt-3">Choose margins examined</h6>
                 <select multiple id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
                     <optgroup label="Ampullectomy margins">
@@ -155,8 +155,11 @@
                 <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box11_2' style='display:none;' placeholder='Specify Other'>
             </div>
 
-            <div class="posmargins" style="display: none;" >
-                <div class="segmental ml-3">
+            <div class="posmargins ml-3" style="display: none;" >
+                <div class="segmental">
+
+                    <div class="py-2 w-100"></div>
+
                     <h6>Deep (Ampullectomy) Margin</h6>
                     <select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
                         <option>Cannot be assessed</option>
@@ -164,6 +167,7 @@
                         <option>Involved by nvasive carcinoma</option>
                     </select>
                     <input type="text" class="form-control form-control-sm col-sm-6" id='box12_2' style='display:none;' placeholder='Specify distance of invasive carcinoma to this margin (mm)'>
+
                     <div class="py-3 w-100"></div>
 
                     <h6>Duodenal Mucosal (Ampullectomy) Margin</h6>
@@ -177,8 +181,11 @@
 
                 </div><!-- end segmental margins-->
 
-                <div class="whipple ml-3" style="display: none;" >
-                    <h6 class="mt-3">Margins - Pancreatic neck/parenchymal</h6>
+                <div class="whipple" style="display: none;" >
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Margins - Pancreatic neck/parenchymal</h6>
 
                     <select multiple id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
                         <option>Cannot be assessed</option>
@@ -189,13 +196,9 @@
                     </select>
                     <input type="text" class="form-control form-control-sm col-sm-6" id='box14_2' style='display:none;' placeholder='Specify distance of invasive carcinoma to the margin (mm)'>
 
+                    <div class="py-2 w-100"></div>
 
-
-
-
-
-
-                    <h6 class="mt-3">Margins - Uncinate</h6>
+                    <h6>Margins - Uncinate</h6>
 
                     <select id="box15" class='form-control selectpicker form-control-sm col-sm-6'>
                         <option>Cannot be assessed</option>
@@ -205,13 +208,9 @@
 
                     <input type="text" class="form-control form-control-sm col-sm-6" id='box15_2' style='display:none;' placeholder='Specify distance of invasive carcinoma to this margin (mm)'>
 
+                    <div class="py-2 w-100"></div>
 
-
-
-
-
-
-                    <h6 class="mt-3">Margins - Bile duct</h6>
+                    <h6>Margins - Bile duct</h6>
 
                     <select multiple id="box16" class='form-control selectpicker form-control-sm col-sm-6'>
                         <option>Cannot be assessed</option>
@@ -223,13 +222,9 @@
 
                     <input type="text" class="form-control form-control-sm col-sm-6" id='box16_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
 
+                    <div class="py-2 w-100"></div>
 
-
-
-
-
-
-                    <h6 class="mt-3">Margins - Proximal Margin</h6>
+                    <h6>Margins - Proximal Margin</h6>
                     <select multiple id="box17" class='form-control selectpicker form-control-sm col-sm-6'>
                         <option>Cannot be assessed</option>
                         <option>Uninvolved by invasive carcinoma and high-grade dysplasia</option>
@@ -238,11 +233,9 @@
                         <option>Involved by high-grade dysplasia</option>
                     </select>
 
+                    <div class="py-2 w-100"></div>
 
-
-
-
-                    <h6 class="mt-3">Margins - Distal Margin</h6>
+                    <h6>Margins - Distal Margin</h6>
                     <select multiple id="box18" class='form-control selectpicker form-control-sm col-sm-6'>
                         <option>Cannot be assessed</option>
                         <option>Uninvolved by invasive carcinoma and high-grade dysplasia</option>
@@ -250,21 +243,18 @@
                         <option>Involved by invasive carcinoma</option>
                         <option>Involved by high-grade dysplasia</option>
                     </select>
-
-
-
-
-
                 </div><!-- end whipple margins-->
 
-                <div class="other ml-3">
+                <div class="py-2 w-100"></div>
+
+                <div class="other">
                     <div class="py-3 w-100"></div>
                     <h6>Other Margin</h6>
                     <select id="box22" class='form-control selectpicker form-control-sm col-sm-6'>
                         <option selected>Not applicable</option>
                         <option>Cannot be assessed</option>
-                        <option>Uninvolved by tumor</option>
-                        <option>Involved by tumor</option>
+                        <option>Uninvolved by invasive carcinoma</option>
+                        <option>Involved by invasive carcinoma</option>
                     </select>
                     <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box22_2' style='display:none;' placeholder='Specify Other Margin'>
                 </div>
@@ -288,6 +278,7 @@
             <hr class="p-2" >
             <h5>+ Perineural Invasion</h5>
             <select id="box24" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                <option></option>
                 <option>Not identified</option>
                 <option>Present</option>
                 <option>Cannot be determined</option>
@@ -309,7 +300,10 @@
                 <option>r</option>
                 <option>y</option>
             </select>
-            <h6 class='mt-2'>pT</h6>
+
+            <div class="py-2 w-100"></div>
+
+            <h6>pT</h6>
             <select id="box26" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option value="pTX">pTX: Primary tumor cannot be assessed</option>
                 <option value="pT0">pT0: No evidence of primary tumor</option>
@@ -323,8 +317,9 @@
                 <option value="pT4">pT4: Tumor involves the celiac axis, superior mesenteric artery, and/or common hepatic artery, irrespective of size</option>
             </select>
 
+            <div class="py-2 w-100"></div>
 
-            <h6 class='mt-2'>pN</h6>
+            <h6>pN</h6>
             <select id="box27" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option value="pNX">pNX: Regional lymph nodes cannot be assessed</option>
                 <option value="pN0">pN0: No regional lymph node metastasis</option>
@@ -332,13 +327,17 @@
                 <option value="pN2">pN2: Metastasis to four or more regional lymph nodes</option>
             </select>
 
+            <div class="py-2 w-100"></div>
 
-            <h6 class='mt-2'>pM</h6>
+            <h6>pM</h6>
             <select id="box28" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option selected value='pMx'>pMx: Not applicable</option>
                 <option value="pM1">pM1: Distant metastasis</option>
             </select>
             <input type="text" class="form-control form-control-sm col-sm-6" id="box28_2" style="display:none;" placeholder="Specify metastatic sites">
+
+            <div class="py-2 w-100"></div>
+
 
             <form class="form-inline mt-2">
                 <label class="form-check-label">Check here if any lymph nodes submitted?
