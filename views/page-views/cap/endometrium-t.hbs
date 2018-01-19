@@ -286,8 +286,14 @@
                 <input type="number" class="form-control form-control-sm mt-3 col-sm-6" id='box16_2' style='display:none;' placeholder='Specify distance of invasive carcinoma to margin(cm)'>
             </div>
 
-
-
+            <hr class="p-2" >
+            <h5>
+                Lymphovascular Invasion</h5>
+            <select id="box50" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not identified</option>
+                <option>Present</option>
+                <option>Cannot be assessed</option>
+            </select>
 
 
             <hr class="p-2" >
@@ -392,7 +398,7 @@
                 <h6 class="mt-5">Para-Aortic Node Examination</h6>
                 <form class="form-inline mt-2 col-12">
 
-                    <label class="m-2 w-100">Total Number of Pelvic lymph nodes examined (sentinel and non-sentinel):
+                    <label class="m-2 w-100">Total Number of Para-Aortic lymph nodes examined (sentinel and non-sentinel):
                         <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box30" style="width:100px"></label>
                     <label class="m-2 w-100">Number of Sentinel Nodes Examined:
                         <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box31" style="width:100px"></label>
@@ -404,17 +410,17 @@
                             <option>Unknown</option>
                         </select>
                     </label>
-                    <label class="m-2 w-100 ">Number of Pelvic Nodes with Macrometastasis (greater than 2 mm):
+                    <label class="m-2 w-100 ">Number of Para-Aortic Nodes with Macrometastasis (greater than 2 mm):
                         <input type="number" class="form-control form-control-sm col-sm-6 ml-3 paranode" id="box33" placeholder="">
                     </label>
-                    <label class="m-2 w-100">Number of Pelvic Nodes with Micrometastasis (greater than 0.2 mm and up to 2 mm):
+                    <label class="m-2 w-100">Number of Para-Aortic Nodes with Micrometastasis (greater than 0.2 mm and up to 2 mm):
                         <input type="number" class="form-control form-control-sm col-sm-6 ml-3 paranode" id="box34" placeholder="">
                     </label>
-                    <label class="m-2 w-100">Number of Pelvic Nodes with Isolated Tumor Cells (0.2 mm or less):
+                    <label class="m-2 w-100">Number of Para-Aortic Nodes with Isolated Tumor Cells (0.2 mm or less):
                         <input type="number" class="form-control form-control-sm col-sm-6 ml-3 paranode" id="box35" placeholder="">
                     </label>
                     <div class="paranodes w-100" style="display: none;">
-                        <label class="m-2 w-100">Laterality of Pelvic Node(s) with Tumor
+                        <label class="m-2 w-100">Laterality of Para-Aortic Node(s) with Tumor
                             <select id="box36" class='form-control selectpicker form-control-sm col-sm-6 ml-3'>
                                 <option>Right</option>
                                 <option>Left</option>
@@ -429,6 +435,25 @@
             </div>
 
 
+            <hr class="2005 FIGO Stage p-2" >
+            <h5>+ FIGO Stage (2015 FIGO Cancer Report)</h5>
+            <select id="box51" class='form-control selectpicker form-control-sm col-sm-10 opt'>
+                <option></option>
+                <option value="FIGO Stage I (2015)">I: 	Tumor confined to the corpus uteri</option>
+                <option value="FIGO Stage IA (2015)">IA: 	No or less than half myometrial invasion</option>
+                <option value="FIGO Stage IB (2015)">IB: 	Invasion equal to or more than half of the myometrium</option>
+                <option value="FIGO Stage II (2015)">II: 	Tumor invades cervical stroma, but does not extend beyond the uterus</option>
+                <option value="FIGO Stage III (2015)">III: 	Local and/or regional spread of the tumor</option>
+                <option value="FIGO Stage IIIA (2015)">IIIA: 	Tumor invades the serosa of the corpus uteri and/or adnexae</option>
+                <option value="FIGO Stage IIIB (2015)">IIIB: 	Vaginal involvement and/ or parametrial involvement</option>
+                <option value="FIGO Stage IIIC (2015)">IIIC: 	Metastases to pelvic and/or para-aortic lymph nodes</option>
+                <option value="FIGO Stage IIIC1 (2015)">IIIC1: Positive pelvic nodes</option>
+                <option value="FIGO Stage IIIC2 (2015)">IIIC2: Positive para-aortic nodes with or without positive pelvic lymph nodes</option>
+                <option value="FIGO Stage IV (2015)">IV: 	Tumor invades bladder and/or bowel mucosa, and/or distant metastases</option>
+                <option value="FIGO Stage IVA (2015)">IVA: 	Tumor invasion of bladder and/or bowel mucosa</option>
+                <option value="FIGO Stage IVB (2015)">IVB: 	Distant metastasis, including intraabdominal metastases and/or inguinal nodes</option>
+            </select>
+            
             <hr class="p-2" >
             <h5>+ Additional Pathologic Findings</h5>
             <select id="box40" class='form-control selectpicker form-control-sm col-sm-6 opt'>

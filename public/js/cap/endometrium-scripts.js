@@ -300,7 +300,7 @@ $(window).on('load', function () {
                 captext += "\n\tDepth of invasion: " + box_7 + "mm\n";
 
                 var box_8 = parseFloat($("#box8").val());
-                var pct = (box_7 / box_8) * 100;
+                var pct = (box_7 / box_8) * 500;
                 captext += "\tMyometrial thickness: " + box_8 + "mm\n\tPercentage of myometrial invasion: " + pct.toFixed(1) + "%\n";
             }
             if (box_6.indexOf('estimated') > -1) {
@@ -317,9 +317,9 @@ $(window).on('load', function () {
             captext += "\nMyometrial Invasion:\n- " + box_6 + "\n";
         }
 
-        var box_10 = $("#box10").val();
-        if (box_10.length > 0) {
-            captext += "\n+ Adenomyosis:\n- " + box_10 + "\n";
+        var box_50 = $("#box50").val();
+        if (box_50.length > 0) {
+            captext += "\n+ Adenomyosis:\n- " + box_50 + "\n";
         }
 
         var box_11 = $("#box11").val();
@@ -366,6 +366,12 @@ $(window).on('load', function () {
             }
         }
 
+
+        var box_50 = $("#box50").val();
+        if (box_50.length > 0) {
+            captext += "\nLymphovascular Invasion:\n- " + box_50 + "\n";
+        }
+        
         var box_17 = $("#box17").val();
         var box_18 = $("#box18").val();
         var box_19 = $("#box19").val();
@@ -374,9 +380,9 @@ $(window).on('load', function () {
         captext += '\nPathologic Staging (pTNM):\n- ';
         if ($("#box21").is(':checked')) {
             // check if nodes are present
-            var pelsen = parseInt($("#box22").val(), 10) - parseInt($("#box23").val(), 10);
+            var pelsen = parseInt($("#box22").val(), 50) - parseInt($("#box23").val(), 50);
             console.log("pel: " + pelsen);
-            var parasen = parseInt($("#box30").val(), 10) - parseInt($("#box31").val(), 10);
+            var parasen = parseInt($("#box30").val(), 50) - parseInt($("#box31").val(), 50);
             console.log("para: " + parasen);
             console.log("pel+para:" + (pelsen + parasen));
             if (pelsen + parasen === 0) {
@@ -404,12 +410,12 @@ $(window).on('load', function () {
         }
 
         if ($("#box21").is(':checked')) {
-            var box_22 = parseInt($("#box22").val(), 10);
-            var box_23 = parseInt($("#box23").val(), 10);
+            var box_22 = parseInt($("#box22").val(), 50);
+            var box_23 = parseInt($("#box23").val(), 50);
             var box_24 = $("#box24").val();
-            var box_25 = parseInt($("#box25").val(), 10);
-            var box_26 = parseInt($("#box26").val(), 10);
-            var box_27 = parseInt($("#box27").val(), 10);
+            var box_25 = parseInt($("#box25").val(), 50);
+            var box_26 = parseInt($("#box26").val(), 50);
+            var box_27 = parseInt($("#box27").val(), 50);
             var box_28 = $("#box28").val();
             captext += "\nLymph nodes: Pelvic" + "\n\tTotal Pelvic Nodes Examined: " + box_22;
             if (box_22 > 0) {
@@ -420,12 +426,12 @@ $(window).on('load', function () {
                 }
             }
 
-            var box_30 = parseInt($("#box30").val(), 10);
-            var box_31 = parseInt($("#box31").val(), 10);
+            var box_30 = parseInt($("#box30").val(), 50);
+            var box_31 = parseInt($("#box31").val(), 50);
             var box_32 = $("#box32").val();
-            var box_33 = parseInt($("#box33").val(), 10);
-            var box_34 = parseInt($("#box34").val(), 10);
-            var box_35 = parseInt($("#box35").val(), 10);
+            var box_33 = parseInt($("#box33").val(), 50);
+            var box_34 = parseInt($("#box34").val(), 50);
+            var box_35 = parseInt($("#box35").val(), 50);
             var box_36 = $("#box36").val();
             captext += "\n\nLymph nodes: Para-Aortic" + "\n\tTotal Para-Aortic Nodes Examined: " + box_30;
             if (box_30 > 0) {
@@ -438,6 +444,12 @@ $(window).on('load', function () {
         } else {
             captext += "\nLymph nodes: None submitted\n";
         }
+
+        var box_51 = $("#box51").val();
+        if (box_51.length > 0) {
+            captext += "\n+ FIGO Stage:\n- "  + box_51+ "\n";
+        }
+
 
         var box_40 = $("#box40").val();
         var box_40_2 = $("#box40_2").val();
