@@ -442,6 +442,7 @@ $(window).on('load', function () {
                 captext += box_26 + " " + box_27 + " " + box_28 + "\n";
             }
         }
+
         if ($("#box29").is(':checked')) {
             var box_30 = $("#box30").val();
             var box_31 = $("#box31").val();

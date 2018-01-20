@@ -205,12 +205,11 @@ $(window).on('load', function () {
         var box_12 = $("#box12").val();
         var box_13 = $("#box13").val();
         var box_14 = $("#box14").val();
-        var box_15 = $("#box15").val();
         captext += '\nPathologic Staging (pTNM):\n- ';
         if (box_12 != "Not applicable") {
-            captext += box_12.join("") + ' ' + box_13 + " " + box_14 + " " + box_15 + "\n";
+            captext += box_12.join("") + ' ' + box_13 + " " + box_14 + "\n";
         } else {
-            captext += box_13 + " " + box_14 + " " + box_15 + "\n";
+            captext += box_13 + " " + box_14  + "\n";
         }
 
         $('#outPut-1').val(captext);
