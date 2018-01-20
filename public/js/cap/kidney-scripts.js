@@ -113,8 +113,16 @@ $(window).on('load', function () {
         }
     });
 
-    $('#box22').on("change", function () {
-        var sela = $('#box22').val();
+    $('#box21').on("change", function(){
+        var sel = $('#box21').val();
+        if ($.inArray('Other', sel) >-1) {
+            $('#box21_2').show();}
+        else {$('#box21_2').hide();}
+    });
+
+
+    $('#box24').on("change", function () {
+        var sela = $('#box24').val();
         var trig1 = sela.filter(function (el) {
             return el.indexOf('Glomerular') > -1;
         });
@@ -128,24 +136,24 @@ $(window).on('load', function () {
             return el.indexOf('Other') > -1;
         });
         if (trig1.length > 0) {
-            $('#box22_2').show();
+            $('#box24_2').show();
         } else {
-            $('#box22_2').hide();
+            $('#box24_2').hide();
         }
         if (trig2.length > 0) {
-            $('#box22_3').show();
+            $('#box24_3').show();
         } else {
-            $('#box22_3').hide();
+            $('#box24_3').hide();
         }
         if (trig3.length > 0) {
-            $('#box22_4').show();
+            $('#box24_4').show();
         } else {
-            $('#box22_4').hide();
+            $('#box24_4').hide();
         }
         if (trig4.length > 0) {
-            $('#box22_5').show();
+            $('#box24_5').show();
         } else {
-            $('#box22_5').hide();
+            $('#box24_5').hide();
         }
     });
 
@@ -321,49 +329,57 @@ $(window).on('load', function () {
         if ($("#box18").is(':checked')) {
             var box_19 = $("#box19").val();
             var box_20 = $("#box20").val();
-            var box_21 = $("#box21").val();
+            var box_22 = $("#box22").val();
 
             captext += "\nLymph nodes:\n\tLymph Nodes Examined: " + box_19 + "\n\tLymph nodes involved: " + box_20 + "\n";
+            
+            var box_21 = $("#box21").val();
+            var box_21_2 = $("#box21_2").val();
+            if (box_21.length > 0){
+                if ($.inArray('Other', box_21) >-1){
+                    captext += "\t+ Nodes Involved: "  + box_21.join(', ').replace(/Other/, box_21_2) + "\n";}
+                else {captext += "\t+ Nodes Involved: "  + box_21.join(', ') + "\n";}
+            }
 
-            if (box_21.length  > 0){
-                captext += "\t+ Largest Metastatic Deposit: " + box_21.replace(/cm/, '') + "cm\n";
+            if (box_22.length  > 0){
+                captext += "\t+ Largest Metastatic Deposit: " + box_22.replace(/cm/, '') + "cm\n";
                     }
 
         } else {
             captext += "\nLymph nodes: None submitted\n";
         }
 
-        var box_22 = $("#box22").val();
-        var box_22_2 = $("#box22_2").val();
-        var box_22_3 = $("#box22_3").val();
-        var box_22_4 = $("#box22_4").val();
-        var box_22_5 = $("#box22_5").val();
-        var trig1_box_22 = box_22.filter(function (el) {
+        var box_24 = $("#box24").val();
+        var box_24_2 = $("#box24_2").val();
+        var box_24_3 = $("#box24_3").val();
+        var box_24_4 = $("#box24_4").val();
+        var box_24_5 = $("#box24_5").val();
+        var trig1_box_24 = box_24.filter(function (el) {
             return el.indexOf("Glomerular") > -1;
         });
-        var trig2_box_22 = box_22.filter(function (el) {
+        var trig2_box_24 = box_24.filter(function (el) {
             return el.indexOf("Tubulointerstitial") > -1;
         });
-        var trig3_box_22 = box_22.filter(function (el) {
+        var trig3_box_24 = box_24.filter(function (el) {
             return el.indexOf("Vascular") > -1;
         });
-        var trig4_box_22 = box_22.filter(function (el) {
+        var trig4_box_24 = box_24.filter(function (el) {
             return el.indexOf("Other") > -1;
         });
         captext += "\nPathologic Findings in Nonneoplastic Kidney:\n";
-        if (trig1_box_22.length > 0) {
-            captext += "- Glomerular disease: " + box_22_2 + "\n";
+        if (trig1_box_24.length > 0) {
+            captext += "- Glomerular disease: " + box_24_2 + "\n";
         }
-        if (trig2_box_22.length > 0) {
-            captext += "- Tubulointerstitial disease: " + box_22_3 + "\n";
+        if (trig2_box_24.length > 0) {
+            captext += "- Tubulointerstitial disease: " + box_24_3 + "\n";
         }
-        if (trig3_box_22.length > 0) {
-            captext += "- Vascular disease: " + box_22_4 + "\n";
+        if (trig3_box_24.length > 0) {
+            captext += "- Vascular disease: " + box_24_4 + "\n";
         }
-        if (trig4_box_22.length > 0) {
-            captext += "- Other disease: " + box_22_5 + "\n";
+        if (trig4_box_24.length > 0) {
+            captext += "- Other disease: " + box_24_5 + "\n";
         } else {
-            captext += "- " + box_22.join("\n- ") + "\n";
+            captext += "- " + box_24.join("\n- ") + "\n";
         }
 
         $('#outPut-1').val(captext);

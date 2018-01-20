@@ -60,8 +60,10 @@
 
 
             <hr class="p-2" >
-            <h5>Tumor Size (cm)</h5>
-            <input type="text" class="form-control form-control-sm col-sm-6" id="box4" placeholder="If multiple tumors present, document the size of the largest tumor">
+            <h5>Tumor Size (cm)
+            <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip" title="If multiple tumors present, document the size of the largest tumor" aria-hidden="true"></i>
+            </h5>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box4" placeholder="">
 
 
 
@@ -132,7 +134,7 @@
 
             <hr class="p-2" >
             <h5>Histologic Grade (WHO / ISUP Grade)</h5>
-            <select id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select id="box9" class='form-control selectpicker form-control-sm col-sm-11'>
                 <option value="WHO / ISUP Grade 1">G1: Nucleoli absent or inconspicuous and basophilic at 400x magnification</option>
                 <option value="WHO / ISUP Grade 2">G2: Nucleoli conspicuous and eosinophilic at 400x magnification, visible but not prominent at 100x magnification</option>
                 <option value="WHO / ISUP Grade 3">G3: Nucleoli conspicuous and eosinophilic at 100x magnification</option>
@@ -182,17 +184,17 @@
 
             <hr class="p-2" >
             <h5>Margins</h5>
-            <select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select id="box12" class='form-control selectpicker form-control-sm col-sm-8'>
                 <option>Cannot be assessed</option>
                 <option>Uninvolved by invasive carcinoma</option>
                 <option>Involved by invasive carcinoma</option>
             </select>
 
-            <div id='box12_2' class="ml-3" style='display:none;'>
+            <div id='box12_2' class="ml-3 col-sm-12" style='display:none;'>
                 <div class="py-2 w-100"></div>
                 <h6>
                     Choose involved margins</h6>
-                <select multiple id="box50" class='form-control selectpicker form-control-sm col-sm-6'>
+                <select multiple id="box50" class='form-control selectpicker form-control-sm'>
                     <option>Renal parenchymal margin (partial nephrectomy only)</option>
                     <option>Renal capsular margin (partial nephrectomy only)</option>
                     <option>Perinephric fat margin</option>
@@ -203,7 +205,7 @@
                     <option>Other</option>
                 </select>
 
-                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box50_2' style='display:none;' placeholder='Specify Other'>
+                <input type="text" class="form-control form-control-sm mt-3" id='box50_2' style='display:none;' placeholder='Specify Other'>
             </div>
 
 
@@ -217,7 +219,9 @@
 
 
             <hr class="p-2" >
-            <h5>+ Lymphovascular Invasion</h5>
+            <h5>+ Lymphovascular Invasion
+            <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip" title="excluding renal vein and its segmental branches and inferior vena cava" aria-hidden="true"></i>
+            </h5>
             <select id="box13" class='form-control selectpicker form-control-sm col-sm-6 opt'>
                 <option>Not identified</option>
                 <option>Present</option>
@@ -247,10 +251,8 @@
             <select id="box15" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option value="pTX">pTX: Primary tumor cannot be assessed</option>
                 <option value="pT0">pT0: No evidence of primary tumor</option>
-                <option value="pT1">pT1: Tumor ≤7 cm in greatest dimension, limited to the kidney</option>
                 <option value="pT1a">pT1a: Tumor ≤4 cm in greatest dimension, limited to the kidney</option>
                 <option value="pT1b">pT1b: Tumor >4 cm but ≤7 cm in greatest dimension limited to the kidney</option>
-                <option value="pT2a">pT2a: Tumor >7 cm but ≤10 cm in greatest dimension, limited to the kidney</option>
                 <option value="pT2b">pT2b: Tumor >10 cm, limited to the kidney</option>
                 <option value="pT3a">pT3a: Tumor extends into the renal vein or its segmental branches</option>
                 <option value="pT3a">pT3a: Tumor  invades the pelvicalyceal system</option>
@@ -290,8 +292,23 @@
                     <label class="m-2">Number of lymph nodes examined: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box19" style="width:100px"></label>
                     <label class="m-2">Number of lymph nodes involved: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box20" style="width:100px"></label>
                     <div class="posnodes" style="display:none;">
+                        + Specify Involved Nodes
+                        <select multiple id="box21" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                            <option>hilar</option>
+                            <option>precaval</option>
+                            <option>interaortocaval</option>
+                            <option>paracaval</option>
+                            <option>retrocaval</option>
+                            <option>preaortic</option>
+                            <option>paraaortic</option>
+                            <option>retroaortic</option>
+                            <option>Other</option>
+                        </select>
+
+                        <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box21_2' style='display:none;' placeholder='Specify Other'>
+
                         <label class="m-2"> + Size of Largest Metastatic Deposit (cm):
-                            <input type="text" class="form-control form-control-sm col-sm-6 opt" id="box21" placeholder="">
+                            <input type="text" class="form-control form-control-sm col-sm-6 opt" id="box22" placeholder="">
                         </label>
                     </div>
                 </form>
@@ -305,7 +322,7 @@
 
             <hr class="p-2" >
             <h5>Pathologic Findings in Nonneoplastic Kidney (select all that apply)</h5>
-            <select multiple id="box22" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select multiple id="box24" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option>Insufficient tissue</option>
                 <option>None identified</option>
                 <option>Glomerular disease </option>
@@ -313,10 +330,10 @@
                 <option>Vascular disease</option>
                 <option>Other</option>
             </select>
-            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box22_2' style='display:none;' placeholder='Specify Glomerular disease'>
-            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box22_3' style='display:none;' placeholder='Specify Tubulointerstitial disease'>
-            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box22_4' style='display:none;' placeholder='Specify Vascular disease'>
-            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box22_5' style='display:none;' placeholder='Specify Other disease'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box24_2' style='display:none;' placeholder='Specify Glomerular disease'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box24_3' style='display:none;' placeholder='Specify Tubulointerstitial disease'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box24_4' style='display:none;' placeholder='Specify Vascular disease'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box24_5' style='display:none;' placeholder='Specify Other disease'>
 
 
 
