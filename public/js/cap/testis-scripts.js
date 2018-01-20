@@ -158,11 +158,26 @@ $(window).on('load', function() {
         else {$('#box8_3').hide();}
     });
 
+    $('#box13').on("change", function(){
+        var sel = $('#box13').val();
+        if (sel == 'pMx') {
+            $('#box13_2').hide();}
+        else {$('#box13_2').show();}
+    });
+    
     $("#box14").on("change", function(){
         if ($(this).is(":checked")){
             $(".lnchk").show();}
         else{
             $(".lnchk").hide();}
+    });
+
+    $("#box16").on("input", function(){
+        var num = parseInt($(this).val() )
+        if (num > 0){
+            $(".posnodes").show();}
+        else{
+            $(".posnodes").hide();}
     });
 
     $('#box20').on("change", function(){
@@ -334,9 +349,21 @@ $(window).on('load', function() {
         var box_11 = $("#box11").val();
         var box_12 = $("#box12").val();
         var box_13 = $("#box13").val();
+        var box_13_2 = $("#box13_2").val();
         captext += '\nPathologic Staging (AJCC 8th ed pTNM):\n- ';
-        if (box_10 != "Not applicable"){captext += box_10.join("")+' '+box_11+" "+box_12+" "+box_13+"\n";}
-        else {captext += box_11+" "+box_12+" "+box_13+"\n";}
+        if (box_10 != "Not applicable") {
+            if (box_13 != "pMx") {
+                captext += box_10.join("") + " " + box_11 + " " + box_12 + " " + box_13 + " (metastatic site(s): " + box_13_2 + ")\n";
+            } else {
+                captext += box_10.join("") + " " + box_11 + " " + box_12 + " " + box_13 + "\n";
+            }
+        } else {
+            if (box_13 != "pMx") {
+                captext += box_11 + " " + box_12 + " " + box_13 + " (metastatic site(s): " + box_13_2 + ")\n";
+            } else {
+                captext += box_11 + " " + box_12 + " " + box_13 + "\n";
+            }
+        }
 
         var box_23 = $("#box23").val();
         if (box_23.length > 0){
@@ -348,8 +375,14 @@ $(window).on('load', function() {
             var box_15 = $("#box15").val();
             var box_16 = $("#box16").val();
             captext += "\nLymph nodes:\n\tLymph Nodes Examined: "+box_15+"\n\tLymph nodes involved: "+box_16+"\n";
+
             var box_17 = $("#box17").val();
-            captext += "\tLymph node sites examined: "  + box_17.replace(/\,$/,'') + "\n";
+            var box_17_2 = $("#box17").val();
+            if ($.inArray("Other", box_17) > -1){
+                captext += "\tLymph node(s) involved: "  + box_17.join(", ").replace(/Other/, box_17_2).replace(/\,$/,'') + "\n";
+            }else {
+                captext += "\tLymph node(s) involved: "  + box_17.join(", ").replace(/\,$/,'') + "\n";
+            }
 
             if (box_16 > 0){
                 var box_18 = $("#box18").val();

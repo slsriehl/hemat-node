@@ -74,14 +74,14 @@
 
 			<hr class="p-2">
 			<h5>Tumor Extension</h5>
-			<select multiple id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
+			<select multiple id="box6" class='form-control selectpicker form-control-sm col-sm-12'>
 				<option>No evidence of primary tumor</option>
 				<option>Germ cell neoplasia in situ only</option>
 				<option>Tumor limited to testis</option>
 				<option>Tumor invades rete testis</option>
 				<option>Tumor invades hilar soft tissue</option>
 				<option>Tumor invades epididymis</option>
-				<option>Tumor invades through tunica albuginea and perforates tunica vaginalis (mesothelium)</option>
+				<option value="Tumor invades through tunica albuginea and perforates tunica vagginalis (mesothelium)">Tumor invades through tunica albug. and perforates tunica vag.</option>
 				<option>Tumor invades spermatic cord</option>
 				<option>Tumor invades scrotum</option>
 				<option>Tumor invades other structures</option>
@@ -95,29 +95,31 @@
 
 
 			<hr class="p-2">
-			<h5>Margins - Spermatic cord</h5>
-			<select id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
-				<option>Cannot be assessed</option>
-				<option>Uninvolved by tumor</option>
-				<option>Involved by tumor</option>
-			</select>
+			<h5>Margins</h5>
+			<div class="ml-3">
+				<h6>Spermatic cord</h6>
+				<select id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
+					<option>Cannot be assessed</option>
+					<option>Uninvolved by tumor</option>
+					<option>Involved by tumor</option>
+				</select>
+
+				<div class="py-3 w-100"></div>
+
+				<h6>Other margins</h6>
+
+				<select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
+					<option selected>Not applicable</option>
+					<option>Cannot be assessed</option>
+					<option>Uninvolved by tumor</option>
+					<option>Involved by tumor</option>
+				</select>
+
+				<input type="text" class="form-control form-control-sm col-sm-6" id='box8_1' style='display:none;' placeholder='Specify margin'>
+				<input type="text" class="form-control form-control-sm col-sm-6" id='box8_3' style='display:none;' placeholder='Specify involved margin'>
 
 
-
-
-
-			<hr class="p-2">
-			<h5>Margins - Other</h5>
-
-			<select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
-				<option selected>Not applicable</option>
-				<option>Cannot be assessed</option>
-				<option>Uninvolved by tumor</option>
-				<option>Involved by tumor</option>
-			</select>
-
-			<input type="text" class="form-control form-control-sm col-sm-6" id='box8_1' style='display:none;' placeholder='Specify margin'>
-			<input type="text" class="form-control form-control-sm col-sm-6" id='box8_3' style='display:none;' placeholder='Specify involved margin'>
+			</div>
 
 
 
@@ -152,6 +154,7 @@
 			<div class="py-2 w-100"></div>
 
 			<h6 class='mt-2'>pT</h6>
+			<div class="bg-info small my-2 p-1"># Subclassification of pT1 applies only to pure seminoma</div>
 			<select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
 				<option value="pTX">pTX: Primary tumor cannot be assessed</option>
 				<option value="pT0">pT0: No evidence of primary tumor</option>
@@ -179,10 +182,10 @@
 			<h6 class='mt-2'>pM</h6>
 			<select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
 				<option selected value='pMx'>pMx: Not applicable</option>
-				<option value="pM1">pM1: Distant metastasis</option>
 				<option value="pM1a">pM1a: Nonretroperitoneal nodal or pulmonary metastases</option>
 				<option value="pM1b">pM1b: Nonpulmonary visceral metastases</option>
 			</select>
+			<input type="text" class="form-control form-control-sm col-sm-6" id="box13_2" style="display:none;" placeholder="Specify metastatic sites">
 
 			<div class="py-2 w-100"></div>
 
@@ -193,38 +196,66 @@
 			</form>
 			<div class='lnchk' style='display:none;'>
 				<form class="form-inline col-8">
-					<label class="m-2">Number of lymph nodes examined: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box15" style="width:100px"></label>
-					<label class="m-2">Number of lymph nodes involved: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box16" style="width:100px"></label>
+					<label class="m-2">Number of lymph nodes examined:
+						<input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box15" style="width:100px"></label>
+					<label class="m-2">Number of lymph nodes involved:
+						<input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box16" style="width:100px"></label>
+
+				<div class="posnodes" style="display: none;">
+
+					<div class="py-2 w-100"></div>
+
+					Involved Lymph Node Site(s)
+					<select multiple id="box17" class='form-control selectpicker form-control-sm col-sm-6 ml-3'>
+						<option>interaortocaval</option>
+						<option>paraaortic</option>
+						<option>paracaval</option>
+						<option>preaortic</option>
+						<option>precaval</option>
+						<option>retroaortic</option>
+						<option>retrocaval</option>
+						<option>Other</option>
+					</select>
+
+					<input type="text" class="form-control form-control-sm mt-3 col-sm-6 ml-3" id='box17_2' style='display:none;' placeholder='Specify Other involved site'>
+
+					<div class="py-2 w-100"></div>
+
+					Size of Largest Lymph Node (or Nodal Mass) Involved (cm)
+					<input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box18" placeholder="">
+
+					<div class="py-2 w-100"></div>
+
+					Extranodal Extension
+					<select id="box19" class='form-control selectpicker form-control-sm col-sm-6 ml-3'>
+						<option>Not identified</option>
+						<option>Present</option>
+						<option>Cannot be determined</option>
+					</select>
+
+					<div class="py-2 w-100"></div>
+
+					Histologic subtype of germ cell tumor in involved lymph nodes
+					<select id="box20" class='form-control selectpicker form-control-sm col-sm-6 ml-3'>
+						<option>Cannot be assessed</option>
+						<option>Seminoma</option>
+						<option>Embryonal carcinoma</option>
+						<option>Yolk sac tumor</option>
+						<option>Choriocarcinoma</option>
+						<option>Placental site trophoblastic tumor</option>
+						<option>Epithelioid trophoblastic tumor</option>
+						<option>Cystic trophoblastic tumor</option>
+						<option>Teratoma</option>
+						<option>Sex Cord-Stromal Tumor</option>
+						<option>Other</option>
+					</select>
+
+					<input type="text" class="form-control form-control-sm mt-3 col-sm-6 ml-3" id='box20_2' style='display:none;' placeholder='Specify Other'>
+
+				</div>
+
 				</form>
 
-				<h6>Specify lymph node sites examined</h6>
-				<input type="text" class="form-control form-control-sm col-sm-6" id="box17" placeholder="">
-
-				<h6>Size of Largest Lymph Node (or Nodal Mass) Involved (cm)</h6>
-				<input type="text" class="form-control form-control-sm col-sm-6" id="box18" placeholder="">
-
-				<h6>Extranodal Extension</h6>
-				<select id="box19" class='form-control selectpicker form-control-sm col-sm-6'>
-					<option>Not identified</option>
-					<option>Present</option>
-					<option>Cannot be determined</option>
-				</select>
-
-				<h6>Histologic subtype of germ cell tumor in involved lymph nodes</h6>
-				<select id="box20" class='form-control selectpicker form-control-sm col-sm-6'>
-					<option>Seminoma</option>
-					<option>Embryonal carcinoma</option>
-					<option>Yolk sac tumor</option>
-					<option>Choriocarcinoma</option>
-					<option>Placental site trophoblastic tumor</option>
-					<option>Epithelioid trophoblastic tumor</option>
-					<option>Cystic trophoblastic tumor</option>
-					<option>Teratoma</option>
-					<option>Sex Cord-Stromal Tumor</option>
-					<option>Other</option>
-				</select>
-
-				<input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box20_2' style='display:none;' placeholder='Specify Other'>
 
 
 			</div>
