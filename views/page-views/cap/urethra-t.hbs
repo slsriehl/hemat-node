@@ -31,6 +31,22 @@
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;' placeholder='Specify Other'>
 
 
+            <hr class="p-2" >
+            <h5>+ Tumor Site (select all that apply)</h5>
+            <select multiple id="box100" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                <optgroup label="Male">
+                    <option>Penile urethra</option>
+                    <option>Bulbomembranous urethra</option>
+                    <option>Prostatic urethra</option>
+                </optgroup>
+                <optgroup label="Female">
+                    <option>Anterior urethra</option>
+                    <option>Posterior urethra</option>
+                </optgroup>
+                <optgroup label="NOS">
+                    <option>Urethra, not otherwise specified</option>
+                </optgroup>
+            </select>
 
 
 
@@ -43,7 +59,7 @@
 
             <hr class="p-2">
             <h5>Histologic Type</h5>
-            <select multiple id="box3" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select multiple id="box3" class='form-control selectpicker form-control-sm col-sm-12'>
                 <optgroup label="Urothelial">
                     <option>Papillary urothelial carcinoma, noninvasive</option>
                     <option>Papillary urothelial carcinoma, invasive</option>
@@ -96,7 +112,7 @@
 
             <hr class="p-2">
             <h5>+ Associated Epithelial Lesions</h5>
-            <select multiple id="box4" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select multiple id="box4" class='form-control selectpicker form-control-sm col-sm-12'>
                 <option>None identified</option>
                 <option>Condyloma</option>
                 <option>Squamous dysplasia (low, intermediate, high grade)</option>
@@ -147,78 +163,77 @@
 
 
             <hr class="p-2">
-            <h5>Tumor Extension - Male carcinoma of penile and bulbomembranous urethra</h5>
-            <select id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
-                <option>Noninvasive papillary carcinoma</option>
-                <option>Carcinoma in situ</option>
-                <option>Tumor invades subepithelial connective tissue</option>
-                <option>Tumor invades adjacent structures</option>
-                <option selected>Not applicable</option>
-            </select>
-            
-            <div class='invade1_hid mt-3' style='display: none;' >
-                <h6>Choose structures which are invaded (select all that apply)</h6>
-                <select multiple id="box7_2" class='form-control selectpicker form-control-sm col-sm-6'>
-                    <option>Corpus spongiosum</option>
-                    <option>Periurethral muscle</option>
-                    <option>Corpus cavernosum</option>
-                    <option>Bladder wall</option>
-                    <option>Rectum</option>
-                    <option>Other</option>
+            <h5>Tumor Extension</h5>
+            <div class="ml-3">
+                <h6>Male carcinoma of penile and bulbomembranous urethra</h6>
+                <select id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Noninvasive papillary carcinoma</option>
+                    <option>Carcinoma in situ</option>
+                    <option>Tumor invades subepithelial connective tissue</option>
+                    <option>Tumor invades adjacent structures</option>
+                    <option selected>Not applicable</option>
                 </select>
-                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box7_3' style='display:none;' placeholder='Specify Other'>
-            </div>
+                <div class='invade1_hid mt-3 ml-3' style='display: none;' >
+                    <h6>Choose structures which are invaded (select all that apply)</h6>
+                    <select multiple id="box7_2" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>Corpus spongiosum</option>
+                        <option>Periurethral muscle</option>
+                        <option>Corpus cavernosum</option>
+                        <option>Bladder wall</option>
+                        <option>Rectum</option>
+                        <option>Other</option>
+                    </select>
+                    <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box7_3' style='display:none;' placeholder='Specify Other'>
+                </div>
 
+                <div class="py-2 w-100"></div>
 
-
-
-            <hr class="p-2">
-            <h5>Tumor Extension - Male carcinoma of the prostatic urethra</h5>
-            <select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
-                <option>Carcinoma in situ, involvement of the prostatic urethra</option>
-                <option>Carcinoma in situ, involvement of the prostatic ducts</option>
-                <option>Tumor invades urethral subepithelial connective tissue immediately underlying the urothelium</option>
-                <option>Tumor invades the prostatic stroma surrounding ducts either by direct extension from the urothelial surface or by invasion from prostatic ducts</option>
-                <option>Tumor invades the periprostatic fat</option>
-                <option>Tumor invades adjacent structures</option>
-                <option selected>Not applicable</option>
-            </select>
-            
-            <div class='invade2_hid mt-3' style='display: none;' >
-                <h6>Choose structures which are invaded (select all that apply)</h6>
-                <select multiple id="box8_2" class='form-control selectpicker form-control-sm col-sm-6'>
-                    <option>Extra-prostatic bladder wall</option>
-                    <option>Rectum</option>
-                    <option>Other</option>
+                <h6>Male carcinoma of the prostatic urethra</h6>
+                <select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Carcinoma in situ, involvement of the prostatic urethra</option>
+                    <option>Carcinoma in situ, involvement of the prostatic ducts</option>
+                    <option>Tumor invades urethral subepithelial connective tissue immediately underlying the urothelium</option>
+                    <option>Tumor invades the prostatic stroma surrounding ducts either by direct extension from the urothelial surface or by invasion from prostatic ducts</option>
+                    <option>Tumor invades the periprostatic fat</option>
+                    <option>Tumor invades adjacent structures</option>
+                    <option selected>Not applicable</option>
                 </select>
-                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box8_3' style='display:none;' placeholder='Specify Other'>
-            </div>
+
+                <div class='invade2_hid mt-3 ml-3' style='display: none;' >
+                    <h6>Choose structures which are invaded (select all that apply)</h6>
+                    <select multiple id="box8_2" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>Extra-prostatic bladder wall</option>
+                        <option>Rectum</option>
+                        <option>Other</option>
+                    </select>
+                    <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box8_3' style='display:none;' placeholder='Specify Other'>
+                </div>
 
 
+                <div class="py-2 w-100"></div>
 
-
-            <hr class="p-2">
-            <h5>Tumor Extension - Female carcinoma of urethra</h5>
-            <select id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
-                <option>Noninvasive papillary carcinoma</option>
-                <option>Carcinoma in situ</option>
-                <option>Tumor invades subepithelial connective tissue</option>
-                <option>Tumor invades adjacent structures</option>
-                <option selected>Not applicable</option>
-            </select>
-            
-            <div class='invade3_hid mt-3' style='display: none;' >
-                <h6>Choose structures which are invaded (select all that apply)</h6>
-                <select multiple id="box9_2" class='form-control selectpicker form-control-sm col-sm-6'>
-                    <option value="Periurethral muscle">Periurethral muscle (fibromuscular and adipose tissue)</option>
-                    <option>Anterior vagina</option>
-                    <option>Bladder wall</option>
-                    <option>Rectum</option>
-                    <option>Other</option>
+                <h6>Tumor Extension - Female carcinoma of urethra</h6>
+                <select id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Noninvasive papillary carcinoma</option>
+                    <option>Carcinoma in situ</option>
+                    <option>Tumor invades subepithelial connective tissue</option>
+                    <option>Tumor invades adjacent structures</option>
+                    <option selected>Not applicable</option>
                 </select>
-                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box9_3' style='display:none;' placeholder='Specify Other'>
-            </div>
 
+                <div class='invade3_hid mt-3 ml-3' style='display: none;' >
+                    <h6>Choose structures which are invaded (select all that apply)</h6>
+                    <select multiple id="box9_2" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option value="Periurethral muscle">Periurethral muscle (fibromuscular and adipose tissue)</option>
+                        <option>Anterior vagina</option>
+                        <option>Bladder wall</option>
+                        <option>Rectum</option>
+                        <option>Other</option>
+                    </select>
+                    <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box9_3' style='display:none;' placeholder='Specify Other'>
+                </div>
+
+            </div>
 
 
 
@@ -250,7 +265,7 @@
                 <option value="Noninvasive low-grade urothelial carcinoma involving: ">Involved by noninvasive low-grade urothelial carcinoma/urothelial dysplasia</option>
                 <option selected>Not applicable</option>
             </select>
-            </div>
+
 
             <div class='situ_hid mt-3 ml-3' style='display: none;' >
                 <h6>Choose margins which are involved (select all that apply)</h6>
@@ -261,6 +276,17 @@
                 </select>
                 <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box11_3' style='display:none;' placeholder='Specify Other'>
             </div>
+            </div>
+
+
+            <hr class="p-2" >
+            <h5>+ Lymphovascular Invasion</h5>
+            <select id="box50" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                <option></option>
+                <option>Not identified</option>
+                <option>Present</option>
+                <option>Cannot be determined</option>
+            </select>
 
 
             <hr class="p-2">
@@ -326,15 +352,35 @@
             </form>
             <div class='lnchk' style='display:none;'>
                 <form class="form-inline col-8">
-                    <label class="m-2">Number of lymph nodes examined: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box17" style="width:100px"></label>
-                    <label class="m-2">Number of lymph nodes involved: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box18" style="width:100px"></label>
+                    <label class="m-2">Number of lymph nodes examined:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box17" ></label>
+                    <label class="m-2">Number of lymph nodes involved:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box18" s></label>
+
+
+                    <div class="py-2 w-100"></div>
+                    <div class="posnodes" style="display: none">
+                        + Size of Largest Metastatic Deposit (cm):
+                        <input type="text" class="form-control form-control-sm col-sm-6 opt" id="box19" placeholder="">
+
+                        <div class="py-2 w-100"></div>
+
+                        + Extranodal Extension
+                        <select id="box20" class='form-control selectpicker form-control-sm col-sm-6 ml-3 opt'>
+                            <option></option>
+                            <option>Not identified</option>
+                            <option>Present</option>
+                            <option>Cannot be determined</option>
+                        </select>
+                    </div>
                 </form>
             </div>
 
 
+
             <hr class="p-2">
             <h5>+ Additional Pathologic Findings</h5>
-            <select multiple id="box19" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select multiple id="box21" class='form-control selectpicker form-control-sm col-sm-6 opt'>
                 <option>Keratinizing squamous metaplasia</option>
                 <option>Inflammation/regenerative changes</option>
                 <option>Therapy-related changes</option>

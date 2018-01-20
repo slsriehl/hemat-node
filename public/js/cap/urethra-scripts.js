@@ -183,12 +183,22 @@ $(window).on("load", function() {
         }
     });
 
-    $("#box19").on("change", function() {
-        var sel = $("#box19").val();
-        if ($.inArray("Other", sel) > -1) {
-            $("#box19_2").show();
+    $("#box18").on("input", function () {
+        var num = parseInt($(this).val());
+        if (num > 0) {
+            $(".posnodes").show();
         } else {
-            $("#box19_2").hide();
+            $(".posnodes").hide();
+        }
+    });
+    
+    
+    $("#box21").on("change", function() {
+        var sel = $("#box21").val();
+        if ($.inArray("Other", sel) > -1) {
+            $("#box21_2").show();
+        } else {
+            $("#box21_2").hide();
         }
     });
 
@@ -262,6 +272,11 @@ $(window).on("load", function() {
             captext += "\nProcedure:\n- " + box_1_2 + "\n";
         } else {
             captext += "\nProcedure:\n- " + box_1 + "\n";
+        }
+
+        var box_100 = $("#box100").val();
+        if (box_100.length > 0){
+            captext += "\n+ Tumor Site:\n- "  + box_100.join('\n- ') + "\n";
         }
 
         var box_2 = $("#box2").val();
@@ -395,7 +410,12 @@ $(window).on("load", function() {
             }
         }
 
-        
+
+        var box_50 = $("#box50").val();
+        if (box_50.length > 0) {
+            captext += "\n+ Lymphovascular Invasion:\n- " + box_50 + "\n";
+        }
+
         var box_12 = $("#box12").val();
         var box_13 = $("#box13").val();
         var box_14 = $("#box14").val();
@@ -444,21 +464,32 @@ $(window).on("load", function() {
                 "\n\tLymph nodes involved: " +
                 box_18 +
                 "\n";
+
+            var box_19 = $("#box19").val();
+            if (box_19.length > 0) {
+                captext += "\t+ Largest Metastatic Deposit: " + box_19 + "cm\n";
+            }
+            
+            var box_20 = $("#box20").val();
+            if (box_20.length > 0) {
+                captext += "\t+ Extranodal Extension: " + box_20 + "\n";
+            }
+        
         } else {
             captext += "\nLymph nodes: None submitted\n";
         }
 
-        var box_19 = $("#box19").val();
-        var box_19_2 = $("#box19_2").val();
-        if (box_19.length > 0) {
-            if ($.inArray("Other", box_19) > -1) {
+        var box_21 = $("#box21").val();
+        var box_21_2 = $("#box21_2").val();
+        if (box_21.length > 0) {
+            if ($.inArray("Other", box_21) > -1) {
                 captext +=
                     "\n+ Additional Pathologic Findings:\n- " +
-                    box_19.join("\n- ").replace(/Other/, box_19_2) +
+                    box_21.join("\n- ").replace(/Other/, box_21_2) +
                     "\n";
             } else {
                 captext +=
-                    "\n+ Additional Pathologic Findings:\n- " + box_19.join("\n- ") + "\n";
+                    "\n+ Additional Pathologic Findings:\n- " + box_21.join("\n- ") + "\n";
             }
 
         }
