@@ -277,7 +277,9 @@ $(window).on("load", function() {
         captext += "\nTumor Site:\n- " + box_2 + "\n";
 
         var box_3 = $("#box3").val();
-        captext += "\nTumor Size:\n- " + box_3.replace(/cm/, "") + "cm\n";
+        if (box_3.length > 0) {
+            captext += "\n+ Tumor Size: " + box_3.replace(/cm/, "") + "cm\n";
+        }
 
         var box_4 = $("#box4").val();
         var box_4_2 = $("#box4_2").val();
@@ -364,7 +366,9 @@ $(window).on("load", function() {
 
 
         var box_11 = $("#box11").val();
-        captext += "\nLymphovascular Invasion:\n- " + box_11 + "\n";
+        if (box_11.length > 0) {
+            captext += "\n+ Lymphovascular Invasion:\n- " + box_11 + "\n";
+        }
 
         var box_12 = $("#box12").val();
         var box_13 = $("#box13").val();

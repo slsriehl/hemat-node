@@ -338,7 +338,7 @@ $(window).on('load', function () {
         captext += "\nTumor Focality:\n- " + box_5 + "\n";
 
         var box_6 = $("#box6").val();
-        captext += "\nTumor Size:\n- " + box_6.replace(/cm/, '') + "cm\n";
+        captext += "\nTumor Size: " + box_6.replace(/cm/, '') + "cm\n";
 
         var box_7 = $("#box7").val();
         var box_7_2 = $("#box7_2").val();

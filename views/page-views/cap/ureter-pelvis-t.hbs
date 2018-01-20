@@ -50,13 +50,13 @@
             </select>
 
             <hr class="p-2">
-            <h5>Tumor Size (cm)</h5>
-            <input type="text" class="form-control form-control-sm col-sm-6" id="box3" placeholder="Greatest dimension">
+            <h5>+ Tumor Size (cm)</h5>
+            <input type="text" class="form-control form-control-sm col-sm-6 opt" id="box3" placeholder="Greatest dimension">
 
 
             <hr class="p-2">
             <h5>Histologic Type</h5>
-            <select multiple id="box4" class='form-control selectpicker form-control-sm col-sm-10'>
+            <select multiple id="box4" class='form-control selectpicker form-control-sm col-sm-12'>
                 <optgroup label="Urothelial">
                     <option>Papillary Urothelial carcinoma, non-invasive</option>
                     <option>Papillary Urothelial carcinoma, invasive</option>
@@ -107,7 +107,7 @@
 
             <hr class="p-2">
             <h5>+ Associated Epithelial Lesions</h5>
-            <select multiple id="box5" class='form-control selectpicker form-control-sm col-sm-10 opt'>
+            <select multiple id="box5" class='form-control selectpicker form-control-sm col-sm-12 opt'>
                 <option>None identified</option>
                 <option>Urothelial papilloma</option>
                 <option>Urothelial papilloma, inverted type</option>
@@ -210,22 +210,24 @@
                     <option value="Noninvasive low-grade urothelial carcinoma involving: ">Involved by noninvasive low-grade urothelial carcinoma/urothelial dysplasia</option>
                     <option selected>Not applicable</option>
                 </select>
+                <div class='situ_hid mt-3 ml-3' style='display: none;' >
+                    <h6>Choose margins which are involved (select all that apply)</h6>
+                    <select multiple id="box50_2" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>Proximal mucosal margin</option>
+                        <option>Distal mucosal margin</option>
+                        <option>Other</option>
+                    </select>
+                    <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box50_3' style='display:none;' placeholder='Specify Other'>
+                </div>
             </div>
 
-            <div class='situ_hid mt-3 ml-3' style='display: none;' >
-                <h6>Choose margins which are involved (select all that apply)</h6>
-                <select multiple id="box50_2" class='form-control selectpicker form-control-sm col-sm-6'>
-                    <option>Proximal mucosal margin</option>
-                    <option>Distal mucosal margin</option>
-                    <option>Other</option>
-                </select>
-                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box50_3' style='display:none;' placeholder='Specify Other'>
-            </div>
+
 
 
             <hr class="p-2">
-            <h5>Lymphovascular Invasion</h5>
-            <select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
+            <h5>+ Lymphovascular Invasion</h5>
+            <select id="box11" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                <option></option>
                 <option>Not identified</option>
                 <option>Present</option>
                 <option>Cannot be determined</option>
@@ -245,7 +247,7 @@
             </select>
             <div class="py-2 w-100"></div>
             <h6 class="mt-2">pT</h6>
-            <select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select id="box13" class='form-control selectpicker form-control-sm col-sm-12'>
                 <option value="pTX">pTX: Primary tumor cannot be assessed</option>
                 <option value="pT0">pT0: No evidence of primary tumor</option>
                 <option value="pTa">pTa: Papillary noninvasive carcinoma</option>
@@ -260,7 +262,7 @@
             <div class="py-2 w-100"></div>
 
             <h6 class='mt-2'>pN</h6>
-            <select id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select id="box14" class='form-control selectpicker form-control-sm col-sm-12'>
                 <option value="pNX">pNX: Regional lymph node cannot be assessed</option>
                 <option value="pN0">pN0: No regional lymph node metastasis</option>
                 <option value="pN1">pN1: Metastasis ≤2 cm in greatest dimension, in a single lymph node</option>
@@ -271,7 +273,7 @@
 
 
             <h6 class='mt-2'>pM</h6>
-            <select id="box15" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select id="box15" class='form-control selectpicker form-control-sm col-sm-12'>
                 <option selected value='pMx'>pMx: Not applicable</option>
                 <option value="pM1">pM1: Distant metastasis</option>
             </select>

@@ -220,7 +220,7 @@ $(window).on('load', function () {
         captext += "\nRelationship of Tumor to Esophagogastric Junction:\n- " + box_3 + "\n";
 
         var box_4 = $("#box4").val();
-        captext += "\nTumor Size:\n- " + box_4.replace(/cm/, '') + "cm\n";
+        captext += "\nTumor Size: " + box_4.replace(/cm/, '') + "cm\n";
 
         var box_5 = $("#box5").val();
         var box_5_2 = $("#box5_2").val();

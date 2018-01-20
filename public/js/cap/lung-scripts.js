@@ -284,7 +284,7 @@ $(window).on('load', function () {
 
         if ($('#box9_4').val() == "No") {
             var box_4 = $("#box4").val();
-            captext += "\nTumor Size:\n- " + box_4.replace(/cm/, '') + "cm\n";
+            captext += "\nTumor Size: " + box_4.replace(/cm/, '') + "cm\n";
         } else {
             var box_6 = $("#box6").val();
             if (box_6.indexOf("n") < 0) {
@@ -293,7 +293,7 @@ $(window).on('load', function () {
 
             var box_7 = $("#box7").val();
             if (box_7.indexOf("n") < 0) {
-                captext += "\nInvasive Tumor Size:\n- " + box_7.replace(/cm/, '') + "cm\n";
+                captext += "\nInvasive Tumor Size: " + box_7.replace(/cm/, '') + "cm\n";
             }
         }
         var box_8 = $("#box8").val();

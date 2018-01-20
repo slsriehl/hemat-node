@@ -191,10 +191,10 @@ $(window).on('load', function () {
         }
 
         var box_3 = $("#box3").val();
-        captext += "\nTumor Size:\n- " + box_3.replace(/cm/, '') + "cm\n";
+        captext += "\nTumor Size: " + box_3.replace(/cm/, '') + "cm\n";
 
         var box_4 = $("#box4").val();
-        captext += "\nTumor Weight:\n- " + box_4 + "g\n";
+        captext += "\nTumor Weight: " + box_4 + "g\n";
 
         var box_5 = $("#box5").val();
         var box_5_2 = $("#box5_2").val();

@@ -218,7 +218,7 @@ $(window).on('load', function () {
         captext += "\nTumor Site:\n- " + box_3 + "\n";
 
         var box_4 = $("#box4").val();
-        captext += "\nTumor Size:\n- " + box_4.replace(/mm/, '') + "mm\n";
+        captext += "\nTumor Size: " + box_4.replace(/mm/, '') + "mm\n";
 
         var box_5 = $("#box5").val();
         captext += "\nMacroscopic Satellite Nodule(s):\n- " + box_5 + "\n";

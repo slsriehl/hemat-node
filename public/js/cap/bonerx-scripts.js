@@ -270,7 +270,7 @@ $(window).on('load', function () {
         // resection ------------------------------------------------------------//
         if (site.indexOf('other') > -1 && box_1_3 == 'resection' || site.indexOf('resection') > -1) {
             var box_4 = $("#box4").val();
-            captext += "\nTumor Size:\n- " + box_4.replace(/cm/, '') + "cm\n";
+            captext += "\nTumor Size: " + box_4.replace(/cm/, '') + "cm\n";
         }
         // end resection ------------------------------------------------------------//
 

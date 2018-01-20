@@ -261,7 +261,7 @@ $(window).on('load', function() {
 
         var box_4 = $("#box4").val();
         if (box_4.length > 0) {
-            captext += "\nAdditional tumor nodules size:\n- " + box_4.replace(/cm/,'') + "cm\n";
+            captext += "\nAdditional tumor nodules Size: " + box_4.replace(/cm/,'') + "cm\n";
         }
 
         var box_5 = $("#box5").val();

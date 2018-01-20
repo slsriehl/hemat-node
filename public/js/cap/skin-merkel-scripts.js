@@ -175,7 +175,7 @@ $(window).on('load', function () {
         captext += "\nTumor Site:\n- " + box_2 + "\n";
 
         var box_3 = $("#box3").val();
-        captext += "\nTumor Size:\n- " + box_3.replace(/cm/, '') + "cm\n";
+        captext += "\nTumor Size: " + box_3.replace(/cm/, '') + "cm\n";
 
         var box_18 = $("#box18").val();
         if (box_18.length > 0) {

@@ -235,7 +235,7 @@ $(window).on('load', function () {
         }
 
         var box_4 = $("#box4").val();
-        captext += "\nTumor Size:\n- " + box_4.replace(/cm/, '') + "cm\n";
+        captext += "\nTumor Size: " + box_4.replace(/cm/, '') + "cm\n";
 
         var box_5 = $("#box5").val();
         captext += "\nHistologic Type:\n- " + box_5 + "\n";

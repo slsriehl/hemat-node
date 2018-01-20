@@ -167,7 +167,7 @@ $(window).on('load', function () {
 
         var box_3 = $("#box3").val();
         if (box_3.length > 0) {
-            captext += "\n+ Polyp Size:\n- " + box_3.replace(/cm/, '') + "cm\n";
+            captext += "\n+ Polyp Size: " + box_3.replace(/cm/, '') + "cm\n";
         }
 
         var box_4 = $("#box4").val();

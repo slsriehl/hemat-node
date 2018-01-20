@@ -245,7 +245,7 @@ $(window).on('load', function () {
         captext += "\nTumor Site:\n- " + box_2.join('\n- ') + "\n";
 
         var box_3 = $("#box3").val();
-        captext += "\nTumor Size:\n- " + box_3.replace(/cm/, '') + "cm\n";
+        captext += "\nTumor Size: " + box_3.replace(/cm/, '') + "cm\n";
 
         var box_4 = $("#box4").val();
         captext += "\nMacroscopic Tumor Perforation:\n- " + box_4 + "\n";

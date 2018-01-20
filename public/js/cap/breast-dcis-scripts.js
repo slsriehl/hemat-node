@@ -331,7 +331,7 @@ $(window).on('load', function () {
         captext += "\nSpecimen Laterality:\n- " + box_2 + "\n";
 
         var box_3 = $("#box3").val();
-        captext += "\nSize:\n- " + box_3.replace(/mm/, '') + "mm\n";
+        captext += "\nSize: " + box_3.replace(/mm/, '') + "mm\n";
 
         var box_4_1 = $("#box4_1").val();
         if (box_4_1.length > 0) {
