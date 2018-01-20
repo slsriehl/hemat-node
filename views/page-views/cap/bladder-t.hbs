@@ -182,7 +182,7 @@
                 <option>Cannot be assessed</option>
             </select>
 
-            <div class='invade1_hid' style='display: none;' >
+            <div class='invade1_hid ml-3 mt-2' style='display: none;' >
                 <h6>Choose structures which are invaded (select all that apply)</h6>
                 <select multiple id="box9_2" class='form-control selectpicker form-control-sm col-sm-6'>
                     <optgroup label="Male structures">
@@ -194,11 +194,12 @@
                         <option>Vagina</option>
                         <option>Adnexae</option>
                     </optgroup>
-                    <optgroup label="Other structures"></optgroup>
-                    <option>Pelvis wall</option>
-                    <option>Abdominal wall</option>
-                    <option>Rectum</option>
-                    <option>Other</option>
+                    <optgroup label="Other structures">
+                        <option>Pelvis wall</option>
+                        <option>Abdominal wall</option>
+                        <option>Rectum</option>
+                        <option>Other</option>
+                    </optgroup>
                 </select>
                 <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box9_3' style='display:none;' placeholder='Specify Other'>
             </div>
@@ -206,27 +207,51 @@
 
             <hr class="p-2">
             <h5>Margins</h5>
-            <select id="box10" class='form-control selectpicker form-control-sm col-sm-10'>
-                <option>Uninvolved by invasive carcinoma and carcinoma in situ/ noninvasive urothelial carcinoma
+            <select multiple id="box10" class='form-control selectpicker form-control-sm col-sm-10'>
+                <option data-marg="hide">Uninvolved by invasive carcinoma and carcinoma in situ/ noninvasive urothelial carcinoma
                 </option>
-                <option>Uninvolved by invasive carcinoma</option>
-                <option value="Invasive carcinoma involving: ">Involved by invasive carcinoma</option>
-                <option value="Non-invasive high-grade dysplasia involving: ">Involved by carcinoma in situ/noninvasive high-grade urothelial carcinoma </option>
-                <option value="Non-invasive low-grade dysplasia involving: ">Involved by noninvasive low-grade urothelial carcinoma/urothelial dysplasia</option>
+                <option data-marg="noinv">Uninvolved by invasive carcinoma</option>
+                <option data-marg="invasive" value="Invasive carcinoma involving: ">Involved by invasive carcinoma</option>
+                <option data-marg="hgdys" value="Non-invasive high-grade dysplasia involving: ">Involved by carcinoma in situ/noninvasive high-grade urothelial carcinoma </option>
+                <option data-marg="lgdys" value="Non-invasive low-grade dysplasia involving: ">Involved by noninvasive low-grade urothelial carcinoma/urothelial dysplasia</option>
             </select>
-
-            <div class='margin_hid ml-4 mt-2' style='display: none;' >
-                <h6>Choose margins which are involved (select all that apply)</h6>
-                <select multiple id="box10_2" class='form-control selectpicker form-control-sm col-sm-6'>
+            <div class="row">
+            <div class='margin_hid mt-2 col-sm-4' style='display: none; background-color: #fccfcf' >
+                <h6>Margins involved - invasive (select all that apply)</h6>
+                <select multiple id="box10_2" class='form-control selectpicker form-control-sm'>
                     <option>Right ureteral margin</option>
                     <option>Left ureteral margin</option>
                     <option>Urethral margin</option>
                     <option>Soft tissue margin</option>
                     <option>Other</option>
                 </select>
-                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box10_3' style='display:none;' placeholder='Specify Other'>
+                <input type="text" class="form-control form-control-sm mt-3 " id='box10_3' style='display:none;' placeholder='Specify Other'>
             </div>
 
+            <div class='margin_hid_2 mt-2 col-sm-4' style='display: none; background-color: #def3dd' >
+                <h6>Margins involved - CIS (select all that apply)</h6>
+                <select multiple id="box10_4" class='form-control selectpicker form-control-sm'>
+                    <option>Right ureteral margin</option>
+                    <option>Left ureteral margin</option>
+                    <option>Urethral margin</option>
+                    <option>Soft tissue margin</option>
+                    <option>Other</option>
+                </select>
+                <input type="text" class="form-control form-control-sm mt-3" id='box10_5' style='display:none; ' placeholder='Specify Other'>
+            </div>
+
+            <div class='margin_hid_3 mt-2 col-sm-4' style='display: none; background-color: #dde5f3' >
+                <h6>Margins involved - LG dysplasia (select all that apply)</h6>
+                <select multiple id="box10_6" class='form-control selectpicker form-control-sm'>
+                    <option>Right ureteral margin</option>
+                    <option>Left ureteral margin</option>
+                    <option>Urethral margin</option>
+                    <option>Soft tissue margin</option>
+                    <option>Other</option>
+                </select>
+                <input type="text" class="form-control form-control-sm mt-3" id='box10_7' style='display:none;' placeholder='Specify Other'>
+            </div>
+            </div>
 
             <hr class="p-2">
             <h5>Lymphovascular Invasion</h5>
@@ -324,7 +349,7 @@
 
 
                     <div class="py-2 w-100"></div>
-
+                    <div class="posnodes" style="display: none">
                     + Extranodal Extension
                     <select id="box19" class='form-control selectpicker form-control-sm col-sm-6 ml-3 opt'>
                         <option></option>
@@ -332,6 +357,7 @@
                         <option>Present</option>
                         <option>Cannot be determined</option>
                     </select>
+                    </div>
                 </form>
             </div>
 

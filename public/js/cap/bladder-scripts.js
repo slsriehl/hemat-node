@@ -109,12 +109,30 @@ $(window).on('load', function () {
     });
 
     $('#box10').on("change", function () {
-        var sel = $('#box10').val();
-        if (sel.indexOf('involving') > -1) {
-            $('.margin_hid').show();
-        } else {
-            $('.margin_hid').hide();
+        var marg_arr = [];
+        $("#box10 :selected").each(function(i, sel){
+            marg_arr.push($(sel).data("marg"));
+        });
+
+        console.log(marg_arr);
+        if ($.inArray("hide", marg_arr) < 0) {
+            if ($.inArray("invasive", marg_arr) > -1){
+                $('.margin_hid').show();
+            } else {
+                $('.margin_hid').hide();
+            }
+            if ($.inArray("hgdys", marg_arr) > -1){
+                $('.margin_hid_2').show();
+            } else {
+                $('.margin_hid_2').hide();
+            }
+            if ($.inArray("lgdys", marg_arr) > -1){
+                $('.margin_hid_3').show();
+            } else {
+                $('.margin_hid_3').hide();
+            }
         }
+
     });
 
     $('#box10_2').on("change", function () {
@@ -126,11 +144,38 @@ $(window).on('load', function () {
         }
     });
 
+    $('#box10_4').on("change", function () {
+        var sel = $('#box10_4').val();
+        if (sel.indexOf('Other') > -1) {
+            $('#box10_5').show();
+        } else {
+            $('#box10_5').hide();
+        }
+    });
+
+    $('#box10_6').on("change", function () {
+        var sel = $('#box10_6').val();
+        if (sel.indexOf('Other') > -1) {
+            $('#box10_7').show();
+        } else {
+            $('#box10_7').hide();
+        }
+    });
+
     $("#box16").on("change", function () {
         if ($(this).is(":checked")) {
             $(".lnchk").show();
         } else {
             $(".lnchk").hide();
+        }
+    });
+
+    $("#box18").on("input", function () {
+        var num = parseInt($(this).val());
+        if (num > 0) {
+            $(".posnodes").show();
+        } else {
+            $(".posnodes").hide();
         }
     });
 
@@ -296,21 +341,46 @@ $(window).on('load', function () {
             captext += "- " + box_9 + "\n";
         }
 
+        captext += "\nMargins:";
         var box_10 = $("#box10").val();
-        var box_10_2 = $("#box10_2").val();
+        var box_10_2 = $("#box10_2").val(); // inv
         var box_10_3 = $("#box10_3").val();
-        if (box_10.indexOf('involving') > -1) {
-            if ($.inArray('Other', box_10_2) > -1) {
-                captext += "\nMargins:\n- " + box_10 + "\n\t" + box_10_2.join('\n\t').replace(/Other/, box_10_3) + "\n";
-            } else {
-                captext += "\nMargins:\n- " + box_10 + "\n\t" + box_10_2.join('\n\t') + "\n";
+        var box_10_4 = $("#box10_4").val(); // hg dys
+        var box_10_5 = $("#box10_5").val();
+        var box_10_6 = $("#box10_6").val(); // lg dys
+        var box_10_7 = $("#box10_7").val();
+        var negbox_10 = box_10.filter(function (el) {
+                            return el.indexOf('and') > -1;
+                        });
+        console.log("neg filter:" + negbox_10.length);
+        var mar_inv = "\n- Invasive carcinoma involving:\n\t"+box_10_2.join("\n\t").replace(/Other/, box_10_3);
+        var mar_cis = "\n- Non-invasive high-grade dysplasia involving:\n\t"+box_10_4.join("\n\t").replace(/Other/, box_10_5);
+        var mar_lgd = "\n- Non-invasive low-grade dysplasia involving:\n\t"+box_10_6.join("\n\t").replace(/Other/, box_10_7);
+        if (negbox_10.length == 0){ // not uninvolved
+            console.log("margins: not all neg");
+            if ($.inArray("Uninvolved by invasive carcinoma", box_10) > -1) {
+                console.log("margins: not inv");
+                captext += "\n- Uninvolved by invasive carcinoma";
+            }
+            if ($.inArray("Invasive carcinoma involving: ", box_10) > -1){
+                console.log("margins: yes inv");
+                captext += mar_inv;
+            }
+            if ($.inArray("Non-invasive high-grade dysplasia involving: ", box_10) > -1){
+                console.log("margins: yes cis");
+                captext += mar_cis;
+            }
+            if ($.inArray("Non-invasive low-grade dysplasia involving: ", box_10) > -1){
+                console.log("margins: yes lgd");
+                captext += mar_lgd;
             }
         } else {
-            captext += "\nMargins:\n- " + box_10 + "\n";
+            console.log("margins: all neg");
+            captext += "- Uninvolved by invasive carcinoma and carcinoma in situ/ noninvasive urothelial carcinoma";
         }
 
         var box_11 = $("#box11").val();
-        captext += "\nLymphovascular Invasion:\n- " + box_11 + "\n";
+        captext += "\n\nLymphovascular Invasion:\n- " + box_11 + "\n";
 
         var box_12 = $("#box12").val();
         var box_13 = $("#box13").val();
