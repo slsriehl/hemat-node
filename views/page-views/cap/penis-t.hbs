@@ -104,7 +104,7 @@
 
             <hr class="p-2">
             <h5>Histologic Type</h5>
-            <select id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select id="box7" class='form-control selectpicker form-control-sm col-sm-10'>
                 <optgroup label="non-HPV-related squamous cell">
                     <option>Squamous cell carcinoma, usual type</option>
                     <option>Pseudohyperplastic carcinoma</option>
@@ -151,7 +151,7 @@
 
             <hr class="p-2">
             <h5>Tumor Extension (select all that apply)</h5>
-            <select multiple id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select multiple id="box9" class='form-control selectpicker form-control-sm col-sm-10'>
                 <option>No evidence of primary tumor</option>
                 <option>Carcinoma in situ</option>
                 <option>Noninvasive localized squamous cell carcinoma</option>
@@ -172,7 +172,9 @@
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box9_3' style='display:none;' placeholder='Specify other structures involved'>
 
 
-
+            <hr class="p-2" >
+            <h5>+ Tumor Thickness or Depth of Invasion </h5>
+            <input type="text" class="form-control form-control-sm col-sm-6 opt" id="box30" placeholder="if applicable">
 
 
             <hr class="p-2">
@@ -187,11 +189,12 @@
             <select id="box10" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option>Cannot be assessed</option>
                 <option>Uninvolved</option>
-                <option>Involved</option>
+                <option>Involved by invasive carcinoma</option>
+                <option>Involved by carcinoma in-situ</option>
             </select>
 
             <div id='box10_2' style='display:none;'>
-                <div class="penectomy" style='display:none'>
+                <div class="penectomy ml-3" style='display:none'>
                     <h6 class="mt-3" >
                         Specify margin involved - For Penectomy specimens</h6>
                     <select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -207,7 +210,7 @@
                     <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box11_2' style='display:none;' placeholder='Specify Other'>
                 </div>
 
-                <div class="circ" style="display:none;">
+                <div class="circ ml-3" style="display:none;">
                     <h6 class="mt-3" >
                         Specify margin involved - For circumcision specimens</h6>
                         <select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -307,36 +310,48 @@
 
             <div class='lnchk' style='display:none;'>
                 <form class="form-inline mt-2 col-8">
-                    <label class="m-2">Number of lymph nodes examined: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box20" style="width:100px"></label>
-                    <label class="m-2">Number of lymph nodes involved: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box21" style="width:100px"></label>
-                    <label class="m-2">
-                        Lymph nodes location(s):
-                        <select multiple id="box22" class='form-control selectpicker form-control-sm ml-3 col-sm-6'>
-                            <option>Sentinel</option>
-                            <option>Pelvic</option>
-                            <option>Inguinal (unilateral)</option>
-                            <option>Inguinal (bilateral)</option>
-                            <option>Other nodes</option>
-                        </select>
+                    <label class="m-2">Number of lymph nodes examined:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box20" style="width:100px"></label>
+                    <label class="m-2">Number of lymph nodes involved:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box21" style="width:100px"></label>
+                    <div class="posnodes" style="display: none;">
+                        <label class="m-2">
+                            Lymph nodes sampled(s):
+                            <select multiple id="box22" class='form-control selectpicker form-control-sm ml-3 col-sm-6'>
+                                <option>Sentinel</option>
+                                <option>Pelvic</option>
+                                <option>Inguinal (unilateral)</option>
+                                <option>Inguinal (bilateral)</option>
+                                <option>Other nodes</option>
+                            </select>
 
-                        <input type="text" class="form-control form-control-sm mt-3 ml-3  col-sm-6" id='box22_2' style='display:none;' placeholder='Specify Other'>
+                            <input type="text" class="form-control form-control-sm mt-3 ml-3  col-sm-6" id='box22_2' style='display:none;' placeholder='Specify Other'>
 
-                    </label>
-                    <label class="m-2">
-                        Number of inguinal nodes involved:
-                        <input type="text" class="form-control form-control-sm col-sm-6 ml-3" id="box23" value="0">
+                        </label>
+                        <div class="inguinal" style="display: none;">
+                            <label class="m-2">
+                                Number of inguinal nodes involved:
+                                <input type="text" class="form-control form-control-sm col-sm-6 ml-3" id="box23" value="0">
 
-                    </label>
-                    <div class="ene" style="display: none;">
-                    <label class="m-2">
-                        Extranodal Extension:
-                        <select id="box24" class='form-control selectpicker form-control-sm col-sm-6'>
-                            <option>Not identified</option>
-                            <option>Present</option>
-                            <option>Cannot be determined</option>
-                        </select>
+                            </label>
+                        </div>
 
-                    </label>
+                        <div class="py-2 w-100"></div>
+                        <label class="m-2">
+                        + Size of Largest Metastatic Deposit (cm)
+                        <input type="number" class="form-control form-control-sm col-sm-6  ml-3 opt" id="box25" placeholder="">
+                        </label>
+
+
+                        <label class="m-2">
+                            Extranodal Extension:
+                            <select id="box27" class='form-control selectpicker form-control-sm col-sm-6  ml-3'>
+                                <option>Not identified</option>
+                                <option>Present</option>
+                                <option>Cannot be determined</option>
+                            </select>
+
+                        </label>
                     </div>
                 </form>
             </div>
@@ -358,7 +373,7 @@
 
             <hr class="p-2">
             <h5>+ Additional Pathologic Findings</h5>
-            <select multiple id="box25" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+            <select multiple id="box28" class='form-control selectpicker form-control-sm col-sm-6 opt'>
                 <option>HPV-related penile intraepithelial neoplasia (PeIN), warty type</option>
                 <option>HPV-related penile intraepithelial neoplasia (PeIN), basaloid type</option>
                 <option>HPV-related penile intraepithelial neoplasia (PeIN), warty-basaloid type</option>
@@ -373,7 +388,7 @@
                 <option>Other (</option>
             </select>
 
-            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box25_2' style='display:none;' placeholder='Specify Other'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box28_2' style='display:none;' placeholder='Specify Other'>
 
 
 

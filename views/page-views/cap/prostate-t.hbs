@@ -117,7 +117,15 @@
 
                 <h6>+ Percentage of pattern 5</h6>
                     <input type="number" class="form-control form-control-sm col-sm-6 opt" id="box9" placeholder="">
-                </div>
+                    <div class="alert alert-info alert-dismissible collapse col-sm-6 mt-2" id="pattern5info" role="alert">
+                        <strong>If the tertiary
+                            pattern 5 comprises >5% of the tumor, some pathologists incorporate it into the Gleason
+                            score as secondary pattern</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    </div>
             </div>
 
 
@@ -389,7 +397,7 @@
 
                 </form>
                 <div class="py-2 w-100"></div>
-                <div class="posnodes" style="display: none";>
+                <div class="posnodes" style="display: none;">
                     Specify involved nodes:
                     <select multiple id="box32" class='form-control selectpicker form-control-sm col-sm-6 ml-2'>
                         <option>hypogastric</option>
@@ -416,6 +424,7 @@
 
                     + Extranodal Extension:
                     <select id="box34" class='form-control selectpicker form-control-sm col-sm-6 ml-2 opt'>
+                        <option></option>
                         <option>Not identified</option>
                         <option>Present</option>
                         <option>Cannot be determined</option>

@@ -127,30 +127,40 @@ $(window).on('load', function () {
         }
     });
 
+
+    $('#box21').on("input", function () {
+        var num =  parseInt($('#box21').val());
+        if (num > 0) {
+            $('.posnodes').show();
+        } else {
+            $('.posnodes').hide();
+        }
+    });
+
     $('#box22').on("change", function () {
         var sel = $('#box22').val();
+        var ing = sel.filter(function (el) {
+                            return el.indexOf('Inguinal') > -1;
+                        });
         if ($.inArray('Other', sel) > -1) {
             $('#box22_2').show();
         } else {
             $('#box22_2').hide();
         }
-    });
-
-    $('#box23').on("input", function () {
-        var sel = $('#box23').val();
-        if (sel > 0) {
-            $('.ene').show();
+        if (ing.length > 0) {
+            $('.inguinal').show();
         } else {
-            $('.ene').hide();
+            $('.inguinal').hide();
         }
+
     });
 
-    $('#box25').on("change", function () {
-        var sel = $('#box25').val();
+    $('#box28').on("change", function () {
+        var sel = $('#box28').val();
         if ($.inArray('Other', sel) > -1) {
-            $('#box25_2').show();
+            $('#box28_2').show();
         } else {
-            $('#box25_2').hide();
+            $('#box28_2').hide();
         }
     });
 
@@ -283,25 +293,32 @@ $(window).on('load', function () {
             captext += "\nTumor Extension:\n- " + box_9.join("\n- ") + "\n";
         }
 
+
+        var box_30 = $("#box30").val();
+        if (box_30.length > 0) {
+            captext += "\n+ Tumor Thickness: "  + box_30.replace(/mm/,'') + "mm\n";
+        }
+
+
         var box_10 = $("#box10").val();
         if (box_10.indexOf("Involved") > -1) {
-            captext += "\nMargins:\n";
+            captext += "\nMargins:\n- "+box_10+"\n";
 
             // penectomy
             var box_11 = $("#box11").val();
             var box_11_2 = $("#box11_2").val();
             if (box_11.indexOf('Not') < 0) {
                 if (box_11.indexOf("Other") > -1) {
-                    captext += "- Involved: " + box_11_2 + "\n";
+                    captext += "- Margins involved: " + box_11_2 + "\n";
                 } else {
-                    captext += "- Involved: " + box_11 + "\n";
+                    captext += "- Margins involved: " + box_11 + "\n";
                 }
             }
 
             //circumcision
             var box_12 = $("#box12").val();
             if (box_12.indexOf('Not') < 0) {
-                captext += "- Involved: " + box_12 + "\n";
+                captext += "- Margins involved: " + box_12 + "\n";
             }
         } else {
             captext += "\nMargins:\n- " + box_10 + "\n";
@@ -339,30 +356,38 @@ $(window).on('load', function () {
             var box_22_2 = $("#box22_2").val();
             captext += "\nLymph nodes:\n\tLymph Nodes Examined: " + box_20 + "\n\tLymph nodes involved: " + box_21 + "\n";
 
-            if ($.inArray('Other', box_22) > -1) {
-                captext += "\tLymph nodes location: " + box_22.join(', ').replace(/Other/, box_22_2) + "\n";
-            } else {
-                captext += "\tLymph nodes location: " + box_22.join(', ') + "\n";
+            if (box_21 != "0"){
+                if ($.inArray('Other', box_22) > -1) {
+                    captext += "\tLymph nodes sampled: " + box_22.join(', ').replace(/Other/, box_22_2) + "\n";
+                } else {
+                    captext += "\tLymph nodes sampled: " + box_22.join(', ') + "\n";
+                }
+
+                var box_23 = $("#box23").val();
+                if (box_23 > 0) {
+                    captext += "\tNumber of inguinal nodes involved: " + box_23 + "\n";
+                }
+
+                var box_25 = $("#box25").val();
+                if (box_25.length > 0) {
+                    captext += "\t+ Largest Metastatic Deposit: "  + box_25.replace(/cm/,'') + "cm\n";
+                }
+
+                var box_27 = $("#box27").val();
+                captext += "\tExtranodal Extension: " + box_27 + "\n";
             }
 
-            var box_23 = $("#box23").val();
-            if (box_23 > 0) {
-                captext += "\tNumber of inguinal nodes involved: " + box_23 + "\n";
-
-                var box_24 = $("#box24").val();
-                captext += "\tExtranodal Extension:\n- " + box_24 + "\n";
-            }
         } else {
             captext += "\nLymph nodes: None submitted\n";
         }
 
-        var box_25 = $("#box25").val();
-        var box_25_2 = $("#box25_2").val();
-        if (box_25.length > 0) {
-            if ($.inArray('Other', box_25) > -1) {
-                captext += "\n+ Additional Pathologic Findings:\n- " + box_25.join('\n- ').replace(/Other/, box_25_2) + "\n";
+        var box_28 = $("#box28").val();
+        var box_28_2 = $("#box28_2").val();
+        if (box_28.length > 0) {
+            if ($.inArray('Other', box_28) > -1) {
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_28.join('\n- ').replace(/Other/, box_28_2) + "\n";
             } else {
-                captext += "\n+ Additional Pathologic Findings:\n- " + box_25.join('\n- ') + "\n";
+                captext += "\n+ Additional Pathologic Findings:\n- " + box_28.join('\n- ') + "\n";
             }
         }
 

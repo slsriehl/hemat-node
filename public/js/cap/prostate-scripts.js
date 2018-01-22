@@ -5,7 +5,6 @@ $(window).on('load', function () {
     //                        Autocomplete                         //
     // *************************************************************/
 
-
     //*************************************************************//
     //                        Pop-ups                              //
     // *************************************************************/
@@ -53,6 +52,14 @@ $(window).on('load', function () {
         } else {
             $('.pct-5').hide();
         }
+    });
+
+    $("#box9").on("input", function(){
+       var pct = parseInt($(this).val());
+       if (pct > 5){
+           $("#pattern5info").show();
+       }
+
     });
 
     $('#box12').on("change", function () {
@@ -424,10 +431,14 @@ $(window).on('load', function () {
             }
 
             var box_33 = $("#box33").val();
-            captext += "\n\t+ Size of Largest Metastatic Deposit: " + box_33 + "cm\n";
+            if (box_33.length > 0){
+                captext += "\n\t+ Size of Largest Metastatic Deposit: " + box_33 + "cm\n";
+            }
 
             var box_34 = $("#box34").val();
-            captext += "\n\t+ Extranodal Extension: " + box_34 + "\n";
+            if (box_34.length > 0) {
+                captext += "\n\t+ Extranodal Extension: " + box_34 + "\n";
+            }
         } else {
             captext += "\nLymph nodes: None submitted\n";
         }
