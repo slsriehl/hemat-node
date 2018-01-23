@@ -116,7 +116,7 @@ $(window).on('load', function () {
         if (sel.indexOf("Positive") > -1) {
             $('.pr').show();
         } else {
-            $('#pr').hide();
+            $('.pr').hide();
         }
     });
 
@@ -393,10 +393,10 @@ $(window).on('load', function () {
 
         var box_3 = $("#box3").val();
         var box_3_2 = $("#box3_2").val();
-        if (box_3.indexOf("Size") > -1) {
+        if (box_3.indexOf("Size >") > -1) {
             captext += "\nTumor Size: " + box_3_2.replace(/mm/, '') + "mm\n";
         } else {
-            captext += "\nTumor Size: " + box_3.replace(/mm/, '') + "mm\n";
+            captext += "\nTumor Size: " + box_3 + "\n";
         }
 
         var box_100 = $("#box100").val();
@@ -471,48 +471,65 @@ $(window).on('load', function () {
         }
 
         if (box_108 != "Cannot be assessed") {
-            captext += "\nDistance of invasive carcinoma to other margins\n";
-            var box_109_1 = $("#box109_1").val();
-            if (box_109_1 != 0) {
-                captext += "\tDistance from superior margin: " + box_109_1.replace(/mm/, '') + "mm\n";
-            } else {
-                captext += "\tSuperior margin: Involved\n";
+            if ($("#invmargin").is(":visible")){
+                captext += "\nDistance of invasive carcinoma to other margins\n";
+
+
+                var box_109_1 = $("#box109_1").val();
+                if (box_109_1.length > 0){
+                    if (box_109_1 != 0) {
+                        captext += "\tDistance from superior margin: " + box_109_1.replace(/mm/, '') + "mm\n";
+                    } else {
+                        captext += "\tSuperior margin: Involved\n";
+                    }
+                }
+
+                var box_109_2 = $("#box109_2").val();
+                if (box_109_2.length > 0) {
+                    if (box_109_2 != 0) {
+                        captext += "\tDistance from inferior margin: " + box_109_2.replace(/mm/, '') + "mm\n";
+                    } else {
+                        captext += "\tInferior margin: Involved\n";
+                    }
+                }
+
+                var box_109_3 = $("#box109_3").val();
+                if (box_109_3.length > 0) {
+                    if (box_109_3 != 0) {
+                        captext += "\tDistance from medial margin: " + box_109_3.replace(/mm/, '') + "mm\n";
+                    } else {
+                        captext += "\tMedial margin: Involved\n";
+                    }
+                }
+
+                var box_109_4 = $("#box109_4").val();
+               if (box_109_4.length > 0) {
+                   if (box_109_4 != 0) {
+                       captext += "\tDistance from lateral margin: " + box_109_4.replace(/mm/, '') + "mm\n";
+                   } else {
+                       captext += "\tLateral margin: Involved\n";
+                   }
+               }
+
+                var box_109_5 = $("#box109_5").val();
+                if (box_109_5.length > 0) {
+                    if (box_109_5 != 0) {
+                        captext += "\tDistance from anterior margin: " + box_109_5.replace(/mm/, '') + "mm\n";
+                    } else {
+                        captext += "\tAnterior margin: Involved\n";
+                    }
+                }
+
+                var box_109_6 = $("#box109_6").val();
+                if (box_109_6.length > 0) {
+                    if (box_109_6 != 0) {
+                        captext += "\tDistance from posterior margin: " + box_109_6.replace(/mm/, '') + "mm\n";
+                    } else {
+                        captext += "\tPosterior margin: Involved\n";
+                    }
+                }
             }
 
-            var box_109_2 = $("#box109_2").val();
-            if (box_109_2 != 0) {
-                captext += "\tDistance from inferior margin: " + box_109_2.replace(/mm/, '') + "mm\n";
-            } else {
-                captext += "\tInferior margin: Involved\n";
-            }
-
-            var box_109_3 = $("#box109_3").val();
-            if (box_109_3 != 0) {
-                captext += "\tDistance from medial margin: " + box_109_3.replace(/mm/, '') + "mm\n";
-            } else {
-                captext += "\tMedial margin: Involved\n";
-            }
-
-            var box_109_4 = $("#box109_4").val();
-            if (box_109_4 != 0) {
-                captext += "\tDistance from lateral margin: " + box_109_4.replace(/mm/, '') + "mm\n";
-            } else {
-                captext += "\tLateral margin: Involved\n";
-            }
-
-            var box_109_5 = $("#box109_5").val();
-            if (box_109_5 != 0) {
-                captext += "\tDistance from anterior margin: " + box_109_5.replace(/mm/, '') + "mm\n";
-            } else {
-                captext += "\tAnterior margin: Involved\n";
-            }
-
-            var box_109_6 = $("#box109_6").val();
-            if (box_109_6 != 0) {
-                captext += "\tDistance from posterior margin: " + box_109_6.replace(/mm/, '') + "mm\n";
-            } else {
-                captext += "\tPosterior margin: Involved\n";
-            }
         }
 
         var box_10 = $("#box10").val();
@@ -594,11 +611,16 @@ $(window).on('load', function () {
         // DCIS segment --------------------------------------------------//
         var box_106 = $("#box106").val();
         if (box_106.indexOf("present") > -1) {
-            captext += "\n----------------------------------------n\nDuctal Carcinoma In Situ:\n- " + box_106;
+            captext += "\n----------------------------------------\nDuctal Carcinoma In Situ:\n- " + box_106;
+
+            var box_4_0 = $("#box4_0").val();
+            if (box_4_0.length > 0) {
+                captext += "\n\t+ Estimated Size of DCIS: " + box_4_0 + "mm\n";
+            }
 
             var box_4_1 = $("#box4_1").val();
             if (box_4_1.length > 0) {
-                captext += "\n\t+ Number of blocks with DCIS: " + box_4_1 + "\n";
+                captext += "\t+ Number of blocks with DCIS: " + box_4_1 + "\n";
             }
 
             var box_4_2 = $("#box4_2").val();
@@ -640,48 +662,64 @@ $(window).on('load', function () {
             }
 
             if (box_8 != "Cannot be assessed") {
-                captext += "\nDistance of DICS to other margins\n";
-                var box_9_1 = $("#box9_1").val();
-                if (box_9_1 != 0) {
-                    captext += "\tDistance from superior margin: " + box_9_1.replace(/mm/, '') + "mm\n";
-                } else {
-                    captext += "\tSuperior margin: Involved\n";
+                if ($("#dcismargin").is(":visible")) {
+                    captext += "\nDistance of DICS to other margins\n";
+
+                    var box_9_1 = $("#box9_1").val();
+                    if (box_9_1.length > 0) {
+                        if (box_9_1 != 0) {
+                            captext += "\tDistance from superior margin: " + box_9_1.replace(/mm/, '') + "mm\n";
+                        } else {
+                            captext += "\tSuperior margin: Involved\n";
+                        }
+                    }
+
+                    var box_9_2 = $("#box9_2").val();
+                    if (box_9_2.length > 0) {
+                        if (box_9_2 != 0) {
+                            captext += "\tDistance from inferior margin: " + box_9_2.replace(/mm/, '') + "mm\n";
+                        } else {
+                            captext += "\tInferior margin: Involved\n";
+                        }
+                    }
+
+                    var box_9_3 = $("#box9_3").val();
+                    if (box_9_3.length > 0) {
+                        if (box_9_3 != 0) {
+                            captext += "\tDistance from medial margin: " + box_9_3.replace(/mm/, '') + "mm\n";
+                        } else {
+                            captext += "\tMedial margin: Involved\n";
+                        }
+                    }
+
+                    var box_9_4 = $("#box9_4").val();
+                    if (box_9_4.length > 0) {
+                        if (box_9_4 != 0) {
+                            captext += "\tDistance from lateral margin: " + box_9_4.replace(/mm/, '') + "mm\n";
+                        } else {
+                            captext += "\tLateral margin: Involved\n";
+                        }
+                    }
+
+                    var box_9_5 = $("#box9_5").val();
+                    if (box_9_5.length > 0) {
+                        if (box_9_5 != 0) {
+                            captext += "\tDistance from anterior margin: " + box_9_5.replace(/mm/, '') + "mm\n";
+                        } else {
+                            captext += "\tAnterior margin: Involved\n";
+                        }
+                    }
+
+                    var box_9_6 = $("#box9_6").val();
+                    if (box_9_6.length > 0) {
+                        if (box_9_6 != 0) {
+                            captext += "\tDistance from posterior margin: " + box_9_6.replace(/mm/, '') + "mm\n";
+                        } else {
+                            captext += "\tPosterior margin: Involved\n";
+                        }
+                    }
                 }
 
-                var box_9_2 = $("#box9_2").val();
-                if (box_9_2 != 0) {
-                    captext += "\tDistance from inferior margin: " + box_9_2.replace(/mm/, '') + "mm\n";
-                } else {
-                    captext += "\tInferior margin: Involved\n";
-                }
-
-                var box_9_3 = $("#box9_3").val();
-                if (box_9_3 != 0) {
-                    captext += "\tDistance from medial margin: " + box_9_3.replace(/mm/, '') + "mm\n";
-                } else {
-                    captext += "\tMedial margin: Involved\n";
-                }
-
-                var box_9_4 = $("#box9_4").val();
-                if (box_9_4 != 0) {
-                    captext += "\tDistance from lateral margin: " + box_9_4.replace(/mm/, '') + "mm\n";
-                } else {
-                    captext += "\tLateral margin: Involved\n";
-                }
-
-                var box_9_5 = $("#box9_5").val();
-                if (box_9_5 != 0) {
-                    captext += "\tDistance from anterior margin: " + box_9_5.replace(/mm/, '') + "mm\n";
-                } else {
-                    captext += "\tAnterior margin: Involved\n";
-                }
-
-                var box_9_6 = $("#box9_6").val();
-                if (box_9_6 != 0) {
-                    captext += "\tDistance from posterior margin: " + box_9_6.replace(/mm/, '') + "mm\n";
-                } else {
-                    captext += "\tPosterior margin: Involved\n";
-                }
             }
 
             captext += "\n\n----------------------------------------\n";
@@ -765,11 +803,16 @@ $(window).on('load', function () {
         var box_46 = $("#box46").val();
         captext += "\nKi-67: " + box_46 + "%\n";
 
+        var box_47 = $("#box47").val();
+        captext += "\nCold Ischemia and Fixation Times :\n- "  + box_47+ "\n";
+
+
+
         captext += "\n-------- BIO-MARKER METHODOLOGY --------\n";
 
         var box_50 = $("#box50").val();
         if (box_50.length > 0) {
-            captext += "\n+ Testing Performed on Block Number(s): " + box_50 + "\n";
+            captext += "\n+ Testing Performed on Block/Case Number(s): " + box_50 + "\n";
         }
 
         var box_51 = $("#box51").val();

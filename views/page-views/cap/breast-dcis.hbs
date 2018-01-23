@@ -44,23 +44,20 @@
 
             <hr class="p-2" >
             <h5>Size (Extent) of DCIS (mm)</h5>
-            <input type="text" class="form-control form-control-sm col-sm-6" id="box3" placeholder="using gross and microscopic evaluation">
+            <input type="text" class="form-control form-control-sm col-sm-8" id="box3" placeholder="using gross and microscopic evaluation">
 
+            <div class="py-2 w-100"></div>
 
+            <div class="ml-3">
+                    <h6>+ Number of blocks with DCIS:</h6>
+                    <input type="number" class="form-control form-control-sm col-sm-6 opt" id="box4_1" placeholder="">
 
+                    <div class="py-2 w-100"></div>
 
-            <hr class="p-2" >
-            <h5>+ Number of blocks with DCIS:</h5>
-            <input type="number" class="form-control form-control-sm col-sm-6 opt" id="box4_1" placeholder="">
+                    <h6>+ Number of blocks examined</h6>
+                    <input type="number" class="form-control form-control-sm col-sm-6 opt" id="box4_2" placeholder="">
 
-
-
-
-            <hr class="p-2" >
-            <h5>+ Number of blocks examined</h5>
-            <input type="number" class="form-control form-control-sm col-sm-6 opt" id="box4_2" placeholder="">
-
-
+            </div>
 
 
             <hr class="p-2" >
@@ -119,39 +116,53 @@
             <input type="text" class="form-control form-control-sm col-sm-6" id='box8_3' style='display:none;' placeholder='Specify involved margin'>
 
 
+            <div class="py-2 w-100"></div>
             <div class="margins ml-5" style="display: none;">
+                <button class="btn btn-sm btn-success p-1" type="button" data-toggle="collapse" data-target="#dcismargin" aria-expanded="false">
+                    Do you want to list distance of DCIS to all margins in the synoptic?
+                </button>
 
-                <div class="py-2 w-100"></div>
+                <div id="dcismargin" class="collapse">
+                    <div class="py-2 w-100"></div>
+                    <h6>Enter values for margins you wish to list, or leave blank if you don't want to list a particular margin</h6>
+                    <h6>Enter "0" to indicate that margin is involved</h6>
 
-                <h6  > Distance from superior margin (mm)</h6>
-                <input type="text" class="form-control form-control-sm col-sm-6" id="box9_1" placeholder="enter 0, if margin is involved">
+                    <div class="py-2 w-100"></div>
+                    <h6 >
+                        Distance of DCIS from superior margin (mm)</h6>
+                    <input type="number" class="form-control form-control-sm col-sm-4 opt" id="box9_1" placeholder="enter 0, if margin is involved">
 
-                <div class="py-2 w-100"></div>
+                    <div class="py-2 w-100"></div>
 
-                <h6  >Distance from inferior margin (mm)</h6>
-                <input type="text" class="form-control form-control-sm col-sm-6" id="box9_2" placeholder="enter 0, if margin is involved">
+                    <h6  >
+                        Distance of DCIS from inferior margin (mm)</h6>
+                    <input type="number" class="form-control form-control-sm col-sm-4 opt" id="box9_2" placeholder="enter 0, if margin is involved">
 
-                <div class="py-2 w-100"></div>
+                    <div class="py-2 w-100"></div>
 
-                <h6  >Distance from medial margin (mm)</h6>
-                <input type="text" class="form-control form-control-sm col-sm-6" id="box9_3" placeholder="enter 0, if margin is involved">
+                    <h6  >
+                        Distance of DCIS from medial margin (mm)</h6>
+                    <input type="number" class="form-control form-control-sm col-sm-4 opt" id="box9_3" placeholder="enter 0, if margin is involved">
 
-                <div class="py-2 w-100"></div>
+                    <div class="py-2 w-100"></div>
 
-                <h6  >Distance from lateral margin (mm)</h6>
-                <input type="text" class="form-control form-control-sm col-sm-6" id="box9_4" placeholder="enter 0, if margin is involved">
+                    <h6  >
+                        Distance of DCIS from lateral margin (mm)</h6>
+                    <input type="number" class="form-control form-control-sm col-sm-4 opt" id="box9_4" placeholder="enter 0, if margin is involved">
 
-                <div class="py-2 w-100"></div>
+                    <div class="py-2 w-100"></div>
 
-                <h6  >Distance from anterior margin (mm)</h6>
-                <input type="text" class="form-control form-control-sm col-sm-6" id="box9_5" placeholder="enter 0, if margin is involved">
+                    <h6  >
+                        Distance of DCIS from anterior margin (mm)</h6>
+                    <input type="number" class="form-control form-control-sm col-sm-4 opt" id="box9_5" placeholder="enter 0, if margin is involved">
 
-                <div class="py-2 w-100"></div>
+                    <div class="py-2 w-100"></div>
 
-                <h6  >Distance from posterior margin (mm)</h6>
-                <input type="text" class="form-control form-control-sm col-sm-6" id="box9_6" placeholder="enter 0, if margin is involved">
+                    <h6  >
+                        Distance of DCIS from posterior margin (mm)</h6>
+                    <input type="number" class="form-control form-control-sm col-sm-4 opt" id="box9_6" placeholder="enter 0, if margin is involved">
 
-
+                </div>
             </div>
 
 
@@ -317,7 +328,7 @@
                     <option>Cannot be determined (Internal control cells present; no immunoreactivity of either tumor cells or internal controls)</option>
                 </select>
 
-                <div class="er ml-5">
+                <div class="pr ml-5">
                     <div class="py-2 w-100"></div>
 
                     Specify % positive
@@ -339,7 +350,7 @@
 
 
                 <h6 >
-                HER2 - IHC </h6>
+                    HER2 - IHC </h6>
                 <select id="box43" class='form-control selectpicker form-control-sm col-sm-6'>
                     <option>Negative (Score 0)</option>
                     <option>Negative (Score 1+)</option>
@@ -352,7 +363,10 @@
                 <input type="text" class="form-control form-control-sm mt-3 col-sm-8" id='box43_1' style='display:none;' placeholder='Specify % of cells with uniform membrane staining'>
                 <input type="text" class="form-control form-control-sm mt-3 col-sm-6 mt-3" id='box43_2' style='display:none;' placeholder='Specify indeterminate'>
 
+
                 <div class="py-3 w-100"></div>
+
+
 
                 <h6 >
                     HER2 - FISH</h6>
@@ -398,14 +412,21 @@
                         <input type="text" class="form-control form-control-sm col-sm-6" id="box45_5" placeholder="">
                     </div>
                 </div>
-
-
                 <div class="py-2 w-100"></div>
 
                 <h6>
-                Ki67%</h6>
+                    Ki67%</h6>
                 <input type="number" class="form-control form-control-sm col-sm-6" id="box46" placeholder="% positive nuclei">
 
+
+                <div class="py-3 w-100"></div>
+
+                <h6>Cold Ischemia and Fixation Times </h6>
+                <select id="box47" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Meet requirements specified in latest version of the ASCO/CAP guidelines </option>
+                    <option>Do not meet requirements specified in latest version of the ASCO/CAP guidelines</option>
+                    <option>Cannot be determined </option>
+                </select>
             </div>
 
 
@@ -415,7 +436,7 @@
             <hr class="p-2" >
             <h5>- BIOMARKER METHODOLOGY -</h5>
             <div class="ml-3 bg-faded">
-                <h6>+ Testing Performed on Block Number(s)</h6>
+                <h6>+ Testing Performed on Block (or Prior case) Number(s)</h6>
                 <input type="text" class="form-control form-control-sm col-sm-6 opt" id="box50" placeholder="">
 
 
@@ -482,7 +503,8 @@
                 <div class="py-3 w-100"></div>
 
                 <h6>HER2 (IHC) Receptor - Method</h6>
-                <select id="box54" class='form-control selectpicker form-control-sm col-sm-6'>
+                <select id="box54" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                    <option></option>
                     <option>Not applicable</option>
                     <option>Food and Drug Administration (FDA) cleared </option>
                     <option>Laboratory-developed test</option>
@@ -491,7 +513,7 @@
 
                 <div class="ml-3" id='box54_3' style='display:none;'>
                     <h6>Primary Antibody Clone</h6>
-                    <select id="box54_4" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <select id="box54_4" class='form-control selectpicker form-control-sm col-sm-6 opt'>
                         <option>4B5</option>
                         <option>HercepTest</option>
                         <option>A0485</option>
@@ -505,7 +527,7 @@
 
                 <div class="py-3 w-100"></div>
 
-                <h6>HER2 FISH  - Method</h6>
+                <h6>HER2 FISH - Method</h6>
                 <select id="box55" class='form-control selectpicker form-control-sm col-sm-6'>
                     <option>Not applicable</option>
                     <option>Food and Drug Administration (FDA) cleared </option>
@@ -521,13 +543,14 @@
 
                 <h6>+ Image Analysis</h6>
                 <select id="box56" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                    <option></option>
                     <option>Not performed</option>
                     <option>Performed </option>
                 </select>
                 <div class="py-2 w-100"></div>
                 <div class="ml-3" id='box56_2' style='display:none;' >
                     <h6>Biomarkers scored by image analysis (select all that apply)</h6>
-                    <select multiple id="box56_3" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <select multiple id="box56_3" class='form-control selectpicker form-control-sm col-sm-6 opt'>
                         <option>ER</option>
                         <option>PgR</option>
                         <option>HER2 by IHC</option>
@@ -537,7 +560,6 @@
 
                 </div>
             </div>
-
 
 
 

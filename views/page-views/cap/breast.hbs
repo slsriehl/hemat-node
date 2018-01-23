@@ -164,10 +164,16 @@
                 <option>DCIS is present in specimen</option>
                 <option>Only DCIS is present after presurgical (neoadjuvant) therapy</option>
             </select>
-            
-            <div class="dcis py-2 ml-3" style="display: none;">
 
-            <h6>+ Number of blocks with DCIS:</h6>
+            <div class="py-2 w-100"></div>
+
+            <div class="dcis py-2 ml-3" style="display: none;">
+                <h6>+ Estimated size (extent) of DCIS (mm)</h6>
+                <input type="number" class="form-control form-control-sm col-sm-6 opt" id="box4_0" placeholder="">
+
+                <div class="py-2 w-100"></div>
+
+                <h6>+ Number of blocks with DCIS:</h6>
                 <input type="number" class="form-control form-control-sm col-sm-6 opt" id="box4_1" placeholder="">
 
                 <div class="py-2 w-100"></div>
@@ -250,46 +256,55 @@
             <input type="text" class="form-control form-control-sm col-sm-6" id='box108_1' style='display:none;' placeholder='Specify closest margin'>
             <input type="text" class="form-control form-control-sm col-sm-6" id='box108_2' style='display:none;' placeholder='Specify distance of invasive tumor from margin (mm)'>
             <input type="text" class="form-control form-control-sm col-sm-6" id='box108_3' style='display:none;' placeholder='Specify involved margin'>
-
+            <div class="py-2 w-100"></div>
 
             <div class="margins-inv ml-5" style="display: none;">
+                <button class="btn btn-sm btn-success p-1" type="button" data-toggle="collapse" data-target="#invmargin" aria-expanded="false">
+                    Do you want to list distance of invasive tumor to all margins in the synoptic?
+                </button>
 
                 <div class="py-2 w-100"></div>
+                <div id="invmargin" class="collapse">
+                    <div class="py-2 w-100"></div>
+                    <h6>Enter values for margins you wish to list, or leave blank if you don't want to list a particular margin</h6>
+                    <h6>Enter "0" to indicate that margin is involved</h6>
 
-                <h6  >
-                    Distance of invasive tumor from superior margin (mm)</h6>
-                <input type="number" class="form-control form-control-sm col-sm-6" id="box109_1" placeholder="enter 0, if margin is involved">
+                    <div class="py-2 w-100"></div>
+                    <h6  >
+                        Distance of invasive tumor from superior margin (mm)</h6>
+                    <input type="number" class="form-control form-control-sm col-sm-4 opt" id="box109_1" placeholder="enter 0, if margin is involved">
 
-                <div class="py-2 w-100"></div>
+                    <div class="py-2 w-100"></div>
 
-                <h6  >
-                    Distance of invasive tumor from inferior margin (mm)</h6>
-                <input type="number" class="form-control form-control-sm col-sm-6" id="box109_2" placeholder="enter 0, if margin is involved">
+                    <h6  >
+                        Distance of invasive tumor from inferior margin (mm)</h6>
+                    <input type="number" class="form-control form-control-sm col-sm-4 opt" id="box109_2" placeholder="enter 0, if margin is involved">
 
-                <div class="py-2 w-100"></div>
+                    <div class="py-2 w-100"></div>
 
-                <h6  >
-                    Distance of invasive tumor from medial margin (mm)</h6>
-                <input type="number" class="form-control form-control-sm col-sm-6" id="box109_3" placeholder="enter 0, if margin is involved">
+                    <h6  >
+                        Distance of invasive tumor from medial margin (mm)</h6>
+                    <input type="number" class="form-control form-control-sm col-sm-4 opt" id="box109_3" placeholder="enter 0, if margin is involved">
 
-                <div class="py-2 w-100"></div>
+                    <div class="py-2 w-100"></div>
 
-                <h6  >
-                    Distance of invasive tumor from lateral margin (mm)</h6>
-                <input type="number" class="form-control form-control-sm col-sm-6" id="box109_4" placeholder="enter 0, if margin is involved">
+                    <h6  >
+                        Distance of invasive tumor from lateral margin (mm)</h6>
+                    <input type="number" class="form-control form-control-sm col-sm-4 opt" id="box109_4" placeholder="enter 0, if margin is involved">
 
-                <div class="py-2 w-100"></div>
+                    <div class="py-2 w-100"></div>
 
-                <h6  >
-                    Distance of invasive tumor from anterior margin (mm)</h6>
-                <input type="number" class="form-control form-control-sm col-sm-6" id="box109_5" placeholder="enter 0, if margin is involved">
+                    <h6  >
+                        Distance of invasive tumor from anterior margin (mm)</h6>
+                    <input type="number" class="form-control form-control-sm col-sm-4 opt" id="box109_5" placeholder="enter 0, if margin is involved">
 
-                <div class="py-2 w-100"></div>
+                    <div class="py-2 w-100"></div>
 
-                <h6  >
-                    Distance of invasive tumor from posterior margin (mm)</h6>
-                <input type="number" class="form-control form-control-sm col-sm-6" id="box109_6" placeholder="enter 0, if margin is involved">
+                    <h6  >
+                        Distance of invasive tumor from posterior margin (mm)</h6>
+                    <input type="number" class="form-control form-control-sm col-sm-4 opt" id="box109_6" placeholder="enter 0, if margin is involved">
 
+                </div>
             </div>
 
 
@@ -307,49 +322,97 @@
             <input type="text" class="form-control form-control-sm col-sm-6" id='box8_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
             <input type="text" class="form-control form-control-sm col-sm-6" id='box8_3' style='display:none;' placeholder='Specify involved margin'>
 
-
+            <div class="py-2 w-100"></div>
             <div class="margins ml-5" style="display: none;">
+                <button class="btn btn-sm btn-success p-1" type="button" data-toggle="collapse" data-target="#dcismargin" aria-expanded="false">
+                    Do you want to list distance of DCIS to all margins in the synoptic?
+                </button>
 
                 <div class="py-2 w-100"></div>
 
-                <h6 >
-                    Distance of DCIS from superior margin (mm)</h6>
-                <input type="number" class="form-control form-control-sm col-sm-4" id="box9_1" placeholder="enter 0, if margin is involved">
+                <div id="dcismargin" class="collapse">
+                    <h6>Enter values for margins you wish to list, or leave blank if you don't want to list a particular margin</h6>
+                    <h6>Enter "0" to indicate that margin is involved</h6>
 
-                <div class="py-2 w-100"></div>
+                    <div class="py-2 w-100"></div>
 
-                <h6  >
-                    Distance of DCIS from inferior margin (mm)</h6>
-                <input type="number" class="form-control form-control-sm col-sm-4" id="box9_2" placeholder="enter 0, if margin is involved">
+                    <h6 >
+                        Distance of DCIS from superior margin (mm)</h6>
+                    <input type="number" class="form-control form-control-sm col-sm-4 opt" id="box9_1" placeholder="enter 0, if margin is involved">
 
-                <div class="py-2 w-100"></div>
+                    <div class="py-2 w-100"></div>
 
-                <h6  >
-                    Distance of DCIS from medial margin (mm)</h6>
-                <input type="number" class="form-control form-control-sm col-sm-4" id="box9_3" placeholder="enter 0, if margin is involved">
+                    <h6  >
+                        Distance of DCIS from inferior margin (mm)</h6>
+                    <input type="number" class="form-control form-control-sm col-sm-4 opt" id="box9_2" placeholder="enter 0, if margin is involved">
 
-                <div class="py-2 w-100"></div>
+                    <div class="py-2 w-100"></div>
 
-                <h6  >
-                    Distance of DCIS from lateral margin (mm)</h6>
-                <input type="number" class="form-control form-control-sm col-sm-4" id="box9_4" placeholder="enter 0, if margin is involved">
+                    <h6  >
+                        Distance of DCIS from medial margin (mm)</h6>
+                    <input type="number" class="form-control form-control-sm col-sm-4 opt" id="box9_3" placeholder="enter 0, if margin is involved">
 
-                <div class="py-2 w-100"></div>
+                    <div class="py-2 w-100"></div>
 
-                <h6  >
-                    Distance of DCIS from anterior margin (mm)</h6>
-                <input type="number" class="form-control form-control-sm col-sm-4" id="box9_5" placeholder="enter 0, if margin is involved">
+                    <h6  >
+                        Distance of DCIS from lateral margin (mm)</h6>
+                    <input type="number" class="form-control form-control-sm col-sm-4 opt" id="box9_4" placeholder="enter 0, if margin is involved">
 
-                <div class="py-2 w-100"></div>
+                    <div class="py-2 w-100"></div>
 
-                <h6  >
-                    Distance of DCIS from posterior margin (mm)</h6>
-                <input type="number" class="form-control form-control-sm col-sm-4" id="box9_6" placeholder="enter 0, if margin is involved">
+                    <h6  >
+                        Distance of DCIS from anterior margin (mm)</h6>
+                    <input type="number" class="form-control form-control-sm col-sm-4 opt" id="box9_5" placeholder="enter 0, if margin is involved">
 
+                    <div class="py-2 w-100"></div>
+
+                    <h6  >
+                        Distance of DCIS from posterior margin (mm)</h6>
+                    <input type="number" class="form-control form-control-sm col-sm-4 opt" id="box9_6" placeholder="enter 0, if margin is involved">
+
+                </div>
             </div>
 
 
+            <hr class="p-2" >
+            <h5>Treatment Effect</h5>
+            <select id="box110" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>No known presurgical therapy</option>
+                <option>Pre-surgical therapy given</option>
+            </select>
 
+            <div class="ml-3" id='box110_2' style='display:none;'>
+
+                <div class="py-2 w-100"></div>
+
+                <h6>Treatment Effect in the Breast</h6>
+                <select id="box111" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>No definite response to presurgical therapy in the invasive carcinoma</option>
+                    <option>Probable or definite response to presurgical therapy in the invasive carcinoma</option>
+                    <option>No residual invasive carcinoma is present in the breast after presurgical therapy</option>
+                </select>
+
+                <div class="py-2 w-100"></div>
+
+                <h6>Treatment Effect in the Lymph Nodes</h6>
+                <select id="box112" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>No lymph nodes removed</option>
+                    <option>No definite response to presurgical therapy in metastatic carcinoma</option>
+                    <option>Probable or definite response to presurgical therapy in metastatic carcinoma</option>
+                    <option>No lymph node metastases. Fibrous scarring, possibly related to prior lymph node metastases with pathologic complete response</option>
+                    <option>No lymph node metastases and no prominent fibrous scarring in the nodes</option>
+                </select>
+
+            </div>
+
+            <hr class="p-2" >
+            <h5>+ Lymphovascular Invasion</h5>
+            <select id="box113" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                <option></option>
+                <option>Not identified</option>
+                <option>Present</option>
+                <option>Cannot be determined</option>
+            </select>
 
 
             <hr class="p-2" >
@@ -367,9 +430,9 @@
             <div class="py-2 w-100"></div>
             <h6 class='mt-2'>pT</h6>
             <select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
-                <option value="pT0">pT0: No evidence of primary tumor#</option>
-                <option value="pTis (DCIS)">pTis (DCIS): Ductal carcinoma in situ#</option>
-                <option value="pTis (Paget)">pTis (Paget): Paget disease of the nipple not associated with invasive carcinoma and/or DCIS in the underlying breast parenchyma##</option>
+                <option value="pT0">pT0: No evidence of primary tumor</option>
+                <option value="pTis (DCIS)">pTis (DCIS): Ductal carcinoma in situ</option>
+                <option value="pTis (Paget)">pTis (Paget): Paget disease of the nipple not associated with invasive carcinoma and/or DCIS in the underlying breast parenchyma</option>
                 <option value="pT1mi">pT1mi: Tumor ≤1 mm in greatest dimension</option>
                 <option value="pT1a">pT1a: Tumor >1 mm but ≤5 mm in greatest dimension </option>
                 <option value="pT1b">pT1b: Tumor >5 mm but ≤10 mm in greatest dimension</option>
@@ -377,7 +440,7 @@
                 <option value="pT2">pT2: Tumor >20 mm but ≤50 mm in greatest dimension</option>
                 <option value="pT3">pT3: Tumor >50 mm in greatest dimension</option>
                 <option value="pT4a">pT4a: Extension (invasion) to the chest wall</option>
-                <option value="pT4b">pT4b: Ulceration and/or ipsilateral macroscopic satellite nodules and/or edema (including peau d’orange) of the skin that does not meet the criteria for inflammatory carcinoma</option>
+                <option value="pT4b">pT4b: Ulceration and/or ipsilateral macroscopic satellite nodules and/or edema (including peau d’orange) of the skin (not inflammatory carcinoma)</option>
                 <option value="pT4c">pT4c: Both T4a and T4b are present</option>
                 <option value="pT4d">pT4d: Inflammatory carcinoma</option>
             </select>
@@ -470,40 +533,6 @@
                 </form>
             </div>
 
-            <hr class="p-2" >
-            <h5>Treatment Effect</h5>
-            <select id="box110" class='form-control selectpicker form-control-sm col-sm-6'>
-                <option>No known presurgical therapy</option>
-                <option>Pre-surgical therapy given</option>
-            </select>
-
-            <div class="ml-3" id='box110_2' style='display:none;'>
-                <h6>Treatment Effect in the Breast</h6>
-                <select id="box111" class='form-control selectpicker form-control-sm col-sm-6'>
-                    <option>No definite response to presurgical therapy in the invasive carcinoma</option>
-                    <option>Probable or definite response to presurgical therapy in the invasive carcinoma</option>
-                    <option>No residual invasive carcinoma is present in the breast after presurgical therapy</option>
-                </select>
-<div class="py-2 w-100"></div>
-                <h6>Treatment Effect in the Lymph Nodes</h6>
-                <select id="box112" class='form-control selectpicker form-control-sm col-sm-6'>
-                    <option>No lymph nodes removed</option>
-                    <option>No definite response to presurgical therapy in metastatic carcinoma</option>
-                    <option>Probable or definite response to presurgical therapy in metastatic carcinoma</option>
-                    <option>No lymph node metastases. Fibrous scarring, possibly related to prior lymph node metastases with pathologic complete response</option>
-                    <option>No lymph node metastases and no prominent fibrous scarring in the nodes</option>
-                </select>
-
-            </div>
-
-            <hr class="p-2" >
-            <h5>+ Lymphovascular Invasion</h5>
-            <select id="box113" class='form-control selectpicker form-control-sm col-sm-6 opt'>
-                <option></option>
-                <option>Not identified</option>
-                <option>Present</option>
-                <option>Cannot be determined</option>
-            </select>
 
             <hr class="p-2" >
             <h5>- ANCILLARY HORMONE RECEPTOR STUDIES -</h5>
@@ -546,7 +575,7 @@
                     <option>Cannot be determined (Internal control cells present; no immunoreactivity of either tumor cells or internal controls)</option>
                 </select>
 
-                <div class="er ml-5">
+                <div class="pr ml-5">
                     <div class="py-2 w-100"></div>
 
                     Specify % positive
@@ -637,6 +666,14 @@
                 <input type="number" class="form-control form-control-sm col-sm-6" id="box46" placeholder="% positive nuclei">
 
 
+                <div class="py-3 w-100"></div>
+
+                <h6>Cold Ischemia and Fixation Times </h6>
+                <select id="box47" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Meet requirements specified in latest version of the ASCO/CAP guidelines </option>
+                    <option>Do not meet requirements specified in latest version of the ASCO/CAP guidelines</option>
+                    <option>Cannot be determined </option>
+                </select>
             </div>
 
 
@@ -646,7 +683,7 @@
             <hr class="p-2" >
             <h5>- BIOMARKER METHODOLOGY -</h5>
             <div class="ml-3 bg-faded">
-                <h6>+ Testing Performed on Block Number(s)</h6>
+                <h6>+ Testing Performed on Block (or Prior case) Number(s)</h6>
                 <input type="text" class="form-control form-control-sm col-sm-6 opt" id="box50" placeholder="">
 
 

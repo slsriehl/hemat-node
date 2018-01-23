@@ -84,7 +84,9 @@ $(window).on('load', function () {
             $('#box9_2').hide();
             $('.inv').show();
         }
-    });$('#box13').on("change", function () {
+    });
+
+    $('#box13').on("change", function () {
         var sel = $('#box13').val();
         if ($.inArray('Other', sel) > -1) {
             $('#box13_2').show();
@@ -138,6 +140,26 @@ $(window).on('load', function () {
         } else {
             $("#box20_2").hide();
         }
+    });
+
+    $("#box22").on("input", function (){
+        var num = parseFloat($(this).val());
+        if (num > 0){
+            $('.pospel').show();
+        } else {
+            $('.pospel').hide();
+        }
+
+    });
+
+    $("#box30").on("input", function (){
+        var num = parseFloat($(this).val());
+        if (num > 0){
+            $('.pospara').show();
+        } else {
+            $('.pospara').hide();
+        }
+
     });
 
     var pelnodes = 0;
@@ -450,7 +472,7 @@ $(window).on('load', function () {
 
         var box_51 = $("#box51").val();
         if (box_51.length > 0) {
-            captext += "\n+ FIGO Stage:\n- "  + box_51+ "\n";
+            captext += "\n\n+ FIGO Stage:\n- "  + box_51+ "\n";
         }
 
 
