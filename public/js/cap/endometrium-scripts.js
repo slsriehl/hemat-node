@@ -139,11 +139,14 @@ $(window).on('load', function () {
             $("#box20_2").hide();
         }
     });
+
     var pelnodes = 0;
     $(".pelnode").on("input", function () {
-        pelnodes =  parseFloat($('#box25').val())
-                    + parseFloat($('#box26').val())
-                    + parseFloat($('#box27').val());
+        var pelnodes_1 =  Number($('#box25').val()) || 0;
+        var pelnodes_2 = Number($('#box26').val()) || 0;
+        var pelnodes_3 = Number($('#box27').val()) || 0;
+        console.log(pelnodes_1, pelnodes_2, pelnodes_3);
+        pelnodes = pelnodes_1+pelnodes_2+pelnodes_3;
         console.log("# pos pelvic nodes: " + pelnodes);
         if (pelnodes > 0) {
             $(".pelnodes").show();
@@ -154,9 +157,9 @@ $(window).on('load', function () {
 
     var paranodes = 0;
     $(".paranode").on("input", function () {
-        paranodes =  parseFloat($('#box33').val())
-            + parseFloat($('#box34').val())
-            + parseFloat($('#box35').val());
+        paranodes =  Number($('#box33').val())
+            + Number($('#box34').val())
+            + Number($('#box35').val());
         console.log("# pos para aortic nodes: " + paranodes);
         if (paranodes > 0) {
             $(".paranodes").show();
@@ -300,7 +303,7 @@ $(window).on('load', function () {
                 captext += "\n\tDepth of invasion: " + box_7 + "mm\n";
 
                 var box_8 = parseFloat($("#box8").val());
-                var pct = (box_7 / box_8) * 500;
+                var pct = (box_7 / box_8) * 100;
                 captext += "\tMyometrial thickness: " + box_8 + "mm\n\tPercentage of myometrial invasion: " + pct.toFixed(1) + "%\n";
             }
             if (box_6.indexOf('estimated') > -1) {
@@ -317,9 +320,9 @@ $(window).on('load', function () {
             captext += "\nMyometrial Invasion:\n- " + box_6 + "\n";
         }
 
-        var box_50 = $("#box50").val();
-        if (box_50.length > 0) {
-            captext += "\n+ Adenomyosis:\n- " + box_50 + "\n";
+        var box_10 = $("#box10").val();
+        if (box_10.length > 0) {
+            captext += "\n+ Adenomyosis:\n- " + box_10 + "\n";
         }
 
         var box_11 = $("#box11").val();
@@ -380,9 +383,9 @@ $(window).on('load', function () {
         captext += '\nPathologic Staging (pTNM):\n- ';
         if ($("#box21").is(':checked')) {
             // check if nodes are present
-            var pelsen = parseInt($("#box22").val(), 50) - parseInt($("#box23").val(), 50);
+            var pelsen = Number($("#box22").val()) - Number($("#box23").val());
             console.log("pel: " + pelsen);
-            var parasen = parseInt($("#box30").val(), 50) - parseInt($("#box31").val(), 50);
+            var parasen = Number($("#box30").val()) - Number($("#box31").val());
             console.log("para: " + parasen);
             console.log("pel+para:" + (pelsen + parasen));
             if (pelsen + parasen === 0) {
@@ -410,12 +413,12 @@ $(window).on('load', function () {
         }
 
         if ($("#box21").is(':checked')) {
-            var box_22 = parseInt($("#box22").val(), 50);
-            var box_23 = parseInt($("#box23").val(), 50);
+            var box_22 = parseInt($("#box22").val()) || 0;
+            var box_23 = parseInt($("#box23").val()) || 0;
             var box_24 = $("#box24").val();
-            var box_25 = parseInt($("#box25").val(), 50);
-            var box_26 = parseInt($("#box26").val(), 50);
-            var box_27 = parseInt($("#box27").val(), 50);
+            var box_25 = parseInt($("#box25").val()) || 0;
+            var box_26 = parseInt($("#box26").val()) || 0;
+            var box_27 = parseInt($("#box27").val()) || 0;
             var box_28 = $("#box28").val();
             captext += "\nLymph nodes: Pelvic" + "\n\tTotal Pelvic Nodes Examined: " + box_22;
             if (box_22 > 0) {
@@ -426,12 +429,12 @@ $(window).on('load', function () {
                 }
             }
 
-            var box_30 = parseInt($("#box30").val(), 50);
-            var box_31 = parseInt($("#box31").val(), 50);
+            var box_30 = parseInt($("#box30").val()) || 0;
+            var box_31 = parseInt($("#box31").val()) || 0;
             var box_32 = $("#box32").val();
-            var box_33 = parseInt($("#box33").val(), 50);
-            var box_34 = parseInt($("#box34").val(), 50);
-            var box_35 = parseInt($("#box35").val(), 50);
+            var box_33 = parseInt($("#box33").val()) || 0;
+            var box_34 = parseInt($("#box34").val()) || 0;
+            var box_35 = parseInt($("#box35").val()) || 0;
             var box_36 = $("#box36").val();
             captext += "\n\nLymph nodes: Para-Aortic" + "\n\tTotal Para-Aortic Nodes Examined: " + box_30;
             if (box_30 > 0) {
