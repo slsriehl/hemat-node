@@ -608,6 +608,11 @@ $(window).on('load', function () {
             captext += "\n+ Lymphovascular Invasion:\n- " + box_113 + "\n";
         }
 
+        var box_130 = $("#box130").val();
+        if (box_130.length > 0) {
+            captext += "\n+ LCIS in specimen:\n- "  + box_130+ "\n";
+        }
+
         // DCIS segment --------------------------------------------------//
         var box_106 = $("#box106").val();
         if (box_106.indexOf("present") > -1) {
