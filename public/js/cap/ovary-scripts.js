@@ -136,8 +136,13 @@ $(window).on('load', function () {
     });
 
     $(".node").on("input", function () {
-        var sel = $(this).val();
-        if (sel > 0) {
+		setTimeout(300);
+        var sel_1 = parseInt($("#box24").val()) || 0;
+        var sel_2 = parseInt($("#box25").val()) || 0;
+        var sel_3 = parseInt($("#box26").val()) || 0;
+        var tot = sel_1 + sel_2 + sel_3;
+        console.log("total pos nodes:"+tot);
+        if (tot > 0) {
             $(".posnodes").show();
         } else {
             $(".posnodes").hide();

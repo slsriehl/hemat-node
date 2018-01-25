@@ -404,24 +404,33 @@ $(function () {
         console.log("isIE?:"+isIE());
     }
 
-    // activate selectpicker
-    //$('.selectpicker').selectpicker({});
+	// validate lymph nodes to max on total submitted
+    $(".maxnode").on("input", function() {
+        var totnode = parseFloat($(this).val());
+            $(".subnode").attr({
+                max: totnode
+            });
 
+    });
 
+    $(".maxinv").on("input", function() {
+        var totinv = parseFloat($(this).val());
+            $(".subinv").attr({
+                max: totinv
+            });
 
-    /*/Google analytics
-     var _gaq = _gaq || [];
-     _gaq.push(['_setAccount', 'UA-37125342-1']);
-     _gaq.push(['_trackPageview']);
+    });
 
-     (function() {
-     var ga = document.createElement('script');
-     ga.type = 'text/javascript';
-     ga.async = true;
-     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-     var s = document.getElementsByTagName('script')[0];
-     s.parentNode.insertBefore(ga, s);
-     })();
-     */
+    $(".subnode").on("input", function(e){
+        var num = parseFloat($(this).val());
+        var max = parseFloat($(this).attr("max"));
+
+        if (num > max){
+            console.log("node numeric validation error");
+            e.preventDefault();
+            $(this).val('')
+        }
+
+    })
 
 });

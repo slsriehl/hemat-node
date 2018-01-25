@@ -71,6 +71,7 @@ $(window).on('load', function () {
     });
 
     $("#box14").on("input", function () {
+        setTimeout(100);
         var sel = $(this).val();
         if (sel > 0) {
             $(".posnodes").show();
@@ -89,7 +90,7 @@ $(window).on('load', function () {
         }
     });
 
-    $('#box21').change(function () {
+    $('#box21').on("change", function () {
         var sel = $('#box21').val();
         if (sel == 'Other') {
             $('#box21_2').show();
@@ -98,7 +99,7 @@ $(window).on('load', function () {
         }
     });
 
-    $('#box22').change(function () {
+    $('#box22').on("change", function () {
         var sel = $('#box22').val();
         if (sel == 'Other') {
             $('#box22_2').show();
@@ -107,7 +108,7 @@ $(window).on('load', function () {
         }
     });
 
-    $('#box23').change(function () {
+    $('#box23').on("change", function () {
         var sel = $('#box23').val();
         if (sel == 'Other') {
             $('#box23_2').show();
@@ -116,7 +117,7 @@ $(window).on('load', function () {
         }
     });
 
-    $('#box24').change(function () {
+    $('#box24').on("change", function () {
         var sel = $('#box24').val();
         if (sel == 'Other') {
             $('#box24_2').show();
