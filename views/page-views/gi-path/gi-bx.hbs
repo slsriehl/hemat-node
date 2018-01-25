@@ -1,826 +1,826 @@
-		<div class="container-fluid">
-				 <!-- Breadcrumbs -->
-				 <ol class="breadcrumb">
-						 <li class="breadcrumb-item">
-								 <a href="/">Home</a>
-						 </li>
-						 <li class="breadcrumb-item">
-								 GI Tools
-						 </li>
-						 <li class="breadcrumb-item active" id="bc-jump"><i class="fa fa-database mr-2"></i>GI Biopsies Reporting Tool</li>
-				 </ol>
+<div class="container-fluid">
+<!-- Breadcrumbs -->
+<ol class="breadcrumb">
+<li class="breadcrumb-item">
+     <a href="/">Home</a>
+</li>
+<li class="breadcrumb-item">
+     GI Tools
+</li>
+<li class="breadcrumb-item active" id="bc-jump"><i class="fa fa-database mr-2"></i>GI Biopsies Reporting Tool</li>
+</ol>
 
- {{> message-center this}}
+{{> message-center this}}
 
-				 <!-- Full width row + card -->
-				 <div class="row">
-						 <!-- top card-->
-						 <div class="col col-md-12">
-						 <div class="card">
-								 <div class="card-header">
-										 <!-- inline header form-->
-										 <form class="form-inline">
+<!-- Full width row + card -->
+<div class="row">
+<!-- top card-->
+<div class="col col-md-12">
+<div class="card">
+     <div class="card-header">
+             <!-- inline header form-->
+             <form class="form-inline">
 
-												 <div class="col col-md-4">
-														 <button type="button" class="btn btn-primary btn-md p-1" data-toggle="modal" data-target="#modal-1">How to Use
-														 </button>
-												 </div>
-												 <div class="col col-md-4">
-														 <button type="button" class="btn btn-success btn-md p-1" data-toggle="modal" data-target="#grossfixer">Gross Fixer
-														 </button>
-												 </div>
-												 <div class="col col-md-4">
-														 <button type="button" class="btn btn-info btn-md p-1" data-toggle="modal" data-target="#IHCbox">Immuno Box
-														 </button>
-												 </div>
-												 <!-- How to use Modal -->
-{{> page-modals/gi-path/gi-bx-how-to-use}}
-												 <!-- Gross fixer Modal -->
-{{> page-modals/gi-path/gi-bx-gross-fixer}}
-										 </form>
-										 <!-- IHC Modal -->
-										 {{> page-partials/immuno this}}
+                     <div class="col col-md-4">
+                             <button type="button" class="btn btn-primary btn-md p-1" data-toggle="modal" data-target="#modal-1">How to Use
+                             </button>
+                     </div>
+                     <div class="col col-md-4">
+                             <button type="button" class="btn btn-success btn-md p-1" data-toggle="modal" data-target="#grossfixer">Gross Fixer
+                             </button>
+                     </div>
+                     <div class="col col-md-4">
+                             <button type="button" class="btn btn-info btn-md p-1" data-toggle="modal" data-target="#IHCbox">Immuno Box
+                             </button>
+                     </div>
+                     <!-- How to use Modal -->
+                    {{> page-modals/gi-path/gi-bx-how-to-use}}
+                     <!-- Gross fixer Modal -->
+                    {{> page-modals/gi-path/gi-bx-gross-fixer}}
+             </form>
+             <!-- IHC Modal -->
+             {{> page-partials/immuno this}}
 
-										 <!--Date-->
+             <!--Date-->
 
-								 </div>
-								 <div class="card-block">
-										 <div class="row">
-											 <div class="col col-md-4">
-												 <div class="card">
-														 <div class="card-header">
-																 Choose your patient age
-														 </div>
-														 <div class="card-block bg-info">
-																 <select id="adultgi" class="adultgi form-control form-control-sm" aria-label="class switch"><option selected value='0'>Pediatric</option><option value='1'>Adult</option></select>
-														 </div>
-												 </div>
-											 </div>
-											 <div class='col col-md-4'>
-												 <div class="card">
-														 <div class="card-header">
-																 Some generic final diagnoses
-														 </div>
-														 <div class="card-block chkboxes">
-																 <div style="font-size: 0.66em;" class="content form-check" id="column2a">
-																		 <label class="form-check-label" id="_dxLine2"><input class="form-check-input" id="dxLine2" name="dxLine" type="checkbox"> MILD NON-SPECIFIC CHANGES </label><br>
-																		 <label class="form-check-label" id="_dxLine3"><input class="form-check-input" id="dxLine3" name="dxLine" type="checkbox"> NEGATIVE GMS/AFB </label><br>
-																		 <label class="form-check-label" id="_dxLine4"><input class="form-check-input" id="dxLine4" name="dxLine" type="checkbox"> NO HP ON GIEMSA </label><br>
-																 </div>
-														 </div>
-												 </div>
-											 </div>
-											 <div class="col col-md-4">
-												 <div class="card">
-														 <div class="card-header">
-																 Some generic microscopic diagnoses
-														 </div>
-														 <div class="card-block chkboxes">
-																 <div style="font-size: 0.66em;" class="content form-check" id="column3a">
-																		 <label class="form-check-label" id="_mxLine1"><input class="form-check-input" id="mxLine1" name="mxLine" type="checkbox"> IHC COMMENT </label><br>
-																		 <label class="form-check-label" id="_mxLine2"><input class="form-check-input" id="mxLine2" name="mxLine" type="checkbox"> NO GRANULOMAS SEEN </label><br> </div>
-														 </div>
-												 </div>
-											 </div>
-										 </div>
-										 <!-- silent alert for erroneous CBC data, fired from pbrules.js-->
-										 <div class="alert alert-warning alert-dismissible collapse" id="alert-1" role="alert">
-												 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-														 <span aria-hidden="true">&times;</span>
-												 </button>
-												 <strong>Uh Oh!</strong> Something doesn't look right.
-										 </div>
-								 </div>
-						 </div>
-					 </div>
-				 </div>
-				 <div class="row top-buffer">
-						 <div class="col-md-8">
-								<!-- left column-->
+     </div>
+     <div class="card-block">
+             <div class="row">
+                 <div class="col col-md-4">
+                     <div class="card">
+                             <div class="card-header">
+                                     Choose your patient age
+                             </div>
+                             <div class="card-block bg-info">
+                                     <select id="adultgi" class="adultgi form-control form-control-sm" aria-label="class switch"><option selected value='0'>Pediatric</option><option value='1'>Adult</option></select>
+                             </div>
+                     </div>
+                 </div>
+                 <div class='col col-md-4'>
+                     <div class="card">
+                             <div class="card-header">
+                                     Some generic final diagnoses
+                             </div>
+                             <div class="card-block chkboxes">
+                                     <div style="font-size: 0.66em;" class="content form-check" id="column2a">
+                                             <label class="form-check-label" id="_dxLine2"><input class="form-check-input" id="dxLine2" name="dxLine" type="checkbox"> MILD NON-SPECIFIC CHANGES </label><br>
+                                             <label class="form-check-label" id="_dxLine3"><input class="form-check-input" id="dxLine3" name="dxLine" type="checkbox"> NEGATIVE GMS/AFB </label><br>
+                                             <label class="form-check-label" id="_dxLine4"><input class="form-check-input" id="dxLine4" name="dxLine" type="checkbox"> NO HP ON GIEMSA </label><br>
+                                     </div>
+                             </div>
+                     </div>
+                 </div>
+                 <div class="col col-md-4">
+                     <div class="card">
+                             <div class="card-header">
+                                     Some generic microscopic diagnoses
+                             </div>
+                             <div class="card-block chkboxes">
+                                     <div style="font-size: 0.66em;" class="content form-check" id="column3a">
+                                             <label class="form-check-label" id="_mxLine1"><input class="form-check-input" id="mxLine1" name="mxLine" type="checkbox"> IHC COMMENT </label><br>
+                                             <label class="form-check-label" id="_mxLine2"><input class="form-check-input" id="mxLine2" name="mxLine" type="checkbox"> NO GRANULOMAS SEEN </label><br> </div>
+                             </div>
+                     </div>
+                 </div>
+             </div>
+             <!-- silent alert for erroneous CBC data, fired from pbrules.js-->
+             <div class="alert alert-warning alert-dismissible collapse" id="alert-1" role="alert">
+                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                             <span aria-hidden="true">&times;</span>
+                     </button>
+                     <strong>Uh Oh!</strong> Something doesn't look right.
+             </div>
+     </div>
+</div>
+</div>
+</div>
+<div class="row top-buffer">
+<div class="col-md-8">
+    <!-- left column-->
 
 
-								 <!-- left column accordion-->
-								 <div id="accordion" role="tablist" aria-multiselectable="true">
-										 <!-- Accordion #1-->
-										 <div class="card">
-												 <div class="card-header" role="tab" id="headingOne">
-														 <h5 class="mb-0">
-																 <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-																		 Duodenum
-																 </a>
-														 </h5>
-												 </div>
-												 <div id="collapseOne" class="collapse " role="tabpanel" aria-labelledby="headingOne">
-														 <div class="card-block chkboxes">
-																 <div class="card-group">
-																		 <div class="card">
-																				 <div class="card-header">
-																						 Part Types
-																				 </div>
-																				 <div class="card-block chkboxes">
-																						 <div style="font-size: 0.66em;" class="content form-check" id="column1b">
-																								 <label class="form-check-label" id="_partType100"><input class="form-check-input duopart" id="partType100" name="partType" value="duodenum" type="checkbox"> DUO </label> <br>
-																								 <label class="form-check-label" id="_partType102"><input class="form-check-input duopart" id="partType102" name="partType" value="duodenum bulb" type="checkbox"> DUO, BULB</label> <br>
-																								 <label class="form-check-label" id="_partType103"><input class="form-check-input duopart" id="partType103" name="partType" value="duodenum ulcer" type="checkbox"> DUO, "ULCER"</label> <br>
-																								 <label class="form-check-label" id="_partType104"><input class="form-check-input duopart" id="partType104" name="partType" value="duodenum lesion" type="checkbox"> DUO, "LESION"</label> <br>
-																								 <label class="form-check-label" id="_partType105"><input class="form-check-input " id="partType105" name="partType" type="checkbox"> DUO, ___</label> <br>
-																						 </div>
-																				 </div>
-																		 </div>
-																		 <div class="card">
-																				 <div class="card-header">
-																						 Diagnoses
-																				 </div>
-																				 <div class="card-block chkboxes">
-																						 <div style="font-size: 0.66em;" class="content form-check" id="column2b">
-																								 <label class="form-check-label" id="_dxLine1"><input class="form-check-input" id="dxLine1" name="dxLine" type="checkbox"> NO SIGNIFICANT ABNORMALITIES </label><br>
-																								 <label class="form-check-label" id="_dxLine108"><input class="form-check-input" id="dxLine108" name="dxLine" type="checkbox">CHRONIC + GASTRIC METAPLASIA, NO ACUTE </label><br>
-																								 <label class="form-check-label" id="_dxLine101"><input class="form-check-input" id="dxLine101" name="dxLine" type="checkbox">CHRONIC ACTIVE </label> <br>
-																								 <label class="form-check-label" id="_dxLine100"><input class="form-check-input" id="dxLine100" name="dxLine" type="checkbox">FOCAL ACUTE INFLAMMATION </label><br>
-																								 <label class="form-check-label" id="_dxLine102"><input class="form-check-input" id="dxLine102" name="dxLine" type="checkbox">CHRONIC &amp; FOCAL ACTIVE </label> <br>
-																								 <label class="form-check-label" id="_dxLine106"><input class="form-check-input" id="dxLine106" name="dxLine" type="checkbox">CHRONIC ACTIVE w/ GRANULOMAS </label> <br>
-																								 <label class="form-check-label" id="_dxLine109"><input class="form-check-input" id="dxLine109" name="dxLine" type="checkbox">CHRONIC ACTIVE W/ GASTRIC METAPLASIA </label><br>
-																								 <label class="form-check-label" id="_dxLine103"><input class="form-check-input" id="dxLine103" name="dxLine" type="checkbox">CELIAC</label><br>
-																								 <label class="form-check-label" id="_dxLine107"><input class="form-check-input" id="dxLine107" name="dxLine" type="checkbox">INCR VILLOUS LYMPHS, NL ARCHIT</label> <br>
-																								 <label class="form-check-label" id="_dxLine111"><input class="form-check-input" id="dxLine111" name="dxLine" type="checkbox">VILLOUS BLUNTING, NO &uarr; IN IELS</label> <br>
-																								 <label class="form-check-label" id="_dxLine110"><input class="form-check-input" id="dxLine110" name="dxLine" type="checkbox">&uarr; LYMPHS IN VILLOUS TIPS</label> <br>
-																								 <label class="form-check-label" id="_dxLine104"><input class="form-check-input" id="dxLine104" name="dxLine" type="checkbox">&uarr; LP CELLULARITY</label> <br>
-																								 <label class="form-check-label" id="_dxLine105"><input class="form-check-input" id="dxLine105" name="dxLine" type="checkbox">&uarr; LP EOS</label> <br>
-																						 </div>
-																				 </div>
-																		 </div>
-																		 <div class="card">
-																				 <div class="card-header">
-																						 Micros
-																						 <i class="fa fa-lightbulb-o ml-2" data-toggle="tooltip" title="Left Shift + mouseclick to group multiple parts in micro" aria-hidden="true"></i>
+     <!-- left column accordion-->
+     <div id="accordion" role="tablist" aria-multiselectable="true">
+             <!-- Accordion #1-->
+             <div class="card">
+                     <div class="card-header" role="tab" id="headingOne">
+                             <h5 class="mb-0">
+                                     <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                             Duodenum
+                                     </a>
+                             </h5>
+                     </div>
+                     <div id="collapseOne" class="collapse " role="tabpanel" aria-labelledby="headingOne">
+                             <div class="card-block chkboxes">
+                                     <div class="card-group">
+                                             <div class="card">
+                                                     <div class="card-header">
+                                                             Part Types
+                                                     </div>
+                                                     <div class="card-block chkboxes">
+                                                             <div style="font-size: 0.66em;" class="content form-check" id="column1b">
+                                                                     <label class="form-check-label" id="_partType100"><input class="form-check-input duopart" id="partType100" name="partType" value="duodenum" type="checkbox"> DUO </label> <br>
+                                                                     <label class="form-check-label" id="_partType102"><input class="form-check-input duopart" id="partType102" name="partType" value="duodenum bulb" type="checkbox"> DUO, BULB</label> <br>
+                                                                     <label class="form-check-label" id="_partType103"><input class="form-check-input duopart" id="partType103" name="partType" value="duodenum ulcer" type="checkbox"> DUO, "ULCER"</label> <br>
+                                                                     <label class="form-check-label" id="_partType104"><input class="form-check-input duopart" id="partType104" name="partType" value="duodenum lesion" type="checkbox"> DUO, "LESION"</label> <br>
+                                                                     <label class="form-check-label" id="_partType105"><input class="form-check-input " id="partType105" name="partType" type="checkbox"> DUO, ___</label> <br>
+                                                             </div>
+                                                     </div>
+                                             </div>
+                                             <div class="card">
+                                                     <div class="card-header">
+                                                             Diagnoses
+                                                     </div>
+                                                     <div class="card-block chkboxes">
+                                                             <div style="font-size: 0.66em;" class="content form-check" id="column2b">
+                                                                     <label class="form-check-label" id="_dxLine1"><input class="form-check-input" id="dxLine1" name="dxLine" type="checkbox"> NO SIGNIFICANT ABNORMALITIES </label><br>
+                                                                     <label class="form-check-label" id="_dxLine108"><input class="form-check-input" id="dxLine108" name="dxLine" type="checkbox">CHRONIC + GASTRIC METAPLASIA, NO ACUTE </label><br>
+                                                                     <label class="form-check-label" id="_dxLine101"><input class="form-check-input" id="dxLine101" name="dxLine" type="checkbox">CHRONIC ACTIVE </label> <br>
+                                                                     <label class="form-check-label" id="_dxLine100"><input class="form-check-input" id="dxLine100" name="dxLine" type="checkbox">FOCAL ACUTE INFLAMMATION </label><br>
+                                                                     <label class="form-check-label" id="_dxLine102"><input class="form-check-input" id="dxLine102" name="dxLine" type="checkbox">CHRONIC &amp; FOCAL ACTIVE </label> <br>
+                                                                     <label class="form-check-label" id="_dxLine106"><input class="form-check-input" id="dxLine106" name="dxLine" type="checkbox">CHRONIC ACTIVE w/ GRANULOMAS </label> <br>
+                                                                     <label class="form-check-label" id="_dxLine109"><input class="form-check-input" id="dxLine109" name="dxLine" type="checkbox">CHRONIC ACTIVE W/ GASTRIC METAPLASIA </label><br>
+                                                                     <label class="form-check-label" id="_dxLine103"><input class="form-check-input" id="dxLine103" name="dxLine" type="checkbox">CELIAC</label><br>
+                                                                     <label class="form-check-label" id="_dxLine107"><input class="form-check-input" id="dxLine107" name="dxLine" type="checkbox">INCR VILLOUS LYMPHS, NL ARCHIT</label> <br>
+                                                                     <label class="form-check-label" id="_dxLine111"><input class="form-check-input" id="dxLine111" name="dxLine" type="checkbox">VILLOUS BLUNTING, NO &uarr; IN IELS</label> <br>
+                                                                     <label class="form-check-label" id="_dxLine110"><input class="form-check-input" id="dxLine110" name="dxLine" type="checkbox">&uarr; LYMPHS IN VILLOUS TIPS</label> <br>
+                                                                     <label class="form-check-label" id="_dxLine104"><input class="form-check-input" id="dxLine104" name="dxLine" type="checkbox">&uarr; LP CELLULARITY</label> <br>
+                                                                     <label class="form-check-label" id="_dxLine105"><input class="form-check-input" id="dxLine105" name="dxLine" type="checkbox">&uarr; LP EOS</label> <br>
+                                                             </div>
+                                                     </div>
+                                             </div>
+                                             <div class="card">
+                                                     <div class="card-header">
+                                                             Micros
+                                                             <i class="fa fa-lightbulb-o ml-2" data-toggle="tooltip" title="Left Shift + mouseclick to group multiple parts in micro" aria-hidden="true"></i>
 
-																				 </div>
-																				 <div class="card-block chkboxes">
-																						 <div style="font-size: 0.66em;" class="content form-check" id="column3b">
-																								 <label class="form-check-label" id="_mxLine100"><input class="form-check-input" id="mxLine100" name="mxLine" type="checkbox">NORMAL </label><br>
-																								 <label class="form-check-label" id="_mxLine108"><input class="form-check-input" id="mxLine108" name="mxLine" type="checkbox">CHRONIC + GASTRIC METAPLASIA, NO ACUTE </label> <br>
-																								 <label class="form-check-label" id="_mxLine101"><input class="form-check-input" id="mxLine101" name="mxLine" type="checkbox">CHRONIC ACTIVE </label> <br>
-																								 <label class="form-check-label" id="_mxLine102"><input class="form-check-input" id="mxLine102" name="mxLine" type="checkbox">FOCAL ACUTE ONLY </label> <br>
-																								 <label class="form-check-label" id="_mxLine110"><input class="form-check-input" id="mxLine110" name="mxLine" type="checkbox">CHRONIC &amp;  FOCAL ACTIVE </label> <br>
-																								 <label class="form-check-label" id="_mxLine107"><input class="form-check-input" id="mxLine107" name="mxLine" type="checkbox">CHRONIC ACTIVE W/ GRANULOMAS </label> <br>
-																								 <label class="form-check-label" id="_mxLine109"><input class="form-check-input" id="mxLine109" name="mxLine" type="checkbox">CHRONIC ACTIVE + GASTRIC METAPLASIA </label> <br>
-																								 <label class="form-check-label" id="_mxLine103"><input class="form-check-input" id="mxLine103" name="mxLine" type="checkbox">CELIAC</label><br>
-																								 <label class="form-check-label" id="_mxLine106"><input class="form-check-input" id="mxLine106" name="mxLine" type="checkbox">INCREASED IELS &amp; NORMAL VILLI</label> <br>
-																								 <label class="form-check-label" id="_mxLine112"><input class="form-check-input" id="mxLine112" name="mxLine" type="checkbox">SHORT VILLI, NO IELS</label> <br>
-																								 <label class="form-check-label" id="_mxLine111"><input class="form-check-input" id="mxLine111" name="mxLine" type="checkbox">&uarr; LYMPHS IN TIPS ONLY</label> <br>
-																								 <label class="form-check-label" id="_mxLine104"><input class="form-check-input" id="mxLine104" name="mxLine" type="checkbox">&uarr; LP CELLULARITY</label> <br>
-																								 <label class="form-check-label" id="_mxLine105"><input class="form-check-input" id="mxLine105" name="mxLine" type="checkbox">&uarr; LP EOS</label><br>
-																						 </div>
-																				 </div>
-																		 </div>
-																 </div>
+                                                     </div>
+                                                     <div class="card-block chkboxes">
+                                                             <div style="font-size: 0.66em;" class="content form-check" id="column3b">
+                                                                     <label class="form-check-label" id="_mxLine100"><input class="form-check-input" id="mxLine100" name="mxLine" type="checkbox">NORMAL </label><br>
+                                                                     <label class="form-check-label" id="_mxLine108"><input class="form-check-input" id="mxLine108" name="mxLine" type="checkbox">CHRONIC + GASTRIC METAPLASIA, NO ACUTE </label> <br>
+                                                                     <label class="form-check-label" id="_mxLine101"><input class="form-check-input" id="mxLine101" name="mxLine" type="checkbox">CHRONIC ACTIVE </label> <br>
+                                                                     <label class="form-check-label" id="_mxLine102"><input class="form-check-input" id="mxLine102" name="mxLine" type="checkbox">FOCAL ACUTE ONLY </label> <br>
+                                                                     <label class="form-check-label" id="_mxLine110"><input class="form-check-input" id="mxLine110" name="mxLine" type="checkbox">CHRONIC &amp;  FOCAL ACTIVE </label> <br>
+                                                                     <label class="form-check-label" id="_mxLine107"><input class="form-check-input" id="mxLine107" name="mxLine" type="checkbox">CHRONIC ACTIVE W/ GRANULOMAS </label> <br>
+                                                                     <label class="form-check-label" id="_mxLine109"><input class="form-check-input" id="mxLine109" name="mxLine" type="checkbox">CHRONIC ACTIVE + GASTRIC METAPLASIA </label> <br>
+                                                                     <label class="form-check-label" id="_mxLine103"><input class="form-check-input" id="mxLine103" name="mxLine" type="checkbox">CELIAC</label><br>
+                                                                     <label class="form-check-label" id="_mxLine106"><input class="form-check-input" id="mxLine106" name="mxLine" type="checkbox">INCREASED IELS &amp; NORMAL VILLI</label> <br>
+                                                                     <label class="form-check-label" id="_mxLine112"><input class="form-check-input" id="mxLine112" name="mxLine" type="checkbox">SHORT VILLI, NO IELS</label> <br>
+                                                                     <label class="form-check-label" id="_mxLine111"><input class="form-check-input" id="mxLine111" name="mxLine" type="checkbox">&uarr; LYMPHS IN TIPS ONLY</label> <br>
+                                                                     <label class="form-check-label" id="_mxLine104"><input class="form-check-input" id="mxLine104" name="mxLine" type="checkbox">&uarr; LP CELLULARITY</label> <br>
+                                                                     <label class="form-check-label" id="_mxLine105"><input class="form-check-input" id="mxLine105" name="mxLine" type="checkbox">&uarr; LP EOS</label><br>
+                                                             </div>
+                                                     </div>
+                                             </div>
+                                     </div>
 
-														 </div>
-												 </div>
-										 </div>
-										 <!-- Accordion #2-->
-										 <div class="card">
-												 <div class="card-header" role="tab" id="headingTwo">
-														 <h5 class="mb-0">
-																 <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-																		 Stomach
-																 </a>
-														 </h5>
-												 </div>
-												 <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingOne">
-														 <div class="card-block chkboxes">
-																 <div class="card-group">
-																		 <div class="card">
-																				 <div class="card-header">
-																						 <label class="form-check-label"><select class="custom-select-sm" id="hpihc"><option value="No" selected hidden>Did you do IHC for HP?</option><option>Yes</option><option>No</option></select></label>
-																				 </div>
-																				 <div class="card-block chkboxes">
-																						 <div style="font-size: 0.66em;" class="content form-check" id="column1c">
-																								 <label class="form-check-label" id="_partType151"><input class="form-check-input stopart" id="partType151" name="partType" value="stomach" type="checkbox"> STO </label> <br>
-																								 <label class="form-check-label" id="_partType153"><input class="form-check-input stopart" id="partType153" name="partType" value="antrum" type="checkbox"> STO, ANTRUM </label> <br>
-																								 <label class="form-check-label" id="_partType154"><input class="form-check-input stopart" id="partType154" name="partType" value="body" type="checkbox"> STO, BODY </label> <br>
-																								 <label class="form-check-label" id="_partType152"><input class="form-check-input stopart" id="partType152" name="partType" value="antrum and body" type="checkbox"> STO, A &amp; B </label><br>
-																								 <label class="form-check-label" id="_partType155"><input class="form-check-input stopart" id="partType155" name="partType" value="cardia" type="checkbox"> STO, CARDIA </label> <br>
-																								 <label class="form-check-label" id="_partType156"><input class="form-check-input " id="partType156" name="partType" type="checkbox"> STO, ____ </label> <br>
-																						 </div>
-																				 </div>
-																		 </div>
-																		 <div class="card">
-																				 <div class="card-header">
-																						 Final Diagnosis
-																				 </div>
-																				 <div class="card-block chkboxes">
-																						 <div style="font-size: 0.66em;" class="content form-check" id="column2c">
-																								 <label class="form-check-label" id="_dxLine150"><input class="form-check-input" id="dxLine150" name="dxLine" type="checkbox">NSA &amp; NEGATIVE HP </label><br>
-																								 <br>
-																								 <label class="form-check-label" id="_dxLine152"><input class="form-check-input" id="dxLine152" name="dxLine" type="checkbox">MILD CHRONIC GASTRITIS</label><br>
-																								 <label class="form-check-label" id="_dxLine164"><input class="form-check-input" id="dxLine164" name="dxLine" type="checkbox">MILD CHRONIC W/ BASAL EOS</label><br>
-																								 <label class="form-check-label" id="_dxLine160"><input class="form-check-input" id="dxLine160" name="dxLine" type="checkbox">&uarr; LAMINA PROPRIA EOSINOPHILS </label><br>
-																								 <br>
-																								 <label class="form-check-label" id="_dxLine151"><input class="form-check-input" id="dxLine151" name="dxLine" type="checkbox">FOCALLY ENCHANCED GASTRITIS </label><br>
-																								 <label class="form-check-label" id="_dxLine153"><input class="form-check-input" id="dxLine153" name="dxLine" type="checkbox">CHRONIC GASTRITIS -HP</label><br>
-																								 <label class="form-check-label" id="_dxLine161"><input class="form-check-input" id="dxLine161" name="dxLine" type="checkbox">CHRONIC GASTRITIS +HP</label><br>
-																								 <label class="form-check-label" id="_dxLine165"><input class="form-check-input" id="dxLine165" name="dxLine" type="checkbox">CHRONIC GASTRITIS + INCR EOS, -HP</label><br>
-																								 <br>
-																								 <label class="form-check-label" id="_dxLine154"><input class="form-check-input" id="dxLine154" name="dxLine" type="checkbox">CHRONIC ACTIVE GASTRITIS -HP</label><br>
-																								 <label class="form-check-label" id="_dxLine155"><input class="form-check-input" id="dxLine155" name="dxLine" type="checkbox">CHRONIC ACTIVE GASTRITIS +HP</label><br>
-																								 <label class="form-check-label" id="_dxLine156"><input class="form-check-input" id="dxLine156" name="dxLine" type="checkbox">CHRONIC FOCAL ACTIVE GASTRITIS -HP</label><br>
-																								 <label class="form-check-label" id="_dxLine157"><input class="form-check-input" id="dxLine157" name="dxLine" type="checkbox">CHRONIC FOCAL ACTIVE GASTRITIS +HP</label><br>
-																								 <label class="form-check-label" id="_dxLine159"><input class="form-check-input" id="dxLine159" name="dxLine" type="checkbox">CHRONIC ACTIVE GASTRITIS + ULCER </label><br>
-																								 <label class="form-check-label" id="_dxLine158"><input class="form-check-input" id="dxLine158" name="dxLine" type="checkbox">CHRONIC ACTIVE GASTRITIS + GRANS </label><br>
-																								 <br>
-																								 <label class="form-check-label" id="_dxLine162"><input class="form-check-input" id="dxLine162" name="dxLine" type="checkbox">FUNDIC GLAND POLYP </label><br>
-																								 <label class="form-check-label" id="_dxLine163"><input class="form-check-input" id="dxLine163" name="dxLine" type="checkbox">REACTIVE GASTROPATHY </label><br>
-																								 <label class="form-check-label" id="_dxLine166"><input class="form-check-input" id="dxLine166" name="dxLine" type="checkbox">ATROPHIC GASTRITIS </label> <br>
-																								 <label class="form-check-label" id="_dxLine167"><input class="form-check-input" id="dxLine167" name="dxLine" type="checkbox">COLLAGENOUS GASTRITIS </label> <br>
-																						 </div>
-																				 </div>
-																		 </div>
-																		 <div class="card">
-																				 <div class="card-header">
-																						 Micros
-																				 </div>
-																				 <div class="card-block chkboxes">
-																						 <div style="font-size: 0.66em;" class="content form-check" id="column3c">
-																								 <label class="form-check-label" id="_mxLine150"><input class="form-check-input" id="mxLine150" name="mxLine" type="checkbox">NORMAL, SINGLE SITE </label><br>
-																								 <label class="form-check-label" id="_mxLine151"><input class="form-check-input" id="mxLine151" name="mxLine" type="checkbox">NORMAL, ALL SITES</label> <br>
-																								 <label class="form-check-label" id="_mxLine152"><input class="form-check-input" id="mxLine152" name="mxLine" type="checkbox">MILD CHRONIC GASTRITIS </label> <br>
-																								 <label class="form-check-label" id="_mxLine156"><input class="form-check-input" id="mxLine156" name="mxLine" type="checkbox">&uarr; BASAL EOS</label> <br>
-																								 <label class="form-check-label" id="_mxLine164"><input class="form-check-input" id="mxLine164" name="mxLine" type="checkbox">&uarr; LP EOS</label> <br>
-																								 <br>
-																								 <label class="form-check-label" id="_mxLine162"><input class="form-check-input" id="mxLine162" name="mxLine" type="checkbox">FOCALLY ENHANCED GASTRITIS</label> <br>
-																								 <label class="form-check-label" id="_mxLine153"><input class="form-check-input" id="mxLine153" name="mxLine" type="checkbox">CHRONIC GASTRITIS, NO HP</label><br>
-																								 <label class="form-check-label" id="_mxLine158"><input class="form-check-input" id="mxLine158" name="mxLine" type="checkbox">CHRONIC GASTRITIS, YES HP</label><br>
-																								 <label class="form-check-label" id="_mxLine161"><input class="form-check-input" id="mxLine161" name="mxLine" type="checkbox">CHRONIC GASTRITIS + &uarr; EOS, NO HP</label><br>
-																								 <br>
-																								 <label class="form-check-label" id="_mxLine154"><input class="form-check-input" id="mxLine154" name="mxLine" type="checkbox">CAG, NO HP</label> <br>
-																								 <label class="form-check-label" id="_mxLine155"><input class="form-check-input" id="mxLine155" name="mxLine" type="checkbox">CAG, YES HP</label><br>
-																								 <label class="form-check-label" id="_mxLine165"><input class="form-check-input" id="mxLine165" name="mxLine" type="checkbox">CHR &amp; FOCAL AG, NO HP</label><br>
-																								 <label class="form-check-label" id="_mxLine166"><input class="form-check-input" id="mxLine166" name="mxLine" type="checkbox">CHR &amp; FOCAL AG, YES HP</label><br>
-																								 <label class="form-check-label" id="_mxLine160"><input class="form-check-input" id="mxLine160" name="mxLine" type="checkbox">CAG + ULCER, NO HP</label> <br>
-																								 <label class="form-check-label" id="_mxLine159"><input class="form-check-input" id="mxLine159" name="mxLine" type="checkbox">CAG + GRANULOMAS, NO HP</label> <br>
-																								 <br>
-																								 <label class="form-check-label" id="_mxLine157"><input class="form-check-input" id="mxLine157" name="mxLine" type="checkbox">FUNDIC GLAND POLYP</label> <br>
-																								 <label class="form-check-label" id="_mxLine163"><input class="form-check-input" id="mxLine163" name="mxLine" type="checkbox">REACTIVE GASTROPATHY</label> <br>
-																								 <label class="form-check-label" id="_mxLine167"><input class="form-check-input" id="mxLine167" name="mxLine" type="checkbox">ATROPHIC GASTRITIS </label> <br>
-																								 <label class="form-check-label" id="_mxLine168"><input class="form-check-input" id="mxLine168" name="mxLine" type="checkbox">COLLAGENOUS GASTRITIS </label> <br>
-																						 </div>
-																				 </div>
-																		 </div>
-																 </div>
+                             </div>
+                     </div>
+             </div>
+             <!-- Accordion #2-->
+             <div class="card">
+                     <div class="card-header" role="tab" id="headingTwo">
+                             <h5 class="mb-0">
+                                     <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                             Stomach
+                                     </a>
+                             </h5>
+                     </div>
+                     <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+                             <div class="card-block chkboxes">
+                                     <div class="card-group">
+                                             <div class="card">
+                                                     <div class="card-header">
+                                                             <label class="form-check-label"><select class="custom-select-sm" id="hpihc"><option value="No" selected hidden>Did you do IHC for HP?</option><option>Yes</option><option>No</option></select></label>
+                                                     </div>
+                                                     <div class="card-block chkboxes">
+                                                             <div style="font-size: 0.66em;" class="content form-check" id="column1c">
+                                                                     <label class="form-check-label" id="_partType151"><input class="form-check-input stopart" id="partType151" name="partType" value="stomach" type="checkbox"> STO </label> <br>
+                                                                     <label class="form-check-label" id="_partType153"><input class="form-check-input stopart" id="partType153" name="partType" value="antrum" type="checkbox"> STO, ANTRUM </label> <br>
+                                                                     <label class="form-check-label" id="_partType154"><input class="form-check-input stopart" id="partType154" name="partType" value="body" type="checkbox"> STO, BODY </label> <br>
+                                                                     <label class="form-check-label" id="_partType152"><input class="form-check-input stopart" id="partType152" name="partType" value="antrum and body" type="checkbox"> STO, A &amp; B </label><br>
+                                                                     <label class="form-check-label" id="_partType155"><input class="form-check-input stopart" id="partType155" name="partType" value="cardia" type="checkbox"> STO, CARDIA </label> <br>
+                                                                     <label class="form-check-label" id="_partType156"><input class="form-check-input " id="partType156" name="partType" type="checkbox"> STO, ____ </label> <br>
+                                                             </div>
+                                                     </div>
+                                             </div>
+                                             <div class="card">
+                                                     <div class="card-header">
+                                                             Final Diagnosis
+                                                     </div>
+                                                     <div class="card-block chkboxes">
+                                                             <div style="font-size: 0.66em;" class="content form-check" id="column2c">
+                                                                     <label class="form-check-label" id="_dxLine150"><input class="form-check-input" id="dxLine150" name="dxLine" type="checkbox">NSA &amp; NEGATIVE HP </label><br>
+                                                                     <br>
+                                                                     <label class="form-check-label" id="_dxLine152"><input class="form-check-input" id="dxLine152" name="dxLine" type="checkbox">MILD CHRONIC GASTRITIS</label><br>
+                                                                     <label class="form-check-label" id="_dxLine164"><input class="form-check-input" id="dxLine164" name="dxLine" type="checkbox">MILD CHRONIC W/ BASAL EOS</label><br>
+                                                                     <label class="form-check-label" id="_dxLine160"><input class="form-check-input" id="dxLine160" name="dxLine" type="checkbox">&uarr; LAMINA PROPRIA EOSINOPHILS </label><br>
+                                                                     <br>
+                                                                     <label class="form-check-label" id="_dxLine151"><input class="form-check-input" id="dxLine151" name="dxLine" type="checkbox">FOCALLY ENCHANCED GASTRITIS </label><br>
+                                                                     <label class="form-check-label" id="_dxLine153"><input class="form-check-input" id="dxLine153" name="dxLine" type="checkbox">CHRONIC GASTRITIS -HP</label><br>
+                                                                     <label class="form-check-label" id="_dxLine161"><input class="form-check-input" id="dxLine161" name="dxLine" type="checkbox">CHRONIC GASTRITIS +HP</label><br>
+                                                                     <label class="form-check-label" id="_dxLine165"><input class="form-check-input" id="dxLine165" name="dxLine" type="checkbox">CHRONIC GASTRITIS + INCR EOS, -HP</label><br>
+                                                                     <br>
+                                                                     <label class="form-check-label" id="_dxLine154"><input class="form-check-input" id="dxLine154" name="dxLine" type="checkbox">CHRONIC ACTIVE GASTRITIS -HP</label><br>
+                                                                     <label class="form-check-label" id="_dxLine155"><input class="form-check-input" id="dxLine155" name="dxLine" type="checkbox">CHRONIC ACTIVE GASTRITIS +HP</label><br>
+                                                                     <label class="form-check-label" id="_dxLine156"><input class="form-check-input" id="dxLine156" name="dxLine" type="checkbox">CHRONIC FOCAL ACTIVE GASTRITIS -HP</label><br>
+                                                                     <label class="form-check-label" id="_dxLine157"><input class="form-check-input" id="dxLine157" name="dxLine" type="checkbox">CHRONIC FOCAL ACTIVE GASTRITIS +HP</label><br>
+                                                                     <label class="form-check-label" id="_dxLine159"><input class="form-check-input" id="dxLine159" name="dxLine" type="checkbox">CHRONIC ACTIVE GASTRITIS + ULCER </label><br>
+                                                                     <label class="form-check-label" id="_dxLine158"><input class="form-check-input" id="dxLine158" name="dxLine" type="checkbox">CHRONIC ACTIVE GASTRITIS + GRANS </label><br>
+                                                                     <br>
+                                                                     <label class="form-check-label" id="_dxLine162"><input class="form-check-input" id="dxLine162" name="dxLine" type="checkbox">FUNDIC GLAND POLYP </label><br>
+                                                                     <label class="form-check-label" id="_dxLine163"><input class="form-check-input" id="dxLine163" name="dxLine" type="checkbox">REACTIVE GASTROPATHY </label><br>
+                                                                     <label class="form-check-label" id="_dxLine166"><input class="form-check-input" id="dxLine166" name="dxLine" type="checkbox">ATROPHIC GASTRITIS </label> <br>
+                                                                     <label class="form-check-label" id="_dxLine167"><input class="form-check-input" id="dxLine167" name="dxLine" type="checkbox">COLLAGENOUS GASTRITIS </label> <br>
+                                                             </div>
+                                                     </div>
+                                             </div>
+                                             <div class="card">
+                                                     <div class="card-header">
+                                                             Micros
+                                                     </div>
+                                                     <div class="card-block chkboxes">
+                                                             <div style="font-size: 0.66em;" class="content form-check" id="column3c">
+                                                                     <label class="form-check-label" id="_mxLine150"><input class="form-check-input" id="mxLine150" name="mxLine" type="checkbox">NORMAL, SINGLE SITE </label><br>
+                                                                     <label class="form-check-label" id="_mxLine151"><input class="form-check-input" id="mxLine151" name="mxLine" type="checkbox">NORMAL, ALL SITES</label> <br>
+                                                                     <label class="form-check-label" id="_mxLine152"><input class="form-check-input" id="mxLine152" name="mxLine" type="checkbox">MILD CHRONIC GASTRITIS </label> <br>
+                                                                     <label class="form-check-label" id="_mxLine156"><input class="form-check-input" id="mxLine156" name="mxLine" type="checkbox">&uarr; BASAL EOS</label> <br>
+                                                                     <label class="form-check-label" id="_mxLine164"><input class="form-check-input" id="mxLine164" name="mxLine" type="checkbox">&uarr; LP EOS</label> <br>
+                                                                     <br>
+                                                                     <label class="form-check-label" id="_mxLine162"><input class="form-check-input" id="mxLine162" name="mxLine" type="checkbox">FOCALLY ENHANCED GASTRITIS</label> <br>
+                                                                     <label class="form-check-label" id="_mxLine153"><input class="form-check-input" id="mxLine153" name="mxLine" type="checkbox">CHRONIC GASTRITIS, NO HP</label><br>
+                                                                     <label class="form-check-label" id="_mxLine158"><input class="form-check-input" id="mxLine158" name="mxLine" type="checkbox">CHRONIC GASTRITIS, YES HP</label><br>
+                                                                     <label class="form-check-label" id="_mxLine161"><input class="form-check-input" id="mxLine161" name="mxLine" type="checkbox">CHRONIC GASTRITIS + &uarr; EOS, NO HP</label><br>
+                                                                     <br>
+                                                                     <label class="form-check-label" id="_mxLine154"><input class="form-check-input" id="mxLine154" name="mxLine" type="checkbox">CAG, NO HP</label> <br>
+                                                                     <label class="form-check-label" id="_mxLine155"><input class="form-check-input" id="mxLine155" name="mxLine" type="checkbox">CAG, YES HP</label><br>
+                                                                     <label class="form-check-label" id="_mxLine165"><input class="form-check-input" id="mxLine165" name="mxLine" type="checkbox">CHR &amp; FOCAL AG, NO HP</label><br>
+                                                                     <label class="form-check-label" id="_mxLine166"><input class="form-check-input" id="mxLine166" name="mxLine" type="checkbox">CHR &amp; FOCAL AG, YES HP</label><br>
+                                                                     <label class="form-check-label" id="_mxLine160"><input class="form-check-input" id="mxLine160" name="mxLine" type="checkbox">CAG + ULCER, NO HP</label> <br>
+                                                                     <label class="form-check-label" id="_mxLine159"><input class="form-check-input" id="mxLine159" name="mxLine" type="checkbox">CAG + GRANULOMAS, NO HP</label> <br>
+                                                                     <br>
+                                                                     <label class="form-check-label" id="_mxLine157"><input class="form-check-input" id="mxLine157" name="mxLine" type="checkbox">FUNDIC GLAND POLYP</label> <br>
+                                                                     <label class="form-check-label" id="_mxLine163"><input class="form-check-input" id="mxLine163" name="mxLine" type="checkbox">REACTIVE GASTROPATHY</label> <br>
+                                                                     <label class="form-check-label" id="_mxLine167"><input class="form-check-input" id="mxLine167" name="mxLine" type="checkbox">ATROPHIC GASTRITIS </label> <br>
+                                                                     <label class="form-check-label" id="_mxLine168"><input class="form-check-input" id="mxLine168" name="mxLine" type="checkbox">COLLAGENOUS GASTRITIS </label> <br>
+                                                             </div>
+                                                     </div>
+                                             </div>
+                                     </div>
 
-														 </div>
-												 </div>
-										 </div>
-										 <!-- Accordion #3-->
-										 <div class="card">
-												 <div class="card-header" role="tab" id="headingThree">
-														 <h5 class="mb-0">
-																 <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-																		 Esophagus
-																 </a>
-														 </h5>
-												 </div>
-												 <div id="collapseThree" class="collapse " role="tabpanel" aria-labelledby="headingOne">
-														 <div class="card-block chkboxes">
-																 <div class="card-group">
-																		 <div class="card">
-																				 <div class="card-header">
-																						 Part Types
-																				 </div>
-																				 <div class="card-block chkboxes">
-																						 <div style="font-size: 0.66em;" class="content form-check" id="column1d">
-																								 <label class="form-check-label" id="_partType200"><input id="partType200" name="partType" class="form-check-input" type="checkbox"> ESO </label> <br>
-																								 <label class="form-check-label" id="_partType201"><input id="partType201" name="partType" class="form-check-input espart" value="distal" type="checkbox"> ESO, DISTAL </label><br>
-																								 <label class="form-check-label" id="_partType202"><input id="partType202" name="partType" class="form-check-input espart" value="mid" type="checkbox"> ESO, MID </label> <br>
-																								 <label class="form-check-label" id="_partType203"><input id="partType203" name="partType" class="form-check-input espart" value="proximal" type="checkbox"> ESO, PROX </label> <br>
-																								 <label class="form-check-label" id="_partType204"><input id="partType204" name="partType" class="form-check-input " type="checkbox"> ESO, @__CM</label> <br>
-																								 <label class="form-check-label" id="_partType206"><input id="partType206" name="partType" class="form-check-input espart" value="lesion" type="checkbox"> ESO "LESION" </label> <br>
-																								 <label class="form-check-label" id="_partType205"><input id="partType205" name="partType" class="form-check-input espart" value="gastroesophageal junction" type="checkbox"> GEJ </label> <br>
-																						 </div>
-																				 </div>
-																		 </div>
-																		 <div class="card">
-																				 <div class="card-header">
-																						 Final Diagnoses
-																				 </div>
-																				 <div class="card-block chkboxes">
-																						 <div style="font-size: 0.66em;" class="content form-check" id="column2d">
-																								 <label for="dxLine200"><input id="dxLine200" name="dxLine" type="checkbox"> NO SIGNIFICANT ABNORMALITIES </label><br>
-																								 <br>
-																								 <label id="_dxLine207"><input id="dxLine207" name="dxLine" type="checkbox">GEJ, NSA </label><br>
-																								 <label id="_dxLine211"><input id="dxLine211" name="dxLine" type="checkbox">GEJ W/ IM </label><br>
-																								 <label id="_dxLine209"><input id="dxLine209" name="dxLine" type="checkbox">MILD REACTIVE ESOPH, NO IEE </label><br>
-																								 <label id="_dxLine206"><input id="dxLine206" name="dxLine" type="checkbox">REACTIVE ESOPH, NO IEE </label><br>
-																								 <br>
-																								 <label id="_dxLine205"><input id="dxLine205" name="dxLine" type="checkbox">REACTIVE EOSPH + LYMPHS </label><br>
-																								 <label id="_dxLine210"><input id="dxLine210" name="dxLine" type="checkbox">MILD REACTIVE + FEW EOS (GERD) </label><br>
-																								 <label id="_dxLine201"><input id="dxLine201" name="dxLine" type="checkbox">REACTIVE + EOS (GERD) </label><br>
-																								 <br>
-																								 <label id="_dxLine202"><input id="dxLine202" name="dxLine" type="checkbox">EOSINOPHILIC ESOPHAGITIS </label><br>
-																								 <label id="_dxLine203"><input id="dxLine203" name="dxLine" type="checkbox">ACTIVE ESOPHAGITIS, -FUNGUS </label><br>
-																								 <label id="_dxLine208"><input id="dxLine208" name="dxLine" type="checkbox">ACTIVE ESOPHAGITIS, + FUNGUS </label><br>
-																								 <label id="_dxLine204"><input id="dxLine204" name="dxLine" type="checkbox">FUNGAL ESOPHAGITIS, NO NEUTS </label><br>
-																								 <label id="_dxLine212"><input id="dxLine212" name="dxLine" type="checkbox">ACUTE EROSIVE ESOPHAGITIS </label><br>
-																						 </div>
-																				 </div>
-																		 </div>
-																		 <div class="card">
-																				 <div class="card-header">
-																								 Micros
-																						 <i class="fa fa-lightbulb-o ml-2" data-toggle="tooltip" title="For 'multi site options', shift + mouseclick to select specific parts for the micro" aria-hidden="true"></i>
-																				 </div>
-																				 <div class="card-block chkboxes">
-																						 <div style="font-size: 0.66em;" class="content form-check" id="column3d">
-																								 <label class="form-check-label" id="_mxLine200"><input class="form-check-input" id="mxLine200" name="mxLine" type="checkbox">NORMAL, 1 SITE</label><br>
-																								 <label id="_mxLine201" class="form-check-label eso_multi"><input class="form-check-input" id="mxLine201" name="mxLine" type="checkbox">NORMAL, </label><span class="text-danger"> MULTI SITES</span><br>
-																								 <label class="form-check-label" id="_mxLine211"><input class="form-check-input" id="mxLine211" name="mxLine" type="checkbox">NORMAL GEJ, NO IM</label> <br>
-																								 <label class="form-check-label" id="_mxLine215"><input class="form-check-input" id="mxLine215" name="mxLine" type="checkbox"> GEJ, YES IM; NO DYS OR CA </label> <br>
-																								 <label class="form-check-label" id="_mxLine213"><input class="form-check-input" id="mxLine213" name="mxLine" type="checkbox">MILD RE NO EOS, 1 SITE</label> <br>
-																								 <label class="form-check-label" id="_mxLine209"><input class="form-check-input" id="mxLine209" name="mxLine" type="checkbox">RE, 1 SITE</label> <br>
-																								 <label id="_mxLine210" class="form-check-label eso_multi"><input class="form-check-input" id="mxLine210" name="mxLine" type="checkbox">RE, </label><span class="text-danger"> MULTI SITES</span><br>
-																								 <label class="form-check-label" id="_mxLine208"><input class="form-check-input" id="mxLine208" name="mxLine" type="checkbox">RE WITH LYMPHS, 1 SITE</label> <br>
-																								 <label class="form-check-label" id="_mxLine214"><input class="form-check-input" id="mxLine214" name="mxLine" type="checkbox">MILD RE+EOS, 1 SITE</label> <br>
-																								 <label class="form-check-label" id="_mxLine202"><input class="form-check-input" id="mxLine202" name="mxLine" type="checkbox">RE+EOS, 1 SITE </label> <br>
-																								 <label id="_mxLine203" class="form-check-label eso_multi"><input class="form-check-input" id="mxLine203" name="mxLine" type="checkbox">RE+EOS, </label><span class="text-danger"> MULTI SITES</span><br>
-																								 <label class="form-check-label" id="_mxLine212"><input class="form-check-input" id="mxLine212" name="mxLine" type="checkbox">EE, 1 SITE</label> <br>
-																								 <label id="_mxLine204" class="form-check-label eso_multi"><input class="form-check-input" id="mxLine204" name="mxLine" type="checkbox">EE, </label><span class="text-danger"> MULTI SITES</span><br>
-																								 <label class="form-check-label" id="_mxLine205"><input class="form-check-input" id="mxLine205" name="mxLine" type="checkbox">ACTIVE,NO CANDIDA</label><br>
-																								 <label class="form-check-label" id="_mxLine206"><input class="form-check-input" id="mxLine206" name="mxLine" type="checkbox">ACTIVE W CANDIDA</label><br>
-																								 <label class="form-check-label" id="_mxLine207"><input class="form-check-input" id="mxLine207" name="mxLine" type="checkbox">CANDIDA ONLY</label><br>
-																								 <label class="form-check-label" id="_mxLine216"><input class="form-check-input" id="mxLine216" name="mxLine" type="checkbox">ACUTE EROSIVE, NO FUNGUS</label><br>
-																						 </div>
-																				 </div>
-																		 </div>
-																 </div>
+                             </div>
+                     </div>
+             </div>
+             <!-- Accordion #3-->
+             <div class="card">
+                     <div class="card-header" role="tab" id="headingThree">
+                             <h5 class="mb-0">
+                                     <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                             Esophagus
+                                     </a>
+                             </h5>
+                     </div>
+                     <div id="collapseThree" class="collapse " role="tabpanel" aria-labelledby="headingOne">
+                             <div class="card-block chkboxes">
+                                     <div class="card-group">
+                                             <div class="card">
+                                                     <div class="card-header">
+                                                             Part Types
+                                                     </div>
+                                                     <div class="card-block chkboxes">
+                                                             <div style="font-size: 0.66em;" class="content form-check" id="column1d">
+                                                                     <label class="form-check-label" id="_partType200"><input id="partType200" name="partType" class="form-check-input" type="checkbox"> ESO </label> <br>
+                                                                     <label class="form-check-label" id="_partType201"><input id="partType201" name="partType" class="form-check-input espart" value="distal" type="checkbox"> ESO, DISTAL </label><br>
+                                                                     <label class="form-check-label" id="_partType202"><input id="partType202" name="partType" class="form-check-input espart" value="mid" type="checkbox"> ESO, MID </label> <br>
+                                                                     <label class="form-check-label" id="_partType203"><input id="partType203" name="partType" class="form-check-input espart" value="proximal" type="checkbox"> ESO, PROX </label> <br>
+                                                                     <label class="form-check-label" id="_partType204"><input id="partType204" name="partType" class="form-check-input " type="checkbox"> ESO, @__CM</label> <br>
+                                                                     <label class="form-check-label" id="_partType206"><input id="partType206" name="partType" class="form-check-input espart" value="lesion" type="checkbox"> ESO "LESION" </label> <br>
+                                                                     <label class="form-check-label" id="_partType205"><input id="partType205" name="partType" class="form-check-input espart" value="gastroesophageal junction" type="checkbox"> GEJ </label> <br>
+                                                             </div>
+                                                     </div>
+                                             </div>
+                                             <div class="card">
+                                                     <div class="card-header">
+                                                             Final Diagnoses
+                                                     </div>
+                                                     <div class="card-block chkboxes">
+                                                             <div style="font-size: 0.66em;" class="content form-check" id="column2d">
+                                                                     <label for="dxLine200"><input id="dxLine200" name="dxLine" type="checkbox"> NO SIGNIFICANT ABNORMALITIES </label><br>
+                                                                     <br>
+                                                                     <label id="_dxLine207"><input id="dxLine207" name="dxLine" type="checkbox">GEJ, NSA </label><br>
+                                                                     <label id="_dxLine211"><input id="dxLine211" name="dxLine" type="checkbox">GEJ W/ IM </label><br>
+                                                                     <label id="_dxLine209"><input id="dxLine209" name="dxLine" type="checkbox">MILD REACTIVE ESOPH, NO IEE </label><br>
+                                                                     <label id="_dxLine206"><input id="dxLine206" name="dxLine" type="checkbox">REACTIVE ESOPH, NO IEE </label><br>
+                                                                     <br>
+                                                                     <label id="_dxLine205"><input id="dxLine205" name="dxLine" type="checkbox">REACTIVE EOSPH + LYMPHS </label><br>
+                                                                     <label id="_dxLine210"><input id="dxLine210" name="dxLine" type="checkbox">MILD REACTIVE + FEW EOS (GERD) </label><br>
+                                                                     <label id="_dxLine201"><input id="dxLine201" name="dxLine" type="checkbox">REACTIVE + EOS (GERD) </label><br>
+                                                                     <br>
+                                                                     <label id="_dxLine202"><input id="dxLine202" name="dxLine" type="checkbox">EOSINOPHILIC ESOPHAGITIS </label><br>
+                                                                     <label id="_dxLine203"><input id="dxLine203" name="dxLine" type="checkbox">ACTIVE ESOPHAGITIS, -FUNGUS </label><br>
+                                                                     <label id="_dxLine208"><input id="dxLine208" name="dxLine" type="checkbox">ACTIVE ESOPHAGITIS, + FUNGUS </label><br>
+                                                                     <label id="_dxLine204"><input id="dxLine204" name="dxLine" type="checkbox">FUNGAL ESOPHAGITIS, NO NEUTS </label><br>
+                                                                     <label id="_dxLine212"><input id="dxLine212" name="dxLine" type="checkbox">ACUTE EROSIVE ESOPHAGITIS </label><br>
+                                                             </div>
+                                                     </div>
+                                             </div>
+                                             <div class="card">
+                                                     <div class="card-header">
+                                                                     Micros
+                                                             <i class="fa fa-lightbulb-o ml-2" data-toggle="tooltip" title="For 'multi site options', shift + mouseclick to select specific parts for the micro" aria-hidden="true"></i>
+                                                     </div>
+                                                     <div class="card-block chkboxes">
+                                                             <div style="font-size: 0.66em;" class="content form-check" id="column3d">
+                                                                     <label class="form-check-label" id="_mxLine200"><input class="form-check-input" id="mxLine200" name="mxLine" type="checkbox">NORMAL, 1 SITE</label><br>
+                                                                     <label id="_mxLine201" class="form-check-label eso_multi"><input class="form-check-input" id="mxLine201" name="mxLine" type="checkbox">NORMAL, </label><span class="text-danger"> MULTI SITES</span><br>
+                                                                     <label class="form-check-label" id="_mxLine211"><input class="form-check-input" id="mxLine211" name="mxLine" type="checkbox">NORMAL GEJ, NO IM</label> <br>
+                                                                     <label class="form-check-label" id="_mxLine215"><input class="form-check-input" id="mxLine215" name="mxLine" type="checkbox"> GEJ, YES IM; NO DYS OR CA </label> <br>
+                                                                     <label class="form-check-label" id="_mxLine213"><input class="form-check-input" id="mxLine213" name="mxLine" type="checkbox">MILD RE NO EOS, 1 SITE</label> <br>
+                                                                     <label class="form-check-label" id="_mxLine209"><input class="form-check-input" id="mxLine209" name="mxLine" type="checkbox">RE, 1 SITE</label> <br>
+                                                                     <label id="_mxLine210" class="form-check-label eso_multi"><input class="form-check-input" id="mxLine210" name="mxLine" type="checkbox">RE, </label><span class="text-danger"> MULTI SITES</span><br>
+                                                                     <label class="form-check-label" id="_mxLine208"><input class="form-check-input" id="mxLine208" name="mxLine" type="checkbox">RE WITH LYMPHS, 1 SITE</label> <br>
+                                                                     <label class="form-check-label" id="_mxLine214"><input class="form-check-input" id="mxLine214" name="mxLine" type="checkbox">MILD RE+EOS, 1 SITE</label> <br>
+                                                                     <label class="form-check-label" id="_mxLine202"><input class="form-check-input" id="mxLine202" name="mxLine" type="checkbox">RE+EOS, 1 SITE </label> <br>
+                                                                     <label id="_mxLine203" class="form-check-label eso_multi"><input class="form-check-input" id="mxLine203" name="mxLine" type="checkbox">RE+EOS, </label><span class="text-danger"> MULTI SITES</span><br>
+                                                                     <label class="form-check-label" id="_mxLine212"><input class="form-check-input" id="mxLine212" name="mxLine" type="checkbox">EE, 1 SITE</label> <br>
+                                                                     <label id="_mxLine204" class="form-check-label eso_multi"><input class="form-check-input" id="mxLine204" name="mxLine" type="checkbox">EE, </label><span class="text-danger"> MULTI SITES</span><br>
+                                                                     <label class="form-check-label" id="_mxLine205"><input class="form-check-input" id="mxLine205" name="mxLine" type="checkbox">ACTIVE,NO CANDIDA</label><br>
+                                                                     <label class="form-check-label" id="_mxLine206"><input class="form-check-input" id="mxLine206" name="mxLine" type="checkbox">ACTIVE W CANDIDA</label><br>
+                                                                     <label class="form-check-label" id="_mxLine207"><input class="form-check-input" id="mxLine207" name="mxLine" type="checkbox">CANDIDA ONLY</label><br>
+                                                                     <label class="form-check-label" id="_mxLine216"><input class="form-check-input" id="mxLine216" name="mxLine" type="checkbox">ACUTE EROSIVE, NO FUNGUS</label><br>
+                                                             </div>
+                                                     </div>
+                                             </div>
+                                     </div>
 
-														 </div>
-												 </div>
-										 </div>
-										 <!-- Accordion #4-->
-										 <div class="card">
-												 <div class="card-header" role="tab" id="headingFour">
-														 <h5 class="mb-0">
-																 <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-																		 Terminal Ileum
-																 </a>
-														 </h5>
-												 </div>
-												 <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour">
-														 <div class="card-block chkboxes">
-																 <div class="card-group">
-																		 <div class="card">
-																				 <div class="card-header">
-																						 Part Types
-																				 </div>
-																				 <div class="card-block chkboxes">
-																						 <div style="font-size: 0.66em;" class="content form-check" id="column1e">
-																								 <label class="form-check-label" id="_partType250"><input class="form-check-input" id="partType250" name="partType" type="checkbox"> TI </label> <br>
-																								 <label class="form-check-label" id="_partType252"><input class="form-check-input" id="partType252" name="partType" type="checkbox"> JEJUNUM </label> <br>
-																								 <label class="form-check-label" id="_partType253"><input class="form-check-input" id="partType253" name="partType" type="checkbox"> ILEUM </label> <br>
-																								 <label class="form-check-label" id="_partType251"><input class="form-check-input" id="partType251" name="partType" type="checkbox"> ANASTOMOSIS SITE </label><br>
-																								 <label class="form-check-label" id="_partType254"><input class="form-check-input" id="partType254" name="partType" type="checkbox"> POUCH </label><br>
-																								 <label class="form-check-label" id="_partType255"><input class="form-check-input" id="partType255" name="partType" type="checkbox"> ILEO-CECAL VALVE </label><br>
-																						 </div>
-																				 </div>
-																		 </div>
-																		 <div class="card">
-																				 <div class="card-header">
-																						 Final Diagnoses
-																				 </div>
-																				 <div class="card-block chkboxes">
-																						 <div style="font-size: 0.66em;" class="content form-check" id="column2e">
-																								 <label class="form-check-label" id="_dxLine1"><input class="form-check-input" id="dxLine1" name="dxLine" type="checkbox"> NO SIGNIFICANT ABNORMALITIES </label><br>
-																								 <label class="form-check-label" id="_dxLine251"><input class="form-check-input" id="dxLine251" name="dxLine" type="checkbox">FOCAL ACUTE INFLAMMATION </label><br>
-																								 <label class="form-check-label" id="_dxLine256"><input class="form-check-input" id="dxLine256" name="dxLine" type="checkbox">INCREASED LP CELLULARITY </label><br>
-																								 <label class="form-check-label" id="_dxLine257"><input class="form-check-input" id="dxLine257" name="dxLine" type="checkbox">INCREASED LP EOS </label><br>
-																								 <label class="form-check-label" id="_dxLine252"><input class="form-check-input" id="dxLine252" name="dxLine" type="checkbox">CHRONIC ACTIVE ILEITIS</label><br>
-																								 <label class="form-check-label" id="_dxLine253"><input class="form-check-input" id="dxLine253" name="dxLine" type="checkbox">CHRONIC FOCAL ACTIVE ILEITIS </label><br>
-																								 <label class="form-check-label" id="_dxLine254"><input class="form-check-input" id="dxLine254" name="dxLine" type="checkbox">CHRONIC ACTIVE WITH GRANULOMAS </label><br>
-																								 <label class="form-check-label" id="_dxLine255"><input class="form-check-input" id="dxLine255" name="dxLine" type="checkbox">ACTIVE ILEITIS WITH ULCER </label><br>
-																								 <label class="form-check-label" id="_dxLine258"><input class="form-check-input" id="dxLine258" name="dxLine" type="checkbox">GRANULOMATOUS INFLAMMATION </label><br>
-																						 </div>
-																				 </div>
-																		 </div>
-																		 <div class="card">
-																				 <div class="card-header">
-																						 <select class="custom-select-sm" id="tilabel">
-																								 <option value="terminal ileum" selected hidden>Pick a Site, if needed</option>
-																								 <option>terminal ileum</option>
-																								 <option>jejunum</option>
-																								 <option>ileum</option>
-																								 <option>anastomosis site</option>
-																								 <option>pouch</option>
-																						 </select>
-																				 </div>
-																				 <div class="card-block chkboxes">
-																						 <div style="font-size: 0.66em;" class="content form-check" id="column3e">
-																								 <label class="form-check-label" id="_mxLine250"><input class="form-check-input" id="mxLine250" name="mxLine" type="checkbox">NORMAL</label><br>
-																								 <label class="form-check-label" id="_mxLine255"><input class="form-check-input" id="mxLine255" name="mxLine" type="checkbox">FOCAL ACUTE INFLAMMATION </label> <br>
-																								 <label class="form-check-label" id="_mxLine254"><input class="form-check-input" id="mxLine254" name="mxLine" type="checkbox">INCREASED LP CELLULARITY</label><br>
-																								 <label class="form-check-label" id="_mxLine253"><input class="form-check-input" id="mxLine253" name="mxLine" type="checkbox">INCREASED LP EOS</label><br>
-																								 <label class="form-check-label" id="_mxLine251"><input class="form-check-input" id="mxLine251" name="mxLine" type="checkbox">CHRONIC AND ACTIVE</label><br>
-																								 <label class="form-check-label" id="_mxLine256"><input class="form-check-input" id="mxLine256" name="mxLine" type="checkbox">CHRONIC AND FOCAL ACTIVE</label><br>
-																								 <label class="form-check-label" id="_mxLine257"><input class="form-check-input" id="mxLine257" name="mxLine" type="checkbox">CHRONIC AND ACTIVE W/ GRANULOMAS</label><br>
-																								 <label class="form-check-label" id="_mxLine252"><input class="form-check-input" id="mxLine252" name="mxLine" type="checkbox">CAI W/ ULCER </label> <br>
-																								 <label class="form-check-label" id="_mxLine258"><input class="form-check-input" id="mxLine258" name="mxLine" type="checkbox">GRANULOMATOUS INFLAMMATION </label> <br>
-																						 </div>
-																				 </div>
-																		 </div>
-																 </div>
-														 </div>
-												 </div>
-										 </div>
-										 <!-- Accordion #5-->
-										 <div class="card">
-												 <div class="card-header" role="tab" id="headingFive">
-														 <h5 class="mb-0">
-																 <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-																		 Colon and Rectum
-																 </a>
-														 </h5>
-												 </div>
-												 <div id="collapseFive" class="collapse" role="tabpanel" aria-labelledby="headingFive">
-														 <div class="card-block chkboxes">
-																 <div class="card-group">
-																		 <div class="card">
-																				 <div class="card-header">
-																						 Part Types
-																				 </div>
-																				 <div class="card-block chkboxes">
-																						 <div style="font-size: 0.66em;" class="content form-check" id="column1f">
-																								 <label class="form-check-label" id="_partType300"><input id="partType300" name="partType" type="checkbox" class="form-check-input colpart" value='cecum'> COLON, CECUM </label> <br>
-																								 <label class="form-check-label" id="_partType301"><input id="partType301" name="partType" type="checkbox" class="form-check-input colpart" value='ascending'> COLON, ASCENDING</label> <br>
-																								 <label class="form-check-label" id="_partType302"><input id="partType302" name="partType" type="checkbox" class="form-check-input colpart" value='cecum and ascending'> COLON, CECUM AND ASCENDING</label> <br>
-																								 <label class="form-check-label" id="_partType303"><input id="partType303" name="partType" type="checkbox" class="form-check-input colpart" value='right'> COLON, RIGHT</label> <br>
-																								 <label class="form-check-label" id="_partType304"><input id="partType304" name="partType" type="checkbox" class="form-check-input colpart" value='transverse'> COLON, TRANSVERSE</label> <br>
-																								 <label class="form-check-label" id="_partType305"><input id="partType305" name="partType" type="checkbox" class="form-check-input colpart" value='descending'> COLON, DESCENDING</label> <br>
-																								 <label class="form-check-label" id="_partType312"><input id="partType312" name="partType" type="checkbox" class="form-check-input colpart" value='transverse and descending'> COLON, TV AND DESCENDING</label> <br>
-																								 <label class="form-check-label" id="_partType306"><input id="partType306" name="partType" type="checkbox" class="form-check-input colpart" value='left'> COLON, LEFT</label> <br>
-																								 <label class="form-check-label" id="_partType307"><input id="partType307" name="partType" type="checkbox" class="form-check-input colpart" value='rectosigmoid'> COLON, RECTOSIGMOID</label> <br>
-																								 <label class="form-check-label" id="_partType308"><input id="partType308" name="partType" type="checkbox" class="form-check-input colpart" value='sigmoid'> COLON, SIGMOID</label> <br>
-																								 <label class="form-check-label" id="_partType309"><input id="partType309" name="partType" type="checkbox" class="form-check-input colpart" value='random'> COLON, RANDOM</label> <br>
-																								 <label class="form-check-label" id="_partType310"><input id="partType310" name="partType" type="checkbox" class="form-check-input"> COLON, @ ___ CM</label> <br>
-																								 <label class="form-check-label" id="_partType311"><input id="partType311" name="partType" type="checkbox" class="form-check-input colpart" value='colon lesion'> COLON "LESION"</label> <br>
-																								 <label class="form-check-label" id="_partType400"><input id="partType400" name="partType" type="checkbox" class="form-check-input colpart" value='rectum'> RECTUM</label><br>
-																								 <label class="form-check-label" id="_partType401"><input id="partType401" name="partType" type="checkbox" class="form-check-input colpart" value='rectum lesion'> RECTUM "LESION"</label><br>
-																						 </div>
-																				 </div>
-																		 </div>
-																		 <div class="card">
-																				 <div class="card-header">
-																						 Final Diagnoses
-																				 </div>
-																				 <div class="card-block chkboxes">
-																						 <div style="font-size: 0.66em;" class="content form-check" id="column2f">
-																								 <label class="form-check-label" id="_dxLine1"><input class="form-check-input" id="dxLine1" name="dxLine" type="checkbox"> NO SIGNIFICANT ABNORMALITIES </label><br>
-																								 <br>
-																								 <label class="form-check-label" id="_dxLine307"><input class="form-check-input" id="dxLine307" name="dxLine" type="checkbox">GLAND ARCHITECTURAL CHANGES </label><br>
-																								 <label class="form-check-label" id="_dxLine315"><input class="form-check-input" id="dxLine315" name="dxLine" type="checkbox">MELANOSIS COLI </label><br>
-																								 <label class="form-check-label" id="_dxLine319"><input class="form-check-input" id="dxLine319" name="dxLine" type="checkbox">LYMPHOCYTIC COLITIS, NORMAL COLLAGEN </label><br>
-																								 <label class="form-check-label" id="_dxLine320"><input class="form-check-input" id="dxLine320" name="dxLine" type="checkbox">COLLAGENOUS COLITIS </label><br>
-																								 <label class="form-check-label" id="_dxLine300"><input class="form-check-input" id="dxLine300" name="dxLine" type="checkbox">FOCAL ACUTE INFLAMMATION </label><br>
-																								 <label class="form-check-label" id="_dxLine302"><input class="form-check-input" id="dxLine302" name="dxLine" type="checkbox">CHRONIC FOCAL ACTIVE COLITIS </label><br>
-																								 <label class="form-check-label" id="_dxLine301"><input class="form-check-input" id="dxLine301" name="dxLine" type="checkbox">CHRONIC ACTIVE COLITIS</label><br>
-																								 <label class="form-check-label" id="_dxLine303"><input class="form-check-input" id="dxLine303" name="dxLine" type="checkbox">CHRONIC ACTIVE WITH GRANULOMAS </label><br>
-																								 <label class="form-check-label" id="_dxLine304"><input class="form-check-input" id="dxLine304" name="dxLine" type="checkbox">GRANULOMATOUS INFLAMMATION </label><br>
-																								 <label class="form-check-label" id="_dxLine305"><input class="form-check-input" id="dxLine305" name="dxLine" type="checkbox">ACTIVE COLITIS WITH ULCER </label><br>
-																								 <label class="form-check-label" id="_dxLine306"><input class="form-check-input" id="dxLine306" name="dxLine" type="checkbox">INCREASED LAMINA PROPRIA EOSINOPHILS </label><br>
-																								 <br>
-																								<p class="text-mutedmuted text-warning">Adenomatous lesions</p>
-																								 <label class="form-check-label" id="_dxLine312"><input class="form-check-input" id="dxLine312" name="dxLine" type="checkbox">HP </label><br>
-																								 <label class="form-check-label" id="_dxLine310"><input class="form-check-input" id="dxLine310" name="dxLine" type="checkbox">TUBULAR ADENOMA </label><br>
-																								 <label class="form-check-label" id="_dxLine311"><input class="form-check-input" id="dxLine311" name="dxLine" type="checkbox">TA WITH HIGH GRADE DYS </label><br>
-																								 <label class="form-check-label" id="_dxLine313"><input class="form-check-input" id="dxLine313" name="dxLine" type="checkbox">SESSILE SERRATED ADENOMA </label><br>
-																								 <label class="form-check-label" id="_dxLine316"><input class="form-check-input" id="dxLine316" name="dxLine" type="checkbox">SSA WITH HIGH GRADE DYS</label><br>
-																								 <label class="form-check-label" id="_dxLine317"><input class="form-check-input" id="dxLine317" name="dxLine" type="checkbox">TRAD SERRATED ADENOMA </label><br>
-																								 <br>
-																								<p class="text-muted text-warning">Rectum</p>
-																								 <label class="form-check-label" id="_dxLine314"><input class="form-check-input" id="dxLine314" name="dxLine" type="checkbox">JUVENILE POLYP </label><br>
-																								 <label class="form-check-label" id="_dxLine308"><input class="form-check-input" id="dxLine308" name="dxLine" type="checkbox">NEGATIVE FOR HIRSCHSPRUNGS </label><br>
-																								 <label class="form-check-label" id="_dxLine309"><input class="form-check-input" id="dxLine309" name="dxLine" type="checkbox">POSITIVE FOR HIRSCHSPRUNGS </label><br>
-																								 <label class="form-check-label" id="_dxLine318"><input class="form-check-input" id="dxLine318" name="dxLine" type="checkbox">SRUS/PROLAPSE </label><br>
-																						 </div>
-																				 </div>
-																		 </div>
-																		 <div class="card">
-																				 <div class="card-header">
-																						 <select class="custom-select-sm" id="collabel">
-																								 <option value="colon" selected hidden>Pick a Site, if needed</option>
-																								 <option>right colon</option>
-																								 <option>cecum</option>
-																								 <option>cecum/ascending colon</option>
-																								 <option>ascending colon</option>
-																								 <option>transverse colon</option>
-																								 <option>descending colon</option>
-																								 <option>transverse/descending</option>
-																								 <option>left colon</option>
-																								 <option>sigmoid colon</option>
-																								 <option>rectosigmoid colon</option>
-																								 <option>random </option>
-																								 <option>rectum</option>
-																								 <option>rectal polyp</option>
-																								 <option>colon lesion</option>
-																						 </select>
-																						 <a href="#" data-toggle="tooltip" title="For 'multi site options', shift + mouseclick to select specific parts for the micro"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></a>
-																				 </div>
-																				 <div class="card-block chkboxes">
-																						 <div style="font-size: 0.66em;" class="content form-check" id="column3f">
-																								 <label class="form-check-label" id="_mxLine300"><input class="form-check-input" id="mxLine300" name="mxLine" type="checkbox">NORMAL, 1 SITE</label><br>
-																								 <label id="_mxLine301" class="form-check-label col_multi"><input class="form-check-input" id="mxLine301" name="mxLine" type="checkbox">NORMAL, </label><span class="text-danger"> MULTI SITES</span><br>
-																								 <label class="form-check-label" id="_mxLine313"><input class="form-check-input" id="mxLine313" name="mxLine" type="checkbox">MILD ARCH CHANGES</label> <br>
-																								 <label class="form-check-label" id="_mxLine316"><input class="form-check-input" id="mxLine316" name="mxLine" type="checkbox">MELANOSIS COLI, 1 SITE</label> <br>
-																								 <label id="_mxLine317" class="form-check-label col_multi"><input class="form-check-input" id="mxLine317" name="mxLine" type="checkbox">MELANOSIS COLI, </label><span class="text-danger"> MULTI SITES</span><br>
-																								 <label class="form-check-label" id="_mxLine333"><input class="form-check-input" id="mxLine333" name="mxLine" type="checkbox">LYMPHOCYTIC COLITIS</label> <br>
-																								 <label class="form-check-label" id="_mxLine334"><input class="form-check-input" id="mxLine334" name="mxLine" type="checkbox">COLLAGENOUS COLITIS, 1 SITE</label> <br>
-																								 <label id="_mxLine335"  class="form-check-label col_multi"><input class="form-check-input" id="mxLine335" name="mxLine" type="checkbox">COLLAGENOUS COLITIS, </label><span class="text-danger"> MULTI SITES</span><br>
-																								 <label class="form-check-label" id="_mxLine314"><input class="form-check-input" id="mxLine314" name="mxLine" type="checkbox">FOCAL ACUTE, 1 SITE</label> <br>
-																								 <label class="form-check-label" id="_mxLine315"><input class="form-check-input" id="mxLine315" name="mxLine" type="checkbox">CHRONIC & FOCAL ACUTE, 1 SITE</label> <br>
-																								 <label class="form-check-label" id="_mxLine302"><input class="form-check-input" id="mxLine302" name="mxLine" type="checkbox">CHRONIC & ACTIVE, 1 SITE </label> <br>
-																								 <label id="_mxLine303"  class="form-check-label col_multi"><input class="form-check-input" id="mxLine303" name="mxLine" type="checkbox">CHRONIC & ACTIVE, </label><span class="text-danger"> MULTI SITES</span><br>
-																								 <label class="form-check-label" id="_mxLine304"><input class="form-check-input" id="mxLine304" name="mxLine" type="checkbox">SEVERE CAC, 1 SITE</label> <br>
-																								 <label class="form-check-label" id="_mxLine311"><input class="form-check-input" id="mxLine311" name="mxLine" type="checkbox">SEVERE CAC W GRANULOMAS, 1 SITE</label> <br>
-																								 <label id="_mxLine305"  class="form-check-label col_multi"><input class="form-check-input" id="mxLine305" name="mxLine" type="checkbox">SEVERE CAC, </label><span class="text-danger"> MULTI SITES</span><br>
-																								 <label class="form-check-label col_multi" id="_mxLine312"><input class="form-check-input" id="mxLine312" name="mxLine" type="checkbox">SEVERE CAC W GRANULOMAS, </label><span class="text-danger"> MULTI SITES</span><br>
-																								 <label class="form-check-label" id="_mxLine318"><input class="form-check-input" id="mxLine318" name="mxLine" type="checkbox">GRANULOMAS ONLY, 1 SITE</label><br>
-																								 <label id="_mxLine319"  class="form-check-label col_multi"><input class="form-check-input" id="mxLine319" name="mxLine" type="checkbox">GRANULOMAS ONLY, </label><span class="text-danger"> MULTI SITES</span><br>
-																								 <label class="form-check-label" id="_mxLine306"><input class="form-check-input" id="mxLine306" name="mxLine" type="checkbox">INCREASED LP EOS, 1 SITE</label><br>
-																								 <br>
-																								 <p class="text-muted text-warning">Adenomatous lesions</p>
-																								 <label class="form-check-label" id="_mxLine326"><input class="form-check-input" id="mxLine326" name="mxLine" type="checkbox">HP, 1 SITE</label><br>
-																								 <label id="_mxLine327" class="form-check-label col_multi"><input class="form-check-input" id="mxLine327" name="mxLine" type="checkbox">HP, </label><span class="text-danger">MULTI SITES</span><br>
-																								 <label class="form-check-label" id="_mxLine320"><input class="form-check-input" id="mxLine320" name="mxLine" type="checkbox">TA, 1 SITE</label><br>
-																								 <label id="_mxLine321"  class="form-check-label col_multi"><input class="form-check-input" id="mxLine321" name="mxLine" type="checkbox">TA, </label><span class="text-danger">MULTI SITES</span><br>
-																								 <label class="form-check-label" id="_mxLine328"><input class="form-check-input" id="mxLine328" name="mxLine" type="checkbox">TA w DYSP, 1 SITE</label><br>
-																								 <label id="_mxLine329"  class="form-check-label col_multi"><input class="form-check-input" id="mxLine329" name="mxLine" type="checkbox">TA w DYSP, </label><span class="text-danger"> MULTI SITES</span><br>
-																								 <label class="form-check-label" id="_mxLine322"><input class="form-check-input" id="mxLine322" name="mxLine" type="checkbox">SSA, 1 SITE</label><br>
-																								 <label id="_mxLine323"  class="form-check-label col_multi"><input class="form-check-input" id="mxLine323" name="mxLine" type="checkbox">SSA, </label><span class="text-danger"> MULTI SITES</span><br>
-																								 <label class="form-check-label" id="_mxLine324"><input class="form-check-input" id="mxLine324" name="mxLine" type="checkbox">SSA w DYSP, 1 SITE</label><br>
-																								 <label id="_mxLine325"  class="form-check-label col_multi"><input class="form-check-input" id="mxLine325" name="mxLine" type="checkbox">SSA w DYSP, </label><span class="text-danger"> MULTI SITES</span><br>
-																								 <label class="form-check-label" id="_mxLine330"><input class="form-check-input" id="mxLine330" name="mxLine" type="checkbox">TSA, 1 SITE</label><br>
-																								 <label id="_mxLine331"  class="form-check-label col_multi"><input class="form-check-input" id="mxLine331" name="mxLine" type="checkbox">TSA, </label><span class="text-danger"> MULTI SITES</span><br>
-																								 <br>
-																								 <p class="text-muted text-warning">Rectum</p>
-																								 <label class="form-check-label" id="_mxLine307"><input class="form-check-input" id="mxLine307" name="mxLine" type="checkbox">NORMAL RECTUM</label><br>
-																								 <label class="form-check-label" id="_mxLine308"><input class="form-check-input" id="mxLine308" name="mxLine" type="checkbox">JUVENILE POLYP</label><br>
-																								 <label class="form-check-label hirsch" id="_mxLine309"><input class="form-check-input " id="mxLine309" name="mxLine" type="checkbox">NOT HIRSCHSPRUNG</label><br>
-																								 <label class="form-check-label hirsch" id="_mxLine310"><input class="form-check-input " id="mxLine310" name="mxLine" type="checkbox">YES HIRSCHSPRUNG</label> <br>
-																								 <label class="form-check-label" id="_mxLine332"><input class="form-check-input" id="mxLine332" name="mxLine" type="checkbox">SRUS/PROLAPSE</label> <br>
-																						 </div>
-																				 </div>
-																		 </div>
-																 </div>
-														 </div>
-												 </div>
-										 </div>
-										 <!-- Accordion #6-->
-										 <div class="card">
-												 <div class="card-header" role="tab" id="headingSix">
-														 <h5 class="mb-0">
-																 <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-																		 Comments
-																 </a>
-														 </h5>
-												 </div>
-												 <div id="collapseSix" class="collapse" role="tabpanel" aria-labelledby="headingSix">
-														 <div class="card-block chkboxes">
-																 <div class="card-group">
-																		 <div class="card">
-																				 <div class="card-header">
-																						 General Case Comments
-																				 </div>
-																				 <div class="card-block chkboxes">
-																						 <div style="font-size: 0.66em;" class="content form-check" id="column1g">
-																								 <label class="form-check-label" id="_comLine100"><input class="form-check-input" id="comLine100" name="comLines" type="checkbox"> CASE D/W </label> <br>
-																						 </div>
-																				 </div>
-																		 </div>
-																		 <div class="card">
-																				 <div class="card-header">
-																						 Upper GI comments
-																				 </div>
-																				 <div class="card-block chkboxes">
-																						 <div style="font-size: 0.66em;" class="content form-check" id="column1h">
-																								 <p class="text-warning">Duodenum comments</p>
-																								 <label class="form-check-label" id="_comLine101"><input class="form-check-input" id="comLine101" name="comLines" type="checkbox"> TYPICAL CELIAC </label> <br>
-																								 <label class="form-check-label" id="_comLine102"><input class="form-check-input" id="comLine102" name="comLines" type="checkbox"> CELIAC SEROLOGY, NOT HISTOLOGY </label> <br>
-																								 <label class="form-check-label" id="_comLine103"><input class="form-check-input" id="comLine103" name="comLines" type="checkbox"> INCREASED IELS, NL VILLOUS MORPHOLOGY</label> <br>
-																								 <label class="form-check-label" id="_comLine116"><input class="form-check-input" id="comLine116" name="comLines" type="checkbox"> INCREASED IELS, &lt;6 MONTHS OLD</label> <br>
-																								 <label class="form-check-label" id="_comLine120"><input class="form-check-input" id="comLine120" name="comLines" type="checkbox"> FOCAL DUODENUM INFLAMMATION</label> <br>
-																								 <label class="form-check-label" id="_comLine123"><input class="form-check-input" id="comLine123" name="comLines" type="checkbox"> MILD VILLOUS BLUNTING, NO IELS</label> <br>
-																								 <label class="form-check-label" id="_comLine124"><input class="form-check-input" id="comLine124" name="comLines" type="checkbox"> TUFTED ENTEROPATHY</label> <br>
-																								 <br>
-																								<p class="text-warning">Esophagus comments</p>
-																								 <label class="form-check-label" id="_comLine104"><input class="form-check-input" id="comLine104" name="comLines" type="checkbox"> EE VS. REFLUX </label> <br>
-																								 <label class="form-check-label" id="_comLine105"><input class="form-check-input" id="comLine105" name="comLines" type="checkbox"> TYPICAL EE PATTERN</label> <br>
-																								 <label class="form-check-label" id="_comLine122"><input class="form-check-input" id="comLine122" name="comLines" type="checkbox"> RESIDUAL EE W/ SUPERIMPOSED GERD</label> <br>
-																								 <br>
-																								<p class="text-warning">Stomach comments</p>
-																								 <label class="form-check-label" id="_comLine115"><input class="form-check-input" id="comLine115" name="comLines" type="checkbox"> GASTRIC LP EOS + GASTRITIS</label> <br>
-																								 <label class="form-check-label" id="_comLine109"><input class="form-check-input" id="comLine109" name="comLines" type="checkbox"> REACTIVE GASTROPATHY </label> <br>
-																								 <label class="form-check-label" id="_comLine110"><input class="form-check-input" id="comLine110" name="comLines" type="checkbox"> FOCALLY ENHANCED GASTRITIS W/ REFERENCE </label> <br>
-																								 <label class="form-check-label" id="_comLine117"><input class="form-check-input" id="comLine117" name="comLines" type="checkbox"> INCR GASTRIC EOS + CHRONIC INFLAMMATION </label> <br>
-																								 <label class="form-check-label" id="_comLine121"><input class="form-check-input" id="comLine121" name="comLines" type="checkbox"> COLLAGENOUS GASTRITIS</label> <br>
-																						 </div>
-																				 </div>
-																		 </div>
-																		 <div class="card">
-																				 <div class="card-header">
-																						 Lower GI comments
-																				 </div>
-																				 <div class="card-block chkboxes">
-																						 <div style="font-size: 0.66em;" class="content form-check" id="column1i">
-																								 <p class="text-warning">Colon/Bowel comments</p>
-																								 <label class="form-check-label" id="_comLine106"><input class="form-check-input" id="comLine106" name="comLines" type="checkbox"> IBD, NONSPECIFIC </label> <br>
-																								 <label class="form-check-label" id="_comLine107"><input class="form-check-input" id="comLine107" name="comLines" type="checkbox"> IBD, SUGGESTING CROHN </label> <br>
-																								 <label class="form-check-label" id="_comLine108"><input class="form-check-input" id="comLine108" name="comLines" type="checkbox"> IBD W/ GRANULOMAS = CROHN </label> <br>
-																								 <label class="form-check-label" id="_comLine114"><input class="form-check-input" id="comLine114" name="comLines" type="checkbox"> IBD-LIKE, YOUNG CHILD </label> <br>
-																								 <label class="form-check-label" id="_comLine111"><input class="form-check-input" id="comLine111" name="comLines" type="checkbox"> MELANOSIS COLI </label> <br>
-																								 <label class="form-check-label" id="_comLine112"><input class="form-check-input" id="comLine112" name="comLines" type="checkbox"> JUVENILE POLYPOSIS? </label> <br>
-																								 <label class="form-check-label" id="_comLine113"><input class="form-check-input" id="comLine113" name="comLines" type="checkbox"> SSA COMMENT </label> <br>
-																								 <label class="form-check-label" id="_comLine118"><input class="form-check-input" id="comLine118" name="comLines" type="checkbox"> LYMPHOCYTIC COLITIS </label> <br>
-																								 <label class="form-check-label" id="_comLine119"><input class="form-check-input" id="comLine119" name="comLines" type="checkbox"> COLLAGENOUS COLITIS </label> <br>
-																						 </div>
-																				 </div>
-																		 </div>
-																 </div>
-														 </div>
-												 </div>
-										 </div>
-										 <!-- end accordion cards-->
-								 </div>
-								 <!-- end left column-->
-						 </div>
-						 <!-- right column-->
-						 <div class="col col-md-4" id="sticky">
-							 <div class="card text-center">
-									 <div class="card-header button-box">
-											 <ul class="nav nav-pills standard-button-box">
-												 <a class="btn btn-outline-success p-1 mb-2" id="writeReport">
-													 Write Report
-													 </a>
+                             </div>
+                     </div>
+             </div>
+             <!-- Accordion #4-->
+             <div class="card">
+                     <div class="card-header" role="tab" id="headingFour">
+                             <h5 class="mb-0">
+                                     <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                             Terminal Ileum
+                                     </a>
+                             </h5>
+                     </div>
+                     <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour">
+                             <div class="card-block chkboxes">
+                                     <div class="card-group">
+                                             <div class="card">
+                                                     <div class="card-header">
+                                                             Part Types
+                                                     </div>
+                                                     <div class="card-block chkboxes">
+                                                             <div style="font-size: 0.66em;" class="content form-check" id="column1e">
+                                                                     <label class="form-check-label" id="_partType250"><input class="form-check-input" id="partType250" name="partType" type="checkbox"> TI </label> <br>
+                                                                     <label class="form-check-label" id="_partType252"><input class="form-check-input" id="partType252" name="partType" type="checkbox"> JEJUNUM </label> <br>
+                                                                     <label class="form-check-label" id="_partType253"><input class="form-check-input" id="partType253" name="partType" type="checkbox"> ILEUM </label> <br>
+                                                                     <label class="form-check-label" id="_partType251"><input class="form-check-input" id="partType251" name="partType" type="checkbox"> ANASTOMOSIS SITE </label><br>
+                                                                     <label class="form-check-label" id="_partType254"><input class="form-check-input" id="partType254" name="partType" type="checkbox"> POUCH </label><br>
+                                                                     <label class="form-check-label" id="_partType255"><input class="form-check-input" id="partType255" name="partType" type="checkbox"> ILEO-CECAL VALVE </label><br>
+                                                             </div>
+                                                     </div>
+                                             </div>
+                                             <div class="card">
+                                                     <div class="card-header">
+                                                             Final Diagnoses
+                                                     </div>
+                                                     <div class="card-block chkboxes">
+                                                             <div style="font-size: 0.66em;" class="content form-check" id="column2e">
+                                                                     <label class="form-check-label" id="_dxLine1"><input class="form-check-input" id="dxLine1" name="dxLine" type="checkbox"> NO SIGNIFICANT ABNORMALITIES </label><br>
+                                                                     <label class="form-check-label" id="_dxLine251"><input class="form-check-input" id="dxLine251" name="dxLine" type="checkbox">FOCAL ACUTE INFLAMMATION </label><br>
+                                                                     <label class="form-check-label" id="_dxLine256"><input class="form-check-input" id="dxLine256" name="dxLine" type="checkbox">INCREASED LP CELLULARITY </label><br>
+                                                                     <label class="form-check-label" id="_dxLine257"><input class="form-check-input" id="dxLine257" name="dxLine" type="checkbox">INCREASED LP EOS </label><br>
+                                                                     <label class="form-check-label" id="_dxLine252"><input class="form-check-input" id="dxLine252" name="dxLine" type="checkbox">CHRONIC ACTIVE ILEITIS</label><br>
+                                                                     <label class="form-check-label" id="_dxLine253"><input class="form-check-input" id="dxLine253" name="dxLine" type="checkbox">CHRONIC FOCAL ACTIVE ILEITIS </label><br>
+                                                                     <label class="form-check-label" id="_dxLine254"><input class="form-check-input" id="dxLine254" name="dxLine" type="checkbox">CHRONIC ACTIVE WITH GRANULOMAS </label><br>
+                                                                     <label class="form-check-label" id="_dxLine255"><input class="form-check-input" id="dxLine255" name="dxLine" type="checkbox">ACTIVE ILEITIS WITH ULCER </label><br>
+                                                                     <label class="form-check-label" id="_dxLine258"><input class="form-check-input" id="dxLine258" name="dxLine" type="checkbox">GRANULOMATOUS INFLAMMATION </label><br>
+                                                             </div>
+                                                     </div>
+                                             </div>
+                                             <div class="card">
+                                                     <div class="card-header">
+                                                             <select class="custom-select-sm" id="tilabel">
+                                                                     <option value="terminal ileum" selected hidden>Pick a Site, if needed</option>
+                                                                     <option>terminal ileum</option>
+                                                                     <option>jejunum</option>
+                                                                     <option>ileum</option>
+                                                                     <option>anastomosis site</option>
+                                                                     <option>pouch</option>
+                                                             </select>
+                                                     </div>
+                                                     <div class="card-block chkboxes">
+                                                             <div style="font-size: 0.66em;" class="content form-check" id="column3e">
+                                                                     <label class="form-check-label" id="_mxLine250"><input class="form-check-input" id="mxLine250" name="mxLine" type="checkbox">NORMAL</label><br>
+                                                                     <label class="form-check-label" id="_mxLine255"><input class="form-check-input" id="mxLine255" name="mxLine" type="checkbox">FOCAL ACUTE INFLAMMATION </label> <br>
+                                                                     <label class="form-check-label" id="_mxLine254"><input class="form-check-input" id="mxLine254" name="mxLine" type="checkbox">INCREASED LP CELLULARITY</label><br>
+                                                                     <label class="form-check-label" id="_mxLine253"><input class="form-check-input" id="mxLine253" name="mxLine" type="checkbox">INCREASED LP EOS</label><br>
+                                                                     <label class="form-check-label" id="_mxLine251"><input class="form-check-input" id="mxLine251" name="mxLine" type="checkbox">CHRONIC AND ACTIVE</label><br>
+                                                                     <label class="form-check-label" id="_mxLine256"><input class="form-check-input" id="mxLine256" name="mxLine" type="checkbox">CHRONIC AND FOCAL ACTIVE</label><br>
+                                                                     <label class="form-check-label" id="_mxLine257"><input class="form-check-input" id="mxLine257" name="mxLine" type="checkbox">CHRONIC AND ACTIVE W/ GRANULOMAS</label><br>
+                                                                     <label class="form-check-label" id="_mxLine252"><input class="form-check-input" id="mxLine252" name="mxLine" type="checkbox">CAI W/ ULCER </label> <br>
+                                                                     <label class="form-check-label" id="_mxLine258"><input class="form-check-input" id="mxLine258" name="mxLine" type="checkbox">GRANULOMATOUS INFLAMMATION </label> <br>
+                                                             </div>
+                                                     </div>
+                                             </div>
+                                     </div>
+                             </div>
+                     </div>
+             </div>
+             <!-- Accordion #5-->
+             <div class="card">
+                     <div class="card-header" role="tab" id="headingFive">
+                             <h5 class="mb-0">
+                                     <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                             Colon and Rectum
+                                     </a>
+                             </h5>
+                     </div>
+                     <div id="collapseFive" class="collapse" role="tabpanel" aria-labelledby="headingFive">
+                             <div class="card-block chkboxes">
+                                     <div class="card-group">
+                                             <div class="card">
+                                                     <div class="card-header">
+                                                             Part Types
+                                                     </div>
+                                                     <div class="card-block chkboxes">
+                                                             <div style="font-size: 0.66em;" class="content form-check" id="column1f">
+                                                                     <label class="form-check-label" id="_partType300"><input id="partType300" name="partType" type="checkbox" class="form-check-input colpart" value='cecum'> COLON, CECUM </label> <br>
+                                                                     <label class="form-check-label" id="_partType301"><input id="partType301" name="partType" type="checkbox" class="form-check-input colpart" value='ascending'> COLON, ASCENDING</label> <br>
+                                                                     <label class="form-check-label" id="_partType302"><input id="partType302" name="partType" type="checkbox" class="form-check-input colpart" value='cecum and ascending'> COLON, CECUM AND ASCENDING</label> <br>
+                                                                     <label class="form-check-label" id="_partType303"><input id="partType303" name="partType" type="checkbox" class="form-check-input colpart" value='right'> COLON, RIGHT</label> <br>
+                                                                     <label class="form-check-label" id="_partType304"><input id="partType304" name="partType" type="checkbox" class="form-check-input colpart" value='transverse'> COLON, TRANSVERSE</label> <br>
+                                                                     <label class="form-check-label" id="_partType305"><input id="partType305" name="partType" type="checkbox" class="form-check-input colpart" value='descending'> COLON, DESCENDING</label> <br>
+                                                                     <label class="form-check-label" id="_partType312"><input id="partType312" name="partType" type="checkbox" class="form-check-input colpart" value='transverse and descending'> COLON, TV AND DESCENDING</label> <br>
+                                                                     <label class="form-check-label" id="_partType306"><input id="partType306" name="partType" type="checkbox" class="form-check-input colpart" value='left'> COLON, LEFT</label> <br>
+                                                                     <label class="form-check-label" id="_partType307"><input id="partType307" name="partType" type="checkbox" class="form-check-input colpart" value='rectosigmoid'> COLON, RECTOSIGMOID</label> <br>
+                                                                     <label class="form-check-label" id="_partType308"><input id="partType308" name="partType" type="checkbox" class="form-check-input colpart" value='sigmoid'> COLON, SIGMOID</label> <br>
+                                                                     <label class="form-check-label" id="_partType309"><input id="partType309" name="partType" type="checkbox" class="form-check-input colpart" value='random'> COLON, RANDOM</label> <br>
+                                                                     <label class="form-check-label" id="_partType310"><input id="partType310" name="partType" type="checkbox" class="form-check-input"> COLON, @ ___ CM</label> <br>
+                                                                     <label class="form-check-label" id="_partType311"><input id="partType311" name="partType" type="checkbox" class="form-check-input colpart" value='colon lesion'> COLON "LESION"</label> <br>
+                                                                     <label class="form-check-label" id="_partType400"><input id="partType400" name="partType" type="checkbox" class="form-check-input colpart" value='rectum'> RECTUM</label><br>
+                                                                     <label class="form-check-label" id="_partType401"><input id="partType401" name="partType" type="checkbox" class="form-check-input colpart" value='rectum lesion'> RECTUM "LESION"</label><br>
+                                                             </div>
+                                                     </div>
+                                             </div>
+                                             <div class="card">
+                                                     <div class="card-header">
+                                                             Final Diagnoses
+                                                     </div>
+                                                     <div class="card-block chkboxes">
+                                                             <div style="font-size: 0.66em;" class="content form-check" id="column2f">
+                                                                     <label class="form-check-label" id="_dxLine1"><input class="form-check-input" id="dxLine1" name="dxLine" type="checkbox"> NO SIGNIFICANT ABNORMALITIES </label><br>
+                                                                     <br>
+                                                                     <label class="form-check-label" id="_dxLine307"><input class="form-check-input" id="dxLine307" name="dxLine" type="checkbox">GLAND ARCHITECTURAL CHANGES </label><br>
+                                                                     <label class="form-check-label" id="_dxLine315"><input class="form-check-input" id="dxLine315" name="dxLine" type="checkbox">MELANOSIS COLI </label><br>
+                                                                     <label class="form-check-label" id="_dxLine319"><input class="form-check-input" id="dxLine319" name="dxLine" type="checkbox">LYMPHOCYTIC COLITIS, NORMAL COLLAGEN </label><br>
+                                                                     <label class="form-check-label" id="_dxLine320"><input class="form-check-input" id="dxLine320" name="dxLine" type="checkbox">COLLAGENOUS COLITIS </label><br>
+                                                                     <label class="form-check-label" id="_dxLine300"><input class="form-check-input" id="dxLine300" name="dxLine" type="checkbox">FOCAL ACUTE INFLAMMATION </label><br>
+                                                                     <label class="form-check-label" id="_dxLine302"><input class="form-check-input" id="dxLine302" name="dxLine" type="checkbox">CHRONIC FOCAL ACTIVE COLITIS </label><br>
+                                                                     <label class="form-check-label" id="_dxLine301"><input class="form-check-input" id="dxLine301" name="dxLine" type="checkbox">CHRONIC ACTIVE COLITIS</label><br>
+                                                                     <label class="form-check-label" id="_dxLine303"><input class="form-check-input" id="dxLine303" name="dxLine" type="checkbox">CHRONIC ACTIVE WITH GRANULOMAS </label><br>
+                                                                     <label class="form-check-label" id="_dxLine304"><input class="form-check-input" id="dxLine304" name="dxLine" type="checkbox">GRANULOMATOUS INFLAMMATION </label><br>
+                                                                     <label class="form-check-label" id="_dxLine305"><input class="form-check-input" id="dxLine305" name="dxLine" type="checkbox">ACTIVE COLITIS WITH ULCER </label><br>
+                                                                     <label class="form-check-label" id="_dxLine306"><input class="form-check-input" id="dxLine306" name="dxLine" type="checkbox">INCREASED LAMINA PROPRIA EOSINOPHILS </label><br>
+                                                                     <br>
+                                                                    <p class="text-mutedmuted text-warning">Adenomatous lesions</p>
+                                                                     <label class="form-check-label" id="_dxLine312"><input class="form-check-input" id="dxLine312" name="dxLine" type="checkbox">HP </label><br>
+                                                                     <label class="form-check-label" id="_dxLine310"><input class="form-check-input" id="dxLine310" name="dxLine" type="checkbox">TUBULAR ADENOMA </label><br>
+                                                                     <label class="form-check-label" id="_dxLine311"><input class="form-check-input" id="dxLine311" name="dxLine" type="checkbox">TA WITH HIGH GRADE DYS </label><br>
+                                                                     <label class="form-check-label" id="_dxLine313"><input class="form-check-input" id="dxLine313" name="dxLine" type="checkbox">SESSILE SERRATED ADENOMA </label><br>
+                                                                     <label class="form-check-label" id="_dxLine316"><input class="form-check-input" id="dxLine316" name="dxLine" type="checkbox">SSA WITH HIGH GRADE DYS</label><br>
+                                                                     <label class="form-check-label" id="_dxLine317"><input class="form-check-input" id="dxLine317" name="dxLine" type="checkbox">TRAD SERRATED ADENOMA </label><br>
+                                                                     <br>
+                                                                    <p class="text-muted text-warning">Rectum</p>
+                                                                     <label class="form-check-label" id="_dxLine314"><input class="form-check-input" id="dxLine314" name="dxLine" type="checkbox">JUVENILE POLYP </label><br>
+                                                                     <label class="form-check-label" id="_dxLine308"><input class="form-check-input" id="dxLine308" name="dxLine" type="checkbox">NEGATIVE FOR HIRSCHSPRUNGS </label><br>
+                                                                     <label class="form-check-label" id="_dxLine309"><input class="form-check-input" id="dxLine309" name="dxLine" type="checkbox">POSITIVE FOR HIRSCHSPRUNGS </label><br>
+                                                                     <label class="form-check-label" id="_dxLine318"><input class="form-check-input" id="dxLine318" name="dxLine" type="checkbox">SRUS/PROLAPSE </label><br>
+                                                             </div>
+                                                     </div>
+                                             </div>
+                                             <div class="card">
+                                                     <div class="card-header">
+                                                             <select class="custom-select-sm" id="collabel">
+                                                                     <option value="colon" selected hidden>Pick a Site, if needed</option>
+                                                                     <option>right colon</option>
+                                                                     <option>cecum</option>
+                                                                     <option>cecum/ascending colon</option>
+                                                                     <option>ascending colon</option>
+                                                                     <option>transverse colon</option>
+                                                                     <option>descending colon</option>
+                                                                     <option>transverse/descending</option>
+                                                                     <option>left colon</option>
+                                                                     <option>sigmoid colon</option>
+                                                                     <option>rectosigmoid colon</option>
+                                                                     <option>random </option>
+                                                                     <option>rectum</option>
+                                                                     <option>rectal polyp</option>
+                                                                     <option>colon lesion</option>
+                                                             </select>
+                                                             <a href="#" data-toggle="tooltip" title="For 'multi site options', shift + mouseclick to select specific parts for the micro"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></a>
+                                                     </div>
+                                                     <div class="card-block chkboxes">
+                                                             <div style="font-size: 0.66em;" class="content form-check" id="column3f">
+                                                                     <label class="form-check-label" id="_mxLine300"><input class="form-check-input" id="mxLine300" name="mxLine" type="checkbox">NORMAL, 1 SITE</label><br>
+                                                                     <label id="_mxLine301" class="form-check-label col_multi"><input class="form-check-input" id="mxLine301" name="mxLine" type="checkbox">NORMAL, </label><span class="text-danger"> MULTI SITES</span><br>
+                                                                     <label class="form-check-label" id="_mxLine313"><input class="form-check-input" id="mxLine313" name="mxLine" type="checkbox">MILD ARCH CHANGES</label> <br>
+                                                                     <label class="form-check-label" id="_mxLine316"><input class="form-check-input" id="mxLine316" name="mxLine" type="checkbox">MELANOSIS COLI, 1 SITE</label> <br>
+                                                                     <label id="_mxLine317" class="form-check-label col_multi"><input class="form-check-input" id="mxLine317" name="mxLine" type="checkbox">MELANOSIS COLI, </label><span class="text-danger"> MULTI SITES</span><br>
+                                                                     <label class="form-check-label" id="_mxLine333"><input class="form-check-input" id="mxLine333" name="mxLine" type="checkbox">LYMPHOCYTIC COLITIS</label> <br>
+                                                                     <label class="form-check-label" id="_mxLine334"><input class="form-check-input" id="mxLine334" name="mxLine" type="checkbox">COLLAGENOUS COLITIS, 1 SITE</label> <br>
+                                                                     <label id="_mxLine335"  class="form-check-label col_multi"><input class="form-check-input" id="mxLine335" name="mxLine" type="checkbox">COLLAGENOUS COLITIS, </label><span class="text-danger"> MULTI SITES</span><br>
+                                                                     <label class="form-check-label" id="_mxLine314"><input class="form-check-input" id="mxLine314" name="mxLine" type="checkbox">FOCAL ACUTE, 1 SITE</label> <br>
+                                                                     <label class="form-check-label" id="_mxLine315"><input class="form-check-input" id="mxLine315" name="mxLine" type="checkbox">CHRONIC & FOCAL ACUTE, 1 SITE</label> <br>
+                                                                     <label class="form-check-label" id="_mxLine302"><input class="form-check-input" id="mxLine302" name="mxLine" type="checkbox">CHRONIC & ACTIVE, 1 SITE </label> <br>
+                                                                     <label id="_mxLine303"  class="form-check-label col_multi"><input class="form-check-input" id="mxLine303" name="mxLine" type="checkbox">CHRONIC & ACTIVE, </label><span class="text-danger"> MULTI SITES</span><br>
+                                                                     <label class="form-check-label" id="_mxLine304"><input class="form-check-input" id="mxLine304" name="mxLine" type="checkbox">SEVERE CAC, 1 SITE</label> <br>
+                                                                     <label class="form-check-label" id="_mxLine311"><input class="form-check-input" id="mxLine311" name="mxLine" type="checkbox">SEVERE CAC W GRANULOMAS, 1 SITE</label> <br>
+                                                                     <label id="_mxLine305"  class="form-check-label col_multi"><input class="form-check-input" id="mxLine305" name="mxLine" type="checkbox">SEVERE CAC, </label><span class="text-danger"> MULTI SITES</span><br>
+                                                                     <label class="form-check-label col_multi" id="_mxLine312"><input class="form-check-input" id="mxLine312" name="mxLine" type="checkbox">SEVERE CAC W GRANULOMAS, </label><span class="text-danger"> MULTI SITES</span><br>
+                                                                     <label class="form-check-label" id="_mxLine318"><input class="form-check-input" id="mxLine318" name="mxLine" type="checkbox">GRANULOMAS ONLY, 1 SITE</label><br>
+                                                                     <label id="_mxLine319"  class="form-check-label col_multi"><input class="form-check-input" id="mxLine319" name="mxLine" type="checkbox">GRANULOMAS ONLY, </label><span class="text-danger"> MULTI SITES</span><br>
+                                                                     <label class="form-check-label" id="_mxLine306"><input class="form-check-input" id="mxLine306" name="mxLine" type="checkbox">INCREASED LP EOS, 1 SITE</label><br>
+                                                                     <br>
+                                                                     <p class="text-muted text-warning">Adenomatous lesions</p>
+                                                                     <label class="form-check-label" id="_mxLine326"><input class="form-check-input" id="mxLine326" name="mxLine" type="checkbox">HP, 1 SITE</label><br>
+                                                                     <label id="_mxLine327" class="form-check-label col_multi"><input class="form-check-input" id="mxLine327" name="mxLine" type="checkbox">HP, </label><span class="text-danger">MULTI SITES</span><br>
+                                                                     <label class="form-check-label" id="_mxLine320"><input class="form-check-input" id="mxLine320" name="mxLine" type="checkbox">TA, 1 SITE</label><br>
+                                                                     <label id="_mxLine321"  class="form-check-label col_multi"><input class="form-check-input" id="mxLine321" name="mxLine" type="checkbox">TA, </label><span class="text-danger">MULTI SITES</span><br>
+                                                                     <label class="form-check-label" id="_mxLine328"><input class="form-check-input" id="mxLine328" name="mxLine" type="checkbox">TA w DYSP, 1 SITE</label><br>
+                                                                     <label id="_mxLine329"  class="form-check-label col_multi"><input class="form-check-input" id="mxLine329" name="mxLine" type="checkbox">TA w DYSP, </label><span class="text-danger"> MULTI SITES</span><br>
+                                                                     <label class="form-check-label" id="_mxLine322"><input class="form-check-input" id="mxLine322" name="mxLine" type="checkbox">SSA, 1 SITE</label><br>
+                                                                     <label id="_mxLine323"  class="form-check-label col_multi"><input class="form-check-input" id="mxLine323" name="mxLine" type="checkbox">SSA, </label><span class="text-danger"> MULTI SITES</span><br>
+                                                                     <label class="form-check-label" id="_mxLine324"><input class="form-check-input" id="mxLine324" name="mxLine" type="checkbox">SSA w DYSP, 1 SITE</label><br>
+                                                                     <label id="_mxLine325"  class="form-check-label col_multi"><input class="form-check-input" id="mxLine325" name="mxLine" type="checkbox">SSA w DYSP, </label><span class="text-danger"> MULTI SITES</span><br>
+                                                                     <label class="form-check-label" id="_mxLine330"><input class="form-check-input" id="mxLine330" name="mxLine" type="checkbox">TSA, 1 SITE</label><br>
+                                                                     <label id="_mxLine331"  class="form-check-label col_multi"><input class="form-check-input" id="mxLine331" name="mxLine" type="checkbox">TSA, </label><span class="text-danger"> MULTI SITES</span><br>
+                                                                     <br>
+                                                                     <p class="text-muted text-warning">Rectum</p>
+                                                                     <label class="form-check-label" id="_mxLine307"><input class="form-check-input" id="mxLine307" name="mxLine" type="checkbox">NORMAL RECTUM</label><br>
+                                                                     <label class="form-check-label" id="_mxLine308"><input class="form-check-input" id="mxLine308" name="mxLine" type="checkbox">JUVENILE POLYP</label><br>
+                                                                     <label class="form-check-label hirsch" id="_mxLine309"><input class="form-check-input " id="mxLine309" name="mxLine" type="checkbox">NOT HIRSCHSPRUNG</label><br>
+                                                                     <label class="form-check-label hirsch" id="_mxLine310"><input class="form-check-input " id="mxLine310" name="mxLine" type="checkbox">YES HIRSCHSPRUNG</label> <br>
+                                                                     <label class="form-check-label" id="_mxLine332"><input class="form-check-input" id="mxLine332" name="mxLine" type="checkbox">SRUS/PROLAPSE</label> <br>
+                                                             </div>
+                                                     </div>
+                                             </div>
+                                     </div>
+                             </div>
+                     </div>
+             </div>
+             <!-- Accordion #6-->
+             <div class="card">
+                     <div class="card-header" role="tab" id="headingSix">
+                             <h5 class="mb-0">
+                                     <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                             Comments
+                                     </a>
+                             </h5>
+                     </div>
+                     <div id="collapseSix" class="collapse" role="tabpanel" aria-labelledby="headingSix">
+                             <div class="card-block chkboxes">
+                                     <div class="card-group">
+                                             <div class="card">
+                                                     <div class="card-header">
+                                                             General Case Comments
+                                                     </div>
+                                                     <div class="card-block chkboxes">
+                                                             <div style="font-size: 0.66em;" class="content form-check" id="column1g">
+                                                                     <label class="form-check-label" id="_comLine100"><input class="form-check-input" id="comLine100" name="comLines" type="checkbox"> CASE D/W </label> <br>
+                                                             </div>
+                                                     </div>
+                                             </div>
+                                             <div class="card">
+                                                     <div class="card-header">
+                                                             Upper GI comments
+                                                     </div>
+                                                     <div class="card-block chkboxes">
+                                                             <div style="font-size: 0.66em;" class="content form-check" id="column1h">
+                                                                     <p class="text-warning">Duodenum comments</p>
+                                                                     <label class="form-check-label" id="_comLine101"><input class="form-check-input" id="comLine101" name="comLines" type="checkbox"> TYPICAL CELIAC </label> <br>
+                                                                     <label class="form-check-label" id="_comLine102"><input class="form-check-input" id="comLine102" name="comLines" type="checkbox"> CELIAC SEROLOGY, NOT HISTOLOGY </label> <br>
+                                                                     <label class="form-check-label" id="_comLine103"><input class="form-check-input" id="comLine103" name="comLines" type="checkbox"> INCREASED IELS, NL VILLOUS MORPHOLOGY</label> <br>
+                                                                     <label class="form-check-label" id="_comLine116"><input class="form-check-input" id="comLine116" name="comLines" type="checkbox"> INCREASED IELS, &lt;6 MONTHS OLD</label> <br>
+                                                                     <label class="form-check-label" id="_comLine120"><input class="form-check-input" id="comLine120" name="comLines" type="checkbox"> FOCAL DUODENUM INFLAMMATION</label> <br>
+                                                                     <label class="form-check-label" id="_comLine123"><input class="form-check-input" id="comLine123" name="comLines" type="checkbox"> MILD VILLOUS BLUNTING, NO IELS</label> <br>
+                                                                     <label class="form-check-label" id="_comLine124"><input class="form-check-input" id="comLine124" name="comLines" type="checkbox"> TUFTED ENTEROPATHY</label> <br>
+                                                                     <br>
+                                                                    <p class="text-warning">Esophagus comments</p>
+                                                                     <label class="form-check-label" id="_comLine104"><input class="form-check-input" id="comLine104" name="comLines" type="checkbox"> EE VS. REFLUX </label> <br>
+                                                                     <label class="form-check-label" id="_comLine105"><input class="form-check-input" id="comLine105" name="comLines" type="checkbox"> TYPICAL EE PATTERN</label> <br>
+                                                                     <label class="form-check-label" id="_comLine122"><input class="form-check-input" id="comLine122" name="comLines" type="checkbox"> RESIDUAL EE W/ SUPERIMPOSED GERD</label> <br>
+                                                                     <br>
+                                                                    <p class="text-warning">Stomach comments</p>
+                                                                     <label class="form-check-label" id="_comLine115"><input class="form-check-input" id="comLine115" name="comLines" type="checkbox"> GASTRIC LP EOS + GASTRITIS</label> <br>
+                                                                     <label class="form-check-label" id="_comLine109"><input class="form-check-input" id="comLine109" name="comLines" type="checkbox"> REACTIVE GASTROPATHY </label> <br>
+                                                                     <label class="form-check-label" id="_comLine110"><input class="form-check-input" id="comLine110" name="comLines" type="checkbox"> FOCALLY ENHANCED GASTRITIS W/ REFERENCE </label> <br>
+                                                                     <label class="form-check-label" id="_comLine117"><input class="form-check-input" id="comLine117" name="comLines" type="checkbox"> INCR GASTRIC EOS + CHRONIC INFLAMMATION </label> <br>
+                                                                     <label class="form-check-label" id="_comLine121"><input class="form-check-input" id="comLine121" name="comLines" type="checkbox"> COLLAGENOUS GASTRITIS</label> <br>
+                                                             </div>
+                                                     </div>
+                                             </div>
+                                             <div class="card">
+                                                     <div class="card-header">
+                                                             Lower GI comments
+                                                     </div>
+                                                     <div class="card-block chkboxes">
+                                                             <div style="font-size: 0.66em;" class="content form-check" id="column1i">
+                                                                     <p class="text-warning">Colon/Bowel comments</p>
+                                                                     <label class="form-check-label" id="_comLine106"><input class="form-check-input" id="comLine106" name="comLines" type="checkbox"> IBD, NONSPECIFIC </label> <br>
+                                                                     <label class="form-check-label" id="_comLine107"><input class="form-check-input" id="comLine107" name="comLines" type="checkbox"> IBD, SUGGESTING CROHN </label> <br>
+                                                                     <label class="form-check-label" id="_comLine108"><input class="form-check-input" id="comLine108" name="comLines" type="checkbox"> IBD W/ GRANULOMAS = CROHN </label> <br>
+                                                                     <label class="form-check-label" id="_comLine114"><input class="form-check-input" id="comLine114" name="comLines" type="checkbox"> IBD-LIKE, YOUNG CHILD </label> <br>
+                                                                     <label class="form-check-label" id="_comLine111"><input class="form-check-input" id="comLine111" name="comLines" type="checkbox"> MELANOSIS COLI </label> <br>
+                                                                     <label class="form-check-label" id="_comLine112"><input class="form-check-input" id="comLine112" name="comLines" type="checkbox"> JUVENILE POLYPOSIS? </label> <br>
+                                                                     <label class="form-check-label" id="_comLine113"><input class="form-check-input" id="comLine113" name="comLines" type="checkbox"> SSA COMMENT </label> <br>
+                                                                     <label class="form-check-label" id="_comLine118"><input class="form-check-input" id="comLine118" name="comLines" type="checkbox"> LYMPHOCYTIC COLITIS </label> <br>
+                                                                     <label class="form-check-label" id="_comLine119"><input class="form-check-input" id="comLine119" name="comLines" type="checkbox"> COLLAGENOUS COLITIS </label> <br>
+                                                             </div>
+                                                     </div>
+                                             </div>
+                                     </div>
+                             </div>
+                     </div>
+             </div>
+             <!-- end accordion cards-->
+     </div>
+     <!-- end left column-->
+</div>
+<!-- right column-->
+<div class="col col-md-4" id="sticky">
+ <div class="card text-center">
+         <div class="card-header button-box">
+                 <ul class="nav nav-pills standard-button-box">
+                     <a class="btn btn-outline-success p-1 mb-2" id="writeReport">
+                         Write Report
+                         </a>
 
-												 <a class="btn btn-outline-danger p-1 mb-2 ml-4" id="Reset">Reset</a>
-											 </ul>
-									 </div>
-									 <div class="card-block">
+                     <a class="btn btn-outline-danger p-1 mb-2 ml-4" id="Reset">Reset</a>
+                 </ul>
+         </div>
+         <div class="card-block">
 
-								 <form>
-										 <!-- hide first text area
-								 <div class="form-group">
-										 <textarea class="form-control" id="outPut-1" rows="5" placeholder="CBC Data"></textarea>
-										 <span class="input-group-addon btn btn-primary" data-clipboard-target="#outPut-1">Copy to Clipboard</span>
-								 </div>   -->
-										 <div class="form-group">
-												 <textarea class="form-control" id="outPut-2" rows="15" placeholder="Example Micro"></textarea>
-												 <span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-2">Copy to Clipboard</span>
-										 </div>
-										 <div class="form-group">
-												 <textarea class="form-control" id="outPut-3" rows="10" placeholder="Example Final"></textarea>
-												 <span class="input-group-addon copy  btn btn-primary" data-clipboard-target="#outPut-3">Copy to Clipboard</span>
-										 </div>
-										 <div class="form-group">
-												 <textarea class="form-control" id="outPut-4" rows="5" placeholder="Example Comment"></textarea>
-												 <span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-4">Copy to Clipboard</span>
-										 </div>
-								 </form>
-							 </div>
-						</div>
-					</div>
-						<!-- end right column-->
-						 <div>
-								<!--modals-->
+     <form>
+             <!-- hide first text area
+     <div class="form-group">
+             <textarea class="form-control" id="outPut-1" rows="5" placeholder="CBC Data"></textarea>
+             <span class="input-group-addon btn btn-primary" data-clipboard-target="#outPut-1">Copy to Clipboard</span>
+     </div>   -->
+             <div class="form-group">
+                     <textarea class="form-control" id="outPut-2" rows="15" placeholder="Example Micro"></textarea>
+                     <span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-2">Copy to Clipboard</span>
+             </div>
+             <div class="form-group">
+                     <textarea class="form-control" id="outPut-3" rows="10" placeholder="Example Final"></textarea>
+                     <span class="input-group-addon copy  btn btn-primary" data-clipboard-target="#outPut-3">Copy to Clipboard</span>
+             </div>
+             <div class="form-group">
+                     <textarea class="form-control" id="outPut-4" rows="5" placeholder="Example Comment"></textarea>
+                     <span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-4">Copy to Clipboard</span>
+             </div>
+     </form>
+ </div>
+</div>
+</div>
+<!-- end right column-->
+<div>
+    <!--modals-->
 
-								 <!--DOC discussed with name modal-->
-								 <div class="docinput">
-										 Select physician you discussed the case with:
-										 <input type="text" id="doc" list="names" />
-												<datalist id="names">
-												 <option>Dr. Zwiener</option>
-												 <option>Dr. Rangwalla</option>
-												 <option>Dr. Easley</option>
-												 <option>Dr. Siddiqui</option>
-												 <option>Dr. Heintz</option>
-												 <option>Dr. Challa</option>
-												 <option>Dr. Izaguirre</option>
-												 <option>Dr. Vaughan</option>
-												</datalist>
-								 </div>
+     <!--DOC discussed with name modal-->
+     <div class="docinput">
+             Select physician you discussed the case with:
+             <input type="text" id="doc" list="names" />
+                    <datalist id="names">
+                     <option>Dr. Zwiener</option>
+                     <option>Dr. Rangwalla</option>
+                     <option>Dr. Easley</option>
+                     <option>Dr. Siddiqui</option>
+                     <option>Dr. Heintz</option>
+                     <option>Dr. Challa</option>
+                     <option>Dr. Izaguirre</option>
+                     <option>Dr. Vaughan</option>
+                    </datalist>
+     </div>
 
-								 <!-- GRANULOMAS modal-->
-								 <div class="granuloma">
-										 Did you do a GMS and AFB?<br>
-										 <select id="gran_1">
-												 <option selected>Yes</option>
-												 <option>No</option>
-										 </select> Block=
-										 <input id="gran_4" size=5>
-										 <br> Was the GMS positive?<br>
-										 <select id="gran_2">
-												 <option >Yes</option>
-												 <option selected>No</option>
-										 </select>
-										 <br> Was the AFB positive?<br>
-										 <select id="gran_3">
-												 <option >Yes</option>
-												 <option selected>No</option>
-										 </select>
-										 <br>
-								 </div>
+     <!-- GRANULOMAS modal-->
+     <div class="granuloma">
+             Did you do a GMS and AFB?<br>
+             <select id="gran_1">
+                     <option selected>Yes</option>
+                     <option>No</option>
+             </select> Block=
+             <input id="gran_4" size=5>
+             <br> Was the GMS positive?<br>
+             <select id="gran_2">
+                     <option >Yes</option>
+                     <option selected>No</option>
+             </select>
+             <br> Was the AFB positive?<br>
+             <select id="gran_3">
+                     <option >Yes</option>
+                     <option selected>No</option>
+             </select>
+             <br>
+     </div>
 
-								 <!--tufting list-->
-								 <div class="tuft_list">
-										 <table class="table">
-												 <tr>
-														 <td>Did you do PAS-d?</td>
-														 <td><select id="tuft_1"><option>Yes</option><option selected>No</option></select><br></td>
-														 <td><select id="tuft_2" style="display:none;"><option>Abnormal</option><option selected>Normal staining</option></select></td>
-												 </tr>
-												 <tr>
-														 <td>Did you do CD10?</td>
-														 <td><select id="tuft_3"><option>Yes</option><option selected>No</option></select><br></td>
-														 <td><select id="tuft_4" style="display:none;"><option>Abnormal</option><option selected>Normal staining</option></select></td>
-												 </tr>
-												 <tr>
-														 <td>Did you do MOC31?</td>
-														 <td><select id="tuft_5"><option>Yes</option><option selected>No</option></select><br></td>
-														 <td><select id="tuft_6" style="display:none;"><option>Abnormal</option><option selected>Normal staining</option></select></td>
-												 </tr>
-										 </table>
-								 </div>
+     <!--tufting list-->
+     <div class="tuft_list">
+             <table class="table">
+                     <tr>
+                             <td>Did you do PAS-d?</td>
+                             <td><select id="tuft_1"><option>Yes</option><option selected>No</option></select><br></td>
+                             <td><select id="tuft_2" style="display:none;"><option>Abnormal</option><option selected>Normal staining</option></select></td>
+                     </tr>
+                     <tr>
+                             <td>Did you do CD10?</td>
+                             <td><select id="tuft_3"><option>Yes</option><option selected>No</option></select><br></td>
+                             <td><select id="tuft_4" style="display:none;"><option>Abnormal</option><option selected>Normal staining</option></select></td>
+                     </tr>
+                     <tr>
+                             <td>Did you do MOC31?</td>
+                             <td><select id="tuft_5"><option>Yes</option><option selected>No</option></select><br></td>
+                             <td><select id="tuft_6" style="display:none;"><option>Abnormal</option><option selected>Normal staining</option></select></td>
+                     </tr>
+             </table>
+     </div>
 
-								 <!-- focal enhanced gastritis modal-->
-								 <div class="feg_list">
-										 <table class="table table-responsive">
-												 <thead>
-												 <tr>
-														 <th>
-																 FEG Modifiers
-														 </th>
-														 <th>
-																 Value
-														 </th>
-												 </tr>
-												 </thead>
-												 <tbody>
-												 <tr>
-														 <td>
-																 How many foci?
-														 </td>
-														 <td>
-																 <select class="form-control selectpicker form-control-sm" id="feg_1">
-																		 <option selected>Single</option>
-																		 <option>Multiple</option>
-																 </select>
-														 </td>
-												 </tr>
-												 <tr>
-														 <td>
-																 Any neutrophils?
-														 </td>
-														 <td>
-																 <select class="form-control selectpicker form-control-sm" id="feg_2">
-																		 <option selected>No</option>
-																		 <option>Yes</option>
-																 </select>
-														 </td>
-												 </tr>
-												 <tr>
-														 <td>
+     <!-- focal enhanced gastritis modal-->
+     <div class="feg_list">
+             <table class="table table-responsive">
+                     <thead>
+                     <tr>
+                             <th>
+                                     FEG Modifiers
+                             </th>
+                             <th>
+                                     Value
+                             </th>
+                     </tr>
+                     </thead>
+                     <tbody>
+                     <tr>
+                             <td>
+                                     How many foci?
+                             </td>
+                             <td>
+                                     <select class="form-control selectpicker form-control-sm" id="feg_1">
+                                             <option selected>Single</option>
+                                             <option>Multiple</option>
+                                     </select>
+                             </td>
+                     </tr>
+                     <tr>
+                             <td>
+                                     Any neutrophils?
+                             </td>
+                             <td>
+                                     <select class="form-control selectpicker form-control-sm" id="feg_2">
+                                             <option selected>No</option>
+                                             <option>Yes</option>
+                                     </select>
+                             </td>
+                     </tr>
+                     <tr>
+                             <td>
 
-														 </td>
-														 <td>
+                             </td>
+                             <td>
 
-														 </td>
-												 </tr>
-												 </tbody>
-										 </table>
-								 </div>
+                             </td>
+                     </tr>
+                     </tbody>
+             </table>
+     </div>
 
-								 <div class="duo_list"></div><!-- Hidden duodenum multi-list-->
-								 <div class="sto_list"></div><!-- Hidden stomach multi-list-->
-								 <div class="eso_list"></div><!-- Hidden esophagus multi-list-->
-								 <div class="col_list"></div><!--  Hidden colon multi-list-->
+     <div class="duo_list"></div><!-- Hidden duodenum multi-list-->
+     <div class="sto_list"></div><!-- Hidden stomach multi-list-->
+     <div class="eso_list"></div><!-- Hidden esophagus multi-list-->
+     <div class="col_list"></div><!--  Hidden colon multi-list-->
 
-								 <div id="intestinalmetaplasia-confirm"></div><!--  Hidden adult gi IM confirmation-->
+     <div id="intestinalmetaplasia-confirm"></div><!--  Hidden adult gi IM confirmation-->
 
-						 </div>
-						<!-- end modals div-->
-				 </div>
-				<!-- end bottom row-->
-				{{> page-modals/combined-report}}
-				{{> page-modals/new-case-reference}}
-				{{> page-partials/history-module}}
-		 </div>
-		 <!--end container wrapper-->
+</div>
+<!-- end modals div-->
+</div>
+<!-- end bottom row-->
+{{> page-modals/combined-report}}
+{{> page-modals/new-case-reference}}
+{{> page-partials/history-module}}
+</div>
+<!--end container wrapper-->
 
 <!--
 
 {"specificScripts":
-	[
-		"/json/json-gi.js",
-		"/js/gi-path/gi-scripts.js",
-	]
+[
+"/json/json-gi.js",
+"/js/gi-path/gi-scripts.js",
+]
 }
 
 -->

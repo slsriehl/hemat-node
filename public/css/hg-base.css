@@ -154,7 +154,7 @@ textarea {
 /* style changes regarding download and create pdf buttons */
 .standard-button-box, .report-button-box, .combined-button-box {
 	display: flex;
-	width: 300px;
+	/*width: 300px;*/
 	flex-wrap: wrap;
 	flex-direction: row;
 	justify-content: space-around;

@@ -380,6 +380,12 @@ $(window).on('load', function () {
             captext += "\nLymph nodes: None submitted\n";
         }
 
+        var box_30 = $("#box30").val();
+        if (box_30.length > 0){
+            captext += "\n+ FIGO Stage:\n- "  + box_30+ "\n";
+        }
+
+
         $('#outPut-1').val(captext);
 
         dataObj.singleSection = $('#outPut-1').val();

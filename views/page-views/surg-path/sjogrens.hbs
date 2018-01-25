@@ -1,218 +1,218 @@
 <div class="container-fluid">
-    <!-- Breadcrumbs -->
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-            <a href="/">Home</a>
-        </li>
-        <li class="breadcrumb-item active">Surgpath/<i class="fa fa-eye-slash mr-2"></i>Sjogren Focus Score - Minor
-            Salivary Gland Biopsy
-        </li>
-    </ol>
+<!-- Breadcrumbs -->
+<ol class="breadcrumb">
+<li class="breadcrumb-item">
+<a href="/">Home</a>
+</li>
+<li class="breadcrumb-item active">Surgpath/<i class="fa fa-eye-slash mr-2"></i>Sjogren Focus Score - Minor
+Salivary Gland Biopsy
+</li>
+</ol>
 
-    {{> message-center this}}
+{{> message-center this}}
 
-    <div class="card mb-3">
-        <div class="card-header bg-info">
-            <!-- How to use and modal -->
-            <div class="row">
-                <div class="col-md-6">
-                    <button class="btn btn-default btn-block" data-target="#help-about" data-toggle="modal"
-                            id='openhelp'
-                            type='button'> Read this, if you are not familiar with the Focus Score
-                    </button>
-                    {{> page-modals/surg-path/sjogrens-focus-score}}
-                </div>
-                <div class="col-md-6">
-                    <button class="btn btn-primary btn-block" data-target="#help-howto" data-toggle="modal"
-                            id='openhowto'
-                            type='button'> How to do a Focus Score
-                    </button>
-                    {{> page-modals/surg-path/sjogrens-how-to-use}}
-                </div>
+<div class="card mb-3">
+<div class="card-header bg-info">
+<!-- How to use and modal -->
+<div class="row">
+<div class="col-md-6">
+<button class="btn btn-default btn-block" data-target="#help-about" data-toggle="modal"
+        id='openhelp'
+        type='button'> Read this, if you are not familiar with the Focus Score
+</button>
+{{> page-modals/surg-path/sjogrens-focus-score}}
+</div>
+<div class="col-md-6">
+<button class="btn btn-primary btn-block" data-target="#help-howto" data-toggle="modal"
+        id='openhowto'
+        type='button'> How to do a Focus Score
+</button>
+{{> page-modals/surg-path/sjogrens-how-to-use}}
+</div>
+</div>
+</div>
+</div>
+<div class="container-fluid">
+<div class="row">
+<!--middle colored boxes-->
+<div class="container">
+<div class="row row-grid ">
+<!-- bottom left column-->
+<div class="col-sm-7" id="bottom-l">
+    <div class="card">
+        <div class="card-header">
+            <h5>Histomorphometry</h5>
+        </div>
+        <div class="card-block">
+            <label class="form-check-label" id="_partType100"><input class="form-check-input"
+                                                                     id="partType100" size='5'>
+                Number of lobules in biopsy </label> <br>
+            <label class="form-check-label" id="_partType101"><input class="form-check-input"
+                                                                     id="partType101" size='5'>
+                Number of atrophic lobules </label> <br>
+            <hr>
+            <label class="form-check-label" id="_partType200"><input class="form-check-input"
+                                                                     id="partType200"
+                                                                     type='checkbox'> Adequate
+                sample </label> <br>
+            <label class="form-check-label" id="_partType201"><input class="form-check-input"
+                                                                     id="partType201"
+                                                                     type='checkbox'> Suboptimal
+                sample due to small size </label> <br>
+            <label class="form-check-label" id="_partType202"><input class="form-check-input"
+                                                                     id="partType202"
+                                                                     type='checkbox'> All acini show
+                atrophic changes </label> <br>
+            <label class="form-check-label" id="_partType203"><input class="form-check-input"
+                                                                     id="partType203"
+                                                                     type='checkbox'> No salivary
+                gland acini present - just fat </label> <br>
+            <label class="form-check-label" id="_partType204"><input class="form-check-input"
+                                                                     id="partType204"
+                                                                     type='checkbox'> No salivary
+                gland acini present - lymph node </label> <br>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <h5>Acinar Histologic Findings</h5>
+        </div>
+        <div class="card-block">
+            <label class="form-check-label" id="_mxLine200"><input class="form-check-input"
+                                                                   id="mxLine200" type='checkbox'>
+                Normal lobules description (no atrophy) </label> <br>
+            <label class="form-check-label" id="_mxLine201"><input class="form-check-input"
+                                                                   id="mxLine201" type='checkbox'>
+                Lobules with some atrophy</label> <br>
+            <hr>
+            <div class="bg-warning mb-2">Qualifiers</div>
+            <label class="form-check-label" id="_mxLine202"><input class="form-check-input"
+                                                                   id="mxLine202" type='checkbox'>
+                Focal duct injury with fibrosis </label> <br>
+            <label class="form-check-label" id="_mxLine203"><input class="form-check-input"
+                                                                   id="mxLine203" type='checkbox'>
+                Focal duct injury with fibrosis + granulomas </label> <br>
+
+            <div class="bg-warning mb-2 mt-3">Inflammation</div>
+            <label class="form-check-label" id="_mxLine204"><input class="form-check-input"
+                                                                   id="mxLine204" type='checkbox'>
+                No lymphoplasmacytic infiltrates </label> <br>
+            <label class="form-check-label" id="_mxLine205"><input class="form-check-input"
+                                                                   id="mxLine205" type='checkbox'>
+                Focal sialadenitis </label> <br>
+            <label class="form-check-label" id="_mxLine206"><input class="form-check-input"
+                                                                   id="mxLine206" type='checkbox'>
+                Multifocal sialadenitis </label> <br>
+
+            <div class="bg-warning mb-2 mt-3">Additional biopsy findings</div>
+            <label class="form-check-label" id="_mxLine211"><input class="form-check-input"
+                                                                   id="mxLine211" type='checkbox'>
+                No lymphoepithelial lesions </label> <br>
+            <label class="form-check-label" id="_mxLine212"><input class="form-check-input"
+                                                                   id="mxLine212" type='checkbox'>
+                Lymphoepithelial lesions are present</label> <br>
+            <label class="form-check-label" id="_mxLine213"><input class="form-check-input"
+                                                                   id="mxLine213" type='checkbox'>
+                No germinal center formation </label> <br>
+            <label class="form-check-label" id="_mxLine214"><input class="form-check-input"
+                                                                   id="mxLine214" type='checkbox'>
+                Germinal centers present </label> <br>
+            <hr>
+
+            <div class="bg-info mb-2">Focus Score</div>
+            <input type="number" id="mxLine100" size='5'> Total surface area (mm^2) <br>
+            <input type="number" id="mxLine101" size='5'> Total inflammatory foci <br>
+            <label class="form-check-label" id="_mxLine210"><input class="form-check-input"
+                                                                   id="mxLine210" type='checkbox'>
+                Check here to include FS </label> <br>
+            <label class="form-check-label" id="_mxLine209"><input class="form-check-input"
+                                                                   id="mxLine209" type='checkbox'>
+                Check here if you cannot perform FS </label> <br>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <h5>Final Diagnoses</h5>
+        </div>
+        <div class="card-block">
+            <label class="form-check-label" id="_dxOut100"><input class="form-check-input"
+                                                                  id="dxOut100" type='checkbox'>
+                Normal salivary glands</label> <br>
+            <label class="form-check-label" id="_dxOut101"><input class="form-check-input"
+                                                                  id="dxOut101" type='checkbox'>
+                Focal lymphocytic sialadenitis</label> <br>
+            <label class="form-check-label" id="_dxOut102"><input class="form-check-input"
+                                                                  id="dxOut102" type='checkbox'>
+                Multifocal lymphocytic sialadenitis</label> <br>
+            <label class="form-check-label" id="_dxOut103"><input class="form-check-input"
+                                                                  id="dxOut103" type='checkbox'>
+                Lymphocytic sialadenitis with focal atrophy</label> <br>
+            <label class="form-check-label" id="_dxOut104"><input class="form-check-input"
+                                                                  id="dxOut104" type='checkbox'>
+                Atrophic sialadenitis</label> <br>
+            <label class="form-check-label" id="_dxOut105"><input class="form-check-input"
+                                                                  id="dxOut105" type='checkbox'>
+                Chronic sialadenitis with duct fibrosis</label> <br>
+
+        </div>
+    </div>
+</div>
+<!-- middle right text output-->
+<div class="col-sm-5 " id="bottom-r">
+    <div class="card text-center ">
+        <div class="card-header">
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a class="btn btn-outline-info p-2" id="writeReport">
+                        <small>Write Report</small>
+                    </a>
+                    <a class="btn btn-outline-danger p-1 mb-2 ml-4" id="Reset">Reset</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-block">
+            <div class="form-group">
+                <textarea class="form-control" id="outPut-2" rows="9"
+                          placeholder="Micro"></textarea>
+                <span class="input-group-addon copy btn btn-primary"
+                      data-clipboard-target="#outPut-2">Copy to Clipboard</span>
+            </div>
+        </div>
+        <div class="card-block">
+            <div class="form-group">
+                <textarea class="form-control" id="outPut-3" rows="6"
+                          placeholder="Finals"></textarea>
+                <span class="input-group-addon copy btn btn-primary"
+                      data-clipboard-target="#outPut-3">Copy to Clipboard</span>
+            </div>
+        </div>
+        <div class="card-block">
+            <div class="form-group">
+                <textarea class="form-control" id="outPut-4" rows="6"
+                          placeholder="Comments"></textarea>
+                <span class="input-group-addon copy btn btn-primary"
+                      data-clipboard-target="#outPut-4">Copy to Clipboard</span>
             </div>
         </div>
     </div>
-    <div class="container-fluid">
-        <div class="row">
-            <!--middle colored boxes-->
-            <div class="container">
-                <div class="row row-grid ">
-                    <!-- bottom left column-->
-                    <div class="col-sm-7" id="bottom-l">
-                        <div class="card">
-                            <div class="card-header">
-                                <h5>Histomorphometry</h5>
-                            </div>
-                            <div class="card-block">
-                                <label class="form-check-label" id="_partType100"><input class="form-check-input"
-                                                                                         id="partType100" size='5'>
-                                    Number of lobules in biopsy </label> <br>
-                                <label class="form-check-label" id="_partType101"><input class="form-check-input"
-                                                                                         id="partType101" size='5'>
-                                    Number of atrophic lobules </label> <br>
-                                <hr>
-                                <label class="form-check-label" id="_partType200"><input class="form-check-input"
-                                                                                         id="partType200"
-                                                                                         type='checkbox'> Adequate
-                                    sample </label> <br>
-                                <label class="form-check-label" id="_partType201"><input class="form-check-input"
-                                                                                         id="partType201"
-                                                                                         type='checkbox'> Suboptimal
-                                    sample due to small size </label> <br>
-                                <label class="form-check-label" id="_partType202"><input class="form-check-input"
-                                                                                         id="partType202"
-                                                                                         type='checkbox'> All acini show
-                                    atrophic changes </label> <br>
-                                <label class="form-check-label" id="_partType203"><input class="form-check-input"
-                                                                                         id="partType203"
-                                                                                         type='checkbox'> No salivary
-                                    gland acini present - just fat </label> <br>
-                                <label class="form-check-label" id="_partType204"><input class="form-check-input"
-                                                                                         id="partType204"
-                                                                                         type='checkbox'> No salivary
-                                    gland acini present - lymph node </label> <br>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header">
-                                <h5>Acinar Histologic Findings</h5>
-                            </div>
-                            <div class="card-block">
-                                <label class="form-check-label" id="_mxLine200"><input class="form-check-input"
-                                                                                       id="mxLine200" type='checkbox'>
-                                    Normal lobules description (no atrophy) </label> <br>
-                                <label class="form-check-label" id="_mxLine201"><input class="form-check-input"
-                                                                                       id="mxLine201" type='checkbox'>
-                                    Lobules with some atrophy</label> <br>
-                                <hr>
-                                <div class="bg-warning mb-2">Qualifiers</div>
-                                <label class="form-check-label" id="_mxLine202"><input class="form-check-input"
-                                                                                       id="mxLine202" type='checkbox'>
-                                    Focal duct injury with fibrosis </label> <br>
-                                <label class="form-check-label" id="_mxLine203"><input class="form-check-input"
-                                                                                       id="mxLine203" type='checkbox'>
-                                    Focal duct injury with fibrosis + granulomas </label> <br>
-
-                                <div class="bg-warning mb-2 mt-3">Inflammation</div>
-                                <label class="form-check-label" id="_mxLine204"><input class="form-check-input"
-                                                                                       id="mxLine204" type='checkbox'>
-                                    No lymphoplasmacytic infiltrates </label> <br>
-                                <label class="form-check-label" id="_mxLine205"><input class="form-check-input"
-                                                                                       id="mxLine205" type='checkbox'>
-                                    Focal sialadenitis </label> <br>
-                                <label class="form-check-label" id="_mxLine206"><input class="form-check-input"
-                                                                                       id="mxLine206" type='checkbox'>
-                                    Multifocal sialadenitis </label> <br>
-
-                                <div class="bg-warning mb-2 mt-3">Additional biopsy findings</div>
-                                <label class="form-check-label" id="_mxLine211"><input class="form-check-input"
-                                                                                       id="mxLine211" type='checkbox'>
-                                    No lymphoepithelial lesions </label> <br>
-                                <label class="form-check-label" id="_mxLine212"><input class="form-check-input"
-                                                                                       id="mxLine212" type='checkbox'>
-                                    Lymphoepithelial lesions are present</label> <br>
-                                <label class="form-check-label" id="_mxLine213"><input class="form-check-input"
-                                                                                       id="mxLine213" type='checkbox'>
-                                    No germinal center formation </label> <br>
-                                <label class="form-check-label" id="_mxLine214"><input class="form-check-input"
-                                                                                       id="mxLine214" type='checkbox'>
-                                    Germinal centers present </label> <br>
-                                <hr>
-
-                                <div class="bg-info mb-2">Focus Score</div>
-                                <input id="mxLine100" size='5'> Total surface area (mm^2) <br>
-                                <input id="mxLine101" size='5'> Total inflammatory foci <br>
-                                <label class="form-check-label" id="_mxLine210"><input class="form-check-input"
-                                                                                       id="mxLine210" type='checkbox'>
-                                    Check here to include FS </label> <br>
-                                <label class="form-check-label" id="_mxLine209"><input class="form-check-input"
-                                                                                       id="mxLine209" type='checkbox'>
-                                    Check here if you cannot perform FS </label> <br>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header">
-                                <h5>Final Diagnoses</h5>
-                            </div>
-                            <div class="card-block">
-                                <label class="form-check-label" id="_dxOut100"><input class="form-check-input"
-                                                                                      id="dxOut100" type='checkbox'>
-                                    Normal salivary glands</label> <br>
-                                <label class="form-check-label" id="_dxOut101"><input class="form-check-input"
-                                                                                      id="dxOut101" type='checkbox'>
-                                    Focal lymphocytic sialadenitis</label> <br>
-                                <label class="form-check-label" id="_dxOut102"><input class="form-check-input"
-                                                                                      id="dxOut102" type='checkbox'>
-                                    Multifocal lymphocytic sialadenitis</label> <br>
-                                <label class="form-check-label" id="_dxOut103"><input class="form-check-input"
-                                                                                      id="dxOut103" type='checkbox'>
-                                    Lymphocytic sialadenitis with focal atrophy</label> <br>
-                                <label class="form-check-label" id="_dxOut104"><input class="form-check-input"
-                                                                                      id="dxOut104" type='checkbox'>
-                                    Atrophic sialadenitis</label> <br>
-                                <label class="form-check-label" id="_dxOut105"><input class="form-check-input"
-                                                                                      id="dxOut105" type='checkbox'>
-                                    Chronic sialadenitis with duct fibrosis</label> <br>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- middle right text output-->
-                    <div class="col-sm-5 " id="bottom-r">
-                        <div class="card text-center ">
-                            <div class="card-header">
-                                <ul class="nav nav-pills">
-                                    <li class="nav-item">
-                                        <a class="btn btn-outline-info p-2" id="writeReport">
-                                            <small>Write Report</small>
-                                        </a>
-                                        <a class="btn btn-outline-danger p-1 mb-2 ml-4" id="Reset">Reset</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="card-block">
-                                <div class="form-group">
-                                    <textarea class="form-control" id="outPut-2" rows="9"
-                                              placeholder="Micro"></textarea>
-                                    <span class="input-group-addon copy btn btn-primary"
-                                          data-clipboard-target="#outPut-2">Copy to Clipboard</span>
-                                </div>
-                            </div>
-                            <div class="card-block">
-                                <div class="form-group">
-                                    <textarea class="form-control" id="outPut-3" rows="6"
-                                              placeholder="Finals"></textarea>
-                                    <span class="input-group-addon copy btn btn-primary"
-                                          data-clipboard-target="#outPut-3">Copy to Clipboard</span>
-                                </div>
-                            </div>
-                            <div class="card-block">
-                                <div class="form-group">
-                                    <textarea class="form-control" id="outPut-4" rows="6"
-                                              placeholder="Comments"></textarea>
-                                    <span class="input-group-addon copy btn btn-primary"
-                                          data-clipboard-target="#outPut-4">Copy to Clipboard</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{> page-modals/combined-report}}
-    {{> page-modals/new-case-reference}}
-    {{> page-partials/history-module}}
+</div>
+</div>
+</div>
+</div>
+</div>
+{{> page-modals/combined-report}}
+{{> page-modals/new-case-reference}}
+{{> page-partials/history-module}}
 </div>
 <!--end container wrapper-->
 
 <!--
 
 {"specificScripts":
-	[
-		"/json/json-sjogrens.js",
-		"/js/gi-path/sjogrens-scripts.js",
-	]
+[
+"/json/json-sjogrens.js",
+"/js/gi-path/sjogrens-scripts.js",
+]
 }
 
 -->
