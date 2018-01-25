@@ -221,7 +221,9 @@
 				<option value="pM1">pM1: Distant metastasis</option>
 			</select>
 			<input type="text" class="form-control form-control-sm col-sm-6" id="box15_2" style="display:none;" placeholder="Specify metastatic sites">
+
 			<div class="py-2 w-100"></div>
+
 			<form class="form-inline">
 				<label class="form-check-label">Check here if any lymph nodes submitted?
 					<input class="form-control form-control-sm col-sm-6" type="checkbox" id="box16" >
@@ -232,9 +234,13 @@
 				<button class="btn btn-sm btn-info m-3"  data-toggle="modal" data-target="#help_thyroid_node">Some information about lymph node levels</button>
 
 				<form class="form-inline col-8">
-					<label class="m-2">Number of lymph nodes examined: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box17" style="width:100px"></label>
-					<label class="m-2">Number of lymph nodes involved: <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box18" style="width:100px"></label>
+					<label class="m-2">Number of lymph nodes examined:
+						<input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box17" style="width:100px"></label>
+					<label class="m-2">Number of lymph nodes involved:
+						<input type="number" class="form-control form-control-sm col-sm-6 ml-3 subnode" id="box18" style="width:100px"></label>
+
 					<div class="py-2 w-100"></div>
+
 					Specify Nodal Levels examined
 					<select multiple id="box20" class='form-control selectpicker form-control-sm col-sm-6 m-2'>
 						<option>Level VI - (central compartment dissection)</option>

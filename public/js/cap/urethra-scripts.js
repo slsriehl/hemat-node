@@ -184,6 +184,7 @@ $(window).on("load", function() {
     });
 
     $("#box18").on("input", function () {
+        setTimeout(100);
         var num = parseInt($(this).val());
         if (num > 0) {
             $(".posnodes").show();

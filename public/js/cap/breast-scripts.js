@@ -79,8 +79,8 @@ $(window).on('load', function () {
     });
 
     $("#box18, #box17").on("input", function () {
-        var ln_itc = $("#box18").val() +
-            $("#box17").val();
+        setTimeout(100);
+        var ln_itc = $("#box18").val() + $("#box17").val();
         if (parseFloat(ln_itc) > 0) {
             $(".itc").show();
             $(".posnodes").show();

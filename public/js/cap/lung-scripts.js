@@ -150,7 +150,8 @@ $(window).on('load', function () {
         }
     });
 
-    $("#box32").on('input', function () {
+    $("#box32").on("input", function () {
+        setTimeout(100);
         if ($(this).val() > 0) {
             $(".posnodes").show();
         } else {

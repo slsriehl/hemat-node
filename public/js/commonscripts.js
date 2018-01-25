@@ -407,9 +407,7 @@ $(function () {
 	// validate lymph nodes to max on total submitted
     $(".maxnode").on("input", function() {
         var totnode = parseFloat($(this).val());
-            $(".subnode").attr({
-                max: totnode
-            });
+        	$(".subnode").attr({max:totnode});
 
     });
 
@@ -421,16 +419,15 @@ $(function () {
 
     });
 
+	var totinput = 0; // staring node involved
     $(".subnode").on("input", function(e){
-        var num = parseFloat($(this).val());
-        var max = parseFloat($(this).attr("max"));
-
-        if (num > max){
-            console.log("node numeric validation error");
-            e.preventDefault();
-            $(this).val('')
-        }
-
+        var num = Number($(this).val()); // this input
+        var max = Number($(this).attr("max")); // get max input
+            if (num > max){ // prevent any inputs
+                console.log("node numeric validation error");
+                e.preventDefault();
+                $(this).val('')
+            }
     })
 
 });

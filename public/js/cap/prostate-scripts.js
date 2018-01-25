@@ -135,6 +135,7 @@ $(window).on('load', function () {
     });
 
     $("#box31").on("input", function () {
+        setTimeout(100);
         var num = parseInt($(this).val(), 10);
         if (num > 0) {
             $(".posnodes").show();

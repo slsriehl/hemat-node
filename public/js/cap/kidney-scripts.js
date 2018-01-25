@@ -104,7 +104,8 @@ $(window).on('load', function () {
         }
     });
 
-    $("#box20").on('input', function () {
+    $("#box20").on("input", function () {
+        setTimeout(100);
         var sel = $(this).val();
         if (sel > 0) {
             $(".posnodes").show();

@@ -172,7 +172,8 @@ $(window).on('load', function() {
             $(".lnchk").hide();}
     });
 
-    $("#box16").on("input", function(){
+    $("#box16").on("input", function () {
+        setTimeout(100);
         var num = parseInt($(this).val() )
         if (num > 0){
             $(".posnodes").show();}

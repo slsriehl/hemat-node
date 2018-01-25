@@ -90,6 +90,7 @@ $(window).on('load', function () {
     });
 
     $("#box18").on("input", function () {
+        setTimeout(100);
         var sel = $(this).val();
         if (sel > 0) {
             $('.node-involved').show();

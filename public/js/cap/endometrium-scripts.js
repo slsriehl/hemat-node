@@ -164,6 +164,7 @@ $(window).on('load', function () {
 
     var pelnodes = 0;
     $(".pelnode").on("input", function () {
+        setTimeout(100);
         var pelnodes_1 =  Number($('#box25').val()) || 0;
         var pelnodes_2 = Number($('#box26').val()) || 0;
         var pelnodes_3 = Number($('#box27').val()) || 0;
@@ -179,6 +180,7 @@ $(window).on('load', function () {
 
     var paranodes = 0;
     $(".paranode").on("input", function () {
+        setTimeout(100);
         paranodes =  Number($('#box33').val())
             + Number($('#box34').val())
             + Number($('#box35').val());

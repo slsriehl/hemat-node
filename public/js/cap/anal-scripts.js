@@ -174,6 +174,7 @@ $(window).on('load', function () {
     });
 
     $('#box29').on("input", function () {
+        setTimeout(100);
         var sel = parseInt($('#box29').val(), 10);
         if (sel > 0) {
             $('.posnodes').show();

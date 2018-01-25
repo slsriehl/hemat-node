@@ -82,6 +82,7 @@ $(window).on('load', function () {
     });
 
     $("#box17").on("input", function () {
+        setTimeout(100);
         var sel = $(this).val();
         if (sel > 0) {
             $(".posnodes").show();

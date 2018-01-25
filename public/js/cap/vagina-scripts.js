@@ -108,7 +108,8 @@ $(window).on("load", function() {
     });
 
 
-    $("#box15, #box16").on("input", function(){
+    $("#box15, #box16".on("input", function () {
+        setTimeout(100);
         var nodes = $("#box15").val() + $("#box16").val();
         nodes = parseInt(nodes, 10);
         console.log("nodes positive: "+typeof nodes);
