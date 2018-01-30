@@ -259,10 +259,10 @@ $(window).on("load", function() {
         var box_7 = $("#box7").val();
         var box_8 = $("#box8").val();
         var box_9 = $("#box9").val();
-        var box_20 = $("#box9").val();
-        var box_21 = $("#box9").val();
-        var box_21_2 = $("#box9_2").val();
-        captext += "\nTumor Extent:\n- ";
+        var box_20 = $("#box20").val();
+        var box_21 = $("#box21").val();
+        var box_21_2 = $("#box21_2").val();
+        captext += "\nTumor Extent:\n";
         captext += "\tGerota’s Fascia: " + box_7 + "\n";
 
         captext += "\tRenal Sinus: " + box_8 + "\n";
@@ -350,7 +350,7 @@ $(window).on("load", function() {
 
         var box_17 = $("#box17").val();
         captext +=
-            "\nChildren’s Oncology Group Staging System :\n- " +
+            "\nChildren’s Oncology Group Staging System:\n- " +
             box_17 +
             "\n";
 
