@@ -209,43 +209,45 @@ $(window).on("load", function() {
         var trig3_box_5 = box_5.filter(function(el) {
             return el.indexOf("Other") > -1;
         });
-
-        if (trig1_box_5.length > 0 && trig2_box_5.length == 0) {
-            captext +=
-                "\nAdditional dimensions of multiple tumors:\n- Tumor #2 maximum size: " +
-                box_5_2.replace(/cm/, "") +
-                "cm\n";
-        } else if (trig1_box_5.length == 0 && trig2_box_5.length > 0) {
-            captext +=
-                "\nAdditional dimensions of multiple tumors:\n- Tumor #3 maximum size: " +
-                box_5_3.replace(/cm/, "") +
-                "cm\n";
-        } else if (trig1_box_5.length > 0 && trig2_box_5.length > 0) {
-            captext +=
-                "\nAdditional dimensions of multiple tumors:\n- Tumor #2 maximum size: " +
-                box_5_2.replace(/cm/, "") +
-                "cm\n- Tumor #3 maximum size: " +
-                box_5_3.replace(/cm/, "") +
-                "cm\n";
-        } else if (
-            trig3_box_5.length > 0 &&
-            trig1_box_5.length > 0 &&
-            trig2_box_5.length > 0
-        ) {
-            captext +=
-                "\nAdditional dimensions of multiple tumors:\n- Tumor #2 maximum size: " +
-                box_5_2.replace(/cm/, "") +
-                "cm\n- Tumor #3 maximum size: " +
-                box_5_3.replace(/cm/, "") +
-                "cm\n- Other tumors maximum size: " +
-                box_5_4.replace(/cm/, "") +
-                "cm\n";
-        } else {
-            captext +=
-                "\nAdditional dimensions of multiple tumors:\n- " +
-                box_5.join("\n- ") +
-                "\n";
+        if (box_5.length> 0){
+            if (trig1_box_5.length > 0 && trig2_box_5.length == 0) {
+                captext +=
+                    "\nAdditional dimensions of multiple tumors:\n- Tumor #2 maximum size: " +
+                    box_5_2.replace(/cm/, "") +
+                    "cm\n";
+            } else if (trig1_box_5.length == 0 && trig2_box_5.length > 0) {
+                captext +=
+                    "\nAdditional dimensions of multiple tumors:\n- Tumor #3 maximum size: " +
+                    box_5_3.replace(/cm/, "") +
+                    "cm\n";
+            } else if (trig1_box_5.length > 0 && trig2_box_5.length > 0) {
+                captext +=
+                    "\nAdditional dimensions of multiple tumors:\n- Tumor #2 maximum size: " +
+                    box_5_2.replace(/cm/, "") +
+                    "cm\n- Tumor #3 maximum size: " +
+                    box_5_3.replace(/cm/, "") +
+                    "cm\n";
+            } else if (
+                trig3_box_5.length > 0 &&
+                trig1_box_5.length > 0 &&
+                trig2_box_5.length > 0
+            ) {
+                captext +=
+                    "\nAdditional dimensions of multiple tumors:\n- Tumor #2 maximum size: " +
+                    box_5_2.replace(/cm/, "") +
+                    "cm\n- Tumor #3 maximum size: " +
+                    box_5_3.replace(/cm/, "") +
+                    "cm\n- Other tumors maximum size: " +
+                    box_5_4.replace(/cm/, "") +
+                    "cm\n";
+            } else {
+                captext +=
+                    "\nAdditional dimensions of multiple tumors:\n- " +
+                    box_5.join("\n- ") +
+                    "\n";
+            }
         }
+
 
         var box_6 = $("#box6").val();
         var box_6_2 = $("#box6_2").val();
@@ -327,7 +329,7 @@ $(window).on("load", function() {
 
         var box_14 = $("#box14").val();
         var box_15 = $("#box15").val();
-        if (box_14.length == 0) {
+        if (box_14 != 0) {
             captext +=
                 "\nLymph nodes:\n\tLymph Nodes Examined: " +
                 box_14 +
