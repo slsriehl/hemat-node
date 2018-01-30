@@ -1,297 +1,297 @@
-		<div class="container-fluid">
-		<!-- Breadcrumbs -->
-		<ol class="breadcrumb">
-				<li class="breadcrumb-item">
-						<a href="/">Home</a>
-				</li>
-				<li class="breadcrumb-item">
-					Clinical Pathology Tools
-				</li>
-				<li class="breadcrumb-item active" id="bc-jump"><i class="fa fa-eyedropper mr-2"></i>Bronchoalveolar Lavage Cytology Reports</li>
-		</ol>
+<div class="container-fluid">
+<!-- Breadcrumbs -->
+<ol class="breadcrumb">
+<li class="breadcrumb-item">
+		<a href="/">Home</a>
+</li>
+<li class="breadcrumb-item">
+	Clinical Pathology Tools
+</li>
+<li class="breadcrumb-item active" id="bc-jump"><i class="fa fa-eyedropper mr-2"></i>Bronchoalveolar Lavage Cytology Reports</li>
+</ol>
 
- {{> message-center this}}
+{{> message-center this}}
 
-		<div class="card mb-3">
-				<div class="card-header bg-info">
-						<!-- How to use and modal -->
-						<div class="row">
-								<button class="btn btn-default btn-block" data-target="#flipFlop" data-toggle="modal" id='openhelp'
-												type='button'> How to use
-								</button>
-						</div>
+<div class="card mb-3">
+<div class="card-header bg-info">
+		<!-- How to use and modal -->
+		<div class="row">
+				<button class="btn btn-default btn-block" data-target="#flipFlop" data-toggle="modal" id='openhelp'
+								type='button'> How to use
+				</button>
+		</div>
+</div>
+</div>
+<div class="row">
+						<!-- bottom left column-->
+	<div class="col col-md-8" id="bottom-l">
+		<div class="card">
+				<div class="card-header">
+						<h5>BAL Reports</h5>
+				</div>
+				<div class="card-block">
+					<div class="table-responsive">
+						<table class="table table-hover">
+								<tr>
+										<th class="h6">Clinical info:</th>
+										<td>
+												<select class="form-control selectpicker form-control-sm col-sm-8" multiple id="box0">
+														<option>wheezing</option>
+														<option>cystic fibrosis</option>
+														<option>reflux</option>
+														<option>aspiration</option>
+														<option>bronchiectasis</option>
+														<option>chronic cough</option>
+														<option>asthma</option>
+														<option>atelectasis</option>
+														<option>failure to thrive</option>
+														<option>tracheomalacia</option>
+														<option>hemoptysis</option>
+														<option>GERD</option>
+												</select>
+
+										</td>
+								</tr>
+
+								<tr>
+										<th ><p class="h6">Source:</p>
+												<div class="form-check form-check-inline">
+														<label class="form-check-label">
+																<input class="form-check-input form-control-sm double" type="checkbox" >2 separate bottles?</label>
+												</div>
+										</th>
+										<td colspan="2">
+												<select class="form-control selectpicker form-control-sm " multiple id="box1">
+														<option>Right lower lobe</option>
+														<option>Right middle lobe</option>
+														<option>Right upper lobe</option>
+														<option>Left lower lobe</option>
+														<option>Left upper lobe</option>
+														<option>Lingula</option>
+														<option>Trachea</option>
+														<option>Carina</option>
+												</select>
+										</td>
+
+								</tr>
+
+								<tr>
+										<th class="h6">Volume of fluid (ml):</th>
+										<td>
+												<input class="form-control form-control-sm col-4" id="box2"  placeholder=''>
+										</td>
+								</tr>
+
+								<tr>
+										<th class="h6">Fluid description:</th>
+										<td>
+												<select class="form-control selectpicker form-control-sm" multiple id="box3">
+												<option>clear</option>
+												<option selected>cloudy</option>
+												<option selected>mucoid</option>
+												<option>thin</option>
+												<option>viscous</option>
+												<option>bloody</option>
+												</select>
+										</td>
+								</tr>
+
+								<tr>
+										<th class="h6">Fluid color</th>
+										<td>
+												<select class="form-control selectpicker form-control-sm col-6" id="box4">
+														<option>white</option>
+														<option>gray</option>
+														<option>straw</option>
+														<option>pink</option>
+														<option>red</option>
+														<option>brown</option>
+												</select>
+										</td>
+								</tr>
+
+								<tr>
+										<th class="h6">Tests ordered</th>
+										<td>
+												<select class="form-control selectpicker form-control-sm col-8" multiple id="box5">
+														<option selected>DQ</option>
+														<option selected>Pap</option>
+														<option>ORO</option>
+														<option>Fe</option>
+														<option>GMS</option>
+														<option>cell count</option>
+												</select>
+										</td>
+								</tr>
+
+								<tr>
+										<th class="count" style="display: none;"><p class="h6">Differential</p>
+												<div class="form-check form-check-inline">
+														<label class="form-check-label">
+																<input type="checkbox" class="form-check-input form-control-sm baldiff">Check to include diff</label>
+												</div>
+										</th>
+										<td class="count" style="display: none;">
+												<div class="form-inline row">
+														<label class="form-check-label">% Macrophages<input class="form-control form-control-sm col-sm-3 m-1 " id="box13"  value="0"> </label>
+												</div>
+												<div class="form-inline row">
+														<label class="form-check-label">% Neutrophils <input class="form-control form-control-sm col-sm-3 m-1" id="box14"  value="0"></label>
+												</div>
+												<div class="form-inline row">
+														<label class="form-check-label"> % Lymphocytes <input class="form-control form-control-sm col-sm-3 m-1" id="box15"  value="0"></label>
+												</div>
+												<div class="form-inline row">
+														<label class="form-check-label">% Eosinophils<input class="form-control form-control-sm col-sm-3 m-1" id="box16"  value="0"> </label>
+												</div>
+
+										</td>
+								</tr>
+
+								<tr>
+										<th class="h6">Microscopic</th>
+										<td>
+												<select class="form-control selectpicker form-control-sm col-sm-8" id="box12">
+														<option>abundantly cellular</option>
+														<option>moderately cellular</option>
+														<option>minimally cellular</option>
+														<option>paucicellular </option>
+												</select>
+										</td>
+								</tr>
+
+								<tr>
+										<th class="h6">Cell mixture</th>
+										<td>
+												<select class="form-control selectpicker form-control-sm" id="box6">
+														<option value='mxLine150'>predominantly macrophages, few epithelial</option>
+														<option value='mxLine151'>predominantly macrophages, few neutrophils</option>
+														<option value='mxLine152'>mixed macrophages and neutrophils</option>
+														<option value='mxLine153'>predominantly neutrophils, fewer macrophages</option>
+														<option value='mxLine154'>mixed neutrophils and eosinophils</option>
+														<option value='mxLine155'>predominantly squamous epithelial cells; no respiratory epithelium present</option>
+														<option value='mxLine156'>mucoid debris and degenerating cells</option>
+														<option value='mxLine157'>necroinflammatory material</option>
+														<option value='mxLine158'>predominantly macrophages, scant blood</option>
+														<option value='mxLine159'>Hemorrhage</option>
+												</select>
+										</td>
+								</tr>
+
+								<tr>
+										<th class="h6">Bugs?</th>
+										<td>
+												<select class="form-control selectpicker form-control-sm " id="box7">
+														<option value='mxLine200'>no microorganisms seen</option>
+														<option value='mxLine201'>No fungal elements present on routine stains</option>
+														<option value='mxLine202'>extracellular bacteria present</option>
+														<option value='mxLine203'>intracellular bacteria present</option>
+														<option value='mxLine204'>fungal hyphae present; no bacteria</option>
+														<option value='mxLine205'>fungal yeast present; no bacteria</option>
+														<option value='mxLine206'>fungal elements and intracellular bacteria seen</option>
+												</select>
+										</td>
+								</tr>
+
+								<tr>
+										<th class="h6">Atypia?</th>
+										<td>
+												<select class="form-control selectpicker form-control-sm " id="box8">
+														<option value='mxLine220'>No malignant cells are present</option>
+														<option value='mxLine221'>Few epithelial cells show possible viral cytopathic changes; no malignant cells present</option>
+												</select>
+										</td>
+								</tr>
+								<tr>
+										<th class="h6">Special stains</th>
+										<td>
+												<div class="form-group row lipid" style="display: none;">
+														<label for="box9" class="col-sm-2 col-form-label">
+																ORO:</label>
+														<select class="form-control selectpicker form-control-sm col-8" id="box9">
+																<option >Not applicable</option>
+																<option value='mxLine230'>No increase</option>
+																<option value='mxLine231'>few present; not significant</option>
+																<option value='mxLine232'>significantly increased</option>
+														</select>
+												</div>
+												<div class="form-group row iron" style="display: none;">
+														<label for="box10" class="col-sm-2 col-form-label">
+																Fe:</label>
+														<select class="form-control selectpicker form-control-sm col-8" id="box10">
+																<option>Not applicable</option>
+																<option value='mxLine233'>No increase</option>
+																<option value='mxLine234'>few present</option>
+																<option value='mxLine235'>significantly increased</option>
+														</select>
+												</div>
+												<div class="form-group row fungus" style="display: none;">
+														<label for="box11" class="col-sm-2 col-form-label">
+																GMS:</label>
+														<select class="form-control selectpicker form-control-sm col-8" id="box11">
+																<option>Not applicable</option>
+																<option value='mxLine236'>No fungus or PCP</option>
+																<option value='mxLine237'>Fungal hypae present; no PCP</option>
+																<option value='mxLine238'>Fungal yeast present; no PCP</option>
+																<option value='mxLine239'>PCP present; no fungal hyphae</option>
+														</select>
+												</div>
+
+										</td>
+								</tr>
+						</table>
+					</div>
 				</div>
 		</div>
-				<div class="row">
-										<!-- bottom left column-->
-										<div class="col col-md-8" id="bottom-l">
-												<div class="card">
-														<div class="card-header">
-																<h5>BAL Reports</h5>
-														</div>
-														<div class="card-block">
-																<div class="table-responsive">
-																		<table class="table table-hover">
-																				<tr>
-																						<th class="h6">Clinical info:</th>
-																						<td>
-																								<select class="form-control selectpicker form-control-sm col-sm-8" multiple id="box0">
-																										<option>wheezing</option>
-																										<option>cystic fibrosis</option>
-																										<option>reflux</option>
-																										<option>aspiration</option>
-																										<option>bronchiectasis</option>
-																										<option>chronic cough</option>
-																										<option>asthma</option>
-																										<option>atelectasis</option>
-																										<option>failure to thrive</option>
-																										<option>tracheomalacia</option>
-																										<option>hemoptysis</option>
-																										<option>GERD</option>
-																								</select>
+	</div>
+	<!-- middle right text output-->
+	<div class="col col-md-4" id="bottom-r">
+			<div class="card text-center">
+						<div class="card-header button-box">
+								<ul class="nav nav-pills standard-button-box">
+									<a class="btn btn-lg btn-outline-primary p-1" id="done">
+											<small>Write Report</small>
+									</a>
 
-																						</td>
-																				</tr>
-
-																				<tr>
-																						<th ><p class="h6">Source:</p>
-																								<div class="form-check form-check-inline">
-																										<label class="form-check-label">
-																												<input class="form-check-input form-control-sm double" type="checkbox" >2 separate bottles?</label>
-																								</div>
-																						</th>
-																						<td colspan="2">
-																								<select class="form-control selectpicker form-control-sm " multiple id="box1">
-																										<option>Right lower lobe</option>
-																										<option>Right middle lobe</option>
-																										<option>Right upper lobe</option>
-																										<option>Left lower lobe</option>
-																										<option>Left upper lobe</option>
-																										<option>Lingula</option>
-																										<option>Trachea</option>
-																										<option>Carina</option>
-																								</select>
-																						</td>
-
-																				</tr>
-
-																				<tr>
-																						<th class="h6">Volume of fluid (ml):</th>
-																						<td>
-																								<input class="form-control form-control-sm col-4" id="box2"  placeholder=''>
-																						</td>
-																				</tr>
-
-																				<tr>
-																						<th class="h6">Fluid description:</th>
-																						<td>
-																								<select class="form-control selectpicker form-control-sm" multiple id="box3">
-																								<option>clear</option>
-																								<option selected>cloudy</option>
-																								<option selected>mucoid</option>
-																								<option>thin</option>
-																								<option>viscous</option>
-																								<option>bloody</option>
-																								</select>
-																						</td>
-																				</tr>
-
-																				<tr>
-																						<th class="h6">Fluid color</th>
-																						<td>
-																								<select class="form-control selectpicker form-control-sm col-6" id="box4">
-																										<option>white</option>
-																										<option>gray</option>
-																										<option>straw</option>
-																										<option>pink</option>
-																										<option>red</option>
-																										<option>brown</option>
-																								</select>
-																						</td>
-																				</tr>
-
-																				<tr>
-																						<th class="h6">Tests ordered</th>
-																						<td>
-																								<select class="form-control selectpicker form-control-sm col-8" multiple id="box5">
-																										<option selected>DQ</option>
-																										<option selected>Pap</option>
-																										<option>ORO</option>
-																										<option>Fe</option>
-																										<option>GMS</option>
-																										<option>cell count</option>
-																								</select>
-																						</td>
-																				</tr>
-
-																				<tr>
-																						<th><p class="h6">Differential</p>
-																								<div class="form-check form-check-inline">
-																										<label class="form-check-label">
-																												<input type="checkbox" class="form-check-input form-control-sm baldiff">Check to include diff</label>
-																								</div>
-																						</th>
-																						<td>
-																								<div class="form-inline row">
-																										<label class="form-check-label">% Macrophages<input class="form-control form-control-sm col-sm-3 m-1 " id="box13"  value="0"> </label>
-																								</div>
-																								<div class="form-inline row">
-																										<label class="form-check-label">% Neutrophils <input class="form-control form-control-sm col-sm-3 m-1" id="box14"  value="0"></label>
-																								</div>
-																								<div class="form-inline row">
-																										<label class="form-check-label"> % Lymphocytes <input class="form-control form-control-sm col-sm-3 m-1" id="box15"  value="0"></label>
-																								</div>
-																								<div class="form-inline row">
-																										<label class="form-check-label">% Eosinophils<input class="form-control form-control-sm col-sm-3 m-1" id="box16"  value="0"> </label>
-																								</div>
-
-																						</td>
-																				</tr>
-
-																				<tr>
-																						<th class="h6">Microscopic</th>
-																						<td>
-																								<select class="form-control selectpicker form-control-sm col-sm-8" id="box12">
-																										<option>abundantly cellular</option>
-																										<option>moderately cellular</option>
-																										<option>minimally cellular</option>
-																										<option>paucicellular </option>
-																								</select>
-																						</td>
-																				</tr>
-
-																				<tr>
-																						<th class="h6">Cell mixture</th>
-																						<td>
-																								<select class="form-control selectpicker form-control-sm" id="box6">
-																										<option value='mxLine150'>predominantly macrophages, few epithelial</option>
-																										<option value='mxLine151'>predominantly macrophages, few neutrophils</option>
-																										<option value='mxLine152'>mixed macrophages and neutrophils</option>
-																										<option value='mxLine153'>predominantly neutrophils, fewer macrophages</option>
-																										<option value='mxLine154'>mixed neutrophils and eosinophils</option>
-																										<option value='mxLine155'>predominantly squamous epithelial cells; no respiratory epithelium present</option>
-																										<option value='mxLine156'>mucoid debris and degenerating cells</option>
-																										<option value='mxLine157'>necroinflammatory material</option>
-																										<option value='mxLine158'>predominantly macrophages, scant blood</option>
-																										<option value='mxLine159'>Hemorrhage</option>
-																								</select>
-																						</td>
-																				</tr>
-
-																				<tr>
-																						<th class="h6">Bugs?</th>
-																						<td>
-																								<select class="form-control selectpicker form-control-sm " id="box7">
-																										<option value='mxLine200'>no microorganisms seen</option>
-																										<option value='mxLine201'>No fungal elements present on routine stains</option>
-																										<option value='mxLine202'>extracellular bacteria present</option>
-																										<option value='mxLine203'>intracellular bacteria present</option>
-																										<option value='mxLine204'>fungal hyphae present; no bacteria</option>
-																										<option value='mxLine205'>fungal yeast present; no bacteria</option>
-																										<option value='mxLine206'>fungal elements and intracellular bacteria seen</option>
-																								</select>
-																						</td>
-																				</tr>
-
-																				<tr>
-																						<th class="h6">Atypia?</th>
-																						<td>
-																								<select class="form-control selectpicker form-control-sm " id="box8">
-																										<option value='mxLine220'>No malignant cells are present</option>
-																										<option value='mxLine221'>Few epithelial cells show possible viral cytopathic changes; no malignant cells present</option>
-																								</select>
-																						</td>
-																				</tr>
-																				<tr>
-																						<th class="h6">Special stains</th>
-																						<td>
-																								<div class="form-group row">
-																										<label for="box9" class="col-sm-2 col-form-label">
-																												ORO:</label>
-																										<select class="form-control selectpicker form-control-sm col-8" id="box9">
-																												<option >Not applicable</option>
-																												<option value='mxLine230'>No increase</option>
-																												<option value='mxLine231'>few present; not significant</option>
-																												<option value='mxLine232'>significantly increased</option>
-																										</select>
-																								</div>
-																								<div class="form-group row">
-																										<label for="box10" class="col-sm-2 col-form-label">
-																												Fe:</label>
-																										<select class="form-control selectpicker form-control-sm col-8" id="box10">
-																												<option>Not applicable</option>
-																												<option value='mxLine233'>No increase</option>
-																												<option value='mxLine234'>few present</option>
-																												<option value='mxLine235'>significantly increased</option>
-																										</select>
-																								</div>
-																								<div class="form-group row">
-																										<label for="box11" class="col-sm-2 col-form-label">
-																												GMS:</label>
-																										<select class="form-control selectpicker form-control-sm col-8" id="box11">
-																												<option>Not applicable</option>
-																												<option value='mxLine236'>No fungus or PCP</option>
-																												<option value='mxLine237'>Fungal hypae present; no PCP</option>
-																												<option value='mxLine238'>Fungal yeast present; no PCP</option>
-																												<option value='mxLine239'>PCP present; no fungal hyphae</option>
-																										</select>
-																								</div>
-
-																						</td>
-																				</tr>
-																		</table>
-																</div>
-														</div>
-												</div>
-										</div>
-										<!-- middle right text output-->
-										<div class="col col-md-4" id="bottom-r">
-												<div class="card text-center">
-															<div class="card-header button-box">
-																	<ul class="nav nav-pills standard-button-box">
-																		<a class="btn btn-lg btn-outline-primary p-1" id="done">
-																				<small>Write Report</small>
-																		</a>
-
-																		<a class="btn btn-lg btn-outline-danger p-1 ml-2" id="Reset" >
-																				<small>Reset</small>
-																		</a>
-																	</ul>
-															</div>
-															<div class="card-block">
-																<div class="form-group">
-																		<textarea class="form-control" id="outPut-1" rows="9" placeholder="Micro"></textarea>
-																		<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-1">Copy to Clipboard</span>
-																</div>
-																<div class="form-group">
-																		<textarea class="form-control" id="outPut-2" rows="6" placeholder="Finals"></textarea>
-																		<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-2">Copy to Clipboard</span>
-																</div>
-																<div class="form-group">
-																		<textarea class="form-control" id="outPut-3" rows="6" placeholder="Gross"></textarea>
-																		<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-3">Copy to Clipboard</span>
-																</div>
-																<div class="form-group">
-																		<textarea class="form-control" id="outPut-4" rows="6" placeholder="Comments"></textarea>
-																		<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-4">Copy to Clipboard</span>
-																</div>
-														</div>
-												</div>
-										</div>
-				</div>
-				<!-- The How-to-modal -->
+									<a class="btn btn-lg btn-outline-danger p-1 ml-2" id="Reset" >
+											<small>Reset</small>
+									</a>
+								</ul>
+						</div>
+						<div class="card-block">
+							<div class="form-group">
+									<textarea class="form-control" id="outPut-1" rows="9" placeholder="Micro"></textarea>
+									<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-1">Copy to Clipboard</span>
+							</div>
+							<div class="form-group">
+									<textarea class="form-control" id="outPut-2" rows="6" placeholder="Finals"></textarea>
+									<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-2">Copy to Clipboard</span>
+							</div>
+							<div class="form-group">
+									<textarea class="form-control" id="outPut-3" rows="6" placeholder="Gross"></textarea>
+									<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-3">Copy to Clipboard</span>
+							</div>
+							<div class="form-group">
+									<textarea class="form-control" id="outPut-4" rows="6" placeholder="Comments"></textarea>
+									<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-4">Copy to Clipboard</span>
+							</div>
+					</div>
+			</div>
+	</div>
+</div>
+<!-- The How-to-modal -->
 {{> page-modals/clin-path/bal-how-to-use}}
-				<!-- The alert modals-->
+<!-- The alert modals-->
 {{> page-modals/clin-path/bal-alert}}
-				{{> page-modals/combined-report}}
-				{{> page-modals/new-case-reference}}
-				{{> page-partials/history-module}}
-		<!--end container wrapper-->
+{{> page-modals/combined-report}}
+{{> page-modals/new-case-reference}}
+{{> page-partials/history-module}}
+<!--end container wrapper-->
 </div>
 <!--
 "specificScripts":
-	[
-		"/json/json-bal.js",
-		"/js/clin-path/bal-scripts.js"
-	]
+[
+"/json/json-bal.js",
+"/js/clin-path/bal-scripts.js"
+]
 -->

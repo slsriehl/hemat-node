@@ -1,152 +1,34 @@
 $(window).on('load', function(){
 
-// Automatically select diagnoses based on selections
-    $('select').on('change', function(){
-        var oro = $('#box9').val();
-        var fe = $('#box10').val();
-        var sel = $('#box6').val();
-        if ($(this).attr('id') == 'box6'){
-            if (sel == 'predominantly of alveolar macrophages, with fewer respiratory epithelial cells' ){
-                $('#box20 option:eq(0)').prop('selected', true).trigger('change');
-            } else if (sel == 'predominantly of a mixture of alveolar macrophages and neutrophils, with fewer respiratory epithelial cells' ){
-                $('#box20 option:eq(2)').prop('selected', true).trigger('change');
-            }else if (sel == 'predominantly of neutrophils, with fewer alveolar macrophages and respiratory epithelial cells' ){
-                $('#box20 option:eq(1)').prop('selected', true).trigger('change');
-            } else if (sel == 'predominantly of a mixture of neutrophils and eosinophils, with fewer alveolar macrophages and respiratory epithelial cells' ){
-                $('#box20 option:eq(3)').prop('selected', true).trigger('change');
-            } else if (sel == 'predominantly of oropharyngeal squamous epithelial cells; no alveolar macrophages or respiratory epithelial cells are present' ){
-                $('#box20 option:eq(4)').prop('selected', true).trigger('change');
-            } else if (sel == 'predominantly of mucoid debris, degenerating mononculear cells and few neutrophils' ){
-                $('#box20 option:eq(5)').prop('selected', true).trigger('change');
-            } else if (sel == 'predominantly of mucoid and necrotic debris with neutrophils' ){
-                $('#box20 option:eq(6)').prop('selected', true).trigger('change');
-            }
+//********** POP-UPS ********************//
 
-        } 	else if ($(this).attr('id') == 'box9'){
-            if (oro == 'No increase in lipid-laden macrophages is seen with an Oil-red O stain' && fe == 'No increase in hemosiderin laden histiocytes is seen with an iron stain'){
-                $('#box21').val([]);
-                $('#box21 option:eq(1)').prop('selected', true).trigger('change');
-            } else if (oro == 'No increase in lipid-laden macrophages is seen with an Oil-red O stain' && fe != 'No increase in hemosiderin laden histiocytes is seen with an iron stain'){
-                $('#box21 option:eq(0)').prop('selected', false).trigger('change');
-                $('#box21 option:eq(1)').prop('selected', false).trigger('change');
-                $('#box21 option:eq(3)').prop('selected', true).trigger('change');
-                $('#box21 option:eq(4)').prop('selected', false).trigger('change');
-                $('#box21 option:eq(5)').prop('selected', false).trigger('change');
-            }
-            else if (oro == 'Few lipid-laden macrophages are seen with an Oil-red O stain; these are not significantly increased'){
-                $('#box21 option:eq(0)').prop('selected', false).trigger('change');
-                $('#box21 option:eq(3)').prop('selected', false).trigger('change');
-                $('#box21 option:eq(4)').prop('selected', true).trigger('change');
-                $('#box21 option:eq(5)').prop('selected', false).trigger('change');
-            } else if (oro == 'An Oil-red O stain shows a significant increase in lipid laden macrophages, which are enumerated at > 40 in a low-power field'){
-                $('#box21 option:eq(0)').prop('selected', false).trigger('change');
-                $('#box21 option:eq(3)').prop('selected', false).trigger('change');
-                $('#box21 option:eq(4)').prop('selected', false).trigger('change');
-                $('#box21 option:eq(5)').prop('selected', true).trigger('change');
-
-                $('#box22 option:eq(0)').prop('selected', false).trigger('change');
-                $('#box22 option:eq(2)').prop('selected', true).trigger('change');
-
-            }
-        } else if ($(this).attr('id') == 'box10'){
-            if (oro == 'No increase in lipid-laden macrophages is seen with an Oil-red O stain' && fe == 'No increase in hemosiderin laden histiocytes is seen with an iron stain'){
-                $('#box21').val([]);
-                $('#box21 option:eq(1)').prop('selected', true).trigger('change');
-
-            } else if (oro != 'No increase in lipid-laden macrophages is seen with an Oil-red O stain' && fe == 'No increase in hemosiderin laden histiocytes is seen with an iron stain'){
-                console.log('no fe');
-                $('#box21 option:eq(0)').prop('selected', false).trigger('change');
-                $('#box21 option:eq(1)').prop('selected', false).trigger('change');
-                $('#box21 option:eq(2)').prop('selected', true).trigger('change');
-                $('#box21 option:eq(6)').prop('selected', false).trigger('change');
-                $('#box21 option:eq(7)').prop('selected', false).trigger('change');
-
-            } else if (fe == 'Few hemosiderin laden histiocytes are seen with an iron stain'){
-                console.log('few fe');
-                $('#box21 option:eq(0)').prop('selected', false).trigger('change');
-                $('#box21 option:eq(2)').prop('selected', false).trigger('change');
-                $('#box21 option:eq(6)').prop('selected', true).trigger('change');
-                $('#box21 option:eq(7)').prop('selected', false).trigger('change');
-
-                $('#box22 option:eq(0)').prop('selected', false).trigger('change');
-                $('#box22 option:eq(8)').prop('selected', false).trigger('change');
-                $('#box22 option:eq(7)').prop('selected', true).trigger('change');
-
-            } else if (fe == 'Numerous hemosiderin laden histiocytes are seen with an iron stain'){
-                console.log('numerous fe');
-                $('#box21 option:eq(0)').prop('selected', false).trigger('change');
-                $('#box21 option:eq(2)').prop('selected', false).trigger('change');
-                $('#box21 option:eq(6)').prop('selected', false).trigger('change');
-                $('#box21 option:eq(7)').prop('selected', true).trigger('change');
-
-                $('#box22 option:eq(0)').prop('selected', false).trigger('change');
-                $('#box22 option:eq(7)').prop('selected', false).trigger('change');
-                $('#box22 option:eq(8)').prop('selected', true).trigger('change');
-
-            }
-        }	else if ($(this).attr('id') == 'box11'){
-            var gms = $('#box11').val();
-            if (gms == 'No fungal hyphae or pneumocystis is seen with a GMS stain'){
-                $('#box21 option:eq(0)').prop('selected', false).trigger('change'); // stains NA
-                $('#box21 option:eq(8)').prop('selected', false).trigger('change'); // neg fungus
-                $('#box21 option:eq(9)').prop('selected', false).trigger('change'); //
-                $('#box21 option:eq(10)').prop('selected', false).trigger('change');
-                $('#box21 option:eq(11)').prop('selected', true).trigger('change');
-                $('#box21 option:eq(12)').prop('selected', false).trigger('change');
-                $('#box21 option:eq(13)').prop('selected', false).trigger('change');
-                $('#box21 option:eq(14)').prop('selected', false).trigger('change');
-
-                $('#box22 option:eq(0)').prop('selected', false).trigger('change');
-                $('#box22 option:eq(1)').prop('selected', true).trigger('change');
-
-            } else if (gms == 'Fungal hyphae are detected with a GMS stain; no pneumocystis is seen'){
-                $('#box21 option:eq(0)').prop('selected', false).trigger('change'); // stains NA
-                $('#box21 option:eq(8)').prop('selected', false).trigger('change'); // neg fungus
-                $('#box21 option:eq(9)').prop('selected', false).trigger('change'); //
-                $('#box21 option:eq(10)').prop('selected', false).trigger('change');
-                $('#box21 option:eq(11)').prop('selected', false).trigger('change');
-                $('#box21 option:eq(12)').prop('selected', true).trigger('change');
-                $('#box21 option:eq(13)').prop('selected', false).trigger('change');
-                $('#box21 option:eq(14)').prop('selected', false).trigger('change');
-
-                $('#box22 option:eq(0)').prop('selected', false).trigger('change');
-                $('#box22 option:eq(4)').prop('selected', true).trigger('change');
-                $('#box22 option:eq(5)').prop('selected', false).trigger('change');
-
-            } else if (gms == 'Fungal yeast are detected with a GMS stain; no pneumocystis is seen'){
-                $('#box21 option:eq(0)').prop('selected', false).trigger('change'); // stains NA
-                $('#box21 option:eq(8)').prop('selected', false).trigger('change'); // neg fungus
-                $('#box21 option:eq(9)').prop('selected', false).trigger('change'); //
-                $('#box21 option:eq(10)').prop('selected', false).trigger('change');
-                $('#box21 option:eq(11)').prop('selected', false).trigger('change');
-                $('#box21 option:eq(12)').prop('selected', false).trigger('change');
-                $('#box21 option:eq(13)').prop('selected', true).trigger('change');
-                $('#box21 option:eq(14)').prop('selected', false).trigger('change');
-
-                $('#box22 option:eq(0)').prop('selected', false).trigger('change');
-                $('#box22 option:eq(4)').prop('selected', true).trigger('change');
-                $('#box22 option:eq(5)').prop('selected', false).trigger('change');
-
-            }else if (gms == 'Pneumocystis organisms are detected with a GMS stain; no fungal hyphae are seen'){
-                $('#box21 option:eq(0)').prop('selected', false).trigger('change'); // stains NA
-                $('#box21 option:eq(8)').prop('selected', false).trigger('change'); // neg fungus
-                $('#box21 option:eq(9)').prop('selected', false).trigger('change'); //
-                $('#box21 option:eq(10)').prop('selected', false).trigger('change');
-                $('#box21 option:eq(11)').prop('selected', false).trigger('change');
-                $('#box21 option:eq(12)').prop('selected', false).trigger('change');
-                $('#box21 option:eq(13)').prop('selected', false).trigger('change');
-                $('#box21 option:eq(14)').prop('selected', true).trigger('change');
-
-                $('#box22 option:eq(0)').prop('selected', false).trigger('change');
-                $('#box22 option:eq(4)').prop('selected', false).trigger('change');
-                $('#box22 option:eq(5)').prop('selected', true).trigger('change');
-
-            }
-        }
-    });
+$("#box5").on("change", function(){
+   var sel = $(this).val();
+   if($.inArray("ORO", sel) > -1){
+       $(".lipid").show();
+    } else {
+       $(".lipid").hide();
+   }
+    if($.inArray("Fe", sel) > -1){
+        $(".iron").show();
+    } else {
+        $(".iron").hide();
+    }
+    if($.inArray("GMS", sel) > -1){
+        $(".fungus").show();
+    } else {
+        $(".fungus").hide();
+    }
+    if($.inArray("cell count", sel) > -1){
+        $(".count").show();
+    } else {
+        $(".count").hide();
+    }
+});
 
 
 
+// ********* WRITE REPORT ***************//
 $('#done').on('click', function(){
 
 // get assign the values from each text input
@@ -225,85 +107,70 @@ $('#done').on('click', function(){
         }
 
 // ORO
-        if ($.inArray('ORO', box_5) > -1){
-            if (box_9 == 'Not applicable'){
+        if ($.inArray('ORO', box_5) > -1) {
+            if (box_9 == 'Not applicable') {
                 $('#error').html('<h5>You forgot the ORO stain!</h5>')
-								// $('#alert-modal').on('show.bs.modal', function() {
-                // 	$('#box9').focus();
-								// });
                 $('#alert-modal').modal('show');
-                // $('#box9').focus();
-								// return;
-            }
-        }
-        if(box_9 != "Not applicable"){
-            micro += mxLines[box_9]+ ". ";
-            // add oro to finals
-            if (box_9 =='mxLine230') { // no ORO
-                stains.push(dxLines.dxLine122);
-            } else if (box_9 == 'mxLine231') {// few ORO
-                stains.push(dxLines.dxLine123);
-            } else if (box_9 == 'mxLine232') {// many ORO
-                if (box_6 == 'mxLine150' || box_6 == 'mxLine151') {// & few neuts
-                    stains.push(dxLines.dxLine124); // aspiration
-                    comment += commLines.commLine102; // aspiration comment
-                } else if (box_6 == 'mxLine152' || box_6 == 'mxLine153'){ // many neuts
-                    stains.push(dxLines.dxLine124); // aspiration
-                    comment += commLines.commLine103; // aspiration vs injury comment
+            } else {
+                micro += mxLines[box_9] + ". ";
+                // add oro to finals
+                if (box_9 == 'mxLine230') { // no ORO
+                    stains.push(dxLines.dxLine122);
+                } else if (box_9 == 'mxLine231') {// few ORO
+                    stains.push(dxLines.dxLine123);
+                } else if (box_9 == 'mxLine232') {// many ORO
+                    if (box_6 == 'mxLine150' || box_6 == 'mxLine151') {// & few neuts
+                        stains.push(dxLines.dxLine124); // aspiration
+                        comment += commLines.commLine102; // aspiration comment
+                    } else if (box_6 == 'mxLine152' || box_6 == 'mxLine153') { // many neuts
+                        stains.push(dxLines.dxLine124); // aspiration
+                        comment += commLines.commLine103; // aspiration vs injury comment
+                    } else {
+                        stains.push((dxLines.dxLine124).replace(/\(see comment\)/, '')); // aspiration
+                    }
                 }
             }
         }
 
 // Fe
-        if ($.inArray('Fe', box_5) > -1){
-            if (box_10 == 'Not applicable'){
+        if ($.inArray('Fe', box_5) > -1) {
+            if (box_10 == 'Not applicable') {
                 $('#error').html('<h5>You forgot the Fe stain!</h5>');
-                // $('#alert-modal').on('show.bs.modal', function() {
-                // 	$('#box10').focus();
-								// });
-								$('#alert-modal').modal('show');
-            }
-        }
-        if(box_10 != "Not applicable"){
-            micro += mxLines[box_10]+ ". ";
-        // add fe to finals
-            if (box_10 =='mxLine233') { // no Fe
-                stains.push(dxLines.dxLine121);
-            } else if (box_10 == 'mxLine234') {// few Fe
-                stains.push(dxLines.dxLine125);
-                comment += commLines.commLine107;
-            } else if (box_10 == 'mxLine235') {// many Fe
-                stains.push(dxLines.dxLine126);
-                comment += commLines.commLine108;
+                $('#alert-modal').modal('show');
+            } else {
+                micro += mxLines[box_10] + ". ";
+                // add fe to finals
+                if (box_10 == 'mxLine233') { // no Fe
+                    stains.push(dxLines.dxLine121);
+                } else if (box_10 == 'mxLine234') {// few Fe
+                    stains.push(dxLines.dxLine125);
+                    comment += commLines.commLine107;
+                } else if (box_10 == 'mxLine235') {// many Fe
+                    stains.push(dxLines.dxLine126);
+                    comment += commLines.commLine108;
+                }
             }
         }
 
 // GMS
-        if ($.inArray('GMS', box_5) > -1){
-            if (box_11 == 'Not applicable'){
-                $('#error').html('<h5>You forgot the GMS stain!</h5>')
-								// $('#alert-modal').on('show.bs.modal', function() {
-                // 	$('#box11').focus();
-								// });
-								$('#alert-modal').modal('show');
-
-                // $('#box9').focus();
-            }
-        }
-        if(box_11 != "Not applicable"){
-            micro += mxLines[box_11]+ ".\n";
-            if (box_11 == 'mxLine236'){ // GMS negative
-                stains.push(dxLines.dxLine140);
-                comment += commLines.commLine101;
-            } else if (box_11 == 'mxLine237'){ // GMS hyphae
-                stains.push(dxLines.dxLine141);
-                comment += commLines.commLine104;
-            } else if (box_11 == 'mxLine238'){ // GMS yeast
-                stains.push(dxLines.dxLine142);
-                comment += commLines.commLine104;
-            }else if (box_11 == 'mxLine239'){ // GMS pcp
-                stains.push(dxLines.dxLine143);
-                comment += commLines.commLine105;
+        if ($.inArray('GMS', box_5) > -1) {
+            if (box_11 == 'Not applicable') {
+                $('#alert-modal').modal('show');
+            } else {
+                micro += mxLines[box_11] + ".\n";
+                if (box_11 == 'mxLine236') { // GMS negative
+                    stains.push(dxLines.dxLine140);
+                    comment += commLines.commLine101;
+                } else if (box_11 == 'mxLine237') { // GMS hyphae
+                    stains.push(dxLines.dxLine141);
+                    comment += commLines.commLine104;
+                } else if (box_11 == 'mxLine238') { // GMS yeast
+                    stains.push(dxLines.dxLine142);
+                    comment += commLines.commLine104;
+                } else if (box_11 == 'mxLine239') { // GMS pcp
+                    stains.push(dxLines.dxLine143);
+                    comment += commLines.commLine105;
+                }
             }
         }
 
