@@ -335,6 +335,12 @@ $(window).on('load', function () {
             captext += "\nLymph nodes: None submitted\n";
         }
 
+
+        var box_30 = $("#box0").val();
+        if (box_30.length > 0) {
+            captext += "\n+ FIGO Stage (2015):\n- "  + box_30+ "\n";
+        }
+
         var box_25 = $("#box25").val();
         var box_25_2 = $("#box25_2").val();
         if (box_25.length  > 0){
