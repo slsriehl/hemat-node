@@ -104,7 +104,7 @@
                    placeholder='Specify Other'>
 
 
-            <div class="adenosarc" style="display: none;">
+            <div class="adenosarcoma" style="display: none;">
                 <hr class="p-2">
                 <h5>Histologic Grade (required only for adenosarcoma)</h5>
                 <select id="box5" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -188,7 +188,7 @@
 
             <hr class="p-2">
             <h5>+ Peritoneal/Ascitic Fluid</h5>
-            <select id="box10" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select id="box10" class='form-control selectpicker form-control-sm col-sm-6 opt'>
                 <option></option>
                 <option>Not submitted/ unknown</option>
                 <option>Negative for malignancy (normal/benign)</option>
@@ -219,27 +219,27 @@
             <select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option value="null"></option>
                 <optgroup label="All sarcomas except adenosarcoma">
-                    <option value="pTX[FIGO: -]">pTX[FIGO: -]: Primary tumor cannot be assessed</option>
-                    <option value="pT0[FIGO: -]">pT0[FIGO: -]: No evidence of primary tumor</option>
-                    <option value="pT1a[FIGO: IA]">pT1a[FIGO: IA]: Tumor 5 cm or less in greatest dimension</option>
-                    <option value="pT1b[FIGO: IB]">pT1b[FIGO: IB]: Tumor more than 5 cm</option>
-                    <option value="pT2a[FIGO: IIA]">pT2a[FIGO: IIA]: Tumor involves adnexa</option>
-                    <option value="pT2b[FIGO: IIB]">pT2b[FIGO: IIB]: Tumor involves other pelvic tissues</option>
-                    <option value="pT3a[FIGO: IIIA]">pT3a[FIGO: IIIA]: Tumor infiltrates abdominal tissues in one site</option>
-                    <option value="pT3b[FIGO: IIIB]">pT3b[FIGO: IIIB]: Tumor infiltrates abdominal tissues in more than one site </option>
-                    <option value="pT4[FIGO: IBA]">pT4[FIGO: IVA]: Tumor invades bladder or rectum</option>
+                    <option value="pTX">pTX: Primary tumor cannot be assessed</option>
+                    <option value="pT0">pT0: No evidence of primary tumor</option>
+                    <option value="pT1a">pT1a: Tumor 5 cm or less in greatest dimension</option>
+                    <option value="pT1b">pT1b: Tumor more than 5 cm</option>
+                    <option value="pT2a">pT2a: Tumor involves adnexa</option>
+                    <option value="pT2b">pT2b: Tumor involves other pelvic tissues</option>
+                    <option value="pT3a">pT3a: Tumor infiltrates abdominal tissues in one site</option>
+                    <option value="pT3b">pT3b: Tumor infiltrates abdominal tissues in more than one site </option>
+                    <option value="pT4">pT4: Tumor invades bladder or rectum</option>
                 </optgroup>
                 <optgroup label="For adenosarcoma">
-                    <option value="pTX[FIGO: -]">pTX[FIGO: -]: Primary tumor cannot be assessed</option>
-                    <option value="pT0[FIGO: -]">pT0[FIGO: -]: No evidence of primary tumor</option>
-                    <option value="pT1a[FIGO: IA]">pT1a[FIGO: IA]: Tumor limited to the endometrium/endocervix</option>
-                    <option value="pT1b[FIGO: IB]">pT1b[FIGO: IB]: Tumor invades to less than half of the myometrium</option>
-                    <option value="pT1c[FIGO: IC]">pT1c[FIGO: IC]: Tumor invades one half or more of the myometrium</option>
-                    <option value="pT2a[FIGO:IIA]">pT2a[FIGO:IIA]: Tumor involves adnexa</option>
-                    <option value="pT2b[FIGO: IIB]">pT2b[FIGO: IIB]: Tumor involves other pelvic tissues</option>
-                    <option value="pT3a[FIGO: IIIA]">pT3a[FIGO: IIIA]: Tumor infiltrates abdominal tissues in one site</option>
-                    <option value="pT3b[FIGO: IIIB]">pT3b[FIGO: IIIB]: Tumor infiltrates abdominal tissues in more than one site</option>
-                    <option value="pT4[FIGO: IVA]">pT4[FIGO: IVA]: Tumor invades bladder and/or rectum</option>
+                    <option value="pTX">pTX: Primary tumor cannot be assessed</option>
+                    <option value="pT0">pT0: No evidence of primary tumor</option>
+                    <option value="pT1a">pT1a: Tumor limited to the endometrium/endocervix</option>
+                    <option value="pT1b">pT1b: Tumor invades to less than half of the myometrium</option>
+                    <option value="pT1c">pT1c: Tumor invades one half or more of the myometrium</option>
+                    <option value="pT2a">pT2a: Tumor involves adnexa</option>
+                    <option value="pT2b">pT2b: Tumor involves other pelvic tissues</option>
+                    <option value="pT3a">pT3a: Tumor infiltrates abdominal tissues in one site</option>
+                    <option value="pT3b">pT3b: Tumor infiltrates abdominal tissues in more than one site</option>
+                    <option value="pT4">pT4: Tumor invades bladder and/or rectum</option>
                 </optgroup>
             </select>
             
@@ -257,7 +257,7 @@
                 <option value="pN0">pN0: No regional lymph node metastasis</option>
                 <option value="pN0(i+)">pN0(i+): Isolated tumor cells in regional lymph node(s) no greater than 0.2 mm
                 </option>
-                <option value="pN1[FIGO: IIIC]">pN1[FIGO: IIIC]: Regional lymph node metastasis</option>
+                <option value="pN1">pN1: Regional lymph node metastasis</option>
             </select>
 
             <div class="py-2 w-100"></div>
@@ -265,7 +265,7 @@
             <h6>pM</h6>
             <select id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option selected value='pMx'>pMx: Not applicable</option>
-                <option value="pM1[FIGO: IVB]">pM1[FIGO: IVB]: Distant metastasis (excluding adnexa, pelvic and abdominal
+                <option value="pM1">pM1: Distant metastasis (excluding adnexa, pelvic and abdominal
                     tissues)
                 </option>
             </select>
@@ -289,26 +289,65 @@
                     </label>
 
                     <div class="posnodes" style="display: none;">
-                    <label class="mb-2">Specify Lymph Node(s) with Tumor
-                        <input type="text" class="form-control form-control-sm w-100 ml-3" id="box19">
-                               </label>
+                        <label class="mb-2">Specify Lymph Node(s) with Tumor
+                            <input type="text" class="form-control form-control-sm w-100 ml-3" id="box19">
+                                   </label>
 
-                    + Additional Lymph Node Findings
-                    <select id="box20" class='form-control selectpicker form-control-sm ml-3 opt'>
-                        <option></option>
-                        <option>None identified</option>
-                        <option>Extranodal extension</option>
-                        <option>Fixed/ulcerated nodes</option>
-                        <option>Other</option>
-                        <option>Cannot be determined</option>
-                    </select>
-                    <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box20_2'
-                           style='display:none;' placeholder='Specify Other'>
+                        + Additional Lymph Node Findings
+                        <select id="box20" class='form-control selectpicker form-control-sm ml-3 opt'>
+                            <option></option>
+                            <option>None identified</option>
+                            <option>Extranodal extension</option>
+                            <option>Fixed/ulcerated nodes</option>
+                            <option>Other</option>
+                            <option>Cannot be determined</option>
+                        </select>
+                        <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box20_2'
+                               style='display:none;' placeholder='Specify Other'>
                     </div>
                 </form>
             </div>
-
-
+            <div class="not_adenosarcoma">
+            <hr class="p-2" >
+            <h5>+ FIGO Stage - For All Sarcomas Excluding Adenosarcoma</h5>
+            <select id="box25" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                <option></option>
+                <option value="FIGO Stage I">I: Tumor limited to uterus</option>
+                <option value="FIGO Stage IA">IA: Less than or equal to 5 cm</option>
+                <option value="FIGO Stage IB">IB: More than 5 cm</option>
+                <option value="FIGO Stage II">II: Tumor extends beyond the uterus, within the pelvis</option>
+                <option value="FIGO Stage IIA">IIA: Adnexal involvement</option>
+                <option value="FIGO Stage IIB">IIB: Involvement of other pelvic tissues</option>
+                <option value="FIGO Stage III">III: Tumor invades abdominal tissues (not just protruding into the abdomen)</option>
+                <option value="FIGO Stage IIIA">IIIA: 1 site</option>
+                <option value="FIGO Stage IIIB">IIIB: More than 1 site</option>
+                <option value="FIGO Stage IIIC">IIIC: Metastasis to pelvic and/or para-aortic lymph nodes</option>
+                <option value="FIGO Stage IV">IV: Tumor invades bladder and/or rectum and/or distant metastasis</option>
+                <option value="FIGO Stage IVA">IVA: Tumor invades bladder and/or rectal mucosa  </option>
+                <option value="FIGO Stage IVB">IVB: Distant metastasis</option>
+            </select>
+            </div>
+            <div class="adenosarcoma" style="display: none;">
+            <hr class="p-2" >
+            <h5>+ FIGO Stage - For Adenosarcoma</h5>
+            <select id="box26" class='form-control selectpicker form-control-sm col-sm-10 opt'>
+                <option></option>
+                <option value="FIGO Stage I">I: Tumor limited to uterus</option>
+                <option value="FIGO Stage IA">IA: Tumor limited to endometrium/endocervix with no myometrial invasion</option>
+                <option value="FIGO Stage IB">IB: Less than or equal to half myometrial invasion</option>
+                <option value="FIGO Stage IC">IC: More than half myometrial invasion</option>
+                <option value="FIGO Stage II">II: Tumor extends beyond the uterus, within the pelvis</option>
+                <option value="FIGO Stage IIA">IIA: Adnexal involvement</option>
+                <option value="FIGO Stage IIB">IIB: Tumor extends to extrauterine pelvic tissue</option>
+                <option value="FIGO Stage III">III: Tumor invades abdominal tissues (not just protruding into the abdomen).</option>
+                <option value="FIGO Stage IIIA">IIIA: 1 site</option>
+                <option value="FIGO Stage IIIB">IIIB: More than 1 site</option>
+                <option value="FIGO Stage IIIC">IIIC: Metastasis to pelvic and/or para-aortic lymph nodes</option>
+                <option value="FIGO Stage IV">IV: Tumor invades bladder and/or rectum and/or distant metastasis</option>
+                <option value="FIGO Stage IVA">IVA: Tumor invades bladder and/or rectal mucosa </option>
+                <option value="FIGO Stage IVB">IVB: Distant metastasis</option>
+            </select>
+            </div>
             <!-- end markup-->
 
             <!-- close markup -->

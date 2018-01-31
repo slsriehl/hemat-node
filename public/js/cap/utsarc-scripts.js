@@ -5,6 +5,8 @@ $(window).on("load", function() {
     //                        Autocomplete                         //
     // *************************************************************/
 
+
+
     //*************************************************************//
     //                        Pop-ups                              //
     // *************************************************************/
@@ -40,9 +42,14 @@ $(window).on("load", function() {
             $("#box4_3").hide();
         }
         if (sel.indexOf("Adenosarcoma") > -1) {
-            $(".adenosarc").show();
+            $(".adenosarcoma").show();
+            $(".not_adenosarcoma").hide();
+            $("#box25 option:eq(0)").prop('selected', true);
         } else {
-            $(".adenosarc").hide();
+            $(".adenosarcoma").hide();
+            $("#box26 option:eq(0)").prop('selected', true);
+
+            $(".not_adenosarcoma").show();
         }
     });
 
@@ -116,7 +123,7 @@ $(window).on("load", function() {
 
     $("#box17, #box18").on("input", function () {
         setTimeout(100);
-        var nodes = $("#box17").val() + $("#box18").val();
+        var nodes = Number($("#box17").val()) + Number($("#box18").val());
         nodes = parseInt(nodes, 10);
         console.log("nodes positive: "+typeof nodes);
         if (nodes > 0){
@@ -373,6 +380,16 @@ $(window).on("load", function() {
             }
         } else {
             captext += "\nLymph nodes: None submitted\n";
+        }
+
+        var box_25 = $("#box25").val();
+        if (box_25.length > 0) {
+            captext += "\n+ FIGO Stage (2015):\n- "  + box_25+ "\n";
+        }
+
+        var box_26 = $("#box26").val();
+        if (box_26.length > 0) {
+            captext += "\n+ Adenosarcoma FIGO Stage (2015):\n- "  + box_26+ "\n";
         }
 
         $("#outPut-1").val(captext);
