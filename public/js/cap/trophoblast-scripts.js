@@ -300,7 +300,7 @@ $(window).on('load', function () {
 
         var box_17 = $("#box17").val();
         if (box_17.length > 0){
-            captext += "\n+ FIGO Stage:\n- " + box_17 + "\n";
+            captext += "\n+ FIGO Stage (2015):\n- " + box_17 + "\n";
 
         }
 

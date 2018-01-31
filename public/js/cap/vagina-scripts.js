@@ -108,7 +108,7 @@ $(window).on("load", function() {
     });
 
 
-    $("#box15, #box16".on("input", function () {
+    $("#box15, #box16").on("input", function () {
         setTimeout(100);
         var nodes = $("#box15").val() + $("#box16").val();
         nodes = parseInt(nodes, 10);
@@ -381,6 +381,13 @@ $(window).on("load", function() {
             }
         } else {
             captext += "\nLymph nodes: None submitted\n";
+        }
+
+
+        var box_25 = $("#box25").val();
+        if (box_25.length > 0) {
+            captext += "\n+ FIGO Stage (2015):\n- "  + box_25+ "\n";
+
         }
 
         var box_20 = $("#box20").val();
