@@ -276,7 +276,13 @@ $(window).on('load', function () {
         var pos = box_10.filter(function (el) {
             return el.indexOf('Other') > -1;
         });
-        captext += "\n-- ANCILLARY STUDIES --";
+        var box_11 = $("#box11").val();
+        var box_11_2 = $("#box11_2").val();
+
+        if (box_10.length > 0 || box_11.length > 0){
+            captext += "\n-- ANCILLARY STUDIES --";
+
+        }
         if (box_10.length > 0) {
             if (pos.length > 0) {
                 captext += "\n+ Cyto-molecular Genetics:\n- " + box_10.join('\n- ').replace(/Other/, box_10_2) + "\n";
@@ -285,8 +291,7 @@ $(window).on('load', function () {
             }
         }
 
-        var box_11 = $("#box11").val();
-        var box_11_2 = $("#box11_2").val();
+
         if (box_11.length > 0) {
             if (box_11.indexOf("Other") > -1) {
                 captext += "\n+ Cyto-molecular Genetics - method:\n- " + box_11_2 + "\n";

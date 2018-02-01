@@ -403,6 +403,8 @@ $(function () {
     } else {
         console.log("isIE?:"+isIE());
     }
+//******************* END check IE11 or less **********************//
+
 
 	// validate lymph nodes to max on total submitted
     $(".maxnode").on("input", function() {
@@ -429,5 +431,26 @@ $(function () {
                 $(this).val('')
             }
     })
+	//************ End lymph node validation *****************//
 
+
+	// collapse final output
+    $(".switch").on("click", function(){
+    	var text = $("#outPut-1").val();
+        var text_new = "";
+        if (this.id == "switchto"){
+            text_new = text
+						.replace(/:\r?\n-\h*(.*)$(?!\r?\n-)/gm, ": $1" )
+						.replace(/\n-/gm, "\n   -" )
+						.replace(/^\s*\r?\n/gm,'');
+            $("#outPut-1").val(text_new);
+            console.log("switched: "+text_new);
+        }
+        if (this.id == "switchback"){
+            $(".writeReport").trigger("click");
+        }
+    });
+
+
+	//****************** End collapse final output
 });
