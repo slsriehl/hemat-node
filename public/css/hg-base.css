@@ -229,7 +229,7 @@ button.snippet-result {
     height: 65px;
     bottom: 20px;
     right: 20px;
-    background-color: #000b5c82;
+    background-color: rgba(0,11,90,0.51);
     color: #FFF;
     border-radius: 60px;
     text-align: center;
