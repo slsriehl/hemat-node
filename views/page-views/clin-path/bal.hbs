@@ -36,6 +36,7 @@
 										<th class="h6">Clinical info:</th>
 										<td>
 												<select class="form-control selectpicker form-control-sm col-sm-8" multiple id="box0">
+														<option>respiratory difficulty</option>
 														<option>wheezing</option>
 														<option>cystic fibrosis</option>
 														<option>reflux</option>
@@ -78,7 +79,7 @@
 								<tr>
 										<th class="h6">Volume of fluid (ml):</th>
 										<td>
-												<input class="form-control form-control-sm col-4" id="box2"  placeholder=''>
+												<input type="number" class="form-control form-control-sm col-4" id="box2"  placeholder=''>
 										</td>
 								</tr>
 
@@ -102,7 +103,7 @@
 												<select class="form-control selectpicker form-control-sm col-6" id="box4">
 														<option>white</option>
 														<option>gray</option>
-														<option>straw</option>
+														<option value="straw colored">straw</option>
 														<option>pink</option>
 														<option>red</option>
 														<option>brown</option>
@@ -133,16 +134,24 @@
 										</th>
 										<td class="count" style="display: none;">
 												<div class="form-inline row">
-														<label class="form-check-label">% Macrophages<input class="form-control form-control-sm col-sm-3 m-1 " id="box13"  value="0"> </label>
+														<label class="form-check-label">
+															% Macrophages
+															<input type="number" class="form-control form-control-sm col-sm-3 m-1 " id="box13" > </label>
 												</div>
 												<div class="form-inline row">
-														<label class="form-check-label">% Neutrophils <input class="form-control form-control-sm col-sm-3 m-1" id="box14"  value="0"></label>
+														<label class="form-check-label">
+															% Neutrophils
+															<input type="number"  class="form-control form-control-sm col-sm-3 m-1" id="box14"  ></label>
 												</div>
 												<div class="form-inline row">
-														<label class="form-check-label"> % Lymphocytes <input class="form-control form-control-sm col-sm-3 m-1" id="box15"  value="0"></label>
+														<label class="form-check-label">
+															% Lymphocytes
+															<input type="number" class="form-control form-control-sm col-sm-3 m-1" id="box15" ></label>
 												</div>
 												<div class="form-inline row">
-														<label class="form-check-label">% Eosinophils<input class="form-control form-control-sm col-sm-3 m-1" id="box16"  value="0"> </label>
+														<label class="form-check-label">
+															% Eosinophils
+															<input type="number"  class="form-control form-control-sm col-sm-3 m-1" id="box16" > </label>
 												</div>
 
 										</td>

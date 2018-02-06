@@ -175,15 +175,15 @@ $('#done').on('click', function(){
         }
 
 // BAL Differential
-        var box_13 = parseInt($("#box13").val(), 10);
-        var box_14 = parseInt($("#box14").val(), 10);
-        var box_15 = parseInt($("#box15").val(), 10);
-        var box_16 = parseInt($("#box16").val(), 10);
+        var box_13 = Number($("#box13").val()) || 0;
+        var box_14 = Number($("#box14").val()) || 0;
+        var box_15 = Number($("#box15").val()) || 0;
+        var box_16 = Number($("#box16").val()) || 0;
 
         var sum_diff = box_13 + box_14 + box_15 + box_16;
+        console.log("diff sum:"+sum_diff);
 
-
-        if ($('.baldiff').is(':checked')){
+        if ($.inArray('cell count', box_5) > -1){
             if (sum_diff >100){
                 alert('Your BAL differential adds up to more than 100%. Please check your inputs');
                 $('#box13').focus();
