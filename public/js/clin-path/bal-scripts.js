@@ -207,7 +207,6 @@ $('#done').on('click', function(){
         $('#outPut-4').val(comment);
 
 				// get clinical history
-        var box_0 = $("#box0").val();
         clinical = "Clinical History\n\n" + box_0.join(', ').replace(/\w\S*/, function (txt) {return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()}) + "\n";
 
         // store your text to localStorage when someone click the link
