@@ -408,13 +408,13 @@ $(function () {
 
 	// validate lymph nodes to max on total submitted
     $(".maxnode").on("input", function() {
-        var totnode = parseFloat($(this).val());
+        var totnode = Number($(this).val()) || 0;
         	$(".subnode").attr({max:totnode});
 
     });
 
     $(".maxinv").on("input", function() {
-        var totinv = parseFloat($(this).val());
+        var totinv = Number($(this).val()) || 0;
             $(".subinv").attr({
                 max: totinv
             });

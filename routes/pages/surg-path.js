@@ -6,6 +6,14 @@ const router = new express.Router;
 const controller = require('../../controllers/pages');
 
 //needs database connection
+router.get('/surg-path/hirsch', (req, res) => {
+    controller.openAccess(req, res, './page-views/surg-path/hd.hbs', [
+        "/js/surg-path/hd.js",
+		"/json/json-hd.js"
+    ]);
+});
+
+
 router.get('/surg-path/ihc-table', (req, res) => {
 	controller.openAccess(req, res, './page-views/surg-path/ihc-table.hbs', [
 		"/js/surg-path/ihc-scripts.js"
