@@ -1,0 +1,437 @@
+<div class="container-fluid">
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item"><i class="fa fa-scissors mr-2"></i>Hirschsprung Resection Synoptic</li>
+    </ol>
+
+    {{> message-center this}}
+
+    <!-- Full width row + card -->
+    <div class="row">
+        {{> page-partials/cap-validate-alert}}
+
+        <!-- top card-->
+        <div class="col col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <!-- inline header form-->
+                    <form class="form-inline">
+
+                        <div class="col col-md-4">
+                            <button type="button" class="btn btn-primary btn-md p-1" data-toggle="modal"
+                                    data-target="#modal-1">How to Use
+                            </button>
+                        </div>
+                        <div class="col col-md-4">
+                            <button type="button" class="btn btn-info btn-md p-1" data-toggle="modal"
+                                    data-target="#IHCbox">Immuno Box
+                            </button>
+                        </div>
+                    </form>
+                    <!-- IHC Modal -->
+                    {{> page-partials/immuno this}}
+
+                    <!--Date-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row top-buffer">
+        <div class="col-md-8">
+            <!-- left column-->
+
+
+            <!-- left column accordion-->
+            <div id="accordion" role="tablist" aria-multiselectable="true">
+                <!-- Accordion #1-->
+                <div class="card">
+                    <div class="card-header" role="tab" id="headingOne">
+                        <h5 class="mb-0">
+                            <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Procedure
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="collapseOne" class="collapse " role="tabpanel" aria-labelledby="headingOne">
+                        <div class="card-block chkboxes">
+                            <div class="card-group">
+                                <div class="card">
+                                    <div class="card-header">
+                                        One stage pull-through resection
+                                    </div>
+                                    <div class="card-block chkboxes">
+                                        <div style="font-size: 0.66em;" class="content form-check" id="column1b">
+                                            <label class="form-check-label w-100">
+                                                <input type="checkbox" class="form-check-input" id="grLine100">
+                                                Duhamel
+                                            </label>
+                                            <label class="form-check-label w-100">
+                                                <input type="checkbox" class="form-check-input" id="grLine105">
+                                                Soave
+                                            </label>
+                                            <label class="form-check-label w-100">
+                                                <input type="checkbox" class="form-check-input" id="grLine110">
+                                                Swenson
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        Ostomy with primary bowel resection
+                                    </div>
+                                    <div class="card-block chkboxes">
+                                        <div style="font-size: 0.66em;" class="content form-check" id="column2b">
+                                            <label class="form-check-label w-100">
+                                                <input type="checkbox" class="form-check-input" id="grLine120">
+                                                Ostomy with primary bowel resection
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        Ostomy takedown with pull-through resection
+
+                                    </div>
+                                    <div class="card-block chkboxes">
+                                        <div style="font-size: 0.66em;" class="content form-check" id="column3b">
+                                            <label class="form-check-label w-100" for="grLine130">
+                                                <input type="checkbox" class="form-check-input" id="grLine130">
+                                                Ostomy takedown with Duhamel pull-through
+                                            </label>
+                                            <label class="form-check-label w-100" for="grLine135">
+                                                <input type="checkbox" class="form-check-input" id="grLine135">
+                                                Ostomy takedown with Soave pull-through
+                                            </label>
+                                            <label class="form-check-label w-100" for="grLine140">
+                                                <input type="checkbox" class="form-check-input" id="grLine140">
+                                                Ostomy takedown with Swenson pull-through
+                                            </label>
+
+                                            <div class="py-2 w-100"></div>
+
+                                            <label class="form-label w-100">Ostomy site:
+                                                <input type="text" class="form-control form-control-sm" id="grLine150">
+                                            </label>
+                                            
+                                            <div class="py-2 w-100"></div>
+                                            
+                                            <label class="form-label w-100">Prior resections (if applicable)?
+                                                <input type="text" class="form-control form-control-sm" id="grLine155">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Accordion #2-->
+                <div class="card">
+                    <div class="card-header" role="tab" id="headingTwo">
+                        <h5 class="mb-0">
+                            <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                Intraoperative Leveling Biopsy
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="card-block chkboxes">
+                            <div class="card-group">
+                                <div class="card">
+                                    <div class="card-header">
+                                        Frozen section parts
+                                    </div>
+                                    <div class="card-block chkboxes">
+                                        <div style="font-size: 0.66em;" class="content form-check" id="column1c">
+                                            <form class="fz-group form-inline">
+                                                <label class="form-label">Part designation
+                                                    <input type="text" class="form-control form-control-sm mx-2 fz-part ignore">
+                                                </label>
+
+                                                <label class="form-label">Location
+                                                    <input type="text" class="form-control form-control-sm mx-2 fz-loc ignore">
+                                                </label>
+
+                                                <div class="py-2 w-100"></div>
+
+
+                                                    <label class="form-inline">Specimen type
+                                                        <select class="form-control form-control-sm ml-2 fz-spctype ignore">
+                                                            <option>Seromuscular biopsy</option>
+                                                            <option>Full-thickness biopsy</option>
+                                                        </select>
+                                                    </label>
+
+                                                    <label class="form-inline ">Diagnosis
+                                                        <select class="form-control form-control-sm ml-2 fz-dx ignore">
+                                                            <option>Inadequate</option>
+                                                            <option>Myenteric ganglion cells present</option>
+                                                            <option>Myenteric ganglion cells absent</option>
+                                                        </select>
+                                                    </label>
+
+                                                    <label class="form-label">Pathologist
+                                                        <input type="text" class="form-control form-control-sm fz-path ignore">
+                                                    </label>
+
+                                                </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Accordion #3-->
+                <div class="card">
+                    <div class="card-header" role="tab" id="headingThree">
+                        <h5 class="mb-0">
+                            <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                GROUP 3
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse " role="tabpanel" aria-labelledby="headingOne">
+                        <div class="card-block chkboxes">
+                            <div class="card-group">
+                                <div class="card">
+                                    <div class="card-header">
+                                        Column 3.1
+                                    </div>
+                                    <div class="card-block chkboxes">
+                                        <div style="font-size: 0.66em;" class="content form-check" id="column1d">
+                                            Checkboxes
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        Column 3.2
+                                    </div>
+                                    <div class="card-block chkboxes">
+                                        <div style="font-size: 0.66em;" class="content form-check" id="column2d">
+                                            Checkboxes
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        Column 3.3
+                                    </div>
+                                    <div class="card-block chkboxes">
+                                        <div style="font-size: 0.66em;" class="content form-check" id="column3d">
+                                            Checkboxes
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Accordion #4-->
+                <div class="card">
+                    <div class="card-header" role="tab" id="headingFour">
+                        <h5 class="mb-0">
+                            <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                GROUP 4
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour">
+                        <div class="card-block chkboxes">
+                            <div class="card-group">
+                                <div class="card">
+                                    <div class="card-header">
+                                        Column 4.1
+                                    </div>
+                                    <div class="card-block chkboxes">
+                                        <div style="font-size: 0.66em;" class="content form-check" id="column1e">
+                                            Checkboxes
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        Column 4.2
+                                    </div>
+                                    <div class="card-block chkboxes">
+                                        <div style="font-size: 0.66em;" class="content form-check" id="column2e">
+                                            Checkboxes
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        Column 4.3
+                                    </div>
+                                    <div class="card-block chkboxes">
+                                        <div style="font-size: 0.66em;" class="content form-check" id="column3e">
+                                            Checkboxes
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Accordion #5-->
+                <div class="card">
+                    <div class="card-header" role="tab" id="headingFive">
+                        <h5 class="mb-0">
+                            <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                GROUP 5
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="collapseFive" class="collapse" role="tabpanel" aria-labelledby="headingFive">
+                        <div class="card-block chkboxes">
+                            <div class="card-group">
+                                <div class="card">
+                                    <div class="card-header">
+                                        Column 5.1
+                                    </div>
+                                    <div class="card-block chkboxes">
+                                        <div style="font-size: 0.66em;" class="content form-check" id="column1f">
+                                            Checkboxes
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        Column 5.2
+                                    </div>
+                                    <div class="card-block chkboxes">
+                                        <div style="font-size: 0.66em;" class="content form-check" id="column2f">
+                                            Checkboxes
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        Column 5.3
+                                    </div>
+                                    <div class="card-block chkboxes">
+                                        <div style="font-size: 0.66em;" class="content form-check" id="column3f">
+                                            Checkboxes
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Accordion #6-->
+                <div class="card">
+                    <div class="card-header" role="tab" id="headingSix">
+                        <h5 class="mb-0">
+                            <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                GROUP 6
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="collapseSix" class="collapse" role="tabpanel" aria-labelledby="headingSix">
+                        <div class="card-block chkboxes">
+                            <div class="card-group">
+                                <div class="card">
+                                    <div class="card-header">
+                                        Column 6.1
+                                    </div>
+                                    <div class="card-block chkboxes">
+                                        <div style="font-size: 0.66em;" class="content form-check" id="column1g">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        Column 6.2
+                                    </div>
+                                    <div class="card-block chkboxes">
+                                        <div style="font-size: 0.66em;" class="content form-check" id="column1h">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        Column 6.3
+                                    </div>
+                                    <div class="card-block chkboxes">
+                                        <div style="font-size: 0.66em;" class="content form-check" id="column1i">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end accordion cards-->
+            </div>
+            <!-- end left column-->
+        </div>
+        <!-- right column-->
+        <div class="col col-md-4" id="sticky">
+            <div class="card text-center">
+                <div class="card-header button-box">
+                    <ul class="nav nav-pills standard-button-box">
+                        <button class="btn btn-outline-success p-1 mb-2" id="writeReport">
+                            Write Report
+                        </button>
+
+                        <button class="btn btn-outline-danger p-1 mb-2 ml-4" id="Reset">Reset</button>
+                    </ul>
+                </div>
+                <div class="card-block">
+
+                    <form>
+                        <div class="form-group">
+                                <textarea class="form-control" id="outPut-1" rows="5"
+                                          placeholder="Gross Description"></textarea>
+                                <span class="input-group-addon btn btn-primary" data-clipboard-target="#outPut-1">Copy to Clipboard</span>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" id="outPut-2" rows="15"
+                                      placeholder="Example Micro"></textarea>
+                            <span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-2">Copy to Clipboard</span>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" id="outPut-3" rows="10"
+                                      placeholder="Example Final"></textarea>
+                            <span class="input-group-addon copy  btn btn-primary" data-clipboard-target="#outPut-3">Copy to Clipboard</span>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" id="outPut-4" rows="5"
+                                      placeholder="Example Comment"></textarea>
+                            <span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-4">Copy to Clipboard</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- end right column-->
+    </div>
+    <!-- end bottom row-->
+    {{> page-modals/combined-report}}
+    {{> page-modals/new-case-reference}}
+    {{> page-partials/history-module}}
+</div>
+<!--end container wrapper-->
+
+
