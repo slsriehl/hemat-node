@@ -139,7 +139,7 @@
                         <h5 class="mb-0">
                             <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion"
                                href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                                Intraoperative Leveling Biopsy
+                                Intraoperative Leveling Biopsy Frozen Sections
                             </a>
                         </h5>
                     </div>
@@ -150,42 +150,59 @@
                                     <div class="card-header">
                                         Frozen section parts
                                     </div>
-                                    <div class="card-block chkboxes">
-                                        <div style="font-size: 0.66em;" class="content form-check" id="column1c">
+                                    <div class="card-block">
+                                        <div class="fz-biopsies">
                                             <form class="fz-group form-inline">
-                                                <label class="form-label">Part designation
-                                                    <input type="text" class="form-control form-control-sm mx-2 fz-part ignore">
+                                                <label class="form-label col-4">Part designation
+                                                    <input type="text" class="form-control form-control-sm col-4 mx-2 fz-part ignore">
                                                 </label>
 
-                                                <label class="form-label">Location
+                                                <label class="form-label col-4">Location
                                                     <input type="text" class="form-control form-control-sm mx-2 fz-loc ignore">
+                                                </label>
+
+                                                <label class="form-label col-4">Pathologist
+                                                    <input type="text" class="form-control form-control-sm mx-2 fz-path ignore">
                                                 </label>
 
                                                 <div class="py-2 w-100"></div>
 
 
-                                                    <label class="form-inline">Specimen type
-                                                        <select class="form-control form-control-sm ml-2 fz-spctype ignore">
+                                                    <label class="form-label col-6">Specimen type
+                                                        <select class="form-control form-control-sm mx-2 col-8 fz-spctype ignore">
                                                             <option>Seromuscular biopsy</option>
                                                             <option>Full-thickness biopsy</option>
                                                         </select>
                                                     </label>
 
-                                                    <label class="form-inline ">Diagnosis
-                                                        <select class="form-control form-control-sm ml-2 fz-dx ignore">
+                                                    <label class="form-label col-6">Diagnosis
+                                                        <select class="form-control form-control-sm mx-2 col-8 fz-dx ignore">
                                                             <option>Inadequate</option>
                                                             <option>Myenteric ganglion cells present</option>
                                                             <option>Myenteric ganglion cells absent</option>
                                                         </select>
                                                     </label>
 
-                                                    <label class="form-label">Pathologist
-                                                        <input type="text" class="form-control form-control-sm fz-path ignore">
-                                                    </label>
+                                                <div class="py-2 w-100"></div>
+                                                <label class="form-label col-4">
+                                                </label>
+
+                                                <label class="form-label col-4">
+                                                    <button class="btn btn-info p-2 fz-add" id="fz-add">Add part</button>
+                                                </label>
+                                                <label class="form-label col-4">
+                                                    <button class="btn btn-danger p-2 fz-remove" id="fz-remove">Remove part</button>
+                                                </label>
 
                                                 </form>
 
                                         </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <label class="form-label col-4">
+                                            <button class="btn btn-success p-2" id="fz-done">Done with frozen sections</button>
+                                        </label>
+
                                     </div>
                                 </div>
                             </div>
@@ -199,7 +216,7 @@
                         <h5 class="mb-0">
                             <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion"
                                href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                                GROUP 3
+                                Resection specimen
                             </a>
                         </h5>
                     </div>
@@ -208,31 +225,80 @@
                             <div class="card-group">
                                 <div class="card">
                                     <div class="card-header">
-                                        Column 3.1
+                                        Frozen section (if performed)
                                     </div>
                                     <div class="card-block chkboxes">
-                                        <div style="font-size: 0.66em;" class="content form-check" id="column1d">
-                                            Checkboxes
+                                        <div class="fz-rxn">
+                                                <label class="form-label w-100">Pathologist
+                                                    <input type="text" class="form-control form-control-sm mx-2 col-10 fz-rx-path ignore">
+                                                </label>
+                                                <label class="form-label w-100">Part designation
+                                                    <input type="text" class="form-control form-control-sm mx-2 col-10" id="mxLine50">
+                                                </label>
+
+
+                                            <label class="bg-warning py-2 w-100">Diagnosis</label>
+
+                                                <label class="form-check-label w-100" for="mxLine100">
+                                                    <input type="checkbox" class="form-check-input" id="mxLine100">
+                                                    No diagnostic alteration
+                                                </label>
+                                                <label class="form-check-label w-100" for="mxLine105">
+                                                    <input type="checkbox" class="form-check-input" id="mxLine105">
+                                                    Transition zone (both IM and submucosa plexi)
+                                                </label>
+                                                <label class="form-check-label w-100" for="mxLine110">
+                                                    <input type="checkbox" class="form-check-input" id="mxLine110">
+                                                    Transition zone (in IM plexus)
+                                                </label>
+                                                <label class="form-check-label w-100" for="mxLine115">
+                                                    <input type="checkbox" class="form-check-input" id="mxLine115">
+                                                    Transition zone (in submucosa plexus)
+                                                </label>
+
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card">
                                     <div class="card-header">
-                                        Column 3.2
+                                        Resection Gross Data
                                     </div>
                                     <div class="card-block chkboxes">
-                                        <div style="font-size: 0.66em;" class="content form-check" id="column2d">
-                                            Checkboxes
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header">
-                                        Column 3.3
-                                    </div>
-                                    <div class="card-block chkboxes">
-                                        <div style="font-size: 0.66em;" class="content form-check" id="column3d">
-                                            Checkboxes
+                                        <div class="form-check">
+                                            <label class="pt-2 w-100">Frozen section residual?</label>
+                                            <label class="form-check-label w-100" for="grLine250">
+                                                <input type="checkbox" class="form-check-input" id="grLine250">
+                                                Stored in OCT
+                                            </label>
+                                            <label class="form-inline ml-4">Submitted in cassette
+                                                <input type="text" class="form-control form-control-sm mx-2 col-2" id="grLine255">
+                                            </label>
+
+                                            <label class="py-2 w-100">Gross data</label>
+                                            <label class="form-check-label w-100" for="grLine260">
+                                                <input type="checkbox" class="form-check-input" id="grLine260">
+                                                Specimen received unfixed
+                                            </label>
+                                            <label class="form-check-label w-100" for="grLine265">
+                                                <input type="checkbox" class="form-check-input" id="grLine265">
+                                                Specimen received in formalin
+                                            </label>
+                                            <label class="form-inline w-100 ml-4">Total length (cm):
+                                                <input type="text" class="form-control form-control-sm mx-2 col-2" id="grLine270">
+                                            </label>
+                                            <label class="form-inline w-100 ml-4">Mucosal sleeve length (cm):
+                                                <input type="text" class="form-control form-control-sm mx-2 col-2" id="grLine275">
+                                            </label>
+
+                                            <div class="py-2 w-100"></div>
+
+                                            <label class="form-inline w-100 ml-4">Minimum external diameter (cm):
+                                                <input type="text" class="form-control form-control-sm mx-2 col-2" id="grLine280">
+                                            </label>
+                                            <label class="form-inline w-100 ml-4">Maximum external diameter (cm):
+                                                <input type="text" class="form-control form-control-sm mx-2 col-2" id="grLine285">
+                                            </label>
+
                                         </div>
                                     </div>
                                 </div>

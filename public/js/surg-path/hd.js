@@ -32,6 +32,34 @@ $(window).on('load', function() {
                             .replace(/:.*\)/, ": "+part+")")
                             .replace(/#gr-200#/, text);
     });
+
+
+    // Frozen section of resection prox margin
+    $("#mxLine50").on("change", function(){
+       var text = $(this).val();
+        mxLines.mxLine50 = mxLines.mxLine50.replace(/: \)/, ": "+text+")");
+    });
+
+    $(".fz-rx-path").on("blur", function(){
+        var text = $(this).val();
+        mxLines.mxLine50 = mxLines.mxLine50.replace(/\n$/, "\nEn face frozen section of proximal margin (donut) (pathologist: "+text+"): ");
+        console.log(mxLines.mxLine50);
+    });
+
+    // Resection - frozen section residue
+    $("#grLine255").on("change", function(){
+        var text = $(this).val();
+        grLines.grLine255 = grLines.grLine255.replace(/cassette: /, "cassette: "+text);
+    });
+
+    // Gross lengths
+    $("#grLine270, #grLine275, #grLine280, #grLine285").on("change", function (){
+        var text = $(this).val();
+        var id = $(this).attr("id");
+        console.log(text, id);
+        grLines[id] = grLines[id].replace(/: /, ": "+text+"cm");
+    });
+
 //************************************************************//
 // Script to populate the template data in the output textarea//
 // *************************************************************/
