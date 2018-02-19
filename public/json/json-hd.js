@@ -30,6 +30,7 @@ $(window).on('load', function() {
 
         grLine280: "Minimum external diameter: \n",
         grLine285: "Maximum external diameter: \n",
+        grLine287: "Proximal margin  diameter: \n",
 
         grLine290: "Gross transition zone: Not identified \n",
         grLine295: "Gross transition zone: Present, ## from distal margin \n",
