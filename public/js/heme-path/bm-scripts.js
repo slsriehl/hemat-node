@@ -400,7 +400,7 @@ $("#CBCswitch").change(function() {
            tests.push('FISH');
        }
        if (mrd != 'Not performed'){
-           tests.push('MRD testing')
+           tests.push('MRD testing');
        }
 
        $.each(commLines, function(val){

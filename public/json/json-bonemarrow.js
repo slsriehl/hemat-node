@@ -295,7 +295,7 @@ $(window).on('load', function(){
 // NORMAL MATURATION
         mxLine250:'Myeloid precursors appear adequate in number with full spectrum maturation. Erythroid precursors appear adequate in number with full spectrum maturation. No dysplastic changes or increased numbers of blast cells is identified. ',
 // MINIMAL PRECURSORS
-        mxLine251:'There are few residual maturing myeloid and erythroid precursors. ',
+        mxLine251:'There is a marked proportional reduction in maturing myeloid and erythroid precursors. ',
 // NORMAL MYELOIDS
         mxLine252:'Myeloid precursors appear adequate in number with full spectrum maturation. ',
 // RELATIVE DEC MYELOIDS
@@ -416,7 +416,7 @@ $(window).on('load', function(){
 // NORMAL M&E MATURATION
         mxLine401: 'Myeloid precursors appear adequate in number with full spectrum maturation. The erythroid precursors appear adequate in number with full spectrum maturation. The M:E ratio is 3:1. ',
 // INJURED MARROW W/ FEW PRECURSORS
-        mxLine402: 'The marrow spaces contain few maturing myeloid and erythroid precursors, with most of the cellularity comprised of stromal cells and plasma cells. ',
+        mxLine402: 'The marrow spaces contain markedly reduced maturing myeloid and erythroid precursors. ',
 // NORMAL MYELOID
         mxLine403: 'Myeloid precursors appear adequate in number with full spectrum maturation. ',
 // RELATIVE DEC MYELOIDS
@@ -1000,9 +1000,9 @@ $(window).on('load', function(){
 // COMMENT: GENERIC HIGH GRADE LYMPHOMA
         commLine404: 'The morphologic and immunophenotypic findings show marrow involvement by a diffuse large B-cell lymphoma. The immunophenotypic differential includes___/the immunophenotype is consistent with ____. Correlation with pending ancillary testing is recommended. ',
 // COMMENT: AML
-        commLine405: 'The morphologic and immunophenotypic findings are those of acute myeloid leukemia. Cytogenetic studies are pending and will be reported when available. FLT3/NPM1 mutation testing can also be performed and may provide additional prognostically relevant information. ',
+        commLine405: 'The morphologic and immunophenotypic findings are those of acute myeloid leukemia. Correlation with pending ancillary testing is recommended. Specifically, FLT3/NPM1 status can provide prognostically relevant information and final classification is deferred until these results are available. ',
 // COMMENT: APL
-        commLine406: 'The morphologic and immunophenotypic findings are those of acute promyelocytic leukemia. Cytogenetic studies, including FISH for PML/RARA is pending and will be reported when available. Quantitative PCR for PML/RARA should be requested for any future marrow biopsies, to better assess for therapeutic response. ',
+        commLine406: 'The morphologic and immunophenotypic findings are those of acute promyelocytic leukemia. Quantitative PCR for PML/RARA should be requested for any future marrow biopsies, to better assess for therapeutic response. Correlation with pending ancillary testing is recommended.',
 // COMMENT: BALL
         commLine407: 'The morphologic and immunophenotypic findings are those of B-lymphoblastic leukemia. Correlation with pending ancillary testing is recommended. ',
 // COMMENT: TALL
