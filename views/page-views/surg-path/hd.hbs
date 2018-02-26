@@ -74,12 +74,26 @@
                         </div>
                         <div class="py-2 w-100"></div>
                         <div class="col form-inline">
-                            <h6>Diagnosis</h6>
+                            <h6>FZ Diagnosis</h6>
                             <select id="box6" class='form-control selectpicker form-control-sm ml-2'>
                                 <option>Inadequate</option>
                                 <option>Ganglion cells present</option>
                                 <option>Ganglion cells absent</option>
                             </select>
+                        </div>
+                        <div class="col form-inline">
+                            <h6>Perm diagnosis</h6>
+                            <select id="box50" class='form-control selectpicker form-control-sm ml-2'>
+                                <option>Inadequate</option>
+                                <option>Myenteric ganglion cells present</option>
+                                <option>Myenteric and submucosal ganglion cells present</option>
+                                <option>Myenteric ganglion cells absent</option>
+                                <option>Submucosal ganglion cells absent</option>
+                                <option>Myenteric and submucosal ganglion cells absent</option>
+                                <option>Other</option>
+                            </select>
+
+                            <input id='box50_2'  type="text" class="form-control form-control-sm mt-3" style='display:none;' placeholder='Specify Other'>
                         </div>
                         <div class="col form-inline">
                             <h6>Residue</h6>
@@ -106,11 +120,355 @@
                 <hr class="p-2" >
                 <h5>Resection specimen</h5>
                 <div class="resection ml-3">
+                    <h6>Part designation</h6>
+                    <input type="text" class="form-control form-control-sm col-sm-6" id="box10"
+                           placeholder="ie. Part(A) Sigmoid Colon">
 
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Resection fixative</h6>
+                    <select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>unfixed</option>
+                        <option>formalin fixed</option>
+                    </select>
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Resection total length (cm)</h6>
+                    <input type="number" class="form-control form-control-sm col-sm-6" id="box12" placeholder="">
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Mucosal sleeve length (cm)</h6>
+                    <input type="number" class="form-control form-control-sm col-sm-6" id="box13" placeholder="(if applicable)">
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Minimum external gross diameter (cm)</h6>
+                    <input type="number" class="form-control form-control-sm col-sm-6" id="box14" placeholder="">
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Maximum external gross diameter (cm)</h6>
+                    <input type="number" class="form-control form-control-sm col-sm-6" id="box15" placeholder="">
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Grossly evident transition zone (distance to distal margin)</h6>
+                    <input type="number" class="form-control form-control-sm col-sm-6" id="box16" placeholder="">
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Proximal margin circumferential frozen section</h6>
+                    <select id="box20" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>Not done</option>
+                        <option>No diagnostic alteration</option>
+                        <option>Features of transition zone present</option>
+                    </select>
+                    <div class="py-2 w-100"></div>
+
+
+                    <div class="resection-frozen ml-5" style="display:none;">
+
+                        <div class="transition" style="display:none;">
+                            <h6>Transition zone features</h6>
+                            <select multiple id="box21" class='form-control selectpicker form-control-sm col-sm-6'>
+                                <option>Partial circumferential aganglionosis: Myenteric plexus</option>
+                                <option>Partial circumferential aganglionosis: Submucosal plexus</option>
+                                <option>Partial circumferential aganglionosis: Both plexi</option>
+                                <option>Partial circumferential partial myenteric aganglionosis</option>
+                                <option>Submucosal nerve hypertrophy</option>
+                                <option>Myenteric nerve hypertrophy</option>
+                                <option></option>
+                            </select>
+                        </div>
+
+                        <div class="py-2 w-100"></div>
+
+                        <h6>Proximal margin frozen section pathologist</h6>
+                        <input type="text" class="form-control form-control-sm col-sm-6" id="box23" placeholder="">
+
+                        <div class="py-2 w-100"></div>
+
+                        <h6>Residual proximal margin frozen residue</h6>
+                        <select id="box24" class='form-control selectpicker form-control-sm col-sm-6'>
+                            <option>Stored frozen in OCT </option>
+                            <option>Submitted in cassette</option>
+                        </select>
+
+                        <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box24_2' style='display:none;' placeholder='Specify Submitted'>
+
+                    </div>
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Locations of intraoperative biopsy sites</h6>
+                    <input type="text" class="form-control form-control-sm col-sm-6" id="box30" placeholder="Specify distances (cm) from distal margin">
+
+
+                    <div class="py-2 w-100"></div>
+
+
+                    <h6>Length of ganglionated bowel (cm)
+                        <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
+                           title="Distance between the proximal margin and distal-most intraoperative ganglionated biopsy" aria-hidden="true"></i>
+                    </h6>
+                    <input type="text" class="form-control form-control-sm col-sm-6" id="box31" placeholder="">
+
+
+                    <div class="py-2 w-100"></div>
+
+
+                    <h6>Gross appearance of mucosal surface</h6>
+                    <select id="box32" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>No significant gross pathology</option>
+                        <option>Scattered punctate ulcers present</option>
+                        <option>Friable erosions throughout bowel</option>
+                        <option>Isolated ulcerations present</option>
+                        <option>Multiple ulcerations present</option>
+                        <option>Perforation noted</option>
+                    </select>
+
+                </div>
+
+                <hr class="p-2" >
+
+                <h5>Ostomy specimen - <a data-toggle="collapse" href="#ostomy" aria-expanded="false" aria-controls="ostomy">if necessary click here</a></h5>
+                <div id="ostomy" class="ostomy collapse ml-3">
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Ostomy part designation:</h6>
+                    <input type="text" class="form-control form-control-sm col-sm-6" id="box40" placeholder="ie. Part(E) Ostomy, Sigmoid">
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Ostomy fixtative</h6>
+                    <select id="box41" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>unfixed</option>
+                        <option>formalin fixation</option>
+                    </select>
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Ostomy length (cm)</h6>
+                    <input type="number" class="form-control form-control-sm col-sm-6" id="box42" placeholder="">
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Appearance of ostomy orifice</h6>
+                    <select id="box43" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>No significant prolapse</option>
+                        <option>Prolapse present</option>
+                        <option>Other</option>
+                    </select>
+                    <input type="number" class="form-control form-control-sm mt-3 col-sm-6" id='box43_2' style='display:none;' placeholder='Length of prolapsed segment'>
+                    <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box43_3' style='display:none;' placeholder='Specify other findings'>
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Proximal ostomy margin circumferential frozen section</h6>
+                    <select id="box45" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>Not done</option>
+                        <option>No diagnostic alteration</option>
+                        <option>Features of transition zone present</option>
+                    </select>
+                    <div class="py-2 w-100"></div>
+
+                    <div class="py-2 w-100"></div>
+
+                    <div class="ostomy-resection-frozen ml-5" style="display:none;">
+
+                        <div class="ostomy-transition" style="display:none;">
+                            <h6>Transition zone features</h6>
+                            <select multiple id="box46" class='form-control selectpicker form-control-sm col-sm-6'>
+                                <option>Partial circumferential aganglionosis: Myenteric plexus</option>
+                                <option>Partial circumferential aganglionosis: Submucosal plexus</option>
+                                <option>Partial circumferential aganglionosis: Both plexi</option>
+                                <option>Partial circumferential partial myenteric aganglionosis</option>
+                                <option>Submucosal nerve hypertrophy</option>
+                                <option>Myenteric nerve hypertrophy</option>
+                                <option></option>
+                            </select>
+
+                            <div class="py-2 w-100"></div>
+
+                        </div>
+
+                        <h6>Proximal margin frozen section pathologist</h6>
+                        <input type="text" class="form-control form-control-sm col-sm-6" id="box47" placeholder="">
+
+                        <div class="py-2 w-100"></div>
+
+                        <h6>Residual proximal margin frozen residue</h6>
+                        <select id="box48" class='form-control selectpicker form-control-sm col-sm-6'>
+                            <option>Stored frozen in OCT </option>
+                            <option>Submitted in cassette</option>
+                        </select>
+
+                        <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box48_2' style='display:none;' placeholder='Specify Submitted'>
+
+                    </div>
+                </div>
+
+                <hr class="p-2" >
+                <h4>Final Microscopic Descriptions</h4>
+
+                <div class="py-2 w-100"></div>
+
+                <h5>Proximal margin</h5>
+                <div class="prox-margin ml-3">
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Ganglion cell distribution</h6>
+                    <select id="box60" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>Normal ganglion cell distribution</option>
+                        <option>Absent full-circumference ganglion cells</option>
+                        <option>Absent partial-circumference ganglion cells</option>
+                        <option>Full circumference myenteric hypoganglionosis</option>
+                        <option>Partial circumference myenteric hypoganglionosis</option>
+                    </select>
+
+                    <select id="box60_2" class='form-control selectpicker form-control-sm col-sm-6' style="display:none">
+                        <option>Myenteric plexus</option>
+                        <option>Submucosal plexus</option>
+                        <option>Both myenteric and submucosal plexi</option>
+                    </select>
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Submucosal nerve hypertrophy</h6>
+                    <select id="box61" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>Absent (subjective)</option>
+                        <option>Absent (measured)</option>
+                        <option>Present (subjective)</option>
+                        <option>Present (measured)</option>
+                        <option>Present (at least 2 nerves >40um in 400x field)</option>
+                    </select>
+
+                    <input type="number" class="form-control form-control-sm mt-3 col-sm-6" id='box61_2' style='display:none;' placeholder='Specify largest measured nerve'>
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Neutrophilic mucosal inflammation</h6>
+                    <select id="box62" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>None</option>
+                        <option>Focal</option>
+                        <option>Multifocal</option>
+                        <option>Diffuse</option>
+                    </select>
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Mucosal ulceration</h6>
+                    <select id="box63" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>None</option>
+                        <option>Focal</option>
+                        <option>Multifocal</option>
+                        <option>Diffuse</option>
+                    </select>
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Eosinophilic inflammation  (select all that apply)</h6>
+                    <select multiple id="box64" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>None</option>
+                        <option>Myenteric ganglia (focal)</option>
+                        <option>Myenteric ganglia (multifocal)</option>
+                        <option>Myenteric ganglia (diffuse)</option>
+                        <option>Submucosal ganglia (focal)</option>
+                        <option>Submucosal ganglia (multifocal)</option>
+                        <option>Submucosal ganglia (diffuse)</option>
+                        <option>Muscularis propria (focal)</option>
+                        <option>Muscularis propria (multifocal)</option>
+                        <option>Muscularis propria (diffuse)</option>
+                    </select>
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Other resection finding</h6>
+                    <input type="text" class="form-control form-control-sm col-sm-6" id="box65" placeholder="">
 
 
                 </div>
 
+                <div class="py-2 w-100"></div>
+
+                <h5>Distal margin</h5>
+                <div class="dist-margin ml-3">
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Ganglion cell distribution</h6>
+                    <select id="box66" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>Normal ganglion cell distribution</option>
+                        <option>Absent full-circumference ganglion cells</option>
+                        <option>Absent partial-circumference ganglion cells</option>
+                        <option>Full circumference myenteric hypoganglionosis</option>
+                        <option>Partial circumference myenteric hypoganglionosis</option>
+                    </select>
+
+                    <select id="box66_2" class='form-control selectpicker form-control-sm col-sm-6' style="display:none">
+                        <option>Myenteric plexus</option>
+                        <option>Submucosal plexus</option>
+                        <option>Both myenteric and submucosal plexi</option>
+                    </select>
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Submucosal nerve hypertrophy</h6>
+                    <select id="box67" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>Absent (subjective)</option>
+                        <option>Absent (measured)</option>
+                        <option>Present (subjective)</option>
+                        <option>Present (measured)</option>
+                        <option>Present (at least 2 nerves >40um in 400x field)</option>
+                    </select>
+
+                    <input type="number" class="form-control form-control-sm mt-3 col-sm-6" id='box67_2' style='display:none;' placeholder='Specify largest measured nerve'>
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Neutrophilic mucosal inflammation</h6>
+                    <select id="box68" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>None</option>
+                        <option>Focal</option>
+                        <option>Multifocal</option>
+                        <option>Diffuse</option>
+                    </select>
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Mucosal ulceration</h6>
+                    <select id="box69" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>None</option>
+                        <option>Focal</option>
+                        <option>Multifocal</option>
+                        <option>Diffuse</option>
+                    </select>
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Eosinophilic inflammation (select all that apply)</h6>
+                    <select multiple id="box70" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>None</option>
+                        <option>Myenteric ganglia (focal)</option>
+                        <option>Myenteric ganglia (multifocal)</option>
+                        <option>Myenteric ganglia (diffuse)</option>
+                        <option>Submucosal ganglia (focal)</option>
+                        <option>Submucosal ganglia (multifocal)</option>
+                        <option>Submucosal ganglia (diffuse)</option>
+                        <option>Muscularis propria (focal)</option>
+                        <option>Muscularis propria (multifocal)</option>
+                        <option>Muscularis propria (diffuse)</option>
+                    </select>
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Other resection finding</h6>
+                    <input type="text" class="form-control form-control-sm col-sm-6" id="box71" placeholder="">
+
+
+                </div>
 
             </div>
 
