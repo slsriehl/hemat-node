@@ -99,7 +99,7 @@ $(window).on('load', function(){
 // SUBOPTIMAL ASPIRATION BX
         partType304: 'show significant aspiration artifact, which limits evaluation of the marrow cellularity. ',
 // SMALL FRAGMENTED BX
-        partType305: 'are small and fragmented, with limited preserved marrow areas wihch are optimal for morphologic evaluation. ',
+        partType305: 'are small and fragmented, with limited preserved marrow areas which are optimal for morphologic evaluation. ',
 // MOSTLY CARTILAGE BX
         partType306: 'are largely comprised of hyaline cartilage, and only contain a small region of evaluable marrow. ',
 // MOSTLY CORTEX BX

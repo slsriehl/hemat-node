@@ -637,7 +637,7 @@ $("#CBCswitch").change(function() {
 		var aa = $('#outPut-2').val(); // micro output
 		var bb = $('#diffOut').val();// CBC output
 		var re = /BONE MARROW, (?!ASPIRATE)/gm;
-		var match = aa.replace(/BONE MARROW, (?!ASPIRATE)/gm,'DIFFERENTIAL: \n'+bb+"\n\nBONE MARROW, ");
+		var match = aa.replace(/BONE MARROW, (?!ASPIRATE)/m,'DIFFERENTIAL: \n'+bb+"\n\nBONE MARROW, ");
 		var cyto_val = $('#cyto_val').val();
 		var mrd_val = $('#mrd_val').val();
 		var fish_val = $('#fish_val').val();

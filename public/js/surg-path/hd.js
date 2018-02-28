@@ -250,7 +250,7 @@ $(window).on('load', function() {
 
 
         // ostomy block
-        if ($("#ostomy").is(":visble")){
+        if ($("#ostomy").is(":visible")){
             captext += "\nOSTOMY SPECIMEN\n";
             var box_45 = $("#box45").val();
             captext += "\nProximal ostomy margin circumferential frozen section:\n- "  + box_45+ "\n";
