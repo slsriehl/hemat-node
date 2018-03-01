@@ -1,0 +1,170 @@
+<div class="container-fluid">
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb h5">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item active"><i class="fa fa-balance-scale mr-2"></i>Stillbirth Autopsy Weights and Measurements</li>
+    </ol>
+    {{> message-center this}}
+    {{> page-partials/autopsy-howto}}
+
+    <div class="row">
+        <div class="col col-md-8">
+            <hr class="p-2" >
+            <h5>Gender</h5>
+            <select id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>male</option>
+                <option>female</option>
+            </select>
+
+            <hr class="p-2" >
+            <h5>Gestational Age</h5>
+            <select id="box2" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>12</option>
+                <option>13</option>
+                <option>14</option>
+                <option>15</option>
+                <option>16</option>
+                <option>17</option>
+                <option>18</option>
+                <option>19</option>
+                <option>20</option>
+                <option>21</option>
+                <option>22</option>
+                <option>23</option>
+                <option>24</option>
+                <option>25</option>
+                <option>26</option>
+                <option>27</option>
+                <option>28</option>
+                <option>29</option>
+                <option>30</option>
+                <option>31</option>
+                <option>32</option>
+                <option>33</option>
+                <option>34</option>
+                <option>35</option>
+                <option>36</option>
+                <option>37</option>
+                <option>38</option>
+                <option>39</option>
+                <option>40</option>
+                <option>41</option>
+                <option>42</option>
+                <option>43</option>
+                <option>44</option>
+            </select>
+
+
+            <hr class="p-2">
+            <div class="card-head h5">Fetal weights and measurements</div>
+                <table class="table table-hover">
+                    <tr>
+                        <th class="thead-default">Fetal weights (grams)</th>
+                        <th></th>
+                        <th class="thead-default">Fetal measurements (cm)</th>
+                    </tr>
+                    <tr>
+                        <td>Body</td>
+                        <td><input class="form-control form-control-sm"  type='text' tabindex="1" id="box10" ></td>
+                        <td>Crown-heel</td>
+                        <td><input class="form-control form-control-sm"  type='text' tabindex="15" id="box30"></td>
+                    </tr>
+                    <tr>
+                        <td>Heart</td>
+                        <td><input class="form-control form-control-sm"  type='text' tabindex="2" id="box11"></td>
+                        <td>Crown-rump</td>
+                        <td><input class="form-control form-control-sm"  type='text' tabindex="16" id="box31"></td>
+                    </tr>
+                    <tr>
+                        <td>R Lung</td>
+                        <td><input class="form-control form-control-sm"  type='text' tabindex="3" id="box12"></td>
+                        <td>Head circ</td>
+                        <td><input class="form-control form-control-sm"  type='text' tabindex="17" id="box32"></td>
+                    </tr>
+                    <tr>
+                        <td>L Lung</td>
+                        <td><input class="form-control form-control-sm"  type='text' tabindex="4" id="box13"></td>
+                        <td>Chest circ</td>
+                        <td><input class="form-control form-control-sm"  type='text' tabindex="18" id="box33"></td>
+                    </tr>
+                    <tr>
+                        <td>Liver</td>
+                        <td><input class="form-control form-control-sm"  type='text' tabindex="5" id="box14"></td>
+                        <td>Abdomen circ</td>
+                        <td><input class="form-control form-control-sm"  type='text' tabindex="19" id="box34"></td>
+                    </tr>
+                    <tr>
+                        <td>R Kidney</td>
+                        <td><input class="form-control form-control-sm"  type='text' tabindex="6" id="box15"></td>
+                        <td>Foot length</td>
+                        <td><input class="form-control form-control-sm"  type='text' tabindex="20" id="box35"></td>
+                    </tr>
+                    <tr>
+                        <td>L Kidney</td>
+                        <td><input class="form-control form-control-sm"  type='text' tabindex="7" id="box16"></td>
+                        <td>Inner canthal dist</td>
+                        <td><input class="form-control form-control-sm"  type='text' tabindex="21" id="box36"></td>
+                    </tr>
+                    <tr>
+                        <td>R Adrenal</td>
+                        <td><input class="form-control form-control-sm"  type='text' tabindex="8" id="box17"></td>
+                        <td>Outer canthal dist</td>
+                        <td><input class="form-control form-control-sm"  type='text' tabindex="22" id="box37"></td>
+                    </tr>
+                    <tr>
+                        <td>L Adrenal</td>
+                        <td><input class="form-control form-control-sm"  type='text' tabindex="9" id="box18"></td>
+                        <td>Pupil diamter (mm)</td>
+                        <td><input class="form-control form-control-sm"  type='text' tabindex="23" id="box38"></td>
+                    </tr>
+                    <tr>
+                        <td>Uterus</td>
+                        <td><input class="form-control form-control-sm"  type='text' tabindex="10" id="box19"></td>
+                        <td>Heart - TV circ</td>
+                        <td><input class="form-control form-control-sm"  type='text' tabindex="24" id="box39"></td>
+                    </tr>
+                    <tr>
+                        <td>Thymus</td>
+                        <td><input class="form-control form-control-sm"  type='text' tabindex="11" id="box20"></td>
+                        <td>Heart - PV circ</td>
+                        <td><input class="form-control form-control-sm"  type='text' tabindex="25" id="box40"></td>
+                    </tr>
+                    <tr>
+                        <td>Spleen</td>
+                        <td><input class="form-control form-control-sm"  type='text' tabindex="12" id="box21"></td>
+                        <td>Heart - MV circ</td>
+                        <td><input class="form-control form-control-sm"  type='text' tabindex="26" id="box41"></td>
+                    </tr>
+                    <tr>
+                        <td>Brain</td>
+                        <td><input class="form-control form-control-sm"  type='text' tabindex="13" id="box22"></td>
+                        <td>Heart - AV circ</td>
+                        <td><input class="form-control form-control-sm"  type='text' tabindex="27" id="box42"></td>
+                    </tr>
+                    <tr>
+                        <td>Placenta</td>
+                        <td><input class="form-control form-control-sm"  type='text' tabindex="14" id="box23"></td>
+                        <td>RV thickness</td>
+                        <td><input class="form-control form-control-sm"  type='text' tabindex="28" id="box43"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>LV thickness</td>
+                        <td><input class="form-control form-control-sm"  type='text' tabindex="29" id="box44"></td>
+                    </tr>
+                </table>
+
+
+            <!-- end markup-->
+
+            <!-- close markup -->
+        </div>
+        {{> page-partials/autopsy-footer}}
+        <!-- close row -->
+    </div>
+    {{> page-partials/history-module}}
+    <!-- close container -->
+</div>

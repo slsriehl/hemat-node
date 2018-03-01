@@ -130,7 +130,6 @@ $(window).on('load', function(){
                 return a.plac_wt_num - b.plac_wt_num; // ascending sort returned array
             });
 
-            console.dir("ascending sorted percentiles\n"+JSON.stringify(percentiles));
 
             var upperIndex = -1;
 

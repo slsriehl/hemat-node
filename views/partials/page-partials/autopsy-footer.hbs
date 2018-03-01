@@ -1,0 +1,37 @@
+<!-- middle right text output-->
+<div class="col col-md-4" id="cap-bottom-right">
+    <div class="card text-center">
+        <div class="card-header button-box">
+            <ul class="nav nav-pills standard-button-box">
+                <a class="btn btn-lg btn-outline-info p-2 writeReport">
+                    <small>Write Report</small>
+                </a>
+                <a class="btn btn-lg btn-outline-success p-2 ml-4" >
+                    <small class="copy btn-default" data-toggle="popover" data-placement="top" data-clipboard-target="#outPut-1" >
+                        Copy</small>
+                </a>
+                <a class="btn btn-lg btn-outline-danger p-2 ml-4" id="Reset" >
+                    <small>Reset</small>
+                </a>
+            </ul>
+            {{> page-partials/logged-in-btn-box}}
+        </div>
+        <div class="card-block">
+            {{> page-partials/case-reference}}
+            <div class="form-group">
+				<textarea class="form-control" id="outPut-1" rows="40" placeholder="Autopsy reference values">
+				</textarea>
+            </div>
+        </div>
+        <div class="card-footer">
+        </div>
+    </div>
+</div>
+<button class="float writeReport" style="color:white;">
+    <p class="mt-1">Write Report</p>
+</button>
+
+<!-- new case reference modal -->
+{{> page-modals/new-case-reference}}
+
+<!-- combined report modal removed bc there is no need on a single-textbox report -->
