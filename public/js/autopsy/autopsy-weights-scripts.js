@@ -97,21 +97,21 @@ wt = {male:{yr1m:{body:"4.0, 3-4.9kg",heart:"23, 16-30g",lungs:"64, 43-85g",live
         var wt_plac = Number($("#box23").val()); // Placenta
        
         // Measurements
-        var ms_ch = $("#box30").val(); // crownheel
-        var ms_cr = $("#box31").val(); // cr-rump
-        var ms_hc = $("#box32").val(); // head circ
-        var ms_cc = $("#box33").val(); // chest circ
-        var ms_ac = $("#box34").val(); // abd circ
-        var ms_fl = $("#box35").val(); // foot length
-        var ms_ic = $("#box36").val(); // inner canth
-        var ms_oc = $("#box37").val(); // out canth
-        var ms_pup = $("#box38").val(); // pupil
-        var ms_tv = $("#box39").val(); // heart TV
-        var ms_pv = $("#box40").val(); // heart pv
-        var ms_mv = $("#box41").val(); // heart mv
-        var ms_av = $("#box42").val(); // heart av
-        var ms_rv = $("#box43").val(); // rv
-        var ms_lv = $("#box44").val(); // lv
+        var ms_ch = Number($("#box30").val()); // crownheel
+        var ms_cr = Number($("#box31").val()); // cr-rump
+        var ms_hc = Number($("#box32").val()); // head circ
+        var ms_cc = Number($("#box33").val()); // chest circ
+        var ms_ac = Number($("#box34").val()); // abd circ
+        var ms_fl = Number($("#box35").val()); // foot length
+        var ms_ic = Number($("#box36").val()); // inner canth
+        var ms_oc = Number($("#box37").val()); // out canth
+        var ms_pup = Number($("#box38").val()); // pupil
+        var ms_tv = Number($("#box39").val()); // heart TV
+        var ms_pv = Number($("#box40").val()); // heart pv
+        var ms_mv = Number($("#box41").val()); // heart mv
+        var ms_av = Number($("#box42").val()); // heart av
+        var ms_rv = Number($("#box43").val()); // rv
+        var ms_lv = Number($("#box44").val()); // lv
 
         // for stillbirths
         if (data == "stillb"){

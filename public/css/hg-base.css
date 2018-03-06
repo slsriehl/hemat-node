@@ -245,4 +245,33 @@ button:focus {
     margin-top: 22px;
 }
 
+.logo {
+	font-family: 'Kanit', sans-serif;
+	color: #e5e6e8;
+	font-size: 1.0em;
+	letter-spacing: 0.8vw;
+	vertical-align: middle;
+}
+
+.logo2 {
+	font-family: 'Kanit', sans-serif;
+	color: #9100ff;
+	font-size: 1.65em;
+	letter-spacing: 0.4vw;
+	vertical-align: middle;
+}
+.logo3 {
+	font-family: 'Kanit', sans-serif;
+	color: #ff8100;
+	font-size: 1.65em;
+	letter-spacing: 0.4vw;
+	vertical-align: middle;
+}
+.logo4 {
+	font-family: 'Kanit', sans-serif;
+	color: #ff0000;
+	font-size: 1.65em;
+	letter-spacing: 0.8vw;
+	vertical-align: middle;
+}
 
