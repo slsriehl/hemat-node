@@ -11,7 +11,7 @@
 		</li>
 		<li class="breadcrumb-item active" id="bc-jump">
 			<i class="fa fa-tags mr-2"></i>
-			Surgical Pathology Snippets
+			Surgical Pathology Snippets and Macros
 		</li>
 	</ol>
 
@@ -26,16 +26,33 @@
 
 <!-- new snippet button that triggers modal -->
 <div class="container-fluid">
-	<div class="row">
+	<div class="row py-2">
+		<div class="col col-md-12 text-sm-center">
+			<div class="card">
+				<div class="card-block">
+					<!-- Button trigger modal -->
+					<button class="btn btn-outline-primary card-text p-2" data-toggle="modal" data-target="#help_snippet">
+						Not sure how this works? Why don't you watch this quick tutorial on how to use it
+					</button>
+
+					<!-- Histology help Modal -->
+					{{> page-modals/surg-path/snippet}}
+
+				</div>
+			</div>
+		</div>
+
+		<div class="py-2 w-100"></div>
+
 		<div class="col col-md-12">
 			<button
-				class="btn btn-default btn-block"
+				class="btn btn-lg btn-outline-danger btn-block p-1"
 				data-target="#addnew"
 				data-toggle="modal"
 				id="openhelp"
 				type="button"
 			>
-				Add new snippet
+				Click here to add a new snippet
 			</button>
 <!-- end new snippet btn col -->
 		</div>
@@ -58,7 +75,7 @@
 					<form id="doSearch">
 						<input class="form-control" name="search" id="search" />
 						<!-- <input type="hidden" name="doSearch" value="1" /> -->
-						<button class="btn btn-outline-primary p-1" type="submit" >
+						<button class="btn btn-outline-primary my-2 p-1" type="submit" >
 							Submit
 						</button>
 					</form>

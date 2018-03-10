@@ -126,10 +126,11 @@ $(document).ready(function(){
 						console.log(dump);
 						txt = txt.replace(/{site}/, "'"+dump+"'");
 						site = site.replace(/,.*,/, ", "+dump.toUpperCase()+",");
-				} else if (txt.indexOf("{value}") >=0){
+				}
+
+				if (txt.indexOf("{value}") >=0){
 						dump = prompt('Enter value');
 						txt = txt.replace(/{value}/, dump);
-						site = site.replace(/,.*,/, ", "+dump.toUpperCase()+",");
 				}
 				$('#outPut-1').val(txt);
 				$('#outPut-2').val(site);
@@ -316,6 +317,17 @@ $(document).ready(function(){
 					return;
 				}
 			}
+		});
+
+
+		// Stop playing how-to video on modal close
+		$(function(){
+			$("body").on('hidden.bs.modal', function (e) {
+				var $iframes = $(e.target).find("iframe");
+				$iframes.each(function(index, iframe){
+					$(iframe).attr("src", $(iframe).attr("src"));
+				});
+			});
 		});
 
 });
