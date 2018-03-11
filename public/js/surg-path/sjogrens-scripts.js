@@ -128,9 +128,9 @@ $(window).on('load', function () {
 // fill final diagnosis textbox
     function print_final() {
         if (diag_choice !== null) {
-            final_text += dxOuts[diag_choice] + dxOuts.dxOut200;
+            final_text += dxOuts[diag_choice] ;
             diag_choice = null;
-            $('#outPut-3').val(final_text);
+            $('#outPut-3').val("SALVIARY GLAND, LIP, BIOPSY:"+final_text + dxOuts.dxOut200);
         }
     }
 

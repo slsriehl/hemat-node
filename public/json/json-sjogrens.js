@@ -25,13 +25,16 @@ $(window).on('load', function(){
         mxLine202: 'Some ducts show epithelial injury with associated mucin extravasation and collections of muciphages. ',
 // focal duct injury + granulomas
         mxLine203: 'Some ducts show epithelial injury with associated mucin extravasation and collections of muciphages. Occasional poorly formed granulomas with foamy epitheliod hisitocytes are seen. ',
-// No inflammation
-        mxLine204: 'No significant periductal or acinar lymphoplasmacytic infilrates are seen. ',
-// focal sialadenitis
-        mxLine205: 'There are occasional periductal and periacinar lymphoplasmacytic infiltrates. ',
-
-// multifocal sialadenitis
-        mxLine206: 'There are multiple periductal and periacinar lymphoplasmacytic infiltrates. ',
+// No lymphocytic inflammation
+        mxLine204: 'No significant periductal or acinar lymphocyte predominent infilrates are seen. ',
+// focal lymphocytic sialadenitis
+        mxLine205: 'There are few periductal and periacinar lymphocyte predominant infiltrates. ',
+// multifocal lymphocytic sialadenitis
+        mxLine206: 'There are multiple periductal and periacinar lymphocyte predominent infiltrates. ',
+// Non-specific chronic sialadenitis
+        mxLine207: 'There are periductal and periacinar inflammatory infiltrates comprised of a heterogenoeus mixture of lymphocytes, plasma cells and histiocytes. These are closely associated with acinar lobules bearing interstitial fibrosis and duct dilation. ',
+// Sclerosing chronic sialadenitis
+        mxLine208: 'There are periductal and periacinar inflammatory infiltrates comprised of a heterogenoeus mixture of lymphocytes, plasma cells and histiocytes. These are closely associated with acinar lobules bearing diffuse interstitial fibrosis, areas of perianciar sclerosis and prominent duct dilation. ',
 
 // Focus score description
         mxLine209: '\n\nFOCUS SCORE: A focus score cannot be performed (see comment). ',
@@ -52,12 +55,12 @@ $(window).on('load', function(){
     };
 
     dxOuts = {
-        dxOut100: '\n- Salivary glands with no significant chronic inflammation ',
+        dxOut100: '\n- Salivary glands with no significant lymphocytic inflammation ',
         dxOut101: '\n- Focal lymphocytic sialadenitis ',
-        dxOut102: '\n- Multifocal lymphocytic sialadenitis ',
-        dxOut103: '\n- Lymphocytic sialadenitis with focal atrophy ',
-        dxOut104: '\n- Atrophic sialadenitis ',
-        dxOut105: '\n- Chronic sialadenitis with duct fibrosis ',
+        dxOut102: '\n- Non-specific chronic sialadenitis ',
+        dxOut103: '\n- Sclerosing chronic sialadenitis ',
+        dxOut104: '\n- Granulomatous sialadenitis ',
+        dxOut105: '\n- Germinal centers present ',
 
         dxOut200: '\n- Focus score = #FFF# (see comment)',
 
@@ -65,11 +68,11 @@ $(window).on('load', function(){
     };
 
     commLines = {
-        commLine100: 'A focus score less than 1 provides no histologic support for Sjogren disease. Clinical correlation is recommended. \n\nReference: Sjögren\'s histopathology workshop group from ESSENTIAL (EULAR Sjögren\'s syndrome study group), et al. Standardisation of labial salivary gland histopathology in clinical trials in primary Sjögren\'s syndrome. Ann Rheum Dis. 2016 Dec 13. ',
+        commLine100: 'A focus score less than 1 provides no histologic support for Sjogren disease. Approximately 10% of patient\'s with serum anti-SSA/SSB antibodies and/or other clinical features of Sjogren syndrome will show unsupportive Focus scores. Clinical correlation is recommended. \n\nReference: Sjögren\'s histopathology workshop group from ESSENTIAL (EULAR Sjögren\'s syndrome study group), et al. Standardisation of labial salivary gland histopathology in clinical trials in primary Sjögren\'s syndrome. Ann Rheum Dis. 2016 Dec 13. ',
 
         commLine101: 'A focus score greater than 1, in the appropriate clincal and serologic context, provides histologic support for Sjogren disease. \n\nReference: Sjögren\'s histopathology workshop group from ESSENTIAL (EULAR Sjögren\'s syndrome study group), et al. Standardisation of labial salivary gland histopathology in clinical trials in primary Sjögren\'s syndrome. Ann Rheum Dis. 2016 Dec 13. ',
 
-        commLine102: 'The salivary gland lobules show extensive atrophic changes which precludes meaningful calculation of a Sjogren Focus Score. If clnical determination for Sjogren disease is equivocal, consideration for rebiopsy to attempt sampling of non-atrophic salivary lobules may be helpful. \n\nReference: Sjögren\'s histopathology workshop group from ESSENTIAL (EULAR Sjögren\'s syndrome study group), et al. Standardisation of labial salivary gland histopathology in clinical trials in primary Sjögren\'s syndrome. Ann Rheum Dis. 2016 Dec 13. ',
+        commLine102: 'The salivary gland lobules show extensive atrophic changes which precludes meaningful calculation of a Sjogren Focus Score. Approximately 15% of patient\'s with serum anti-SSA/SSB antibodies and/or other clinical features of Sjogren syndrome will show a non-specific chronic injury pattern.  If clnical determination for Sjogren disease is equivocal, consideration for rebiopsy to attempt sampling of non-atrophic salivary lobules may be helpful. \n\nReference: Sjögren\'s histopathology workshop group from ESSENTIAL (EULAR Sjögren\'s syndrome study group), et al. Standardisation of labial salivary gland histopathology in clinical trials in primary Sjögren\'s syndrome. Ann Rheum Dis. 2016 Dec 13. ',
         commLine999: ""
     };
 
