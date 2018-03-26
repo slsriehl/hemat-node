@@ -108,6 +108,20 @@ $(window).on('load', function() {
             $('#box24_2').hide();}
     });
 
+    $('#box43').on("change", function(){
+        var sel = $('#box43').val();
+        if (sel.indexOf("present") > -1) {
+            $('#box43_2').show();}
+        else {
+            $('#box43_2').hide();}
+
+        if (sel.indexOf("Other") > -1) {
+            $('#box43_3').show();}
+        else {
+            $('#box43_3').hide();}
+    });
+
+
     $('#box48').on("change", function(){
         var sel = $('#box48').val();
         if (sel.indexOf("Submitted") > -1) {
@@ -159,8 +173,8 @@ $(window).on('load', function() {
         var box_1 = $("#box1").val();
         var box_1_2 = $("#box1_2").val();
         if (box_1.indexOf("takedown") > -1) {
-            captext += "\nProcedure:\n- "  + box_1_2+ "\n";}
-        else {captext += "\nProcedure:\n- "  + box_1+ "\n";}
+            captext += "\nProcedure: "  + box_1_2;}
+        else {captext += "\nProcedure: "  + box_1;}
 
 
         // frozen sections
@@ -186,149 +200,180 @@ $(window).on('load', function() {
             fz_out += fz_part[i];
         }
 
-        captext += "\nFROZEN SECTION(S)\n";
+        captext += "\n\nFROZEN SECTION(S)\n";
         captext += fz_out;
 
         // resection part
-        captext += "\n\nRESECTION SPECIMEN GROSS DESCRIPTION\n";
+        captext += "\nRESECTION SPECIMEN GROSS DESCRIPTION";
         var box_10 = $("#box10").val();
-        captext += "\nResection Part designation:\n- "  + box_10 + "\n";
+        captext += "\nResection Part designation: "  + box_10;
 
         var box_11 = $("#box11").val();
-        captext += "\nResection fixative:\n- "  + box_11+ "\n";
+        captext += "\nResection fixative: "  + box_11;
 
         var box_12 = $("#box12").val();
-        captext += "\nResection total length:\n- "  + box_12 + "cm\n";
+        captext += "\nResection total length: "  + box_12 + "cm";
 
         var box_13 = $("#box13").val();
         if (box_13.length > 0){
-            captext += "\nMucosal sleeve length:\n- "  + box_13.replace(/cm/,'') + "cm\n";
+            captext += "\nMucosal sleeve length: "  + box_13.replace(/cm/,'') + "cm";
         } else {
-            captext += "\nMucosal sleeve length:\n- Not applicable\n";
+            captext += "\nMucosal sleeve length: Not applicable";
         }
 
 
         var box_14 = $("#box14").val();
-        captext += "\nMinimum external gross diameter:\n- "  + box_14.replace(/cm/,'') + "cm\n";
+        captext += "\nMinimum external gross diameter: "  + box_14.replace(/cm/,'') + "cm";
 
         var box_15 = $("#box15").val();
-        captext += "\nMaximum external gross diameter:\n- "  + box_15.replace(/cm/,'') + "cm\n";
+        captext += "\nMaximum external gross diameter: "  + box_15.replace(/cm/,'') + "cm";
 
         var box_16 = $("#box16").val();
-        captext += "\nDistance to visualized transition zone:\n- "  + box_16.replace(/cm/,'') + "cm\n";
+        captext += "\nDistance to visualized transition zone: "  + box_16.replace(/cm/,'') + "cm";
 
         var box_20 = $("#box20").val();
-        captext += "\nProximal margin circumferential frozen section:\n- "  + box_20+ "\n";
+        captext += "\nProximal margin circumferential frozen section: "  + box_20;
 
         if (box_20.indexOf("Not") < 0){
 
             var box_21 = $("#box21").val();
             if (box_21.length > 0){
-                captext += "\nTransition zone features:\n- "  + box_21.join('\n- ') + "\n";
+                captext += "\nTransition zone features: "  + box_21.join('\t\n- ');
             }
 
 
             var box_23 = $("#box23").val();
-            captext += "\nProximal margin frozen section pathologist:\n- "  + box_23 + "\n";
+            captext += "\nProximal margin frozen section pathologist: "  + box_23;
 
             var box_24 = $("#box24").val();
             var box_24_2 = $("#box24_2").val();
             if (box_24.indexOf("Submitted") > -1) {
-                captext += "\nResidual proximal margin frozen residue:\n- "  + box_24_2+ "\n";}
-            else {captext += "\nResidual proximal margin frozen residue:\n- "  + box_24+ "\n";}
+                captext += "\nResidual proximal margin frozen residue: "  + box_24_2;}
+            else {captext += "\nResidual proximal margin frozen residue: "  + box_24;}
         }
 
 
         var box_30 = $("#box30").val();
-        captext += "\nLocations of intraoperative biopsy sites:\n- "  + box_30 + "\n";
+        captext += "\nLocations of intraoperative biopsy sites: "  + box_30;
 
         var box_31 = $("#box31").val();
-        captext += "\nLength of ganglionated bowel:\n- "  + box_31 + "\n";
+        captext += "\nLength of ganglionated bowel: "  + box_31;
 
         var box_32 = $("#box32").val();
-        captext += "\nGross appearance of mucosal surface:\n- "  + box_32+ "\n";
+        captext += "\nGross appearance of mucosal surface: "  + box_32;
+
+        // Cassette labels
+        captext += "\n\nCASSETTE LABELS\n";
+        var box_35 = $("#box35").val();
+        captext += box_35+ ": Transverse section adjacent to proximal margin\n";
+
+        var box_36 = $("#box36").val();
+        captext += box_36+ ": Transverse section adjacent to distal margin\n";
+
+        var box_37 = $("#box37").val();
+        captext += box_37+ ": Intervening longitudinal sections (proximal to distal)\n";
 
 
         // ostomy block
         if ($("#ostomy").is(":visible")){
-            captext += "\nOSTOMY SPECIMEN\n";
+            captext += "\n\nOSTOMY SPECIMEN";
+
+            var box_40 = $("#box40").val();
+            captext += "\nOstomy Part designation: "  + box_40;
+
+            var box_41 = $("#box41").val();
+            captext += "\nOstomy fixative: "  + box_41;
+
+            var box_42 = $("#box42").val();
+            captext += "\nOstomy total length: "  + box_42 + "cm";
+
+            var box_43 = $("#box43").val();
+            var box_43_2 = $("#box43_2").val();
+            var box_43_3 = $("#box43_3").val();
+            if (box_43.indexOf("present") > -1) {
+                captext += "\nOstomy external orifice appearance: "  + box_43+" ("+box_43_2+"cm segment)";}
+            else if (box_43.indexOf("Other") > -1) {
+                captext += "\nOstomy external orifice appearance: "  + box_43_3;}
+            else {captext += "\nOstomy external orifice appearance: "  + box_43;}
+
+            
             var box_45 = $("#box45").val();
-            captext += "\nProximal ostomy margin circumferential frozen section:\n- "  + box_45+ "\n";
+            captext += "\nProximal ostomy margin circumferential frozen section: "  + box_45;
 
             if (box_45.indexOf("Not") < 0){
 
                 var box_46 = $("#box46").val();
                 if (box_46.length > 0){
-                    captext += "\nOstomy Transition zone features:\n- "  + box_46.join('\n- ') + "\n";
+                    captext += "\nOstomy Transition zone features:\n- "  + box_46.join('\t\n- ');
                 }
 
 
                 var box_47 = $("#box47").val();
-                captext += "\nProximal ostomy margin frozen section pathologist:\n- "  + box_47 + "\n";
+                captext += "\nProximal ostomy margin frozen section pathologist: "  + box_47;
 
                 var box_48 = $("#box48").val();
                 var box_48_2 = $("#box48_2").val();
                 if (box_48.indexOf("Submitted") > -1) {
-                    captext += "\nResidual ostomy proximal margin frozen residue:\n- "  + box_48_2+ "\n";}
-                else {captext += "\nResidual ostomy proximal margin frozen residue:\n- "  + box_48+ "\n";}
+                    captext += "\nResidual ostomy proximal margin frozen residue: "  + box_48_2;}
+                else {captext += "\nResidual ostomy proximal margin frozen residue: "  + box_48;}
             }
         }
 
         // PROXIMAL MARGIN
-        captext += "\nPROXIMAL MARGIN\n";
+        captext += "\n\nPROXIMAL MARGIN";
         var box_60 = $("#box60").val();
         var box_60_2 = $("#box60_2").val();
         if (box_60.indexOf("ganglion") > -1) {
-            captext += "\nGanglion cell distribution:\n- "  + box_60+"\n- "+ box_60_2+ "\n";}
-        else {captext += "\nGanglion cell distribution:\n- "  + box_60+ "\n";}
+            captext += "\nGanglion cell distribution: "  + box_60+" ("+ box_60_2+ ")";}
+        else {captext += "\nGanglion cell distribution: "  + box_60;}
 
 
         var box_61 = $("#box61").val();
         var box_61_2 = $("#box61_2").val();
         if (box_61.indexOf("measured") > -1) {
-            captext += "\nSubmucosal nerve hypertrophy:\n- "+ box_61+", largest measured nerve: " + box_61_2+ "um\n";}
-        else {captext += "\nSubmucosal nerve hypertrophy:\n- "  + box_61+ "\n";}
+            captext += "\nSubmucosal nerve hypertrophy: "+ box_61+", largest measured nerve: " + box_61_2+ "um";}
+        else {captext += "\nSubmucosal nerve hypertrophy: "  + box_61;}
 
 
         var box_62 = $("#box62").val();
-        captext += "\nNeutrophilic mucosal inflammation:\n- "  + box_62+ "\n";
+        captext += "\nNeutrophilic mucosal inflammation: "  + box_62;
 
         var box_63 = $("#box63").val();
-        captext += "\nMucosal ulceration:\n- "  + box_63+ "\n";
+        captext += "\nMucosal ulceration: "  + box_63;
 
         var box_64 = $("#box64").val();
-        captext += "\nEosinophilic inflammation:\n- "  + box_64.join('\n- ') + "\n";
+        captext += "\nEosinophilic inflammation: "  + box_64.join(', ');
 
         var box_65 = $("#box65").val();
-        captext += "\nOther resection finding:\n- "  + box_65 + "\n";
+        captext += "\nOther resection finding: "  + box_65;
         
         // DISTAL MARGIN
-        captext += "\nDISTAL MARGIN\n";
+        captext += "\n\nDISTAL MARGIN";
         var box_66 = $("#box66").val();
         var box_66_2 = $("#box66_2").val();
         if (box_66.indexOf("ganglion") > -1) {
-            captext += "\nGanglion cell distribution:\n- "  + box_66+"\n- "+ box_66_2+ "\n";}
-        else {captext += "\nGanglion cell distribution:\n- "  + box_66+ "\n";}
+            captext += "\nGanglion cell distribution: "  + box_66+" ("+ box_66_2+ ")";}
+        else {captext += "\nGanglion cell distribution: "  + box_66;}
 
 
         var box_67 = $("#box67").val();
         var box_67_2 = $("#box67_2").val();
         if (box_67.indexOf("measured") > -1) {
-            captext += "\nSubmucosal nerve hypertrophy:\n- "+ box_67+", largest measured nerve: " + box_67_2+ "um\n";}
-        else {captext += "\nSubmucosal nerve hypertrophy:\n- "  + box_67+ "\n";}
+            captext += "\nSubmucosal nerve hypertrophy: "+ box_67+", largest measured nerve: " + box_67_2+ "um\n";}
+        else {captext += "\nSubmucosal nerve hypertrophy: "  + box_67;}
 
 
         var box_68 = $("#box68").val();
-        captext += "\nNeutrophilic mucosal inflammation:\n- "  + box_68+ "\n";
+        captext += "\nNeutrophilic mucosal inflammation: "  + box_68;
 
         var box_69 = $("#box69").val();
-        captext += "\nMucosal ulceration:\n- "  + box_69+ "\n";
+        captext += "\nMucosal ulceration: "  + box_69;
 
         var box_70 = $("#box70").val();
-        captext += "\nEosinophilic inflammation:\n- "  + box_70.join('\n- ') + "\n";
+        captext += "\nEosinophilic inflammation: "  + box_70.join(', ');
 
         var box_71 = $("#box71").val();
-        captext += "\nOther resection finding:\n- "  + box_71 + "\n";
+        captext += "\nOther resection finding: "  + box_71;
 
         $('#outPut-1').val(captext);
 

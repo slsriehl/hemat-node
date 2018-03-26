@@ -124,7 +124,6 @@
                                     <option>Stored frozen in OCT </option>
                                     <option>Submitted in cassette</option>
                                 </select>
-                                <input type="text" class="form-control form-control-sm mt-3 col-sm-6 fz-residue2"  style='display:none;' placeholder='Specify cassette label'>
                             </td>
                         </tr>
                         </tbody>
@@ -221,8 +220,6 @@
                             <option>Submitted in cassette</option>
                         </select>
 
-                        <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box24_2' style='display:none;' placeholder='Specify Submitted'>
-
                     </div>
 
                     <div class="py-2 w-100"></div>
@@ -253,6 +250,29 @@
                         <option>Multiple ulcerations present</option>
                         <option>Perforation noted</option>
                     </select>
+
+                </div>
+
+                <div class="py-4 w-100"></div>
+
+                <h5>Histologic sampling for permanent sections</h5>
+                <div class="histology ml-3">
+                    <h6>Cassette Label - Transverse section adjacent to proximal margin</h6>
+                    <input type="text" class="form-control form-control-sm col-sm-6" id="box35" placeholder="Specify cassette designation">
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Cassette Label - Transverse section adjacent to distal margin</h6>
+                    <input type="text" class="form-control form-control-sm col-sm-6" id="box36" placeholder="Specify cassette designation">
+
+                    <div class="py-2 w-100"></div>
+
+                    <h6>Cassette Label - Intervening sections
+                        <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
+                           title="Proximal-to-distal strips/rings, ink at proximal end of each piece" aria-hidden="true"></i>
+                    </h6>
+                    <input type="text" class="form-control form-control-sm col-sm-6" id="box37" placeholder="Specify range of cassette designations">
+
 
                 </div>
 
@@ -300,8 +320,6 @@
                     </select>
                     <div class="py-2 w-100"></div>
 
-                    <div class="py-2 w-100"></div>
-
                     <div class="ostomy-resection-frozen ml-5" style="display:none;">
 
                         <div class="ostomy-transition" style="display:none;">
@@ -337,13 +355,13 @@
                 </div>
 
                 <hr class="p-2" >
-                <h4>Final Microscopic Descriptions</h4>
+                <h4>Microscopic Findings</h4>
 
                 <div class="py-2 w-100"></div>
 
                 <h5>Proximal margin</h5>
                 <div class="prox-margin ml-3">
-                    <div class="py-2 w-100"></div>
+                    <div class="py-1 w-100"></div>
 
                     <h6>Ganglion cell distribution</h6>
                     <select id="box60" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -417,11 +435,11 @@
 
                 </div>
 
-                <div class="py-2 w-100"></div>
+                <div class="py-4 w-100"></div>
 
                 <h5>Distal margin</h5>
                 <div class="dist-margin ml-3">
-                    <div class="py-2 w-100"></div>
+                    <div class="py1 w-100"></div>
 
                     <h6>Ganglion cell distribution</h6>
                     <select id="box66" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -491,6 +509,15 @@
 
                     <h6>Other resection finding</h6>
                     <input type="text" class="form-control form-control-sm col-sm-6" id="box71" placeholder="">
+
+
+                </div>
+
+
+                <div class="py-4 w-100"></div>
+
+                <h5>Longitudinal strip / Intervening cross-sectional evaluation</h5>
+                <div class="intervening ml-3">
 
 
                 </div>
