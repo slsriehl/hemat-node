@@ -27,7 +27,7 @@
             <!-- paste markup here-->
 
             <hr class="p-2" >
-            <h5>Procedure</h5>
+            <h3>Procedure / Clinical history</h3>
             <select id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option>One-stage (Duhamel) pull-through</option>
                 <option>One-stage (Swenson) pull-through</option>
@@ -44,66 +44,91 @@
                    placeholder="Describe prior resections (if applicable)">
 
 
+
             <hr class="p-2" >
-            <h5>Intraoperative frozen section</h5>
+            <h3>Gross description + Frozen sections </h3>
+
+            <div class="py-2 w-100"></div>
+
             <div class="ml-3 fz">
+                <h5>Intraoperative frozen section</h5>
 
-                <div class="row pblock">
-                        <div class="col form-inline">
-                            <h6>Part type</h6>
-                            <input type="text" class="form-control form-control-sm ml-2" id="box2" placeholder="">
-                        </div>
+                <div class="row pblock ml-3">
+                    <table class="table table-striped">
+                        <tbody>
+                        <tr>
+                            <td>
+                                <h6>Part designation</h6>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm ml-2 fz-part"  placeholder="">
+                            </td>
+                            <td>
+                                <h6>Location</h6>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm ml-2 fz-loc"  placeholder="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h6>Biopsy type</h6>
+                            </td>
+                            <td>
+                                <select class='form-control selectpicker form-control-sm ml-2 fz-type'>
+                                    <option>seromuscular</option>
+                                    <option>full-thickness</option>
+                                </select>
+                            </td>
+                            <td>
+                                <h6>Pathologist</h6>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm ml-2 fz-path"  placeholder="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h6>FZ Diagnosis</h6>
+                            </td>
+                            <td>
+                                <select  class='form-control selectpicker form-control-sm ml-2 fz-iodx'>
+                                    <option>Inadequate</option>
+                                    <option>Ganglion cells present</option>
+                                    <option>Ganglion cells absent</option>
+                                </select>
+                            </td>
+                            <td>
+                                <h6>Perm Diagnosis</h6>
+                            </td>
+                            <td>
+                                <select  class='form-control selectpicker form-control-sm ml-2 fz-finaldx'>
+                                    <option>Inadequate</option>
+                                    <option>Myenteric ganglion cells present</option>
+                                    <option>Myenteric and submucosal ganglion cells present</option>
+                                    <option>Myenteric ganglion cells absent</option>
+                                    <option>Submucosal ganglion cells absent</option>
+                                    <option>Myenteric and submucosal ganglion cells absent</option>
+                                    <option>Other</option>
+                                </select>
+                                <input type="text" class="form-control form-control-sm mt-3 fz-finaldx2" style='display:none;' placeholder='Specify Other'>
 
-                        <div class="col form-inline">
-                            <h6>Location</h6>
-                            <input type="text" class="form-control form-control-sm ml-2" id="box3" placeholder="">
-
-                        </div>
-
-                        <div class="py-2 w-100"></div>
-                        <div class="col form-inline">
-                            <h6>Biopsy type</h6>
-                            <select id="box4" class='form-control selectpicker form-control-sm ml-2'>
-                                <option>seromuscular</option>
-                                <option>full-thickness</option>
-                            </select>
-                        </div>
-                        <div class="col form-inline">
-                            <h6>Pathologist</h6>
-                            <input type="text" class="form-control form-control-sm ml-2" id="box5" placeholder="">
-                        </div>
-                        <div class="py-2 w-100"></div>
-                        <div class="col form-inline">
-                            <h6>FZ Diagnosis</h6>
-                            <select id="box6" class='form-control selectpicker form-control-sm ml-2'>
-                                <option>Inadequate</option>
-                                <option>Ganglion cells present</option>
-                                <option>Ganglion cells absent</option>
-                            </select>
-                        </div>
-                        <div class="col form-inline">
-                            <h6>Perm diagnosis</h6>
-                            <select id="box50" class='form-control selectpicker form-control-sm ml-2'>
-                                <option>Inadequate</option>
-                                <option>Myenteric ganglion cells present</option>
-                                <option>Myenteric and submucosal ganglion cells present</option>
-                                <option>Myenteric ganglion cells absent</option>
-                                <option>Submucosal ganglion cells absent</option>
-                                <option>Myenteric and submucosal ganglion cells absent</option>
-                                <option>Other</option>
-                            </select>
-
-                            <input id='box50_2'  type="text" class="form-control form-control-sm mt-3" style='display:none;' placeholder='Specify Other'>
-                        </div>
-                        <div class="col form-inline">
-                            <h6>Residue</h6>
-                            <select id="box7" class='form-control selectpicker form-control-sm ml-2'>
-                                <option>Stored frozen in OCT </option>
-                                <option>Submitted in cassette</option>
-                            </select>
-                            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box7_2' style='display:none;' placeholder='Specify cassette label'>
-
-                        </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                                <h6>Residue</h6>
+                            </td>
+                            <td colspan="2">
+                                <select class='form-control selectpicker form-control-sm ml-2 fz-residue'>
+                                    <option>Stored frozen in OCT </option>
+                                    <option>Submitted in cassette</option>
+                                </select>
+                                <input type="text" class="form-control form-control-sm mt-3 col-sm-6 fz-residue2"  style='display:none;' placeholder='Specify cassette label'>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
                     <div class="card-footer w-100">
                         <button id="btnAdd_1" type="button" class="clone btn btn-success mt-3 p-1">
                             <i class="fa fa-plus-circle mr-2"></i>Add frozen
@@ -118,6 +143,7 @@
                 <div class="py-2 w-100"></div>
 
                 <hr class="p-2" >
+
                 <h5>Resection specimen</h5>
                 <div class="resection ml-3">
                     <h6>Part designation</h6>
@@ -154,7 +180,7 @@
 
                     <div class="py-2 w-100"></div>
 
-                    <h6>Grossly evident transition zone (distance to distal margin)</h6>
+                    <h6>Gross transition zone (distance to distal margin)</h6>
                     <input type="number" class="form-control form-control-sm col-sm-6" id="box16" placeholder="">
 
                     <div class="py-2 w-100"></div>
@@ -179,7 +205,6 @@
                                 <option>Partial circumferential partial myenteric aganglionosis</option>
                                 <option>Submucosal nerve hypertrophy</option>
                                 <option>Myenteric nerve hypertrophy</option>
-                                <option></option>
                             </select>
                         </div>
 
@@ -329,7 +354,7 @@
                         <option>Partial circumference myenteric hypoganglionosis</option>
                     </select>
 
-                    <select id="box60_2" class='form-control selectpicker form-control-sm col-sm-6' style="display:none">
+                    <select id="box60_2" class='form-control selectpicker form-control-sm col-sm-6'>
                         <option>Myenteric plexus</option>
                         <option>Submucosal plexus</option>
                         <option>Both myenteric and submucosal plexi</option>

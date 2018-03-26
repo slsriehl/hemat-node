@@ -9,13 +9,10 @@ $(window).on('load', function() {
         var num = $('.pblock').length;
 
         if (num < 5) {
-            // create the new element via clone(), and manipulate it's ID using newNum value
-            var newElem = $('.pblock:first').clone(true);
 
-            // $(newElem).append(remove);
-            newElem.find(':input').attr('id', function (i, val) {
-                return val + count;
-            });
+            // create the new element via clone(), and manipulate it's ID using newNum value
+            var newElem = $('.pblock:first').clone(true).find("input").val("").end();
+
             var header = "<h6 class='mt-3 text-info'>Frozen Section #" + count + "</h6>";
 
             count++;
@@ -25,13 +22,20 @@ $(window).on('load', function() {
             $('.remove').hide();
             $('.remove:last').show();
         }
+
     });
 
     $('.remove').on('click', function () {
-        $(this).closest('.pblock').remove();
-        $(".text-info:last").remove();
-        $('.remove:last').show();
-        count--;
+        var num = $('.pblock').length;
+        console.log(num);
+        if (num >1){
+            $(this).closest('.pblock').remove();
+            $(".text-info:last").remove();
+            $('.remove:last').show();
+        } else {
+            $('.remove:last').hide();
+
+        }
     });
 
 
@@ -52,13 +56,12 @@ $(window).on('load', function() {
         }
     });
 
-    $('#box7').on("change", function(){
-        var sel = $('#box7').val();
+    $('.fz-residue').on("change", function(){
+        var sel = $(this).val();
         if (sel.indexOf("Submitted") > -1) {
-
-            $('#box7_2').show();}
+            $(this).closest('.fz-residue').next('.fz-residue2').show();}
         else {
-            $('#box7_2').hide();}
+            $(this).closest('.fz-residue').next('.fz-residue2').hide();}
     });
 
 
@@ -114,13 +117,13 @@ $(window).on('load', function() {
             $('#box48_2').hide();}
     });
 
-    $('#box50').on("change", function(){
-        var sel = $('#box50').val();
+    $('.fz-finaldx').on("change", function(){
+        var sel = $(this).val();
         if (sel.indexOf("Other") > -1) {
 
-            $('#box50_2').show();}
+            $(this).closest('.fz-finaldx').next('.fz-finaldx2').show();}
         else {
-            $('#box50_2').hide();}
+            $(this).closest('.fz-finaldx').next('.fz-finaldx2').hide();}
     });
 
 
@@ -161,36 +164,33 @@ $(window).on('load', function() {
 
 
         // frozen sections
+        // Frozen section arrays
+        var fz_part =   []; // fz parts
 
-        var box_2 = $("#box2").val();
-        captext += "\nFROZEN SECTION(S)\nPart Type:\n- "  + box_2 + "\n";
+        $(".pblock").each(function(){
+            var fztext = "Part designation: " + $(this).find(".fz-part").val() +
+                "\n\tLocation: "    + $(this).find(".fz-loc").val() +
+                "\n\tBiopsy type: " + $(this).find(".fz-type").val() +
+                "\n\tPathologist: " + $(this).find(".fz-path").val() +
+                "\n\tIntra-Op Dx: " + $(this).find(".fz-iodx").val() +
+                "\n\tPerm Dx: "     + $(this).find(".fz-finaldx").val() +
+                "\n\tResidue: "     + $(this).find(".fz-residue").val() +
+                "\n\n";
+            fz_part.push(fztext);
+        });
+        console.log(fz_part);
 
-        var box_3 = $("#box3").val();
-        captext += "\nLocation:\n- "  + box_3 + "\n";
+        var fzlen = fz_part.length;
+        var fz_out = '';
+        for (var i=0; i<fzlen; i++){
+            fz_out += fz_part[i];
+        }
 
-        var box_4 = $("#box4").val();
-        captext += "\nBiopsy type:\n- "  + box_4+ "\n";
-
-        var box_5 = $("#box5").val();
-        captext += "\nPathologist:\n- "  + box_5 + "\n";
-
-        var box_6 = $("#box6").val();
-        captext += "\nFrozen section diagnosis:\n- "  + box_6+ "\n";
-
-        var box_7 = $("#box7").val();
-        var box_7_2 = $("#box7_2").val();
-        if (box_7.indexOf("Submitted") > -1) {
-            captext += "\nFrozen section residue: Submitted in cassette: "  + box_7_2+ "\n";}
-        else {captext += "\nFrozen section residue:\n- "  + box_7+ "\n";}
-
-        var box_50 = $("#box50").val();
-        var box_50_2 = $("#box50_2").val();
-        if (box_50.indexOf("Other") > -1) {
-            captext += "\nPermanent section diagnosis:\n- "  + box_50_2+ "\n";}
-        else {captext += "\nPermanent section diagnosis:\n- "  + box_50+ "\n";}
+        captext += "\nFROZEN SECTION(S)\n";
+        captext += fz_out;
 
         // resection part
-        captext += "\nRESECTION SPECIMEN GROSS DESCRIPTION\n";
+        captext += "\n\nRESECTION SPECIMEN GROSS DESCRIPTION\n";
         var box_10 = $("#box10").val();
         captext += "\nResection Part designation:\n- "  + box_10 + "\n";
 
@@ -303,7 +303,7 @@ $(window).on('load', function() {
         captext += "\nOther resection finding:\n- "  + box_65 + "\n";
         
         // DISTAL MARGIN
-        captext += "\nPROXIMAL MARGIN\n";
+        captext += "\nDISTAL MARGIN\n";
         var box_66 = $("#box66").val();
         var box_66_2 = $("#box66_2").val();
         if (box_66.indexOf("ganglion") > -1) {
