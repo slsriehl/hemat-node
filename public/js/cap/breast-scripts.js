@@ -616,11 +616,11 @@ $(window).on('load', function () {
         // DCIS segment --------------------------------------------------//
         var box_106 = $("#box106").val();
         if (box_106.indexOf("present") > -1) {
-            captext += "\n----------------------------------------\nDuctal Carcinoma In Situ:\n- " + box_106;
+            captext += "\n----------------------------------------\nDuctal Carcinoma In Situ:\n- " + box_106+"\n";
 
             var box_4_0 = $("#box4_0").val();
             if (box_4_0.length > 0) {
-                captext += "\n\t+ Estimated Size of DCIS: " + box_4_0 + "mm\n";
+                captext += "\t+ Estimated Size of DCIS: " + box_4_0 + "mm\n";
             }
 
             var box_4_1 = $("#box4_1").val();
@@ -659,7 +659,7 @@ $(window).on('load', function () {
             var box_8_2 = $("#box8_2").val();
             var box_8_3 = $("#box8_3").val();
             if (box_8.indexOf("Uninvolved") > -1) {
-                captext += "\nMargins - DCIS:\n- " + box_8 + "- Nearest margin: " + box_8_1 + "\n- Distance of DCIS to this margin: " + box_8_2.replace(/mm/, "") + "mm\n";
+                captext += "\nMargins - DCIS:\n- " + box_8 + "\n- Nearest margin: " + box_8_1 + "\n- Distance of DCIS to this margin: " + box_8_2.replace(/mm/, "") + "mm\n";
             } else if (box_8.indexOf("Involved") > -1) {
                 captext += "\nMargins- DCIS:\n- " + box_8 + "\n- Margin involved: " + box_8_3 + "\n";
             } else {
