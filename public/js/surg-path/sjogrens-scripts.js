@@ -130,7 +130,12 @@ $(window).on('load', function () {
         if (diag_choice !== null) {
             final_text += dxOuts[diag_choice] ;
             diag_choice = null;
-            $('#outPut-3').val("SALVIARY GLAND, LIP, BIOPSY:"+final_text + dxOuts.dxOut200);
+            if ($("#mxLine210").is(":checked")) { // add focus score
+                $('#outPut-3').val(final_text + dxOuts.dxOut200);
+
+            } else {
+                $('#outPut-3').val(final_text);
+            }
         }
     }
 
