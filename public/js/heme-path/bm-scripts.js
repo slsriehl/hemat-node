@@ -404,7 +404,7 @@ $("#CBCswitch").change(function() {
        }
 
        $.each(commLines, function(val){
-           commLines[val] = commLines[val].replace(/testing.*is/, 'testing ('+tests.join(", ")+') is');
+           commLines[val] = commLines[val].replace(/testing is/, 'testing ('+tests.join(", ")+') is');
        });
 
         if ($('#mxLine264').is(':checked')){

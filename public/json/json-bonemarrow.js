@@ -369,7 +369,7 @@ $(window).on('load', function(){
 // LYMPHOPLASMACYTIC
         mxLine303: 'There is an abnormal lymphoplasmacytic infiltrate characterized by small lymphocytes with variably abundant pale cytoplasm, irregular nuclear membranes and occasional perinuclear Hofs. ',
 // AML, GENERIC
-        mxLine304: 'There is an abnormal population of variably sized blasts characterized by high N:C ratios, sparsely granular cytoplasm and smooth chromatin. The blasts include some binucleated forms with prominent nucleoli. Rare basts with Auer rods are present.  There is a proportional reduction in maturing myeloid and erythroid precursors, neither of which display dysplastic changes. Megakaryocytes are few and appear normal in morphology. Eosinophils are not prominent and do not exhibit abnormal morphology.  ',
+        mxLine304: 'There is an abnormal population of variably sized blasts characterized by high N:C ratios, sparsely granular cytoplasm and smooth chromatin. The blasts include some binucleated forms with prominent nucleoli. Rare blasts with Auer rods are present.  There is a proportional reduction in maturing myeloid and erythroid precursors, neither of which display dysplastic changes. Megakaryocytes are few and appear normal in morphology. Eosinophils are not prominent and do not exhibit abnormal morphology.  ',
 // AMML, GENERIC
         mxLine305: 'There is an abnormal population of monocytoid blasts characterized by abundant pale cytoplasm, prominent nuclear membrane clefts/folds and smooth chromatin. There is a proportional reduction in maturing myeloid and erythroid precursors, neither of which display dysplastic changes. Megakaryocytes are few and appear normal in morphology. Eosinophils are not prominent and do not exhibit abnormal morphology.  ',
 // APL
@@ -598,7 +598,7 @@ $(window).on('load', function(){
 // nna mild rouleaux
         dxOut107:'PERIPHERAL BLOOD:\n- Normochromic, normocytic anemia with mild rouleaux \n',
 // nna + rouleaux
-        dxOut108:'PERIPHERAL BLOOD:\n- Normochromic, normocytic anemia with signficant rouleaux \n',
+        dxOut108:'PERIPHERAL BLOOD:\n- Normochromic, normocytic anemia with significant rouleaux \n',
 // nna + schistocytes
         dxOut109:'PERIPHERAL BLOOD:\n- Normochromic, normocytic anemia with frequent schistocytes \n',
 // nna + targets
@@ -609,6 +609,8 @@ $(window).on('load', function(){
         dxOut112:'PERIPHERAL BLOOD:\n- Normochromic, normocytic anemia with prominent oxidative injury \n',
 // nna + teardrops
         dxOut113:'PERIPHERAL BLOOD:\n- Normochromic, normocytic anemia with prominent tear drop forms \n',
+// hypo micro not anemia
+        dxOut114:'PERIPHERAL BLOOD:\n- Hypochromic, microcytic red cells \n',
 
 // **************************************  wbc options **********************************************
 // nsa leukocytes
@@ -891,11 +893,11 @@ $(window).on('load', function(){
 // KNOWN HbSC
         commLine110: 'The red cell changes are consistent with the known history of HbSC disease. ',
 // ROULEAUX COMMENT
-        commLine111: 'Red cell rouleaux formation is a non-specific finding that is typically associated with excess serum immunoglobulin complexes,which can be seen with hepatitis, recent IVIG therapy, or lymphoproliferative disorders. Correlation with serum protein electrophoresis may be helpful. ',
+        commLine111: 'Red cell rouleaux formation is a non-specific finding that is typically associated with excess serum immunoglobulin complexes, which can be seen with hepatitis, recent IVIG therapy, or lymphoproliferative disorders. Correlation with serum protein electrophoresis may be helpful. ',
 // FREQUENT TARGETS, NO MACROCYTOSIS COMMENT
         commLine112: 'Increased numbers of target cells can be associated with liver dysfunction, hypothyroidism or medication related effects. In the absence of macrocytosis, an underlying non-hemolyzing hemoglobinopathy (like homozygous HbC) cannot be excluded.',
 // POST-SPLENECTOMY CHANGES COMMENT
-        commLine113: 'The red-cell changes, including frequent Howell-Jolly bodies and sperocytes, are most consistent with a hyposplenic, or post-splenic state. Clinical correlation is recommended. ',
+        commLine113: 'The red-cell changes, including frequent Howell-Jolly bodies and spherocytes, are most consistent with a hyposplenic, or post-splenic state. Clinical correlation is recommended. ',
 // INCREASED SCHISTOCYTES COMMENT
         commLine114: 'There is an increase in schistocytes which may indicate ongoing intravascular hemolysis. Correlation with other laboratory data, including a DIC work-up, may be helpful. ',
 // MICROYCTIC HBS OR HBSC
@@ -932,11 +934,11 @@ $(window).on('load', function(){
         commLine161: 'The etiology for the severe neutropenia is unclear. In the setting of reactive lymphocytes, the finding may represent a virus- or medication-mediated effect. Severe neutropenia may also represent a benign condition of various ethnic extractions, immune reaction or a congenital process. Correlation with clinical history and other laboratory findings is necessary to differentiate among these possibilities. ',
 //
 // CLUMPS DDX
-        commLine200: 'The apparent thrombocytopenia is accounted for by platelet clumps causing a spurious reduction in the count. This is usually an in vito phenomenon due to EDTA collection tubes. Future platelet counts using non-EDTA anticoagulants (such as heparin) may resolve this issue. ',
+        commLine200: 'The apparent thrombocytopenia is accounted for by platelet clumps causing a spurious reduction in the count. This is usually an in vitro phenomenon due to EDTA collection tubes. Future platelet counts using non-EDTA anticoagulants (such as heparin) may resolve this issue. ',
 // ITP
         commLine201: 'In the appropriate clinical context, the thrombocytopenia and reactive lymphocytes may be compatible with ITP. ',
 // THROMBOCYTOSIS
-        commLine202: 'Thrombocytosis can be seen in a wide variety of reactive settings including infections, hyposplenic states, iron deficiency, among others. Rarely, it may reflect a myleoproliferative disorder. Clinical correlation is recommended. ',
+        commLine202: 'Thrombocytosis can be seen in a wide variety of reactive settings including infections, hyposplenic states, iron deficiency, among others. Rarely, it may reflect a myeloproliferative disorder. Clinical correlation is recommended. ',
 // TTP
         commLine203: 'In the appropriate clinical context, the combination of schistocytes and marked thrombocytopenia suggests TTP. Correlation with other laboratory data, specifically to assess for thrombotic risk, is recommended. ',
 //
@@ -961,7 +963,7 @@ $(window).on('load', function(){
 // COMMENT: NEG MYELOMA
         commLine308: "There is no morphologic or immunophenotypic evidence of a clonal plasma cell population. Correlation with the pending ancillary testing is recommended. \n",
 // COMMENT: NEG LOW GRADE LYMPHOMA
-        commLine309: "There is no morphologic or immunophenotypic evidence of a the patient's previously described low-grade B-cell lymphoma. Correlation with the pending ancillary testing is recommended. \n",
+        commLine309: "There is no morphologic or immunophenotypic evidence of the patient's previously described low-grade B-cell lymphoma. Correlation with the pending ancillary testing is recommended. \n",
 // COMMENT: NEG HIGH GRADE LYMPHOMA
         commLine310: "There is no morphologic or immunophenotypic evidence of the patient's previously described high-grade B-cell lymphoma. Correlation with the pending ancillary testing is recommended. \n",
 // COMMENT: NEG T-CELL LYMPHOMA
@@ -985,7 +987,7 @@ $(window).on('load', function(){
 // COMMENT: Serous atrophy
         commLine357: 'There is a qualitative change within the marrow stroma consistent with so-called \'serous atrophy\'. This change is most often described in patient\'s with severe malnutrition, anorexia and/or cachexia. ',
 // COMMENT: IDIOPATHIC HYPOCELLULARITY/APLASIA
-        commLine358: 'The bone marrow shows a [marked] decrease in the expected cellularity. There is no morphologic or immunophenotypic evidence of involvement by a neoplastic hematolymphoid disorder. Such marrow changes may be transient and may be secondary to medication/toxin exposure, viral infection related suppression, autoimmune disease, paroxysmal nocturnal hemoglobinuria, or possibly a subtle myelodysplastic syndrome. Correlation with the pending cytogenetic studies and MDS FISH testing is recommended. If indicated, consideration to perform PNH testing on fresh peripheral blood may be helpful. ',
+        commLine358: 'The bone marrow shows a [marked] decrease in the expected cellularity. There is no morphologic or immunophenotypic evidence of involvement by a neoplastic hematolymphoid disorder. Such marrow changes may be transient and may be secondary to medication/toxin exposure, viral infection related suppression, autoimmune disease, paroxysmal nocturnal hemoglobinuria, or possibly a subtle myelodysplastic syndrome. Correlation with the pending ancillary studies is recommended. If indicated, consideration to perform PNH testing on fresh peripheral blood may be helpful. ',
 // COMMENT: TREATED MARROW
         commLine359: 'The marrow composition suggests therapy-related injury/aplasia. Correlation with the pending ancillary testing is recommended. ',
 //
@@ -1033,3 +1035,4 @@ $(window).on('load', function(){
 /**
  * Created by chandrakrishnan on 4/28/2017.
  */
+
