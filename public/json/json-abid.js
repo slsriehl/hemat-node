@@ -35,13 +35,13 @@ $(window).on('load', function(){
 
     comLines = {
 // Anti-A1
-        comLine_100: 'COMMENT:\nAnti-A1 is usually an IgM, naturally occurring antibody that is usually not considered clinically significant. It can appear to cause in-vitro crossmatch incompatibility, due to reaction below 30 C. Some examples of this antibody can be clnically significant when active at body temperature, and only A2 or O type RBCs should be used. \n',
+        comLine_100: 'COMMENT:\nAnti-A1 is usually an IgM, naturally occurring antibody that is usually not considered clinically significant. It can appear to cause in-vitro crossmatch incompatibility, due to reaction below 30 C. Some examples of this antibody can be clinically significant when active at body temperature, and only A2 or O type RBCs should be used. \n',
         // Anti-C
         comLine_110: 'COMMENT:\nAnti-C is an IgG, immune antibody which has been reported to cause hemolytic disease of the newborn and hemolytic transfusion reactions.  Crossmatch compatible units lacking the C, E and K antigens should ideally be used in future red cell transfusions. Approximately 19% of random donors are expected to be compatible; however, delays in obtaining compatible units may occur.\n',
         // Anti-C + e
         comLine_111: 'COMMENT:\n Anti-C and anti-e are IgG, immune antibodies which have been reported to cause hemolytic disease of the newborn and hemolytic transfusion reactions.  Crossmatch compatible units lacking the C and e antigens will be used in future red cell transfusions. <1% of random donors are expected to be compatible, thus, delays in obtaining compatible units may occur. Scheduled surgical procedures should be made known to the blood bank to allow for collection of appropriate units. \n',
         // Anti - D baby
-        comLine_120: 'COMMENT:\n Anti-D is an IgG, immune antibody which as been reported to cause hemolytic disease of the newborn and hemolytic transfusion reactions. Records indicate that this patient\'s mother received Rh-immune globulin (RhoGam, WinRho) prior to delivery. The patient\'s blood type is O-neg. The observed anti-D likely represents persistent Rh-immune globulin, or less likely a maternally derived allo antibody. The presence of anti-D in the serum after six months may be indicative of alloimmunization.\n',
+        comLine_120: 'COMMENT:\n Anti-D is an IgG, immune antibody which has been reported to cause hemolytic disease of the newborn and hemolytic transfusion reactions. Records indicate that this patient\'s mother received Rh-immune globulin (RhoGAM, WinRho) prior to delivery. The patient\'s blood type is O-neg. The observed anti-D likely represents persistent Rh-immune globulin, or less likely a maternally derived allo antibody. The presence of anti-D in the serum after six months may be indicative of alloimmunization.\n',
         // Anti D mom
         comLine_121: 'COMMENT:\n Records indicate that this patient received Rh-immune globulin (RhoGam, WinRho, Rhophylac) prior to delivery / transfusion. The patient\'s blood type is O-neg. The observed anti-D likely represents persistent therapeutic Rh-immune globulin. Rh-immune globulins are indicated for suppression of rhesus (Rh) isoimmunization in incompatible transfusions in Rh-negative individuals transfused with blood components containing Rh-positive red blood cells. The duration of response is variable.\n',
         // Anti - E
@@ -63,7 +63,7 @@ $(window).on('load', function(){
         // cold agglutinin
         comLine_191: 'COMMENT:\nDuring routine type and screen procedures, this patient was identified as having a positive antibody screen. \n\nThis patient\'s serum was tested against a panel of antibodies which yielded a non-specific pattern of reaction. \n',
         // positive DAT and elution
-        comLine_200: 'COMMENT:\nDuring routine testing procedures on __, this patient was identified as having a positive direct antiglobulin test. The serological findings of the DAT were __ for IgG and ___ for C3. An elution study on the patient\' serum was rective with all cells tested.\n\nDue to the presence of IgG coating the patient cells, further testing of the patient\'s serum would be helpful in evaluating the source of the positive DAT result. ',
+        comLine_200: 'COMMENT:\nDuring routine testing procedures on __, this patient was identified as having a positive direct antiglobulin test. The serological findings of the DAT were __ for IgG and ___ for C3. An elution study on the patient\' serum was reactive with all cells tested.\n\nDue to the presence of IgG coating the patient cells, further testing of the patient\'s serum would be helpful in evaluating the source of the positive DAT result. ',
 
         comLine_999: ''
     };

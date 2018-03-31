@@ -85,7 +85,7 @@ $(window).on('load', function(){
 // APARTICULATE/TP FOR MICRO
         partType258: 'The aspirate smears contain no marrow particles and are hemodilute. The touch preparation slides are adequately cellular and form the basis for morphologic evaluation. ',
 // NO PARTICLES
-        partType259: 'The aspirate slides contain no marrow particles, but show adequate sampling of marrow elements. ',
+        partType259: 'The aspirate slides contain no marrow particles but show adequate sampling of marrow elements. ',
 //
 //BONE MARROW BIOPSIES
 // 1 SIDE BM
@@ -275,9 +275,9 @@ $(window).on('load', function(){
         mxLine169: 'No dysplastic changes are seen. ',
 //
 // ABSOLUTE NEUTROPENIA
-        mxLine170: 'Neutrophils are reduced in absolute terms, but show normal morphology. ',
+        mxLine170: 'Neutrophils are reduced in absolute terms but show normal morphology. ',
 // ABSOLUTE LYMPHOPENIA
-        mxLine171: 'Lymphocytes are reduced in absolute terms, but show normal morphology. ',
+        mxLine171: 'Lymphocytes are reduced in absolute terms but show normal morphology. ',
 // RELATIVE INCREASE IN EOSINOPHILS
         mxLine172: 'There is a relative prominence in eosinophils, which show normal morphology. ',
 // NORMAL PLT
@@ -674,7 +674,7 @@ $(window).on('load', function(){
         dxOut202:'- Marked thrombocytopenia \n',
 // mild thrombocytosis
         dxOut203: '- Mild thrombocytosis  \n',
-// marked thrmobocytosis
+// marked thrombocytosis
         dxOut204: '- Marked thrombocytosis \n',
 // dysplastic platelets
         dxOut205: '- Occasional dysplastic platelets \n',

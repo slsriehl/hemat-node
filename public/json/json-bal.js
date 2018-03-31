@@ -6,7 +6,7 @@ $(window).on('load', function() {
         dxLine101: 'Predominance of neutrophils',
         dxLine102: 'Mixed neutrophils and alveolar macrophages',
         dxLine103: 'Mixed neutrophils and eosinophils',
-        dxLine104: 'Predominance of orpharyngeal squamous epithelial cells',
+        dxLine104: 'Predominance of oropharyngeal squamous epithelial cells',
         dxLine105: 'Predominance of mucoid debris and few degenerating cells',
         dxLine106: 'Necroinflammatory infiltrate with neutrophils and mucoid debris',
         dxLine107: 'Predominance of alveolar macrophages in a background of red blood cells (see comment)',
@@ -16,7 +16,7 @@ $(window).on('load', function() {
         dxLine111: ' ',
         dxLine112: ' ',
         dxLine113: ' ',
-        
+
         //Final special stains
         // Negative stains
         dxLine120: 'No increase in lipid-laden or hemosiderin-laden macrophages',
@@ -63,7 +63,7 @@ $(window).on('load', function() {
         mxLine153: 'predominantly of neutrophils, with fewer alveolar macrophages and respiratory epithelial cells',
         mxLine154: 'predominantly of a mixture of neutrophils and eosinophils, with fewer alveolar macrophages and respiratory epithelial cells',
         mxLine155: 'predominantly of oropharyngeal squamous epithelial cells; no alveolar macrophages or respiratory epithelial cells are present',
-        mxLine156: 'predominantly of mucoid debris, degenerating mononculear cells and few neutrophils',
+        mxLine156: 'predominantly of mucoid debris, degenerating mononuclear cells and few neutrophils',
         mxLine157: 'predominantly of mucoid and necrotic debris with neutrophils',
         mxLine158: 'predominantly of alveolar macrophages with fewer respiratory epithelial cells and background red blood cells',
         mxLine159: 'predominantly of red blood cells with scattered mature leukocytes and few alveolar macrophages',
@@ -127,7 +127,7 @@ $(window).on('load', function() {
         commLine107: 'Few hemosiderin-laden macrophages are seen, which may correlate with small volume airway hemorrhage. ',
         commLine108: 'The iron stains highlight frequent hemosiderin-laden macrophages, which suggests persistent or large volume airway hemorrhage. ',
         commLine109: 'There is scant background red blood cells suggesting at least low-volume airway hemorrhage or tissue injury. ',
-        commLine110: 'A predominance of blood is consistent with airway or alveolar hemorrhage, but is non-specific with respect to the etiology. Correlation with bronchosopic findings is recommended. ',
+        commLine110: 'A predominance of blood is consistent with airway or alveolar hemorrhage, but is non-specific with respect to the etiology. Correlation with bronchoscopic findings is recommended. ',
 
 
 

@@ -48,7 +48,7 @@ $(window).on('load', function(){
     commLines = {
         commLine000:'dummy',
 // non-specific portal inflammation
-        commLine110: 'The portal changes are mild and non-specific, and may be seen with resolving viral hepatitis or a medication reaction. Clinical correlation is recommended',
+        commLine110: 'The portal changes are mild and non-specific and may be seen with resolving viral hepatitis or a medication reaction. Clinical correlation is recommended',
 
 // c/w AIH in children
         commLine111: 'The portal plasma cell infiltrate, in the context of the serologic findings, is consistent with autoimmune hepatitis. There is no evidence of primary sclerosing cholangitis / overlap syndrome. ',
@@ -63,13 +63,13 @@ $(window).on('load', function(){
         commLine121: 'There is diffuse steatosis with/without lobular inflammation; no balloon degeneration of hepatocytes is evident. The pattern of steatosis may be seen with clinical metabolic syndrome, including obesity, DM2 and/or dyslipidemia. No increase in fibrosis is evident. Wilson disease can show similar morphologic findings and cannot be excluded by histology alone. Clinical correlation is recommended. ',
 
 // steatohepatitis- adult
-        commLine122: 'There is diffuse steatosis with/without lobular inflammation; no balloon degeneration of hepatocytes is evident. The findings, in the appropriate clinical context, is commpatible with histologic evidence of steatohepatitis. There is no /a mild increase in fibrosis. Wilson disease can show similar morphologic findings and cannot be excluded by histology alone. ',
+        commLine122: 'There is diffuse steatosis with/without lobular inflammation; no balloon degeneration of hepatocytes is evident. The findings, in the appropriate clinical context, is compatible with histologic evidence of steatohepatitis. There is no /a mild increase in fibrosis. Wilson disease can show similar morphologic findings and cannot be excluded by histology alone. ',
 
 // neonatal giant cell hepatitis pattern
         commLine123: 'The differential diagnosis for the liver changes is broad, and includes entities such as gestational alloimmune liver disease, inborn error of metabolism, bile acid synthesis defect, hypopituitarism, viral or TORCH infection.\n\nCorrelation with other laboratory data is recommended. ',
 
 // Non-specific hepatitis with lobular injury
-        commLine124: 'The pattern of lobular inflammation with hepatocyte injury is non-specific. Viral hepatitis or drug (herbal supplement) reactions are most commonly associated with this pattern. Occasionally, Wilson\'s disease or extragastrointestinal manifestation of Celiac disease can produce a similar histiologic picture.\n\nCorrelation with other laboratory data is recommended. ',
+        commLine124: 'The pattern of lobular inflammation with hepatocyte injury is non-specific. Viral hepatitis or drug (herbal supplement) reactions are most commonly associated with this pattern. Occasionally, Wilson\'s disease or extragastrointestinal manifestation of Celiac disease can produce a similar histologic picture.\n\nCorrelation with other laboratory data is recommended. ',
 
 // Pure microvesicular steatosis
         commLine125: 'Pure microvesicular steatosis is an uncommon pattern of liver injury which is most often associated with medication effect. Less common non-medication related etiologies include disorders of lipid metabolism, fatty liver in pregnancy or hornet stings. ',

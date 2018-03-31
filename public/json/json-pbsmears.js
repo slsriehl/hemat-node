@@ -174,9 +174,9 @@ $(window).on('load', function () {
         mxLine169: 'No dysplastic changes are seen. ',
 //
 // ABSOLUTE NEUTROPENIA
-        mxLine170: 'Neutrophils are reduced in absolute terms, but show normal morphology. ',
+        mxLine170: 'Neutrophils are reduced in absolute terms but show normal morphology. ',
 // ABSOLUTE LYMPHOPENIA
-        mxLine171: 'Lymphocytes are reduced in absolute terms, but show normal morphology. ',
+        mxLine171: 'Lymphocytes are reduced in absolute terms but show normal morphology. ',
 // RELATIVE INCREASE IN EOSINOPHILS
         mxLine172: 'There is a relative prominence in eosinophils, which show normal morphology. ',
 // PLT MORPHOLOGY
@@ -223,11 +223,11 @@ $(window).on('load', function () {
 // KNOWN HbSC
         commLine110: 'The red cell changes are consistent with the known history of HbSC disease. ',
 // ROULEAUX COMMENT
-        commLine111: 'Red cell rouleaux formation is a non-specific finding that is typically associated with excess serum immunoglobulin complexes,which can be seen with hepatitis, recent IVIG therapy, or lymphoproliferative disorders. Correlation with serum protein electrophoresis may be helpful. ',
+        commLine111: 'Red cell rouleaux formation is a non-specific finding that is typically associated with excess serum immunoglobulin complexes, which can be seen with hepatitis, recent IVIG therapy, or lymphoproliferative disorders. Correlation with serum protein electrophoresis may be helpful. ',
 // FREQUENT TARGETS, NO MACROCYTOSIS COMMENT
         commLine112: 'Increased numbers of target cells can be associated with liver dysfunction, hypothyroidism or medication related effects. In the absence of macrocytosis, an underlying non-hemolyzing hemoglobinopathy (like homozygous HbC) cannot be excluded.',
 // POST-SPLENECTOMY CHANGES COMMENT
-        commLine113: 'The red-cell changes, including frequent Howell-Jolly bodies and sperocytes, are most consistent with a hyposplenic, or post-splenic state. Clinical correlation is recommended. ',
+        commLine113: 'The red-cell changes, including frequent Howell-Jolly bodies and spherocytes, are most consistent with a hyposplenic, or post-splenic state. Clinical correlation is recommended. ',
 // INCREASED SCHISTOCYTES COMMENT
         commLine114: 'There is an increase in schistocytes which may indicate ongoing intravascular hemolysis. Correlation with other laboratory data, including a DIC work-up, may be helpful. ',
 // MICROYCTIC HBS OR HBSC
@@ -253,7 +253,7 @@ $(window).on('load', function () {
 // AML
         commLine157: 'The findings are consistent with an acute myeloid leukemia. Correlation with flow cytometry and bone marrow evaluation is recommended. ',
 // APL
-        commLine158: 'The findings are consistent with an acute myeloid leukemia, and are further worrisome for acute promyelocytic leukemia. While no changes suggesting microangiopathic hemolysis is seen, evaluation for DIC is recommended. Additionally, FISH testing is pending and can help confirm this possibility. ',
+        commLine158: 'The findings are consistent with an acute myeloid leukemia and are further worrisome for acute promyelocytic leukemia. While no changes suggesting microangiopathic hemolysis is seen, evaluation for DIC is recommended. Additionally, FISH testing is pending and can help confirm this possibility. ',
 // ALL
         commLine159: 'The findings are consistent with an acute lymphoblastic leukemia. Correlation with flow cytometry and bone marrow evaluation is recommended.',
 // TREATMENT EFFECT
@@ -262,11 +262,11 @@ $(window).on('load', function () {
         commLine161: 'The etiology for the severe neutropenia is unclear. In the setting of reactive lymphocytes, the finding may represent a virus- or medication-mediated effect. Severe neutropenia may also represent a benign condition of various ethnic extractions, immune reaction or a congenital process. Correlation with clinical history and other laboratory findings is necessary to differentiate among these possibilities. ',
 //
 // CLUMPS DDX
-        commLine200: 'The apparent thrombocytopenia is accounted for by platelet clumps causing a spurious reduction in the count. This is usually an in virto phenomenon due to EDTA collection tubes. Future platelet counts using non-EDTA anticoagulants (such as heparin) may resolve this issue. ',
+        commLine200: 'The apparent thrombocytopenia is accounted for by platelet clumps causing a spurious reduction in the count. This is usually an in vitro phenomenon due to EDTA collection tubes. Future platelet counts using non-EDTA anticoagulants (such as heparin) may resolve this issue. ',
 // ITP
         commLine201: 'In the appropriate clinical context, the thrombocytopenia and reactive lymphocytes may be compatible with ITP. ',
 // THROMBOCYTOSIS
-        commLine202: 'Thrombocytosis can be seen in a wide variety of reactive settings including infections, hyposplenic states, iron deficiency, among others. Rarely, it may reflect a myleoproliferative disorder. Clinical correlation is recommended. ',
+        commLine202: 'Thrombocytosis can be seen in a wide variety of reactive settings including infections, hyposplenic states, iron deficiency, among others. Rarely, it may reflect a myeloproliferative disorder. Clinical correlation is recommended. ',
 // TTP
         commLine203: 'In the appropriate clinical context, the combination of schistocytes and marked thrombocytopenia suggests TTP/HUS. Correlation with other laboratory data, specifically to assess for thrombotic risk, is recommended. ',
         commLine999:'dummy'
@@ -294,7 +294,7 @@ $(window).on('load', function () {
 // nna mild rouleaux
         dxOut107:'PERIPHERAL BLOOD:\n- Normochromic, normocytic anemia with mild rouleaux \n',
 // nna + rouleaux
-        dxOut108:'PERIPHERAL BLOOD:\n- Normochromic, normocytic anemia with signficant rouleaux \n',
+        dxOut108:'PERIPHERAL BLOOD:\n- Normochromic, normocytic anemia with significant rouleaux \n',
 // nna + schistocytes
         dxOut109:'PERIPHERAL BLOOD:\n- Normochromic, normocytic anemia with frequent schistocytes \n',
 // nna + targets
@@ -370,7 +370,7 @@ $(window).on('load', function () {
         dxOut202:'- Marked thrombocytopenia \n',
 // mild thrombocytosis
         dxOut203: '- Mild thrombocytosis  \n',
-// marked thrmobocytosis
+// marked thrombocytosis
         dxOut204: '- Marked thrombocytosis \n',
 // dysplastic platelets
         dxOut205: '- Occasional dysplastic platelets \n',

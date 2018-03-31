@@ -58,8 +58,8 @@ $(window).on('load', function(){
 //generic diagnoses 1
         dxLine1: '- No significant abnormalities \n',
         dxLine2: '- Mild non-specific changes (see comment) \n',
-        dxLine3: '- No microorganisms seen with gms and afb stains \n',
-        dxLine4: '- No Helicobacter-like organisms seen with giemsa stain \n',
+        dxLine3: '- No microorganisms seen with GMS and AFB stains \n',
+        dxLine4: '- No Helicobacter-like organisms seen with Giemsa stain \n',
 
 //duodenum diagnoses 100
         dxLine100: '- Focal acute inflammation\n',
@@ -112,7 +112,7 @@ $(window).on('load', function(){
 
 //terminal ileum diagnoses 250
         dxLine251: '- Focal acute inflammation\n',
-        dxLine252: '- Chronic and active ileits\n',
+        dxLine252: '- Chronic and active ileitis\n',
         dxLine253: '- Chronic and focal active ileitis\n',
         dxLine254: '- Chronic and active ileitis with granulomas\n',
         dxLine255: '- Active ileitis with ulcer\n',
@@ -174,7 +174,7 @@ $(window).on('load', function(){
         // CHRONIC WITH GASTRIC METAPLAISA
         mxLine108: "Sections of the 'duodenum' show fragments of small bowel tissue with mostly normal villous architecture. There is no undue crypt hyperplasia. The lamina propria shows variably increased cellularity comprised of lymphocytes, plasma cells and few eosinophils. Some of the mucosa shows gastric foveolar metaplasia, characterized by the presence of antral-type mucous cells and loss of goblet-cells. No increase in intraepithelial lymphocytes is seen. No neutrophilic infiltrates or ulcers are present. \n ",
         // CHRONIC ACTIVE WITH GASTRIC METAPLASIA
-        mxLine109: "Sections of the 'duodenum' show fragments of small bowel tissue with mostly normal villous architecture. There is no undue crypt hyperplasia. The lamina propria shows variably increased cellularity comprised of lymphocytes, plasma cells and few eosinophils. Focal neutrophilic infiltrates are also present, and extend into the crypt epithelium. Some of the mucosa shows gastric foveolar metaplasia, characterized by the presence of antral-type mucous cells and loss of goblet-cells. No increase in intraepithelial lymphocytes is seen. \n ",
+        mxLine109: "Sections of the 'duodenum' show fragments of small bowel tissue with mostly normal villous architecture. There is no undue crypt hyperplasia. The lamina propria shows variably increased cellularity comprised of lymphocytes, plasma cells and few eosinophils. Focal neutrophilic infiltrates are also present and extend into the crypt epithelium. Some of the mucosa shows gastric foveolar metaplasia, characterized by the presence of antral-type mucous cells and loss of goblet-cells. No increase in intraepithelial lymphocytes is seen. \n ",
         // CHRONIC ACTIVE WITH GASTRIC METAPLASIA
         mxLine110: "Sections of the 'duodenum' show fragments of small bowel tissue with normal villous architecture. The lamina propria shows increased cellularity comprised of lymphocytes, plasma cells and few eosinophils. In addition, there is a focal neutrophilic infiltrate that extends into the crypt epithelium. No increase in intraepithelial lymphocytes is seen.  \n ",
         // TIP VILLITIS
@@ -267,7 +267,7 @@ $(window).on('load', function(){
         // CHRONIC ACTIVE ILEITIS WITH ULCER
         mxLine252: "Sections of the 'terminal ileum' biopsy show fragments of reactive small bowel tissue with disorganized villi and increased lamina propria cellularity comprised of plasma cells, lymphocytes and neutrophils. There is patchy cryptitis with rare crypt abscesses. Some areas of the surface show ulcer formation. \n",
         // NON-SPECIFIC CHANGES WITH INCREASED EOS
-        mxLine253: "Sections of the 'terminal ileum' show fragments of small bowel tissue with a normal villous architecture. The lamina propria shows scattered lymphoid aggregates, but no neutrophilic infiltrates.There is a mild, non-specific increase in lamina propria eosinophils. \n",
+        mxLine253: "Sections of the 'terminal ileum' show fragments of small bowel tissue with a normal villous architecture. The lamina propria shows scattered lymphoid aggregates, but no neutrophilic infiltrates. There is a mild, non-specific increase in lamina propria eosinophils. \n",
         // INCREASED LP CELLULARITY, TI
         mxLine254: "Sections of the 'terminal ileum' show fragments of small bowel tissue with a normal villous architecture. The lamina propria shows a nonspecific increase in overall cellularity, comprised mainly of lymphocytes and plasma cells; prominent lymphoid aggregates are also present. No undue neutrophilic or eosinophilic infiltrates are seen. No increase in intraepithelial lymphocytes is seen. \n",
         // FOCAL ACUTE INFLAMMATION TI
@@ -319,7 +319,7 @@ $(window).on('load', function(){
         // GRANULOMATOUS INFLAMMATION, 1 SITE
         mxLine318: "Sections of the 'colon' biopsy show fragments of colonic tissue with normal glandular architecture. The lamina propria shows increased overall cellularity comprised of lymphocytes, plasma cells and eosinophils. Several lamina propria non-necrotizing granulomata are present. No neutrophilic infiltrates, cryptitis or surface ulcers are seen. \n",
         // GRANULOMATOUS INFLAMMATION, ALL SITES
-        mxLine319: "Sections from all the colonic biopsies show show fragments of colonic tissue with normal glandular architecture. The lamina propria shows increased overall cellularity comprised of lymphocytes, plasma cells and eosinophils. Several lamina propria non-necrotizing granulomata are present. No neutrophilic infiltrates, cryptitis or surface ulcers are seen. \n",
+        mxLine319: "Sections from all the colonic biopsies show fragments of colonic tissue with normal glandular architecture. The lamina propria shows increased overall cellularity comprised of lymphocytes, plasma cells and eosinophils. Several lamina propria non-necrotizing granulomata are present. No neutrophilic infiltrates, cryptitis or surface ulcers are seen. \n",
         // TA, 1 site
         mxLine320: "Sections of the 'colon' show colonic mucosa exhibiting adenomatous changes characterized by tubular gland morphology, hyperchromatic, elongate nuclei and depletion of goblet cells. No high-grade dysplasia or carcinoma is seen. \n",
         // TA, many sites
@@ -329,9 +329,9 @@ $(window).on('load', function(){
         // SSA, many sites
         mxLine323: "Sections from the ' ' and ' ' biopsies show similar findings and are described together. They show a mucosal lesion with deep crypt serration, horizontal, inverted T- and L-shaped crypts with lateral spread of the crypts.  There is no dysplasia, undue acute inflammatory infiltrates. \n",
         // SSA W DYSPLASIA, 1 site
-        mxLine324: "Sections of the 'colon' show a mucosal lesion with deep crypt serration, horizontal, inverted T- and L-shaped crypts with lateral spread of the crypts.  There is an area of adenomatous epithelium adenomatous changes characterized by tubular gland morphology, hyperchromatic, elongate nuclei   The dysplasia is low grade; There is no evidence of high-grade dysplasia or malignancy. \n",
+        mxLine324: "Sections of the 'colon' show a mucosal lesion with deep crypt serration, horizontal, inverted T- and L-shaped crypts with lateral spread of the crypts.  There is an area of adenomatous epithelium adenomatous changes characterized by tubular gland morphology, hyperchromatic, elongate nuclei. The dysplasia is low grade; There is no evidence of high-grade dysplasia or malignancy. \n",
         // SSA W DYSPLASIA, many sites
-        mxLine325: "Sections from the ' ' and ' ' biopsies show similar findings and are described together. They show a mucosal lesion with deep crypt serration, horizontal, inverted T- and L-shaped crypts with lateral spread of the crypts.  There is an area of adenomatous epithelium adenomatous changes characterized by tubular gland morphology, hyperchromatic, elongate nuclei   The dysplasia is low grade; There is no evidence of high-grade dysplasia or malignancy. \n",
+        mxLine325: "Sections from the ' ' and ' ' biopsies show similar findings and are described together. They show a mucosal lesion with deep crypt serration, horizontal, inverted T- and L-shaped crypts with lateral spread of the crypts.  There is an area of adenomatous epithelium adenomatous changes characterized by tubular gland morphology, hyperchromatic, elongate nuclei. The dysplasia is low grade. There is no evidence of high-grade dysplasia or malignancy. \n",
         // Hyperplastic polyp, 1 site
         mxLine326: "Sections of the 'colon' show a hyperplastic mucosal lesion with luminal crypt scalloping and funnel-shaped elongated crypts.  The crypt serration is confined to the upper crypt. There is no adenomatous change. \n",
         // Hyperplastic poly, many sites
@@ -343,7 +343,7 @@ $(window).on('load', function(){
         // TSA, 1 site
         mxLine330: "Sections of the 'colon' show a serrated adenomatous lesion characterized by columnar epithelium with eosinophilic cytoplasm, a centrally placed elongated nucleus that is somewhat hyperchromatic and mild pseudostratification.  Mitoses are few.  There are ectopic crypt foci. The overall architecture is villiform and protuberant rather than sessile.  There is no high-grade dysplasia or invasive malignancy. \n",
         // TSA, many sites
-        mxLine331: "Sections from the ' ' and ' ' biopsies show similar findings and are described together. They show show  a serrated adenomatous lesion characterized by columnar epithelium with eosinophilic cytoplasm, a centrally placed elongated nucleus that is somewhat hyperchromatic and mild pseudostratification.  Mitoses are few.  There are ectopic crypt foci. The overall architecture is villiform and protuberant rather than sessile.  There is no high-grade dysplasia or invasive malignancy. \n",
+        mxLine331: "Sections from the ' ' and ' ' biopsies show similar findings and are described together. They show  a serrated adenomatous lesion characterized by columnar epithelium with eosinophilic cytoplasm, a centrally placed elongated nucleus that is somewhat hyperchromatic and mild pseudostratification.  Mitoses are few.  There are ectopic crypt foci. The overall architecture is villiform and protuberant rather than sessile.  There is no high-grade dysplasia or invasive malignancy. \n",
         // Rectum, prolapse/SRUS
         mxLine332: "Sections of the 'rectum' biopsy show fragments of architecturally disorganized colonic mucosa with interstitial fibrosis, dilated lamina propria lymphatics and focal areas of surface erosion and ulceration. The lamina propria is not excessively cellular and does not show a prominent basal lymphoplasmacytic infiltrate. There is sampling of ulcer bed material consisting of granulation tissue. No viral cytopathic changes are seen. \n",
         // Lymphocytic colitis
@@ -383,9 +383,9 @@ $(window).on('load', function(){
 // MELANOSIS COLI
         comLine111: 'Melanosis coli is a non-specific change which is often observed in the setting of prolonged laxative use (senna or magnesium containing laxatives in particular). Clinical correlation is recommended. \n',
 // JPS COMMENT
-        comLine112: 'Currently accepted criteria recommend documentation of 5 colorectal juvenile polyps to consider a diagnosis of juvenile polyposis syndrome. If other gastrointestinal polyps were seen during endoscopy, or if other clinical history is suggestive, consideration for genetic testing of mutations in the BMPR1A and SMAD4 genes may be helpful. BMPR1A and SMAD4 mutations are known to cause juvenile polyposis syndrome, and can be tested on peripheral blood. \n',
+        comLine112: 'Currently accepted criteria recommend documentation of 5 colorectal juvenile polyps to consider a diagnosis of juvenile polyposis syndrome. If other gastrointestinal polyps were seen during endoscopy, or if other clinical history is suggestive, consideration for genetic testing of mutations in the BMPR1A and SMAD4 genes may be helpful. BMPR1A and SMAD4 mutations are known to cause juvenile polyposis syndrome and can be tested on peripheral blood. \n',
 // SSA COMMENT
-        comLine113: 'Sessile serrated adenomas is a lesion that should be entirely removed endoscopically, if at all possible.  Consensus guidelines recommend that if the lesion cannot be entirely removed, then watchful waiting with repeated colonoscopy at a shortened interval is warranted.  This ensures there is no re-growth of the lesion since there may difficulty in identifying the margins of the lesion.  Future surveillance should be individualized. \n',
+        comLine113: 'Sessile serrated adenomas is a lesion that should be entirely removed endoscopically, if possible.  Consensus guidelines recommend that if the lesion cannot be entirely removed, then watchful waiting with repeated colonoscopy at a shortened interval is warranted.  This ensures there is no re-growth of the lesion since there may difficulty in identifying the margins of the lesion.  Future surveillance should be individualized. \n',
 
 // IBD IN INFANTS COMMENT
         comLine114: 'The findings, on a histologic basis alone, raise a differential diagnosis of inflammatory bowel disorder or a self-limited colitis. In very young patients, other less common entities can show an "IBD-like" histologic picture, including: congenital immune deficiencies, autoimmune enteropathy, Bechet\'s disease, chronic granulomatous disease or severe allergic enterocolitis [see reference].  Correlation with clinical findings and other laboratory data is recommended. \n\nReference:\n1. Kappelman MD, Grand RJ. Does inflammatory bowel disease develop in infants? Inflamm Bowel Dis. 2008;14.',
@@ -415,10 +415,10 @@ $(window).on('load', function(){
         comLine122: 'The prior biopsy ( ) is reviewed in conjunction with these current biopsies. The prior biopsies show variably increased eosinophils throughout the length of the esophagus, with some areas resembling eosinophilic esophagitis. The current biopsies show subjectively fewer intraepithelial eosinophils, particularly in the __ biopsy. In the context of clinical eosinophilic esophagitis, these changes may represent incomplete treatment or superimposed GERD. ',
 
 // VILLOUS BLUNTING, NO IELS (NON-SPECIFIC)
-        comLine123: 'The duodenum changes show villous blunting without concomittant increase in intraepithelial lymphocytes. This is a non-specific pattern that can be seen with acute or post-viral gastroenteritis, autoimmune gastroenteropathies or primary disorders of the brush border or enterocyte junctions. Changes indicative of the latter are not evident in the biopsies. Clinical correlation is recommended.  ',
+        comLine123: 'The duodenum changes show villous blunting without concomitant increase in intraepithelial lymphocytes. This is a non-specific pattern that can be seen with acute or post-viral gastroenteritis, autoimmune gastroenteropathies or primary disorders of the brush border or enterocyte junctions. Changes indicative of the latter are not evident in the biopsies. Clinical correlation is recommended.  ',
 
 // VILLOUS BLUNTING, NO IELS, TUFTING
-        comLine124: 'The duodenum changes show villous blunting without concomittant increase in intraepithelial lymphocytes. The abnormal EpCAM/MOC31 staining indicates a primary disorder of enterocyte junctions, as is expected for tufting enteropathy. Tufting enteropathy (aka intestinal epithelial dysplasia) is an etiology for chronic infantile diarrhea, which can be associated with other extra-gastrointestinal manifestations, including keratitis. ',
+        comLine124: 'The duodenum changes show villous blunting without concomitant increase in intraepithelial lymphocytes. The abnormal EpCAM/MOC31 staining indicates a primary disorder of enterocyte junctions, as is expected for tufting enteropathy. Tufting enteropathy (aka intestinal epithelial dysplasia) is an etiology for chronic infantile diarrhea, which can be associated with other extra-gastrointestinal manifestations, including keratitis. ',
 
         comLine999: ' '
     };

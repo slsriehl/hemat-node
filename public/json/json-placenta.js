@@ -133,11 +133,11 @@ $(window).on('load', function(){
         // MASSIVE PERIVILLOUS FIBRIN
         dxLine550: "- FETAL SURFACE: No significant abnormalities\n- VILLOUS TISSUE: Massive perivillous fibrin (>40% of placental disk)\n",
         // FTV
-        dxLine551: "- FETAL SURFACE: No significant abnormalities\n- VILLOUS TISSUE: Fetal thrombotic vasculopathy [focal, pathy, diffuse]\n",
+        dxLine551: "- FETAL SURFACE: No significant abnormalities\n- VILLOUS TISSUE: Fetal thrombotic vasculopathy [focal, patchy, diffuse]\n",
         // FETAL NRBCS
         dxLine552: "- FETAL SURFACE: No significant abnormalities\n- VILLOUS TISSUE: Increased fetal nucleated red blood cells\n",
         // VILLOUS EDEMA
-        dxLine553: "- FETAL SURFACE: No significant abnormalities\n- VILLOUS TISSUE: Villous edema, [focal, patchy, dffuse]\n",
+        dxLine553: "- FETAL SURFACE: No significant abnormalities\n- VILLOUS TISSUE: Villous edema, [focal, patchy, diffuse]\n",
         // ACUTE ABRUPTION
         dxLine554: "- FETAL SURFACE: No significant abnormalities\n- VILLOUS TISSUE: Features suggestive of acute abruption\n",
         // CHRONIC MARGINAL ABRUPTION
@@ -146,7 +146,7 @@ $(window).on('load', function(){
         dxLine556: "- FETAL SURFACE: No significant abnormalities\n- VILLOUS TISSUE: Acute necrotizing intervillositis\n",
 
         // MATERNAL SURFACE
-        dxLine560: "- MATERNAL SURFACE: No significant abnormaliteis \n",
+        dxLine560: "- MATERNAL SURFACE: No significant abnormalities \n",
         dxLine561: "- MATERNAL SURFACE: Acute atherosis \n",
         dxLine562: "- MATERNAL SURFACE: Chronic deciduitis with plasma cells \n",
 
@@ -176,7 +176,7 @@ $(window).on('load', function(){
         // NORMAL PLACENTAL DISK
         mxLine540: "The placental disk shows a chorionic plate without vasculitis or definitive neutrophilic infiltration. The parenchyma has villous development that is consistent with the infant’s estimated gestational age. There is no pathologic increase in perivillous fibrin deposition, calcifications or fetal nucleated red blood cells. No villitis or infarcts are seen. ",
         // DISTAL VILLOUS HYPOPLASIA
-        mxLine541: "The placental disk shows a chorionic plate without vasculitis or definitive neutrophilic infiltration. The parenchyma has has abnormal villous development for the infant's estimated gestational age, characterized by small, slender villi with decreased branching. There is no pathologic increase in perivillous fibrin deposition, calcifications or fetal nucleated red blood cells. No villitis or infarcts are seen. ",
+        mxLine541: "The placental disk shows a chorionic plate without vasculitis or definitive neutrophilic infiltration. The parenchyma has abnormal villous development for the infant's estimated gestational age, characterized by small, slender villi with decreased branching. There is no pathologic increase in perivillous fibrin deposition, calcifications or fetal nucleated red blood cells. No villitis or infarcts are seen. ",
         //  CHORANGIOSIS
         mxLine542: "The placental disk shows a chorionic plate without vasculitis or definitive neutrophilic infiltration. The parenchyma has villous development that is consistent with the infant’s estimated gestational age; however, most of the terminal villi show expanded stroma by greater than 10 capillaries per cross section. There is no pathologic increase in perivillous fibrin deposition, calcifications or fetal nucleated red blood cells. No villitis or infarcts are seen. ",
         // CHORANGIOMA
@@ -186,7 +186,7 @@ $(window).on('load', function(){
         // ACUTE VILLIITS
         mxLine545: "The placental disk shows a chorionic plate without vasculitis or definitive neutrophilic infiltration. The parenchyma has villous development that is consistent with the infant’s estimated gestational age. There are [focal, patchy, diffuse] areas in the terminal villi that show stromal lymphocytic and neutrophilic inflammatory infiltrates with disrupted trophoblast layers and perivillous fibrin deposition. There is no pathologic increase in fetal nucleated red blood cells or calcifications. ",
         // ACUTE VILLITIS WITH OBLITERATIVE VASCULOPATHY
-        mxLine546: "The placental disk shows a chorionic plate without vasculitis or definitive neutrophilic infiltration. The parenchyma has villous development that is consistent with the infant’s estimated gestational age. There are [focal, patchy, diffuse] areas in the terminal villi that show stromal lymphocytic and neutrophilic inflammatory infiltrates with disrupted trophoblast layers and perivillous fibrin deposition. In addition, the affected villi show obiliterated fetal blood vessels with fragmented and extravasated red blood cells. There is no pathologic increase in fetal nucleated red blood cells or calcifications. ",
+        mxLine546: "The placental disk shows a chorionic plate without vasculitis or definitive neutrophilic infiltration. The parenchyma has villous development that is consistent with the infant’s estimated gestational age. There are [focal, patchy, diffuse] areas in the terminal villi that show stromal lymphocytic and neutrophilic inflammatory infiltrates with disrupted trophoblast layers and perivillous fibrin deposition. In addition, the affected villi show obliterated fetal blood vessels with fragmented and extravasated red blood cells. There is no pathologic increase in fetal nucleated red blood cells or calcifications. ",
         // INTERVILLOUS THROMBUS
         mxLine547: "The placental disk shows a chorionic plate without vasculitis or definitive neutrophilic infiltration. The parenchyma has villous development that is consistent with the infant’s estimated gestational age. The grossly identified parenchymal lesion(s) correspond(s) to a focally expanded intervillous space by extravasated blood, laminated fibrin deposition, and rare hemosiderin laden macrophages (intervillous thrombus). There is no pathologic increase in calcifications or fetal nucleated red blood cells. No villitis or infarcts are seen.",
         // PLACENTAL INFARCTS
@@ -211,7 +211,7 @@ $(window).on('load', function(){
         // MATERNAL DECIDUA - NORMAL
         mxLine560: "The decidua of the maternal surface shows occasional lymphocytes but no definitive plasma cells.  No decidual atherosis is evident. ",
         // DECIDUAL ATHEROSIS
-        mxLine561: "The decidua of the maternal surface shows occasional lymphocytes but no definitive plasma cells.  Some decidual arteries show features of acute atherosis, as evidenced by maternal blood vessels exhibting subendothelial fibrinous necrosis and infiltration by foamy macrophages.  ",
+        mxLine561: "The decidua of the maternal surface shows occasional lymphocytes but no definitive plasma cells.  Some decidual arteries show features of acute atherosis, as evidenced by maternal blood vessels exhibiting subendothelial fibrinous necrosis and infiltration by foamy macrophages.  ",
         // CHORNIC DEC WITH PLASMA CELLS
         mxLine562: "The decidua of the maternal surface shows an increase in lymphocytes with associated clusters of plasma cells. There is no evidence of decidual vasculopathy. ",
 
