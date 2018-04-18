@@ -10,14 +10,17 @@ $(window).on('load', function(){
         var bp2 = $('#bp2').val();
         var prod = $('#prod').val();
         var prod_type = $('#prod_type').val();
+        prod_type = prod_type.replace(/an /, '');
         var hemol = $('#hemol').val();
         var date1 = $('#date1').val();
         var date2 = $('#date2').val();
         var treat  = $('#LR').val().join(", ").replace(/,(?=[^,]*$)/, ' and');
         var pretest = $('#pretest').val();
+        pretest = pretest.replace(/an /, '');
         var time1 = $('#time1').val();
         var time2 = $('#time2').val();
         var posttest = $('#posttest').val();
+        posttest = posttest.replace(/an /, '');
         var symptoms = $('#symptoms').val().join(', ').replace(/,(?=[^,]*$)/, ' and');
         var premed = $('#premed').val();
         var dat = $('#dat').val();
@@ -48,16 +51,16 @@ $(window).on('load', function(){
             '\n\nLABORATORY INVESTIGATION:\n'+
             'Clerical Check:\t\t\t'+cc+
 
-            '\nVisual Hemolysis Check:\t\t'+hemol+
+            '\nVisual Hemolysis Check:\t'+hemol+
 
             '\nPre-transfusion testing:\t'+pretest+
 
             '\nPost-transfusion testing:\t'+posttest+
 
-            '\nDAT:\t\t\t\t'+dat+
+            '\nDAT:\t\t\t\t\t'+dat+
 
 
-            '\n\nFINAL DIAGNOSIS:\n '+dxOuts['dxOut'+interp] +
+            '\n\nTRANSFUSION REACTION WORK-UP:\n '+dxOuts['dxOut'+interp] +
             '\n\nCOMMENTS:\n'+commLines['commLine' +interp];
 
         $('#outPut-1').val(text);
