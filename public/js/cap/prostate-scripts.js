@@ -425,7 +425,7 @@ $(window).on('load', function () {
 
             var box_32 = $("#box32").val();
             var box_32_2 = $("#box32_2").val();
-            if (box_31 !== 0){
+            if (box_31 != '0'){
                 if ($.inArray('Other', box_32) > -1) {
                     captext += "\n\tInvolved nodes: " + box_32.join(', ').replace(/Other/, box_32_2) + "\n";
                 } else {
