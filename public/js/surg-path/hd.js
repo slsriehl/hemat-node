@@ -222,9 +222,10 @@ $(window).on('load', function() {
         // frozen sections
         // Frozen section arrays
         var fz_part =   []; // fz parts
-
+        var fz_diag =   []; // fz diagnosis at the end
         $(".pblock").each(function(){
-            var fztext = "("+$(this).find(".fz-part").val() + ") " + $(this).find(".fz-loc").val() + ": "+
+            var fztext = "("+$(this).find(".fz-part").val().toUpperCase() +
+                ") " + $(this).find(".fz-loc").val() + ": "+
                 "\n\tBiopsy type: " + $(this).find(".fz-type").val() +
                 "\n\tPathologist: " + $(this).find(".fz-path").val() +
                 "\n\tIntra-Op Dx: " + $(this).find(".fz-iodx").val() +
@@ -239,8 +240,16 @@ $(window).on('load', function() {
                 console.log("FZ length:" + $(".fz-residue").length);
                 fztext += "\n\tResidue: Kept in OCT\n\n";
             }
+            fz_part.push(fztext)
 
-            fz_part.push(fztext);
+            // final diagnosis
+            var fzdx =  "("+$(this).find(".fz-part").val() + ") " +       // (A)
+                        "COLON, " + $(this).find(".fz-loc").val() + ", "+ // (A) COLON, SIGMOID
+                        $(this).find(".fz-type").val() + " BIOPSY: \n" +  // (A) COLON, SIGMOID, SEROMUSCULAR BIOPSY:
+                        "- "+ $(this).find(".fz-finaldx").val() +"\n";
+
+            fz_diag.push(fzdx.toUpperCase());
+
         });
         console.log(fz_part);
 
@@ -261,7 +270,7 @@ $(window).on('load', function() {
         captext += "\n("  + box_10+") "+box_10_2+": ";
 
         var box_11 = $("#box11").val();
-        captext += "\n\tResection fixative: "  + box_11;
+        captext += "\n\tResection status: "  + box_11;
 
         var box_12 = $("#box12").val();
         captext += "\n\tResection total length: "  + box_12 + "cm";
@@ -327,7 +336,7 @@ $(window).on('load', function() {
 
             var box_21 = $("#box21").val();
             if (box_21.length > 0){
-                captext += "\n\tTransition zone features: "  + box_21.join('\n\t- ');
+                captext += "\n\tTransition zone features: \n\t- "  + box_21.join('\n\t- ');
             }
 
 
@@ -435,7 +444,7 @@ $(window).on('load', function() {
             captext += "\n("  + box_40+") "+box_40_2+":";
 
             var box_41 = $("#box41").val();
-            captext += "\n\tOstomy fixative: "  + box_41;
+            captext += "\n\tOstomy staus: "  + box_41;
 
             var box_42 = $("#box42").val();
             captext += "\n\tOstomy total length: "  + box_42 + "cm";
@@ -457,7 +466,7 @@ $(window).on('load', function() {
 
                 var box_46 = $("#box46").val();
                 if (box_46.length > 0){
-                    captext += "\n\tOstomy Transition zone features:\n- "  + box_46.join('\n\t- ');
+                    captext += "\n\tOstomy Transition zone features:\n\t- "  + box_46.join('\n\t- ');
                 }
 
 
@@ -546,10 +555,54 @@ $(window).on('load', function() {
 
         }
 
-        captext += "\n----------------------------------------\n";
+        captext += "\n\n----------------------------------------\n";
 
         captext += "\n\nFINAL DIAGNOSIS\n";
 
+        // Frozen section diagnoses
+        captext += fz_diag.join('\n');
+
+        // Pull-through diagnoses
+        captext += "\n("  + box_10.toUpperCase()+") COLON, "+box_10_2.replace(/ colon/, '').toUpperCase()+", RESECTION (LENGTH: "+box_12+"cm):";
+
+        captext += "\n- COLONIC AGANGLIONOSIS (HIRSCHSPRUNG DISEASE), WITH THE FOLLOWING FEATURES:";
+
+        var gang_length
+        // compare distance to submucosal ganglion and myenteric ganglion, take longer one to calculate aganglionic segment
+        var sub_gang = Number(box_80);
+        var myen_gang = Number (box_81);
+
+        if (sub_gang >= myen_gang){
+            gang_length = sub_gang;
+        } else {
+            gang_length = myen_gang;
+        }
+        captext += "\n\t- DISTAL AGANGLIONIC SEGMENT: "+(box_12-gang_length)+" CM ";
+
+        captext += "\n\t- PROXIMAL END OF TRANSITION ZONE: "+box_82+" CM FROM PROXIMAL MARGIN "
+
+        if (box_20.indexOf("transition") > -1) { // if proximal is transition zone
+                captext += "\n\t- HISTOPATHOLOGICAL FEATURES OF TRANSITION ZONE AT PROXIMAL MARGIN, AS FOLLOWS:\n\t\t- " +
+                            box_21.map(function (x) { return x.toUpperCase() }).join('\n\t\t- ');
+        } else if (box_20.indexOf("Absent") > -1){ // if proximal is aganglionic
+            captext += "\n\t- ABSENT CIRCUMFERENTIAL GANGLION CELLS AT PROXIMAL MARGIN ";
+        } else { // if proximal is normal
+            captext += "\n\t- NO SIGNIFICANT NEUROMUSCULAR PATHOLOGY AT THE PROXIMAL SURGICAL MARGIN ";
+        }
+
+        // ostomy final (if needed)
+        if ($("#ostomy").is(":visible")) {
+        captext += "\n\n("  + box_40+") BOWEL SEGMENT, "+box_40_2.toUpperCase()+", OSTOMY TAKEDOWN:";
+
+        captext += "\n- ENTEROCUTANEOUS ANASTOMOSIS WITH THE FOLLOWING FEATURES:";
+
+            if (box_45.indexOf("No") > -1) { // if proximal is transition zone
+                captext += "\n- NO SIGNIFICANT NEUROMUSCULAR PATHOLOGY AT THE PROXIMAL SURGICAL MARGIN";
+            } else {
+                captext += "\n- "+box_100+"\n\t- "+box_46.map(function (x) { return x.toUpperCase()}).join('\n\t- ');
+            }
+
+        }
 
 
         $('#outPut-1').val(captext);
