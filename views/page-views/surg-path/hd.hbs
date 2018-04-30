@@ -99,16 +99,13 @@
                                 </select>
                             </td>
                             <td>
-                                <h6>Perm Diagnosis</h6>
+                                <h6>Permanent Diagnosis</h6>
                             </td>
                             <td>
                                 <select  class='form-control selectpicker form-control-sm ml-2 fz-finaldx'>
                                     <option>Inadequate</option>
-                                    <option>Myenteric ganglion cells present</option>
-                                    <option>Myenteric and submucosal ganglion cells present</option>
-                                    <option>Myenteric ganglion cells absent</option>
-                                    <option>Submucosal ganglion cells absent</option>
-                                    <option>Myenteric and submucosal ganglion cells absent</option>
+                                    <option>Ganglion cells present</option>
+                                    <option>Ganglion cells absent</option>
                                     <option>Other</option>
                                 </select>
                                 <input type="text" class="form-control form-control-sm mt-3 fz-finaldx2" style='display:none;' placeholder='Specify Other'>
@@ -117,13 +114,11 @@
                         </tr>
                         <tr>
                             <td >
-                                <h6>Residue</h6>
+                                <h6>FZ residue</h6>
                             </td>
-                            <td colspan="2">
-                                <select class='form-control selectpicker form-control-sm ml-2 fz-residue'>
-                                    <option>Stored frozen in OCT </option>
-                                    <option>Submitted in cassette</option>
-                                </select>
+                            <td colspan="3">
+                                <input class='form-control form-control-sm ml-2 fz-residue'
+                                        placeholder="Enter FZ cassette code, or leave blank if FZ kept in OCT">
                             </td>
                         </tr>
                         </tbody>
@@ -145,13 +140,21 @@
 
                 <h5>Resection specimen</h5>
                 <div class="resection ml-3">
+
                     <h6>Part designation</h6>
-                    <input type="text" class="form-control form-control-sm col-sm-6" id="box10"
-                           placeholder="ie. Part(A) Sigmoid Colon">
+                    <form class="form-inline">
+                        <div class="form-group w-100">
+                            <input type="text" class="form-control form-control-sm col-sm-5" id="box10"
+                                   placeholder="ie. A, B, C or 1, 2, 3 etc...">
+                            <input type="text" class="form-control form-control-sm col-sm-5 ml-3" id="box10_2"
+                                   placeholder="specify anatomic location">
+
+                        </div>
+                    </form>
 
                     <div class="py-2 w-100"></div>
 
-                    <h6>Resection fixative</h6>
+                    <h6>Resection submission status</h6>
                     <select id="box11" class='form-control selectpicker form-control-sm col-sm-6'>
                         <option>unfixed</option>
                         <option>formalin fixed</option>
@@ -165,7 +168,7 @@
                     <div class="py-2 w-100"></div>
 
                     <h6>Mucosal sleeve length (cm)</h6>
-                    <input type="number" class="form-control form-control-sm col-sm-6" id="box13" placeholder="(if applicable)">
+                    <input type="number" class="form-control form-control-sm col-sm-6 opt" id="box13" placeholder="(if applicable)">
 
                     <div class="py-2 w-100"></div>
 
@@ -192,13 +195,13 @@
 
                     <div class="py-2 w-100"></div>
 
-
+                    <!-- Suppressed during draft stage
                     <h6>Length of ganglionated bowel (cm)
                         <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
                            title="Distance between the proximal margin and distal-most intraoperative ganglionated biopsy" aria-hidden="true"></i>
                     </h6>
                     <input type="text" class="form-control form-control-sm col-sm-6" id="box31" placeholder="">
-
+                    -->
 
                     <div class="py-2 w-100"></div>
 
@@ -211,8 +214,9 @@
                         <option>Isolated ulcerations present</option>
                         <option>Multiple ulcerations present</option>
                         <option>Perforation noted</option>
+                        <option>Other</option>
                     </select>
-
+                    <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box32_2' style='display:none;' placeholder='Specify Other finding'>
                 </div>
 
                 <div class="py-4 w-100"></div>
@@ -220,7 +224,7 @@
                 <h5>Histologic sampling for permanent sections</h5>
                 <div class="histology ml-3">
                     <h6>Cassette Label - Proximal margin frozen section residue (if applicable)</h6>
-                    <input type="text" class="form-control form-control-sm col-sm-6" id="box34" placeholder="Specify cassette designation">
+                    <input type="text" class="form-control form-control-sm col-sm-6 opt" id="box34" placeholder="Specify cassette designation">
 
                     <div class="py-2 w-100"></div>
 
@@ -236,7 +240,7 @@
 
                     <h6>Cassette Label - Intervening sections
                         <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
-                           title="Proximal-to-distal strips/rings, ink at proximal end of each piece" aria-hidden="true"></i>
+                           title="Proximal-to-distal strips (ink at proximal end of each piece) or sequential rings" aria-hidden="true"></i>
                     </h6>
                     <input type="text" class="form-control form-control-sm col-sm-6" id="box37" placeholder="Specify range of cassette designations">
 
@@ -251,11 +255,19 @@
                     <div class="py-2 w-100"></div>
 
                     <h6>Ostomy part designation:</h6>
-                    <input type="text" class="form-control form-control-sm col-sm-6" id="box40" placeholder="ie. Part(E) Ostomy, Sigmoid">
+                    <form class="form-inline">
+                        <div class="form-group w-100">
+                            <input type="text" class="form-control form-control-sm col-sm-5" id="box40"
+                                   placeholder="ie. A, B, C or 1, 2, 3 etc...">
+                            <input type="text" class="form-control form-control-sm col-sm-5 ml-3" id="box40_2"
+                                   placeholder="specify anatomic designation">
+
+                        </div>
+                    </form>
 
                     <div class="py-2 w-100"></div>
 
-                    <h6>Ostomy fixtative</h6>
+                    <h6>Ostomy submission status</h6>
                     <select id="box41" class='form-control selectpicker form-control-sm col-sm-6'>
                         <option>unfixed</option>
                         <option>formalin fixation</option>
@@ -327,7 +339,7 @@
                         <h6>Cassette label - Circumferential section adjacent to proximal margin</h6>
                         <input type="text" class="form-control form-control-sm col-sm-6" id="box49" placeholder="">
 
-                        <h6>Cassette label - Longitudinal strip (proxima-to-distal)</h6>
+                        <h6>Cassette label - Longitudinal strip (proximal-to-distal)</h6>
                         <input type="text" class="form-control form-control-sm col-sm-6" id="box50" placeholder="Inked at proximal end">
 
                     </div>
@@ -374,7 +386,7 @@
 
                         <div class="py-2 w-100"></div>
 
-                        <h6>Residual proximal margin frozen residue</h6>
+                        <h6>Residual proximal margin frozen tissue</h6>
                         <select id="box24" class='form-control selectpicker form-control-sm col-sm-6'>
                             <option>Stored frozen in OCT </option>
                             <option>Submitted in cassette</option>
@@ -412,6 +424,7 @@
 
                     <input type="number" class="form-control form-control-sm mt-3 col-sm-6" id='box61_2' style='display:none;' placeholder='Specify largest measured nerve'>
 
+                    <!-- suppressed in this draft
                     <div class="py-2 w-100"></div>
 
                     <h6>Neutrophilic mucosal inflammation</h6>
@@ -447,7 +460,7 @@
                         <option>Muscularis propria (multifocal)</option>
                         <option>Muscularis propria (diffuse)</option>
                     </select>
-
+                    -->
                     <div class="py-2 w-100"></div>
 
                     <h6>Other resection finding</h6>
@@ -490,6 +503,7 @@
 
                     <input type="number" class="form-control form-control-sm mt-3 col-sm-6" id='box67_2' style='display:none;' placeholder='Specify largest measured nerve'>
 
+                    <!-- suppressed in this draft
                     <div class="py-2 w-100"></div>
 
                     <h6>Neutrophilic mucosal inflammation</h6>
@@ -525,7 +539,7 @@
                         <option>Muscularis propria (multifocal)</option>
                         <option>Muscularis propria (diffuse)</option>
                     </select>
-
+                    -->
                     <div class="py-2 w-100"></div>
 
                     <h6>Other resection finding</h6>
@@ -536,7 +550,7 @@
 
                 <div class="py-4 w-100"></div>
 
-                <h5>Longitudinal strip / Intervening cross-sectional evaluation</h5>
+                <h5>Longitudinal strip / transverse section evaluation</h5>
                 <div class="intervening py-2 ml-3">
 
                 <div class="py-2 w-100"></div>
@@ -633,7 +647,7 @@
                     </select>
 
                     <input type="number" class="form-control form-control-sm mt-3 col-sm-6" id='box101_2' style='display:none;' placeholder='Specify largest measured nerve'>
-
+                    <!-- suppressed in this draft
                     <div class="py-2 w-100"></div>
 
                     <h6>Neutrophilic mucosal inflammation</h6>
@@ -669,7 +683,7 @@
                         <option>Muscularis propria (multifocal)</option>
                         <option>Muscularis propria (diffuse)</option>
                     </select>
-
+                -->
                     <div class="py-2 w-100"></div>
 
                     <h6>Other ostomy proximal margin finding</h6>
@@ -680,18 +694,18 @@
                     <h6>Ostomy longitudinal strip</h6>
 
                     <div class="py-2 w-100"></div>
-                    <h6>Distance to most distal submucosal ganglion cell</h6>
-                    <input type="number" class="form-control form-control-sm col-sm-6" id="box110" placeholder="From proximal margin (cm)">
+                    <h6>Distance from proximal margin to most distal submucosal ganglion cell (if applicable)</h6>
+                    <input type="text" class="form-control form-control-sm col-sm-6" id="box110" placeholder="n/a">
 
                     <div class="py-2 w-100"></div>
 
-                    <h6>Distance to most distal intermyenteric ganglion cell</h6>
-                    <input type="number" class="form-control form-control-sm col-sm-6" id="box111" placeholder="From proximal margin (cm)">
+                    <h6>Distance from proximal margin to most distal intermyenteric ganglion cell (if applicable)</h6>
+                    <input type="text" class="form-control form-control-sm col-sm-6" id="box111" placeholder="n/a">
 
                     <div class="py-2 w-100"></div>
 
-                    <h6>Distance to closest hypertrophic nerves</h6>
-                    <input type="number" class="form-control form-control-sm col-sm-6" id="box112" placeholder="From proximal margin (cm)">
+                    <h6>Distance from proximal margin to closest hypertrophic nerves (if applicable)</h6>
+                    <input type="text" class="form-control form-control-sm col-sm-6" id="box112" placeholder="n/a">
 
                     <div class="py-2 w-100"></div>
 
