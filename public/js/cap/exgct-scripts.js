@@ -255,8 +255,10 @@ $(window).on('load', function () {
             captext += "\nLymph nodes: None submitted\n";
         }
 
+        if (box_18 != "0"){
         var box_19 = $("#box19").val();
         captext += "\nSpecify nodes involved:\n- " + box_19 + "\n";
+        }
 
         var box_20 = $("#box20").val();
         captext += "\nPathologic Staging:\n- " + box_20 + "\n";
