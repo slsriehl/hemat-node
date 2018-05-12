@@ -42,4 +42,10 @@ router.get('/heme-path/dlbcl', (req, res) => {
 	]);
 });
 
+router.get('/heme-path/heme-media', (req, res) => {
+    controller.openAccess(req, res, './page-views/heme-path/heme-media.hbs', [
+        
+    ]);
+});
+
 module.exports = router;
