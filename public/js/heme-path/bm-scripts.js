@@ -256,7 +256,6 @@ $("#CBCswitch").change(function() {
 
     // hide clot options if aparticulate
     $('#partType312').on('change', function(){
-
         $('.clotoptions').toggle();
     });
 

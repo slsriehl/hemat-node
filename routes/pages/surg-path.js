@@ -50,8 +50,10 @@ router.get('/surg-path/snippets', (req, res) => {
 	controller.userWall(req, res, './page-views/surg-path/snippets.hbs', [
 		"/vendor/tag-it/js/tag-it.min.js",
 		"/vendor/he/he.min.js",
-		"/js/surg-path/snippets-scripts.js"
-	], [
+		"/js/surg-path/snippets-scripts.js",
+        "/js/surg-path/ihc-scripts.js"
+
+    ], [
 		"/vendor/tag-it/css/jquery.tagit.css",
 		"/vendor/tag-it/css/tagit.ui-zendesk.css"
 	]);

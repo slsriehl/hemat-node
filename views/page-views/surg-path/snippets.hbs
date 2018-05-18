@@ -30,14 +30,23 @@
 		<div class="col col-md-12 text-sm-center">
 			<div class="card">
 				<div class="card-block">
+					<div class="row">
 					<!-- Button trigger modal -->
-					<button class="btn btn-outline-primary card-text p-2" data-toggle="modal" data-target="#help_snippet">
-						Not sure how this works? Why don't you watch this quick tutorial on how to use it
+					<button class="btn btn-outline-primary card-text p-2 col-6" style="word-wrap: break-word" data-toggle="modal" data-target="#help_snippet">
+						How-to tutorial video
 					</button>
-
+					<button
+							class="btn btn-lg btn-outline-danger btn-block p-1 col-6"
+							data-target="#addnew"
+							data-toggle="modal"
+							id="openhelp"
+							type="button"
+					>
+						Click here to add a new snippet
+					</button>
 					<!-- Histology help Modal -->
 					{{> page-modals/surg-path/snippet}}
-
+					</div>
 				</div>
 			</div>
 		</div>
@@ -45,15 +54,7 @@
 		<div class="py-2 w-100"></div>
 
 		<div class="col col-md-12">
-			<button
-				class="btn btn-lg btn-outline-danger btn-block p-1"
-				data-target="#addnew"
-				data-toggle="modal"
-				id="openhelp"
-				type="button"
-			>
-				Click here to add a new snippet
-			</button>
+
 <!-- end new snippet btn col -->
 		</div>
 <!-- end new snippet btn row -->
@@ -124,6 +125,18 @@
 								</a>
 							<a class="btn btn-outline-danger p-2" id="Reset">Reset</a>
 						</ul>
+
+					<div class="w-100"></div>
+					<!-- Immunohistochemistry trigger modal -->
+					<div class="text-center mt-4">
+						<button type="button" class="btn btn-outline-primary p-2"
+								data-toggle="modal"
+								data-target="#IHCbox">
+							Add IHCs to your report
+						</button>
+					</div>
+					{{> page-partials/immuno this}}
+
 				</div>
 				<div class="card-block">
 					{{> page-partials/case-reference}}
@@ -132,21 +145,22 @@
 					<input hidden type="text" id="keyword-holder" />
 					<input hidden type="text" id="entry_id-holder" />
 					<div class="form-group">
-						<textarea class="form-control" id="outPut-1" rows="12" placeholder="Micro"></textarea>
-						<button class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-1" type="button">
+						<textarea class="form-control" id="outPut-2" rows="12" placeholder="Finals"></textarea>
+						<button class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-2" type="button">
 							Copy to Clipboard
 						</button>
-<!-- end first textarea form group -->
+						<!-- end second textarea form group -->
 					</div>
+
 <!-- end first textarea card block -->
 				</div>
 				<div class="card-block">
 					<div class="form-group">
-						<textarea class="form-control" id="outPut-2" rows="6" placeholder="Finals"></textarea>
-						<button class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-2" type="button">
+						<textarea class="form-control" id="outPut-1" rows="12" placeholder="Micro"></textarea>
+						<button class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-1" type="button">
 							Copy to Clipboard
 						</button>
-<!-- end second textarea form group -->
+						<!-- end first textarea form group -->
 					</div>
 <!-- end second textarea card block -->
 				</div>

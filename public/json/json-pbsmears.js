@@ -131,6 +131,8 @@ $(window).on('load', function () {
         mxLine122: 'Occasional tear-drop forms are seen. ',
 // FREQUENT TEAR DROPS
         mxLine123: 'Frequent tear-drop forms are present. ',
+// NRBCs
+        mxLine124: 'There are occasional nucleated red blood cells. ',
 //
 // NORMAL WBC MORPH
         mxLine150: 'No circulating blasts or dysplastic changes are seen. ',

@@ -26,6 +26,16 @@ $("#box5").on("change", function(){
     }
 });
 
+    $("#box6").on("change", function() {
+        var sel = $(this).val();
+        console.log(sel);
+        if (sel == "mxLine158"){
+            $(".blood").hide();
+        } else {
+            $(".blood").show();
+            $(".blood option:eq(0)").prop('selected', true);
+        }
+    });
 
 
 // ********* WRITE REPORT ***************//
@@ -36,6 +46,7 @@ $('#done').on('click', function(){
         var diag = '';
         var stains = ['']; //place holder to add stains
         var cells = '';
+        var blood = '';
         var gross = '';
         var comment = '';
         var clinical = '';
@@ -67,8 +78,25 @@ $('#done').on('click', function(){
         var box_10 = $("#box10").val();
         var box_11 = $("#box11").val();
         var box_12 = $("#box12").val();
+        var box_20 = $("#box20").val();
 
-        micro +="The cytospin slides are "+box_12+" and consist "+mxLines[box_6]+". "+mxLines[box_7]+". "+mxLines[box_8]+". ";
+        micro +=    "The cytospin slides are "+box_12+" and consist "+
+                    mxLines[box_6]+ ". ";
+
+        // Add any background blood description (unless user selects hemorrhage for cell mixture
+        if (box_6 != "mxLine158"){
+            micro+= mxLines[box_20]+". ";
+        }
+        if (box_20 == 'mxLine181') { // scant blood
+            blood = 'dxLine107';
+            comment += commLines.commLine109;
+        } else if (box_20 == 'mxLine182') { // moderate blood
+            blood = 'dxLine108';
+            comment += commLines.commLine109;
+        }
+
+        // resume rest of microscopic description
+            micro += mxLines[box_7]+ ". " + mxLines[box_8]+". ";
 
         // add cell mixture to diagnosis
         if (box_6 == 'mxLine150' || box_6 == 'mxLine151'){  // predom macs
@@ -83,13 +111,11 @@ $('#done').on('click', function(){
             cells = 'dxLine105';
         } else if (box_6 == 'mxLine157') { // necroinflammatory material
             cells = 'dxLine106';
-        } else if (box_6 == 'mxLine158') { // scant blood
-            cells = 'dxLine107';
-            comment += commLines.commLine109;
-        } else if (box_6 == 'mxLine159') { // hemorrhage
-            cells = 'dxLine108';
+        } else if (box_6 == 'mxLine158') { // hemorrhage
+            cells = 'dxLine109';
             comment += commLines.commLine110;
         }
+
 
         // add microorganisms to diagnosis
         if (box_7 == 'mxLine203'){
@@ -197,7 +223,15 @@ $('#done').on('click', function(){
             }
         }
 
-         diag = "LUNG, "+box_1.join(', ').replace(/lobe,/, 'and').replace(/.*/, function(a) { return a.toUpperCase(); })+", BRONCHOALVEOLAR LAVAGE:\n- " + dxLines[cells]+stains.join('\n- ');
+         diag = "LUNG, "+box_1.join(', ').replace(/lobe,/, 'and').replace(/.*/, function(a) { return a.toUpperCase(); })+
+                ", BRONCHOALVEOLAR LAVAGE:\n- " +
+                dxLines[cells];
+
+         if (blood.length >0){
+             diag += "\n- " + dxLines[blood];
+         }
+
+         diag += stains.join('\n- ');
 
 
 
@@ -207,14 +241,20 @@ $('#done').on('click', function(){
         $('#outPut-4').val(comment);
 
 				// get clinical history
-        clinical = "Clinical History\n\n" + box_0.join(', ').replace(/\w\S*/, function (txt) {return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()}) + "\n";
+        clinical = "CLINICAL HISTORY\n\n" + box_0.join(', ').replace(/\w\S*/, function (txt) {return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()}) + "\n";
 
         // store your text to localStorage when someone click the link
 
 				if(!$('#alert-modal').hasClass('show')) {
-					var textToPass = clinical+'\n\n'+$('#outPut-1').val()+'\n\n'+$('#outPut-2').val()+'\n\n'+$('#outPut-3').val()+'\n\n'+$('#outPut-4').val();
-					$('#outPut-combine').val(textToPass);
-	        $('#combined-report').modal("show");
+					var textToPass =    "\n"+clinical+
+                                        '\n\nMICROSCOPIC DESCRIPTION\n\n'+$('#outPut-1').val()+
+                                        '\n\nFINAL DIAGNOSIS\n\n'+$('#outPut-2').val()+
+                                        '\n\nCOMMENT\n\n'+$('#outPut-4').val()+
+                                        '\n\nGROSS DESCRIPTION\n\n'+$('#outPut-3').val();
+
+                        $('#outPut-combine').val(textToPass);
+
+	            $('#combined-report').modal("show");
 					dataObj.singleSection = $('#outPut-combine').val();
 					makeCreatePdfBtn();
 				}

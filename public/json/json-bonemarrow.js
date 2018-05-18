@@ -232,6 +232,9 @@ $(window).on('load', function(){
         mxLine122: 'Occasional tear-drop forms are seen. ',
 // FREQUENT TEAR DROPS
         mxLine123: 'Frequent tear-drop forms are present. ',
+// NRBCs
+mxLine124: 'There are occasional nucleated red blood cells. ',
+
 //
 // NORMAL WBC MORPH
         mxLine150: 'No circulating blasts or dysplastic changes are seen. ',
@@ -489,10 +492,10 @@ $(window).on('load', function(){
         mxLine439: 'The clot sections contain only few cellular marrow particles and are mostly comprised of blood. ',
 // FEW MEGAS
         mxLine446: 'Only rare megakaryocytes are seen, which appear normal in morphology. ',
-// NO INCR BLASTS OR ABNORMAL INFILTRATES
-        mxLine447: 'No increase in blasts or abnormal infiltrates is seen. ',
-// FEW BLASTS NO ABNORMAL INFILTRATES
-        mxLine448: 'Blasts are slightly prominent, but do not appear atypical or form aggregates; no abnormal infiltrates is seen. ',
+// NO INCR BLASTS
+        mxLine447: 'There is no conspicuous increase in blasts. ',
+// NO ABNORMAL INFILTRATES
+        mxLine448: 'No abnormal infiltrates is seen. ',
 // ATYPICAL SMALL LYMPHS
         mxLine450: 'Lymphocytes are increased and are morphologically atypical, as evidenced by irregular nuclear outlines and coarse chromatin. ',
 // ATYPICAL LARGE LYMPHS
@@ -955,9 +958,9 @@ $(window).on('load', function(){
 // COMMENT: NEGATIVE FOR HODGKIN
         commLine304: 'There is no morphologic or immunohistochemistry evidence of involvement by Hodgkin lymphoma. Correlation with the pending ancillary testing is recommended. \n',
 // COMMENT: NEGATIVE FOR BALL
-        commLine305: 'There is no morphologic or immunophenotypic evidence of involvement by the patient\'s previously described B-lymphoblastic leukemia. #ERY# Correlation with pending ancillary testing is recommended. \n ',
+        commLine305: 'There is no morphologic or immunophenotypic evidence of involvement by the patient\'s previously described B-lymphoblastic leukemia. #ERY# Correlation with the pending ancillary testing is recommended. \n ',
 // COMMENT: NEGATIVE FOR TALL
-        commLine306: 'There is no morphologic or immunophenotypic evidence of involvement by the patient\'s previously described T-lymphoblastic leukemia. #ERY# Correlation with pending ancillary testing is recommended. \n ',
+        commLine306: 'There is no morphologic or immunophenotypic evidence of involvement by the patient\'s previously described T-lymphoblastic leukemia. #ERY# Correlation with the pending ancillary testing is recommended. \n ',
 // COMMENT: NEG FOR R/R AML
         commLine307: 'There is no morphologic or immunophenotypic evidence for recurrent or persistent acute myeloid leukemia. Correlation with the pending ancillary testing is recommended. \n ',
 // COMMENT: NEG MYELOMA
@@ -985,30 +988,30 @@ $(window).on('load', function(){
 // COMMENT: REBOUND ERYTHROID HYPERPLASIA
         commLine356: 'A left-shifted erythroid hyperplasia, in the context of significant anemia, suggests a brisk marrow response to the degree of anemia. The dyspoietic changes likely reflect high erythroid progenitor activity. ',
 // COMMENT: Serous atrophy
-        commLine357: 'There is a qualitative change within the marrow stroma consistent with so-called \'serous atrophy\'. This change is most often described in patient\'s with severe malnutrition, anorexia and/or cachexia. ',
+        commLine357: 'There is a qualitative change within the marrow stroma consistent with so-called \"serous atrophy\". This change is most often described in patient\'s with severe malnutrition, anorexia and/or cachexia. ',
 // COMMENT: IDIOPATHIC HYPOCELLULARITY/APLASIA
         commLine358: 'The bone marrow shows a [marked] decrease in the expected cellularity. There is no morphologic or immunophenotypic evidence of involvement by a neoplastic hematolymphoid disorder. Such marrow changes may be transient and may be secondary to medication/toxin exposure, viral infection related suppression, autoimmune disease, paroxysmal nocturnal hemoglobinuria, or possibly a subtle myelodysplastic syndrome. Correlation with the pending ancillary studies is recommended. If indicated, consideration to perform PNH testing on fresh peripheral blood may be helpful. ',
 // COMMENT: TREATED MARROW
         commLine359: 'The marrow composition suggests therapy-related injury/aplasia. Correlation with the pending ancillary testing is recommended. ',
 //
 // COMMENT: CMPD DDX
-        commLine400: 'The marrow changes raise a differential diagnosis of infection or G-CSF therapy; however, a chronic myeloproliferative disorder cannot be excluded on morphologic grounds alone. Correlation with clinical history, other laboratory data and pending ancillary testing is recommended. ',
+        commLine400: 'The marrow changes raise a differential diagnosis of infection or G-CSF therapy; however, a chronic myeloproliferative disorder cannot be excluded on morphologic grounds alone. Correlation with the pending ancillary testing, clinical history and other laboratory data and is recommended. ',
 // COMMENT: CML
-        commLine401: 'The marrow changes are suggestive of a chronic myeloproliferative disorder, such as CML. Correlation with pending ancillary testing is recommended. Further assessment for JAK2 mutations on peripheral blood may also be helpful. ',
+        commLine401: 'The marrow changes are suggestive of a chronic myeloproliferative disorder, such as CML. correlation with the pending ancillary testing is recommended. Further assessment for JAK2 mutations on peripheral blood may also be helpful. ',
 // COMMENT: CLL
-        commLine402: 'The morphologic and immunophenotypic findings are those of chronic lymphocytic leukemia. There is no evidence of large cell or prolymphocytic transformation. Correlation with pending ancillary testing is recommended. ',
+        commLine402: 'The morphologic and immunophenotypic findings are those of chronic lymphocytic leukemia. There is no evidence of large cell or prolymphocytic transformation. correlation with the pending ancillary testing is recommended. ',
 // COMMENT: GENERIC LOW GRADE LYMPHOMA
-        commLine403: 'The morphologic and immunophenotypic findings show marrow involvement by a low-grade B-cell lymphoma. The immunophenotypic differential includes___/the immunophenotype is consistent with ____. Correlation with pending ancillary testing is recommended. ',
+        commLine403: 'The morphologic and immunophenotypic findings show marrow involvement by a low-grade B-cell lymphoma. The immunophenotypic differential includes___/the immunophenotype is consistent with ____. correlation with the pending ancillary testing is recommended. ',
 // COMMENT: GENERIC HIGH GRADE LYMPHOMA
-        commLine404: 'The morphologic and immunophenotypic findings show marrow involvement by a diffuse large B-cell lymphoma. The immunophenotypic differential includes___/the immunophenotype is consistent with ____. Correlation with pending ancillary testing is recommended. ',
+        commLine404: 'The morphologic and immunophenotypic findings show marrow involvement by a diffuse large B-cell lymphoma. The immunophenotypic differential includes___/the immunophenotype is consistent with ____. correlation with the pending ancillary testing is recommended. ',
 // COMMENT: AML
-        commLine405: 'The morphologic and immunophenotypic findings are those of acute myeloid leukemia. Correlation with pending ancillary testing is recommended. Specifically, FLT3/NPM1 status can provide prognostically relevant information and final classification is deferred until these results are available. ',
+        commLine405: 'The morphologic and immunophenotypic findings are those of acute myeloid leukemia. correlation with the pending ancillary testing is recommended. Specifically, FLT3/NPM1 status can provide prognostically relevant information and final classification is deferred until these results are available. ',
 // COMMENT: APL
-        commLine406: 'The morphologic and immunophenotypic findings are those of acute promyelocytic leukemia. Quantitative PCR for PML/RARA should be requested for any future marrow biopsies, to better assess for therapeutic response. Correlation with pending ancillary testing is recommended.',
+        commLine406: 'The morphologic and immunophenotypic findings are those of acute promyelocytic leukemia. Quantitative PCR for PML/RARA should be requested for any future marrow biopsies, to better assess for therapeutic response. correlation with the pending ancillary testing is recommended.',
 // COMMENT: BALL
-        commLine407: 'The morphologic and immunophenotypic findings are those of B-lymphoblastic leukemia. Correlation with pending ancillary testing is recommended. ',
+        commLine407: 'The morphologic and immunophenotypic findings are those of B-lymphoblastic leukemia. correlation with the pending ancillary testing is recommended. ',
 // COMMENT: TALL
-        commLine408: 'The morphologic and immunophenotypic findings are those of T-lymphoblastic leukemia. Correlation with pending ancillary testing is recommended. ',
+        commLine408: 'The morphologic and immunophenotypic findings are those of T-lymphoblastic leukemia. correlation with the pending ancillary testing is recommended. ',
 // COMMENT: HODGKIN
         commLine409: 'The morphologic and immunohistochemistry findings are those of classical Hodgkin lymphoma. ',
 // COMMENT: NEUROBLASTOMA - EXTENSIVE
@@ -1016,7 +1019,7 @@ $(window).on('load', function(){
 // COMMENT: NEUROBLASTOMA - FOCAL
         commLine411: "There is focal [bilateral] involvement by neuroblastoma, accounting for __#% of the marrow spaces. ",
 // COMMENT: MYELOMA
-        commLine412: "The morphologic and immunophenotypic findings are those of plasma cell myeloma. Correlation with radiographic and other laboratory findings is recommended to optimally assess the disease burden. Correlation with pending ancillary testing is recommended to better risk stratify the neoplasm. ",
+        commLine412: "The morphologic and immunophenotypic findings are those of plasma cell myeloma. Correlation with radiographic and other laboratory findings is recommended to optimally assess the disease burden. correlation with the pending ancillary testing is recommended to better risk stratify the neoplasm. ",
 
 
 // Last item

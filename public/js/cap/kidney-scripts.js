@@ -61,7 +61,8 @@ $(window).on('load', function () {
 
     $('#box11').on("change", function () {
         var sel = $('#box11').val();
-        if (sel.indexOf('structures') > -1) {
+        var other = sel.filter(el => el.indexOf('structures') > -1); // FILTER KEYWORD #1
+        if (other.length > 0) {
             $('#box11_2').show();
         } else {
             $('#box11_2').hide();
@@ -282,11 +283,14 @@ $(window).on('load', function () {
         }
 
         var box_11 = $("#box11").val();
+        var other = box_11.filter(function (el) {
+                            return el.indexOf('structures') > -1;
+                        });
         var box_11_2 = $("#box11_2").val();
-        if (box_11.indexOf('structures') > -1) {
-            captext += "\nTumor Extension:\n- " + box_11.replace(/structures/, "structures, including: " + box_11_2) + "\n";
+        if (other.length > 0) {
+            captext += "\nTumor Extension:\n- " + box_11.join("\n- ").replace(/structures/, "structures, including: " + box_11_2) + "\n";
         } else {
-            captext += "\nTumor Extension:\n- " + box_11 + "\n";
+            captext += "\nTumor Extension:\n- " + box_11.join("\n- ") + "\n";
         }
 
         var box_12 = $("#box12").val();

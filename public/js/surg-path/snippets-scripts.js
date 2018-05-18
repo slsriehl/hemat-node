@@ -50,7 +50,7 @@ $(document).ready(function(){
 	}
 
 	var emptyFormAlert = function() {
-		if(!$('#outPut-1').val() && !$('#outPut-2').val() && !$('#outPut-4').val()) {
+		if(!$('#outPut-2').val() && !$('#outPut-1').val() && !$('#outPut-4').val()) {
 			alert('The form is empty.');
 			return true;
 		} else {
@@ -59,7 +59,7 @@ $(document).ready(function(){
 	}
 	//handle click on a search result
 	$(document).off('click', '.snippet-result').on('click', '.snippet-result', function(event) {
-		if($('#outPut-1').val() || $('#outPut-2').val() || $('#outPut-4').val()) {
+		if($('#outPut-2').val() || $('#outPut-1').val() || $('#outPut-4').val()) {
 			var myConfirm = confirm("Viewing this snippet will wipe out the text you're currently working with.  Do you want to continue?");
 			if(myConfirm) {
 				//console.log('myconfirm positive');
@@ -89,12 +89,12 @@ $(document).ready(function(){
 		//console.log(itemObj);
 		//console.log(itemObj.micros);
 		//val to show text
-		$('#outPut-1').val(he.decode(itemObj.micros));
-		$('#outPut-2').val(he.decode(itemObj.finals));
+		$('#outPut-2').val(he.decode(itemObj.micros));
+		$('#outPut-1').val(he.decode(itemObj.finals));
 		$('#outPut-4').val(he.decode(itemObj.comments));
 		//append to set value (weird, I know.  Shouldn't either append or val do it?  But it seems not, especially after clearing the textboxes and repopulating them)
-		$('#outPut-1').append(he.decode(itemObj.micros));
-		$('#outPut-2').append(he.decode(itemObj.finals));
+		$('#outPut-2').append(he.decode(itemObj.micros));
+		$('#outPut-1').append(he.decode(itemObj.finals));
 		$('#outPut-4').append(he.decode(itemObj.comments));
 		//set values of hidden inputs
 		$('#user-holder').append(snippetResult.parent().parent().attr('data-user'));
@@ -117,9 +117,9 @@ $(document).ready(function(){
 	}
 
 	// update results with {site} or {value} placeholders on focus
-		$('#outPut-1').on('focus', function(){
+		$('#outPut-2').on('click', function(){
 				var txt = $(this).val();
-				var site = $('#outPut-2').val();
+				var site = $('#outPut-1').val();
 				var dump;
 				if (txt.indexOf("{site}") >=0){
 						dump = prompt('Enter location');
@@ -132,8 +132,8 @@ $(document).ready(function(){
 						dump = prompt('Enter value');
 						txt = txt.replace(/{value}/, dump);
 				}
-				$('#outPut-1').val(txt);
-				$('#outPut-2').val(site);
+				$('#outPut-2').val(txt);
+				$('#outPut-1').val(site);
 				$(this).blur;
 		});
 
@@ -141,7 +141,7 @@ $(document).ready(function(){
 		$('#writeReport').on('click', function(event) {
 			if(!emptyFormAlert()) {
 				$('#caseRefDiv').attr('style', 'display: block;');
-				var textToPass = 'REPORT:\n\nMICRO:\n' + $('#outPut-1').val() +'\n\nFINALS:\n'+$('#outPut-2').val()+'\n\nCOMMENTS:\n'+$('#outPut-4').val();
+				var textToPass = 'REPORT:\n\nMICRO:\n' + $('#outPut-2').val() +'\n\nFINALS:\n'+$('#outPut-1').val()+'\n\nCOMMENTS:\n'+$('#outPut-4').val();
 
 				$('#outPut-combine').val(textToPass);
 				$('#combined-report').modal("show");
@@ -182,8 +182,8 @@ $(document).ready(function(){
 			//fill in all the fields with values from the displayed snippet (some in hidden inputs)
 			//console.log('class holder val ' + $('#class-holder').text());
 			$('#ent_class').val($('#class-holder').text()).change();
-			$('#ent_micro').val($('#outPut-1').text());
-			$('#ent_final').val($('#outPut-2').text());
+			$('#ent_micro').val($('#outPut-2').text());
+			$('#ent_final').val($('#outPut-1').text());
 			$('#ent_comment').val($('#outPut-4').text());
 			//loop existing tags to insert spaces for good rendering
 			var tagLoop = function(extText) {
@@ -208,16 +208,16 @@ $(document).ready(function(){
 		});
 		var clearNonFormPanel = function() {
 			//console.log('clearNonFormPanel fired');
-			$('#outPut-1').text('');
 			$('#outPut-2').text('');
+			$('#outPut-1').text('');
 			$('#outPut-4').text('');
 			$('#class-holder').text('');
 			$('#keyword-holder').text('');
 			$('#entry_id-holder').text('');
 			$('#user-holder').text('');
 
-			$('#outPut-1').val('');
 			$('#outPut-2').val('');
+			$('#outPut-1').val('');
 			$('#outPut-4').val('');
 			$('#class-holder').val('');
 			$('#keyword-holder').val('');
