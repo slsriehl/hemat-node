@@ -292,7 +292,7 @@ $(window).on('load', function(){
 
 // Lab value modifiers (pediatric)
 
-        var  labText = "SEROLOGIC DATA ("+labs._1+"): ";
+        var  labText = "LABORATORY/SEROLOGIC DATA ("+labs._1+"): ";
 
         for (var i=2; i<16; i++){
             if (labs['_'+i] != ''){

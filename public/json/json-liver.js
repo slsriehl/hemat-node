@@ -31,7 +31,25 @@ $(window).on('load', function(){
         mxLine127: 'No viral inclusions are evident. ',
         mxLine128: 'Some hepatocytes show nuclear clearing with eosinophilic inclusions, which are reminiscent of viral inclusions. ',
         mxLine129: 'No areas of necrosis, giant cell change or viral inclusions are seen. ',
-
+        // iron stains
+        // No iron
+        mxLine150: 'An iron stain shows no increase in hepatocytic or reticuloendothelial iron. ',
+        // Mild RE iron
+        mxLine151: 'An iron stain shows mild increase in reticuloendothelial iron (1+). ',
+        // Moderate RE iron
+        mxLine152: 'An iron stain shows mild increase in reticuloendothelial iron (2+). ',
+        // Mild RE iron
+        mxLine153: 'An iron stain shows mild increase in reticuloendothelial iron (3+). ',
+        // Mild hepatocytic iron
+        mxLine155: 'An iron stain shows mild increase in hepatocytc iron (1+). ',
+        // Moderate hepatocytic iron
+        mxLine156: 'An iron stain shows mild increase in hepatocytc iron (2+). ',
+        // Mild hepatocytic iron
+        mxLine157: 'An iron stain shows mild increase in hepatocytc iron (3+). ',
+        // No copper
+        mxLine160: 'A copper stain shows no visible copper deposits. ',
+        // Mild copper
+        mxLine161: 'A copper stain shows scattered granular hepatocytic deposits. ',
 
         mxLine999: ''
     };
@@ -76,6 +94,12 @@ $(window).on('load', function(){
 
 // Pseudoground glass inclusions
         commLine126: 'Pseudo-ground glass inclusions (PGI) in hepatocytes have been a well described alteration in a variety of clinical settings. They are often attributed to altered hepatocytic glycogen metabolism, often in the setting of patients receiving polypharmacotherapy. They are typically a non-causative change which do not explain the clinical symptoms described. ',
+
+// Excess hepatocytic iron
+        commLine127: 'Increased hepatocytic iron, in the absence of cirrhosis or known viral hepatitis, can be seen with underlying genetic iron overload (Hemochromatosis) or abnormal erythropoiesis (such as with MDS). Correlation with clinical findings and other laboratory data is recommended. ',
+
+// Excess hepatocytic iron + cirrhosis
+        commLine128: 'Increased hepatocytic iron in the background of cirrhosis is often "cryptogenic" in nature. Aside from genetic hemochromatosis, similar changes can be seen with excess alcholic intake, viral hepatidites or primary biliary cirrhosis. Correlation with clinical findings and other laboratory data is recommended. ',
 
     };
     commLines_old = $.extend(true, {}, commLines);
