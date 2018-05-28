@@ -302,28 +302,28 @@ $(window).on('load', function() {
         var box_32 = $("#box32").val();
         var box_32_2 = $("#box32_2").val();
         if (box_32.indexOf("Other") > -1) {
-            captext += "\nGross appearance of mucosal surface: "  + box_32_2;
+            captext += "\nMucosal surface appearance: "  + box_32_2;
         }
         else {
-            captext += "\n\tGross appearance of mucosal surface: "  + box_32;
+            captext += "\n\tMucosal surface appearance: "  + box_32;
         }
 
         // Cassette labels
         captext += "\n\nRESECTION CASSETTE LABELS\n";
         var box_34 = $("#box34").val();
         if (box_34.length > 0) {
-            captext += box_34+ ": Proximal resection margin frozen residue\n";
+            captext += "Proximal resection margin frozen residue: "+box_34+ "\n";
 
         }
 
         var box_35 = $("#box35").val();
-        captext += box_35+ ": Transverse section adjacent to proximal margin\n";
+        captext += "Transverse section adjacent to proximal margin: "+box_35+ "\n";
 
         var box_36 = $("#box36").val();
-        captext += box_36+ ": Transverse section adjacent to distal margin\n";
+        captext += "Transverse section adjacent to distal margin: "+box_36+ "\n";
 
         var box_37 = $("#box37").val();
-        captext += box_37+ ": Intervening sections\n";
+        captext += "Intervening sections: "+box_37+ "\n";
 
 
         
@@ -563,7 +563,7 @@ $(window).on('load', function() {
         captext += fz_diag.join('\n');
 
         // Pull-through diagnoses
-        captext += "\n("  + box_10.toUpperCase()+") COLON, "+box_10_2.replace(/ colon/, '').toUpperCase()+", RESECTION (LENGTH: "+box_12+"cm):";
+        captext += "\n("  + box_10.toUpperCase()+") COLON, "+box_10_2.replace(/ colon/, '').toUpperCase()+", RESECTION (LENGTH: "+box_12+"CM):";
 
         captext += "\n- COLONIC AGANGLIONOSIS (HIRSCHSPRUNG DISEASE), WITH THE FOLLOWING FEATURES:";
 
@@ -577,7 +577,8 @@ $(window).on('load', function() {
         } else {
             gang_length = myen_gang;
         }
-        captext += "\n\t- DISTAL AGANGLIONIC SEGMENT: "+(box_12-gang_length)+" CM ";
+        var tot_length = Number(box_12);
+        captext += "\n\t- DISTAL AGANGLIONIC SEGMENT: "+(tot_length-gang_length)+" CM ";
 
         captext += "\n\t- PROXIMAL END OF TRANSITION ZONE: "+box_82+" CM FROM PROXIMAL MARGIN "
 
@@ -610,6 +611,9 @@ $(window).on('load', function() {
         dataObj.singleSection = $('#outPut-1').val();
         makeCreatePdfBtn();
     });
+
+    // toggle sentence case in final diagnosis
+
 });
 
 
