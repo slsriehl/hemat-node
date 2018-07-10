@@ -997,21 +997,21 @@ mxLine124: 'There are occasional nucleated red blood cells. ',
 // COMMENT: CMPD DDX
         commLine400: 'The marrow changes raise a differential diagnosis of infection or G-CSF therapy; however, a chronic myeloproliferative disorder cannot be excluded on morphologic grounds alone. Correlation with the pending ancillary testing, clinical history and other laboratory data and is recommended. ',
 // COMMENT: CML
-        commLine401: 'The marrow changes are suggestive of a chronic myeloproliferative disorder, such as CML. correlation with the pending ancillary testing is recommended. Further assessment for JAK2 mutations on peripheral blood may also be helpful. ',
+        commLine401: 'The marrow changes are suggestive of a chronic myeloproliferative disorder, such as CML. Correlation with the pending ancillary testing is recommended. Further assessment for JAK2 mutations on peripheral blood may also be helpful. ',
 // COMMENT: CLL
-        commLine402: 'The morphologic and immunophenotypic findings are those of chronic lymphocytic leukemia. There is no evidence of large cell or prolymphocytic transformation. correlation with the pending ancillary testing is recommended. ',
+        commLine402: 'The morphologic and immunophenotypic findings are those of chronic lymphocytic leukemia. There is no evidence of large cell or prolymphocytic transformation. Correlation with the pending ancillary testing is recommended. ',
 // COMMENT: GENERIC LOW GRADE LYMPHOMA
-        commLine403: 'The morphologic and immunophenotypic findings show marrow involvement by a low-grade B-cell lymphoma. The immunophenotypic differential includes___/the immunophenotype is consistent with ____. correlation with the pending ancillary testing is recommended. ',
+        commLine403: 'The morphologic and immunophenotypic findings show marrow involvement by a low-grade B-cell lymphoma. The immunophenotypic differential includes___/the immunophenotype is consistent with ____. Correlation with the pending ancillary testing is recommended. ',
 // COMMENT: GENERIC HIGH GRADE LYMPHOMA
-        commLine404: 'The morphologic and immunophenotypic findings show marrow involvement by a diffuse large B-cell lymphoma. The immunophenotypic differential includes___/the immunophenotype is consistent with ____. correlation with the pending ancillary testing is recommended. ',
+        commLine404: 'The morphologic and immunophenotypic findings show marrow involvement by a diffuse large B-cell lymphoma. The immunophenotypic differential includes___/the immunophenotype is consistent with ____. Correlation with the pending ancillary testing is recommended. ',
 // COMMENT: AML
-        commLine405: 'The morphologic and immunophenotypic findings are those of acute myeloid leukemia. correlation with the pending ancillary testing is recommended. Specifically, FLT3/NPM1 status can provide prognostically relevant information and final classification is deferred until these results are available. ',
+        commLine405: 'The morphologic and immunophenotypic findings are those of acute myeloid leukemia. Correlation with the pending ancillary testing is recommended. Specifically, FLT3/NPM1 status can provide prognostically relevant information and final classification is deferred until these results are available. ',
 // COMMENT: APL
-        commLine406: 'The morphologic and immunophenotypic findings are those of acute promyelocytic leukemia. Quantitative PCR for PML/RARA should be requested for any future marrow biopsies, to better assess for therapeutic response. correlation with the pending ancillary testing is recommended.',
+        commLine406: 'The morphologic and immunophenotypic findings are those of acute promyelocytic leukemia. Quantitative PCR for PML/RARA should be requested for any future marrow biopsies, to better assess for therapeutic response. Correlation with the pending ancillary testing is recommended.',
 // COMMENT: BALL
-        commLine407: 'The morphologic and immunophenotypic findings are those of B-lymphoblastic leukemia. correlation with the pending ancillary testing is recommended. ',
+        commLine407: 'The morphologic and immunophenotypic findings are those of B-lymphoblastic leukemia. Correlation with the pending ancillary testing is recommended. ',
 // COMMENT: TALL
-        commLine408: 'The morphologic and immunophenotypic findings are those of T-lymphoblastic leukemia. correlation with the pending ancillary testing is recommended. ',
+        commLine408: 'The morphologic and immunophenotypic findings are those of T-lymphoblastic leukemia. Correlation with the pending ancillary testing is recommended. ',
 // COMMENT: HODGKIN
         commLine409: 'The morphologic and immunohistochemistry findings are those of classical Hodgkin lymphoma. ',
 // COMMENT: NEUROBLASTOMA - EXTENSIVE
@@ -1019,7 +1019,7 @@ mxLine124: 'There are occasional nucleated red blood cells. ',
 // COMMENT: NEUROBLASTOMA - FOCAL
         commLine411: "There is focal [bilateral] involvement by neuroblastoma, accounting for __#% of the marrow spaces. ",
 // COMMENT: MYELOMA
-        commLine412: "The morphologic and immunophenotypic findings are those of plasma cell myeloma. Correlation with radiographic and other laboratory findings is recommended to optimally assess the disease burden. correlation with the pending ancillary testing is recommended to better risk stratify the neoplasm. ",
+        commLine412: "The morphologic and immunophenotypic findings are those of plasma cell myeloma. Correlation with radiographic and other laboratory findings is recommended to optimally assess the disease burden. Correlation with the pending ancillary testing is recommended to better risk stratify the neoplasm. ",
 
 
 // Last item
