@@ -259,7 +259,9 @@ $(window).on('load', function () {
         captext += "\nLymphatic Invasion:\n- " + box_8 + "\n";
 
         var box_9 = $("#box9").val();
-        captext += "\nMitotic Rate:\n- " + box_9 + " per 10 hpf\n";
+        if (box_9.length > 0) {
+            captext += "\n+ Mitotic Rate:\n- " + box_9 + " per 10 hpf\n";
+        }
 
         var box_10 = $("#box10").val();
         if (box_10.length > 0) {
