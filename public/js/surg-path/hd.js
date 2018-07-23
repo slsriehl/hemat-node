@@ -226,18 +226,15 @@ $(window).on('load', function() {
         $(".pblock").each(function(){
             var fztext = "("+$(this).find(".fz-part").val().toUpperCase() +
                 ") " + $(this).find(".fz-loc").val() + ": "+
-                "\n\tBiopsy type: " + $(this).find(".fz-type").val() +
+                "\n\tSpecimen type: " + $(this).find(".fz-type").val() +
                 "\n\tPathologist: " + $(this).find(".fz-path").val() +
                 "\n\tIntra-Op Dx: " + $(this).find(".fz-iodx").val() +
                 "\n\tPerm Dx: "     + $(this).find(".fz-finaldx").val();
 
             if ($(".fz-residue").length > 1 ){
-                console.log("FZ length:" + $(".fz-residue").length);
                 fztext += "\n\tResidue: " + $(this).find(".fz-residue").val() +
                 "\n\n";
             } else {
-                console.log("fz residue empty");
-                console.log("FZ length:" + $(".fz-residue").length);
                 fztext += "\n\tResidue: Kept in OCT\n\n";
             }
             fz_part.push(fztext)
@@ -245,7 +242,7 @@ $(window).on('load', function() {
             // final diagnosis
             var fzdx =  "("+$(this).find(".fz-part").val() + ") " +       // (A)
                         "COLON, " + $(this).find(".fz-loc").val() + ", "+ // (A) COLON, SIGMOID
-                        $(this).find(".fz-type").val() + " BIOPSY: \n" +  // (A) COLON, SIGMOID, SEROMUSCULAR BIOPSY:
+                        $(this).find(".fz-type").val()+ ":\n" +  // (A) COLON, SIGMOID, SEROMUSCULAR BIOPSY:
                         "- "+ $(this).find(".fz-finaldx").val() +"\n";
 
             fz_diag.push(fzdx.toUpperCase());
@@ -292,8 +289,18 @@ $(window).on('load', function() {
         var box_16 = $("#box16").val();
         captext += "\n\tDistance to visualized transition zone: "  + box_16.replace(/cm/,'') + "cm";
 
-                var box_30 = $("#box30").val();
-        captext += "\n\tLocations of intraoperative biopsy sites: "  + box_30;
+        var box_30 = $("#box30").val();
+        var iopbx = box_30.length;
+        if (iopbx == 1){
+            captext += "\n\tLocations of intraoperative biopsy sites: "  + box_30.replace(/cm/,'') + "cm from proximal margin";
+
+        } else if (iopbx > 2){
+            captext += "\n\tLocations of intraoperative biopsy sites: "  + box_30.replace(/cm/,'').replace(/(;|,)(?!.*(;|,))/, "cm and ").replace(/;|,/g, "cm, ") + "cm from proximal margin";
+
+        } else {
+            captext += "\n\tLocations of intraoperative biopsy sites: "  + box_30.replace(/cm/,'').replace(/;|,/g, "cm and ") + "cm from proximal margin";
+
+        }
 
         // Suppressed during draft stage
         // var box_31 = $("#box31").val();
@@ -328,10 +335,12 @@ $(window).on('load', function() {
 
         
         // PROXIMAL MARGIN
-        captext += "\n\nRESECTION SPECIMEN - MICROSCOPIC DESCRIPTION\nPROXIMAL MARGIN";
-        var box_20 = $("#box20").val();
-        captext += "\n\tProximal margin frozen section: "  + box_20;
+        captext += "\n\nRESECTION SPECIMEN - MICROSCOPIC DESCRIPTION";
+        captext += "\nPROXIMAL MARGIN (PERMANENT SECTIONS)";
 
+        var box_20 = $("#box20").val();
+        captext += "\n\tProximal margin frozen section (permanent): "  + box_20;
+        /*
         if (box_20.indexOf("Not") < 0){
 
             var box_21 = $("#box21").val();
@@ -346,13 +355,13 @@ $(window).on('load', function() {
             var box_24 = $("#box24").val();
             var box_24_2 = $("#box24_2").val();
             captext += "\n\tResidual proximal margin frozen tissue: "  + box_24;
-        }
+
+        }*/
 
         var box_60 = $("#box60").val();
         var box_60_2 = $("#box60_2").val();
-        if (box_60.indexOf("ganglion") > -1) {
-            captext += "\n\tGanglion cell distribution: "  + box_60+" ("+ box_60_2+ ")";}
-        else {captext += "\n\tGanglion cell distribution: "  + box_60;}
+        captext += "\n\tMyenteric plexus: "  + box_60;
+        captext += "\n\tSubmucosal plexus: "  + box_60_2;
 
 
         var box_61 = $("#box61").val();
@@ -381,9 +390,8 @@ $(window).on('load', function() {
         captext += "\n\nDISTAL MARGIN";
         var box_66 = $("#box66").val();
         var box_66_2 = $("#box66_2").val();
-        if (box_66.indexOf("ganglion") > -1) {
-            captext += "\n\tGanglion cell distribution: "  + box_66+" ("+ box_66_2+ ")";}
-        else {captext += "\n\tGanglion cell distribution: "  + box_66;}
+        captext += "\n\tMyenteric plexus: "  + box_66;
+        captext += "\n\tSubmucosal plexus: "  + box_66_2;
 
 
         var box_67 = $("#box67").val();
@@ -415,7 +423,7 @@ $(window).on('load', function() {
         captext += "\n\tDistance to most distal submucosal ganglion cell: "  + box_80.replace(/cm/,'') + "cm";
 
         var box_81 = $("#box81").val();
-        captext += "\n\tDistance to most distal intermyenteric ganglion cell: "  + box_81.replace(/cm/,'') + "cm";
+        captext += "\n\tDistance to most distal myenteric ganglion cell: "  + box_81.replace(/cm/,'') + "cm";
 
         var box_82 = $("#box82").val();
         captext += "\n\tDistance to closest hypertrophic nerves: "  + box_82.replace(/cm/,'') + "cm";
@@ -444,7 +452,7 @@ $(window).on('load', function() {
             captext += "\n("  + box_40+") "+box_40_2+":";
 
             var box_41 = $("#box41").val();
-            captext += "\n\tOstomy staus: "  + box_41;
+            captext += "\n\tOstomy status: "  + box_41;
 
             var box_42 = $("#box42").val();
             captext += "\n\tOstomy total length: "  + box_42 + "cm";
@@ -458,7 +466,7 @@ $(window).on('load', function() {
                 captext += "\n\tOstomy external orifice appearance: "  + box_43_3;}
             else {captext += "\n\tOstomy external orifice appearance: "  + box_43;}
 
-
+            /*
             var box_45 = $("#box45").val();
             captext += "\n\tProximal ostomy margin frozen section: "  + box_45;
 
@@ -486,7 +494,12 @@ $(window).on('load', function() {
                 else {captext += "\n"+ box_48 +": Ostomy proximal margin frozen residue";}
 
             }
+            */
+            captext+= "\nOSTOMY CASSETTE LABELS:";
+            var box_48 = $("#box48").val();
+            captext += "\n"+ box_48 +": Ostomy proximal margin frozen residue";
 
+            var box_49 = $("#box49").val();
             captext+= "\n"+box_49+": Circumferential adjacent to proximal margin";
 
             var box_50 = $("#box50").val();
@@ -494,11 +507,11 @@ $(window).on('load', function() {
 
             captext += "\n\nOSTOMY MICROSCOPIC DESCRIPTION\nPROXIMAL MARGIN:";
 
+            captext += "\n\nPROXIMAL MARGIN";
             var box_100 = $("#box100").val();
             var box_100_2 = $("#box100_2").val();
-            if (box_100.indexOf("ganglion") > -1) {
-                captext += "\n\tGanglion cell distribution: "  + box_100+" ("+ box_100_2+ ")";}
-            else {captext += "\n\tGanglion cell distribution: "  + box_100;}
+            captext += "\n\tMyenteric plexus: "  + box_100;
+            captext += "\n\tSubmucosal plexus: "  + box_100_2;
 
             var box_101 = $("#box101").val();
             var box_101_2 = $("#box101_2").val();
@@ -531,7 +544,7 @@ $(window).on('load', function() {
 
             var box_111 = $("#box111").val();
             if (box_111.length > 0) {
-                captext += "\n\tDistance to most distal intermyenteric ganglion cell: "  + box_111.replace(/cm/,'') + "cm";
+                captext += "\n\tDistance to most distal myenteric ganglion cell: "  + box_111.replace(/cm/,'') + "cm";
             }
 
             var box_112 = $("#box112").val();
