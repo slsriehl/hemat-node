@@ -19,7 +19,7 @@ $(window).on('load', function(){
 //ESOPHAGUS PARTS 200
         partType200: '\nESOPHAGUS, BIOPSY: \n',
         partType201: '\nESOPHAGUS, DISTAL, BIOPSY: \n',
-        partType202: '\nESOPHAGUS, MIDDLE, BIOPSY: \n',
+        partType202: '\nESOPHAGUS, MID, BIOPSY: \n',
         partType203: '\nESOPHAGUS, PROXIMAL, BIOPSY: \n',
         partType204: '\nESOPHAGUS,  CM, BIOPSY: \n',
         partType205: '\nGASTROESOPHAGEAL JUNCTION, BIOPSY: \n ',
