@@ -87,6 +87,8 @@ const giPathRoutes = require('./routes/pages/gi-path');
 const clinPathRoutes = require('./routes/pages/clin-path');
 const surgPathRoutes = require('./routes/pages/surg-path');
 const autopsyRoutes = require('./routes/pages/autopsy');
+const surgmediaRoutes = require('./routes/pages/surg-media');
+const clinmediaRoutes = require('./routes/pages/clin-media');
 
 app.use(userRoutes);
 
@@ -98,5 +100,7 @@ app.use(giPathRoutes);
 app.use(clinPathRoutes);
 app.use(surgPathRoutes);
 app.use(autopsyRoutes);
+app.use(surgmediaRoutes);
+app.use(clinmediaRoutes);
 
 module.exports = app;

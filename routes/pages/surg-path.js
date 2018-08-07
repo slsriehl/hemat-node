@@ -59,12 +59,6 @@ router.get('/surg-path/snippets', (req, res) => {
 	]);
 });
 
-router.get('/surg-path/surg-media', (req, res) => {
-    controller.openAccess(req, res, './page-views/surg-path/surg-media.hbs', [
-
-    ]);
-});
-
 
 //post new interp to db
 router.post('/ihc/save', (req, res) => {

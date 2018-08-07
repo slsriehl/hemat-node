@@ -3,8 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/hemat-node.iml" filepath="$PROJECT_DIR$/.idea/hemat-node.iml" />
-      <module fileurl="file://C:/xampp/htdocs/hg_new/.idea/hg_new.iml" filepath="C:/xampp/htdocs/hg_new/.idea/hg_new.iml" />
-      <module fileurl="file://$USER_HOME$/Dropbox/Apps/site44/www.hematogones.com/.idea/www.hematogones.com.iml" filepath="$USER_HOME$/Dropbox/Apps/site44/www.hematogones.com/.idea/www.hematogones.com.iml" />
     </modules>
   </component>
 </project>
