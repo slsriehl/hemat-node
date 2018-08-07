@@ -931,7 +931,7 @@ $(window).on('load', function(){
             } else if (labels[j].indexOf('LOWER') > -1) {
                 labels[j] = "ESOPHAGUS, DISTAL, BIOPSY";
             } else if (labels[j].indexOf('MIDDLE') > -1) {
-                labels[j] = "ESOPHAGUS, "+labels[j].replace(/ ESOPHAGUS/, '') + ", BIOPSY";
+                labels[j] = "ESOPHAGUS, MID, BIOPSY";
             } else if (labels[j].indexOf('MID') > -1) {
                 labels[j] = "ESOPHAGUS, MID, BIOPSY";
             } else if (labels[j].indexOf('GE ') > -1) {
