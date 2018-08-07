@@ -4,7 +4,5 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="hg_new" />
-    <orderEntry type="module" module-name="www.hematogones.com" />
   </component>
 </module>
