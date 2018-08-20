@@ -453,4 +453,10 @@ $(function () {
 
 
 	//****************** End collapse final output
+
+	//******************* Move anchor jumps below the fixed top navbar
+    var shiftWindow = function() { scrollBy(0, -75) };
+    if (location.hash) shiftWindow();
+    window.addEventListener("hashchange", shiftWindow);
+
 });

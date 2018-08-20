@@ -11,6 +11,12 @@ router.get('/clin-media/newborn-blood-smears', (req, res) => {
     ]);
 });
 
+router.get('/clin-media/lymph-node-az', (req, res) => {
+    controller.openAccess(req, res, './page-views/clin-media/lymph-node-az.hbs', [
+
+    ]);
+});
+
 
 
 module.exports = router;
