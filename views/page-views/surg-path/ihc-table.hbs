@@ -1,152 +1,183 @@
-		<div class="container-fluid">
-		<!-- Breadcrumbs -->
-		<ol class="breadcrumb">
-				<li class="breadcrumb-item">
-						<a href="/">Home</a>
-				</li>
-				<li class="breadcrumb-item">
-					Surgical Pathology Tools
-				</li>
-				<li class="breadcrumb-item active" id="bc-jump"><i class="fa fa-table mr-2"></i>Immunohistochemistry Table</li>
-		</ol>
+<div class="container-fluid">
+<!-- Breadcrumbs -->
+<ol class="breadcrumb">
+<li class="breadcrumb-item">
+<a href="/">Home</a>
+</li>
+<li class="breadcrumb-item">
+Surgical Pathology Tools
+</li>
+<li class="breadcrumb-item active" id="bc-jump"><i class="fa fa-table mr-2"></i>Immunohistochemistry Table</li>
+</ol>
 
- {{> message-center this}}
+{{> message-center this}}
 
-		<div class="card mb-3">
-				<div class="card-header bg-info">
-						<!-- How to use and modal -->
-						<div class="row">
-								<button class="btn btn-default btn-block" data-target="#flipFlop" data-toggle="modal" id='openhelp'
-												type='button'> How to use
-								</button>
+<div class="card mb-3">
+<div class="card-header bg-info">
+<!-- How to use and modal -->
+<div class="row">
+<button class="btn btn-default btn-block" data-target="#flipFlop" data-toggle="modal" id='openhelp'
+				type='button'> How to use
+</button>
 
 <!-- The modal -->
 {{> page-modals/surg-path/ihc-how-to-use}}
+</div>
+</div>
+</div>
+<div class="row">
+<!--middle colored boxes-->
+<div class="col col-md-8" id="bottom-l">
+<!-- <div class="row row-grid">-->
+		<!-- bottom left column-->
+		<!-- <div class="col-sm-7" id="bottom-l"> -->
+				<div class="card">
+						<div class="card-header">
+								<h5>IHC table builder - Select your antibodies</h5>
+						</div>
+						<div class="card-block">
+							<div class="table-responsive">
+								<table class="table">
+									<thead>
+										<th>
+											Chooose cells of interest
+										</th>
+										<th>
+											Which block was stained
+										</th>
+										<th>
+											Choose preferred header
+										</th>
+									</thead>
+									<tbody>
+									<tr>
+										<td>
+											<select id="celltype" class="form-control form-control-sm">
+												<option selected value="ABNORMAL CELLS">ABNORMAL CELLS</option>
+												<option value="ABNORMAL VESSELS">ABNORMAL VESSELS</option>
+												<option value="BLASTS">BLASTS</option>
+												<option value="PLASMA CELLS">PLASMA CELLS</option>
+												<option value="GENERAL">GENERAL</option>
+											</select>
+										</td>
+										<td>
+											<input id="block_designation" class="form-control form-control-sm">
+										</td>
+										<td>
+											<select id="ihc_header" class="form-control form-control-sm">
+												<option selected value="head1">IHC only, no flow</option>
+												<option value="head2">IHC for architecture/pattern</option>
+												<option value="head3">IHC for extent of disease</option>
+												<option value="head4">IHC with negative flow</option>
+											</select>
+										</td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="table-responsive">
+									<table class="table" id="ihctable">
+											<thead>
+											<tr>
+													<th>
+															Antibody
+																	<i class="fa fa-question-circle" data-toggle="tooltip"
+																			data-placement="right" title="Start typing antibody name"></i>
+
+													</th>
+													<th>Value</th>
+													<th>Comments</th>
+											</tr>
+											</thead>
+											<tbody>
+											<tr>
+													<td scope="row">
+
+																	<input class="form-control form-control-sm search" type="text" >
+
+
+													</td>
+													<td>
+															<select class="form-control selectpicker form-control-sm ihc_val">
+																	<option selected hidden>Value?</option>
+																	<option value="POS">POS</option>
+																	<option value="NEG">NEG</option>
+																	<option value="EQUIV">EQUIVOCAL</option>
+															</select>
+													</td>
+													<td>
+															<input placeholder="Enter any Comments" class="form-control form-control-sm usercomm" type="text">
+													</td>
+											</tr>
+											</tbody>
+									</table>
+									<button class="btn btn-block btn-warning addrow">Add another antibody</button>
+
+							</div>
 						</div>
 				</div>
-		</div>
-				<div class="row">
-						<!--middle colored boxes-->
-						<div class="col col-md-8" id="bottom-l">
-								<!-- <div class="row row-grid">-->
-										<!-- bottom left column-->
-										<!-- <div class="col-sm-7" id="bottom-l"> -->
-												<div class="card">
-														<div class="card-header">
-																<h5>IHC table builder - Select your antibodies</h5>
-														</div>
-														<div class="card-block">
-																Chooose cells of interest:
-																<select id="celltype" class="form-control form-control-sm mb-3">
-																		<option selected value="ABNORMAL CELLS">ABNORMAL CELLS</option>
-																		<option value="ABNORMAL VESSELS">ABNORMAL VESSELS</option>
-																		<option value="BLASTS">BLASTS</option>
-																		<option value="PLASMA CELLS">PLASMA CELLS</option>
-																		<option value="GENERAL">GENERAL</option>
-																</select>
-																<div class="table-responsive">
-																		<table class="table" id="ihctable">
-																				<thead>
-																				<tr>
-																						<th>
-																								Antibody
-																										<i class="fa fa-question-circle" data-toggle="tooltip"
-																												data-placement="right" title="Start typing antibody name"></i>
+				<div class="card mt-2">
+						<div class="card-block">
+						Interpretation:
+<select class="form-control selectpicker form-control-sm" name="ihc_preset" id="ihc_preset">
+<option selected value="null">Choose quick preset if needed</option>
+{{#if ihcPresets}}
+{{#each ihcPresets}}
+<option value="{{interp}}">{{name}}</option>
+{{/each}}
+{{/if}}
+</select><br>
+<!-- TODO: custom helper where if option value is set, //interp fill the textarea
+if(option.value == data.opt) {
+<textarea class="form-control" rows="8"  id="ihc_interp">data.opt</textarea>
+}
+-->
 
-																						</th>
-																						<th>Value</th>
-																						<th>Comments</th>
-																				</tr>
-																				</thead>
-																				<tbody>
-																				<tr>
-																						<td scope="row">
-
-																										<input class="form-control form-control-sm search" type="text" >
-
-
-																						</td>
-																						<td>
-																								<select class="form-control selectpicker form-control-sm ihc_val">
-																										<option selected hidden>Value?</option>
-																										<option value="POS">POS</option>
-																										<option value="NEG">NEG</option>
-																										<option value="EQUIV">EQUIVOCAL</option>
-																								</select>
-																						</td>
-																						<td>
-																								<input placeholder="Enter any Comments" class="form-control form-control-sm usercomm" type="text">
-																						</td>
-																				</tr>
-																				</tbody>
-																		</table>
-																		<button class="btn btn-block btn-warning addrow">Add another antibody</button>
-
-																</div>
-														</div>
-												</div>
-												<div class="card mt-2">
-														<div class="card-block">
-														Interpretation:
-		<select class="form-control selectpicker form-control-sm" name="ihc_preset" id="ihc_preset">
-			<option selected value="null">Choose quick preset if needed</option>
-			{{#if ihcPresets}}
-			{{#each ihcPresets}}
-			<option value="{{interp}}">{{name}}</option>
-			{{/each}}
-			{{/if}}
-		</select><br>
-		<!-- TODO: custom helper where if option value is set, //interp fill the textarea
-		if(option.value == data.opt) {
-		<textarea class="form-control" rows="8"  id="ihc_interp">data.opt</textarea>
-	}
-	  -->
-
-		<!-- New interp modal button -->
-		<button type="button" class="btn btn-outline-primary btn-sm p-2 mt-1" data-toggle="modal"						data-target="#addNewInterp" id="add_interp">
-						Save a new interpretation</button>
+<!-- New interp modal button -->
+<button type="button" class="btn btn-outline-primary btn-sm p-2 mt-1" data-toggle="modal"						data-target="#addNewInterp" id="add_interp">
+Save a new interpretation</button>
 
 <!-- Modal -->
 {{> page-modals/surg-path/new-interp}}
-														</div>
-												</div>
-												<div class='card-block'>
-													<div class="form-group" id="selected_preset">
-														<label for="ihc_preset_change">Tweak the preset if desired</label><br>
-															<textarea class="form-control" rows="5"  id="ihc_preset_change"></textarea>
-													</div>
-													 <div class="form-group">
-														 <label for="ihc_interp">Type your additional interpretation of the stains, if any</label><br>
-															 <textarea class="form-control" rows="5" id="ihc_interp"></textarea>
-													 </div>
-
-												</div>
-										</div>
-										<!-- middle right text output-->
-										<div class="col col-md-4" id="bottom-r">
-												<div class="card text-center">
-													<div class="card-header button-box">
-															<ul class="nav nav-pills standard-button-box">
-																	<a class="btn btn-lg btn-outline-info p-2 ihc-table-page" id="ihcwrite">
-																			<small>Write Report</small>
-																	</a>
-																	<a class="btn btn-lg btn-outline-danger p-2 ml-4" id="Reset" >
-																			<small>Reset</small>
-																	</a>
-															</ul>
-															{{> page-partials/logged-in-btn-box}}
-														</div>
-														<div class="card-block">
-															{{> page-partials/case-reference}}
-																<div class="form-group">
-																		<textarea class="form-control" id="outPut-2" rows="20" placeholder="IHC table"></textarea>
-																		<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-2">Copy to Clipboard</span>
-																</div>
-														</div>
-												</div>
-										</div>
-								</div>
-								{{> page-modals/new-case-reference}}
-								{{> page-partials/history-module}}
 						</div>
-		<!--end container wrapper-->
+				</div>
+				<div class='card-block'>
+					<div class="form-group" id="selected_preset">
+						<label for="ihc_preset_change">Tweak the preset if desired</label><br>
+							<textarea class="form-control" rows="5"  id="ihc_preset_change"></textarea>
+					</div>
+					 <div class="form-group">
+						 <label for="ihc_interp">Type your additional interpretation of the stains, if any</label><br>
+							 <textarea class="form-control" rows="5" id="ihc_interp"></textarea>
+					 </div>
+
+				</div>
+		</div>
+		<!-- middle right text output-->
+		<div class="col col-md-4" id="bottom-r">
+				<div class="card text-center">
+					<div class="card-header button-box">
+							<ul class="nav nav-pills standard-button-box">
+									<a class="btn btn-lg btn-outline-info p-2 ihc-table-page" id="ihcwrite">
+											<small>Write Report</small>
+									</a>
+									<a class="btn btn-lg btn-outline-danger p-2 ml-4" id="Reset" >
+											<small>Reset</small>
+									</a>
+							</ul>
+							{{> page-partials/logged-in-btn-box}}
+						</div>
+						<div class="card-block">
+							{{> page-partials/case-reference}}
+								<div class="form-group">
+										<textarea class="form-control" id="outPut-2" rows="20" placeholder="IHC table"></textarea>
+										<span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-2">Copy to Clipboard</span>
+								</div>
+						</div>
+				</div>
+		</div>
+</div>
+{{> page-modals/new-case-reference}}
+{{> page-partials/history-module}}
+</div>
+<!--end container wrapper-->

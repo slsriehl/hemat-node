@@ -17,14 +17,45 @@
             </div>
             <div class="modal-body">
                 <div class="card-block">
-                    Chooose cells of interest:
-                    <select id="celltype" class="form-control selectpicker form-control-sm mb-3">
-                        <option selected value="ABNORMAL CELLS">ABNORMAL CELLS</option>
-                        <option value="ABNORMAL VESSELS">ABNORMAL VESSELS</option>
-                        <option value="BLASTS">BLASTS</option>
-                        <option value="PLASMA CELLS">PLASMA CELLS</option>
-                        <option value="GENERAL">GENERAL</option>
-                    </select>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <th>
+                                Chooose cells of interest
+                            </th>
+                            <th>
+                                Which block was stained
+                            </th>
+                            <th>
+                                Choose preferred header
+                            </th>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <select id="celltype" class="form-control form-control-sm">
+                                        <option selected value="ABNORMAL CELLS">ABNORMAL CELLS</option>
+                                        <option value="ABNORMAL VESSELS">ABNORMAL VESSELS</option>
+                                        <option value="BLASTS">BLASTS</option>
+                                        <option value="PLASMA CELLS">PLASMA CELLS</option>
+                                        <option value="GENERAL">GENERAL</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input id="block_designation" class="form-control form-control-sm">
+                                </td>
+                                <td>
+                                    <select id="ihc_header" class="form-control form-control-sm">
+                                        <option selected value="head1">IHC only, no flow</option>
+                                        <option value="head2">IHC for architecture/pattern</option>
+                                        <option value="head3">IHC for extent of disease</option>
+                                        <option value="head4">IHC with negative flow</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                     <div class="table-responsive">
                         <table class="table" id="ihctable">
                             <thead>
@@ -43,7 +74,7 @@
                             <tr>
                                 <td scope="row">
 
-                                    <input class="form-control form-control-sm search" type="text">
+                                    <input class="form-control form-control-sm search" type="text" >
 
 
                                 </td>
@@ -56,8 +87,7 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <input placeholder="Enter any Comments"
-                                           class="form-control form-control-sm usercomm" type="text">
+                                    <input placeholder="Enter any Comments" class="form-control form-control-sm usercomm" type="text">
                                 </td>
                             </tr>
                             </tbody>

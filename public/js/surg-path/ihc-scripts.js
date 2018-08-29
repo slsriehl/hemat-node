@@ -19,15 +19,23 @@ $(window).on('load', function(){
             "Strong nuclear",
             "Golgi pattern",
             "Membranous and golgi pattern",
+            "Major subset",
+            "Minor subset",
             "Highlights small T-cells",
             "Highlights small B-cells",
             "Highlights atypical cells",
             "Highlights large cells",
             "No support for carcinoma",
             "No support for rhabdomyosarcoma",
-            "No support for nerve sheath or melanoma",
-            "No support for lymphoma",
-            "No support for classical Hodgkin lymphoma"
+            "No support for melanoma",
+            "No support for nerve sheath differentiation",
+            "No support for B-cell lymphoma",
+            "No support for T-cell lymphoma",
+            "No support for classical Hodgkin lymphoma",
+            "Subset of lymphocytes",
+            "Subset of plasma cells",
+            "Subset of epithelial cells",
+            "Subset of tumor cells"
         ],
         appendTo: '#IHCbox'
     };
@@ -78,23 +86,24 @@ $(window).on('load', function(){
         var ab = [];
         var val = [];
         var com = [];
+        var ihc_head = {
+            head1: "Immunohistochemistry is performed (with working controls) to further characterize the process. Stains are summarized as follows:\n" ,
+            head2: "Immunohistochemistry is performed (with working controls) in conjunction with flow cytometry immunophenotyping. This is deemed necessary to better characterize the immunoarchitectur and infiltration pattern. Stains are summarized as follows:\n" ,
+            head3: "Immunohistochemistry is performed (with working controls) in conjunction with flow cytometry immunophenotyping. This is deemed necessary to evaluate the extent of disease involvement. Stains are summarized as follows:\n" ,
+            head4: "Immunohistochemistry is performed (with working controls) in conjunction with flow cytometry immunophenotyping. This is deemed necessary as the flow cytometry sample yielded negative/non-contributory findings with respect to the process in question. Stains are summarized as follows:\n"
+        };
         var count = 1;
         var interest = $('#celltype').val();
-        var header = 'Immunohistochemistry is performed (with working controls) to further characterize the process. Stains are summarized as follows:\n';
-        var body = '\nCELLS OF INTEREST: '+interest+'\nANTIBODY ........... VALUE ... COMMENT\n';
+        var blk = $('#block_designation').val();
+        var head = $('#ihc_header').val();
+        var header = ihc_head[head];
+        var body =  '\nCELLS OF INTEREST: '+interest+
+                    '\nBLOCK STAINED: '+blk+
+                    '\nANTIBODY ........... VALUE ... COMMENT\n';
         var ihcout= '';
-        //var des = $('#disclaimer').val();
-        //var desc = "\n\nThe immunoperoxidase and/or in situ hybridization stain(s) reported above were developed and their performance characteristics determined by " + des + ". They have not been cleared or approved by the U.S. Food and Drug Administration, although such approval is not required for analyte-specific reagents of this type. This test is used for clinical purposes. It should not be regarded as investigational or for research. This laboratory is certified under the Clinical Laboratory Improvement Amendments of 1988 (CLIA) as qualified to perform high complexity clinical laboratory testing. All controls show appropriate reactivity.";
 				var interpFunc = function() {
 					return $('#ihc_preset_change').val() + '  ' + $('#ihc_interp').val();
-					// if($('#ihc_preset').find(":selected").val() != 'null' && $('#ihc_interp').val() != '') {
-					// 	return $('#ihc_preset').find(":selected").val() + '  ' + $('#ihc_interp').val();
-					// } else if ($('#ihc_preset').find(":selected").val() == 'null' && $('#ihc_interp').val() != '') {
-					// 	return $('#ihc_interp').val();
-					// } else {
-					// 	return $('#ihc_preset').find(":selected").val();
-					// }
-				}
+				};
 				var interp = interpFunc();
         // array of antibodies
         $('.search').each(function(){
@@ -133,12 +142,7 @@ $(window).on('load', function(){
         }
         console.log(ihcout);
 
-        // final table
-        // if (des != "none" ) {
-        //     ihcout = header + body + ihcout + desc + '\n\nINTERPRETATION: '+interp;
-        // }else {
             ihcout = header + body + ihcout + '\n\nINTERPRETATION: '+interp;
-        // }
 				var outPut2Value = $('#outPut-2').val() + '\n\n' + ihcout;
 
         $('#outPut-2').focus().val(outPut2Value);
