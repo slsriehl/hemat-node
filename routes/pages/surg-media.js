@@ -11,6 +11,10 @@ router.get('/surg-media/thyroid-graves-hashi', (req, res) => {
     ]);
 });
 
+router.get('/surg-media/head-neck-az', (req, res) => {
+    controller.openAccess(req, res, './page-views/surg-media/head-neck-az.hbs', [
 
+    ]);
+});
 
 module.exports = router;
