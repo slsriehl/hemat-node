@@ -995,7 +995,7 @@ mxLine124: 'There are occasional nucleated red blood cells. ',
         commLine359: 'The marrow composition suggests therapy-related injury/aplasia. Correlation with the pending ancillary testing is recommended. ',
 //
 // COMMENT: CMPD DDX
-        commLine400: 'The marrow changes raise a differential diagnosis of infection or G-CSF therapy; however, a chronic myeloproliferative disorder cannot be excluded on morphologic grounds alone. Correlation with the pending ancillary testing, clinical history and other laboratory data and is recommended. ',
+        commLine400: 'The marrow changes raise a differential diagnosis of infection or G-CSF therapy; however, a chronic myeloproliferative disorder cannot be excluded on morphologic grounds alone. Correlation with the clinical history, other laboratory data and pending ancillary testing is recommended. ',
 // COMMENT: CML
         commLine401: 'The marrow changes are suggestive of a chronic myeloproliferative disorder, such as CML. Correlation with the pending ancillary testing is recommended. Further assessment for JAK2 mutations on peripheral blood may also be helpful. ',
 // COMMENT: CLL
