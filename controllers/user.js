@@ -205,7 +205,7 @@ const controller = {
 	logoutUser: (req, res) => {
 		console.log(req.params);
 		req.session.destroy();
-		res.redirect('/');
+		res.render('index.hbs');
 	},
 	//show the index page whether logged in or not
 	renderIndex: (req, res) => {
