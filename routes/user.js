@@ -149,6 +149,11 @@ router.post('/message/dismiss', (req, res) => {
 	userController.dismissMessage(req, res);
 });
 
+router.delete('/message/acknowledge-privacy', (req, res) => {
+	req.session.privacyAcknowledged = true;
+	res.end();
+});
+
 router.post('/user/delete', (req, res) => {
 	userController.deleteUser(req, res);
 });
