@@ -60,7 +60,7 @@ const controller = {
 					snippets = true;
 				}
 				res.render(renderPath, {
-					messages: req.session.systemMessages,
+					messages: req.session.privacyMessage.concat(req.session.systemMessages),
 					isAuth: {
 						check: req.session.isAuth,
 						firstname: req.session.firstname
@@ -82,7 +82,9 @@ const controller = {
 			});
 		} else {
 			res.render('index.hbs', {
-				messages: [{
+				messages: [
+					...req.session.privacyMessage,
+					{
 					text: 'You need an account to access that resource.  <a href="/user/signup">Sign up</a>.',
 					id: `access-denied`
 				}]
@@ -100,6 +102,7 @@ const controller = {
 				req.session.app = result.dataValues.id;
 				res.render(renderPath, {
 					messages: [
+						...req.session.privacyMessage,
 						...req.session.unAuthSystemMessages,
 						{
 						text: '<a href="/user/signup">Sign up</a> to save, edit, and PDF your reports and access more resources.',

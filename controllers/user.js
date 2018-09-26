@@ -214,7 +214,7 @@ const controller = {
 			//if the logged in user has system messages but not a single session message
 			console.log('verified cookie on index load');
 			res.render('index.hbs', {
-				messages: req.session.systemMessages,
+				messages: req.session.privacyMessage.concat(req.session.systemMessages),
 				isAuth: {
 					check: req.session.isAuth,
 					firstname: req.session.firstname
@@ -231,7 +231,7 @@ const controller = {
 				id: msgType
 			});
 			res.render('index.hbs', {
-				messages: messages,
+				messages: req.session.privacyMessage.concat(messages),
 				isAuth: {
 					check: req.session.isAuth,
 					firstname: req.session.firstname
@@ -251,6 +251,7 @@ const controller = {
 			}
 			res.render('index.hbs', {
 				messages: [
+					...req.session.privacyMessage,
 					...req.session.unAuthSystemMessages,
 					{
 					text: loggedOutMessage,
@@ -261,7 +262,7 @@ const controller = {
 			//if the user isn't logged in and doesn't need to get any messages
 			console.log('index no cookie no message');
 			res.render('index.hbs', {
-				messages: req.session.unAuthSystemMessages
+				messages: req.session.privacyMessage.concat(req.session.unAuthSystemMessages)
 			});
 		}
 	},
@@ -291,13 +292,12 @@ const controller = {
 							text: singleMessage,
 							id: singleMessageType
 						}];
-						return theseMessages;
-					} else {
-						return null;
 					}
+					return theseMessages;
+
 				}
 				res.render('login/settings.hbs', {
-						messages: ifSessionMessages(),
+						messages: req.session.privacyMessage.concat(ifSessionMessages()),
 						isAuth: {
 							check: req.session.isAuth,
 							email: data.dataValues.email,
@@ -315,7 +315,9 @@ const controller = {
 			.catch(error => {
 				generalHelpers.writeToErrorLog(req, error);
 				console.log(error);
-				res.render('index.hbs');
+				res.render('index.hbs', {
+					messages: req.session.privacyMessage
+				});
 			});
 		} else {
 			res.redirect('/user/login');

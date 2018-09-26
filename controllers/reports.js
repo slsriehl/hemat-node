@@ -241,7 +241,7 @@ const controller = {
 		})
 		.then((data) => {
 			res.render('login/all-reports.hbs', {
-				messages: req.session.systemMessages,
+				messages: req.session.privacyMessage.concat(req.session.systemMessages),
 				isAuth: {
 					check: req.session.isAuth,
 					firstname: req.session.firstname
@@ -282,7 +282,7 @@ const controller = {
 		.then((result) => {
 			prevReps = result;
 			res.render('login/copy-paste.hbs', {
-				messages: req.session.systemMessages,
+				messages: req.session.privacyMessage.concat(req.session.systemMessages),
 				isAuth: {
 					check: req.session.isAuth,
 					firstname: req.session.firstname

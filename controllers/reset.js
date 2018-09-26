@@ -39,7 +39,9 @@ const controller = {
 			if(data == null) {
 				console.log('data is null');
 				res.render('login/reset-request.hbs', {
-					messages: [{
+					messages: [
+						...req.session.privacyMessage,
+						{
 						text: "That email or username wasn't found.  Please try again.",
 						id: "reset-request-fail"
 					}],
@@ -71,13 +73,16 @@ const controller = {
 			if(data.dataValues.valid && !data.dataValues.used && isNotExpired) {
 				res.render('login/reset.hbs', {
 					code: req.params.code,
+					messages: req.session.privacyMessage,
 					specificScripts: [
 						"/js/login-settings.js"
 					]
 				});
 			} else {
 				res.render('login/reset-request.hbs', {
-					messages: [{
+					messages: [
+						...req.session.privacyMessage,
+						{
 						text: 'Sorry, this reset link is expired.  Please request another and use it within 24 hours.',
 						id: 'expired-reset-request-on-load'
 					}],
@@ -112,7 +117,9 @@ const controller = {
 				return Promise.resolve(userObjTemp);
 			} else {
 				res.render('login/reset-request.hbs', {
-					messages: [{
+					messages: [
+						...req.session.privacyMessage,
+						{
 						text: 'Sorry, this reset link is expired.  Please request another and use it within 24 hours.',
 						id: 'expired-reset-request-on-try'
 					}],
@@ -140,7 +147,9 @@ const controller = {
 				return Promise.resolve(userObjTemp);
 			} else {
 				res.render('login/reset-request.hbs', {
-					messages: [{
+					messages: [
+						...req.session.privacyMessage,
+						{
 						text: 'Sorry, we were unable to record your new password.  Please try again or <a href="/mail">contact our admin</a>.',
 						id: 'expired-reset-request-on-load'
 					}],
