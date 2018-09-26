@@ -50,7 +50,7 @@ const controller = {
 			})
 			.then((data) => {
 				res.render('mail.hbs', {
-					messages: req.session.privacyMessage.concat(msg),
+					messages: req.session.privacyMessage.concat(msg ? msg : []),
 					isAuth: {
 						check: req.session.isAuth,
 						email: data.dataValues.email,
@@ -67,7 +67,7 @@ const controller = {
 				console.log(error);
 				generalHelpers.writeToErrorLog(req, error);
 				res.render('mail.hbs', {
-					messages: req.session.privacyMessage.concat(msg),
+					messages: req.session.privacyMessage.concat(msg ? msg : []),
 					specificScripts: [
 						"/vendor/jquery/js/jquery.validate.min.js",
 						"/js/login-settings.js"
@@ -76,7 +76,7 @@ const controller = {
 			})
 		} else {
 			res.render('mail.hbs', {
-				messages: req.session.privacyMessage.concat(msg),
+				messages: req.session.privacyMessage.concat(msg ? msg : []),
 				specificScripts: [
 					"/vendor/jquery/js/jquery.validate.min.js",
 					"/js/login-settings.js"

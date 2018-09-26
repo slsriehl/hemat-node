@@ -214,7 +214,7 @@ const controller = {
 			//if the logged in user has system messages but not a single session message
 			console.log('verified cookie on index load');
 			res.render('index.hbs', {
-				messages: req.session.privacyMessage.concat(req.session.systemMessages),
+				messages: req.session.privacyMessage.concat(req.session.systemMessages ? req.session.systemMessages : []),
 				isAuth: {
 					check: req.session.isAuth,
 					firstname: req.session.firstname
@@ -231,7 +231,7 @@ const controller = {
 				id: msgType
 			});
 			res.render('index.hbs', {
-				messages: req.session.privacyMessage.concat(messages),
+				messages: req.session.privacyMessage.concat(messages ? messages : []),
 				isAuth: {
 					check: req.session.isAuth,
 					firstname: req.session.firstname
@@ -262,7 +262,7 @@ const controller = {
 			//if the user isn't logged in and doesn't need to get any messages
 			console.log('index no cookie no message');
 			res.render('index.hbs', {
-				messages: req.session.privacyMessage.concat(req.session.unAuthSystemMessages)
+				messages: req.session.privacyMessage.concat(req.session.unAuthSystemMessages ? req.session.unAuthSystemMessages : [])
 			});
 		}
 	},
@@ -282,8 +282,8 @@ const controller = {
 				console.log(`req.session at user settings ${util.inspect(req.session)}`);
 				const ifSessionMessages = () => {
 					console.log(req.session.message);
+					let theseMessages = [];
 					if(req.session.message) {
-						let theseMessages = [];
 						const singleMessage = req.session.message;
 						const singleMessageType = req.session.messageType;
 						req.session.message = null;

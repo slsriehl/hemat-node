@@ -63,7 +63,7 @@ const helpers = {
 				}
 				totalMessages.push(sessMsg);
 				res.render(renderPath, {
-					messages: req.session.privacyMessage.concat(totalMessages),
+					messages: req.session.privacyMessage.concat(totalMessages ? totalMessages : []),
 					isAuth: {
 						check: req.session.isAuth,
 						firstname: req.session.firstname
@@ -72,7 +72,7 @@ const helpers = {
 			} else if(renderPath != null) {
 				console.log('getSystem no sessmsg but renderPath');
 				res.render(renderPath, {
-					messages: req.session.privacyMessage.concat(req.session.systemMessages),
+					messages: req.session.privacyMessage.concat(req.session.systemMessages ? req.session.systemMessages : []),
 					isAuth: {
 						check: req.session.isAuth,
 						firstname: req.session.firstname
