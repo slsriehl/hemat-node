@@ -29,7 +29,7 @@ const reportsHelpers = require('./reports-helpers');
 
 const controller = {
 	renderMailPage: (req, res) => {
-		let msg = null;
+		let msg = [];
 		if(req.session.message) {
 			let tempMsg = req.session.message;
 			let tempType = req.session.messageType;
@@ -50,7 +50,7 @@ const controller = {
 			})
 			.then((data) => {
 				res.render('mail.hbs', {
-					messages: msg,
+					messages: req.session.privacyMessage.concat(msg),
 					isAuth: {
 						check: req.session.isAuth,
 						email: data.dataValues.email,
@@ -67,7 +67,7 @@ const controller = {
 				console.log(error);
 				generalHelpers.writeToErrorLog(req, error);
 				res.render('mail.hbs', {
-					messages: msg,
+					messages: req.session.privacyMessage.concat(msg),
 					specificScripts: [
 						"/vendor/jquery/js/jquery.validate.min.js",
 						"/js/login-settings.js"
@@ -76,7 +76,7 @@ const controller = {
 			})
 		} else {
 			res.render('mail.hbs', {
-				messages: msg,
+				messages: req.session.privacyMessage.concat(msg),
 				specificScripts: [
 					"/vendor/jquery/js/jquery.validate.min.js",
 					"/js/login-settings.js"

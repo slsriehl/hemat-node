@@ -36,7 +36,9 @@ router.get('/user/signup', (req, res) => {
 		req.session.message = null;
 		req.session.messageType = null;
 		res.render('login/signup.hbs', {
-			messages: [{
+			messages: [
+				...req.session.privacyMessage,
+				{
 				text: tempMsg,
 				id: tempType
 			}],
@@ -47,6 +49,7 @@ router.get('/user/signup', (req, res) => {
 		});
 	} else {
 		res.render('login/signup.hbs', {
+			messages: req.session.privacyMessage,
 			specificScripts: [
 				"/js/login-settings.js"
 			],
@@ -69,7 +72,9 @@ router.get('/user/login', (req, res) => {
 		req.session.message = null;
 		req.session.messageType = null;
 		res.render('login/login.hbs', {
-			messages: [{
+			messages: [
+				...req.session.privacyMessage,
+				{
 				text: tempMsg,
 				id: tempType
 			}],
@@ -79,6 +84,7 @@ router.get('/user/login', (req, res) => {
 		});
 	} else {
 		res.render('login/login.hbs', {
+			messages: req.session.privacyMessage,
 			specificScripts: [
 				"/js/login-settings.js"
 			]
@@ -116,6 +122,7 @@ router.get('/user/logout', (req, res) => {
 router.get('/reset/request', (req, res) => {
 	// helpers.clearSessionMessage(req, res);
 	res.render('login/reset-request.hbs', {
+		messages: req.session.privacyMessage,
 		specificScripts: [
 			"/js/login-settings.js"
 		]
@@ -140,6 +147,11 @@ router.post('/reset/:code', (req, res) => {
 
 router.post('/message/dismiss', (req, res) => {
 	userController.dismissMessage(req, res);
+});
+
+router.delete('/message/acknowledge-privacy', (req, res) => {
+	req.session.privacyAcknowledged = true;
+	res.end();
 });
 
 router.post('/user/delete', (req, res) => {

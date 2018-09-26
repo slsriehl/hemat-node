@@ -119,6 +119,20 @@ var frontEndMessage = function(id, message, className) {
 
 //onload
 $(document).ready(function() {
+
+	// logic to dismiss cookies button
+	$(document).off('click', '#acknowledgePrivacy').on('click', '#acknowledgePrivacy', function(event) {
+		$.ajax({
+			type: 'DELETE',
+			url: '/message/acknowledge-privacy'
+		})
+		.done(function(response) {
+			console.log(response);
+			var message = $(this).parent().parent();
+			message.slideUp(500);
+		});
+	});
+
 // instantiate copy button
     new Clipboard('.copy');
 
@@ -150,6 +164,8 @@ $(document).ready(function() {
 			vertical: 'bottom'
 		}
 	});
+
+
 
 // Add highlight to checkboxes
     $('input:checkbox').click(function () {
@@ -211,7 +227,7 @@ $(function () {
 //immuno/ihc box moved to ihc-script
 
 		//dismiss messages: hide and ajax to add to dismissed messages table
-		$(document).off('click', '.message-dismiss h2').on('click', '.message-dismiss h2', function(event) {
+		$(document).off('click', '.message-dismiss i').on('click', '.message-dismiss i', function(event) {
 			console.log('foo');
 			var message = $(this).parent().parent();
 			var messageId = message.attr('id');

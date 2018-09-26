@@ -120,10 +120,10 @@ textarea {
 	justify-content: flex-end;
 }
 
-.message-center .message-box .message-dismiss h2 {
+/* .message-center .message-box .message-dismiss i {
 	line-height: 0.5;
 	margin: 0;
-}
+} */
 
 .message-center .message-fail {
 	background-color: rgba(219, 114, 123, 0.5);
