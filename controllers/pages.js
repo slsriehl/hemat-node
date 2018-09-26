@@ -60,7 +60,7 @@ const controller = {
 					snippets = true;
 				}
 				res.render(renderPath, {
-					messages: req.session.privacyMessage.concat(req.session.systemMessages),
+					messages: req.session.privacyMessage.concat(req.session.systemMessages ? req.session.systemMessages : []),
 					isAuth: {
 						check: req.session.isAuth,
 						firstname: req.session.firstname

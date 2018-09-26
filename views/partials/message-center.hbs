@@ -2,18 +2,21 @@
 		<div class="message-center">
 			{{#if messages}}
 				{{#each messages}}
-			<div class="message-box" id="{{id}}">
-				<div class="message-dismiss">
-					<i {{#if clickId}}id="{{clickId}}"{{/if}} class="fa fa-times"></i>
+					<div class="message-box" id="{{id}}">
+						<div class="message-dismiss">
+							<i {{#if clickId}}id="{{clickId}}"{{/if}} class="fa fa-times">
+							</i>
 				<!-- end message-dismiss -->
-				</div>
-				<div class="message-item">
-					<span>{{{text}}}</span>
-					<!-- / message-item-->
-				</div>
+						</div>
+						<div class="message-item">
+							<span>{{{text}}}</span>
+							<!-- / message-item-->
+						</div>
 				<!-- /message-box -->
-			</div>
+					</div>
+				{{else}}
+					<span></span>
 				{{/each}}
-				{{/if}}
+			{{/if}}
 			<!-- /message-center -->
 		</div>
