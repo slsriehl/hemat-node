@@ -4,7 +4,7 @@
 				{{#each messages}}
 			<div class="message-box" id="{{id}}">
 				<div class="message-dismiss">
-					<h2>&times;</h2>
+					<i {{#if clickId}}id="{{clickId}}"{{/if}} class="fa fa-times"></i>
 				<!-- end message-dismiss -->
 				</div>
 				<div class="message-item">
