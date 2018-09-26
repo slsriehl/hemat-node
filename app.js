@@ -76,6 +76,10 @@ app.use(session({
 let unAuthMsg = require('./routes/middleware/logged-out-messages');
 app.use(unAuthMsg);
 
+//++++++ middleware to show cookie warning until dismissed ++++++
+let showCookieWarning = require('./routes/middleware/show-cookie-warning');
+app.use(showCookieWarning);
+
 // ++++++ Express routes ++++++
 const userRoutes = require('./routes/user');
 
