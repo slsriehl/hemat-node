@@ -308,7 +308,7 @@ $(window).on('load', function () {
         }
 
         var box_13 = $("#box13").val();
-        if (box_13.length  > 0){
+        if (box_13 != "Not reported"){
             captext += "\n+ Lymphovascular Invasion:\n- " + box_13 + "\n";
                 }
 
