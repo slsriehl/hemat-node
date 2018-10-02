@@ -307,9 +307,9 @@ $(window).on('load', function () {
         var captext = "Exocrine Pancreas Cancer Synoptic\nAJCC 2018 cancer staging version\n\n";
 
         var box_2 = $("#box2").val();
-        var box__2 = $("#box_2").val();
+        var box2_2 = $("#box2_2").val();
         if (box_2 == 'Other') {
-            captext += "\nProcedure:\n- " + box__2 + "\n";
+            captext += "\nProcedure:\n- " + box2_2 + "\n";
         } else {
             captext += "\nProcedure:\n- " + box_2 + "\n";
         }
