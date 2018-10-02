@@ -97,19 +97,19 @@ $(window).on('load', function(){
 // CLOT SECTION ONLY
         partType303: '\n\nBONE MARROW, CLOT SECTION: The clot sections ',
 // SUBOPTIMAL ASPIRATION BX
-        partType304: 'show significant aspiration artifact, which limits evaluation of the marrow cellularity. ',
+        partType304: 'show significant aspiration artifact, which limits estimation of the marrow cellularity. ',
 // SMALL FRAGMENTED BX
-        partType305: 'are small and fragmented, with limited preserved marrow areas which are optimal for morphologic evaluation. ',
+        partType305: 'are small and fragmented, with limited preserved marrow areas which can be morphologically evaluated. ',
 // MOSTLY CARTILAGE BX
-        partType306: 'are largely comprised of hyaline cartilage, and only contain a small region of evaluable marrow. ',
+        partType306: 'are largely comprised of hyaline cartilage, and only contain a small region marrow that can be morphologically evaluated. ',
 // MOSTLY CORTEX BX
-        partType307: 'are largely comprised of cortical bone, and only contain a small region of evaluable marrow. ',
+        partType307: 'are largely comprised of cortical bone, and only contain a small region marrow that can be morphologically evaluated. ',
 // NORMOCELLULAR BX
-        partType308: 'The marrow spaces are normocellular at ###',
+        partType308: 'The marrow spaces are normocellular for age at ###',
 // HYPERCELLULAR BX
-        partType309: 'The marrow spaces are hypercellular at ###',
+        partType309: 'The marrow spaces are hypercellular for age at ###',
 // HYPOCELLULAR BX
-        partType310: 'The marrow spaces are hypocellular at ###',
+        partType310: 'The marrow spaces are hypocellular for age at ###',
 // VARIABLY CELLULAR BX
         partType311: 'The marrow spaces are variably cellular, ranging from ',
 // APARTICULATE CLOT HEADER
@@ -128,9 +128,9 @@ $(window).on('load', function(){
         partType503:  '\n\nThe #SIDE# biopsy is suboptimal for morphologic evaluation due to predominant sampling of cartilage. Where evaluable, the marrow spaces are ',
         partType504:  '\n\nThe #SIDE# biopsy is suboptimal for morphologic evaluation due to predominant sampling of cortical bone. Where evaluable, the marrow spaces are ',
 // cellularity
-        partType510:  'normocellular at ',
-        partType511:  'hypercellular at ',
-        partType512:  'hypocellular at ',
+        partType510:  'normocellular for age at ',
+        partType511:  'hypercellular for age at ',
+        partType512:  'hypocellular for age at ',
         partType513:  'markedly hypocellular at <5% and mostly consist of stromal cells and adipose. ',
 // cellularity number
         partType518:  '%. ',
