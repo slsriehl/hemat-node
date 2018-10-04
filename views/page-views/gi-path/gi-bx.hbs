@@ -152,8 +152,9 @@
                                              <div class="card">
                                                      <div class="card-header">
                                                              Micros
-                                                             <i class="fa fa-lightbulb-o ml-2" data-toggle="tooltip" title="Left Shift + mouseclick to group multiple parts in micro" aria-hidden="true"></i>
-
+                                                             <i class="fa fa-lightbulb-o ml-2" data-toggle="tooltip"
+                                                                title="To group multiple sites with the same diagnosis, hold shift + mouseclick to select specific parts for the micro"
+                                                                aria-hidden="true"></i>
                                                      </div>
                                                      <div class="card-block chkboxes">
                                                              <div style="font-size: 0.66em;" class="content form-check" id="column3b">
@@ -239,6 +240,10 @@
                                              <div class="card">
                                                      <div class="card-header">
                                                              Micros
+                                                             <i class="fa fa-lightbulb-o ml-2" data-toggle="tooltip"
+                                                                title="To group multiple sites with the same diagnosis, hold shift + mouseclick to select specific parts for the micro"
+                                                                aria-hidden="true"></i>
+
                                                      </div>
                                                      <div class="card-block chkboxes">
                                                              <div style="font-size: 0.66em;" class="content form-check" id="column3c">
@@ -303,6 +308,10 @@
                                              <div class="card">
                                                      <div class="card-header">
                                                              Final Diagnoses
+                                                             <i class="fa fa-asterisk ml-2" data-toggle="tooltip"
+                                                                title="(*) press shift + mouseclick to include eosinophil count in final diagnosis here"
+                                                                aria-hidden="true"></i>
+
                                                      </div>
                                                      <div class="card-block chkboxes">
                                                              <div style="font-size: 0.66em;" class="content form-check" id="column2d">
@@ -312,12 +321,12 @@
                                                                      <label id="_dxLine211"><input id="dxLine211" name="dxLine" type="checkbox">GEJ W/ IM </label><br>
                                                                      <label id="_dxLine209"><input id="dxLine209" name="dxLine" type="checkbox">MILD REACTIVE ESOPH, NO IEE </label><br>
                                                                      <label id="_dxLine206"><input id="dxLine206" name="dxLine" type="checkbox">REACTIVE ESOPH, NO IEE </label><br>
-                                                                     <br>
                                                                      <label id="_dxLine205"><input id="dxLine205" name="dxLine" type="checkbox">REACTIVE EOSPH + LYMPHS </label><br>
-                                                                     <label id="_dxLine210"><input id="dxLine210" name="dxLine" type="checkbox">MILD REACTIVE + FEW EOS (GERD) </label><br>
-                                                                     <label id="_dxLine201"><input id="dxLine201" name="dxLine" type="checkbox">REACTIVE + EOS (GERD) </label><br>
                                                                      <br>
-                                                                     <label id="_dxLine202"><input id="dxLine202" name="dxLine" type="checkbox">EOSINOPHILIC ESOPHAGITIS </label><br>
+                                                                     <label id="_dxLine210" class="eosnum"><input id="dxLine210" name="dxLine" type="checkbox" class="eos">MILD REACTIVE + FEW EOS (GERD) <i class="fa fa-asterisk ml-2" style="color: red;"></i></label><br>
+                                                                     <label id="_dxLine201" class="eosnum"><input id="dxLine201" name="dxLine" type="checkbox" class="eos">REACTIVE + EOS (GERD) <i class="fa fa-asterisk ml-2" style="color: red;"></i></label><br>
+                                                                     <label id="_dxLine202" class="eosnum"><input id="dxLine202" name="dxLine" type="checkbox" class="eos">EOSINOPHILIC ESOPHAGITIS <i class="fa fa-asterisk ml-2" style="color: red;"></i></label><br>
+                                                                     <br>
                                                                      <label id="_dxLine203"><input id="dxLine203" name="dxLine" type="checkbox">ACTIVE ESOPHAGITIS, -FUNGUS </label><br>
                                                                      <label id="_dxLine208"><input id="dxLine208" name="dxLine" type="checkbox">ACTIVE ESOPHAGITIS, + FUNGUS </label><br>
                                                                      <label id="_dxLine204"><input id="dxLine204" name="dxLine" type="checkbox">FUNGAL ESOPHAGITIS, NO NEUTS </label><br>
@@ -328,7 +337,9 @@
                                              <div class="card">
                                                      <div class="card-header">
                                                                      Micros
-                                                             <i class="fa fa-lightbulb-o ml-2" data-toggle="tooltip" title="For 'multi site options', shift + mouseclick to select specific parts for the micro" aria-hidden="true"></i>
+                                                             <i class="fa fa-lightbulb-o ml-2" data-toggle="tooltip"
+                                                                title="To group multiple sites with the same diagnosis, hold shift + mouseclick to select specific parts for the micro"
+                                                                aria-hidden="true"></i>
                                                      </div>
                                                      <div class="card-block chkboxes">
                                                              <div style="font-size: 0.66em;" class="content form-check" id="column3d">
@@ -340,11 +351,11 @@
                                                                      <label class="form-check-label" id="_mxLine209"><input class="form-check-input" id="mxLine209" name="mxLine" type="checkbox">RE, 1 SITE</label> <br>
                                                                      <label id="_mxLine210" class="form-check-label eso_multi"><input class="form-check-input" id="mxLine210" name="mxLine" type="checkbox">RE, </label><span class="text-danger"> MULTI SITES</span><br>
                                                                      <label class="form-check-label" id="_mxLine208"><input class="form-check-input" id="mxLine208" name="mxLine" type="checkbox">RE WITH LYMPHS, 1 SITE</label> <br>
-                                                                     <label class="form-check-label" id="_mxLine214"><input class="form-check-input" id="mxLine214" name="mxLine" type="checkbox">MILD RE+EOS, 1 SITE</label> <br>
-                                                                     <label class="form-check-label" id="_mxLine202"><input class="form-check-input" id="mxLine202" name="mxLine" type="checkbox">RE+EOS, 1 SITE </label> <br>
-                                                                     <label id="_mxLine203" class="form-check-label eso_multi"><input class="form-check-input" id="mxLine203" name="mxLine" type="checkbox">RE+EOS, </label><span class="text-danger"> MULTI SITES</span><br>
-                                                                     <label class="form-check-label" id="_mxLine212"><input class="form-check-input" id="mxLine212" name="mxLine" type="checkbox">EE, 1 SITE</label> <br>
-                                                                     <label id="_mxLine204" class="form-check-label eso_multi"><input class="form-check-input" id="mxLine204" name="mxLine" type="checkbox">EE, </label><span class="text-danger"> MULTI SITES</span><br>
+                                                                     <label class="form-check-label" id="_mxLine214"><input class="form-check-input eosnum" id="mxLine214" name="mxLine" type="checkbox">MILD RE+EOS, 1 SITE</label> <br>
+                                                                     <label class="form-check-label" id="_mxLine202"><input class="form-check-input eosnum" id="mxLine202" name="mxLine" type="checkbox">RE+EOS, 1 SITE </label> <br>
+                                                                     <label id="_mxLine203" class="form-check-label eso_multi"><input class="form-check-input eosnum" id="mxLine203" name="mxLine" type="checkbox">RE+EOS, </label><span class="text-danger"> MULTI SITES</span><br>
+                                                                     <label class="form-check-label" id="_mxLine212"><input class="form-check-input eosnum" id="mxLine212" name="mxLine" type="checkbox">EE, 1 SITE</label> <br>
+                                                                     <label id="_mxLine204" class="form-check-label eso_multi"><input class="form-check-input eosnum" id="mxLine204" name="mxLine" type="checkbox">EE, </label><span class="text-danger"> MULTI SITES</span><br>
                                                                      <label class="form-check-label" id="_mxLine205"><input class="form-check-input" id="mxLine205" name="mxLine" type="checkbox">ACTIVE,NO CANDIDA</label><br>
                                                                      <label class="form-check-label" id="_mxLine206"><input class="form-check-input" id="mxLine206" name="mxLine" type="checkbox">ACTIVE W CANDIDA</label><br>
                                                                      <label class="form-check-label" id="_mxLine207"><input class="form-check-input" id="mxLine207" name="mxLine" type="checkbox">CANDIDA ONLY</label><br>
@@ -381,6 +392,7 @@
                                                                      <label class="form-check-label" id="_partType251"><input class="form-check-input" id="partType251" name="partType" type="checkbox"> ANASTOMOSIS SITE </label><br>
                                                                      <label class="form-check-label" id="_partType254"><input class="form-check-input" id="partType254" name="partType" type="checkbox"> POUCH </label><br>
                                                                      <label class="form-check-label" id="_partType255"><input class="form-check-input" id="partType255" name="partType" type="checkbox"> ILEO-CECAL VALVE </label><br>
+                                                                     <label class="form-check-label" id="_partType256"><input class="form-check-input" id="partType256" name="partType" type="checkbox"> SMALL INTESTINE (UNSPECIFIED) </label><br>
                                                              </div>
                                                      </div>
                                              </div>
@@ -522,7 +534,9 @@
                                                                      <option>rectal polyp</option>
                                                                      <option>colon lesion</option>
                                                              </select>
-                                                             <a href="#" data-toggle="tooltip" title="For 'multi site options', shift + mouseclick to select specific parts for the micro"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></a>
+                                                             <i class="fa fa-lightbulb-o ml-2" data-toggle="tooltip"
+                                                                title="To group multiple sites with the same diagnosis, hold shift + mouseclick to select specific parts for the micro"
+                                                                aria-hidden="true"></i>
                                                      </div>
                                                      <div class="card-block chkboxes">
                                                              <div style="font-size: 0.66em;" class="content form-check" id="column3f">

@@ -1,6 +1,5 @@
 $(window).on('load', function(){
 
-
 // load DOM scripts for auto hidden modal fields
 
     $(".duo_list").dialog({width: "450px", autoOpen: false});
@@ -152,14 +151,13 @@ $(window).on('load', function(){
                             }
                         }
 
-                        // reset checkmark status and clost dialog
+                        // reset checkmark status and close dialog
                         $('#dxLine111').prop('disabled', false);
                         setTimeout(function() {
                             $("#dxLine111").trigger('click')
                         }, 100);// complete the check
                         $(".tuft_list").dialog('close');
                     }
-
                 }
             });
         }
@@ -167,26 +165,60 @@ $(window).on('load', function(){
 
 // ******************** replace duodenum location marker for single site micros ***********************//
     var duoArr = []; // part type array
-    var duoSel = []; // selected parts for multiple
+    var duoSel = []; // selected parts from multiple dialog
 
     $('#_partType105').on('mousedown', function(){
         if (!$('#partType105').is(':checked')){
-            var duodist = prompt('Enter description');
-            partTypes.partType105 = partTypes.partType105.replace(/,(.*)(?=,)/, ", "+duodist.toUpperCase());
-            $('.duo_list').append('<div class="form-inline"><input type="checkbox" class="form-control form-control-sm mr-2 source" value="' + duodist + '">' + duodist + '</div>');
-            if($.inArray(duodist, duoArr) > -1){ // check to see if item already present in array, if so remove for unchecked box
-                duoArr.splice(duodist, 1);
-                console.log('already in duo array, removed');
-            } else { // item not present so add it to the array of part types
-                duoArr.push("duodenum "+duodist);
-                console.log('new to duo array, added');
-            }
-            var last_duo = duoArr[duoArr.length - 1];
-            for (var i=100; i<113; i++){
-                mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/'(.*)'/, "'"+last_duo+"'");
-            }
-            $('#partType105').trigger('click').off().prop( "checked", false ); // resume click event .off() prevents double firing in firefox
+            // uncheck micros and final boxes on new part
+            $('input:checkbox[name*="dxLine"]').prop( "checked", false );
+            $('input:checkbox[name*="mxLine"]').prop( "checked", false );
+            $("label").removeClass("highlight");
 
+            var duodist = prompt('Enter description');
+
+                    // Update part designation with prompt value
+                    partTypes.partType105 = partTypes.partType105.replace(/,(.*)(?=,)/, ", "+duodist.toUpperCase());
+
+                    // add prompt value to multi list options
+                    $('.duo_list')
+                        .append('<div class="form-inline"><input type="checkbox" class="form-control form-control-sm mr-2 source" value="' + duodist + '">' + duodist + '</div>');
+
+                    // check to see if item already present in array, if so remove for unchecked box
+                    if($.inArray(duodist, duoArr) > -1){
+                        duoArr.splice(duodist, 1);
+                        console.log('already in duo array, removed');
+                    }
+                    // item not present so add it to the array of part types
+                    else {
+                        duoArr.push("duodenum "+duodist);
+                        console.log('new to duo array, added');
+                    }
+                    // get most recently added part from the array, and replace json values with it for single site micros
+                    var last_duo = duoArr[duoArr.length - 1];
+                    for (var i=100; i<113; i++){
+                        mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/'(.*)'/, "'"+last_duo+"'");
+                    }
+
+                    console.log("1. click before timeout");
+                    $("#partType105").trigger("click");
+
+                    // Janky work-around for firefox, which fires event twice after prompt is closed
+                    // disable checkbox to stop FF from firing event again
+                    console.log("2. disable before timeout");
+                    $('#partType105').prop("disabled", true);
+
+
+                    // reset click event
+                    setTimeout(function() {
+                        $("#partType105").prop("checked", false);
+                        $('#partType105').prop("disabled", false);
+
+                        console.log("3. timeout unchecked");
+                    }, 100);
+
+
+        } else {
+            console.log("part105 is unchecked");
         }
     });
 
@@ -198,7 +230,6 @@ $(window).on('load', function(){
             var duo_list_markup = $('<div class="form-inline"><input type="checkbox" class="form-control form-control-sm mr-2 source" value="' + duo_part + '">' + duo_part + '</div>');
             if($.inArray(duo_part, duoArr) > -1){ // check to see if item already present in array, if so remove for unchecked box
                 duoArr.splice(duo_part, 1);
-                //  $('.duo_list').remove(duo_list_markup);
                 console.log('already in duo array, removed');
             } else { // item not present so add it to the array of part types
                 duoArr.push(duo_part);
@@ -210,22 +241,13 @@ $(window).on('load', function(){
             var last_duo = duoArr[duoArr.length - 1];
             console.log('Last duo: '+last_duo);
             console.log('duoArr: '+duoArr+duoArr.length);
-            if (duoArr.length > 2) {
-                duo_sent = "'" + duoArr.slice(0, duoArr.length - 1).join("', '") + "' and '" + duoArr.slice(-1) + "'";
-            } else if (duoArr.length <1) {
-                duo_sent = '';
-            } else {
-                duo_sent = "'" + duoArr.join("' and '")+ "'";
-            }
-
             for (var i=100; i<113; i++){
                 mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/the (.*?) show/, 'the \''+last_duo+'\' show');
             }
-
-            console.log('formatted multi duo text:' + duo_sent);
         }
     });
 
+    // Duodenum multi-part shift-click
     $("#column3b>label").on('mousedown', function(e) {
         e.preventDefault();
         if (e.shiftKey) {
@@ -252,6 +274,8 @@ $(window).on('load', function(){
                                     duoSel.join(', ');
                                 }
                             });
+
+                            // Correct grammar for multiple items taken from dynamic modal list
                             if (duoSel.length > 2) {
                                 duo_sent = "'" + duoSel.slice(0, duoSel.length - 1).join("', '") + "' and '" + duoSel.slice(-1) + "'";
                             } else if (duoSel.length < 1) {
@@ -260,10 +284,11 @@ $(window).on('load', function(){
                             } else {
                                 duo_sent = "'" + duoSel.join("' and '") + "'";
                             }
-
+                            // json text replaced with chosen items
                             for (var i = 100; i < 113; i++) {
-                                mxLines['mxLine' + i] = mxLines['mxLine' + i].replace(/'.*'/, duo_sent + ' biopsies each '); // replace site for multi site micros
+                                mxLines['mxLine' + i] = mxLines['mxLine' + i].replace(/'.*'/, duo_sent + ' biopsies each'); // replace site for multi site micros
                             }
+
                             console.log('formatted multi duo text:' + duo_sent);
 
                             $("#" + duoid).prop('disabled', false);
@@ -293,9 +318,15 @@ $(window).on('load', function(){
 
     $('#_partType156').on('mousedown', function(){
         if (!$('#partType156').is(':checked')){
+            // uncheck micros and final boxes on new part
+            $('input:checkbox[name*="dxLine"]').prop( "checked", false );
+            $('input:checkbox[name*="mxLine"]').prop( "checked", false );
+            $("label").removeClass("highlight");
+            
             var stodist = prompt('Enter location');
             partTypes.partType156 = partTypes.partType156.replace(/,(.*)(?=,)/, ", "+stodist.toUpperCase());
             $('.sto_list').append('<div class="form-inline"><input type="checkbox" class="form-control form-control-sm mr-2 source" value="' + stodist + '">sto: "' + stodist + '"</div><br>');
+            
             if($.inArray(stodist, stoArr) > -1){ // check to see if item already present in array, if so remove for unchecked box
                 stoArr.splice(stodist, 1);
                 console.log('already in sto array, removed');
@@ -307,17 +338,139 @@ $(window).on('load', function(){
             for (var i=150; i<169; i++){
                 mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/'(.*)'/, "'"+last_sto+"'");
             }
-            $('#partType156').trigger('click').off().prop( "checked", false ); // resume click event
+
+            console.log("1. click before timeout");
+            $("#partType156").trigger("click");
+
+            // Janky work-around for firefox, which fires event twice after prompt is closed
+            // disable checkbox to stop FF from firing event again
+            console.log("2. disable before timeout");
+            $('#partType156').prop("disabled", true);
+
+
+            // reset click event
+            setTimeout(function() {
+                $("#partType156").prop("checked", false);
+                $('#partType156').prop("disabled", false);
+
+                console.log("3. timeout unchecked");
+            }, 100);
 
         }
     });
 
+    // Shift-click multisite pop-up with modal template
+    // name arrays
+    var stoArr = []; // part type array
+    var stoSel = []; // selected parts for multiple
+
+    // collect part data and create multi-site markup
+    $('.stopart').on('click', function(e) {
+        // Store part data if user clicked part other than the wildcard part type
+        if ($(this).attr('id') != 'partType156') {
+            var sto_part = $(this).val();
+            var sto_sent;
+            var sto_list_markup = $('<div class="form-inline"><input type="checkbox" class="form-control form-control-sm mr-2 source" value="' + sto_part + '">' + sto_part + '</div>');
+            if($.inArray(sto_part, stoArr) > -1){ // check to see if item already present in array, if so remove for unchecked box
+                stoArr.splice(sto_part, 1);
+                console.log('Item is already in array, removed');
+            } else { // item not present so add it to the array of part types
+                stoArr.push(sto_part);
+                $('.sto_list').append(sto_list_markup);
+                console.log('New item for array, added');
+            }
+
+            // update syntax for single biopsy
+            // Get most recently chosen part
+            var last_sto = stoArr[stoArr.length - 1];
+            console.log('Last item: '+last_sto);
+            console.log('stoArr: '+stoArr+stoArr.length);
+
+            // !!!! adjust the variable iteration #s below  and adjust the replace syntax
+            for (var i=150; i<169; i++){
+                mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/the (.*?) show/, 'the \''+last_sto+'\' show');
+            }
+
+            console.log('formatted multi array text:' + sto_sent);
+        }
+    });
+
+    // Find label selector or use generic $(?#columnID>label").on("mousedown"...
+    $("#column3c>label").on('mousedown', function(e) {
+        // prevent normal click propagation
+        e.preventDefault();
+        // 1. if user clicked shift key...
+        if (e.shiftKey) {
+            // 2. Find nearest input to the label that was clicked
+            var que = $(this).find('input').attr('id');
+            console.log(que);
+            // 3. Disable this checkbox to prevent an event trigger
+            $("#" + que).prop('checked', false).prop("disabled", true);
+            // 4. If that checkbox is not checked, run the script
+            if (!$("#" + que).is(":checked")) {
+                // 5. Pick your variable for the selected chkbox id
+                var stoId = $("#" + que).attr("id");
+                // 6. Pick a variable for for the text that was sent to your array
+                var sto_sent;
+                // 7. Open your empty dialog with class ___:: should be   <div class="sto_list"></div><!-- Hidden multi-list-->
+                $('.sto_list').dialog('open').dialog({
+                    // 8. Give a proper title
+                    title: "Select all part-types to include",
+                    modal: 'true',
+                    buttons: {
+                        "OK": function () {
+                            // Find each part label that was checked in the multisite modal, which carries a class .source
+                            $(".source:checked").each(function () {
+                                var sel = $(this).val();
+                                // Change the name of the array to push and join
+                                if ($.inArray(sel, stoSel) == -1) {
+                                    //Value not found in the array.  Add to the end of the array with push();
+                                    stoSel.push(sel);
+                                    stoSel.join(', ');
+                                }
+                            });
+
+                            // Format multiple selections for proper grammar
+                            if (stoSel.length > 2) {
+                                sto_sent = "'" + stoSel.slice(0, stoSel.length - 1).join("', '") + "' and '" + stoSel.slice(-1) + "'";
+                            } else if (stoSel.length < 1) {
+                                sto_sent = '';
+                                return;
+                            } else {
+                                sto_sent = "'" + stoSel.join("' and '") + "'";
+                            }
+
+                            // !!! Replace start and end iteration #s for the json text replacement
+                            for (var i=150; i<169; i++) {
+                                mxLines['mxLine' + i] = mxLines['mxLine' + i].replace(/'.*'/, sto_sent + ' gastric biopsies each'); // replace site for multi site micros
+                            }
+                            console.log('formatted multi array text:' + sto_sent);
+
+                            $("#" + stoId).prop('disabled', false);
+                            console.log('register un-disable');
+                            setTimeout(function() {$("#" + stoId).trigger('click')}, 100);// complete the check
+                            console.log('register dynamic click on: ' + stoId);
+
+                            $(".source").prop('checked', false) // reset duo list checks
+                            console.log('Sent Array after function: ' + stoSel);
+                            stoSel.length = 0; // reset multi array
+                            console.log('stoSel after erase: ' + stoSel);
+                            $(".sto_list").dialog('close');
+
+                        }
+                    }
+                });
+            }
+        }
+    }); // end brace for shift+click
+
+    /*
     $('.stopart').on('click', function(e) {
         //e.preventDefault();
         if ($(this).attr('id') != 'partType156') {
             var st_part = $(this).val();
             var sto_sent;
-            $('.sto_list').append('<div class="form-inline"><input type="checkbox" class="form-control form-control-sm mr-2 source" value="' + st_part + '">sto: ' + st_part + '</div>');
+            $('.sto_list').append('<div class="form-inline"><input type="checkbox" class="form-control form-control-sm mr-2 source" value="' + st_part + '">Sto: ' + st_part + '</div>');
             if($.inArray(st_part, stoArr) > -1){ // check to see if item already present in array, if so remove for unchecked box
                 stoArr.splice(st_part, 1);
                 console.log('already in sto array, removed');
@@ -350,6 +503,8 @@ $(window).on('load', function(){
             console.log('formatted multi sto text:' + sto_sent);
         }
     });
+    */
+
 
     //*********** Focally enchanced gastritis modal *****************//
     $('#_mxLine162').on('mousedown', function(e){
@@ -401,7 +556,13 @@ $(window).on('load', function(){
 
     $('#_partType204').on('mousedown', function(){
         if (!$('#partType204').is(':checked')){
+            // uncheck micros and final boxes on new part
+            $('input:checkbox[name*="dxLine"]').prop( "checked", false );
+            $('input:checkbox[name*="mxLine"]').prop( "checked", false );
+            $("label").removeClass("highlight");
+
             var esodist = prompt('Enter location');
+
             partTypes.partType204 = partTypes.partType204.replace(/,(.*)(?=,)/, ", "+esodist+" CM");
             $('.eso_list').append('<div class="form-inline"><input type="checkbox" class="form-control form-control-sm mr-2 source" value="' + esodist + 'cm">ESO @' + esodist + '</div>');
             if($.inArray(esodist+"cm", esoArr) > -1){ // check to see if item already present in array, if so remove for unchecked box
@@ -416,12 +577,23 @@ $(window).on('load', function(){
                 mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/the .* biopsy/, "the '"+last_eso+" esophagus' biopsy");
             }
 
-             $("#partType204").trigger('click');
-            $("#partType204").off().prop("checked", false);
-            //$("#partType204").trigger('click');// resume click event
+            // Resume checkbox click event
+            // trigger click
+            console.log("1. click before timeout");
+            $("#partType204").trigger("click");
 
-           // $('#partType204').prop( "checked", false );
+            // Janky work-around for firefox, which fires event twice after prompt is closed
+            // disable checkbox to stop FF from firing event again
+            console.log("2. disable before timeout");
+            $('#partType204').prop("disabled", true);
 
+            // reset click event with timeout to uncheck and enable to ready state
+            setTimeout(function() {
+                $("#partType204").prop("checked", false);
+                $('#partType204').prop("disabled", false);
+
+                console.log("3. timeout unchecked");
+            }, 100);
         }
         console.log('finish mousedown');
 
@@ -521,11 +693,54 @@ $(window).on('load', function(){
         } // end brace for no shift click
     });
 
-    $('#_dxLine205').on('click', function(e){// reactive lymphs, ask about eos
+    $('#_dxLine205').on('click', function(e){ // reactive lymphs, ask about eos
         if (!$('#dxLine205').is(':checked')){
             if(confirm("Any eos as well?")) {
                 dxLines.dxLine205 = dxLines.dxLine205.replace(/lymphocytes/, 'lymphocytes and few eosinophils ');
                 mxLines.mxLine208 = mxLines.mxLine208.replace(/surface. /, 'surface. In addition, a mild increase in intraepithelial eosinophils is also present, and is enumerated at up to 5 in a representative field. ');
+            }
+        }
+    });
+
+    // -----------------------------------
+    // Pause checkbox event to get prompt and run script
+    // -----------------------------------
+
+    // listen for checkbox label mousedown
+    $('.eosnum').on('mousedown', function(e){
+        e.preventDefault();
+        if (e.shiftKey){
+
+            var que = $(this).find('input').attr('id');
+
+            $("#"+que).prop('checked', false).prop("disabled", true);
+
+            if (!$("#"+que).is(":checked")){
+
+                // get checkbox id
+                var esoid = $("#"+que).attr("id");
+
+                // change prompt as needed below
+                var prompt_var = prompt('Enter your eos per hpf');
+
+                for (var i=200; i<217; i++){
+                    mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/(?!number up to )\d\d/, prompt_var); // replace site for multi site micros
+                }
+
+                for (var i=201; i<211; i++){
+                    dxLines['dxLine'+i] = dxLines['dxLine'+i]
+                                            .replace(/(?:eosinophils)(.*)\n?/, "eosinophils (up to "+prompt_var+" eosinophils per high powered field) \n")
+                                            .replace(/(?:Eosinophilic esophagitis)(.*)\n?/, "Eosinophilic esophagitis (up to "+prompt_var+" eosinophils per high powered field) \n"); // replace site for multi site micros
+                }
+
+
+                // Resume checkbox click event
+                $("#"+esoid).prop('disabled', false);
+                console.log('register un-disable');
+                setTimeout(function() {
+                    $("#"+esoid).trigger('click')
+                }, 100);// complete the check
+
             }
         }
     });
@@ -539,9 +754,15 @@ $(window).on('load', function(){
 
     $('#_partType310').on('mousedown', function(){
         if (!$('#partType310').is(':checked')){
+            // uncheck micros and final boxes on new part
+            $('input:checkbox[name*="dxLine"]').prop( "checked", false );
+            $('input:checkbox[name*="mxLine"]').prop( "checked", false );
+            $("label").removeClass("highlight");
+
             var coldist = prompt('Enter location');
             partTypes.partType310 = partTypes.partType310.replace(/,(.*?)(?=,)/, ", "+coldist+" CM");
             $('.col_list').append('<div class="form-inline"><input type="checkbox" class="form-control form-control-sm mr-2 source" value="' + coldist + 'cm">COL @' + coldist + '</div>');
+
             if($.inArray(coldist+"cm", colArr) > -1){ // check to see if item already present in array, if so remove for unchecked box
                 colArr.splice(coldist+"cm", 1);
                 console.log('already in sto array, removed');
@@ -549,12 +770,29 @@ $(window).on('load', function(){
                 colArr.push(coldist+"cm");
                 console.log('new to sto array, added');
             }
+
             var last_col = colArr[colArr.length - 1];
             for (var i=300; i<336; i++){
                 mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/'(.*?)'/, "'"+last_col+" colon'");
             }
-            $('#partType310').trigger('click').off().prop( "checked", false ); // resume click event
 
+            // Resume checkbox click event
+            // trigger click
+            console.log("1. click before timeout");
+            $("#partType310").trigger("click");
+
+            // Janky work-around for firefox, which fires event twice after prompt is closed
+            // disable checkbox to stop FF from firing event again
+            console.log("2. disable before timeout");
+            $('#partType310').prop("disabled", true);
+
+            // reset click event with timeout to uncheck and enable to ready state
+            setTimeout(function() {
+                $("#partType310").prop("checked", false);
+                $('#partType310').prop("disabled", false);
+
+                console.log("3. timeout unchecked");
+            }, 100);
         }
     });
 
@@ -578,7 +816,6 @@ $(window).on('load', function(){
             for (var i=300; i<336; i++){
                 if (last_col.indexOf("lesion") >= 0){
                     mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/'(.*?)'/, "'"+last_col+"'").replace(/cm/,'');
-
                 }
                 else {
                     mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/'(.*?)'/, "'"+last_col+" colon'").replace(/cm/,'');
@@ -769,7 +1006,6 @@ $(window).on('load', function(){
 
 // fill final diagnosis textbox
     function print_final() {
-        console.log("print final");
         if (part_choice !== null) {
             final_text += partTypes[part_choice] + '';
             part_choice = null;
@@ -777,16 +1013,21 @@ $(window).on('load', function(){
             $('input:checkbox[name*="mxLine"]').prop( "checked", false );
             $("label").removeClass("highlight");
             $('#outPut-3').val(final_text);
+            console.log("print final");
+
         }
         else if (diag_choice !== null) {
             final_text += dxLines[diag_choice] + '';
             diag_choice = null;
             $('#outPut-3').val(final_text);
+            console.log("print diagnosis");
+
         }
     }
 
 // fill micros textbox
     function print_micro() {
+        console.log("print micro");
         if (micro_choice !== null) {
             micro_text += mxLines[micro_choice] + '\n';
             micro_choice = null;
@@ -796,6 +1037,7 @@ $(window).on('load', function(){
 
 // fill comment textbox
     function print_comm() {
+        console.log("print comment");
         if (comm_choice !== null) {
             comm_text += comLines[comm_choice] + '';
             comm_choice = null;
@@ -816,7 +1058,7 @@ $(window).on('load', function(){
 
 // Micros: add new selection to list, unless unchecked
     $('input:checkbox').on('change', function () {
-        console.log("input:chk change");
+        console.log("input:chkbox change");
         if ($(this).attr('id').indexOf('partType') > -1){
             if ($(this).is(':checked')) {
                 part_choice = $(this).attr('id');
@@ -931,7 +1173,7 @@ $(window).on('load', function(){
             } else if (labels[j].indexOf('LOWER') > -1) {
                 labels[j] = "ESOPHAGUS, DISTAL, BIOPSY";
             } else if (labels[j].indexOf('MIDDLE') > -1) {
-                labels[j] = "ESOPHAGUS, "+labels[j].replace(/ ESOPHAGUS/, '') + ", BIOPSY";
+                labels[j] = "ESOPHAGUS, MID, BIOPSY";
             } else if (labels[j].indexOf('MID') > -1) {
                 labels[j] = "ESOPHAGUS, MID, BIOPSY";
             } else if (labels[j].indexOf('GE ') > -1) {
