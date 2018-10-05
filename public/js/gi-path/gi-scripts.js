@@ -724,7 +724,7 @@ $(window).on('load', function(){
                 var prompt_var = prompt('Enter your eos per hpf');
 
                 for (var i=200; i<217; i++){
-                    mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/(?!number up to )\d\d/, prompt_var); // replace site for multi site micros
+                    mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/(?!number up to )\d+/, prompt_var); // replace site for multi site micros
                 }
 
                 for (var i=201; i<211; i++){
