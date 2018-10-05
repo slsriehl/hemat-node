@@ -193,9 +193,9 @@ $(window).on('load', function(){
         // CHRONIC GASTRITIS, NO HP
         mxLine153: "Sections from the 'stomach' biopsy show fragments of reactive gastric mucosa. The lamina propria shows increased cellularity comprised of lymphocytes, eosinophils and plasma cells. No neutrophilic infiltrates are seen. No Helicobacter-like organisms are seen. \n",
         // CHRONIC AND ACTIVE GASTRITIS, BUT NO HP
-        mxLine154: "Sections from the 'stomach' show fragments of gastric mucosa with increased lamina propria cellularity that is due to lymphocytes, plasma cells and neutrophils. The neutrophilic infiltrate extends into glands with reactive epithelial changes. No Helicobacter-like organisms are seen. \n",
+        mxLine154: "Sections from the 'stomach' biopsy show fragments of gastric mucosa with increased lamina propria cellularity that is due to lymphocytes, plasma cells and neutrophils. The neutrophilic infiltrate extends into glands with reactive epithelial changes. No Helicobacter-like organisms are seen. \n",
         // ACUTE GASTRITIS WITH POSITIVE HP
-        mxLine155: "Sections from the 'stomach' show fragments of gastric mucosa with increased lamina propria cellularity that is due to lymphocytes, plasma cells and neutrophils. The neutrophilic infiltrate extends into glands with associated reactive changes. Helicobacter-like organisms are seen on routine stains. \n",
+        mxLine155: "Sections from the 'stomach' biopsy show fragments of gastric mucosa with increased lamina propria cellularity that is due to lymphocytes, plasma cells and neutrophils. The neutrophilic infiltrate extends into glands with associated reactive changes. Helicobacter-like organisms are seen on routine stains. \n",
         // MILD CHRONIC GASTRITIS
         mxLine156: "Sections from the 'stomach' biopsy show fragments of mildly reactive gastric mucosa. The lamina propria shows a mild prominence of eosinophils along the base of the pits. No neutrophilic infiltrates are seen. No Helicobacter-like organisms are seen. \n",
         // FUNDIC GLAND POLYP
@@ -203,9 +203,9 @@ $(window).on('load', function(){
         // CHRONIC GASTRITIS, YES HP
         mxLine158: "Sections from the 'stomach' biopsy show fragments of reactive gastric mucosa. The lamina propria shows increased cellularity comprised of lymphocytes and plasma cells, with some lymphoid aggregates. No neutrophilic infiltrates are seen. Helicobacter-like organisms are seen on routine stains. \n",
         // CHRONIC ACTIVE WITH GRANULOMAS, NO HP
-        mxLine159: "Sections from the 'stomach' show fragments of gastric mucosa with increased lamina propria cellularity that is due to lymphocytes, plasma cells and neutrophils. The neutrophilic infiltrate extends into glands with reactive epithelial changes. Rare well-formed, non-caseating granulomas are present. [##GMS/AFB stains show no fungal or mycobacterial organisms.] No Helicobacter-like organisms are seen. \n ",
+        mxLine159: "Sections from the 'stomach' biopsy show fragments of gastric mucosa with increased lamina propria cellularity that is due to lymphocytes, plasma cells and neutrophils. The neutrophilic infiltrate extends into glands with reactive epithelial changes. Rare well-formed, non-caseating granulomas are present. [##GMS/AFB stains show no fungal or mycobacterial organisms.] No Helicobacter-like organisms are seen. \n ",
         // CHRONIC ACTIVE WITH ULCER, NO HP
-        mxLine160: "Sections from the 'stomach' show fragments of gastric mucosa with increased lamina propria cellularity that is due to lymphocytes, plasma cells and neutrophils. The neutrophilic infiltrate extends into glands with reactive epithelial changes. The surface mucosa shows focal ulcer formation. No Helicobacter-like organisms are seen. \n ",
+        mxLine160: "Sections from the 'stomach' biopsy show fragments of gastric mucosa with increased lamina propria cellularity that is due to lymphocytes, plasma cells and neutrophils. The neutrophilic infiltrate extends into glands with reactive epithelial changes. The surface mucosa shows focal ulcer formation. No Helicobacter-like organisms are seen. \n ",
         //  CHRONIC GASTRITIS WITH INCREASED EOS
         mxLine161: "Sections from the 'stomach' biopsy show fragments of mildly reactive gastric mucosa. The lamina propria shows increased cellularity comprised of lymphocytes and plasma cells, as well as increased numbers of basal & interstitial eosinophils. No neutrophilic infiltrates are seen. No Helicobacter-like organisms are seen. \n",
         //  FOCALLY ENHANCED GASTRITIS
@@ -215,13 +215,15 @@ $(window).on('load', function(){
         //  INCREASED LP EOS
         mxLine164: "Sections from the 'stomach' biopsy show fragments of mildly reactive gastric mucosa. The lamina propria shows increased cellularity with a prominent eosinophilic infiltrate. Eosinophils extend into the crypt epithelium and along the base of the crypts. No neutrophilic infiltrates are seen. No Helicobacter-like organisms are seen. \n",
         // FOCAL ACUTE GASTRITIS, BUT NO HP
-        mxLine165: "Sections from the 'stomach' show fragments of gastric mucosa with increased lamina propria cellularity that is due to lymphocytes and plasma cells. There is a focal neutrophilic infiltrate extends into some glands with reactive epithelial changes. No Helicobacter-like organisms are seen. \n",
+        mxLine165: "Sections from the 'stomach' biopsy how fragments of gastric mucosa with increased lamina propria cellularity that is due to lymphocytes and plasma cells. There is a focal neutrophilic infiltrate extends into some glands with reactive epithelial changes. No Helicobacter-like organisms are seen. \n",
         // FOCAL ACUTE GASTRITIS WITH POSITIVE HP
-        mxLine166: "Sections from the 'stomach' show fragments of gastric mucosa with increased lamina propria cellularity that is due to lymphocytes and plasma cells. There is a focal neutrophilic infiltrate extends into some glands with reactive epithelial changes. Helicobacter-like organisms are seen on routine stains. \n",
+        mxLine166: "Sections from the 'stomach' biopsy show fragments of gastric mucosa with increased lamina propria cellularity that is due to lymphocytes and plasma cells. There is a focal neutrophilic infiltrate extends into some glands with reactive epithelial changes. Helicobacter-like organisms are seen on routine stains. \n",
         // ATROPHIC GASTRITIS
-        mxLine167: "Sections from the 'stomach' show fragments of gastric mucosa with increased lamina propria cellularity that is due to lymphocytes, plasma cells and neutrophils. The neutrophilic infiltrate extends into glands with reactive epithelial changes. There are multifocal areas with loss of oxyntic glands due to the inflammatory infiltrate. Focal pseudo-pyloric glandular metaplasia is evident. No Helicobacter-like organisms are seen.   \n",
+        mxLine167: "Sections from the 'stomach' biopsy show fragments of gastric mucosa with increased lamina propria cellularity that is due to lymphocytes, plasma cells and neutrophils. The neutrophilic infiltrate extends into glands with reactive epithelial changes. There are multifocal areas with loss of oxyntic glands due to the inflammatory infiltrate. Focal pseudo-pyloric glandular metaplasia is evident. No Helicobacter-like organisms are seen.   \n",
         // COLLAGENOUS GASTRITIS
         mxLine168: "Sections from the 'stomach' biopsy show fragments of unremarkable gastric mucosa and separate fragments of inflamed mucosa. The latter is characterized by reactive gastric epithelium. The lamina propria shows increased cellularity with a prominent eosinophilic and plasma cell infiltrate. Eosinophils extend into the crypt epithelium and along the base of the crypts. No neutrophilic infiltrates are seen. There is prominent background interstitial fibroplasia and thick subepithelial mature collagen. This is highlighted with a trichrome stain. No Helicobacter-like organisms are seen.   \n",
+        // IRON SALT GASTRITIS
+        mxLine169: "Sections from the 'stomach' biopsy show fragments of edematous gastric antral mucosa with increased lamina propria cellularity, comprised of lymphocytes and neutrophils. There is foveolar hyperplasia with surface foveolar mucin depletion and surface erosion. Iron-salt deposits are present along the areas of erosion. No Helicobacter-like organisms are seen.  \n",
 
         //ESOPHAGUS MICROS 200
         // NORMAL ESOPHAGUS, SINGLE
@@ -420,6 +422,15 @@ $(window).on('load', function(){
 
 // VILLOUS BLUNTING, NO IELS, TUFTING
         comLine124: 'The duodenum changes show villous blunting without concomitant increase in intraepithelial lymphocytes. The abnormal EpCAM/MOC31 staining indicates a primary disorder of enterocyte junctions, as is expected for tufting enteropathy. Tufting enteropathy (aka intestinal epithelial dysplasia) is an etiology for chronic infantile diarrhea, which can be associated with other extra-gastrointestinal manifestations, including keratitis. ',
+
+// GASTRIC FOVEOLAR METAPLASIS, INACTIVE
+        comLine125: 'The presence of gastric foveolar metaplasia in the duodenum is a non-specific finding, but one that is often indicative of prior mucosal injury and subsequent healing. This may represent peptic duodenitsi, healing ulcer or previously resolved active inflammation. ',
+
+// EROSIVE ESOPHAGITIS W/ NEUTS, NO  FUNGUS
+        comLine126: 'Erosive esophagitis, in the absence of demonstrable fungal infection, can be seen with severe acid reflux, chronic injury in the setting of a hiatal hernia or secondary to trauma from a foreign body. Clinical correlation is recommended. ',
+
+// IRON SALT GASTRITIS
+        comLine127: 'Excess iron-salt precipitates in the stomach may be seen with certain formulations of iron replacement therapy, or if dosing is too high. Consideration for an alternative formulation is recommended. ',
 
         comLine999: ' '
     };
