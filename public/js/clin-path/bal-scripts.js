@@ -63,11 +63,20 @@ $('#done').on('click', function(){
         var box_4 = $('#box4').val();
         var box_5 = $('#box5').val();
 
+        var stains_list = box_5.join();
+
+        var stains_num;
+            if ($.inArray('cell count', box_5) > -1){
+                stains_num = box_5.length - 1;
+            } else {
+                stains_num = box_5.length;
+            }
+
         if ($('.double').is(':checked')){
-            gross += "LUNG, "+box_1.join(', ').replace(/.*/, function(a) { return a.toUpperCase(); })+" BRONCHOALVEOLAR LAVAGE: Received without fixative are two specimen bottles, labeled with the patient's name and '"+box_1.join('\' and \'').replace(/.*/, function(a) { return a.toLowerCase(); })+"'. The specimens are combined to account for "+box_2+"ml of "+box_3.join(', ')+" "+box_4+" fluid. The following cytospin preparations are performed on the material: "+box_5.join(', ')+".\n\n";
+            gross += "LUNG, "+box_1.join(', ').replace(/.*/, function(a) { return a.toUpperCase(); })+" BRONCHOALVEOLAR LAVAGE: Received without fixative are two specimen bottles, labeled with the patient's name and '"+box_1.join('\' and \'').replace(/.*/, function(a) { return a.toLowerCase(); })+"'. The specimens are combined to account for "+box_2+"ml of "+box_3.join(', ')+" "+box_4+" fluid. The following cytospin preparations are performed on the material: "+stains_num+" total slides prepared ("+stains_list+").\n\n";
         }
         else{
-            gross += "LUNG, "+box_1.join(', ').replace(/lobe,/, 'and').replace(/.*/, function(a) { return a.toUpperCase(); })+", BRONCHOALVEOLAR LAVAGE: Received without fixative is a single specimen bottle, labeled with the patient's name and '"+box_1.join(', ').replace(/lobe,/, 'and').replace(/.*/, function(a) { return a.toLowerCase(); })+"'. The specimen accounts for "+box_2+"ml of "+box_3.join(', ')+" "+box_4+" fluid. The following cytospin preparations are performed on the material: "+box_5.join(', ')+".\n\n";
+            gross += "LUNG, "+box_1.join(', ').replace(/lobe,/, 'and').replace(/.*/, function(a) { return a.toUpperCase(); })+", BRONCHOALVEOLAR LAVAGE: Received without fixative is a single specimen bottle, labeled with the patient's name and '"+box_1.join(', ').replace(/lobe,/, 'and').replace(/.*/, function(a) { return a.toLowerCase(); })+"'. The specimen accounts for "+box_2+"ml of "+box_3.join(', ')+" "+box_4+" fluid. The following cytospin preparations are performed on the material: "+stains_num+" total slides prepared ("+stains_list+").\n\n";
         }
 
 // Microscopic description
