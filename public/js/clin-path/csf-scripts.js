@@ -211,8 +211,15 @@ $(window).on("load", function (){
             }); //comments
             console.log("comments: "+box_11);
 
+        var box_12 = $("#box12").val();  // number of cytospin slides evaluated
+        var box_13 = $("#box13").val();  // Types of slide preps
+
 // MICRO
-        report_m = 'The cytospin slides are '+box_5+box_6+'. ';
+        if ($("#box5").val() == 'mxLine155'){
+            report_m = 'The cytospin slides are '+box_5+'. ';
+        } else {
+            report_m = 'The cytospin slides are '+box_5+box_6+'. ';
+        }
 
         if(box_7 != "None"){
             report_m += box_7+'. ';
@@ -222,9 +229,9 @@ $(window).on("load", function (){
 
 //FINAL DIAGNOSIS
         if (type == 2){
-            report_f = 'CEREBROSPINAL FLUID, SHUNT ASPIRATE:\n- ' + box_10.join('\n- ');
+            report_f = 'CEREBROSPINAL FLUID, SHUNT ASPIRATE:\n- ' + box_10.join('\n- ')+'\n';
         }else {
-            report_f = 'CEREBROSPINAL FLUID, CYTOLOGY:\n- ' + box_10.join('\n- ');
+            report_f = 'CEREBROSPINAL FLUID, CYTOLOGY:\n- ' + box_10.join('\n- ')+'\n';
         }
         $('#outPut-2').val(report_f);
 
@@ -235,10 +242,10 @@ $(window).on("load", function (){
 
 // GROSS DESCRIPTION
         if (type == 2){
-            report_g = 'CEREBROSPINAL FLUID, SHUNT ASPIRATE: Received without fixative, labeled with the patient\'s name and medical record number, is ' + box_1 + ' ml of ' + box_2 + ' fluid for cytocentrifuge preparation (Diff-Quik stained slides).'
+            report_g = 'CEREBROSPINAL FLUID, SHUNT ASPIRATE: Received without fixative, labeled with the patient\'s name and medical record number, is ' + box_1 + ' ml of ' + box_2 + ' fluid for cytocentrifuge preparation.\n\nNumber of slides prepared: '+box_12+' \nStains performed: '+box_13.join(",")+' \n';
 
         }else {
-            report_g = 'CEREBROSPINAL FLUID, CYTOLOGY: Received without fixative, labeled with the patient\'s name and medical record number, is ' + box_1 + ' ml of ' + box_2 + ' fluid for cytocentrifuge preparation (Diff-Quik stained slides).'
+            report_g = 'CEREBROSPINAL FLUID, CYTOLOGY: Received without fixative, labeled with the patient\'s name and medical record number, is ' + box_1 + ' ml of ' + box_2 + ' fluid for cytocentrifuge preparation.\n\nNumber of slides prepared: '+box_12+' \nStains performed: '+box_13.join(",")+' \n';
         }
         $('#outPut-3').val(report_g);
 
