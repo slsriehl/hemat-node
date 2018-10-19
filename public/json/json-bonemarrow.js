@@ -698,44 +698,44 @@ mxLine124: 'There are occasional nucleated red blood cells. ',
         dxOut306: '\nBONE MARROW (BILATERAL):\n',
 
 // neg bx, normocellular
-        dxOut310: '- Normocellular marrow, #AA#%, with trilineage hematopoiesis \n- No increase in blasts or abnormal lymphoid infiltrates\n',
+        dxOut310: '- Normocellular marrow, #AA#%, with trilineage hematopoiesis \n- No morphologic increase in blasts or abnormal infiltrates\n',
 // neg bx, hypercellular
-        dxOut311: '- Hypercellular marrow, #AA#%, with trilineage hematopoiesis \n- No increase in blasts or abnormal lymphoid infiltrates\n',
+        dxOut311: '- Hypercellular marrow, #AA#%, with trilineage hematopoiesis \n- No morphologic increase in blasts or abnormal infiltrates\n',
 // neg bx, hypocellular
-        dxOut312: '- Hypocellular marrow, #AA#%, with trilineage hematopoiesis \n- No increase in blasts or abnormal lymphoid infiltrates\n',
+        dxOut312: '- Hypocellular marrow, #AA#%, with trilineage hematopoiesis \n- No morphologic increase in blasts or abnormal infiltrates\n',
 // neg bx, variably
-        dxOut313: '- Variably cellular marrow, #AA#%, with trilineage hematopoiesis \n- No increase in blasts or abnormal lymphoid infiltrates\n',
+        dxOut313: '- Variably cellular marrow, #AA#%, with trilineage hematopoiesis \n- No morphologic increase in blasts or abnormal infiltrates\n',
 // neg bx, myeloid hyperplasia
-        dxOut314: '- Hypercellular marrow, #AA#%, with myeloid hyperplasia\n- No increase in blasts or abnormal lymphoid infiltrates\n',
+        dxOut314: '- Hypercellular marrow, #AA#%, with myeloid hyperplasia\n- No morphologic increase in blasts or abnormal infiltrates\n',
 // neg bx, myeloid hyperplasia w/ left shift
-        dxOut315: '- Hypercellular marrow, #AA#%, with left-shifted myeloid hyperplasia\n- No increase in blasts or abnormal lymphoid infiltrates\n',
+        dxOut315: '- Hypercellular marrow, #AA#%, with left-shifted myeloid hyperplasia\n- No morphologic increase in blasts or abnormal infiltrates\n',
 // neg bx, erythroid hyperplasia w/ left shift
-        dxOut316: '- Hypercellular marrow, #AA#%, with left-shifted erythroid hyperplasia\n- No increase in blasts or abnormal lymphoid infiltrates\n',
+        dxOut316: '- Hypercellular marrow, #AA#%, with left-shifted erythroid hyperplasia\n- No morphologic increase in blasts or abnormal infiltrates\n',
 // neg bx, erythroid hyperplasia w/ dyspoiesis
-        dxOut317: '- Hypercellular marrow, #AA#%, with dyspoietic erythroid hyperplasia\n- No increase in blasts or abnormal lymphoid infiltrates\n',
+        dxOut317: '- Hypercellular marrow, #AA#%, with dyspoietic erythroid hyperplasia\n- No morphologic increase in blasts or abnormal infiltrates\n',
 // neg bx, hemodilute
-        dxOut318: '- Hemodilute marrow with minimal maturing hematopoietic precursors\n- No increase in blasts or abnormal lymphoid infiltrates\n',
+        dxOut318: '- Hemodilute marrow with minimal maturing hematopoietic precursors\n- No morphologic increase in blasts or abnormal infiltrates\n',
 // cmpd
-        dxOut319: '- Hypercellular marrow, #AA#%, with trilineage hematopoiesis, increased eosinophils and megakaryocyte hyperplasia\n- No increase in blasts or dysplastic changes (see comment) \n',
+        dxOut319: '- Hypercellular marrow, #AA#%, with trilineage hematopoiesis, increased eosinophils and megakaryocyte hyperplasia\n- No morphologic increase in blasts or dysplastic changes (see comment) \n',
 // empty marrow
-        dxOut320: '- Markedly hypocellular marrow, #AA#%, with minimal residual hematopoiesis\n- No increase in blasts or abnormal lymphoid infiltrates (see comment) \n',
+        dxOut320: '- Markedly hypocellular marrow, #AA#%, with minimal residual hematopoiesis\n- No morphologic increase in blasts or abnormal infiltrates (see comment) \n',
 // neg bx, erythroid hyperplasia only
-        dxOut321: '- Hypercellular marrow, #AA#%, with erythroid hyperplasia\n- No increase in blasts or abnormal lymphoid infiltrates\n',
+        dxOut321: '- Hypercellular marrow, #AA#%, with erythroid hyperplasia\n- No morphologic increase in blasts or abnormal infiltrates\n',
 
 // negative cl, cellular
-        dxOut330: '- Cellular marrow with trilineage hematopoiesis \n- No increase in blasts or abnormal lymphoid infiltrates (see comment) \n',
+        dxOut330: '- Cellular marrow with trilineage hematopoiesis \n- No morphologic increase in blasts or abnormal infiltrates (see comment) \n',
 // negative cl, paucicellular
-        dxOut331: '- Paucicellular marrow with trilineage hematopoiesis \n- No increase in blasts or abnormal lymphoid infiltrates (see comment) \n',
+        dxOut331: '- Paucicellular marrow with trilineage hematopoiesis \n- No morphologic increase in blasts or abnormal infiltrates (see comment) \n',
 // negative cl, &#8593; myeloids
-        dxOut332: '- Cellular marrow with myeloid hyperplasia \n- No increase in blasts or abnormal lymphoid infiltrates (see comment) \n',
+        dxOut332: '- Cellular marrow with myeloid hyperplasia \n- No morphologic increase in blasts or abnormal infiltrates (see comment) \n',
 // negative cl, &#8593; myeloids w/ left shift
-        dxOut333: '- Cellular marrow with left-shifted myeloid hyperplasia \n- No increase in blasts or abnormal lymphoid infiltrates (see comment) \n',
+        dxOut333: '- Cellular marrow with left-shifted myeloid hyperplasia \n- No morphologic increase in blasts or abnormal infiltrates (see comment) \n',
 // negative cl, &#8593; erythroids
-        dxOut334: '- Cellular marrow with erythroid hyperplasia \n- No increase in blasts or abnormal lymphoid infiltrates (see comment) \n',
+        dxOut334: '- Cellular marrow with erythroid hyperplasia \n- No morphologic increase in blasts or abnormal infiltrates (see comment) \n',
 // negative cl, &#8593; erythroids w dyspoiesis
-        dxOut335: '- Cellular marrow with dyspoietic erythroid hyperplasia \n- No increase in blasts or abnormal lymphoid infiltrates (see comment) \n',
+        dxOut335: '- Cellular marrow with dyspoietic erythroid hyperplasia \n- No morphologic increase in blasts or abnormal infiltrates (see comment) \n',
 // negative cl, aparticulate and hemodilute
-        dxOut336: '- Aparticulate marrow consisting of blood clot \n- No increase in blasts or abnormal lymphoid infiltrates (see comment) \n',
+        dxOut336: '- Aparticulate marrow consisting of blood clot \n- No morphologic increase in blasts or abnormal infiltrates (see comment) \n',
 
 // history of ball
         dxOut350: '; history of B-lymphoblastic leukemia (see comment)',

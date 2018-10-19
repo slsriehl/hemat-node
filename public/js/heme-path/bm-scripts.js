@@ -147,7 +147,7 @@ $("#CBCswitch").change(function() {
         var sel = $(this).val();
         var seltxt = dxOuts[sel];
         var final = $('#outPut-3').val();
-        final = final.replace(/ or abnormal lymphoid infiltrates/, seltxt).replace("(see comment)", '');
+        final = final.replace(/ or abnormal infiltrates/, seltxt).replace("(see comment)", '');
         $('#outPut-3').val(final);
 
         // if hx is BALL, add genetics modifiers
