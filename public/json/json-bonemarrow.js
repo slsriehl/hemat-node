@@ -118,7 +118,7 @@ $(window).on('load', function(){
         partType313: '\n\nBONE MARROW, CLOT SECTION: The clot sections contain #CLOTNUM# #CLOTCELL# marrow particles. ',
 
 // ADEQUATE SAMPLE
-        partType350: 'adequate for morphologic evaluation. ',
+        partType350: 'are adequate for morphologic evaluation. ',
 
 // DISSIMILAR BILATERAL BIOPSIES
 // Adequacy
