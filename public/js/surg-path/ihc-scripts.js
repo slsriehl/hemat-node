@@ -89,7 +89,7 @@ $(window).on('load', function(){
         var ihc_head = {
             head1: "Immunohistochemistry is performed (with working controls) to further characterize the process. Stains are summarized as follows:\n" ,
             head2: "Immunohistochemistry is performed (with working controls) in conjunction with flow cytometry immunophenotyping. This is deemed necessary to better characterize the immunoarchitecture and infiltration pattern. Stains are summarized as follows:\n" ,
-            head3: "Immunohistochemistry is performed (with working controls) in conjunction with flow cytometry immunophenotyping. This is deemed necessary to evaluate the extent of disease involvement. Stains are summarized as follows:\n" ,
+            head3: "Immunohistochemistry is performed (with working controls) in conjunction with flow cytometry immunophenotyping. This is deemed necessary to evaluate the extent of disease involvement and/or nuclear markers. Stains are summarized as follows:\n" ,
             head4: "Immunohistochemistry is performed (with working controls) in conjunction with flow cytometry immunophenotyping. This is deemed necessary as the flow cytometry sample yielded negative/non-contributory findings with respect to the process in question. Stains are summarized as follows:\n"
         };
         var count = 1;
