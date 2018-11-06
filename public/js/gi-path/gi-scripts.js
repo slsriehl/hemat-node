@@ -862,7 +862,7 @@ $(window).on('load', function(){
                             }
 
                             for (var i=300; i<336; i++){
-                                mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/from (.*?) colonic/, 'from '+col_sent +' colonic');
+                                mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/all (.*?) colonic/, 'the '+col_sent +' colonic');
                             }
                             console.log('formatted multi col text:' + col_sent);
 
