@@ -548,6 +548,7 @@ $(window).on('load', function(){
             });
         }
     });
+//########################################################################################//
 
 //********************************************** ESOPHAGUS *****************************************************//
 // replace esophagus location marker for single site micros
@@ -574,7 +575,7 @@ $(window).on('load', function(){
             }
             var last_eso = esoArr[esoArr.length - 1]; // most recent esophagus entry
             for (var i=200; i<217; i++){
-                mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/the .* biopsy/, "the '"+last_eso+" esophagus' biopsy");
+                mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/the .* biopsy/, "the '"+last_eso+"' biopsy");
             }
 
             // Resume checkbox click event
@@ -606,15 +607,15 @@ $(window).on('load', function(){
             $('.eso_list').append('<div class="form-inline"><input type="checkbox" class="form-control form-control-sm mr-2 source" value="' + e_part + '">ESO ' + e_part + '</div>');
             if($.inArray(e_part, esoArr) > -1){ // check to see if item already present in array, if so remove for unchecked box
                 esoArr.splice(e_part, 1);
-                console.log('already in sto array, removed');
+                console.log('already in eso array, removed');
             } else { // item not present so add it to the array of part types
                 esoArr.push(e_part);
-                console.log('new to sto array, added');
+                console.log('new to eso array, added');
             }
             // update syntax for single biopsy
             var last_eso = esoArr[esoArr.length - 1];
             for (var i=200; i<217; i++){
-                mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/the .* biopsy/, "the '"+last_eso+" esophagus' biopsy");
+                mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/the .* biopsy/, "the '"+last_eso+"' biopsy");
             }
         }
     });
@@ -745,9 +746,37 @@ $(window).on('load', function(){
         }
     });
 
-//######################//
+//########################################################################################//
 
-//##colon##//
+//********************************************** SMALL INTESTINE**************************************************//
+// replace colon site for single site micros
+    var tiArr = []; // part type array
+    var tiSel = []; // selected parts for multiple
+
+    $('.tipart').on('click', function(e) {
+            var ti_part = $(this).val();
+            if($.inArray(ti_part, tiArr) > -1){ // check to see if item already present in array, if so remove for unchecked box
+                tiArr.splice(ti_part, 1);
+                console.log('already in ti array, removed');
+            } else { // item not present so add it to the array of part types
+                tiArr.push(ti_part);
+                console.log('new to ti array, added');
+            }
+        
+            // update syntax for single biopsy in micro
+            var last_ti = tiArr[tiArr.length - 1];
+            console.log('Last ti: '+last_ti);
+            console.log('tiArr: '+tiArr+tiArr.length);
+            for (var i=250; i<259; i++){
+                    mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/'(.*?)'/, "'"+last_ti+"'");
+            }
+    });
+
+
+//########################################################################################//
+
+//********************************************** COLON *****************************************************//
+
 // replace colon site for single site micros
     var colArr = []; // part type array
     var colSel = []; // selected parts for multiple
@@ -773,7 +802,7 @@ $(window).on('load', function(){
 
             var last_col = colArr[colArr.length - 1];
             for (var i=300; i<336; i++){
-                mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/'(.*?)'/, "'"+last_col+" colon'");
+                mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/'(.*?)'/, "'"+last_col+"'");
             }
 
             // Resume checkbox click event
@@ -818,7 +847,7 @@ $(window).on('load', function(){
                     mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/'(.*?)'/, "'"+last_col+"'").replace(/cm/,'');
                 }
                 else {
-                    mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/'(.*?)'/, "'"+last_col+" colon'").replace(/cm/,'');
+                    mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/'(.*?)'/, "'"+last_col+"'").replace(/cm/,'');
                 }
             }
         }
@@ -862,7 +891,7 @@ $(window).on('load', function(){
                             }
 
                             for (var i=300; i<336; i++){
-                                mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/all (.*?) colonic/, 'the '+col_sent +' colonic');
+                                mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/all (.*?) colonic/, 'the '+col_sent +'');
                             }
                             console.log('formatted multi col text:' + col_sent);
 
@@ -918,6 +947,8 @@ $(window).on('load', function(){
             $("#"+que).trigger('click'); // resume click event
         }
     });
+//########################################################################################//
+
 
     /***************************************************************************************************/
     /******************************* GRANULOMA MODAL ****************************************************/

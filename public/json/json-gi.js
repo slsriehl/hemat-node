@@ -27,12 +27,13 @@ $(window).on('load', function(){
 
 //TERMINAL ILEUM PARTS 250
         partType250: '\nTERMINAL ILEUM, BIOPSY: \n',
-        partType251: '\nSMALL BOWEL, ANASTOMOSIS SITE, BIOPSY: \n',
+        partType251: '\nSMALL INTESTINE, ANASTOMOSIS SITE, BIOPSY: \n',
         partType252: '\nJEJUNUM, BIOPSY: \n',
         partType253: '\nILEUM, BIOPSY: \n',
-        partType254: '\nILEUM, POUCH, BIOPSY: \n',
+        partType254: '\nILEUM "POUCH", BIOPSY: \n',
         partType255: '\nILEOCECAL VALVE, BIOPSY: \n',
         partType256: '\nSMALL INTESTINE, BIOPSY: \n',
+        partType257: '\nILEUM "LESION", BIOPSY: \n',
 
 //COLON AND RECTUM PARTS 300
         partType300: '\nCOLON, CECUM, BIOPSY: \n',
@@ -57,10 +58,11 @@ $(window).on('load', function(){
 
     dxLines = {
 //generic diagnoses 1
-        dxLine1: '- No significant abnormalities \n',
+        dxLine1: '- Specimen did not survive processing \n',
         dxLine2: '- Mild non-specific changes (see comment) \n',
         dxLine3: '- No microorganisms seen with GMS and AFB stains \n',
         dxLine4: '- No Helicobacter-like organisms seen with Giemsa stain \n',
+        dxLine5: '- No specimen identified in the sample bottle \n',
 
 //duodenum diagnoses 100
         dxLine100: '- Focal acute inflammation\n',
@@ -151,10 +153,13 @@ $(window).on('load', function(){
     };
 
     mxLines = {
-        // IHC COMMENT
-        mxLine1: "Immunohistochemistry, in-situ hybridization and cytochemistry stains were developed and their performance characteristics determined by either the Dell Children's Medical Center of Central Texas Pathology Laboratory or the Seton Main Pathology Laboratory.  They have not been cleared or approved by the U.S. Food and Drug Administration.  The FDA has determined that such clearance or approval is not necessary.  These tests are used for clinical purposes.  They should not be regarded as investigational or for research.  This laboratory is certified under the Clinical Laboratory Improvement Amendments of 1988 (CLIA-88) as qualified to perform high complexity clinical laboratory testing. \n",
-        // NO GRANULOMAS
-        mxLine2: "No granulomas are seen in any of the biopsies. \n",
+        // NO GRANULOMAS GENERICCOMMENT
+        mxLine1: "\nNo granulomas are seen in any of the biopsies. \n",
+        // NO GRANULOMAS, CYTOPATHIC CHANGES OR VIRAL INCLUSIONS
+        mxLine2: "\nNo granulomas, viral cytopathic changes or inclusions are seen in any of the biopsies. \n",
+        // NO GRANULOMAS, CYTOPATHIC CHANGES OR VIRAL INCLUSIONS
+        mxLine3: "\nThere is no evidence of acute cellular rejection in the transplanted bowel, or graft vs. host disease in the native bowel. \n",
+
         // DUODENUM MICROS 100 * note that strings are bounded by quotes, not apostrophes in this section
         // Normal duo
         mxLine100: "Sections from the 'duodenum' show fragments of small bowel tissue with normal villous architecture. There is no undue crypt hyperplasia. The lamina propria is not excessively cellular. No increase in intraepithelial lymphocytes is seen. \n",
@@ -424,7 +429,7 @@ $(window).on('load', function(){
         comLine124: 'The duodenum changes show villous blunting without concomitant increase in intraepithelial lymphocytes. The abnormal EpCAM/MOC31 staining indicates a primary disorder of enterocyte junctions, as is expected for tufting enteropathy. Tufting enteropathy (aka intestinal epithelial dysplasia) is an etiology for chronic infantile diarrhea, which can be associated with other extra-gastrointestinal manifestations, including keratitis. ',
 
 // GASTRIC FOVEOLAR METAPLASIS, INACTIVE
-        comLine125: 'The presence of gastric foveolar metaplasia in the duodenum is a non-specific finding, but one that is often indicative of prior mucosal injury and subsequent healing. This may represent peptic duodenitsi, healing ulcer or previously resolved active inflammation. ',
+        comLine125: 'The presence of gastric foveolar metaplasia in the duodenum is a non-specific finding, but one that is often indicative of prior mucosal injury and subsequent healing. This may represent peptic duodenitis, healing ulcer or previously resolved active inflammation. ',
 
 // EROSIVE ESOPHAGITIS W/ NEUTS, NO  FUNGUS
         comLine126: 'Erosive esophagitis, in the absence of demonstrable fungal infection, can be seen with severe acid reflux, chronic injury in the setting of a hiatal hernia or secondary to trauma from a foreign body. Clinical correlation is recommended. ',
