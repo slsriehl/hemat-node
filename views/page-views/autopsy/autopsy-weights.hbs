@@ -4,7 +4,7 @@
         <li class="breadcrumb-item">
             <a href="/">Home</a>
         </li>
-        <li class="breadcrumb-item active"><i class="fa fa-balance-scale mr-2"></i>Stillbirth Autopsy Weights and Measurements</li>
+        <li class="breadcrumb-item active"><i class="fa fa-balance-scale mr-2"></i>Autopsy Weights and Measurements - Premature to adult</li>
     </ol>
     {{> message-center this}}
     {{> page-partials/autopsy-howto}}
@@ -12,14 +12,14 @@
     <div class="row">
         <div class="col col-md-8">
             <hr class="p-2" >
-            <h5>Gender</h5>
+            <h5>Sex</h5>
             <select id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option>male</option>
                 <option>female</option>
             </select>
 
             <hr class="p-2" >
-            <h5>Age</h5>
+            <h5>Age (or corrected age)</h5>
             <select id="box2" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option data-type="stillb">12wk</option>
                 <option data-type="stillb">13wk</option>
@@ -91,7 +91,7 @@
             <hr class="p-2">
             <div class="card-head h5">
                 <span class="stillb">Fetal weights</span>
-                <span class="infant">Infant weights</span>
+                <span class="infant" style="display: none;">Infant weights</span>
                 <span class="nonstillb" style="display: none;">Weights</span>
                 
                 and measurements</div>

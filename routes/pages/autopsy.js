@@ -11,7 +11,12 @@ router.get('/autopsy/weights', (req, res) => {
 	]);
 });
 
-
+router.get('/autopsy/autopsy-pedi', (req, res) => {
+    //not behind a login
+    controller.openAccess(req, res, './page-views/autopsy/autopsy-pedi.hbs', [
+        "/js/autopsy/autopsy-pedi-scripts.js"
+    ]);
+});
 
 
 module.exports = router;

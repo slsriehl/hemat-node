@@ -1,0 +1,1719 @@
+<div class="container-fluid">
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+            Autopsy - Livebirth
+        </li>
+        <li class="breadcrumb-item active" id="bc-jump"><i class="fa fa-child mr-2"></i>Pediatric Autopsy - Perinatal, Livebrith and Infant</li>
+    </ol>
+
+    {{> message-center this}}
+
+    <!-- Full width row + card -->
+    <div class="row">
+        <!-- top card-->
+        <div class="col col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <!-- inline header form-->
+                    <form class="form-inline">
+
+                        <div class="col col-md-4">
+                            <button type="button" class="btn btn-primary btn-md p-1" data-toggle="modal"
+                                    data-target="#modal-1">How to Use
+                            </button>
+                        </div>
+                    </form>
+                    <!--Date-->
+
+                </div>
+                <div class="card-block">
+                    <div class="row">
+                        <div class="col col-md-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    Birth Details
+                                </div>
+                                <div class="card-block ">
+                                    <div class="input-group date my-date-picker">
+                                        <span class="input-group-addon">
+                                            Birthdate
+                                        </span>
+                                        <input type="text" class="form-control form-control-sm" id="date-birth"/>
+                                    </div>
+                                    <div class="input-group pt-2 date my-time-picker">
+                                        <span class="input-group-addon">
+                                            Time of birth
+                                        </span>
+                                        <input type="text" class="form-control form-control-sm" id="date-btime"/>
+                                    </div>
+                                    <div class="input-group pt-2">
+                                        <span class="input-group-addon">
+                                            Sex
+                                        </span>
+                                        <select class="form-control" id="sex">
+                                            <option>male</option>
+                                            <option>female</option>
+                                            <option>ambiguous</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group pt-2">
+                                        <span class="input-group-addon">
+                                            Weight at birth
+                                        </span>
+                                        <input type="text" class="form-control form-control-sm" id="weight"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col col-md-4'>
+                            <div class="card">
+                                <div class="card-header">
+                                    Death details
+                                </div>
+                                <div class="card-block ">
+                                    <div class="input-group date my-date-picker">
+                                        <span class="input-group-addon">
+                                            Date of death
+                                        </span>
+                                        <input type="text" class="form-control form-control-sm" id="date-death"/>
+                                    </div>
+                                    <div class="input-group date my-time-picker pt-2">
+                                        <span class="input-group-addon">
+                                            Time of death
+                                        </span>
+                                        <input type="text" class="form-control form-control-sm " id="date-dtime"/>
+                                    </div>
+                                    <div class="input-group pt-2">
+                                        <span class="input-group-addon">
+                                            Age (or time alive)
+                                        </span>
+                                        <input type="text" class="form-control form-control-sm" id="age"/>
+                                    </div>
+                                    <div class="input-group py-2 date my-date-picker">
+                                        <span class="input-group-addon">
+                                            Date of autopsy
+                                        </span>
+                                        <input type="text" class="form-control form-control-sm" id="date-autopsy"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-md-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    Autopsy performance
+                                </div>
+                                <div class="card-block ">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            Autopsy type
+                                        </span>
+                                        <select class="form-control" id="autopsy-type">
+                                            <option>No restrictions</option>
+                                            <option>Limited</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group pt-2">
+                                        <span class="input-group-addon">
+                                            Limitations?
+                                        </span>
+                                        <input class="form-control form-control-sm" id="autopsy-limits" placeholder="Leave blank if none">
+                                    </div>
+                                    <div class="input-group pt-2">
+                                        <span class="input-group-addon">
+                                            Pathologist
+                                        </span>
+                                        <input class="form-control form-control-sm" id="autopsy-md" placeholder="Name of pathologist">
+                                    </div>
+                                    <div class="input-group pt-2">
+                                        <span class="input-group-addon">
+                                            Physician notified
+                                        </span>
+                                        <input class="form-control form-control-sm" id="autopsy-notify" placeholder="Name of physician notified prior to prosection">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row top-buffer">
+        <div class="col-md-8">
+            <!-- left column-->
+
+
+            <!-- left column accordion-->
+            <div id="accordion" role="tablist" aria-multiselectable="true">
+                <!-- Accordion #1-->
+                <div class="card">
+                    <div class="card-header" role="tab" id="headingOne">
+                        <h5 class="mb-0">
+                            <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Maternal / Prenatal history
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="collapseOne" class="collapse " role="tabpanel" aria-labelledby="headingOne">
+                        <div class="card-block">
+                            <div class="card-group">
+                                <div class="card">
+                                    <div class="card-header">
+                                        Maternal Data
+                                    </div>
+                                    <div class="card-block chkboxes">
+                                        <div style="font-size: 0.66em;" class="content" id="column1b">
+                                            <div class="input-group py-1 mt-2">
+                                                <span class="input-group-addon">Maternal age</span>
+                                                <input class="form-control form-control-sm" id="maternal-age">
+                                            </div>
+
+                                            <div class="text-center bg-faded w-100 p-1">Gravida/Para</div>
+                                            <div class="input-group py-1 mt-2">
+                                                <span class="input-group-addon">G:</span>
+                                                <input class="form-control form-control-sm" id="maternal-g">
+                                            </div>
+                                            <div class="input-group py-1 mt-2">
+                                                <span class="input-group-addon">P:</span>
+                                                <input class="form-control form-control-sm" id="maternal-p">
+                                            </div>
+                                            <div class="input-group py-1 mt-2">
+                                                <span class="input-group-addon">A:</span>
+                                                <input class="form-control form-control-sm" id="maternal-a">
+                                            </div>
+
+                                            <div class="text-center bg-success w-100 p-1">Prenatal data</div>
+                                            <div class="input-group py-1 mt-2">
+                                                <span class="input-group-addon">Blood type</span>
+                                                <select class="form-control" id="maternal-blood">
+                                                    <option>O+</option>
+                                                    <option>O-</option>
+                                                    <option>A+</option>
+                                                    <option>A-</option>
+                                                    <option>B+</option>
+                                                    <option>B-</option>
+                                                    <option>AB+</option>
+                                                    <option>AB-</option>
+                                                    <option>Unknown</option>
+                                                </select>
+                                            </div>
+                                            <div class="input-group py-1 mt-2">
+                                                <span class="input-group-addon">Ab screen</span>
+                                                <select class="form-control" id="maternal-abs">
+                                                    <option>Negative</option>
+                                                    <option>Antibodies identified</option>
+                                                    <option>Unknown</option>
+                                                </select>
+                                            </div>
+                                            <div class="input-group py-1 mt-2">
+                                                <span class="input-group-addon">RPR</span>
+                                                <select class="form-control " id="maternal-rpr">
+                                                    <option>Nonreactive</option>
+                                                    <option>Reactive</option>
+                                                    <option>Unknown</option>
+                                                </select>
+                                            </div>
+                                            <div class="input-group py-1 mt-2">
+                                                <span class="input-group-addon">HepB</span>
+                                                <select class="form-control " id="maternal-hepb">
+                                                    <option>Negative</option>
+                                                    <option>Positive</option>
+                                                    <option>Unknown</option>
+                                                </select>
+                                            </div>
+                                            <div class="input-group py-1 mt-2">
+                                                <span class="input-group-addon">HIV</span>
+                                                <select class="form-control " id="maternal-hiv">
+                                                    <option>Negative</option>
+                                                    <option>Positive</option>
+                                                    <option>Unknown</option>
+                                                </select>
+                                            </div>
+                                            <div class="input-group py-1 mt-2">
+                                                <span class="input-group-addon">Rubella</span>
+                                                <select class="form-control " id="maternal-rubella">
+                                                    <option>Immune</option>
+                                                    <option>Non-immune</option>
+                                                    <option>Unknown</option>
+                                                </select>
+                                            </div>
+                                            <div class="input-group py-1 mt-2">
+                                                <span class="input-group-addon">GBS</span>
+                                                <select class="form-control " id="maternal-gbs">
+                                                    <option>Not detected</option>
+                                                    <option>Present</option>
+                                                    <option>Unknown</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        Labor information
+                                    </div>
+                                    <div class="card-block chkboxes">
+                                        <div class="w-100 py-1 mt-2">Prenatal ultrasound (if known)</div>
+                                            <div class="input-group date my-date-picker mt-2">
+                                                <span class="input-group-addon">
+                                                    Date of sonograph
+                                                </span>
+                                                <input type="text" class="form-control form-control-sm" id="maternal-sono-date"/>
+                                            </div>
+                                            <div class="input-group py-1 mt-2">
+                                                <span class="input-group-addon">
+                                                    Findings
+                                                </span>
+                                                <select class="form-control " id="maternal-sono-findings">
+                                                    <option>Size appropriate for gestational age</option>
+                                                    <option>Unknown</option>
+                                                    <option>Other</option>
+                                                </select>
+                                            </div>
+                                            <div class="py-1 mt-1 sono-other" style="display: none;">
+                                                <span class="w-100 py-1">
+                                                    Describe other sonographic findings
+                                                </span>
+                                                <textarea class="form-control " id="maternal-sono-other" rows = "8"></textarea>
+                                            </div>
+                                            <div class="input-group py-1 mt-2">
+                                                    <span class="input-group-addon">
+                                                        Labor details
+                                                    </span>
+                                                <select class="form-control " id="maternal-labor">
+                                                    <option>Progressed expectantly</option>
+                                                    <option>Induced</option>
+                                                </select>
+                                                <select class="form-control " id="maternal-delivery">
+                                                    <option>Vaginal delivery</option>
+                                                    <option>Cesarean section</option>
+                                                </select>
+                                            </div>
+                                            <div class="card-header pt-1 my-2" style="background-color: #f0ad4e"> Post Delivery </div>
+                                            <div class="pt-2">
+                                                <span class="w-100 py-1 mt-2">
+                                                    Describe the infant's hospital course
+                                                </span>
+                                                <textarea class="form-control w-100" rows="16" id="hospital-course"></textarea>
+                                            </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Accordion #2-->
+                <div class="card">
+                    <div class="card-header" role="tab" id="headingTwo">
+                        <h5 class="mb-0">
+                            <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                Weights and Measurements
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="card-block chkboxes">
+                            <div class="card-header w-100">
+                                <div class="input-group py-1 mt-2">
+                                    <span class="input-group-addon bg-success h4">Choose age to use for reference data</span>
+                                    <select id="box2" class='form-control'>
+                                        <option data-type="stillb">23wk</option>
+                                        <option data-type="stillb">24wk</option>
+                                        <option data-type="stillb">25wk</option>
+                                        <option data-type="stillb">26wk</option>
+                                        <option data-type="stillb">27wk</option>
+                                        <option data-type="stillb">28wk</option>
+                                        <option data-type="stillb">29wk</option>
+                                        <option data-type="stillb">30wk</option>
+                                        <option data-type="stillb">31wk</option>
+                                        <option data-type="stillb">32wk</option>
+                                        <option data-type="stillb">33wk</option>
+                                        <option data-type="stillb">34wk</option>
+                                        <option data-type="stillb">35wk</option>
+                                        <option data-type="stillb">36wk</option>
+                                        <option data-type="stillb">37wk</option>
+                                        <option data-type="stillb">38wk</option>
+                                        <option data-type="stillb">39wk</option>
+                                        <option data-type="stillb">40wk</option>
+                                        <option data-type="stillb">41wk</option>
+                                        <option data-type="stillb">42wk</option>
+                                        <option data-type="stillb">43wk</option>
+                                        <option data-type="stillb">44wk</option>
+                                        <option data-type="infant"> 1m </option>
+                                        <option data-type="infant"> 2m </option>
+                                        <option data-type="infant"> 3m </option>
+                                        <option data-type="infant"> 4m </option>
+                                        <option data-type="infant"> 5m </option>
+                                        <option data-type="infant"> 6m </option>
+                                        <option data-type="infant"> 7m </option>
+                                        <option data-type="infant"> 8m </option>
+                                        <option data-type="infant"> 9m </option>
+                                        <option data-type="infant"> 10m </option>
+                                        <option data-type="infant"> 11m </option>
+                                        <option data-type="infant"> 12m </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="card-group">
+                                <div class="card">
+                                    <table class="table table-hover">
+                                        <tr>
+                                            <th class="thead-default">
+                                                <span class="stillb">Fetal weights</span>
+                                                <span class="infant" style="display: none;">Infant weights</span>
+                                                (grams)</th>
+                                            <th></th>
+                                            <th class="thead-default">
+                                                <span class="stillb">Fetal measurements</span>
+                                                <span class="infant">Infant measurements</span>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td>Body <span class="nonstillb" style="display: none;"> kg </span></td>
+                                            <td><input class="form-control form-control-sm"  type='text' tabindex="1" id="box10" ></td>
+                                            <td class="meas">Crown-heel</td>
+                                            <td class="meas"><input class="form-control form-control-sm"  type='text' tabindex="15" id="box30"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Heart</td>
+                                            <td><input class="form-control form-control-sm"  type='text' tabindex="2" id="box11"></td>
+                                            <td class="meas">Crown-rump</td>
+                                            <td class="meas"><input class="form-control form-control-sm"  type='text' tabindex="16" id="box31"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>R Lung</td>
+                                            <td><input class="form-control form-control-sm"  type='text' tabindex="3" id="box12"></td>
+                                            <td class="meas">Head circ</td>
+                                            <td class="meas"><input class="form-control form-control-sm"  type='text' tabindex="17" id="box32"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>L Lung</td>
+                                            <td><input class="form-control form-control-sm"  type='text' tabindex="4" id="box13"></td>
+                                            <td class="meas">Chest circ</td>
+                                            <td class="meas"><input class="form-control form-control-sm"  type='text' tabindex="18" id="box33"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Liver</td>
+                                            <td><input class="form-control form-control-sm"  type='text' tabindex="5" id="box14"></td>
+                                            <td class="meas">Abdomen circ</td>
+                                            <td class="meas"><input class="form-control form-control-sm"  type='text' tabindex="19" id="box34"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>R Kidney</td>
+                                            <td><input class="form-control form-control-sm"  type='text' tabindex="6" id="box15"></td>
+                                            <td class="meas">Foot length</td>
+                                            <td class="meas"><input class="form-control form-control-sm"  type='text' tabindex="20" id="box35"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>L Kidney</td>
+                                            <td><input class="form-control form-control-sm"  type='text' tabindex="7" id="box16"></td>
+                                            <td class="meas">Inner canthal dist</td>
+                                            <td class="meas"><input class="form-control form-control-sm"  type='text' tabindex="21" id="box36"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>R Adrenal</td>
+                                            <td><input class="form-control form-control-sm"  type='text' tabindex="8" id="box17"></td>
+                                            <td class="meas">Outer canthal dist</td>
+                                            <td class="meas"><input class="form-control form-control-sm"  type='text' tabindex="22" id="box37"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>L Adrenal</td>
+                                            <td><input class="form-control form-control-sm"  type='text' tabindex="9" id="box18"></td>
+                                            <td class="meas">Pupil diamter (mm)</td>
+                                            <td class="meas"><input class="form-control form-control-sm"  type='text' tabindex="23" id="box38"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Gonads
+                                                <span class="stillb"> (cm)</span>
+                                                <span class="infant" style="display: none;"> (gr)</span>
+                                                <span class="nonstillb" style="display: none;"> (gr)</span>
+                                            </td>
+                                            <td><input class="form-control form-control-sm"  type='text' tabindex="10" id="box19"></td>
+                                            <td>Heart - TV circ</td>
+                                            <td><input class="form-control form-control-sm"  type='text' tabindex="24" id="box39"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="meas">Thymus</td>
+                                            <td class="meas"><input class="form-control form-control-sm"  type='text' tabindex="11" id="box20"></td>
+                                            <td>Heart - PV circ</td>
+                                            <td><input class="form-control form-control-sm"  type='text' tabindex="25" id="box40"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Spleen</td>
+                                            <td><input class="form-control form-control-sm"  type='text' tabindex="12" id="box21"></td>
+                                            <td>Heart - MV circ</td>
+                                            <td><input class="form-control form-control-sm"  type='text' tabindex="26" id="box41"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Brain</td>
+                                            <td><input class="form-control form-control-sm"  type='text' tabindex="13" id="box22"></td>
+                                            <td>Heart - AV circ</td>
+                                            <td><input class="form-control form-control-sm"  type='text' tabindex="27" id="box42"></td>
+                                        </tr>
+                                        <tr>
+                                            <td ><span class="stillb">Placenta</span></td>
+                                            <td ><input class="form-control form-control-sm stillb"  type='text' tabindex="14" id="box23"></td>
+                                            <td>RV thickness</td>
+                                            <td><input class="form-control form-control-sm"  type='text' tabindex="28" id="box43"></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td>LV thickness</td>
+                                            <td><input class="form-control form-control-sm"  type='text' tabindex="29" id="box44"></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Accordion #3-->
+                <div class="card">
+                    <div class="card-header" role="tab" id="headingThree">
+                        <h5 class="mb-0">
+                            <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                External exam
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse " role="tabpanel" aria-labelledby="headingOne">
+                        <div class="card-block chkboxes">
+                            <div class="card-group">
+                                <div class="card">
+                                    <div class="card-header" style="background-color: aquamarine">
+                                        General Body
+                                    </div>
+                                    <div class="card-block chkboxes">
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon">Habitus</span>
+                                            <select class="form-control" id="ext-habitus">
+                                                <option>Appears normally grown and developed</option>
+                                                <option>Normally developed, but small for age</option>
+                                                <option>Normally developed, but large for age</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon input">Skin / Soft tissue</span>
+                                            <select class="form-control" id="ext-skin" multiple>
+                                                <option selected>Unremarkable for age</option>
+                                                <option>Generalized edema</option>
+                                                <option>Icteric</option>
+                                                <option>Macerated <50% of surface area</option>
+                                                <option>Macerated >50% of surface area*</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon">Extremities</span>
+                                            <select class="form-control" id="ext-extremities">
+                                                <option>Normally formed, no contractures, normal creases</option>
+                                                <option>Abnormal (specify)</option>
+                                            </select>
+                                        </div>
+                                        <textarea class="form-control-sm w-100" id="ext-extremities-more" rows="3" style="display: none;" placeholder="Specify extremity anomalies"></textarea>
+                                        </div>
+                                        <div class="input-group py-1 mt-2 perinatal">
+                                            <span class="input-group-addon input">*Meconium staining</span>
+                                            <select class="form-control" id="ext-meconium">
+                                                <option>Around anus only</option>
+                                                <option>Anus, fingernails, nares and oral cavity</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                        </div>
+                                        <div class="py-1 mt-2">
+                                            <div class="input-group">
+                                                <span class="input-group-addon w-100"> Medical intervensions </span>
+                                            </div>
+                                            <textarea class="form-control" id="ext-medical" rows="5"
+                                            placeholder="Describe other medical interventions, or leave blank"></textarea>
+                                        </div>
+                                                                                                                     </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" style="background-color: #5cb3fd">
+                                        Head and Neck
+                                    </div>
+                                    <div class="py-1 mt-2">
+                                        <div class="input-group py-1">
+                                            <span class="input-group-addon">Head shape</span>
+                                            <select class="form-control" id="ext-head">
+                                                <option>Normally formed facies, normal ear positioning</option>
+                                                <option>Abnormal (specify)</option>
+                                            </select>
+                                        </div>
+                                            <textarea class="form-control py-1 mt-2 w-100" id="ext-head-more" style="display: none;" rows="3" placeholder="Specify findings"></textarea>
+                                    </div>
+                                    <div class="input-group py-1 mt-2">
+                                        <span class="input-group-addon">Fontanelles</span>
+                                        <select class="form-control" id="ext-fontanelle">
+                                            <option>Flat</option>
+                                            <option>Tense, slightly raised</option>
+                                            <option>Turgid, bulging</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group py-1 mt-2">
+                                        <span class="input-group-addon">Eye color </span>
+                                        <input class="form-control" id="ext-eye">
+                                    </div>
+                                    <div class="input-group py-1 mt-2">
+                                        <span class="input-group-addon"> Sclera/Conjunctiva </span>
+                                        <select class="form-control" id="ext-sclera">
+                                            <option>Eyelids fused</option>
+                                            <option>Clear</option>
+                                            <option>Slightly icteric</option>
+                                            <option>Icteric</option>
+                                            <option>Capillaries are injected</option>
+                                            <option>Capillary hemorrhage present</option>
+                                        </select>
+                                    </div>
+                                    <div class="py-1 mt-2">
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon"> Pupils </span>
+                                            <select class="form-control" id="ext-pupils">
+                                                <option>Eyelids fused</option>
+                                                <option>Round and equal diameter</option>
+                                                <option>Dilated and equal in diameter</option>
+                                                <option>Dilated, but unequal</option>
+                                            </select>
+                                            <input class="form-control" id="ext-pupils-size" placeholder="Specify diameter(s)">
+                                        </div>
+                                    </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon"> Oral cavity </span>
+                                            <select class="form-control" id="ext-oral">
+                                                <option>No teeth are erupted</option>
+                                                <option>Age appropriate infant teeth present</option>
+                                                <option>Normal dentition</option>
+                                                <option>Not evaluated</option>
+                                                <option>Abnormal (specify)</option>
+                                            </select>
+                                            <textarea class="form-control" id="ext-oral-more" style="display:none;" rows="3" placeholder="Specify findings"></textarea>
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon"> Hair </span>
+                                            <select class="form-control" id="ext-hair">
+                                                <option>Sparse, lanugo</option>
+                                                <option>Normal infant hair distribution</option>
+                                                <option>Normal child hair distribution</option>
+                                                <option>Normal hair distribution</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                            <input class="form-control" id="ext-hair-color" placeholder="Specify color">
+                                        </div>
+                                    <div class="card-header mt-2" style="background-color: #f7ecb5">
+                                        Abdomen & Perineum
+                                    </div>
+                                    <div class="py-1 mt-2">
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon"> Abdomen </span>
+                                            <select class="form-control" id="ext-abdomen">
+                                                <option>Soft and otherwise unremarkable</option>
+                                                <option>Protuberant and firm</option>
+                                                <option>Protuberant and fluctuant</option>
+                                                <option>Abnormal (specify)</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                        </div>
+                                            <textarea class="form-control py-1 mt-2 w-100" id="ext-abdomen-more" style="display:none;" rows="3" placeholder="Specify findings"></textarea>
+                                    </div>
+                                    <div class="py-1 mt-2">
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon"> Umbilicus </span>
+                                            <select class="form-control" id="ext-umbilicus">
+                                                <option>Midline, closed abdominal wall</option>
+                                                <option>Midline, abdominal wall defect present</option>
+                                                <option>Umbilical cord attached</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                        </div>
+                                            <textarea class="form-control py-1 mt-2 w-100" id="ext-umbilicus-length" style="display:none;" rows="3" placeholder="Specify findings"></textarea>
+                                    </div>
+                                    <div class="input-group py-1 mt-2">
+                                        <span class="input-group-addon"> External genitalia </span>
+                                        <select class="form-control" id="ext-genital">
+                                            <option>Immature male; unremarkable with testis palpable in scrotum</option>
+                                            <option>Immature male; testis not palpable in scrotum</option>
+                                            <option>Immature male; marked scrotal edema</option>
+                                            <option>Immature female; unremarkable</option>
+                                            <option>Immature female; marked labial edema</option>
+                                            <option>Ambiguous genitalia</option>
+                                            <option>Not evaluated</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group py-1 mt-2">
+                                        <span class="input-group-addon"> Anus </span>
+                                        <select class="form-control" id="ext-anus">
+                                            <option>Normally located and patent</option>
+                                            <option>Normally located and stenotic/non-patent</option>
+                                            <option>Not evaluated</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Accordion #4-->
+                <div class="card">
+                    <div class="card-header" role="tab" id="headingFour">
+                        <h5 class="mb-0">
+                            <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Internal exam
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour">
+                        <div class="card-block chkboxes">
+                            <div class="card-group">
+                                <div class="card">
+                                    <div class="card-header">
+                                        Body cavities and in-situ exam
+                                    </div>
+                                    <div class="card-block chkboxes">
+                                        <div class="py-1 mt-2">
+                                            <div class="input-group py-1">
+                                                <span class="input-group-addon"> Incision </span>
+                                                <select class="form-control" id="int-incision">
+                                                    <option>Y-shaped thoraco-abdominal</option>
+                                                    <option>Modified Y-shaped incision to include neck</option>
+                                                    <option>Inverted Y-thorax only incision</option>
+                                                    <option>Inverted U-abdomen only incision</option>
+                                                    <option>Other (specify)</option>
+                                                </select>
+                                            </div>
+                                                <textarea class="form-control py-1 w-100" id="int-incision-more" style="display:none;" rows="3" placeholder="Specify findings"></textarea>
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon"> Subcutaneous fat  </span>
+                                            <select class="form-control" id="int-subcut">
+                                                <option>Unremarkable</option>
+                                                <option>Decreased</option>
+                                                <option>Abundant</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon"> Peritoneal cavity </span>
+                                            <select class="form-control" id="int-peritoneum">
+                                                <option>Surfaces smooth and glistening</option>
+                                                <option>Surfaces smooth and dull</option>
+                                                <option>Surfaces roughened and dull</option>
+                                            </select>
+                                            <input class="form-control" id="int-peritoneum-fl" placeholder="Volume?">
+                                        </div>
+                                        <div class="py-1 mt-2">
+                                            <div class="input-group py-1">
+                                                <span class="input-group-addon"> Diaphragm </span>
+                                                <select class="form-control" id="int-diaphragm">
+                                                    <option>Unremarkable, intact hemidiaphragms</option>
+                                                    <option>Abnormal (specify)</option>
+                                                    <option>Not evaluated</option>
+                                                </select>
+                                            </div>
+                                                <textarea class="form-control py-1 w-100" id="int-diaphragm-more" style="display:none;" rows="3" placeholder="Specify findings"></textarea>
+                                        </div>
+                                        <div class="py-1 mt-2">
+                                            <div class="input-group py-1">
+                                                <span class="input-group-addon"> Abdominal organs </span>
+                                                <select class="form-control" id="int-abdorgans">
+                                                    <option>Normally situated, normal bowel rotation</option>
+                                                    <option>Abnormal (specify)</option>
+                                                    <option>Not evaluated</option>
+                                                </select>
+                                            </div>
+                                                <textarea class="form-control py-1 w-100" id="int-abdorgans-more" style="display:none;" rows="3" placeholder="Specify findings"></textarea>
+                                        </div>
+                                        <div class="py-1 mt-2">
+                                            <div class="input-group py-1">
+                                                <span class="input-group-addon"> Internal genitalia </span>
+                                                <select class="form-control" id="int-genitalia">
+                                                    <option>Male, testes located along pelvic side-walls</option>
+                                                    <option>Male, testes located in inguinal canal</option>
+                                                    <option>Male, testes located in scrotum, inguinal rings closed</option>
+                                                    <option>Female, unremarkable uterus and gonads</option>
+                                                    <option>Abnormal (specify)</option>
+                                                    <option>Not evaluated</option>
+                                                </select>
+                                            </div>
+                                                <textarea class="form-control py-1 w-100" id="int-genitalia-more" style="display:none;" rows="3" placeholder="Specify findings"></textarea>
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon"> Pleural cavities </span>
+                                            <select class="form-control" id="int-pleural">
+                                                <option>Surfaces smooth and glistening</option>
+                                                <option>Surfaces smooth and dull</option>
+                                                <option>Surfaces roughened and dull</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon"> Right pleural fluid </span>
+                                            <select class="form-control" id="int-rtplfl">
+                                                <option>Straw colored</option>
+                                                <option>Serosanguineous</option>
+                                                <option>Bloody</option>
+                                                <option>Yellow, purulent</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                            <input class="form-control" id="int-rtplvol" placeholder="Rt volume">
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon"> Right pleural fluid </span>
+                                            <select class="form-control" id="int-ltplfl">
+                                                <option>Straw colored</option>
+                                                <option>Serosanguineous</option>
+                                                <option>Bloody</option>
+                                                <option>Yellow, purulent</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                            <input class="form-control" id="int-ltplvol" placeholder="Lt volume">
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon"> Mediastinum </span>
+                                            <select class="form-control" id="int-mediastinum">
+                                                <option>Unremarkable soft tissues with normally formed thymus</option>
+                                                <option>Unremarkable soft tissues with age appropriate thymic remnant</option>
+                                                <option>Unremarkable soft tissues with absent thymus</option>
+                                            </select>
+                                        </div>
+                                        <div class="py-1 mt-2">
+                                            <div class="input-group py-1">
+                                                <span class="input-group-addon"> Great vessels </span>
+                                                <select class="form-control" id="int-greatvessel">
+                                                    <option>Arise normally in their expected locations</option>
+                                                    <option>Abnormal (specify)</option>
+                                                    <option>Not evaluated</option>>
+                                                </select>
+                                            </div>
+                                                <textarea class="form-control py-1 w-100" id="int-greatvessel-more" style="display:none;" rows="3" placeholder="Specify findings"></textarea>
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon"> Pericardium </span>
+                                            <select class="form-control" id="int-pericardium">
+                                                <option>Surfaces smooth and glistening</option>
+                                                <option>Surfaces smooth and dull</option>
+                                                <option>Surfaces roughened and dull</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                            <input class="form-control" id="int-pericardiumfl" placeholder="Fluid?">
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon"> Scalp </span>
+                                            <select class="form-control" id="int-scalp">
+                                                <option>Unremarkable skin and subcutaneous tissues</option>
+                                                <option>Mildly edematous skin and subcutaneous tissues</option>
+                                                <option>Markedly edematous skin and subcutaneous tissues</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon"> Cranium/Meninges/Dura </span>
+                                            <select class="form-control" id="int-cranium">
+                                                <option>Unremarkable inner cranium, meninges and dural sinuses</option>
+                                                <option>Opaque meninges and cloudy CSF; unremarkable inner cranium and dural sinuses</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                        </div>
+                                        <div class="card-header py-2 mt-4" style="background-color: #5cb3fd">Tissues for ancillary testing
+                                        <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
+                                           title="Leave blank if not performed" aria-hidden="true"></i>
+                                        </div>
+
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon"> Microbiology </span>
+                                            <input class="form-control" id="int-micro" placeholder="Specify tissues sampled">
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon"> Blood culture </span>
+                                            <input class="form-control" id="int-blood" placeholder="Specify where sampled">
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon"> Snap frozen </span>
+                                            <input class="form-control" id="int-frozen" placeholder="Specify tissues sampled">
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon"> Cytogentics </span>
+                                            <input class="form-control" id="int-cytogen" placeholder="Specify tissues sampled">
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon"> Electron microscopy </span>
+                                            <input class="form-control" id="int-em" placeholder="Specify tissues sampled">
+                                        </div>
+                                    </div>
+                                    <div class="card-header mt-3" style="background-color: black; color: white">
+                                        Organ systems
+                                    </div>
+                                    <div class="card-block chkboxes">
+                                        <div class="card-header py-2 mt-2" style="background-color: #fd7f95">
+                                            Cardiovascular system
+                                        </div>
+                                        <div class="py-1 mt-2">
+                                            <div class="input-group py-1">
+                                                <span class="input-group-addon" style="background-color: #fd7f95"> Heart size </span>
+                                                <select class="form-control" id="heart-size">
+                                                    <option>Normal size and shape</option>
+                                                    <option>Enlarged, biventricular hypertrophy</option>
+                                                    <option>Enlarged, global hypertrophy</option>
+                                                    <option>Abnormal (specify)</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                            </div>
+                                            <textarea class="form-control py-1 w-100" id="heart-size-more" style="display:none;" rows="3" placeholder="Specify findings"></textarea>
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon" style="background-color: #fd7f95"> Venous return </span>
+                                            <select class="form-control" id="heart-venous">
+                                                <option>Innominate and azygous veins follow usual courses</option>
+                                                <option>Innominate and azygous veins follow aberrant courses</option>
+                                                <option>Innominate and azygous veins cannot be evaluated</option>
+                                            </select>
+                                        </div>
+                                        <div class="py-1 mt-2">
+                                            <div class="input-group py-1">
+                                                <span class="input-group-addon" style="background-color: #fd7f95"> Atrial septum </span>
+                                                <select class="form-control" id="heart-aseptum">
+                                                    <option>Intact with probe patent foramen ovale</option>
+                                                    <option>Intact with probe closed foramen ovale</option>
+                                                    <option>Abnormal (specify)</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                            </div>
+                                            <textarea class="form-control py-1 w-100" id="heart-aseptum-more" style="display:none;" rows="3" placeholder="Specify findings"></textarea>
+                                        </div>
+                                        <div class="py-1 mt-2">
+                                            <div class="input-group py-1">
+                                                <span class="input-group-addon" style="background-color: #fd7f95"> Ventricle septum </span>
+                                                <select class="form-control" id="heart-vseptum">
+                                                    <option>Intact and uniform septum without defects</option>
+                                                    <option>Intact but hypertrophic and curvilinear contour</option>
+                                                    <option>Ventricular septal defect present, submembranous</option>
+                                                    <option>Ventricular septal defect present, muscular</option>
+                                                    <option>Other (specify)</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                            </div>
+                                            <textarea class="form-control py-1 w-100" id="heart-vseptum-more" style="display:none;" rows="3" placeholder="Specify findings"></textarea>
+                                        </div>
+                                        <div class="py-1 mt-2">
+                                            <div class="input-group py-1">
+                                                <span class="input-group-addon" style="background-color: #fd7f95"> Ventricles </span>
+                                                <select class="form-control" id="heart-vent">
+                                                    <option>Uniform and dark brown</option>
+                                                    <option>Uniform and pale (fatty infiltration)</option>
+                                                    <option>Asymmetric with left ventricular hypertrophy</option>
+                                                    <option>Asymmetric with hypoplastic left ventricle</option>
+                                                    <option>Asymmetric with hypoplastic right ventricle</option>
+                                                    <option>Other (specify)</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                            </div>
+                                            <textarea class="form-control py-1 w-100" id="heart-vent-more" style="display:none;" rows="3" placeholder="Specify findings"></textarea>
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon" style="background-color: #fd7f95"> Endocardium </span>
+                                            <select class="form-control" id="heart-endo">
+                                                <option>Clear and glistening</option>
+                                                <option>Pale with diffuse fibroelastosis</option>
+                                            <option>Not evaluated</option>
+                                            </select>
+                                        </div>
+                                        <div class="py-1 mt-2">
+                                            <div class="input-group py-1">
+                                                <span class="input-group-addon" style="background-color: #fd7f95"> Coronaries </span>
+                                                <select class="form-control" id="heart-coronary">
+                                                    <option>Unremarkable ostia in normal location</option>
+                                                    <option>Other (specify)</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                            </div>
+                                            <textarea class="form-control py-1" id="heart-coronary-more" style="display:none;" rows="3" placeholder="Specify findings"></textarea>
+                                        </div>
+                                        <div class="py-1 mt-2">
+                                            <div class="input-group py-1">
+                                                <span class="input-group-addon" style="background-color: #fd7f95"> Aorta/arch </span>
+                                                <select class="form-control" id="heart-aorta">
+                                                    <option>Left-sided with normal aortic branches</option>
+                                                    <option>Right-sided with normal aortic branches</option>
+                                                    <option>Other (specify)</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                            </div>
+                                            <textarea class="form-control py-1" id="heart-aorta-more" style="display:none;" rows="3" placeholder="Specify findings"></textarea>
+                                        </div>
+                                        <div class="py-1 mt-2">
+                                            <div class="input-group py-1">
+                                                <span class="input-group-addon" style="background-color: #fd7f95"> Pulmonary vein/IVC </span>
+                                                <select class="form-control" id="heart-pulv">
+                                                    <option>Pulmonary veins and IVC drain normally</option>
+                                                    <option>Other (specify)</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                            </div>
+                                            <textarea class="form-control py-1" id="heart-pulv-more" style="display:none;" rows="3" placeholder="Specify findings"></textarea>
+                                        </div>
+                                        <div class="py-1 mt-2">
+                                            <div class="input-group">
+                                                <span class="input-group-addon w-100" style="background-color: #fd7f95"> Surgical interventions </span>
+                                            </div>
+                                            <textarea class="form-control" id="heart-surg" rows="5" placeholder="Describe any surgical changes"></textarea>
+                                        </div>
+
+                                        <div class="card-header py-2 mt-2" style="background-color: #8fc5fd">
+                                            Pulmonary system
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon" style="background-color: #8fc5fd"> Airways </span>
+                                            <select class="form-control" id="pulm-airway">
+                                                <option>Larynx and trachea normally formed; unremarkable mucosa</option>
+                                                <option>Larynx and trachea normally formed; abundant mucoid debris present</option>
+                                                <option>Larynx and trachea normally formed; blood/mucoid contents present</option>
+                                            <option>Not evaluated</option>
+                                            </select>
+                                        </div>
+                                        <div class="py-1 mt-2">
+                                            <div class="input-group py-1">
+                                                <span class="input-group-addon" style="background-color: #8fc5fd"> Right lung </span>
+                                                <select class="form-control" id="pulm-rlung">
+                                                    <option>Three lobes, smooth pleural surfaces, unremarkable spongy parenchyma</option>
+                                                    <option>Three lobes, smooth pleural surfaces, congested parenchyma</option>
+                                                    <option>Other (specify)</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                            </div>
+                                                <textarea class="form-control py-1" id="pulm-rlung-more" style="display:none;" rows="3" placeholder="Specify findings"></textarea>
+                                        </div>
+                                        <div class="py-1 mt-2">
+                                            <div class="input-group py-1">
+                                                <span class="input-group-addon" style="background-color: #8fc5fd"> Left lung </span>
+                                                <select class="form-control" id="pulm-llung">
+                                                    <option>Two lobes, smooth pleural surfaces, unremarkable spongy parenchyma</option>
+                                                    <option>Two lobes, smooth pleural surfaces, congested parenchyma</option>
+                                                    <option>Abnormal (specify)</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                            </div>
+                                                <textarea class="form-control py-1" id="pulm-llung-more" style="display:none;" rows="3" placeholder="Specify findings"></textarea>
+                                        </div>
+                                        <div class="py-1 mt-2">
+                                            <div class="input-group py-1">
+                                                <span class="input-group-addon" style="background-color: #8fc5fd"> Parenchymal vessels </span>
+                                                <select class="form-control" id="pulm-vessels">
+                                                    <option>Unremarkable; no thrombus seen</option>
+                                                    <option>Dilated venous channels with hemorrhage</option>
+                                                    <option>Dilated venous channels with multiple thrombi</option>
+                                                    <option>Other (specify)</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                            </div>
+                                                <textarea class="form-control py-1" id="pulm-vessels-more" style="display:none;" rows="3" placeholder="Specify findings"></textarea>
+                                        </div>
+
+                                        <div class="card-header py-2 mt-2" style="background-color: #fdbf7d">
+                                            Gastrointestinal system
+                                        </div>
+                                        <div class="py-1 mt-2">
+                                            <div class="input-group py-1">
+                                                <span class="input-group-addon" style="background-color: #fdbf7d"> Esophagus </span>
+                                                <select class="form-control" id="gi-esoph">
+                                                    <option>Uniform caliber, smooth mucosa</option>
+                                                    <option>Uniform caliber, smooth mucosa; no trachea-esophageal fistula</option>
+                                                    <option>Uniform caliber, roughened mucosa</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                                <input class="form-control py-1" id="gi-esoph-color"  placeholder="Specify mucosa color">
+                                            </div>
+                                        </div>
+                                        <div class="py-1 mt-2">
+                                            <div class="input-group py-1">
+                                                <span class="input-group-addon" style="background-color: #fdbf7d"> Stomach </span>
+                                                <select class="form-control" id="gi-stomach">
+                                                    <option>Unremarkable, smooth mucosa</option>
+                                                    <option>Unremarkable, nodular mucosa</option>
+                                                    <option>Irregular mucosa with punctate ulcers</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                                <input class="form-control py-1" id="gi-stomach-color"  placeholder="Specify mucosa color">
+                                            </div>
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon" style="background-color: #fdbf7d"> Stomach contents </span>
+                                            <select class="form-control" id="gi-sto-cont">
+                                                <option>Scant, mucoid contents</option>
+                                                <option>Mucoid, tan contents</option>
+                                                <option>Semi-solid tan contents</option>
+                                                <option>Semi-solid reen contents</option>
+                                                <option>Semi-digested food particles</option>
+                                                <option>Semi-particulate bloody contents</option>
+                                            <option>Not evaluated</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon" style="background-color: #fdbf7d"> Pylorus </span>
+                                            <select class="form-control" id="gi-pylorus">
+                                                <option>Unremarkable; patent communication to duodenum</option>
+                                                <option>Hypertrophic with stenotic communication to duodenum</option>
+                                                <option>Hypertrophic and nearly complete occlusion</option>
+                                            <option>Not evaluated</option>
+                                            </select>
+                                        </div>
+                                        <div class="py-1 mt-2">
+                                            <div class="input-group py-1">
+                                                <span class="input-group-addon" style="background-color: #fdbf7d"> Small intestine </span>
+                                                <select class="form-control" id="gi-si">
+                                                    <option>Unremarkable, smooth folded mucosa</option>
+                                                    <option>Flattened mucosa with loss of normal folds</option>
+                                                    <option>Irregular mucosa with scattered ulcers</option>
+                                                    <option>Other (specify)</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                                <input class="form-control" id="gi-si-color" placeholder="Describe mucosa color">
+                                            </div>
+                                                <textarea class="form-control py-1" id="gi-si-more" style="display:none;" rows="3" placeholder="Specify small bowel findings"></textarea>
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon" style="background-color: #fdbf7d"> Small intestine contents </span>
+                                            <select class="form-control" id="gi-si-cont">
+                                                <option>Semi-solid tan contents</option>
+                                                <option>Semi-solid green contents</option>
+                                                <option>Semi-digested food particles</option>
+                                                <option>Semi-particulate bloody contents</option>
+                                            <option>Not evaluated</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon" style="background-color: #fdbf7d"> Appendix </span>
+                                            <select class="form-control" id="gi-appy">
+                                                <option>Present, expected position</option>
+                                                <option>Present, malpositioned</option>
+                                                <option>Absent</option>
+                                            <option>Not evaluated</option>
+                                            </select>
+                                            <input class="form-control" id="gi-appy-len" placeholder="Length (if present)">
+                                        </div>
+                                        <div class="py-1 mt-2">
+                                            <div class="input-group py-1">
+                                                <span class="input-group-addon" style="background-color: #fdbf7d"> Colo-rectal </span>
+                                                <select class="form-control" id="gi-colon">
+                                                    <option>Unremarkable, smooth folded mucosa</option>
+                                                    <option>Flattened mucosa with loss of normal folds</option>
+                                                    <option>Irregular mucosa with scattered ulcers</option>
+                                                    <option>Other (specify)</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                                <input class="form-control" id="gi-colon-color" placeholder="Describe mucosa color">
+                                            </div>
+                                            <textarea class="form-control py-1" id="gi-colon-more" style="display:none;" rows="3" placeholder="Specify small bowel findings"></textarea>
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon" style="background-color: #fdbf7d"> Colo-rectal contents </span>
+                                            <select class="form-control" id="gi-colon-cont">
+                                                <option>Semi-solid tan contents</option>
+                                                <option>Semi-solid green contents</option>
+                                                <option>Semi-digested food particles</option>
+                                                <option>Semi-particulate bloody contents</option>
+                                            <option>Not evaluated</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="card-header py-2 mt-2" style="background-color: #c5fdb6">
+                                            Hepatobiliary system
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon" style="background-color: #c5fdb6"> Liver shape </span>
+                                            <select class="form-control" id="liv-shape">
+                                                <option>Unremarkable shape; smooth capsule</option>
+                                                <option>Globally enlarged shape; smooth capsule</option>
+                                                <option>Surgically altered shape; smooth capsule</option>
+                                            <option>Not evaluated</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon" style="background-color: #c5fdb6"> Liver parenchyma </span>
+                                            <select class="form-control" id="liv-paren">
+                                                <option>Uniform</option>
+                                                <option>Mottled</option>
+                                                <option>Congested</option>
+                                                <option>Bile stained</option>
+                                            </select>
+                                            <input class="form-control" id="liv-color" placeholder="Describe color">
+                                            <select class="form-control" id="liv-texture">
+                                                <option>firm</option>
+                                                <option>fibrotic</option>
+                                                <option>soft</option>
+                                                <option>semi-liquid</option>
+                                                <option>completely autolyzed</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon" style="background-color: #c5fdb6"> Hepatic veins </span>
+                                            <select class="form-control" id="liv-veins">
+                                                <option>Unremarkable visible venous branches</option>
+                                                <option>Dilated visible venous branches</option>
+                                                <option>Compressed visible venous branches</option>
+                                            <option>Not evaluated</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon" style="background-color: #c5fdb6"> Gallbladder </span>
+                                            <select class="form-control" id="liv-gb">
+                                                <option>Normally formed and located; green bile</option>
+                                                <option>Small and normally located; scant green bile</option>
+                                                <option>Fibrotic remnant at expected location; no bile</option>
+                                            <option>Not evaluated</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon" style="background-color: #c5fdb6"> Extra-hepatic Biliary tree </span>
+                                            <select class="form-control" id="liv-biliary">
+                                                <option>Bile expressed normally into duodenum</option>
+                                                <option>Bile cannot be expressed into duodenum</option>
+                                            <option>Not evaluated</option>
+                                            </select>
+                                        </div>
+                                        <div class="py-1 mt-2">
+                                            <div class="input-group">
+                                                <span class="input-group-addon w-100" style="background-color: #c5fdb6">Other hepatic findings </span>
+                                            </div>
+                                            <textarea class="form-control" id="liv-other" rows="5"
+                                                      placeholder="Describe any other hepatic findings, or leave blank if none"></textarea>
+                                        </div>
+
+                                        <div class="card-header py-2 mt-2" style="background-color: #f3fd58">
+                                            Genitourinary system
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon" style="background-color: #f3fd58"> Cortical surface </span>
+                                            <select class="form-control" id="kid-surface">
+                                                <option>Smooth, slight fetal lobations</option>
+                                                <option>Smooth, marked fetal lobations</option>
+                                                <option>Smooth, capsule strips with ease</option>
+                                                <option>Pebbled, roughened surface</option>
+                                                <option>Pebbled, scarred segments</option>
+                                            <option>Not evaluated</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon" style="background-color: #f3fd58"> Kidney parenchyma </span>
+                                            <input class="form-control" id="kid-paren-color" placeholder="Describe parenchyma color">
+                                            <select class="form-control" id="kid-paren">
+                                                <option>Normal corticomedullary architecture</option>
+                                                <option>Pale preserved corticomedullary architecture</option>
+                                                <option>Obscured corticomedullary junction</option>
+                                                <option>Hemorrhagic papillae</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon" style="background-color: #f3fd58"> Ureters </span>
+                                            <select class="form-control" id="kid_ureter">
+                                                <option>Unremarkable pelvis; normal caliber ureters</option>
+                                                <option>Unilateral dilated pelvis and ureter</option>
+                                                <option>Bilateral dilated pelves and megaureters</option>
+                                            <option>Not evaluated</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon" style="background-color: #f3fd58"> Bladder </span>
+                                            <select class="form-control" id="gu-bladder-color">
+                                                <option>white</option>
+                                                <option>dull</option>
+                                                <option>hemorrhagic</option>
+                                                <option>ulcerated</option>
+                                            </select>
+                                            <select class="form-control" id="gu-bladder">
+                                                <option>Thin walled mucosa, scant urine</option>
+                                                <option>Thin walled mucosa, abundant urine</option>
+                                                <option>Thick walled mucosa, scant urine</option>
+                                                <option>Thick walled mucosa, scant urine</option>
+                                            </select>
+                                        </div>
+                                        <div class="py-1 mt-2">
+                                            <div class="input-group">
+                                                <span class="input-group-addon w-100" style="background-color: #f3fd58"> Other GU findings </span>
+                                            </div>
+                                            <textarea class="form-control" id="gu_more" rows="5"
+                                                      placeholder="Describe other findings or leave blank"></textarea>
+                                        </div>
+
+                                        <div class="card-header py-2 mt-2" style="background-color: #926afd">
+                                            Reproductive system
+                                        </div>
+                                        <div class="male">
+                                            <div class="input-group py-1 mt-2">
+                                                <span class="input-group-addon" style="background-color: #926afd"> Testes </span>
+                                                <select class="form-control" id="rep-testis">
+                                                    <option>Tan, firm parenchyma</option>
+                                                    <option>Tan, edematous parenchyma</option>
+                                                    <option>Firm parenchyma with focal hemorrhage</option>
+                                                    <option>Not evaluated</option>
+                                                </select>
+                                                <input class="form-control" id="rep-testis-len" placeholder="Average testis length (cm)">
+                                            </div>
+                                            <div class="input-group py-1 mt-2">
+                                                <span class="input-group-addon" style="background-color: #926afd"> Prostate </span>
+                                                <select class="form-control" id="rep-prostate">
+                                                    <option>Unremarkable fibrous parenchyma</option>
+                                                    <option>Not evaluated</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="female" style="display: none">
+                                            <div class="input-group py-1 mt-2">
+                                                <span class="input-group-addon" style="background-color: #926afd"> Uterus </span>
+                                                <select class="form-control" id="rep-uterus">
+                                                    <option>Smooth surfaces and juvenile proportions</option>
+                                                    <option>Not evaluated</option>
+                                                </select>
+                                            </div>
+                                            <div class="input-group py-1 mt-2">
+                                                <span class="input-group-addon" style="background-color: #926afd"> Ovaries </span>
+                                                <select class="form-control" id="rep-ovary">
+                                                    <option>Smooth capsular surface, unremarkable parenchyma</option>
+                                                    <option>Smooth capsular surface, scattered cystic follicles present</option>
+                                                    <option>Not evaluated</option>
+                                                </select>
+                                                <input class="form-control" id="rep-ovary-len" placeholder="Average ovary length (cm)">
+                                            </div>
+                                            <div class="input-group py-1 mt-2">
+                                                <span class="input-group-addon" style="background-color: #926afd"> Fallopian tubes </span>
+                                                <select class="form-control" id="rep-fallopian">
+                                                    <option>Unremarkable fimbriated ends</option>
+                                                    <option>Not evaluated</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="py-1 mt-2">
+                                            <div class="input-group">
+                                                <span class="input-group-addon w-100" style="background-color: #926afd"> Other reproductive findings </span>
+                                            </div>
+                                            <textarea class="form-control" id="rep-other" rows="5"
+                                                      placeholder="Describe other reproductive findings or leave blank"></textarea>
+                                        </div>
+
+                                        <div class="card-header py-2 mt-2" style="background-color: #f0bffd">
+                                            Hematolymphoid system
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon" style="background-color: #f0bffd"> Thymus </span>
+                                            <select class="form-control" id="hem-thymus">
+                                                <option>Age appropriate size, tan lobulated parenchyma</option>
+                                                <option>Small for age, tan fibro-fatty parenchyma</option>
+                                                <option>Hyperplastic for age, tan lobulated parenchyma</option>
+                                                <option>Absent</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon" style="background-color: #f0bffd"> Spleen </span>
+                                            <select class="form-control" id="hem-spleen">
+                                                <option>Firm parenchyma</option>
+                                                <option>Soft parenchyma</option>
+                                                <option>Congested parenchyma</option>
+                                                <option>Absent</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                            <input class="form-control" id="hem-spleen-color" placeholder="Describe parenchyma color">
+                                            <select class="form-control" id="hem-spleen-pulp">
+                                                <option>White pulp visible</option>
+                                                <option>White pulp absent</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon" style="background-color: #f0bffd"> Bone marrow </span>
+                                            <select class="form-control" id="hem-marrow">
+                                                <option>Dark brown, unremarkable marrow spaces</option>
+                                                <option>Red, bloody marrow spaces</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon" style="background-color: #f0bffd"> Lymph nodes </span>
+                                            <select class="form-control" id="hem-lymphnode">
+                                                <option>Small, soft and unremarkable</option>
+                                                <option>Variably prominent, soft</option>
+                                                <option>Diffusely enlarged, firm</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                        </div>
+                                        <div class="py-1 mt-2">
+                                            <div class="input-group">
+                                                <span class="input-group-addon w-100" style="background-color: #f0bffd"> Other findings </span>
+                                            </div>
+                                            <textarea class="form-control" id="hem-more" rows="5"
+                                                      placeholder="Describe other hematolymphoid findings or leave blank"></textarea>
+                                        </div>
+
+                                        <div class="card-header py-2 mt-2" style="background-color: #4ffde1">
+                                            Endocrine system
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon" style="background-color: #4ffde1"> Thyroid </span>
+                                            <select class="form-control" id="endo-thyroid">
+                                                <option>Normally formed parenchyma</option>
+                                                <option>Hypertrophic parenchyma</option>
+                                                <option>Hypoplastic parenchyma</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                            <input class="form-control" id="endo-thyroid-color" placeholder="Describe thyroid color">
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon" style="background-color: #4ffde1"> Parathyroids </span>
+                                            <select class="form-control" id="endo-parathy">
+                                                <option>Inconspicuous (unidentifiable)</option>
+                                                <option>Not evaluated</option> 
+                                            </select>
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon" style="background-color: #4ffde1"> Adrenals </span>
+                                            <select class="form-control" id="endo-adrenals">
+                                                <option>Normal architecture with dark medulla</option>
+                                                <option>Depleted, thin cortex and dark medulla</option>
+                                                <option>Hemorrhagic parenchyma with loss of markings</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon" style="background-color: #4ffde1"> Pituitary </span>
+                                            <select class="form-control" id="endo-pit">
+                                                <option>Unremarkable spongy parenchyma</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                        </div>
+                                        <div class="py-1 mt-2">
+                                            <div class="input-group">
+                                                <span class="input-group-addon w-100"> Other endocrine </span>
+                                            </div>
+                                            <textarea class="form-control" id="endo-more" rows="5"
+                                                      placeholder="Describe other endocrine findings, or leave blank"></textarea>
+                                        </div>
+
+                                        <div class="card-header py-2 mt-2" style="background-color: #fd86c5">
+                                            Skin and Musculoskeletal system
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon" style="background-color: #fd86c5"> Skin </span>
+                                            <select class="form-control" id="msk-skin">
+                                                <option>Well keratinized and otherwise unremarkable</option>
+                                                <option>Poorly keratinized consistent with prematurity</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                        </div>
+                                        <div class="py-1 mt-2">
+                                            <div class="input-group py-1">
+                                                <span class="input-group-addon" style="background-color: #fd86c5"> Muscle tissue </span>
+                                                <select class="form-control" id="msk-muscle">
+                                                    <option>Unremarkable</option>
+                                                    <option>Abnormal (specify)</option>
+                                                    <option>Not evaluated</option>
+                                                </select>
+                                            </div>
+                                                <textarea class="form-control py-1" id="msk-muscle-more"
+                                                          style="display:none;" rows="3" placeholder="Specify other findings"></textarea>
+                                        </div>
+                                        <div class="py-1 mt-2">
+                                            <div class="input-group py-1">
+                                                <span class="input-group-addon" style="background-color: #fd86c5"> Bones and cartilage </span>
+                                                <select class="form-control" id="msk_bones">
+                                                    <option>Normally formed, long bone lengths appropriate for age</option>
+                                                    <option>Abnormal (specify)</option>
+                                                    <option>Not evaluated</option>
+                                                </select>
+                                            </div>
+                                                <textarea class="form-control py-1" id="msk_bones-more" style="display:none;" rows="3" placeholder="Specify findings"></textarea>
+                                        </div>
+                                        <div class="py-1 mt-2">
+                                            <div class="input-group">
+                                                <span class="input-group-addon w-100" style="background-color: #fd86c5"> X-Rays </span>
+                                            </div>
+                                            <textarea class="form-control" id="msk_xray" rows="5"
+                                            placeholder="Describe any radiographic findings, or leave blank"></textarea>
+                                        </div>
+
+                                        <div class="card-header py-2 mt-2" style="background-color: #3db7fd">
+                                            Nervous system
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon" style="background-color: #3db7fd"> Duration of fixation (days)</span>
+                                            <input class="form-control" id="cns-fix">
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon" style="background-color: #3db7fd"> Development stage </span>
+                                            <select class="form-control" id="cns-dev">
+                                                <option>Age appropriate</option>
+                                                <option>Asynchronous with gestational age</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                        </div>
+                                        <div class="py-1 mt-2">
+                                            <div class="input-group py-1">
+                                                <span class="input-group-addon" style="background-color: #3db7fd"> Brain surface </span>
+                                                <select class="form-control" id="cns_surface">
+                                                    <option>Unremarkable smooth immature developing cortex</option>
+                                                    <option>Unremarkable gyrated developing cortex; operculum open</option>
+                                                    <option>Unremarkable gyrated developing cortex; operculum closed</option>
+                                                    <option>Semi-liquid and autolyzed</option>
+                                                    <option>Abnormal (specify)</option>
+                                                    <option>Not evaluated</option>
+                                                </select>
+                                            </div>
+                                                <textarea class="form-control py-1" id="cns_surface-more" style="display:none;" rows="3"
+                                                          placeholder="Specify other surface findings"></textarea>
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon" style="background-color: #3db7fd"> Cranial nerves + basal vessels </span>
+                                            <select class="form-control" id="cns-cranial">
+                                                <option>Arise normally</option>
+                                                <option>Cannot be assessed</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                        </div>
+                                        <div class="py-1 mt-2">
+                                            <div class="input-group py-1">
+                                                <span class="input-group-addon" style="background-color: #3db7fd"> Cerebral cortex </span>
+                                                <select class="form-control" id="cns-parenchyma">
+                                                    <option>Soft with discrete white-gray matter delineation</option>
+                                                    <option>Poorly fixed with indistinct white-gray matter</option>
+                                                    <option>Semi-liquid without clear landmarks</option>
+                                                    <option>Abnormal (specify)</option>
+                                                    <option>Not evaluated</option>
+                                                </select>
+                                            </div>
+                                                <textarea class="form-control py-1" id="cns-parenchyma-more" style="display:none;" rows="3" placeholder="Specify findings"></textarea>
+                                        </div>
+                                        <div class="input-group py-1 mt-2" style="background-color: #3db7fd">
+                                            <span class="input-group-addon"> Ventricles </span>
+                                            <select class="form-control" id="cns-vent">
+                                                <option>Normal size for age; no periventricular lesions</option>
+                                                <option>Symmetrically dilated with periventricular hemorrhage</option>
+                                                <option>Cannot be evaluated due to autolysis</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                        </div>
+                                        <div class="py-1 mt-2">
+                                            <div class="input-group py-1">
+                                                <span class="input-group-addon" style="background-color: #3db7fd"> Cerebellum </span>
+                                                <select class="form-control" id="cns-cerebell">
+                                                    <option>Normally developed and symmetric</option>
+                                                    <option>Artifactually disrupted during extraction</option>
+                                                    <option>Abnormal (specify)</option>
+                                                    <option>Not evaluated</option>
+                                                </select>
+                                            </div>
+                                                <textarea class="form-control py-1" id="cns-cerebell-more" style="display:none;" rows="3" placeholder="Specify findings"></textarea>
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon" style="background-color: #3db7fd"> Brainstem </span>
+                                            <select class="form-control" id="cns-bs">
+                                                <option>Normal external landmarks without visible lesions</option>
+                                                <option>Basilar hemorrhage extending into pons</option>
+                                                <option>Extensive autolytic changes</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-group py-1 mt-2">
+                                            <span class="input-group-addon" style="background-color: #3db7fd"> Spinal cord </span>
+                                            <select class="form-control" id="cns-sc">
+                                                <option>Unremarkable cut surfaces with peripheral thin meninges</option>
+                                                <option>Not evaluated</option>
+                                            </select>
+                                        </div>
+                                        <div class="py-1 mt-2">
+                                            <div class="input-group">
+                                                <span class="input-group-addon w-100" style="background-color: #3db7fd"> Other CNS findings </span>
+                                            </div>
+                                            <textarea class="form-control" id="cns-more" rows="5"
+                                            placeholder="Describe other brain findings, or leave blank"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Accordion #7-->
+                <div class="card">
+                    <div class="card-header" role="tab" id="headingSeven">
+                        <h5 class="mb-0">
+                            <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                Cassette List
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="collapseSeven" class="collapse" role="tabpanel" aria-labelledby="headingSeven">
+                        <div class="card-block chkboxes">
+                            <div class="card-group">
+                                <div class="card">
+                                    <div class="card-header">
+                                        Cassette summary
+                                    </div>
+                                    <div class="card-block chkboxes">
+                                        <div style="font-size: 0.66em;" class="content form-check" id="column1j">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion #5-->
+                <div class="card">
+                    <div class="card-header" role="tab" id="headingFive">
+                        <h5 class="mb-0">
+                            <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                Microscopic description
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="collapseFive" class="collapse" role="tabpanel" aria-labelledby="headingFive">
+                        <div class="card-block chkboxes">
+                            <div class="card-group">
+                                <div class="card">
+                                    <div class="card-header">
+                                        Column 5.1
+                                    </div>
+                                    <div class="card-block chkboxes">
+                                        <div style="font-size: 0.66em;" class="content form-check" id="column1f">
+                                            Checkboxes
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        Column 5.2
+                                    </div>
+                                    <div class="card-block chkboxes">
+                                        <div style="font-size: 0.66em;" class="content form-check" id="column2f">
+                                            Checkboxes
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        Column 5.3
+                                    </div>
+                                    <div class="card-block chkboxes">
+                                        <div style="font-size: 0.66em;" class="content form-check" id="column3f">
+                                            Checkboxes
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Accordion #6-->
+                <div class="card">
+                    <div class="card-header" role="tab" id="headingSix">
+                        <h5 class="mb-0">
+                            <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                Common summary discussions
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="collapseSix" class="collapse" role="tabpanel" aria-labelledby="headingSix">
+                        <div class="card-block chkboxes">
+                            <div class="card-group">
+                                <div class="card">
+                                    <div class="card-header">
+                                        Column 6.1
+                                    </div>
+                                    <div class="card-block chkboxes">
+                                        <div style="font-size: 0.66em;" class="content form-check" id="column1g">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        Column 6.2
+                                    </div>
+                                    <div class="card-block chkboxes">
+                                        <div style="font-size: 0.66em;" class="content form-check" id="column1h">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        Column 6.3
+                                    </div>
+                                    <div class="card-block chkboxes">
+                                        <div style="font-size: 0.66em;" class="content form-check" id="column1i">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- end accordion cards-->
+            </div>
+            <!-- end left column-->
+        </div>
+        <!-- right column-->
+        <div class="col col-md-4" id="sticky">
+            <div class="card text-center">
+                <div class="card-header button-box">
+                    <ul class="nav nav-pills standard-button-box">
+                        <a class="btn btn-outline-success p-1 mb-2" id="writeReport">
+                            Write Report
+                        </a>
+
+                        <a class="btn btn-outline-danger p-1 mb-2 ml-4" id="Reset">Reset</a>
+                    </ul>
+                </div>
+                <div class="card-block">
+                    <form>
+                        <div class="form-group">
+                            <textarea class="form-control" id="outPut-1" rows="8"
+                                      placeholder="Clinical summary"></textarea>
+                            <span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-1">Copy to Clipboard</span>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" id="outPut-2" rows="15"
+                                      placeholder="Gross and microscopic description"></textarea>
+                            <span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-2">Copy to Clipboard</span>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" id="outPut-3" rows="10"
+                                      placeholder="Example Final"></textarea>
+                            <span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-3">Copy to Clipboard</span>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" id="outPut-4" rows="5"
+                                      placeholder="Example Comment"></textarea>
+                            <span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-4">Copy to Clipboard</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- end right column-->
+    </div>
+    <!-- end bottom row-->
+    {{> page-modals/combined-report}}
+    {{> page-modals/new-case-reference}}
+    {{> page-partials/history-module}}
+</div>
+<!--end container wrapper-->
+
+

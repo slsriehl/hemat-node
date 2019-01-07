@@ -475,4 +475,29 @@ $(function () {
     if (location.hash) shiftWindow();
     window.addEventListener("hashchange", shiftWindow);
 
+    //****************** End move anchor jumps
+
+	//****************** Add padding to create right sided text column
+	String.prototype.rpad = function (num) {
+        // .rpad() function to right pad block of text,
+        // num = #of spaces to pad right
+
+        // match block of text to the 5th space, or remainder (1)
+		// (this+" ") adds one more space to catch end of sentence
+        var text = (this+" ").match(/(.*?\s){1,5}/g);
+        // get first line
+		if (text){
+            var padded = text[0];
+            // loop through array, add new line and pad
+            for (var i=1; i < text.length; i++) {
+                padded += "\n".padEnd(num)+text[i]; // pad subsequent lines
+            }
+            // return value to string
+            return padded;
+		} else {
+			return text;
+		}
+
+    };
+
 });
