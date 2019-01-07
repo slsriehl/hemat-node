@@ -58,11 +58,12 @@ $(window).on('load', function(){
 
     dxLines = {
 //generic diagnoses 1
-        dxLine1: '- Specimen did not survive processing \n',
+        dxLine1: '- No significant abnormalities \n',
         dxLine2: '- Mild non-specific changes (see comment) \n',
         dxLine3: '- No microorganisms seen with GMS and AFB stains \n',
         dxLine4: '- No Helicobacter-like organisms seen with Giemsa stain \n',
         dxLine5: '- No specimen identified in the sample bottle \n',
+        dxLine6: '- Specimen did not survive processing \n',
 
 //duodenum diagnoses 100
         dxLine100: '- Focal acute inflammation\n',
