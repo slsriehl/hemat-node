@@ -33,6 +33,7 @@
                 <div class="card-block">
                     <div class="row">
                         <div class="col col-md-4">
+                            <!-- Birth/Death/Autopsy details-->
                             <div class="card">
                                 <div class="card-header">
                                     Birth Details
@@ -89,7 +90,7 @@
                                     </div>
                                     <div class="input-group pt-2">
                                         <span class="input-group-addon">
-                                            Age (or time alive)
+                                            Age (enter 0 if stillbirth)
                                         </span>
                                         <input type="text" class="form-control form-control-sm" id="age"/>
                                     </div>
@@ -150,7 +151,7 @@
 
             <!-- left column accordion-->
             <div id="accordion" role="tablist" aria-multiselectable="true">
-                <!-- Accordion #1-->
+                <!-- Maternal history-->
                 <div class="card">
                     <div class="card-header" role="tab" id="headingOne">
                         <h5 class="mb-0">
@@ -309,7 +310,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- Accordion #2-->
+
+                <!-- Weights and measurements-->
                 <div class="card">
                     <div class="card-header" role="tab" id="headingTwo">
                         <h5 class="mb-0">
@@ -477,7 +479,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- Accordion #3-->
+
+                <!-- External exam-->
                 <div class="card">
                     <div class="card-header" role="tab" id="headingThree">
                         <h5 class="mb-0">
@@ -666,7 +669,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- Accordion #4-->
+
+                <!-- Internal exam-->
                 <div class="card">
                     <div class="card-header" role="tab" id="headingFour">
                         <h5 class="mb-0">
@@ -1492,8 +1496,8 @@
                                             </div>
                                                 <textarea class="form-control py-1" id="cns-parenchyma-more" style="display:none;" rows="3" placeholder="Specify findings"></textarea>
                                         </div>
-                                        <div class="input-group py-1 mt-2" style="background-color: #3db7fd">
-                                            <span class="input-group-addon"> Ventricles </span>
+                                        <div class="input-group py-1 mt-2" >
+                                            <span class="input-group-addon" style="background-color: #3db7fd"> Ventricles </span>
                                             <select class="form-control" id="cns-vent">
                                                 <option>Normal size for age; no periventricular lesions</option>
                                                 <option>Symmetrically dilated with periventricular hemorrhage</option>
@@ -1542,7 +1546,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- Accordion #7-->
+
+                <!-- Cassette list-->
                 <div class="card">
                     <div class="card-header" role="tab" id="headingSeven">
                         <h5 class="mb-0">
@@ -1560,9 +1565,366 @@
                                         Cassette summary
                                     </div>
                                     <div class="card-block chkboxes">
-                                        <div style="font-size: 0.66em;" class="content form-check" id="column1j">
+                                        <!--Table-->
+                                        <table id="tablePreview" class="table table-striped table-sm table-borderless mt-2 py-1">
+                                            <!--Table head-->
+                                            <thead>
+                                            <tr>
+                                                <th>Cassette #</th>
+                                                <th>Label</th>
+                                            </tr>
+                                            </thead>
+                                            <!--Table head-->
+                                            <!--Table body-->
+                                            <tbody>
+                                            <tr>
+                                                <th scope="row">
+                                                    <input list="cass-1a" id="cass-1" class="form-control form-control-sm py-2" placeholder="choose cassette label or enter your own">
 
-                                        </div>
+                                                    <datalist id="cass-1a">
+                                                        <option selected value="A1">
+                                                        <option value="A">
+                                                        <option value="1">
+                                                        <option value="1A">
+                                                    </datalist>
+                                                </th>
+                                                <td>
+                                                    <input list="cass-organs" id="cass-label-1" class="form-control form-control-sm py-2" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    <input list="cass-2a" id="cass-2" class="form-control form-control-sm py-2" placeholder="choose cassette label or enter your own">
+
+                                                    <datalist id="cass-2a">
+                                                        <option selected value="A2">
+                                                        <option value="B">
+                                                        <option value="2">
+                                                        <option value="1B">
+                                                    </datalist>
+                                                </th>
+                                                <td>
+                                                    <input list="cass-organs" id="cass-label-2" class="form-control form-control-sm py-2" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    <input list="cass-3a" id="cass-3" class="form-control form-control-sm py-2" placeholder="choose cassette label or enter your own">
+
+                                                    <datalist id="cass-3a">
+                                                        <option selected value="A3">
+                                                        <option value="C">
+                                                        <option value="1">
+                                                        <option value="1C">
+                                                    </datalist>
+                                                </th>
+                                                <td>
+                                                    <input list="cass-organs" id="cass-label-3" class="form-control form-control-sm py-2" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    <input list="cass-4a" id="cass-4" class="form-control form-control-sm py-2" placeholder="choose cassette label or enter your own">
+
+                                                    <datalist id="cass-4a">
+                                                        <option selected value="A4">
+                                                        <option value="D">
+                                                        <option value="4">
+                                                        <option value="4A">
+                                                    </datalist>
+                                                </th>
+                                                <td>
+                                                    <input list="cass-organs" id="cass-label-4" class="form-control form-control-sm py-2" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    <input list="cass-5a" id="cass-5" class="form-control form-control-sm py-2" placeholder="choose cassette label or enter your own">
+
+                                                    <datalist id="cass-5a">
+                                                        <option selected value="A5">
+                                                        <option value="E">
+                                                        <option value="5">
+                                                        <option value="5A">
+                                                    </datalist>
+                                                </th>
+                                                <td>
+                                                    <input list="cass-organs" id="cass-label-5" class="form-control form-control-sm py-2" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    <input list="cass-6a" id="cass-6" class="form-control form-control-sm py-2" placeholder="choose cassette label or enter your own">
+
+                                                    <datalist id="cass-6a">
+                                                        <option selected value="A6">
+                                                        <option value="F">
+                                                        <option value="6">
+                                                        <option value="6A">
+                                                    </datalist>
+                                                </th>
+                                                <td>
+                                                    <input list="cass-organs" id="cass-label-6" class="form-control form-control-sm py-2" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    <input list="cass-7a" id="cass-7" class="form-control form-control-sm py-2" placeholder="choose cassette label or enter your own">
+
+                                                    <datalist id="cass-7a">
+                                                        <option selected value="A7">
+                                                        <option value="G">
+                                                        <option value="7">
+                                                        <option value="7A">
+                                                    </datalist>
+                                                </th>
+                                                <td>
+                                                    <input list="cass-organs" id="cass-label-7" class="form-control form-control-sm py-2" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    <input list="cass-8a" id="cass-8" class="form-control form-control-sm py-2" placeholder="choose cassette label or enter your own">
+
+                                                    <datalist id="cass-8a">
+                                                        <option selected value="A8">
+                                                        <option value="H">
+                                                        <option value="8">
+                                                        <option value="8A">
+                                                    </datalist>
+                                                </th>
+                                                <td>
+                                                    <input list="cass-organs" id="cass-label-8" class="form-control form-control-sm py-2" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    <input list="cass-9a" id="cass-9" class="form-control form-control-sm py-2" placeholder="choose cassette label or enter your own">
+
+                                                    <datalist id="cass-9a">
+                                                        <option selected value="A9">
+                                                        <option value="I">
+                                                        <option value="9">
+                                                        <option value="9A">
+                                                    </datalist>
+                                                </th>
+                                                <td>
+                                                    <input list="cass-organs" id="cass-label-9" class="form-control form-control-sm py-2" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    <input list="cass-10a" id="cass-10" class="form-control form-control-sm py-2" placeholder="choose cassette label or enter your own">
+
+                                                    <datalist id="cass-10a">
+                                                        <option selected value="A10">
+                                                        <option value="J">
+                                                        <option value="10">
+                                                        <option value="10A">
+                                                    </datalist>
+                                                </th>
+                                                <td>
+                                                    <input list="cass-organs" id="cass-label-10" class="form-control form-control-sm py-2" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    <input list="cass-11a" id="cass-11" class="form-control form-control-sm py-2" placeholder="choose cassette label or enter your own">
+
+                                                    <datalist id="cass-11a">
+                                                        <option selected value="A11">
+                                                        <option value="K">
+                                                        <option value="11">
+                                                        <option value="11A">
+                                                    </datalist>
+                                                </th>
+                                                <td>
+                                                    <input list="cass-organs" id="cass-label-11" class="form-control form-control-sm py-2" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    <input list="cass-12a" id="cass-12" class="form-control form-control-sm py-2" placeholder="choose cassette label or enter your own">
+
+                                                    <datalist id="cass-12a">
+                                                        <option selected value="A12">
+                                                        <option value="L">
+                                                        <option value="12">
+                                                        <option value="12A">
+                                                    </datalist>
+                                                </th>
+                                                <td>
+                                                    <input list="cass-organs" id="cass-label-12" class="form-control form-control-sm py-2" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    <input list="cass-13a" id="cass-13" class="form-control form-control-sm py-2" placeholder="choose cassette label or enter your own">
+
+                                                    <datalist id="cass-13a">
+                                                        <option selected value="A13">
+                                                        <option value="M">
+                                                        <option value="13">
+                                                        <option value="13A">
+                                                    </datalist>
+                                                </th>
+                                                <td>
+                                                    <input list="cass-organs" id="cass-label-13" class="form-control form-control-sm py-2" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    <input list="cass-14a" id="cass-14" class="form-control form-control-sm py-2" placeholder="choose cassette label or enter your own">
+
+                                                    <datalist id="cass-14a">
+                                                        <option selected value="A14">
+                                                        <option value="N">
+                                                        <option value="14">
+                                                        <option value="14A">
+                                                    </datalist>
+                                                </th>
+                                                <td>
+                                                    <input list="cass-organs" id="cass-label-14" class="form-control form-control-sm py-2" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    <input list="cass-15a" id="cass-15" class="form-control form-control-sm py-2" placeholder="choose cassette label or enter your own">
+
+                                                    <datalist id="cass-15a">
+                                                        <option selected value="A15">
+                                                        <option value="O">
+                                                        <option value="15">
+                                                        <option value="15A">
+                                                    </datalist>
+                                                </th>
+                                                <td>
+                                                    <input list="cass-organs" id="cass-label-15" class="form-control form-control-sm py-2" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    <input list="cass-16a" id="cass-16" class="form-control form-control-sm py-2" placeholder="choose cassette label or enter your own">
+
+                                                    <datalist id="cass-16a">
+                                                        <option selected value="A16">
+                                                        <option value="P">
+                                                        <option value="16">
+                                                        <option value="16A">
+                                                    </datalist>
+                                                </th>
+                                                <td>
+                                                    <input list="cass-organs" id="cass-label-16" class="form-control form-control-sm py-2" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    <input list="cass-17a" id="cass-17" class="form-control form-control-sm py-2" placeholder="choose cassette label or enter your own">
+
+                                                    <datalist id="cass-17a">
+                                                        <option selected value="A17">
+                                                        <option value="Q">
+                                                        <option value="17">
+                                                        <option value="17A">
+                                                    </datalist>
+                                                </th>
+                                                <td>
+                                                    <input list="cass-organs" id="cass-label-17" class="form-control form-control-sm py-2" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    <input list="cass-18a" id="cass-18" class="form-control form-control-sm py-2" placeholder="choose cassette label or enter your own">
+
+                                                    <datalist id="cass-18a">
+                                                        <option selected value="A18">
+                                                        <option value="R">
+                                                        <option value="18">
+                                                        <option value="18A">
+                                                    </datalist>
+                                                </th>
+                                                <td>
+                                                    <input list="cass-organs" id="cass-label-18" class="form-control form-control-sm py-2" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    <input list="cass-19a" id="cass-19" class="form-control form-control-sm py-2" placeholder="choose cassette label or enter your own">
+
+                                                    <datalist id="cass-19a">
+                                                        <option selected value="A19">
+                                                        <option value="S">
+                                                        <option value="19">
+                                                        <option value="19A">
+                                                    </datalist>
+                                                </th>
+                                                <td>
+                                                    <input list="cass-organs" id="cass-label-19" class="form-control form-control-sm py-2" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    <input list="cass-20a" id="cass-20" class="form-control form-control-sm py-2" placeholder="choose cassette label or enter your own">
+
+                                                    <datalist id="cass-20a">
+                                                        <option selected value="A20">
+                                                        <option value="T">
+                                                        <option value="20">
+                                                        <option value="20A">
+                                                    </datalist>
+                                                </th>
+                                                <td>
+                                                    <input list="cass-organs" id="cass-label-20" class="form-control form-control-sm py-2" />
+                                                </td>
+                                            </tr>
+                                            <datalist id="cass-organs">
+                                                <option value="Adrenal (L)">
+                                                <option value="Adrenal (R)">
+                                                <option value="Bone marrow">
+                                                <option value="Brain, cortex">
+                                                <option value="Brain, cerebellum">
+                                                <option value="Brain, hippocampus">
+                                                <option value="Brain, pons">
+                                                <option value="Brain, midbrain">
+                                                <option value="Brain, medulla">
+                                                <option value="Brain, ventricles">
+                                                <option value="Cecum">
+                                                <option value="Colon">
+                                                <option value="Duodenum">
+                                                <option value="Esophagus">
+                                                <option value="Gall bladder">
+                                                <option value="Heart">
+                                                <option value="Kidney (L)">
+                                                <option value="Kidney (R)">
+                                                <option value="Liver">
+                                                <option value="Liver (L)">
+                                                <option value="Liver (R)">
+                                                <option value="Lung (L)">
+                                                <option value="Lung (R)">
+                                                <option value="Lymph nodes">
+                                                <option value="Mesentery">
+                                                <option value="Muscle (diaphragm)">
+                                                <option value="Muscle (psoas and diaphragm)">
+                                                <option value="Muscle (psoas)">
+                                                <option value="Pancreas">
+                                                <option value="Pituitary">
+                                                <option value="Rectum">
+                                                <option value="Rib segment">
+                                                <option value="Skin">
+                                                <option value="Small intestine">
+                                                <option value="Spleen">
+                                                <option value="Spinal cord">
+                                                <option value="Stomach">
+                                                <option value="Terminal ileum">
+                                                <option value="Thymus">
+                                                <option value="Thyroid">
+                                                <option value="Vertebral body">
+                                            </datalist>
+
+                                            </tbody>
+                                            <!--Table body-->
+                                        </table>
+                                        <!--Table-->
                                     </div>
                                 </div>
                             </div>
@@ -1570,7 +1932,7 @@
                     </div>
                 </div>
 
-                <!-- Accordion #5-->
+                <!-- Micros-->
                 <div class="card">
                     <div class="card-header" role="tab" id="headingFive">
                         <h5 class="mb-0">
@@ -1585,45 +1947,97 @@
                             <div class="card-group">
                                 <div class="card">
                                     <div class="card-header">
-                                        Column 5.1
+                                        Lung || Heart || GI
                                     </div>
                                     <div class="card-block chkboxes">
                                         <div style="font-size: 0.66em;" class="content form-check" id="column1f">
-                                            Checkboxes
+                                            <div class="card-header py-1 my-1" style="background-color: #7955485e;">Lung Micros:</div>
+                                            <label class="form-check-label w-100" id="_lung100"><input type='checkbox' class="form-check-input lung" id='lung100'>Autolyzed lungs</label>
+                                            <label class="form-check-label w-100" id="_lung101"><input type='checkbox' class="form-check-input lung" id='lung101'>Partially autolyzed lungs</label>
+                                            <label class="form-check-label w-100" id="_lung102"><input type='checkbox' class="form-check-input lung" id='lung102'>Normal, pseudoglandular</label>
+                                            <label class="form-check-label w-100" id="_lung103"><input type='checkbox' class="form-check-input lung" id='lung103'>Normal, canalicular</label>
+                                            <label class="form-check-label w-100" id="_lung104"><input type='checkbox' class="form-check-input lung" id='lung104'>Normal, saccular</label>
+                                            <label class="form-check-label w-100" id="_lung105"><input type='checkbox' class="form-check-input lung" id='lung105'>Normal, alveolar</label>
+
+                                            <div class="card-header py-1 my-1" style="background-color: #7955485e;">Heart / CV Micros:</div>
+                                            <label class="form-check-label w-100" id="_heart100"><input type='checkbox' class="form-check-input heart" id='heart100'>Autolyzed heart & vessels</label>
+                                            <label class="form-check-label w-100" id="_heart101"><input type='checkbox' class="form-check-input heart" id='heart101'>Normal heart</label>
+                                            <label class="form-check-label w-100" id="_heart102"><input type='checkbox' class="form-check-input heart" id='heart102'>Normal aorta</label>
+
+                                            <div class="card-header py-1 my-1" style="background-color: #7955485e;">GI micros:</div>
+                                            <label class="form-check-label w-100" id="_gastro100"><input type='checkbox' class="form-check-input gi" id='gastro100'>Autolyzed bowel</label>
+                                            <label class="form-check-label w-100" id="_gastro101"><input type='checkbox' class="form-check-input gi" id='gastro101'>Normal bowel</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card">
                                     <div class="card-header">
-                                        Column 5.2
+                                        Liver  || GU || Heme
                                     </div>
                                     <div class="card-block chkboxes">
                                         <div style="font-size: 0.66em;" class="content form-check" id="column2f">
-                                            Checkboxes
+                                            <div class="card-header py-1 my-1" style="background-color: #7955485e;">Hepatobiliary micros:</div>
+                                            <label class="form-check-label w-100" id="_hepato100"><input type='checkbox' class="form-check-input liv" id='hepato100'>Autolyzed liver</label>
+                                            <label class="form-check-label w-100" id="_hepato101"><input type='checkbox' class="form-check-input liv" id='hepato101'>Normal liver</label>
+                                            <label class="form-check-label w-100" id="_hepato102"><input type='checkbox' class="form-check-input liv" id='hepato102'>EMH present</label>
+                                            <label class="form-check-label w-100" id="_hepato103"><input type='checkbox' class="form-check-input liv" id='hepato103'>Normal gallbladder</label>
+
+                                            <div class="card-header py-1 my-1" style="background-color: #7955485e;">Genitourinary micros:</div>
+                                            <label class="form-check-label w-100" id="_gu100"><input type='checkbox' class="form-check-input gu" id='gu100'>Autolyzed kidney/bladder</label>
+                                            <label class="form-check-label w-100" id="_gu101"><input type='checkbox' class="form-check-input gu" id='gu101'>Autolyzed gonads</label>
+                                            <label class="form-check-label w-100" id="_gu102"><input type='checkbox' class="form-check-input gu" id='gu102'>Normal kidney/bladder</label>
+                                            <label class="form-check-label w-100" id="_gu103"><input type='checkbox' class="form-check-input gu" id='gu103'>Normal testes</label>
+                                            <label class="form-check-label w-100" id="_gu104"><input type='checkbox' class="form-check-input gu" id='gu104'>Normal ovaries</label>
+
+                                            <div class="card-header py-1 my-1" style="background-color: #7955485e;">Hematolymphatic micros:</div>
+                                            <label class="form-check-label w-100" id="_heme100"><input type='checkbox' class="form-check-input heme" id='heme100'>Autolyzed thymus, spleen, nodes</label>
+                                            <label class="form-check-label w-100" id="_heme101"><input type='checkbox' class="form-check-input heme" id='heme101'>Autolyzed marrow</label>
+                                            <label class="form-check-label w-100" id="_heme102"><input type='checkbox' class="form-check-input heme" id='heme102'>Normal thymus</label>
+                                            <label class="form-check-label w-100" id="_heme103"><input type='checkbox' class="form-check-input heme" id='heme103'>Normal spleen</label>
+                                            <label class="form-check-label w-100" id="_heme104"><input type='checkbox' class="form-check-input heme" id='heme104'>Normal nodes/marrow</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card">
                                     <div class="card-header">
-                                        Column 5.3
+                                        Endo || MSK || CNS || Placenta
                                     </div>
                                     <div class="card-block chkboxes">
                                         <div style="font-size: 0.66em;" class="content form-check" id="column3f">
-                                            Checkboxes
-                                        </div>
+                                            <div class="card-header py-1 my-1" style="background-color: #7955485e;">Endocrine micros:</div>
+                                            <label class="form-check-label w-100" id="_endocr100"><input type='checkbox' class="form-check-input endo" id='endocr100'>Autolyzed thyroid/adrenals</label>
+                                            <label class="form-check-label w-100" id="_endocr101"><input type='checkbox' class="form-check-input endo" id='endocr101'>Normal thyroid</label>
+                                            <label class="form-check-label w-100" id="_endocr102"><input type='checkbox' class="form-check-input endo" id='endocr102'>Normal adrenals</label>
+                                            <label class="form-check-label w-100" id="_endocr104"><input type='checkbox' class="form-check-input endo" id='endocr103'>Normal pituitary (if needeD)</label>
+
+                                            <div class="card-header py-1 my-1" style="background-color: #7955485e;">Musculoskeletal micros:</div>
+                                            <label class="form-check-label w-100" id="_msk100"><input type='checkbox' class="form-check-input msk" id='msk100'>Autolyzed muscle</label>
+                                            <label class="form-check-label w-100" id="_msk101"><input type='checkbox' class="form-check-input msk" id='msk101'>Normal muscle</label>
+                                            <label class="form-check-label w-100" id="_msk102"><input type='checkbox' class="form-check-input msk" id='msk102'>Normal rib</label>
+                                            <label class="form-check-label w-100" id="_msk103"><input type='checkbox' class="form-check-input msk" id='msk103'>Normal unkeratinized skin</label>
+                                            <label class="form-check-label w-100" id="_msk104"><input type='checkbox' class="form-check-input msk" id='msk104'>Normal keratinized skin</label>
+
+                                            <div class="card-header py-1 my-1" style="background-color: #7955485e;">CNS micros:</div>
+                                            <label class="form-check-label w-100" id="_cns100"><input type='checkbox' class="form-check-input cns" id='cns100'>Autolyzed brain</label>
+                                            <label class="form-check-label w-100" id="_cns101"><input type='checkbox' class="form-check-input cns" id='cns101'>Poorly-fixed, normal brain</label>
+                                            <label class="form-check-label w-100" id="_cns102"><input type='checkbox' class="form-check-input cns" id='cns102'>Well-fixed, normal</label>
+
+                                            <div class="card-header py-1 my-1" style="background-color: #7955485e;">Placenta micro:</div>
+                                            <label class="form-check-label w-100" id="_plac100"><input type='checkbox' class="form-check-input plac" id='plac100'>Unremarkable placenta, IUFD</label>                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Accordion #6-->
+
+                <!-- Final and comments-->
                 <div class="card">
                     <div class="card-header" role="tab" id="headingSix">
                         <h5 class="mb-0">
                             <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion"
                                href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                                Common summary discussions
+                                Final diagnosis and Common summary discussions
                             </a>
                         </h5>
                     </div>
@@ -1674,33 +2088,36 @@
             <div class="card text-center">
                 <div class="card-header button-box">
                     <ul class="nav nav-pills standard-button-box">
-                        <a class="btn btn-outline-success p-1 mb-2" id="writeReport">
+                        <a class="btn btn-outline-success p-1 mx-2" id="writeReport">
                             Write Report
                         </a>
+                        <a class="btn btn-outline-warning p-1 mb-2 mx-2" id="combineReport">
+                            Combine report
+                        </a>
 
-                        <a class="btn btn-outline-danger p-1 mb-2 ml-4" id="Reset">Reset</a>
+                        <a class="btn btn-outline-danger p-1 mb-2 mx-2" id="Reset">Reset</a>
                     </ul>
                 </div>
                 <div class="card-block">
                     <form>
                         <div class="form-group">
-                            <textarea class="form-control" id="outPut-1" rows="8"
-                                      placeholder="Clinical summary"></textarea>
+                            <textarea class="form-control" id="outPut-1" rows="10"
+                                      placeholder="Clinical summary and Maternal data"></textarea>
                             <span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-1">Copy to Clipboard</span>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" id="outPut-2" rows="15"
-                                      placeholder="Gross and microscopic description"></textarea>
+                            <textarea class="form-control" id="outPut-2" rows="25"
+                                      placeholder="Weights/Measurements and Gross description"></textarea>
                             <span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-2">Copy to Clipboard</span>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" id="outPut-3" rows="10"
-                                      placeholder="Example Final"></textarea>
+                            <textarea class="form-control" id="outPut-3" rows="15"
+                                      placeholder="Microscopic descriptions"></textarea>
                             <span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-3">Copy to Clipboard</span>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" id="outPut-4" rows="5"
-                                      placeholder="Example Comment"></textarea>
+                            <textarea class="form-control" id="outPut-4" rows="10"
+                                      placeholder="Final diagnosis skeleton and Comment"></textarea>
                             <span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-4">Copy to Clipboard</span>
                         </div>
                     </form>

@@ -1,10 +1,4 @@
 $(window).on('load', function() {
-//*************************************************************//
-//                        Autocomplete                         //
-// *************************************************************/
-
-
-
 
 //*************************************************************//
 //                        Weights Reference scripts            //
@@ -635,6 +629,186 @@ function make_data(datatable) {
         }
     });
 
+//*************************************************************//
+//                        Microscopic descriptions             //
+// *************************************************************/
+
+    micros = {
+        // Free text
+        free100: "Sections show ....",
+        // ** LUNGS ** //
+        // Autolyzed lungs
+        lung100: 'Sections from the lungs show extensive autolysis, with only ghost-like outlines of the alveolar parenchyma. Few pneumocytes and respiratory eptihelial cells retain nuclear basophilia.\nSections from the trachea and larynx show diffuse autolysis and a ghost-like outline of tubular structures.\n',
+        // Partially autolyzed lungs
+        lung101: 'Sections from the lungs show partial autolysis, with retention of normal alveolar parenchymal architecture. Where viable, the pneumocytes and respiratory eptihelial cells retain nuclear basophilia. No viral inclusions or neutrophilic infiltrates are seen.\nSections from the trachea and larynx show normal tubular architecture with a ciliated respiratory epithelial lining. No undue hemorrhage or inflammatory infiltrates are seen. The tracheal cartilage is shows unremarkable hyaline cartilage and forms an incomplete ring.\n',
+        // Viable lungs, pseduoglandular
+        lung102: 'Sections from the lungs show normal immature pulmonary architecture. There is maturity to the pseudoglandular stage, as evidenced by densely cellular interstitial mesenchyme and columnar-epithelium lined tubular structures. Many of these show cells with subnuclear vacuoles. Alveolar structures are not apparent. No neutrophilic infiltrates or viral inclusions are seen.\nSections from the trachea and larynx show normal tubular architecture with a ciliated respiratory epithelial lining. No undue hemorrhage or inflammatory infiltrates are seen. The tracheal cartilage is shows unremarkable hyaline cartilage and forms an incomplete ring.\n',
+        // Viable lungs, canalicular
+        lung103: 'Sections from the lungs show normal immature pulmonary architecture. There is maturity to the canalicular stage, as evidenced by moderately cellular interstitial mesenchyme and recognizable branching terminal bronchioles. No well developed alveolar structures are seen. No neutrophilic infiltrates or viral inclusions are seen.\nSections from the trachea and larynx show normal tubular architecture with a ciliated respiratory epithelial lining. No undue hemorrhage or inflammatory infiltrates are seen. The tracheal cartilage is shows unremarkable hyaline cartilage and forms an incomplete ring.\n',
+        // Viable lungs, saccular
+        lung104: 'Sections from the lungs show normal immature pulmonary architecture. There is maturity to the canalicular stage, as evidenced by minimal amounts of cellular interstitial mesenchyme and branching terminal bronchioles which often end in dilated saccules. Few squames are present within the dilated spaces. The interstitial capillaries are well visualized and are centrally placed within the mesenchyme. No well formed alveolar spaces are seen. No neutrophilic infiltrates or viral inclusions are seen.\nSections from the trachea and larynx show normal tubular architecture with a ciliated respiratory epithelial lining. No undue hemorrhage or inflammatory infiltrates are seen. The tracheal cartilage is shows unremarkable hyaline cartilage and forms an incomplete ring.\n',
+        // Viable lungs, alveolar
+        lung105: 'Sections from the lungs show normal pulmonary architecture. There is maturity to the alveolar stage, as evidenced by an appropriate distribution of alveolar spaces which abut a rich network of interstitial capillaries. Occasional squames are present within the alveolar spaces. No neutrophilic infiltrates or viral inclusions are seen.\nSections from the trachea and larynx show normal tubular architecture with a ciliated respiratory epithelial lining. No undue hemorrhage or inflammatory infiltrates are seen. The tracheal cartilage is shows unremarkable hyaline cartilage and forms an incomplete ring.\n',
+
+        // ** HEART CV ** //
+        // autolyzed heart / cv
+        heart100: 'Sections from the heart show diffuse autolysis with a ghost-like outline of normal architecture. Nuclear basophilia is minimally present. The aorta show autolysis with no apparent intimal thickening.\n',
+        // normal heart
+        heart101: 'Sections from the heart show normal myocardial architecture with retention of nuclear basophilia. No ischemic foci or areas with nuclear enlargement are seen. No undue inflammatory infiltrates or viral cytopathic changes are evident.\n',
+        // autolyzed aorta
+        heart102: 'Sections from the aorta show normal vascular architecture without intimal thickening or subintimal deposits.\n',
+
+        // ** GI ** //
+        // Autolyzed GI
+        gastro100: 'Sections of the esophagus show normal developmental architecture. Sections from the stomach, large bowel and small bowel show extensive autolysis with only ghost-like outlines of the expected bowel architecture remaining. Nuclear basophilia is not retained. There is abundant luminal mucous and meconium. Where evaluable, ganglion cells are present in the myenteric and submucosal plexi.\nSections from the pancreas show extensive autolysis.\n',
+        // Normal GI
+        gastro101: 'Sections of the esophagus show normal developmental architecture. Sections from the stomach, large bowel and small bowel show normal bowel architecture without undue inflammatory infiltrates. There is abundant luminal mucous and meconium. Where evaluable, ganglion cells are present in the myenteric and submucosal plexi.\nSections from the pancreas show normal lobular architecture with scattered endocrine islets.\n',
+
+        // ** HEPATOBILIARY ** //
+        // autolyzed hepatobilliary
+        hepato100: 'Sections from the liver show extensive autolysis which obscures the normal expected architecture. No nuclear basophilia is retained by the hepatocytes.\n',
+        // normal hepatobilliary
+        hepato101: 'Sections from the liver show normal hepatic architecture. The portal areas show a normal distribution of bile ducts and portal vessels. There is no undue lobular inflammation, giant cell change or bile stasis.\n',
+        // normal EMH
+        hepato102: 'Scattered islands of age-appropriate extra-medullary hematopoiesis are present.\n',
+        // normal gallbladder
+        hepato103: 'Sections from the gallbladder show normal biliary mucosa without mural hypertrophy or undue inflammatory infiltrates.\n',
+
+        // ** GENITOURINARY ** //
+        // autolyzed kidney & bladder
+        gu100: 'Sections from the kidney show extensive autolysis obscuring the normal expected cortico-medullary architecture. Nuclear basophilia is minimally retained and a peripheral rim of nephrogenesis cannot be discerned. No viral cytopathic changes are seen. Sections from the bladder are unremarkable.\n',
+        // autolyzed gonads
+        gu101: 'Sections from the testes show extensive autolysis with obscuring of the expected parenchymal architecture.\n',
+        // normal kidney and bladder
+        gu102: 'Sections from the kidney show normal cortico-medullary architecture with a peripheral rim of developing nephrogenesis. No viral cytopathic changes are seen. Sections of the bladder are unremarkable.\n',
+        // normal testes
+        gu103: 'Sections from the testes show normal seminiferous tubule architecture. Few basal germ cells are present.\n',
+        // normal ovaries
+        gu104: 'Sections of the ovaries show normal parenchymal architecture with a rim of oocytes.\n',
+
+        //** HEME ** //
+        // Autolyzed thymus, spleen nodes
+        heme100: 'Sections from the thymus, spleen and lymph nodes show extensive autolysis with only faint nuclear basophilia within a minority of lymphocytes.  Overall architecture appears distorted by the autolysis.\n',
+        // Autolyzed marrow
+        heme101: 'Sections from the bone marrow show autolysis with depletion of marrow elements.\n',
+        // normal thymus
+        heme102: 'Sections from the thymus show normal cortico-medullary architecture with scattered Hassall corpuscles. No significant involution-changes are evident.\n',
+        // normal spleen
+        heme103: 'Sections from the spleen show normal parenchymal architecture with a predominance of congested red pulp and few white pulp nodules.\n',
+        // normal nodes/marrow
+        heme104: 'Sections from the mesenteric lymph nodes show primary follicles without germinal center formation. Sections from the bone marrow show adequate cellularity with trilineage hematopoiesis.\n',
+
+        // ** ENDOCRINE ** //
+        // autolyized
+        endocr100: 'Sections from the thyroid and adrenal glands show extensive autolysis with only vague residual ghost-like outlines of normal architecture.\n',
+        // normal thyroid
+        endocr101: 'Sections from the thyroid show normal developing follicular architecture without undue inflammatory infiltrates. Some follicles contain colloid. No parathyroid is present.\n',
+        // normal adrenals
+        endocr102: 'Sections from the adrenal glands show a predominance of fetal adrenal cortex, with a peripheral rim of definitive cortex. There is some acinar change. No cortical hemorrhage or excessive vacuolization is seen. The medulla is unremarkable.\n',
+        //  normal pituitary
+        endocr103: 'Sections from the pituitary gland show normal hypophysis and adenohypophysis constituents.\n',
+
+        // ** MUSCULOSKELETAL ** //
+        // autolyzed muscle
+        msk100: 'Sections of skeletal muscle show extensive autolysis with ghost-like outlines of normal architecture. No excess in adipose is seen.\n',
+        // normal muscle
+        msk101:'Sections of skeletal muscle are unremarkable, and show uniform thickness to the skeletal muscle fibers and no excess in adipose.\n',
+        // normal rib
+        msk102:'Section from the rib show hyaline cartilage with a subjacent zone of orderly ossification and unremarkable surrounding soft tissue.\n',
+        // normal unkeratinized skin
+        msk103: 'Sections of the skin show age appropriate epidermis without keratinization and developing dermal adnexal structures.',
+        // normal keratinized skin
+        msk104: 'Sections of the skin show age appropriate epidermis with keratinization and developing dermal adnexal structures.',
+
+        // ** CNS ** //
+        // autolyzed
+        cns100: 'Random sections from the brain tissue show autolysis and minimal retention of nuclear basophilia. There are focally preserved peripheral cortical zones of developing cortex. No calcifications are present.\n',
+        // mildly autolyzed
+        cns101: 'Random sections from the brain tissue show fragments of developing cortex, cerebellum and deep nuclei, with uniform retention of nuclear basophilia. Where evaluable, the cortex appears to show normal underlying developmental architecture. There are peripheral cortical zones of developing cortex and distinct gray and white matter zones. No calcifications, viral inclusions or hemorrhagic foci are present.\n',
+        // well-fixed, normal
+        cns102: 'Sections from the brain cortex show normal developing cortical architecture, with a peripheral zone of neurons and distinction from the gray matter. The cerebellum shows normal foveolar architecture with occasional eosinophilic Purkinje cells. Deep nuclei shows normal neuronal morphology and no excess of hypoxic change. No calcifications, viral inclusions, areas of hemorrhage or leukomalacia are seen.\n',
+
+        // ** PLACENTA ** //
+        // unremarkable placenta, IUFD
+        plac100:'Sections from the umbilical cord show no undue inflammatory infiltrates in the vein or arteries, or within Wharton\'s jelly. There is patchy subendothelial pyknosis of the smooth muscle cells.\nSections from the membrane roll are unremarkable.\nSections from the placental disk show well-developed tertiary villi with degenerative changes suggesting intra-uterine retention. These are characterized by villous stromal karyorrhexis, stromal hemorrhage and prominent syncytial knots. No maternal vascular arteriopathy is evident. Acute inflammation within and outside villi is not seen. No appreciable intervillous lymphocytes, plasma cells or histiocytes are seen. No viral inclusions or excess intervillous fibrinoid is present.\n',
+
+        finalmicro: ''
+        //
+    }
+
+//************************************************************//
+// Script to populate the microscopic description variables   //
+// *************************************************************/
+    var resp = [];  var cv = [];  var gi = [];
+    var liv = [];   var gu = [];  var heme = [];
+    var endo = [];  var msk = []; var cns = [];
+    var plac = [];
+
+    $("input:checkbox").on("change", function(){
+        if ($(this).is(":checked")) {
+            if ($(this).attr('id').indexOf('lung') > -1) {
+                let part_choice = $(this).attr('id');
+                resp.push(micros[part_choice]);
+                console.log(resp);
+            }
+
+            if ($(this).attr('id').indexOf('heart') > -1) {
+                let part_choice = $(this).attr('id');
+                cv.push(micros[part_choice]);
+                console.log(cv);
+            }
+
+            if ($(this).attr('id').indexOf('gastro') > -1) {
+                let part_choice = $(this).attr('id');
+                gi.push(micros[part_choice]);
+                console.log(gi);
+            }
+
+            if ($(this).attr('id').indexOf('hepat') > -1) {
+                let part_choice = $(this).attr('id');
+                liv.push(micros[part_choice]);
+                console.log(liv);
+            }
+
+            if ($(this).attr('id').indexOf('gu') > -1) {
+                let part_choice = $(this).attr('id');
+                gu.push(micros[part_choice]);
+                console.log(gu);
+            }
+
+            if ($(this).attr('id').indexOf('heme') > -1) {
+                let part_choice = $(this).attr('id');
+                heme.push(micros[part_choice]);
+                console.log(heme);
+            }
+
+            if ($(this).attr('id').indexOf('endo') > -1) {
+                let part_choice = $(this).attr('id');
+                endo.push(micros[part_choice]);
+                console.log(endo);
+            }
+
+            if ($(this).attr('id').indexOf('msk') > -1) {
+                let part_choice = $(this).attr('id');
+                msk.push(micros[part_choice]);
+                console.log(msk);
+            }
+
+            if ($(this).attr('id').indexOf('cns') > -1) {
+                let part_choice = $(this).attr('id');
+                cns.push(micros[part_choice]);
+                console.log(cns);
+            }
+
+            if ($(this).attr('id').indexOf('plac') > -1) {
+                let part_choice = $(this).attr('id');
+                plac.push(micros[part_choice]);
+                console.log(plac);
+            }
+
+        }
+    });
+
 
 //************************************************************//
 // Script to populate the template data in the output textarea//
@@ -886,14 +1060,78 @@ function make_data(datatable) {
         var cns_more = ($("#cns-more").val().length > 0) ? $("#cns-more").val().rpad(25) : "None";
 
         // Cassette Summary
+        var cass_1 = $("#cass-1").val();
+        var cass_label_1 = $("#cass-label-1").val();
 
+        var cass_2 = $("#cass-2").val();
+        var cass_label_2 = $("#cass-label-2").val();
+
+        var cass_3 = $("#cass-3").val();
+        var cass_label_3 = $("#cass-label-3").val();
+
+        var cass_4 = $("#cass-4").val();
+        var cass_label_4 = $("#cass-label-4").val();
+
+        var cass_5 = $("#cass-5").val();
+        var cass_label_5 = $("#cass-label-5").val();
+
+        var cass_6 = $("#cass-6").val();
+        var cass_label_6 = $("#cass-label-6").val();
+
+        var cass_7 = $("#cass-7").val();
+        var cass_label_7 = $("#cass-label-7").val();
+
+        var cass_8 = $("#cass-8").val();
+        var cass_label_8 = $("#cass-label-8").val();
+
+        var cass_9 = $("#cass-9").val();
+        var cass_label_9 = $("#cass-label-9").val();
+
+        var cass_10 = $("#cass-10").val();
+        var cass_label_10 = $("#cass-label-10").val();
+
+        var cass_11 = $("#cass-11").val();
+        var cass_label_11 = $("#cass-label-11").val();
+
+        var cass_12 = $("#cass-12").val();
+        var cass_label_12 = $("#cass-label-12").val();
+
+        var cass_13 = $("#cass-13").val();
+        var cass_label_13 = $("#cass-label-13").val();
+
+        var cass_14 = $("#cass-14").val();
+        var cass_label_14 = $("#cass-label-14").val();
+
+        var cass_15 = $("#cass-15").val();
+        var cass_label_15 = $("#cass-label-15").val();
+
+        var cass_16 = $("#cass-16").val();
+        var cass_label_16 = $("#cass-label-16").val();
+
+        var cass_17 = $("#cass-17").val();
+        var cass_label_17 = $("#cass-label-17").val();
+
+        var cass_18 = $("#cass-18").val();
+        var cass_label_18 = $("#cass-label-18").val();
+
+        var cass_19 = $("#cass-19").val();
+        var cass_label_19 = $("#cass-label-19").val();
+
+        var cass_20 = $("#cass-20").val();
+        var cass_label_20 = $("#cass-label-20").val();
 
 
 
 
         // Headers for  Text to print
-        var clinical_text = "CLINICAL SUMMARY\n\n";
-        var gross_text = "GROSS DESCRIPTION\n\n";
+        var clinical_text = "CLINICAL SUMMARY\n";
+        var gross_text = "GROSS DESCRIPTION\n";
+        var micro_text = "MICROSCOPIC DESCRIPTION\n";
+        var final_text = "FINAL DIAGNOSIS\n";
+
+        // **********************************************************************//
+        //                  CLINICAL SUMMARY, DEMOGRAPHICS                       //
+        // ********************************************************************* //
         // Demographic data
 
         clinical_text +=    "\nPATIENT DEMOGRAPHICS\n"+
@@ -938,9 +1176,12 @@ function make_data(datatable) {
                             "\n  Delivery type:".padEnd(25)+maternal_delivery+
                             "\n  Hospital course:".padEnd(25) + hospital_course+"\n";
 
-        console.log(clinical_text);
 
-        $('#outPut-1').val(clinical_text);
+
+
+        // **********************************************************************//
+        //                  EXTERNAL EXAM, DATA TABLE                            //
+        // ********************************************************************* //
 
         // call make_data function
         var data_table = make_data();
@@ -999,7 +1240,9 @@ function make_data(datatable) {
 
 
 
-        // Add internal exam
+        // **********************************************************************//
+        //                  INTERNAL EXAM                                        //
+        // ********************************************************************* //
         var internal = "\n\nInternal exam\n-------------\nIn-situ exam";
         
         if (int_incision.indexOf("specify") > -1){
@@ -1052,6 +1295,9 @@ function make_data(datatable) {
         internal += "\n  Cytogenetics:".padEnd(25) + int_cytogen;
         internal += "\n  Electron microscopy:".padEnd(25) + int_em;
 
+        // **********************************************************************//
+        //                 ORGAN SYSTEMS GROSS                                   //
+        // ********************************************************************* //
         var organs = "\n\nOrgan systems\n-------------";
         organs +=   "\n\nCardiovascular" +
                     "\n  Heart weight:".padEnd(25) + heart_wt +
@@ -1171,7 +1417,7 @@ function make_data(datatable) {
                     "\n  Ovaries:".padEnd(25) + rep_ovary + "(Length: "+rep_ovary_len + ")" +
                     "\n  Fallopian tubes:".padEnd(25) + rep_falliopian;
         }
-        organs +=   "\n  Other findings:".rpad(25) + rep_other;
+        organs +=   "\n  Other findings:".padEnd(25) + rep_other;
 
         organs +=   "\n\nHematolymphatic";
         organs +=   "\n  Thymus:".padEnd(25) + (hem_thymus + " ("+hem_thymuswt+")").rpad(25);
@@ -1197,18 +1443,18 @@ function make_data(datatable) {
 
 
         organs +=   "\n\nSkin & Musculoskeletal";
-        organs +=   "\n Skin:".padEnd(25) + msk_skin;
+        organs +=   "\n  Skin:".padEnd(25) + msk_skin;
         
         if (msk_muscle.indexOf("specify") > -1) {
-            organs +=  "\n  Muscle:".padEnd(25) + msk_bones_more;
+            organs +=  "\n  Muscle:".padEnd(25) + msk_muscle_more;
         }   else {
-            organs +=  "\n  Muscle:".padEnd(25) + msk_bones;
+            organs +=  "\n  Muscle:".padEnd(25) + msk_muscle;
         }
 
         if (msk_bones.indexOf("specify") > -1) {
             organs +=  "\n  Bone & cartilage:".padEnd(25) + msk_bones_more;
         }   else {
-            organs +=  "\n  Bone & cartilage:".padEnd(25) + msk_bones;
+            organs +=  "\n  Bone & cartilage:".padEnd(25) + msk_bones.rpad(25);
         }
 
         organs +=  "\n  X-ray findings:".padEnd(25) + msk_xray;
@@ -1244,15 +1490,119 @@ function make_data(datatable) {
                     "\n  Other findings:".padEnd(25) + cns_more;
 
 
+        // **********************************************************************//
+        //                  CASSETTE SUMMARY                                     //
+        // ********************************************************************* //
+        var cassette = 	"CASSETTE SUMMARY" +
+                        "\n  "+cass_1.padEnd(25) +  cass_label_1 +
+                        "\n  "+cass_2.padEnd(25) + cass_label_2 +
+                        "\n  "+cass_3.padEnd(25) + cass_label_3 +
+                        "\n  "+cass_4.padEnd(25) + cass_label_4 +
+                        "\n  "+cass_5.padEnd(25) + cass_label_5 +
+                        "\n  "+cass_6.padEnd(25) + cass_label_6 +
+                        "\n  "+cass_7.padEnd(25) + cass_label_7 +
+                        "\n  "+cass_8.padEnd(25) + cass_label_8 +
+                        "\n  "+cass_9.padEnd(25) + cass_label_9 +
+                        "\n  "+cass_10.padEnd(25) + cass_label_10 +
+                        "\n  "+cass_11.padEnd(25) + cass_label_11 +
+                        "\n  "+cass_12.padEnd(25) + cass_label_12 +
+                        "\n  "+cass_13.padEnd(25) + cass_label_13 +
+                        "\n  "+cass_14.padEnd(25) + cass_label_14 +
+                        "\n  "+cass_15.padEnd(25) + cass_label_15 +
+                        "\n  "+cass_16.padEnd(25) + cass_label_16 +
+                        "\n  "+cass_17.padEnd(25) + cass_label_17 +
+                        "\n  "+cass_18.padEnd(25) + cass_label_18 +
+                        "\n  "+cass_19.padEnd(25) + cass_label_19 +
+                        "\n  "+cass_20.padEnd(25) + cass_label_20;
 
-        gross_text += "\n"+data_table +"\n"+external+"\n"+internal+organs+"\n";
+            cassette = cassette.trim()+"\n";
 
+        gross_text += "\n"+data_table +"\n"+external+"\n"+internal+organs+"\n\n"+cassette;
+
+
+        // **********************************************************************//
+        //                  MICROSCOPIC DESCRIPTION                              //
+        // ********************************************************************* //
+
+        if (cv.length < 1){
+            cv.push(micros.free100);
+        }
+        if (resp.length < 1){
+            resp.push(micros.free100);
+        } 
+        if (gi.length < 1){
+            gi.push(micros.free100);
+        }
+        if (liv.length < 1){
+            liv.push(micros.free100);
+        }
+        if (gu.length < 1){
+            gu.push(micros.free100);
+        }
+        if (heme.length < 1){
+            heme.push(micros.free100);
+        }
+        if (endo.length < 1){
+            endo.push(micros.free100);
+        }
+        if (cns.length < 1){
+            cns.push(micros.free100);
+        }
+        if (msk.length < 1){
+            msk.push(micros.free100);
+        }
+        if (plac.length < 1){
+            plac.push(micros.free100);
+        }
+
+        micro_text +=   "Cardiovascular system: " + cv.join("") +
+                        "\n\nRespiratory system: "+resp.join("") +
+                        "\n\nGastrointestinal system:" + gi.join("") +
+                        "\n\nHepatobiliary system:" + liv.join("") +
+                        "\n\nGenitourinary system:" + gu.join("")+
+                        "\n\nHematolymphoid system:" + heme.join("") +
+                        "\n\nEndocrine system:" + endo.join("") +
+                        "\n\nMusculoskeletal system:" + msk.join("") +
+                        "\n\nNervous system:" + cns.join("") +
+                        "\n\nPlacenta:" + plac.join("");
+
+
+        final_text +=
+            "I. "+weight.replace(/g/,"")+
+            " gram "+sex;
+
+        if (date_age == '0'){
+            final_text += " stillborn fetus"
+        } else {
+            final_text += " infant"
+        }
+        final_text +=  "\n\n"+
+            "II. List diagnoses here\n\n"+
+            "__. Ancillary studies\nMicrobiology: \nTissue cultures: \nCytogenetics: \nElectron microscopy: Not performed \nFrozen tissue: None taken"+
+            "\n\nCOMMENT\n";
+
+        // print clinical summary and maternal data
+        $('#outPut-1').val(clinical_text);
+        // print gross and data table and cassette
         $('#outPut-2').val(gross_text);
-
-
-        dataObj.singleSection = $('#outPut-1').val();
-        makeCreatePdfBtn();
+        // print micro
+        $('#outPut-3').val(micro_text);
+        // print final/comment
+        $('#outPut-4').val(final_text);
     });
+// ********************* Combined report function ***********************//
+        $('#combineReport').on('click', function () {
+            // store your text to localStorage when someone click the link
+            var textToPass = $('#outPut-4').val()+'\n\n'+$('#outPut-1').val()+'\n\n'+$('#outPut-2').val()+'\n\n'+$('#outPut-3').val();
+            $('#outPut-combine').val(textToPass);
+            $('#combined-report').modal("show");
+            dataObj.singleSection = $('#outPut-combine').val();
+            makeCreatePdfBtn();
+        });
+
+// ======================================================================//
 });
+
+
 
 
