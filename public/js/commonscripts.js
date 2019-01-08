@@ -471,33 +471,56 @@ $(function () {
 	//****************** End collapse final output
 
 	//******************* Move anchor jumps below the fixed top navbar
-    var shiftWindow = function() { scrollBy(0, -75) };
-    if (location.hash) shiftWindow();
-    window.addEventListener("hashchange", shiftWindow);
+	var shiftWindow = function() { scrollBy(0, -75) };
+	if (location.hash) shiftWindow();
+	window.addEventListener("hashchange", shiftWindow);
 
-    //****************** End move anchor jumps
+	//****************** End move anchor jumps
+
+
+	// https://github.com/uxitten/polyfill/blob/master/string.polyfill.js
+	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padEnd
+	// Run if IE only
+	if(/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) {
+		if (!String.prototype.padEnd) {
+		    String.prototype.padEnd = function padEnd(targetLength,padString) {
+			targetLength = targetLength>>0; //floor if number or convert non-number to 0;
+			padString = String((typeof padString !== 'undefined' ? padString : ' '));
+			if (this.length > targetLength) {
+			    return String(this);
+			}
+			else {
+			    targetLength = targetLength-this.length;
+			    if (targetLength > padString.length) {
+				padString += padString.repeat(targetLength/padString.length); //append to original to ensure we are longer than needed
+			    }
+			    return String(this) + padString.slice(0,targetLength);
+			}
+		    };
+		}
+	}
 
 	//****************** Add padding to create right sided text column
 	String.prototype.rpad = function (num) {
-        // .rpad() function to right pad block of text,
-        // num = #of spaces to pad right
+	// .rpad() function to right pad block of text,
+	// num = #of spaces to pad right
 
-        // match block of text to the 5th space, or remainder (1)
+	// match block of text to the 5th space, or remainder (1)
 		// (this+" ") adds one more space to catch end of sentence
-        var text = (this+" ").match(/(.*?\s){1,5}/g);
-        // get first line
+	var text = (this+" ").match(/(.*?\s){1,5}/g);
+	// get first line
 		if (text){
-            var padded = text[0];
-            // loop through array, add new line and pad
-            for (var i=1; i < text.length; i++) {
-                padded += "\n".padEnd(num)+text[i]; // pad subsequent lines
-            }
-            // return value to string
-            return padded;
+	    var padded = text[0];
+	    // loop through array, add new line and pad
+	    for (var i=1; i < text.length; i++) {
+		padded += "\n".padEnd(num)+text[i]; // pad subsequent lines
+	    }
+	    // return value to string
+	    return padded;
 		} else {
 			return text;
 		}
 
-    };
+	};								
 
 });
