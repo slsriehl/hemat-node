@@ -20,7 +20,7 @@ $(window).on('load', function(){
 // normal
         mxLine200: 'The lobules are comprised of unremarkable ducts without periductal fibrosis or undue dilation. ',
 // atrophic lobules
-        mxLine201: 'The lobules are mostly comprised of unremarkable ducts without periductal fibrosis or undue dilation. Some lobules show atrophy as evidenced by dilated ducts with periductal fibrosis and acinar depletion. ',
+        mxLine201: 'The lobules are mostly comprised of unremarkable ducts without periductal fibrosis or undue dilation. The few atrophic areas are evidenced by dilated ducts with periductal fibrosis and acinar depletion. ',
 // focal duct injury
         mxLine202: 'Some ducts show epithelial injury with associated mucin extravasation and collections of muciphages. ',
 // focal duct injury + granulomas
@@ -37,7 +37,7 @@ $(window).on('load', function(){
         mxLine208: 'There are periductal and periacinar inflammatory infiltrates comprised of a heterogeneous mixture of lymphocytes, plasma cells and histiocytes. These are closely associated with acinar lobules bearing diffuse interstitial fibrosis, areas of periacinar sclerosis and prominent duct dilation. ',
 
 // Focus score description
-        mxLine209: '\n\nFOCUS SCORE: A focus score cannot be performed (see comment). ',
+        mxLine209: '\n\nFOCUS SCORE: A focus score cannot be performed due to lack of appropriate lymphocyte predominant aggregates (see comment). ',
         mxLine210: '\n\nFOCUS SCORE: A total of #SSS# mm^2 of evaluable acinar tissue is present. The lobules are examined for any significant (ie. > 50 grouped chronic inflammatory cells) foci. There are #TTT# such foci present, resulting in a focus score of #UUU#. ',
 
 // Additional microscopic findings:
