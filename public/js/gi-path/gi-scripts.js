@@ -657,7 +657,7 @@ $(window).on('load', function(){
                             }
 
                             for (var i=200; i<217; i++){
-                                mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/'.*' esophageal/, eso_sent+' esophageal'); // replace site for multi site micros
+                                mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/'.*' esophageal/, eso_sent+' '); // replace site for multi site micros
                             }
                             console.log('formatted multi eso text:' + eso_sent);
 
@@ -689,7 +689,7 @@ $(window).on('load', function(){
                 eso_sent = "'" + esoArr.join("' and '")+ "'";
             }
             for (var i=200; i<217; i++){
-                mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/'(.*?)' esophageal/, eso_sent+' esophageal'); // replace site for multi site micros
+                mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/'(.*?)' esophageal/, eso_sent+' '); // replace site for multi site micros
             }
         } // end brace for no shift click
     });
