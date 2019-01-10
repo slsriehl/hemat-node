@@ -328,7 +328,7 @@ function make_data(datatable) {
                     "\nL Adrenal".padEnd(16, ".")  + (wt_lad + " (g)").padEnd(16, ".")  + "[no reference]" +
                     "\nSpleen".padEnd(16, ".")  + (wt_spleen + " (g)").padEnd(16, ".")  + "[" +  spleen + "]" +
                     "\nGonads".padEnd(16, ".")  + (wt_gonads+" (g)").padEnd(16, ".")  + "[no reference]"+
-                    "\nBrain".padEnd(16, ".")  + + (wt_brain + " (g)").padEnd(16, ".")  + "[" + brain + "]" +
+                    "\nBrain".padEnd(16, ".")  + (wt_brain + " (g)").padEnd(16, ".")  + "[" + brain + "]" +
                     "\n\nHeart Valves and Ventricles : \n" +
                     "Item".padEnd(16)+"Value".padEnd(16)+"Reference"+
                     "\n".padEnd(50, "-") +
