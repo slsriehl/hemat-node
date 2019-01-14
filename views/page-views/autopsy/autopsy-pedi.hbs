@@ -63,7 +63,7 @@
                                     </div>
                                     <div class="input-group pt-2">
                                         <span class="input-group-addon">
-                                            Weight at birth
+                                            Weight
                                         </span>
                                         <input type="text" class="form-control form-control-sm" id="weight"/>
                                     </div>
@@ -89,10 +89,20 @@
                                         <input type="text" class="form-control form-control-sm " id="date-dtime"/>
                                     </div>
                                     <div class="input-group pt-2">
-                                        <span class="input-group-addon">
-                                            Age (enter 0 if stillbirth)
+                                        <span class="input-group-addon"
+                                              data-placement="left" data-toggle="tooltip"
+                                              title="Autocalculated, but you can enter your own age (enter 0 for stillbirth)" aria-hidden="true">
+                                            Age
                                         </span>
                                         <input type="text" class="form-control form-control-sm" id="age"/>
+                                    </div>
+                                    <div class="input-group pt-2 ga" style="display: none;">
+                                        <span class="input-group-addon"
+                                              data-placement="left" data-toggle="tooltip"
+                                              title="Enter gestational age for stillbirths" aria-hidden="true">
+                                            Gestational Age
+                                        </span>
+                                        <input type="text" class="form-control form-control-sm" id="age-ga"/>
                                     </div>
                                     <div class="input-group py-2 date my-date-picker">
                                         <span class="input-group-addon">
@@ -151,13 +161,13 @@
 
             <!-- left column accordion-->
             <div id="accordion" role="tablist" aria-multiselectable="true">
-                <!-- Maternal history-->
+                <!-- Clinical history-->
                 <div class="card">
                     <div class="card-header" role="tab" id="headingOne">
                         <h5 class="mb-0">
                             <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion"
                                href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Maternal / Prenatal history
+                                Clinical history (Maternal history and labs or Hospital course)
                             </a>
                         </h5>
                     </div>
@@ -166,16 +176,17 @@
                             <div class="card-group">
                                 <div class="card">
                                     <div class="card-header">
-                                        Maternal Data
+                                        <span class="mx-1 mat-history">Maternal History</span>
+                                        <button class="btn btn-outline-danger mx-1 p-1" id="mat-hide" data-toggle="button">Toggle Maternal section</button>
                                     </div>
-                                    <div class="card-block chkboxes">
-                                        <div style="font-size: 0.66em;" class="content" id="column1b">
+                                    <div class="card-block mat-history">
+                                        <div class="content" id="column1b">
                                             <div class="input-group py-1 mt-2">
                                                 <span class="input-group-addon">Maternal age</span>
                                                 <input class="form-control form-control-sm" id="maternal-age">
                                             </div>
 
-                                            <div class="text-center bg-faded w-100 p-1">Gravida/Para</div>
+                                            <div class="text-center bg-faded w-100 p-1 my-1">Gravida/Para</div>
                                             <div class="input-group py-1 mt-2">
                                                 <span class="input-group-addon">G:</span>
                                                 <input class="form-control form-control-sm" id="maternal-g">
@@ -189,7 +200,7 @@
                                                 <input class="form-control form-control-sm" id="maternal-a">
                                             </div>
 
-                                            <div class="text-center bg-success w-100 p-1">Prenatal data</div>
+                                            <div class="text-center bg-success w-100 p-1 my-1">Prenatal Labs</div>
                                             <div class="input-group py-1 mt-2">
                                                 <span class="input-group-addon">Blood type</span>
                                                 <select class="form-control" id="maternal-blood">
@@ -252,15 +263,8 @@
                                                     <option>Unknown</option>
                                                 </select>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header">
-                                        Labor information
-                                    </div>
-                                    <div class="card-block chkboxes">
-                                        <div class="w-100 py-1 mt-2">Prenatal ultrasound (if known)</div>
+                                            <div class="text-center bg-info w-100 p-1 my-1">Labor information</div>
+                                            <div class="w-100 py-1 mt-2">Prenatal ultrasound (if known)</div>
                                             <div class="input-group date my-date-picker mt-2">
                                                 <span class="input-group-addon">
                                                     Date of sonograph
@@ -296,14 +300,17 @@
                                                     <option>Cesarean section</option>
                                                 </select>
                                             </div>
-                                            <div class="card-header pt-1 my-2" style="background-color: #f0ad4e"> Post Delivery </div>
-                                            <div class="pt-2">
-                                                <span class="w-100 py-1 mt-2">
-                                                    Describe the infant's hospital course
-                                                </span>
-                                                <textarea class="form-control w-100" rows="16" id="hospital-course"></textarea>
-                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card hosp-course">
+                                    <div class="card-header">
+                                        Describe the hospital course
+                                    </div>
 
+                                    <div class="card-block chkboxes">
+                                        <div class="text-center bg-warning w-100 p-1 my-1">Hospital course</div>
+                                        <textarea class="form-control w-100" rows="50" id="hospital-course"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -453,16 +460,16 @@
                                         <tr>
                                             <td>Gonads
                                                 <span class="stillb"> (cm)</span>
-                                                <span class="infant" style="display: none;"> (gr)</span>
-                                                <span class="nonstillb" style="display: none;"> (gr)</span>
+                                                <span class="infant" style="display: none;"> (g)</span>
+                                                <span class="nonstillb" style="display: none;"> (g)</span>
                                             </td>
                                             <td><input class="form-control form-control-sm"  type='text' tabindex="10" id="box19"></td>
                                             <td>Heart - TV circ</td>
                                             <td><input class="form-control form-control-sm"  type='text' tabindex="24" id="box39"></td>
                                         </tr>
                                         <tr>
-                                            <td class="meas">Thymus</td>
-                                            <td class="meas"><input class="form-control form-control-sm"  type='text' tabindex="11" id="box20"></td>
+                                            <td>Thymus</td>
+                                            <td><input class="form-control form-control-sm"  type='text' tabindex="11" id="box20"></td>
                                             <td>Heart - PV circ</td>
                                             <td><input class="form-control form-control-sm"  type='text' tabindex="25" id="box40"></td>
                                         </tr>

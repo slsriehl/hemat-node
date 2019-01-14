@@ -538,22 +538,22 @@ $(function () {
 	String.prototype.rpad = function (num) {
 	// .rpad() function to right pad block of text,
 	// num = #of spaces to pad right
+	// Explanation of regex: https://stackoverflow.com/questions/14484787/wrap-text-in-javascript/51506718#51506718
+    // Here, capture group is 45 chars, to account for 72 char courier 11pt standard width in word document
 
-	// match block of text to the 5th space, or remainder (1)
-		// (this+" ") adds one more space to catch end of sentence
-	var text = (this+" ").match(/(.*?\s){1,5}/g);
-	// get first line
-		if (text){
-	    var padded = text[0];
-	    // loop through array, add new line and pad
-	    for (var i=1; i < text.length; i++) {
-		padded += "\n".padEnd(num)+text[i]; // pad subsequent lines
-	    }
-	    // return value to string
-	    return padded;
-		} else {
-			return text;
-		}
+        var text = (this).match(/((?![^\n]{1,45}$)([^\n]{1,45})\s)|(.{1,45}$)/g);
+        console.log(text);
+        if (text) {
+            var padded = text[0]; // get first line, don't pad
+
+            for (var i = 1; i < text.length; i++) {
+                padded += "\n".padEnd(num) + text[i]; // pad subsequent lines
+            }
+
+            return padded;
+        } else {
+            return text;
+        }
 
 	};								
 

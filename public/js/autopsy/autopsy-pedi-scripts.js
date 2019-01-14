@@ -629,8 +629,111 @@ function make_data(datatable) {
         }
     });
 
+    $("#mat-hide").on("click", function(){
+           $(".mat-history").toggle();
+    });
+
+    $("#age").on("change", function(){
+       var sel = $(this).val();
+       if (sel == "Stillbirth") {
+           $(".ga").show();
+       } else {
+           $(".ga").hide();
+       }
+    });
+
+    $("#age-ga").on("input", function (){
+        var ga = parseFloat($("#age-ga").val());
+        // set weights age
+        $("#box2").val(ga+"wk").change();
+    });
+
 //*************************************************************//
-//                        Microscopic descriptions             //
+//                   Calculate age and adjust                  //
+// *************************************************************/
+
+$("#age").on("focus", function () {
+    var bdt     = new Date($("#date-birth").val() + " " + $("#date-btime").val());
+    var ddt     = new Date($("#date-death").val() + " " + $("#date-dtime").val());
+    // difference in time in milliseconds
+    var difference = Math.abs(bdt.getTime() - ddt.getTime());
+    console.log("Diff abs: "+difference);
+    // total ms in year
+    var ms_yr    = 1000 * 60 * 60 * 24 * 365;
+    // total ms in wk
+    var ms_wk    = 1000 * 60 * 60 * 24 * 7;
+    console.log("MS_wk: "+ms_wk)
+    // total ms in days
+    var ms_day    = 1000 * 60 * 60 * 24;
+    // total ms in  hours
+    var ms_hr    = 1000 * 60 * 60;
+    // total ms in  minutes
+    var ms_min    = 1000 * 60;
+
+    // get integer value of abs year, will be 0 if in the same year span
+    var yearDifference = Math.floor(difference / ms_yr);
+    // subtract the integer year from the difference in ms
+    difference -= yearDifference * ms_yr;
+
+    // get integer value of weeks from remaining time difference
+    var wkDifference = Math.floor(difference / ms_wk);
+    // subtract the integer weeks from the difference in ms
+    difference -= wkDifference * ms_wk;
+
+    // get integer value of days from remaining time difference
+    var dayDifference = Math.floor(difference / ms_day);
+    // subtract the integer weeks from the difference in ms
+    difference -= dayDifference * ms_day;
+
+    // get integer value of hours from remaining time difference
+    var hrDifference = Math.floor(difference / ms_hr);
+    difference -= hrDifference * ms_hr;
+
+    // get integer value of minutes from remaining time difference
+    var minDifference = Math.floor(difference / ms_min);
+
+    // adjust text to output and subsequent weights reference
+    if (difference == 0){
+        // This is a stillbirth
+        $("#age").val("Stillbirth").trigger("change");
+    } else {
+        // Not a still birth
+        // Less than a year
+        if (yearDifference == 0 && wkDifference < 52){
+            // approximate month
+            var moDifference = Math.floor(wkDifference / 4);
+            // Age greater than a week
+            if (wkDifference > 0){
+                $("#age").val(moDifference + " months ");
+                // set weights age
+                $("#box2").val(moDifference+"m").change();
+            } else {
+                if (dayDifference > 0){
+                    // Age between birth and 1 weeks
+                    $("#age").val(dayDifference + " days " + hrDifference + " hours");
+                } else {
+                    if (hrDifference == 0){
+                        // Age between birth and 1 hour
+                        $("#age").val(minDifference + " minutes");
+                    } else {
+                        // Age between birth and day
+                        $("#age").val(hrDifference + " hours");
+                    }
+                }
+                // set weights age
+                $("#box2").val("1m").change();
+            }
+        } else {
+            // greater than a year
+            $("#age").val(yearDifference + " yr " +wkDifference + " weeks ");
+            // set weights age
+            $("#box2").val(yearDifference+"yr").change();
+        }
+    }
+});
+
+//*************************************************************//
+//                   Microscopic descriptions                  //
 // *************************************************************/
 
 micros = {
@@ -874,6 +977,7 @@ $("input:checkbox").on("change", function() {
         var date_birth = $("#date-birth").val();
         var date_btime = $("#date-btime").val();
         var date_age = $("#age").val();
+        var date_gage = $("#age-ga").val();
         var sex = $("#sex").val();
         var weight = $("#weight").val();
         var date_death = $("#date-death").val();
@@ -907,7 +1011,7 @@ $("input:checkbox").on("change", function() {
         // Maternal delivery information
         var maternal_labor = $("#maternal-labor").val();
         var maternal_delivery = $("#maternal-delivery").val();
-        var hospital_course = $("#hospital-course").val().rpad(25);
+        var hospital_course = ($("#hospital-course").val().length >0) ? $("#hospital-course").val().rpad(25) : "None";
 
         // External exam variables
         var ext_habitus = $("#ext-habitus").val();
@@ -1162,47 +1266,50 @@ $("input:checkbox").on("change", function() {
         // ********************************************************************* //
         // Demographic data
 
-        clinical_text +=    "\nPATIENT DEMOGRAPHICS\n"+
-                            "\nBirth record:".padEnd(25) + "DOB: "+date_birth + " at " + date_btime +
-                            "\nDeath record:".padEnd(25) + "DOD: "+date_death + " at " + date_dtime +
-                            "\nAge (or time alive):".padEnd(25) + date_age +
-                            "\nWeight at birth:".padEnd(25) + weight +
-                            "\nSex:".padEnd(25) + sex +"\n";
+        clinical_text +=    "\nPATIENT DEMOGRAPHICS"+
+                            "\n  Birth record:".padEnd(25) + "DOB: "+date_birth + " at " + date_btime +
+                            "\n  Death record:".padEnd(25) + "DOD: "+date_death + " at " + date_dtime +
+                            "\n  Age (or time alive):".padEnd(25) + date_age +
+                            "\n  Weight at birth:".padEnd(25) + weight +
+                            "\n  Sex:".padEnd(25) + sex +"\n";
         // Autopsy details
 
-        clinical_text +=    "\nAUTOPSY DETAILS\n" +
-                            "\nAutopsy date:".padEnd(25) + date_autopsy+
-                            "\nAutopsy type:".padEnd(25) + autopsy_type+
-                            "\nAutopsy limitations:".padEnd(25) + autopsy_limits+
-                            "\nAutopsy pathologist:".padEnd(25) + autopsy_md+
-                            "\nPhysician notified".padEnd(25) + autopsy_notify +"\n";
+        clinical_text +=    "\nAUTOPSY DETAILS" +
+                            "\n  Autopsy date:".padEnd(25) + date_autopsy+
+                            "\n  Autopsy type:".padEnd(25) + autopsy_type+
+                            "\n  Autopsy limitations:".padEnd(25) + autopsy_limits+
+                            "\n  Autopsy pathologist:".padEnd(25) + autopsy_md+
+                            "\n  Physician notified".padEnd(25) + autopsy_notify +"\n";
 
-        // Maternal data
+        // Maternal data (if section is not toggled off
+        if (!$("#mat-hide").hasClass("active")){
+            clinical_text +=    "\nMATERNAL DATA" +
+                "\n  Maternal age:".padEnd(25) + maternal_age +
+                "\n  Birth history:".padEnd(25) + "G"+maternal_g+" P"+maternal_p+" A"+maternal_a+
+                "\n  Prenatal sonography:".padEnd(25) + maternal_sono_date;
 
-        clinical_text +=    "\nMaternal age:".padEnd(25) + maternal_age +
-                            "\nBirth history:".padEnd(25) + "G"+maternal_g+" P"+maternal_p+" A"+maternal_a+
-                            "\nPrenatal sonography:".padEnd(25) + maternal_sono_date;
 
+            if (maternal_sono_findings == "Other") {
+                clinical_text += "\n  Sonographic findings:".padEnd(25) + maternal_sono_other +"\n";
+            } else {
+                clinical_text += "\n  Sonographic findings:".padEnd(25) + maternal_sono_findings +"\n";
+            }
 
-         if (maternal_sono_findings == "Other") {
-             clinical_text += "\nSonographic findings:".padEnd(25) + maternal_sono_other +"\n";
-         } else {
-             clinical_text += "\nSonographic findings:".padEnd(25) + maternal_sono_findings +"\n";
-         }
+            clinical_text +=   "\nPRENATAL MATERNAL LABS"+
+                "\n  Blood type:".padEnd(25) + maternal_blood +
+                "\n  Antibody screen".padEnd(25) + maternal_abs +
+                "\n  RPR:".padEnd(25) + maternal_rpr +
+                "\n  Hepatitis-B:".padEnd(25) + maternal_hepb +
+                "\n  HIV:".padEnd(25) + maternal_hiv +
+                "\n  Rubella".padEnd(25) + maternal_rubella +
+                "\n  Group B-Strep:".padEnd(25) + maternal_gbs+"\n";
 
-        clinical_text +=   "\nPRENATAL MATERNAL LABS"+
-                            "\n  Blood type:".padEnd(25) + maternal_blood +
-                            "\n  Antibody screen".padEnd(25) + maternal_abs +
-                            "\n  RPR:".padEnd(25) + maternal_rpr +
-                            "\n  Hepatitis-B:".padEnd(25) + maternal_hepb +
-                            "\n  HIV:".padEnd(25) + maternal_hiv +
-                            "\n  Rubella".padEnd(25) + maternal_rubella +
-                            "\n  Group B-Strep:".padEnd(25) + maternal_gbs+"\n";
+            clinical_text +=    "\nDELIVERY AND HOSPITAL COURSE"+
+                "\n  Labor type:".padEnd(25) + maternal_labor+
+                "\n  Delivery type:".padEnd(25)+maternal_delivery;
+        }
 
-        clinical_text +=    "\nDELIVERY AND HOSPITAL COURSE"+
-                            "\n  Labor type:".padEnd(25) + maternal_labor+
-                            "\n  Delivery type:".padEnd(25)+maternal_delivery+
-                            "\n  Hospital course:".padEnd(25) + hospital_course+"\n";
+            clinical_text += "\n\n"+"HOSPITAL COURSE:".padEnd(25) + hospital_course+"\n";
 
 
 
