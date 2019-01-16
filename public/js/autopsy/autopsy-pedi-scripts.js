@@ -662,7 +662,6 @@ $("#age").on("focus", function () {
     var ms_yr    = 1000 * 60 * 60 * 24 * 365;
     // total ms in wk
     var ms_wk    = 1000 * 60 * 60 * 24 * 7;
-    console.log("MS_wk: "+ms_wk)
     // total ms in days
     var ms_day    = 1000 * 60 * 60 * 24;
     // total ms in  hours
@@ -682,40 +681,46 @@ $("#age").on("focus", function () {
 
     // get integer value of days from remaining time difference
     var dayDifference = Math.floor(difference / ms_day);
-    // subtract the integer weeks from the difference in ms
+    // subtract the integer days from the difference in ms
     difference -= dayDifference * ms_day;
 
     // get integer value of hours from remaining time difference
     var hrDifference = Math.floor(difference / ms_hr);
+    // subtract the integer hours from the difference in ms
     difference -= hrDifference * ms_hr;
 
     // get integer value of minutes from remaining time difference
     var minDifference = Math.floor(difference / ms_min);
 
     // adjust text to output and subsequent weights reference
-    if (difference == 0){
+    if (difference === 0){
         // This is a stillbirth
         $("#age").val("Stillbirth").trigger("change");
     } else {
+        console.log("Not a stillbirth");
         // Not a still birth
         // Less than a year
-        if (yearDifference == 0 && wkDifference < 52){
+        if (yearDifference === 0 && wkDifference < 52){
             // approximate month
             var moDifference = Math.floor(wkDifference / 4);
             // Age greater than a week
             if (wkDifference > 0){
+              console.log("Age in months");
                 $("#age").val(moDifference + " months ");
                 // set weights age
                 $("#box2").val(moDifference+"m").change();
             } else {
                 if (dayDifference > 0){
+                  console.log("Age in days");
                     // Age between birth and 1 weeks
                     $("#age").val(dayDifference + " days " + hrDifference + " hours");
                 } else {
-                    if (hrDifference == 0){
+                    if (hrDifference === 0){
+                      console.log("Age in minutes");
                         // Age between birth and 1 hour
                         $("#age").val(minDifference + " minutes");
                     } else {
+                      console.log("Age in hours");
                         // Age between birth and day
                         $("#age").val(hrDifference + " hours");
                     }
@@ -724,6 +729,7 @@ $("#age").on("focus", function () {
                 $("#box2").val("1m").change();
             }
         } else {
+          console.log("Age in years");
             // greater than a year
             $("#age").val(yearDifference + " yr " +wkDifference + " weeks ");
             // set weights age
