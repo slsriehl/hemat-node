@@ -657,7 +657,7 @@ $("#age").on("focus", function () {
     var ddt     = new Date($("#date-death").val() + " " + $("#date-dtime").val());
     // difference in time in milliseconds
     var difference = Math.abs(bdt.getTime() - ddt.getTime());
-    console.log("Diff abs: "+difference);
+    var abs_diff = difference;
     // total ms in year
     var ms_yr    = 1000 * 60 * 60 * 24 * 365;
     // total ms in wk
@@ -673,27 +673,36 @@ $("#age").on("focus", function () {
     var yearDifference = Math.floor(difference / ms_yr);
     // subtract the integer year from the difference in ms
     difference -= yearDifference * ms_yr;
-
+    console.log("Diff - year: "+difference);
+    
     // get integer value of weeks from remaining time difference
     var wkDifference = Math.floor(difference / ms_wk);
     // subtract the integer weeks from the difference in ms
     difference -= wkDifference * ms_wk;
+    console.log("Diff - week: "+abs_diff);
+
+		// approximate month
+    var moDifference = Math.floor(wkDifference / 4);
+
 
     // get integer value of days from remaining time difference
     var dayDifference = Math.floor(difference / ms_day);
     // subtract the integer days from the difference in ms
     difference -= dayDifference * ms_day;
+    console.log("Diff - day: "+difference);
 
     // get integer value of hours from remaining time difference
     var hrDifference = Math.floor(difference / ms_hr);
     // subtract the integer hours from the difference in ms
     difference -= hrDifference * ms_hr;
+    console.log("Diff - hour: "+difference);
 
     // get integer value of minutes from remaining time difference
     var minDifference = Math.floor(difference / ms_min);
+    console.log("Diff - min: "+difference);
 
     // adjust text to output and subsequent weights reference
-    if (difference === 0){
+    if (abs_diff === 0){
         // This is a stillbirth
         $("#age").val("Stillbirth").trigger("change");
     } else {
@@ -701,19 +710,17 @@ $("#age").on("focus", function () {
         // Not a still birth
         // Less than a year
         if (yearDifference === 0 && wkDifference < 52){
-            // approximate month
-            var moDifference = Math.floor(wkDifference / 4);
             // Age greater than a week
-            if (wkDifference > 0){
+            if (wkDifference > 4){
               console.log("Age in months");
                 $("#age").val(moDifference + " months ");
                 // set weights age
                 $("#box2").val(moDifference+"m").change();
             } else {
-                if (dayDifference > 0){
-                  console.log("Age in days");
+                if (wkDifference <= 4 && wkDifference >= 1){
+                  console.log("Age in weeks");
                     // Age between birth and 1 weeks
-                    $("#age").val(dayDifference + " days " + hrDifference + " hours");
+                    $("#age").val(wkDifference+ " weeks " + dayDifference + " day(s)");
                 } else {
                     if (hrDifference === 0){
                       console.log("Age in minutes");
@@ -731,7 +738,7 @@ $("#age").on("focus", function () {
         } else {
           console.log("Age in years");
             // greater than a year
-            $("#age").val(yearDifference + " yr " +wkDifference + " weeks ");
+            $("#age").val(yearDifference + " yr " +wkDifference + " weeks");
             // set weights age
             $("#box2").val(yearDifference+"yr").change();
         }
