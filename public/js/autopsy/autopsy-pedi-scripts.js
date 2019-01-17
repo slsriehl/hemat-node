@@ -1767,11 +1767,11 @@ $("input:checkbox").on("change", function() {
         final_text +=  "\n"+
             "II. List diagnoses here\n\n"+
             "__. Ancillary studies\n" +
-            "Tissue microbiology:".padEnd(8) + int_micro + "\n"
-            "Blood culture:".padEnd(8) + int_blood + "\n"
-            "Cytogenetics:".padEnd(8) + int_cytogen + "\n"
-            "Electron microscopy:".padEnd(8) + int_em + "\n"
-            "Frozen tissue:".padEnd(8) + int_frozen + "\n"
+            "Tissue microbiology:".padEnd(8) + int_micro + "\n" +
+            "Blood culture:".padEnd(8) + int_blood + "\n" +
+            "Cytogenetics:".padEnd(8) + int_cytogen + "\n" +
+            "Electron microscopy:".padEnd(8) + int_em + "\n" +
+            "Frozen tissue:".padEnd(8) + int_frozen + "\n" +
             "\n\nCOMMENT\n" +
             comm.join("\n");
 
