@@ -651,13 +651,14 @@ function make_data(datatable) {
 //*************************************************************//
 //                   Calculate age and adjust                  //
 // *************************************************************/
-
 $("#age").on("focus", function () {
     var bdt     = new Date($("#date-birth").val() + " " + $("#date-btime").val());
     var ddt     = new Date($("#date-death").val() + " " + $("#date-dtime").val());
-    // difference in time in milliseconds
-    var difference = Math.abs(bdt.getTime() - ddt.getTime());
-    var abs_diff = difference;
+    // ageDiff in time in milliseconds
+    var ageDiff = Math.abs(bdt.getTime() - ddt.getTime());
+    console.log(bdt, ddt, ageDiff);
+
+    var abs_diff = ageDiff;
     // total ms in year
     var ms_yr    = 1000 * 60 * 60 * 24 * 365;
     // total ms in wk
@@ -670,36 +671,36 @@ $("#age").on("focus", function () {
     var ms_min    = 1000 * 60;
 
     // get integer value of abs year, will be 0 if in the same year span
-    var yearDifference = Math.floor(difference / ms_yr);
-    // subtract the integer year from the difference in ms
-    difference -= yearDifference * ms_yr;
-    console.log("Diff - year: "+difference);
+    var yearageDiff = Math.floor(ageDiff / ms_yr);
+    // subtract the integer year from the ageDiff in ms
+    ageDiff -= yearageDiff * ms_yr;
+    console.log("Diff - year: "+ageDiff);
     
-    // get integer value of weeks from remaining time difference
-    var wkDifference = Math.floor(difference / ms_wk);
-    // subtract the integer weeks from the difference in ms
-    difference -= wkDifference * ms_wk;
+    // get integer value of weeks from remaining time ageDiff
+    var wkageDiff = Math.floor(ageDiff / ms_wk);
+    // subtract the integer weeks from the ageDiff in ms
+    ageDiff -= wkageDiff * ms_wk;
     console.log("Diff - week: "+abs_diff);
 
 		// approximate month
-    var moDifference = Math.floor(wkDifference / 4);
+    var moageDiff = Math.floor(wkageDiff / 4);
 
 
-    // get integer value of days from remaining time difference
-    var dayDifference = Math.floor(difference / ms_day);
-    // subtract the integer days from the difference in ms
-    difference -= dayDifference * ms_day;
-    console.log("Diff - day: "+difference);
+    // get integer value of days from remaining time ageDiff
+    var dayageDiff = Math.floor(ageDiff / ms_day);
+    // subtract the integer days from the ageDiff in ms
+    ageDiff -= dayageDiff * ms_day;
+    console.log("Diff - day: "+ageDiff);
 
-    // get integer value of hours from remaining time difference
-    var hrDifference = Math.floor(difference / ms_hr);
-    // subtract the integer hours from the difference in ms
-    difference -= hrDifference * ms_hr;
-    console.log("Diff - hour: "+difference);
+    // get integer value of hours from remaining time ageDiff
+    var hrageDiff = Math.floor(ageDiff / ms_hr);
+    // subtract the integer hours from the ageDiff in ms
+    ageDiff -= hrageDiff * ms_hr;
+    console.log("Diff - hour: "+ageDiff);
 
-    // get integer value of minutes from remaining time difference
-    var minDifference = Math.floor(difference / ms_min);
-    console.log("Diff - min: "+difference);
+    // get integer value of minutes from remaining time ageDiff
+    var minageDiff = Math.floor(ageDiff / ms_min);
+    console.log("Diff - min: "+ageDiff);
 
     // adjust text to output and subsequent weights reference
     if (abs_diff === 0){
@@ -709,38 +710,43 @@ $("#age").on("focus", function () {
         console.log("Not a stillbirth");
         // Not a still birth
         // Less than a year
-        if (yearDifference === 0 && wkDifference < 52){
-            // Age greater than a week
-            if (wkDifference > 4){
-              console.log("Age in months");
-                $("#age").val(moDifference + " months ");
-                // set weights age
-                $("#box2").val(moDifference+"m").change();
+        if (yearageDiff === 0 && wkageDiff < 52){
+            if (wkageDiff > 4){
+                // Age greater than a month
+                $("#age").val(moageDiff + " months ");
+                console.log("Age in months");
+                // set weights age estimation for months up to a year
+                $("#box2").val(moageDiff+"m").change();
             } else {
-                if (wkDifference <= 4 && wkDifference >= 1){
-                  console.log("Age in weeks");
-                    // Age between birth and 1 weeks
-                    $("#age").val(wkDifference+ " weeks " + dayDifference + " day(s)");
-                } else {
-                    if (hrDifference === 0){
-                      console.log("Age in minutes");
-                        // Age between birth and 1 hour
-                        $("#age").val(minDifference + " minutes");
+                    if (wkageDiff <= 4 && wkageDiff >= 1){
+                        console.log("Age in weeks");
+                        // Age between 1 week and a month
+                        $("#age").val(wkageDiff+ " weeks " + dayageDiff + " day(s)");
+                    } else if (wkageDiff <1 && dayageDiff >0) {
+                        console.log("Age in days");
+                        // Age between 1 week and a month
+                        $("#age").val(dayageDiff + " day(s) " + hrageDiff + " hour(s)");
                     } else {
-                      console.log("Age in hours");
-                        // Age between birth and day
-                        $("#age").val(hrDifference + " hours");
+                        // Age is less than a day from birth
+                        if (hrageDiff === 0){
+                            console.log("Age in minutes");
+                            // Age between birth and 1 hour
+                            $("#age").val(minageDiff + " minutes");
+                        } else {
+                            console.log("Age in hours");
+                            // Age between birth and day
+                            $("#age").val(hrageDiff + " hour(s)");
+                        }
                     }
-                }
-                // set weights age
+                // set weights age to 1month for all ages less than 5 weeks
                 $("#box2").val("1m").change();
             }
         } else {
           console.log("Age in years");
             // greater than a year
-            $("#age").val(yearDifference + " yr " +wkDifference + " weeks");
+            $("#age").val(yearageDiff + " yr " +wkageDiff + " week(s)");
             // set weights age
-            $("#box2").val(yearDifference+"yr").change();
+            $("#box2").val(yearageDiff+"yr").change();
         }
     }
 });
@@ -877,7 +883,17 @@ micros = {
   // unremarkable placenta, IUFD
   plac105: 'Sections from the umbilical cord show no undue inflammatory infiltrates in the vein or arteries, or within Wharton\'s jelly. There is patchy subendothelial pyknosis of the smooth muscle cells.\nSections from the membrane roll are unremarkable.\nSections from the placental disk show well-developed tertiary villi with degenerative changes suggesting intra-uterine retention. These are characterized by villous stromal karyorrhexis, stromal hemorrhage and prominent syncytial knots. No maternal vascular arteriopathy is evident. Acute inflammation within and outside villi is not seen. No appreciable intervillous lymphocytes, plasma cells or histiocytes are seen. No viral inclusions or excess intervillous fibrinoid is present.\n',
 
-  finalmicro: ''
+  // ** COMMENTS ** //
+  comm100: '\n Test comment #1 \n',
+
+  comm102: '\n Test comment #2 \n',
+
+  comm104: '\n Test comment #3 \n',
+
+  comm106: '\n Test comment #4 \n',
+
+  comm108: '\n Test comment #5 \n'
+
   //
 }
 
@@ -894,6 +910,7 @@ var endo = [];
 var msk = [];
 var cns = [];
 var plac = [];
+var comm = [];
 
 
 $("input:checkbox").on("change", function() {
@@ -950,6 +967,11 @@ $("input:checkbox").on("change", function() {
       console.log(plac);
     }
 
+      if ($(this).attr('id').indexOf('comm') > -1) {
+          comm.push(micros[part_choice]);
+          console.log(comm);
+      }
+
   }
 });
 
@@ -993,6 +1015,7 @@ $("input:checkbox").on("change", function() {
         var date_gage = $("#age-ga").val();
         var sex = $("#sex").val();
         var weight = $("#weight").val();
+        var weight_unit = $("#weight-unit").val();
         var date_death = $("#date-death").val();
         var date_dtime = $("#date-dtime").val();
 
@@ -1283,7 +1306,7 @@ $("input:checkbox").on("change", function() {
                             "\n  Birth record:".padEnd(25) + "DOB: "+date_birth + " at " + date_btime +
                             "\n  Death record:".padEnd(25) + "DOD: "+date_death + " at " + date_dtime +
                             "\n  Age (or time alive):".padEnd(25) + date_age +
-                            "\n  Weight at birth:".padEnd(25) + weight +
+                            "\n  Weight at birth:".padEnd(25) + weight + " " + weight_unit +
                             "\n  Sex:".padEnd(25) + sex +"\n";
         // Autopsy details
 
@@ -1716,19 +1739,41 @@ $("input:checkbox").on("change", function() {
             "\n\nPlacenta"+"\n".padEnd(25, "-") +"\n" + plac.join("");
 
 
-        final_text +=
-            "I. "+weight.replace(/g/,"")+
-            " gram "+sex;
+        // FINAL ANATOMIC DIAGNOSES AND COMMENT
 
-        if (date_age == '0'){
-            final_text += " stillborn fetus"
+        final_text +=
+            "I. "+weight + " " + weight_unit + " " + sex ;
+
+        // get age
+        var bdt     = new Date($("#date-birth").val() + " " + $("#date-btime").val());
+        var ddt     = new Date($("#date-death").val() + " " + $("#date-dtime").val());
+        // ageDiff in time in milliseconds
+        var ageDiff = Math.abs(bdt.getTime() - ddt.getTime());
+        console.log(bdt, ddt, ageDiff);
+
+        if (ageDiff === 0){
+            final_text += " stillborn fetus";
+
+            var ga = $('#age-ga').val();
+            final_text += " delivered at "+ga+ " gestational age \n";
+        } else if (ageDiff < 31557600000){
+            final_text += " infant \n";
+        } else if (ageDiff < 378691200000){
+            final_text += " child \n";
         } else {
-            final_text += " infant"
+            final_text += " adolescent \n";
         }
-        final_text +=  "\n\n"+
+
+        final_text +=  "\n"+
             "II. List diagnoses here\n\n"+
-            "__. Ancillary studies\nMicrobiology: \nTissue cultures: \nCytogenetics: \nElectron microscopy: Not performed \nFrozen tissue: None taken"+
-            "\n\nCOMMENT\n";
+            "__. Ancillary studies\n" +
+            "Tissue microbiology:".padEnd(8) + int_micro + "\n"
+            "Blood culture:".padEnd(8) + int_blood + "\n"
+            "Cytogenetics:".padEnd(8) + int_cytogen + "\n"
+            "Electron microscopy:".padEnd(8) + int_em + "\n"
+            "Frozen tissue:".padEnd(8) + int_frozen + "\n"
+            "\n\nCOMMENT\n" +
+            comm.join("\n");
 
         // print clinical summary and maternal data
         $('#outPut-1').val(clinical_text);
