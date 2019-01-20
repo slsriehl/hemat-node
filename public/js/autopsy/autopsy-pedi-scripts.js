@@ -756,143 +756,144 @@ $("#age").on("focus", function () {
 // *************************************************************/
 
 micros = {
-  // Free text
-  free100: "Sections show ....",
-  // ** LUNGS ** //
-  // Autolyzed lungs
-  lung100: 'Sections from the lungs show extensive autolysis, with only ghost-like outlines of the alveolar parenchyma. Few pneumocytes and respiratory eptihelial cells retain nuclear basophilia\n\nSections from the trachea and larynx show diffuse autolysis and a ghost-like outline of tubular structures.\n',
-  // Partially autolyzed lungs
-  lung101: 'Sections from the lungs show partial autolysis, with retention of normal alveolar parenchymal architecture. Where viable, the pneumocytes and respiratory eptihelial cells retain nuclear basophilia. No viral inclusions or neutrophilic infiltrates are seen.\n\nSections from the trachea and larynx show normal tubular architecture with a ciliated respiratory epithelial lining. No undue hemorrhage or inflammatory infiltrates are seen. The tracheal cartilage is shows unremarkable hyaline cartilage and forms an incomplete ring.\n',
-  // Viable lungs, pseduoglandular
-  lung102: 'Sections from the lungs show normal immature pulmonary architecture. There is maturity to the pseudoglandular stage, as evidenced by densely cellular interstitial mesenchyme and columnar-epithelium lined tubular structures. Many of these show cells with subnuclear vacuoles. Alveolar structures are not apparent. No neutrophilic infiltrates or viral inclusions are seen.\n\nSections from the trachea and larynx show normal tubular architecture with a ciliated respiratory epithelial lining. No undue hemorrhage or inflammatory infiltrates are seen. The tracheal cartilage is shows unremarkable hyaline cartilage and forms an incomplete ring.\n',
-  // Viable lungs, canalicular
-  lung103: 'Sections from the lungs show normal immature pulmonary architecture. There is maturity to the canalicular stage, as evidenced by moderately cellular interstitial mesenchyme and recognizable branching terminal bronchioles. No well developed alveolar structures are seen. No neutrophilic infiltrates or viral inclusions are seen.\nSections from the trachea and larynx show normal tubular architecture with a ciliated respiratory epithelial lining. No undue hemorrhage or inflammatory infiltrates are seen. The tracheal cartilage is shows unremarkable hyaline cartilage and forms an incomplete ring.\n',
-  // Viable lungs, saccular
-  lung104: 'Sections from the lungs show normal immature pulmonary architecture. There is maturity to the canalicular stage, as evidenced by minimal amounts of cellular interstitial mesenchyme and branching terminal bronchioles which often end in dilated saccules. Few squames are present within the dilated spaces. The interstitial capillaries are well visualized and are centrally placed within the mesenchyme. No well formed alveolar spaces are seen. No neutrophilic infiltrates or viral inclusions are seen.\n\nSections from the trachea and larynx show normal tubular architecture with a ciliated respiratory epithelial lining. No undue hemorrhage or inflammatory infiltrates are seen. The tracheal cartilage is shows unremarkable hyaline cartilage and forms an incomplete ring.\n',
-  // Viable lungs, alveolar
-  lung105: 'Sections from the lungs show normal pulmonary architecture. There is maturity to the alveolar stage, as evidenced by an appropriate distribution of alveolar spaces which abut a rich network of interstitial capillaries. Occasional squames are present within the alveolar spaces. No neutrophilic infiltrates or viral inclusions are seen.\n\nSections from the trachea and larynx show normal tubular architecture with a ciliated respiratory epithelial lining. No undue hemorrhage or inflammatory infiltrates are seen. The tracheal cartilage is shows unremarkable hyaline cartilage and forms an incomplete ring.\n',
+    // Free text
+    free100: "Sections show ....",
+    // ** LUNGS ** //
+    // Autolyzed lungs
+    lung100: 'Sections from the lungs show extensive autolysis, with only ghost-like outlines of the alveolar parenchyma. Few pneumocytes and respiratory eptihelial cells retain nuclear basophilia\n\nSections from the trachea and larynx show diffuse autolysis and a ghost-like outline of tubular structures.\n',
+    // Partially autolyzed lungs
+    lung101: 'Sections from the lungs show partial autolysis, with retention of normal alveolar parenchymal architecture. Where viable, the pneumocytes and respiratory eptihelial cells retain nuclear basophilia. No viral inclusions or neutrophilic infiltrates are seen.\n\nSections from the trachea and larynx show normal tubular architecture with a ciliated respiratory epithelial lining. No undue hemorrhage or inflammatory infiltrates are seen. The tracheal cartilage is shows unremarkable hyaline cartilage and forms an incomplete ring.\n',
+    // Viable lungs, pseduoglandular
+    lung102: 'Sections from the lungs show normal immature pulmonary architecture. There is maturity to the pseudoglandular stage, as evidenced by densely cellular interstitial mesenchyme and columnar-epithelium lined tubular structures. Many of these show cells with subnuclear vacuoles. Alveolar structures are not apparent. No neutrophilic infiltrates or viral inclusions are seen.\n\nSections from the trachea and larynx show normal tubular architecture with a ciliated respiratory epithelial lining. No undue hemorrhage or inflammatory infiltrates are seen. The tracheal cartilage is shows unremarkable hyaline cartilage and forms an incomplete ring.\n',
+    // Viable lungs, canalicular
+    lung103: 'Sections from the lungs show normal immature pulmonary architecture. There is maturity to the canalicular stage, as evidenced by moderately cellular interstitial mesenchyme and recognizable branching terminal bronchioles. No well developed alveolar structures are seen. No neutrophilic infiltrates or viral inclusions are seen.\nSections from the trachea and larynx show normal tubular architecture with a ciliated respiratory epithelial lining. No undue hemorrhage or inflammatory infiltrates are seen. The tracheal cartilage is shows unremarkable hyaline cartilage and forms an incomplete ring.\n',
+    // Viable lungs, saccular
+    lung104: 'Sections from the lungs show normal immature pulmonary architecture. There is maturity to the canalicular stage, as evidenced by minimal amounts of cellular interstitial mesenchyme and branching terminal bronchioles which often end in dilated saccules. Few squames are present within the dilated spaces. The interstitial capillaries are well visualized and are centrally placed within the mesenchyme. No well formed alveolar spaces are seen. No neutrophilic infiltrates or viral inclusions are seen.\n\nSections from the trachea and larynx show normal tubular architecture with a ciliated respiratory epithelial lining. No undue hemorrhage or inflammatory infiltrates are seen. The tracheal cartilage is shows unremarkable hyaline cartilage and forms an incomplete ring.\n',
+    // Viable lungs, alveolar
+    lung105: 'Sections from the lungs show normal pulmonary architecture. There is maturity to the alveolar stage, as evidenced by an appropriate distribution of alveolar spaces which abut a rich network of interstitial capillaries. Occasional squames are present within the alveolar spaces. No neutrophilic infiltrates or viral inclusions are seen.\n\nSections from the trachea and larynx show normal tubular architecture with a ciliated respiratory epithelial lining. No undue hemorrhage or inflammatory infiltrates are seen. The tracheal cartilage is shows unremarkable hyaline cartilage and forms an incomplete ring.\n',
     // Multifocal pulmonary hemorrhage/necrosis
-  lung106: 'Sections from the lungs show normal pulmonary architecture with age appropriate alveolar maturation to the ____ stage. Multifocal areas of alveolar hemorrhage and hemorrhagic necrosis are seen. The large airways show acute bronchopneumonia with neutrophils and inspissated material in the airway lumens\n\nSections from the trachea and larynx show normal tubular architecture with a ciliated respiratory epithelial lining. No undue hemorrhage or inflammatory infiltrates are seen. The tracheal cartilage is shows unremarkable hyaline cartilage and forms an incomplete ring.\n',
-     // Developmental lung arrest
-  lung107: 'Sections from the lungs show abnormal pulmonary architecture characterized by maturation assynchrony with the expected degree of alveolar development. This is characterized by persistence of interstitial mesenchyme, early fibroplasia and alveolar simplification (underdevelopment) with patchy hyperexpansion. In addition to these developmental changes, there are multifocal hemorrhagic infarctions in the peripheral airway parenchyma. Areas of airway edema with proteinaceous fluid in the airspaces are present. The pulmonary arteries show mild-moderate hypertensive arteriopathic changes. No undue neutrophilic infiltrates are seen in alveoli or bronchial spaces. \n',
+    lung106: 'Sections from the lungs show normal pulmonary architecture with age appropriate alveolar maturation to the ____ stage. Multifocal areas of alveolar hemorrhage and hemorrhagic necrosis are seen. The large airways show acute bronchopneumonia with neutrophils and inspissated material in the airway lumens\n\nSections from the trachea and larynx show normal tubular architecture with a ciliated respiratory epithelial lining. No undue hemorrhage or inflammatory infiltrates are seen. The tracheal cartilage is shows unremarkable hyaline cartilage and forms an incomplete ring.\n',
+    // Developmental lung arrest
+    lung107: 'Sections from the lungs show abnormal pulmonary architecture characterized by maturation assynchrony with the expected degree of alveolar development. This is characterized by persistence of interstitial mesenchyme, early fibroplasia and alveolar simplification (underdevelopment) with patchy hyperexpansion. In addition to these developmental changes, there are multifocal hemorrhagic infarctions in the peripheral airway parenchyma. Areas of airway edema with proteinaceous fluid in the airspaces are present. The pulmonary arteries show mild-moderate hypertensive arteriopathic changes. No undue neutrophilic infiltrates are seen in alveoli or bronchial spaces. \n',
 
-  // ** HEART CV ** //
-  // autolyzed heart / cv
-  heart100: 'Sections from the heart show diffuse autolysis with a ghost-like outline of normal architecture. Nuclear basophilia is minimally present. The aorta show autolysis with no apparent intimal thickening.\n',
-  // normal heart
-  heart101: 'Sections from the heart show normal myocardial architecture with retention of nuclear basophilia. No ischemic foci or areas with nuclear enlargement are seen. No undue inflammatory infiltrates or viral cytopathic changes are evident.\n',
+    // ** HEART CV ** //
+    // autolyzed heart / cv
+    heart100: 'Sections from the heart show diffuse autolysis with a ghost-like outline of normal architecture. Nuclear basophilia is minimally present. The aorta show autolysis with no apparent intimal thickening.\n',
+    // normal heart
+    heart101: 'Sections from the heart show normal myocardial architecture with retention of nuclear basophilia. No ischemic foci or areas with nuclear enlargement are seen. No undue inflammatory infiltrates or viral cytopathic changes are evident.\n',
     // AMI/hypertrophy
-  heart102: 'Sections from the heart show hypertrophic left-ventricular myofibers and multiple foci of acute ischemic necrosis. These are characterized by inter-myofiber hemorrhage, myofiber necrosis and early neutrophilic infiltration.\n',
-  // Mild hypertrophy
-  heart103: 'Sections from the heart show normal myocardial architecture with mild myocardial hypertrophy and boxy nuclei. No ischemic foci or areas of infarction are seen.\n',
-  // normal aorta
-  heart110: 'Sections from the aorta show normal vascular architecture without intimal thickening or subintimal deposits.\n',
+    heart102: 'Sections from the heart show hypertrophic left-ventricular myofibers and multiple foci of acute ischemic necrosis. These are characterized by inter-myofiber hemorrhage, myofiber necrosis and early neutrophilic infiltration.\n',
+    // Mild hypertrophy
+    heart103: 'Sections from the heart show normal myocardial architecture with mild myocardial hypertrophy and boxy nuclei. No ischemic foci or areas of infarction are seen.\n',
+    // normal aorta
+    heart110: 'Sections from the aorta show normal vascular architecture without intimal thickening or subintimal deposits.\n',
 
-  // ** GI ** //
-  // Autolyzed GI
-  gastro100: 'Sections of the esophagus show normal developmental architecture. Sections from the stomach, large bowel and small bowel show extensive autolysis with only ghost-like outlines of the expected bowel architecture remaining. Nuclear basophilia is not retained. There is abundant luminal mucous and meconium. Where evaluable, ganglion cells are present in the myenteric and submucosal plexi.\n',
-  // Normal fetal GI
-  gastro101: 'Sections of the esophagus show normal developmental architecture. Sections from the stomach, large bowel and small bowel show normal bowel architecture without undue inflammatory infiltrates. There is abundant luminal mucous and meconium. Where evaluable, ganglion cells are present in the myenteric and submucosal plexi.\n\nSections from the pancreas show normal lobular architecture with scattered endocrine islets.\n',
-  // Normal GI
-  gastro102: 'Sections of the esophagus show normal developmental architecture. Sections from the stomach, large bowel and small bowel show normal bowel architecture without undue inflammatory infiltrates. Where evaluable, ganglion cells are present in the myenteric and submucosal plexi.\n',  
-// Normal pancreas
-  gastro120: 'Sections from the pancreas show extensive autolysis with vaguely residual retention of normal lobular architecture and scattered endocrine islets.\n',
-// Autolyzed pancreas
-  gastro121: '\nSections from the pancreas show extensive autolysis and areas of fatty saponification.\n',
-  
+    // ** GI ** //
+    // Autolyzed GI
+    gastro100: 'Sections of the esophagus show normal developmental architecture. Sections from the stomach, large bowel and small bowel show extensive autolysis with only ghost-like outlines of the expected bowel architecture remaining. Nuclear basophilia is not retained. There is abundant luminal mucous and meconium. Where evaluable, ganglion cells are present in the myenteric and submucosal plexi.\n',
+    // Normal fetal GI
+    gastro101: 'Sections of the esophagus show normal developmental architecture. Sections from the stomach, large bowel and small bowel show normal bowel architecture without undue inflammatory infiltrates. There is abundant luminal mucous and meconium. Where evaluable, ganglion cells are present in the myenteric and submucosal plexi.\n\nSections from the pancreas show normal lobular architecture with scattered endocrine islets.\n',
+    // Normal GI
+    gastro102: 'Sections of the esophagus show normal developmental architecture. Sections from the stomach, large bowel and small bowel show normal bowel architecture without undue inflammatory infiltrates. Where evaluable, ganglion cells are present in the myenteric and submucosal plexi.\n',
+    // Normal pancreas
+    gastro120: 'Sections from the pancreas show extensive autolysis with vaguely residual retention of normal lobular architecture and scattered endocrine islets.\n',
+    // Autolyzed pancreas
+    gastro121: '\nSections from the pancreas show extensive autolysis and areas of fatty saponification.\n',
 
-  // ** HEPATOBILIARY ** //
-  // autolyzed hepatobilliary
-  hepato100: 'Sections from the liver show extensive autolysis which obscures the normal expected architecture. No nuclear basophilia is retained by the hepatocytes.\n',
-  // normal hepatobilliary
-  hepato101: 'Sections from the liver show normal hepatic architecture. The portal areas show a normal distribution of bile ducts and portal vessels. There is no undue lobular inflammation, giant cell change or bile stasis.\n',
-  // Submassive hepatic necrosis
-  hepato102: 'Sections from the liver show essentially normal hepatic architecture. There is extensive submassive parenchymal injury with areas of hemorrhage, necrosis and periportal ischemia. The viable hepatocytes show cholestasis and cytoplasmic vacuoles. Few giant cells and sinusoidal bile plugs are seen. The portal areas show a normal distribution of bile ducts and portal vessels. There is no undue lobular inflammation, giant cell change or bile stasis.\n',
-  // normal EMH
-  hepato120: 'Scattered islands of age-appropriate extra-medullary hematopoiesis are present.\n',
-  // normal gallbladder
-  hepato130: 'Sections from the gallbladder show normal biliary mucosa without mural hypertrophy or undue inflammatory infiltrates.\n',
 
-  // ** GENITOURINARY ** //
-  // autolyzed kidney & bladder
-  gu100: 'Sections from the kidney show extensive autolysis obscuring the normal expected cortico-medullary architecture. Nuclear basophilia is minimally retained and a peripheral rim of nephrogenesis cannot be discerned. No viral cytopathic changes are seen. Sections from the bladder are unremarkable.\n',
-  // autolyzed gonads
-  gu101: 'Sections from the testes show extensive autolysis with obscuring of the expected parenchymal architecture.\n',
-  // normal kidney and bladder
-  gu102: 'Sections from the kidney show normal cortico-medullary architecture with a peripheral rim of developing nephrogenesis. No viral cytopathic changes are seen. Sections of the bladder are unremarkable.\n',
-  // ATN kidney and bladder
-  gu103: 'Sections from the kidney show prominent preferential degeneration (and/or superimposed autolysis) of the tubular epithelium. Granular casts are found in many tubules. There is normal cortico-medullary architecture. The papillary tubules show focal hemorrhage and vascular congestion. No viral cytopathic changes are seen. Sections of the bladder are unremarkable.\n',
+    // ** HEPATOBILIARY ** //
+    // autolyzed hepatobilliary
+    hepato100: 'Sections from the liver show extensive autolysis which obscures the normal expected architecture. No nuclear basophilia is retained by the hepatocytes.\n',
+    // normal hepatobilliary
+    hepato101: 'Sections from the liver show normal hepatic architecture. The portal areas show a normal distribution of bile ducts and portal vessels. There is no undue lobular inflammation, giant cell change or bile stasis.\n',
+    // Submassive hepatic necrosis
+    hepato102: 'Sections from the liver show essentially normal hepatic architecture. There is extensive submassive parenchymal injury with areas of hemorrhage, necrosis and periportal ischemia. The viable hepatocytes show cholestasis and cytoplasmic vacuoles. Few giant cells and sinusoidal bile plugs are seen. The portal areas show a normal distribution of bile ducts and portal vessels. There is no undue lobular inflammation, giant cell change or bile stasis.\n',
+    // normal EMH
+    hepato120: 'Scattered islands of age-appropriate extra-medullary hematopoiesis are present.\n',
+    // normal gallbladder
+    hepato130: 'Sections from the gallbladder show normal biliary mucosa without mural hypertrophy or undue inflammatory infiltrates.\n',
+
+    // ** GENITOURINARY ** //
+    // autolyzed kidney & bladder
+    gu100: 'Sections from the kidney show extensive autolysis obscuring the normal expected cortico-medullary architecture. Nuclear basophilia is minimally retained and a peripheral rim of nephrogenesis cannot be discerned. No viral cytopathic changes are seen. Sections from the bladder are unremarkable.\n',
+    // autolyzed gonads
+    gu101: 'Sections from the testes show extensive autolysis with obscuring of the expected parenchymal architecture.\n',
+    // normal kidney and bladder
+    gu102: 'Sections from the kidney show normal cortico-medullary architecture with a peripheral rim of developing nephrogenesis. No viral cytopathic changes are seen. Sections of the bladder are unremarkable.\n',
+    // ATN kidney and bladder
+    gu103: 'Sections from the kidney show prominent preferential degeneration (and/or superimposed autolysis) of the tubular epithelium. Granular casts are found in many tubules. There is normal cortico-medullary architecture. The papillary tubules show focal hemorrhage and vascular congestion. No viral cytopathic changes are seen. Sections of the bladder are unremarkable.\n',
     // diffuse ischemia
-  gu104: 'Sections from the kidney show prominent preferential degeneration (and/or superimposed autolysis) of the tubular epithelium. Granular casts are found in many tubules. There is normal cortico-medullary architecture. The papillary tubules show focal hemorrhage and vascular congestion. No viral cytopathic changes are seen. Sections of the bladder are unremarkable.\n',  
-  // normal testes
-  gu110: 'Sections from the testes show normal seminiferous tubule architecture. Few basal germ cells are present.\n',
-  // normal ovaries
-  gu115: 'Sections of the ovaries show normal parenchymal architecture with a rim of oocytes.\n',
+    gu104: 'Sections from the kidney show prominent preferential degeneration (and/or superimposed autolysis) of the tubular epithelium. Granular casts are found in many tubules. There is normal cortico-medullary architecture. The papillary tubules show focal hemorrhage and vascular congestion. No viral cytopathic changes are seen. Sections of the bladder are unremarkable.\n',
+    // normal testes
+    gu110: 'Sections from the testes show normal seminiferous tubule architecture. Few basal germ cells are present.\n',
+    // normal ovaries
+    gu115: 'Sections of the ovaries show normal parenchymal architecture with a rim of oocytes.\n',
 
-  //** HEME ** //
-  // Autolyzed thymus, spleen nodes
-  heme100: 'Sections from the thymus, spleen and lymph nodes show extensive autolysis with only faint nuclear basophilia within a minority of lymphocytes.  Overall architecture appears distorted by the autolysis.\n',
-  // Autolyzed marrow
-  heme101: 'Sections from the bone marrow show autolysis with depletion of marrow elements.\n',
-  // normal thymus
-  heme102: 'Sections from the thymus show normal cortico-medullary architecture with scattered Hassall corpuscles. No significant involution-changes are evident.\n',
-  // normal spleen
-  heme103: 'Sections from the spleen show normal parenchymal architecture with a predominance of congested red pulp and few white pulp nodules.\n',
-  // normal nodes/marrow
-  heme104: 'Sections from the mesenteric lymph nodes show primary follicles without germinal center formation. Sections from the bone marrow show adequate cellularity with trilineage hematopoiesis.\n',
+    //** HEME ** //
+    // Autolyzed thymus, spleen nodes
+    heme100: 'Sections from the thymus, spleen and lymph nodes show extensive autolysis with only faint nuclear basophilia within a minority of lymphocytes.  Overall architecture appears distorted by the autolysis.\n',
+    // Autolyzed marrow
+    heme101: 'Sections from the bone marrow show autolysis with depletion of marrow elements.\n',
+    // normal thymus
+    heme102: 'Sections from the thymus show normal cortico-medullary architecture with scattered Hassall corpuscles. No significant involution-changes are evident.\n',
+    // normal spleen
+    heme103: 'Sections from the spleen show normal parenchymal architecture with a predominance of congested red pulp and few white pulp nodules.\n',
+    // normal nodes/marrow
+    heme104: 'Sections from the mesenteric lymph nodes show primary follicles without germinal center formation. Sections from the bone marrow show adequate cellularity with trilineage hematopoiesis.\n',
 
-  // ** ENDOCRINE ** //
-  // autolyized
-  endocr100: 'Sections from the thyroid and adrenal glands show extensive autolysis with only vague residual ghost-like outlines of normal architecture.\n',
-  // normal thyroid
-  endocr101: 'Sections from the thyroid show normal developing follicular architecture without undue inflammatory infiltrates. Some follicles contain colloid. No parathyroid is present.\n',
-  // normal adrenals
-  endocr102: 'Sections from the adrenal glands show a predominance of fetal adrenal cortex, with a peripheral rim of definitive cortex. There is some acinar change. No cortical hemorrhage or excessive vacuolization is seen. The medulla is unremarkable.\n',
-  //  normal pituitary
-  endocr103: 'Sections from the pituitary gland show normal hypophysis and adenohypophysis constituents.\n',
+    // ** ENDOCRINE ** //
+    // autolyized
+    endocr100: 'Sections from the thyroid and adrenal glands show extensive autolysis with only vague residual ghost-like outlines of normal architecture.\n',
+    // normal thyroid
+    endocr101: 'Sections from the thyroid show normal developing follicular architecture without undue inflammatory infiltrates. Some follicles contain colloid. No parathyroid is present.\n',
+    // normal adrenals
+    endocr102: 'Sections from the adrenal glands show a predominance of fetal adrenal cortex, with a peripheral rim of definitive cortex. There is some acinar change. No cortical hemorrhage or excessive vacuolization is seen. The medulla is unremarkable.\n',
+    //  normal pituitary
+    endocr103: 'Sections from the pituitary gland show normal hypophysis and adenohypophysis constituents.\n',
 
-  // ** MUSCULOSKELETAL ** //
-  // autolyzed muscle
-  msk100: 'Sections of skeletal muscle show extensive autolysis with ghost-like outlines of normal architecture. No excess in adipose is seen.\n',
-  // normal muscle
-  msk101: 'Sections of skeletal muscle are unremarkable, and show uniform thickness to the skeletal muscle fibers and no excess in adipose.\n',
-  // normal rib
-  msk102: 'Section from the rib show hyaline cartilage with a subjacent zone of orderly ossification and unremarkable surrounding soft tissue.\n',
-  // normal unkeratinized skin
-  msk103: 'Sections of the skin show age appropriate epidermis without keratinization and developing dermal adnexal structures.',
-  // normal keratinized skin
-  msk104: 'Sections of the skin show age appropriate epidermis with keratinization and developing dermal adnexal structures.',
+    // ** MUSCULOSKELETAL ** //
+    // autolyzed muscle
+    msk100: 'Sections of skeletal muscle show extensive autolysis with ghost-like outlines of normal architecture. No excess in adipose is seen.\n',
+    // normal muscle
+    msk101: 'Sections of skeletal muscle are unremarkable, and show uniform thickness to the skeletal muscle fibers and no excess in adipose.\n',
+    // normal rib
+    msk102: 'Section from the rib show hyaline cartilage with a subjacent zone of orderly ossification and unremarkable surrounding soft tissue.\n',
+    // normal unkeratinized skin
+    msk103: 'Sections of the skin show age appropriate epidermis without keratinization and developing dermal adnexal structures.',
+    // normal keratinized skin
+    msk104: 'Sections of the skin show age appropriate epidermis with keratinization and developing dermal adnexal structures.',
 
-  // ** CNS ** //
-  // autolyzed
-  cns100: 'Random sections from the brain tissue show autolysis and minimal retention of nuclear basophilia. There are focally preserved peripheral cortical zones of developing cortex. No calcifications are present.\n',
-  // mildly autolyzed
-  cns101: 'Random sections from the brain tissue show fragments of developing cortex, cerebellum and deep nuclei, with uniform retention of nuclear basophilia. Where evaluable, the cortex appears to show normal underlying developmental architecture. There are peripheral cortical zones of developing cortex and distinct gray and white matter zones. No calcifications, viral inclusions or hemorrhagic foci are present.\n',
-  // well-fixed, normal
-  cns102: 'Sections from the brain cortex show normal developing cortical architecture, with a peripheral zone of neurons and distinction from the gray matter. The cerebellum shows normal foveolar architecture with occasional eosinophilic Purkinje cells. Deep nuclei shows normal neuronal morphology and no excess of hypoxic change. No calcifications, viral inclusions, areas of hemorrhage or leukomalacia are seen.\n',
-  // poorly-fixed, global ischemia
-  cns103: 'Random sections from the poorly-fixed brain tissue show fragments of developing cortex, cerebellum and deep nuclei, with uniform retention of nuclear basophilia. Where evaluable, the cortex appears to show normal underlying developmental architecture. Neurons within the evaluable cortex and cerebellum show extensive "red-neuron" change, characterizing global hypoxic/ischemic change. No calcifications, viral inclusions, areas of hemorrhage or leukomalacia are seen.\n', 
-  // well-fixed, global ischemia
-  cns104: 'Sections from the brain cortex show normal developing cortical architecture, with a peripheral zone of neurons and distinction from the gray matter. Neurons within the cerebral cortex, hippocampus and brain stem show extensive "red-neuron" change, characterizing global hypoxic/ischemic change. No calcifications, viral inclusions, areas of hemorrhage or leukomalacia are seen.\n',  
+    // ** CNS ** //
+    // autolyzed
+    cns100: 'Random sections from the brain tissue show autolysis and minimal retention of nuclear basophilia. There are focally preserved peripheral cortical zones of developing cortex. No calcifications are present.\n',
+    // mildly autolyzed
+    cns101: 'Random sections from the brain tissue show fragments of developing cortex, cerebellum and deep nuclei, with uniform retention of nuclear basophilia. Where evaluable, the cortex appears to show normal underlying developmental architecture. There are peripheral cortical zones of developing cortex and distinct gray and white matter zones. No calcifications, viral inclusions or hemorrhagic foci are present.\n',
+    // well-fixed, normal
+    cns102: 'Sections from the brain cortex show normal developing cortical architecture, with a peripheral zone of neurons and distinction from the gray matter. The cerebellum shows normal foveolar architecture with occasional eosinophilic Purkinje cells. Deep nuclei shows normal neuronal morphology and no excess of hypoxic change. No calcifications, viral inclusions, areas of hemorrhage or leukomalacia are seen.\n',
+    // poorly-fixed, global ischemia
+    cns103: 'Random sections from the poorly-fixed brain tissue show fragments of developing cortex, cerebellum and deep nuclei, with uniform retention of nuclear basophilia. Where evaluable, the cortex appears to show normal underlying developmental architecture. Neurons within the evaluable cortex and cerebellum show extensive "red-neuron" change, characterizing global hypoxic/ischemic change. No calcifications, viral inclusions, areas of hemorrhage or leukomalacia are seen.\n',
+    // well-fixed, global ischemia
+    cns104: 'Sections from the brain cortex show normal developing cortical architecture, with a peripheral zone of neurons and distinction from the gray matter. Neurons within the cerebral cortex, hippocampus and brain stem show extensive "red-neuron" change, characterizing global hypoxic/ischemic change. No calcifications, viral inclusions, areas of hemorrhage or leukomalacia are seen.\n',
 
-  // ** PLACENTA ** //
-  // Not examined
-  plac100: "Placenta not examined\n",
-  // See surgpath case
-  plac101: "See surgpath case# \n",
-  // unremarkable placenta, IUFD
-  plac105: 'Sections from the umbilical cord show no undue inflammatory infiltrates in the vein or arteries, or within Wharton\'s jelly. There is patchy subendothelial pyknosis of the smooth muscle cells.\nSections from the membrane roll are unremarkable.\nSections from the placental disk show well-developed tertiary villi with degenerative changes suggesting intra-uterine retention. These are characterized by villous stromal karyorrhexis, stromal hemorrhage and prominent syncytial knots. No maternal vascular arteriopathy is evident. Acute inflammation within and outside villi is not seen. No appreciable intervillous lymphocytes, plasma cells or histiocytes are seen. No viral inclusions or excess intervillous fibrinoid is present.\n',
+    // ** PLACENTA ** //
+    // Not examined
+    plac100: "Placenta not examined\n",
+    // See surgpath case
+    plac101: "See surgpath case# \n",
+    // unremarkable placenta, IUFD
+    plac105: 'Sections from the umbilical cord show no undue inflammatory infiltrates in the vein or arteries, or within Wharton\'s jelly. There is patchy subendothelial pyknosis of the smooth muscle cells.\nSections from the membrane roll are unremarkable.\nSections from the placental disk show well-developed tertiary villi with degenerative changes suggesting intra-uterine retention. These are characterized by villous stromal karyorrhexis, stromal hemorrhage and prominent syncytial knots. No maternal vascular arteriopathy is evident. Acute inflammation within and outside villi is not seen. No appreciable intervillous lymphocytes, plasma cells or histiocytes are seen. No viral inclusions or excess intervillous fibrinoid is present.\n',
 
-  // ** COMMENTS ** //
-  comm100: '\n Test comment #1 \n',
-
-  comm102: '\n Test comment #2 \n',
-
-  comm104: '\n Test comment #3 \n',
-
-  comm106: '\n Test comment #4 \n',
-
-  comm108: '\n Test comment #5 \n'
+// ** COMMENTS ** //
+    // Erythroblastosis fetalis, no typical etiology
+    comm100: '\n The findings at autopsy confirm the presence of erythroblastosis fetalis, resulting in the clinical syndrome of hydrops fetalis. Hydrops fetalis is characterized by a constellation of findings, including diffuse edema/effusions, erythroblastosis (excess nucleated red blood cells) and ineffective oxygen-exchange. The causes of hydrops can be broadly divided into immune and non-immune etiologies. Immune mediated hydrops typically refers to the development of material anti-fetal (usually red cell antigen) alloimmune antibodies which causes massive hemolytic anemia in the infant. Nonimmune hydrops (NIH) may be caused by a broad variety of conditions including, but not limited to: primary cardiac anomalies, karyotypic aneuploidy, primary fetal anemia due to bone marrow disorder, significant thalassemias, TORCH infections, inborn errors of metabolism or, uncommonly, congenital neoplasms (see references).\n\nReview of available prenatal laboratory studies shows no red cell directed allo-immune antibodies, which argues against an immune mediated cause. Thus, the category of NIH is applicable. Often, in the absence of demonstrable infections or congenital mass lesions (neoplasms) the specific cause of non-immune hydrops cannot be confirmed by autopsy alone. Review of pertinent laboratory results that may account for erythroblastosis shows no etiologic viral infections (negative CMV, HSV and Parvovirus by PCR). Flow cytometry on a peripheral blood sample (DHP15-288) confirmed extensive circulating proerythroblasts without features of congenital leukemia. No congenital cardiac anomalies (excepting a large PDA) were detected. \n\nIn the absence of demonstrable viral infection, congenital leukemia, congenital tumors or causative cardiac anomalies, other causes of NIH must be considered. Given the extensive degree of multiorgan erythroblastosis, an underlying significant thalassemia (such as alpha-chain defect), primary bone marrow disorder or, possibly, a congenital genetic abnormality is favored. The autopsy findings alone cannot differentiate among these possibilities. Evaluating for parental hemoglobinopathies (particularly alpha-thalassemia) may be helpful, if not already performed. Chromosomal microarray testing of fetal tissues will be performed, the results of which will be reported as an addendum when available. \n\nReferences:\n1: Lallemand AV, et al. Investigation of nonimmune hydrops fetalis: multidisciplinary studies are necessary for diagnosis--review of 94 cases. Pediatr Dev Pathol. 1999 Sep-Oct;2(5):432-9.\n\n2: Rodrdguez MM, et al. Value of autopsy in nonimmune hydrops fetalis: series of 51 stillborn infantes. Pediatr Dev Pathol. 2002 Jul-Aug;5(4):365-74. \n',
+    // Nucal cord, hypoxia,  meconium excess
+    comm102: '\n Excessive meconium in airways (meconium aspiration) is associated with agonal / gasping respiratory efforts in the setting of in-utero hypoxic events. Overall, the findings are supportive of an in-utero hypoxic event. Nuchal cords are seen in a minority of normal births and do not necessarily cause fetal demise. Nevertheless, in the absence of any other identifiable cause of hypoxia, an instance of causative nuchal cord asphyxia is a plausible cause of hypoxia. Such accidents cannot always be definitively proven in all fetal demise cases.  \n',
+    // Extensive fetal autolysis, small placenta , no obvious cause of demise
+    comm104: '\n The etiology of the intrauterine fetal demise is uncertain and assessment of fetal organs is limited by the degree of autolysis. The placenta is small for the estimated gestational age. \n\nSmall placentas can be seen in a variety of settings, including chronic maternal underperfusion due to hypertension, diabetes or vascular derangements. \n',
+    // Congenital diaphragmatic hernia
+    comm106: '\nDiaphragmatic defects, including hemiagenesis with a congenital diaphragmatic hernia, often are associated with unilateral or bilateral pulmonary hypoplasia. The space occupying displaced viscera retards the ability of the lungs to expand and develop into the growing thoracic cavity. The hypoplastic nature of the lungs are confirmed by the low individual and combined lung weights, and the simplification of terminal alveolar development and markedly reduced lung:body ratio. Inadequate development of the lungs (and suboptimal development of oxygen-exchange participating terminal alveoli) in this severe setting is incompatible with spontaneous respiration and oxygenation. There is insufficient oxygen-exchange capacity of the parenchyma and incompliance of the lung to expand with spontaneous breaths. Furthermore, the absence of a fully functional diaphragm exacerbates the inability of the lungs to participate in sufficient oxygenation to support the organs. Secondary effects include increased pulmonary vascular resistance with resultant pulmonary hypertension. This is evidenced by the marked right sided cardiac dilated hypertrophy and left sided cardiac hypoplasia. The redundant and ballooned atria coincide with a markedly dilated tricuspid valve. Pre-mortem echocardiogram (performed 4/16/2015) confirmed marked right-to-left vascular shunting and minimal left ventricular ejection. The combination of inadequate pulmonary capacity, stigmata of severe pulmonary hypertension and depressed cardiac function likely resulted in in-utero cardiac hypoxia with end organ dysfunction. \n\nIn summary, this is a male infant with CDH due to agenesis of the hemidiaphragm. Findings during autopsy which would predict a higher risk CDH population include agenesis of the diaphragm, the presence of liver herniation and stigmata of pulmonary hypertension. [1] In the absence of other significant non-cardiac or pulmonary anomalies, this infant likely has a so-called isolated (non-syndromic) CDH. The possibility of a syndromic variant of CDH cannot be completely excluded by anatomic evaluation alone, and consideration for parental genetic counseling may be helpful. The reported risk in an isolated CDH occurring in future pregnancies is 1-2%. [2]\n\nREFERENCES:\n1: Mayer S, et al. The correlation between lung volume and liver herniation measurements by fetal MRI in isolated congenital diaphragmatic hernia: a systematic review and meta-analysis of observational studies. Prenat Diagn. 2011 Nov;31(11):1086-96.\n\n2: Pober BR, et al. Infants with Bochdalek diaphragmatic hernia: sibling precurrence and monozygotic twin discordance in a hospital-based malformation surveillance program. Am J Med Genet A. 2005 Oct 1;138A(2):81-8.\n',
+    // Extreme prematurity with underdeveloped respiratory
+    comm108: '\nThe lungs show maturity only to the late pseudoglandular stage, concomittant with the extreme prematurity. This stage of pulmonary development shows inadequate development of the necessary air-exchange structures, which likely accounts for the poor respiratory function after delivery. No intrinsic congenital anomalies are seen which might have accounted for poor respiratory function (ie. no tracheoesophageal fistula, rotational abnormalities or pulmonary hypoplasia).\n'
 
   //
 }

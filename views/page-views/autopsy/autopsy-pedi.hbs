@@ -23,14 +23,26 @@
 
                         <div class="col col-md-4">
                             <button type="button" class="btn btn-primary btn-md p-1" data-toggle="modal"
-                                    data-target="#modal-1">How to Use
+                                    data-target="#pedi-autopsy-1">How to Use This App
                             </button>
                         </div>
+                        <div class="col col-md-4">
+                            <button type="button" class="btn btn-success btn-md p-1" data-toggle="modal"
+                                    data-target="#pedi-autopsy-2">Printable Grossing Sheet
+                            </button>
+                        </div>
+                        <!-- How to use Modal -->
+                        {{> page-modals/autopsy-pedi/autopsy-pedi-how-to-use}}
+                        <!-- Gross fixer Modal -->
+                        {{> page-modals/autopsy-pedi/autopsy-pedi-gross-sheet}}
+
+
                     </form>
                     <!--Date-->
 
                 </div>
                 <div class="card-block">
+                    <div class="card-header h5 my-2"><a href="#">Autopsy details</a></div>
                     <div class="row">
                         <div class="col col-md-4">
                             <!-- Birth/Death/Autopsy details-->
@@ -2081,7 +2093,7 @@
                         <h5 class="mb-0">
                             <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion"
                                href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                                Final diagnosis and Common summary discussions
+                                Common summary discussions
                             </a>
                         </h5>
                     </div>
@@ -2090,35 +2102,15 @@
                             <div class="card-group">
                                 <div class="card">
                                     <div class="card-header">
-                                        Common summary discussions
+                                        Comment snippets
                                     </div>
                                     <div class="card-block chkboxes">
                                         <div style="font-size: 0.66em;" class="content form-check" id="column1g">
-                                            <label class="form-check-label w-100" id="_comm100"><input type="checkbox" class="form-check-input comm" id="comm100">Comm </label>
-                                            <label class="form-check-label w-100" id="_comm101"><input type="checkbox" class="form-check-input comm" id="comm102">Comm 2</label>
-                                            <label class="form-check-label w-100" id="_comm102"><input type="checkbox" class="form-check-input comm" id="comm104">Comm 3</label>
-                                            <label class="form-check-label w-100" id="_comm103"><input type="checkbox" class="form-check-input comm" id="comm106">Comm 4</label>
-                                            <label class="form-check-label w-100" id="_comm104"><input type="checkbox" class="form-check-input comm" id="comm108">Comm 5</label>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header">
-                                        Column 6.2
-                                    </div>
-                                    <div class="card-block chkboxes">
-                                        <div style="font-size: 0.66em;" class="content form-check" id="column1h">
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header">
-                                        Column 6.3
-                                    </div>
-                                    <div class="card-block chkboxes">
-                                        <div style="font-size: 0.66em;" class="content form-check" id="column1i">
+                                            <label class="form-check-label w-100" id="_comm100"><input type="checkbox" class="form-check-input comm" id="comm100">Erythroblastosis Fetalis - No obvious cause</label>
+                                            <label class="form-check-label w-100" id="_comm101"><input type="checkbox" class="form-check-input comm" id="comm102">Nuchal cord, meconium excess, hypoxia</label>
+                                            <label class="form-check-label w-100" id="_comm102"><input type="checkbox" class="form-check-input comm" id="comm104">Extensive fetal autolytic changes + small placenta</label>
+                                            <label class="form-check-label w-100" id="_comm103"><input type="checkbox" class="form-check-input comm" id="comm106">Congenital diaphragmatic hernia - typical sequelae</label>
+                                            <label class="form-check-label w-100" id="_comm104"><input type="checkbox" class="form-check-input comm" id="comm108">Extreme prematurity, underdeveloped respiratory function</label>
 
                                         </div>
                                     </div>
