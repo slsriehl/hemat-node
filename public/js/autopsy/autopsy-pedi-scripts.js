@@ -1367,55 +1367,55 @@ $("input:checkbox").on("change", function() {
         var hospital_course = ($("#hospital-course").val().length >0) ? $("#hospital-course").val().rpad(25) : "None";
 
         // External exam variables
-        var ext_habitus = $("#ext-habitus").val();
-        var ext_skin = $("#ext-skin").val();
+        var ext_habitus = $("#ext-habitus").val().rpad(25);
+        var ext_skin = $("#ext-skin").val().join(", ").rpad(25);
         var ext_extremities = $("#ext-extremities").val().rpad(25);
         var ext_extremities_more = $("#ext-extremities-more").val().rpad(25);
-        var ext_meconium = $("#ext-meconium").val();
+        var ext_meconium = $("#ext-meconium").val().rpad(25);
         var ext_medical = ($("#ext-medical").val().length >0) ? $("#ext-medical").val().rpad(25) : "None";
             // head/neck
-        var ext_head = $("#ext-head").val();
+        var ext_head = $("#ext-head").val().rpad(25);
         var ext_head_more = $("#ext-head-more").val().rpad(25);
-        var ext_fontanelle = $("#ext-fontanelle").val();
-        var ext_eye = $("#ext-eye").val();
-        var ext_sclera = $("#ext-sclera").val();
-        var ext_pupils = $("#ext-pupils").val();
-        var ext_pupils_size = $("#ext-pupils-size").val();
-        var ext_oral = $("#ext-oral").val();
+        var ext_fontanelle = $("#ext-fontanelle").val().rpad(25);
+        var ext_eye = $("#ext-eye").val().rpad(25);
+        var ext_sclera = $("#ext-sclera").val().rpad(25);
+        var ext_pupils = $("#ext-pupils").val().rpad(25);
+        var ext_pupils_size = $("#ext-pupils-size").val().rpad(25);
+        var ext_oral = $("#ext-oral").val().rpad(25);
         var ext_oral_more = $("#ext-oral-more").val().rpad(25);
-        var ext_hair = $("#ext-hair").val();
-        var ext_hair_color = $("#ext-hair-color").val();
+        var ext_hair = $("#ext-hair").val().rpad(25);
+        var ext_hair_color = $("#ext-hair-color").val().rpad(25);
 
             // abdomen and perineum
-        var ext_abdomen = $("#ext-abdomen").val();
+        var ext_abdomen = $("#ext-abdomen").val().rpad(25);
         var ext_abdomen_more = $("#ext-abdomen-more").val().rpad(25);
-        var ext_umbilicus = $("#ext-umbilicus").val();
-        var ext_umbilicus_length = $("#ext-umbilicus-length").val();
+        var ext_umbilicus = $("#ext-umbilicus").val().rpad(25);
+        var ext_umbilicus_length = $("#ext-umbilicus-length").val().rpad(25);
         var ext_genital = $("#ext-genital").val().rpad(25);
-        var ext_anus = $("#ext-anus").val();
+        var ext_anus = $("#ext-anus").val().rpad(25);
 
         // Internal exam
             // In-situ exam
-        var int_incision = $("#int-incision").val();
+        var int_incision = $("#int-incision").val().rpad(25);
         var int_incision_more = $("#int-incision-more").val().rpad(25);
-        var int_subcut = $("#int-subcut").val();
-        var int_peritoneum = $("#int-peritoneum").val();
+        var int_subcut = $("#int-subcut").val().rpad(25);
+        var int_peritoneum = $("#int-peritoneum").val().rpad(25);
         var int_peritoneum_fl = ($("#int-peritoneum-fl").val().length > 0) ? $("#int-peritoneum-fl").val() : "none";
-        var int_diaphragm = $("#int-diaphragm").val();
+        var int_diaphragm = $("#int-diaphragm").val().rpad(25);
         var int_diaphragm_more = $("#int-diaphragm-more").val().rpad(25);
-        var int_abdorgans = $("#int-abdorgans").val();
+        var int_abdorgans = $("#int-abdorgans").val().rpad(25);
         var int_abdorgans_more = $("#int-abdorgans-more").val().rpad(25);
-        var int_genitalia = $("#int-genitalia").val();
+        var int_genitalia = $("#int-genitalia").val().rpad(25);
         var int_genitalia_more = $("#int-genitalia-more").val().rpad(25);
-        var int_pleural = $("#int-pleural").val();
-        var int_rtplfl = $("#int-rtplfl").val();
+        var int_pleural = $("#int-pleural").val().rpad(25);
+        var int_rtplfl = $("#int-rtplfl").val().rpad(25);
         var int_rtplvol = ($("#int-rtplvol").val().length > 0) ? $("#int-rtplvol").val() : "none";
-        var int_ltplfl = $("#int-ltplfl").val();
+        var int_ltplfl = $("#int-ltplfl").val().rpad(25);
         var int_ltplvol = ($("#int-ltplvol").val().length > 0) ? $("#int-ltplvol").val() : "none";
         var int_mediastinum = $("#int-mediastinum").val().rpad(25);
-        var int_greatvessel = $("#int-greatvessel").val();
+        var int_greatvessel = $("#int-greatvessel").val().rpad(25);
         var int_greatvessel_more = $("#int-greatvessel-more").val().rpad(25);
-        var int_pericardium = $("#int-pericardium").val();
+        var int_pericardium = $("#int-pericardium").val().rpad(25);
         var int_pericardiumfl = ($("#int-pericardiumfl").val().length > 0) ? $("#int-pericardiumfl").val() : "none";
         var int_scalp = $("#int-scalp").val().rpad(25);
         var int_cranium = $("#int-cranium").val().rpad(25);
@@ -1430,20 +1430,20 @@ $("input:checkbox").on("change", function() {
         // Organ systems
             // Cardiovascular
         var heart_wt = Number($("#box11").val()) + " g";
-        var heart_size = $("#heart-size").val();
+        var heart_size = $("#heart-size").val().rpad(25);
         var heart_venous = $("#heart-venous").val().rpad(25);
-        var heart_aseptum = $("#heart-aseptum").val();
+        var heart_aseptum = $("#heart-aseptum").val().rpad(25);
         var heart_aseptum_more = $("#heart-aseptum-more").val().rpad(25);
-        var heart_vseptum = $("#heart-vseptum").val();
+        var heart_vseptum = $("#heart-vseptum").val().rpad(25);
         var heart_vseptum_more = $("#heart-vseptum-more").val().rpad(25);
-        var heart_vent = $("#heart-vent").val();
+        var heart_vent = $("#heart-vent").val().rpad(25);
         var heart_vent_more = $("#heart-vent-more").val().rpad(25);
-        var heart_endo = $("#heart-endo").val();
-        var heart_coronary = $("#heart-coronary").val();
+        var heart_endo = $("#heart-endo").val().rpad(25);
+        var heart_coronary = $("#heart-coronary").val().rpad(25);
         var heart_coronary_more = $("#heart-coronary-more").val().rpad(25);
-        var heart_aorta = $("#heart-aorta").val();
+        var heart_aorta = $("#heart-aorta").val().rpad(25);
         var heart_aorta_more = $("#heart-aorta-more").val().rpad(25);
-        var heart_pulv = $("#heart-pulv").val();
+        var heart_pulv = $("#heart-pulv").val().rpad(25);
         var heart_pulv_more = $("#heart-pulv-more").val().rpad(25);
         var heart_surg = ($("#heart-surg").val().length > 0) ? $("#heart-surg").val().rpad(25) : "No surgical alterations seen";
             // Pulmonary system
@@ -1454,91 +1454,91 @@ $("input:checkbox").on("change", function() {
         var pulm_rlung_more = $("#pulm-rlung-more").val().rpad(25);
         var pulm_llung = $("#pulm-llung").val().rpad(25);
         var pulm_llung_more = $("#pulm-llung-more").val().rpad(25);
-        var pulm_vessels = $("#pulm-vessels").val();
-        var pulm_vessels_more = $("#pulm-vessels-more").val();
+        var pulm_vessels = $("#pulm-vessels").val().rpad(25);
+        var pulm_vessels_more = $("#pulm-vessels-more").val().rpad(25);
             // Gastrointestinal
         var gi_esoph_color = $("#gi-esoph-color").val() || "";
         var gi_esoph = $("#gi-esoph").val().replace(/(?=\w+ *?)mucosa/, gi_esoph_color+" mucosa").rpad(25);
         var gi_stomach_color = $("#gi-stomach-color").val() || "";
         var gi_stomach = $("#gi-stomach").val().replace(/(?=\w+ *?)mucosa/, gi_stomach_color+" mucosa").rpad(25);
-        var gi_sto_cont = $("#gi-sto-cont").val();
-        var gi_pylorus = $("#gi-pylorus").val();
+        var gi_sto_cont = $("#gi-sto-cont").val().rpad(25);
+        var gi_pylorus = $("#gi-pylorus").val().rpad(25);
         var gi_si_color = $("#gi-si-color").val() || "";
         var gi_si = $("#gi-si").val().replace(/(?=\w+ *?)mucosa/, gi_si_color+" mucosa").rpad(25);
         var gi_si_more = $("#gi-si-more").val().rpad(25);
-        var gi_si_cont = $("#gi-si-cont").val();
-        var gi_appy = $("#gi-appy").val();
+        var gi_si_cont = $("#gi-si-cont").val().rpad(25);
+        var gi_appy = $("#gi-appy").val().rpad(25);
         var gi_appy_len = $("#gi-appy-len").val() || "n/a";
         var gi_colon_color = $("#gi-colon-color").val() || "";
         var gi_colon = $("#gi-colon").val().replace(/(?=\w+ *?)mucosa/, gi_colon_color+" mucosa").rpad(25);
         var gi_colon_more = $("#gi-colon-more").val().rpad(25);
-        var gi_colon_cont = $("#gi-colon-cont").val();
+        var gi_colon_cont = $("#gi-colon-cont").val().rpad(25);
             // Hepatobiliary
         var liv_wt = Number($("#box14").val())+ " g" || "n/a"; // Liver
-        var liv_shape = $("#liv-shape").val();
-        var liv_paren = $("#liv-paren").val();
-        var liv_color = $("#liv-color").val();
-        var liv_texture = $("#liv-texture").val();
-        var liv_veins = $("#liv-veins").val();
-        var liv_gb = $("#liv-gb").val();
-        var liv_biliary = $("#liv-biliary").val();
+        var liv_shape = $("#liv-shape").val().rpad(25);
+        var liv_paren = $("#liv-paren").val().rpad(25);
+        var liv_color = $("#liv-color").val().rpad(25);
+        var liv_texture = $("#liv-texture").val().rpad(25);
+        var liv_veins = $("#liv-veins").val().rpad(25);
+        var liv_gb = $("#liv-gb").val().rpad(25);
+        var liv_biliary = $("#liv-biliary").val().rpad(25);
         var liv_other = ($("#liv-other").val().length > 0) ? $("#liv-other").val().rpad(25) : "None";
             // Genitourinary
         var kid_rwt = Number($("#box15").val()) + " g" || "n/a"; // R Kidney
         var kid_lwt = Number($("#box16").val()) + " g" || "n/a"; // L Kidney
-        var kid_surface = $("#kid-surface").val();
-        var kid_paren_color = $("#kid-paren-color").val();
+        var kid_surface = $("#kid-surface").val().rpad(25);
+        var kid_paren_color = $("#kid-paren-color").val().rpad(25);
         var kid_paren = $("#kid-paren").val().replace(/\s/, " "+kid_paren_color+ " ");
-        var kid_ureter = $("#kid_ureter").val();
-        var gu_bladder_color = $("#gu-bladder-color").val();
+        var kid_ureter = $("#kid_ureter").val().rpad(25);
+        var gu_bladder_color = $("#gu-bladder-color").val().rpad(25);
         var gu_bladder = $("#gu-bladder").val().replace(/ mucosa/, " " + gu_bladder_color + " mucosa");
         var gu_more = ($("#gu_more").val().length > 0) ? $("#gu_more").val().rpad(25) : "None";
             // Reproductive system
         var rep_testis_len = $("#rep-testis-len").val() + " cm" || "n/a";
-        var rep_testis = $("#rep-testis").val();
-        var rep_prostate = $("#rep-prostate").val();
-        var rep_uterus = $("#rep-uterus").val();
+        var rep_testis = $("#rep-testis").val().rpad(25);
+        var rep_prostate = $("#rep-prostate").val().rpad(25);
+        var rep_uterus = $("#rep-uterus").val().rpad(25);
         var rep_ovary_len = $("#rep-ovary-len").val() + " cm" || "n/a";
         var rep_ovary = $("#rep-ovary").val().rpad(25);
-        var rep_falliopian = $("#rep-fallopian").val();
+        var rep_falliopian = $("#rep-fallopian").val().rpad(25);
         var rep_other = ($("#rep-other").val().length > 0) ? $("#rep-other").val().rpad(25) : "None";
             // Hematolymphatic
         var hem_thymuswt    = Number($("#box20").val()) + " g" || "n/a"; // Thymus
         var hem_spleenwt    = Number($("#box21").val()) + " g" || "n/a"; // Spleen
-        var hem_thymus = $("#hem-thymus").val();
-        var hem_spleen = $("#hem-spleen").val();
-        var hem_spleen_color = $("#hem-spleen-color").val();
-        var hem_spleen_pulp = $("#hem-spleen-pulp").val();
-        var hem_marrow = $("#hem-marrow").val();
-        var hem_lymphnode = $("#hem-lymphnode").val();
+        var hem_thymus = $("#hem-thymus").val().rpad(25);
+        var hem_spleen = $("#hem-spleen").val().rpad(25);
+        var hem_spleen_color = $("#hem-spleen-color").val().rpad(25);
+        var hem_spleen_pulp = $("#hem-spleen-pulp").val().rpad(25);
+        var hem_marrow = $("#hem-marrow").val().rpad(25);
+        var hem_lymphnode = $("#hem-lymphnode").val().rpad(25);
         var hem_more = ($("#hem-more").val().length > 0) ? $("#hem-more").val().rpad(25) : "None";
             // Endocrine
-        var endo_thyroid_color = $("#endo-thyroid-color").val();
+        var endo_thyroid_color = $("#endo-thyroid-color").val().rpad(25);
         var endo_thyroid = $("#endo-thyroid").val().replace(/ parenchyma/, " "+ endo_thyroid_color + " parenchyma");
-        var endo_parathy = $("#endo-parathy").val();
-        var endo_adrenals = $("#endo-adrenals").val();
+        var endo_parathy = $("#endo-parathy").val().rpad(25);
+        var endo_adrenals = $("#endo-adrenals").val().rpad(25);
         var endo_rad = Number($("#box17").val()) + " g"; // R Adrenal
         var endo_lad = Number($("#box18").val()) + " g"; // L Adrenal
-        var endo_pit = $("#endo-pit").val();
+        var endo_pit = $("#endo-pit").val().rpad(25);
         var endo_more = ($("#endo-more").val().length > 0) ? $("#endo-more").val().rpad(25) : "None";
             // Musculoskeletal
-        var msk_skin = $("#msk-skin").val();
-        var msk_muscle = $("#msk-muscle").val();
+        var msk_skin = $("#msk-skin").val().rpad(25);
+        var msk_muscle = $("#msk-muscle").val().rpad(25);
         var msk_muscle_more = $("#msk-muscle-more").val().rpad(25);
-        var msk_bones = $("#msk_bones").val();
+        var msk_bones = $("#msk_bones").val().rpad(25);
         var msk_bones_more = $("#msk_bones-more").val().rpad(25);
         var msk_xray = ($("#msk_xray").val().length > 0) ? $("#msk_xray").val().rpad(25) : "None";
             // Brain
         var cns_brwt = Number($("#box22").val()) + " g"; // Brain
         var cns_fix = $("#cns-fix").val() + " days";
-        var cns_dev = $("#cns-dev").val();
+        var cns_dev = $("#cns-dev").val().rpad(25);
         var cns_surface = $("#cns_surface").val().rpad(25);
         var cns_surface_more = $("#cns_surface-more").val().rpad(25);
-        var cns_cranial = $("#cns-cranial").val();
+        var cns_cranial = $("#cns-cranial").val().rpad(25);
         var cns_parenchyma = $("#cns-parenchyma").val().rpad(25);
         var cns_parenchyma_more = $("#cns-parenchyma-more").val().rpad(25);
         var cns_vent = $("#cns-vent").val().rpad(25);
-        var cns_cerebell = $("#cns-cerebell").val();
+        var cns_cerebell = $("#cns-cerebell").val().rpad(25);
         var cns_cerebell_more = $("#cns-cerebell-more").val().rpad(25);
         var cns_bs = $("#cns-bs").val().rpad(25);
         var cns_sc = $("#cns-sc").val().rpad(25);
@@ -1623,7 +1623,7 @@ $("input:checkbox").on("change", function() {
                             "\n  Birth record:".padEnd(25) + "DOB: "+date_birth + " at " + date_btime +
                             "\n  Death record:".padEnd(25) + "DOD: "+date_death + " at " + date_dtime +
                             "\n  Age (or time alive):".padEnd(25) + date_age +
-                            "\n  Weight at birth:".padEnd(25) + weight + " " + weight_unit +
+                            "\n  Weight:".padEnd(25) + weight + " " + weight_unit +
                             "\n  Sex:".padEnd(25) + sex +"\n";
         // Autopsy details
 

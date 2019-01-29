@@ -335,7 +335,7 @@ $(window).on('load', function(){
                 console.log('new to sto array, added');
             }
             var last_sto = stoArr[stoArr.length - 1];
-            for (var i=150; i<169; i++){
+            for (var i=150; i<170; i++){
                 mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/'(.*)'/, "'"+last_sto+"'");
             }
 
@@ -387,7 +387,7 @@ $(window).on('load', function(){
             console.log('stoArr: '+stoArr+stoArr.length);
 
             // !!!! adjust the variable iteration #s below  and adjust the replace syntax
-            for (var i=150; i<169; i++){
+            for (var i=150; i<170; i++){
                 mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/the (.*?) show/, 'the \''+last_sto+'\' show');
             }
 
@@ -441,7 +441,7 @@ $(window).on('load', function(){
                             }
 
                             // !!! Replace start and end iteration #s for the json text replacement
-                            for (var i=150; i<169; i++) {
+                            for (var i=150; i<170; i++) {
                                 mxLines['mxLine' + i] = mxLines['mxLine' + i].replace(/'.*'/, sto_sent + ' gastric biopsies each'); // replace site for multi site micros
                             }
                             console.log('formatted multi array text:' + sto_sent);
@@ -463,47 +463,6 @@ $(window).on('load', function(){
             }
         }
     }); // end brace for shift+click
-
-    /*
-    $('.stopart').on('click', function(e) {
-        //e.preventDefault();
-        if ($(this).attr('id') != 'partType156') {
-            var st_part = $(this).val();
-            var sto_sent;
-            $('.sto_list').append('<div class="form-inline"><input type="checkbox" class="form-control form-control-sm mr-2 source" value="' + st_part + '">Sto: ' + st_part + '</div>');
-            if($.inArray(st_part, stoArr) > -1){ // check to see if item already present in array, if so remove for unchecked box
-                stoArr.splice(st_part, 1);
-                console.log('already in sto array, removed');
-            } else { // item not present so add it to the array of part types
-                stoArr.push(st_part);
-                console.log('new to sto array, added');
-            }
-
-            // update syntax for single biopsy
-            var last_sto = stoArr[stoArr.length - 1];
-            console.log('Last sto: '+last_sto);
-            console.log('stoArr: '+stoArr+stoArr.length);
-            if (stoArr.length > 2) {
-                sto_sent = "'" + stoArr.slice(0, stoArr.length - 1).join("', '") + "' and '" + stoArr.slice(-1) + "'";
-            } else if (stoArr.length <1) {
-                sto_sent = '';
-            } else {
-                sto_sent = "'" + stoArr.join("' and '")+ "'";
-            }
-
-            for (var i=150; i<169; i++){
-                if (i == 151){
-                    mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/the (.*?) show/, 'the '+sto_sent+' gastric biopsies each show');
-
-                } else {
-                    mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/the (.*?) show/, 'the \''+last_sto+'\' show');
-
-                }
-            }
-            console.log('formatted multi sto text:' + sto_sent);
-        }
-    });
-    */
 
 
     //*********** Focally enchanced gastritis modal *****************//
