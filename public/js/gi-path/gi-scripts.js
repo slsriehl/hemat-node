@@ -616,7 +616,7 @@ $(window).on('load', function(){
                             }
 
                             for (var i=200; i<217; i++){
-                                mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/'.*' esophageal/, eso_sent+' '); // replace site for multi site micros
+                                mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/'.*' esophageal/, eso_sent); // replace site for multi site micros
                             }
                             console.log('formatted multi eso text:' + eso_sent);
 
@@ -648,7 +648,7 @@ $(window).on('load', function(){
                 eso_sent = "'" + esoArr.join("' and '")+ "'";
             }
             for (var i=200; i<217; i++){
-                mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/'(.*?)' esophageal/, eso_sent+' '); // replace site for multi site micros
+                mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/'(.*?)' esophageal/, eso_sent); // replace site for multi site micros
             }
         } // end brace for no shift click
     });
@@ -917,34 +917,37 @@ $(window).on('load', function(){
             $('.granuloma').dialog("open").dialog({
                 modal: true,
                 title: "Granulomas",
-                close: function(){
-                    var stains = $('#gran_1').val();
-                    var stain_gms = $('#gran_2').val();
-                    var stain_afb = $('#gran_3').val();
-                    var stain_block = $('#gran_4').val();
-                    var text = $('#outPut-2').val();
-                    if (stains != "No"){
-                        text += 'GMS and AFB stains are performed (with adequate controls, block(s) '+stain_block+') to assess for an infectious process. ';
-                        if (stain_gms == 'Yes'){
-                            text += 'A GMS stain shows occasional fungal elements. ';
-                        } else {
-                            text += 'A GMS stain shows no fungal elements. ';
-                        }
-                        if (stain_afb == 'Yes'){
-                            text += 'An AFB stain shows occasional mycobacteria. ';
-                        } else {
-                            text += 'An AFB stain shows no mycobacteria. ';
-                        }
-                        $('#outPut-2').val(text);
-                        // keep changes in textarea by simulating spacebar keypress
-                        var e = jQuery.Event("keydown");
-                        e.which = 32; // spacebar keycode value
-                        $("#outPut-2").focus();
-                        $("#outPut-2").trigger();
-                        $('#outPut-2').val($('#outPut-2').val()+"\n\n");
-                        // end simulation snippett
+                buttons: {
+                    "Add to micro": function () {
+                            var stains = $('#gran_1').val();
+                            var stain_gms = $('#gran_2').val();
+                            var stain_afb = $('#gran_3').val();
+                            var stain_block = $('#gran_4').val();
+                            var text = $('#outPut-2').val();
+                            if (stains != "No") {
+                                text += 'GMS and AFB stains are performed (with adequate controls, block(s) ' + stain_block + ') to assess for an infectious process. ';
+                                if (stain_gms == 'Yes') {
+                                    text += 'A GMS stain shows occasional fungal elements. ';
+                                } else {
+                                    text += 'A GMS stain shows no fungal elements. ';
+                                }
+                                if (stain_afb == 'Yes') {
+                                    text += 'An AFB stain shows occasional mycobacteria. ';
+                                } else {
+                                    text += 'An AFB stain shows no mycobacteria. ';
+                                }
+                                $('#outPut-2').val(text);
+                                // keep changes in textarea by simulating spacebar keypress
+                                var e = jQuery.Event("keydown");
+                                e.which = 32; // spacebar keycode value
+                                $("#outPut-2").focus();
+                                $("#outPut-2").trigger();
+                                $('#outPut-2').val($('#outPut-2').val() + "\n\n");
+                                // end simulation snippett
 
-                    }
+                            }
+                            $(".granuloma").dialog("close");
+                        }
                 }
             });
         }
