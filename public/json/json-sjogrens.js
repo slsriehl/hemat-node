@@ -5,7 +5,7 @@ $(window).on('load', function(){
 // suboptimal sampling
         partType201: 'Multiple step-leveled sections from the biopsy show suboptimal sampling of small sized minor salivary gland tissue, comprised of #AAA# lobules, #BBB# of which show atrophic changes. ',
 // all atrophic
-        partType202: 'Multiple step-leveled sections from the biopsy show sampling of minor salivary gland tissue, comprised of #AAA# lobules, all of which show atrophic changes. ',
+        partType202: 'Multiple step-leveled sections from the biopsy show sampling of minor salivary gland tissue, comprised of #AAA# lobules, the majority of which show atrophic changes as evidenced by frequent dilated ducts with periductal fibrosis and acinar depletion. Non-atrophic lobules are too small to adequately evaluate. ',
 // no salivary gland sampling - fat
         partType203: 'Multiple step-leveled sections from the biopsy show mature adipose and fibroconnective tissue. No sampling of minor salivary gland tissue is evident. ',
 // no salivary gland sampling - lymph node
