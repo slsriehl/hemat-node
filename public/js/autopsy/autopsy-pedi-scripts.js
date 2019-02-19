@@ -663,6 +663,13 @@ function make_data(datatable) {
     };
 
 
+
+// auto fix text boxes with pasted formatted spaced out data
+    $(".txtbox").on("input", function(){
+        var str = $(this).val().replace(/\s+/gm, " ");
+        $(this).val(str);
+    })
+
 //*************************************************************//
 //                        Pop-ups                              //
 // *************************************************************/
