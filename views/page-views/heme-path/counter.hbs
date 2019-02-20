@@ -167,17 +167,21 @@ Hemepath Tools
                             <div class="card-header button-box">
                                     <ul class="nav nav-pills standard-button-box">
 
-                                        <a class="btn btn-lg btn-outline-info p-2" id="printDiff">
+                                        <a class="btn btn-lg btn-outline-info p-2 w-50" id="printDiff">
                                                 <small>Print Diff</small>
                                         </a>
 
-                                        <a class="btn btn-lg btn-outline-success p-2 ml-4" >
+                                        <a class="btn btn-lg btn-outline-success p-2 w-50" >
                                                 <small class="copy btn-default" data-toggle="popover" data-placement="top" data-content="Diff copied to clipboard!" data-clipboard-target="#diffOut" >
                                                         Copy</small>
                                         </a>
+                                        <div class="w-100"></div>
+                                        <a class="btn btn-lg btn-outline-danger p-2 w-50" style="word-wrap: break-word;" id="Reset" >
+                                                <small>Count again</small>
+                                        </a>
 
-                                        <a class="btn btn-lg btn-outline-danger p-2 ml-4" id="Reset" >
-                                                <small>Reset</small>
+                                        <a class="btn btn-lg btn-outline-warning p-2 w-50" id="resetDiff" >
+                                                <small>Reset labels</small>
                                         </a>
 
                                     </ul>
@@ -188,7 +192,11 @@ Hemepath Tools
                                     <div class="form-group">
                                             <textarea id="diffOut" rows="16" style="width: 100%;" class="form-control"></textarea>
                                     </div>
-                                    <p class="card-footer"><input id="switchtext" type="checkbox"> Check to toggle the final diff format</p>
+                                <div class="card-footer">
+                                    <div id="switchtext" class="btn btn-outline-info p-2" data-toggle="button">
+                                        Click to toggle the final diff format
+                                    </div>
+                                </div>
                             </div>
                     </div>
 

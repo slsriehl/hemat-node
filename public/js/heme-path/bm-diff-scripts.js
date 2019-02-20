@@ -117,5 +117,15 @@ $('#diffinput').focus().alphanum({allowNumeric:true, allowLatin:false, disallow 
 
 	});//end of function
 
-
+// Change final input format
+	$("#switchtext").on("click", function(){
+		var str = $("#diffOut").val();
+		if ($(this).hasClass("active")){
+            var str_new = str.replace(/%\n/gm, "%; ");
+            console.log(str_new);
+            $("#diffOut").val(str_new);
+        } else {
+            $("#diffOut").val(str);
+		}
+	});
 });

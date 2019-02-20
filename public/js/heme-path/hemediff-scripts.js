@@ -159,20 +159,19 @@ $(window).on('load', function() {
         var baso_pct = $('#baso_pct').val();
         var atyp_pct = $('#atyp_pct').val();
         var _limit = $('#limit').val();
-        var diffStr = _limit + ' cell differential: Blasts: ' + blast_pct + '%; ' + 'Pros: ' + pro_pct + '%; ' + 'Meta/Myelo: ' + meta_pct + '%; ' + 'Segs: ' + seg_pct + '%; ' + 'Eryth: ' + nrbc_pct + '%;' + ' Lymphs: ' + lymph_pct + '%;' + ' Mono: ' + mono_pct + '%;' + ' Eos: ' + eos_pct + '%; ' + 'Plasma cells: ' + plasma_pct + '%; ' + 'Baso: ' + baso_pct + '%; ' + 'Atypical cells: ' + atyp_pct + '%.' + '\n\nM:E ratio= ' + $('#merat').val();
+        var diffStr = _limit + ' cell differential: Blasts: ' + blast_pct + '%; ' + 'Pros: ' + pro_pct + '%; ' + 'Meta/Myelo: ' + meta_pct + '%; ' + 'Segs: ' + seg_pct + '%; ' + 'Eryth: ' + nrbc_pct + '%;' + ' Lymphs: ' + lymph_pct + '%;' + ' Mono: ' + mono_pct + '%;' + ' Eos: ' + eos_pct + '%; ' + 'Plasma cells: ' + plasma_pct + '%; ' + 'Baso: ' + baso_pct + '%; ' + 'Atypical cells: ' + atyp_pct + '%' + '\n\nM:E ratio= ' + $('#merat').val();
 				//format the diff text automatically
 				var text2 = diffStr.replace(/differential: /, 'differential:\n').replace(/; /g, '\n');
         $('#diffOut').val(text2);
+
 				dataObj.singleSection = text2;
 				console.log(dataObj);
-        // $('#diffOut').val(diffStr);
-        // append each printed diff into "history" window with counter to label them
-        $('#diffHist').val($('#diffHist').val() + this.counter + ':\n' + diffStr + '\n\n');
 				//add a pdf button to the button bar if it's not already there
 				makeCreatePdfBtn();
 
     });
 
+    /*
     $('#printAbs').on('click', function() {
         var totalwbc = $('#totwbc').val();
         var pctneut = $('#pctneut').val();
@@ -199,7 +198,7 @@ $(window).on('load', function() {
         $('#CBCout').val(fullcbc);
     });
 
-    // Diff Chart
+      // Diff Chart
 
     $("#textarea").on('keyup', function() {
 
@@ -217,49 +216,21 @@ $(window).on('load', function() {
             atyp: $('#atyp_pct').val()
         };
 
-        /* Canvas painting script
-         var chart = new CanvasJS.Chart("chartcontainer", {
-         title:{
-         text: "Marrow differential"
-         },
-
-         axisY:{
-         title:"%",
-         suffix: "%"
-         },
-
-         data: [//array of dataSeries
-         { //dataSeries object
-
-         /*** Change type "column" to "bar", "area", "line" or "pie"***/
-        /*
-         type: "column",
-         dataPoints: [
-         { label: "BL", y: parseFloat(diff.blast ) },
-         { label: "PR",     y: parseFloat(diff.pros ) },
-         { label: "MY", y: parseFloat(diff.meta) },
-         { label: "LYM", y: parseFloat(diff.lymph ) },
-         { label: "RBC", y: parseFloat(diff.eryth ) },
-         { label: "MO", y: parseFloat(diff.monos ) },
-         { label: "EO", y: parseFloat(diff.eos ) },
-         { label: "PLA", y: parseFloat(diff.plasma ) },
-         { label: "BAS", y: parseFloat(diff.baso ) },
-         { label: "ATY", y: parseFloat(diff.atyp ) }
-         ]
-         }
-         ]
-         });
-
-         chart.render();
-         */
     });
+    */
 
-		//this is now done automatically when the report is printed
-    // $('#switchtext').change(function() {
-    //     var text = $('#diffOut').val();
-    //     var text2 = text.replace(/differential: /, 'differential:\n').replace(/; /g, '\n');
-    //     $('#diffOut').val(text2);
-    // });
+    // Change final input format
+    $("#switchtext").on("click", function(){
+        const str = $("#diffOut").val();
+        if ($(this).hasClass("active")){
+            var str_new = str.replace(/; /gm, "\n");
+            $("#diffOut").val(str_new);
+        } else {
+            str_new = str.replace(/%\n/gm, "%; ").replace(/; \nM:E/, "\n\nM:E");
+            console.log(str_new);
+            $("#diffOut").val(str_new);
+        }
+    });
 
 });
 

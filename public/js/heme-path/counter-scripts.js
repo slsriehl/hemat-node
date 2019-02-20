@@ -213,7 +213,7 @@ $(window).on("load", function(){
         }
 
         if (diffStr.length < 25){
-            alert("You forgot to set any counting labels")
+            alert("Please define at least one label before counting.")
         }
 
         $('#diffOut').val(diffStr);
@@ -275,9 +275,25 @@ $(window).on("load", function(){
         $('#diffOut').val('');
         $('#counter').val('');
         $('#textarea').val('');
+        localStorage.clear();
         for (var i=0; i<16; i++){
             $('#box_'+i+'_pct').val('');
             $('#box_'+i+'_num').val('');
+        }
+        location.reload();
+    });
+
+
+    // Change final input format
+    $("#switchtext").on("click", function(){
+        const str = $("#diffOut").val();
+        if ($(this).hasClass("active")){
+            var str_new = str.replace(/; /gm, "\n");
+            $("#diffOut").val(str_new);
+        } else {
+            str_new = str.replace(/%\n/gm, "%; ").replace(/; \nM:E/, "\n\nM:E");
+            console.log(str_new);
+            $("#diffOut").val(str_new);
         }
     });
 
