@@ -1,0 +1,768 @@
+<div class="container-fluid">
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+            Clinical Pathology Tools
+        </li>
+        <li class="breadcrumb-item active" id="bc-jump"><i class="fa fa-eyedropper mr-2"></i>Body Fluid Cytology Reports</li>
+    </ol>
+
+    {{> message-center this}}
+
+    <div class="card mb-3">
+        <div class="card-header bg-info">
+            <!-- How to use and modal -->
+            <div class="row">
+                <button class="btn btn-default btn-block" data-target="#flipFlop" data-toggle="modal" id='openhelp'
+                        type='button'> How to use
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- bottom left column-->
+        <div class="col col-md-8" id="bottom-l">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Body Fluid Reports</h5>
+                </div>
+                <div class="card-block">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <tr>
+                                <th class="h6">Clinical info:</th>
+                                <td>
+                                    <input type="text" class="form-control w-75" id="box0" list="box0_list"
+                                        placeholder="Enter short clinical history or choose from dropdown"/>
+                                    <datalist id="box0_list">
+                                        <option value="Not specified">
+                                        <option value="Respiratory difficulty">
+                                        <option value="Cough">
+                                        <option value="Ascites">
+                                        <option value="Pleural effusion">
+                                        <option value="Pericardial effusion">
+                                        <option value="Chest pain">
+                                        <option value="Cyst">
+                                        <option value="Atelectasis">
+                                        <option value="Hemoptysis">
+                                        <option value="Cirrhosis">
+                                    </datalist>
+
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th ><p class="h6">Source:</p>
+                                    <div class="form-inline mx-2 my-2">
+                                        <div class="form-group">
+                                            <label>
+                                                <input type="checkbox" class="form-check form-check-input from-control-sm double">
+                                                2 specimen bottles?
+                                            </label>
+                                        </div>
+                                    </div>
+                                </th>
+                                <td colspan="2">
+                                    <select class="form-control form-control-sm " multiple id="box1">
+                                        <optgroup label="Body cavities">
+                                            <option value="mxLine010"
+                                                    data-proc="PARACENTESIS">Peritoneal fluid</option>
+                                            <option value="mxLine011"
+                                                    data-proc="THORACENTESIS">Right pleural fluid</option>
+                                            <option value="mxLine012"
+                                                    data-proc="THORACENTESIS">Left pleural fluid</option>
+                                            <option value="mxLine013"
+                                                    data-proc="THORACENTESIS">Bilateral pleural fluid</option>
+                                            <option value="mxLine014"
+                                                    data-proc="ASPIRATE">Synovial fluid</option>
+                                            <option value="mxLine015"
+                                                    data-proc="ASPIRATE">Pericardial fluid</option>
+                                            <option value="mxLine016"
+                                                    data-proc="WASHINGS">Right pelvic fluid</option>
+                                            <option value="mxLine017"
+                                                    data-proc="WASHINGS">Left pelvic fluid</option>
+                                            <option value="mxLine018"
+                                                    data-proc="WASHINGS">Pelvic fluid</option>
+                                            <option value="mxLine019"
+                                                    data-proc="ASPIRATE">Cyst fluid</option>
+                                            <option value="mxLine020"
+                                                    data-proc="CYTOLOGY">Urine</option>
+                                        </optgroup>
+                                        <optgroup label="Other">
+                                            <option value="mxLine021">Other specimen type</option>
+                                        </optgroup>
+                                    </select>
+                                    <input class="form-control form-control-sm col-8 my-2" id="box1b"
+                                           style="display: none;" placeholder="Describe specimen type">
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <th class="h6">Volume of <span class="dbl-text" style="display: none;">combined</span> fluid (ml):</th>
+                                <td>
+                                    <input type="number" class="form-control form-control-sm col-4" id="box2"  placeholder=''>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th class="h6">Fluid description:</th>
+                                <td>
+                                    <select class="form-control form-control-sm col-6" id="box3">
+                                        <option>clear</option>
+                                        <option selected>cloudy</option>
+                                        <option>mucoid</option>
+                                        <option>thin</option>
+                                        <option>viscous</option>
+                                        <option>bilious</option>
+                                        <option>bloody</option>
+                                    </select>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th class="h6">Fluid color</th>
+                                <td>
+                                    <select class="form-control selectpicker form-control-sm col-6" id="box4">
+                                        <option>colorless</option>
+                                        <option>gray</option>
+                                        <option selected value="straw colored">straw</option>
+                                        <option>yellow</option>
+                                        <option>pink</option>
+                                        <option>red</option>
+                                        <option>green</option>
+                                        <option>brown</option>
+                                    </select>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th class="h6">Stains / Preparations</th>
+                                <td>
+                                    <select class="form-control selectpicker form-control-sm col-8"
+                                            multiple id="box5">
+                                        <option selected>DQ</option>
+                                        <option selected>Pap</option>
+                                        <option>Surepath</option>
+                                        <option>Fe</option>
+                                        <option>GMS</option>
+                                        <option>ORO</option>
+                                    </select>
+                                    <div class="form-inline mx-2 my-2 h6">
+                                        <div class="form-group">
+                                            <label>
+                                                <input type="checkbox" id="cell_count" class="form-check form-check-input from-control-sm">
+                                                Cell count?
+                                            </label>
+                                        </div>
+                                     </div>
+                                    <div class="form-inline mx-2 my-2 h6">
+                                        <div class="form-group">
+                                            <label>
+                                                <input type="checkbox" id="cellblock" class="form-check form-check-input from-control-sm">
+                                                Cell block made?
+                                            </label>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th class="count" style="display: none;">
+                                    <p class="h6">Differential</p>
+                                </th>
+                                <td class="count" style="display: none;">
+                                    <div class="form-inline row">
+                                        <label class="form-check-label">
+                                            % Macrophages
+                                            <input type="number" class="form-control form-control-sm col-sm-3 m-1 " id="box13" > </label>
+                                    </div>
+                                    <div class="form-inline row">
+                                        <label class="form-check-label">
+                                            % Neutrophils
+                                            <input type="number"  class="form-control form-control-sm col-sm-3 m-1" id="box14"  ></label>
+                                    </div>
+                                    <div class="form-inline row">
+                                        <label class="form-check-label">
+                                            % Lymphocytes
+                                            <input type="number" class="form-control form-control-sm col-sm-3 m-1" id="box15" ></label>
+                                    </div>
+                                    <div class="form-inline row">
+                                        <label class="form-check-label">
+                                            % Eosinophils
+                                            <input type="number"  class="form-control form-control-sm col-sm-3 m-1" id="box16" > </label>
+                                    </div>
+                                    <div class="form-inline row">
+                                        <label class="form-check-label">
+                                            % Mesothelial cells
+                                            <input type="number"  class="form-control form-control-sm col-sm-3 m-1" id="box17" > </label>
+                                    </div>
+                                    <div class="form-inline row">
+                                        <label class="form-check-label">
+                                            % Malignant cells
+                                            <input type="number"  class="form-control form-control-sm col-sm-3 m-1" id="box18" > </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="h6">Cellularity</th>
+                                <td>
+                                    <select class="form-control selectpicker form-control-sm col-sm-8" id="box6">
+                                        <option>abundantly cellular</option>
+                                        <option>moderately cellular</option>
+                                        <option>minimally cellular</option>
+                                        <option>paucicellular </option>
+                                        <option>acellular </option>
+                                    </select>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th class="h6">Microscopic</th>
+                                <td>
+                                    <div class="row cells-major">
+                                        <div class="col-10 card card-outline-warning text-center p-1 mx-auto my-1">Major cell population</div>
+                                        <div class="col-4">
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine100" >
+                                                        Benign epithelial
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine101">
+                                                        Mesothelial cells
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine102">
+                                                        Squamous cells
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine103">
+                                                       Urothelial cells
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine104">
+                                                        Degenerating cells
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine105">
+                                                        Necro-inflammatory debris
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine106">
+                                                        Neutrophils
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine107">
+                                                        Lymphocytes
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine108">
+                                                        Reactive lymphocytes
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine109">
+                                                        Macrophages
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine110">
+                                                        Macrophages (hemosiderin)
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine111">
+                                                        Eosinophils
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine117">
+                                                        Blood (predominantly)
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 card card-outline-danger text-center p-1 mx-auto my-2">Abnormal cells</div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine112">
+                                                        Lymphoma (small cells)
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine113">
+                                                        Lymphoma (large cells)
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine114">
+                                                        Tumor (single, adeno)
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine115">
+                                                        Tumor (cannonballs)
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine116">
+                                                        Tumor (ugly, large)
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row cells-minor">
+                                        <div class="col-10 card card-outline-info text-center p-1 mx-auto my-2">Minor cell population</div>
+                                        <div class="col-4">
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine130">
+                                                        Benign epithelial
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine131">
+                                                        Mesothelial cells
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine132">
+                                                        Squamous cells
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine133">
+                                                        Urothelial cells
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine134">
+                                                        Degenerating cells
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine135">
+                                                        Necro-inflammatory debris
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine136">
+                                                        Neutrophils
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine137">
+                                                        Lymphocytes
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine138">
+                                                        Reactive lymphocytes
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine139">
+                                                        Macrophages
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine140">
+                                                        Macrophages (hemosiderin)
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine141">
+                                                        Eosinophils
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine117">
+                                                        Blood (partial)
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <!-- minor abnormal cells block - hidden for now
+                                            <div class="col-12 card card-outline-danger text-center p-1 mx-auto my-2">Abnormal cells</div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine142">
+                                                        Lymphoma (small cells)
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine143">
+                                                        Lymphoma (large cells)
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine144">
+                                                        Tumor (single, adeno)
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine145">
+                                                        Tumor (cannonballs)
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine146">
+                                                        Tumor (ugly, large)
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            -->
+                                        </div>
+                                    </div>
+                                    <div class="row cells-other">
+                                        <div class="col-6">
+                                            <div class="col-12 card card-outline-danger text-center p-1 mx-auto my-2">Microorganisms</div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2"
+                                                               data-diag="dxLine110" id="mxLine150">
+                                                        Extracellular bacterial cocci present
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2"
+                                                               data-diag="dxLine111" id="mxLine151">
+                                                        Intracellular bacterial cocci present
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2"
+                                                               data-diag="dxLine112" id="mxLine152">
+                                                        Extracellular bacteria (mixed flora) present
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2"
+                                                               data-diag="dxLine115" id="mxLine153">
+                                                        Intracellular bacteria (mixed flora) present
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2"
+                                                               data-diag="dxLine114" id="mxLine154">
+                                                        Fungal hyphae present
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2"
+                                                               data-diag=" " id="mxLine155">
+                                                        Fungal yeast present
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine156">
+                                                        Viral cytopathic changes seen
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="col-12 card card-outline-success text-center p-1 mx-auto my-2">Pertinent negatives</div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label style="font-size: 1.5em;">
+                                                        <input type="checkbox" class="form-control from-control-sm my-2"
+                                                               data-diag="dxLine100" id="mxLine160">
+                                                        NO MALIGNANT CELLS SEEN
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label style="font-size: 1.5em;">
+                                                        <input type="checkbox" class="form-control from-control-sm my-2"
+                                                               data-diag="dxLine101" id="mxLine161">
+                                                        NO MICROORGANISMS SEEN
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="h6">Cytology special stains</th>
+                                <td>
+                                    <div class="form-group row lipid" style="display: none;">
+                                        <label for="box9" class="col-sm-2 col-form-label">
+                                            ORO:</label>
+                                        <select class="form-control selectpicker form-control-sm col-8" id="box9">
+                                            <option >Not applicable</option>
+                                            <option value='mxLine230'>No increase</option>
+                                            <option value='mxLine231'>few present; not significant</option>
+                                            <option value='mxLine232'>significantly increased</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group row iron" style="display: none;">
+                                        <label for="box10" class="col-sm-2 col-form-label">
+                                            Fe:</label>
+                                        <select class="form-control selectpicker form-control-sm col-8" id="box10">
+                                            <option>Not applicable</option>
+                                            <option value='mxLine233'>No increase</option>
+                                            <option value='mxLine234'>few present</option>
+                                            <option value='mxLine235'>significantly increased</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group row fungus" style="display: none;">
+                                        <label for="box11" class="col-sm-2 col-form-label">
+                                            GMS:</label>
+                                        <select class="form-control selectpicker form-control-sm col-8" id="box11">
+                                            <option>Not applicable</option>
+                                            <option value='mxLine236'>No fungus or PCP</option>
+                                            <option value='mxLine237'>Fungal hypae present; no PCP</option>
+                                            <option value='mxLine238'>Fungal yeast present; no PCP</option>
+                                            <option value='mxLine239'>PCP present; no fungal hyphae</option>
+                                        </select>
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="cblock" style="display: none;">
+                                    <p class="h6">Cell block</p></th>
+                                <td class="cblock" style="display: none;">
+                                    <div>
+                                        <div class="form-group">
+                                            <label style="font-size: 1.2em">
+                                                Total # of cell blocks submitted?
+                                            </label>
+                                            <input type="text" id="cb_count" class="form-control from-control-sm col-6">
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label style="font-size: 1.2em">
+                                                Cell block cassette label?
+                                            </label>
+                                            <input type="text" id="cb_label" class="form-control from-control-sm my-2 col-6">
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label style="font-size: 1.2em">
+                                                Cell block cellularity?
+                                            </label>
+                                            <select id="cb_cellularity" class="form-control form-control-sm my-2">
+                                                <option value="mxLine180">Acellular</option>
+                                                <option value="mxLine181">Paucicellular</option>
+                                                <option value="mxLine182">Moderately cellular</option>
+                                                <option value="mxLine183">Abundantly cellular</option>
+                                            </select>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label style="font-size: 1.2em">
+                                                Cell block constituents?
+                                            </label>
+                                            <select id="cb_population" class="form-control form-control-sm my-2">
+                                                <option value="mxLine185">Scant proteinaceous material (acelluar)</option>
+                                                <option value="mxLine186">Similar to cytospins</option>
+                                                <option value="mxLine187">Similar to cytospins with atypical lymphoid cells</option>
+                                                <option value="mxLine188">Similar to cytospins with occasional tumor clusters</option>
+                                                <option value="mxLine189">Similar to cytospins with frequent clumps of tumor</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- middle right text output-->
+        <div class="col col-md-4" id="bottom-r">
+            <div class="card text-center">
+                <div class="card-header button-box">
+                    <ul class="nav nav-pills standard-button-box">
+                        <div class="btn btn-lg btn-outline-primary p-1" id="done">
+                            <small>Write Report</small>
+                        </div>
+
+                        <div class="btn btn-lg btn-outline-danger p-1 ml-2" id="Reset" >
+                            <small>Reset</small>
+                        </div>
+                    </ul>
+                </div>
+                <div class="card-block">
+                    <div class="form-group">
+                        <textarea class="form-control" id="outPut-1" rows="9" placeholder="Micro"></textarea>
+                        <span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-1">Copy to Clipboard</span>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" id="outPut-2" rows="6" placeholder="Finals"></textarea>
+                        <span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-2">Copy to Clipboard</span>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" id="outPut-3" rows="6" placeholder="Gross"></textarea>
+                        <span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-3">Copy to Clipboard</span>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" id="outPut-4" rows="6" placeholder="Comments"></textarea>
+                        <span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-4">Copy to Clipboard</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- The How-to-modal -->
+    {{> page-modals/clin-path/bal-how-to-use}}
+    <!-- The alert modals-->
+    {{> page-modals/clin-path/bal-alert}}
+    {{> page-modals/combined-report}}
+    {{> page-modals/new-case-reference}}
+    {{> page-partials/history-module}}
+    <!--end container wrapper-->
+</div>
+<!--
+"specificScripts":
+[
+"/json/json-bal.js",
+"/js/clin-path/bal-scripts.js"
+]
+-->

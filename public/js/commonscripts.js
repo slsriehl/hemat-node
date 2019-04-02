@@ -534,27 +534,37 @@ $(function () {
 		}
 	}
 
-	//****************** Add padding to create right sided text column
-	String.prototype.rpad = function (num) {
-	// .rpad() function to right pad block of text,
-	// num = #of spaces to pad right
-	// Explanation of regex: https://stackoverflow.com/questions/14484787/wrap-text-in-javascript/51506718#51506718
-    // Here, capture group is 45 chars, to account for 72 char courier 11pt standard width in word document
-
-        var text = (this).match(/((?![^\n]{1,45}$)([^\n]{1,45})\s)|(.{1,45}$)/g);
-        console.log(text);
-        if (text) {
-            var padded = text[0]; // get first line, don't pad
-
-            for (var i = 1; i < text.length; i++) {
-                padded += "\n".padEnd(num) + text[i]; // pad subsequent lines
-            }
-
-            return padded;
-        } else {
-            return text;
-        }
-
-	};								
 
 });
+
+//****************** Add padding to create right sided text column
+String.prototype.rpad = function (num) {
+    // .rpad() function to right pad block of text,
+    // num = #of spaces to pad right
+    // Explanation of regex: https://stackoverflow.com/questions/14484787/wrap-text-in-javascript/51506718#51506718
+    // Here, capture group is 45 chars, to account for 72 char courier 11pt standard width in word document
+
+    var text = (this).match(/((?![^\n]{1,45}$)([^\n]{1,45})\s)|(.{1,45}$)/g);
+    console.log(text);
+    if (text) {
+        var padded = text[0]; // get first line, don't pad
+
+        for (var i = 1; i < text.length; i++) {
+            padded += "\n".padEnd(num) + text[i]; // pad subsequent lines
+        }
+
+        return padded;
+    } else {
+        return text;
+    }
+
+};
+
+//****************** Convert array contents to grammatically correct string
+function arrayToSentence (arr) {
+    var len = arr.length;
+    return arr.reduce(function(a,b,c){
+        return a + (c + 1 !== len ? ', ' : ' and ') + b;
+    });
+}
+//******************
