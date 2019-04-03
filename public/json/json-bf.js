@@ -9,7 +9,7 @@ $(window).on('load', function() {
         //
         // Microorganism diagnosies
         // extracellular bacteria
-        dxLine110: 'xtracellular bacteria present; no intracellular organisms seen ',
+        dxLine110: 'Extracellular bacteria present; no intracellular organisms seen ',
         // intraacellular coci
         dxLine111: 'Intracellular bacterial cocci present ',
         // extracellular mixed
@@ -117,9 +117,9 @@ $(window).on('load', function() {
         //
         mxLine111: 'eosinophils',
         //
-        mxLine112: 'small lymphoma cells',
+        mxLine112: 'a population of monotonous, atypical small lymphoid cells',
         //
-        mxLine113: 'large lymphoma cells',
+        mxLine113: 'a population of monotonous, atypical large lymphoid cells',
         //
         mxLine114: 'malignant glandular cells',
         //
@@ -154,7 +154,7 @@ $(window).on('load', function() {
         //
         mxLine141: 'eosinophils',
         //
-        mxLine142: 'small lymphoma cells',
+        mxLine142: 'a population of monotonous, atypical small lymphoid cells',
         //
         mxLine143: 'large lymphoma cells',
 
@@ -244,17 +244,17 @@ $(window).on('load', function() {
 
 
     commLines = {
-        commLine100: ' ',
-        commLine101: 'Correlation with microbiologic cultures is recommended. ',
-        commLine102: 'A significant increase in lipid-laden macrophages, in the appropriate clinical context, can be associated with chronic aspiration. ',
-        commLine103: 'The increased lipid-laden macrophages may represent tissue injury and/or chronic aspiration. ',
-        commLine104: 'Fungal elements are seen and correlation with microbiologic cultures is recommended to speciate. ',
-        commLine105: 'Pneumocystis organisms are seen and correlation with microbiologic cultures is recommended to confirm. ',
-        commLine106: 'Some respiratory epithelial cells show possible viral cytopathic changes. ',
-        commLine107: 'Few hemosiderin-laden macrophages are seen, which may correlate with small volume airway hemorrhage. ',
-        commLine108: 'The iron stains highlight frequent hemosiderin-laden macrophages, which suggests persistent or large volume airway hemorrhage. ',
-        commLine109: 'There is some background red blood cells which may represent incidental procedure related changes, low-volume airway hemorrhage or tissue injury. Correlation with bronchoscopic findings is recommended',
-        commLine110: 'A predominance of blood is consistent with airway or alveolar hemorrhage, but is non-specific with respect to the etiology. Correlation with bronchoscopic findings is recommended. ',
+        commLine100: 'Frequent degenerating cells are present which limits optimal cytomorphology. This can be seen in the setting of prolonged in-vitro storage artifact or cellular degredation from various etiologies. ',
+        commLine101: 'There is abundant necro-inflammatory debris which can be seen in the setting of acute infection, post-surgical settings or with the presence of necrotic debris. Clinical correlation is recommended. ',
+        commLine103: 'Correlation with any microbiologic cultures is recommended. ',
+        commLine105: 'Fungal elements are seen and correlation with microbiologic cultures is recommended to speciate. ',
+        commLine107: 'Some epithelial cells show possible viral cytopathic changes. ',
+        commLine110: 'Hemosiderin-laden macrophages are seen, which may correlate with remote or subacute recent hemorrhage. ',
+        commLine112: 'The iron stains highlight frequent hemosiderin-laden macrophages, which suggests chronic or subacute recent hemorrhage. ',
+        commLine113: 'There is some background red blood cells which may represent incidental procedure related changes, low-volume hemorrhage or tissue injury. Correlation with clinical findings is recommended',
+        commLine114: 'A predominance of blood is consistent with acute or subacute hemorrhage, but is non-specific with respect to the etiology. Correlation with clnical findings is recommended. ',
+        commLine120: 'Tumor cells are present in the cytospins, which is consistent with involvement by primary or metastatic ______. ',
+        commLine125: 'An atypical lymphocytic population is present and is compatible with a lymphoproliferative disorder. Correlation with flow cytometry, if indicated, is recommended. ',
 
 
 

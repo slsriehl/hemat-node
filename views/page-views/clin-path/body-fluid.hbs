@@ -96,7 +96,7 @@
                                         </optgroup>
                                     </select>
                                     <input class="form-control form-control-sm col-8 my-2" id="box1b"
-                                           style="display: none;" placeholder="Describe specimen type">
+                                           style="display: none;" placeholder="Enter specimen, procedure">
                                 </td>
 
                             </tr>
@@ -261,7 +261,7 @@
                                             <div class="form-inline">
                                                 <div class="form-group">
                                                     <label>
-                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine104">
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine104" data-com="commLine100">
                                                         Degenerating cells
                                                     </label>
                                                 </div>
@@ -269,7 +269,7 @@
                                             <div class="form-inline">
                                                 <div class="form-group">
                                                     <label>
-                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine105">
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine105" data-com="commLine101">
                                                         Necro-inflammatory debris
                                                     </label>
                                                 </div>
@@ -280,7 +280,7 @@
                                             <div class="form-inline">
                                                 <div class="form-group">
                                                     <label>
-                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine106">
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine106" data-com="commLine103">
                                                         Neutrophils
                                                     </label>
                                                 </div>
@@ -312,7 +312,7 @@
                                             <div class="form-inline">
                                                 <div class="form-group">
                                                     <label>
-                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine110">
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine110" data-com="commLine110">
                                                         Macrophages (hemosiderin)
                                                     </label>
                                                 </div>
@@ -330,7 +330,7 @@
                                             <div class="form-inline">
                                                 <div class="form-group">
                                                     <label>
-                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine117">
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine117" data-com="commLine113">
                                                         Blood (predominantly)
                                                     </label>
                                                 </div>
@@ -339,7 +339,8 @@
                                             <div class="form-inline">
                                                 <div class="form-group">
                                                     <label>
-                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine112">
+                                                        <input type="checkbox" class="form-control from-control-sm my-2 malignant"
+                                                               id="mxLine112" data-com="commLine125">
                                                         Lymphoma (small cells)
                                                     </label>
                                                 </div>
@@ -347,7 +348,8 @@
                                             <div class="form-inline">
                                                 <div class="form-group">
                                                     <label>
-                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine113">
+                                                        <input type="checkbox" class="form-control from-control-sm my-2 malignant"
+                                                               id="mxLine113" data-com="commLine114">
                                                         Lymphoma (large cells)
                                                     </label>
                                                 </div>
@@ -355,7 +357,8 @@
                                             <div class="form-inline">
                                                 <div class="form-group">
                                                     <label>
-                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine114">
+                                                        <input type="checkbox" class="form-control from-control-sm my-2 malignant"
+                                                               id="mxLine114" data-com="commLine120">
                                                         Tumor (single, adeno)
                                                     </label>
                                                 </div>
@@ -363,7 +366,8 @@
                                             <div class="form-inline">
                                                 <div class="form-group">
                                                     <label>
-                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine115">
+                                                        <input type="checkbox" class="form-control from-control-sm my-2 malignant"
+                                                               id="mxLine115" data-com="commLine120">
                                                         Tumor (cannonballs)
                                                     </label>
                                                 </div>
@@ -371,7 +375,8 @@
                                             <div class="form-inline">
                                                 <div class="form-group">
                                                     <label>
-                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine116">
+                                                        <input type="checkbox" class="form-control from-control-sm my-2 malignant"
+                                                               id="mxLine116" data-com="commLine120">
                                                         Tumor (ugly, large)
                                                     </label>
                                                 </div>
@@ -485,7 +490,7 @@
                                             <div class="form-inline">
                                                 <div class="form-group">
                                                     <label>
-                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine117">
+                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine117" data-com="commLine113">
                                                         Blood (partial)
                                                     </label>
                                                 </div>
@@ -541,8 +546,8 @@
                                             <div class="form-inline">
                                                 <div class="form-group">
                                                     <label>
-                                                        <input type="checkbox" class="form-control from-control-sm my-2"
-                                                               data-diag="dxLine110" id="mxLine150">
+                                                        <input type="checkbox" class="form-control from-control-sm my-2 dirty"
+                                                               data-diag="dxLine110" data-com="commLine103" id="mxLine150">
                                                         Extracellular bacterial cocci present
                                                     </label>
                                                 </div>
@@ -550,8 +555,8 @@
                                             <div class="form-inline">
                                                 <div class="form-group">
                                                     <label>
-                                                        <input type="checkbox" class="form-control from-control-sm my-2"
-                                                               data-diag="dxLine111" id="mxLine151">
+                                                        <input type="checkbox" class="form-control from-control-sm my-2 dirty"
+                                                               data-diag="dxLine111"  data-com="commLine103" id="mxLine151">
                                                         Intracellular bacterial cocci present
                                                     </label>
                                                 </div>
@@ -559,8 +564,8 @@
                                             <div class="form-inline">
                                                 <div class="form-group">
                                                     <label>
-                                                        <input type="checkbox" class="form-control from-control-sm my-2"
-                                                               data-diag="dxLine112" id="mxLine152">
+                                                        <input type="checkbox" class="form-control from-control-sm my-2 dirty"
+                                                               data-diag="dxLine112" data-com="commLine103" id="mxLine152">
                                                         Extracellular bacteria (mixed flora) present
                                                     </label>
                                                 </div>
@@ -568,8 +573,8 @@
                                             <div class="form-inline">
                                                 <div class="form-group">
                                                     <label>
-                                                        <input type="checkbox" class="form-control from-control-sm my-2"
-                                                               data-diag="dxLine115" id="mxLine153">
+                                                        <input type="checkbox" class="form-control from-control-sm my-2 dirty"
+                                                               data-diag="dxLine115" data-com="commLine103" id="mxLine153">
                                                         Intracellular bacteria (mixed flora) present
                                                     </label>
                                                 </div>
@@ -577,8 +582,8 @@
                                             <div class="form-inline">
                                                 <div class="form-group">
                                                     <label>
-                                                        <input type="checkbox" class="form-control from-control-sm my-2"
-                                                               data-diag="dxLine114" id="mxLine154">
+                                                        <input type="checkbox" class="form-control from-control-sm my-2 dirty"
+                                                               data-diag="dxLine114" data-com="commLine105" id="mxLine154">
                                                         Fungal hyphae present
                                                     </label>
                                                 </div>
@@ -586,8 +591,8 @@
                                             <div class="form-inline">
                                                 <div class="form-group">
                                                     <label>
-                                                        <input type="checkbox" class="form-control from-control-sm my-2"
-                                                               data-diag=" " id="mxLine155">
+                                                        <input type="checkbox" class="form-control from-control-sm my-2 dirty"
+                                                               data-diag="dxLine115" data-com="commLine105" id="mxLine155">
                                                         Fungal yeast present
                                                     </label>
                                                 </div>
@@ -595,7 +600,8 @@
                                             <div class="form-inline">
                                                 <div class="form-group">
                                                     <label>
-                                                        <input type="checkbox" class="form-control from-control-sm my-2" id="mxLine156">
+                                                        <input type="checkbox" class="form-control from-control-sm my-2"
+                                                               data-diag="dxLine116" data-com="commLine107" id="mxLine156">
                                                         Viral cytopathic changes seen
                                                     </label>
                                                 </div>
@@ -606,7 +612,7 @@
                                             <div class="form-inline">
                                                 <div class="form-group">
                                                     <label style="font-size: 1.5em;">
-                                                        <input type="checkbox" class="form-control from-control-sm my-2"
+                                                        <input type="checkbox" class="form-control from-control-sm my-2 benign"
                                                                data-diag="dxLine100" id="mxLine160">
                                                         NO MALIGNANT CELLS SEEN
                                                     </label>
@@ -615,7 +621,7 @@
                                             <div class="form-inline">
                                                 <div class="form-group">
                                                     <label style="font-size: 1.5em;">
-                                                        <input type="checkbox" class="form-control from-control-sm my-2"
+                                                        <input type="checkbox" class="form-control from-control-sm my-2 sterile"
                                                                data-diag="dxLine101" id="mxLine161">
                                                         NO MICROORGANISMS SEEN
                                                     </label>

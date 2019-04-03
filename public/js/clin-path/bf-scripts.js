@@ -9,7 +9,7 @@ $(window).on('load', function(){
 //********** POP-UPS ********************//
 $("#box1").on("change", function(){
    var sel = $(this).val();
-    if ($.inArray("Other specimen type", sel) > -1 ) {
+    if ($.inArray("mxLine021", sel) > -1 ) {
         $("#box1b").show();
     } else {
         $("#box1b").hide();
@@ -60,6 +60,8 @@ $(".double").on("change", function(){
    $(".dbl-text").toggle();
 });
 
+
+
 // ********* WRITE REPORT ***************//
 
 
@@ -76,7 +78,8 @@ $('#done').on('click', function(){
         var diag = '';
         var stains = []; //place holder to add stains
         var blood = '';
-        var comment = '';
+        var comArr = []; // array of comments
+        var comment = ''; // comment text
 
 // Clinical history
         var box_0 = $("#box0").val();
@@ -85,8 +88,8 @@ $('#done').on('click', function(){
 // Gross description
         var box_1 = $('#box1').val(); // part type
         var box_1b = $('#box1b').val(); // other part type
-        if ($.inArray("mxLine020", box_1) > -1){
-            mxLines.mxLine020 = mxLines.mxLine020.replace(/.*/, box_1b);
+        if ($.inArray("mxLine021", box_1) > -1){
+            mxLines.mxLine021 = mxLines.mxLine021.replace(/.*/, box_1b);
         }
         $.each(box_1, function(){
            parts.push(mxLines[this]);
@@ -97,13 +100,12 @@ $('#done').on('click', function(){
         }); // get procedure type
 
 
-    var box_2 = $("#box2").val(); // volume
+        var box_2 = $("#box2").val(); // volume
         var box_3 = $("#box3").val(); // consistency
         var box_4 = $("#box4").val(); // color
         var box_5 = $("#box5").val(); // stains ordered
-        var cb = $("#cell_block").val();
-        var cbcount = toWords($("#cb_count").val());
-        var cblabel = $("#cb_label").val();
+        var cbcount = toWords($("#cb_count").val()); // cb # of blocks
+        var cblabel = $("#cb_label").val(); // cb block label
 
 
         if (proc.length > 1){
@@ -167,7 +169,9 @@ $('#done').on('click', function(){
     } else {
         micro = "The cytospin slides from the '"+ arrayToSentence(parts) +"' sample consist predominantly of "+arrayToSentence(cells_maj);
     }
-        if (cells_min.length > 0){
+        if (cells_min.length > 0 && parts.length === 1){
+            micro += "and fewer "+arrayToSentence(cells_min)+". "
+        } else if (cells_min.length > 0 && parts.length > 1) {
             micro += ", with fewer "+arrayToSentence(cells_min)+". "
         } else {
             micro += ". "
@@ -261,8 +265,6 @@ $('#done').on('click', function(){
             }
         }
 
-
-
         // Final diagnosis
         if (proc.length > 1){
             diag =  arrayToSentence(parts).toUpperCase() + ", ASPIRATE:\n"+
@@ -271,13 +273,26 @@ $('#done').on('click', function(){
             diag =  arrayToSentence(parts).toUpperCase() + ", "+proc+":\n"+
                 "- Predominance of "+arrayToSentence(cells_maj);
         }
-            var fnArr = [];
             $(".cells-other").find(':checkbox').each(function () {
                 if ($(this).is(":checked")) {
                     diag += "\n- " + dxLines[$(this).data("diag")];
                 }
             });
 
+        // Comments
+
+        $("input:checkbox").each(function(){
+            if ($(this).is(":checked") && $(this).data().hasOwnProperty("com")){
+                var sel = $(this).data("com");
+                comArr.push(commLines[sel]);
+            }
+        })
+
+        if (comArr.length > 0){
+            diag = diag.replace(/$/, " (see comment)");
+        }
+
+        comment = comArr.join(". ");
 
         $('#outPut-1').val(micro);
         $('#outPut-2').val(diag);
