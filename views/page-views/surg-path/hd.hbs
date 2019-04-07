@@ -8,8 +8,29 @@
     </ol>
 
     {{> message-center this}}
-    {{> page-partials/cap-header}}
-
+    <div class="card mb-3">
+        <div class="card-header bg-info">
+            <!-- How to use and modal -->
+            <div class="row">
+                <div class="col-md-6">
+                    <button class="btn btn-default btn-block p-1" data-target="#help-about" data-toggle="modal"
+                            id='openhelp'
+                            style='white-space: normal'
+                            type='button'> Guidelines for synoptic reporting of surgery and pathology in
+                        Hirschsprung disease
+                    </button>
+                    {{> page-modals/surg-path/hd-guidelines}}
+                </div>
+                <div class="col-md-6">
+                    <button class="btn btn-primary btn-block" data-target="#help-howto" data-toggle="modal"
+                            id='openhowto'
+                            type='button'> Some other useful references
+                    </button>
+                    {{> page-modals/surg-path/hd-references}}
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="row">
 
@@ -19,7 +40,7 @@
             <!-- paste markup here-->
             <hr class="p-2" >
             <h5>Type of Pull-through procedure</h5>
-            <select id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select id="box1" class='form-control  form-control-sm col-sm-6'>
                 <option>One stage (primary)</option>
                 <option>Two stage (prior colostomy)</option>
                 <option>Other </option>
@@ -33,9 +54,9 @@
 
             <hr class="p-2" >
             <h5>Surgical technique</h5>
-            <select id="box2" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select id="box2" class='form-control  form-control-sm col-sm-6'>
                 <option>Swenson</option>
-                <option>Soave</option>
+                <option selected>Soave</option>
                 <option>Duhamel</option>
                 <option>Other </option>
             </select>
@@ -65,7 +86,7 @@
 
             <hr class="p-2" >
             <h5>Anatomic location of Transition Zone</h5>
-            <select id="box5" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select id="box5" class='form-control  form-control-sm col-sm-6'>
                 <option>Rectum</option>
                 <option>Sigmoid</option>
                 <option>Descending colon</option>
@@ -86,7 +107,7 @@
 
             <hr class="p-2" >
             <h5>Histology of Proximal Surgical Margin</h5>
-            <select multiple id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select multiple id="box6" class='form-control  form-control-sm col-sm-6'>
                 <option>No neuropathological feature of Transition Zone</option>
                 <option>Partial circumferential aganglionosis (>1/8th circumference)</option>
                 <option>Myenteric hypoganglionosis (>1/8th circumference)</option>
@@ -103,7 +124,7 @@
 
             <hr class="p-2" >
             <h5>Proximal margin intraoperative frozen section performed?</h5>
-            <select id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select id="box7" class='form-control  form-control-sm col-sm-6'>
                 <option>Yes</option>
                 <option>No</option>
             </select>
@@ -121,8 +142,11 @@
             <h6> Eosinophilic inflammation
             <i class="fa fa-question-circle ml-2" data-placement="right"
                data-toggle="tooltip" title="Includes eosinophilic periganglionitis, plexitis, or leiomyositis" aria-hidden="true"></i>
+            <button class="btn btn-sm btn-outline-primary mx-2 p-1" data-target="#help-howto" data-toggle="modal"
+                    type='button'> See reference
+            </button>
             </h6>
-            <select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
+            <select id="box8" class='form-control  form-control-sm col-sm-6'>
                 <option>Absent</option>
                 <option>Focal</option>
                 <option>Multifocal</option>
@@ -130,11 +154,14 @@
 
                 <div class="py-3 w-100"></div>
 
-                <h6>Arterial adventitial fibromuscular dysplasia
+            <h6>Arterial adventitial fibromuscular dysplasia
             <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
                title="ie. myofibroblastic or smooth muscle proliferation in the adventitia of submucosal, intramuscular, or serosal arteries" aria-hidden="true"></i>
+            <button class="btn btn-sm btn-outline-primary mx-2 p-1" data-target="#help-howto" data-toggle="modal"
+                    type='button'> See reference
+            </button>
             </h6>
-            <select id="box9" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+            <select id="box9" class='form-control  form-control-sm col-sm-6 opt'>
                 <option>Absent</option>
                 <option>Focal</option>
                 <option>Multifocal</option>
@@ -147,7 +174,7 @@
             <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
                title="This is a 2 cm or shorter stretch of submucosa that contains more than 5 ganglia with >8 nucleated ganglion cell bodies" aria-hidden="true"></i>
             </h6>
-            <select id="box10" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+            <select id="box10" class='form-control  form-control-sm col-sm-6 opt'>
                 <option>Absent</option>
                 <option>Focal</option>
                 <option>Multifocal</option>
@@ -160,7 +187,7 @@
             <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
                title="ie. neutrophilic/active mucosal inflammation" aria-hidden="true"></i>
             </h6>
-            <select id="box11" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+            <select id="box11" class='form-control  form-control-sm col-sm-6 opt'>
                 <option>Absent</option>
                 <option>Focal</option>
                 <option>Multifocal</option>
