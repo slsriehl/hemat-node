@@ -100,7 +100,7 @@ $(window).on('load', function(){
         var body =  '\nCELLS OF INTEREST: '+interest+
                     '\nBLOCK STAINED: '+blk+
                     '\nANTIBODY ........... VALUE ... COMMENT\n';
-        var ihcout= '';
+        window.ihcout= '';
 				var interpFunc = function() {
 					return $('#ihc_preset_change').val() + '  ' + $('#ihc_interp').val();
 				};
@@ -140,14 +140,13 @@ $(window).on('load', function(){
         for (var i=0; i<ab.length; i++){
             ihcout += ab[i] + val[i] + com[i]+'\n';
         }
-        console.log(ihcout);
 
-            ihcout = header + body + ihcout + '\n\nINTERPRETATION: '+interp;
-				var outPut2Value = $('#outPut-2').val() + '\n\n' + ihcout;
+        // get global ihcout variable
+        ihcout = header + body + ihcout + '\n\nINTERPRETATION: '+interp;
 
-        $('#outPut-2').focus().val(outPut2Value);
+        $('#outPut-1').focus().val(outPut1Value);
 				if($('.ihc-table-page')) {
-					dataObj.singleSection = outPut2Value;
+					dataObj.singleSection = outPut1Value;
 					console.log(dataObj);
 					//add a pdf button to the button bar if it's not already there
 					makeCreatePdfBtn();

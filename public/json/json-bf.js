@@ -225,10 +225,10 @@ $(window).on('load', function() {
         mxLine234: '\n\nAn iron stain on the cytospin (with appropriately working controls) shows few hemosiderin laden macrophages are present. ',
         mxLine235: '\n\nAn iron stain on the cytospin (with appropriately working controls) shows numerous hemosiderin laden macrphages are present. ',
         // GMS
-        mxLine236: '\n\nA GMS stain on the cytospin (with appropriately working controls) shows no fungal hyphae or pneumocystis',
-        mxLine237: '\n\nA GMS stain on the cytospin (with appropriately working controls) shows fungal hyphae; no pneumocystis is seen',
-        mxLine238: '\n\nA GMS stain on the cytospin (with appropriately working controls) shows fungal yeast; no pneumocystis is seen',
-        mxLine239: '\n\nA GMS stain on the cytospin (with appropriately working controls) shows Pneumocystis; no fungal elements are seen',
+        mxLine236: '\n\nA GMS stain on the cytospin (with appropriately working controls) shows no fungal hyphae or pneumocystis. ',
+        mxLine237: '\n\nA GMS stain on the cytospin (with appropriately working controls) shows fungal hyphae; no pneumocystis is seen. ',
+        mxLine238: '\n\nA GMS stain on the cytospin (with appropriately working controls) shows fungal yeast; no pneumocystis is seen. ',
+        mxLine239: '\n\nA GMS stain on the cytospin (with appropriately working controls) shows Pneumocystis; no fungal elements are seen. ',
 
         // Organisms
         mxLine240: ' ',
@@ -251,7 +251,7 @@ $(window).on('load', function() {
         commLine107: 'Some epithelial cells show possible viral cytopathic changes. ',
         commLine110: 'Hemosiderin-laden macrophages are seen, which may correlate with remote or subacute recent hemorrhage. ',
         commLine112: 'The iron stains highlight frequent hemosiderin-laden macrophages, which suggests chronic or subacute recent hemorrhage. ',
-        commLine113: 'There is some background red blood cells which may represent incidental procedure related changes, low-volume hemorrhage or tissue injury. Correlation with clinical findings is recommended',
+        commLine113: 'There is some background red blood cells which may represent incidental procedure related changes, low-volume hemorrhage or tissue injury. Correlation with clinical findings is recommended. ',
         commLine114: 'A predominance of blood is consistent with acute or subacute hemorrhage, but is non-specific with respect to the etiology. Correlation with clnical findings is recommended. ',
         commLine120: 'Tumor cells are present in the cytospins, which is consistent with involvement by primary or metastatic ______. ',
         commLine125: 'An atypical lymphocytic population is present and is compatible with a lymphoproliferative disorder. Correlation with flow cytometry, if indicated, is recommended. ',

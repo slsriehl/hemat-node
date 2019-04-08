@@ -677,14 +677,14 @@
                                             <label style="font-size: 1.2em">
                                                 Total # of cell blocks submitted?
                                             </label>
-                                            <input type="text" id="cb_count" class="form-control from-control-sm col-6">
+                                            <input type="text" id="cb_count" class="form-control form-control-sm col-6">
 
                                         </div>
                                         <div class="form-group">
                                             <label style="font-size: 1.2em">
                                                 Cell block cassette label?
                                             </label>
-                                            <input type="text" id="cb_label" class="form-control from-control-sm my-2 col-6">
+                                            <input type="text" id="cb_label" class="form-control form-control-sm my-2 col-6">
 
                                         </div>
                                         <div class="form-group">
@@ -712,15 +712,24 @@
                                             </select>
 
                                         </div>
+                                        <div class="form-group">
+                                            <label style="font-size: 1.2em">
+                                                Add any IHCs performed on the cell block here
+                                            </label>
+                                            <button type="button" class="btn btn-outline-info btn-md p-1 my-2" data-toggle="modal" data-target="#IHCbox">Open IHC module
+                                            </button>
+                                        </div>
                                     </div>
                                 </td>
                             </tr>
-
                         </table>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- IHC Modal -->
+        {{> page-partials/immuno}}
+
         <!-- middle right text output-->
         <div class="col col-md-4" id="bottom-r">
             <div class="card text-center">
@@ -757,7 +766,7 @@
         </div>
     </div>
     <!-- The How-to-modal -->
-    {{> page-modals/clin-path/bal-how-to-use}}
+    {{> page-modals/clin-path/bf-how-to-use}}
     <!-- The alert modals-->
     {{> page-modals/clin-path/bal-alert}}
     {{> page-modals/combined-report}}

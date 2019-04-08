@@ -237,6 +237,11 @@ $('#done').on('click', function(){
             }
         }
 
+        // Any IHCs to cell block?
+        if (typeof ihcout !== 'undefined') {
+            micro += "\n\n"+ihcout;
+        }
+
         // Manual cell count
         var box_13 = Number($("#box13").val()) || 0; // macropahges
         var box_14 = Number($("#box14").val()) || 0; // lymphocytes
@@ -292,7 +297,7 @@ $('#done').on('click', function(){
             diag = diag.replace(/$/, " (see comment)");
         }
 
-        comment = comArr.join(". ");
+        comment = comArr.join("");
 
         $('#outPut-1').val(micro);
         $('#outPut-2').val(diag);

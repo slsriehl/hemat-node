@@ -21,7 +21,9 @@ router.get('/clin-path/bal', (req, res) => {
 router.get('/clin-path/body-fluid', (req, res) => {
     controller.openAccess(req, res, './page-views/clin-path/body-fluid.hbs', [
         "/json/json-bf.js",
-        "/js/clin-path/bf-scripts.js"
+        "/js/clin-path/bf-scripts.js",
+        "/js/clin-path/ihc-cyto-scripts.js"
+
     ]);
 });
 
