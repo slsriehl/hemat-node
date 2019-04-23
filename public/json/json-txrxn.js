@@ -16,7 +16,7 @@ $(window).on('load', function(){
     dxOuts_old = $.extend(true, {}, dxOuts);
 
     commLines = {
-        commLine100 : 'Consideration for more aggressive premedication with antipyretics and anti-inflammatory agents may help alleviate symptoms. Frequent recurrent allergic reactions may warrant washing of red blood cell units or volume reduction of platelets prior to subsequent transfusions. ',
+        commLine100 : 'Consideration for more aggressive premedication with antihistamines and/or anti-inflammatory agents may help alleviate symptoms. Frequent recurrent allergic reactions may warrant washing of red blood cell units or volume reduction of platelets prior to subsequent transfusions. ',
         commLine101 : 'Consideration for more aggressive premedication with antipyretics and anti-inflammatory agents may help alleviate symptoms.',
         commLine102 : 'The findings are consistent with an acute hemolytic transfusion reaction due to the presence of the ___ allo-antibody. Future transfusions with products lacking this antigen will be provided. ',
         commLine103 : 'The findings are consistent with a delayed hemolytic transfusion reaction due to minor antigenic incompatibility in the presence of a _____ allo-antibody. Most delayed hemolytic reactions have a benign course and require no treatment, however life-threatening hemolysis with severe anemia and renal failure may occur. Close monitoring of hemolysis laboratory data is recommended. ',

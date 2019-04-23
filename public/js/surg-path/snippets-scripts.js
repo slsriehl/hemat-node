@@ -5,7 +5,7 @@ $(document).ready(function(){
 	//handler and ajax call to search db for keyword matching search
 	$('#doSearch').on('submit', function(event) {
 		event.preventDefault();
-		//console.log('foo');
+		console.log('search sent');
 		$.ajax({
 			url: '/snippets/search',
 			type: 'POST',
