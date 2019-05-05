@@ -18,6 +18,7 @@ router.get('/', (req, res) => {
 	userController.renderIndex(req, res);
 });
 
+
 //get mail page
 router.get('/mail', (req, res) => {
 	mailController.renderMailPage(req, res);

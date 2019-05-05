@@ -17,4 +17,11 @@ router.get('/surg-media/head-neck-az', (req, res) => {
     ]);
 });
 
+
+router.get('/api', (req, res) => {
+    controller.openAccess(req, res, './page-views/api.hbs', [
+
+    ]);
+});
+
 module.exports = router;
