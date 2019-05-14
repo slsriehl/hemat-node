@@ -221,7 +221,7 @@ $(window).on('load', function(){
         //  INCREASED LP EOS
         mxLine164: "Sections from the 'stomach' biopsy show fragments of mildly reactive gastric mucosa. The lamina propria shows increased cellularity with a prominent eosinophilic infiltrate. Eosinophils extend into the crypt epithelium and along the base of the crypts. No neutrophilic infiltrates are seen. No Helicobacter-like organisms are seen. \n",
         // FOCAL ACUTE GASTRITIS, BUT NO HP
-        mxLine165: "Sections from the 'stomach' biopsy how fragments of gastric mucosa with increased lamina propria cellularity that is due to lymphocytes and plasma cells. There is a focal neutrophilic infiltrate extends into some glands with reactive epithelial changes. No Helicobacter-like organisms are seen. \n",
+        mxLine165: "Sections from the 'stomach' biopsy show fragments of gastric mucosa with increased lamina propria cellularity that is due to lymphocytes and plasma cells. There is a focal neutrophilic infiltrate extends into some glands with reactive epithelial changes. No Helicobacter-like organisms are seen. \n",
         // FOCAL ACUTE GASTRITIS WITH POSITIVE HP
         mxLine166: "Sections from the 'stomach' biopsy show fragments of gastric mucosa with increased lamina propria cellularity that is due to lymphocytes and plasma cells. There is a focal neutrophilic infiltrate extends into some glands with reactive epithelial changes. Helicobacter-like organisms are seen on routine stains. \n",
         // ATROPHIC GASTRITIS
