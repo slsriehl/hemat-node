@@ -33,6 +33,7 @@
 
                 </div>
                 <div class="card-block" style="font-size: 0.8em">
+                    <form id="plac_save">
                     <div class="row text-sm-center">
                         <div class="col col-md-3">
                             <div class="card">
@@ -66,14 +67,13 @@
                                 <div class="card-block ">
                                     <div>
                                         <select id="plac_type" class="form-control">
-                                            <option value="partType500">Single</option>
-                                            <option value="partType501">Twin</option>
+                                            <option value="partType500" data-twin="0">Single</option>
+                                            <option value="partType501" data-twin="1">Twin</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
 
                         <div class="col col-md-5">
                             <div class="card">
@@ -90,11 +90,18 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-12 mt-2">
                             <div class="card">
                                 <div class="card-header outline-danger text-center">
                                     <button class="btn btn-lg btn-success p-1 getref" style="white-space:normal !important;max-width:400px">Get the Placenta Reference Weight Range</button>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                        <div class="col-12 mt-2">
+                            <div class="card">
                                 <div class="card-block">
                                                 <div class="row text-center">
                                                     <div class="col-12 " style="font-size: 3em;">PLACENTA WEIGHT IS: </div>

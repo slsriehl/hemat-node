@@ -331,6 +331,22 @@ const controller = {
 		}
 
 	},
+    saveIhcPreset: (req, res) => {
+        console.log(req.body);
+        return models.IhcPresets
+            .create({
+                name: req.body.newName.trim(),
+                interp: req.body.newInterp.trim(),
+                userId: req.session.user
+            })
+            .then((result) => {
+                res.end();
+            })
+            .catch(error => {
+                generalHelpers.writeToErrorLog(req, error);
+                console.log(error);
+            });
+    }
 }
 
 module.exports = controller;

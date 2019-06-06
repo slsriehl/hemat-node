@@ -94,6 +94,7 @@ const autopsyRoutes = require('./routes/pages/autopsy');
 const surgmediaRoutes = require('./routes/pages/surg-media');
 const clinmediaRoutes = require('./routes/pages/clin-media');
 const talkRoutes = require('./routes/pages/talks');
+const placRef = require('./routes/pages/plac-ref');
 
 app.use(userRoutes);
 
@@ -108,5 +109,6 @@ app.use(autopsyRoutes);
 app.use(surgmediaRoutes);
 app.use(clinmediaRoutes);
 app.use(talkRoutes);
+app.use(placRef);
 
 module.exports = app;

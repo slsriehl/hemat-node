@@ -73,26 +73,6 @@ $(window).on('load', function(){
             $(".umbilical_0").show();
         }
         });
-    });
-
-
-//***************************************************************************************//
-
-// # UMBILICAL CORD VESSEL MODIFIERS
-    $('.umbilical_0').on('change', function(){
-        var sel = $(this).val();
-        var dxlength = 570;
-        sel = sel.charAt(0).toUpperCase() + sel.slice(1);
-        for(var i=500; i<dxlength; i++){
-            if(dxLines.hasOwnProperty("dxLine"+i)){
-                dxLines['dxLine'+i] = dxLines['dxLine'+i].replace(/Three/g, sel).replace(/abnormality/, 'inflammation');
-            }
-            if (mxLines.hasOwnProperty("mxLine"+i)){
-                mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/three/g, sel.toLowerCase());
-
-            }
-        }
-    });
 
 // PLACENTA PERCENTAGE REFERENCE RANGE AND DATA MODIFIERS
     $('.getref').on('click', function () {
@@ -120,7 +100,7 @@ $(window).on('load', function(){
         }
 
         if (wkObj) {
-            console.log(wkObj);
+            console.log("WkObj exists as: "+wkObj);
             var percentiles = $.map(wkObj, function (value, key) {
                 return {
                     plac_wt_num: Number(value),
@@ -175,14 +155,63 @@ $(window).on('load', function(){
             }
 
             $.each(partTypes, function(key){
-                   partTypes[key] = partTypes[key]
-                                    .replace(/\d+ WEEKS/, plac_ga+" WEEKS")
-                                    .replace(/\d+ grams/, plac_weight+" grams")
+                partTypes[key] = partTypes[key]
+                    .replace(/\d+ WEEKS/, plac_ga+" WEEKS")
+                    .replace(/\d+ grams/, plac_weight+" grams")
             });
 
             $(".plac-range").val(plac_range);
             $(".ref").text(plac_cite);
 
+            // *********************************************
+            // Send placenta reference data to database
+            // *********************************************
+            console.log("Form submit called");
+            // Set placenta weights data object
+            let placObj = {};
+
+            $("#plac_save").on("submit", function(e){
+                //don't reload page
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                console.log("Form submit after e.preventDefault");
+
+                //define ajax request data obj
+
+                placObj.ga = $('#plac_age').val();
+                placObj.weight = $('#plac_wt').val();
+                placObj.twin = $('#plac_type option:selected').data('twin');
+
+                $.ajax({
+                    url: "http://ip-api.com/json",
+                    type: 'GET',
+                    success: function(json)
+                    {
+                        placObj.country = json.countryCode;
+                        placObj.city = json.city;
+                        placObj.state = json.regionName;
+                        console.log("Geolocation called");
+
+                    },
+                    error: function(err)
+                    {
+                        console.log("Geolocation Request failed, error= " + err);
+                    }
+                }).done(function(response) {
+                    console.log(".done block called");
+
+                    //ajax call to save new placenta object in the db when geoloc is done
+                    $.ajax({
+                        url: '/placenta/add',
+                        type: 'POST',
+                        data: placObj,
+                        dataType: "json",
+                        cache: false
+                    });
+                    console.log("Data to DB", placObj);
+                });
+                return false;
+            });
         } else { // when reference ranges aren't available
             console.log("no data: "+wkObj);
             $.each(partTypes, function(key){
@@ -208,6 +237,27 @@ $(window).on('load', function(){
             head = partTypes.partType500;
             $("#outPut-3").val(head).trigger("input");
             $("#outPut-4").val("Placenta Weights Reference: "+plac_cite+"\n\n").trigger("input");
+        }
+    });
+
+});
+
+
+//***************************************************************************************//
+
+// # UMBILICAL CORD VESSEL MODIFIERS
+    $('.umbilical_0').on('change', function(){
+        var sel = $(this).val();
+        var dxlength = 570;
+        sel = sel.charAt(0).toUpperCase() + sel.slice(1);
+        for(var i=500; i<dxlength; i++){
+            if(dxLines.hasOwnProperty("dxLine"+i)){
+                dxLines['dxLine'+i] = dxLines['dxLine'+i].replace(/Three/g, sel).replace(/abnormality/, 'inflammation');
+            }
+            if (mxLines.hasOwnProperty("mxLine"+i)){
+                mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/three/g, sel.toLowerCase());
+
+            }
         }
     });
 
@@ -366,7 +416,7 @@ $(window).on('load', function(){
     $('textarea').on("input", function(){
         if ($(this).is('#outPut-3')){
             final_text = $(this).val();
-            console.log("final text input change:"+final_text);
+          //  console.log("final text input change:"+final_text);
         }
         else if ($(this).is('#outPut-2')){
             micro_text = $(this).val();
