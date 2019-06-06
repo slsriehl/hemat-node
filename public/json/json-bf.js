@@ -129,6 +129,7 @@ $(window).on('load', function() {
         //
         mxLine117: 'blood',
         //
+        mxLine118: 'atypical mesothelial cells',
         // Minor cells (repeated from prior block)
         mxLine130: 'benign epithelial cells',
         //
@@ -166,6 +167,7 @@ $(window).on('load', function() {
         //
         mxLine147: 'background red blood cells',
         //
+        mxLine148: 'atypical mesothelial cells',
         // Microorganisms
         // Extracellular cocci
         mxLine150: 'Extracellular bacterial cocci are seen',
@@ -237,6 +239,24 @@ $(window).on('load', function() {
         mxLine243: ' ',
         mxLine244: ' ',
         mxLine245: ' ',
+
+        // Microscopic descriptors for abnormal or atypical cells
+        // atypical mesothelial cells
+        mxLine300: "The atypical mesothelial cells are characterized by variable cell size, higher N:C ratios, occasional nucleoi and nuclear membrane irregularities. ",
+        // Necro-inflammatory debris
+        mxLine301: "There is abundant background granular material admixed with anucleate cellular debris and fibrinous necrotic matrix. ",
+
+
+        // Small lymphoma cells
+        mxLine320: "The atypical lymphocytes show monotonous morphology with small size, coarse chromatin and nuclear membrane irregularities. A conspicuous large cell component is not seen. ",
+        // Large lymphoma cells
+        mxLine321: "The atypical lymphocytes show monotonous morphology with medium-to-large size, coarse mature hromatin and nuclear membrane irregularities. ",
+        // Adenocarcionma, single cells
+        mxLine322: "The malignant cells are present singly and in small groups, with pale cytoplasm and rare intracytoplasmic lumens. ",
+        // Carcinoma, cannonballs
+        mxLine323: "The malignant cell clumps show large, three-dimensional groups with cells bearing enlarged, atypical nuclei with prominent nucleoli. ",
+        // Pleomorphic tumor
+        mxLine324: "The malignant cells are characterized by large, pleomorphic cells with moderate cytoplasm, enlarged and hyperchromatic nuclei bearing nucleoli and occasional multinucleation. ",
 
 
         end:' '

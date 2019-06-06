@@ -74,6 +74,7 @@ $('#done').on('click', function(){
         var clinical = '';
         var cells_maj = [];  //place holder to add  major cell types
         var cells_min = [];  //place holder to add minor cell types
+        var microDesc = []; // place holder to add micro descriptors
         var micro = '';
         var diag = '';
         var stains = []; //place holder to add stains
@@ -164,17 +165,32 @@ $('#done').on('click', function(){
             }
         });
 
-    if ($(".double").is(":checked")){
-        micro = "The cytospin slides from the '"+ arrayToSentence(parts) +"' combined sample consist predominantly of "+arrayToSentence(cells_maj);
-    } else {
-        micro = "The cytospin slides from the '"+ arrayToSentence(parts) +"' sample consist predominantly of "+arrayToSentence(cells_maj);
-    }
-        if (cells_min.length > 0 && parts.length === 1){
-            micro += "and fewer "+arrayToSentence(cells_min)+". "
-        } else if (cells_min.length > 0 && parts.length > 1) {
-            micro += ", with fewer "+arrayToSentence(cells_min)+". "
+        // adjust micro for two specimen sites
+        if ($(".double").is(":checked")){
+            micro = "The cytospin slides from the '"+ arrayToSentence(parts) +"' combined sample consist predominantly of "+arrayToSentence(cells_maj);
         } else {
-            micro += ". "
+            micro = "The cytospin slides from the '"+ arrayToSentence(parts) +"' sample consist predominantly of "+arrayToSentence(cells_maj);
+        }
+            if (cells_min.length > 0 && parts.length === 1){
+                micro += " and fewer "+arrayToSentence(cells_min)+". "
+            } else if (cells_min.length > 0 && parts.length > 1) {
+                micro += ", with fewer "+arrayToSentence(cells_min)+". "
+            } else {
+                micro += ". "
+            }
+
+        // add any morphologic descriptors
+        $("input:checkbox").each(function(){
+            if ($(this).is(":checked") && $(this).data().hasOwnProperty("desc")){
+                var sel = $(this).data("desc");
+                microDesc.push(mxLines[sel]);
+            }
+        })
+
+        if (microDesc.length > 0){
+            $.each(microDesc, function(index, val){ // loop through array and return value to end of micro
+                micro += val;
+            });
         }
 
     // Add any microbiology or pertinent negatives
@@ -285,7 +301,7 @@ $('#done').on('click', function(){
             });
 
         // Comments
-
+        // search through checkboxes to find any checked items that contain a data-com element, collect them
         $("input:checkbox").each(function(){
             if ($(this).is(":checked") && $(this).data().hasOwnProperty("com")){
                 var sel = $(this).data("com");
