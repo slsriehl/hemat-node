@@ -9,7 +9,7 @@ let config = require('../../config/config.json')[env];
 let connection = mysql.createConnection(config);
 
 // post placenta reference to placenta Reference database
-router.post('/placenta/add', (req, res) => {
+router.post('https://hematogones.com/placenta/add', (req, res) => {
     if (req.body){
         var data = req.body;
         var data_ga = req.body.ga;
@@ -32,7 +32,7 @@ router.post('/placenta/add', (req, res) => {
                 console.log('Plac insert Id:' + results.row);
             }
         });
-        res.status(204).end();
+        res.status(204).end(); // status 204 returned to let cliet browser know not to wait for content
     } else {
         res.send("No data posted from client to send to DB");
     }
