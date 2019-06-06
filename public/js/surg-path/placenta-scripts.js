@@ -183,13 +183,13 @@ $(window).on('load', function(){
                 placObj.twin = $('#plac_type option:selected').data('twin');
 
                 $.ajax({
-                    url: "http://ip-api.com/json",
+                    url: "https://ipapi.co/json/",
                     type: 'GET',
                     success: function(json)
                     {
-                        placObj.country = json.countryCode;
+                        placObj.country = json.country;
                         placObj.city = json.city;
-                        placObj.state = json.regionName;
+                        placObj.state = json.region;
                         console.log("Geolocation called");
 
                     },
