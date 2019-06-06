@@ -4,7 +4,14 @@ const router = new express.Router;
 
 let mysql  = require('mysql');
 var env    = process.env.NODE_ENV || 'krishnan';
-let config = require('../../config/config.json')[env];
+var config;
+// development
+if (env === 'krishnan'){
+    config = require('../../config/config.json')[env];
+} else {
+// production
+    config = require(__dirname + '/../config/config.json')[env];
+}
 
 let connection = mysql.createConnection(config);
 
