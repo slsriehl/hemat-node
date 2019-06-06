@@ -2,9 +2,34 @@
 const express = require('express');
 const router = new express.Router;
 
+var fs        = require('fs');
+var path      = require('path');
+var basename  = path.basename(module.filename);
+
 let mysql  = require('mysql');
 var env    = process.env.NODE_ENV || 'krishnan';
 var config;
+
+// development
+if (env === 'krishnan'){
+    config = require('../../config/config.json')[env];
+    console.log("DB connected to dev", config);
+} else {
+    // production
+    config = require(__dirname + '/../config/config.json')[env];
+    console.log("DB connected to prod", config);
+}
+
+let connection = mysql.createConnection(config);
+
+connection.on('connect', function(err) {
+    if (err){
+        console.log("DB connection error", err.message);
+    } else {
+        // If no error, then good to proceed.
+        console.log("DB Connected");
+    }
+});
 
 // post placenta reference to placenta Reference database
 router.post('/placenta/add', (req, res) => {
@@ -16,27 +41,6 @@ router.post('/placenta/add', (req, res) => {
         var data_country = req.body.country;
         var data_state = req.body.state;
         var data_city = req.body.city;
-
-        // development
-        if (env === 'krishnan'){
-            config = require('../../config/config.json')[env];
-            console.log("DB connected to dev", config);
-        } else {
-            // production
-            config = require(__dirname + '/../config/config.json')[env];
-            console.log("DB connected to prod", config);
-        }
-
-        let connection = mysql.createConnection(config);
-
-        connection.on('connect', function(err) {
-            if (err){
-                console.log("DB connection error", err.message);
-            } else {
-                // If no error, then good to proceed.
-                console.log("DB Connected");
-            }
-        });
 
         // insert statment
         let sql = "INSERT INTO hemat.placref (gestage, weight, twin, country, state, city) VALUES ('"+data_ga+"', '"+data_weight+"', '"+data_twin+"', '"+data_country+"', '"+data_state+"', '"+data_city+"')";
