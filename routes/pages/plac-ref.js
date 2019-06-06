@@ -20,10 +20,11 @@ router.post('/placenta/add', (req, res) => {
         // development
         if (env === 'krishnan'){
             config = require('../../config/config.json')[env];
-            console.log(config);
+            console.log("DB connected to dev", config);
         } else {
             // production
             config = require(__dirname + '/../config/config.json')[env];
+            console.log("DB connected to prod", config);
         }
 
         let connection = mysql.createConnection(config);
