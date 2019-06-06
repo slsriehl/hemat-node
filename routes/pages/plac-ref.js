@@ -2,10 +2,6 @@
 const express = require('express');
 const router = new express.Router;
 
-var fs        = require('fs');
-var path      = require('path');
-var basename  = path.basename(module.filename);
-
 let mysql  = require('mysql');
 
 /* dev
@@ -18,9 +14,7 @@ console.log("DB connected to dev", config);
 
 // production
 var env    = process.env.NODE_ENV || 'development';
-var config;
-
-config = require(__dirname + '/../config/config.json')[env];
+var config = require(__dirname + '/../config/config.json')[env];
 console.log("DB connected to prod", config);
 
 let connection = mysql.createConnection(config);
