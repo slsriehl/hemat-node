@@ -12,7 +12,7 @@ config = require('../../config/config.json')[env];
 console.log("DB connected to dev", config);
 */
 
-// production
+/*/ production
 var env    = process.env.NODE_ENV || 'development';
 var config = require(__dirname + '../../config/config.json')[env];
 console.log("DB connected to prod", config);
@@ -27,6 +27,7 @@ connection.on('connect', function(err) {
         console.log("DB Connected");
     }
 });
+*/
 
 // post placenta reference to placenta Reference database
 router.post('/placenta/add', (req, res) => {
