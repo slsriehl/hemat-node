@@ -14,7 +14,7 @@ console.log("DB connected to dev", config);
 
 // production
 var env    = process.env.NODE_ENV || 'development';
-var config = require(__dirname + '/../config/config.json')[env];
+var config = require(__dirname + '../../config/config.json')[env];
 console.log("DB connected to prod", config);
 
 let connection = mysql.createConnection(config);
