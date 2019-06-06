@@ -7,18 +7,21 @@ var path      = require('path');
 var basename  = path.basename(module.filename);
 
 let mysql  = require('mysql');
+
+/* dev
 var env    = process.env.NODE_ENV || 'krishnan';
 var config;
 
-// development
-if (env === 'krishnan'){
-    config = require('../../config/config.json')[env];
-    console.log("DB connected to dev", config);
-} else {
-    // production
-    config = require(__dirname + '/../config/config.json')[env];
-    console.log("DB connected to prod", config);
-}
+config = require('../../config/config.json')[env];
+console.log("DB connected to dev", config);
+*/
+
+// production
+var env    = process.env.NODE_ENV || 'development';
+var config;
+
+config = require(__dirname + '/../config/config.json')[env];
+console.log("DB connected to prod", config);
 
 let connection = mysql.createConnection(config);
 
