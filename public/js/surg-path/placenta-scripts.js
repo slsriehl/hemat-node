@@ -7,7 +7,7 @@ $(window).on('load', function(){
     $('.dialog-extent').dialog({autoOpen:false});
 
 
-// Plaental weight - Prevent entering beyond GA max or min
+// Plaenta GA validation - Prevent entering beyond GA max or min
     $("#plac_age").on("input", function(e){
         if ($(this).val().length > 1){
             var num = Number($(this).val()); // this input
@@ -27,6 +27,19 @@ $(window).on('load', function(){
 
         });
 
+// Plaenta weight validation - Prevent entering 2000 grams or <50 grams
+    $("#plac_wt").on("input", function(e){
+            if ($(this).val().length > 1){
+                var num = Number($(this).val()); // this input
+                    var max = 2000; // get max input
+                    if (num >= max){ // prevent any inputs
+                        console.log("placenta weight error");
+                        alert('Weight greater than 2000g are not allowed, please check your entry');
+                        e.preventDefault();
+                        $(this).val('');
+                    }
+            }
+    });
 
 // Adjust headers for twin placentas
     $('#plac_dx').on("change", function(){
@@ -85,6 +98,10 @@ $(window).on('load', function(){
         var plac_ref = $('#reference').val();
         var plac_cite = $('#reference').find(":selected").data("ref");
         var plac_type = $("#plac_type").val();
+        if (plac_weight.length <1){
+            alert("You forgot to enter a placenta weight!");
+            return;
+        }
         // GET PLACENTA PERCENTILES
         if( plac_type == "partType501" ){ // twin
             console.log("twin reference");
