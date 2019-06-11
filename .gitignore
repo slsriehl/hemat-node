@@ -11,3 +11,4 @@ test-send.tar.gz
 test/email-config/test-sent-from.txt
 test/email-config/test-send
 labis_macros_json.js
+datab.env

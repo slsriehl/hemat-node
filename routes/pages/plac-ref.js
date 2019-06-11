@@ -1,21 +1,17 @@
-
+require('dotenv').config();
 const express = require('express');
 const router = new express.Router;
 
 let mysql  = require('mysql');
 
-/* dev
-var env    = process.env.NODE_ENV || 'krishnan';
-var config;
+console.log(process.env.DB_TABLE);
 
-config = require('../../config/config.json')[env];
-console.log("DB connected to dev", config);
-*/
-
-/*/ production
-var env    = process.env.NODE_ENV || 'development';
-var config = require(__dirname + '../../config/config.json')[env];
-console.log("DB connected to prod", config);
+var config = {
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_TABLE
+};
 
 let connection = mysql.createConnection(config);
 
@@ -27,7 +23,6 @@ connection.on('connect', function(err) {
         console.log("DB Connected");
     }
 });
-*/
 
 // post placenta reference to placenta Reference database
 router.post('/placenta/add', (req, res) => {
