@@ -183,6 +183,7 @@ $(window).on('load', function(){
             // *********************************************
             // Send placenta reference data to database
             // *********************************************
+
             console.log("Form submit called");
             // Set placenta weights data object
             let placObj = {};
@@ -208,6 +209,12 @@ $(window).on('load', function(){
                         placObj.city = json.city;
                         placObj.state = json.region;
                         console.log("Geolocation called");
+
+                        // AJAX success page
+                        $("#alert-1").show();
+                        setTimeout(function() {
+                            $("#alert-1").fadeOut('1000');
+                        }, 1000);
 
                     },
                     error: function(err)
@@ -258,7 +265,6 @@ $(window).on('load', function(){
     });
 
 });
-
 
 //***************************************************************************************//
 
