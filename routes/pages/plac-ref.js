@@ -37,7 +37,7 @@ router.post('/placenta/add', (req, res) => {
 
         // check statement
       //  let chk = "SELECT * FROM hemat.placref WHERE '"+data_ga+"' IN(gestage) AND '"+data_weight+"' IN(weight) AND '"+data_city+"' IN (city);"
-        let chk = "SELECT * FROM hemat.placref WHERE '"+data_city+"' IN (city) AND WHERE '"+data_ga+"' IN (gestage) AND createdAt BETWEEN timestamp(DATE_SUB(NOW(), INTERVAL 10 SECOND)) AND timestamp(NOW())"
+        let chk = "SELECT * FROM hemat.placref WHERE '"+data_city+"' IN (city) AND '"+data_ga+"' IN (gestage) AND createdAt BETWEEN timestamp(DATE_SUB(NOW(), INTERVAL 10 SECOND)) AND timestamp(NOW())";
         // insert statment
         let sql = "INSERT INTO hemat.placref (gestage, weight, twin, country, state, city) VALUES ('"+data_ga+"', '"+data_weight+"', '"+data_twin+"', '"+data_country+"', '"+data_state+"', '"+data_city+"')";
 
