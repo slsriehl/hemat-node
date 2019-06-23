@@ -212,9 +212,11 @@ $(window).on('load', function(){
 
                         // AJAX success page
                         $("#alert-1").show();
+                        $(".getref").prop("disabled", true);
                         setTimeout(function() {
                             $("#alert-1").fadeOut('1000');
-                        }, 1000);
+                            $(".getref").prop("disabled", false);
+                        }, 1500);
 
                     },
                     error: function(err)
