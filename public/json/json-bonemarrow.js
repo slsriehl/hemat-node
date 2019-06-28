@@ -563,7 +563,7 @@ mxLine124: 'There are occasional nucleated red blood cells. ',
 // RETIC FIBROSIS, 4+
         mxLine519: 'A reticulin stain shows markedly increased marrow fibrosis, MF4, including dilated sinusoids and dense collagen. ',
 // GRANULOMAS
-        mxLine520: 'A few non-caseating granulomas are present. GMS and AFB stains show no microorganisms. ',
+        mxLine520: 'A few non-necrotizing granulomas are present. GMS and AFB stains show no microorganisms. ',
 // NO GRANULOMAS
         mxLine521: 'No granulomas are present. ',
 // FEW GRANULOMAS
