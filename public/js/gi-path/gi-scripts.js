@@ -360,10 +360,6 @@ $(window).on('load', function(){
     });
 
     // Shift-click multisite pop-up with modal template
-    // name arrays
-    var stoArr = []; // part type array
-    var stoSel = []; // selected parts for multiple
-
     // collect part data and create multi-site markup
     $('.stopart').on('click', function(e) {
         // Store part data if user clicked part other than the wildcard part type
@@ -662,10 +658,10 @@ $(window).on('load', function(){
         }
     });
 
-    // -----------------------------------
-    // Pause checkbox event to get prompt and run script
-    // -----------------------------------
-
+    // -------------------------------------------
+    // Replace eosinophil counts where necessary
+    // -------------------------------------------
+    let eoshpf = []; // array to hold number of eos
     // listen for checkbox label mousedown
     $('.eosnum').on('mousedown', function(e){
         e.preventDefault();
@@ -683,8 +679,11 @@ $(window).on('load', function(){
                 // change prompt as needed below
                 var prompt_var = prompt('Enter your eos per hpf');
 
+                eoshpf.push(prompt_var); // push prompted eos # to array
+                console.log("EOS per HPF array:",eoshpf);
+
                 for (var i=200; i<217; i++){
-                    mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/(?!number up to )\d+/, prompt_var); // replace site for multi site micros
+                    mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/(?:to ).*(?: in )/, "to "+arrayToSentence(eoshpf)+" in "); // replace site for multi site micros
                 }
 
                 for (var i=201; i<211; i++){

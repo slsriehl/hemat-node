@@ -239,7 +239,7 @@ $(window).on('load', function(){
         // TYPICAL REFLUX, 1 SITE
         mxLine202: "Sections from the 'esophagus' biopsy show fragments of reactive squamous mucosa characterized by prominent basal cell hyperplasia and spongiosis. There is a mild increase in intraepithelial eosinophils which number up to 5 in a representative high-powered field. \n",
         // TYPICAL REFLUX, ALL SITES
-        mxLine203: "Sections from the '###' esophageal biopsies show similar findings which are described together. They show fragments of reactive squamous mucosa characterized by prominent basal cell hyperplasia and spongiosis. There is a mild increase in intraepithelial eosinophils which number up to 5-10 in a representative high-powered field at both sites. \n",
+        mxLine203: "Sections from the '###' esophageal biopsies show similar findings which are described together. They show fragments of reactive squamous mucosa characterized by prominent basal cell hyperplasia and spongiosis. There is a mild increase in intraepithelial eosinophils which number up to 10 in a representative high-powered field at each site. \n",
         // TYPICAL EE, ALL SITES
         mxLine204: "Sections from the '###' esophageal biopsies show similar findings. They show fragments of reactive squamous mucosa characterized by prominent basal cell hyperplasia and spongiosis. There is a marked increase in intraepithelial eosinophils which number up to 80 in a representative high-powered field at each site. The infiltrate extends the entire thickness of the mucosa and focally includes small superficial aggregates. \n",
         // ACUTE ESOPHAGITIS, 1 SITE, NO CANDIDA
