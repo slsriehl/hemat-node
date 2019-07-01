@@ -5,7 +5,7 @@ $(window).on('load', function() {
 
 
 	$('#timestart').datetimepicker({
-			format: 'MM-DD-YYYY HH:mm',
+			format: 'MM/DD/YYYY HH:mm',
 			icons: datePickerIcons,
 			collapse: false,
 			sideBySide: true,
@@ -17,7 +17,7 @@ $(window).on('load', function() {
 	});
 
 	$('#timeformalin').datetimepicker({
-			format: 'MM-DD-YYYY HH:mm',
+			format: 'MM/DD/YYYY HH:mm',
 			icons: datePickerIcons,
 			collapse: false,
 			sideBySide: true,
@@ -29,7 +29,7 @@ $(window).on('load', function() {
 	});
 
 	$('#processorstart').datetimepicker({
-			format: 'MM-DD-YYYY HH:mm',
+			format: 'MM/DD/YYYY HH:mm',
 			icons: datePickerIcons,
 			collapse: false,
 			sideBySide: true,
@@ -68,20 +68,27 @@ $('#writeReport').on('click', function () {
 		var fix_diff_mins = moment.duration(proc.diff(end)).asMinutes();
 		var fix_hours = Math.floor(fix_diff_mins / 60);
 		var fix_mins = Math.floor(fix_diff_mins % 60);
-		// var fix_hours = Math.floor(fix_difference / 60);
-		// var fix_minutes = fix_difference % 60;
 
-		var _starttxt = "Collection time: \t"+ start.format('MMMM D, YYYY; HH:mm');
-		var _timeinfix = "Time in fixative: \t"+ end.format('MMMM D, YYYY; HH:mm');
-		var _coldischtxt = "Cold ischemia time: \t" + cold_difference + " minutes";
-		var _fixdurtxt = "Fixation time: \t\t" + fix_hours + ' hours, ' + fix_mins + ' minutes';
-		// fix_hours + " hours, " + fix_minutes + " minutes";
+		// US date format
+		if ($("#dateUS").hasClass("active")) {
+            var _starttxt = "Collection time: \t" + start.format('MM/DD/YYYY [at] HH:mm');
+            var _timeinfix = "Time in fixative: \t" + end.format('MM/DD/YYYY [at] HH:mm');
+        } else {
+            var _starttxt = "Collection time: \t" + start.format('DD/MM/YYYY [at] HH:mm');
+            var _timeinfix = "Time in fixative: \t" + end.format('DD/MM/YYYY [at] HH:mm');
+		}
+            var _coldischtxt = "Cold ischemia time: \t" + cold_difference + " minutes";
+            var _fixdurtxt = "Fixation time: \t\t" + fix_hours + ' hours, ' + fix_mins + ' minutes';
+
+		// EU date format
 
 		$('#outPut-1').val(_starttxt+"\n"+_timeinfix+'\n'+_coldischtxt +'\n'+_fixdurtxt);
 
 		dataObj.singleSection = $('#outPut-1').val();
 		makeCreatePdfBtn();
 
-});/**
+});
+
+/**
  * Created by chandrakrishnan on 4/29/2017.
  */
