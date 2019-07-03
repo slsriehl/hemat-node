@@ -6,11 +6,16 @@ let mysql  = require('mysql');
 
 console.log(process.env.DB_TABLE);
 
+var db_host = process.env.DB_HOST || "localhost";
+var db_user = process.env.DB_USER || "root";
+var db_pass = process.env.DB_PASS || "";
+var db_table = process.env.DB_TABLE || "hemat";
+
 var config = {
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: process.env.DB_TABLE
+    host: db_host,
+    user: db_user,
+    password: db_pass,
+    database: db_table
 };
 
 let connection = mysql.createConnection(config);
@@ -61,6 +66,28 @@ router.post('/placenta/add', (req, res) => {
     } else {
         res.send("No data posted from client to send to DB");
     }
+});
+
+// Send DB contents to HTML as JSON api
+router.get('/surg-path/placenta-data', (req, res) => {
+    // get placref data
+    let sql = "SELECT gestage, weight, twin, country, state, city FROM hemat.placref";
+        // execute the get statment
+        connection.query(sql, function (err, results){
+            if (err) {
+                return console.error("DB Sql get error",err.message);
+            } else {
+                var resultJson = JSON.stringify(results);
+                resultJson = JSON.parse(resultJson);
+                var apiResult = {};
+
+                //add our JSON results to the data table
+                apiResult.data = resultJson;
+
+                //send JSON to Express
+                res.json(apiResult);
+            }
+        });
 });
 
 
