@@ -50,7 +50,8 @@
     "sequelize": "^3.31.1",
     "unescape-html": "^1.1.0",
     "util": "^0.10.3",
-    "uuid": "^3.1.0"
+    "uuid": "^3.1.0",
+    "webdatarocks": "^1.0.2"
   },
   "devDependencies": {
     "chai": "^4.1.2",

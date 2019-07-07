@@ -46,6 +46,13 @@ router.get('/surg-path/placenta', (req, res) => {
     ]);
 });
 
+router.get('/surg-path/plac-view', (req, res) => {
+    controller.openAccess(req, res, './page-views/surg-path/plac-view.hbs', [
+        "/js/placdata/webdatarocks/webdatarocks.toolbar.min.js",
+        "/js/placdata/webdatarocks/webdatarocks.js"
+    ]);
+});
+
 router.get('/surg-path/snippets', (req, res) => {
 	controller.userWall(req, res, './page-views/surg-path/snippets.hbs', [
 		"/vendor/tag-it/js/tag-it.min.js",

@@ -1,0 +1,48 @@
+<div class="container-fluid">
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+            <i class="fa fa-user-circle mr-2"></i>  Placenta Weights Reference Data
+        </li>
+    </ol>
+
+    {{> message-center this}}
+
+    <!-- Full width row + card -->
+    <div class="row">
+        <!-- top card-->
+        <div class="col col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="display-3">Placenta Reference Table Viewer</div>
+                </div>
+                <div class="card-block">
+                    <div id="wdr-component" style="height: 800px"></div>
+                    <script>
+                        window.onload = (function(){
+                            var pivot = new WebDataRocks({
+                                container: "#wdr-component",
+                                toolbar: true,
+                                report: {
+                                    dataSource: {
+                                        filename: "https://hematogones.com/surg-path/placenta-data"
+                                    }
+                                }
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+<!-- end bottom row-->
+</div>
+<!--end container wrapper-->
+<link href="/js/placdata/webdatarocks/webdatarocks.min.css" rel="stylesheet"/>
