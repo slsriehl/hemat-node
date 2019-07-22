@@ -11,8 +11,10 @@
     "npm": "3.10.10"
   },
   "scripts": {
+    "restart-prod": "npm run clean && npm run install-prod && NODE_ENV=production pm2 restart server --update-env",
     "start-dev": "NODE_ENV=development nodemon server.js",
-    "clean": "rimraf node_modules",
+    "stop-prod": "pm2 stop server",
+    "clean": "rimraf 'node_modules'",
     "install-dev": "npm install --development",
     "install-prod": "npm install --production",
     "test-pages": "mocha test/pages-get.js --reporter mochawesome --reporter-options autoOpen=true",
