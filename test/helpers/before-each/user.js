@@ -3,7 +3,7 @@ const models = require('../../../models');
 
 const path = require('path');
 
-const Promise = require('bluebird');
+ 
 
 const fs = Promise.promisifyAll(require('fs'));
 

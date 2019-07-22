@@ -4,7 +4,7 @@ const helpers = require('./reports-helpers');
 const generalHelpers = require('./general-helpers');
 const cookieHelpers = require('./cookie-helpers');
 
-const Promise = require('bluebird');
+ 
 
 const moment = require('moment');
 

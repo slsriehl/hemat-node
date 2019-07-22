@@ -2,7 +2,7 @@
 const models = require('../models');
 
 //++++++ Promises ++++++
-const Promise = require('bluebird');
+ 
 
 const generalHelpers = require('./general-helpers');
 

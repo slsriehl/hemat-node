@@ -1,7 +1,5 @@
 const models = require('../models');
 
-const Promise = require('bluebird');
-
 const moment = require('moment');
 const path = require('path');
 const fs = Promise.promisifyAll(require('fs')); //promisify

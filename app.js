@@ -2,6 +2,10 @@
 const util = require('util'),
     moment = require('moment');
 
+// const dotenv = process.env.NODE_ENV != "production" ? require('dotenv').config({BASIC: 'basic', path: `./datab.env`}) : undefined;
+
+Promise = require('bluebird');
+
 // ++++++ General Express config ++++++
 const express = require('express'),
     bodyParser = require('body-parser'),
@@ -10,12 +14,7 @@ const express = require('express'),
     hbs = require('express-handlebars'),
     app = express();
 
-let secretKey;
-if (process.env.SECRET) {
-    secretKey = process.env.SECRET;
-} else {
-    secretKey = require('./config/secret');
-}
+const secretKey = process.env.SECRET || require('./config/secret');
 
 app.use(express.static(__dirname + '/public'));
 app.use(logger("dev"));
@@ -45,15 +44,6 @@ const session = require('express-session'),
     database = require('./models').sequelize,
     SequelStore = require('connect-session-sequelize')(session.Store),
     modelName = 'UserSessions';
-
-// const setSecret = (secretEnvVar) => {
-// 	if(secretEnvVar) {
-// 		return secretEnvVar;
-// 	} else {
-//
-// 		return secretKey;
-// 	}
-// }
 
 //set session secret with env var, process.env.___
 app.use(session({

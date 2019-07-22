@@ -4,7 +4,7 @@ const chaiHTTP = require('chai-http');
 const chaiCheerio = require('chai-cheerio');
 const cheerio = require('cheerio');
 const server = require('../../../server');
-const Promise = require('bluebird');
+ 
 const util = require('util');
 chai.use(chaiHTTP);
 chai.use(chaiCheerio);

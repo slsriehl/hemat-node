@@ -1,4 +1,4 @@
-const Promise = require('bluebird');
+ 
 const chai = require('chai');
 const chaiHTTP = require('chai-http');
 const chaiCheerio = require('chai-cheerio');
