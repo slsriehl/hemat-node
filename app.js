@@ -2,6 +2,8 @@
 const util = require('util'),
     moment = require('moment');
 
+Promise = require('bluebird');
+
 // ++++++ General Express config ++++++
 const express = require('express'),
     bodyParser = require('body-parser'),

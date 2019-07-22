@@ -2,7 +2,7 @@ const util = require('util');
 
 const models = require('../models');
 
-const Promise = require('bluebird');
+ 
 const escape = require('escape-html');
 
 const generalHelpers = require('./general-helpers');

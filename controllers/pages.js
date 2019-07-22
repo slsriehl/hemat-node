@@ -10,7 +10,7 @@ const util = require('util');
 const escape = require('escape-html');
 const unescape = require('unescape-html');
 
-const Promise = require('bluebird');
+ 
 
 //const userHelpers = require('./user-helpers');
 

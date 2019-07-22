@@ -9,7 +9,7 @@ const uuid = require('uuid/v4');
 const moment = require('moment');
 const nodemailer = require('nodemailer');
 
-const Promise = require('bluebird');
+ 
 
 const transporter = require('./transporter');
 

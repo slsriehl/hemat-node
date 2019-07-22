@@ -4,7 +4,7 @@ const models = require('../models');
 const util = require('util');
 const bcrypt = require('bcryptjs');
 const moment = require('moment');
-const Promise = require('bluebird');
+ 
 
 const generalHelpers = require('./general-helpers');
 const cookieHelpers = require('./cookie-helpers');

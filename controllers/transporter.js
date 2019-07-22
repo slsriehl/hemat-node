@@ -2,7 +2,7 @@ const util = require('util');
 
 const nodemailer = require('nodemailer');
 
-const Promise = require('bluebird');
+ 
 
 //const nodemailerMock = require('nodemailer-mock');
 //const mockery = require('mockery');
