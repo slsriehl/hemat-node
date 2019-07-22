@@ -11,7 +11,7 @@
     "npm": "3.10.10"
   },
   "scripts": {
-    "restart-prod": "npm run clean && npm run install-prod && NODE_ENV=production pm2 restart server --update-env",
+    "restart-prod": "npm run clean && npm run install-prod && NODE_ENV=production pm2 restart server --update-env && sudo systemctl reload nginx",
     "start-dev": "NODE_ENV=development nodemon server.js",
     "stop-prod": "pm2 stop server",
     "clean": "rimraf 'node_modules'",
