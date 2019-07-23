@@ -67,9 +67,7 @@ const controller = {
                         throw new Error(`DB Sql get error: no data`);
                     }
                 });
-                res.json({
-                    data: data
-                });
+                res.json(data);
                 return Promise.resolve(true);
             } else {
                 return Promise.reject(new Error(`DB Sql get error: no results returned`));
