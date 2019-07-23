@@ -85,14 +85,12 @@ const routes = {
     surgPath: require('./routes/pages/surg-path'),
     placRef: require('./routes/pages/plac-ref'),
     cap: require('./routes/pages/cap'),
-    capAuth: require('./routes/pages/cap-auth'),
 }
 
 //mounted with no prefix
 
 app.use('/', routes.user);
 app.use('/', routes.placRef);
-app.use('/', routes.capAuth);
 app.use('/', routes.reports);
 app.use('/', routes.surgPath);
 app.use('/', routes.surgmedia);
