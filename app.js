@@ -2,7 +2,7 @@
 const util = require('util'),
     moment = require('moment');
 
-// const dotenv = process.env.NODE_ENV != "production" ? require('dotenv').config({BASIC: 'basic', path: `./datab.env`}) : undefined;
+const dotenv = process.env.NODE_ENV != "production" ? require('dotenv').config({BASIC: 'basic', path: `./.env`}) : undefined;
 
 Promise = require('bluebird');
 
@@ -71,34 +71,40 @@ let showCookieWarning = require('./routes/middleware/show-cookie-warning');
 app.use(showCookieWarning);
 
 // ++++++ Express routes ++++++
-const userRoutes = require('./routes/user');
 
-const reportsRoutes = require('./routes/reports');
+const routes = {
+    user: require('./routes/user'),
+    talks: require('./routes/pages/talks'),
+    reports: require('./routes/reports'),
+    clinmedia: require('./routes/pages/clin-media'),
+    surgmedia: require('./routes/pages/surg-media'),
+    autopsy: require('./routes/pages/autopsy'),
+    hemePath: require('./routes/pages/heme-path'),
+    giPath: require('./routes/pages/gi-path'),
+    clinPath: require('./routes/pages/clin-path'),
+    surgPath: require('./routes/pages/surg-path'),
+    placRef: require('./routes/pages/plac-ref'),
+    cap: require('./routes/pages/cap'),
+}
 
-const capRoutes = require('./routes/pages/cap');
-const hemePathRoutes = require('./routes/pages/heme-path');
-const giPathRoutes = require('./routes/pages/gi-path');
-const clinPathRoutes = require('./routes/pages/clin-path');
-const surgPathRoutes = require('./routes/pages/surg-path');
-const autopsyRoutes = require('./routes/pages/autopsy');
-const surgmediaRoutes = require('./routes/pages/surg-media');
-const clinmediaRoutes = require('./routes/pages/clin-media');
-const talkRoutes = require('./routes/pages/talks');
-const placRef = require('./routes/pages/plac-ref');
+//mounted with no prefix
 
-app.use(userRoutes);
+app.use('/', routes.user);
+app.use('/', routes.placRef);
+app.use('/', routes.reports);
+app.use('/', routes.surgPath);
+app.use('/', routes.surgmedia);
+app.use('/', routes.talks);
+app.use('/', routes.placRef);
 
-app.use(reportsRoutes);
+//mounted with a prefix --> routes here will be prefixed with the '/...' passed as the first argument below
 
-app.use(capRoutes);
-app.use(hemePathRoutes);
-app.use(giPathRoutes);
-app.use(clinPathRoutes);
-app.use(surgPathRoutes);
-app.use(autopsyRoutes);
-app.use(surgmediaRoutes);
-app.use(clinmediaRoutes);
-app.use(talkRoutes);
-app.use(placRef);
+app.use('/cap', routes.cap);
+app.use('/heme-path', routes.hemePath);
+app.use('/gi-path', routes.giPath);
+app.use('/clin-path', routes.clinPath);
+app.use('/autopsy', routes.autopsy);
+app.use('/clin-media', routes.clinmedia);
+
 
 module.exports = app;

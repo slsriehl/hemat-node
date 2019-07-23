@@ -30,7 +30,7 @@ const helpers = {
 		})
 	},
 	getAppId: (req) => {
-		const slugArr = req.originalUrl.split('/');
+		const slugArr = req.originalUrl.split('?')[0].split('/');
 		const slug = slugArr[slugArr.length - 1];
 		return models.Apps
 		.findOne({

@@ -6,7 +6,7 @@ const controller = require('../../controllers/pages');
 
 
 //routes to get the pages to create a fresh report
-router.get('/heme-path/pb-smears', (req, res) => {
+router.get('/pb-smears', (req, res) => {
 	controller.openAccess(req, res, './page-views/heme-path/pb-smears.hbs', [
 		"/json/json-pbsmears.js",
 		"/js/heme-path/pb-rules.js",
@@ -14,7 +14,7 @@ router.get('/heme-path/pb-smears', (req, res) => {
 	]);
 });
 
-router.get('/heme-path/bone-marrow', (req, res) => {
+router.get('/bone-marrow', (req, res) => {
 	controller.openAccess(req, res, './page-views/heme-path/bone-marrow.hbs', [
 		"/json/json-bonemarrow.js",
 		"/js/heme-path/bm-diff-scripts.js",
@@ -24,25 +24,25 @@ router.get('/heme-path/bone-marrow', (req, res) => {
 	]);
 });
 
-router.get('/heme-path/heme-diff', (req, res) => {
+router.get('/heme-diff', (req, res) => {
 	controller.openAccess(req, res, './page-views/heme-path/heme-diff.hbs', [
 		"/js/heme-path/hemediff-scripts.js"
 	]);
 });
 
-router.get('/heme-path/counter', (req, res) => {
+router.get('/counter', (req, res) => {
 	controller.openAccess(req, res, './page-views/heme-path/counter.hbs', [
 		"/js/heme-path/counter-scripts.js"
 	]);
 });
 
-router.get('/heme-path/dlbcl', (req, res) => {
+router.get('/dlbcl', (req, res) => {
 	controller.openAccess(req, res, './page-views/heme-path/dlbcl.hbs', [
 		"/js/heme-path/dlbcl-scripts.js"
 	]);
 });
 
-router.get('/heme-path/heme-media', (req, res) => {
+router.get('/heme-media', (req, res) => {
     controller.openAccess(req, res, './page-views/heme-path/newborn-pbsmears-media.hbs', [
         
     ]);
