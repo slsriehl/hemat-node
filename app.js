@@ -2,7 +2,7 @@
 const util = require('util'),
     moment = require('moment');
 
-// const dotenv = process.env.NODE_ENV != "production" ? require('dotenv').config({BASIC: 'basic', path: `./datab.env`}) : undefined;
+const dotenv = process.env.NODE_ENV != "production" ? require('dotenv').config({BASIC: 'basic', path: `./.env`}) : undefined;
 
 Promise = require('bluebird');
 
