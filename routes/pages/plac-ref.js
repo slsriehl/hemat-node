@@ -20,7 +20,8 @@ router.post('/placenta/add', (req, res) => {
 // Send DB contents to HTML as JSON api
 router.get('/surg-path/placenta-data', (req, res) => {
    // set header to allow hematogones.com
-    res.header("Access-Control-Allow-Origin", `hematogones.com`);
+    res.header("Access-Control-Allow-Origin", "hematogones.com");
+    res.header("Access-Control-Allow-Origin", "localhost");
 
     return controller.allData(req, res);
 
