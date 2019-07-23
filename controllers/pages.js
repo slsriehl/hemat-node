@@ -75,10 +75,13 @@ const controller = {
 					snippets: snippets,
 					specificCss: css
 				});
+				return Promise.resolve(true);
 			})
 			.catch(error => {
 				generalHelpers.writeToErrorLog(req, error);
 				console.log(error);
+				res.status(500).end();
+				return Promise.resolve(false);
 			});
 		} else {
 			res.render('index.hbs', {
@@ -110,10 +113,13 @@ const controller = {
 					}],
 					specificScripts: scripts
 				});
+				return Promise.resolve(true);
 			})
 			.catch(error => {
 				generalHelpers.writeToErrorLog(req, error);
 				console.log(error);
+				res.status(500).end();
+				return Promise.resolve(false);
 			});
 		}
 	},
@@ -127,10 +133,13 @@ const controller = {
 		})
 		.then((result) => {
 			res.end();
+			return Promise.resolve(true);
 		})
 		.catch(error => {
 			generalHelpers.writeToErrorLog(req, error);
 			console.log(error);
+			res.status(500).end();
+			return Promise.resolve(false);
 		});
 	},
 	searchSnippets: (req, res) => {
@@ -191,10 +200,13 @@ const controller = {
 			}
 			console.log(sendMe);
 			res.json(sendMe);
+			return Promise.resolve(true);
 		})
 		.catch(error => {
 			generalHelpers.writeToErrorLog(req, error);
 			console.log(error);
+			res.status(500).end();
+			return Promise.resolve(false);
 		});
 	},
 	saveSnippet: (req, res) => {
@@ -225,11 +237,13 @@ const controller = {
 			res.json({
 				snips: [cleanObj]
 			});
+			return Promise.resolve(true);
 		})
 		.catch(error => {
 			generalHelpers.writeToErrorLog(req, error);
 			console.log(error);
 			res.send(false);
+			return Promise.resolve(false);
 		});
 	},
 	updateSnippet: (req, res) => {
@@ -290,16 +304,19 @@ const controller = {
 				res.json({
 					snips: [cleanObj]
 				});
+				return Promise.resolve(true);
 			} else if (data == false) {
-				return;
+				return Promise.resolve(true);
 			} else {
 				res.send(false);
+				return Promise.resolve(true);
 			}
 		})
 		.catch(error => {
 			generalHelpers.writeToErrorLog(req, error);
 			console.log(error);
 			res.send(false);
+			return Promise.resolve(false);
 		});
 	},
 	deleteSnippet: (req, res) => {
@@ -320,11 +337,13 @@ const controller = {
 				} else {
 					res.send(false);
 				}
+				return Promise.resolve(true);
 			})
 			.catch(error => {
 				generalHelpers.writeToErrorLog(req, error);
 				console.log(error);
 				res.send(false);
+				return Promise.resolve(false);
 			});
 		} else {
 			res.send("You can't delete that snippet because you don't own it.");
@@ -340,11 +359,14 @@ const controller = {
                 userId: req.session.user
             })
             .then((result) => {
-                res.end();
+				res.end();
+				return Promise.resolve(true);
             })
             .catch(error => {
                 generalHelpers.writeToErrorLog(req, error);
-                console.log(error);
+				console.log(error);
+				res.status(500).end();
+				return Promise.resolve(false);
             });
     }
 }
