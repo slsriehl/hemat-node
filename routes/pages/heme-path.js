@@ -4,6 +4,12 @@ const router = new express.Router;
 
 const controller = require('../../controllers/pages');
 
+//heme-diff is the default
+router.get('/', (req, res) => {
+	controller.openAccess(req, res, './page-views/heme-path/heme-diff.hbs', [
+		"/js/heme-path/hemediff-scripts.js"
+	]);
+});
 
 //routes to get the pages to create a fresh report
 router.get('/pb-smears', (req, res) => {

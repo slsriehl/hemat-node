@@ -4,6 +4,14 @@ const router = new express.Router;
 
 const controller = require('../../controllers/pages');
 
+//bal is the default
+router.get('/', (req, res) => {
+	controller.openAccess(req, res, './page-views/clin-path/bal.hbs', [
+		"/json/json-bal.js",
+		"/js/clin-path/bal-scripts.js"
+	]);
+});
+
 router.get('/csf', (req, res) => {
 	controller.openAccess(req, res, './page-views/clin-path/csf.hbs', [
 		"/json/json-csf.js",

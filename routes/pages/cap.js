@@ -8,6 +8,13 @@ const capLoginCheck = require('../middleware/cap-login-check');
 
 router.use(capLoginCheck);
 
+//checklist is the default
+router.all('/', (req, res) => {
+    controller.openAccess(req, res, './page-views/cap/checklist.hbs', [
+		"/js/cap/checklist-scripts.js"
+	])
+});
+
 router.all('/checklist', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/checklist.hbs', [
 		"/js/cap/checklist-scripts.js"
