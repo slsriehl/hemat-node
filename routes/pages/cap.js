@@ -8,8 +8,7 @@ const capLoginCheck = require('../middleware/cap-login-check');
 
 router.use(capLoginCheck);
 
-
-router.get('/checklist', (req, res) => {
+router.all('/checklist', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/checklist.hbs', [
 		"/js/cap/checklist-scripts.js"
 	])
@@ -18,404 +17,404 @@ router.get('/checklist', (req, res) => {
 //pediatric, some crossover
 
 
-router.get('/appy-net', (req, res) => {
+router.all('/appy-net', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/appy-net.hbs', [
 		"/js/cap/appy-net-scripts.js",
 	]);
 });
 
-router.get('/bone-t-rx', (req, res) => {
+router.all('/bone-t-rx', (req, res) => {
 	controller.openAccess(req, res, './page-views/cap/bone-t-rx.hbs', [
 		"/js/cap/bonerx-scripts.js",
 	]);
 });
 
-router.get('/neuro-t', (req, res) => {
+router.all('/neuro-t', (req, res) => {
 	controller.openAccess(req, res, './page-views/cap/neuro-t.hbs', [
 		"/js/cap/neuro-scripts.js",
 	]);
 });
 
-router.get('/neuro-t-biomarker', (req, res) => {
+router.all('/neuro-t-biomarker', (req, res) => {
 	controller.openAccess(req, res, './page-views/cap/neuro-t-biomarker.hbs', [
 		"/js/cap/cnsbio-scripts.js",
 	]);
 });
 
 
-router.get('/pnet-rx', (req, res) => {
+router.all('/pnet-rx', (req, res) => {
 	controller.openAccess(req, res, './page-views/cap/pnet-rx.hbs', [
 		"/js/cap/pnet-rx-scripts.js",
 	]);
 });
 
-router.get('/colon-net', (req, res) => {
+router.all('/colon-net', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/colon-net.hbs', [
     "/js/cap/colon-net-scripts.js",
 ]);
 });
 
-router.get('/ex-gon-gct', (req, res) => {
+router.all('/ex-gon-gct', (req, res) => {
 	controller.openAccess(req, res, './page-views/cap/ex-gon-gct.hbs', [
 		"/js/cap/exgct-scripts.js",
 	]);
 });
 
-router.get('/duo-amp-net', (req, res) => {
+router.all('/duo-amp-net', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/duo-amp-net.hbs', [
     "/js/cap/duo-amp-net-scripts.js",
 ]);
 });
 
-router.get('/hepatoblastoma', (req, res) => {
+router.all('/hepatoblastoma', (req, res) => {
 	controller.openAccess(req, res, './page-views/cap/hepatoblastoma.hbs', [
 		"/js/cap/hepatoblastoma-scripts.js",
 	]);
 });
 
-router.get('/neuroblast', (req, res) => {
+router.all('/neuroblast', (req, res) => {
 	controller.openAccess(req, res, './page-views/cap/neuroblast.hbs', [
 		"/js/cap/nb-scripts.js",
 	]);
 });
 
 
-router.get('/ovary-t', (req, res) => {
+router.all('/ovary-t', (req, res) => {
 	controller.openAccess(req, res, './page-views/cap/ovary-t.hbs', [
 		"/js/cap/ovary-scripts.js",
 	]);
 });
 
-router.get('/wilms-t', (req, res) => {
+router.all('/wilms-t', (req, res) => {
 	controller.openAccess(req, res, './page-views/cap/wilms-t.hbs', [
 		"/js/cap/wilms-scripts.js",
 	]);
 });
 
-router.get('/retinoblast', (req, res) => {
+router.all('/retinoblast', (req, res) => {
 	controller.openAccess(req, res, './page-views/cap/retinoblast.hbs', [
 		"/js/cap/rb-scripts.js",
 	]);
 });
 
-router.get('/rhabdo', (req, res) => {
+router.all('/rhabdo', (req, res) => {
 	controller.openAccess(req, res, './page-views/cap/rhabdo.hbs', [
 		"/js/cap/rhabdo-scripts.js",
 	]);
 });
 
-router.get('/testis-t', (req, res) => {
+router.all('/testis-t', (req, res) => {
 	controller.openAccess(req, res, './page-views/cap/testis-t.hbs', [
 		"/js/cap/testis-scripts.js",
 	]);
 });
 
-router.get('/soft-t-rx', (req, res) => {
+router.all('/soft-t-rx', (req, res) => {
 	controller.openAccess(req, res, './page-views/cap/soft-t-rx.hbs', [
 		"/js/cap/softrx-scripts.js",
 	]);
 });
 
 //adult only
-router.get('/prostate-t', (req, res) => {
+router.all('/prostate-t', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/prostate-t.hbs', [
     "/js/cap/prostate-scripts.js",
 ]);
 });
 
 
-router.get('/adrenal-t', (req, res) => {
+router.all('/adrenal-t', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/adrenal-t.hbs', [
     "/js/cap/adrenal-scripts.js",
 ]);
 });
 
 
-router.get('/ampulla-t', (req, res) => {
+router.all('/ampulla-t', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/ampulla-t.hbs', [
     "/js/cap/ampulla-scripts.js",
 ]);
 });
 
 
-router.get('/anal-t', (req, res) => {
+router.all('/anal-t', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/anal-t.hbs', [
     "/js/cap/anal-scripts.js",
 ]);
 });
 
 
-router.get('/appy-t', (req, res) => {
+router.all('/appy-t', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/appy-t.hbs', [
     "/js/cap/appy-t-scripts.js",
 ]);
 });
 
-router.get('/breast-dcis', (req, res) => {
+router.all('/breast-dcis', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/breast-dcis.hbs', [
     "/js/cap/breast-dcis-scripts.js",
 ]);
 });
 
 
-router.get('/breast', (req, res) => {
+router.all('/breast', (req, res) => {
 	controller.openAccess(req, res, './page-views/cap/breast.hbs', [
 		"/js/cap/breast-scripts.js",
 	]);
 });
 
-router.get('/cervix-leep', (req, res) => {
+router.all('/cervix-leep', (req, res) => {
 	controller.openAccess(req, res, './page-views/cap/cervix-leep.hbs', [
 		"/js/cap/cxleep-scripts.js",
 	]);
 });
 
-router.get('/cervix-rx', (req, res) => {
+router.all('/cervix-rx', (req, res) => {
 	controller.openAccess(req, res, './page-views/cap/cervix-rx.hbs', [
 		"/js/cap/cxrx-scripts.js",
 	]);
 });
 
-router.get('/colon-polyp', (req, res) => {
+router.all('/colon-polyp', (req, res) => {
 	controller.openAccess(req, res, './page-views/cap/colon-polyp.hbs', [
 		"/js/cap/colonpolyp-scripts.js",
 	]);
 });
 
-router.get('/colon-rx', (req, res) => {
+router.all('/colon-rx', (req, res) => {
 	controller.openAccess(req, res, './page-views/cap/colon-rx.hbs', [
 		"/js/cap/colonrx-scripts.js",
 	]);
 });
 
-router.get('/endometrium-t', (req, res) => {
+router.all('/endometrium-t', (req, res) => {
 	controller.openAccess(req, res, './page-views/cap/endometrium-t.hbs', [
 		"/js/cap/endometrium-scripts.js",
 	]);
 });
 
-router.get('/esophagus', (req, res) => {
+router.all('/esophagus', (req, res) => {
 	controller.openAccess(req, res, './page-views/cap/esophagus.hbs', [
 		"/js/cap/esophagus-scripts.js",
 	]);
 });
 
-router.get('/gist', (req, res) => {
+router.all('/gist', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/gist.hbs', [
     "/js/cap/gist-scripts.js",
 ]);
 });
 
-router.get('/kidney-rx', (req, res) => {
+router.all('/kidney-rx', (req, res) => {
 	controller.openAccess(req, res, './page-views/cap/kidney-rx.hbs', [
 		"/js/cap/kidney-scripts.js",
 	]);
 });
 
-router.get('/lung-rx', (req, res) => {
+router.all('/lung-rx', (req, res) => {
 	controller.openAccess(req, res, './page-views/cap/lung-rx.hbs', [
 		"/js/cap/lung-scripts.js",
 	]);
 });
 
-router.get('/melanoma', (req, res) => {
+router.all('/melanoma', (req, res) => {
 	controller.openAccess(req, res, './page-views/cap/melanoma.hbs', [
 		"/js/cap/melanoma-scripts.js",
 	]);
 });
 
-router.get('/melanoma-bx', (req, res) => {
+router.all('/melanoma-bx', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/melanoma-bx.hbs', [
     "/js/cap/melanoma-bx-scripts.js",
 ]);
 });
 
-router.get('/gallbladder', (req, res) => {
+router.all('/gallbladder', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/gallbladder', [
     "/js/cap/gallbladder-scripts.js",
 ]);
 });
 
-router.get('/hepatocellular', (req, res) => {
+router.all('/hepatocellular', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/hepatocellular', [
     "/js/cap/hepatocellular-scripts.js",
 ]);
 });
 
-router.get('/jejunal-t', (req, res) => {
+router.all('/jejunal-t', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/jejunal-t.hbs', [
     "/js/cap/jejunal-scripts.js",
 ]);
 });
 
-router.get('/lip-oral-t', (req, res) => {
+router.all('/lip-oral-t', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/lip-oral-t.hbs', [
     "/js/cap/lip-oral-scripts.js",
 ]);
 });
 
-router.get('/larynx-t', (req, res) => {
+router.all('/larynx-t', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/larynx-t.hbs', [
     "/js/cap/larynx-scripts.js",
 ]);
 });
 
-router.get('/mesothelioma', (req, res) => {
+router.all('/mesothelioma', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/mesothelioma.hbs', [
     "/js/cap/mesothelioma-scripts.js",
 ]);
 });
 
-router.get('/nasal-t', (req, res) => {
+router.all('/nasal-t', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/nasal-t.hbs', [
     "/js/cap/nasal-scripts.js",
 ]);
 });
 
-router.get('/pancendo-t', (req, res) => {
+router.all('/pancendo-t', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/pancendo-t.hbs', [
     "/js/cap/pancendo-scripts.js",
 ]);
 });
 
-router.get('/penis-t', (req, res) => {
+router.all('/penis-t', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/penis-t.hbs', [
     "/js/cap/penis-scripts.js",
 ]);
 });
 
-router.get('/intrahepatic-ducts', (req, res) => {
+router.all('/intrahepatic-ducts', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/intrahepatic-ducts.hbs', [
     "/js/cap/intrahepatic-ducts-scripts.js",
 ]);
 });
 
-router.get('/distal-ducts', (req, res) => {
+router.all('/distal-ducts', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/distal-ducts.hbs', [
     "/js/cap/distal-ducts-scripts.js",
 ]);
 });
 
-router.get('/perihilar-ducts', (req, res) => {
+router.all('/perihilar-ducts', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/perihilar-ducts.hbs', [
     "/js/cap/perihilar-ducts-scripts.js",
 ]);
 });
 
-router.get('/pharynx-t', (req, res) => {
+router.all('/pharynx-t', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/pharynx-t.hbs', [
     "/js/cap/pharynx-scripts.js",
 ]);
 });
 
-router.get('/plasmacytoma', (req, res) => {
+router.all('/plasmacytoma', (req, res) => {
 	controller.openAccess(req, res, './page-views/cap/plasmacytoma.hbs', [
 		"/js/cap/plasmacytoma-scripts.js",
 	]);
 });
 
-router.get('/pancexo-t', (req, res) => {
+router.all('/pancexo-t', (req, res) => {
 	controller.openAccess(req, res, './page-views/cap/pancexo-t.hbs', [
 		"/js/cap/pancexo-scripts.js",
 	]);
 });
 
-router.get('/thyroid-t', (req, res) => {
+router.all('/thyroid-t', (req, res) => {
 	controller.openAccess(req, res, './page-views/cap/thyroid-t.hbs', [
 		"/js/cap/thyroid-scripts.js",
 	]);
 });
 
-router.get('/salivary-t', (req, res) => {
+router.all('/salivary-t', (req, res) => {
 	controller.openAccess(req, res, './page-views/cap/salivary-t.hbs', [
 		"/js/cap/salivary-scripts.js",
 	]);
 });
 
-router.get('/skin-merkel', (req, res) => {
+router.all('/skin-merkel', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/skin-merkel.hbs', [
     "/js/cap/skin-merkel-scripts.js",
 ]);
 });
 
-router.get('/small-intestine', (req, res) => {
+router.all('/small-intestine', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/small-intestine.hbs', [
     "/js/cap/small-intestine-scripts.js",
 ]);
 });
 
-router.get('/stomach', (req, res) => {
+router.all('/stomach', (req, res) => {
 	controller.openAccess(req, res, './page-views/cap/stomach.hbs', [
 		"/js/cap/stomach-scripts.js",
 	]);
 });
 
-router.get('/stomach-net', (req, res) => {
+router.all('/stomach-net', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/stomach-net.hbs', [
     "/js/cap/stomach-net-scripts.js",
 ]);
 });
 
-router.get('/thymus-t', (req, res) => {
+router.all('/thymus-t', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/thymus-t.hbs', [
     "/js/cap/thymus-scripts.js",
 ]);
 });
 
-router.get('/trophoblast', (req, res) => {
+router.all('/trophoblast', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/trophoblast.hbs', [
     "/js/cap/trophoblast-scripts.js",
 ]);
 });
 
 
-router.get('/urethra-t', (req, res) => {
+router.all('/urethra-t', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/urethra-t.hbs', [
     "/js/cap/urethra-scripts.js",
 ]);
 });
 
-router.get('/ureter-pelvis-t', (req, res) => {
+router.all('/ureter-pelvis-t', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/ureter-pelvis-t.hbs', [
     "/js/cap/ureter-scripts.js",
 ]);
 });
 
-router.get('/bladder-bx', (req, res) => {
+router.all('/bladder-bx', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/bladder-bx.hbs', [
     "/js/cap/bladder-bx-scripts.js",
 ]);
 });
 
-router.get('/bladder-t', (req, res) => {
+router.all('/bladder-t', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/bladder-t.hbs', [
     "/js/cap/bladder-scripts.js",
 ]);
 });
 
 
-router.get('/uterine-sarc', (req, res) => {
+router.all('/uterine-sarc', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/uterine-sarc.hbs', [
     "/js/cap/utsarc-scripts.js",
 ]);
 });
 
 
-router.get('/uveal-mel', (req, res) => {
+router.all('/uveal-mel', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/uveal-mel.hbs', [
     "/js/cap/uveal-mel-scripts.js",
 ]);
 });
 
 
-router.get('/vagina', (req, res) => {
+router.all('/vagina', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/vagina.hbs', [
     "/js/cap/vagina-scripts.js",
 ]);
 });
 
 
-router.get('/vulva', (req, res) => {
+router.all('/vulva', (req, res) => {
     controller.openAccess(req, res, './page-views/cap/vulva.hbs', [
     "/js/cap/vulva-scripts.js",
 ]);
