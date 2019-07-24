@@ -14,114 +14,101 @@ const unescape = require('unescape-html');
 
 //const userHelpers = require('./user-helpers');
 
+const hasPresets = (app, req) => {
+	if(app === 8 || app === 12 || app === 15 || app === 16) {
+		return helpers.getIhcPresets(req);
+	} else {
+		return Promise.resolve(null);
+	}
+}
+
 const controller = {
-	userWall: (req, res, renderPath, scripts, css) => {
-		console.log(req.session);
-		if(cookieHelpers.verifyCookie(req, res)) {
-			let myRefs;
-			let anyReports;
-			let prevReps;
-			let ihcPresets;
-			let snippets;
-			return helpers.getAppId(req)
-			.then((result) => {
-				req.session.app = result.dataValues.id;
-				const thisApp = req.session.app;
-				if(thisApp === 8 || thisApp === 12 || thisApp === 15 || thisApp === 16) {
-					return helpers.getIhcPresets(req)
-				} else {
-					return Promise.resolve(null)
-				}
-			})
-			.then((result) => {
-				//set
-				ihcPresets = result;
-				//get case references
-				return helpers.getCaseReferences(req)
-				// return Promise.all([helpers.getCaseReferences(req), reportsHelpers.getAnyReports(req), reportsHelpers.getPreviousReports(req)])
-			})
-			.then((result) => {
-				//set the results of case references equal to a var
-				myRefs = result;
-				return reportsHelpers.getAnyReports(req)
-			})
-			.then((result) => {
-				anyReports = result;
-				if(result == null) {
-					//this will set the value for previous reports to null is there aren't any reports at all
-					return Promise.resolve(null);
-				} else {
-					return reportsHelpers.getPreviousReports(req)
-				}
-			})
-			.then((result) => {
-				prevReps = result;
-				if(renderPath == './page-views/surg-path/snippets.hbs') {
-					snippets = true;
-				}
-				res.render(renderPath, {
-					messages: req.session.privacyMessage.concat(req.session.systemMessages ? req.session.systemMessages : []),
-					isAuth: {
-						check: req.session.isAuth,
-						firstname: req.session.firstname
-					},
-					specificScripts: scripts,
-					cases: myRefs,
-					prevRep: {
-						any: anyReports,
-						thisApp: prevReps
-					},
-					ihcPresets: ihcPresets,
-					snippets: snippets,
-					specificCss: css
-				});
-				return Promise.resolve(true);
-			})
-			.catch(error => {
-				generalHelpers.writeToErrorLog(req, error);
-				console.log(error);
-				res.status(500).end();
-				return Promise.resolve(false);
-			});
+	render: (req, res, renderPath, scripts, css = [], more = {}) => {
+		if(req.session.isAuth) {
+			return controller.loggedIn(req, res, renderPath, scripts, css, more)
 		} else {
-			res.render('index.hbs', {
-				messages: [
-					...req.session.privacyMessage,
-					{
-					text: 'You need an account to access that resource.  <a href="/user/signup">Sign up</a>.',
-					id: `access-denied`
-				}]
-			});
+			return controller.guestUser(req, res, renderPath, scripts, css, more)
 		}
 	},
-	openAccess: (req, res, renderPath, scripts) => {
-		console.log(req.session);
-		if(cookieHelpers.verifyCookie(req, res)) {
-			controller.userWall(req, res, renderPath, scripts);
-		} else {
-			return helpers.getAppId(req)
-			.then((result) => {
-				console.log(result);
-				req.session.app = result.dataValues.id;
-				res.render(renderPath, {
-					messages: [
-						...req.session.privacyMessage,
-						...req.session.unAuthSystemMessages,
-						{
-						text: '<a href="/user/signup">Sign up</a> to save, edit, and PDF your reports and access more resources.',
-						id: 'you-should-sign-up'
-					}],
-					specificScripts: scripts
-				});
-				return Promise.resolve(true);
-			})
-			.catch(error => {
-				generalHelpers.writeToErrorLog(req, error);
-				console.log(error);
-				res.status(500).end();
-				return Promise.resolve(false);
-			});
-		}
+	loggedIn: (req, res, renderPath, scripts, css, more) => {
+		let snippets = renderPath == './page-views/surg-path/snippets.hbs' ? true : false;
+
+		return Promise.all([
+			helpers.getAppId(req),
+			reportsHelpers.getAnyReports(req)
+		])
+		.then(([app, reports]) => {
+			req.session.app = app.dataValues.id;
+			const thisApp = req.session.app;
+
+			return Promise.all([
+				hasPresets(thisApp, req),
+				helpers.getCaseReferences(req),
+				Promise.resolve(reports),
+				(reports ? reportsHelpers.getPreviousReports(req) : Promise.resolve(null))
+			])
+		})
+		.then(([ihcPresets, myRefs, anyReps, prevReps]) => {
+
+			let info = {
+				messages: req.session.privacyMessage.concat(req.session.systemMessages ? req.session.systemMessages : []),
+				isAuth: {
+					check: req.session.isAuth,
+					firstname: req.session.firstname
+				},
+				specificScripts: scripts,
+				cases: myRefs,
+				prevRep: {
+					any: anyReps,
+					thisApp: prevReps
+				},
+				ihcPresets: ihcPresets,
+				snippets: snippets,
+				specificCss: css
+			}
+
+			let data = Object.assign({}, info, more)
+
+			res.render(renderPath, data);
+
+			return Promise.resolve(true);
+		})
+		.catch(error => {
+			generalHelpers.writeToErrorLog(req, error);
+			console.log(error);
+			res.status(500).end();
+			return Promise.resolve(false);
+		});
+	},
+	guestUser: (req, res, renderPath, scripts, css, more) => {
+		return helpers.getAppId(req)
+		.then((result) => {
+			// console.log(result);
+			req.session.app = result.dataValues.id;
+
+			let info = {
+				messages: [
+					...req.session.privacyMessage,
+					...req.session.unAuthSystemMessages,
+					{
+					text: '<a href="/user/signup">Sign up</a> to save, edit, and PDF your reports and access more resources.',
+					id: 'you-should-sign-up'
+				}],
+				specificScripts: scripts
+			}
+
+			let data = Object.assign({}, info, more)
+
+			res.render(renderPath, data);
+
+			return Promise.resolve(true);
+		})
+		.catch(error => {
+			generalHelpers.writeToErrorLog(req, error);
+			console.log(error);
+			res.status(500).end();
+			return Promise.resolve(false);
+		});
 	},
 	saveIhcPreset: (req, res) => {
 		console.log(req.body);

@@ -2,10 +2,10 @@ const express = require('express');
 
 const router = new express.Router;
 
-const controller = require('../../controllers/pages');
+const render = require('../../controllers/pages').render;
 
 router.get('/talks/api', (req, res) => {
-    controller.openAccess(req, res, './page-views/talks/api.hbs', [
+    return render(req, res, './page-views/talks/api.hbs', [
 
     ]);
 });
