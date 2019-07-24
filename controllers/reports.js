@@ -37,7 +37,7 @@ const controller = {
 		const myAttributes = generalHelpers.generateKeyArr(almostObjToSave);
 		console.log('almost obj to save' + util.inspect(almostObjToSave));
 		console.log(myAttributes);
-		if(cookieHelpers.verifyCookie(req, res)) {
+		if(cookieHelpers.verify(req)) {
 			controller.memberReportPromise(req, res, almostObjToSave, myAttributes);
 		} else {
 			res.send("You can't PDF reports unless you're logged in.")

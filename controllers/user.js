@@ -112,7 +112,7 @@ const controller = {
 			//req.session.regenerate();
 			//req.session = null;
 			if(data != 'complete') {
-				cookieHelpers.verifyCookie(req, res, true);
+				cookieHelpers.verify(req, true);
 				req.session.message = 'Welcome to Hematogones.com!  I hope you find these tools useful.';
 				req.session.messageType = 'successful-signup';
 				req.session.user = data.dataValues.id;
@@ -177,7 +177,7 @@ const controller = {
 					req.session.message = null;
 					req.session.messageType = null;
 					req.session.firstname = data.dataValues.firstname;
-					cookieHelpers.verifyCookie(req, res, true);
+					cookieHelpers.verify(req, true);
 					req.session.save();
 					helpers.getSystemMessages(req, res, 'index.hbs');
 				} else {
@@ -210,7 +210,7 @@ const controller = {
 	//show the index page whether logged in or not
 	renderIndex: (req, res) => {
 		console.log(util.inspect(req.session) + 'reqsess renderindex prefunction');
-		if (cookieHelpers.verifyCookie(req, res) && !req.session.message) {
+		if (cookieHelpers.verify(req) && !req.session.message) {
 			//if the logged in user has system messages but not a single session message
 			console.log('verified cookie on index load');
 			res.render('index.hbs', {
@@ -220,7 +220,7 @@ const controller = {
 					firstname: req.session.firstname
 				}
 			});
-		} else if(cookieHelpers.verifyCookie(req, res)) {
+		} else if(cookieHelpers.verify(req)) {
 			const msg = req.session.message;
 			const msgType = req.session.messageType;
 			req.session.message = null;
@@ -270,7 +270,7 @@ const controller = {
 	userSettings: (req, res) => {
 		//console.log(req.headers.cookie);
 		//use the session to display the email and username of the user
-		if(cookieHelpers.verifyCookie(req, res)) {
+		if(cookieHelpers.verify(req)) {
 			return models.Users
 			.findOne({
 				attributes: ['email', 'username', 'firstname', 'lastname', 'mobile'],

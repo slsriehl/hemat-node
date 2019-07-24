@@ -5,12 +5,8 @@ const models = require('../../models');
 const helpers = require('../../controllers/general-helpers');
 
 let middleware = (req, res, next) => {
-
-  console.log('+++++++++++++++++++++');
   
-  console.log(req.session.showCookieWarning);
-  
-  console.log('+++++++++++++++++++++');
+  console.log('+++ Cookie Warning: ' + req.session.showCookieWarning + ' +++');
 
   if(req.session.privacyAcknowledged === undefined) req.session.privacyAcknowledged = false;
 

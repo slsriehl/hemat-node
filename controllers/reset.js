@@ -166,7 +166,7 @@ const controller = {
 			req.session.user = data.id;
 			req.session.firstname = data.firstname;
 			req.session.reset = false;
-			cookieHelpers.verifyCookie(req, res, true);
+			cookieHelpers.verify(req, true);
 			req.session.save();
 			return models.ResetTokens
 			.update({

@@ -40,7 +40,7 @@ const controller = {
 				id: tempType
 			}]
 		}
-		if(cookieHelpers.verifyCookie(req, res)) {
+		if(cookieHelpers.verify(req)) {
 			return models.Users
 			.findOne({
 				attributes: ['email', 'firstname', 'lastname'],
