@@ -23,16 +23,35 @@
                     <div id="wdr-component" style="height: 800px"></div>
                     <script>
                         window.onload = (function(){
-                            var pivot = new WebDataRocks({
-                                container: "#wdr-component",
-                                toolbar: true,
-                                report: {
-                                    dataSource: {
-                                        filename: "https://hematogones.com/surg-path/placenta-data"
+                            var plac_data;
+                                fetch('https://hematogones.com/surg-path/placenta-data')
+                                    .then(
+                                        function(u){ return u.json();}
+                                    ).then(
+                                        function(json){
+                                            plac_data = json;
+                                        }
+                                    )
+                                    .then(() => console.log(plac_data))
+
+                            setTimeout(function () {
+                                var pivot = new WebDataRocks({
+                                    container: "#wdr-component",
+                                    toolbar: true,
+                                    report: {
+                                        dataSource: {
+                                            data: plac_data
+                                        }
                                     }
-                                }
-                            });
+                                });
+                            }, 4000);
+
+
+
+
                         });
+
+
                     </script>
                 </div>
             </div>
