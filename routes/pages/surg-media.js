@@ -17,6 +17,12 @@ router.get('/surg-media/head-neck-az', (req, res) => {
     ]);
 });
 
+router.get('/surg-media/cns-tumor-map', (req, res) => {
+    return render(req, res, './page-views/surg-media/cns-tumor-map.hbs', [
+
+    ]);
+});
+
 
 router.get('/api', (req, res) => {
     return render(req, res, './page-views/api.hbs', [

@@ -17,6 +17,12 @@ router.get('/newborn-blood-smears', (req, res) => {
     ]);
 });
 
+router.get('/transfusion-workup', (req, res) => {
+    return render(req, res, './page-views/clin-media/transfusion-workup.hbs', [
+
+    ]);
+});
+
 router.get('/lymph-node-az', (req, res) => {
     return render(req, res, './page-views/clin-media/lymph-node-az.hbs', [
 
