@@ -1122,7 +1122,7 @@ $(window).on('load', function(){
     $('#transform').on('click', function () {
         var input = $('#textIn').val();
         input = input
-            .replace(/[\u2018\u2019\u201C\u201D]/g, ") 
+            .replace(/[\u2018\u2019\u201C\u201D]/g, '\"') 
             .replace(/([A-Z]).+:\s/g, '')
             .replace(/\s+(?=R)/g, ' ') 
             .replace(/\(/g, '')
