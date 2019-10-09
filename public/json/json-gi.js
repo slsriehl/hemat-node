@@ -138,10 +138,10 @@ $(window).on('load', function(){
         dxLine310: '- Tubular adenoma\n',
         dxLine311: '- Tubular adenoma with high grade dysplasia\n- No invasive carcinoma seen (see comment) \n',
         dxLine312: '- Hyperplastic polyp\n',
-        dxLine313: '- Sessile serrated adenoma\n',
+        dxLine313: '- Sessile serrated lesion (aka sessile serrated adenoma)\n',
         dxLine314: '- Juvenile polyp\n',
         dxLine315: '- Melanosis coli\n',
-        dxLine316: '- Sessile serrated adenoma with high-grade dysplasia\n- No invasive carcinoma seen (see comment)\n',
+        dxLine316: '- Sessile serrated lesion with high-grade dysplasia\n- No invasive carcinoma seen (see comment)\n',
         dxLine317: '- Traditional serrated adenoma\n',
         dxLine318: '- Interstitial fibrosis and architectural distortion, consistent with solitary rectal ulcer / prolapse\n',
         dxLine319: '- Increased intraepithelial lymphocytes without excess subepithelial collagen (see comment)\n',
@@ -334,11 +334,11 @@ $(window).on('load', function(){
         // TA, many sites
         mxLine321: "Sections from the ' ' and ' ' biopsies show similar findings and are described together. They show colonic mucosa exhibiting adenomatous changes characterized by tubular gland morphology, hyperchromatic, elongate nuclei and depletion of goblet cells. No high-grade dysplasia or carcinoma is seen. \n",
         // SSA, 1 site
-        mxLine322: "Sections from the 'colon' show a mucosal lesion with deep crypt serration, horizontal, inverted T- and L-shaped crypts with lateral spread of the crypts.  There is no dysplasia, undue acute inflammatory infiltrates. \n",
+        mxLine322: "Sections from the 'colon' show a mucosal lesion with deep crypt serration, some inverted T- and L-shaped crypts and focal lateral crypt budding. There is no dysplasia, undue acute inflammatory infiltrates. \n",
         // SSA, many sites
-        mxLine323: "Sections from the ' ' and ' ' biopsies show similar findings and are described together. They show a mucosal lesion with deep crypt serration, horizontal, inverted T- and L-shaped crypts with lateral spread of the crypts.  There is no dysplasia, undue acute inflammatory infiltrates. \n",
+        mxLine323: "Sections from the ' ' and ' ' biopsies show similar findings and are described together. They show a mucosal lesion with deep crypt serration, some inverted T- and L-shaped crypts and focal lateral crypt budding. There is no dysplasia, undue acute inflammatory infiltrates. \n",
         // SSA W DYSPLASIA, 1 site
-        mxLine324: "Sections from the 'colon' show a mucosal lesion with deep crypt serration, horizontal, inverted T- and L-shaped crypts with lateral spread of the crypts.  There is an area of adenomatous epithelium adenomatous changes characterized by tubular gland morphology, hyperchromatic, elongate nuclei. The dysplasia is low grade; There is no evidence of high-grade dysplasia or malignancy. \n",
+        mxLine324: "Sections from the 'colon' show a mucosal lesion with deep crypt serration, some inverted T- and L-shaped crypts and focal lateral crypt budding. There is an area of adenomatous epithelium adenomatous changes characterized by tubular gland morphology, hyperchromatic, elongate nuclei. The dysplasia is low grade; There is no evidence of high-grade dysplasia or malignancy. \n",
         // SSA W DYSPLASIA, many sites
         mxLine325: "Sections from the ' ' and ' ' biopsies show similar findings and are described together. They show a mucosal lesion with deep crypt serration, horizontal, inverted T- and L-shaped crypts with lateral spread of the crypts.  There is an area of adenomatous epithelium adenomatous changes characterized by tubular gland morphology, hyperchromatic, elongate nuclei. The dysplasia is low grade. There is no evidence of high-grade dysplasia or malignancy. \n",
         // Hyperplastic polyp, 1 site
@@ -380,7 +380,7 @@ $(window).on('load', function(){
 // TYPICAL EE PATTERN
         comLine105: 'The pattern of esophageal eosinophils is consistent with eosinophilic esophagitis. \n',
 // IBD, NONSPECIFIC
-        comLine106: 'The findings raise a differential diagnosis of inflammatory bowel disorder or, if the symptoms are acute in nature, a self-limited colitis. Correlation with clinical findings and other laboratory data is recommended. \n',
+        comLine106: 'The findings are suggestive of an inflammatory bowel disorder. If the symptoms are acute in nature, a self-limited colitis cannot be entirely excluded. Correlation with clinical findings and other laboratory data is recommended. \n',
 // IBD, SUGGESTING CROHN
         comLine107: 'The pattern of acute inflammation is suggestive of Crohn disease. Ulcerative colitis with non-specific upper gastrointestinal inflammation or rare infections may also show a similar pattern. \n',
 // IBD W GRANULOMAS
@@ -394,7 +394,7 @@ $(window).on('load', function(){
 // JPS COMMENT
         comLine112: 'Currently accepted criteria recommend documentation of 5 colorectal juvenile polyps to consider a diagnosis of juvenile polyposis syndrome. If other gastrointestinal polyps were seen during endoscopy, or if other clinical history is suggestive, consideration for genetic testing of mutations in the BMPR1A and SMAD4 genes may be helpful. BMPR1A and SMAD4 mutations are known to cause juvenile polyposis syndrome and can be tested on peripheral blood. \n',
 // SSA COMMENT
-        comLine113: 'Sessile serrated adenomas is a lesion that should be entirely removed endoscopically, if possible.  Consensus guidelines recommend that if the lesion cannot be entirely removed, then watchful waiting with repeated colonoscopy at a shortened interval is warranted.  This ensures there is no re-growth of the lesion since there may difficulty in identifying the margins of the lesion.  Future surveillance should be individualized. \n',
+        comLine113: 'Sessile serrated lesion (previously known as sessile serrated adenoma) should be entirely removed endoscopically, if possible.  Consensus guidelines recommend that if the lesion cannot be entirely removed, then watchful waiting with repeated colonoscopy at a shortened interval is warranted.  This ensures there is no re-growth of the lesion since there may difficulty in identifying the margins of the lesion.  Future surveillance should be individualized. \n',
 
 // IBD IN INFANTS COMMENT
         comLine114: 'The findings, on a histologic basis alone, raise a differential diagnosis of inflammatory bowel disorder or a self-limited colitis. In very young patients, other less common entities can show an "IBD-like" histologic picture, including: congenital immune deficiencies, autoimmune enteropathy, Bechet\'s disease, chronic granulomatous disease or severe allergic enterocolitis [see reference].  Correlation with clinical findings and other laboratory data is recommended. \n\nReference:\n1. Kappelman MD, Grand RJ. Does inflammatory bowel disease develop in infants? Inflamm Bowel Dis. 2008;14.',
