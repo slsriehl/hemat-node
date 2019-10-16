@@ -975,7 +975,6 @@ function make_data(datatable) {
 //                   Calculate age and adjust                  //
 // *************************************************************/
 $("#age").on("focus", function () {
-    alert("calculating age on focus");
     var bdt     = new Date($("#date-birth").val() + " " + $("#date-btime").val());
     var ddt     = new Date($("#date-death").val() + " " + $("#date-dtime").val());
     // ageDiff in time in milliseconds
