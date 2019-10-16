@@ -139,7 +139,7 @@ $(document).ready(function() {
 
 // instantiate date picker
     $('.my-date-picker').datetimepicker({
-			format: 'MM-DD-YYYY',
+			format: 'MM/DD/YYYY',
 			icons: datePickerIcons,
 			collapse: false,
 			allowInputToggle: true,

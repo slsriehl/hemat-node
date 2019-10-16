@@ -975,11 +975,12 @@ function make_data(datatable) {
 //                   Calculate age and adjust                  //
 // *************************************************************/
 $("#age").on("focus", function () {
+    alert("calculating age on focus");
     var bdt     = new Date($("#date-birth").val() + " " + $("#date-btime").val());
     var ddt     = new Date($("#date-death").val() + " " + $("#date-dtime").val());
     // ageDiff in time in milliseconds
     var ageDiff = Math.abs(bdt.getTime() - ddt.getTime());
-    console.log(bdt, ddt, ageDiff);
+    console.log("begin date, death date, age diff: ", bdt, ddt, ageDiff);
 
     var abs_diff = ageDiff;
     // total ms in year
