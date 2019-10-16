@@ -529,7 +529,7 @@ $(window).on('load', function(){
                 console.log('new to sto array, added');
             }
             var last_eso = esoArr[esoArr.length - 1]; // most recent esophagus entry
-            for (var i=200; i<217; i++){
+            for (var i=200; i<219; i++){
                 mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/the .* biopsy/, "the '"+last_eso+"' biopsy");
             }
 
@@ -569,7 +569,7 @@ $(window).on('load', function(){
             }
             // update syntax for single biopsy
             var last_eso = esoArr[esoArr.length - 1];
-            for (var i=200; i<217; i++){
+            for (var i=200; i<219; i++){
                 mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/the .* biopsy/, "the '"+last_eso+"' biopsy");
             }
         }
@@ -611,7 +611,7 @@ $(window).on('load', function(){
                                 eso_sent = "'" + esoSel.join("' and '")+ "'";
                             }
 
-                            for (var i=200; i<217; i++){
+                            for (var i=200; i<219; i++){
                                 mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/'.*' esophageal/, eso_sent); // replace site for multi site micros
                             }
                             console.log('formatted multi eso text:' + eso_sent);
@@ -643,7 +643,7 @@ $(window).on('load', function(){
             } else {
                 eso_sent = "'" + esoArr.join("' and '")+ "'";
             }
-            for (var i=200; i<217; i++){
+            for (var i=200; i<219; i++){
                 mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/'(.*?)' esophageal/, eso_sent); // replace site for multi site micros
             }
         } // end brace for no shift click
@@ -682,11 +682,11 @@ $(window).on('load', function(){
                 eoshpf.push(prompt_var); // push prompted eos # to array
                 console.log("EOS per HPF array:",eoshpf);
 
-                for (var i=200; i<217; i++){
+                for (var i=200; i<219; i++){
                     mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/(?:to ).*(?: in )/, "to "+arrayToSentence(eoshpf)+" in "); // replace site for multi site micros
                 }
 
-                for (var i=201; i<211; i++){
+                for (var i=201; i<214; i++){
                     dxLines['dxLine'+i] = dxLines['dxLine'+i]
                                             .replace(/(?:eosinophils)(.*)\n?/, "eosinophils (up to "+prompt_var+" eosinophils per high powered field) \n")
                                             .replace(/(?:Eosinophilic esophagitis)(.*)\n?/, "Eosinophilic esophagitis (up to "+prompt_var+" eosinophils per high powered field) \n"); // replace site for multi site micros

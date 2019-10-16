@@ -78,6 +78,7 @@ $(window).on('load', function(){
         dxLine109: '- Chronic and active duodenitis with gastric foveolar metaplasia \n',
         dxLine110: '- Focally increased intraepithelial lymphocytes within villous tips (see comment) \n',
         dxLine111: '- Mild villous shortening without increased intraepithelial lymphocytes (see comment) \n',
+        dxLine112: '- Superficial sampling with no significant abnormalities \n',
 
 //stomach diagnoses 150
         dxLine150: '- No significant abnormalities \n- No Helicobacter-like organisms seen\n',
@@ -113,6 +114,7 @@ $(window).on('load', function(){
         dxLine210: '- Mild reactive esophagitis with few eosinophils\n',
         dxLine211: '- Squamous mucosa with no significant abnormalities  \n- Gastric cardia with intestinal metaplasia; no dysplasia or carcinoma seen\n',
         dxLine212: '- Acute erosive esophagitis (see comment) \n',
+        dxLine213: '- Superficial squamous mucosa with no significant abnormalities \n',
 
 //terminal ileum diagnoses 250
         dxLine251: '- Focal acute inflammation\n',
@@ -123,6 +125,7 @@ $(window).on('load', function(){
         dxLine256: '- Non-specific increase in lamina propria cellularity\n',
         dxLine257: '- Increased lamina propria eosinophils\n',
         dxLine258: '- Granulomatous inflammation\n',
+        dxLine259: '- Superficial sampling with no significant abnormalities\n',
 
 //colon diagnoses 300
         dxLine300: '- Focal acute inflammation\n',
@@ -188,6 +191,8 @@ $(window).on('load', function(){
         mxLine111: "Sections from the 'duodenum' show fragments of small bowel tissue with normal villous architecture. There is no undue crypt hyperplasia. The lamina propria is not excessively cellular. Some of the villous tips show increased intraepithelial lymphocytes, which are enumerated at 12-15 per involved tip (normal < 10). A diffuse increase in intraepithelial lymphocytes is not seen.  \n ",
         // VILLOUS BLUNTING, NO INCREASE IN IELS
         mxLine112: "Sections from the 'duodenum' show fragments of small bowel tissue with mild villous shortening and slight lengthening of the crypts. The lamina propria shows a mild increase in lamina propria cellularity, comprised of lymphocytes and plasma cells. No increase in intraepithelial lymphocytes is evident. \n ",
+        // SUPERFICIAL BIOPSY WITH NSA
+        mxLine113: "Sections from the 'duodenum' show superficial fragments of small bowel tissue consisting mostly of normal villi. The lamina propria is not well visualized. No increase in intraepithelial lymphocytes is seen among the villi. \n",
 
         // STOMACH MICROS 150
         // NORMAL STOMACH
@@ -266,6 +271,10 @@ $(window).on('load', function(){
         mxLine215: "Sections from the 'esophagus' biopsy show fragments of unremarkable squamous mucosa without intraepithelial inflammatory infiltrates. There is sampling of the gastroesophageal junction with gastric cardia-type mucosa bearing a mild increase in lamina propria cellularity comprised of lymphocytes and plasma cells. There is intestinal metaplasia without dysplasia or carcinoma.  \n",
         // ACUTE EROSIVE ESOPHAGITIS
         mxLine216: "Sections from the 'esophagus' biopsy show fragments of markedly reactive squamous mucosa with confluent surface erosion and squamous epithelial degeneration. There is a brisk surface neutrophilic infiltrate and sparse eosinophils. A PAS-f stain shows no fungal organisms.  \n",
+        // NORMAL ESOPHAGUS, SINGLE - SUPERFICIAL
+        mxLine217: "Sections from the 'esophagus' biopsy show limited superficial sampling of unremarkable squamous mucosa. No intraepithelial inflammatory infiltrates are seen, though the mucosal base is not well visualized. \n",
+        // NORMAL EOSPHAGUS, ALL SITES - SUPERFICIAL
+        mxLine218: "Sections from the '###' esophageal biopsies show similar findings. They show limited superficial sampling of unremarkable squamous mucosa. No intraepithelial inflammatory infiltrates are seen, though the mucosal base is not well visualized. \n",
 
 
         // TERMINAL ILEUM 250
@@ -287,6 +296,8 @@ $(window).on('load', function(){
         mxLine257: "Sections from the 'terminal ileum' biopsy show fragments of reactive small bowel tissue with disorganized villi and increased lamina propria cellularity comprised of plasma cells, lymphocytes and neutrophils. There is patchy cryptitis with rare crypt abscesses. There are focal [is a single granuloma] non-necrotizing granulomas in the submucosa. \n",
         // GRANULOMATOUS INFLAMMATION
         mxLine258: "Sections from the 'terminal ileum' show fragments of small bowel tissue with a normal villous architecture. The lamina propria shows scattered lymphoid aggregates, but no neutrophilic infiltrates. Few lamina propria non-necrotizing granulomata are present. \n",
+        // NORMAL TI - SUPERFICIAL
+        mxLine259: "Sections from the 'terminal ileum' show superficial fragments of small bowel comprised of unremarkable villous mucosa. While the lamina propria is not well visualized, no neutrophilic infiltrates are seen. \n",
 
         // COLON MICROS 300
         // COLON NSA, 1 SITE
