@@ -158,11 +158,11 @@ $(window).on('load', function(){
 
     mxLines = {
         // NO GRANULOMAS GENERICCOMMENT
-        mxLine1: "\nNo granulomas are seen in any of the biopsies. \n",
+        mxLine1: "No granulomas are seen in any of the biopsies. \n",
         // NO GRANULOMAS, CYTOPATHIC CHANGES OR VIRAL INCLUSIONS
-        mxLine2: "\nNo granulomas, viral cytopathic changes or inclusions are seen in any of the biopsies. \n",
-        // NO GRANULOMAS, CYTOPATHIC CHANGES OR VIRAL INCLUSIONS
-        mxLine3: "\nThere is no evidence of acute cellular rejection in the transplanted bowel, or graft vs. host disease in the native bowel. \n",
+        mxLine2: "No granulomas, viral cytopathic changes or inclusions are seen in any of the biopsies. \n",
+        // NO ACUTE CELLULAR REJECTION
+        mxLine3: "There is no evidence of acute cellular rejection in the transplanted bowel, or graft vs. host disease in the native bowel. \n",
 
         // DUODENUM MICROS 100 * note that strings are bounded by quotes, not apostrophes in this section
         // Normal duo
