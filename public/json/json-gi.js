@@ -99,6 +99,8 @@ $(window).on('load', function(){
         dxLine165: '- Chronic gastritis with increased eosinophils\n- No Helicobacter-like organisms seen\n ',
         dxLine166: '- Chronic and active gastritis with atrophic changes\n- No Helicobacter-like organisms seen\n ',
         dxLine167: '- Increased lamina propria eosinophils and prominent subepithelial collagen (see comment) \n- No Helicobacter-like organisms seen\n',
+        dxLine168: '- Chronic gastritis with iron-salt deposits (see comment) \n- No Helicobacter-like organisms seen\n',
+        dxLine169: '- Interstitial fibrosis and focal surface erosion (see comment) \n- No Helicobacter-like organisms seen\n',
 
 //esophagus diagnoses 200
         dxLine200: '- No significant abnormalities \n',
@@ -235,6 +237,8 @@ $(window).on('load', function(){
         mxLine168: "Sections from the 'stomach' biopsy show fragments of unremarkable gastric mucosa and separate fragments of inflamed mucosa. The latter is characterized by reactive gastric epithelium. The lamina propria shows increased cellularity with a prominent eosinophilic and plasma cell infiltrate. Eosinophils extend into the crypt epithelium and along the base of the crypts. No neutrophilic infiltrates are seen. There is prominent background interstitial fibroplasia and thick subepithelial mature collagen. This is highlighted with a trichrome stain. No Helicobacter-like organisms are seen.   \n",
         // IRON SALT GASTRITIS
         mxLine169: "Sections from the 'stomach' biopsy show fragments of edematous gastric antral mucosa with increased lamina propria cellularity, comprised of lymphocytes and neutrophils. There is foveolar hyperplasia with surface foveolar mucin depletion and surface erosion. Iron-salt deposits are present along the areas of erosion. No Helicobacter-like organisms are seen.  \n",
+        // INTERSTITIAL FIBROSIS + FOCAL EROSION
+        mxLine170: "Sections from the 'stomach' show fragments of mildly reactive gastric mucosa. The lamina propria shows mild interstitial fibroplasia and congested vasculature with extravasated red blood cells. There is focal surface erosion. No neutrophilic infiltrates are seen. No Helicobacter-like organisms are seen.  \n",
 
         //ESOPHAGUS MICROS 200
         // NORMAL ESOPHAGUS, SINGLE
@@ -448,6 +452,9 @@ $(window).on('load', function(){
 
 // IRON SALT GASTRITIS
         comLine127: 'Excess iron-salt precipitates in the stomach may be seen with certain formulations of iron replacement therapy, or if dosing is too high. Consideration for an alternative formulation is recommended. ',
+
+// FOCAL EROSION CHANGES
+        comLine128: 'The gastric ____ changes are non-specific, but may represent sampling adjacent to an ulcer or resolving mucosal injury. ',
 
         comLine999: ' '
     };
