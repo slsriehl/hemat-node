@@ -335,7 +335,7 @@ $(window).on('load', function(){
                 console.log('new to sto array, added');
             }
             var last_sto = stoArr[stoArr.length - 1];
-            for (var i=150; i<170; i++){
+            for (var i=150; i<171; i++){
                 mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/'(.*)'/, "'"+last_sto+"'");
             }
 
@@ -383,7 +383,7 @@ $(window).on('load', function(){
             console.log('stoArr: '+stoArr+stoArr.length);
 
             // !!!! adjust the variable iteration #s below  and adjust the replace syntax
-            for (var i=150; i<170; i++){
+            for (var i=150; i<171; i++){
                 mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/the (.*?) show/, 'the \''+last_sto+'\' show');
             }
 
@@ -437,7 +437,7 @@ $(window).on('load', function(){
                             }
 
                             // !!! Replace start and end iteration #s for the json text replacement
-                            for (var i=150; i<170; i++) {
+                            for (var i=150; i<171; i++) {
                                 mxLines['mxLine' + i] = mxLines['mxLine' + i].replace(/'.*'/, sto_sent + ' gastric biopsies each'); // replace site for multi site micros
                             }
                             console.log('formatted multi array text:' + sto_sent);
