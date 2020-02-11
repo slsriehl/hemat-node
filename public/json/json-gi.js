@@ -451,7 +451,7 @@ $(window).on('load', function(){
         comLine126: 'Erosive esophagitis, in the absence of demonstrable fungal infection, can be seen with severe acid reflux, chronic injury in the setting of a hiatal hernia or secondary to trauma from a foreign body. Clinical correlation is recommended. ',
 
 // IRON SALT GASTRITIS
-        comLine127: 'Excess iron-salt precipitates in the stomach may be seen with certain formulations of iron replacement therapy, or if dosing is too high. Consideration for an alternative formulation is recommended. ',
+        comLine127: 'Excess iron-salt precipitates in the stomach may be seen with certain formulations of iron replacement therapy, or with suboptimal absorption of iron containing supplements. Consideration for an alternative formulation is recommended. ',
 
 // FOCAL EROSION CHANGES
         comLine128: 'The gastric ____ changes are non-specific, but may represent sampling adjacent to an ulcer or resolving mucosal injury. ',
