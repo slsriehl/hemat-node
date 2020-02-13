@@ -662,7 +662,7 @@ $("#CBCswitch").change(function() {
 		var myel3 = $('#myeloma_3').val();
 		var myel4 = $('#myeloma_4').val();
 
-		myel_text = '\nEXTENT OF PLASMA CELL INFILTRATE IN BONE MARROW:\n- Plasma cells on aspirate smear/touch preparation: '+myel1.replace(/%/,'') +'%\n- Plasma cells on core biopsy or clot: '+ myel2.replace(/%/,'')+'%\n\nIMMUNOGLOBULIN LIGHT CHAIN TYPE:\n- '+myel3+' \n\nIMMUNOGLOBULIN DEPOSITS:\n- '+myel4+'\n ';
+		myel_text = '\nEXTENT OF PLASMA CELL INFILTRATE IN BONE MARROW:\n- Plasma cells on aspirate smear/touch preparation: '+myel1.replace(/%/,'') +'%\n- Plasma cells on core biopsy or clot: '+ myel2.replace(/%/,'')+'%\n\nIMMUNOGLOBULIN LIGHT CHAIN TYPE:\n- '+myel3+' \n\nAMYLOID/IMMUNOGLOBULIN DEPOSITS:\n- '+myel4+'\n ';
 
 
 		// store your text to localStorage when someone click the link
