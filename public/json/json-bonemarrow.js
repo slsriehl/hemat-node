@@ -414,7 +414,7 @@ mxLine124: 'There are occasional nucleated red blood cells. ',
         mxLine324: 'Too few erythroid precursors are present to assess for ring sideroblasts. ',
 //*** EXTRA ASPIRATE DESCRIPTORS */
 // MILD PROPORTIONALLY REDUCTED HEMATOPOIESIS
-        mxLine340: 'There is a proportional reduction in maturing myeloid and erythroid precursors, both of which show full-spectrum maturation. '
+        mxLine340: 'There is a proportional reduction in maturing myeloid and erythroid precursors, both of which show full-spectrum maturation. ',
 
 // ***************************
 // ***** BIOPSY MICROS *****
