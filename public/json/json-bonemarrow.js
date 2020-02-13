@@ -295,8 +295,8 @@ mxLine124: 'There are occasional nucleated red blood cells. ',
 // ***** ASPIRATE MICROS *****
 // NORMAL ASPIRATE
         mxLine249: 'Myeloid precursors appear adequate in number with full-spectrum maturation. Erythroid precursors appear adequate in number with full-spectrum maturation. Megakaryocytes are adequate in number and are normal in morphology. No dysplastic changes or increased numbers of blast cells is identified. No lymphoid infiltrates are identified. The direct smears and touch preparation slides show a similar cellular composition. ',
-// NORMAL MATURATION
-        mxLine250:'Myeloid precursors appear adequate in number with full spectrum maturation. Erythroid precursors appear adequate in number with full spectrum maturation. No dysplastic changes or increased numbers of blast cells is identified. ',
+// NORMAL M&E MATURATION
+        mxLine250:'Myeloid precursors appear adequate in number with full spectrum maturation. Erythroid precursors appear adequate in number with full spectrum maturation. ',
 // MINIMAL PRECURSORS
         mxLine251:'There is a marked proportional reduction in maturing myeloid and erythroid precursors. ',
 // NORMAL MYELOIDS
@@ -358,9 +358,9 @@ mxLine124: 'There are occasional nucleated red blood cells. ',
 // MILD INCREASE IN PLASMA CELLS
         mxLine293: 'Plasma cells are somewhat prominent, and are mostly small in size. ',
 // REACTIVE PLASMACYTOSIS
-        mxLine294: 'There are increased numbers of mostly small plasma cells; a few reactive binucleate forms are seen. ',
+        mxLine294: 'There are increased numbers of mostly small plasma cells without cytologic atypia. ',
 // CLONAL PLASMA CELLS
-        mxLine295: 'Plasma cells are increased in number, including some in clusters. ',
+        mxLine295: 'Plasma cells are conspicuously increased in number, including some in clusters. These include abnormally enlarged forms with occasional binucleation. ',
 // INCREASED LYMPHS
         mxLine296: 'Lymphocytes are somewhat prominent and are mostly small in size with round, mature nuclei. ',
 // ATYPICAL SMALL LYMPHOCYTOSIS
@@ -412,6 +412,10 @@ mxLine124: 'There are occasional nucleated red blood cells. ',
         mxLine323: 'Increased numbers of ring sideroblasts are seen, accounting for >15% of erythroid precursors. ',
 // CANNOT ASSESS FOR RINGS
         mxLine324: 'Too few erythroid precursors are present to assess for ring sideroblasts. ',
+//*** EXTRA ASPIRATE DESCRIPTORS */
+// MILD PROPORTIONALLY REDUCTED HEMATOPOIESIS
+        mxLine340: 'There is a proportional reduction in maturing myeloid and erythroid precursors, both of which show full-spectrum maturation. '
+
 // ***************************
 // ***** BIOPSY MICROS *****
 // BX NORMAL M&E MATURATION
