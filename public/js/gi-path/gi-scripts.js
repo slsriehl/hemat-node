@@ -902,7 +902,9 @@ $(window).on('load', function(){
             }
             console.log(mxLines[que]);
             $("#"+que).prop("disabled", false); // undisable checkbox
-            $("#"+que).trigger('click'); // resume click event
+            setTimeout(function() {
+                $("#"+que).trigger('click'); // resume click event
+            }, 50);// complete the check
         }
     });
 //########################################################################################//
