@@ -1,5 +1,5 @@
 $(window).on('load', function(){
-// pinar et al.
+// Static singleton placenta reference: pinar et al.
     pinar_single = {
         wk21: {_90th: '172', _75th: '158', _50th: '143', _25th: '128', _10th: '114'},
         wk22: {_90th: '191', _75th: '175', _50th: '157', _25th: '138', _10th: '122'},
@@ -24,7 +24,7 @@ $(window).on('load', function(){
         wk41: {_90th: '651', _75th: '605', _50th: '553', _25th: '502', _10th: '456'}
     };
 
-// boyd et al
+// Static singleton placenta reference: boyd et al
     boyd_single = {
         wk22: {_90th: '285', _75th: '206', _50th: '166', _25th: '130', _10th: '107'},
         wk23: {_90th: '262', _75th: '208', _50th: '188', _25th: '168', _10th: '127'},
@@ -49,7 +49,7 @@ $(window).on('load', function(){
         wk42: {_90th: '658', _75th: '592', _50th: '525', _25th: '460', _10th: '412'}
     };
 
-// pinar et al twins
+// Static twin placenta reference: pinar et al twins
     pinar_twin = {
         wk19: {_90th: '263', _75th: '239', _50th: '212', _25th: '185', _10th: '161'},
         wk20: {_90th: '270', _75th: '245', _50th: '218', _25th: '190', _10th: '166'},
@@ -76,11 +76,12 @@ $(window).on('load', function(){
         wk41: {_90th: '1123', _75th: '1009', _50th: '882', _25th: '756', _10th: '642'}
     };
 
-// pinar 2002 triplets
+// Static triplet placenta reference: pinar 2002 triplets
     pinar_triple = {
 
     };
 
+    // Placenta report headers
     partJson = {
         partType500: "PLACENTA, DELIVERY AT 00 WEEKS:\n- WEIGHT: 00 grams (between 00 and 00 %ile)\n",
         partType501: "PLACENTA, TWIN DELIVERY AT 00 WEEKS:\n- WEIGHT: 00 grams (between 00 and 00 %ile)\n",

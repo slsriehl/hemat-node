@@ -15,40 +15,11 @@
     <div class="row">
         <!-- top card-->
         <div class="col col-md-12">
-            <div class="card">
+            <div class="card h-100">
                 <div class="card-header">
-                    <div class="display-3">Placenta Reference Table Viewer</div>
+                    <div class="display-3">Placenta Reference Data Spreadsheet</div>
                 </div>
-                <div class="card-block">
-                    <div id="wdr-component" style="height: 800px"></div>
-                    <script>
-                        window.onload = (function(){
-                            var plac_data;
-                                fetch('https://hematogones.com/surg-path/placenta-data')
-                                    .then(
-                                        function(u){ return u.json();}
-                                    ).then(
-                                        function(json){
-                                            plac_data = json;
-                                        }
-                                    )
-                                    .then(() => console.log(plac_data))
-
-                                var pivot = new WebDataRocks({
-                                    container: "#wdr-component",
-                                    toolbar: true,
-                                    report: {
-                                        dataSource: {
-                                            data: plac_data
-                                        }
-                                    }
-                                });
-
-                        });
-
-
-                    </script>
-                </div>
+                <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTkheDHEFHzRUsDp9HCiy1-2UohrvX6rTqKk0Q9HLHubMfbQsydgerJgNiEk1LXeOT8RVp3sI1RUtZG/pubhtml?gid=1689910235&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
             </div>
         </div>
     </div>
@@ -58,5 +29,4 @@
 </div>
 <!-- end bottom row-->
 </div>
-<!--end container wrapper-->
-<link href="/js/placdata/webdatarocks/webdatarocks.min.css" rel="stylesheet"/>
+

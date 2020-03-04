@@ -52,9 +52,8 @@ router.get('/surg-path/placenta', (req, res) => {
 
 router.get('/surg-path/plac-view', (req, res) => {
     return render(req, res, './page-views/surg-path/plac-view.hbs', [
-        "/js/placdata/webdatarocks/webdatarocks.toolbar.min.js",
-        "/js/placdata/webdatarocks/webdatarocks.js"
-    ]);
+        "/js/surg-path/plac-view.js"
+	]);
 });
 
 router.get('/surg-path/snippets', userWall, (req, res) => {

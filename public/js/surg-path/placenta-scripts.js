@@ -6,7 +6,8 @@ $(window).on('load', function(){
 
     $('.dialog-extent').dialog({autoOpen:false});
 
-
+//***************************************************************************************//
+// SCRIPTS PERTAINING TO THE PLACENTA REFERENCE AND SENDING DATA TO DB
 // Plaenta GA validation - Prevent entering beyond GA max or min
     $("#plac_age").on("input", function(e){
         if ($(this).val().length > 1){
@@ -34,60 +35,14 @@ $(window).on('load', function(){
                     var max = 2000; // get max input
                     if (num >= max){ // prevent any inputs
                         console.log("placenta weight error");
-                        alert('Weight greater than 2000g are not allowed, please check your entry');
+                        alert('Are you sure this placenta weighs more than 2000g? The database does not support that kind of weight. Please check your entry and try again');
                         e.preventDefault();
                         $(this).val('');
                     }
             }
     });
 
-// Adjust headers for twin placentas
-    $('#plac_dx').on("change", function(){
-        var sel = $(this).val();
-        if (sel == "partType501"){
-            $(".umbilical_0").hide();
-            $('.twin_dialog').dialog("open").dialog({
-                modal: 'true',
-                buttons: {
-                    "OK": function () {
-                        var twintype = $('#twintype').val();
-                        var twinAvessel = $('.umbilical_1').val();
-                        twinAvessel = twinAvessel.charAt(0).toUpperCase() + twinAvessel.slice(1);
-                        var twinBvessel = $('#umbilical_4').val();
-                        var partlength = 499 + Object.keys(partTypes).length;
-                        var dxlength = 570;
-                        var mxlength = 570;
-                        var twindx = twintype.toLowerCase();
-                        for (var i = 500; i < dxlength; i++) {
-                            if (dxLines.hasOwnProperty("dxLine" + i)) {
-                                dxLines["dxLine" + i] = dxLines["dxLine" + i]
-                                                        .replace(/MEMBRANES: /, 'MEMBRANES (' + twintype + '): ')
-                                                        .replace(/CORD:/, 'CORDS (x2): Twin A: ')
-                                                        .replace(/Three/, twinAvessel)
-                                                        .replace(/cord/, "and Twin B: "+twinBvessel+" vessel cords");
-                            }
-                        }
-                        for (var j = 500; j < 512; j++) {
-                            if (mxLines.hasOwnProperty("mxLine" + j)) {
-                                console.log("this fired");
-                                console.log("mxLine:\n"+mxLines.mxLine500);
-                                mxLines["mxLine" + j] = mxLines["mxLine" + j].replace(/Sections of the umbilical cord confirm .* vessels/, 'Sections from the ' + twindx + ' twin placentas show similar findings and are described together. The umbilical cords (Twin A: '+twinAvessel.toLowerCase() + ' vessel and Twin B: '+twinBvessel.toLowerCase()+' vessel) are');
-                            }
-                        }
-                        $('#partType501').prop('disabled', false);
-                        setTimeout(function () {
-                            $("#partType301").trigger('click')
-                        }, 100);
-                        $(".twin_dialog").dialog("close");
-                    }
-                }
-            });
-        } else {
-            $(".umbilical_0").show();
-        }
-        });
-
-// PLACENTA PERCENTAGE REFERENCE RANGE AND DATA MODIFIERS
+// PLACENTA PERCENTAGE REFERENCE RANGE AND DATA ENTRY
     $('.getref').on('click', function () {
         var partTypes = $.extend(true, {}, partJson); // extended original JSON to this variable, so header replaces are reset on new values entered
 
@@ -102,7 +57,7 @@ $(window).on('load', function(){
             alert("You forgot to enter a placenta weight!");
             return;
         }
-        // GET PLACENTA PERCENTILES
+        // GET PLACENTA PERCENTILES FROM STATIC REFERENCES
         if( plac_type == "partType501" ){ // twin
             console.log("twin reference");
             var wkObj = pinar_twin['wk' + wk];
@@ -180,9 +135,11 @@ $(window).on('load', function(){
             $(".plac-range").val(plac_range);
             $(".ref").text(plac_cite);
 
-            // *********************************************
-            // Send placenta reference data to database
-            // *********************************************
+    // *********************************************
+    // Send placenta reference data to database
+    // *********************************************
+
+        // Need if statement here when user agrees to submit data...
 
             console.log("Form submit called");
             // Set placenta weights data object
@@ -269,7 +226,7 @@ $(window).on('load', function(){
 });
 
 //***************************************************************************************//
-
+// SCRIPTS PERTAINING TO THE REPORTING TOOL
 // # UMBILICAL CORD VESSEL MODIFIERS
     $('.umbilical_0').on('change', function(){
         var sel = $(this).val();
@@ -310,13 +267,13 @@ $(window).on('load', function(){
                             }
                         }
                         if (vesnum == "one") {
-                            for (var j = 500; j < mxlength; j++) {
+                            for (var j = 510; j < 512; j++) {
                                 if (mxLines.hasOwnProperty("mxLine" + j)) {
                                     mxLines['mxLine' + j] = mxLines['mxLine' + j].replace(/confirm .* vessels/, "confirm " + vesnum + " vessel");
                                 }
                             }
                         } else {
-                            for (var j = 500; j < mxlength; j++) {
+                            for (var j = 510; j < 512; j++) {
                                 if (mxLines.hasOwnProperty("mxLine" + j)) {
                                     mxLines['mxLine' + j] = mxLines['mxLine' + j].replace(/confirm .* vessel/, "confirm " + vesnum + " vessels");
                                 }
@@ -328,9 +285,9 @@ $(window).on('load', function(){
                             dxLines['dxLine' + i] = dxLines['dxLine' + i].replace(/\(.* vessel\)/, "(" + vesinf + " vessel)");
                         }
                     }
-                    for (var j = 500; j < mxlength; j++) {
+                    for (var j = 510; j < 512; j++) {
                         if (mxLines.hasOwnProperty("mxLine" + j)) {
-                            mxLines['mxLine' + j] = mxLines['mxLine' + j].replace(/(, \w+? )(?! of)/g, ", " + vesinf+"$");
+                            mxLines['mxLine' + j] = mxLines['mxLine' + j].replace(/(, .*? )(?! of)/g, ", " + vesinf+" ");
                         }
                     }
 
@@ -420,7 +377,51 @@ $(window).on('load', function(){
         };
     });
 
-
+// ADJUST REPORT HEADERS FOR TWIN PLACENTAS
+$('#plac_dx').on("change", function(){
+    var sel = $(this).val();
+    if (sel == "partType501"){
+        $(".umbilical_0").hide();
+        $('.twin_dialog').dialog("open").dialog({
+            modal: 'true',
+            buttons: {
+                "OK": function () {
+                    var twintype = $('#twintype').val();
+                    var twinAvessel = $('.umbilical_1').val();
+                    twinAvessel = twinAvessel.charAt(0).toUpperCase() + twinAvessel.slice(1);
+                    var twinBvessel = $('#umbilical_4').val();
+                    var partlength = 499 + Object.keys(partTypes).length;
+                    var dxlength = 570;
+                    var mxlength = 570;
+                    var twindx = twintype.toLowerCase();
+                    for (var i = 500; i < dxlength; i++) {
+                        if (dxLines.hasOwnProperty("dxLine" + i)) {
+                            dxLines["dxLine" + i] = dxLines["dxLine" + i]
+                                .replace(/MEMBRANES: /, 'MEMBRANES (' + twintype + '): ')
+                                .replace(/CORD:/, 'CORDS (x2): Twin A: ')
+                                .replace(/Three/, twinAvessel)
+                                .replace(/cord/, "and Twin B: "+twinBvessel+" vessel cords");
+                        }
+                    }
+                    for (var j = 500; j < 512; j++) {
+                        if (mxLines.hasOwnProperty("mxLine" + j)) {
+                            console.log("this fired");
+                            console.log("mxLine:\n"+mxLines.mxLine500);
+                            mxLines["mxLine" + j] = mxLines["mxLine" + j].replace(/Sections of the umbilical cord confirm .* vessels/, 'Sections from the ' + twindx + ' twin placentas show similar findings and are described together. The umbilical cords (Twin A: '+twinAvessel.toLowerCase() + ' vessel and Twin B: '+twinBvessel.toLowerCase()+' vessel) are');
+                        }
+                    }
+                    $('#partType501').prop('disabled', false);
+                    setTimeout(function () {
+                        $("#partType301").trigger('click')
+                    }, 100);
+                    $(".twin_dialog").dialog("close");
+                }
+            }
+        });
+    } else {
+        $(".umbilical_0").show();
+    }
+});
 
 // **** ADD MICROS WITH ONE-CLICK UNDO *****//
 //											//
