@@ -77,7 +77,7 @@
                     <option>Urothelial carcinoma with Mϋllerian differentiation</option>
                 </optgroup>
                 <optgroup label="Squamous">
-                    <option>Pure Squamous cell carcinoma</option>
+                    <option>Squamous cell carcinoma</option>
                     <option>Verrucous (Squamous cell) carcinoma</option>
                     <option>Squamous cell carcinoma in situ only</option>
                 </optgroup>
@@ -262,6 +262,38 @@
             </select>
 
 
+
+            <hr class="p-2">
+            <h5>Regional lymph nodes</h5>
+
+            <form class="form-inline">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box16">
+                </label>
+            </form>
+
+            <div class='lnchk' style='display:none;'>
+                <form class="form-inline col-8">
+                    <label class="m-2">Number of lymph nodes examined:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box17" ></label>
+                    <label class="m-2">Number of lymph nodes involved:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 subnode" id="box18" s></label>
+
+
+                    <div class="py-2 w-100"></div>
+                    <div class="posnodes" style="display: none">
+                        + Extranodal Extension
+                        <select id="box19" class='form-control selectpicker form-control-sm col-sm-6 ml-3 opt'>
+                            <option></option>
+                            <option>Not identified</option>
+                            <option>Present</option>
+                            <option>Cannot be determined</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+
+
             <hr class="p-2">
             <h5>Pathologic Staging (pTNM)</h5>
             <!-- Button trigger modal -->
@@ -333,34 +365,6 @@
             <input type="text" class="form-control form-control-sm col-sm-6" id="box15_2" style="display:none;" placeholder="Specify metastatic sites">
 
             <div class="py-2 w-100"></div>
-
-            <form class="form-inline">
-                <label class="form-check-label">Check here if any lymph nodes submitted?
-                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box16">
-                </label>
-            </form>
-
-            <div class='lnchk' style='display:none;'>
-                <form class="form-inline col-8">
-                    <label class="m-2">Number of lymph nodes examined:
-                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box17" ></label>
-                    <label class="m-2">Number of lymph nodes involved:
-                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 subnode" id="box18" s></label>
-
-
-                    <div class="py-2 w-100"></div>
-                    <div class="posnodes" style="display: none">
-                    + Extranodal Extension
-                    <select id="box19" class='form-control selectpicker form-control-sm col-sm-6 ml-3 opt'>
-                        <option></option>
-                        <option>Not identified</option>
-                        <option>Present</option>
-                        <option>Cannot be determined</option>
-                    </select>
-                    </div>
-                </form>
-            </div>
-
 
 
 

@@ -202,16 +202,17 @@ $(window).on('load', function () {
         var box_11 = $("#box11").val();
         captext += "\nLymphovascular Invasion:\n- " + box_11 + "\n";
 
-        var box_12 = $("#box12").val();
-        var box_13 = $("#box13").val();
-        var box_14 = $("#box14").val();
-        captext += '\nPathologic Staging (pTNM):\n- ';
-        if (box_12 != "Not applicable") {
-            captext += box_12.join("") + ' ' + box_13 + " " + box_14 + "\n";
-        } else {
-            captext += box_13 + " " + box_14  + "\n";
-        }
-
+        /*  Removed from 2020 protocol
+            var box_12 = $("#box12").val();
+            var box_13 = $("#box13").val();
+            var box_14 = $("#box14").val();
+            captext += '\nPathologic Staging (pTNM):\n- ';
+            if (box_12 != "Not applicable") {
+                captext += box_12.join("") + ' ' + box_13 + " " + box_14 + "\n";
+            } else {
+                captext += box_13 + " " + box_14  + "\n";
+            }
+        */
         $('#outPut-1').val(captext);
 
         dataObj.singleSection = $('#outPut-1').val();
