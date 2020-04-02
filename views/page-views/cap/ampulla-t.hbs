@@ -18,7 +18,7 @@
             <hr class="p-2" >
             <h5>Procedure</h5>
             <select id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
-                <option>Ampulla segmental resection</option>
+                <option>Ampullectomy</option>
                 <option>Pancreaticoduodenectomy (Whipple)</option>
                 <option>Other </option>
                 <option>Not specified</option>
@@ -59,19 +59,14 @@
                 <option>Adenocarcinoma</option>
                 <option>Adenocarcinoma, pancreaticobiliary type</option>
                 <option>Adenocarcinoma, intestinal type</option>
+                <option>Mucinous adenocarcinoma</option>
+                <option>Signet-ring cell carcinoma</option>
                 <option>Medullary carcinoma</option>
                 <option>Invasive papillary adenocarcinoma</option>
-                <option>Mucinous adenocarcinoma</option>
-                <option>Clear cell adenocarcinoma</option>
-                <option>Signet-ring cell carcinoma</option>
                 <option>Adenosquamous carcinoma</option>
-                <option>Squamous cell carcinoma</option>
-                <option>Hepatoid adenocarcinoma</option>
                 <option>Large cell neuroendocrine carcinoma</option>
                 <option>Small cell neuroendocrine carcinoma</option>
-                <option>Neuroendocrine carcinoma (poorly differentiated)#</option>
                 <option>Undifferentiated carcinoma</option>
-                <option>Undifferentiated carcinoma with osteoclast giant cells</option>
                 <option>Mixed adenoneuroendocrine carcinoma</option>
                 <option>Other histologic type </option>
                 <option>Carcinoma, not otherwise specified</option>
@@ -130,7 +125,7 @@
             <hr class="p-2">
             <h5>Margins</h5>
             <select id="box10" class='form-control selectpicker form-control-sm col-sm-6'>
-                <option>All margins are uninvolved by tumor </option>
+                <option>All margins are uninvolved by invasive carcinoma or high-grade intraepithelial neoplasia </option>
                 <option>One or more margins involved by neoplasia</option>
             </select>
             <div class="negmargins ml-4">
@@ -163,8 +158,8 @@
                     <h6>Deep (Ampullectomy) Margin</h6>
                     <select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
                         <option>Cannot be assessed</option>
-                        <option>Uninvolved by nvasive carcinoma</option>
-                        <option>Involved by nvasive carcinoma</option>
+                        <option>Uninvolved by invasive carcinoma</option>
+                        <option>Involved by invasive carcinoma</option>
                     </select>
                     <input type="text" class="form-control form-control-sm col-sm-6" id='box12_2' style='display:none;' placeholder='Specify distance of invasive carcinoma to this margin (mm)'>
 
@@ -285,7 +280,20 @@
             </select>
 
 
+            <form class="form-inline mt-2">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box29" >
+                </label>
+            </form>
 
+            <div class='lnchk' style='display:none;'>
+                <form class="form-inline mt-2 col-8">
+                    <label class="m-2">Number of lymph nodes examined:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box30" ></label>
+                    <label class="m-2">Number of lymph nodes involved:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 subnode" id="box31" ></label>
+                </form>
+            </div>
 
 
             <hr class="p-2" >
@@ -339,20 +347,6 @@
             <div class="py-2 w-100"></div>
 
 
-            <form class="form-inline mt-2">
-                <label class="form-check-label">Check here if any lymph nodes submitted?
-                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box29" >
-                </label>
-            </form>
-
-            <div class='lnchk' style='display:none;'>
-                <form class="form-inline mt-2 col-8">
-                    <label class="m-2">Number of lymph nodes examined:
-                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box30" ></label>
-                    <label class="m-2">Number of lymph nodes involved:
-                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 subnode" id="box31" ></label>
-                </form>
-            </div>
 
 
             <hr class="p-2" >
