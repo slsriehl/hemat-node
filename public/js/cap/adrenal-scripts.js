@@ -44,14 +44,16 @@ $(window).on('load', function () {
         }
     });
 
-    $('#box8').on("change", function () {
-        var sel = $('#box8').val();
-        if (sel.indexOf("structures") > -1) {
-
-            $('#box8_2').show();
-        } else {
-            $('#box8_2').hide();
-        }
+    $('#box8').on("change", function(){
+        var sela = $('#box8').val();
+        var trig1 = sela.filter(el => el.indexOf('structures') > -1);
+        var trig2 = sela.filter(el => el.indexOf('organs') > -1);
+        if (trig1.length > 0) {
+            $('#box8_2').show();}
+        else {$('#box8_2').hide();}
+        if (trig2.length > 0) {
+            $('#box8_3').show();}
+        else {$('#box8_3').hide();}
     });
 
     $('#box9').on("change", function () {
@@ -77,6 +79,7 @@ $(window).on('load', function () {
             $(".lnchk").hide();
         }
     });
+
 
     $("#box13").on("change", function () {
         var sel = $("#box13").val();
@@ -212,11 +215,16 @@ $(window).on('load', function () {
 
         var box_8 = $("#box8").val();
         var box_8_2 = $("#box8_2").val();
-        if (box_8.indexOf("structures") > -1) {
-            captext += "\nTumor Extension:\n- " + box_8.replace(/structures/, 'structures, including: ' + box_8_2) + "\n";
-        } else {
-            captext += "\nTumor Extension:\n- " + box_8 + "\n";
-        }
+        var box_8_3 = $("#box8_3").val();
+        var trig1_box_8 = box_8.filter(el => el.indexOf("structures") > -1);
+        var trig2_box_8 = box_8.filter(el => el.indexOf("organs") > -1);
+        if ((trig1_box_8.length > 0 ) && (trig2_box_8.length == 0  )) {
+            captext += "\nTumor Extension:\n- "+box_8.join("\n- ").replace(/structures/, "structures: "+box_8_2)+"\n";}
+        else if ((trig1_box_8.length == 0 ) && (trig2_box_8.length > 0  )) {
+            captext += "\nTumor Extension:\n- "+box_8.join("\n- ").replace(/organs/, "organs: "+box_8_3)+"\n";}
+        else if ((trig1_box_8.length > 0 ) && (trig2_box_8.length > 0  )) {
+            captext += "\nTumor Extension:\n- "+box_8.join("\n- ").replace(/structures/, "structures: "+box_8_2).replace(/organs/, "organs: "+box_8_3)+"\n";}
+        else {captext += "\nTumor Extension:\n- "+box_8.join("\n- ")+"\n";}
 
         var box_9 = $("#box9").val();
         var box_9_1 = $("#box9_1").val();
@@ -228,6 +236,29 @@ $(window).on('load', function () {
             captext += "\nMargins:\n- " + box_9 + "\n- Margin involved: " + box_9_3 + "\n";
         } else {
             captext += "\nMargins:\n- " + box_9 + "\n";
+        }
+
+        if ($("#box14").is(':checked')) {
+            var box_15 = $("#box15").val();
+            var box_16 = $("#box16").val();
+            var box_16_2 = $("#box16_2").val();
+            captext += "\nLymph nodes:\n\tLymph Nodes Examined: " + box_15 + "\n\tLymph nodes involved: " + box_16 + "\n";
+            if(box_16_2 != "Not applicable"){
+                captext += "\t+ Extranodal extension: "  + box_16_2+ "\n";}
+
+        } else {
+            captext += "\nLymph nodes: None submitted\n";
+        }
+
+        if ($("#box14").is(":checked")) {
+            var box14_1_1 = $("#box14_1").val();
+            var box14_2_2 = $("#box14_2").val();
+            var box14_3_3 = $("#box14_3").val();
+            captext += "\nLymph nodes:\n\tLymph Nodes Examined: " + box14_1_1 + "\n\tLymph nodes involved: " + box14_2_2 + "\n";
+            if(box14_3_3 != "Not applicable"){
+            captext += "\t+ Extranodal extension: "  + box14_3_3 + "\n"};
+        } else {
+            captext += "\nLymph nodes: None submitted\n";
         }
 
         var box_10 = $("#box10").val();
@@ -249,13 +280,7 @@ $(window).on('load', function () {
                 captext += box_11 + " " + box_12 + " " + box_13 + "\n";
             }
         }
-        if ($("#box14").is(':checked')) {
-            var box_15 = $("#box15").val();
-            var box_16 = $("#box16").val();
-            captext += "\nLymph nodes:\n\tLymph Nodes Examined: " + box_15 + "\n\tLymph nodes involved: " + box_16 + "\n";
-        } else {
-            captext += "\nLymph nodes: None submitted\n";
-        }
+
 
         var box_17 = $("#box17").val();
         var box_17_2 = $("#box17_2").val();
