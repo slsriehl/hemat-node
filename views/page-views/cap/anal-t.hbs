@@ -15,6 +15,9 @@
         <div class="col col-md-8">
 
     <!-- paste markup here-->
+            <hr class="p-2" >
+            <h4>Note: This can be used for EMR and resection cancer synoptics, based on the procedure performed.</h4>
+
         <hr class="p-2" >
         <h5>Procedure</h5>
         <select id="box2" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -29,32 +32,32 @@
 
 
         <div class="emr" style="display: none;">
-        <hr class="p-2" >
-        <h5>Specimen</h5>
-        <select multiple id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
-            <option>Anal canal</option>
-            <option>Anorectal junction</option>
-            <option>Rectum</option>
-            <option>Perianal skin</option>
-            <option>Other</option>
-            <option>Not specified</option>
-        </select>
+            <hr class="p-2" >
+            <h5>Specimen</h5>
+            <select multiple id="box1" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Anal canal</option>
+                <option>Anorectal junction</option>
+                <option>Rectum</option>
+                <option>Perianal skin</option>
+                <option>Other</option>
+                <option>Not specified</option>
+            </select>
 
-        <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;' placeholder='Specify Other'>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;' placeholder='Specify Other'>
+
+
+            <hr class="p-2" >
+            <h5>Specimen Integrity</h5>
+            <select id="box3" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not applicable</option>
+                <option>Intact</option>
+                <option>Fragmented</option>
+                <option>Other</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box3_2' style='display:none;' placeholder='Specify Other'>
+
         </div>
-
-
-        <hr class="p-2" >
-        <h5>Specimen Integrity</h5>
-        <select id="box3" class='form-control selectpicker form-control-sm col-sm-6'>
-            <option>Intact</option>
-            <option>Fragmented</option>
-            <option>Other</option>
-        </select>
-
-        <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box3_2' style='display:none;' placeholder='Specify Other'>
-
-
 
 
 
@@ -86,16 +89,10 @@
         <select id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
             <option>Squamous cell carcinoma</option>
             <option>Verrucous carcinoma</option>
-            <option>Basal cell carcinoma</option>
             <option>Adenocarcinoma</option>
-            <option>Mucinous adenocarcinoma</option>
             <option>Large cell neuroendocrine carcinoma</option>
             <option>Small cell neuroendocrine carcinoma</option>
-            <option>Neuroendocrine carcinoma (poorly differentiated)</option>
-            <option>Mixed adenoneuroendocrine carcinoma</option>
-            <option>Undifferentiated carcinoma</option>
-            <option>Paget disease</option>
-            <option>Carcinoma, type cannot be determined</option>
+            <option>Mixed adenoneuroendocrine non-neuroendocrine neoplasm</option>
             <option>Other histologic type</option>
             <option></option>
         </select>
@@ -132,10 +129,15 @@
             <option>Tumor invades lamina propria</option>
             <option>Tumor invades muscularis mucosae</option>
             <option>Tumor invades submucosa</option>
-            <option>Tumor invades anal sphincter muscle</option>
+            <option>Tumor invades into but not through anal sphincter muscle</option>
+            <option>Tumor invades into but not through muscularis propria of rectum</option>
+            <option>Tumor invades through anal sphincter muscle into perianal or perirectal soft tissue without involvement of adjacent structures</option>
+            <option>Tumor directly invades adjacent structures</option>
             <option>Tumor invades perianal skin</option>
-            <option>Cannot be assessed</option>
         </select>
+
+        <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box8_2' style='display:none;' placeholder='Specify organs ivaded'>
+
 
 
 
@@ -164,7 +166,7 @@
 
                 <div class="py-2 w-100"></div>
 
-                <input type="number" class="form-control form-control-sm mt-3 col-sm-4 opt" id='box11_3'  placeholder='+ Distance to closest margin (mm)'>
+                <input type="number" class="form-control form-control-sm mt-3 col-sm-8 opt" id='box11_3'  placeholder='+ Distance to closest margin (mm)'>
 
             </div>
 
@@ -194,7 +196,7 @@
 
                     <div class="py-2 w-100"></div>
 
-                    <h6>Radial Margin</h6>
+                    <h6>Radial (Circumferential) Margin</h6>
                     <select id="box14" class='form-control selectpicker form-control-sm col-sm-9'>
                         <option>Cannot be assessed</option>
                         <option>Uninvolved by invasive carcinoma</option>
@@ -240,26 +242,15 @@
 
             <select id="box17" class='form-control selectpicker form-control-sm col-sm-12'>
                 <option>Cannot be assessed</option>
-                <option>Uninvolved by invasive carcinoma, intramucosal adenocarcinoma, high-grade dysplasia, and adenoma</option>
-                <option>Uninvolved by invasive carcinoma</option>
-                <option>Involved by invasive carcinoma</option>
+                <option>Uninvolved by invasive carcinoma and high-grade dysplasia</option>
+                <option>Uninvolved by invasive carcinoma, but high-grade dysplasia present a margin</option>
+                <option>Involved by invasive carcinoma, but not by high-grade dysplasia</option>
+                <option>Involved by invasive carcinoma and high-grade dysplasia</option>
             </select>
 
-            <input type="number" class="form-control form-control-sm col-sm-6" id='box17_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
+            <input type="number" class="form-control form-control-sm col-sm-8" id='box17_2' style='display:none;' placeholder='Distance of invasive carcinoma from margin (mm)'>
 
             <div class="py-2 w-100"></div>
-
-            <!-- other mucosal neoplasia-->
-            <div class="ml-3" id='box17_3' style='display:none;'>
-                <h6>Mucosal margin involved by any other type of neoplasia?</h6>
-                    <select multiple id="box18" class='form-control selectpicker form-control-sm col-sm-9'>
-                        <option>Uninvolved by intramucosal adenocarcinoma, high-grade dysplasia or adenoma</option>
-                        <option>intramucosal adenocarcinoma</option>
-                        <option>high-grade dysplasia</option>
-                        <option>adenoma</option>
-                    </select>
-
-            </div>
 
         </div>
 
@@ -308,6 +299,42 @@
         </select>
 
 
+        <hr class="p-2">
+        <h5>Regional Lymph Nodes</h5>
+            <div class='lnchk' style='display:none;'>
+                <form class="form-inline mt-2 col-8">
+                    <label class="m-2">Number of External Iliac lymph nodes examined:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box27"></label>
+                    <div class="py-2 w-100"></div>
+                    <label class="m-2">Number of External Iliac lymph nodes involved:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box28"></label>
+                    <div class="py-2 w-100"></div>
+                    <label class="m-2">Number of Other Regional lymph nodes examined:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box29"></label>
+                    <div class="py-2 w-100"></div>
+                    <label class="m-2">Number of Other Regional lymph nodes involved:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box30"></label>
+                    <div class="posnodes" style="display:none;">
+                        <div class="py-2 w-100"></div>
+                        Specify Other Nodes Examined:
+                        <select multiple id="box31" class='form-control selectpicker form-control-sm col-sm-6'>
+                            <option>inguinal</option>
+                            <option>mesorectal</option>
+                            <option>internal iliac</option>
+                            <option>Other</option>
+                        </select>
+                        <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box31_2' style='display:none;' placeholder='Specify Other sites'>
+                    </div>
+
+                </form>
+            </div>
+            <div class="py-2 w-100"></div>
+
+            <form class="form-inline mt-2">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box26" >
+                </label>
+            </form>
 
 
 
@@ -357,41 +384,7 @@
         </select>
         <input type="text" class="form-control form-control-sm col-sm-6" id="box25_2" style="display:none;" placeholder="Specify metastatic sites">
 
-            <div class="py-2 w-100"></div>
 
-        <form class="form-inline mt-2">
-            <label class="form-check-label">Check here if any lymph nodes submitted?
-                <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box26" >
-            </label>
-        </form>
-
-        <div class='lnchk' style='display:none;'>
-            <form class="form-inline mt-2 col-8">
-                <label class="m-2">Number of External Iliac lymph nodes examined:
-                    <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box27"></label>
-                <div class="py-2 w-100"></div>
-                <label class="m-2">Number of External Iliac lymph nodes involved:
-                    <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box28"></label>
-                <div class="py-2 w-100"></div>
-                <label class="m-2">Number of Other Regional lymph nodes examined:
-                    <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box29"></label>
-                <div class="py-2 w-100"></div>
-                <label class="m-2">Number of Other Regional lymph nodes involved:
-                    <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box30"></label>
-                <div class="posnodes" style="display:none;">
-                    <div class="py-2 w-100"></div>
-                        Specify Other Nodes Examined:
-                        <select multiple id="box31" class='form-control selectpicker form-control-sm col-sm-6'>
-                            <option>inguinal</option>
-                            <option>mesorectal</option>
-                            <option>internal iliac</option>
-                            <option>Other</option>
-                        </select>
-                        <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box31_2' style='display:none;' placeholder='Specify Other sites'>
-                </div>
-
-            </form>
-        </div>
 
 
         <hr class="p-2" >
@@ -408,21 +401,21 @@
 
         <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box32_2' style='display:none;' placeholder='Specify Other'>
 
-
-            <hr class="p-2" >
-            <h5>+ Clinical History (select all that apply)</h5>
-            <select multiple id="box33" class='form-control selectpicker form-control-sm col-sm-6 opt'>
-                <option>Solid organ transplantation</option>
-                <option>HIV/AIDS</option>
-                <option>Human papillomavirus infection</option>
-                <option>Crohn disease</option>
-                <option>Neoadjuvant therapy</option>
-                <option>Other</option>
-                <option>Not known</option>
-            </select>
-            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box33_2' style='display:none;' placeholder='Specify Other'>
-            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box33_3' style='display:none;' placeholder='Specify type of therapy'>
-
+            <!-- Removed from 2020 revision
+                <hr class="p-2" >
+                <h5>+ Clinical History (select all that apply)</h5>
+                <select multiple id="box33" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                    <option>Solid organ transplantation</option>
+                    <option>HIV/AIDS</option>
+                    <option>Human papillomavirus infection</option>
+                    <option>Crohn disease</option>
+                    <option>Neoadjuvant therapy</option>
+                    <option>Other</option>
+                    <option>Not known</option>
+                </select>
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box33_2' style='display:none;' placeholder='Specify Other'>
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box33_3' style='display:none;' placeholder='Specify type of therapy'>
+            -->
 
         <!-- end markup-->
 

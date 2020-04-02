@@ -32,10 +32,12 @@ $(window).on('load', function () {
             $(".emr").hide();
             if (proc == "resection") {
                 // resection
+                $(".resection").show();
                 $(".segmental").show();
                 $(".emr").hide();
             } else {
                 // emr
+                $(".resection").hide();
                 $(".emr").show();
                 $(".segmental").hide();
             }
@@ -100,6 +102,15 @@ $(window).on('load', function () {
         }
     });
 
+    $('#box8').on("change", function(){
+        var sel = $('#box8').val();
+        if (sel.indexOf("directly") > -1) {
+
+            $('#box8_2').show();}
+        else {
+            $('#box8_2').hide();}
+    });
+
     $('#box10').on("change", function () {
         var sel = $('#box10').val();
         if (sel.indexOf('uninvolved') > -1) {
@@ -149,11 +160,7 @@ $(window).on('load', function () {
             ;
             $('#box17_2').hide();
         }
-        if (sela.indexOf("Cannot") < 0 && sela.indexOf("intramucosal") < 0) {
-            $('#box17_3').show();
-        } else {
-            $('#box17_3').hide();
-        }
+
     });
 
     $("#box26").on("change", function () {
@@ -201,6 +208,7 @@ $(window).on('load', function () {
         }
     });
 
+    /*
     $('#box33').on("change", function () {
         var sela = $('#box33').val();
         var trig1 = sela.filter(function (el) {
@@ -220,6 +228,7 @@ $(window).on('load', function () {
             $('#box33_3').hide();
         }
     });
+    */
 
     //************************************************************//
     // Script to populate the template data in the output textarea//
@@ -287,14 +296,6 @@ $(window).on('load', function () {
 
         var captext = "Anal Carcinoma Cancer Synoptic\n(pTNM requirements from the 8th Edition, AJCC Staging Manual)\n\n";
 
-        var box_2 = $("#box2").val();
-        var box_2_2 = $("#box2_2").val();
-        if (box_2.indexOf("Other") > -1) {
-            captext += "\nProcedure:\n- " + box_2_2 + "\n";
-        } else {
-            captext += "\nProcedure:\n- " + box_2 + "\n";
-        }
-
         var box_1 = $("#box1").val();
         var box_1_2 = $("#box1_2").val();
         if (box_1.length > 0) {
@@ -305,12 +306,22 @@ $(window).on('load', function () {
             }
         }
 
+        var box_2 = $("#box2").val();
+        var box_2_2 = $("#box2_2").val();
+        if (box_2.indexOf("Other") > -1) {
+            captext += "\nProcedure:\n- " + box_2_2 + "\n";
+        } else {
+            captext += "\nProcedure:\n- " + box_2 + "\n";
+        }
+
         var box_3 = $("#box3").val();
         var box_3_2 = $("#box3_2").val();
-        if (box_3.indexOf("Other") > -1) {
-            captext += "\nSpecimen Integrity:\n- " + box_3_2 + "\n";
-        } else {
-            captext += "\nSpecimen Integrity:\n- " + box_3 + "\n";
+        if (box_3 != 'Not applicable'){
+            if (box_3.indexOf("Other") > -1) {
+                captext += "\nSpecimen Integrity:\n- " + box_3_2 + "\n";
+            } else {
+                captext += "\nSpecimen Integrity:\n- " + box_3 + "\n";
+            }
         }
 
         var box_4 = $("#box4").val();
@@ -341,7 +352,11 @@ $(window).on('load', function () {
         }
 
         var box_8 = $("#box8").val();
-        captext += "\nTumor Extension:\n- " + box_8 + "\n";
+        var box_8_2 = $("#box8_2").val();
+        if (box_8.indexOf("invades") > -1) {
+            captext += "\nTumor Extension:\n- "  + box_8+": "+box_8_2+ "\n";}
+        else {captext += "\nTumor Extension:\n- "  + box_8+ "\n";}
+
 
         captext += "\nMargins:";
         // resection vars-------------------------//
@@ -394,19 +409,9 @@ $(window).on('load', function () {
 
             var box_17 = $("#box17").val();
             var box_17_2 = $("#box17_2").val();
-            var box_17_3 = $("#box17_3").val();
-            var box_18 = $("#box18").val();
-            var dys = box_18.filter(function (el) {
-                        return el.indexOf('Uninvolved') > -1;
-                    });
             if (box_17.indexOf("Cannot") < 0) {
                 captext += "\nMucosal Margin:\n- " + box_17 + "\n";
                 if (box_17.indexOf("intramucosal") < 0) {
-                    if (dys.length == 0) {
-                        captext += "- Involved by " + box_18.join(' and ') + "\n";
-                    } else {
-                        captext += "- " + box_18 + "\n";
-                    }
                     captext += "- Distance of invasive carcinoma to mucosal margin: " + box_17_2.replace(/mm/, "") + "mm\n";
                 } else {
                     captext += "- Distance of invasive carcinoma to mucosal margin: " + box_17_2.replace(/mm/, "") + "mm\n";
