@@ -93,14 +93,22 @@
 
             <div class="py-2 w-100"></div>
 
-            <h6>+Horizontal extent longitudinal/length (mm)</h6>
-            <input type="text" class="form-control form-control-sm col-sm-6 opt" id="box6" placeholder="if applicable">
+            <h6>Horizontal extent of stromal invasion (mm)</h6>
+            <select id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not applicable</option>
+                <option>Measured at</option>
+                <option>Estimated as less than or equal to 7 mm</option>
+                <option>Estimated as greater than 7 mm</option>
+                <option>Cannot be determined</option>
+            </select>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box6_2' style='display:none;' placeholder='Specify in mm'>
+            <input type="number" class="form-control form-control-sm mt-3 col-sm-6" id='box6_3' style='display:none;' placeholder='Specify # of blocks involved'>
 
             <div class="py-2 w-100"></div>
-
-            <h6>+Horizontal extent circumferential/width</h6>
-            <input type="text" class="form-control form-control-sm col-sm-6 opt" id="box7" placeholder="if applicable">
-
+            <!-- removed in 2020
+                <h6>+Horizontal extent circumferential/width</h6>
+                <input type="text" class="form-control form-control-sm col-sm-6 opt" id="box7" placeholder="if applicable">
+            -->
 
             <hr class="p-2">
             <h5>Margins - Endocervical</h5>

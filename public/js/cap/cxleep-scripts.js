@@ -30,6 +30,16 @@ $(window).on('load', function () {
         }
     });
 
+    $('#box6').on("change", function(){
+        var sel = $('#box6').val();
+        if (sel.indexOf('Measured') > -1){
+            $('#box6_2').show();}
+        else {$('#box6_2').hide();}
+        if (sel.indexOf('Estimated') > -1){
+            $('#box6_3').show();}
+        else {$('#box6_3').hide();}
+    });
+
     $('#box8').on("change", function () {
         var sela = $('#box8').val();
         var neg = sela.filter(function (el) {
@@ -191,14 +201,19 @@ $(window).on('load', function () {
         captext += "\nDepth of stromal invasion (mm): " + box_5.replace(/mm/g, '') + "mm\n";
 
         var box_6 = $("#box6").val();
-        if (box_6.length > 0) {
-            captext += "Horizontal extent longitudinal/length: " + box_6.replace(/mm/g, '') + "mm\n";
-        }
+        var box_6_2 = $("#box6_2").val();
+        var box_6_3 = $("#box6_3").val();
+        if (box_6.indexOf("Measured") > -1) {
+            captext += "\nHorizontal extent of stromal invasion: "+box_6_2+" mm\n";}
+        else if (box_6.indexOf("Estimated") > -1) {
+            captext += "\nHorizontal extent of stromal invasion:\n- "+box_6+" ("+box_6_3+" blocks involved)\n";}
+        else {captext += "\nHorizontal extent of stromal invasion:\n- "+box_6+"\n";}
 
+        /*removed from 2020
         var box_7 = $("#box7").val();
         if (box_7.length > 0) {
             captext += "Horizontal extent circumferential/width: " + box_7.replace(/mm/g, '') + "mm\n";
-        }
+        }*/
 
         captext += "\nMargins:\n";
         var box_8 = $("#box8").val();

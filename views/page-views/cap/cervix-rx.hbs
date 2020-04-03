@@ -65,7 +65,7 @@
                 <option>Squamous cell carcinoma, papillary</option>
                 <option>Squamous cell carcinoma, lymphoepithelioma-like</option>
                 <option>Squamous cell carcinoma, squamotransitional</option>
-                <option>Endocervical adenocarcionoma, usual type</option>
+                <option data-histo="ecad">Endocervical adenocarcinoma, usual type</option>
                 <option>Mucinous carcinoma, NOS</option>
                 <option>Mucinous carcinoma, intestinal type</option>
                 <option>Mucinous carcinoma, signet-ring cell type</option>
@@ -111,14 +111,42 @@
 
             <div class="py-2 w-100"></div>
 
-            <h6>+Horizontal extent longitudinal/length (mm)</h6>
-            <input type="text" class="form-control form-control-sm col-sm-6 opt" id="box6" placeholder="if applicable">
+            <h6>Horizontal extent of stromal invasion (mm)</h6>
+            <select id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Not applicable</option>
+                <option>Measured at</option>
+                <option>Estimated as less than or equal to 7 mm</option>
+                <option>Estimated as greater than 7 mm</option>
+                <option>Cannot be determined</option>
+            </select>
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box6_2' style='display:none;' placeholder='Specify in mm'>
+            <input type="number" class="form-control form-control-sm mt-3 col-sm-6" id='box6_3' style='display:none;' placeholder='Specify # of blocks involved'>
 
             <div class="py-2 w-100"></div>
 
-            <h6>+Horizontal extent circumferential/width (mm)</h6>
-            <input type="text" class="form-control form-control-sm col-sm-6 opt" id="box7" placeholder="if applicable">
+            <div class="silva" style="display:none;">
+                <h6>Pattern of Invasion (applies only to HPV-associated endocervical adenocarcinomas)
+                </h6>
+                <div class="py-2">
+                    <!-- Button trigger modal -->
+                    <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_silva">A word about endocervical adenocarcinoma patterns</button>
 
+                    <!-- Histology help Modal -->
+                    {{> page-modals/cap-helpers/cap-cervix-silva}}
+                </div>
+                <select id="box6_4" class='form-control selectpicker form-control-sm col-sm-6'>
+                    <option>Pattern A</option>
+                    <option>Pattern B</option>
+                    <option>Pattern C</option>
+                </select>
+            </div>
+
+
+                <div class="py-2 w-100"></div>
+            <!-- removed in 2020
+                <h6>+Horizontal extent circumferential/width (mm)</h6>
+                <input type="text" class="form-control form-control-sm col-sm-6 opt" id="box7" placeholder="if applicable">
+            -->
             </div>
 
 
