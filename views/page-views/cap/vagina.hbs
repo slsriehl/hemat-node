@@ -155,6 +155,60 @@
             </select>
 
 
+            <hr class="p-2" >
+            <h5>Regional Lymph Nodes</h5>
+            <form class="form-inline">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box14">
+                </label>
+            </form>
+
+            <div class='lnchk' style='display:none;'>
+                <p>
+                    <small>
+                        Note: For upper two-thirds of the vagina, the following are considered regional lymph nodes:
+                        pelvic, parametrial, obturator, internal iliac (hypogastric), external iliac, common iliac,
+                        sacral, presacral, and para-aortic.
+                        For lower third of the vagina, the following are considered regional lymph nodes: inguinal and
+                        femoral. Any involved nonregional nodes should be categorized as metastases (pM1) and commented
+                        on in the distant metastasis section. Presence of isolated tumor cells no greater than 0.2 mm in
+                        regional lymph node(s) is considered N0 (i+).
+                    </small>
+                </p>
+                <form class="form-inline">
+                    <label class="mb-2">Total Number of Nodes Examined
+                        <input type="number" class="form-control form-control-sm ml-3 maxnode" id="box18"></label>
+                    <label class="mb-2">Number of Nodes with Metastasis (excludes ITCs)
+                        <input type="number" class="form-control form-control-sm ml-3 subnode" id="box15"></label>
+                    <label class="mb-2">Number of Nodes with Isolated Tumor Cells (ITCs)
+                        <input type="number" class="form-control form-control-sm ml-3" id="box16">
+                        <i class="fa fa-question-circle ml-2" data-toggle="tooltip"
+                           title="Note: ITC are <0.2 mm foci. #Reporting the number of lymph nodes with isolated tumor cells is required only in the absence of metastasis greater than 0.2 mm in other lymph nodes."
+                           aria-hidden="true"></i></label>
+
+                    <div class="posnodes" style="display: none;">
+                        <label>Specify Lymph Node(s) with Tumor
+                            <input type="text" class="form-control form-control-sm w-100 ml-3" id="box17"
+                                   value="Not applicable"></label>
+
+                        <div class="py-2 w-100"></div>
+
+                        + Additional Lymph Node Findings
+                        <select id="box19" class='form-control selectpicker form-control-sm ml-3 opt'>
+                            <option>None identified</option>
+                            <option>Extranodal extension</option>
+                            <option>Fixed/ulcerated nodes</option>
+                            <option>Other</option>
+                            <option>Cannot be determined</option>
+                        </select>
+
+                        <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box19_2'
+                               style='display:none;' placeholder='Specify Other'>
+                    </div>
+                </form>
+            </div>
+
+
             <hr class="p-2">
             <h5>Pathologic Staging (pTNM)
 
@@ -208,57 +262,8 @@
                 <option value="pM1">pM1: Distant metastasis</option>
             </select>
             <input type="text" class="form-control form-control-sm col-sm-6" id="box13_2" style="display:none;" placeholder="Specify metastatic sites">
+
             <div class="py-2 w-100"></div>
-            <form class="form-inline">
-                <label class="form-check-label">Check here if any lymph nodes submitted?
-                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box14">
-                </label>
-            </form>
-
-            <div class='lnchk' style='display:none;'>
-                <p>
-                    <small>
-                        Note: For upper two-thirds of the vagina, the following are considered regional lymph nodes:
-                        pelvic, parametrial, obturator, internal iliac (hypogastric), external iliac, common iliac,
-                        sacral, presacral, and para-aortic.
-                        For lower third of the vagina, the following are considered regional lymph nodes: inguinal and
-                        femoral. Any involved nonregional nodes should be categorized as metastases (pM1) and commented
-                        on in the distant metastasis section. Presence of isolated tumor cells no greater than 0.2 mm in
-                        regional lymph node(s) is considered N0 (i+).
-                    </small>
-                </p>
-                <form class="form-inline">
-                    <label class="mb-2">Total Number of Nodes Examined
-                        <input type="number" class="form-control form-control-sm ml-3 maxnode" id="box18"></label>
-                    <label class="mb-2">Number of Nodes with Metastasis (excludes ITCs)
-                        <input type="number" class="form-control form-control-sm ml-3 subnode" id="box15"></label>
-                    <label class="mb-2">Number of Nodes with Isolated Tumor Cells (ITCs)
-                        <input type="number" class="form-control form-control-sm ml-3" id="box16">
-                        <i class="fa fa-question-circle ml-2" data-toggle="tooltip"
-                           title="Note: ITC are <0.2 mm foci. #Reporting the number of lymph nodes with isolated tumor cells is required only in the absence of metastasis greater than 0.2 mm in other lymph nodes."
-                           aria-hidden="true"></i></label>
-
-                    <div class="posnodes" style="display: none;">
-                        <label>Specify Lymph Node(s) with Tumor
-                            <input type="text" class="form-control form-control-sm w-100 ml-3" id="box17"
-                                   value="Not applicable"></label>
-
-                        <div class="py-2 w-100"></div>
-
-                        + Additional Lymph Node Findings
-                        <select id="box19" class='form-control selectpicker form-control-sm ml-3 opt'>
-                            <option>None identified</option>
-                            <option>Extranodal extension</option>
-                            <option>Fixed/ulcerated nodes</option>
-                            <option>Other</option>
-                            <option>Cannot be determined</option>
-                        </select>
-
-                        <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box19_2'
-                               style='display:none;' placeholder='Specify Other'>
-                    </div>
-                </form>
-            </div>
 
             <hr class="p-2" >
             <h5>+ FIGO Stage (2015)</h5>
