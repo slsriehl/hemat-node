@@ -295,6 +295,97 @@
                 <option>Cannot be assessed</option>
             </select>
 
+            <hr class="p-2" >
+            <h5>Regional Lymph Nodes</h5>
+            <form class="form-inline mt-2">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box21" >
+                </label>
+            </form>
+
+            <div class='lnchk' style='display:none;'>
+                <h6 class="m-2">Pelvic Node Examination</h6>
+                <form class="form-inline mt-2 col-12">
+
+                    <label class="m-2 w-100">Total Number of Pelvic lymph nodes examined (sentinel and non-sentinel):
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box22" style="width:100px"></label>
+                    <div class="pospel" style="display: none;">
+                        <label class="m-2 w-100">Number of Sentinel Nodes Examined:
+                            <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box23" style="width:100px"></label>
+                        <label class="m-2 w-100">Laterality of Pelvic Nodes Examined:
+                            <select id="box24" class='form-control selectpicker form-control-sm col-sm-6 ml-3'>
+                                <option>Right</option>
+                                <option>Left</option>
+                                <option>Bilateral</option>
+                                <option>Unknown</option>
+                            </select>
+                        </label>
+
+                        <label class="m-2 w-100 ">Number of Pelvic Nodes with Macrometastasis (greater than 2 mm):
+                            <input type="number" class="form-control form-control-sm col-sm-6 ml-3 pelnode" id="box25" placeholder="">
+                        </label>
+                        <label class="m-2 w-100">Number of Pelvic Nodes with Micrometastasis (greater than 0.2 mm and up to 2 mm):
+                            <input type="number" class="form-control form-control-sm col-sm-6 ml-3 pelnode" id="box26" placeholder="">
+                        </label>
+                        <label class="m-2 w-100">Number of Pelvic Nodes with Isolated Tumor Cells (0.2 mm or less):
+                            <input type="number" class="form-control form-control-sm col-sm-6 ml-3 pelnode" id="box27" placeholder="">
+                        </label>
+                        <div class="pelnodes w-100" style="display: none;">
+                            <label class="m-2 w-100">Laterality of Pelvic Node(s) with Tumor
+                                <select id="box28" class='form-control selectpicker form-control-sm col-sm-6 ml-3'>
+                                    <option>Right</option>
+                                    <option>Left</option>
+                                    <option>Bilateral</option>
+                                    <option>Unknown</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+
+                </form>
+
+                <h6 class="mt-5">Para-Aortic Node Examination</h6>
+                <form class="form-inline mt-2 col-12">
+
+                    <label class="m-2 w-100">Total Number of Para-Aortic lymph nodes examined (sentinel and non-sentinel):
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box30" style="width:100px"></label>
+                    <div class="pospara" style="display: none;">
+                        <label class="m-2 w-100">Number of Sentinel Nodes Examined:
+                            <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box31" style="width:100px"></label>
+                        <label class="m-2 w-100">Laterality of Pelvic Nodes Examined:
+                            <select id="box32" class='form-control selectpicker form-control-sm col-sm-6 ml-3'>
+                                <option>Right</option>
+                                <option>Left</option>
+                                <option>Bilateral</option>
+                                <option>Unknown</option>
+                            </select>
+                        </label>
+
+                        <label class="m-2 w-100 ">Number of Para-Aortic Nodes with Macrometastasis (greater than 2 mm):
+                            <input type="number" class="form-control form-control-sm col-sm-6 ml-3 paranode" id="box33" placeholder="">
+                        </label>
+                        <label class="m-2 w-100">Number of Para-Aortic Nodes with Micrometastasis (greater than 0.2 mm and up to 2 mm):
+                            <input type="number" class="form-control form-control-sm col-sm-6 ml-3 paranode" id="box34" placeholder="">
+                        </label>
+                        <label class="m-2 w-100">Number of Para-Aortic Nodes with Isolated Tumor Cells (0.2 mm or less):
+                            <input type="number" class="form-control form-control-sm col-sm-6 ml-3 paranode" id="box35" placeholder="">
+                        </label>
+                        <div class="paranodes w-100" style="display: none;">
+                            <label class="m-2 w-100">Laterality of Para-Aortic Node(s) with Tumor
+                                <select id="box36" class='form-control selectpicker form-control-sm col-sm-6 ml-3'>
+                                    <option>Right</option>
+                                    <option>Left</option>
+                                    <option>Bilateral</option>
+                                    <option>Unknown</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+
 
             <hr class="p-2" >
             <h5>Pathologic Staging (pTNM)
@@ -351,94 +442,7 @@
 
             <div class="py-2 w-100"></div>
 
-            <form class="form-inline mt-2">
-                <label class="form-check-label">Check here if any lymph nodes submitted?
-                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box21" >
-                </label>
-            </form>
 
-            <div class='lnchk' style='display:none;'>
-                <h6 class="m-2">Pelvic Node Examination</h6>
-                <form class="form-inline mt-2 col-12">
-
-                    <label class="m-2 w-100">Total Number of Pelvic lymph nodes examined (sentinel and non-sentinel):
-                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box22" style="width:100px"></label>
-                    <div class="pospel" style="display: none;">
-                    <label class="m-2 w-100">Number of Sentinel Nodes Examined:
-                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box23" style="width:100px"></label>
-                    <label class="m-2 w-100">Laterality of Pelvic Nodes Examined:
-                        <select id="box24" class='form-control selectpicker form-control-sm col-sm-6 ml-3'>
-                            <option>Right</option>
-                            <option>Left</option>
-                            <option>Bilateral</option>
-                            <option>Unknown</option>
-                        </select>
-                    </label>
-
-                        <label class="m-2 w-100 ">Number of Pelvic Nodes with Macrometastasis (greater than 2 mm):
-                            <input type="number" class="form-control form-control-sm col-sm-6 ml-3 pelnode" id="box25" placeholder="">
-                        </label>
-                        <label class="m-2 w-100">Number of Pelvic Nodes with Micrometastasis (greater than 0.2 mm and up to 2 mm):
-                            <input type="number" class="form-control form-control-sm col-sm-6 ml-3 pelnode" id="box26" placeholder="">
-                        </label>
-                        <label class="m-2 w-100">Number of Pelvic Nodes with Isolated Tumor Cells (0.2 mm or less):
-                            <input type="number" class="form-control form-control-sm col-sm-6 ml-3 pelnode" id="box27" placeholder="">
-                        </label>
-                        <div class="pelnodes w-100" style="display: none;">
-                        <label class="m-2 w-100">Laterality of Pelvic Node(s) with Tumor
-                            <select id="box28" class='form-control selectpicker form-control-sm col-sm-6 ml-3'>
-                                <option>Right</option>
-                                <option>Left</option>
-                                <option>Bilateral</option>
-                                <option>Unknown</option>
-                            </select>
-                        </label>
-                        </div>
-                    </div>
-
-                </form>
-
-                <h6 class="mt-5">Para-Aortic Node Examination</h6>
-                <form class="form-inline mt-2 col-12">
-
-                    <label class="m-2 w-100">Total Number of Para-Aortic lymph nodes examined (sentinel and non-sentinel):
-                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box30" style="width:100px"></label>
-                    <div class="pospara" style="display: none;">
-                    <label class="m-2 w-100">Number of Sentinel Nodes Examined:
-                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box31" style="width:100px"></label>
-                    <label class="m-2 w-100">Laterality of Pelvic Nodes Examined:
-                        <select id="box32" class='form-control selectpicker form-control-sm col-sm-6 ml-3'>
-                            <option>Right</option>
-                            <option>Left</option>
-                            <option>Bilateral</option>
-                            <option>Unknown</option>
-                        </select>
-                    </label>
-
-                        <label class="m-2 w-100 ">Number of Para-Aortic Nodes with Macrometastasis (greater than 2 mm):
-                            <input type="number" class="form-control form-control-sm col-sm-6 ml-3 paranode" id="box33" placeholder="">
-                        </label>
-                        <label class="m-2 w-100">Number of Para-Aortic Nodes with Micrometastasis (greater than 0.2 mm and up to 2 mm):
-                            <input type="number" class="form-control form-control-sm col-sm-6 ml-3 paranode" id="box34" placeholder="">
-                        </label>
-                        <label class="m-2 w-100">Number of Para-Aortic Nodes with Isolated Tumor Cells (0.2 mm or less):
-                            <input type="number" class="form-control form-control-sm col-sm-6 ml-3 paranode" id="box35" placeholder="">
-                        </label>
-                        <div class="paranodes w-100" style="display: none;">
-                            <label class="m-2 w-100">Laterality of Para-Aortic Node(s) with Tumor
-                                <select id="box36" class='form-control selectpicker form-control-sm col-sm-6 ml-3'>
-                                    <option>Right</option>
-                                    <option>Left</option>
-                                    <option>Bilateral</option>
-                                    <option>Unknown</option>
-                                </select>
-                            </label>
-                        </div>
-                    </div>
-
-                </form>
-
-            </div>
 
 
             <hr class="2005 FIGO Stage p-2" >
