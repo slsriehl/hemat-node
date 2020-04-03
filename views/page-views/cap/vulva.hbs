@@ -166,6 +166,83 @@
             </select>
 
 
+            <hr class="p-2" >
+            <h5>Regional Lymph Nodes</h5>
+            <form class="form-inline">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box16">
+                </label>
+            </form>
+            <div class='lnchk ml-3' style='display:none;'>
+                Total lymph nodes (sentinel and non-sentinel) examined:
+                <i class="fa fa-question-circle ml-2" data-toggle="tooltip" data-placement="right"
+                   title="Only inguinal and femoral nodes are considered regional lymph nodes. Any other involved nodes should be categorized as metastases (pM1) and be commented on in the distant metastasis section. Presence of isolated tumor cells no greater than 0.2 mm in regional lymph node(s) is considered N0 (i+)."
+                   aria-hidden="true"></i>
+                <input type="number" class="form-control form-control-sm col-sm-6" id="box17" style="width:100px">
+
+                <div class="py-2 w-100"></div>
+
+                Number of Sentinel Nodes Examined:
+                <input type="number" class="form-control form-control-sm col-sm-6 maxnode" id="box19" style="width:100px" placeholder="0">
+
+                <div class="py-2 w-100"></div>
+
+
+                Number of lymph nodes involved:
+                <input type="number" class="form-control form-control-sm col-sm-6 subnode" id="box18" style="width:100px">
+
+                <div class="py-2 w-100"></div>
+
+                <div class="posnodes" style="display: none;">
+                    Number of Nodes with Metastasis 5 mm or Greater
+                    <input type="number" class="form-control form-control-sm col-sm-6" id="box20" style="width:100px"
+                           value="0">
+
+                    <div class="py-2 w-100"></div>
+
+
+                    Number of Nodes with Metastasis Less than 5 mm (excludes ITCs)
+                    <input type="number" class="form-control form-control-sm col-sm-6" id="box21" style="width:100px"
+                           value="0">
+
+                    <div class="py-2 w-100"></div>
+
+
+                    Number of Nodes with Isolated Tumor Cells (ITCs) (0.2 mm or less)
+                    <input type="number" class="form-control form-control-sm col-sm-6" id="box22" style="width:100px"
+                           value="0">
+
+                    <div class="py-2 w-100"></div>
+
+
+                    Specify Lymph Node(s) involved by Tumor:
+                    <i class="fa fa-question-circle ml-2" data-toggle="tooltip"
+                       title="Note: Information should include location and laterality of sentinel or non-sentinel regional lymph nodes with tumor."
+                       aria-hidden="true"></i>
+                    <input type="text" class="form-control form-control-sm col-sm-6" id="box23">
+
+
+                    <div class="py-2 w-100"></div>
+
+
+                    Additional Lymph Node Findings:
+                    <select multiple id="box24" class='form-control selectpicker form-control-sm col-sm-6'>
+                        <option>None identified</option>
+                        <option>Extranodal extension</option>
+                        <option>Fixed/ulcerated nodes</option>
+                        <option>Other</option>
+                        <option selected>Not applicable</option>
+                    </select>
+                    <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box24_2' style='display:none;'
+                           placeholder='Specify Other'>
+
+                </div>
+            </div>
+
+
+
+
+
             <hr class="p-2">
             <h5>Pathologic Staging (pTNM)
                 <!-- Button trigger modal -->
@@ -237,76 +314,6 @@
             <input type="text" class="form-control form-control-sm col-sm-6" id="box15_2" style="display:none;" placeholder="Specify metastatic sites">
             <div class="py-2 w-100"></div>
 
-            <form class="form-inline">
-                <label class="form-check-label">Check here if any lymph nodes submitted?
-                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box16">
-                </label>
-            </form>
-            <div class='lnchk ml-3' style='display:none;'>
-                Total lymph nodes (sentinel and non-sentinel) examined:
-                <i class="fa fa-question-circle ml-2" data-toggle="tooltip" data-placement="right"
-                   title="Only inguinal and femoral nodes are considered regional lymph nodes. Any other involved nodes should be categorized as metastases (pM1) and be commented on in the distant metastasis section. Presence of isolated tumor cells no greater than 0.2 mm in regional lymph node(s) is considered N0 (i+)."
-                   aria-hidden="true"></i>
-                <input type="number" class="form-control form-control-sm col-sm-6" id="box17" style="width:100px">
-
-                <div class="py-2 w-100"></div>
-
-                Number of Sentinel Nodes Examined:
-                <input type="number" class="form-control form-control-sm col-sm-6 maxnode" id="box19" style="width:100px" placeholder="0">
-
-                <div class="py-2 w-100"></div>
-
-
-                Number of lymph nodes involved:
-                <input type="number" class="form-control form-control-sm col-sm-6 subnode" id="box18" style="width:100px">
-
-                <div class="py-2 w-100"></div>
-
-                <div class="posnodes" style="display: none;">
-                Number of Nodes with Metastasis 5 mm or Greater
-                <input type="number" class="form-control form-control-sm col-sm-6" id="box20" style="width:100px"
-                       value="0">
-
-                <div class="py-2 w-100"></div>
-
-
-                Number of Nodes with Metastasis Less than 5 mm (excludes ITCs)
-                <input type="number" class="form-control form-control-sm col-sm-6" id="box21" style="width:100px"
-                       value="0">
-
-                <div class="py-2 w-100"></div>
-
-
-                Number of Nodes with Isolated Tumor Cells (ITCs) (0.2 mm or less)
-                <input type="number" class="form-control form-control-sm col-sm-6" id="box22" style="width:100px"
-                       value="0">
-
-                <div class="py-2 w-100"></div>
-
-
-                Specify Lymph Node(s) involved by Tumor:
-                <i class="fa fa-question-circle ml-2" data-toggle="tooltip"
-                   title="Note: Information should include location and laterality of sentinel or non-sentinel regional lymph nodes with tumor."
-                   aria-hidden="true"></i>
-                <input type="text" class="form-control form-control-sm col-sm-6" id="box23">
-
-
-                <div class="py-2 w-100"></div>
-
-
-                Additional Lymph Node Findings:
-                <select multiple id="box24" class='form-control selectpicker form-control-sm col-sm-6'>
-                    <option>None identified</option>
-                    <option>Extranodal extension</option>
-                    <option>Fixed/ulcerated nodes</option>
-                    <option>Other</option>
-                    <option selected>Not applicable</option>
-                </select>
-                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box24_2' style='display:none;'
-                       placeholder='Specify Other'>
-
-            </div>
-            </div>
 
 
             <hr class="p-2" >
