@@ -204,6 +204,45 @@
             <input type="text" class="form-control form-control-sm col-sm-6 opt" id="box21" placeholder="Specify">
 
 
+            <hr class="p-2" >
+            <h5>Regional Lymph Nodes</h5>
+            <form class="form-inline">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box15">
+                </label>
+            </form>
+            <div class='lnchk' style='display:none;'>
+                <form class="form-inline">
+                    <label class="mb-2">Total Number of Nodes Examined
+                        <input type="number" class="form-control form-control-sm ml-3 maxnode" id="box16"></label>
+                    <label class="mb-2">Number of Nodes with Metastasis (excludes ITCs)
+                        <input type="number" class="form-control form-control-sm ml-3 subnode" id="box17"></label>
+                    <label class="mb-2">Number of Nodes with Isolated Tumor Cells (ITCs)
+                        <input type="number" class="form-control form-control-sm ml-3" id="box18">
+                    </label>
+
+                    <div class="posnodes" style="display: none;">
+                        <label class="mb-2">Specify Lymph Node(s) with Tumor
+                            <input type="text" class="form-control form-control-sm w-100 ml-3" id="box19">
+                        </label>
+
+                        + Additional Lymph Node Findings
+                        <select id="box20" class='form-control selectpicker form-control-sm ml-3 opt'>
+                            <option></option>
+                            <option>None identified</option>
+                            <option>Extranodal extension</option>
+                            <option>Fixed/ulcerated nodes</option>
+                            <option>Other</option>
+                            <option>Cannot be determined</option>
+                        </select>
+                        <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box20_2'
+                               style='display:none;' placeholder='Specify Other'>
+                    </div>
+                </form>
+            </div>
+
+
+
             <hr class="p-2">
             <h5>Pathologic Staging (pTNM)
             </h5>
@@ -273,40 +312,7 @@
 
             <div class="py-2 w-100"></div>
 
-            <form class="form-inline">
-                <label class="form-check-label">Check here if any lymph nodes submitted?
-                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box15">
-                </label>
-            </form>
-            <div class='lnchk' style='display:none;'>
-                <form class="form-inline">
-                    <label class="mb-2">Total Number of Nodes Examined
-                        <input type="number" class="form-control form-control-sm ml-3 maxnode" id="box16"></label>
-                    <label class="mb-2">Number of Nodes with Metastasis (excludes ITCs)
-                        <input type="number" class="form-control form-control-sm ml-3 subnode" id="box17"></label>
-                    <label class="mb-2">Number of Nodes with Isolated Tumor Cells (ITCs)
-                        <input type="number" class="form-control form-control-sm ml-3" id="box18">
-                    </label>
 
-                    <div class="posnodes" style="display: none;">
-                        <label class="mb-2">Specify Lymph Node(s) with Tumor
-                            <input type="text" class="form-control form-control-sm w-100 ml-3" id="box19">
-                                   </label>
-
-                        + Additional Lymph Node Findings
-                        <select id="box20" class='form-control selectpicker form-control-sm ml-3 opt'>
-                            <option></option>
-                            <option>None identified</option>
-                            <option>Extranodal extension</option>
-                            <option>Fixed/ulcerated nodes</option>
-                            <option>Other</option>
-                            <option>Cannot be determined</option>
-                        </select>
-                        <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box20_2'
-                               style='display:none;' placeholder='Specify Other'>
-                    </div>
-                </form>
-            </div>
             <div class="not_adenosarcoma">
             <hr class="p-2" >
             <h5>+ FIGO Stage - For All Sarcomas Excluding Adenosarcoma</h5>

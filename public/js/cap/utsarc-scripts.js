@@ -305,6 +305,44 @@ $(window).on("load", function() {
             captext += "\n+ Ancillary Studies:\n- " + box_21 + "\n";
         }
 
+        if ($("#box15").is(":checked")) {
+            var box_16 = $("#box16").val();
+            var box_17 = $("#box17").val();
+            var box_18 = $("#box18").val();
+            var posnode = parseInt(box_17, 10) + parseInt(box_18, 10);
+            captext +=
+                "\nLymph nodes:\n" +
+                "\tTotal Number of Nodes Examined: " +
+                box_16 +
+                "\n" +
+                "\tNumber of Nodes with Metastasis (excludes ITCs): " +
+                box_17 +
+                "\n";
+
+            captext +=
+                "\tNumber of Nodes with Isolated Tumor Cells: " + box_18 + "\n";
+
+            if (posnode > 0) {
+                var box_19 = $("#box19").val();
+                captext +=
+                    "\tSpecify Lymph Node(s) with Tumor : " + box_19 + "\n";
+
+                var box_20 = $("#box20").val();
+                var box_20_2 = $("#box20_2").val();
+                if (box_20.length  > 0) {
+                    if (box_20 == "Other") {
+                        captext +=
+                            "\t+ Additional Lymph Node Findings:\n\t- " + box_20_2 + "\n";
+                    } else {
+                        captext +=
+                            "\t+ Additional Lymph Node Findings:\n\t- " + box_20 + "\n";
+                    }
+                }
+            }
+        } else {
+            captext += "\nLymph nodes: None submitted\n";
+        }
+
         var box_11 = $("#box11").val();
         var box_12 = $("#box12").val();
         var box_13 = $("#box13").val();
@@ -344,43 +382,6 @@ $(window).on("load", function() {
             }
         }
 
-        if ($("#box15").is(":checked")) {
-            var box_16 = $("#box16").val();
-            var box_17 = $("#box17").val();
-            var box_18 = $("#box18").val();
-            var posnode = parseInt(box_17, 10) + parseInt(box_18, 10);
-            captext +=
-                "\nLymph nodes:\n" +
-                "\tTotal Number of Nodes Examined: " +
-                box_16 +
-                "\n" +
-                "\tNumber of Nodes with Metastasis (excludes ITCs): " +
-                box_17 +
-                "\n";
-
-                captext +=
-                    "\tNumber of Nodes with Isolated Tumor Cells: " + box_18 + "\n";
-
-            if (posnode > 0) {
-                var box_19 = $("#box19").val();
-                captext +=
-                    "\tSpecify Lymph Node(s) with Tumor : " + box_19 + "\n";
-
-                var box_20 = $("#box20").val();
-                var box_20_2 = $("#box20_2").val();
-                if (box_20.length  > 0) {
-                    if (box_20 == "Other") {
-                        captext +=
-                            "\t+ Additional Lymph Node Findings:\n\t- " + box_20_2 + "\n";
-                    } else {
-                        captext +=
-                            "\t+ Additional Lymph Node Findings:\n\t- " + box_20 + "\n";
-                    }
-                }
-            }
-        } else {
-            captext += "\nLymph nodes: None submitted\n";
-        }
 
         var box_25 = $("#box25").val();
         if (box_25.length > 0) {
