@@ -22,9 +22,9 @@ $(window).on('load', function () {
     });
 
     $('#box3').on("change", function () {
-        var sel = $('#box3').val();
-        if (sel.indexOf("Size") > -1) {
-
+        var sel = $("#box3").find(":selected").data("size");
+        console.log("box3 data-size=",sel);
+        if (sel == "measurable") {
             $('#box3_2').show();
         } else {
             $('#box3_2').hide();
@@ -122,11 +122,6 @@ $(window).on('load', function () {
 
     $('#box43').on("change", function () {
         var sel = $('#box43').val();
-        if (sel.indexOf("indeterminate") > -1) {
-            $('#box43_2').show();
-        } else {
-            $('#box43_2').hide();
-        }
         if (sel.indexOf("Not") < 0) {
             $('#box43_1').show();
         } else {
@@ -759,22 +754,13 @@ $(window).on('load', function () {
 
         var box_43 = $("#box43").val();
         var box_43_1 = $("#box43_1").val();
-        var box_43_2 = $("#box43_2").val();
         if (box_43 != "Not applicable") {
-            if (box_43.indexOf("indeterminate") > -1) {
-                captext += "\nHER2 Immunohistochemistry:\n- " + box_43_2 + "\n";
-            } else {
                 captext += "\nHER2 Immunohistochemistry:\n- " + box_43 + "\n- % cells with intense membranous staining: " + box_43_1 + "%\n";
-            }
         }
 
         var box_44 = $("#box44").val();
-        var box_44_2 = $("#box44_2").val();
         var fish = $("#box44").find(":selected").data("fish");
         if (box_44 != "Not applicable") {
-            if (box_44.indexOf("indeterminate") > -1) {
-                captext += "\nHER2 FISH: Cannot be determined, due to: " + box_44_2;
-            } else {
                 if (fish == "performed") {
                     captext += "\nHER2 FISH: " + box_44;
                     var box_45_1 = $("#box45_1").val();
@@ -802,7 +788,6 @@ $(window).on('load', function () {
                 } else {
                     captext += "\nHER2 FISH: " + box_44 + "\n";
                 }
-            }
         }
 
         var box_46 = $("#box46").val();
