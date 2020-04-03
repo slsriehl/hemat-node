@@ -70,19 +70,17 @@
             <select id="box5" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option>Adenocarcinoma</option>
                 <option>Mucinous adenocarcinoma</option>
-                <option>Signet-ring cell carcinoma</option>
+                <option>Signet ring cell carcinoma (poorly cohesive carcinoma)</option>
                 <option>Medullary carcinoma</option>
-                <option>Micropapillary carcinoma</option>
                 <option>Serrated adenocarcinoma</option>
+                <option>Micropapillary carcinoma</option>
+                <option>Adenoma-like adenocarcinoma</option>
+                <option>Adenosquamous carcinoma</option>
+                <option>Undifferentiated carcinoma</option>
+                <option>Carcinoma with sarcomatoid component</option>
                 <option>Large cell neuroendocrine carcinoma</option>
                 <option>Small cell neuroendocrine carcinoma</option>
-                <option>Neuroendocrine carcinoma (poorly differentiated)</option>
-                <option>Squamous cell carcinoma</option>
-                <option>Adenosquamous carcinoma</option>
-                <option>Spindle cell carcinoma</option>
-                <option>Mixed adenoneuroendocrine carcinoma</option>
-                <option>Undifferentiated carcinoma</option>
-                <option>Other histologic type </option>
+                <option>Mixed neuroendocrine-non-neuroendocrine neoplasm</option>                <option>Other histologic type </option>
                 <option>Carcinoma, type cannot be determined</option>
                 <option></option>
             </select>
@@ -179,9 +177,8 @@
 
 
             <hr class="p-2" >
-            <h5>+ Type of Polyp in Which Invasive Carcinoma Arose</h5>
-            <select id="box11" class='form-control selectpicker form-control-sm col-sm-6 opt'>
-                <option></option>
+            <h5>Type of Polyp in Which Invasive Carcinoma Arose</h5>
+            <select id="box11" class='form-control selectpicker form-control-sm col-sm-6 '>
                 <option>Tubular adenoma</option>
                 <option>Villous adenoma</option>
                 <option>Tubulovillous adenoma</option>
@@ -194,7 +191,22 @@
             <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box11_2' style='display:none;' placeholder='Specify Other'>
 
 
+            <hr class="p-2" >
+            <h5>Tumor Budding
+                <!-- Button trigger modal -->
+                <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_budding">A word about tumor budding</button>
 
+                <!-- Histology help Modal -->
+                {{> page-modals/cap-helpers/colon-tumor-budding}}
+            </h5>
+            <select id="box15" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Low score (0-4)</option>
+                <option>Intermediate score (5-9)</option>
+                <option>High score (10 or more)</option>
+                <option>Cannot be determined</option>
+            </select>
+
+            <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box15_2' placeholder='specify total number in area=0.785 mm2'>
 
 
             <hr class="p-2" >

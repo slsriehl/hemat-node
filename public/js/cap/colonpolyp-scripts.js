@@ -224,6 +224,12 @@ $(window).on('load', function () {
             }
         }
 
+        var box_15 = $("#box15").val();
+        var box_15_2 = $("#box15_2").val();
+        if (box_15.length > 0) {
+            captext += "\nTumor Budding:\n- "  + box_15 + "(total #: "+box_15_2+ ")\n";}
+        else {captext += "\nTumor Budding:\n- "  + box_15+ "\n";}
+
         var box_12 = $("#box12").val();
         var box_12_2 = $("#box12_2").val();
         var box_12_3 = $("#box12_3").val();

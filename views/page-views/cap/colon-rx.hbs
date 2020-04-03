@@ -83,16 +83,16 @@
             <select id="box5" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option>Adenocarcinoma</option>
                 <option>Mucinous adenocarcinoma</option>
-                <option>Signet-ring cell carcinoma</option>
+                <option>Signet-ring cell carcinoma (poorly cohesive carcinoma)</option>
                 <option>Medullary carcinoma</option>
-                <option>Micropapillary carcinoma</option>
                 <option>Serrated adenocarcinoma</option>
-                <option>Large cell neuroendocrine carcinoma</option>
-                <option>Small cell neuroendocrine carcinoma</option>
-                <option>Neuroendocrine carcinoma (poorly differentiated)</option>
-                <option>Squamous cell carcinoma</option>
+                <option>Micropapillary carcinoma</option>
                 <option>Adenosquamous carcinoma</option>
                 <option>Undifferentiated carcinoma</option>
+                <option>Carcinoma with sarcomatoid component</option>
+                <option>Large cell neuroendocrine carcinoma</option>
+                <option>Small cell neuroendocrine carcinoma</option>
+                <option>Mixed neuroendocrine-non-neuroendocrine neoplasm</option>
                 <option>Other histologic type </option>
                 <option>Carcinoma, type cannot be determined</option>
             </select>
@@ -144,7 +144,7 @@
             <hr class="p-2">
             <h5>Margins</h5>
             <select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
-                <option>All margins are uninvolved by tumor </option>
+                <option>All margins are uninvolved by invsive carcinoma and high-grade or low-grade dysplasia </option>
                 <option>One or more margins involved by neoplasia</option>
             </select>
 
@@ -158,8 +158,8 @@
                     <option>distal</option>
                     <option>radial</option>
                     <option>mesenteric</option>
-                    <option>mucosal</option>
-                    <option>deep</option>
+                    <option value="mucosal">mucosal (EMR only)</option>
+                    <option value="deep">deep (EMR only)</option>
                     <option>Other</option>
                 </select>
                 <input type="text" class="form-control form-control-sm mt-1 col-sm-6" id='box9_2' style='display:none;' placeholder='Specify Other margin'>
@@ -376,6 +376,23 @@
             <input type="number" class="form-control form-control-sm mt-3 col-sm-6" id='box20_2' style='display:none;' placeholder='Specify # of deposits'>
 
 
+            <hr class="p-2" >
+            <h5>Regional Lymph Nodes</h5>
+            <form class="form-inline mt-2">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box25" >
+                </label>
+            </form>
+
+            <div class='lnchk' style='display:none;'>
+                <form class="form-inline mt-2 col-8">
+                    <label class="m-2">Number of lymph nodes examined:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box26" style="width:100px"></label>
+                    <label class="m-2">Number of lymph nodes involved:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 subnode" id="box27" style="width:100px"></label>
+                </form>
+            </div>
+
 
 
 
@@ -450,20 +467,7 @@
 
             <div class="py-2 w-100"></div>
 
-            <form class="form-inline mt-2">
-                <label class="form-check-label">Check here if any lymph nodes submitted?
-                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box25" >
-                </label>
-            </form>
 
-            <div class='lnchk' style='display:none;'>
-                <form class="form-inline mt-2 col-8">
-                    <label class="m-2">Number of lymph nodes examined:
-                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box26" style="width:100px"></label>
-                    <label class="m-2">Number of lymph nodes involved:
-                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 subnode" id="box27" style="width:100px"></label>
-                </form>
-            </div>
 
 
             <hr class="p-2" >
