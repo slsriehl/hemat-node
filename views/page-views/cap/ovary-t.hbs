@@ -332,6 +332,7 @@
                 <option>Not submitted/unknown</option>
                 <option>Negative for malignancy (normal/benign)</option>
                 <option>Atypical and/or suspicious</option>
+                <option>Neoplastic cells (applicable only for borderline/atypical proliferative tumor)</option>
                 <option>Malignant (positive for malignancy)</option>
                 <option>Unsatisfactory/nondiagnostic</option>
                 <option>Results pending</option>
@@ -360,7 +361,40 @@
             <small>CRS: Chemotherapy response score
             </small>
 
+            <hr class="p-2" >
+            <h5>Regional Lymph Nodes</h5>
+            <form class="form-inline mt-2">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box22" >
+                </label>
+            </form>
 
+            <div class='lnchk' style='display:none;'>
+                <form class="form-inline mt-2 col-8">
+                    <label class="m-2">
+                        Number of lymph nodes examined:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box23" ></label>
+                    <label class="m-2">
+                        Number of lymph nodes with metastasis > 10mm:
+                        <input type="number" class="node form-control form-control-sm col-sm-6 ml-3 subnode maxinv" id="box24" ></label>
+                    <label class="m-2">
+                        Number of lymph nodes with metastasis < 10mm:
+                        <input type="number" class="node form-control form-control-sm col-sm-6 ml-3 subnode submax" id="box25" ></label>
+                    <label class="m-2">
+                        Number of Nodes with Isolated Tumor Cells (ITCs) (0.2 mm or less) (if applicable):
+                        <input type="number" class="node form-control form-control-sm col-sm-6 ml-3 subnode" id="box26" > </label>
+                    <div class="posnodes" style="display: none;">
+                        <label class="m-2">
+                            Size of Largest Metastatic Deposit (mm):
+                            <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box27" value="0">
+                        </label>
+                        <label class="m-2">
+                            Location of Largest Deposit:
+                            <input type="text" class="form-control form-control-sm col-sm-6 ml-3" id="box28" placeholder="if applicable">
+                        </label>
+                    </div>
+                </form>
+            </div>
 
 
 
@@ -416,38 +450,7 @@
 
             <div class="py-2 w-100"></div>
 
-            <form class="form-inline mt-2">
-                <label class="form-check-label">Check here if any lymph nodes submitted?
-                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box22" >
-                </label>
-            </form>
 
-            <div class='lnchk' style='display:none;'>
-                <form class="form-inline mt-2 col-8">
-                    <label class="m-2">
-                        Number of lymph nodes examined:
-                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box23" ></label>
-                    <label class="m-2">
-                        Number of lymph nodes with metastasis > 10mm:
-                        <input type="number" class="node form-control form-control-sm col-sm-6 ml-3 subnode maxinv" id="box24" ></label>
-                    <label class="m-2">
-                        Number of lymph nodes with metastasis < 10mm:
-                        <input type="number" class="node form-control form-control-sm col-sm-6 ml-3 subnode submax" id="box25" ></label>
-                    <label class="m-2">
-                        Number of Nodes with Isolated Tumor Cells (ITCs) (0.2 mm or less) (if applicable):
-                        <input type="number" class="node form-control form-control-sm col-sm-6 ml-3 subnode" id="box26" > </label>
-                    <div class="posnodes" style="display: none;">
-                        <label class="m-2">
-                            Size of Largest Metastatic Deposit (mm):
-                            <input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box27" value="0">
-                        </label>
-                        <label class="m-2">
-                            Location of Largest Deposit:
-                            <input type="text" class="form-control form-control-sm col-sm-6 ml-3" id="box28" placeholder="if applicable">
-                        </label>
-                    </div>
-                </form>
-            </div>
 
             <hr class="p-2" >
             <h5>+ FIGO Stage (2015)</h5>
