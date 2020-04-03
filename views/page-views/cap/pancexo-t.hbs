@@ -110,7 +110,6 @@
                 <option>G1: Well differentiated</option>
                 <option>G2: Moderately differentiated</option>
                 <option>G3: Poorly differentiated</option>
-                <option>G4: Undifferentiated</option>
                 <option>Other</option>
             </select>
             <input type="text" class="form-control form-control-sm  col-sm-6 " id='box6_2' style='display:none;'
@@ -182,9 +181,6 @@
 
 
 
-
-
-
                     <h6 class="mt-3" >
                         Margins - Distal Pancreatic Parenchymal Margin</h6>
 
@@ -213,9 +209,6 @@
 
 
 
-
-
-
                     <h6 class="mt-3">Margins - Uncinate</h6>
 
                     <select id="box25" class='form-control selectpicker form-control-sm col-sm-6'>
@@ -225,9 +218,6 @@
                     </select>
 
                     <input type="text" class="form-control form-control-sm col-sm-6" id='box25_2' style='display:none;' placeholder='Specify distance of invasive carcinoma to this margin (mm)'>
-
-
-
 
 
 
@@ -247,9 +237,6 @@
 
 
 
-
-
-
                     <h6 class="mt-3">Margins - Proximal Margin</h6>
                     <select multiple id="box27" class='form-control selectpicker form-control-sm col-sm-6'>
                         <option>Cannot be assessed</option>
@@ -258,9 +245,6 @@
                         <option>Involved by invasive carcinoma</option>
                         <option>Involved by high-grade dysplasia</option>
                     </select>
-
-
-
 
 
                     <h6 class="mt-3">Margins - Distal Margin</h6>
@@ -336,6 +320,25 @@
 
 
             <hr class="p-2">
+            <h5>Regional Lymph Nodes</h5>
+
+            <form class="form-inline mt-2">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box34" >
+                </label>
+            </form>
+
+            <div class='lnchk' style='display:none;'>
+                <form class="form-inline mt-2 col-8">
+                    <label class="m-2">Number of lymph nodes examined:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box35" style="width:100px"></label>
+                    <label class="m-2">Number of lymph nodes involved:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 subnode" id="box36" style="width:100px"></label>
+                </form>
+            </div>
+
+
+            <hr class="p-2">
             <h5>Pathologic Staging (pTNM)
 
             </h5>
@@ -387,20 +390,6 @@
 
             <div class="py-2 w-100"></div>
 
-            <form class="form-inline mt-2">
-                <label class="form-check-label">Check here if any lymph nodes submitted?
-                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box34" >
-                </label>
-            </form>
-
-            <div class='lnchk' style='display:none;'>
-                <form class="form-inline mt-2 col-8">
-                    <label class="m-2">Number of lymph nodes examined:
-                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box35" style="width:100px"></label>
-                    <label class="m-2">Number of lymph nodes involved:
-                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 subnode" id="box36" style="width:100px"></label>
-                </form>
-            </div>
 
 
 
