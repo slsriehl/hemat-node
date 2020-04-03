@@ -172,8 +172,23 @@
 
 
 
+            <hr class="p-2" >
+            <h5>Regional Lymph Nodes</h5>
 
+            <form class="form-inline mt-2">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box15" >
+                </label>
+            </form>
 
+            <div class='lnchk' style='display:none;'>
+                <form class="form-inline mt-2 col-8">
+                    <label class="m-2">Number of lymph nodes examined:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box16" style="width:100px"></label>
+                    <label class="m-2">Number of lymph nodes involved:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 subnode" id="box17" style="width:100px"></label>
+                </form>
+            </div>
 
                 <hr class="p-2" >
                 <h5>Pathologic Staging (pTNM)
@@ -219,20 +234,7 @@
 
                 <div class="py-2 w-100"></div>
 
-                <form class="form-inline mt-2">
-                    <label class="form-check-label">Check here if any lymph nodes submitted?
-                        <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box15" >
-                    </label>
-                </form>
 
-                <div class='lnchk' style='display:none;'>
-                    <form class="form-inline mt-2 col-8">
-                        <label class="m-2">Number of lymph nodes examined:
-                            <input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box16" style="width:100px"></label>
-                        <label class="m-2">Number of lymph nodes involved:
-                            <input type="number" class="form-control form-control-sm col-sm-6 ml-3 subnode" id="box17" style="width:100px"></label>
-                    </form>
-                </div>
 
 
                 <hr class="p-2" >
@@ -247,6 +249,10 @@
                     <option>KIT (CD117), Negative</option>
                     <option>DOG1 (ANO1), Positive</option>
                     <option>DOG1 (ANO1), Negative</option>
+                    <option>SDHB, Positive</option>
+                    <option>SDHB, Negative</option>
+                    <option>SDHA, Positive</option>
+                    <option>SDHA, Negative</option>
                     <option>Other</option>
                     <option>Pending</option>
                     <option>Not performed</option>
@@ -267,7 +273,7 @@
                     <option>Not performed</option>
                 </select>
 
-                <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box21_2' style='display:none;' placeholder='Specify tests (ex: test1 - NGS; test-2 - FISH;)'>
+                <input type="text" class="form-control form-control-sm mt-3 col-sm-8" id='box21_2' style='display:none;' placeholder='Specify tests or results'>
 
 
 

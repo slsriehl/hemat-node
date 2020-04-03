@@ -251,6 +251,15 @@ $(window).on('load', function () {
             captext += "\nMargins:\n- " + box_10 + "\n";
         }
 
+        if ($("#box15").is(':checked')) {
+            var box_16 = $("#box16").val();
+            var box_17 = $("#box17").val();
+            captext += "\nLymph nodes:\n\tLymph Nodes Examined: " + box_16 + "\n\tLymph nodes involved: " + box_17 + "\n";
+        } else {
+            captext += "\nLymph nodes: None submitted\n";
+        }
+
+
         var box_11 = $("#box11").val();
         var box_12 = $("#box12").val();
         var box_13 = $("#box13").val();
@@ -270,13 +279,7 @@ $(window).on('load', function () {
                 captext += box_12 + " " + box_13 + " " + box_14 + "\n";
             }
         }
-        if ($("#box15").is(':checked')) {
-            var box_16 = $("#box16").val();
-            var box_17 = $("#box17").val();
-            captext += "\nLymph nodes:\n\tLymph Nodes Examined: " + box_16 + "\n\tLymph nodes involved: " + box_17 + "\n";
-        } else {
-            captext += "\nLymph nodes: None submitted\n";
-        }
+
 
         captext += "\n-- ANCILLARY TESTING --\n";
 
