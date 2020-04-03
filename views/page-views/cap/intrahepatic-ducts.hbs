@@ -61,13 +61,15 @@
             <hr class="p-2">
             <h5>Histologic Type</h5>
             <select id="box4" class='form-control selectpicker form-control-sm col-sm-6'>
-                <option>Intrahepatic cholangiocarcinoma</option>
+                <option>Large duct intrahepatic cholangiocarcinoma</option>
+                <option>Small duct intrahepatic cholangiocarcinoma</option>
                 <option>Combined hepatocellular-cholangiocarcinoma</option>
                 <option>Intraductal papillary neoplasm with an associated invasive carcinoma</option>
                 <option>Mucinous cystic neoplasm with an associated invasive carcinoma</option>
+                <option>Undifferentiated carcinoma</option>
                 <option>Large cell neuroendocrine carcinoma</option>
                 <option>Small cell neuroendocrine carcinoma</option>
-                <option>Neuroendocrine carcinoma (poorly differentiated)</option>
+                <option>Mixed neuroendocrine-non-neuroendocrine neoplasm (MiNEN)</option>
                 <option>Other histologic type</option>
             </select>
 
@@ -180,7 +182,22 @@
             </select>
 
 
+            <hr class="p-2" >
+            <h5>Regional Lymph Nodes</h5>
+            <form class="form-inline mt-2">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box17" >
+                </label>
+            </form>
 
+            <div class='lnchk' style='display:none;'>
+                <form class="form-inline mt-2 col-8">
+                    <label class="m-2">Number of lymph nodes examined:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box18" style="width:100px"></label>
+                    <label class="m-2">Number of lymph nodes involved:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 subnode" id="box19" style="width:100px"></label>
+                </form>
+            </div>
 
 
             <hr class="p-2">
@@ -231,20 +248,6 @@
 
             <div class="py-2 w-100"></div>
 
-            <form class="form-inline mt-2">
-                <label class="form-check-label">Check here if any lymph nodes submitted?
-                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box17" >
-                </label>
-            </form>
-
-            <div class='lnchk' style='display:none;'>
-                <form class="form-inline mt-2 col-8">
-                    <label class="m-2">Number of lymph nodes examined:
-                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box18" style="width:100px"></label>
-                    <label class="m-2">Number of lymph nodes involved:
-                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 subnode" id="box19" style="width:100px"></label>
-                </form>
-            </div>
 
 
             <hr class="p-2">

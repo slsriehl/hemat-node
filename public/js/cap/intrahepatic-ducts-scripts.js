@@ -294,6 +294,16 @@ $(window).on('load', function () {
             captext += "\n+ Perineural Invasion:\n- " + box_12 + "\n";
                 }
 
+
+        if ($("#box17").is(':checked')) {
+            var box_18 = $("#box18").val();
+            var box_19 = $("#box19").val();
+            captext += "\nLymph nodes:\n\tLymph Nodes Examined: " + box_18 + "\n\tLymph nodes involved: " + box_19 + "\n";
+        } else {
+            captext += "\nLymph nodes: None submitted\n";
+        }
+
+
         var box_13 = $("#box13").val();
         var box_14 = $("#box14").val();
         var box_15 = $("#box15").val();
@@ -312,13 +322,6 @@ $(window).on('load', function () {
             } else {
                 captext += box_14 + " " + box_15 + " " + box_16 + "\n";
             }
-        }
-        if ($("#box17").is(':checked')) {
-            var box_18 = $("#box18").val();
-            var box_19 = $("#box19").val();
-            captext += "\nLymph nodes:\n\tLymph Nodes Examined: " + box_18 + "\n\tLymph nodes involved: " + box_19 + "\n";
-        } else {
-            captext += "\nLymph nodes: None submitted\n";
         }
 
         var box_25 = $("#box25").val();
