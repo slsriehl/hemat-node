@@ -244,6 +244,19 @@ $(window).on("load", function() {
             captext += "\nMargins:\n- " + box_11 + "\n";
         }
 
+        if ($("#box16").is(":checked")) {
+            var box_17 = $("#box17").val();
+            var box_18 = $("#box18").val();
+            captext +=
+                "\nLymph nodes:\n\tLymph Nodes Examined: " +
+                box_17 +
+                "\n\tLymph nodes involved: " +
+                box_18 +
+                "\n";
+        } else {
+            captext += "\nLymph nodes: None submitted\n";
+        }
+
         var box_12 = $("#box12").val();
         var box_13 = $("#box13").val();
         var box_14 = $("#box14").val();
@@ -283,18 +296,7 @@ $(window).on("load", function() {
             }
         }
 
-        if ($("#box16").is(":checked")) {
-            var box_17 = $("#box17").val();
-            var box_18 = $("#box18").val();
-            captext +=
-                "\nLymph nodes:\n\tLymph Nodes Examined: " +
-                box_17 +
-                "\n\tLymph nodes involved: " +
-                box_18 +
-                "\n";
-        } else {
-            captext += "\nLymph nodes: None submitted\n";
-        }
+
 
         var box_19 = $("#box19").val();
         var box_19_2 = $("#box19_2").val();
