@@ -1,6 +1,6 @@
  
 const matches = (password) => {
-	if(password == process.env.PRACTICE_CAP_ACCESS || password == process.env.PRIVATE_CAP_ACCESS) {
+	if(password == process.env.PRACTICE_CAP_ACCESS || password == process.env.PRIVATE_CAP_ACCESS || password == process.env.ACADEMIC_CAP_ACCESS) {
 		return true;
 	} else {
 		return false;
