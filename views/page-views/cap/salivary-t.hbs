@@ -181,81 +181,8 @@
 
 
 
-
-
             <hr class="p-2" >
-            <h5>Pathologic Staging (pTNM)
-
-            </h5>
-
-            <h6>TNM Descriptors (select all that apply)</h6>
-            <select id="box11" class='form-control selectpicker form-control-sm col-sm-6' multiple>
-                <option selected value="Not applicable">Not applicable</option>
-                <option>m</option>
-                <option>r</option>
-                <option>y</option>
-            </select>
-
-            <div class="py-2 w-100"></div>
-
-
-            <h6 class='mt-2'>pT</h6>
-            <select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
-                <option value="pTX">pTX: Primary tumor cannot be assessed</option>
-                <option value="pT0">pT0: No evidence of primary tumor</option>
-                <option value="pTis">pTis: Carcinoma in situ</option>
-                <option value="pT1">pT1: Tumor 2 cm or smaller in greatest dimension without extraparenchymal extension</option>
-                <option value="pT2">pT2: Tumor larger than 2 cm but not larger than 4 cm in greatest dimension without extraparenchymal extension</option>
-                <option value="pT3">pT3: Tumor larger than 4 cm and/or tumor having extraparenchymal extension</option>
-                <option value="pT4a">pT4a: Moderately advanced disease. Tumor invades skin, mandible, ear canal, and/or facial nerve.</option>
-                <option value="pT4b">pT4b: Very advanced disease. Tumor invades skull base and/or pterygoid plates and/or encases carotid artery</option>
-            </select>
-
-
-            <div class="py-2 w-100"></div>
-
-
-            <h6 class='mt-2'>pN</h6>
-            <select id="box13" class="form-control selectpicker form-control-sm col-sm-6">
-
-                <option value="pNx">pNx: Regional lymph nodes cannot be assessed</option>
-                <option value="pN0">pN0: No regional lymph node metastasis</option>
-                <option value="pN1">pN1: Metastasis in a single ipsilateral lymph node, ENE(−), 3 cm or smaller in greatest
-                    dimension
-                </option>
-                <option value="pN2a">pN2a: Metastasis in single ipsilateral node 3 cm or smaller in greatest dimension and ENE(+)
-                </option>
-                <option value="pN2a ">pN2a: Metastasis in a single ipsilateral node larger than 3 cm but not larger than 6 cm in
-                    greatest dimension and ENE(−)
-                </option>
-                <option value="pN2b">pN2b: Metastasis in multiple ipsilateral nodes, none larger than 6 cm in greatest dimension and
-                    ENE(−)
-                </option>
-                <option value="pN2c">pN2c: Metastasis in bilateral or contralateral lymph node(s), none larger than 6 cm in greatest
-                    dimension and ENE(−)
-                </option>
-                <option value="pN3a">pN3a: Metastasis in a lymph node larger than 6 cm in greatest dimension and ENE(−)</option>
-                <option value="pN3b">pN3b: Metastasis in a single ipsilateral node larger than 3 cm in greatest dimension and
-                    ENE(+)
-                </option>
-                <option value="pN3b ">pN3b: Metastasis in multiple ipsilateral, contralateral or bilateral nodes any with ENE(+)
-                </option>
-                <option value="pN3b  ">pN3b: Metastasis in a single contralateral node 3 cm or smaller and ENE(+)</option>
-            </select>
-
-            <div class="py-2 w-100"></div>
-
-
-            <h6 class='mt-2'>pM</h6>
-            <select id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
-                <option selected value='pMx'>pMx: Not applicable</option>
-                <option value="pM1">pM1: Distant metastasis</option>
-            </select>
-            <input type="text" class="form-control form-control-sm col-sm-6" id="box14_2" style="display:none;" placeholder="Specify metastatic sites">
-
-            <div class="py-2 w-100"></div>
-
-
+            <h5>Regional Lymph Nodes</h5>
             <form class="form-inline mt-2">
                 <label class="form-check-label">Check here if any lymph nodes submitted?
                     <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box15" >
@@ -292,6 +219,84 @@
 
                 </form>
             </div>
+
+
+
+            <hr class="p-2" >
+            <h5>Pathologic Staging (pTNM)
+
+            </h5>
+
+            <h6>TNM Descriptors (select all that apply)</h6>
+            <select id="box11" class='form-control selectpicker form-control-sm col-sm-6' multiple>
+                <option selected value="Not applicable">Not applicable</option>
+                <option>m</option>
+                <option>r</option>
+                <option>y</option>
+            </select>
+
+            <div class="py-2 w-100"></div>
+
+
+            <h6 class='mt-2'>pT</h6>
+            <select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pTX">pTX: Primary tumor cannot be assessed</option>
+                <option value="pT0">pT0: No evidence of primary tumor</option>
+                <option value="pTis">pTis: Carcinoma in situ</option>
+                <option value="pT1">pT1: Tumor 2 cm or smaller in greatest dimension without extraparenchymal extension</option>
+                <option value="pT2">pT2: Tumor larger than 2 cm but not larger than 4 cm in greatest dimension without extraparenchymal extension</option>
+                <option value="pT3">pT3: Tumor larger than 4 cm and/or tumor having extraparenchymal extension</option>
+                <option value="pT4a">pT4a: Moderately advanced disease. Tumor invades skin, mandible, ear canal, and/or facial nerve.</option>
+                <option value="pT4b">pT4b: Very advanced disease. Tumor invades skull base and/or pterygoid plates and/or encases carotid artery</option>
+            </select>
+
+
+            <div class="py-2 w-100"></div>
+
+
+            <h6 class='mt-2'>pN
+            <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
+                                   title="Midline nodes are considered ipsilateral nodes">A word about nodes</i>
+            </h6>
+            <select id="box13" class="form-control selectpicker form-control-sm col-sm-6">
+
+                <option value="pNx">pNx: Regional lymph nodes cannot be assessed</option>
+                <option value="pN0">pN0: No regional lymph node metastasis</option>
+                <option value="pN1">pN1: Metastasis in a single ipsilateral lymph node, ENE(−), 3 cm or smaller in greatest
+                    dimension
+                </option>
+                <option value="pN2a">pN2a: Metastasis in single ipsilateral node 3 cm or smaller in greatest dimension and ENE(+)
+                </option>
+                <option value="pN2a ">pN2a: Metastasis in a single ipsilateral node larger than 3 cm but not larger than 6 cm in
+                    greatest dimension and ENE(−)
+                </option>
+                <option value="pN2b">pN2b: Metastasis in multiple ipsilateral nodes, none larger than 6 cm in greatest dimension and
+                    ENE(−)
+                </option>
+                <option value="pN2c">pN2c: Metastasis in bilateral or contralateral lymph node(s), none larger than 6 cm in greatest
+                    dimension and ENE(−)
+                </option>
+                <option value="pN3a">pN3a: Metastasis in a lymph node larger than 6 cm in greatest dimension and ENE(−)</option>
+                <option value="pN3b">pN3b: Metastasis in a single ipsilateral node larger than 3 cm in greatest dimension and
+                    ENE(+)
+                </option>
+                <option value="pN3b ">pN3b: Metastasis in multiple ipsilateral, contralateral or bilateral nodes any with ENE(+)
+                </option>
+                <option value="pN3b  ">pN3b: Metastasis in a single contralateral node of any size and ENE(+)</option>
+            </select>
+
+            <div class="py-2 w-100"></div>
+
+
+            <h6 class='mt-2'>pM</h6>
+            <select id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option selected value='pMx'>pMx: Not applicable</option>
+                <option value="pM1">pM1: Distant metastasis</option>
+            </select>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box14_2" style="display:none;" placeholder="Specify metastatic sites">
+
+            <div class="py-2 w-100"></div>
+
 
 
             <hr class="p-2" >

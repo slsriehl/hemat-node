@@ -39,7 +39,7 @@ $(window).on('load', function () {
             "pN3a": "pN3a: Metastasis in a lymph node larger than 6 cm in greatest dimension and ENE(−)",
             "pN3b": "pN3b: Metastasis in a single ipsilateral node larger than 3 cm in greatest dimension and ENE(+)",
             "pN3b ": "pN3b: Metastasis in multiple ipsilateral, contralateral or bilateral nodes any with ENE(+)",
-            "pN3b  ": "pN3b: Metastasis in a single contralateral node 3 cm or smaller and ENE(+)"
+            "pN3b  ": "pN3b: Metastasis in a single contralateral node of any size and ENE(+)"
         },
         "Melanoma": {
             "pT3": "pT3: Tumors limited to the mucosa and immediately underlying soft tissue, regardless of thickness or greatest dimension",
@@ -424,6 +424,27 @@ $(window).on('load', function () {
         var box_11 = $("#box11").val();
         captext += "\nPerineural Invasion:\n- " + box_11 + "\n";
 
+
+        if ($("#box16").is(':checked')) {
+            var box_17 = $("#box17").val();
+            var box_18 = $("#box18").val();
+            captext += "\nLymph nodes:\n\tLymph Nodes Examined: " + box_17 + "\n\tLymph nodes involved: " + box_18 + "\n";
+
+            if (box_18 > 0) {
+                var box_19 = $("#box19").val();
+                captext += "\n\tLaterality of Lymph Nodes Involved: " + box_19 + "\n";
+
+                var box_20 = $("#box20").val();
+                captext += "\n\tSize of Largest Metastatic Deposit: " + box_20.replace(/cm/, '') + "cm\n";
+
+                var box_21 = $("#box21").val();
+                captext += "\n\tExtranodal Extension: " + box_21 + "\n";
+            }
+        } else {
+            captext += "\nLymph nodes: None submitted\n";
+        }
+
+
         var box_12 = $("#box12").val();
         var box_13 = $("#box13").val();
         var box_14 = $("#box14").val();
@@ -443,24 +464,7 @@ $(window).on('load', function () {
                 captext += box_13 + " " + box_14 + " " + box_15 + "\n";
             }
         }
-        if ($("#box16").is(':checked')) {
-            var box_17 = $("#box17").val();
-            var box_18 = $("#box18").val();
-            captext += "\nLymph nodes:\n\tLymph Nodes Examined: " + box_17 + "\n\tLymph nodes involved: " + box_18 + "\n";
 
-            if (box_18 > 0) {
-                var box_19 = $("#box19").val();
-                captext += "\n\tLaterality of Lymph Nodes Involved: " + box_19 + "\n";
-
-                var box_20 = $("#box20").val();
-                captext += "\n\tSize of Largest Metastatic Deposit: " + box_20.replace(/cm/, '') + "cm\n";
-
-                var box_21 = $("#box21").val();
-                captext += "\n\tExtranodal Extension: " + box_21 + "\n";
-            }
-        } else {
-            captext += "\nLymph nodes: None submitted\n";
-        }
 
         var box_25 = $("#box25").val();
         var box_25_2 = $("#box25_2").val();

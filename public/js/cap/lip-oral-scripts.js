@@ -10,12 +10,14 @@ $(window).on('load', function () {
         "Carcinoma": {
             "pTx": "pTx: Primary tumor cannot be assessed",
             "pTis": "pTis: Carcinoma in situ",
-            "pT1": "pT1: Tumor ≤2 cm, ≤5 mm depth of invasion",
+            "pT1": "pT1: Tumor ≤2 cm and ≤5 mm depth of invasion",
             "pT2": "pT2: Tumor ≤2 cm, depth of invasion >5 mm and ≤10 mm ",
             "pT2 ": "pT2: Tumor >2 cm but ≤4 cm, and depth of invasion ≤10 mm ",
-            "pT3": "pT3: Tumor >4 cm  or any tumor with depth of invasion >10 mm",
-            "pT4a": "pT4a: Moderately advanced local disease",
-            "pT4b": "pT4b: Very advanced local disease"
+            "pT3": "pT3: Tumor >2 cm but ≤4 cm and depth of invasion >10 mm",
+            "pT3 ": "pT3: Tumor >4 cm and depith of invasion ≤10 mm",
+            "pT4a": "pT4a: Tumor >4 cm with DOI >10 mm",
+            "pT4a ": "pT4a: Tumor invades adjacent structures only",
+            "pT4b": "pT4b: Tumor invades masticator space, pterygoid plates, or skull base, and/or encases the internal carotid artery"
         },
         "Not specified": {
             "pTx": "Cannot be determined"
@@ -31,7 +33,7 @@ $(window).on('load', function () {
             "pN3a": "pN3a: Metastasis in a lymph node larger than 6 cm in greatest dimension and ENE(−)",
             "pN3b": "pN3b: Metastasis in a single ipsilateral node larger than 3 cm in greatest dimension and ENE(+)",
             "pN3b ": "pN3b: Metastasis in multiple ipsilateral, contralateral or bilateral nodes any with ENE(+)",
-            "pN3b  ": "pN3b: Metastasis in a single contralateral node 3 cm or smaller and ENE(+)"
+            "pN3b  ": "pN3b: Metastasis in a single contralateral node of any size and ENE(+)"
         },
         "Melanoma": {
             "pT3": "pT3: Tumors limited to the mucosa and immediately underlying soft tissue, regardless of thickness or greatest dimension",
@@ -446,25 +448,7 @@ $(window).on('load', function () {
             captext += "\nPerineural Invasion:\n- " + box_17 + "\n";
         }
 
-        var box_18 = $("#box18").val();
-        var box_19 = $("#box19").val();
-        var box_20 = $("#box20").val();
-        var box_21 = $("#box21").val();
-        var box_21_2 = $("#box21_2").val();
-        captext += '\nPathologic Staging (pTNM):\n- ';
-        if (box_18 != "Not applicable") {
-            if (box_21 != "pMx") {
-                captext += box_18.join("") + " " + box_19 + " " + box_20 + " " + box_21 + " (metastatic site(s): " + box_21_2 + ")\n";
-            } else {
-                captext += box_18.join("") + " " + box_19 + " " + box_20 + " " + box_21 + "\n";
-            }
-        } else {
-            if (box_21 != "pMx") {
-                captext += box_19 + " " + box_20 + " " + box_21 + " (metastatic site(s): " + box_21_2 + ")\n";
-            } else {
-                captext += box_19 + " " + box_20 + " " + box_21 + "\n";
-            }
-        }
+
         if ($("#box22").is(':checked')) {
             var box_23 = $("#box23").val();
             var box_24 = $("#box24").val();
@@ -486,6 +470,27 @@ $(window).on('load', function () {
         } else {
             captext += "\nLymph nodes: None submitted\n";
         }
+
+        var box_18 = $("#box18").val();
+        var box_19 = $("#box19").val();
+        var box_20 = $("#box20").val();
+        var box_21 = $("#box21").val();
+        var box_21_2 = $("#box21_2").val();
+        captext += '\nPathologic Staging (pTNM):\n- ';
+        if (box_18 != "Not applicable") {
+            if (box_21 != "pMx") {
+                captext += box_18.join("") + " " + box_19 + " " + box_20 + " " + box_21 + " (metastatic site(s): " + box_21_2 + ")\n";
+            } else {
+                captext += box_18.join("") + " " + box_19 + " " + box_20 + " " + box_21 + "\n";
+            }
+        } else {
+            if (box_21 != "pMx") {
+                captext += box_19 + " " + box_20 + " " + box_21 + " (metastatic site(s): " + box_21_2 + ")\n";
+            } else {
+                captext += box_19 + " " + box_20 + " " + box_21 + "\n";
+            }
+        }
+
 
 
 

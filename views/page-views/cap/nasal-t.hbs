@@ -246,39 +246,8 @@
 
 
 
-
-            <hr class="p-2">
-            <h5>Pathologic Staging (pTNM)
-
-            </h5>
-
-            <h6>TNM Descriptors (select all that apply)</h6>
-            <select id="box12" class='form-control selectpicker form-control-sm col-sm-6' multiple>
-                <option selected value="Not applicable">Not applicable</option>
-                <option>m</option>
-                <option>r</option>
-                <option>y</option>
-            </select>
-            <h6 class='mt-2'>pT</h6>
-            <select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
-                <option value="pTX">pTX: Primary tumor cannot be assessed</option>
-                <option value="pTis">pTis: Carcinoma in situ</option>
-            </select>
-
-
-            <h6 class='mt-2'>pN</h6>
-            <select id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
-                <option value="null"></option>
-            </select>
-
-
-            <h6 class='mt-2'>pM</h6>
-            <select id="box15" class='form-control selectpicker form-control-sm col-sm-6'>
-                <option selected value='pMx'>pMx: Not applicable</option>
-                <option value="pM1">pM1: Distant metastasis present</option>
-            </select>
-            <input type="text" class="form-control form-control-sm col-sm-6" id="box15_2" style="display:none;" placeholder="Specify metastatic sites">
-
+            <hr class="p-2" >
+            <h5>Regional Lymph Nodes</h5>
             <form class="form-inline mt-2">
                 <label class="form-check-label">Check here if any lymph nodes submitted?
                     <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box16" >
@@ -315,6 +284,46 @@
 
                 </form>
             </div>
+
+
+
+
+            <hr class="p-2">
+            <h5>Pathologic Staging (pTNM)
+
+            </h5>
+
+            <h6>TNM Descriptors (select all that apply)</h6>
+            <select id="box12" class='form-control selectpicker form-control-sm col-sm-6' multiple>
+                <option selected value="Not applicable">Not applicable</option>
+                <option>m</option>
+                <option>r</option>
+                <option>y</option>
+            </select>
+            <h6 class='mt-2'>pT</h6>
+            <select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pTX">pTX: Primary tumor cannot be assessed</option>
+                <option value="pTis">pTis: Carcinoma in situ</option>
+            </select>
+
+
+            <h6 class='mt-2'>pN
+            <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
+                                   title="Midline nodes are considered ipsilateral nodes">A word about nodes</i>
+            </h6>
+            <select id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="null"></option>
+            </select>
+
+
+            <h6 class='mt-2'>pM</h6>
+            <select id="box15" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option selected value='pMx'>pMx: Not applicable</option>
+                <option value="pM1">pM1: Distant metastasis present</option>
+            </select>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box15_2" style="display:none;" placeholder="Specify metastatic sites">
+
+
 
 
 

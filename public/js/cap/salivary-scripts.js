@@ -229,6 +229,23 @@ $(window).on('load', function () {
         var box_10 = $("#box10").val();
         captext += "\nPerineural Invasion:\n- " + box_10 + "\n";
 
+        if ($("#box15").is(':checked')) {
+            var box_16 = $("#box16").val();
+            var box_17 = $("#box17").val();
+            captext += "\nLymph nodes:\n\tLymph Nodes Examined: " + box_16 + "\n\tLymph nodes involved: " + box_17 + "\n";
+
+            if (box_17 > 0) {
+                var box_18 = $("#box18").val();
+                captext += "\n\tLaterality of Lymph Nodes Involved: " + box_18 + "\n";
+
+                var box_19 = $("#box19").val();
+                captext += "\n\tSize of Largest Metastatic Deposit: " + box_19.replace(/cm/, '') + "cm\n";
+
+                var box_20 = $("#box20").val();
+                captext += "\n\tExtranodal Extension: " + box_20 + "\n";
+            }
+        }
+
         var box_11 = $("#box11").val();
         var box_12 = $("#box12").val();
         var box_13 = $("#box13").val();
@@ -249,22 +266,7 @@ $(window).on('load', function () {
             }
         }
 
-        if ($("#box15").is(':checked')) {
-            var box_16 = $("#box16").val();
-            var box_17 = $("#box17").val();
-            captext += "\nLymph nodes:\n\tLymph Nodes Examined: " + box_16 + "\n\tLymph nodes involved: " + box_17 + "\n";
 
-            if (box_17 > 0) {
-                var box_18 = $("#box18").val();
-                captext += "\n\tLaterality of Lymph Nodes Involved: " + box_18 + "\n";
-
-                var box_19 = $("#box19").val();
-                captext += "\n\tSize of Largest Metastatic Deposit: " + box_19.replace(/cm/, '') + "cm\n";
-
-                var box_20 = $("#box20").val();
-                captext += "\n\tExtranodal Extension: " + box_20 + "\n";
-            }
-        }
 
         var box_21 = $("#box21").val();
         var box_21_2 = $("#box21_2").val();

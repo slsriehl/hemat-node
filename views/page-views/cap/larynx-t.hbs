@@ -216,6 +216,53 @@
             </select>
 
 
+            <hr class="p-2" >
+            <h5>Regional Lymph Nodes</h5>
+
+            <form class="form-inline mt-4">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box16">
+                </label>
+            </form>
+
+            <div class="py-2 w-100"></div>
+
+            <div class='lnchk' style='display:none;'>
+                <form class="form-inline col-8">
+                    <label class="m-2">Number of lymph nodes examined:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box17" style="width:100px"></label>
+                    <label class="m-2">Number of lymph nodes involved:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 subnode" id="box18" style="width:100px"></label>
+
+                    <div class="posnodes" style="display:none;">
+                        Laterality of Lymph Nodes Involved
+                        <select id="box19" class='form-control selectpicker form-control-sm col-sm-6'>
+                            <option value="Ipsilateral">Ipsilateral (including midline)</option>
+                            <option>Contralateral</option>
+                            <option>Bilateral</option>
+                            <option>Cannot be determined</option>
+                        </select>
+
+                        <div class="py-2 w-100"></div>
+
+                        Size of Largest Metastatic Deposit (cm):
+                        <input type="text" class="form-control form-control-sm col-sm-6" id="box20" placeholder="">
+
+                        <div class="py-2 w-100"></div>
+
+                        Extranodal Extension
+                        <select id="box21" class='form-control selectpicker form-control-sm col-sm-6'>
+                            <option>Not identified</option>
+                            <option>Present</option>
+                            <option>Cannot be determined</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+
+
+
+
             <hr class="p-2">
             <h5>Pathologic Staging (pTNM)
 
@@ -238,7 +285,10 @@
 
             <div class="py-2 w-100"></div>
 
-            <h6 class='mt-2'>pN</h6>
+            <h6 class='mt-2'>pN
+            <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
+                                   title="Midline nodes are considered ipsilateral nodes">A word about nodes</i>
+            </h6>
             <select id="box14" class='form-control selectpicker form-control-sm col-sm-6'>
 
             </select>
@@ -253,47 +303,7 @@
             <input type="text" class="form-control form-control-sm col-sm-6" id="box15_2" style="display:none;"
                    placeholder="Specify metastatic sites">
 
-            <form class="form-inline mt-4">
-                <label class="form-check-label">Check here if any lymph nodes submitted?
-                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box16">
-                </label>
-            </form>
 
-            <div class="py-2 w-100"></div>
-
-
-            <div class='lnchk' style='display:none;'>
-                <form class="form-inline col-8">
-                    <label class="m-2">Number of lymph nodes examined:
-                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box17" style="width:100px"></label>
-                    <label class="m-2">Number of lymph nodes involved:
-                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 subnode" id="box18" style="width:100px"></label>
-
-                <div class="posnodes" style="display:none;">
-                    Laterality of Lymph Nodes Involved
-                    <select id="box19" class='form-control selectpicker form-control-sm col-sm-6'>
-                        <option value="Ipsilateral">Ipsilateral (including midline)</option>
-                        <option>Contralateral</option>
-                        <option>Bilateral</option>
-                        <option>Cannot be determined</option>
-                    </select>
-
-                    <div class="py-2 w-100"></div>
-
-                    Size of Largest Metastatic Deposit (cm):
-                    <input type="text" class="form-control form-control-sm col-sm-6" id="box20" placeholder="">
-
-                    <div class="py-2 w-100"></div>
-
-                   Extranodal Extension
-                    <select id="box21" class='form-control selectpicker form-control-sm col-sm-6'>
-                        <option>Not identified</option>
-                        <option>Present</option>
-                        <option>Cannot be determined</option>
-                    </select>
-                </div>
-                </form>
-            </div>
 
 
             <hr class="p-2">

@@ -61,8 +61,6 @@
                     <option>Alveolar process, maxillary</option>
                     <option>Alveolar process, mandibular</option>
                     <option>Retromolar area</option>
-                    <option>Mandible</option>
-                    <option>Maxilla</option>
                 </optgroup>
                 <option>Other</option>
                 <option>Not specified</option>
@@ -323,6 +321,55 @@
 
 
 
+            <hr class="p-2" >
+            <h5>Regional Lymph Nodes</h5>
+            <form class="form-inline mt-2">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box22" >
+                </label>
+            </form>
+
+            <div class='lnchk' style='display:none;'>
+                <form class="form-inline mt-2 col-8">
+                    <label class="m-2">Number of lymph nodes examined:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box23" style="width:100px"></label>
+                    <label class="m-2">Number of lymph nodes involved:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 subnode" id="box24" style="width:100px"></label>
+
+                    <div class="posnodes" style="display:none;">
+                        <label class="m-2">
+                            Laterality of Lymph Nodes Involved
+                            <select id="box25" class='form-control selectpicker form-control-sm col-sm-6 ml-3'>
+                                <option>Ipsilateral/midline</option>
+                                <option>Contralateral</option>
+                                <option>Bilateral</option>
+                                <option>Cannot be determined</option>
+                            </select>
+                        </label>
+
+                        <div class="py-2 w-100"></div>
+
+                        <label class="m-2">
+                            Size of Largest Metastatic Deposit (cm):
+                            <input type="text" class="form-control form-control-sm col-sm-6 ml-3" id="boxx26" placeholder="">
+                        </label>
+
+                        <div class="py-2 w-100"></div>
+
+                        <label class="m-2">
+                            Extranodal Extension:
+                            <select id="box27" class='form-control selectpicker form-control-sm col-sm-8 ml-3'>
+                                <option>Not identified</option>
+                                <option>Present, ENEma (>2 mm)</option>
+                                <option>Present, ENEmi (≤2 mm)</option>
+                                <option>Cannot be determined</option>
+                            </select>
+                        </label>
+                    </div>
+                </form>
+            </div>
+
+
 
 
             <hr class="p-2" >
@@ -360,9 +407,12 @@
 
             </select>
 
-                <div class="py-2 w-100"></div>
+            <div class="py-2 w-100"></div>
 
-                <h6 class='mt-2'>pN</h6>
+            <h6 class='mt-2'>pN
+                <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
+                                       title="Midline nodes are considered ipsilateral nodes">A word about nodes</i>
+            </h6>
             <select id="box20" class='form-control selectpicker form-control-sm col-sm-6'>
 
             </select>
@@ -378,51 +428,7 @@
 
                 <div class="py-2 w-100"></div>
 
-                <form class="form-inline mt-2">
-                <label class="form-check-label">Check here if any lymph nodes submitted?
-                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box22" >
-                </label>
-            </form>
 
-            <div class='lnchk' style='display:none;'>
-                <form class="form-inline mt-2 col-8">
-                    <label class="m-2">Number of lymph nodes examined:
-                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box23" style="width:100px"></label>
-                    <label class="m-2">Number of lymph nodes involved:
-                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 subnode" id="box24" style="width:100px"></label>
-
-                <div class="posnodes" style="display:none;">
-                    <label class="m-2">
-                        Laterality of Lymph Nodes Involved
-                    <select id="box25" class='form-control selectpicker form-control-sm col-sm-6 ml-3'>
-                        <option>Ipsilateral/midline</option>
-                        <option>Contralateral</option>
-                        <option>Bilateral</option>
-                        <option>Cannot be determined</option>
-                    </select>
-                    </label>
-
-                    <div class="py-2 w-100"></div>
-
-                    <label class="m-2">
-                        Size of Largest Metastatic Deposit (cm):
-                        <input type="text" class="form-control form-control-sm col-sm-6 ml-3" id="boxx26" placeholder="">
-                    </label>
-
-                    <div class="py-2 w-100"></div>
-
-                    <label class="m-2">
-                            Extranodal Extension:
-                            <select id="box27" class='form-control selectpicker form-control-sm col-sm-8 ml-3'>
-                                <option>Not identified</option>
-                                <option>Present, ENEma (>2 mm)</option>
-                                <option>Present, ENEmi (≤2 mm)</option>
-                                <option>Cannot be determined</option>
-                            </select>
-                    </label>
-                </div>
-                </form>
-            </div>
 
 
 

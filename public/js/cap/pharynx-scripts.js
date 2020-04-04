@@ -66,7 +66,7 @@ $(window).on('load', function () {
             "pN3a": "pN3a: Metastasis in a lymph node larger than 6 cm in greatest dimension and ENE(−)",
             "pN3b": "pN3b: Metastasis in a single ipsilateral node larger than 3 cm in greatest dimension and ENE(+)",
             "pN3b ": "pN3b: Metastasis in multiple ipsilateral, contralateral or bilateral nodes any with ENE(+)",
-            "pN3b  ": "pN3b: Metastasis in a single contralateral node 3 cm or smaller and ENE(+)"
+            "pN3b  ": "pN3b: Metastasis in a single contralateral node of any size and ENE(+)"
 
         },
         "Nasopharynx-node": {
