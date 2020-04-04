@@ -371,6 +371,32 @@ $(window).on("load", function() {
             captext += "\n+ Lymphovascular Invasion:\n- " + box_11 + "\n";
         }
 
+
+        if ($("#box16").is(":checked")) {
+            var box_17 = $("#box17").val();
+            var box_18 = $("#box18").val();
+            var box_60 = $("#box60").val();
+            captext +=
+                "\nLymph nodes:\n\tLymph Nodes Examined: " +
+                box_17 +
+                "\n\tLymph nodes involved: " +
+                box_18 +"\n";
+            if (box_18.indexOf("0") < 0){
+                if (box_60.length > 0) {
+                    captext += "\t+ Size of Largest Deposit: "+box_60+"cm\n";
+                }
+
+                var box_19 = $("#box19").val();
+                if (box_19.length > 0) {
+                    captext += "\t+ Extranodal Extension: " + box_19 + "\n";
+                }
+            }
+        } else {
+            captext += "\nLymph nodes: None submitted\n";
+        }
+
+
+
         var box_12 = $("#box12").val();
         var box_13 = $("#box13").val();
         var box_14 = $("#box14").val();
@@ -408,29 +434,6 @@ $(window).on("load", function() {
             } else {
                 captext += box_13 + " " + box_14 + " " + box_15 + "\n";
             }
-        }
-
-        if ($("#box16").is(":checked")) {
-            var box_17 = $("#box17").val();
-            var box_18 = $("#box18").val();
-            var box_60 = $("#box60").val();
-            captext +=
-                "\nLymph nodes:\n\tLymph Nodes Examined: " +
-                box_17 +
-                "\n\tLymph nodes involved: " +
-                box_18 +"\n";
-            if (box_18.indexOf("0") < 0){
-                if (box_60.length > 0) {
-                    captext += "\t+ Size of Largest Deposit: "+box_60+"cm\n";
-                }
-
-                var box_19 = $("#box19").val();
-                if (box_19.length > 0) {
-                    captext += "\t+ Extranodal Extension: " + box_19 + "\n";
-                }
-            }
-        } else {
-            captext += "\nLymph nodes: None submitted\n";
         }
 
 

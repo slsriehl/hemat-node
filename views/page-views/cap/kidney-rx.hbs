@@ -231,6 +231,44 @@
 
 
 
+            <hr class="p-2" >
+            <h5>Regional Lymph Nodes</h5>
+            <form class="form-inline mt-2">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box18" >
+                </label>
+            </form>
+            <div class='lnchk' style='display:none;'>
+                <form class="form-inline mt-2 col-8">
+                    <label class="m-2">Number of lymph nodes examined:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box19" style="width:100px"></label>
+                    <label class="m-2">Number of lymph nodes involved:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 subnode" id="box20" style="width:100px"></label>
+                    <div class="posnodes" style="display:none;">
+                        + Specify Involved Nodes
+                        <select multiple id="box21" class='form-control selectpicker form-control-sm col-sm-6 opt'>
+                            <option>hilar</option>
+                            <option>precaval</option>
+                            <option>interaortocaval</option>
+                            <option>paracaval</option>
+                            <option>retrocaval</option>
+                            <option>preaortic</option>
+                            <option>paraaortic</option>
+                            <option>retroaortic</option>
+                            <option>Other</option>
+                        </select>
+
+                        <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box21_2' style='display:none;' placeholder='Specify Other'>
+
+                        <label class="m-2"> + Size of Largest Metastatic Deposit (cm):
+                            <input type="text" class="form-control form-control-sm col-sm-6 opt" id="box22" placeholder="">
+                        </label>
+                    </div>
+                </form>
+            </div>
+
+
+
 
 
             <hr class="p-2" >
@@ -283,43 +321,6 @@
             <input type="text" class="form-control form-control-sm col-sm-6" id="box17_2" style="display:none;" placeholder="Specify metastatic sites">
 
             <div class="py-2 w-100"></div>
-
-            <form class="form-inline mt-2">
-                <label class="form-check-label">Check here if any lymph nodes submitted?
-                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box18" >
-                </label>
-            </form>
-            <div class='lnchk' style='display:none;'>
-                <form class="form-inline mt-2 col-8">
-                    <label class="m-2">Number of lymph nodes examined:
-                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box19" style="width:100px"></label>
-                    <label class="m-2">Number of lymph nodes involved:
-                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 subnode" id="box20" style="width:100px"></label>
-                    <div class="posnodes" style="display:none;">
-                        + Specify Involved Nodes
-                        <select multiple id="box21" class='form-control selectpicker form-control-sm col-sm-6 opt'>
-                            <option>hilar</option>
-                            <option>precaval</option>
-                            <option>interaortocaval</option>
-                            <option>paracaval</option>
-                            <option>retrocaval</option>
-                            <option>preaortic</option>
-                            <option>paraaortic</option>
-                            <option>retroaortic</option>
-                            <option>Other</option>
-                        </select>
-
-                        <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box21_2' style='display:none;' placeholder='Specify Other'>
-
-                        <label class="m-2"> + Size of Largest Metastatic Deposit (cm):
-                            <input type="text" class="form-control form-control-sm col-sm-6 opt" id="box22" placeholder="">
-                        </label>
-                    </div>
-                </form>
-            </div>
-
-
-
 
 
 

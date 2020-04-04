@@ -312,7 +312,23 @@ $(window).on('load', function () {
             captext += "\n+ Lymphovascular Invasion:\n- " + box_13 + "\n";
                 }
 
-        var box_14 = $("#box14").val();
+        if ($("#box18").is(':checked')) {
+            var box_19 = $("#box19").val();
+            var box_20 = $("#box20").val();
+            var box_22 = $("#box22").val();
+
+            captext += "\nLymph nodes:\n\tLymph Nodes Examined: " + box_19 + "\n\tLymph nodes involved: " + box_20 + "\n";
+
+            var box_21 = $("#box21").val();
+            var box_21_2 = $("#box21_2").val();
+            if (box_21.length > 0){
+                if ($.inArray('Other', box_21) >-1){
+                    captext += "\t+ Nodes Involved: "  + box_21.join(', ').replace(/Other/, box_21_2) + "\n";}
+                else {captext += "\t+ Nodes Involved: "  + box_21.join(', ') + "\n";}
+            }
+
+
+            var box_14 = $("#box14").val();
         var box_15 = $("#box15").val();
         var box_16 = $("#box16").val();
         var box_17 = $("#box17").val();
@@ -331,20 +347,6 @@ $(window).on('load', function () {
                 captext += box_15 + " " + box_16 + " " + box_17 + "\n";
             }
         }
-        if ($("#box18").is(':checked')) {
-            var box_19 = $("#box19").val();
-            var box_20 = $("#box20").val();
-            var box_22 = $("#box22").val();
-
-            captext += "\nLymph nodes:\n\tLymph Nodes Examined: " + box_19 + "\n\tLymph nodes involved: " + box_20 + "\n";
-            
-            var box_21 = $("#box21").val();
-            var box_21_2 = $("#box21_2").val();
-            if (box_21.length > 0){
-                if ($.inArray('Other', box_21) >-1){
-                    captext += "\t+ Nodes Involved: "  + box_21.join(', ').replace(/Other/, box_21_2) + "\n";}
-                else {captext += "\t+ Nodes Involved: "  + box_21.join(', ') + "\n";}
-            }
 
             if (box_22.length  > 0){
                 captext += "\t+ Largest Metastatic Deposit: " + box_22.replace(/cm/, '') + "cm\n";
