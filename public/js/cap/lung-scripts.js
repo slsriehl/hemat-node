@@ -173,6 +173,15 @@ $(window).on('load', function () {
         }
     });
 
+    $('#box50').on("change", function(){
+        var sel = $('#box50').val();
+        if (sel.indexOf("Present") > -1) {
+
+            $('#box50_2').show();}
+        else {
+            $('#box50_2').hide();}
+    });
+
     //************************************************************//
     // Script to populate the template data in the output textarea//
     // *************************************************************/
@@ -271,6 +280,13 @@ $(window).on('load', function () {
         } else {
             captext += "\nTumor Site:\n- " + box_3.join("\n- ") + "\n";
         }
+
+        var box_50 = $("#box50").val();
+        var box_50_2 = $("#box50_2").val();
+        if (box_50.indexOf("Present") > -1) {
+            captext += "\nSynchronous tumors:\n- Present: "  + box_50_2+ " tumors in specimen\n";}
+        else {captext += "\nSynchronous tumors:\n- "  + box_50+ "\n";}
+
 
         var box_9 = $("#box9").val();
         var box_9_2 = $("#box9_2").val();
@@ -377,6 +393,24 @@ $(window).on('load', function () {
         var box_25 = $("#box25").val();
         captext += "\nTreatment Effect:\n- " + box_25 + "\n";
 
+
+        if ($("#box30").is(':checked')) {
+            var box_31 = $("#box31").val();
+            var box_32 = $("#box32").val();
+            captext += "\nLymph nodes:\n\tLymph Nodes Examined: " + box_31 + "\n\tLymph nodes involved: " + box_32 + "\n";
+            if (box_32 > 0) {
+                var box_33 = $("#box33").val();
+                captext += "\tNodal station(s) involved: " + box_33 + "\n";
+                var box_34 = $("#box34").val();
+                if (box_34.length  > 0){
+                    captext += "\t+ Extranodal Extension: " + box_34 + "\n";
+                }
+            }
+        } else {
+            captext += "\nLymph nodes: None submitted\n";
+        }
+
+
         var box_26 = $("#box26").val();
         var box_27 = $("#box27").val();
         var box_28 = $("#box28").val();
@@ -395,21 +429,6 @@ $(window).on('load', function () {
             } else {
                 captext += box_27 + " " + box_28 + " " + box_29 + "\n";
             }
-        }
-        if ($("#box30").is(':checked')) {
-            var box_31 = $("#box31").val();
-            var box_32 = $("#box32").val();
-            captext += "\nLymph nodes:\n\tLymph Nodes Examined: " + box_31 + "\n\tLymph nodes involved: " + box_32 + "\n";
-            if (box_32 > 0) {
-                var box_33 = $("#box33").val();
-                captext += "\tNodal station(s) involved: " + box_33 + "\n";
-                var box_34 = $("#box34").val();
-                if (box_34.length  > 0){
-                    captext += "\t+ Extranodal Extension: " + box_34 + "\n";
-                    }
-            }
-        } else {
-            captext += "\nLymph nodes: None submitted\n";
         }
 
         var box_35 = $("#box35").val();

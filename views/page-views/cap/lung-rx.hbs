@@ -65,7 +65,17 @@
 
 
 
+            <hr class="p-2" >
+            <h5>Synchronous tumors?
+            <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
+                                   title="required if morphologically distinct unrelated multiple primary tumors are present"></i>
+            </h5>
+            <select id="box50" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option>Absent</option>
+                <option>Present</option>
+            </select>
 
+            <input type="number" class="form-control form-control-sm mt-3 col-sm-6" id='box50_2' style='display:none;' placeholder='Specify # of tumors'>
 
 
 
@@ -379,6 +389,35 @@
             </select>
 
 
+            <hr class="p-2" >
+            <h5>Regional Lymph Nodes</h5>
+            <form class="form-inline mt-2">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box30" >
+                </label>
+            </form>
+
+            <div class='lnchk' style='display:none;'>
+                <form class="form-inline mt-2 col-8">
+                    <label class="m-2">Number of lymph nodes examined:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box31"></label>
+                    <label class="m-2">Number of lymph nodes involved:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 subnode" id="box32" ></label>
+                    <div class="posnodes" style="display: none;">
+                        <label class="m-2">Nodal station(s) involved:
+                            <input type="text" class="form-control form-control-sm col-sm-6 ml-3" id="box33" placeholder=""></label>
+                        <label class="m-2">+ Extranodal Extension:
+                            <select id="box34" class='form-control selectpicker form-control-sm col-sm-6 ml-3 opt'>
+                                <option></option>
+                                <option>Not identified</option>
+                                <option>Present</option>
+                                <option>Cannot be determined</option>
+                            </select></label>
+                    </div>
+                </form>
+            </div>
+
+
 
 
 
@@ -444,39 +483,6 @@
             <input type="text" class="form-control form-control-sm col-sm-6" id="box29_2" style="display:none;" placeholder="Specify metastatic sites">
 
             <div class="py-2 w-100"></div>
-
-
-            <form class="form-inline mt-2">
-                <label class="form-check-label">Check here if any lymph nodes submitted?
-                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box30" >
-                </label>
-            </form>
-
-            <div class='lnchk' style='display:none;'>
-                <form class="form-inline mt-2 col-8">
-                    <label class="m-2">Number of lymph nodes examined:
-                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box31"></label>
-                    <label class="m-2">Number of lymph nodes involved:
-                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 subnode" id="box32" ></label>
-                    <div class="posnodes" style="display: none;">
-                    <label class="m-2">Nodal station(s) involved:
-                        <input type="text" class="form-control form-control-sm col-sm-6 ml-3" id="box33" placeholder=""></label>
-                    <label class="m-2">+ Extranodal Extension:
-                        <select id="box34" class='form-control selectpicker form-control-sm col-sm-6 ml-3 opt'>
-                            <option></option>
-                            <option>Not identified</option>
-                            <option>Present</option>
-                            <option>Cannot be determined</option>
-                        </select></label>
-                    </div>
-                </form>
-            </div>
-
-
-
-
-
-
 
 
 
