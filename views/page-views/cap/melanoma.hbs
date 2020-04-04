@@ -165,7 +165,18 @@
 
                     <div class="py-2 w-100"></div>
 
-                    <h6 class="mt-3">+ Tumor-Infiltrating Lymphocytes
+					<h6>Mitotic Rate</h6>
+					<form class="form-inline mt-2">
+						<div class="form-group">
+							<label for="">Specify:</label>
+							<input type="number" class="form-control form-control-sm ml-2 mr-2" id="box50" style="width:100px" placeholder="0">			/10 high-power fields
+						</div>
+						<p class="w-100"><small>note: 1 HPF = 400x field (10x ocular and 40x objective)</small></p>
+					</form>
+
+					<div class="py-2 w-100"></div>
+
+					<h6 class="mt-3">+ Tumor-Infiltrating Lymphocytes
                         <!-- Button trigger modal -->
                         <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_mel-til">A word about TILs</button>
                     </h6>
@@ -192,9 +203,9 @@
                     <option>Uninvolved by invasive melanoma</option>
                     <option>Involved by invasive melanoma</option>
                 </select>
-                <input type="text" class="form-control form-control-sm col-sm-6" id='box10_1' style='display:none;' placeholder='Specify closest margin'>
-                <input type="text" class="form-control form-control-sm col-sm-6" id='box10_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
-                <input type="text" class="form-control form-control-sm col-sm-6" id='box10_3' style='display:none;' placeholder='Specify involved margin'>
+                <input type="text" class="form-control form-control-sm col-sm-8" id='box10_1' style='display:none;' placeholder='Specify closest margin'>
+                <input type="text" class="form-control form-control-sm col-sm-8" id='box10_2' style='display:none;' placeholder='Specify distance to closest peripheral margin (mm)'>
+                <input type="text" class="form-control form-control-sm col-sm-8" id='box10_3' style='display:none;' placeholder='Specify involved margin'>
 
                 <div class="py-2 w-100"></div>
 
@@ -206,7 +217,7 @@
                     <option>Involved by in-situ melanoma</option>
                 </select>
                 <input type="text" class="form-control form-control-sm col-sm-6" id='box11_1' style='display:none;' placeholder='Specify closest margin'>
-                <input type="text" class="form-control form-control-sm col-sm-6" id='box11_2' style='display:none;' placeholder='Specify distance from margin (mm)'>
+                <input type="text" class="form-control form-control-sm col-sm-6" id='box11_2' style='display:none;' placeholder='Specify distance to closest peripheral margin (mm)'>
                 <input type="text" class="form-control form-control-sm col-sm-6" id='box11_3' style='display:none;' placeholder='Specify involved margin'>
 
 
@@ -214,7 +225,10 @@
 
                     <div class="py-2 w-100"></div>
 
-                    <h6 class="mt-3">Margins - Deep, Invasive component</h6>
+                    <h6 class="mt-3">Margins - Deep, Invasive component
+					<i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
+					                       title="Note: Margin involvement by melanoma in situ should be recorded if in situ disease is present in the specimen, and if margins are uninvolved by invasive melanoma.">Note about in-situ melanoma</i>
+					</h6>
                 <select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
                     <option>Cannot be assessed</option>
                     <option>Uninvolved by invasive melanoma</option>
@@ -236,6 +250,38 @@
 			</select>
 
 
+
+			<hr class="p-2" >
+			<h5>Regional Lymph Nodes</h5>
+			<form class="form-inline">
+				<label class="form-check-label">Check here if any lymph nodes submitted?
+					<input class="form-control form-control-sm col-sm-6" type="checkbox" id="box22" >
+				</label>
+			</form>
+
+			<div class='lnchk' style='display:none;'>
+				<form class="form-inline col-8">
+					<label class="m-2">Number of lymph nodes examined:
+						<input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box23" style="width:100px">
+					</label>
+					<label class="m-2">Number of Sentinel Nodes Examined:
+						<input type="text" class="form-control form-control-sm col-sm-6 ml-3" id="box25" style="width:100px" placeholder="">
+					</label>
+					<label class="m-2">Number of lymph nodes involved:
+						<input type="number" class="form-control form-control-sm col-sm-6 ml-3 subnode" id="box24" style="width:100px">
+					</label>
+					<div class="posnodes" style="display: none;">
+						<label class="m-2">Number of Sentinel Nodes Involved:
+							<input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box27">
+						</label>
+						Matted Nodes:
+						<select id="box26" class='form-control selectpicker form-control-sm col-sm-6 ml-3'>
+							<option selected>Not identified</option>
+							<option>Present</option>
+						</select>
+					</div>
+				</form>
+			</div>
 
 
 
@@ -302,35 +348,6 @@
 
             <div class="py-2 w-100"></div>
 
-			<form class="form-inline">
-				<label class="form-check-label">Check here if any lymph nodes submitted?
-					<input class="form-control form-control-sm col-sm-6" type="checkbox" id="box22" >
-				</label>
-			</form>
-
-			<div class='lnchk' style='display:none;'>
-				<form class="form-inline col-8">
-					<label class="m-2">Number of lymph nodes examined:
-						<input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box23" style="width:100px">
-					</label>
-					<label class="m-2">Number of Sentinel Nodes Examined:
-						<input type="text" class="form-control form-control-sm col-sm-6 ml-3" id="box25" style="width:100px" placeholder="">
-					</label>
-					<label class="m-2">Number of lymph nodes involved:
-						<input type="number" class="form-control form-control-sm col-sm-6 ml-3 subnode" id="box24" style="width:100px">
-					</label>
-                    <div class="posnodes" style="display: none;">
-					<label class="m-2">Number of Sentinel Nodes Involved:
-						<input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box27">
-					</label>
-					Matted Nodes:
-                        <select id="box26" class='form-control selectpicker form-control-sm col-sm-6 ml-3'>
-                            <option selected>Not identified</option>
-                            <option>Present</option>
-                        </select>
-                    </div>
-				</form>
-			</div>
 
 
 

@@ -261,6 +261,9 @@ $(window).on('load', function () {
             var box_15 = $("#box15").val();
             captext += "\nNeurotropism: " + box_15 + "\n";
 
+            var box_50 = $("#box50").val();
+            captext += "\nMitotic Rate: "  + box_50 + " per 10 hpf\n";
+
             var box_16 = $("#box16").val();
             if (box_16.length  > 0){
                 captext += "\n+ Tumor-Infiltrating Lymphocytes: " + box_16 + "\n";
@@ -308,6 +311,25 @@ $(window).on('load', function () {
         var box_17 = $("#box17").val();
         captext += "\nTumor Regression:\n- " + box_17 + "\n";
 
+        if ($("#box22").is(':checked')) {
+            var box_23 = $("#box23").val();
+            var box_24 = $("#box24").val();
+            var box_25 = $("#box25").val();
+
+            captext += "\nLymph nodes:\n\tLymph Nodes Examined: " + box_23 + "\n\tLymph nodes involved: " + box_24 + "\n";
+            captext += "\tNumber of Sentinel Nodes Examined: " + box_25 + "\n";
+            if (box_25.length > 0) {
+                var box_27 = $("#box27").val();
+                captext += "\nNumber of Sentinel Nodes Involved:\n- " + box_27 + "\n";
+            }
+            if (box_24.length > 0) {
+                var box_26 = $("#box26").val();
+                captext += "\nMatted Nodes:\n- " + box_26 + "\n";
+            }
+        } else {
+            captext += "\nLymph nodes: None submitted\n";
+        }
+
         var box_18 = $("#box18").val();
         var box_19 = $("#box19").val();
         var box_20 = $("#box20").val();
@@ -327,24 +349,7 @@ $(window).on('load', function () {
                 captext += box_19 + " " + box_20 + " " + box_21 + "\n";
             }
         }
-        if ($("#box22").is(':checked')) {
-            var box_23 = $("#box23").val();
-            var box_24 = $("#box24").val();
-            var box_25 = $("#box25").val();
 
-            captext += "\nLymph nodes:\n\tLymph Nodes Examined: " + box_23 + "\n\tLymph nodes involved: " + box_24 + "\n";
-            captext += "\tNumber of Sentinel Nodes Examined: " + box_25 + "\n";
-            if (box_25.length > 0) {
-                var box_27 = $("#box27").val();
-                captext += "\nNumber of Sentinel Nodes Involved:\n- " + box_27 + "\n";
-            }
-            if (box_24.length > 0) {
-                var box_26 = $("#box26").val();
-                captext += "\nMatted Nodes:\n- " + box_26 + "\n";
-            }
-        } else {
-            captext += "\nLymph nodes: None submitted\n";
-        }
 
         $('#outPut-1').val(captext);
 
