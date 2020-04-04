@@ -247,61 +247,8 @@
 
 
 
-
-
-            <hr class="p-2">
-            <h5>Pathologic Staging (pTNM)
-
-            </h5>
-
-            <h6>TNM Descriptors (select all that apply)</h6>
-            <select id="box15" class='form-control selectpicker form-control-sm col-sm-6' multiple>
-                <option selected value="Not applicable">Not applicable</option>
-                <option>m</option>
-                <option>r</option>
-                <option>y</option>
-            </select>
-
-            <div class="py-2 w-100"></div>
-
-            <h6 class='mt-2'>pT</h6>
-            <select id="box16" class='form-control selectpicker form-control-sm col-sm-6'>
-                <option value="pT0">pT0: No evidence of primary tumor</option>
-                <option value="pTis">pTis: Carcinoma in situ (penile intraepithelial neoplasia [PeIN])</option>
-                <option value="pTa">pTa: Noninvasive localized squamous cell carcinoma</option>
-                <option value="pT1a">pT1a: Glans: Tumor invades lamina propria; w/o LVI/PNI and not Grade 3</option>
-                <option value="pT1a">pT1a: Foreskin: Tumor invades dermis, lamina propria, or dartos fascia; w/o LVI/PNI and not Grade 3</option>
-                <option value="pT1a">pT1a: Shaft: Tumor invades connective tissue between epidermis and corpora regardless of location; w/o LVI/PNI and not Grade 3</option>
-                <option value="pT1b">pT1b: Glans: Tumor invades lamina propria; with LVI or PNI or Grade 3</option>
-                <option value="pT1b">pT1b: Foreskin: Tumor invades dermis, lamina propria, or dartos fascia; with LVI or PNI or Grade 3</option>
-                <option value="pT1b">pT1b: Shaft: Tumor invades connective tissue between epidermis and corpora regardless of location; with LVI or PNI or Grade 3</option>
-                <option value="pT2">pT2: Tumor invades into corpus spongiosum (either glans or ventral shaft) with or without urethral invasion</option>
-                <option value="pT3">pT3: Tumor invades into corpora cavernosum (including tunica albuginea) with or without urethral invasion</option>
-                <option value="pT4">pT4: Tumor invades into adjacent structures (ie, scrotum, prostate, pubic bone)</option>
-            </select>
-
-            <div class="py-2 w-100"></div>
-
-            <h6 class='mt-2'>pN</h6>
-            <select id="box17" class='form-control selectpicker form-control-sm col-sm-6'>
-                <option value="pNX">pNX: Lymph node metastasis cannot be established</option>
-                <option value="pN0">pN0: No lymph node metastasis</option>
-                <option value="pN1">pN1: ≤2 unilateral inguinal metastases, no ENE</option>
-                <option value="pN2">pN2: ≥3 unilateral inguinal metastases or bilateral metastases, no ENE</option>
-                <option value="pN3">pN3: ENE of lymph node metastases or pelvic lymph node metastases</option>
-            </select>
-
-            <div class="py-2 w-100"></div>
-
-            <h6 class='mt-2'>pM</h6>
-            <select id="box18" class='form-control selectpicker form-control-sm col-sm-6'>
-                <option selected value='pMx'>pMx: Not applicable</option>
-                <option value="pM1">pM1: Distant metastasis present</option>
-            </select>
-            <input type="text" class="form-control form-control-sm col-sm-6" id="box18_2" style="display:none;" placeholder="Specify metastatic sites">
-
-            <div class="py-2 w-100"></div>
-
+            <hr class="p-2" >
+            <h5>Regional Lymph Nodes</h5>
             <form class="form-inline mt-2">
                 <label class="form-check-label">Check here if any lymph nodes submitted?
                     <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box19" >
@@ -338,8 +285,8 @@
 
                         <div class="py-2 w-100"></div>
                         <label class="m-2">
-                        + Size of Largest Metastatic Deposit (cm)
-                        <input type="number" class="form-control form-control-sm col-sm-6  ml-3 opt" id="box25" placeholder="">
+                            + Size of Largest Metastatic Deposit (cm)
+                            <input type="number" class="form-control form-control-sm col-sm-6  ml-3 opt" id="box25" placeholder="">
                         </label>
 
 
@@ -360,15 +307,56 @@
 
 
 
+            <hr class="p-2">
+            <h5>Pathologic Staging (pTNM)
 
+            </h5>
 
+            <h6>TNM Descriptors (select all that apply)</h6>
+            <select id="box15" class='form-control selectpicker form-control-sm col-sm-6' multiple>
+                <option selected value="Not applicable">Not applicable</option>
+                <option>m</option>
+                <option>r</option>
+                <option>y</option>
+            </select>
 
+            <div class="py-2 w-100"></div>
 
+            <h6 class='mt-2'>pT</h6>
+            <select id="box16" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pT0">pT0: No evidence of primary tumor</option>
+                <option value="pTis">pTis: Carcinoma in situ (penile intraepithelial neoplasia [PeIN])</option>
+                <option value="pTa">pTa: Noninvasive localized squamous cell carcinoma</option>
+                <option value="pT1a">pT1a: Glans: Tumor invades lamina propria; w/o LVI/PNI and not Grade 3</option>
+                <option value="pT1a">pT1a: Foreskin: Tumor invades dermis, lamina propria, or dartos fascia; w/o LVI/PNI and not Grade 3</option>
+                <option value="pT1a">pT1a: Shaft: Tumor invades connective tissue between epidermis and corpora regardless of location; w/o LVI/PNI and not Grade 3</option>
+                <option value="pT1b">pT1b: Tumor exhibits LVI or PNI or Grade 3</option>
+                <option value="pT2">pT2: Tumor invades into corpus spongiosum (either glans or ventral shaft) with or without urethral invasion</option>
+                <option value="pT3">pT3: Tumor invades into corpora cavernosum (including tunica albuginea) with or without urethral invasion</option>
+                <option value="pT4">pT4: Tumor invades into adjacent structures (ie, scrotum, prostate, pubic bone)</option>
+            </select>
 
+            <div class="py-2 w-100"></div>
 
+            <h6 class='mt-2'>pN</h6>
+            <select id="box17" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option value="pNX">pNX: Lymph node metastasis cannot be established</option>
+                <option value="pN0">pN0: No lymph node metastasis</option>
+                <option value="pN1">pN1: ≤2 unilateral inguinal metastases, no ENE</option>
+                <option value="pN2">pN2: ≥3 unilateral inguinal metastases or bilateral metastases, no ENE</option>
+                <option value="pN3">pN3: ENE of lymph node metastases or pelvic lymph node metastases</option>
+            </select>
 
+            <div class="py-2 w-100"></div>
 
+            <h6 class='mt-2'>pM</h6>
+            <select id="box18" class='form-control selectpicker form-control-sm col-sm-6'>
+                <option selected value='pMx'>pMx: Not applicable</option>
+                <option value="pM1">pM1: Distant metastasis present</option>
+            </select>
+            <input type="text" class="form-control form-control-sm col-sm-6" id="box18_2" style="display:none;" placeholder="Specify metastatic sites">
 
+            <div class="py-2 w-100"></div>
 
 
             <hr class="p-2">

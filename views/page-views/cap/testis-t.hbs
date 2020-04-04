@@ -136,6 +136,75 @@
 
 
 
+			<hr class="p-2" >
+			<h5>Regional Lymph Nodes</h5>
+
+			<form class="form-inline">
+				<label class="form-check-label">Check here if any lymph nodes submitted?
+					<input class="form-control form-control-sm col-sm-6" type="checkbox" id="box14" >
+				</label>
+			</form>
+
+			<div class='lnchk' style='display:none;'>
+				<form class="form-inline col-8">
+					<label class="m-2">Number of lymph nodes examined:
+						<input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box15" style="width:100px"></label>
+					<label class="m-2">Number of lymph nodes involved:
+						<input type="number" class="form-control form-control-sm col-sm-6 ml-3 subnode" id="box16" style="width:100px"></label>
+
+					<div class="posnodes" style="display: none;">
+
+						<div class="py-2 w-100"></div>
+
+						Involved Lymph Node Site(s)
+						<select multiple id="box17" class='form-control selectpicker form-control-sm col-sm-6 ml-3'>
+							<option>interaortocaval</option>
+							<option>paraaortic</option>
+							<option>paracaval</option>
+							<option>preaortic</option>
+							<option>precaval</option>
+							<option>retroaortic</option>
+							<option>retrocaval</option>
+							<option>Other</option>
+						</select>
+
+						<input type="text" class="form-control form-control-sm mt-3 col-sm-6 ml-3" id='box17_2' style='display:none;' placeholder='Specify Other involved site'>
+
+						<div class="py-2 w-100"></div>
+
+						Size of Largest Lymph Node (or Nodal Mass) Involved (cm)
+						<input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box18" placeholder="">
+
+						<div class="py-2 w-100"></div>
+
+						Extranodal Extension
+						<select id="box19" class='form-control selectpicker form-control-sm col-sm-6 ml-3'>
+							<option>Not identified</option>
+							<option>Present</option>
+							<option>Cannot be determined</option>
+						</select>
+
+						<div class="py-2 w-100"></div>
+
+						Histologic subtype of germ cell tumor in involved lymph nodes
+						<select id="box20" class='form-control selectpicker form-control-sm col-sm-6 ml-3'>
+							<option>Cannot be assessed</option>
+							<option>Seminoma</option>
+							<option>Embryonal carcinoma</option>
+							<option>Yolk sac tumor</option>
+							<option>Choriocarcinoma</option>
+							<option>Placental site trophoblastic tumor</option>
+							<option>Epithelioid trophoblastic tumor</option>
+							<option>Cystic trophoblastic tumor</option>
+							<option>Teratoma</option>
+							<option>Sex Cord-Stromal Tumor</option>
+							<option>Other</option>
+						</select>
+						<input type="text" class="form-control form-control-sm mt-3 col-sm-6 ml-3" id='box20_2' style='display:none;' placeholder='Specify Other'>
+					</div>
+				</form>
+			</div>
+
 
 
 			<hr class="p-2">
@@ -190,76 +259,8 @@
 
 			<div class="py-2 w-100"></div>
 
-			<form class="form-inline">
-				<label class="form-check-label">Check here if any lymph nodes submitted?
-					<input class="form-control form-control-sm col-sm-6" type="checkbox" id="box14" >
-				</label>
-			</form>
-			<div class='lnchk' style='display:none;'>
-				<form class="form-inline col-8">
-					<label class="m-2">Number of lymph nodes examined:
-						<input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box15" style="width:100px"></label>
-					<label class="m-2">Number of lymph nodes involved:
-						<input type="number" class="form-control form-control-sm col-sm-6 ml-3 subnode" id="box16" style="width:100px"></label>
-
-				<div class="posnodes" style="display: none;">
-
-					<div class="py-2 w-100"></div>
-
-					Involved Lymph Node Site(s)
-					<select multiple id="box17" class='form-control selectpicker form-control-sm col-sm-6 ml-3'>
-						<option>interaortocaval</option>
-						<option>paraaortic</option>
-						<option>paracaval</option>
-						<option>preaortic</option>
-						<option>precaval</option>
-						<option>retroaortic</option>
-						<option>retrocaval</option>
-						<option>Other</option>
-					</select>
-
-					<input type="text" class="form-control form-control-sm mt-3 col-sm-6 ml-3" id='box17_2' style='display:none;' placeholder='Specify Other involved site'>
-
-					<div class="py-2 w-100"></div>
-
-					Size of Largest Lymph Node (or Nodal Mass) Involved (cm)
-					<input type="number" class="form-control form-control-sm col-sm-6 ml-3" id="box18" placeholder="">
-
-					<div class="py-2 w-100"></div>
-
-					Extranodal Extension
-					<select id="box19" class='form-control selectpicker form-control-sm col-sm-6 ml-3'>
-						<option>Not identified</option>
-						<option>Present</option>
-						<option>Cannot be determined</option>
-					</select>
-
-					<div class="py-2 w-100"></div>
-
-					Histologic subtype of germ cell tumor in involved lymph nodes
-					<select id="box20" class='form-control selectpicker form-control-sm col-sm-6 ml-3'>
-						<option>Cannot be assessed</option>
-						<option>Seminoma</option>
-						<option>Embryonal carcinoma</option>
-						<option>Yolk sac tumor</option>
-						<option>Choriocarcinoma</option>
-						<option>Placental site trophoblastic tumor</option>
-						<option>Epithelioid trophoblastic tumor</option>
-						<option>Cystic trophoblastic tumor</option>
-						<option>Teratoma</option>
-						<option>Sex Cord-Stromal Tumor</option>
-						<option>Other</option>
-					</select>
-
-					<input type="text" class="form-control form-control-sm mt-3 col-sm-6 ml-3" id='box20_2' style='display:none;' placeholder='Specify Other'>
-
-				</div>
-
-				</form>
 
 
-
-			</div>
 
 
 			<hr class="p-2">

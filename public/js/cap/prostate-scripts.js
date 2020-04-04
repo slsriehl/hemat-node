@@ -268,16 +268,14 @@ $(window).on('load', function () {
         var gleas1 = parseInt($("#box5").find(":selected").data("gleas"), 10);
         var gleas2 = parseInt($("#box6").find(":selected").data("gleas"), 10);
         var gleas3 = parseInt($("#box7").find(":selected").data("gleas"), 10);
-        var gtot = "" + gleas1 + gleas2;
+
+        var box_5 = $("#box5").val();
+        var box_6 = $("#box6").val();
+        var box_7 = $("#box7").val();
+        var box_8 = $("#box8").val();
+        var box_9 = $("#box9").val();
 
         var grgp = {
-            "11": "Grade Group 1",
-            "12": "Grade Group 1",
-            "21": "Grade Group 1",
-            "22": "Grade Group 1",
-            "23": "Grade Group 1",
-            "31": "Grade Group 1",
-            "32": "Grade Group 1",
             "33": "Grade Group 1",
             "34": "Grade Group 2",
             "43": "Grade Group 3",
@@ -285,30 +283,49 @@ $(window).on('load', function () {
             "35": "Grade Group 4",
             "53": "Grade Group 4",
             "54": "Grade Group 5",
-            "45": "Grade Group 5"
+            "45": "Grade Group 5",
+            "55": "Grade Group 5"
         };
-        captext += "\n\tGleason Score: " + (gleas1 + gleas2) + " (" + gleas1 + "+" + gleas2 + ")\n";
-        captext += "\tGrade Group: " + grgp[gtot] + "\n";
-        captext += "\n\nHistologic Grade:\n";
-        var box_5 = $("#box5").val();
-        captext += "\tPrimary Gleason Pattern: " + box_5 + "\n";
+        if (gleas3 > 4){
+            var gtot = "" + gleas1 + gleas3;
+            captext += "\n Gleason Score: " + (gleas1 + gleas3) + " (" + gleas1 + "+" + gleas3 + ")\n";
+            captext += "  Grade Group: " + grgp[gtot] + "\n";
+            captext += "\n\nHistologic Grade:\n";
+            captext += "  Primary Gleason Pattern: " + box_5 + "\n";
 
-        var box_6 = $("#box6").val();
-        captext += "\tSecondary Gleason Pattern: " + box_6 + "\n";
+            captext += "  Secondary Gleason Pattern: " + box_7 + "\n";
 
-        var box_7 = $("#box7").val();
-        if (box_7 != "Not applicable") {
-            captext += "\tTertiary Gleason Pattern: " + box_7 + "\n";
+            captext += "  Tertiary Gleason Pattern: " + box_6 + "\n";
+
+            if (box_8.length > 0) {
+                captext += "\n  + Percentage of pattern 4: " + box_8 + "%\n";
+            }
+            if (box_9.length > 0) {
+                captext += "  + Percentage of pattern 5: " + box_9 + "%\n";
+            }
+
+        } else {
+            gtot = "" + gleas1 + gleas2;
+            captext += "\n  Gleason Score: " + (gleas1 + gleas2) + " (" + gleas1 + "+" + gleas2 + ")\n";
+            captext += "  Grade Group: " + grgp[gtot] + "\n";
+            captext += "\n\nHistologic Grade:\n";
+
+            captext += "  Primary Gleason Pattern: " + box_5 + "\n";
+
+            captext += "  Secondary Gleason Pattern: " + box_6 + "\n";
+
+            if (box_7 != "Not applicable") {
+                captext += "  Tertiary Gleason Pattern: " + box_7 + "\n";
+            }
+
+            if (box_8.length > 0) {
+                captext += "\n  + Percentage of pattern 4: " + box_8 + "%\n";
+            }
+            if (box_9.length > 0) {
+                captext += "  + Percentage of pattern 5: " + box_9 + "%\n";
+            }
         }
 
-        var box_8 = $("#box8").val();
-        if (box_8.length > 0) {
-            captext += "\n\t+ Percentage of pattern 4: " + box_8 + "%\n";
-        }
-        var box_9 = $("#box9").val();
-        if (box_9.length > 0) {
-            captext += "\t+ Percentage of pattern 5: " + box_9 + "%\n";
-        }
         captext += "\n--------------------\n";
 
         var box_10 = $("#box10").val();
@@ -376,8 +393,7 @@ $(window).on('load', function () {
 
         var box_21 = $("#box21").val();
         if (box_21.length > 0 ) {
-            captext += "\n+ Gleason Pattern at Positive Margin(s):\n- " + box_21 + "\n";
-        }
+            captext += "\n+ Gleason Pattern at Positive Margin(s):\n- "  + box_21.join(', ') + "\n";        }
 
         var box_22 = $("#box22").val();
         var box_22_2 = $("#box22_2").val();
@@ -399,7 +415,25 @@ $(window).on('load', function () {
 
         }
 
-        var box_25 = $("#box25").val();
+
+        if ($("#box29").is(':checked')) {
+            var box_30 = $("#box30").val();
+            var box_31 = $("#box31").val();
+            captext += "\nLymph nodes:\n\tLymph Nodes Examined: " + box_30 + "\n\tLymph nodes involved: " + box_31;
+
+            var box_32 = $("#box32").val();
+            var box_32_2 = $("#box32_2").val();
+            if (box_31 != '0'){
+                if ($.inArray('Other', box_32) > -1) {
+                    captext += "\n\tInvolved nodes: " + box_32.join(', ').replace(/Other/, box_32_2) + "\n";
+                } else {
+                    captext += "\n\tInvolved nodes: " + box_32.join(', ') + "\n";
+                }
+            }
+
+
+
+            var box_25 = $("#box25").val();
         var box_26 = $("#box26").val();
         var box_27 = $("#box27").val();
         var box_28 = $("#box28").val();
@@ -418,20 +452,6 @@ $(window).on('load', function () {
                 captext += box_26 + " " + box_27 + " " + box_28 + "\n";
             }
         }
-        if ($("#box29").is(':checked')) {
-            var box_30 = $("#box30").val();
-            var box_31 = $("#box31").val();
-            captext += "\nLymph nodes:\n\tLymph Nodes Examined: " + box_30 + "\n\tLymph nodes involved: " + box_31;
-
-            var box_32 = $("#box32").val();
-            var box_32_2 = $("#box32_2").val();
-            if (box_31 != '0'){
-                if ($.inArray('Other', box_32) > -1) {
-                    captext += "\n\tInvolved nodes: " + box_32.join(', ').replace(/Other/, box_32_2) + "\n";
-                } else {
-                    captext += "\n\tInvolved nodes: " + box_32.join(', ') + "\n";
-                }
-            }
 
             var box_33 = $("#box33").val();
             if (box_33.length > 0){

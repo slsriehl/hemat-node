@@ -346,31 +346,6 @@ $(window).on('load', function() {
         var box_9 = $("#box9").val();
         captext += "\nLymphovascular Invasion:\n- "  + box_9+ "\n";
 
-        var box_10 = $("#box10").val();
-        var box_11 = $("#box11").val();
-        var box_12 = $("#box12").val();
-        var box_13 = $("#box13").val();
-        var box_13_2 = $("#box13_2").val();
-        captext += '\nPathologic Staging (AJCC 8th ed pTNM):\n- ';
-        if (box_10 != "Not applicable") {
-            if (box_13 != "pMx") {
-                captext += box_10.join("") + " " + box_11 + " " + box_12 + " " + box_13 + " (metastatic site(s): " + box_13_2 + ")\n";
-            } else {
-                captext += box_10.join("") + " " + box_11 + " " + box_12 + " " + box_13 + "\n";
-            }
-        } else {
-            if (box_13 != "pMx") {
-                captext += box_11 + " " + box_12 + " " + box_13 + " (metastatic site(s): " + box_13_2 + ")\n";
-            } else {
-                captext += box_11 + " " + box_12 + " " + box_13 + "\n";
-            }
-        }
-
-        var box_23 = $("#box23").val();
-        if (box_23.length > 0){
-            captext += "\n+ Modified Royal Marsden Staging System:\n- "  + box_23+ "\n";
-
-        }
 
         if ($("#box14").is(':checked')) {
             var box_15 = $("#box15").val();
@@ -402,6 +377,34 @@ $(window).on('load', function() {
 
         } else {
             captext += "\nLymph nodes: None submitted\n";}
+
+
+
+        var box_10 = $("#box10").val();
+        var box_11 = $("#box11").val();
+        var box_12 = $("#box12").val();
+        var box_13 = $("#box13").val();
+        var box_13_2 = $("#box13_2").val();
+        captext += '\nPathologic Staging (AJCC 8th ed pTNM):\n- ';
+        if (box_10 != "Not applicable") {
+            if (box_13 != "pMx") {
+                captext += box_10.join("") + " " + box_11 + " " + box_12 + " " + box_13 + " (metastatic site(s): " + box_13_2 + ")\n";
+            } else {
+                captext += box_10.join("") + " " + box_11 + " " + box_12 + " " + box_13 + "\n";
+            }
+        } else {
+            if (box_13 != "pMx") {
+                captext += box_11 + " " + box_12 + " " + box_13 + " (metastatic site(s): " + box_13_2 + ")\n";
+            } else {
+                captext += box_11 + " " + box_12 + " " + box_13 + "\n";
+            }
+        }
+
+        var box_23 = $("#box23").val();
+        if (box_23.length > 0){
+            captext += "\n+ Modified Royal Marsden Staging System:\n- "  + box_23+ "\n";
+
+        }
 
 
 

@@ -71,8 +71,6 @@
                 <div class="py-2 w-100"></div>
                 <h6>Primary Gleason Pattern</h6>
                 <select id="box5" class='form-control selectpicker form-control-sm col-sm-6'>
-                    <option data-gleas="1">Pattern 1</option>
-                    <option data-gleas="2">Pattern 2</option>
                     <option data-gleas="3">Pattern 3</option>
                     <option data-gleas="4">Pattern 4</option>
                     <option data-gleas="5">Pattern 5</option>
@@ -84,8 +82,6 @@
 
                 <h6>Secondary Gleason Pattern</h6>
                 <select id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
-                    <option data-gleas="1">Pattern 1</option>
-                    <option data-gleas="2">Pattern 2</option>
                     <option data-gleas="3">Pattern 3</option>
                     <option data-gleas="4">Pattern 4</option>
                     <option data-gleas="5">Pattern 5</option>
@@ -116,11 +112,9 @@
                 <div class="py-2 w-100"></div>
 
                 <h6>+ Percentage of pattern 5</h6>
-                    <input type="number" class="form-control form-control-sm col-sm-6 opt" id="box9" placeholder="">
+                    <input type="text" class="form-control form-control-sm col-sm-6 opt" id="box9" placeholder="">
                     <div class="alert alert-info alert-dismissible collapse col-sm-6 mt-2" id="pattern5info" role="alert">
-                        <strong>If the tertiary
-                            pattern 5 comprises >5% of the tumor, some pathologists incorporate it into the Gleason
-                            score as secondary pattern</strong>
+                        <strong>If Gleason pattern 5 is 5% or higher and constitutes the third most common pattern, experts now include it as the secondary pattern, rather than as the tertiary pattern.</strong>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -151,8 +145,8 @@
             <hr class="p-2" >
             <h5>Extraprostatic Extension
             <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip" data-html="true"
-               title="<p>Focal EPE equates with only a few neoplastic glands being outside the prostate or a tumor involving less than 1 high-power field in 1 or 2 sections</p>
-                </p>More than focal EPE is more extensively spread beyond the prostatic edge</p>" aria-hidden="true"></i>
+               title="Focal EPE equates with only a few neoplastic glands being outside the prostate or a tumor involving less than 1 high-power field in 1 or 2 sections.
+                More than focal EPE is more extensively spread beyond the prostatic edge." aria-hidden="true"></i>
             </h5>
             <select id="box12" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option>Not identified</option>
@@ -289,11 +283,11 @@
 
 
             <hr class="p-2" >
-            <h5>+ Gleason Pattern at Positive Margin(s)</h5>
-            <select id="box21" class='form-control selectpicker form-control-sm col-sm-6 opt'>
-                <option></option>
+            <h5>+ Gleason Pattern at Positive Margin(s) (select all that apply)</h5>
+            <select multiple id="box21" class='form-control selectpicker form-control-sm col-sm-6 opt'>
                 <option>Pattern 3</option>
-                <option>Pattern 4 or 5</option>
+                <option>Pattern 4</option>
+                <option>Pattern 5</option>
             </select>
 
 
@@ -340,6 +334,69 @@
             </select>
 
 
+            <hr class="p-2" >
+            <h5>Regional Lymph Nodes</h5>
+            <form class="form-inline mt-2">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box29" >
+                </label>
+            </form>
+
+            <div class='lnchk' style='display:none;'>
+                <form class="form-inline mt-2 col-8">
+                    <label class="m-2">
+                        Number of lymph nodes examined:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box30" style="width:100px"></label>
+                    <label class="m-2">
+                        Number of lymph nodes involved:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 subnode" id="box31" style="width:100px"></label>
+
+                </form>
+                <div class="py-2 w-100"></div>
+                <div class="posnodes" style="display: none;">
+                    Specify involved nodes:
+                    <select multiple id="box32" class='form-control selectpicker form-control-sm col-sm-6 ml-2 opt'>
+                        <option>left hypogastric</option>
+                        <option>right hypogastric</option>
+                        <option>left obturator</option>
+                        <option>right obturator</option>
+                        <option>left internal iliac</option>
+                        <option>right internal iliac</option>
+                        <option>left external iliac</option>
+                        <option>right external iliac</option>
+                        <option>left iliac NOS</option>
+                        <option>right iliac NOS</option>
+                        <option>left lateral sacral</option>
+                        <option>right lateral sacral</option>
+                        <option>left presacral</option>
+                        <option>right presacral</option>
+                        <option>left promontory</option>
+                        <option>right promontory</option>
+                        <option>left sacral NOS</option>
+                        <option>right sacral NOS</option>
+                        <option>Other</option>
+                    </select>
+
+                    <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box32_2' style='display:none;' placeholder='Specify Other nodes'>
+
+                    <div class="py-2 w-100"></div>
+
+                    + Size of Largest Metastatic Deposit (cm)
+                    <input type="text" class="form-control form-control-sm col-sm-6 ml-2 opt" id="box33" placeholder="">
+
+                    <div class="py-2 w-100"></div>
+
+
+                    + Extranodal Extension:
+                    <select id="box34" class='form-control selectpicker form-control-sm col-sm-6 ml-2 opt'>
+                        <option></option>
+                        <option>Not identified</option>
+                        <option>Present</option>
+                        <option>Cannot be determined</option>
+                    </select>
+                </div>
+            </div>
+
 
 
 
@@ -381,69 +438,6 @@
                 <option value="pM1c">pM1c: Other site(s) with or without bone disease</option>
             </select>
             <input type="text" class="form-control form-control-sm col-sm-6" id="box28_2" style="display:none;" placeholder="Specify metastatic sites">
-
-            <form class="form-inline mt-2">
-                <label class="form-check-label">Check here if any lymph nodes submitted?
-                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box29" >
-                </label>
-            </form>
-
-            <div class='lnchk' style='display:none;'>
-                <form class="form-inline mt-2 col-8">
-                    <label class="m-2">
-                        Number of lymph nodes examined:
-                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box30" style="width:100px"></label>
-                    <label class="m-2">
-                        Number of lymph nodes involved:
-                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 subnode" id="box31" style="width:100px"></label>
-
-                </form>
-                <div class="py-2 w-100"></div>
-                <div class="posnodes" style="display: none;">
-                    Specify involved nodes:
-                    <select multiple id="box32" class='form-control selectpicker form-control-sm col-sm-6 ml-2'>
-                        <option>hypogastric</option>
-                        <option>obturator</option>
-                        <option>internal iliac</option>
-                        <option>external iliac</option>
-                        <option>iliac NOS</option>
-                        <option>lateral sacral</option>
-                        <option>presacral</option>
-                        <option>promontory</option>
-                        <option>sacral NOS</option>
-                        <option>Other</option>
-                    </select>
-
-                    <input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box32_2' style='display:none;' placeholder='Specify Other nodes'>
-
-                    <div class="py-2 w-100"></div>
-
-                    + Size of Largest Metastatic Deposit (cm)
-                    <input type="text" class="form-control form-control-sm col-sm-6 ml-2 opt" id="box33" placeholder="">
-
-                    <div class="py-2 w-100"></div>
-
-
-                    + Extranodal Extension:
-                    <select id="box34" class='form-control selectpicker form-control-sm col-sm-6 ml-2 opt'>
-                        <option></option>
-                        <option>Not identified</option>
-                        <option>Present</option>
-                        <option>Cannot be determined</option>
-                    </select>
-
-
-                </div>
-            </div>
-
-
-
-
-
-
-
-
-
 
 
 

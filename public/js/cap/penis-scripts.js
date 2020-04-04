@@ -331,25 +331,7 @@ $(window).on('load', function () {
         var box_14 = $("#box14").val();
         captext += "\nPerineural Invasion:\n- " + box_14 + "\n";
 
-        var box_15 = $("#box15").val();
-        var box_16 = $("#box16").val();
-        var box_17 = $("#box17").val();
-        var box_18 = $("#box18").val();
-        var box_18_2 = $("#box18_2").val();
-        captext += '\nPathologic Staging (pTNM):\n- ';
-        if (box_15 != "Not applicable") {
-            if (box_18 != "pMx") {
-                captext += box_15.join("") + " " + box_16 + " " + box_17 + " " + box_18 + " (metastatic site(s): " + box_18_2 + ")\n";
-            } else {
-                captext += box_15.join("") + " " + box_16 + " " + box_17 + " " + box_18 + "\n";
-            }
-        } else {
-            if (box_18 != "pMx") {
-                captext += box_16 + " " + box_17 + " " + box_18 + " (metastatic site(s): " + box_18_2 + ")\n";
-            } else {
-                captext += box_16 + " " + box_17 + " " + box_18 + "\n";
-            }
-        }
+
         if ($("#box19").is(':checked')) {
             var box_20 = $("#box20").val();
             var box_21 = $("#box21").val();
@@ -380,6 +362,27 @@ $(window).on('load', function () {
 
         } else {
             captext += "\nLymph nodes: None submitted\n";
+        }
+
+
+        var box_15 = $("#box15").val();
+        var box_16 = $("#box16").val();
+        var box_17 = $("#box17").val();
+        var box_18 = $("#box18").val();
+        var box_18_2 = $("#box18_2").val();
+        captext += '\nPathologic Staging (pTNM):\n- ';
+        if (box_15 != "Not applicable") {
+            if (box_18 != "pMx") {
+                captext += box_15.join("") + " " + box_16 + " " + box_17 + " " + box_18 + " (metastatic site(s): " + box_18_2 + ")\n";
+            } else {
+                captext += box_15.join("") + " " + box_16 + " " + box_17 + " " + box_18 + "\n";
+            }
+        } else {
+            if (box_18 != "pMx") {
+                captext += box_16 + " " + box_17 + " " + box_18 + " (metastatic site(s): " + box_18_2 + ")\n";
+            } else {
+                captext += box_16 + " " + box_17 + " " + box_18 + "\n";
+            }
         }
 
         var box_28 = $("#box28").val();
