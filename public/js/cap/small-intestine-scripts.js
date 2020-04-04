@@ -264,6 +264,16 @@ $(window).on('load', function () {
         var box_9 = $("#box9").val();
         captext += "\nLymphovascular Invasion:\n- " + box_9 + "\n";
 
+
+        if ($("#box14").is(':checked')) {
+            var box_15 = $("#box15").val();
+            var box_16 = $("#box16").val();
+            captext += "\nLymph nodes:\n\tLymph Nodes Examined: " + box_15 + "\n\tLymph nodes involved: " + box_16 + "\n";
+        } else {
+            captext += "\nLymph nodes: None submitted\n";
+        }
+
+
         var box_10 = $("#box10").val();
         var box_11 = $("#box11").val();
         var box_12 = $("#box12").val();
@@ -282,13 +292,6 @@ $(window).on('load', function () {
             } else {
                 captext += box_11 + " " + box_12 + " " + box_13 + "\n";
             }
-        }
-        if ($("#box14").is(':checked')) {
-            var box_15 = $("#box15").val();
-            var box_16 = $("#box16").val();
-            captext += "\nLymph nodes:\n\tLymph Nodes Examined: " + box_15 + "\n\tLymph nodes involved: " + box_16 + "\n";
-        } else {
-            captext += "\nLymph nodes: None submitted\n";
         }
 
         var box_17 = $("#box17").val();

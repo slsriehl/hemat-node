@@ -87,18 +87,19 @@
                 <option>Adenocarcinoma</option>
                 <option>Adenoid cystic carcinoma</option>
                 <option>Mucoepidermoid carcinoma</option>
-                <option>Mixed adenoneuroendocrine carcinoma</option>
-                <option>Undifferentiated carcinoma with glandular component</option>
+                <option>Adenosquamous carcinoma</option>
                 <option>Squamous cell carcinoma</option>
                 <option>Basaloid squamous cell carcinoma</option>
-                <option>Adenosquamous carcinoma</option>
-                <option>Spindle cell (squamous) carcinoma</option>
-                <option>Verrucous (squamous) carcinoma</option>
-                <option>Undifferentiated carcinoma with squamous component</option>
+                <option>Spindle cell squamous cell carcinoma</option>
+                <option>Verrucous squamous cell carcinoma</option>
                 <option>Undifferentiated carcinoma</option>
+                <option>Lymphoepithelioma-like carcinoma</option>
                 <option>Large cell neuroendocrine carcinoma</option>
                 <option>Small cell neuroendocrine carcinoma</option>
-                <option>Neuroendocrine carcinoma (poorly differentiated)</option>
+                <option>Neuroendocrine carcinoma (poorly differentiated)#</option>
+                <option>Mixed squamous cell carcinoma-neuroendocrine carcinoma</option>
+                <option>Mixed adenocarcinoma-neuroendocrine carcinoma</option>
+                <option>Mixed adenocarcinoma-neuroendocrine tumor</option>
                 <option>G1: Well-differentiated neuroendocrine tumor</option>
                 <option>G2: Well-differentiated neuroendocrine tumor</option>
                 <option>G3: Well-differentiated neuroendocrine tumor</option>
@@ -326,6 +327,24 @@
 
 
 
+            <hr class="p-2" >
+            <h5>Regional Lymph Nodes</h5>
+
+            <form class="form-inline mt-2">
+                <label class="form-check-label">Check here if any lymph nodes submitted?
+                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box24" >
+                </label>
+            </form>
+
+            <div class='lnchk' style='display:none;'>
+                <form class="form-inline mt-2 col-8">
+                    <label class="m-2">Number of lymph nodes examined:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box25" style="width:100px"></label>
+                    <label class="m-2">Number of lymph nodes involved:
+                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 subnode" id="box26" style="width:100px"></label>
+                </form>
+            </div>
+
 
 
             <hr class="p-2" >
@@ -378,20 +397,7 @@
 
             <div class="py-2 w-100"></div>
 
-            <form class="form-inline mt-2">
-                <label class="form-check-label">Check here if any lymph nodes submitted?
-                    <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box24" >
-                </label>
-            </form>
 
-            <div class='lnchk' style='display:none;'>
-                <form class="form-inline mt-2 col-8">
-                    <label class="m-2">Number of lymph nodes examined:
-                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box25" style="width:100px"></label>
-                    <label class="m-2">Number of lymph nodes involved:
-                        <input type="number" class="form-control form-control-sm col-sm-6 ml-3 subnode" id="box26" style="width:100px"></label>
-                </form>
-            </div>
 
 
             <hr class="p-2" >

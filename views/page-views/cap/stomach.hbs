@@ -64,21 +64,21 @@
 			<h5>Histologic Type (WHO classification)</h5>
 			<select id="box4" class='form-control selectpicker form-control-sm col-sm-6'>
 				<option>Tubular (intestinal) adenocarcinoma</option>
-				<option>Poorly cohesive carcinoma (including signet-ring cell carcinoma and other variants)</option>
+				<option>Poorly cohesive carcinoma (including signet-ring cell carcinoma and variants)</option>
 				<option>Mucinous adenocarcinoma (>50% mucinous)</option>
-				<option>Papillary adenocarcinoma</option>
 				<option>Mixed carcinoma</option>
-				<option>Hepatoid adenocarcinoma</option>
-				<option>Carcinoma with lymphoid stroma (medullary carcinoma)</option>
-				<option>Large cell neuroendocrine carcinoma</option>
-				<option>Small cell neuroendocrine carcinoma</option>
-				<option>Neuroendocrine carcinoma (poorly differentiated)#</option>
-				<option>Mixed adenoneuroendocrine carcinoma</option>
+				<option>Micropapillary adenocarcinoma</option>
+				<option>Adenocarcinoma of fundic-gland type</option>
 				<option>Squamous cell carcinoma</option>
 				<option>Adenosquamous carcinoma</option>
-				<option>Undifferentiated carcinoma</option>
+				<option>Undifferentiated (anaplastic) carcinoma</option>
+				<option>Gastroblastoma</option>
+				<option>Large cell neuroendocrine carcinoma</option>
+				<option>Small cell neuroendocrine carcinoma</option>
+				<option>Neuroendocrine carcinoma (poorly differentiated)</option>
+				<option>Mixed adenocarcinoma-neuroendocrine carcinoma (small cell or large cell )</option>
+				<option>Mixed adenocarcinoma-neuroendocrine tumor</option>
 				<option>Other histologic type</option>
-				<option></option>
 			</select>
 
 			<input type="text" class="form-control form-control-sm mt-3 col-sm-6" id='box4_2' style='display:none;' placeholder='Specify Other histologic type'>
@@ -105,7 +105,11 @@
 
 
 			<hr class="p-2">
-			<h5>Tumor Extension</h5>
+			<h5>Tumor Extension
+			<span class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
+			                       title="Intramural extension to the duodenum or esophagus is not considered invasion of an adjacent structure, but is classified using the depth of the greatest invasion in any of these sites.">
+				A word about tumor extent</span>
+			</h5>
 			<select id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
 				<option>No evidence of primary tumor</option>
 				<option>Carcinoma in situ (high-grade dysplasia)</option>
@@ -265,6 +269,22 @@
 
 
 
+			<hr class="p-2" >
+			<h5>Regional Lymph Nodes</h5>
+			<form class="form-inline">
+				<label class="form-check-label">Check here if any lymph nodes submitted?
+					<input class="form-control form-control-sm col-sm-6" type="checkbox" id="box15" >
+				</label>
+			</form>
+			<div class='lnchk' style='display:none;'>
+				<form class="form-inline col-8">
+					<label class="m-2">Number of lymph nodes examined:
+						<input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box16" style="width:100px"></label>
+					<label class="m-2">Number of lymph nodes involved:
+						<input type="number" class="form-control form-control-sm col-sm-6 ml-3 subnode" id="box17" style="width:100px"></label>
+				</form>
+			</div>
+
 
 
 			<hr class="p-2">
@@ -290,15 +310,18 @@
 				<option value="pT1a">pT1a: Tumor invades the lamina propria or muscularis mucosae</option>
 				<option value="pT1b">pT1b: Tumor invades the submucosa</option>
 				<option value="pT2">pT2: Tumor invades the muscularis propria#</option>
-				<option value="pT3">pT3: Tumor penetrates the subserosal connective tissue without invasion of the visceral peritoneum or adjacent structures##, ###</option>
-				<option value="pT4">pT4: Tumor invades the serosa (visceral peritoneum) or adjacent structures##, ###</option>
+				<option value="pT3">pT3: Tumor penetrates the subserosal connective tissue without invasion of the visceral peritoneum or adjacent structures</option>
+				<option value="pT4">pT4: Tumor invades the serosa (visceral peritoneum) or adjacent structures</option>
 				<option value="pT4a">pT4a: Tumor invades the serosa (visceral peritoneum)</option>
 				<option value="pT4b">pT4b: Tumor invades adjacent structures/organs</option>
 			</select>
 
 			<div class="py-2 w-100"></div>
 
-			<h6 class='mt-2'>pN</h6>
+			<h6 class='mt-2'>pN
+			<i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
+			                       title="Metastatic tumor deposits in the subserosal fat adjacent to a gastric carcinoma, without evidence of residual lymph node tissue, are considered regional lymph node metastases for purposes of gastric cancer staging."></i>
+			</h6>
 			<select id="box13" class='form-control selectpicker form-control-sm col-sm-6'>
 				<option value="pNX">pNX: Regional lymph node(s) cannot be assessed</option>
 				<option value="pN0">pN0: No regional lymph node metastasis</option>
@@ -319,21 +342,6 @@
 			<input type="text" class="form-control form-control-sm col-sm-6" id="box14_2" style="display:none;" placeholder="Specify metastatic sites">
 
 			<div class="py-2 w-100"></div>
-
-
-			<form class="form-inline">
-				<label class="form-check-label">Check here if any lymph nodes submitted?
-					<input class="form-control form-control-sm col-sm-6" type="checkbox" id="box15" >
-				</label>
-			</form>
-			<div class='lnchk' style='display:none;'>
-				<form class="form-inline col-8">
-					<label class="m-2">Number of lymph nodes examined:
-						<input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box16" style="width:100px"></label>
-					<label class="m-2">Number of lymph nodes involved:
-						<input type="number" class="form-control form-control-sm col-sm-6 ml-3 subnode" id="box17" style="width:100px"></label>
-				</form>
-			</div>
 
 
 			<hr class="p-2">
@@ -370,6 +378,7 @@
 			<option selected>Not performed</option>
 			<option>HER2 by IHC</option>
 			<option>HER2 by FISH</option>
+			<option>HER2 by genomic testing</option>
 			</select>
 
 
@@ -407,6 +416,16 @@
 
 				<div class="py-2 w-100"></div>
 
+				<b class="w-100">HER2 by in-situ hybridization</b>
+				<select class="form-control selectpicker form-control-sm "  id="box31">
+					<option>Not applicable</option>
+					<option>Negative (not amplified)</option>
+					<option>Positive (amplified) </option>
+					<option>Indeterminate – poor technical study</option>
+				</select>
+
+				<div class="py-2 w-100"></div>
+
 				<b>Number of observers:</b>
 				<input type="text" class="form-control form-control-sm "  id="box32"  value='2'>
 
@@ -435,14 +454,7 @@
 				            </div>
 				        </form>
 
-				<div class="py-2 w-100"></div>
-				<b class="w-100">HER2 by in-situ hybridization</b>
-				<select class="form-control selectpicker form-control-sm "  id="box31">
-				<option>Not applicable</option>
-				<option>Negative (not amplified)</option>
-				<option>Positive (amplified) </option>
-				<option>Indeterminate – poor technical study</option>
-				</select>
+
 
 
 				<div class="py-2 w-100"></div>
@@ -458,6 +470,24 @@
 				
 
 </div>
+
+			<div id="her2genomic" class="ml-3" style="display:none;">
+				<div class="py-2 w-100" ></div>
+
+				<b>HER2 by genomic testing</b>
+				<select id="box37" class='form-control selectpicker form-control-sm col-sm-6'>
+					<option>Negative</option>
+					<option>Positive</option>
+					<option>Cannot be determinted - technical failure</option>
+				</select>
+
+				<input type="text" class="form-control form-control-sm mt-3 col-sm-8" id='box37_2' style='display:none;' placeholder='Specify positive result'>
+
+				<div class="py-2 w-100" ></div>
+
+				<b>Specify genomic testing method</b>
+				<input type="text" class="form-control form-control-sm col-sm-8" id="box38" placeholder="">
+			</div>
 
 <!-- close column -->
 		</div>

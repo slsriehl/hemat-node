@@ -171,7 +171,14 @@ $(window).on('load', function () {
         } else {
             $('#her2fish').hide();
         }
-    });$('#box30b').change(function () {
+        if (sel == 'HER2 by genomic testing') {
+            $('#her2genomic').show();
+        } else {
+            $('#her2genomic').hide();
+        }
+    });
+
+    $('#box30b').change(function () {
         var sel = $('#box30b').val();
         if (sel == 'Other') {
             $('#box30b_2').show();
@@ -208,6 +215,15 @@ $(window).on('load', function () {
         } else {
             $('#box36_2').hide();
         }
+    });
+
+    $('#box37').on("change", function(){
+        var sel = $('#box37').val();
+        if (sel.indexOf("Positive") > -1) {
+
+            $('#box37_2').show();}
+        else {
+            $('#box37_2').hide();}
     });
 
     $("#box50").on("change", function () {
@@ -383,6 +399,15 @@ $(window).on('load', function () {
             captext += "\n+ Perineural Invasion:\n- " + box_10 + "\n";
         }
 
+        if ($("#box15").is(':checked')) {
+            var box_16 = $("#box16").val();
+            var box_17 = $("#box17").val();
+            captext += "\nLymph nodes:\n\tLymph Nodes Examined: " + box_16 + "\n\tLymph nodes involved: " + box_17 + "\n";
+        } else {
+            captext += "\nLymph nodes: None submitted\n";
+        }
+
+
         var box_11 = $("#box11").val();
         var box_12 = $("#box12").val();
         var box_13 = $("#box13").val();
@@ -403,13 +428,6 @@ $(window).on('load', function () {
             }
         }
 
-        if ($("#box15").is(':checked')) {
-            var box_16 = $("#box16").val();
-            var box_17 = $("#box17").val();
-            captext += "\nLymph nodes:\n\tLymph Nodes Examined: " + box_16 + "\n\tLymph nodes involved: " + box_17 + "\n";
-        } else {
-            captext += "\nLymph nodes: None submitted\n";
-        }
 
         var box_18 = $("#box18").val();
         var box_18_2 = $("#box18_2").val();
@@ -482,6 +500,22 @@ $(window).on('load', function () {
                 captext += "+HER2 - method used: " + box_36 + ", " + box_36_2 + "\n";
             } else {
                 captext += "+HER2 - method used: " + box_36 + "\n";
+            }
+        }
+
+        if (box_29 == 'HER2 by genomic testing'){
+
+            var box_37 = $("#box37").val();
+            var box_37_2 = $("#box37_2").val();
+            if (box_37.indexOf("Positive") > -1) {
+                captext += "\nHER2 by genomic testing:\n- Positive: "  + box_37_2+ "\n";}
+            else {captext += "\nHER2 by genomic testing:\n- "  + box_37+ "\n";}
+
+            var box_38 = $("#box38").val();
+            if (box_37.length > 0){
+                captext += "\nSpecify genomic testing method:\n- "  + box_38 + "\n";
+            } else {
+                captext += "\nSpecify genomic testing method:\n- Unspecified\n";
             }
         }
 

@@ -71,14 +71,14 @@
             <select id="box5" class='form-control selectpicker form-control-sm col-sm-6'>
                 <option value="Adenocarcinoma, NOS">Adenocarcinoma (not otherwise characterized)</option>
                 <option value="Mucinous adenocarcinoma">Mucinous adenocarcinoma (greater than 50% mucinous)</option>
-                <option value="Signet-ring cell carcinoma">Signet-ring cell carcinoma (greater than 50% signet-ring cells)</option>
+                <option value="Signet-ring cell carcinoma">Poorly cohesive cell carcinoma +/- signet-ring cells</option>
                 <option>Medullary carcinoma</option>
                 <option>Adenosquamous carcinoma</option>
                 <option>Squamous cell carcinoma</option>
                 <option>Large cell neuroendocrine carcinoma</option>
                 <option>Small cell neuroendocrine carcinoma</option>
-                <option>Neuroendocrine carcinoma (poorly differentiated)</option>
-                <option>Mixed adenoneuroendocrine carcinoma</option>
+                <option>Neuroendocrine carcinoma (poorly differentiated)#</option>
+                <option>Mixed adenocarcinoma-neuroendocrine carcinoma</option>
                 <option>Undifferentiated carcinoma</option>
                 <option>Other histologic type</option>
             </select>
@@ -173,7 +173,7 @@
                     <option>Not applicable</option>
                     <option>Cannot be assessed</option>
                     <option>Uninvolved by invasive carcinoma</option>
-                    <option>Involved by invasive carcinoma (tumor present with in 1 mm from margin)</option>
+                    <option>Involved by invasive carcinoma (tumor present within 1 mm from margin)</option>
                 </select>
 
 
@@ -220,8 +220,21 @@
                 </select>
 
 
-
-
+                <hr class="p-2" >
+                <h5>Regional Lymph Nodes</h5>
+                <form class="form-inline">
+                    <label class="form-check-label">Check here if any lymph nodes submitted?
+                        <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box14" >
+                    </label>
+                </form>
+                <div class='lnchk' style='display:none;'>
+                    <form class="form-inline col-8">
+                        <label class="m-2">Number of lymph nodes examined:
+                            <input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box15" style="width:100px"></label>
+                        <label class="m-2">Number of lymph nodes involved:
+                            <input type="number" class="form-control form-control-sm col-sm-6 ml-3 subnode" id="box16" style="width:100px"></label>
+                    </form>
+                </div>
 
                 <hr class="p-2">
                 <h5>Pathologic Staging (pTNM)
@@ -281,19 +294,7 @@
             <div class="py-2 w-100"></div>
 
 
-            <form class="form-inline">
-                    <label class="form-check-label">Check here if any lymph nodes submitted?
-                        <input class="form-control form-control-sm col-sm-6" type="checkbox" id="box14" >
-                    </label>
-                </form>
-                <div class='lnchk' style='display:none;'>
-                    <form class="form-inline col-8">
-                        <label class="m-2">Number of lymph nodes examined:
-                            <input type="number" class="form-control form-control-sm col-sm-6 ml-3 maxnode" id="box15" style="width:100px"></label>
-                        <label class="m-2">Number of lymph nodes involved:
-                            <input type="number" class="form-control form-control-sm col-sm-6 ml-3 subnode" id="box16" style="width:100px"></label>
-                    </form>
-                </div>
+
 
 
                 <hr class="p-2">
