@@ -208,7 +208,7 @@ $(window).on('load', function () {
         }
 
         var box_6 = $("#box6").val();
-        captext += "\nHistologic Grad:\n- " + box_6 + "\n";
+        captext += "\nHistologic Grade:\n- " + box_6 + "\n";
 
         var box_7 = $("#box7").val();
         captext += "\nLymphovascular Invasion:\n- " + box_7.join('\n- ') + "\n";
