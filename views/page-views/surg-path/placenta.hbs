@@ -22,7 +22,7 @@
 
                         <div class="col col-md-4">
                             <!-- Button trigger modal -->
-                            <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_placenta">How to Use</button>
+                            <button id="howToUse" type="button" class="btn btn-sm btn-info ml-2 p-1" data-toggle="modal" data-target="#help_placenta">How to Use</button>
                         </div>
 
                         <!-- Histology help Modal -->
@@ -38,17 +38,17 @@
                         <div class="col col-md-3">
                             <div class="card">
                                 <div class="card-header h-100 text-sm-center">
-                                    Gestational Age
+                                    Gestational Age (weeks)
                                 </div>
                                 <div class="card-block ">
-                                    <input type="number" max="44" class="form-control mx-auto" id="plac_age" placeholder="nearest week (19-44)">
+                                    <input type="number" min="19" max="44" class="form-control mx-auto" id="plac_age" placeholder="19-44">
                                 </div>
                             </div>
                         </div>
 
                         <div class='col col-md-2'>
                             <div class="card">
-                                <div class="card-header h-100 text-sm-center">
+                                <div class="card-header h-100 px-2 text-sm-center">
                                     Weight (grams)
                                 </div>
                                 <div class="card-block ">
@@ -61,8 +61,8 @@
 
                         <div class='col col-md-2'>
                             <div class="card">
-                                <div class="card-header h-100 text-sm-center">
-                                    Gestation type
+                                <div class="card-header h-100 px-2 text-sm-center">
+                                    Gestation Type
                                 </div>
                                 <div class="card-block ">
                                     <div>
@@ -78,7 +78,7 @@
                         <div class="col col-md-5">
                             <div class="card">
                                 <div class="card-header h-100 text-sm-center">
-                                    Preferred Reference
+                                    Preferred Historic Reference
                                 </div>
                                 <div class="card-block ">
                                     <div>
@@ -92,26 +92,106 @@
                         </div>
 
                         <div class="col-12 mt-2">
-                            <div class="card">
-                                <div class="card-header outline-danger text-center">
-                                    <button class="btn btn-lg btn-success p-1 getref" style="white-space:normal !important;max-width:400px">Get the Placenta Reference Weight Range</button>
-                                </div>
+
+                            {{#if isAuth.check}}
+                            <div class="checkbox_container form-check mt-2 mb-2">
+                                <input id="agreement" type="checkbox" class="form-check-input" checked="checked">
+                                <label class="form-check-label" for="agreement">I agree to add my data for collection</label>
                             </div>
+                            {{/if}}
+
+                            <button type="button" class="btn btn-lg btn-success m-2 p-2 getref" style="white-space:normal !important;max-width:400px">Get the Placenta Reference Weight Range</button>                            
                         </div>
                     </div>
                     </form>
-                        <div class="col-12 mt-2">
+                        <div id="results" class="col-12 mt-2 d-none">
                             <div class="card">
                                 <div class="card-block">
                                                 <div class="row text-center">
-                                                    <div class="col-12 " style="font-size: 3em;">PLACENTA WEIGHT IS: </div>
-                                                    <textarea type="text" class="mx-auto form-control col-md-6 text-center plac-range" style="font-size: 3em; word-wrap: break-word;"></textarea>
-                                                    <h6 class="col-12 py-4" >Reference: <span class="ref"> </span> </h6>
+                                                    <div class="col-12"><h2>PLACENTA WEIGHT IS:</h2></div>
+                                                    <textarea type="text" class="mx-auto form-control col-md-5 text-center plac-range" style="font-size: 3em; word-wrap: break-word;"></textarea>
+                                                    <textarea type="text" class="mx-auto form-control col-md-5 text-center plac-range-2" style="font-size: 3em; word-wrap: break-word;"></textarea>
+                                                    <h6 class="col-md-6 py-3" >Reference: <span class="ref"> </span> </h6>
+                                                    <h6 class="col-md-6 py-3" >Realtime Reference <span class="ref-2"> </span> </h6>
                                                 </div>
                                 </div>
                             </div>
                         </div>
+
+                        <div id="data" class="col-12 mt-2 d-none">
+                            <div class="card">
+                                <div class="card-header h-100 px-2 text-sm-center" style="font-size: 3em; font-weight: bold">
+                                    Realtime Placenta Data Reference
+                                </div>
+                                <div class="card-block">
+                                            <div class="row text-center">
+                                                    <div class="table">
+                                                        <table class="table table-bordered" id="summaryData" style="font-size: 2em">
+                                                            <thead>
+                                                                <tr id="summaryHead" class="text-white" style="background-color: #686868">
+                                                                </tr>
+                                                              </thead>
+                                                              <tbody>
+                                                                <tr id="summaryBody">
+                                                                </tr>
+                                                              </tbody>
+                                                        </table>
+                                                    </div>
+                                            </div>
+
+                                            <div id="graphContainer" class="text-center pb-5"> 
+                                            </div>
+
+                                            <form>
+                                            <h2 class="text-center">Explore the Data</h2>
+                                            <div class="text-center pt-2">
+                                                <p>To export the full dataset as an excel spreadsheet, please <a href="/mail">send me an email</a>.</p>
+                                            </div>
+
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="my-1 mr-2 ml-1" for="geoSelection">Filter By</label>
+                                                    <select id="geoSelection" class="form-control">
+                                                        <option selected value="0">None</option>
+                                                        <option value="3">Country</option>
+                                                        <option value="4">State</option>
+                                                        <option value="5">City</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="my-1 mr-2 ml-1" for="geoInput"></label>
+                                                    <input id="geoInput" type="text" class="d-none form-control mt-2" placeholder="Search...">
+                                                </div>
+                                            </div>
+                                            </form>
+
+                                                <div class="row text-center">
+                                                    
+                                                    <div class="table">
+                                                        <table class="table table-hover table-bordered" style="font-size: 1.5em;" id="fullData">
+                                                            <thead class="text-white" style="background-color: #686868">
+                                                                <tr>
+                                                                  <th scope="col" class="text-center">Gestational Age</th>
+                                                                  <th scope="col" class="text-center">Weight</th>
+                                                                  <th scope="col" class="text-center">Twin</th>
+                                                                  <th scope="col" class="text-center">Country</th>
+                                                                  <th scope="col" class="text-center">State</th>
+                                                                  <th scope="col" class="text-center">City</th>
+                                                                </tr>
+                                                              </thead>
+                                                              <tbody>
+                                                              </tbody>
+                                                        </table>
+                                                    </div>
+
+
+                                                </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
+
                     <!-- silent success notification for AJAX-->
                     <div class="alert alert-success alert-dismissible collapse text-center" id="alert-1" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label w-100="Close">
