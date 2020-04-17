@@ -993,6 +993,7 @@ $(window).on('load', function(){
 
 //********************//
 
+
 // **** ADD MICROS WITH ONE-CLICK UNDO *****//
 //											//
 //											//
@@ -1109,13 +1110,21 @@ $(window).on('load', function(){
 // **** ADD MICROS WITH ONE-CLICK UNDO *****//
 
 // ********************* Combined report function ***********************//
+
+    $('.copy').on('click', function(){
+        // validate that all parts have a corresponding final diagnosis:
+        validate_finals();
+    });
+
     $('#writeReport').on('click', function () {
-        // store your text to localStorage when someone click the link
-        var textToPass = $('#outPut-2').val()+'\n\n'+$('#outPut-3').val()+'\n\n'+$('#outPut-4').val();
-        $('#outPut-combine').val(textToPass);
-        $('#combined-report').modal("show");
-        dataObj.singleSection = $('#outPut-combine').val();
-        makeCreatePdfBtn();
+        // validate that all parts have a corresponding final diagnosis:
+        validate_finals();
+            // store your text to localStorage when someone click the link
+            var textToPass = $('#outPut-2').val()+'\n\n'+$('#outPut-3').val()+'\n\n'+$('#outPut-4').val();
+            $('#outPut-combine').val(textToPass);
+            $('#combined-report').modal("show");
+            dataObj.singleSection = $('#outPut-combine').val();
+            makeCreatePdfBtn();
     });
 
 // ======================================================================//

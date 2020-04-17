@@ -568,3 +568,20 @@ function arrayToSentence (arr) {
     });
 }
 //******************
+
+//*********************VALIDATE FINAL DIAGNOSIS FIELD ALWAYS HAS A DIAGNOSIS  ********//
+// ********************THAT FOLLOWS A PART TYPE (CORRECT FOR BLANK DIAGNOSES *********//
+function validate_finals(){
+    var finalText = $("#outPut-3").val();
+    // count # of times a colon+space occur
+    var reg1 = finalText.match(/\:.$/gm);
+    console.log("Matches of parts: "+reg1.length);
+    // count # of times dash+space occur
+    var reg2 = finalText.match(/(\:.$)\n\- /gm);
+    console.log("Matches of finals: "+reg2.length);
+    if (reg1.length > reg2.length){
+        alert("Oops, one of your parts doesn't have a diagnosis. Please check your report.");
+        return ;
+    }
+}
+// ********************END CORRECTION FOR BLANK DIAGNOSES *********//
