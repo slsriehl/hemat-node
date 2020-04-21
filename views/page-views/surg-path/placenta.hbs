@@ -576,7 +576,7 @@
     <div class="row top-buffer d-none" id="results">
         <div class="col-12 mt-2">
             <div class="card card-outline-success">
-                <div class="card-header text-center card-inverse card-success">
+                <div class="card-header text-center card-inverse bg-success">
                     <h2 class="card-title">This Placenta Weight is</h2>
                 </div>
                 <div class="card-block">
@@ -597,73 +597,46 @@
     {{!-- DATA RESULTS --}}
     <div class="row top-buffer d-none" id="data">
         <div class="col-12 mt-2">
-            <div class="card">
-                <div class="card-header h-100 px-2 text-sm-center" style="font-size: 3em; font-weight: bold">
-                    Realtime Placenta Data Reference
+            <div class="card border-d3-blue">
+                <div class="card-header border-0 text-center">
+                    <h2 class="card-title">Realtime Placenta Data Reference</h2>
                 </div>
                 <div class="card-block">
-                            <div class="row text-center">
-                                    <div class="table">
-                                        <table class="table table-bordered" id="summaryData" style="font-size: 2em">
-                                            <thead>
-                                                <tr id="summaryHead" class="text-white" style="background-color: #686868">
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr id="summaryBody">
-                                                </tr>
-                                                </tbody>
-                                        </table>
-                                    </div>
+                    <div class="row text-center" style="padding: 1rem;">
+                        {{> page-partials/placenta-table summary=true}}
+                    </div>
+                </div>
+                <div class="card-block" style="padding: 1rem;">
+                    <div id="graphContainer" class="text-center pb-5"> 
+                    </div>
+
+                    <form>
+                        <h2 class="text-center">Explore the Data</h2>
+                        <div class="text-center pt-2">
+                            <p>To export the full dataset as an excel spreadsheet, please <a href="/mail">send me an email</a>.</p>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="my-1 mr-2 ml-1" for="geoSelection">Filter By</label>
+                                <select id="geoSelection" class="form-control">
+                                    <option selected value="0">None</option>
+                                    <option value="3">Country</option>
+                                    <option value="4">State</option>
+                                    <option value="5">City</option>
+                                </select>
                             </div>
-
-                            <div id="graphContainer" class="text-center pb-5"> 
+                            <div class="col-md-6">
+                                <label class="my-1 mr-2 ml-1" for="geoInput"></label>
+                                <input id="geoInput" type="text" class="d-none form-control mt-2" placeholder="Search...">
                             </div>
-
-                            <form>
-                            <h2 class="text-center">Explore the Data</h2>
-                            <div class="text-center pt-2">
-                                <p>To export the full dataset as an excel spreadsheet, please <a href="/mail">send me an email</a>.</p>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label class="my-1 mr-2 ml-1" for="geoSelection">Filter By</label>
-                                    <select id="geoSelection" class="form-control">
-                                        <option selected value="0">None</option>
-                                        <option value="3">Country</option>
-                                        <option value="4">State</option>
-                                        <option value="5">City</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="my-1 mr-2 ml-1" for="geoInput"></label>
-                                    <input id="geoInput" type="text" class="d-none form-control mt-2" placeholder="Search...">
-                                </div>
-                            </div>
-                            </form>
-
-                                <div class="row text-center">
-                                    
-                                    <div class="table">
-                                        <table class="table table-hover table-bordered" style="font-size: 1.5em;" id="fullData">
-                                            <thead class="text-white" style="background-color: #686868">
-                                                <tr>
-                                                    <th scope="col" class="text-center">Gestational Age</th>
-                                                    <th scope="col" class="text-center">Weight</th>
-                                                    <th scope="col" class="text-center">Twin</th>
-                                                    <th scope="col" class="text-center">Country</th>
-                                                    <th scope="col" class="text-center">State</th>
-                                                    <th scope="col" class="text-center">City</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                </tbody>
-                                        </table>
-                                    </div>
-
-
-                                </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-block">
+                    <div class="row text-center" style="padding: 1rem;">
+                        {{> page-partials/placenta-table summary=false}}
+                    </div>
                 </div>
             </div>
         </div>

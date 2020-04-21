@@ -283,4 +283,11 @@ button:focus {
     display: list-item;
 }
 
+.bg-d3-blue {
+	background-color: rgb(50, 93, 138);
+}
+
+.border-d3-blue {
+	border-color: rgb(50, 93, 138);
+}
 
