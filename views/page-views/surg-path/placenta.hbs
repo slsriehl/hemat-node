@@ -11,11 +11,11 @@
 
     {{> message-center this}}
 
-    <!-- Full width row + card -->
+    {{!-- DATA INPUT --}}
     <div class="row">
         <!-- top card-->
         <div class="col col-md-12">
-            <div class="card">
+            <div class="card card-outline-success">
                 <div class="card-header">
                     <!-- inline header form-->
                     <form class="form-inline">
@@ -101,93 +101,6 @@
                     </div>
                 </form>
             </div>
-            {{!-- results --}}
-            <div id="results" class="col-12 mt-2 d-none">
-                <div class="card">
-                    <div class="card-block">
-                                    <div class="row text-center">
-                                        <div class="col-12"><h2>PLACENTA WEIGHT IS:</h2></div>
-                                        <textarea type="text" class="mx-auto form-control col-md-5 text-center plac-range" style="font-size: 3em; word-wrap: break-word;"></textarea>
-                                        <textarea type="text" class="mx-auto form-control col-md-5 text-center plac-range-2" style="font-size: 3em; word-wrap: break-word;"></textarea>
-                                        <h6 class="col-md-6 py-3" >Reference: <span class="ref"> </span> </h6>
-                                        <h6 class="col-md-6 py-3" >Realtime Reference <span class="ref-2"> </span> </h6>
-                                    </div>
-                    </div>
-                </div>
-            </div>
-            {{!-- data --}}
-            <div id="data" class="col-12 mt-2 d-none">
-                <div class="card">
-                    <div class="card-header h-100 px-2 text-sm-center" style="font-size: 3em; font-weight: bold">
-                        Realtime Placenta Data Reference
-                    </div>
-                    <div class="card-block">
-                                <div class="row text-center">
-                                        <div class="table">
-                                            <table class="table table-bordered" id="summaryData" style="font-size: 2em">
-                                                <thead>
-                                                    <tr id="summaryHead" class="text-white" style="background-color: #686868">
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr id="summaryBody">
-                                                    </tr>
-                                                    </tbody>
-                                            </table>
-                                        </div>
-                                </div>
-
-                                <div id="graphContainer" class="text-center pb-5"> 
-                                </div>
-
-                                <form>
-                                <h2 class="text-center">Explore the Data</h2>
-                                <div class="text-center pt-2">
-                                    <p>To export the full dataset as an excel spreadsheet, please <a href="/mail">send me an email</a>.</p>
-                                </div>
-
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <label class="my-1 mr-2 ml-1" for="geoSelection">Filter By</label>
-                                        <select id="geoSelection" class="form-control">
-                                            <option selected value="0">None</option>
-                                            <option value="3">Country</option>
-                                            <option value="4">State</option>
-                                            <option value="5">City</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="my-1 mr-2 ml-1" for="geoInput"></label>
-                                        <input id="geoInput" type="text" class="d-none form-control mt-2" placeholder="Search...">
-                                    </div>
-                                </div>
-                                </form>
-
-                                    <div class="row text-center">
-                                        
-                                        <div class="table">
-                                            <table class="table table-hover table-bordered" style="font-size: 1.5em;" id="fullData">
-                                                <thead class="text-white" style="background-color: #686868">
-                                                    <tr>
-                                                        <th scope="col" class="text-center">Gestational Age</th>
-                                                        <th scope="col" class="text-center">Weight</th>
-                                                        <th scope="col" class="text-center">Twin</th>
-                                                        <th scope="col" class="text-center">Country</th>
-                                                        <th scope="col" class="text-center">State</th>
-                                                        <th scope="col" class="text-center">City</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    </tbody>
-                                            </table>
-                                        </div>
-
-
-                                    </div>
-                    </div>
-                </div>
-            </div>
-
             <!-- silent success notification for AJAX-->
             <div class="alert alert-success alert-dismissible collapse text-center" id="alert-1" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label w-100="Close">
@@ -197,32 +110,54 @@
             </div>
         </div>
     </div>
-
+    {{!-- SHORT RESULTS --}}
+    <div class="row top-buffer d-none" id="results">
+        <div class="col-12 mt-2">
+            <div class="card card-outline-success">
+                <div class="card-header text-center card-inverse card-success">
+                    <h2 class="card-title">This Placenta Weight is</h2>
+                </div>
+                <div class="card-block">
+                    <div class="row text-center">
+                        <div class="col col-md-6">
+                            <textarea type="text" class="mx-auto form-control text-center plac-range" style="font-size: 3em; word-wrap: break-word;"></textarea>
+                            <h6 class="py-3" >Reference: <span class="ref"> </span></h6>
+                        </div>
+                        <div class="col col-md-6">
+                            <textarea type="text" class="mx-auto form-control text-center plac-range-2" style="font-size: 3em; word-wrap: break-word;"></textarea>
+                            <h6 class="py-3" >Realtime Reference <span class="ref-2"> </span></h6>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        {{!-- REPORTING TOOL --}}
     <div class="row top-buffer">
         <!-- placenta reporting card -->
-        <div class="col col-md-12">
-            <div class="card">
+        <div class="col col-12">
+            <div class="card card-outline-success">
                 {{!-- click to show --}}
-                <div class="card-header" role="tab" id="section1HeaderId">
+                <div class="card-header border-0" role="tab" id="section1HeaderId">
                     <form class="form-inline row">
-                        <div id="show-plac-report-block" class="col col-md-6" data-toggle="collapse" data-parent="#accordion" href="#section1ContentId"
+                        <div id="show-plac-report-block" class="col col-md-9" data-toggle="collapse" data-parent="#accordion" href="#section1ContentId"
                             aria-expanded="true" aria-controls="section1ContentId">
-                            <h5><span id="plac-report-title">Expand</span> the Placenta Reporting Tool</h5>
+                            <h4 class="card-title"><span id="plac-report-title">Expand</span> the Placenta Reporting Tool</h4>
                         </div>
-                        <div class="col col-md-6 text-right">
+                        <div class="col col-md-3 text-right">
                             <button type="button" class="btn btn-info btn-md p-1" data-toggle="modal" data-target="#IHCbox">Immuno Box
                             </button>
                         </div>
                     </form>
                 </div>
-                <div class="card-body hidden top-buffer" id="plac-report-block">
-                    <div class="row">
+                <div class="card-body d-none" id="plac-report-block">
+                    <div class="row" style="padding: 1rem;">
                         <div class="col col-md-8" id="accordion" role="tablist" aria-multiselectable="true">  
                             <div id="section1ContentId" class="collapse in" role="tabpanel" aria-labelledby="section1HeaderId">
                                 <!-- left column-->
                                 <!-- Accordion #1-->
                                 <div class="card">
-                                    <div class="card-header" role="tab" id="headingOne">
+                                    <div class="card-header border-0" role="tab" id="headingOne">
                                         <h5 class="mb-0">
                                             <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                                 Delivery Type - Normal Findings
@@ -285,7 +220,7 @@
                                 </div>
                                 <!-- Accordion #2-->
                                 <div class="card">
-                                    <div class="card-header" role="tab" id="headingTwo">
+                                    <div class="card-header border-0" role="tab" id="headingTwo">
                                         <h5 class="mb-0">
                                             <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                                                 Umbilical cord
@@ -335,7 +270,7 @@
                                 </div>
                                 <!-- Accordion #3-->
                                 <div class="card">
-                                    <div class="card-header" role="tab" id="headingThree">
+                                    <div class="card-header border-0" role="tab" id="headingThree">
                                         <h5 class="mb-0">
                                             <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
                                                 Membranes
@@ -391,7 +326,7 @@
                                 </div>
                                 <!-- Accordion #4-->
                                 <div class="card">
-                                    <div class="card-header" role="tab" id="headingFour">
+                                    <div class="card-header border-0" role="tab" id="headingFour">
                                         <h5 class="mb-0">
                                             <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                                                 Fetal surface / Placental disk
@@ -507,7 +442,7 @@
                                 </div>
                                 <!-- Accordion #5-->
                                 <div class="card">
-                                    <div class="card-header" role="tab" id="headingFive">
+                                    <div class="card-header border-0" role="tab" id="headingFive">
                                         <h5 class="mb-0">
                                             <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                                                 Maternal decidua
@@ -559,7 +494,7 @@
                                 </div>
                                 <!-- Accordion #6-->
                                 <div class="card">
-                                    <div class="card-header" role="tab" id="headingSix">
+                                    <div class="card-header border-0" role="tab" id="headingSix">
                                         <h5 class="mb-0">
                                             <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
                                                 Comments
@@ -656,6 +591,80 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </div>
+    {{!-- DATA RESULTS --}}
+    <div class="row top-buffer d-none" id="data">
+        <div class="col-12 mt-2">
+            <div class="card">
+                <div class="card-header h-100 px-2 text-sm-center" style="font-size: 3em; font-weight: bold">
+                    Realtime Placenta Data Reference
+                </div>
+                <div class="card-block">
+                            <div class="row text-center">
+                                    <div class="table">
+                                        <table class="table table-bordered" id="summaryData" style="font-size: 2em">
+                                            <thead>
+                                                <tr id="summaryHead" class="text-white" style="background-color: #686868">
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr id="summaryBody">
+                                                </tr>
+                                                </tbody>
+                                        </table>
+                                    </div>
+                            </div>
+
+                            <div id="graphContainer" class="text-center pb-5"> 
+                            </div>
+
+                            <form>
+                            <h2 class="text-center">Explore the Data</h2>
+                            <div class="text-center pt-2">
+                                <p>To export the full dataset as an excel spreadsheet, please <a href="/mail">send me an email</a>.</p>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="my-1 mr-2 ml-1" for="geoSelection">Filter By</label>
+                                    <select id="geoSelection" class="form-control">
+                                        <option selected value="0">None</option>
+                                        <option value="3">Country</option>
+                                        <option value="4">State</option>
+                                        <option value="5">City</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="my-1 mr-2 ml-1" for="geoInput"></label>
+                                    <input id="geoInput" type="text" class="d-none form-control mt-2" placeholder="Search...">
+                                </div>
+                            </div>
+                            </form>
+
+                                <div class="row text-center">
+                                    
+                                    <div class="table">
+                                        <table class="table table-hover table-bordered" style="font-size: 1.5em;" id="fullData">
+                                            <thead class="text-white" style="background-color: #686868">
+                                                <tr>
+                                                    <th scope="col" class="text-center">Gestational Age</th>
+                                                    <th scope="col" class="text-center">Weight</th>
+                                                    <th scope="col" class="text-center">Twin</th>
+                                                    <th scope="col" class="text-center">Country</th>
+                                                    <th scope="col" class="text-center">State</th>
+                                                    <th scope="col" class="text-center">City</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                        </table>
+                                    </div>
+
+
+                                </div>
+                </div>
             </div>
         </div>
     </div>
