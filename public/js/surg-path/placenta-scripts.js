@@ -8,13 +8,18 @@ $(window).on('load', function(){
 
     $('#show-plac-report-block').on('click', function(event) {
         var block = $('#plac-report-block');
+        var title = $('#plac-report-title');
         var isHidden = block.hasClass('hidden');
         if(isHidden) {
             block.removeClass('hidden');
+            title.text('Collapse');
         } else {
             block.addClass('hidden');
+            title.text('Expand');
         }
     });
+
+
 
 //***************************************************************************************//
 // SCRIPTS PERTAINING TO THE PLACENTA REFERENCE AND SENDING DATA TO DB
