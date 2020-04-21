@@ -282,3 +282,8 @@ button:focus {
 .ordered-list-group-item {
     display: list-item;
 }
+
+.hidden {
+	display: none;
+}
+

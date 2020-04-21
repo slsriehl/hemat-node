@@ -6,6 +6,16 @@ $(window).on('load', function(){
 
     $('.dialog-extent').dialog({autoOpen:false});
 
+    $('#show-plac-report-block').on('click', function(event) {
+        var block = $('#plac-report-block');
+        var isHidden = block.hasClass('hidden');
+        if(isHidden) {
+            block.removeClass('hidden');
+        } else {
+            block.addClass('hidden');
+        }
+    });
+
 //***************************************************************************************//
 // SCRIPTS PERTAINING TO THE PLACENTA REFERENCE AND SENDING DATA TO DB
 // Plaenta GA validation - Prevent entering beyond GA max or min
