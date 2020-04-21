@@ -275,3 +275,10 @@ button:focus {
 	vertical-align: middle;
 }
 
+.ordered-list-group {
+    list-style: decimal inside;
+}
+
+.ordered-list-group-item {
+    display: list-item;
+}
