@@ -48,7 +48,7 @@ label:hover {
 }
 
 /*  Shrink Table header font size  */
-.table {
+.table-small {
     font-size: 0.65em;
 }
 
