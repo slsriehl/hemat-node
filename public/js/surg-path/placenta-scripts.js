@@ -9,12 +9,12 @@ $(window).on('load', function(){
     $('#show-plac-report-block').on('click', function(event) {
         var block = $('#plac-report-block');
         var title = $('#plac-report-title');
-        var isHidden = block.hasClass('hidden');
+        var isHidden = block.hasClass('d-none');
         if(isHidden) {
-            block.removeClass('hidden');
+            block.removeClass('d-none');
             title.text('Collapse');
         } else {
-            block.addClass('hidden');
+            block.addClass('d-none');
             title.text('Expand');
         }
     });
