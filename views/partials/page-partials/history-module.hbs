@@ -4,7 +4,7 @@
 <div class="row top-buffer">
 	<div class="col col-md-12">
 		<div class="card text-center">
-				<div class="card-header">
+				<div class="card-header border-0">
 					<ul class="nav nav-pills individual-report-btn-box">
 						{{#if prevRep.thisApp}}
 						<li class="nav-item">
@@ -27,7 +27,7 @@
 					</ul>
 				</div>
 				{{#if prevRep.thisApp}}
-				<div class="card-block" id="previous-reports">
+				<div class="card-block border-0" id="previous-reports">
 				{{#each prevRep.thisApp}}
 					<div class="row previous-report" id="pr-{{@index}}" {{{stripeRows @index}}}>
 						<div class="col col-md-12 text-left">
