@@ -1,0 +1,23 @@
+<table class="table table-bordered {{#unless summary}}table-hover table-striped {{/unless}}" id="{{#if summary}}summaryData{{else}}fullData{{/if}}">
+    <thead class="bg-d3-blue text-white">
+        {{#if summary}}
+            <tr id="summaryHead">
+            </tr>
+        {{else}}
+            <tr>
+                <th scope="col" class="text-center">Gestational Age</th>
+                <th scope="col" class="text-center">Weight</th>
+                <th scope="col" class="text-center">Twin</th>
+                <th scope="col" class="text-center">Country</th>
+                <th scope="col" class="text-center">State</th>
+                <th scope="col" class="text-center">City</th>
+            </tr>
+        {{/if}}
+    </thead>
+    <tbody>
+        {{#if summary}}
+            <tr id="summaryBody">
+            </tr>
+        {{/if}}
+    </tbody>
+</table>
