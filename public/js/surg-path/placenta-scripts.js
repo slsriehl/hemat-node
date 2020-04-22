@@ -6,6 +6,21 @@ $(window).on('load', function(){
 
     $('.dialog-extent').dialog({autoOpen:false});
 
+    $('#show-plac-report-block').on('click', function(event) {
+        var block = $('#plac-report-block');
+        var title = $('#plac-report-title');
+        var isHidden = block.hasClass('d-none');
+        if(isHidden) {
+            block.removeClass('d-none');
+            title.text('Collapse');
+        } else {
+            block.addClass('d-none');
+            title.text('Expand');
+        }
+    });
+
+
+
 //***************************************************************************************//
 // SCRIPTS PERTAINING TO THE PLACENTA REFERENCE AND SENDING DATA TO DB
 // Plaenta GA validation - Prevent entering beyond GA max or min
@@ -26,7 +41,7 @@ $(window).on('load', function(){
             }
         }
 
-        });
+    });
 
 // Plaenta weight validation - Prevent entering 2000 grams or <50 grams
     $("#plac_wt").on("input", function(e){
@@ -42,7 +57,7 @@ $(window).on('load', function(){
             }
     });
 
-// PLACENTA PERCENTAGE REFERENCE RANGE AND DATA ENTRY
+// PLACENTA HISTORIC REFERENCE RANGE AND DATA ENTRY
     $('.getref').on('click', function () {
         var partTypes = $.extend(true, {}, partJson); // extended original JSON to this variable, so header replaces are reset on new values entered
 
@@ -53,14 +68,25 @@ $(window).on('load', function(){
         var plac_ref = $('#reference').val();
         var plac_cite = $('#reference').find(":selected").data("ref");
         var plac_type = $("#plac_type").val();
+        var minWeight = 50;
+        if(!(wk > 0)){
+            alert("You forgot to enter a gestational age!");
+            return;
+        }
         if (plac_weight.length <1){
             alert("You forgot to enter a placenta weight!");
+            return;
+        }
+        if (plac_weight < minWeight){ // prevent any inputs
+            console.log("placenta weight error");
+            alert('Are you sure this placenta weighs less than 50g? The database does not support that kind of weight. Please check your entry and try again');
             return;
         }
         // GET PLACENTA PERCENTILES FROM STATIC REFERENCES
         if( plac_type == "partType501" ){ // twin
             console.log("twin reference");
             var wkObj = pinar_twin['wk' + wk];
+            plac_cite = "Pinar H. et al. Pediatr Pathol Lab med 1996; 16:901-7.";
         } else {
             if (plac_ref == "1"){
                 console.log("pinar single");
@@ -95,8 +121,10 @@ $(window).on('load', function(){
                 }
             });
 
-            console.log("Upper Index: "+upperIndex);
+            console.log('here');
 
+            console.log("Upper Index: "+upperIndex);
+            console.log(percentiles);
             var lower, upper;
             var plac_range;
             if (upperIndex > 0) { // meaning, if user plac wt falls between 0 and 90th pctille
@@ -135,15 +163,440 @@ $(window).on('load', function(){
             $(".plac-range").val(plac_range);
             $(".ref").text(plac_cite);
 
+        } else { // when reference ranges aren't available
+            console.log("no data: "+wkObj);
+            $.each(partTypes, function(key){
+                partTypes[key] = partTypes[key]
+                    .replace(/\d+ WEEKS/, plac_ga+" WEEKS")
+                    .replace(/\d+ grams/, plac_weight+" grams")
+                    .replace(/\(.*\)/, "(No reference data available)")
+            });
+
+            plac_range = "No reference data available";
+            $(".plac-range").val(plac_range);
+            $(".ref").text(plac_cite);
+        }
+        $("#results").removeClass("d-none");
+
+
+    // *********************************************
+    // GET REALTIME REFERENCE
+    // *********************************************
+        let placObj = {};
+        placObj.ga = $('#plac_age').val();
+        placObj.weight = $('#plac_wt').val();
+        placObj.twin = $('#plac_type option:selected').data('twin');
+        var plac_range_2;
+        var percentages = [10,25,50,75,90];
+        var percentiles2 = [];
+        var percentilesHistoric = [];
+        var percentilesRealtime = [];
+        var sorted;
+        var minDataPoints = 10;
+
+        $.ajax({
+            url: 'https://hematogones.com/surg-path/placenta-data',
+            type: 'GET',
+            dataType: "json",
+            success: function(json){
+                // Get realtime data from the database, filter it for the inputs, and sort it by weight
+                var filtered = json.filter(function(obj){
+                    return obj["gestage"] == placObj.ga && obj["twin"] == placObj.twin;
+                })
+                sorted = filtered.sort(function(a, b){
+                    return a.weight-b.weight
+                })     
+                // If there exists realtime data that matches the filters, reveal the data section of the webpage 
+                if (filtered.length > 0){
+                     $("#data").removeClass("d-none");
+                     $("#geoSelection").val('0');
+                     $("#geoInput").val('');
+                     $("#geoInput").addClass('d-none');
+                }
+                // If there is not enough data, do not show a summary table and clear the graph
+                if (filtered.length < minDataPoints){
+                    console.log("Not enough data");
+                    plac_range_2 = "Not enough data points available";
+                    $("#summaryData").addClass('d-none');
+                    $("#graphContainer").empty();
+                } else {
+                    // Calculate the each percentile as specified in the array named "percentages" using the mathematical formula for percentile calculation
+                    percentages.forEach(function(percent,index){
+                        var i = (percent / 100) * sorted.length;
+                        var p;
+                        var suffix = percent % 10 == 1 ? "st" : (percent % 10 == 2 ? "nd" : (percent % 10 == 3 ? "rd" : "th"))
+                        if (Number.isInteger(i)){
+                            p = (sorted[i-1]["weight"] + sorted[i]["weight"]) / 2
+                        } else {
+                            p = sorted[Math.ceil(i) - 1]["weight"]
+                        }
+                        // create a dictionary with the weights and percentiles, and create an array with the weights
+                        percentiles2.push({plac_wt_num: p, percentile: percent + "" + suffix});       
+                        percentilesRealtime.push(p);                         
+                    }); 
+                    // loop through the dictionary to find the percentile range into which that the inputted data point falls, and create the appropriate string to display
+                    percentiles2.forEach(function(obj,index){
+                        if (placObj.weight >= obj.plac_wt_num){
+                            if (index == percentiles2.length - 1){
+                                plac_range_2 = "Greather than " + obj.percentile + " percentile";
+                            } else {
+                                plac_range_2 = "Between " + obj.percentile + " and " + percentiles2[index+1].percentile + " percentiles"
+                            }
+                        }
+
+                    });
+                    // if the inputted weight is less than all the percentiles, then it's in the bottom range
+                    if (!plac_range_2) {
+                        plac_range_2 = "Less than " + percentiles2[0].percentile + " percentile"
+                    } 
+
+                    populateSummary(percentiles2); // populate the summary table
+                    // If there exists historic data, draw the graph. Otherwise, empty the graph
+                    if (wkObj){
+                        percentilesHistoric = Object.values(wkObj).reverse();
+                        percentilesHistoric.forEach(function(num,index){
+                            num = Number(num);
+                        });
+                        drawGraph([percentilesHistoric, percentilesRealtime], sorted, sorted[0]['weight'], sorted[sorted.length-1]['weight']);
+                    } else {
+                        $("#graphContainer").empty();
+                    }
+                }
+                // If there exists realtime data, populate the full data table
+                populateTable(sorted);
+            },
+            error: function(err)
+            {
+                console.log("Get request failed, error= " + err);
+                plac_range_2 = "No reference data available";
+                $("#graphContainer").empty();
+            }
+
+         }).done(function(response){
+             console.log("Got Data from DB");
+             $(".plac-range-2").val(plac_range_2); // show the appropriate string with the realtime reference range
+        });
+
+
+    // *********************************************
+    // Box & Whisker Graph
+    // *********************************************
+
+    var xScale;
+    var colors = ['#879772','#325d8a','#ac112d'];
+    var graphedGeo = false;
+
+// Function to draw the initial set of graphs
+// "percentiles" is an array of 2 or 3 arrays, each array containing 5 weights for the 5 significant percentiles
+// "sorted" is the full set of realtime data that matches the inputted filters
+function drawGraph(percentiles, sorted, min, max){
+    var numGraphs = percentiles.length;
+    var paddingSmall = 20;
+    var paddingLarge = 150;
+    var graphWidth = 600
+    var width = graphWidth + paddingLarge;
+    var h = 200;
+    var height = numGraphs * h - h/2;
+    var rectHeight = h/2 - paddingSmall
+    var jitterHeight = 80;
+
+    // Empty the graph, then append an svg with the specified height and width
+    $("#graphContainer").empty();
+
+    var svg = d3.select("#graphContainer")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height+paddingSmall*3); 
+
+    svg.selectAll("*").remove()
+
+    var g = svg.append("g")
+        .attr("transform", "translate(0,"+paddingSmall+")") 
+
+    // create the x-axis scale based on the min and max weight values
+    xScale = d3.scaleLinear()
+                    .domain([min,max])
+                    .range([paddingLarge,width-paddingSmall])
+
+    // for each set of percentiles, plot a box and whisker graph
+    percentiles.forEach(function(set,index){
+        var rect = g.append('rect')
+            .attr("class",index == 2 ? "rectGeoData" : "rect")
+            .attr('y',index*h)
+            .attr('x',xScale(set[1]))
+            .attr('height',rectHeight)
+            .attr('width', xScale(set[3]) - xScale(set[1]))
+            .attr('fill',colors[index])
+            .attr('stroke-width',2)
+            .attr('stroke','black');
+        var midline = g.append('line')
+            .attr("class",index == 2 ? "midlineGeoData" : "midline")
+            .attr('x1',xScale(set[2]))
+            .attr('x2',xScale(set[2]))
+            .attr('y1',h/2 - rectHeight - paddingSmall + index*h)
+            .attr('y2',h/2 - paddingSmall + index*h)
+            .attr('stroke','black')
+            .attr('stroke-width',2);
+        var lowline = g.append('line')
+            .attr("class",index == 2 ? "lowlineGeoData" : "lowline")
+            .attr('x1',xScale(set[0]))
+            .attr('x2',xScale(set[1]))
+            .attr('y1',h/2 - paddingSmall - rectHeight/2 + index*h)
+            .attr('y2',h/2 - paddingSmall - rectHeight/2 + index*h)
+            .attr('stroke','black')
+            .attr('stroke-width',2);
+        var highline = g.append('line')
+            .attr("class",index == 2 ? "highlineGeoData" : "highline")
+            .attr('x1',xScale(set[3]))
+            .attr('x2',xScale(set[4]))
+            .attr('y1',h/2 - paddingSmall - rectHeight/2 + index*h)
+            .attr('y2',h/2 - paddingSmall - rectHeight/2 + index*h)
+            .attr('stroke','black')
+            .attr('stroke-width',2);
+    })
+
+    // append the x-axis to the bottom and append an axis label
+    var x_axis = d3.axisBottom()
+                   .scale(xScale);
+    var axis = g.append("g")
+        .attr("transform", "translate(0,"+height+")")
+        .call(x_axis);
+    axis.append("text")
+        .attr("y",paddingSmall * 3/2)
+        .attr("x", paddingLarge + graphWidth/2)
+        .text("Weight (g)")
+        .attr("text-anchor", "middle")
+        .style("fill", "black")
+
+    // Append text labels for each box & whisker plot
+    g.append("text")
+        .attr("x",paddingSmall)
+        .attr("y",h*1/4)
+        .style("fill","black")
+        .text("Historic Reference")
+    g.append("text")
+        .attr("x",paddingSmall)
+        .attr("y",h*5/4)
+        .style("fill","black")
+        .text("Realtime Reference")
+
+    // If a geo filter graph is also being plotted, append a text label and append circles for each data point
+    if (numGraphs > 2) {
+        g.append("text")
+        .attr('class','textGeoData')
+        .attr("x",paddingSmall)
+        .attr("y",h*9/4)
+        .style("fill","black")
+        .text("Realtime Reference with Geo Filter")
+
+        g.selectAll("realtimeGeoData")
+        .data(sorted)
+        .enter().append("circle")
+        .attr("class","realtimeGeoData")
+        .attr('r',h/60)
+        .attr('cy',function(d){return 3 * h / 2 + Math.random() * jitterHeight}) // randomize y coordinate of data points
+        .attr('cx',function(d){return xScale(d.weight)})
+        .style('fill',colors[2])
+        .style("fill-opacity", .7)
+        .attr('stroke',colors[2])
+        .style('stroke-opacity',1)
+    }
+
+    // Append circles for each realtime data point
+    g.selectAll("realtimeData")
+        .data(sorted)
+        .enter().append("circle")
+        .attr('r',h/60)
+        .attr('cy',function(d){return h/2 + Math.random() * jitterHeight}) // randomize y coordinate of data points
+        .attr('cx',function(d){return xScale(d.weight)})
+        .style('fill',colors[1])
+        .style("fill-opacity", .7)
+        .attr('stroke',colors[1])
+        .style('stroke-opacity',1)
+    // Append a circle to represent the user inputted data point
+    g.append("circle")
+        .attr('r',h/60)
+        .attr('cy',h/2 + Math.random() * jitterHeight)
+        .attr('cx',xScale(placObj.weight))
+        .style('fill','#f2a058')
+        .style("fill-opacity", 1)
+        .attr('stroke','#f2a058')
+        .style('stroke-opacity',1)
+}
+    
+    // Function to update the 3rd plot based on a change to the geo filter
+    function drawGraphGeo(){
+        graphedGeo = true;
+        // store the relevant information for the inputted geo filter in variables
+        var selection = $("#geoSelection").val();
+        var value = $("#geoInput").val().toLowerCase();
+        var geo = (selection == 3 ? "country" : (selection == 4 ? "state" : "city"));        
+
+        // make the opacity 0 for any data points that do not match the filter
+        d3.selectAll(".realtimeGeoData")
+            .transition().duration(5000)
+            .style('fill-opacity',function(d) { 
+                return (d[geo].toLowerCase().indexOf(value) > -1 ? .7 : 0)
+            })
+            .style('stroke-opacity',function(d) { 
+                return (d[geo].toLowerCase().indexOf(value) > -1 ? 1 : 0)
+            })
+
+        // filter the realtime data by applying the inputted geo filter
+        var sortedAndFiltered = sorted.filter(function(obj){
+            return obj[geo].toLowerCase().indexOf(value) > -1;
+        })
+
+        // if there are enough data points that match the geo filter...
+        if (sortedAndFiltered.length >= minDataPoints){
+            var percentilesGeo = [];
+
+            // calculate percentiles for the filtered data
+            percentages.forEach(function(percent,index){
+                var i = (percent / 100) * sortedAndFiltered.length;
+                var p;
+                var suffix = percent % 10 == 1 ? "st" : (percent % 10 == 2 ? "nd" : (percent % 10 == 3 ? "rd" : "th"))
+                if (Number.isInteger(i)){
+                    p = (sortedAndFiltered[i-1]["weight"] + sortedAndFiltered[i]["weight"]) / 2
+                } else {
+                    p = sortedAndFiltered[Math.ceil(i) - 1]["weight"]
+                }    
+                percentilesGeo.push(p);                         
+            }); 
+
+            // move the elements of the box & whisker plot to match the updated percentiles
+            d3.select(".rectGeoData")
+            .transition().duration(5000)
+            .attr('x',xScale(percentilesGeo[1]))
+            .attr('width', xScale(percentilesGeo[3]) - xScale(percentilesGeo[1]))
+            .style('fill-opacity',1)
+            .style('stroke-opacity',1)
+            d3.select(".midlineGeoData")
+            .transition().duration(5000)
+            .attr('x1',xScale(percentilesGeo[2]))
+            .attr('x2',xScale(percentilesGeo[2]))
+            .style('fill-opacity',1)
+            .style('stroke-opacity',1)
+            d3.select(".lowlineGeoData")
+            .transition().duration(5000)
+            .attr('x1',xScale(percentilesGeo[0]))
+            .attr('x2',xScale(percentilesGeo[1]))
+            .style('fill-opacity',1)
+            .style('stroke-opacity',1)
+            d3.select(".highlineGeoData")
+            .transition().duration(5000)
+            .attr('x1',xScale(percentilesGeo[3]))
+            .attr('x2',xScale(percentilesGeo[4]))
+            .style('fill-opacity',1)
+            .style('stroke-opacity',1)
+
+            d3.select('.textGeoData')
+            .text("Realtime Reference with Geo Filter")
+
+        // if there are not enough data points that match the geo filter, make the plot's opacity 0, and change the label text accordingly
+        } else {
+            d3.select(".rectGeoData")
+            .transition().duration(1000)
+            .style('fill-opacity',0)
+            .style('stroke-opacity',0)
+            d3.select(".midlineGeoData")
+            .transition().duration(1000)
+            .style('fill-opacity',0)
+            .style('stroke-opacity',0)
+            d3.select(".lowlineGeoData")
+            .transition().duration(1000)
+            .style('fill-opacity',0)
+            .style('stroke-opacity',0)
+            d3.select(".highlineGeoData")
+            .transition().duration(1000)
+            .style('fill-opacity',0)
+            .style('stroke-opacity',0)
+
+            d3.select('.textGeoData')
+            .text("Realtime Reference with Geo Filter (Not Enough Data Points Available to Show Distribution)")
+        }
+    }
+
+    // *********************************************
+    // Summary Data Table and Full Data Table 
+    // *********************************************
+
+        var typingTimer;                //timer identifier
+        var doneTypingInterval = 1000;  //time in ms, 1 second for example
+
+        $("#geoInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $(".dataRow").filter(function() {
+                // remove data points from the table that do not match the new geo filter
+              $(this).toggle($(this).children()[Number($("#geoSelection").val())].innerText.toLowerCase().indexOf(value) > -1)
+            });
+            // if the user stops typing for more than 1 second, update the graph based on the geo filter
+            clearTimeout(typingTimer);
+            typingTimer = setTimeout(drawGraphGeo, doneTypingInterval);
+        });
+
+        $("#geoSelection").on("change", function() {
+            var value = $(this).val();
+            $("#geoInput").val('');
+            $("#geoInput").keyup();
+            if (value != "0"){
+                $("#geoInput").removeClass('d-none');
+                if (percentilesHistoric){
+                    // if the 3rd box & whisker plot has already been grpahed, update the plot... if not, redraw the full graph
+                    if(graphedGeo){
+                        drawGraphGeo();
+                    } else {
+                        drawGraph([percentilesHistoric,percentilesRealtime,percentilesRealtime],sorted,sorted[0]['weight'],sorted[sorted.length-1]['weight']);
+                    }
+                }
+            } else {
+                $("#geoInput").addClass('d-none');
+            }
+        });
+
+        function populateSummary(data){
+            // empty the table
+            $("#summaryData").removeClass('d-none');
+            $('#summaryHead').empty()
+            $('#summaryBody').empty()
+            $('#summaryHead').append('<th scope="col" class="text-center">Gestational Age</th>')
+            $('#summaryHead').append('<th scope="col" class="text-center">Gestational Type</th>')
+            // create a column heading for each calculated percentile
+            percentages.forEach(function(percent,index){
+                var content = '<th scope="col" class="text-center">' + percent + '%</th>'
+                $('#summaryHead').append(content);
+            });
+            // add a table data to the table body for each calculated percentile
+            $('#summaryBody').append('<td>'+ placObj.ga + '</td><td>' + (placObj.twin == 1 ? "Twin" : "Single") + '</td>');
+            data.forEach(function(p,index){
+                var content = '<td>' + p.plac_wt_num + 'g</td>'
+                $('#summaryBody').append(content);
+            });
+        }
+
+        function populateTable(data){
+            $('#fullData tbody').empty();
+            // add a table row for each data point
+            data.forEach(function(row,index){
+                var content = '<tr class="dataRow"><td>' + row.gestage + '</td><td>' + row.weight + '</td><td>' + row.twin + '</td><td>' 
+                                         + row.country + '</td><td>' + row.state + '</td><td>' + row.city + '</td></tr>'
+                $('#fullData').append(content);
+            });
+        }
+        
+
+
     // *********************************************
     // Send placenta reference data to database
     // *********************************************
 
-        // Need if statement here when user agrees to submit data...
+        // if statement here when user agrees to submit data...
+        var checked = $("#agreement").prop('checked');
 
+        if (checked){
             console.log("Form submit called");
             // Set placenta weights data object
-            let placObj = {};
+            
 
             $("#plac_save").on("submit", function(e){
                 //don't reload page
@@ -195,20 +648,8 @@ $(window).on('load', function(){
                 });
                 return false;
             });
-        } else { // when reference ranges aren't available
-            console.log("no data: "+wkObj);
-            $.each(partTypes, function(key){
-                partTypes[key] = partTypes[key]
-                    .replace(/\d+ WEEKS/, plac_ga+" WEEKS")
-                    .replace(/\d+ grams/, plac_weight+" grams")
-                    .replace(/\(.*\)/, "(No reference data available)")
-            });
-
-            plac_range = "No reference data available";
-            $(".plac-range").val(plac_range);
-            $(".ref").text(plac_cite);
-
         }
+
 
         // add final header
         var head = '';
@@ -223,6 +664,11 @@ $(window).on('load', function(){
         }
     });
 
+});
+
+// Checkbox styling
+$('#agreement').change(function(){
+    $('.checkbox_container').removeClass('highlight')
 });
 
 //***************************************************************************************//
@@ -424,8 +870,8 @@ $('#plac_dx').on("change", function(){
 });
 
 // **** ADD MICROS WITH ONE-CLICK UNDO *****//
-//											//
-//											//
+//                                          //
+//                                          //
 // temporary holder for checkbox id
     var part_choice  = null;
     var diag_choice  = null;
@@ -560,8 +1006,8 @@ $('#plac_dx').on("change", function(){
             }
         }
     });
-//											//
-//											//
+//                                          //
+//                                          //
 // **** ADD MICROS WITH ONE-CLICK UNDO *****//
 
 // ********************* Combined report function ***********************//

@@ -48,7 +48,7 @@ label:hover {
 }
 
 /*  Shrink Table header font size  */
-.table {
+.table-small {
     font-size: 0.65em;
 }
 
@@ -273,5 +273,21 @@ button:focus {
 	font-size: 1.65em;
 	letter-spacing: 0.8vw;
 	vertical-align: middle;
+}
+
+.ordered-list-group {
+    list-style: decimal inside;
+}
+
+.ordered-list-group-item {
+    display: list-item;
+}
+
+.bg-d3-blue {
+	background-color: rgb(50, 93, 138);
+}
+
+.border-d3-blue {
+	border-color: rgb(50, 93, 138);
 }
 
