@@ -188,11 +188,50 @@ $(window).on('load', function(){
         placObj.twin = $('#plac_type option:selected').data('twin');
         var plac_range_2;
         var percentages = [10,25,50,75,90];
-        var percentiles2 = [];
-        var percentilesHistoric = [];
-        var percentilesRealtime = [];
+        var percentiles2;
+        var percentilesHistoric;
+        var percentilesRealtime;
         var sorted;
         var minDataPoints = 10;
+
+        function filterArray(fullArray, criteria){
+            return fullArray.filter(function(obj){
+                return obj[criteria.geo] == criteria.value;
+            });
+        }
+
+        // Calculate each percentile as specified in the array named "percentages" using the mathematical formula for percentile calculation
+        function calculatePercents(filteredArray){
+            return percentages.map(function(percent,index){
+                var i = (percent / 100) * filteredArray.length;
+                var p;
+                var suffix = percent % 10 == 1 ? "st" : (percent % 10 == 2 ? "nd" : (percent % 10 == 3 ? "rd" : "th"))
+                if (Number.isInteger(i)){
+                    p = (filteredArray[i-1]["weight"] + filteredArray[i]["weight"]) / 2
+                } else {
+                    p = filteredArray[Math.ceil(i) - 1]["weight"]
+                }
+                // create a dictionary with the weights and percentiles
+                return {plac_wt_num: p, percentile: percent + "" + suffix};
+            });
+        }
+
+        // Given the array of percentile ranges and the inputted weight, returns the text to display
+        function displayTextFromPercents(percentiles,weight){
+            // if the inputted weight is less than all the percentiles, then it's in the bottom range
+            var p = "Less than " + percentiles[0].percentile + " percentile"                         
+            // loop through the dictionary to find the percentile range into which that the inputted data point falls, and create the appropriate string to display
+            percentiles.forEach(function(obj,index){
+                if (weight >= obj.plac_wt_num){
+                    if (index == percentiles.length - 1){
+                        p = "Greather than " + obj.percentile + " percentile";
+                    } else {
+                        p = "Between " + obj.percentile + " and " + percentiles[index+1].percentile + " percentiles";
+                    }
+                }
+            });
+            return p;
+        }
 
         $.ajax({
             url: 'https://hematogones.com/surg-path/placenta-data',
@@ -200,64 +239,39 @@ $(window).on('load', function(){
             dataType: "json",
             success: function(json){
                 // Get realtime data from the database, filter it for the inputs, and sort it by weight
-                var filtered = json.filter(function(obj){
+                var sorted = json.filter(function(obj){
                     return obj["gestage"] == placObj.ga && obj["twin"] == placObj.twin;
                 })
-                sorted = filtered.sort(function(a, b){
-                    return a.weight-b.weight
+                .sort(function(a, b){
+                    return a.weight-b.weight;
                 })     
                 // If there exists realtime data that matches the filters, reveal the data section of the webpage 
-                if (filtered.length > 0){
+                if (sorted.length > 0){
                      $("#data").removeClass("d-none");
                      $("#geoSelection").val('0');
                      $("#geoInput").val('');
                      $("#geoInput").addClass('d-none');
                 }
                 // If there is not enough data, do not show a summary table and clear the graph
-                if (filtered.length < minDataPoints){
+                if (sorted.length < minDataPoints){
                     console.log("Not enough data");
                     plac_range_2 = "Not enough data points available";
                     $("#summaryData").addClass('d-none');
                     $("#graphContainer").empty();
                 } else {
-                    // Calculate the each percentile as specified in the array named "percentages" using the mathematical formula for percentile calculation
-                    percentages.forEach(function(percent,index){
-                        var i = (percent / 100) * sorted.length;
-                        var p;
-                        var suffix = percent % 10 == 1 ? "st" : (percent % 10 == 2 ? "nd" : (percent % 10 == 3 ? "rd" : "th"))
-                        if (Number.isInteger(i)){
-                            p = (sorted[i-1]["weight"] + sorted[i]["weight"]) / 2
-                        } else {
-                            p = sorted[Math.ceil(i) - 1]["weight"]
-                        }
-                        // create a dictionary with the weights and percentiles, and create an array with the weights
-                        percentiles2.push({plac_wt_num: p, percentile: percent + "" + suffix});       
-                        percentilesRealtime.push(p);                         
-                    }); 
-                    // loop through the dictionary to find the percentile range into which that the inputted data point falls, and create the appropriate string to display
-                    percentiles2.forEach(function(obj,index){
-                        if (placObj.weight >= obj.plac_wt_num){
-                            if (index == percentiles2.length - 1){
-                                plac_range_2 = "Greather than " + obj.percentile + " percentile";
-                            } else {
-                                plac_range_2 = "Between " + obj.percentile + " and " + percentiles2[index+1].percentile + " percentiles"
-                            }
-                        }
-
-                    });
-                    // if the inputted weight is less than all the percentiles, then it's in the bottom range
-                    if (!plac_range_2) {
-                        plac_range_2 = "Less than " + percentiles2[0].percentile + " percentile"
-                    } 
-
-                    populateSummary(percentiles2); // populate the summary table
+                    percentiles2 = calculatePercents(sorted);    
+                    plac_range_2 = displayTextFromPercents(percentiles2,placObj.weight)
+                    // populate the summary table
+                    populateSummary(percentiles2); 
                     // If there exists historic data, draw the graph. Otherwise, empty the graph
                     if (wkObj){
-                        percentilesHistoric = Object.values(wkObj).reverse();
-                        percentilesHistoric.forEach(function(num,index){
-                            num = Number(num);
+                        percentilesHistoric = Object.values(wkObj).reverse().map(function(num,index){
+                            return Number(num);
                         });
-                        drawGraph([percentilesHistoric, percentilesRealtime], sorted, sorted[0]['weight'], sorted[sorted.length-1]['weight']);
+                        percentilesRealtime = percentiles2.map(function(obj,index){
+                            return obj.plac_wt_num;
+                        });
+                        drawGraph([percentilesHistoric, percentilesRealtime], sorted);
                     } else {
                         $("#graphContainer").empty();
                     }
@@ -289,7 +303,9 @@ $(window).on('load', function(){
 // Function to draw the initial set of graphs
 // "percentiles" is an array of 2 or 3 arrays, each array containing 5 weights for the 5 significant percentiles
 // "sorted" is the full set of realtime data that matches the inputted filters
-function drawGraph(percentiles, sorted, min, max){
+function drawGraph(percentiles, sorted){
+    var min = sorted[0]['weight'];
+    var max = sorted[sorted.length-1]['weight'];
     var numGraphs = percentiles.length;
     var paddingSmall = 20;
     var paddingLarge = 150;
@@ -443,26 +459,13 @@ function drawGraph(percentiles, sorted, min, max){
             })
 
         // filter the realtime data by applying the inputted geo filter
-        var sortedAndFiltered = sorted.filter(function(obj){
-            return obj[geo].toLowerCase().indexOf(value) > -1;
-        })
+        var sortedAndFiltered = filterArray(sorted,{geo:geo,value:value})
 
         // if there are enough data points that match the geo filter...
         if (sortedAndFiltered.length >= minDataPoints){
-            var percentilesGeo = [];
-
-            // calculate percentiles for the filtered data
-            percentages.forEach(function(percent,index){
-                var i = (percent / 100) * sortedAndFiltered.length;
-                var p;
-                var suffix = percent % 10 == 1 ? "st" : (percent % 10 == 2 ? "nd" : (percent % 10 == 3 ? "rd" : "th"))
-                if (Number.isInteger(i)){
-                    p = (sortedAndFiltered[i-1]["weight"] + sortedAndFiltered[i]["weight"]) / 2
-                } else {
-                    p = sortedAndFiltered[Math.ceil(i) - 1]["weight"]
-                }    
-                percentilesGeo.push(p);                         
-            }); 
+            var percentilesGeo = calculatePercents(sortedAndFiltered).map(function(obj,index){
+                return obj.plac_wt_num;
+            });
 
             // move the elements of the box & whisker plot to match the updated percentiles
             d3.select(".rectGeoData")
@@ -546,7 +549,7 @@ function drawGraph(percentiles, sorted, min, max){
                     if(graphedGeo){
                         drawGraphGeo();
                     } else {
-                        drawGraph([percentilesHistoric,percentilesRealtime,percentilesRealtime],sorted,sorted[0]['weight'],sorted[sorted.length-1]['weight']);
+                        drawGraph([percentilesHistoric,percentilesRealtime,percentilesRealtime],sorted);
                     }
                 }
             } else {
