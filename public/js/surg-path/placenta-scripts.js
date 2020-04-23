@@ -196,7 +196,7 @@ $(window).on('load', function(){
 
         function filterArray(fullArray, criteria){
             return fullArray.filter(function(obj){
-                return obj[criteria.geo] == criteria.value;
+                return obj[criteria[0]].toLowerCase() == criteria[1];
             });
         }
 
@@ -239,7 +239,7 @@ $(window).on('load', function(){
             dataType: "json",
             success: function(json){
                 // Get realtime data from the database, filter it for the inputs, and sort it by weight
-                var sorted = json.filter(function(obj){
+                sorted = json.filter(function(obj){
                     return obj["gestage"] == placObj.ga && obj["twin"] == placObj.twin;
                 })
                 .sort(function(a, b){
@@ -445,21 +445,22 @@ function drawGraph(percentiles, sorted){
         graphedGeo = true;
         // store the relevant information for the inputted geo filter in variables
         var selection = $("#geoSelection").val();
-        var value = $("#geoInput").val().toLowerCase();
-        var geo = (selection == 3 ? "country" : (selection == 4 ? "state" : "city"));        
+        var v = $("#geoInput").val().toLowerCase();
+        var g = (selection == 3 ? "country" : (selection == 4 ? "state" : "city"));        
 
         // make the opacity 0 for any data points that do not match the filter
         d3.selectAll(".realtimeGeoData")
             .transition().duration(5000)
             .style('fill-opacity',function(d) { 
-                return (d[geo].toLowerCase().indexOf(value) > -1 ? .7 : 0)
+                return (d[g].toLowerCase().indexOf(v) > -1 ? .7 : 0)
             })
             .style('stroke-opacity',function(d) { 
-                return (d[geo].toLowerCase().indexOf(value) > -1 ? 1 : 0)
+                return (d[g].toLowerCase().indexOf(v) > -1 ? 1 : 0)
             })
 
         // filter the realtime data by applying the inputted geo filter
-        var sortedAndFiltered = filterArray(sorted,{geo:geo,value:value})
+        var sortedAndFiltered = filterArray(sorted,[g,v]);
+        console.log(sortedAndFiltered);
 
         // if there are enough data points that match the geo filter...
         if (sortedAndFiltered.length >= minDataPoints){
@@ -544,6 +545,7 @@ function drawGraph(percentiles, sorted){
             $("#geoInput").keyup();
             if (value != "0"){
                 $("#geoInput").removeClass('d-none');
+                $("#geoSubmit").removeClass('d-none');
                 if (percentilesHistoric){
                     // if the 3rd box & whisker plot has already been grpahed, update the plot... if not, redraw the full graph
                     if(graphedGeo){
@@ -554,6 +556,7 @@ function drawGraph(percentiles, sorted){
                 }
             } else {
                 $("#geoInput").addClass('d-none');
+                $("#geoSubmit").addClass('d-none');
             }
         });
 
