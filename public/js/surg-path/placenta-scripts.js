@@ -192,11 +192,13 @@ $(window).on('load', function(){
         var percentilesHistoric;
         var percentilesRealtime;
         var sorted;
+        var countries, states, cities;
         var minDataPoints = 10;
 
         function filterArray(fullArray, criteria){
             return fullArray.filter(function(obj){
-                return obj[criteria[0]].toLowerCase() == criteria[1];
+                var g = criteria[0];
+                return g == "country" ? (isoCountries[obj[g]].toLowerCase() == criteria[1]) : (obj[g].toLowerCase() == criteria[1]);
             });
         }
 
@@ -245,12 +247,18 @@ $(window).on('load', function(){
                 .sort(function(a, b){
                     return a.weight-b.weight;
                 })     
-                // If there exists realtime data that matches the filters, reveal the data section of the webpage 
+                // If there exists realtime data that matches the filters, reveal the data section of the webpage
                 if (sorted.length > 0){
                      $("#data").removeClass("d-none");
                      $("#geoSelection").val('0');
                      $("#geoInput").val('');
                      $("#geoInput").addClass('d-none');
+                    // Get lists of all countries, states, and cities in the dataset
+                    countries = getAllGeo(sorted,"country").map(function(obj,index){
+                        return isoCountries[obj];
+                    });
+                    states = getAllGeo(sorted,"state");
+                    cities = getAllGeo(sorted,"city");
                 }
                 // If there is not enough data, do not show a summary table and clear the graph
                 if (sorted.length < minDataPoints){
@@ -304,6 +312,7 @@ $(window).on('load', function(){
 // "percentiles" is an array of 2 or 3 arrays, each array containing 5 weights for the 5 significant percentiles
 // "sorted" is the full set of realtime data that matches the inputted filters
 function drawGraph(percentiles, sorted){
+    console.log(percentiles);
     var min = sorted[0]['weight'];
     var max = sorted[sorted.length-1]['weight'];
     var numGraphs = percentiles.length;
@@ -315,6 +324,12 @@ function drawGraph(percentiles, sorted){
     var height = numGraphs * h - h/2;
     var rectHeight = h/2 - paddingSmall
     var jitterHeight = 80;
+
+    if (numGraphs == 3) {
+        graphedGeo = true;
+    } else {
+        graphedGeo = false;
+    }
 
     // Empty the graph, then append an svg with the specified height and width
     $("#graphContainer").empty();
@@ -442,7 +457,6 @@ function drawGraph(percentiles, sorted){
     
     // Function to update the 3rd plot based on a change to the geo filter
     function drawGraphGeo(){
-        graphedGeo = true;
         // store the relevant information for the inputted geo filter in variables
         var selection = $("#geoSelection").val();
         var v = $("#geoInput").val().toLowerCase();
@@ -460,7 +474,6 @@ function drawGraph(percentiles, sorted){
 
         // filter the realtime data by applying the inputted geo filter
         var sortedAndFiltered = filterArray(sorted,[g,v]);
-        console.log(sortedAndFiltered);
 
         // if there are enough data points that match the geo filter...
         if (sortedAndFiltered.length >= minDataPoints){
@@ -525,43 +538,99 @@ function drawGraph(percentiles, sorted){
     // Summary Data Table and Full Data Table 
     // *********************************************
 
-        var typingTimer;                //timer identifier
-        var doneTypingInterval = 1000;  //time in ms, 1 second for example
+        function getAllGeo(arr,selection){
+            //creates a list of all the countries/states/cities in the dataset, sorts them, and filters out duplicates
+            return arr.map(function(obj){
+                return obj[selection];
+            }).sort().filter(function(item, index, array) {
+                return !index || (item != array[index - 1]);
+            })
+        }
+
+        function closeAllLists(){
+            $("#autocompleteList").empty();
+            $("#autocompleteList").addClass('d-none');
+        }
 
         $("#geoInput").on("keyup", function() {
-            var value = $(this).val().toLowerCase();
-            $(".dataRow").filter(function() {
-                // remove data points from the table that do not match the new geo filter
-              $(this).toggle($(this).children()[Number($("#geoSelection").val())].innerText.toLowerCase().indexOf(value) > -1)
+            var val = $(this).val();
+            var a, b, i;
+            var selection = $("#geoSelection").val()
+            closeAllLists();
+            if (!val) { 
+                return false;
+            }
+            var arr = (selection == 3 ? countries : (selection == 4 ? states : cities));    
+            var currentFocus = -1;
+            // Create dropdown autocomplete list
+            arr.forEach(function(item,index){
+                // check if the item starts with the same letters as the text field value
+                if (item.substr(0, val.length).toLowerCase() == val.toLowerCase()) {
+                    // make the matching letters bold
+                    var HTML = "<strong>" + item.substr(0, val.length) + "</strong>";
+                    var rest = item.substr(val.length);
+                    // fix whitespace bug
+                    if (item[val.length - 1] == " "){
+                        rest = '&nbsp' + rest;
+                    }   
+                    else if (rest.length > 0 && rest[0] == " "){
+                        rest = '&nbsp' + rest.substr(1);
+                    } 
+                    HTML += rest;
+                    HTML = '<li class="list-group-item list-group-item-action">' + HTML + '</li>'
+                    $(HTML).appendTo('#autocompleteList').on("click", function() {
+                          /*insert the value for the autocomplete text field:*/
+                          $('#geoInput').val(item);
+                          closeAllLists();
+                    })
+                }
             });
-            // if the user stops typing for more than 1 second, update the graph based on the geo filter
-            clearTimeout(typingTimer);
-            typingTimer = setTimeout(drawGraphGeo, doneTypingInterval);
+            $("#autocompleteList").removeClass('d-none');
+        });
+        
+
+        $("#geoForm").on("submit", function(e) {
+            e.preventDefault();
+            var selection = $("#geoSelection").val()
+            var g = (selection == 3 ? "country" : (selection == 4 ? "state" : "city")); 
+            var v = $("#geoInput").val().toLowerCase();
+            var filteredData = filterArray(sorted,[g,v]);
+            var filteredPercentiles = calculatePercents(filteredData);
+            populateTable(filteredData);
+            if (filteredData.length < minDataPoints){
+                $("#warningLabel").html("There is not enough data to calcualte summary statistics");
+            } else {
+                populateSummary(filteredPercentiles);
+            }
+            if (percentilesHistoric){
+                console.log(graphedGeo);
+                // if the 3rd box & whisker plot has already been grpahed, update the plot... if not, redraw the full graph
+                if(graphedGeo){
+                    drawGraphGeo();
+                } else {
+                    drawGraph([percentilesHistoric,percentilesRealtime,percentilesRealtime],sorted);
+                }
+            }
         });
 
         $("#geoSelection").on("change", function() {
             var value = $(this).val();
             $("#geoInput").val('');
-            $("#geoInput").keyup();
             if (value != "0"){
                 $("#geoInput").removeClass('d-none');
                 $("#geoSubmit").removeClass('d-none');
-                if (percentilesHistoric){
-                    // if the 3rd box & whisker plot has already been grpahed, update the plot... if not, redraw the full graph
-                    if(graphedGeo){
-                        drawGraphGeo();
-                    } else {
-                        drawGraph([percentilesHistoric,percentilesRealtime,percentilesRealtime],sorted);
-                    }
-                }
             } else {
                 $("#geoInput").addClass('d-none');
                 $("#geoSubmit").addClass('d-none');
+                populateTable(sorted);
+                populateSummary(percentiles2);
+                drawGraph([percentilesHistoric,percentilesRealtime],sorted);
             }
         });
 
         function populateSummary(data){
             // empty the table
+            $("#warningLabel").html('');
             $("#summaryData").removeClass('d-none');
             $('#summaryHead').empty()
             $('#summaryBody').empty()
@@ -588,8 +657,7 @@ function drawGraph(percentiles, sorted){
                                          + row.country + '</td><td>' + row.state + '</td><td>' + row.city + '</td></tr>'
                 $('#fullData').append(content);
             });
-        }
-        
+        }     
 
 
     // *********************************************

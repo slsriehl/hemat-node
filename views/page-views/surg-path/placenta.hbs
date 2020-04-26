@@ -601,39 +601,39 @@
                 <div class="card-header border-0 text-center">
                     <h2 class="card-title">Realtime Placenta Data Reference</h2>
                 </div>
-                <div class="card-block">
-                    <div class="row text-center" style="padding: 1rem;">
-                        {{> page-partials/placenta-table summary=true}}
-                    </div>
-                </div>
-                <div class="card-block" style="padding: 1rem;">
-                    <div id="graphContainer" class="text-center pb-5"> 
-                    </div>
-
-                    <form>
-                        <h2 class="text-center">Explore the Data</h2>
-                        <div class="text-center pt-2">
-                            <p>To export the full dataset as an excel spreadsheet, please <a href="/mail">send me an email</a>.</p>
+                <div class="card-block pb-0">
+                    <form autocomplete="off" class="form-inline" id="geoForm">
+                        <label class="mt-2 mr-2 ml-1" for="geoSelection">Filter By</label>
+                        <select id="geoSelection" class="form-control mt-2 mr-2">
+                            <option selected value="0">None</option>
+                            <option value="3">Country</option>
+                            <option value="4">State</option>
+                            <option value="5">City</option>
+                        </select>
+                        <label class="my-1 mr-2 ml-1 sr-only" for="geoInput"></label>
+                        <div id="autocomplete">
+                            <input id="geoInput" type="text" class="d-none form-control mt-2 mx-2" placeholder="Search...">
+                            <ul id="autocompleteList" class="d-none list-group ml-2" style="position: absolute;">
+                            </ul>
                         </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label class="my-1 mr-2 ml-1" for="geoSelection">Filter By</label>
-                                <select id="geoSelection" class="form-control">
-                                    <option selected value="0">None</option>
-                                    <option value="3">Country</option>
-                                    <option value="4">State</option>
-                                    <option value="5">City</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="my-1 mr-2 ml-1" for="geoInput"></label>
-                                <input id="geoInput" type="text" class="d-none form-control mt-2" placeholder="Search...">
-                            </div>
-                        </div>
+                        <button type="submit" id="geoSubmit" class="btn d-none btn-primary mt-2 mx-2 p-2">Filter</button>
+                       <label class="mt-2 mr-2 ml-1 text-danger" id="warningLabel"></label>
                     </form>
                 </div>
                 <div class="card-block">
+                    <div class="row text-center px-3">
+                        {{> page-partials/placenta-table summary=true}}
+                    </div>
+                </div>
+                <div class="card-block px-1 pt-0">
+                    <div id="graphContainer" class="text-center pb-5"> 
+                    </div>
+                </div>
+                <div class="card-block">
+                    <h2 class="text-center">Explore the Data</h2>
+                    <div class="text-center pt-2">
+                        <p>To export the full dataset as an excel spreadsheet, please <a href="/mail">send me an email</a>.</p>
+                    </div>
                     <div class="row text-center" style="padding: 1rem;">
                         {{> page-partials/placenta-table summary=false}}
                     </div>
