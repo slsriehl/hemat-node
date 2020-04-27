@@ -58,7 +58,8 @@ $(window).on('load', function(){
     });
 
 // PLACENTA HISTORIC REFERENCE RANGE AND DATA ENTRY
-    $('.getref').on('click', function () {
+    $('.getref').on('click', function (e) {
+        e.preventDefault();
         var partTypes = $.extend(true, {}, partJson); // extended original JSON to this variable, so header replaces are reset on new values entered
 
         var plac_ga = $('#plac_age').val();
@@ -247,6 +248,7 @@ $(window).on('load', function(){
                 .sort(function(a, b){
                     return a.weight-b.weight;
                 })     
+                
                 // If there exists realtime data that matches the filters, reveal the data section of the webpage
                 if (sorted.length > 0){
                      $("#data").removeClass("d-none");
@@ -307,23 +309,22 @@ $(window).on('load', function(){
     var xScale;
     var colors = ['#879772','#325d8a','#ac112d'];
     var graphedGeo = false;
+    var h = 200;
+    var paddingSmall = 20;
+    var paddingLarge = 150;
+    var graphWidth = 600;
+    var width = graphWidth + paddingLarge;
+    var rectHeight = h/2 - paddingSmall;
+
 
 // Function to draw the initial set of graphs
 // "percentiles" is an array of 2 or 3 arrays, each array containing 5 weights for the 5 significant percentiles
 // "sorted" is the full set of realtime data that matches the inputted filters
-function drawGraph(percentiles, sorted){
-    console.log(percentiles);
+function drawGraph(percentiles, sorted, filtered=[]){
     var min = sorted[0]['weight'];
     var max = sorted[sorted.length-1]['weight'];
     var numGraphs = percentiles.length;
-    var paddingSmall = 20;
-    var paddingLarge = 150;
-    var graphWidth = 600
-    var width = graphWidth + paddingLarge;
-    var h = 200;
     var height = numGraphs * h - h/2;
-    var rectHeight = h/2 - paddingSmall
-    var jitterHeight = 80;
 
     if (numGraphs == 3) {
         graphedGeo = true;
@@ -339,15 +340,13 @@ function drawGraph(percentiles, sorted){
         .attr("width", width)
         .attr("height", height+paddingSmall*3); 
 
-    svg.selectAll("*").remove()
-
     var g = svg.append("g")
         .attr("transform", "translate(0,"+paddingSmall+")") 
 
     // create the x-axis scale based on the min and max weight values
     xScale = d3.scaleLinear()
-                    .domain([min,max])
-                    .range([paddingLarge,width-paddingSmall])
+                .domain([min,max])
+                .range([paddingLarge,width-paddingSmall])
 
     // for each set of percentiles, plot a box and whisker graph
     percentiles.forEach(function(set,index){
@@ -364,31 +363,30 @@ function drawGraph(percentiles, sorted){
             .attr("class",index == 2 ? "midlineGeoData" : "midline")
             .attr('x1',xScale(set[2]))
             .attr('x2',xScale(set[2]))
-            .attr('y1',h/2 - rectHeight - paddingSmall + index*h)
-            .attr('y2',h/2 - paddingSmall + index*h)
+            .attr('y1',index*h)
+            .attr('y2',rectHeight + index*h)
             .attr('stroke','black')
             .attr('stroke-width',2);
         var lowline = g.append('line')
             .attr("class",index == 2 ? "lowlineGeoData" : "lowline")
             .attr('x1',xScale(set[0]))
             .attr('x2',xScale(set[1]))
-            .attr('y1',h/2 - paddingSmall - rectHeight/2 + index*h)
-            .attr('y2',h/2 - paddingSmall - rectHeight/2 + index*h)
+            .attr('y1',rectHeight/2 + index*h)
+            .attr('y2',rectHeight/2 + index*h)
             .attr('stroke','black')
             .attr('stroke-width',2);
         var highline = g.append('line')
             .attr("class",index == 2 ? "highlineGeoData" : "highline")
             .attr('x1',xScale(set[3]))
             .attr('x2',xScale(set[4]))
-            .attr('y1',h/2 - paddingSmall - rectHeight/2 + index*h)
-            .attr('y2',h/2 - paddingSmall - rectHeight/2 + index*h)
+            .attr('y1',rectHeight/2 + index*h)
+            .attr('y2',rectHeight/2 + index*h)
             .attr('stroke','black')
             .attr('stroke-width',2);
     })
 
     // append the x-axis to the bottom and append an axis label
-    var x_axis = d3.axisBottom()
-                   .scale(xScale);
+    var x_axis = d3.axisBottom().scale(xScale);
     var axis = g.append("g")
         .attr("transform", "translate(0,"+height+")")
         .call(x_axis);
@@ -399,139 +397,84 @@ function drawGraph(percentiles, sorted){
         .attr("text-anchor", "middle")
         .style("fill", "black")
 
+    // helper function to draw a text label in a group
+    function textLabel(group,className,text,height){
+        group.append("text")
+        .attr('class',className)
+        .attr("x",paddingSmall)
+        .attr("y",height)
+        .style("fill","black")
+        .text(text)
+    }
+
     // Append text labels for each box & whisker plot
-    g.append("text")
-        .attr("x",paddingSmall)
-        .attr("y",h*1/4)
-        .style("fill","black")
-        .text("Historic Reference")
-    g.append("text")
-        .attr("x",paddingSmall)
-        .attr("y",h*5/4)
-        .style("fill","black")
-        .text("Realtime Reference")
+    textLabel(g,"textLabel","Historic Reference",h*1/4);
+    textLabel(g,"textLabel","Realtime Reference",h*5/4);
 
-    // If a geo filter graph is also being plotted, append a text label and append circles for each data point
-    if (numGraphs > 2) {
-        g.append("text")
-        .attr('class','textGeoData')
-        .attr("x",paddingSmall)
-        .attr("y",h*9/4)
-        .style("fill","black")
-        .text("Realtime Reference with Geo Filter")
-
-        g.selectAll("realtimeGeoData")
-        .data(sorted)
-        .enter().append("circle")
-        .attr("class","realtimeGeoData")
-        .attr('r',h/60)
-        .attr('cy',function(d){return 3 * h / 2 + Math.random() * jitterHeight}) // randomize y coordinate of data points
+    // helper function to draw cirlces in a group
+    function drawCircles(group,className,offset,rectHeight,xScale,color){
+        group.append("circle")
+        .attr("class",className)
+        .attr('r',rectHeight/24)
+        .attr('cy',function(d){return offset + Math.random() * rectHeight}) // randomize y coordinate of data points
         .attr('cx',function(d){return xScale(d.weight)})
-        .style('fill',colors[2])
+        .style('fill',colors[color])
         .style("fill-opacity", .7)
-        .attr('stroke',colors[2])
+        .attr('stroke',colors[color])
         .style('stroke-opacity',1)
     }
 
     // Append circles for each realtime data point
-    g.selectAll("realtimeData")
-        .data(sorted)
-        .enter().append("circle")
-        .attr('r',h/60)
-        .attr('cy',function(d){return h/2 + Math.random() * jitterHeight}) // randomize y coordinate of data points
-        .attr('cx',function(d){return xScale(d.weight)})
-        .style('fill',colors[1])
-        .style("fill-opacity", .7)
-        .attr('stroke',colors[1])
-        .style('stroke-opacity',1)
-    // Append a circle to represent the user inputted data point
-    g.append("circle")
-        .attr('r',h/60)
-        .attr('cy',h/2 + Math.random() * jitterHeight)
-        .attr('cx',xScale(placObj.weight))
-        .style('fill','#f2a058')
-        .style("fill-opacity", 1)
-        .attr('stroke','#f2a058')
-        .style('stroke-opacity',1)
+    var realtimeCircles = g.selectAll("realtimeData").data(sorted).enter();
+    drawCircles(realtimeCircles,"realtimeData",h/2,rectHeight,xScale,1)
+
+    // If a geo filter graph is also being plotted, append a text label and append circles for each data point
+    if (numGraphs > 2) {
+        textLabel(g,"textLabelGeo","Realtime Refernce with Filter",h*9/4);
+
+        var geoCircles = g.selectAll("realtimeGeoData").data(sorted).enter();
+        drawCircles(geoCircles,"realtimeGeoData",3*h/2,rectHeight,xScale,2);
+    }
 }
+
     
     // Function to update the 3rd plot based on a change to the geo filter
-    function drawGraphGeo(){
-        // store the relevant information for the inputted geo filter in variables
-        var selection = $("#geoSelection").val();
-        var v = $("#geoInput").val().toLowerCase();
-        var g = (selection == 3 ? "country" : (selection == 4 ? "state" : "city"));        
-
-        // make the opacity 0 for any data points that do not match the filter
+    function drawGraphGeo(percentilesGeo, g, v){     
+         // make the opacity 0 for any data points that do not match the filter
         d3.selectAll(".realtimeGeoData")
             .transition().duration(5000)
             .style('fill-opacity',function(d) { 
-                return (d[g].toLowerCase().indexOf(v) > -1 ? .7 : 0)
+                if (g != "country"){
+                    return (d[g].toLowerCase() == v ? .7 : 0)
+                } else {
+                    return (isoCountries[d[g]].toLowerCase() == v ? .7 : 0)
+                }
             })
             .style('stroke-opacity',function(d) { 
-                return (d[g].toLowerCase().indexOf(v) > -1 ? 1 : 0)
-            })
-
-        // filter the realtime data by applying the inputted geo filter
-        var sortedAndFiltered = filterArray(sorted,[g,v]);
-
-        // if there are enough data points that match the geo filter...
-        if (sortedAndFiltered.length >= minDataPoints){
-            var percentilesGeo = calculatePercents(sortedAndFiltered).map(function(obj,index){
-                return obj.plac_wt_num;
-            });
+                if (g != "country"){
+                    return (d[g].toLowerCase() == v ? 1 : 0)
+                } else {
+                    return (isoCountries[d[g]].toLowerCase() == v ? 1 : 0)
+                }
+            })    
 
             // move the elements of the box & whisker plot to match the updated percentiles
             d3.select(".rectGeoData")
             .transition().duration(5000)
             .attr('x',xScale(percentilesGeo[1]))
             .attr('width', xScale(percentilesGeo[3]) - xScale(percentilesGeo[1]))
-            .style('fill-opacity',1)
-            .style('stroke-opacity',1)
             d3.select(".midlineGeoData")
             .transition().duration(5000)
             .attr('x1',xScale(percentilesGeo[2]))
             .attr('x2',xScale(percentilesGeo[2]))
-            .style('fill-opacity',1)
-            .style('stroke-opacity',1)
             d3.select(".lowlineGeoData")
             .transition().duration(5000)
             .attr('x1',xScale(percentilesGeo[0]))
             .attr('x2',xScale(percentilesGeo[1]))
-            .style('fill-opacity',1)
-            .style('stroke-opacity',1)
             d3.select(".highlineGeoData")
             .transition().duration(5000)
             .attr('x1',xScale(percentilesGeo[3]))
             .attr('x2',xScale(percentilesGeo[4]))
-            .style('fill-opacity',1)
-            .style('stroke-opacity',1)
-
-            d3.select('.textGeoData')
-            .text("Realtime Reference with Geo Filter")
-
-        // if there are not enough data points that match the geo filter, make the plot's opacity 0, and change the label text accordingly
-        } else {
-            d3.select(".rectGeoData")
-            .transition().duration(1000)
-            .style('fill-opacity',0)
-            .style('stroke-opacity',0)
-            d3.select(".midlineGeoData")
-            .transition().duration(1000)
-            .style('fill-opacity',0)
-            .style('stroke-opacity',0)
-            d3.select(".lowlineGeoData")
-            .transition().duration(1000)
-            .style('fill-opacity',0)
-            .style('stroke-opacity',0)
-            d3.select(".highlineGeoData")
-            .transition().duration(1000)
-            .style('fill-opacity',0)
-            .style('stroke-opacity',0)
-
-            d3.select('.textGeoData')
-            .text("Realtime Reference with Geo Filter (Not Enough Data Points Available to Show Distribution)")
-        }
     }
 
     // *********************************************
@@ -552,17 +495,8 @@ function drawGraph(percentiles, sorted){
             $("#autocompleteList").addClass('d-none');
         }
 
-        $("#geoInput").on("keyup", function() {
-            var val = $(this).val();
-            var a, b, i;
-            var selection = $("#geoSelection").val()
-            closeAllLists();
-            if (!val) { 
-                return false;
-            }
-            var arr = (selection == 3 ? countries : (selection == 4 ? states : cities));    
-            var currentFocus = -1;
-            // Create dropdown autocomplete list
+        // Given the array of options and the value of the text input, creates an autocomplete dropdown
+        function createDropdown(arr, val){
             arr.forEach(function(item,index){
                 // check if the item starts with the same letters as the text field value
                 if (item.substr(0, val.length).toLowerCase() == val.toLowerCase()) {
@@ -577,18 +511,30 @@ function drawGraph(percentiles, sorted){
                         rest = '&nbsp' + rest.substr(1);
                     } 
                     HTML += rest;
-                    HTML = '<li class="list-group-item list-group-item-action">' + HTML + '</li>'
+                    HTML = '<li class="list-group-item list-group-item-action">' + HTML + '</li>';
                     $(HTML).appendTo('#autocompleteList').on("click", function() {
-                          /*insert the value for the autocomplete text field:*/
+                          // insert the value for the autocomplete text field //
                           $('#geoInput').val(item);
                           closeAllLists();
                     })
                 }
             });
+        }
+
+        // Event handler: updates the dropdown autocomplete list when the user searches for a country/state/city
+        $("#geoInput").on("keyup", function() {
+            var val = $(this).val();
+            var selection = $("#geoSelection").val()
+            closeAllLists();
+            if (!val) { 
+                return false;
+            }
+            var arr = (selection == 3 ? countries : (selection == 4 ? states : cities));    
+            createDropdown(arr,val);
             $("#autocompleteList").removeClass('d-none');
         });
         
-
+        // Event handler: updates the summary table, data table, and graph accordingly when the user submits the filter
         $("#geoForm").on("submit", function(e) {
             e.preventDefault();
             var selection = $("#geoSelection").val()
@@ -598,21 +544,27 @@ function drawGraph(percentiles, sorted){
             var filteredPercentiles = calculatePercents(filteredData);
             populateTable(filteredData);
             if (filteredData.length < minDataPoints){
-                $("#warningLabel").html("There is not enough data to calcualte summary statistics");
+                $("#warningLabel").html("There are not enough data points to calcualte summary statistics");
+                drawGraph([percentilesHistoric,percentilesRealtime], sorted);
             } else {
+                // only populate the summary table and draph the 3rd box & whisker plot if there are enough data points
                 populateSummary(filteredPercentiles);
-            }
-            if (percentilesHistoric){
-                console.log(graphedGeo);
-                // if the 3rd box & whisker plot has already been grpahed, update the plot... if not, redraw the full graph
-                if(graphedGeo){
-                    drawGraphGeo();
-                } else {
-                    drawGraph([percentilesHistoric,percentilesRealtime,percentilesRealtime],sorted);
+                if (percentilesHistoric){
+                    var percentilesFiltered = filteredPercentiles.map(function(obj,index){
+                        return obj.plac_wt_num;
+                    });
+                    // if the 3rd box & whisker plot has already been graphed, update the plot... if not, redraw the full graph
+                    if(graphedGeo){
+                        drawGraphGeo(percentilesFiltered, g, v);
+                    } else {
+                        drawGraph([percentilesHistoric,percentilesRealtime,percentilesFiltered], sorted);
+                        drawGraphGeo(percentilesFiltered, g, v);
+                    }
                 }
             }
         });
 
+        // Event handler: resets the summary table, data table, and graph if the user selects filter as "None"
         $("#geoSelection").on("change", function() {
             var value = $(this).val();
             $("#geoInput").val('');
@@ -637,26 +589,28 @@ function drawGraph(percentiles, sorted){
             $('#summaryHead').append('<th scope="col" class="text-center">Gestational Age</th>')
             $('#summaryHead').append('<th scope="col" class="text-center">Gestational Type</th>')
             // create a column heading for each calculated percentile
+            var contentHead;
             percentages.forEach(function(percent,index){
-                var content = '<th scope="col" class="text-center">' + percent + '%</th>'
-                $('#summaryHead').append(content);
+                contentHead += '<th scope="col" class="text-center">' + percent + '%</th>'
             });
+            $('#summaryHead').append(contentHead);
             // add a table data to the table body for each calculated percentile
-            $('#summaryBody').append('<td>'+ placObj.ga + '</td><td>' + (placObj.twin == 1 ? "Twin" : "Single") + '</td>');
+            var contentBody = '<td>'+ placObj.ga + '</td><td>' + (placObj.twin == 1 ? "Twin" : "Single") + '</td>';
             data.forEach(function(p,index){
-                var content = '<td>' + p.plac_wt_num + 'g</td>'
-                $('#summaryBody').append(content);
+                contentBody += '<td>' + p.plac_wt_num + 'g</td>'   
             });
+            $('#summaryBody').append(contentBody);
         }
 
         function populateTable(data){
             $('#fullData tbody').empty();
             // add a table row for each data point
+            var content;
             data.forEach(function(row,index){
-                var content = '<tr class="dataRow"><td>' + row.gestage + '</td><td>' + row.weight + '</td><td>' + row.twin + '</td><td>' 
-                                         + row.country + '</td><td>' + row.state + '</td><td>' + row.city + '</td></tr>'
-                $('#fullData').append(content);
+                content += '<tr class="dataRow"><td>' + row.gestage + '</td><td>' + row.weight + '</td><td>' + row.twin + '</td><td>' 
+                        + row.country + '</td><td>' + row.state + '</td><td>' + row.city + '</td></tr>'
             });
+            $('#fullData').append(content);
         }     
 
 
@@ -670,7 +624,6 @@ function drawGraph(percentiles, sorted){
         if (checked){
             console.log("Form submit called");
             // Set placenta weights data object
-            
 
             $("#plac_save").on("submit", function(e){
                 //don't reload page
