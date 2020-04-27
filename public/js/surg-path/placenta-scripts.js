@@ -255,6 +255,7 @@ $(window).on('load', function(){
                      $("#geoSelection").val('0');
                      $("#geoInput").val('');
                      $("#geoInput").addClass('d-none');
+                     $("#geoSubmit").addClass('d-none');
                     // Get lists of all countries, states, and cities in the dataset
                     countries = getAllGeo(sorted,"country").map(function(obj,index){
                         return isoCountries[obj];
