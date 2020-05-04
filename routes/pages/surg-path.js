@@ -70,6 +70,12 @@ router.get('/surg-path/snippets', userWall, (req, res) => {
 	]);
 });
 
+router.get('/surg-path/heart-bx', (req, res) => {
+    return render(req, res, './page-views/surg-path/heart-bx.hbs', [
+        "/js/surg-path/heartbx.js"
+    ]);
+});
+
 //post new interp to db
 router.post('/ihc/save', (req, res) => {
 	return controller.saveIhcPreset(req, res);

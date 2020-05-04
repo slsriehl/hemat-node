@@ -538,19 +538,24 @@ $(function () {
 });
 
 //****************** Add padding to create right sided text column
-String.prototype.rpad = function (num) {
+String.prototype.rpad = function (num, brk) {
     // .rpad() function to right pad block of text,
     // num = #of spaces to pad right
     // Explanation of regex: https://stackoverflow.com/questions/14484787/wrap-text-in-javascript/51506718#51506718
     // Here, capture group is 45 chars, to account for 72 char courier 11pt standard width in word document
 
-    var text = (this).match(/((?![^\n]{1,45}$)([^\n]{1,45})\s)|(.{1,45}$)/g);
-    console.log(text);
+	if (typeof brk == "undefined"){ brk == 45};
+	var re = `((?![^\\n]{1,${brk}}$)([^\\n]{1,${brk}})\\s)|(.{1,${brk}}$)`;
+	console.log("regex: ", re);
+	var str = new RegExp(re, "g");
+    var text = (this).match(str);
+    console.log("Matched text", text);
     if (text) {
         var padded = text[0]; // get first line, don't pad
-
-        for (var i = 1; i < text.length; i++) {
-            padded += "\n".padEnd(num) + text[i]; // pad subsequent lines
+		if (text.length > 1){
+            for (var i = 1; i < text.length; i++) {
+                padded += "\n".padEnd(num+1) + text[i]; // pad subsequent lines
+            }
         }
 
         return padded;
@@ -585,3 +590,9 @@ function validate_finals(){
     }
 }
 // ********************END CORRECTION FOR BLANK DIAGNOSES *********//
+
+//*********************MAKE ALL MODALS DRAGGABLE*******************//
+$(".modal-dialog").draggable({
+    handle: ".modal-header"
+});
+//*********************END DRAGGABLE******************************//
