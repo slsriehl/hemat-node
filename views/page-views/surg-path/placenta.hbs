@@ -602,6 +602,31 @@
                     <h2 class="card-title">Realtime Placenta Data Reference</h2>
                 </div>
                 <div class="card-block">
+                    <div class="row p-2">
+                        <form class="w-100">
+                            <h2 class="text-center">Explore the Data</h2>
+                            <div class="text-center pt-2">
+                                <p>To export the full dataset as an excel spreadsheet, please <a href="/mail">send me an email</a>.</p>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-4">
+                                    <label class="my-1 mr-2 ml-1" for="geoSelection">Filter By</label>
+                                    <select id="geoSelection" class="form-control col-4">
+                                        <option selected value="0">None</option>
+                                        <option value="3">Country</option>
+                                        <option value="4">State</option>
+                                        <option value="5">City</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-8">
+                                    <label class="my-1 mr-2 ml-1" for="geoInput"></label>
+                                    <input id="geoInput" type="text" class="d-none form-control mt-2" placeholder="Enter Country code (eg. US, CA, ES...), city or state/region...">
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
                     <div class="row text-center" style="padding: 1rem;">
                         {{> page-partials/placenta-table summary=true}}
                     </div>
@@ -610,28 +635,6 @@
                     <div id="graphContainer" class="text-center pb-5"> 
                     </div>
 
-                    <form>
-                        <h2 class="text-center">Explore the Data</h2>
-                        <div class="text-center pt-2">
-                            <p>To export the full dataset as an excel spreadsheet, please <a href="/mail">send me an email</a>.</p>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label class="my-1 mr-2 ml-1" for="geoSelection">Filter By</label>
-                                <select id="geoSelection" class="form-control">
-                                    <option selected value="0">None</option>
-                                    <option value="3">Country</option>
-                                    <option value="4">State</option>
-                                    <option value="5">City</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="my-1 mr-2 ml-1" for="geoInput"></label>
-                                <input id="geoInput" type="text" class="d-none form-control mt-2" placeholder="Search...">
-                            </div>
-                        </div>
-                    </form>
                 </div>
                 <div class="card-block">
                     <div class="row text-center" style="padding: 1rem;">
