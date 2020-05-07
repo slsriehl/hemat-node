@@ -45,7 +45,7 @@ router.get('/surg-path/sjogrens', (req, res) => {
 
 router.get('/surg-path/placenta', (req, res) => {
     return render(req, res, './page-views/surg-path/placenta.hbs', [
-		"https://d3js.org/d3.v4.min.js",
+		// "https://d3js.org/d3.v4.min.js",
         "/js/surg-path/placenta-scripts.js",
         "/json/json-placenta.js",
     ]);
