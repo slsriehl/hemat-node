@@ -11,700 +11,649 @@
 
     {{> message-center this}}
 
-    {{!-- DATA INPUT --}}
+    <!-- Full width row + card -->
     <div class="row">
         <!-- top card-->
         <div class="col col-md-12">
-            <div class="card card-outline-success">
+            <div class="card">
                 <div class="card-header">
                     <!-- inline header form-->
                     <form class="form-inline">
-                        <!-- Button trigger modal -->
-                        <button id="howToUse" type="button" class="btn btn-sm btn-info ml-2 p-1" data-toggle="modal" data-target="#help_placenta">How to Use</button>
+
+                        <div class="col col-md-4">
+                            <!-- Button trigger modal -->
+                            <button class="btn btn-sm btn-info ml-2 p-1"  data-toggle="modal" data-target="#help_placenta">How to Use</button>
+                        </div>
+
                         <!-- Histology help Modal -->
                         {{> page-modals/surg-path/placenta-how-to}}
+
                     </form>
                     <!--Date-->
+
                 </div>
-                <form id="plac_save">
-                    <div class="card-block" style="font-size: 0.8em">
-                        <div class="row text-sm-center">
-                            <div class="col col-md-3">
-                                <div class="card">
-                                    <div class="card-header h-100 text-sm-center">
-                                        Gestational Age (weeks)
-                                    </div>
-                                    <div class="card-block ">
-                                        <input type="number" min="19" max="44" class="form-control mx-auto" id="plac_age" placeholder="19-44">
-                                    </div>
+                <div class="card-block" style="font-size: 0.8em">
+                    <form id="plac_save">
+                    <div class="row text-sm-center">
+                        <div class="col col-md-3">
+                            <div class="card">
+                                <div class="card-header h-100 text-sm-center">
+                                    Gestational Age
+                                </div>
+                                <div class="card-block ">
+                                    <input type="number" max="44" class="form-control mx-auto" id="plac_age" placeholder="nearest week (19-44)">
                                 </div>
                             </div>
+                        </div>
 
-                            <div class='col col-md-2'>
-                                <div class="card">
-                                    <div class="card-header h-100 px-2 text-sm-center">
-                                        Weight (grams)
-                                    </div>
-                                    <div class="card-block ">
-                                        <div>
-                                            <input type="number" class="form-control col-12 mx-auto" id="plac_wt">
-                                        </div>
-                                    </div>
+                        <div class='col col-md-2'>
+                            <div class="card">
+                                <div class="card-header h-100 text-sm-center">
+                                    Weight (grams)
                                 </div>
-                            </div>
-
-                            <div class='col col-md-2'>
-                                <div class="card">
-                                    <div class="card-header h-100 px-2 text-sm-center">
-                                        Gestation Type
-                                    </div>
-                                    <div class="card-block ">
-                                        <div>
-                                            <select id="plac_type" class="form-control">
-                                                <option value="partType500" data-twin="0">Single</option>
-                                                <option value="partType501" data-twin="1">Twin</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col col-md-5">
-                                <div class="card">
-                                    <div class="card-header h-100 text-sm-center">
-                                        Preferred Historic Reference
-                                    </div>
-                                    <div class="card-block ">
-                                        <div>
-                                            <select id="reference" class="form-control">
-                                                <option data-ref="Pinar H. et al. Pediatr Pathol Lab med 1996; 16:901-7." value="1">Pinar et al. - Singleton/Twin (1996)</option>
-                                                <option data-ref="Boyd T. et al. Mod Pathol 1999; 12:1P." value="2">Boyd et al. - Singleton (1999)</option>
-                                            </select>
-                                        </div>
+                                <div class="card-block ">
+                                    <div>
+                                        <input type="number" class="form-control col-12 mx-auto" id="plac_wt">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        {{#if isAuth.check}}
-                        <div class="row text-center">
-                            <div class="col-12 mt-2">
-                                <div class="checkbox_container form-check mt-2 mb-2">
-                                    <input id="agreement" type="checkbox" class="form-check-input" checked="checked">
-                                    <label class="form-check-label" for="agreement">I agree to add my data for collection</label>
+
+                        <div class='col col-md-2'>
+                            <div class="card">
+                                <div class="card-header h-100 text-sm-center">
+                                    Gestation type
+                                </div>
+                                <div class="card-block ">
+                                    <div>
+                                        <select id="plac_type" class="form-control">
+                                            <option value="partType500" data-twin="0">Single</option>
+                                            <option value="partType501" data-twin="1">Twin</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        {{/if}}
+
+                        <div class="col col-md-5">
+                            <div class="card">
+                                <div class="card-header h-100 text-sm-center">
+                                    Preferred Reference
+                                </div>
+                                <div class="card-block ">
+                                    <div>
+                                        <select id="reference" class="form-control">
+                                            <option data-ref="Pinar H. et al. Pediatr Pathol Lab med 1996; 16:901-7." value="1">Pinar et al. - Singleton/Twin (1996)</option>
+                                            <option data-ref="Boyd T. et al. Mod Pathol 1999; 12:1P." value="2">Boyd et al. - Singleton (1999)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mt-2">
+                            <div class="card">
+                                <div class="card-header outline-danger text-center">
+                                    <button class="btn btn-lg btn-success p-1 getref" style="white-space:normal !important;max-width:400px">Get the Placenta Reference Weight Range</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-footer text-sm-center">
-                        <button type="button" class="btn btn-lg btn-success m-2 p-2 getref" style="white-space:normal !important;max-width:400px">Get the Placenta Reference Weight Range</button>
-                    </div>
-                </form>
-            </div>
-            <!-- silent success notification for AJAX-->
-            <div class="alert alert-success alert-dismissible collapse text-center" id="alert-1" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label w-100="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h4>Data submitted successfully. Thanks!</h4>
-            </div>
-        </div>
-    </div>
-    {{!-- REPORTING TOOL --}}
-    <div class="row top-buffer">
-        <!-- placenta reporting card -->
-        <div class="col col-12">
-            <div class="card card-outline-success">
-                {{!-- click to show --}}
-                <div class="card-header border-0" role="tab" id="section1HeaderId">
-                    <form class="form-inline row">
-                        <div id="show-plac-report-block" class="col col-md-9" data-toggle="collapse" data-parent="#accordion" href="#section1ContentId"
-                            aria-expanded="true" aria-controls="section1ContentId">
-                            <h4 class="card-title"><span id="plac-report-title">Expand</span> the Placenta Reporting Tool</h4>
-                        </div>
-                        <div class="col col-md-3 text-right">
-                            <button type="button" class="btn btn-info btn-md p-1" data-toggle="modal" data-target="#IHCbox">Immuno Box
-                            </button>
-                        </div>
                     </form>
-                </div>
-                <div class="card-body d-none" id="plac-report-block">
-                    <div class="row" style="padding: 1rem;">
-                        <div class="col col-md-8" id="accordion" role="tablist" aria-multiselectable="true">  
-                            <div id="section1ContentId" class="collapse in" role="tabpanel" aria-labelledby="section1HeaderId">
-                                <!-- left column-->
-                                <!-- Accordion #1-->
-                                <div class="card">
-                                    <div class="card-header border-0" role="tab" id="headingOne">
-                                        <h5 class="mb-0">
-                                            <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                Delivery Type - Normal Findings
-                                            </a>
-                                        </h5>
-                                    </div>
-                                    <div id="collapseOne" class="collapse " role="tabpanel" aria-label w-100ledby="headingOne">
-                                        <div class="card-block chkboxes">
-                                            <div class="card-group">
-                                                <div class="card">
-                                                    <div class="card-header">
-                                                        Gross modifiers
-                                                    </div>
-                                                    <div class="card-block chkboxes">
-                                                        <div style="font-size: 0.66em;" class="content form-check" id="column1b">
-                                                            <label class="form-check-label w-100 col mx-auto">? Twin gestation:
-                                                                <select id="plac_dx" class="form-control form-control-sm">
-                                                                    <option>No</option>
-                                                                    <option value="partType501">Yes</option>
-                                                                </select>
-                                                            </label>
-                                                            <hr>
-                                                            <label class="form-check-label w-100 col mx-auto"># of umbilical vessels?
-                                                                <select class="form-control form-control-sm umbilical_0">
-                                                                    <option>one</option>
-                                                                    <option>two</option>
-                                                                    <option selected>three</option>
-                                                                </select>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card">
-                                                    <div class="card-header">
-                                                        Normal options
-                                                    </div>
-                                                    <div class="card-block chkboxes">
-                                                        <div style="font-size: 0.66em;" class="content form-check" id="column2b">
-                                                            <label class="form-check-label w-100"  id="_dxLine500"><input class="form-check-input" id="dxLine500" type="checkbox"> NORMAL FINDINGS</label> <br>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card">
-                                                    <div class="card-header">
-                                                        Findings
-
-                                                    </div>
-                                                    <div class="card-block chkboxes">
-                                                        <div style="font-size: 0.66em;" class="content form-check" id="column3b">
-                                                            <label class="form-check-label w-100"  id="_mxLine500"><input class="form-check-input" id="mxLine500" type="checkbox"> NORMAL EVERYTHING </label>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Accordion #2-->
-                                <div class="card">
-                                    <div class="card-header border-0" role="tab" id="headingTwo">
-                                        <h5 class="mb-0">
-                                            <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                                                Umbilical cord
-                                            </a>
-                                        </h5>
-                                    </div>
-                                    <div id="collapseTwo" class="collapse" role="tabpanel" aria-label w-100ledby="headingOne">
-                                        <div class="card-block chkboxes">
-                                            <div class="card-group">
-                                                <div class="card">
-                                                    <div class="card-header">
-
-                                                    </div>
-                                                    <div class="card-block chkboxes">
-                                                        <div style="font-size: 0.66em;" class="content form-check" id="column1c">
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card">
-                                                    <div class="card-header">
-                                                        Final Diagnosis
-                                                    </div>
-                                                    <div class="card-block chkboxes">
-                                                        <div style="font-size: 0.66em;" class="content form-check" id="column2c">
-                                                            <label class="form-check-label w-100"  id="_dxLine510"><input class="form-check-input" id="dxLine510" type="checkbox"> NO SIGNIFICANT ABNORMALITIES </label>
-                                                            <label class="form-check-label w-100"  id="_dxLine511"><input class="form-check-input" id="dxLine511" type="checkbox"> UMBILICAL VASCULITIS/FUNISITIS </label>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card">
-                                                    <div class="card-header">
-                                                        Microscopic Description
-                                                    </div>
-                                                    <div class="card-block chkboxes">
-                                                        <div style="font-size: 0.66em;" class="content form-check" id="column3c">
-                                                            <label class="form-check-label w-100"  id="_mxLine510"><input class="form-check-input" id="mxLine510" type="checkbox"> NORMAL </label>
-                                                            <label class="form-check-label w-100"  id="_mxLine511"><input class="form-check-input" id="mxLine511" type="checkbox"> UMBILICAL VASCULITIS / FUNISITS </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Accordion #3-->
-                                <div class="card">
-                                    <div class="card-header border-0" role="tab" id="headingThree">
-                                        <h5 class="mb-0">
-                                            <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                                                Membranes
-                                            </a>
-                                        </h5>
-                                    </div>
-                                    <div id="collapseThree" class="collapse " role="tabpanel" aria-label w-100ledby="headingOne">
-                                        <div class="card-block chkboxes">
-                                            <div class="card-group">
-                                                <div class="card">
-                                                    <div class="card-header">
-
-                                                    </div>
-                                                    <div class="card-block chkboxes">
-                                                        <div style="font-size: 0.66em;" class="content form-check" id="column1d">
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card">
-                                                    <div class="card-header">
-                                                        Final diagnosis
-                                                    </div>
-                                                    <div class="card-block chkboxes">
-                                                        <div style="font-size: 0.66em;" class="content form-check" id="column2d">
-                                                            <label class="form-check-label w-100"  id="_dxLine520"><input class="form-check-input" id="dxLine520" type="checkbox"> NORMAL </label>
-                                                            <label class="form-check-label w-100"  id="_dxLine521"><input class="form-check-input" id="dxLine521" type="checkbox"> ACUTE CHORIO </label>
-
-                                                            <label class="form-check-label w-100"  id="_dxLine522"><input class="form-check-input" id="dxLine522" type="checkbox"> MECONIUM STAINING (NO ACUTE CHORIO) </label>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card">
-                                                    <div class="card-header">
-                                                        Microscopic Description
-                                                    </div>
-                                                    <div class="card-block chkboxes">
-                                                        <div style="font-size: 0.66em;" class="content form-check" id="column3d">
-                                                            <label class="form-check-label w-100"  id="_mxLine520"><input class="form-check-input" id="mxLine520" type="checkbox"> NORMAL </label>
-
-                                                            <label class="form-check-label w-100 extent"  id="_mxLine521"><input class="form-check-input" id="mxLine521" type="checkbox"> ACUTE CHORIO </label>
-
-                                                            <label class="form-check-label w-100"  id="_mxLine522"><input class="form-check-input" id="mxLine522" type="checkbox"> MECONIUM STAINING </label>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Accordion #4-->
-                                <div class="card">
-                                    <div class="card-header border-0" role="tab" id="headingFour">
-                                        <h5 class="mb-0">
-                                            <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                                Fetal surface / Placental disk
-                                            </a>
-                                        </h5>
-                                    </div>
-                                    <div id="collapseFour" class="collapse" role="tabpanel" aria-label w-100ledby="headingFour">
-                                        <div class="card-block chkboxes">
-                                            <div class="card-group">
-                                                <div class="card">
-                                                    <div class="card-header">
-
-                                                    </div>
-                                                    <div class="card-block chkboxes">
-                                                        <div style="font-size: 0.66em;" class="content form-check" id="column1e">
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card">
-                                                    <div class="card-header">
-                                                        Final Diagnosis
-                                                    </div>
-                                                    <div class="card-block chkboxes">
-                                                        <div style="font-size: 0.66em;" class="content form-check" id="column2e">
-                                                            <label class="form-check-label w-100"  id="_dxLine540"><input class="form-check-input" id="dxLine540" type="checkbox"> NO SIGNIFICANT ABNORMALITIES </label>
-
-                                                            <label class="form-check-label w-100"  id="_dxLine531"><input class="form-check-input" id="dxLine531" type="checkbox"> CHORIONIC PLATE VASCULITIS </label>
-
-                                                            <label class="form-check-label w-100"  id="_dxLine541"><input class="form-check-input" id="dxLine541" type="checkbox"> DISTAL VILLOUS HYPOPLASIA </label>
-
-                                                            <label class="form-check-label w-100"  id="_dxLine542"><input class="form-check-input" id="dxLine542" type="checkbox"> CHORANGIOSIS </label>
-
-                                                            <label class="form-check-label w-100"  id="_dxLine543"><input class="form-check-input" id="dxLine543" type="checkbox"> CHORANGIOMA </label>
-
-                                                            <label class="form-check-label w-100"  id="_dxLine544"><input class="form-check-input" id="dxLine544" type="checkbox"> CHRONIC VILLITIS </label>
-
-                                                            <label class="form-check-label w-100"  id="_dxLine545"><input class="form-check-input" id="dxLine545" type="checkbox"> ACUTE VILLITIS </label>
-
-                                                            <label class="form-check-label w-100"  id="_dxLine546"><input class="form-check-input" id="dxLine546" type="checkbox"> ACUTE VILLITIS WITH VASCULOPATHY </label>
-
-                                                            <label class="form-check-label w-100"  id="_dxLine556"><input class="form-check-input" id="dxLine556" type="checkbox"> ACUTE NECROTIZING INTERVILLOSITIS </label>
-
-                                                            <label class="form-check-label w-100"  id="_dxLine547"><input class="form-check-input" id="dxLine547" type="checkbox"> INTERVILLOUS THROMBUS </label>
-
-                                                            <label class="form-check-label w-100"  id="_dxLine548"><input class="form-check-input" id="dxLine548" type="checkbox"> PLACENTAL INFARCTS </label>
-
-                                                            <label class="form-check-label w-100"  id="_dxLine549"><input class="form-check-input" id="dxLine549" type="checkbox"> INCREASED PERIVILLOUS FIBRIN (&lt;40% OF DISK) </label>
-
-                                                            <label class="form-check-label w-100"  id="_dxLine550"><input class="form-check-input" id="dxLine550" type="checkbox"> MASSIVE PERIVILLOUS FIBRIN (&gt;40% OF DISK) </label>
-
-                                                            <label class="form-check-label w-100"  id="_dxLine551"><input class="form-check-input" id="dxLine551" type="checkbox"> FETAL THROMBOTIC VASCULOPATHY </label>
-
-                                                            <label class="form-check-label w-100"  id="_dxLine552"><input class="form-check-input" id="dxLine552" type="checkbox"> NRBCS </label>
-
-                                                            <label class="form-check-label w-100 extent"  id="_dxLine553"><input class="form-check-input" id="dxLine553" type="checkbox"> VILLOUS EDEMA </label>
-
-                                                            <label class="form-check-label w-100"  id="_dxLine554"><input class="form-check-input" id="dxLine554" type="checkbox"> FEATURES OF ACUTE ABRUPTION </label>
-
-                                                            <label class="form-check-label w-100"  id="_dxLine555"><input class="form-check-input" id="dxLine555" type="checkbox"> FEATURES OF CHRONIC MARGINAL ABRUPTION </label>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card">
-                                                    <div class="card-header">
-                                                        Microscopic Description
-                                                    </div>
-                                                    <div class="card-block chkboxes">
-                                                        <div style="font-size: 0.66em;" class="content form-check" id="column3e">
-                                                            <label class="form-check-label w-100 "  id="_mxLine540"><input class="form-check-input"  id="mxLine540" type="checkbox"> NORMAL </label>
-
-                                                            <label class="form-check-label w-100 "  id="_mxLine531"><input class="form-check-input"  id="mxLine531" type="checkbox"> CHORIONIC PLATE VASCULITIS </label>
-
-                                                            <label class="form-check-label w-100 "  id="_mxLine541"><input class="form-check-input"  id="mxLine541" type="checkbox"> DISTAL VILLOUS HYPOPLASIA </label>
-
-                                                            <label class="form-check-label w-100 "  id="_mxLine542"><input class="form-check-input"  id="mxLine542" type="checkbox"> CHORANGIOSIS </label>
-
-                                                            <label class="form-check-label w-100 "  id="_mxLine543"><input class="form-check-input"  id="mxLine543" type="checkbox"> CHORANGIOMA </label>
-
-                                                            <label class="form-check-label w-100  extent"  id="_mxLine544"><input class="form-check-input"  id="mxLine544" type="checkbox"> CHRONIC VILLITIS </label>
-
-                                                            <label class="form-check-label w-100  extent"  id="_mxLine545" ><input class="form-check-input"  id="mxLine545" type="checkbox"> ACUTE VILLITIS </label>
-
-                                                            <label class="form-check-label w-100  extent"  id="_mxLine546" ><input class="form-check-input"  id="mxLine546" type="checkbox"> ACUTE VILLITIS W/ VASCULOPATHY </label>
-
-                                                            <label class="form-check-label w-100  extent"  id="_mxLine556" ><input class="form-check-input"  id="mxLine556" type="checkbox"> ACUTE NECROTIZING INTERVILLOSITIS</label>
-
-                                                            <label class="form-check-label w-100 "  id="_mxLine547"><input class="form-check-input"  id="mxLine547" type="checkbox"> INTERVILLOUS THROMBUS </label>
-
-                                                            <label class="form-check-label w-100  extent"  id="_mxLine548" ><input class="form-check-input"  id="mxLine548" type="checkbox"> PLACENTAL INFARCTS </label>
-
-                                                            <label class="form-check-label w-100 "  id="_mxLine549"><input class="form-check-input"  id="mxLine549" type="checkbox"> INCREASED PERIVILLOUS FIBRIN (&lt;40% OF DISK) </label>
-
-                                                            <label class="form-check-label w-100 "  id="_mxLine550"><input class="form-check-input"  id="mxLine550" type="checkbox"> MASSIVE PERIVILLOUS FIBRIN (&gt;40% OF DISK) </label>
-
-                                                            <label class="form-check-label w-100  extent"  id="_mxLine551"><input class="form-check-input"  id="mxLine551" type="checkbox"> FETAL THROMBOTIC VASCULOPATHY </label>
-
-                                                            <label class="form-check-label w-100 "  id="_mxLine552"><input class="form-check-input"  id="mxLine552" type="checkbox"> NRBCS </label>
-
-                                                            <label class="form-check-label w-100  extent"  id="_mxLine553" ><input class="form-check-input"  id="mxLine553" type="checkbox"> VILLOUS EDEMA </label>
-
-                                                            <label class="form-check-label w-100  extent"  id="_mxLine554" ><input class="form-check-input"  id="mxLine554" type="checkbox"> FEATURES OF ACUTE ABRUPTION </label>
-
-                                                            <label class="form-check-label w-100 "  id="_mxLine555"><input class="form-check-input"  id="mxLine555" type="checkbox"> FEATURES OF CHRONIC MARGINAL ABRUPTION </label>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Accordion #5-->
-                                <div class="card">
-                                    <div class="card-header border-0" role="tab" id="headingFive">
-                                        <h5 class="mb-0">
-                                            <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                                Maternal decidua
-                                            </a>
-                                        </h5>
-                                    </div>
-                                    <div id="collapseFive" class="collapse" role="tabpanel" aria-label w-100ledby="headingFive">
-                                        <div class="card-block chkboxes">
-                                            <div class="card-group">
-                                                <div class="card">
-                                                    <div class="card-header">
-
-                                                    </div>
-                                                    <div class="card-block chkboxes">
-                                                        <div style="font-size: 0.66em;" class="content form-check" id="column1f">
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card">
-                                                    <div class="card-header">
-                                                        Final Diagnosis
-                                                    </div>
-                                                    <div class="card-block chkboxes">
-                                                        <div style="font-size: 0.66em;" class="content form-check" id="column2f">
-                                                            <label class="form-check-label w-100"  id="_dxLine560"><input class="form-check-input" id="dxLine560" type="checkbox"> NORMAL </label> <br>
-                                                            <label class="form-check-label w-100"  id="_dxLine561"><input class="form-check-input" id="dxLine561" type="checkbox"> DECIDUAL ATHEROSIS </label> <br>
-                                                            <label class="form-check-label w-100"  id="_dxLine562"><input class="form-check-input" id="dxLine562" type="checkbox"> CHRONIC DECIDUITIS WITH PLASMA CELLS </label>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card">
-                                                    <div class="card-header">
-                                                        Microscopic Description
-                                                    </div>
-                                                    <div class="card-block chkboxes">
-                                                        <div style="font-size: 0.66em;" class="content form-check" id="column3f">
-                                                            <label class="form-check-label w-100"  id="_mxLine560"><input class="form-check-input" id="mxLine560" type="checkbox"> NORMAL </label> <br>
-                                                            <label class="form-check-label w-100"  id="_mxLine561"><input class="form-check-input" id="mxLine561" type="checkbox"> DECIDUAL ATHEROSIS </label> <br>
-                                                            <label class="form-check-label w-100"  id="_mxLine562"><input class="form-check-input" id="mxLine562" type="checkbox"> CHRONIC DECIDUITIS WITH PLASMA CELLS </label> <br>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Accordion #6-->
-                                <div class="card">
-                                    <div class="card-header border-0" role="tab" id="headingSix">
-                                        <h5 class="mb-0">
-                                            <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                                                Comments
-                                            </a>
-                                        </h5>
-                                    </div>
-                                    <div id="collapseSix" class="collapse" role="tabpanel" aria-label w-100ledby="headingSix">
-                                        <div class="card-block chkboxes">
-                                            <div class="card-group">
-                                                <div class="card">
-                                                    <div class="card-header">
-                                                        Choose comment as needed
-                                                    </div>
-                                                    <div class="card-block chkboxes">
-                                                        <div style="font-size: 0.66em;" class="content form-check" id="column1g">
-                                                            <label class="form-check-label w-100"  id="_comLine500"><input class="form-check-input" id="comLine500" type="checkbox"> ACUTE INTERVILLOSITIS </label> <br>
-
-                                                            <label class="form-check-label w-100"  id="_comLine501"><input class="form-check-input" id="comLine501" type="checkbox"> CHRONIC VILLITIS / VUE </label> <br>
-
-                                                            <label class="form-check-label w-100"  id="_comLine502"><input class="form-check-input" id="comLine502" type="checkbox"> DISTAL VILLOUS HYPOPLASIA </label> <br>
-
-                                                            <label class="form-check-label w-100"  id="_comLine503"><input class="form-check-input" id="comLine503" type="checkbox"> NRBCS </label> <br>
-
-                                                            <label class="form-check-label w-100"  id="_comLine504"><input class="form-check-input" id="comLine504" type="checkbox"> MASSIVE CHRONIC INTERVILLOSITIS</label> <br>
-
-                                                            <label class="form-check-label w-100"  id="_comLine505"><input class="form-check-input" id="comLine505" type="checkbox"> MASSIVE PERIVILLOUS FIBRIN (>40%) </label> <br>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card">
-                                                    <div class="card-header">
-
-                                                    </div>
-                                                    <div class="card-block chkboxes">
-                                                        <div style="font-size: 0.66em;" class="content form-check" id="column1h">
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card">
-                                                    <div class="card-header">
-
-                                                    </div>
-                                                    <div class="card-block chkboxes">
-                                                        <div style="font-size: 0.66em;" class="content form-check" id="column1i">
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end accordion cards-->
-                            </div>
-                        </div>
-                        <!-- right column-->
-                        <div class="col col-md-4" id="sticky">
-                            <div class="card text-center">
-                                <div class="card-header button-box">
-                                    <ul class="nav nav-pills standard-button-box">
-                                        <a class="btn btn-outline-success p-1 mb-2" id="writeReport">
-                                            Write Report
-                                        </a>
-
-                                        <a class="btn btn-outline-danger p-1 mb-2 ml-4" id="Reset">Reset</a>
-                                    </ul>
-                                </div>
+                        <div class="col-12 mt-2">
+                            <div class="card">
                                 <div class="card-block">
-
-                                    <form>
-                                        <!-- hide first text area
-                                <div class="form-group">
-                                        <textarea class="form-control" id="outPut-1" rows="5" placeholder="CBC Data"></textarea>
-                                        <span class="input-group-addon btn btn-primary" data-clipboard-target="#outPut-1">Copy to Clipboard</span>
-                                </div>   -->
-                                        <div class="form-group">
-                                            <textarea class="form-control" id="outPut-2" rows="15" placeholder="Example Micro"></textarea>
-                                            <span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-2">Copy to Clipboard</span>
-                                        </div>
-                                        <div class="form-group">
-                                            <textarea class="form-control" id="outPut-3" rows="10" placeholder="Example Final"></textarea>
-                                            <span class="input-group-addon copy  btn btn-primary" data-clipboard-target="#outPut-3">Copy to Clipboard</span>
-                                        </div>
-                                        <div class="form-group">
-                                            <textarea class="form-control" id="outPut-4" rows="5" placeholder="Example Comment"></textarea>
-                                            <span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-4">Copy to Clipboard</span>
-                                        </div>
-                                    </form>
+                                                <div class="row text-center">
+                                                    <div class="col-12 " style="font-size: 3em;">PLACENTA WEIGHT IS: </div>
+                                                    <textarea type="text" class="mx-auto form-control col-md-6 text-center plac-range" style="font-size: 3em; word-wrap: break-word;"></textarea>
+                                                    <h6 class="col-12 py-4" >Reference: <span class="ref"> </span> </h6>
+                                                </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    {{!-- SHORT RESULTS --}}
-    <div class="row top-buffer d-none" id="results">
-        <div class="col-12 mt-2">
-            <div class="card card-outline-success">
-                <div class="card-header text-center card-inverse bg-success">
-                    <h2 class="card-title">This Placenta Weight is</h2>
-                </div>
-                <div class="card-block">
-                    <div class="row text-center">
-                        <div class="col col-md-6">
-                            <textarea type="text" class="mx-auto form-control text-center plac-range" style="font-size: 3em; word-wrap: break-word;"></textarea>
-                            <h6 class="py-3" >Reference: <span class="ref"> </span></h6>
-                        </div>
-                        <div class="col col-md-6">
-                            <textarea type="text" class="mx-auto form-control text-center plac-range-2" style="font-size: 3em; word-wrap: break-word;"></textarea>
-                            <h6 class="py-3" >Realtime Reference <span class="ref-2"> </span></h6>
-                        </div> 
+                    <!-- silent success notification for AJAX-->
+                    <div class="alert alert-success alert-dismissible collapse text-center" id="alert-1" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label w-100="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4>Data submitted successfully. Thanks!</h4>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    {{!-- DATA RESULTS --}}
-    <div class="row top-buffer d-none" id="data">
-        <div class="col-12 mt-2">
-            <div class="card border-d3-blue">
-                <div class="card-header border-0 text-center">
-                    <h2 class="card-title">Realtime Placenta Data Reference</h2>
-                </div>
-                <div class="card-block">
-                    <div class="row p-2">
-                        <form class="w-100">
-                            <h2 class="text-center">Explore the Data</h2>
-                            <div class="text-center pt-2">
-                                <p>To export the full dataset as an excel spreadsheet, please <a href="/mail">send me an email</a>.</p>
-                            </div>
 
-                            <div class="row mb-3">
-                                <div class="col-md-4">
-                                    <label class="my-1 mr-2 ml-1" for="geoSelection">Filter By</label>
-                                    <select id="geoSelection" class="form-control col-4">
-                                        <option selected value="0">None</option>
-                                        <option value="3">Country</option>
-                                        <option value="4">State</option>
-                                        <option value="5">City</option>
-                                    </select>
+
+            <!-- left column accordion-->
+            <div id="accordion" role="tablist" aria-multiselectable="true">
+                <div id="report-block" role="tablist" aria-multiselectable="true">
+                        <div class="card-header" role="tab" id="section1HeaderId">
+                            <form class="form-inline">
+                                <div class="col col-md-6 h5" data-toggle="collapse" data-parent="#report-block" href="#section1ContentId"
+                                   aria-expanded="true" aria-controls="section1ContentId">
+                                    Click for the Placenta reporting tool
                                 </div>
+                                <div class="col col-md-6">
+                                    <button type="button" class="btn btn-info btn-md p-1" data-toggle="modal" data-target="#IHCbox">Immuno Box
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div id="section1ContentId" class="collapse in" role="tabpanel"
+                             aria-labelledby="section1HeaderId">
+                            <div class="row top-buffer">
                                 <div class="col-md-8">
-                                    <label class="my-1 mr-2 ml-1" for="geoInput"></label>
-                                    <input id="geoInput" type="text" class="d-none form-control mt-2" placeholder="Enter Country code (eg. US, CA, ES...), city or state/region...">
+                                    <!-- left column-->
+                                    <!-- Accordion #1-->
+                                    <div class="card">
+                                        <div class="card-header" role="tab" id="headingOne">
+                                            <h5 class="mb-0">
+                                                <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                    Delivery Type - Normal Findings
+                                                </a>
+                                            </h5>
+                                        </div>
+                                        <div id="collapseOne" class="collapse " role="tabpanel" aria-label w-100ledby="headingOne">
+                                            <div class="card-block chkboxes">
+                                                <div class="card-group">
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            Gross modifiers
+                                                        </div>
+                                                        <div class="card-block chkboxes">
+                                                            <div style="font-size: 0.66em;" class="content form-check" id="column1b">
+                                                                <label class="form-check-label w-100 col mx-auto">? Twin gestation:
+                                                                    <select id="plac_dx" class="form-control form-control-sm">
+                                                                        <option>No</option>
+                                                                        <option value="partType501">Yes</option>
+                                                                    </select>
+                                                                </label>
+                                                                <hr>
+                                                                <label class="form-check-label w-100 col mx-auto"># of umbilical vessels?
+                                                                    <select class="form-control form-control-sm umbilical_0">
+                                                                        <option>one</option>
+                                                                        <option>two</option>
+                                                                        <option selected>three</option>
+                                                                    </select>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            Normal options
+                                                        </div>
+                                                        <div class="card-block chkboxes">
+                                                            <div style="font-size: 0.66em;" class="content form-check" id="column2b">
+                                                                <label class="form-check-label w-100"  id="_dxLine500"><input class="form-check-input" id="dxLine500" type="checkbox"> NORMAL FINDINGS</label> <br>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            Findings
+
+                                                        </div>
+                                                        <div class="card-block chkboxes">
+                                                            <div style="font-size: 0.66em;" class="content form-check" id="column3b">
+                                                                <label class="form-check-label w-100"  id="_mxLine500"><input class="form-check-input" id="mxLine500" type="checkbox"> NORMAL EVERYTHING </label>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Accordion #2-->
+                                    <div class="card">
+                                        <div class="card-header" role="tab" id="headingTwo">
+                                            <h5 class="mb-0">
+                                                <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                                    Umbilical cord
+                                                </a>
+                                            </h5>
+                                        </div>
+                                        <div id="collapseTwo" class="collapse" role="tabpanel" aria-label w-100ledby="headingOne">
+                                            <div class="card-block chkboxes">
+                                                <div class="card-group">
+                                                    <div class="card">
+                                                        <div class="card-header">
+
+                                                        </div>
+                                                        <div class="card-block chkboxes">
+                                                            <div style="font-size: 0.66em;" class="content form-check" id="column1c">
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            Final Diagnosis
+                                                        </div>
+                                                        <div class="card-block chkboxes">
+                                                            <div style="font-size: 0.66em;" class="content form-check" id="column2c">
+                                                                <label class="form-check-label w-100"  id="_dxLine510"><input class="form-check-input" id="dxLine510" type="checkbox"> NO SIGNIFICANT ABNORMALITIES </label>
+                                                                <label class="form-check-label w-100"  id="_dxLine511"><input class="form-check-input" id="dxLine511" type="checkbox"> UMBILICAL VASCULITIS/FUNISITIS </label>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            Microscopic Description
+                                                        </div>
+                                                        <div class="card-block chkboxes">
+                                                            <div style="font-size: 0.66em;" class="content form-check" id="column3c">
+                                                                <label class="form-check-label w-100"  id="_mxLine510"><input class="form-check-input" id="mxLine510" type="checkbox"> NORMAL </label>
+                                                                <label class="form-check-label w-100"  id="_mxLine511"><input class="form-check-input" id="mxLine511" type="checkbox"> UMBILICAL VASCULITIS / FUNISITS </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Accordion #3-->
+                                    <div class="card">
+                                        <div class="card-header" role="tab" id="headingThree">
+                                            <h5 class="mb-0">
+                                                <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                                    Membranes
+                                                </a>
+                                            </h5>
+                                        </div>
+                                        <div id="collapseThree" class="collapse " role="tabpanel" aria-label w-100ledby="headingOne">
+                                            <div class="card-block chkboxes">
+                                                <div class="card-group">
+                                                    <div class="card">
+                                                        <div class="card-header">
+
+                                                        </div>
+                                                        <div class="card-block chkboxes">
+                                                            <div style="font-size: 0.66em;" class="content form-check" id="column1d">
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            Final diagnosis
+                                                        </div>
+                                                        <div class="card-block chkboxes">
+                                                            <div style="font-size: 0.66em;" class="content form-check" id="column2d">
+                                                                <label class="form-check-label w-100"  id="_dxLine520"><input class="form-check-input" id="dxLine520" type="checkbox"> NORMAL </label>
+                                                                <label class="form-check-label w-100"  id="_dxLine521"><input class="form-check-input" id="dxLine521" type="checkbox"> ACUTE CHORIO </label>
+
+                                                                <label class="form-check-label w-100"  id="_dxLine522"><input class="form-check-input" id="dxLine522" type="checkbox"> MECONIUM STAINING (NO ACUTE CHORIO) </label>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            Microscopic Description
+                                                        </div>
+                                                        <div class="card-block chkboxes">
+                                                            <div style="font-size: 0.66em;" class="content form-check" id="column3d">
+                                                                <label class="form-check-label w-100"  id="_mxLine520"><input class="form-check-input" id="mxLine520" type="checkbox"> NORMAL </label>
+
+                                                                <label class="form-check-label w-100 extent"  id="_mxLine521"><input class="form-check-input" id="mxLine521" type="checkbox"> ACUTE CHORIO </label>
+
+                                                                <label class="form-check-label w-100"  id="_mxLine522"><input class="form-check-input" id="mxLine522" type="checkbox"> MECONIUM STAINING </label>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Accordion #4-->
+                                    <div class="card">
+                                        <div class="card-header" role="tab" id="headingFour">
+                                            <h5 class="mb-0">
+                                                <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                                    Fetal surface / Placental disk
+                                                </a>
+                                            </h5>
+                                        </div>
+                                        <div id="collapseFour" class="collapse" role="tabpanel" aria-label w-100ledby="headingFour">
+                                            <div class="card-block chkboxes">
+                                                <div class="card-group">
+                                                    <div class="card">
+                                                        <div class="card-header">
+
+                                                        </div>
+                                                        <div class="card-block chkboxes">
+                                                            <div style="font-size: 0.66em;" class="content form-check" id="column1e">
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            Final Diagnosis
+                                                        </div>
+                                                        <div class="card-block chkboxes">
+                                                            <div style="font-size: 0.66em;" class="content form-check" id="column2e">
+                                                                <label class="form-check-label w-100"  id="_dxLine540"><input class="form-check-input" id="dxLine540" type="checkbox"> NO SIGNIFICANT ABNORMALITIES </label>
+
+                                                                <label class="form-check-label w-100"  id="_dxLine531"><input class="form-check-input" id="dxLine531" type="checkbox"> CHORIONIC PLATE VASCULITIS </label>
+
+                                                                <label class="form-check-label w-100"  id="_dxLine541"><input class="form-check-input" id="dxLine541" type="checkbox"> DISTAL VILLOUS HYPOPLASIA </label>
+
+                                                                <label class="form-check-label w-100"  id="_dxLine542"><input class="form-check-input" id="dxLine542" type="checkbox"> CHORANGIOSIS </label>
+
+                                                                <label class="form-check-label w-100"  id="_dxLine543"><input class="form-check-input" id="dxLine543" type="checkbox"> CHORANGIOMA </label>
+
+                                                                <label class="form-check-label w-100"  id="_dxLine544"><input class="form-check-input" id="dxLine544" type="checkbox"> CHRONIC VILLITIS </label>
+
+                                                                <label class="form-check-label w-100"  id="_dxLine545"><input class="form-check-input" id="dxLine545" type="checkbox"> ACUTE VILLITIS </label>
+
+                                                                <label class="form-check-label w-100"  id="_dxLine546"><input class="form-check-input" id="dxLine546" type="checkbox"> ACUTE VILLITIS WITH VASCULOPATHY </label>
+
+                                                                <label class="form-check-label w-100"  id="_dxLine556"><input class="form-check-input" id="dxLine556" type="checkbox"> ACUTE NECROTIZING INTERVILLOSITIS </label>
+
+                                                                <label class="form-check-label w-100"  id="_dxLine547"><input class="form-check-input" id="dxLine547" type="checkbox"> INTERVILLOUS THROMBUS </label>
+
+                                                                <label class="form-check-label w-100"  id="_dxLine548"><input class="form-check-input" id="dxLine548" type="checkbox"> PLACENTAL INFARCTS </label>
+
+                                                                <label class="form-check-label w-100"  id="_dxLine549"><input class="form-check-input" id="dxLine549" type="checkbox"> INCREASED PERIVILLOUS FIBRIN (&lt;40% OF DISK) </label>
+
+                                                                <label class="form-check-label w-100"  id="_dxLine550"><input class="form-check-input" id="dxLine550" type="checkbox"> MASSIVE PERIVILLOUS FIBRIN (&gt;40% OF DISK) </label>
+
+                                                                <label class="form-check-label w-100"  id="_dxLine551"><input class="form-check-input" id="dxLine551" type="checkbox"> FETAL THROMBOTIC VASCULOPATHY </label>
+
+                                                                <label class="form-check-label w-100"  id="_dxLine552"><input class="form-check-input" id="dxLine552" type="checkbox"> NRBCS </label>
+
+                                                                <label class="form-check-label w-100 extent"  id="_dxLine553"><input class="form-check-input" id="dxLine553" type="checkbox"> VILLOUS EDEMA </label>
+
+                                                                <label class="form-check-label w-100"  id="_dxLine554"><input class="form-check-input" id="dxLine554" type="checkbox"> FEATURES OF ACUTE ABRUPTION </label>
+
+                                                                <label class="form-check-label w-100"  id="_dxLine555"><input class="form-check-input" id="dxLine555" type="checkbox"> FEATURES OF CHRONIC MARGINAL ABRUPTION </label>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            Microscopic Description
+                                                        </div>
+                                                        <div class="card-block chkboxes">
+                                                            <div style="font-size: 0.66em;" class="content form-check" id="column3e">
+                                                                <label class="form-check-label w-100 "  id="_mxLine540"><input class="form-check-input"  id="mxLine540" type="checkbox"> NORMAL </label>
+
+                                                                <label class="form-check-label w-100 "  id="_mxLine531"><input class="form-check-input"  id="mxLine531" type="checkbox"> CHORIONIC PLATE VASCULITIS </label>
+
+                                                                <label class="form-check-label w-100 "  id="_mxLine541"><input class="form-check-input"  id="mxLine541" type="checkbox"> DISTAL VILLOUS HYPOPLASIA </label>
+
+                                                                <label class="form-check-label w-100 "  id="_mxLine542"><input class="form-check-input"  id="mxLine542" type="checkbox"> CHORANGIOSIS </label>
+
+                                                                <label class="form-check-label w-100 "  id="_mxLine543"><input class="form-check-input"  id="mxLine543" type="checkbox"> CHORANGIOMA </label>
+
+                                                                <label class="form-check-label w-100  extent"  id="_mxLine544"><input class="form-check-input"  id="mxLine544" type="checkbox"> CHRONIC VILLITIS </label>
+
+                                                                <label class="form-check-label w-100  extent"  id="_mxLine545" ><input class="form-check-input"  id="mxLine545" type="checkbox"> ACUTE VILLITIS </label>
+
+                                                                <label class="form-check-label w-100  extent"  id="_mxLine546" ><input class="form-check-input"  id="mxLine546" type="checkbox"> ACUTE VILLITIS W/ VASCULOPATHY </label>
+
+                                                                <label class="form-check-label w-100  extent"  id="_mxLine556" ><input class="form-check-input"  id="mxLine556" type="checkbox"> ACUTE NECROTIZING INTERVILLOSITIS</label>
+
+                                                                <label class="form-check-label w-100 "  id="_mxLine547"><input class="form-check-input"  id="mxLine547" type="checkbox"> INTERVILLOUS THROMBUS </label>
+
+                                                                <label class="form-check-label w-100  extent"  id="_mxLine548" ><input class="form-check-input"  id="mxLine548" type="checkbox"> PLACENTAL INFARCTS </label>
+
+                                                                <label class="form-check-label w-100 "  id="_mxLine549"><input class="form-check-input"  id="mxLine549" type="checkbox"> INCREASED PERIVILLOUS FIBRIN (&lt;40% OF DISK) </label>
+
+                                                                <label class="form-check-label w-100 "  id="_mxLine550"><input class="form-check-input"  id="mxLine550" type="checkbox"> MASSIVE PERIVILLOUS FIBRIN (&gt;40% OF DISK) </label>
+
+                                                                <label class="form-check-label w-100  extent"  id="_mxLine551"><input class="form-check-input"  id="mxLine551" type="checkbox"> FETAL THROMBOTIC VASCULOPATHY </label>
+
+                                                                <label class="form-check-label w-100 "  id="_mxLine552"><input class="form-check-input"  id="mxLine552" type="checkbox"> NRBCS </label>
+
+                                                                <label class="form-check-label w-100  extent"  id="_mxLine553" ><input class="form-check-input"  id="mxLine553" type="checkbox"> VILLOUS EDEMA </label>
+
+                                                                <label class="form-check-label w-100  extent"  id="_mxLine554" ><input class="form-check-input"  id="mxLine554" type="checkbox"> FEATURES OF ACUTE ABRUPTION </label>
+
+                                                                <label class="form-check-label w-100 "  id="_mxLine555"><input class="form-check-input"  id="mxLine555" type="checkbox"> FEATURES OF CHRONIC MARGINAL ABRUPTION </label>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Accordion #5-->
+                                    <div class="card">
+                                        <div class="card-header" role="tab" id="headingFive">
+                                            <h5 class="mb-0">
+                                                <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                                    Maternal decidua
+                                                </a>
+                                            </h5>
+                                        </div>
+                                        <div id="collapseFive" class="collapse" role="tabpanel" aria-label w-100ledby="headingFive">
+                                            <div class="card-block chkboxes">
+                                                <div class="card-group">
+                                                    <div class="card">
+                                                        <div class="card-header">
+
+                                                        </div>
+                                                        <div class="card-block chkboxes">
+                                                            <div style="font-size: 0.66em;" class="content form-check" id="column1f">
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            Final Diagnosis
+                                                        </div>
+                                                        <div class="card-block chkboxes">
+                                                            <div style="font-size: 0.66em;" class="content form-check" id="column2f">
+                                                                <label class="form-check-label w-100"  id="_dxLine560"><input class="form-check-input" id="dxLine560" type="checkbox"> NORMAL </label> <br>
+                                                                <label class="form-check-label w-100"  id="_dxLine561"><input class="form-check-input" id="dxLine561" type="checkbox"> DECIDUAL ATHEROSIS </label> <br>
+                                                                <label class="form-check-label w-100"  id="_dxLine562"><input class="form-check-input" id="dxLine562" type="checkbox"> CHRONIC DECIDUITIS WITH PLASMA CELLS </label>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            Microscopic Description
+                                                        </div>
+                                                        <div class="card-block chkboxes">
+                                                            <div style="font-size: 0.66em;" class="content form-check" id="column3f">
+                                                                <label class="form-check-label w-100"  id="_mxLine560"><input class="form-check-input" id="mxLine560" type="checkbox"> NORMAL </label> <br>
+                                                                <label class="form-check-label w-100"  id="_mxLine561"><input class="form-check-input" id="mxLine561" type="checkbox"> DECIDUAL ATHEROSIS </label> <br>
+                                                                <label class="form-check-label w-100"  id="_mxLine562"><input class="form-check-input" id="mxLine562" type="checkbox"> CHRONIC DECIDUITIS WITH PLASMA CELLS </label> <br>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Accordion #6-->
+                                    <div class="card">
+                                        <div class="card-header" role="tab" id="headingSix">
+                                            <h5 class="mb-0">
+                                                <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                                    Comments
+                                                </a>
+                                            </h5>
+                                        </div>
+                                        <div id="collapseSix" class="collapse" role="tabpanel" aria-label w-100ledby="headingSix">
+                                            <div class="card-block chkboxes">
+                                                <div class="card-group">
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            Choose comment as needed
+                                                        </div>
+                                                        <div class="card-block chkboxes">
+                                                            <div style="font-size: 0.66em;" class="content form-check" id="column1g">
+                                                                <label class="form-check-label w-100"  id="_comLine500"><input class="form-check-input" id="comLine500" type="checkbox"> ACUTE INTERVILLOSITIS </label> <br>
+
+                                                                <label class="form-check-label w-100"  id="_comLine501"><input class="form-check-input" id="comLine501" type="checkbox"> CHRONIC VILLITIS / VUE </label> <br>
+
+                                                                <label class="form-check-label w-100"  id="_comLine502"><input class="form-check-input" id="comLine502" type="checkbox"> DISTAL VILLOUS HYPOPLASIA </label> <br>
+
+                                                                <label class="form-check-label w-100"  id="_comLine503"><input class="form-check-input" id="comLine503" type="checkbox"> NRBCS </label> <br>
+
+                                                                <label class="form-check-label w-100"  id="_comLine504"><input class="form-check-input" id="comLine504" type="checkbox"> MASSIVE CHRONIC INTERVILLOSITIS</label> <br>
+
+                                                                <label class="form-check-label w-100"  id="_comLine505"><input class="form-check-input" id="comLine505" type="checkbox"> MASSIVE PERIVILLOUS FIBRIN (>40%) </label> <br>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card">
+                                                        <div class="card-header">
+
+                                                        </div>
+                                                        <div class="card-block chkboxes">
+                                                            <div style="font-size: 0.66em;" class="content form-check" id="column1h">
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card">
+                                                        <div class="card-header">
+
+                                                        </div>
+                                                        <div class="card-block chkboxes">
+                                                            <div style="font-size: 0.66em;" class="content form-check" id="column1i">
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end accordion cards-->
                                 </div>
+                                <!-- right column-->
+                                <div class="col col-md-4" id="sticky">
+                                    <div class="card text-center">
+                                        <div class="card-header button-box">
+                                            <ul class="nav nav-pills standard-button-box">
+                                                <a class="btn btn-outline-success p-1 mb-2" id="writeReport">
+                                                    Write Report
+                                                </a>
+
+                                                <a class="btn btn-outline-danger p-1 mb-2 ml-4" id="Reset">Reset</a>
+                                            </ul>
+                                        </div>
+                                        <div class="card-block">
+
+                                            <form>
+                                                <!-- hide first text area
+                                        <div class="form-group">
+                                                <textarea class="form-control" id="outPut-1" rows="5" placeholder="CBC Data"></textarea>
+                                                <span class="input-group-addon btn btn-primary" data-clipboard-target="#outPut-1">Copy to Clipboard</span>
+                                        </div>   -->
+                                                <div class="form-group">
+                                                    <textarea class="form-control" id="outPut-2" rows="15" placeholder="Example Micro"></textarea>
+                                                    <span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-2">Copy to Clipboard</span>
+                                                </div>
+                                                <div class="form-group">
+                                                    <textarea class="form-control" id="outPut-3" rows="10" placeholder="Example Final"></textarea>
+                                                    <span class="input-group-addon copy  btn btn-primary" data-clipboard-target="#outPut-3">Copy to Clipboard</span>
+                                                </div>
+                                                <div class="form-group">
+                                                    <textarea class="form-control" id="outPut-4" rows="5" placeholder="Example Comment"></textarea>
+                                                    <span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-4">Copy to Clipboard</span>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end right column-->
+
                             </div>
-                        </form>
-
-                    </div>
-                    <div class="row text-center" style="padding: 1rem;">
-                        {{> page-partials/placenta-table summary=true}}
-                    </div>
-                </div>
-                <div class="card-block" style="padding: 1rem;">
-                    <div id="graphContainer" class="text-center pb-5"> 
-                    </div>
-
-                </div>
-                <div class="card-block">
-                    <div class="row text-center" style="padding: 1rem;">
-                        {{> page-partials/placenta-table summary=false}}
-                    </div>
+                        </div>
                 </div>
             </div>
-        </div>
-    </div>
+            <!-- end left column-->
 
-    <!-- modals & dialogs -->
-    <!-- Twin gestation dialog-->
-    <div class="twin_dialog" title="Select twin type">
-        <label class="form-check-label w-100"  for="twintype">Select twin type:</label>
-        <select id="twintype" class="form-control form-control-sm">
-            <option value='Dichorionic, diamnionic'>Di/Di</option>
-            <option value='Dichorionic, monoamnionic'>Di/Mo</option>
-            <option value='Monochorionic, monoamnionic'>Mo/Mo</option>
-        </select>
 
-        <div class="py-2 w-100"></div>
-        <label class="form-check-label w-100">TwinA umbilical vessels:
-            <select class="form-control form-control-sm umbilical_1">
+
+
+        <!-- Dialogs -->
+        <!-- Twin gestation dialog-->
+        <div class="twin_dialog" title="Select twin type">
+            <label class="form-check-label w-100"  for="twintype">Select twin type:</label>
+            <select id="twintype" class="form-control form-control-sm">
+                <option value='Dichorionic, diamnionic'>Di/Di</option>
+                <option value='Dichorionic, monoamnionic'>Di/Mo</option>
+                <option value='Monochorionic, monoamnionic'>Mo/Mo</option>
+            </select>
+
+            <div class="py-2 w-100"></div>
+            <label class="form-check-label w-100">TwinA umbilical vessels:
+                <select class="form-control form-control-sm umbilical_1">
+                    <option>one</option>
+                    <option>two</option>
+                    <option selected>three</option>
+                </select>
+            </label>
+            <div class="py-2 w-100"></div>
+            <label class="form-check-label w-100"  for="umbilical_4">TwinB umbilical vessels:</label>
+            <select id="umbilical_4" class="form-control form-control-sm">
                 <option>one</option>
                 <option>two</option>
                 <option selected>three</option>
             </select>
-        </label>
-        <div class="py-2 w-100"></div>
-        <label class="form-check-label w-100"  for="umbilical_4">TwinB umbilical vessels:</label>
-        <select id="umbilical_4" class="form-control form-control-sm">
-            <option>one</option>
-            <option>two</option>
-            <option selected>three</option>
-        </select>
+        </div>
+        <!-- END TWIN DIALOG-->
+
+        <!-- funisitis dialog-->
+        <div class='umbilical' title="Umbilical Vasculitis">
+            # of inflamed vessels
+            <select class="form-control form-control-sm" id="umbilical_2">
+                <option>one</option>
+                <option>two</option>
+                <option selected>three</option>
+            </select>
+
+            <div class="py-2 w-100"></div>
+
+            Any funisitis?
+            <select class="form-control form-control-sm" id="umbilical_3">
+                <option value='1'>yes</option>
+                <option value='2'>yes (necrotizing)</option>
+                <option selected value='3'>no</option>
+            </select >
+        </div>
+        <!-- end funisitis cord dialog-->
+
+        <!-- Extent of villitis dialog-->
+        <div class="dialog-extent" title="Extent of the lesion">
+           <label class="form-check-label w-100"  for="extent-value">To what extent do you see the lesion?</label>
+            
+            <select id="extent-value" class="form-control form-control-sm">
+                <option selected>focal</option>
+                <option >patchy</option>
+                <option >diffuse</option>
+            </select>
+        </div>
+        <!-- End Extent Dialog-->
+
     </div>
-    <!-- END TWIN DIALOG-->
-
-    <!-- funisitis dialog-->
-    <div class='umbilical' title="Umbilical Vasculitis">
-        # of inflamed vessels
-        <select class="form-control form-control-sm" id="umbilical_2">
-            <option>one</option>
-            <option>two</option>
-            <option selected>three</option>
-        </select>
-
-        <div class="py-2 w-100"></div>
-
-        Any funisitis?
-        <select class="form-control form-control-sm" id="umbilical_3">
-            <option value='1'>yes</option>
-            <option value='2'>yes (necrotizing)</option>
-            <option selected value='3'>no</option>
-        </select >
-    </div>
-    <!-- end funisitis cord dialog-->
-
-    <!-- Extent of villitis dialog-->
-    <div class="dialog-extent" title="Extent of the lesion">
-        <label class="form-check-label w-100"  for="extent-value">To what extent do you see the lesion?</label>
-        
-        <select id="extent-value" class="form-control form-control-sm">
-            <option selected>focal</option>
-            <option >patchy</option>
-            <option >diffuse</option>
-        </select>
-    </div>
-    <!-- End Extent Dialog-->
+    <!-- end bottom row-->
+    <!-- IHC Modal -->
     {{> page-partials/immuno this}}
+
+
     {{> page-modals/combined-report}}
     {{> page-modals/new-case-reference}}
     {{> page-partials/history-module}}
@@ -713,10 +662,11 @@
 
 <!--
 
-{"specificScripts": [
-"https://d3js.org/d3.v4.min.js",
-"/js/surg-path/placenta-scripts.js",
-"/json/json-placenta.js",
-]}
+{"specificScripts":
+[
+"/json/json-gi.js",
+"/js/gi-path/gi-scripts.js",
+]
+}
 
 -->
