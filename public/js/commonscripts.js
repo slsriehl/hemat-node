@@ -538,19 +538,24 @@ $(function () {
 });
 
 //****************** Add padding to create right sided text column
-String.prototype.rpad = function (num) {
+String.prototype.rpad = function (num, brk) {
     // .rpad() function to right pad block of text,
     // num = #of spaces to pad right
     // Explanation of regex: https://stackoverflow.com/questions/14484787/wrap-text-in-javascript/51506718#51506718
     // Here, capture group is 45 chars, to account for 72 char courier 11pt standard width in word document
 
-    var text = (this).match(/((?![^\n]{1,45}$)([^\n]{1,45})\s)|(.{1,45}$)/g);
-    console.log(text);
+	if (typeof brk == "undefined"){ brk == 45};
+	var re = `((?![^\\n]{1,${brk}}$)([^\\n]{1,${brk}})\\s)|(.{1,${brk}}$)`;
+	console.log("regex: ", re);
+	var str = new RegExp(re, "g");
+    var text = (this).match(str);
+    console.log("Matched text", text);
     if (text) {
         var padded = text[0]; // get first line, don't pad
-
-        for (var i = 1; i < text.length; i++) {
-            padded += "\n".padEnd(num) + text[i]; // pad subsequent lines
+		if (text.length > 1){
+            for (var i = 1; i < text.length; i++) {
+                padded += "\n".padEnd(num+1) + text[i]; // pad subsequent lines
+            }
         }
 
         return padded;
@@ -568,3 +573,26 @@ function arrayToSentence (arr) {
     });
 }
 //******************
+
+//*********************VALIDATE FINAL DIAGNOSIS FIELD ALWAYS HAS A DIAGNOSIS  ********//
+// ********************THAT FOLLOWS A PART TYPE (CORRECT FOR BLANK DIAGNOSES *********//
+function validate_finals(){
+    var finalText = $("#outPut-3").val();
+    // count # of times a colon+space occur
+    var reg1 = finalText.match(/\:.$/gm);
+    console.log("Matches of parts: "+reg1.length);
+    // count # of times dash+space occur
+    var reg2 = finalText.match(/(\:.$)\n\- /gm);
+    console.log("Matches of finals: "+reg2.length);
+    if (reg1.length > reg2.length){
+        alert("Oops, one of your parts doesn't have a diagnosis. Please check your report.");
+        return ;
+    }
+}
+// ********************END CORRECTION FOR BLANK DIAGNOSES *********//
+
+//*********************MAKE ALL MODALS DRAGGABLE*******************//
+$(".modal-dialog").draggable({
+    handle: ".modal-header"
+});
+//*********************END DRAGGABLE******************************//

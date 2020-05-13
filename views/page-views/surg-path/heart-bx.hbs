@@ -1,0 +1,793 @@
+<div class="container-fluid">
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item"><i class="fa fa-heartbeat mr-2"></i>Transplant Heart biopsy rejection synoptic</li>
+    </ol>
+
+    {{> message-center this}}
+    <div class="card mb-3">
+        <div class="card-header bg-info">
+            <!-- How to use and modal -->
+            <div class="row">
+                <div class="col-md-6">
+                    <button class="btn btn-success btn-block p-1" data-target="#help-ACR" data-toggle="modal"
+                            id='openACR'
+                            style='white-space: normal'
+                            type='button'> About ISHLT 2004 Acute Cellular Rejection
+                    </button>
+                    {{> page-modals/surg-path/heartbx-acr}}
+                </div>
+                <div class="col-md-6">
+                    <button class="btn btn-primary btn-block p-1" data-target="#help-AMR" data-toggle="modal"
+                            id='openAMR'
+                            style='white-space: normal'
+                            type='button'> About ISHLT 2013 Antibody Mediated Rejection
+                    </button>
+                    {{> page-modals/surg-path/heartbx-amr}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        {{> page-partials/cap-validate-alert}}
+        <div class="col col-md-7">
+            <h4 class="py-2">Click the headers to open and fill out your biopsy report.</h4>
+            <h5>The formatting works best if you use a monospaced font (like courier new, 10 or 11 pt)</h5>
+            <hr>
+            <div id="accordion" role="tablist" aria-multiselectable="true">
+                <!-- paste markup here-->
+
+                <!-- Biopsy quality-->
+                <div class="card">
+                    <div class="card-header" role="tab" id="heading-1">
+                        <h4 class="mb-0">
+                            <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapse-01" aria-expanded="true" aria-controls="collapseOne">
+                                Biopsy quality
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse-01" class="collapse p-1" role="tabpanel" aria-labelledby="heading-1">
+                        <h5>Number of biopsy pieces</h5>
+                        <input type="text" class="form-control form-control-sm col-sm-6" id="box1" placeholder="">
+
+
+
+
+                        <hr class="p-2" >
+                        <h5>Number with adequate myocardium</h5>
+                        <input type="text" class="form-control form-control-sm col-sm-6" id="box2" placeholder="">
+
+
+
+
+                        <hr class="p-2" >
+                        <h5>Number sampling Non-myocardial tissues</h5>
+                        <input type="text" class="form-control form-control-sm col-sm-6" id="box3" placeholder="">
+
+
+
+
+                        <hr class="p-2" >
+                        <h5>Adequacy</h5>
+                        <select id="box5" class='form-control  form-control-sm col-sm-6'>
+                            <option>Adequate biopsies submitted</option>
+                            <option>Borderline adequate biopsy</option>
+                            <option>Inadequate biopsy</option>
+                        </select>
+
+
+
+                        <hr>
+                    </div>
+                </div>
+
+                <!-- Endomyocardium-->
+                <div class="card">
+                    <div class="card-header" role="tab" id="heading-2">
+                        <h4 class="mb-0">
+                            <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapse-02" aria-expanded="true" aria-controls="collapseOne">
+                                Endomyocardium assessment
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse-02" class="collapse p-1" role="tabpanel" aria-labelledby="heading-2">
+                        <h4 class="py-2">Myocytes</h4>
+
+                        <div class="ml-3 p-1">
+
+                            <h5>Rejection type infiltrate present?</h5>
+                            <select id="box6" class='form-control  form-control-sm col-sm-6'>
+                                <option>No</option>
+                                <option>Yes</option>
+                                <option>Interderminate</option>
+                            </select>
+
+
+                            <hr class="p-2" >
+                            <h5>Ischemia</h5>
+                            <select id="box10" class='form-control  form-control-sm col-sm-6'>
+                                <option>Absent</option>
+                                <option>Present - focal</option>
+                                <option>Present - multifocal</option>
+                                <option>Present - diffuse</option>
+                            </select>
+
+
+                            <hr class="p-2" >
+                            <h5>Nucleation</h5>
+                            <select id="box11" class='form-control  form-control-sm col-sm-6'>
+                                <option>Uniformly intact myocyte nuclei</option>
+                                <option>Anucleate myocytes present - focal</option>
+                                <option>Anucleate myocytes present - multifocal</option>
+                                <option>Anucleate myocytes present - diffuse</option>
+                            </select>
+
+
+                            <hr class="p-2" >
+                            <h5>Myocyte injury</h5>
+                            <select id="box12" class='form-control  form-control-sm col-sm-6'>
+                                <option>No pathologic changes</option>
+                                <option>Focal myocyte hypereosinophilia</option>
+                                <option>Multifocal myocyte hypereosinophilia</option>
+                                <option>Focal myocyte vacuolization</option>
+                                <option>Multifocal myocyte vacuolization</option>
+                                <option>Focal feathery degeneration</option>
+                                <option>Multifocal feathery degeneration</option>
+                                <option>Focal myocyte necrosis</option>
+                                <option>Multifocal myocyte necrosis</option>
+                            </select>
+
+
+                            <hr class="p-2" >
+                            <h5>Organization</h5>
+                            <select id="box13" class='form-control  form-control-sm col-sm-6'>
+                                <option>No pathologic changes</option>
+                                <option>Focal myocyte disorganization</option>
+                                <option>Multifocal myocyte disorganization</option>
+                                <option>Focal irregular myocyte hypertrophy</option>
+                                <option>Multifocal irregular myocyte hypertrophy</option>
+                            </select>
+
+
+                            <hr class="p-2" >
+                            <h5>Other changes</h5>
+                            <input type="text" class="form-control form-control-sm col-sm-10 opt" id="box14" placeholder="Describe any other changes">
+
+                        </div>
+
+
+                        <div class="py-4 w-100"></div>
+
+
+                        <h4 class="py-2" >Capillary vasculature</h4>
+
+
+                        <div class="ml-3 p-1">
+                            <h5>Endothelium</h5>
+                            <select id="box20" class='form-control  form-control-sm col-sm-6'>
+                                <option>No pathologic changes</option>
+                                <option>Focal endothelial swelling</option>
+                                <option>Multifocal endothelial swelling</option>
+                                <option>Diffuse endothelial swelling</option>
+                            </select>
+
+
+                            <hr class="p-2" >
+                            <h5>Luminal occlusion</h5>
+                            <select id="box21" class='form-control  form-control-sm col-sm-6'>
+                                <option>No luminal fibrin or occlusion</option>
+                                <option>Focal luminal fibrin</option>
+                                <option>Focal luminal thrombus</option>
+                                <option>Multifocal luminal fibrin</option>
+                                <option>Multifocal luminal thrombus</option>
+                                <option>Diffuse luminal fibrin</option>
+                                <option>Diffuse luminal thrombus</option>
+                            </select>
+
+
+                            <hr class="p-2" >
+                            <h5>Other vascular changes</h5>
+                            <input type="text" class="form-control form-control-sm col-sm-10 opt" id="box22" placeholder="Describe any other changes">
+
+                        </div>
+
+                        <div class="py-4 w-100"></div>
+
+                        <h4 class="py-2">Interstitium</h4>
+
+                        <div class="ml-3 p-1">
+                            <h5>Cellularity</h5>
+                            <select id="box25" class='form-control  form-control-sm col-sm-6'>
+                                <option>No significant alteration in cellularity</option>
+                                <option>Focal increase in cellularity</option>
+                                <option>Multifocal increase in cellularity</option>
+                                <option>Diffuse increase in cellularity</option>
+                            </select>
+
+
+                            <hr class="p-2" >
+                            <h5>Edema</h5>
+                            <select id="box26" class='form-control  form-control-sm col-sm-6'>
+                                <option>Absent</option>
+                                <option>Focally present</option>
+                                <option>Diffusely present</option>
+                            </select>
+
+
+                            <hr class="p-2" >
+                            <h5>Fibrosis/Scar</h5>
+                            <select id="box27" class='form-control  form-control-sm col-sm-6'>
+                                <option>Absent</option>
+                                <option>Focal fibrosis present</option>
+                                <option>Multifocal fibrosis present</option>
+                                <option>Changes consistent with prior biopsy site</option>
+                                <option>Changes consistent with remote ischemia</option>
+                            </select>
+
+
+                            <hr class="p-2" >
+                            <h5>Other interstitial changes</h5>
+                            <input type="text" class="form-control form-control-sm col-sm-10 opt" id="box28" placeholder="Describe any other changes">
+                        </div>
+
+
+                        <div class="py-4 w-100"></div>
+                    </div>
+                </div>
+
+                <!-- Inflammatory infiltrate-->
+                <div class="card">
+                    <div class="card-header" role="tab" id="heading-3">
+                        <h4 class="mb-0">
+                            <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapse-03" aria-expanded="true" aria-controls="collapseOne">
+                                Inflammatory Infiltrate
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse-03" class="collapse p-1" role="tabpanel" aria-labelledby="heading-3">
+                        <div class="ml-3 p-1">
+                            <h4>Lymphocytes</h4>
+                            <div class="ml-3 p-1">
+                                <select id="box30" class='form-control  form-control-sm col-sm-6'>
+                                    <option>Absent</option>
+                                    <option>Sparse infiltrates</option>
+                                    <option>Focal infiltrates</option>
+                                    <option>Multifocal infiltrates</option>
+                                    <option>Diffuse infiltrates</option>
+                                </select>
+
+                                <div class="lymph" style="display: none;">
+                                    <hr class="p-2" >
+                                    <h5>Localization (select all that apply)</h5>
+                                    <select multiple id="box31" class='form-control  form-control-sm col-sm-6'>
+                                        <option>Intravascular</option>
+                                        <option>Perivascular</option>
+                                        <option>Interstitial</option>
+                                        <option>Myocardium</option>
+                                        <option>Endocardium (plaque-like)</option>
+                                        <option>Endocardium (nodular)</option>
+                                    </select>
+
+
+                                    <hr class="p-2" >
+                                    <h5>Density</h5>
+                                    <select id="box32" class='form-control  form-control-sm col-sm-6'>
+                                        <option>Scant</option>
+                                        <option>Mild</option>
+                                        <option>Moderate</option>
+                                        <option>Extensive</option>
+                                    </select>
+
+
+                                    <hr class="p-2" >
+                                    <h5>Atypia</h5>
+                                    <select id="box33" class='form-control  form-control-sm col-sm-6'>
+                                        <option>Absent</option>
+                                        <option>Minimal</option>
+                                        <option>Moderate with few large cells</option>
+                                        <option>Extensive with many large cells</option>
+                                        <option>Extensive with uniformly large cells</option>
+                                    </select>
+
+                                </div>
+                            </div>
+
+
+                            <div class="py-4 w-100"></div>
+
+                            <h4>Plasma cells</h4>
+                            <div class="ml-3 p-1">
+                                <select id="box35" class='form-control  form-control-sm col-sm-6'>
+                                    <option>Absent</option>
+                                    <option>Sparse infiltrates</option>
+                                    <option>Focal infiltrates</option>
+                                    <option>Multifocal infiltrates</option>
+                                    <option>Diffuse infiltrates</option>
+                                </select>
+
+
+                                <div class="plasma" style="display: none;">
+
+                                    <hr class="p-2" >
+                                    <h5>Localization</h5>
+                                    <select multiple id="box36" class='form-control  form-control-sm col-sm-6'>
+                                        <option>Intravascular</option>
+                                        <option>Perivascular</option>
+                                        <option>Interstitial</option>
+                                        <option>Myocardium</option>
+                                        <option>Endocardium</option>
+                                    </select>
+
+                                    <hr class="p-2" >
+                                    <h5>Density</h5>
+                                    <select id="box37" class='form-control  form-control-sm col-sm-6'>
+                                        <option>Scant</option>
+                                        <option>Mild</option>
+                                        <option>Moderate</option>
+                                        <option>Extensive</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="py-4 w-100"></div>
+
+                            <h4>Neutrophils</h4>
+                            <div class="ml-3 p-1">
+                                <select id="box40" class='form-control  form-control-sm col-sm-6'>
+                                    <option>Absent</option>
+                                    <option>Sparse infiltrates</option>
+                                    <option>Focal infiltrates</option>
+                                    <option>Multifocal infiltrates</option>
+                                    <option>Diffuse infiltrates</option>
+                                </select>
+
+
+                                <div class="neuts" style="display: none;">
+
+                                    <hr class="p-2" >
+                                    <h5>Localization</h5>
+                                    <select multiple id="box41" class='form-control  form-control-sm col-sm-6'>
+                                        <option>Intravascular</option>
+                                        <option>Perivascular</option>
+                                        <option>Interstitial</option>
+                                        <option>Myocardium</option>
+                                        <option>Endocardium</option>
+                                    </select>
+
+
+                                    <hr class="p-2" >
+                                    <h5>Density</h5>
+                                    <select id="box42" class='form-control  form-control-sm col-sm-6'>
+                                        <option>Scant</option>
+                                        <option>Mild</option>
+                                        <option>Moderate</option>
+                                        <option>Extensive</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="py-4 w-100"></div>
+
+                            <h4>Eosinophils</h4>
+                            <div class="ml-3 p-1">
+                                <select id="box45" class='form-control  form-control-sm col-sm-6'>
+                                    <option>Absent</option>
+                                    <option>Sparse infiltrates</option>
+                                    <option>Focal infiltrates</option>
+                                    <option>Multifocal infiltrates</option>
+                                    <option>Diffuse infiltrates</option>
+                                </select>
+
+
+                                <div class="eos" style="display: none;">
+
+                                    <hr class="p-2" >
+                                    <h5>Localization</h5>
+                                    <select multiple id="box46" class='form-control  form-control-sm col-sm-6'>
+                                        <option>Intravascular</option>
+                                        <option>Perivascular</option>
+                                        <option>Interstitial</option>
+                                        <option>Myocardium</option>
+                                        <option>Endocardium</option>
+                                    </select>
+
+
+                                    <hr class="p-2" >
+                                    <h5>Density</h5>
+                                    <select id="box47" class='form-control  form-control-sm col-sm-6'>
+                                        <option>Scant</option>
+                                        <option>Mild</option>
+                                        <option>Moderate</option>
+                                        <option>Extensive</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="py-4 w-100"></div>
+
+                            <h4>Histiocytes</h4>
+                            <div class="ml-3 p-1">
+                                <select id="box50" class='form-control  form-control-sm col-sm-6'>
+                                    <option>Absent</option>
+                                    <option>Sparse infiltrates</option>
+                                    <option>Focal infiltrates</option>
+                                    <option>Multifocal infiltrates</option>
+                                    <option>Diffuse infiltrates</option>
+                                </select>
+
+
+                                <div class="histio" style="display: none;">
+
+                                    <hr class="p-2" >
+                                    <h5>Localization</h5>
+                                    <select multiple id="box51" class='form-control  form-control-sm col-sm-6'>
+                                        <option>Intravascular</option>
+                                        <option>Perivascular</option>
+                                        <option>Interstitial</option>
+                                        <option>Myocardium</option>
+                                        <option>Endocardium</option>
+                                    </select>
+
+
+                                    <hr class="p-2" >
+                                    <h5>Density</h5>
+                                    <select id="box52" class='form-control  form-control-sm col-sm-6'>
+                                        <option>Scant</option>
+                                        <option>Mild - no aggregates</option>
+                                        <option>Moderate - few expansile aggregates</option>
+                                        <option>Extensive - numerous expansile aggregates</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Quilty-->
+                <div class="card">
+                    <div class="card-header" role="tab" id="heading-4">
+                        <h4 class="mb-0">
+                            <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapse-04" aria-expanded="true" aria-controls="collapseOne">
+                                Quilty
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse-04" class="collapse p-1" role="tabpanel" aria-labelledby="heading-4">
+                        <div class="ml-3 p-1">
+                            <h5>Quilty lesions</h5>
+                            <select id="box55" class='form-control  form-control-sm col-sm-6'>
+                                <option>Absent</option>
+                                <option>Present</option>
+                            </select>
+
+                            <div class="quilty" style="display: none;">
+                                <hr class="p-2" >
+                                <h5>Number of Quilty lesions</h5>
+                                <select id="box56" class='form-control  form-control-sm col-sm-6'>
+                                    <option>Single</option>
+                                    <option>Two</option>
+                                    <option>Three</option>
+                                    <option>Four</option>
+                                    <option>Greater than four</option>
+                                </select>
+
+
+                                <hr class="p-2" >
+                                <h5>Pattern</h5>
+                                <select id="box57" class='form-control  form-control-sm col-sm-6'>
+                                    <option>Endocardium - nodular</option>
+                                    <option>Endocardium - plaque</option>
+                                    <option>Endomyocardium - nodular and infiltrative</option>
+                                    <option>Endomyocardium - plaque and infiltrative</option>
+                                </select>
+
+
+                                <hr class="p-2" >
+                                <h5>Intralesional vessels</h5>
+                                <select id="box58" class='form-control  form-control-sm col-sm-6'>
+                                    <option>Inconspicuous</option>
+                                    <option>Present</option>
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Infection -->
+                <div class="card">
+                    <div class="card-header" role="tab" id="heading-5">
+                        <h4 class="mb-0">
+                            <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapse-05" aria-expanded="true" aria-controls="collapseOne">
+                                Infection
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse-05" class="collapse p-1" role="tabpanel" aria-labelledby="heading-5">
+                        <div class="ml-3 p-1">
+                            <h5>Features of infection</h5>
+                            <select id="box60" class='form-control  form-control-sm col-sm-6'>
+                                <option>Absent</option>
+                                <option>Present</option>
+                            </select>
+
+                            <div class="infection" style="display: none;">
+                                <hr class="py-2" >
+                                <h5>Infection finding</h5>
+                                <select id="box61" class='form-control  form-control-sm col-sm-6'>
+                                    <option>CMV-like inclusions</option>
+                                    <option>HSV-like inclusions</option>
+                                    <option>Non-specific viral cytopathic changes</option>
+                                    <option>Toxoplasma-like inclusion</option>
+                                    <option>Fungal hyphae</option>
+                                    <option>Bacteria</option>
+                                    <option></option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- AMR -->
+                <div class="card">
+                    <div class="card-header" role="tab" id="heading-6">
+                        <h4 class="mb-0">
+                            <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapse-06" aria-expanded="true" aria-controls="collapseOne">
+                                Antibody Mediated Rejection
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse-06" class="collapse p-1" role="tabpanel" aria-labelledby="heading-6">
+                        <div class="ml-3 p-1">
+                            <h5>Histological AMR changes</h5>
+                            <select id="box65" class='form-control  form-control-sm col-sm-6'>
+                                <option>Absent</option>
+                                <option>Present</option>
+                            </select>
+
+
+                            <hr class="p-2" >
+                            <h5>IHC</h5>
+                            <select id="box66_1" class='form-control  form-control-sm col-sm-6'>
+                                <option>Not performed</option>
+                                <option>Performed</option>
+                            </select>
+
+                            <div class="py-3 w-100"></div>
+                            <hr>
+                            <div class="c4d" style="display: none;">
+                                <h5>C4d IHC - distribution</h5>
+                                <select id="box66" class='form-control  form-control-sm col-sm-6'>
+                                    <option>NEG, 0+ (0-10%)</option>
+                                    <option>POS, 1+ (10-50%)</option>
+                                    <option>POS, 2+ (50-100%)</option>
+                                </select>
+
+                                <div class="py-3 w-100"></div>
+
+                                <h5>C4d IHC - intensity</h5>
+                                <select id="box67" class='form-control  form-control-sm col-sm-6'>
+                                    <option>NEG, 0+</option>
+                                    <option>POS, 1+ (dim)</option>
+                                    <option>POS, 2+ (strong & uniform)</option>
+                                </select>
+
+                            <div class="py-3 w-100"></div>
+
+                            <hr>
+                                <h5>CD68 IHC - distribution</h5>
+                                <select id="box68" class='form-control  form-control-sm col-sm-6'>
+                                    <option>NEG, 0+ (0-10% intravascular)</option>
+                                    <option>POS,  1+ (10-50% intravascular)</option>
+                                    <option>POS,  2+ (51-100% intravascular)</option>
+                                    <option selected>Not applicable</option>
+                                </select>
+
+                            <div class="py-3 w-100"></div>
+
+                            <h5>Other Immunohistochemistry</h5>
+                            <button type="button" class="btn btn-info btn-md p-1 opt" data-toggle="modal" data-target="#IHCbox">Immuno Box
+                            </button>
+
+                            {{> page-partials/immuno this}}
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Stains -->
+                <div class="card">
+                    <div class="card-header" role="tab" id="heading-7">
+                        <h4 class="mb-0">
+                            <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapse-07" aria-expanded="true" aria-controls="collapseOne">
+                                Additional Studies
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse-07" class="collapse p-1" role="tabpanel" aria-labelledby="heading-7">
+                        <h5>Special stains (select all that apply)</h5>
+                        <select multiple id="box70" class='form-control  form-control-sm col-sm-6'>
+                            <option selected>None performed</option>
+                            <option>Trichrome</option>
+                            <option>Congo Red</option>
+                            <option>VVG</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Final diagnoses -->
+                <div class="card">
+                    <div class="card-header" role="tab" id="heading-8">
+                        <h4 class="mb-0">
+                            <a class="collapsed btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapse-8" aria-expanded="true" aria-controls="collapseOne">
+                                Final Diagnoses
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse-8" class="collapse " role="tabpanel" aria-labelledby="heading-8">
+                        <div class="card-block chkboxes">
+                            <div class="card-group">
+                                <div class="card">
+                                    <div class="card-header">
+                                        Rejection
+                                    </div>
+                                    <div class="card-block chkboxes">
+                                        <div style="font-size: 0.66em;" class="content form-check facr" id="column2b">
+                                            <label class="form-check-label" id="_dxLine001"><input class="form-check-input" id="dxLine001" name="dxLine" type="checkbox"> Negative ACR (Gr 0R) </label><br>
+                                            <label class="form-check-label" id="_dxLine010"><input class="form-check-input" id="dxLine010" name="dxLine" type="checkbox">Neg AMR, H- no IHC</label><br>
+                                            <label class="form-check-label" id="_dxLine020"><input class="form-check-input" id="dxLine020" name="dxLine" type="checkbox">Neg AMR, H- & I- </label><br>
+                                            <div class="mt-3 mb-1 w-100 font-weight-bold">Positive for ACR</div>
+                                            <label class="form-check-label" id="_dxLine100"><input class="form-check-input" id="dxLine100" name="dxLine" type="checkbox"> Mild ACR (Gr 1R) </label><br>
+                                            <label class="form-check-label" id="_dxLine110"><input class="form-check-input" id="dxLine110" name="dxLine" type="checkbox"> Moderate ACR (Gr 2R) </label><br>
+                                            <label class="form-check-label" id="_dxLine120"><input class="form-check-input" id="dxLine120" name="dxLine" type="checkbox"> Severe ACR (Gr 3R) </label><br>
+                                            <div class="mt-3 mb-1 w-100 font-weight-bold">Positve for AMR</div>
+                                            <label class="form-check-label" id="_dxLine130"><input class="form-check-input" id="dxLine130" name="dxLine" type="checkbox"> pAMR-1 H+ </label><br>
+                                            <label class="form-check-label" id="_dxLine140"><input class="form-check-input" id="dxLine140" name="dxLine" type="checkbox"> pAMR-1 I+ </label><br>
+                                            <label class="form-check-label" id="_dxLine141"><input class="form-check-input" id="dxLine141" name="dxLine" type="checkbox"> pAMR-2 </label><br>
+                                            <label class="form-check-label" id="_dxLine142"><input class="form-check-input" id="dxLine142" name="dxLine" type="checkbox"> pAMR-3 </label><br>
+                                            <div class="mt-3 mb-1 w-100 font-weight-bold">AMR IHC patterns</div>
+                                            <label class="form-check-label" id="_dxLine150"><input class="form-check-input" id="dxLine150" name="dxLine" type="checkbox"> C4d multi/weak </label><br>
+                                            <label class="form-check-label" id="_dxLine151"><input class="form-check-input" id="dxLine151" name="dxLine" type="checkbox"> C4d multi/strong </label><br>
+                                            <label class="form-check-label" id="_dxLine152"><input class="form-check-input" id="dxLine152" name="dxLine" type="checkbox"> C4d diffuse/weak </label><br>
+                                            <label class="form-check-label" id="_dxLine153"><input class="form-check-input" id="dxLine153" name="dxLine" type="checkbox"> C4d diffuse/strong</label><br>
+                                            <div class="my-3 w-100"></div>
+                                            <label class="form-check-label" id="_dxLine155"><input class="form-check-input" id="dxLine155" name="dxLine" type="checkbox"> CD68 multi/weak </label><br>
+                                            <label class="form-check-label" id="_dxLine156"><input class="form-check-input" id="dxLine156" name="dxLine" type="checkbox"> CD68 multi/strong</label><br>
+                                            <label class="form-check-label" id="_dxLine157"><input class="form-check-input" id="dxLine157" name="dxLine" type="checkbox"> CD68 diffuse/weak </label><br>
+                                            <label class="form-check-label" id="_dxLine158"><input class="form-check-input" id="dxLine158" name="dxLine" type="checkbox"> CD68 diffuse/strong </label><br>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        Other histologic findings
+                                    </div>
+                                    <div class="card-block chkboxes">
+                                        <div style="font-size: 0.66em;" class="content form-check famr" id="column3b">
+                                            <div class="mt-1 mb-1 w-100 font-weight-bold">Quilty</div>
+                                            <label class="form-check-label" id="_dxLine200"><input class="form-check-input" id="dxLine200" name="dxLine" type="checkbox"> No Quilty </label><br>
+                                            <label class="form-check-label" id="_dxLine201"><input class="form-check-input" id="dxLine201" name="dxLine" type="checkbox"> 1 Quilty </label><br>
+                                            <label class="form-check-label" id="_dxLine202"><input class="form-check-input" id="dxLine202" name="dxLine" type="checkbox"> 2 Quilty </label><br>
+                                            <label class="form-check-label" id="_dxLine203"><input class="form-check-input" id="dxLine203" name="dxLine" type="checkbox"> 3 Quilty </label><br>
+                                            <label class="form-check-label" id="_dxLine204"><input class="form-check-input" id="dxLine204" name="dxLine" type="checkbox"> Lots Quilty </label><br>
+                                            <div class="mt-3 mb-1 w-100 font-weight-bold">Fibrosis / ischemia</div>
+                                            <label class="form-check-label" id="_dxLine221"><input class="form-check-input" id="dxLine221" name="dxLine" type="checkbox"> No ischemia </label><br>
+                                            <label class="form-check-label" id="_dxLine225"><input class="form-check-input" id="dxLine225" name="dxLine" type="checkbox"> Focal ischemia </label><br>
+                                            <label class="form-check-label" id="_dxLine226"><input class="form-check-input" id="dxLine226" name="dxLine" type="checkbox"> Extensive ischemia </label><br>
+                                            <div class="mt-3 mb-1 w-100 font-weight-bold">Prior biopsy</div>
+                                            <label class="form-check-label" id="_dxLine230"><input class="form-check-input" id="dxLine230" name="dxLine" type="checkbox"> Prior biopsy site </label><br>
+                                            <label class="form-check-label" id="_dxLine231"><input class="form-check-input" id="dxLine231" name="dxLine" type="checkbox"> Suggests prior biopsy site </label><br>
+                                            <div class="mt-3 mb-1 w-100 font-weight-bold">Infection</div>
+                                            <label class="form-check-label" id="_dxLine222"><input class="form-check-input" id="dxLine222" name="dxLine" type="checkbox"> No infection </label><br>
+                                            <div class="my-2 w-100"></div>
+                                            <label class="form-check-label" id="_dxLine240"><input class="form-check-input" id="dxLine240" name="dxLine" type="checkbox"> No CMV by IHC </label><br>
+                                            <label class="form-check-label" id="_dxLine241"><input class="form-check-input" id="dxLine241" name="dxLine" type="checkbox"> Yes CMV by IHC </label><br>
+                                            <div class="my-2 w-100"></div>
+                                            <label class="form-check-label" id="_dxLine245"><input class="form-check-input" id="dxLine245" name="dxLine" type="checkbox"> No fungus by stains </label><br>
+                                            <label class="form-check-label" id="_dxLine246"><input class="form-check-input" id="dxLine246" name="dxLine" type="checkbox"> Yes fungus by stains </label><br>
+                                            <div class="my-2 w-100"></div>
+                                            <label class="form-check-label" id="_dxLine250"><input class="form-check-input" id="dxLine250" name="dxLine" type="checkbox"> No PTLD or EBV </label><br>
+                                            <label class="form-check-label" id="_dxLine251"><input class="form-check-input" id="dxLine251" name="dxLine" type="checkbox"> Yes poly PTLD & EBV </label><br>
+                                            <label class="form-check-label" id="_dxLine252"><input class="form-check-input" id="dxLine252" name="dxLine" type="checkbox"> Yes mono PTLD & EBV </label><br>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        Comments
+                                    </div>
+                                    <div class="card-block chkboxes">
+                                        <div style="font-size: 0.66em;" class="content form-check fother" id="column3b">
+                                            <div class="mt-1 mb-1 w-100 font-weight-bold">Prior biopsy review</div>
+                                            <label class="form-check-label" id="_commLine100"><input class="form-check-input" id="commLine100" name="dxLine" type="checkbox">Prior = same </label><br>
+                                            <label class="form-check-label" id="_commLine110"><input class="form-check-input" id="commLine110" name="dxLine" type="checkbox">Current = worse </label><br>
+                                            <label class="form-check-label" id="_commLine111"><input class="form-check-input" id="commLine111" name="dxLine" type="checkbox">Current = ++worse </label><br>
+                                            <label class="form-check-label" id="_commLine112"><input class="form-check-input" id="commLine112" name="dxLine" type="checkbox">Current = better </label><br>
+                                            <label class="form-check-label" id="_commLine113"><input class="form-check-input" id="commLine113" name="dxLine" type="checkbox">Current = ++better </label><br>
+                                            <div class="m3-1 mb-1 w-100 font-weight-bold">PTLD</div>
+                                            <label class="form-check-label" id="_commLine120"><input class="form-check-input" id="commLine120" name="dxLine" type="checkbox">Suspicious PTLD </label><br>
+                                            <label class="form-check-label" id="_commLine121"><input class="form-check-input" id="commLine121" name="dxLine" type="checkbox">Polymorph. PTLD </label><br>
+                                            <label class="form-check-label" id="_commLine122"><input class="form-check-input" id="commLine122" name="dxLine" type="checkbox">Monomorph. PTLD </label><br>
+                                            <div class="m3-1 mb-1 w-100 font-weight-bold">Case QA</div>
+                                            <label class="form-check-label" id="_commLine010"><input class="form-check-input" id="commLine010" name="dxLine" type="checkbox">Case D/W ... </label><br>
+                                            <label class="form-check-label" id="_commLine020"><input class="form-check-input" id="commLine020" name="dxLine" type="checkbox">QA Review performed </label><br>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end markup-->
+        </div>
+
+        <!-- middle right text output-->
+        <div class="col-md-5 " id="bottom-r">
+            <div class="card text-center ">
+                <div class="card-header">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item">
+                            <a class="btn btn-outline-info p-2" id="writeReport">
+                                <small>Write Report</small>
+                            </a>
+                            <a class="btn btn-outline-danger p-2 ml-4" id="Reset">Reset</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-block">
+                    <div class="form-group">
+                <textarea class="form-control" id="outPut-2" rows="9"
+                          placeholder="Micro"></textarea>
+                        <span class="input-group-addon copy btn btn-primary"
+                              data-clipboard-target="#outPut-2">Copy to Clipboard</span>
+                    </div>
+                </div>
+                <div class="card-block">
+                    <div class="form-group">
+                <textarea class="form-control" id="outPut-3" rows="6"
+                          placeholder="Finals">HEART, RIGHT VENTRICLE, TRANSPLANT BIOPSY:
+                </textarea>
+                        <span class="input-group-addon copy btn btn-primary"
+                              data-clipboard-target="#outPut-3">Copy to Clipboard</span>
+                    </div>
+                </div>
+                <div class="card-block">
+                    <div class="form-group">
+                <textarea class="form-control" id="outPut-4" rows="6"
+                          placeholder="Comments"></textarea>
+                        <span class="input-group-addon copy btn btn-primary"
+                              data-clipboard-target="#outPut-4">Copy to Clipboard</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+            <!-- close markup -->
+        <!-- close row -->
+    </div>
+    {{> page-partials/history-module}}
+    {{> page-modals/combined-report}}
+    <!-- close container -->
+</div>
