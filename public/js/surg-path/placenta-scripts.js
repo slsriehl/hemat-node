@@ -19,6 +19,40 @@ $(window).on('load', function(){
         }
     });
 
+    // GLOBAL VARIABLES
+    var fullJSON;
+    var sorted;
+    var percentages = [10,25,50,75,90];
+    var percentilesHistoric;
+    var percentilesRealtime;
+    var countries, states, cities;
+    var minDataPoints = 10;
+
+    // *********************************************
+    // GET REALTIME REFERENCE
+    // *********************************************
+
+    $.ajax({
+            url: 'https://hematogones.com/surg-path/placenta-data',
+            type: 'GET',
+            dataType: "json",
+            success: function(json){
+                fullJSON = json;
+                // Get lists of all countries, states, and cities in the dataset
+                countries = getAllGeo(json,"country").map(function(obj,index){
+                    return isoCountries[obj];
+                });
+                states = getAllGeo(json,"state");
+                cities = getAllGeo(json,"city");
+            },
+            error: function(err)
+            {
+            }
+
+    }).done(function(response){
+             console.log("Got Data from DB");
+    });
+
 
 
 //***************************************************************************************//
@@ -60,8 +94,6 @@ $(window).on('load', function(){
 // PLACENTA HISTORIC REFERENCE RANGE AND DATA ENTRY
     $('.getref').on('click', function (e) {
         e.preventDefault();
-        var partTypes = $.extend(true, {}, partJson); // extended original JSON to this variable, so header replaces are reset on new values entered
-
         var plac_ga = $('#plac_age').val();
         var plac_weight = $('#plac_wt').val();
         var wk = parseFloat($('#plac_age').val());
@@ -70,6 +102,7 @@ $(window).on('load', function(){
         var plac_cite = $('#reference').find(":selected").data("ref");
         var plac_type = $("#plac_type").val();
         var minWeight = 50;
+
         if(!(wk > 0)){
             alert("You forgot to enter a gestational age!");
             return;
@@ -83,197 +116,260 @@ $(window).on('load', function(){
             alert('Are you sure this placenta weighs less than 50g? The database does not support that kind of weight. Please check your entry and try again');
             return;
         }
-        // GET PLACENTA PERCENTILES FROM STATIC REFERENCES
-        if( plac_type == "partType501" ){ // twin
-            console.log("twin reference");
-            var wkObj = pinar_twin['wk' + wk];
-            plac_cite = "Pinar H. et al. Pediatr Pathol Lab med 1996; 16:901-7.";
-        } else {
-            if (plac_ref == "1"){
-                console.log("pinar single");
-                wkObj = pinar_single['wk' + wk];
-            } else if (plac_ref == "2"){
-                console.log("boyd single");
-                wkObj = boyd_single['wk' + wk];
-            }
-        }
-
-        if (wkObj) {
-            console.log("WkObj exists as: "+wkObj);
-            var percentiles = $.map(wkObj, function (value, key) {
-                return {
-                    plac_wt_num: Number(value),
-                    percentile: key.substr(1)
-                };
-            }).sort(function (a, b) {
-                return a.plac_wt_num - b.plac_wt_num; // ascending sort returned array
-            });
-
-
-            var upperIndex = -1;
-
-            $.each(percentiles, function (i, obj) {
-                if (obj.plac_wt_num > plac_wt_num) {
-                    // when the percentiles[plac_wt_num] value first exceeds the user plac wt,
-                    // return the index position and stop the function
-                    upperIndex = i;
-                    // if user plac wt is greater than all percentile weights, upperIndex remains -1
-                    return false;
-                }
-            });
-
-            console.log('here');
-
-            console.log("Upper Index: "+upperIndex);
-            console.log(percentiles);
-            var lower, upper;
-            var plac_range;
-            if (upperIndex > 0) { // meaning, if user plac wt falls between 0 and 90th pctille
-                lower = percentiles[upperIndex - 1].percentile; // assign bottom delimiter
-                upper = percentiles[upperIndex].percentile; // assgn upper delimiter
-                $.each(partTypes, function(key){
-                    partTypes[key] = partTypes[key]
-                        .replace(/between .* and/, "between "+lower+ " and")
-                        .replace(/and .* %ile/, "and "+upper+" %ile");
-                });
-                plac_range = "Between "+lower+" and "+upper+" percentiles";
-            } else if (upperIndex === 0) { // meaning, user plac wt falls below 10th pctiles
-                lower = 'xx';
-                upper = percentiles[upperIndex].percentile;
-                $.each(partTypes, function(key){
-                    partTypes[key] = partTypes[key]
-                        .replace(/between .* %ile/, "<"+upper+ " %ile");
-                });
-                plac_range = "Less than "+upper+" percentile";
-            } else { // meaning, user plac wt falls above 90th pctiles
-                lower = percentiles[percentiles.length - 1].percentile;
-                upper = 'ZZ';
-                $.each(partTypes, function(key){
-                    partTypes[key] = partTypes[key]
-                        .replace(/between .* %ile/, ">"+lower+ " %ile");
-                });
-                plac_range = "Greater than "+lower+" percentile";
-            }
-
-            $.each(partTypes, function(key){
-                partTypes[key] = partTypes[key]
-                    .replace(/\d+ WEEKS/, plac_ga+" WEEKS")
-                    .replace(/\d+ grams/, plac_weight+" grams")
-            });
-
-            $(".plac-range").val(plac_range);
-            $(".ref").text(plac_cite);
-
-        } else { // when reference ranges aren't available
-            console.log("no data: "+wkObj);
-            $.each(partTypes, function(key){
-                partTypes[key] = partTypes[key]
-                    .replace(/\d+ WEEKS/, plac_ga+" WEEKS")
-                    .replace(/\d+ grams/, plac_weight+" grams")
-                    .replace(/\(.*\)/, "(No reference data available)")
-            });
-
-            plac_range = "No reference data available";
-            $(".plac-range").val(plac_range);
-            $(".ref").text(plac_cite);
-        }
-        $("#results").removeClass("d-none");
 
 
     // *********************************************
-    // GET REALTIME REFERENCE
+    // Send placenta reference data to database
     // *********************************************
+
         let placObj = {};
         placObj.ga = $('#plac_age').val();
         placObj.weight = $('#plac_wt').val();
         placObj.twin = $('#plac_type option:selected').data('twin');
-        var plac_range_2;
-        var percentages = [10,25,50,75,90];
-        var percentiles2;
-        var percentilesHistoric;
-        var percentilesRealtime;
-        var sorted;
-        var countries, states, cities;
-        var minDataPoints = 10;
 
-        function filterArray(fullArray, criteria){
-            return fullArray.filter(function(obj){
-                var g = criteria[0];
-                return g == "country" ? (isoCountries[obj[g]].toLowerCase() == criteria[1]) : (obj[g].toLowerCase() == criteria[1]);
-            });
-        }
+        // if statement here when user agrees to submit data...
+        var checked = $("#agreement").prop('checked');
 
-        // Calculate each percentile as specified in the array named "percentages" using the mathematical formula for percentile calculation
-        function calculatePercents(filteredArray){
-            return percentages.map(function(percent,index){
-                var i = (percent / 100) * filteredArray.length;
-                var p;
-                var suffix = percent % 10 == 1 ? "st" : (percent % 10 == 2 ? "nd" : (percent % 10 == 3 ? "rd" : "th"))
-                if (Number.isInteger(i)){
-                    p = (filteredArray[i-1]["weight"] + filteredArray[i]["weight"]) / 2
-                } else {
-                    p = filteredArray[Math.ceil(i) - 1]["weight"]
-                }
-                // create a dictionary with the weights and percentiles
-                return {plac_wt_num: p, percentile: percent + "" + suffix};
-            });
-        }
+        if (checked){
+            console.log("Form submit called");
+            // Set placenta weights data object
 
-        // Given the array of percentile ranges and the inputted weight, returns the text to display
-        function displayTextFromPercents(percentiles,weight){
-            // if the inputted weight is less than all the percentiles, then it's in the bottom range
-            var p = "Less than " + percentiles[0].percentile + " percentile"                         
-            // loop through the dictionary to find the percentile range into which that the inputted data point falls, and create the appropriate string to display
-            percentiles.forEach(function(obj,index){
-                if (weight >= obj.plac_wt_num){
-                    if (index == percentiles.length - 1){
-                        p = "Greather than " + obj.percentile + " percentile";
-                    } else {
-                        p = "Between " + obj.percentile + " and " + percentiles[index+1].percentile + " percentiles";
+            $("#plac_save").on("submit", function(e){
+                //don't reload page
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                console.log("Form submit after e.preventDefault");
+
+                //define ajax request data obj
+
+                placObj.ga = $('#plac_age').val();
+                placObj.weight = $('#plac_wt').val();
+                placObj.twin = $('#plac_type option:selected').data('twin');
+
+                $.ajax({
+                    url: "https://ipapi.co/json/",
+                    type: 'GET',
+                    success: function(json)
+                    {
+                        placObj.country = json.country;
+                        placObj.city = json.city;
+                        placObj.state = json.region;
+                        console.log("Geolocation called");
+
+                        // AJAX success page
+                        $("#alert-1").show();
+                        $(".getref").prop("disabled", true);
+                        setTimeout(function() {
+                            $("#alert-1").fadeOut('1000');
+                            $(".getref").prop("disabled", false);
+                        }, 1500);
+
+                    },
+                    error: function(err)
+                    {
+                        console.log("Geolocation Request failed, error= " + err);
                     }
-                }
+                }).done(function(response) {
+                    console.log(".done block called");
+
+                    //ajax call to save new placenta object in the db when geoloc is done
+                    $.ajax({
+                        url: '/placenta/add',
+                        type: 'POST',
+                        data: placObj,
+                        dataType: "json",
+                        cache: false
+                    });
+                    console.log("Data to DB", placObj);
+                });
+                return false;
             });
-            return p;
         }
 
-        $.ajax({
-            url: 'https://hematogones.com/surg-path/placenta-data',
-            type: 'GET',
-            dataType: "json",
-            success: function(json){
-                // Get realtime data from the database, filter it for the inputs, and sort it by weight
-                sorted = json.filter(function(obj){
-                    return obj["gestage"] == placObj.ga && obj["twin"] == placObj.twin;
-                })
-                .sort(function(a, b){
-                    return a.weight-b.weight;
-                })     
-                
-                // If there exists realtime data that matches the filters, reveal the data section of the webpage
-                if (sorted.length > 0){
-                     $("#data").removeClass("d-none");
-                     $("#geoSelection").val('0');
-                     $("#geoInput").val('');
-                     $("#geoInput").addClass('d-none');
-                     $("#geoSubmit").addClass('d-none');
-                    // Get lists of all countries, states, and cities in the dataset
-                    countries = getAllGeo(sorted,"country").map(function(obj,index){
-                        return isoCountries[obj];
+        var partTypes = handleSubmit(false,placObj,plac_ga,plac_weight,plac_wt_num,wk,plac_ref,plac_cite,plac_type);
+
+        // add final header
+        var head = '';
+        if( plac_type == "partType501" ) {
+            head = partTypes.partType500.replace(/DELIVERY/, 'TWIN DELIVERY');
+            $("#outPut-3").val(head).trigger("input");
+            $("#outPut-4").val("Placenta Weights Reference: "+plac_cite+"\n\n").trigger("input");
+        } else {
+            head = partTypes.partType500;
+            $("#outPut-3").val(head).trigger("input");
+            $("#outPut-4").val("Placenta Weights Reference: "+plac_cite+"\n\n").trigger("input");
+        }
+
+    });
+
+
+
+        function handleSubmit(filter,placObj,plac_ga,plac_weight,plac_wt_num,wk,plac_ref,plac_cite,plac_type){
+
+            var partTypes = $.extend(true, {}, partJson); // extended original JSON to this variable, so header replaces are reset on new values entered
+
+            // GET PLACENTA PERCENTILES FROM STATIC REFERENCES
+            if( plac_type == "partType501" ){ // twin
+                console.log("twin reference");
+                var wkObj = pinar_twin['wk' + wk];
+                plac_cite = "Pinar H. et al. Pediatr Pathol Lab med 1996; 16:901-7.";
+            } else {
+                if (plac_ref == "1"){
+                    console.log("pinar single");
+                    wkObj = pinar_single['wk' + wk];
+                } else if (plac_ref == "2"){
+                    console.log("boyd single");
+                    wkObj = boyd_single['wk' + wk];
+                }
+            }
+
+            if (wkObj) {
+                console.log("WkObj exists as: "+wkObj);
+                var percentiles = $.map(wkObj, function (value, key) {
+                    return {
+                        plac_wt_num: Number(value),
+                        percentile: key.substr(1)
+                    };
+                }).sort(function (a, b) {
+                    return a.plac_wt_num - b.plac_wt_num; // ascending sort returned array
+                });
+
+
+                var upperIndex = -1;
+
+                $.each(percentiles, function (i, obj) {
+                    if (obj.plac_wt_num > plac_wt_num) {
+                        // when the percentiles[plac_wt_num] value first exceeds the user plac wt,
+                        // return the index position and stop the function
+                        upperIndex = i;
+                        // if user plac wt is greater than all percentile weights, upperIndex remains -1
+                        return false;
+                    }
+                });
+
+                console.log('here');
+
+                console.log("Upper Index: "+upperIndex);
+                console.log(percentiles);
+                var lower, upper;
+                var plac_range;
+                if (upperIndex > 0) { // meaning, if user plac wt falls between 0 and 90th pctille
+                    lower = percentiles[upperIndex - 1].percentile; // assign bottom delimiter
+                    upper = percentiles[upperIndex].percentile; // assgn upper delimiter
+                    $.each(partTypes, function(key){
+                        partTypes[key] = partTypes[key]
+                            .replace(/between .* and/, "between "+lower+ " and")
+                            .replace(/and .* %ile/, "and "+upper+" %ile");
                     });
-                    states = getAllGeo(sorted,"state");
-                    cities = getAllGeo(sorted,"city");
+                    plac_range = "Between "+lower+" and "+upper+" percentiles";
+                } else if (upperIndex === 0) { // meaning, user plac wt falls below 10th pctiles
+                    lower = 'xx';
+                    upper = percentiles[upperIndex].percentile;
+                    $.each(partTypes, function(key){
+                        partTypes[key] = partTypes[key]
+                            .replace(/between .* %ile/, "<"+upper+ " %ile");
+                    });
+                    plac_range = "Less than "+upper+" percentile";
+                } else { // meaning, user plac wt falls above 90th pctiles
+                    lower = percentiles[percentiles.length - 1].percentile;
+                    upper = 'ZZ';
+                    $.each(partTypes, function(key){
+                        partTypes[key] = partTypes[key]
+                            .replace(/between .* %ile/, ">"+lower+ " %ile");
+                    });
+                    plac_range = "Greater than "+lower+" percentile";
+                }
+
+                    $.each(partTypes, function(key){
+                        partTypes[key] = partTypes[key]
+                            .replace(/\d+ WEEKS/, plac_ga+" WEEKS")
+                            .replace(/\d+ grams/, plac_weight+" grams")
+                    });
+
+                if (!filter){
+                    $(".plac-range").val(plac_range);
+                    $(".ref").text(plac_cite);
+                }
+
+            } else { // when reference ranges aren't available
+                console.log("no data: "+wkObj);
+                if (!filter){
+                    $.each(partTypes, function(key){
+                        partTypes[key] = partTypes[key]
+                            .replace(/\d+ WEEKS/, plac_ga+" WEEKS")
+                            .replace(/\d+ grams/, plac_weight+" grams")
+                            .replace(/\(.*\)/, "(No reference data available)")
+                    });
+
+                    plac_range = "No reference data available";
+
+                    $(".plac-range").val(plac_range);
+                    $(".ref").text(plac_cite);
+                }
+            }
+            if (!filter){
+                $("#results").removeClass("d-none");
+            }
+
+
+        // *********************************************
+        // Process Realtime Data
+        // *********************************************
+
+            var plac_range_2;
+            var percentiles2;
+
+            // Given the array of percentile ranges and the inputted weight, returns the text to display
+            function displayTextFromPercents(percentiles,weight){
+                // if the inputted weight is less than all the percentiles, then it's in the bottom range
+                var p = "Less than " + percentiles[0].percentile + " percentile"                         
+                // loop through the dictionary to find the percentile range into which that the inputted data point falls, and create the appropriate string to display
+                percentiles.forEach(function(obj,index){
+                    if (weight >= obj.plac_wt_num){
+                        if (index == percentiles.length - 1){
+                            p = "Greather than " + obj.percentile + " percentile";
+                        } else {
+                            p = "Between " + obj.percentile + " and " + percentiles[index+1].percentile + " percentiles";
+                        }
+                    }
+                });
+                return p;
+            }  
+        
+                // Get realtime data from the database, filter it for the inputs, and sort it by weight
+                sorted = filterJSON(fullJSON, placObj.ga, placObj.twin)
+                
+                // If there exists realtime data that matches the filters, reveal the data tables
+                if (sorted.length > 0){
+                    $("#div_dataTable").removeClass("d-none");
+                    $("#div_summaryTable").removeClass("d-none");
+                    // If the user just entered a new data point, temporarily remove the geo filter
+                    if (!filter){
+                        $("#geoInput").val('');
+                        $("#geoSelection").val('0');
+                        $("#geoInput").addClass('d-none');
+                        $("#div_summaryTable2").addClass('d-none');
+                    }
+                    // If there exists realtime data, populate the full data table
+                    populateTable(sorted);
+                } else {
+                    $("#div_dataTable").addClass("d-none");
                 }
                 // If there is not enough data, do not show a summary table and clear the graph
                 if (sorted.length < minDataPoints){
                     console.log("Not enough data");
                     plac_range_2 = "Not enough data points available";
-                    $("#summaryData").addClass('d-none');
-                    $("#graphContainer").empty();
+                    $("#div_summaryTable").addClass('d-none');
+                    $("#div_summaryTable2").addClass('d-none');
+                    $("#graphContainer").addClass('d-none');
+                    $("#warningLabel").html("Not enough data points to display summary statistics");
                 } else {
-                    percentiles2 = calculatePercents(sorted);    
-                    plac_range_2 = displayTextFromPercents(percentiles2,placObj.weight)
+                    percentiles2 = calculatePercents(percentages, sorted);  
+                    if (!filter){  
+                        plac_range_2 = displayTextFromPercents(percentiles2,placObj.weight)
+                    }
                     // populate the summary table
-                    populateSummary(percentiles2); 
+                    populateSummary(percentiles2,placObj.ga,placObj.twin,"",sorted.length); 
                     // If there exists historic data, draw the graph. Otherwise, empty the graph
                     if (wkObj){
                         percentilesHistoric = Object.values(wkObj).reverse().map(function(num,index){
@@ -287,21 +383,54 @@ $(window).on('load', function(){
                         $("#graphContainer").empty();
                     }
                 }
-                // If there exists realtime data, populate the full data table
-                populateTable(sorted);
-            },
-            error: function(err)
-            {
-                console.log("Get request failed, error= " + err);
-                plac_range_2 = "No reference data available";
-                $("#graphContainer").empty();
-            }
 
-         }).done(function(response){
-             console.log("Got Data from DB");
-             $(".plac-range-2").val(plac_range_2); // show the appropriate string with the realtime reference range
-        });
+                if (!filter){
+                 // change the filters down below to match the inputted data point
+                    $("#plac_age_filter").val(placObj.ga);
+                    $("#twin_filter").val(placObj.twin ? "partType501" : "partType500");
+                    $("#geoSelection").val(0);
+                    $("#geoInput").addClass('d-none');
+                    // show the appropriate string with the realtime reference range
+                    $(".plac-range-2").val(plac_range_2); 
+                } 
 
+                return partTypes;
+        }
+
+    // *********************************************
+    // Helper Functions
+    // *********************************************
+
+        function filterJSON(JSON, age, twin){
+            return JSON.filter(function(obj){
+                return obj["gestage"] == age && obj["twin"] == twin;
+            }).sort(function(a, b){
+                    return a.weight-b.weight;
+            })     
+        }
+
+        function filterArray(fullArray, criteria){
+            return fullArray.filter(function(obj){
+                var g = criteria[0];
+                return g == "country" ? (isoCountries[obj[g]].toLowerCase() == criteria[1]) : (obj[g].toLowerCase() == criteria[1]);
+            });
+        }
+
+        // Calculate each percentile as specified in the array named "percentages" using the mathematical formula for percentile calculation
+        function calculatePercents(percentages, filteredArray){
+            return percentages.map(function(percent,index){
+                var i = (percent / 100) * filteredArray.length;
+                var p;
+                var suffix = percent % 10 == 1 ? "st" : (percent % 10 == 2 ? "nd" : (percent % 10 == 3 ? "rd" : "th"))
+                if (Number.isInteger(i)){
+                    p = (filteredArray[i-1]["weight"] + filteredArray[i]["weight"]) / 2
+                } else {
+                    p = filteredArray[Math.ceil(i) - 1]["weight"]
+                }
+                // create a dictionary with the weights and percentiles
+                return {plac_wt_num: p, percentile: percent + "" + suffix};
+            });
+        }
 
     // *********************************************
     // Box & Whisker Graph
@@ -335,6 +464,7 @@ function drawGraph(percentiles, sorted, filtered=[]){
 
     // Empty the graph, then append an svg with the specified height and width
     $("#graphContainer").empty();
+    $("#graphContainer").removeClass('d-none');
 
     var svg = d3.select("#graphContainer")
         .append("svg")
@@ -512,7 +642,7 @@ function drawGraph(percentiles, sorted, filtered=[]){
                         rest = '&nbsp' + rest.substr(1);
                     } 
                     HTML += rest;
-                    HTML = '<li class="list-group-item list-group-item-action">' + HTML + '</li>';
+                    HTML = '<li class="list-group-item list-group-item-action" style="z-index: 1;">' + HTML + '</li>';
                     $(HTML).appendTo('#autocompleteList').on("click", function() {
                           // insert the value for the autocomplete text field //
                           $('#geoInput').val(item);
@@ -538,29 +668,58 @@ function drawGraph(percentiles, sorted, filtered=[]){
         // Event handler: updates the summary table, data table, and graph accordingly when the user submits the filter
         $("#geoForm").on("submit", function(e) {
             e.preventDefault();
+            var wk = parseFloat($('#plac_age_filter').val())
+            var twn = $('#plac_age_filter').val()
+            if(!(wk > 0)){
+                alert("You forgot to enter a gestational age!");
+                return;
+            }
+
+            // prepare inputs to handleSubmit function
             var selection = $("#geoSelection").val()
-            var g = (selection == 3 ? "country" : (selection == 4 ? "state" : "city")); 
-            var v = $("#geoInput").val().toLowerCase();
-            var filteredData = filterArray(sorted,[g,v]);
-            var filteredPercentiles = calculatePercents(filteredData);
-            populateTable(filteredData);
-            if (filteredData.length < minDataPoints){
-                $("#warningLabel").html("There are not enough data points to calcualte summary statistics");
-                drawGraph([percentilesHistoric,percentilesRealtime], sorted);
-            } else {
-                // only populate the summary table and draph the 3rd box & whisker plot if there are enough data points
-                populateSummary(filteredPercentiles);
-                if (percentilesHistoric){
-                    var percentilesFiltered = filteredPercentiles.map(function(obj,index){
-                        return obj.plac_wt_num;
-                    });
-                    // if the 3rd box & whisker plot has already been graphed, update the plot... if not, redraw the full graph
-                    if(graphedGeo){
-                        drawGraphGeo(percentilesFiltered, g, v);
+            var plac_ga = $('#plac_age_filter').val();
+            var plac_type = $("#twin_filter").val();
+            let placObj = {};
+            placObj.ga = plac_ga
+            placObj.weight = 0
+            placObj.twin = $('#twin_filter option:selected').data('twin');
+            var plac_cite = "Pinar H. et al. Pediatr Pathol Lab med 1996; 16:901-7.";
+            handleSubmit(true,placObj,plac_ga,0,0,wk,"1",plac_cite,plac_type);
+
+            // if a geofilter is being applied
+            if (selection != 0){
+                var g = (selection == 3 ? "country" : (selection == 4 ? "state" : "city")); 
+                var v = $("#geoInput").val().toLowerCase();
+                var filteredData = filterArray(sorted,[g,v]);
+                // if there exist data that match the filters
+                if (filteredData.length > 0){
+                    populateTable(filteredData);
+                    var filteredPercentiles = calculatePercents(percentages, filteredData);
+                    if (filteredData.length < minDataPoints){
+                        $("#warningLabel").html("Not enough data points to display geo filtered summary statistics");
+                        $("#div_summaryTable2").addClass('d-none');
+                        if (percentilesHistoric){
+                            drawGraph([percentilesHistoric,percentilesRealtime], sorted);
+                        } else {
+                            $("#graphContainer").addClass('d-none');
+                        }
                     } else {
-                        drawGraph([percentilesHistoric,percentilesRealtime,percentilesFiltered], sorted);
-                        drawGraphGeo(percentilesFiltered, g, v);
+                        // only populate the summary table and draph the 3rd box & whisker plot if there are enough data points
+                        populateSummary(filteredPercentiles,wk,twn,"2",filteredData.length,g.charAt(0).toUpperCase() + g.slice(1) + " = " + $("#geoInput").val());
+                        if (percentilesHistoric){
+                            var percentilesFiltered = filteredPercentiles.map(function(obj,index){
+                                return obj.plac_wt_num;
+                            });
+                            drawGraph([percentilesHistoric,percentilesRealtime,percentilesFiltered], sorted);
+                            drawGraphGeo(percentilesFiltered, g, v);
+                        } else {
+                            $("#graphContainer").addClass('d-none');
+                        }
                     }
+                } else {
+                    $("#warningLabel").html("Not enough data points to display geo filtered summary statistics");
+                    $("#div_summaryTable2").addClass('d-none');
+                    $("#div_dataTable").addClass("d-none");
                 }
             }
         });
@@ -569,38 +728,42 @@ function drawGraph(percentiles, sorted, filtered=[]){
         $("#geoSelection").on("change", function() {
             var value = $(this).val();
             $("#geoInput").val('');
+            console.log('here')
             if (value != "0"){
                 $("#geoInput").removeClass('d-none');
-                $("#geoSubmit").removeClass('d-none');
             } else {
                 $("#geoInput").addClass('d-none');
-                $("#geoSubmit").addClass('d-none');
+                $("#div_summaryTable2").addClass('d-none');
                 populateTable(sorted);
-                populateSummary(percentiles2);
                 drawGraph([percentilesHistoric,percentilesRealtime],sorted);
             }
         });
 
-        function populateSummary(data){
+        // geo is either "" or "2" to match the id of the HTML element containing the non geo filtered and geo filtered summary statistics, respectively
+        // label is what is added to the end of the label to indicate the geo filter that was applied
+        function populateSummary(data, ga, tw, geo, n, label){
             // empty the table
+            $("#div_summaryTable" + geo).removeClass('d-none')
             $("#warningLabel").html('');
-            $("#summaryData").removeClass('d-none');
-            $('#summaryHead').empty()
-            $('#summaryBody').empty()
-            $('#summaryHead').append('<th scope="col" class="text-center">Gestational Age</th>')
-            $('#summaryHead').append('<th scope="col" class="text-center">Gestational Type</th>')
+            $("#summaryData" + geo).removeClass('d-none');
+            $('#summaryHead' + geo).empty()
+            $('#summaryHeader' + geo).empty()
+            $('#summaryHeader' + geo).html('N = ' + n + (geo == "" ? "" : ", " + label))
+            $('#summaryBody' + geo).empty()
+            $('#summaryHead' + geo).append('<th scope="col" class="text-center">Gestational Age</th>')
+            $('#summaryHead' + geo).append('<th scope="col" class="text-center">Gestational Type</th>')
             // create a column heading for each calculated percentile
             var contentHead;
             percentages.forEach(function(percent,index){
                 contentHead += '<th scope="col" class="text-center">' + percent + '%</th>'
             });
-            $('#summaryHead').append(contentHead);
-            // add a table data to the table body for each calculated percentile
-            var contentBody = '<td>'+ placObj.ga + '</td><td>' + (placObj.twin == 1 ? "Twin" : "Single") + '</td>';
+            $('#summaryHead' + geo).append(contentHead);
+            // add a table data to the table body for each calculatepod percentile
+            var contentBody = '<td>'+ ga + '</td><td>' + (tw == 1 ? "Twin" : "Single") + '</td>';
             data.forEach(function(p,index){
                 contentBody += '<td>' + p.plac_wt_num + 'g</td>'   
             });
-            $('#summaryBody').append(contentBody);
+            $('#summaryBody' + geo).append(contentBody);
         }
 
         function populateTable(data){
@@ -612,86 +775,26 @@ function drawGraph(percentiles, sorted, filtered=[]){
                         + row.country + '</td><td>' + row.state + '</td><td>' + row.city + '</td></tr>'
             });
             $('#fullData').append(content);
-        }     
+        }    
 
+        $("#plac_age_filter").on("input", function(e){
+            if ($(this).val().length > 1){
+                var num = Number($(this).val()); // this input
+                var max = 44; // get max input
+                var min = 19;
+                if (num > max){ // prevent any inputs
+                    console.log("node numeric validation error");
+                    e.preventDefault();
+                    $(this).val('44');
+                }
+                if (num < min){
+                    console.log("node numeric validation error");
+                    e.preventDefault();
+                    $(this).val('19');
+                }
+            }
 
-    // *********************************************
-    // Send placenta reference data to database
-    // *********************************************
-
-        // if statement here when user agrees to submit data...
-        var checked = $("#agreement").prop('checked');
-
-        if (checked){
-            console.log("Form submit called");
-            // Set placenta weights data object
-
-            $("#plac_save").on("submit", function(e){
-                //don't reload page
-                e.preventDefault();
-                e.stopImmediatePropagation();
-                console.log("Form submit after e.preventDefault");
-
-                //define ajax request data obj
-
-                placObj.ga = $('#plac_age').val();
-                placObj.weight = $('#plac_wt').val();
-                placObj.twin = $('#plac_type option:selected').data('twin');
-
-                $.ajax({
-                    url: "https://ipapi.co/json/",
-                    type: 'GET',
-                    success: function(json)
-                    {
-                        placObj.country = json.country;
-                        placObj.city = json.city;
-                        placObj.state = json.region;
-                        console.log("Geolocation called");
-
-                        // AJAX success page
-                        $("#alert-1").show();
-                        $(".getref").prop("disabled", true);
-                        setTimeout(function() {
-                            $("#alert-1").fadeOut('1000');
-                            $(".getref").prop("disabled", false);
-                        }, 1500);
-
-                    },
-                    error: function(err)
-                    {
-                        console.log("Geolocation Request failed, error= " + err);
-                    }
-                }).done(function(response) {
-                    console.log(".done block called");
-
-                    //ajax call to save new placenta object in the db when geoloc is done
-                    $.ajax({
-                        url: '/placenta/add',
-                        type: 'POST',
-                        data: placObj,
-                        dataType: "json",
-                        cache: false
-                    });
-                    console.log("Data to DB", placObj);
-                });
-                return false;
-            });
-        }
-
-
-        // add final header
-        var head = '';
-        if( plac_type == "partType501" ) {
-            head = partTypes.partType500.replace(/DELIVERY/, 'TWIN DELIVERY');
-            $("#outPut-3").val(head).trigger("input");
-            $("#outPut-4").val("Placenta Weights Reference: "+plac_cite+"\n\n").trigger("input");
-        } else {
-            head = partTypes.partType500;
-            $("#outPut-3").val(head).trigger("input");
-            $("#outPut-4").val("Placenta Weights Reference: "+plac_cite+"\n\n").trigger("input");
-        }
-    });
-
+        });
 });
 
 // Checkbox styling

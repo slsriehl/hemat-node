@@ -1,6 +1,9 @@
-<table class="table table-bordered {{#unless summary}}table-hover table-striped {{/unless}}" id="{{#if summary}}summaryData{{else}}fullData{{/if}}">
+<table class="table table-bordered {{#unless summary}}table-hover table-striped {{/unless}}" id="{{#if geo}}summaryData2{{else if summary}}summaryData{{else}}fullData{{/if}}">
     <thead class="bg-d3-blue text-white">
-        {{#if summary}}
+        {{#if geo}}
+            <tr id="summaryHead2">
+            </tr>
+        {{else if summary}}
             <tr id="summaryHead">
             </tr>
         {{else}}
@@ -15,7 +18,10 @@
         {{/if}}
     </thead>
     <tbody>
-        {{#if summary}}
+        {{#if geo}}
+            <tr id="summaryBody2">
+            </tr>
+        {{else if summary}}
             <tr id="summaryBody">
             </tr>
         {{/if}}
