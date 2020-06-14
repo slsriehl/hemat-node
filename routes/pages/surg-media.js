@@ -23,11 +23,25 @@ router.get('/surg-media/cns-tumor-map', (req, res) => {
     ]);
 });
 
+router.get('/surg-media/rhabdo-infographic', (req, res) => {
+    return render(req, res, './page-views/surg-media/rhabdomyosarcoma.hbs', [
+
+    ]);
+});
+
+router.get('/surg-media/breast-tumor-map', (req, res) => {
+    return render(req, res, './page-views/surg-media/breast-tumor-map.hbs', [
+
+    ]);
+});
+
 
 router.get('/api', (req, res) => {
     return render(req, res, './page-views/api.hbs', [
 
     ]);
 });
+
+
 
 module.exports = router;
