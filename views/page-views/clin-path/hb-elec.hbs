@@ -1,0 +1,306 @@
+<div class="container-fluid">
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+            Clinical Pathology Tools
+        </li>
+        <li class="breadcrumb-item active" id="bc-jump"><i class="fa fa-align-left fa-rotate-270 mr-2"></i>Hemoglobin Electrophoresis</li>
+    </ol>
+
+    {{> message-center this}}
+
+    <!-- Full width row + card -->
+    <div class="row">
+        <!-- top card-->
+        <div class="col col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <!-- inline header form-->
+                    <form class="form-inline">
+
+                        <div class="col col-md-4">
+                            <button type="button" class="btn btn-primary btn-md p-1" data-toggle="modal"
+                                    data-target="#modal-1">How to Use
+                            </button>
+                        </div>
+                        <div class="col col-md-4">
+                            <button type="button" class="btn btn-warning btn-md p-1" data-toggle="modal"
+                                    data-target="#modal-2">List of Abnormal Hb by Capillary Zone
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+                <div class="card-block">
+                    <div class="card-blockquote p-2 h3"> Enter Hb Electrophoresis values here</div>
+                    <div class="row mt-2">
+                        <!-- A, A2, F-->
+                        <div class="col-3">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-block ">
+                                        <input id="HbA_pct" type="number" class="form-control form-control-sm" placeholder="Hb A %">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-block ">
+                                        <input id="HbA2_pct" type="number" class="form-control form-control-sm" placeholder="Hb A2 %">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-block ">
+                                        <input id="HbF_pct" type="number" class="form-control form-control-sm" placeholder="Hb F %">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Barts, S, C, E-->
+                        <div class="col-3">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-block ">
+                                        <input id="HbBarts_pct" type="number" class="form-control form-control-sm" placeholder="Hb Barts %">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-block ">
+                                        <input id="HbS_pct" type="number" class="form-control form-control-sm" placeholder="Hb S %">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-block ">
+                                        <input id="HbC_pct" type="number" class="form-control form-control-sm" placeholder="Hb C %">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-block ">
+                                        <input id="HbE_pct" type="number" class="form-control form-control-sm" placeholder="Hb E %">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- H, D, X-->
+                        <div class="col-3">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-block ">
+                                        <input id="HbH_pct" type="number" class="form-control form-control-sm" placeholder="Hb H %">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-block ">
+                                        <input id="HbD_pct" type="number" class="form-control form-control-sm" placeholder="Hb D %">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-block ">
+                                        <input id="HbX_pct" type="number" class="form-control form-control-sm" placeholder="Hb X %">
+                                        <div>
+                                            <select id="HbX_zone" class="form-control form-control-sm">
+                                                <option disabled>Zone?</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                                <option>7</option>
+                                                <option>8</option>
+                                                <option>9</option>
+                                                <option>10</option>
+                                                <option>11</option>
+                                                <option>12</option>
+                                                <option>13</option>
+                                                <option>14</option>
+                                                <option>15</option>
+                                            </select>
+                                            <div class="card-footer form-control-sm">
+                                                Select HbX zone
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- silent alert for erroneous CBC data, fired from pbrules.js-->
+                    <div class="alert alert-warning alert-dismissible collapse" id="alert-1" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <strong>Uh Oh!</strong> Something doesn't look right.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row top-buffer">
+        <div class="col-md-8">
+            <!-- left column-->
+            <hr class="p-2" >
+
+            <h5>Age</h5>
+            <select id="age" class='form-control form-control-sm col-sm-4'>
+                <option>newborn - 6 months</option>
+                <option>6 months - 2 years</option>
+                <option>2 years - adult</option>
+            </select>
+
+            <div class="py-3 w-100"></div>
+
+            <h5>History of recent transfusion?</h5>
+            <select id="txhx" class='form-control form-control-sm col-sm-4'>
+                <option>No</option>
+                <option>Unknown</option>
+                <option>Yes</option>
+            </select>
+
+            <div class="input-group date my-date-picker tx-date col-sm-4" style="display: none;">
+                <input id="date-pick" type="text" class="form-control form-control-sm" placeholder="Enter Date"/>
+                <span class="input-group-addon">
+                    <span class="fa fa-calendar-plus-o"></span>
+                </span>
+            </div>
+
+            <div class="py-3 w-100"></div>
+            <div class="row">
+                <div class="col-md-4 p-2" style="background-color: rgba(255, 152, 0, 0.45)">
+                    <h5>Microcytic for age?</h5>
+                    <select id="mcv" class='form-control form-control-sm'>
+                        <option>No</option>
+                        <option>Unknown</option>
+                        <option>Yes</option>
+                    </select>
+                </div>
+                <div class="col-md-4 p-2" style="background-color: rgba(255, 152, 0, 0.45)">
+                    <h5>Erythrocytosis for age?</h5>
+                    <select id="eryth" class='form-control form-control-sm'>
+                        <option>No</option>
+                        <option>Unknown</option>
+                        <option>Yes</option>
+                    </select>
+                </div>
+                <div class="col-md-4 p-2" style="background-color: rgba(255, 152, 0, 0.45)">
+                    <h5>Ferritin?</h5>
+                    <select id="ferritin" class='form-control form-control-sm'>
+                        <option>Not low</option>
+                        <option>Unknown</option>
+                        <option>Low</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <hr class="py-3 w-100">
+            <h5>Interpretation</h5>
+            <select id="hbinterp" class='form-control form-control-sm col-sm-8'>
+                <option>Choose...</option>
+                <optgroup label="No abnormal hemoglobins"></optgroup>
+                    <option data-dx="he000">Not infant: No abnormal hemoglobins</option>
+                    <option data-dx="he001">Not infant: No abnormal hemoglobins, microcytosis</option>
+                    <option class="child" data-dx="he010">Infant: No abnormal hemoglobins, repeat > 2 years</option>
+                    <option class="child" data-dx="he011">Infant: No abnormal hemoglobins, microcytosis</option>
+                    <option class="child" data-dx="he012">Infant: No abnormal hemoglobins, iron deficiency</option>
+                <optgroup label="HbS detected"></optgroup>
+                    <option data-dx="he300">Hb S, no microcytosis - Hbs 35-45%</option>
+                    <option data-dx="he301">Hb S + microcytosis - HbS ~35 or less, no iron deficiency</option>
+                    <option data-dx="he302">Hb S + microcytosis - HbS ~35 or less, yes iron deficiency</option>
+                    <option data-dx="he303">HbSS - typical (non-infant) - HbS only, >90%</option>
+                    <option data-dx="he304">HbSS + transfusion, no microcytosis - HbS >50%, HbA 1-50%</option>
+                    <option data-dx="he305">HbSS + transfusion and microcytosis - HbS >50%, HbA 1-50%</option>
+                    <option data-dx="he306">HbS + elevated A2 (trait beta-thal) - A<30%, F 5-10%, A2 >3.5%</option>
+                    <option data-dx="he307">HbSS + elevated A2 (sickle beta-thal) - A = 0, F 5-10%, A2 >3.5%</option>
+                    <option data-dx="he308">HbSS + increased HbF non-infant - sickle HPFH: S + F 15-30%</option>
+                    <option data-dx="he309">HbSS + increased HbF infant - sickle or sickle HPFH</option>
+                    <option data-dx="he310">HbS and HbC only- HbSC </option>
+                <optgroup label="HbC detected"></optgroup>
+                <option data-dx="he500">Heterozygous Hb C trait - no microcytosis</option>
+                <option data-dx="he501">Heterozygous Hb C trait - and microcytosis</option>
+                <option data-dx="he502">Heterozygous Hb C trait - and iron deficiency</option>
+                <option data-dx="he503">Hemoglobin C trait and beta plus-thal (C-beta+ thal) - C > A, F 2-5%, A2 >3.5</option>
+                <option data-dx="he504">Hemoglobin C trait and beta -thal (C-beta thal) - C only, F 2-5%, A2 >3.5</option>
+                <option data-dx="he505">Homozygous Hb C</option>
+
+                <optgroup label="only HbF elevated"></optgroup>
+                <optgroup label="HbX detected"></optgroup>
+                <option data-dx="he900">Abnormal HbX detected</option>
+
+            </select>
+
+            <div class="py-3 w-100"></div>
+
+            <h5>Interpretive Comment</h5>
+            <div class="small py-2">Adjust as necessary</div>
+            <textarea  id="hbtext" class="form-control col-sm-8" rows="15" ></textarea>
+
+        </div>
+        <!-- right column-->
+        <div class="col col-md-4" id="sticky">
+            <div class="card text-center">
+                <div class="card-header button-box">
+                    <ul class="nav nav-pills standard-button-box">
+                        <a class="btn btn-outline-success p-1 mb-2" id="writeReport">
+                            Write Report
+                        </a>
+
+                        <a class="btn btn-outline-danger p-1 mb-2 ml-4" id="Reset">Reset</a>
+                    </ul>
+                </div>
+                <div class="card-block">
+
+                    <form>
+                        <!-- hide first text area
+                <div class="form-group">
+                        <textarea class="form-control" id="outPut-1" rows="5" placeholder="CBC Data"></textarea>
+                        <span class="input-group-addon btn btn-primary" data-clipboard-target="#outPut-1">Copy to Clipboard</span>
+                </div>   -->
+                        <div class="form-group">
+                            <textarea class="form-control" id="outPut-2" rows="15"
+                                      placeholder="Example Micro"></textarea>
+                            <span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-2">Copy to Clipboard</span>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" id="outPut-3" rows="10"
+                                      placeholder="Example Final"></textarea>
+                            <span class="input-group-addon copy  btn btn-primary" data-clipboard-target="#outPut-3">Copy to Clipboard</span>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" id="outPut-4" rows="5"
+                                      placeholder="Example Comment"></textarea>
+                            <span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-4">Copy to Clipboard</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- end right column-->
+    </div>
+    <!-- end bottom row-->
+    {{> page-modals/combined-report}}
+    {{> page-modals/new-case-reference}}
+    {{> page-partials/history-module}}
+</div>
+<!--end container wrapper-->
+
+

@@ -55,4 +55,11 @@ router.get('/kb', (req, res) => {
 ]);
 });
 
+router.get('/hb-elec', (req, res) => {
+    return render(req, res, './page-views/clin-path/hb-elec.hbs', [
+        "/json/json-hbelec.js",
+        "/js/clin-path/hbelec-scripts.js"
+    ]);
+});
+
 module.exports = router;
