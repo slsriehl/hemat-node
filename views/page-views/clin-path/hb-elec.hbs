@@ -218,30 +218,34 @@
                 <option>Choose...</option>
                 <optgroup label="No abnormal hemoglobins"></optgroup>
                     <option data-dx="he000">Not infant: No abnormal hemoglobins</option>
-                    <option data-dx="he001">Not infant: No abnormal hemoglobins, microcytosis</option>
+                    <option class="mcv" data-dx="he001">Not infant: No abnormal hemoglobins, microcytosis</option>
                     <option class="child" data-dx="he010">Infant: No abnormal hemoglobins, repeat > 2 years</option>
-                    <option class="child" data-dx="he011">Infant: No abnormal hemoglobins, microcytosis</option>
-                    <option class="child" data-dx="he012">Infant: No abnormal hemoglobins, iron deficiency</option>
+                    <option class="child mcv" data-dx="he011">Infant: No abnormal hemoglobins, microcytosis</option>
+                    <option class="child fer" data-dx="he012">Infant: No abnormal hemoglobins, iron deficiency</option>
+                <optgroup label="Thalassemia (no abnormal hemoglobins)"></optgroup>
+                    <option class="mcv" data-dx="he200">Probable a-thal: Erythrocytosis and microcytosis, Fer unkown</option>
+                    <option class="mcv" data-dx="he201">Likely a-thal: Erythrocytosis and microcytosis, Fer normal</option>
+                    <option class="A2 mcv" data-dx="he202">Probable b-thal: Microcytosis and A2 > 4.0%, but no erythrocytosis</option>
+                    <option class="A2 mcv" data-dx="he203">Likely b-thal: Erythrocytosi and microcytosis and A2 >4/0%</option>
                 <optgroup label="HbS detected"></optgroup>
                     <option data-dx="he300">Hb S, no microcytosis - Hbs 35-45%</option>
-                    <option data-dx="he301">Hb S + microcytosis - HbS ~35 or less, no iron deficiency</option>
-                    <option data-dx="he302">Hb S + microcytosis - HbS ~35 or less, yes iron deficiency</option>
+                    <option class="mcv" data-dx="he301">Hb S + microcytosis - HbS ~35 or less, no iron deficiency</option>
+                    <option class="fer" data-dx="he302">Hb S + microcytosis - HbS ~35 or less, yes iron deficiency</option>
                     <option data-dx="he303">HbSS - typical (non-infant) - HbS only, >90%</option>
                     <option data-dx="he304">HbSS + transfusion, no microcytosis - HbS >50%, HbA 1-50%</option>
-                    <option data-dx="he305">HbSS + transfusion and microcytosis - HbS >50%, HbA 1-50%</option>
+                    <option class="mcv" data-dx="he305">HbSS + transfusion and microcytosis - HbS >50%, HbA 1-50%</option>
                     <option data-dx="he306">HbS + elevated A2 (trait beta-thal) - A<30%, F 5-10%, A2 >3.5%</option>
                     <option data-dx="he307">HbSS + elevated A2 (sickle beta-thal) - A = 0, F 5-10%, A2 >3.5%</option>
                     <option data-dx="he308">HbSS + increased HbF non-infant - sickle HPFH: S + F 15-30%</option>
                     <option data-dx="he309">HbSS + increased HbF infant - sickle or sickle HPFH</option>
                     <option data-dx="he310">HbS and HbC only- HbSC </option>
                 <optgroup label="HbC detected"></optgroup>
-                <option data-dx="he500">Heterozygous Hb C trait - no microcytosis</option>
-                <option data-dx="he501">Heterozygous Hb C trait - and microcytosis</option>
-                <option data-dx="he502">Heterozygous Hb C trait - and iron deficiency</option>
-                <option data-dx="he503">Hemoglobin C trait and beta plus-thal (C-beta+ thal) - C > A, F 2-5%, A2 >3.5</option>
-                <option data-dx="he504">Hemoglobin C trait and beta -thal (C-beta thal) - C only, F 2-5%, A2 >3.5</option>
-                <option data-dx="he505">Homozygous Hb C</option>
-
+                    <option data-dx="he500">Heterozygous Hb C trait - no microcytosis</option>
+                    <option class="mcv" data-dx="he501">Heterozygous Hb C trait - and microcytosis</option>
+                    <option class="fer" data-dx="he502">Heterozygous Hb C trait - and iron deficiency</option>
+                    <option data-dx="he503">Hemoglobin C trait and beta plus-thal (C-beta+ thal) - C > A, F 2-5%, A2 >3.5</option>
+                    <option data-dx="he504">Hemoglobin C trait and beta -thal (C-beta thal) - C only, F 2-5%, A2 >3.5</option>
+                    <option data-dx="he505">Homozygous Hb C</option>
                 <optgroup label="only HbF elevated"></optgroup>
                 <optgroup label="HbX detected"></optgroup>
                 <option data-dx="he900">Abnormal HbX detected</option>

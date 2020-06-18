@@ -61,6 +61,7 @@ $(window).on('load', function(){
         }
         if (hbF.length>0){
             micro +=    'HbF'.padEnd(20, ".") + hbF + "%\n";
+            hbinterp = hbinterp.replace(/FF/, hbF);
         }
         if (hbS.length>0){
             micro +=    'HbS'.padEnd(20, ".") + hbS + "%\n";
@@ -72,18 +73,23 @@ $(window).on('load', function(){
         }
         if (hbBarts.length>0){
             micro +=    'HbBarts'.padEnd(20, ".") + hbBarts + "%\n";
+            hbinterp = hbinterp.replace(/BB/, hbBarts);
         }
         if (hbH.length>0){
             micro +=    'HbAH'.padEnd(20, ".") + hbH + "%\n";
+            hbinterp = hbinterp.replace(/HH/, hbH);
         }
         if (hbD.length>0){
             micro +=    'HbD'.padEnd(20, ".") + hbD + "%\n";
+            hbinterp = hbinterp.replace(/DD/, hbD);
         }
         if (hbE.length>0){
             micro +=    'HbE'.padEnd(20, ".") + hbE + "%\n";
+            hbinterp = hbinterp.replace(/EE/, hbE);
         }
         if (hbX.length>0){
             micro +=    'Other Hb'.padEnd(20, ".") + hbX + "% (Capillary zone: "+hbX_zone+")\n";
+            hbinterp = hbinterp.replace(/XX/, hbX);
         }
 
         // Ancillary data
@@ -115,7 +121,7 @@ $(window).on('load', function(){
         $('#outPut-3').val(final);
 
         // Comment
-        $('#outPut-4').val(comment);;
+        $('#outPut-4').val(comment + "\n\nCPT: 83020-26");;
 
 
         var textToPass = $('#outPut-2').val()+'\nFINAL DIAGNOSIS\n'+$('#outPut-3').val()+'\n\nCOMMENT\n'+$('#outPut-4').val();
