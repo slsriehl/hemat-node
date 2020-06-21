@@ -133,6 +133,8 @@ $(window).on('load', function () {
         mxLine123: 'Frequent tear-drop forms are present. ',
 // NRBCs
         mxLine124: 'There are occasional nucleated red blood cells. ',
+// Howell-Jolly bodies
+        mxLine125: 'Few Howell-Jolly bodies are present. ',
 //
 // NORMAL WBC MORPH
         mxLine150: 'No circulating blasts or dysplastic changes are seen. ',
