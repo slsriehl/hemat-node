@@ -233,7 +233,9 @@ $(window).on('load', function(){
 // FREQUENT TEAR DROPS
         mxLine123: 'Frequent tear-drop forms are present. ',
 // NRBCs
-mxLine124: 'There are occasional nucleated red blood cells. ',
+        mxLine124: 'There are occasional nucleated red blood cells. ',
+// Howell-Jolly bodies
+        mxLine125: 'Few Howell-Jolly bodies are present. ',
 
 //
 // NORMAL WBC MORPH
@@ -739,7 +741,7 @@ mxLine124: 'There are occasional nucleated red blood cells. ',
 // negative cl, &#8593; erythroids w dyspoiesis
         dxOut335: '- Cellular marrow with dyspoietic erythroid hyperplasia \n- No morphologic increase in blasts or abnormal infiltrates (see comment) \n',
 // negative cl, aparticulate and hemodilute
-        dxOut336: '- Aparticulate marrow consisting of blood clot \n- No morphologic increase in blasts or abnormal infiltrates (see comment) \n',
+        dxOut336: '- Aparticulate marrow consisting of blood clot \n- Hemodilute aspirate smears with minimal maturing hematopoietic precursors \n- No morphologic increase in blasts or abnormal infiltrates (see comment) \n',
 
 // history of ball
         dxOut350: '; history of B-lymphoblastic leukemia (see comment)',
@@ -776,7 +778,7 @@ mxLine124: 'There are occasional nucleated red blood cells. ',
 // history of Carcinoma`
         dxOut366: '; history of carcinoma \n',
 // history of Neuroblastoma
-        dxOut367: '; history of Neuroblastoma \n',
+        dxOut367: '; history of neuroblastoma \n',
 // reactive lymphoid ags
         dxOut370: '- Reactive lymphoid aggregates \n',
 // mild interstitial lymphs
@@ -999,7 +1001,7 @@ mxLine124: 'There are occasional nucleated red blood cells. ',
         commLine359: 'The marrow composition suggests therapy-related injury/aplasia. Correlation with the pending ancillary testing is recommended. ',
 //
 // COMMENT: CMPD DDX
-        commLine400: 'The marrow changes raise a differential diagnosis of infection or G-CSF therapy; however, a chronic myeloproliferative disorder cannot be excluded on morphologic grounds alone. Correlation with the clinical history, other laboratory data and pending ancillary testing is recommended. ',
+        commLine400: 'The marrow changes raise a differential diagnosis of infection or G-CSF therapy; however, a chronic myeloproliferative disorder cannot be excluded on morphologic grounds alone. Correlation with the clinical history, other laboratory data and the pending ancillary testing is recommended. ',
 // COMMENT: CML
         commLine401: 'The marrow changes are suggestive of a chronic myeloproliferative disorder, such as CML. Correlation with the pending ancillary testing is recommended. Further assessment for JAK2 mutations on peripheral blood may also be helpful. ',
 // COMMENT: CLL
