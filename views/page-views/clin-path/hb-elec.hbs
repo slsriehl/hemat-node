@@ -21,14 +21,19 @@
                     <!-- inline header form-->
                     <form class="form-inline">
 
-                        <div class="col col-md-4">
-                            <button type="button" class="btn btn-primary btn-md p-1" data-toggle="modal"
+                        <div class="col col-md-4 ">
+                            <button type="button" class="btn btn-primary btn-md p-1 w-100" data-toggle="modal"
                                     data-target="#modal-1">How to Use
                             </button>
                         </div>
                         <div class="col col-md-4">
-                            <button type="button" class="btn btn-warning btn-md p-1" data-toggle="modal"
+                            <button type="button" class="btn btn-warning btn-md p-1 w-100" data-toggle="modal"
                                     data-target="#modal-2">List of Abnormal Hb by Capillary Zone
+                            </button>
+                        </div>
+                        <div class="col col-md-4">
+                            <button type="button" class="btn btn-success btn-md p-1 w-100" data-toggle="modal"
+                                    data-target="#modal-3">Normal HbF decline in infants
                             </button>
                         </div>
 
@@ -67,13 +72,6 @@
                             <div class="col">
                                 <div class="card">
                                     <div class="card-block ">
-                                        <input id="HbBarts_pct" type="number" class="form-control form-control-sm" placeholder="Hb Barts %">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <div class="card-block ">
                                         <input id="HbS_pct" type="number" class="form-control form-control-sm" placeholder="Hb S %">
                                     </div>
                                 </div>
@@ -92,20 +90,27 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-block ">
+                                        <input id="HbD_pct" type="number" class="form-control form-control-sm" placeholder="Hb D %">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <!-- H, D, X-->
                         <div class="col-3">
                             <div class="col">
                                 <div class="card">
                                     <div class="card-block ">
-                                        <input id="HbH_pct" type="number" class="form-control form-control-sm" placeholder="Hb H %">
+                                        <input id="HbBarts_pct" type="number" class="form-control form-control-sm" placeholder="Hb Barts %">
                                     </div>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="card">
                                     <div class="card-block ">
-                                        <input id="HbD_pct" type="number" class="form-control form-control-sm" placeholder="Hb D %">
+                                        <input id="HbH_pct" type="number" class="form-control form-control-sm" placeholder="Hb H %">
                                     </div>
                                 </div>
                             </div>
@@ -225,8 +230,10 @@
                 <optgroup label="Thalassemia (no abnormal hemoglobins)"></optgroup>
                     <option class="mcv" data-dx="he200">Probable a-thal: Erythrocytosis and microcytosis, Fer unkown</option>
                     <option class="mcv" data-dx="he201">Likely a-thal: Erythrocytosis and microcytosis, Fer normal</option>
-                    <option class="A2 mcv" data-dx="he202">Probable b-thal: Microcytosis and A2 > 4.0%, but no erythrocytosis</option>
-                    <option class="A2 mcv" data-dx="he203">Likely b-thal: Erythrocytosi and microcytosis and A2 >4/0%</option>
+                    <option class="mcv" data-dx="he202">Likely 3 gene a-thal: incr HbH & decr. A2</option>
+                    <option class="mcv" data-dx="he203">Likely a-thal + Hb-CS: Hb Barts > HbH & decr. A2 w/ HbCS</option>
+                    <option class="A2 mcv" data-dx="he210">Probable b-thal: Microcytosis and A2 >3.5%, but no erythrocytosis</option>
+                    <option class="A2 mcv" data-dx="he211">Likely b-thal: Erythrocytosi and microcytosis and A2 >3.5%</option>
                 <optgroup label="HbS detected"></optgroup>
                     <option data-dx="he300">Hb S, no microcytosis - Hbs 35-45%</option>
                     <option class="mcv" data-dx="he301">Hb S + microcytosis - HbS ~35 or less, no iron deficiency</option>
@@ -240,15 +247,39 @@
                     <option data-dx="he309">HbSS + increased HbF infant - sickle or sickle HPFH</option>
                     <option data-dx="he310">HbS and HbC only- HbSC </option>
                 <optgroup label="HbC detected"></optgroup>
-                    <option data-dx="he500">Heterozygous Hb C trait - no microcytosis</option>
-                    <option class="mcv" data-dx="he501">Heterozygous Hb C trait - and microcytosis</option>
-                    <option class="fer" data-dx="he502">Heterozygous Hb C trait - and iron deficiency</option>
-                    <option data-dx="he503">Hemoglobin C trait and beta plus-thal (C-beta+ thal) - C > A, F 2-5%, A2 >3.5</option>
-                    <option data-dx="he504">Hemoglobin C trait and beta -thal (C-beta thal) - C only, F 2-5%, A2 >3.5</option>
-                    <option data-dx="he505">Homozygous Hb C</option>
+                    <option data-dx="he400">Heterozygous Hb C trait - 25-45%, no microcytosis</option>
+                    <option class="mcv" data-dx="he401">Heterozygous Hb C trait - 25-45% and microcytosis</option>
+                    <option class="fer" data-dx="he402">Heterozygous Hb C trait - 25-45% and iron deficiency</option>
+                    <option data-dx="he403">Hemoglobin C trait and beta plus-thal (C-beta+ thal) - C (25-45%) > A, F 2-5%, A2 >3.5</option>
+                    <option data-dx="he404">Hemoglobin C trait and beta -thal (C-beta thal) - C only (25-45%), F 2-5%, A2 >3.5</option>
+                    <option data-dx="he405">Homozygous Hb C</option>
                 <optgroup label="only HbF elevated"></optgroup>
+                    <option data-dx="he500" class="">Not infant: HPFH - Hb F ~10-35% > 2 yrs of age</option>
+                    <option data-dx="he501" class="">Not infant: Mildly increased Hb F 2-10%</option>
+                    <option data-dx="he502" class="child">Infant: Increased HbF for age (up to 2 years)</option>
+                    <option data-dx="he503" class="mcv child">Increased HbF and thalassemic RBC indices w/ increased A2$%</option>
+                <optgroup label="only HbE elevated"></optgroup>
+                    <option data-dx="he600" class="">HbE trait - HbE ~25-30%</option>
+                    <option data-dx="he601" class="mcv">HbEE vs HbE-B-thal major - HbE without A, incr A2 and Hb F</option>
+                    <option data-dx="he602" class="mcv">HbE-B-thal minor - HbE without A, incr A2 and Hb F</option>
                 <optgroup label="HbX detected"></optgroup>
-                <option data-dx="he900">Abnormal HbX detected</option>
+                    <option data-dx="he701">Zone 1: Abnormal HbX </option>
+                    <option data-dx="he702">Zone 2: Abnormal HbX (HbCS ~2-5%)</option>
+                    <option data-dx="he703">Zone 3: Abnormal HbX (HbO-Arab ~30-40%)</option>
+                    <option data-dx="he704">Zone 4: Abnormal HbX (Hb Koln multiple peaks btwn A and A2)</option>
+                    <option data-dx="he705">Zone 5: Abnormal HbX </option>
+                    <option data-dx="he706">Zone 6: Abnormal HbX (HbD ~40-45%) </option>
+                    <option data-dx="he707">Zone 6: Abnormal HbX (Hb Lepore ~7-15%) </option>
+                    <option data-dx="he708">Zone 6: Abnormal HbX (HbG 20-25% with F and A2 derivatives) </option>
+                    <option data-dx="he709">Zone 7: Abnormal HbX (usually ~25-35%)</option>
+                    <option data-dx="he710">Zone 8: Abnormal HbX (usually ~35-50%)</option>
+                    <option data-dx="he711">Zone 9: Abnormal HbX </option>
+                    <option data-dx="he712">Zone 10: Abnormal HbX </option>
+                    <option data-dx="he713">Zone 11: Abnormal HbX </option>
+                    <option data-dx="he714">Zone 12: Abnormal HbX (Hb Barts <10%) </option>
+                    <option data-dx="he715">Zone 12: Abnormal HbX (not Barts or H) </option>
+                    <option data-dx="he716">Zone 13: Abnormal HbX (Hb N-Baltimore 40-50%) </option>
+                    <option data-dx="he717">Zone 15: Abnormal HbX (Hb H, >10%) </option>
 
             </select>
 
@@ -301,6 +332,9 @@
         <!-- end right column-->
     </div>
     <!-- end bottom row-->
+    {{> page-modals/clin-path/hbelec-how-to-use}}
+    {{> page-modals/clin-path/hbelec-zone-data}}
+    {{> page-modals/clin-path/hbf-levels}}
     {{> page-modals/combined-report}}
     {{> page-modals/new-case-reference}}
     {{> page-partials/history-module}}
