@@ -141,9 +141,9 @@ $(window).on('load', function(){
         he302: 'The findings are consistent with heterozygous hemoglobin S (sickle trait) complicated by iron deficiency. Iron deficiency can obscure the presence of other abnormal hemoglobins. If clinically warranted, repeat evaluation after correction of iron deficiency may be helpful. ',
         // HbSS - typical (non-infant) - HbS only, >90%
         he303: 'Findings consistent with homozygous Hemoglobin S (sickle cell disease). ',
-        // HbSS + transfusion, no microcytosis - HbS >50%, HbA 1-50%
+        // HbSS + transfusion, no microcytosis - HbS >50 or <35%, & A
         he304: 'Findings consistent with previously transfused homozygous Hemoglobin S (sickle cell disease).\n\nNote: In sickle cell patients with detectable HbA, hemoglobin electrophoresis cannot reliably distinguish between previous transfusion (in the absence of a marrow transplant) and incomplete engraftment in bone marrow transplant recipients. ',
-        // HbSS + transfusion and microcytosis - HbS >50%, HbA 1-50%
+        // HbSS + transfusion and microcytosis - HbS >50 or <35%, & A
         he305: 'Findings show predominance of Hemoglobin S (sickle cell disease) and lesser amounts of HbA. This may represent previous transfusion. In the context of microcytosis, coexisting iron deficiency cannot be excluded. \n\nNote: In sickle cell patients with detectable HbA, hemoglobin electrophoresis cannot reliably distinguish between previous transfusion (in the absence of a marrow transplant) and incomplete engraftment in bone marrow transplant recipients. ',
         // HbS + elevated A2 (trait beta-thal) - A<30%, F 5-10%, A2 >3.5%
         he306: 'Findings suggestive of doubly heterozygous hemoglobin S (trait) and beta-plus thalassemia. ',
@@ -155,6 +155,8 @@ $(window).on('load', function(){
         he309: 'Findings suggestive of homozygous hemoglobin S (sickle cell disease) or, possible, heterozygous HbS and hereditary persistence of fetal hemoglobin (HPFH). Repeat hemoglobin electrophoresis after the age of 2 is recommeded to assess whether the HbF levels decline to the expected levels for sickle cell disease. ',
         // HbS and HbC only- HbSC
         he310: 'Findings consistent with combined hemoglobin S and Hemoglobin C (sickle-C disease). ',
+        // HbSS + transfusion & HbF, no microcytosis - HbS + HbA + HbF >10%
+        he311: 'Findings suggestive of previously transfused homozygous Hemoglobin S (sickle cell disease). There is increased HbF as well, which may indicate medication (hydroxyurea) effect. The elevated HbF, however, also raises the possibility of heterozygous HbS and hereditary persistence of fetal hemoglobin. If necessary, beta-globin gene testing can help differentiate among these possibilities. \n\nNote: In sickle cell patients with detectable HbA, hemoglobin electrophoresis cannot reliably distinguish between previous transfusion (in the absence of a marrow transplant) and incomplete engraftment in bone marrow transplant recipients. ',
         //
         // HbC
         // Heterozygous Hb C trait - no microcytosis - c 25-45%
@@ -164,7 +166,7 @@ $(window).on('load', function(){
         // Heterozygous Hb C trait - and iron deficiency
         he402: 'Findings consistent with heterozygous Hemoglobinc C (Hb C trait) and iron deficiency. Iron deficiency can obscure the presence of co-existing abnormal hemoglobins. Repeat evaluation after correction of the iron deficiency may be helpful. ',
         // Hemoglobin C trait and beta plus-thal (C-beta+ thal) - C > A, F 2-5%, A2 >3.5
-        he403: 'Findings consistent with hterozygous Hemoglobin C (Hb C trait) in combination with beta(plus)-thalassemia. ',
+        he403: 'Findings consistent with heterozygous Hemoglobin C (Hb C trait) in combination with beta(plus)-thalassemia. ',
         // Hemoglobin C trait and beta -thal (C-beta thal) - C only, F 2-5%, A2 >3.5
         he404: 'Findings consistent with  Hemoglobin C (Hb C trait) in combination with beta-thalassemia.',
         // Homozygous Hb C
@@ -174,7 +176,7 @@ $(window).on('load', function(){
         // HPFH
         he500: 'Findings consistent with hereditary persistence of fetal hemoglobin (HPFH). ',
         // Not infant: Mildly elevated HbF
-        he501: 'Mildly elevated HbF for age is a non-specific finding that can be seen as a reactive response in some hematologic conditions or with some forms of heterozygous hereditary persistence of fetal hemoglobin (HPFH). It can also be se',
+        he501: 'Mildly elevated HbF for age is a non-specific finding that can be seen as a reactive response in some hematologic conditions or with some forms of heterozygous hereditary persistence of fetal hemoglobin (HPFH). ',
         // Infant with increased HbF for age
         he502: 'The HbF levels are higher than expected for this patient\'s age. There is considerable variability in the manner of natural HbF decline in infants. Consideration for repeat Hb electrophoresis after 2 years of age is recommended to ensure HbF% declines to adult levels. ' ,
         // Increased HbF and thalassemic RBC indices (microcytos, increased A2%)

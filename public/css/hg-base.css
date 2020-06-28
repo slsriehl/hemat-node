@@ -39,7 +39,9 @@ label:hover {
 /* reset padding and margins for checkbox columns */
 .btn {
     margin: 0;
-    padding: 0;
+    padding: 2;
+	font-size: 1.8vw;
+	white-space: normal;
 }
 
 .chkboxes {
@@ -289,5 +291,10 @@ button:focus {
 
 .border-d3-blue {
 	border-color: rgb(50, 93, 138);
+}
+
+::placeholder{
+	font-size: 1.4vw;
+	white-space: normal;
 }
 

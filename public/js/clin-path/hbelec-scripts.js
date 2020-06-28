@@ -9,12 +9,56 @@ $(window).on('load', function(){
     });
 
 
-    // decimels
-    $("input[type=number]").on('blur', function(){
+    // decimels and sum total validation
+    function calculateTotal() {
+        var sum = 0;
+        $(".pct").each(function () {
+            if(!isNaN(this.value) && this.value.length!=0) {
+                sum += parseFloat(this.value);
+            }
+            console.log("sum:", sum);
+        })
+        if (sum > 100){
+            $(".alert").show();
+        } else {
+            $(".alert").hide();
+
+        }
+        console.log(sum);
+    }
+
+    $("input.pct").on('blur', function(){
         this.value = parseFloat(this.value).toFixed(1);
+        calculateTotal();
     });
 
+    //########################LOGIC HELPERS#################################
 
+    $(".pct").on('input', function () {
+        var sel = $(this).prop("class");
+        var hbclass = sel.match(/...(?= pct)/);
+        console.log("pct class?", hbclass);
+        if (sel.indexOf('abnl') > 0){
+            $("#hbinterp option").css("background-color", "#ffffff");
+            $("#hbinterp optgroup").css("background-color", "#ffffff");
+
+            if(!isNaN(this.value) && this.value.length!=0) {
+                if (sel.indexOf(hbclass[0]) > 0){
+                    console.log(hbclass[0], " exists!");
+                    $("#hbinterp option[class*='"+hbclass+"']").css("background-color", "#f3fd58");
+                    $("#hbinterp optgroup[class*='"+hbclass+"']").css("background-color", "#f3fd58");
+                }
+
+            } else {
+                    console.log("HbX absent!");
+                    $("#hbinterp option").css("background-color", "#ffffff");
+                    $("#hbinterp optgroup").css("background-color", "#ffffff");
+                }
+            }
+    })
+
+
+    //######################################################################
 
     // Show hbtext on hbinterp selection
     $("#hbinterp").on("change", function(){
