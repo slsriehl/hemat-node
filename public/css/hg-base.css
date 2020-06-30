@@ -39,8 +39,8 @@ label:hover {
 /* reset padding and margins for checkbox columns */
 .btn {
     margin: 0;
-    padding: 2;
-	font-size: 1.8vw;
+    padding: 2px;
+	font-size: 1.15vw;
 	white-space: normal;
 }
 
@@ -294,7 +294,7 @@ button:focus {
 }
 
 ::placeholder{
-	font-size: 1.4vw;
+	font-size: 1.2rem;
 	white-space: normal;
 }
 
