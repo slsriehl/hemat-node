@@ -42,6 +42,8 @@ $(window).on('load', function(){
         he309: '- HbS detected at SS% \n- HbF elevated at FF%',
         // HbS and HbC only- HbSC
         he310: '- HbS detected at SS%\n- HbC detected at CC%',
+        // HbS + HbA + incr HbF
+        he311: '- HbS detected at SS%\n- HbF detected at FF%',
         //
         // HbC
         // Heterozygous Hb C trait - no microcytosis
@@ -142,7 +144,7 @@ $(window).on('load', function(){
         // HbSS - typical (non-infant) - HbS only, >90%
         he303: 'Findings consistent with homozygous Hemoglobin S (sickle cell disease). ',
         // HbSS + transfusion, no microcytosis - HbS >50 or <35%, & A
-        he304: 'Findings consistent with previously transfused homozygous Hemoglobin S (sickle cell disease).\n\nNote: In sickle cell patients with detectable HbA, hemoglobin electrophoresis cannot reliably distinguish between previous transfusion (in the absence of a marrow transplant) and incomplete engraftment in bone marrow transplant recipients. ',
+        he304: 'Findings suggestive of previously transfused homozygous Hemoglobin S (sickle cell disease).\n\nNote: In sickle cell patients with detectable HbA, hemoglobin electrophoresis cannot reliably distinguish between previous transfusion (in the absence of a marrow transplant) and incomplete engraftment in bone marrow transplant recipients. ',
         // HbSS + transfusion and microcytosis - HbS >50 or <35%, & A
         he305: 'Findings show predominance of Hemoglobin S (sickle cell disease) and lesser amounts of HbA. This may represent previous transfusion. In the context of microcytosis, coexisting iron deficiency cannot be excluded. \n\nNote: In sickle cell patients with detectable HbA, hemoglobin electrophoresis cannot reliably distinguish between previous transfusion (in the absence of a marrow transplant) and incomplete engraftment in bone marrow transplant recipients. ',
         // HbS + elevated A2 (trait beta-thal) - A<30%, F 5-10%, A2 >3.5%
