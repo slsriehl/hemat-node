@@ -3,9 +3,18 @@ $(window).on('load', function(){
     $('#txhx').on("change", function(){
         var sel = $('#txhx').val();
         if (sel.indexOf("Yes") > -1) {
-            $('.tx-date').show();}
+            $('.tx-date').show();
+            $.each(commLines, function (key, val) {
+                commLines[key] = commLines[key].replace(/suggestive of previously transfused/, 'consistent with previously transfused');
+                console.log("Transfused update: "+commLines.he304);
+            });
+            }
         else {
-            $('.tx-date').hide();}
+            $('.tx-date').hide();
+            $.each(commLines, function (key, val) {
+                commLines[key] = commLines[key].replace(/consistent with previously transfused/, 'suggestive of previously transfused');
+            });
+        }
     });
 
 
@@ -64,6 +73,7 @@ $(window).on('load', function(){
     $("#hbinterp").on("change", function(){
        var sel = $(this).find(":selected").data("dx");
        console.log("HbInterp selection data val: "+ sel);
+
         $("#hbtext").val(commLines[sel]);
     });
 
