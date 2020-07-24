@@ -1378,8 +1378,8 @@ $("input:checkbox").on("change", function() {
         // External exam variables
         var ext_habitus = $("#ext-habitus").val().rpad(25);
         var ext_skin = $("#ext-skin").val().join(", ").rpad(25);
-        var ext_extremities = $("#ext-extremities").val().rpad(25);
-        var ext_extremities_more = $("#ext-extremities-more").val().rpad(25);
+        var ext_extremities = $("#ext-extremities").val().rpad(25, 45);
+        var ext_extremities_more = $("#ext-extremities-more").val().rpad(25, 45);
         var ext_meconium = $("#ext-meconium").val().rpad(25);
         var ext_medical = ($("#ext-medical").val().length >0) ? $("#ext-medical").val().rpad(25) : "None";
             // head/neck
