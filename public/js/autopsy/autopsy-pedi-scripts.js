@@ -1396,8 +1396,8 @@ $("input:checkbox").on("change", function() {
         var ext_hair_color = $("#ext-hair-color").val().rpad(25);
 
             // abdomen and perineum
-        var ext_abdomen = $("#ext-abdomen").val().rpad(25);
-        var ext_abdomen_more = $("#ext-abdomen-more").val().rpad(25);
+        var ext_abdomen = $("#ext-abdomen").val().rpad(25, 45);
+        var ext_abdomen_more = $("#ext-abdomen-more").val().rpad(25, 45);
         var ext_umbilicus = $("#ext-umbilicus").val().rpad(25);
         var ext_umbilicus_length = $("#ext-umbilicus-length").val().rpad(25);
         var ext_genital = $("#ext-genital").val().rpad(25);
