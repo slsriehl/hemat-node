@@ -538,13 +538,13 @@ $(function () {
 });
 
 //****************** Add padding to create right sided text column
-String.prototype.rpad = function (num, brk) {
+String.prototype.rpad = function (num, brk = 45) {
     // .rpad() function to right pad block of text,
     // num = #of spaces to pad right
     // Explanation of regex: https://stackoverflow.com/questions/14484787/wrap-text-in-javascript/51506718#51506718
     // Here, capture group is 45 chars, to account for 72 char courier 11pt standard width in word document
+    // To change the width of text being broken, pass through a value for the 2nd argument brk. ie. .rpad(25, 30) adds 25 spaces and breaks up paragraph into chunks of 30 chars
 
-	if (typeof brk == "undefined"){ brk == 45};
 	var re = `((?![^\\n]{1,${brk}}$)([^\\n]{1,${brk}})\\s)|(.{1,${brk}}$)`;
 	console.log("regex: ", re);
 	var str = new RegExp(re, "g");
