@@ -1162,8 +1162,9 @@ $(window).on('load', function(){
             }
             else if (labels[j].indexOf('BULB') > -1) {
                 labels[j] = "DUODENUM, BULB, BIOPSY";
-            }
-            else if (labels[j].indexOf('ANTRUM') > -1) {
+            } else if (labels[j].indexOf('DISTAL') > -1) {
+                labels[j] = "DUODENUM, DISTAL, BIOPSY";
+            } else if (labels[j].indexOf('ANTRUM') > -1) {
                 labels[j] = "STOMACH, " + labels[j] + ", BIOPSY";
             } else if (labels[j].indexOf('BODY') > -1) {
                 labels[j] = "STOMACH, BODY, BIOPSY";

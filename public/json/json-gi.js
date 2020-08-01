@@ -252,11 +252,11 @@ $(window).on('load', function(){
         // TYPICAL EE, ALL SITES
         mxLine204: "Sections from the '###' esophageal biopsies show similar findings. They show fragments of reactive squamous mucosa characterized by prominent basal cell hyperplasia and spongiosis. There is a marked increase in intraepithelial eosinophils which number up to 80 in a representative high-powered field at each site. The infiltrate extends the entire thickness of the mucosa and focally includes small superficial aggregates. \n",
         // ACUTE ESOPHAGITIS, 1 SITE, NO CANDIDA
-        mxLine205: "Sections from the 'esophagus' biopsy show fragments of reactive squamous mucosa with a superficial neutrophilic infiltrate [and areas of surface ulceration]. No intraepithelial eosinophils are seen. A PAS-f stain shows no fungal organisms. \n",
+        mxLine205: "Sections from the 'esophagus' biopsy show fragments of reactive squamous mucosa with a superficial neutrophilic infiltrate [and areas of surface ulceration]. No intraepithelial eosinophils are seen. A GMS stain shows no fungal organisms. \n",
         // ACUTE ESOPHAGITIS, 1 SITE, WITH CANDIDA
-        mxLine206: "Sections from the 'esophagus' biopsy show fragments of reactive squamous mucosa with a superficial neutrophilic infiltrate [and areas of surface ulceration]. No intraepithelial eosinophils are seen. A PAS-f stain shows yeast with pseudohyphae in the areas of inflammation. \n",
+        mxLine206: "Sections from the 'esophagus' biopsy show fragments of reactive squamous mucosa with a superficial neutrophilic infiltrate [and areas of surface ulceration]. No intraepithelial eosinophils are seen. A GMS stain shows yeast with pseudohyphae in the areas of inflammation. \n",
         // CANDIDA ONLY
-        mxLine207: "Sections from the 'esophagus' biopsy show fragments of unremarkable squamous mucosa without intraepithelial inflammatory infiltrates. A PAS-f stain shows yeast with pseudohyphae attached to the luminal surface, and focally invading into the mucosal epithelium. \n",
+        mxLine207: "Sections from the 'esophagus' biopsy show fragments of unremarkable squamous mucosa without intraepithelial inflammatory infiltrates. A GMS stain shows yeast with pseudohyphae attached to the luminal surface, and focally invading into the mucosal epithelium. \n",
         // REACTIVE ESOPH WITH INCREASED LYMPHS (CROHNS LIKE)
         mxLine208: "Sections from the 'esophagus' biopsy show fragments of reactive squamous mucosa characterized by prominent basal cell hyperplasia and prominent spongiosis. There are increased numbers of intraepithelial lymphocytes extending from the mucosal base to the surface. \n ",
         // REACTIVE ESOPH, NO IEE
@@ -274,7 +274,7 @@ $(window).on('load', function(){
         // GEJ WITH IM; NO DYS OR CA
         mxLine215: "Sections from the 'esophagus' biopsy show fragments of unremarkable squamous mucosa without intraepithelial inflammatory infiltrates. There is sampling of the gastroesophageal junction with gastric cardia-type mucosa bearing a mild increase in lamina propria cellularity comprised of lymphocytes and plasma cells. There is intestinal metaplasia without dysplasia or carcinoma.  \n",
         // ACUTE EROSIVE ESOPHAGITIS
-        mxLine216: "Sections from the 'esophagus' biopsy show fragments of markedly reactive squamous mucosa with confluent surface erosion and squamous epithelial degeneration. There is a brisk surface neutrophilic infiltrate and sparse eosinophils. A PAS-f stain shows no fungal organisms.  \n",
+        mxLine216: "Sections from the 'esophagus' biopsy show fragments of markedly reactive squamous mucosa with confluent surface erosion and squamous epithelial degeneration. There is a brisk surface neutrophilic infiltrate and sparse eosinophils. A GMS stain shows no fungal organisms.  \n",
         // NORMAL ESOPHAGUS, SINGLE - SUPERFICIAL
         mxLine217: "Sections from the 'esophagus' biopsy show limited superficial sampling of unremarkable squamous mucosa. No intraepithelial inflammatory infiltrates are seen, though the mucosal base is not well visualized. \n",
         // NORMAL EOSPHAGUS, ALL SITES - SUPERFICIAL
