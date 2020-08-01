@@ -3,7 +3,7 @@ $(window).on('load', function(){
 
 $('.cbcval').blur(function (){
 
-var agerx  = $('#agerange').val();
+var agerx  = parseFloat($('#agerange').val());
 var wbcIx = parseFloat($('#WBC').val());
 var rbcIx = parseFloat($('#RBC').val());
 var hbIx = parseFloat($('#HB').val());
@@ -15,10 +15,10 @@ var pltIx = parseFloat($('#PLT').val());
 var pneutIx = parseFloat($('#PNEUT').val());
 var plymphIx = parseFloat($('#PLYMPH').val());
 var pmonoIx = parseFloat($('#PMONO').val());
-var neutIx = parseFloat($('#NEUT').val());
-var lymphIx = parseFloat($('#LYMPH').val());
-var monoIx = parseFloat($('#MONO').val());
-var eosIx = parseFloat($('#EOS').val());
+var neutIx = parseFloat($('#NEUT').val()) || 0;
+var lymphIx = parseFloat($('#LYMPH').val()) || 0;
+var monoIx = parseFloat($('#MONO').val()) || 0;
+var eosIx = parseFloat($('#EOS').val()) || 0;
 var aneut = (parseFloat(wbcIx) * (parseFloat(pneutIx) / 100)).toFixed(2);
 var alym = (parseFloat(wbcIx) * (parseFloat(plymphIx) / 100)).toFixed(2);
 var amono = (parseFloat(wbcIx) * (parseFloat(pmonoIx) / 100)).toFixed(2);
@@ -31,9 +31,11 @@ monoIx = amono;
  }
  
  // set error triggers
- if (rbcIx > 10 || hbIx > 30 || hctIx > 80 || mcvIx > 150 || mcvIx < 40 || mchcIx > 50 || rdwIx > 40 || (neutIx + lymphIx + monoIx > wbcIx)){
-     $("#cbcerror").show()
-}
+ if (rbcIx > 10 || hbIx > 30 || hctIx > 80 || mcvIx > 150 || mcvIx < 40 || mchcIx > 50 || rdwIx > 40 || (neutIx + lymphIx + monoIx >= wbcIx)){
+     $("#cbcerror").show();
+} else {
+        $("#cbcerror").hide();
+	}
 
 // reset the .highlight class appendage
 $('.helpful').removeClass('helpful');
@@ -41,7 +43,7 @@ $('.helpful').removeClass('helpful');
 // @=====****=====START HELPERS HERE =====****=====@
 
 // adult rules
-if (agerx == 3){
+if (agerx === 3){
 	// normal WBCs
 	if (wbcIx >= 3.6 && wbcIx < 10.5 && neutIx > lymphIx){
 	$('#_partType150').addClass('helpful');
@@ -51,13 +53,13 @@ if (agerx == 3){
 	// Low WBC rule
 	if (wbcIx < 3.6 && wbcIx > 2.0){
 	$('#_partType152').addClass('helpful');
-		for (var i=150; i<166; i++){
+		for (var i=150; i<167; i++){
 		partTypes['partType'+i] = partTypes['partType'+i].replace(/L(.*?)(in )/, 'Leukocytes are slightly decreased in ');
 		}
 	}
 	else if (wbcIx <= 2.0){ 
 	$('#_partType153').addClass('helpful');
-		for (var i=150; i<166; i++){
+		for (var i=150; i<167; i++){
 		partTypes['partType'+i] = partTypes['partType'+i].replace(/L(.*?)(in )/, 'Leukocytes are decreased in ');
 		}
 	}
@@ -65,19 +67,21 @@ if (agerx == 3){
 	// Hi WBC rule
 	if (wbcIx >= 10.5 && wbcIx < 14.0){
 	$('#_partType160').addClass('helpful');
-		for (var i=150; i<166; i++){
+		for (var i=150; i<167; i++){
 		partTypes['partType'+i] = partTypes['partType'+i].replace(/L(.*?)(in )/, 'Leukocytes are slightly increased in ');
 		}
 	}else if (wbcIx >= 14.0 && lymphIx < 10.0){
 	$('#_partType160').addClass('helpful');
 	$('#_partType164').addClass('helpful');
-		for (var i=150; i<166; i++){
+		for (var i=150; i<167; i++){
 		partTypes['partType'+i] = partTypes['partType'+i].replace(/L(.*?)(in )/, 'Leukocytes are increased in ');
 		}
 	}else if (wbcIx >= 40){
 	$('#_partType160').addClass('helpful');
 	$('#_partType164').addClass('helpful');
-		for (var i=150; i<166; i++){
+	$('#_partType165').addClass('helpful');
+
+        for (var i=150; i<167; i++){
 		partTypes['partType'+i] = partTypes['partType'+i].replace(/L(.*?)(in )/, 'Leukocytes are markedly increased in ');
 		}
 	}
@@ -92,7 +96,6 @@ if (agerx == 3){
 
 	// Hi neuts
 	if (neutIx > 6.0 && neutIx <=7.5){
-	$('#_partType165').addClass('helpful');
 	$('#_commLine150').addClass('helpful');
 	partTypes.partType156 = partTypes.partType156.replace(/an absolute/, 'a mild absolute');
 	} else if (neutIx > 7.5 && neutIx < 50){
@@ -120,7 +123,7 @@ if (agerx == 3){
 	$('#_mxLine151').addClass('helpful');
 	$('#_mxLine152').addClass('helpful');
 	$('#_commLine152').addClass('helpful');
-		for (var i=150; i<166; i++){
+		for (var i=150; i<167; i++){
 		partTypes['partType'+i] = partTypes['partType'+i].replace(/(of )(.*?)(\. )/, 'of lymphocytes with fewer neutrophils and monocytes. ');
 		}
 
@@ -129,7 +132,7 @@ if (agerx == 3){
 	$('#_mxLine151').addClass('helpful');
 	$('#_mxLine152').addClass('helpful');
 	$('#_commLine152').addClass('helpful');
-	for (var i=150; i<166; i++){
+	for (var i=150; i<167; i++){
 		partTypes['partType'+i] = partTypes['partType'+i].replace(/(of )(.*?)(\. )/, 'of an absolute increase in lymphocytes with fewer neutrophils and monocytes. ');
 		}
 	}else if (lymphIx >=20.0 && lymphIx > neutIx){
@@ -145,25 +148,26 @@ if (agerx == 3){
 	if (monoIx > 1.0 && monoIx < 2.5 && monoIx < neutIx && wbcIx < 12.0){
 	$('#_partType163').addClass('helpful');
 		
-	for (var i=150; i<166; i++){
+	for (var i=150; i<167; i++){
 		partTypes['partType'+i] = partTypes['partType'+i].replace(/(, lymphocytes and monocytes.)/, ' and lymphocytes. There is a relative prominence of monocytes, which include a few young forms. ');
 		}
 
 	}
 
 	// RBC rules
-	if (rbcIx < 4.0 && mcvIx >= 79 && mcvIx <= 99){
+	if (rbcIx < 4.0 && mcvIx >= 77 && mcvIx <= 99){
 	$('#_partType101').addClass('helpful');
 	$('#_mxLine100').addClass('helpful');
-	} else if (rbcIx < 4.0 && mcvIx < 79 && rdwIx < 18){ // microcytic anemia
+	} else if (rbcIx < 4.0 && mcvIx < 77 && rdwIx < 18){ // microcytic anemia
+		console.log("Microcytic anemia!");
 	$('#_partType102').addClass('helpful');
 	$('#_commLine100').addClass('helpful');
 	$('#_mxLine100').addClass('helpful');
-	} else if (rbcIx >= 4.0 && rbcIx <= 5.5 && mcvIx < 79){ // microcytic, not anemic
+	} else if (rbcIx >= 4.0 && rbcIx <= 5.5 && mcvIx < 77){ // microcytic, not anemic
 	$('#_partType106').addClass('helpful');
 	$('#_commLine117').addClass('helpful');
 	$('#_mxLine100').addClass('helpful');
-	} else if (rbcIx < 4.0 && mcvIx < 79 && rdwIx >= 18){ // microcytic anemia, high rdw
+	} else if (rbcIx < 4.0 && mcvIx < 77 && rdwIx >= 18){ // microcytic anemia, high rdw
 	$('#_partType102').addClass('helpful');
 	$('#_commLine100').addClass('helpful');
 	$('#_mxLine100').addClass('helpful');
@@ -187,7 +191,7 @@ if (agerx == 3){
 	}
 
 	// Possible spherocytes
-	if (mchcIx > 35 && rdwIx > 17){
+	if (mchcIx >= 34.5 && rdwIx > 17){
 	$('#_mxLine107').addClass('helpful');
 	$('#_mxLine108').addClass('helpful');
 	$('#_mxLine109').addClass('helpful');
@@ -246,7 +250,7 @@ if (agerx == 3){
 } // end adult rules block
 
 // start infant rules block
-if (agerx == 1){
+if (agerx === 1){
 	// normal WBCs
 	if (wbcIx >= 5.1 && wbcIx < 16){
 	$('#_partType151').addClass('helpful');
@@ -254,13 +258,13 @@ if (agerx == 1){
 	// Low WBC rule
 	if (wbcIx < 5.1 && wbcIx > 4.5){
 	$('#_partType152').addClass('helpful');
-		for (var i=150; i<166; i++){
+		for (var i=150; i<167; i++){
 		partTypes['partType'+i] = partTypes['partType'+i].replace(/L(.*?)(in )/, 'Leukocytes are slightly decreased in ');
 		}
 	}
 	else if (wbcIx <= 4.5){ 
 	$('#_partType153').addClass('helpful');
-		for (var i=150; i<166; i++){
+		for (var i=150; i<167; i++){
 		partTypes['partType'+i] = partTypes['partType'+i].replace(/L(.*?)(in )/, 'Leukocytes are decreased in ');
 		}
 	}
@@ -268,13 +272,15 @@ if (agerx == 1){
 	// Hi WBC rule
 	if (wbcIx >= 16 && wbcIx < 20){
 	$('#_partType160').addClass('helpful');
-		for (var i=150; i<166; i++){
+		for (var i=150; i<167; i++){
 		partTypes['partType'+i] = partTypes['partType'+i].replace(/L(.*?)(in )/, 'Leukocytes are increased in ');
 		}
 	}else if (wbcIx >= 20.0){
 	$('#_partType160').addClass('helpful');
 	$('#_partType164').addClass('helpful');
-		for (var i=150; i<166; i++){
+    $('#_partType165').addClass('helpful');
+
+        for (var i=150; i<167; i++){
 		partTypes['partType'+i] = partTypes['partType'+i].replace(/L(.*?)(in )/, 'Leukocytes are markedly increased in ');
 		}
 	}
@@ -286,7 +292,6 @@ if (agerx == 1){
 
 	// Hi neuts
 	if (neutIx > 5.5 && neutIx <=7.5){
-	$('#_partType165').addClass('helpful');
 	$('#_commLine150').addClass('helpful');
 	partTypes.partType156 = partTypes.partType156.replace(/an absolute/, 'a mild absolute');
 	} else if (neutIx > 7.5){
@@ -308,7 +313,7 @@ if (agerx == 1){
 	$('#_mxLine151').addClass('helpful');
 	$('#_mxLine152').addClass('helpful');
 	$('#_commLine152').addClass('helpful');
-		for (var i=150; i<166; i++){
+		for (var i=150; i<167; i++){
 		partTypes['partType'+i] = partTypes['partType'+i].replace(/(of )(.*?)(\. )/, 'of a relative increase in lymphocytes with fewer neutrophils and monocytes. ');
 		}
 
@@ -317,7 +322,7 @@ if (agerx == 1){
 	$('#_mxLine151').addClass('helpful');
 	$('#_mxLine152').addClass('helpful');
 	$('#_commLine152').addClass('helpful');
-	for (var i=150; i<166; i++){
+	for (var i=150; i<167; i++){
 		partTypes['partType'+i] = partTypes['partType'+i].replace(/(of )(.*?)(\. )/, 'of an absolute increase in lymphocytes with fewer neutrophils and monocytes. ');
 		}
 	}else if (lymphIx >=20.0){
@@ -332,25 +337,25 @@ if (agerx == 1){
 	if (monoIx > 1.2 && monoIx < 2.5 && monoIx < neutIx && wbcIx < 16.0){
 	$('#_partType163').addClass('helpful');
 		
-	for (var i=150; i<166; i++){
+	for (var i=150; i<167; i++){
 		partTypes['partType'+i] = partTypes['partType'+i].replace(/( and monocytes.)/, '. There is a relative prominence of monocytes, which include a few young forms. ');
 		}
 
 	}
 
 	// RBC rules
-	if (rbcIx < 2.9 && mcvIx >= 74 && mcvIx <= 105){
+	if (rbcIx < 2.9 && mcvIx >= 72 && mcvIx <= 105){
 	$('#_partType101').addClass('helpful');
 	$('#_mxLine100').addClass('helpful');
-	} else if (rbcIx < 2.9 && mcvIx < 74 && rdwIx < 18){
+	} else if (rbcIx < 2.9 && mcvIx < 72 && rdwIx < 18){
 	$('#_partType102').addClass('helpful');
 	$('#_commLine100').addClass('helpful');
 	$('#_mxLine100').addClass('helpful');
-	} else if (rbcIx >= 2.9 && rbcIx <= 5.5 && mcvIx < 74 && rdwIx < 18){ // microcytic, not anemic
+	} else if (rbcIx >= 2.9 && rbcIx <= 5.5 && mcvIx < 72 && rdwIx < 18){ // microcytic, not anemic
 	$('#_partType106').addClass('helpful');
 	$('#_commLine117').addClass('helpful');
 	$('#_mxLine100').addClass('helpful');
-	} else if (rbcIx < 2.9 && mcvIx < 74 && rdwIx >= 18){
+	} else if (rbcIx < 2.9 && mcvIx < 72 && rdwIx >= 18){
 	$('#_partType102').addClass('helpful');
 	$('#_commLine100').addClass('helpful');
 	$('#_mxLine100').addClass('helpful');
@@ -361,10 +366,10 @@ if (agerx == 1){
 	$('#_mxLine100').addClass('helpful');
 	$('#_mxLine165').addClass('helpful');
 	$('#_mxLine166').addClass('helpful');
-	}else if (rbcIx > 4.4 && mcvIx < 75){
+	}else if (rbcIx > 4.4 && mcvIx < 72){
 	$('#_partType104').addClass('helpful');
 	$('#_commLine102').addClass('helpful');
-	}else if (rbcIx > 4.4 && mcvIx >= 75 && mcvIx <= 105){
+	}else if (rbcIx > 4.4 && mcvIx >= 72 && mcvIx <= 105){
 	$('#_partType105').addClass('helpful');
 	}else if (rbcIx >=2.9 && rbcIx<=4.4 && mcvIx <= 105){
 	$('#_partType100').addClass('helpful');
@@ -374,7 +379,7 @@ if (agerx == 1){
 	}
 
 	// Possible spherocytes
-	if (mchcIx > 35 && rdwIx > 17){
+	if (mchcIx >= 34.5 && rdwIx > 17){
 	$('#_mxLine107').addClass('helpful');
 	$('#_mxLine108').addClass('helpful');
 	$('#_mxLine109').addClass('helpful');
@@ -432,7 +437,7 @@ if (agerx == 1){
 } // end infant rules block
 
 // start baby rules block
-if (agerx == 2){
+if (agerx === 2){
 	// normal WBCs
 	if (wbcIx >= 5.6 && wbcIx < 17.0){
 	$('#_partType151').addClass('helpful');
@@ -440,13 +445,13 @@ if (agerx == 2){
 	// Low WBC rule
 	if (wbcIx < 5.6 && wbcIx > 3.5){
 	$('#_partType152').addClass('helpful');
-		for (var i=150; i<166; i++){
+		for (var i=150; i<167; i++){
 		partTypes['partType'+i] = partTypes['partType'+i].replace(/L(.*?)(in )/, 'Leukocytes are slightly decreased in ');
 		}
 	}
 	else if (wbcIx <= 3.5){ 
 	$('#_partType153').addClass('helpful');
-		for (var i=150; i<166; i++){
+		for (var i=150; i<167; i++){
 		partTypes['partType'+i] = partTypes['partType'+i].replace(/L(.*?)(in )/, 'Leukocytes are decreased in ');
 		}
 	}
@@ -454,13 +459,15 @@ if (agerx == 2){
 	// Hi WBC rule
 	if (wbcIx >= 17 && wbcIx < 22){
 	$('#_partType160').addClass('helpful');
-		for (var i=150; i<166; i++){
+		for (var i=150; i<167; i++){
 		partTypes['partType'+i] = partTypes['partType'+i].replace(/L(.*?)(in )/, 'Leukocytes are increased in ');
 		}
 	}else if (wbcIx >= 22.0){
 	$('#_partType160').addClass('helpful');
 	$('#_partType164').addClass('helpful');
-		for (var i=150; i<166; i++){
+	$('#_partType165').addClass('helpful');
+
+        for (var i=150; i<167; i++){
 		partTypes['partType'+i] = partTypes['partType'+i].replace(/L(.*?)(in )/, 'Leukocytes are markedly increased in ');
 		}
 	}
@@ -472,7 +479,6 @@ if (agerx == 2){
 
 	// Hi neuts
 	if (neutIx > 6.9 && neutIx <=7.5){
-	$('#_partType165').addClass('helpful');
 	$('#_commLine150').addClass('helpful');
 	partTypes.partType156 = partTypes.partType156.replace(/an absolute/, 'a mild absolute');
 	} else if (neutIx > 7.5){
@@ -494,7 +500,7 @@ if (agerx == 2){
 	$('#_mxLine151').addClass('helpful');
 	$('#_mxLine152').addClass('helpful');
 	$('#_commLine152').addClass('helpful');
-		for (var i=150; i<166; i++){
+		for (var i=150; i<167; i++){
 		partTypes['partType'+i] = partTypes['partType'+i].replace(/(of )(.*?)(\. )/, 'of a relative increase in lymphocytes with fewer neutrophils and monocytes. ');
 		}
 
@@ -503,7 +509,7 @@ if (agerx == 2){
 	$('#_mxLine151').addClass('helpful');
 	$('#_mxLine152').addClass('helpful');
 	$('#_commLine152').addClass('helpful');
-	for (var i=150; i<166; i++){
+	for (var i=150; i<167; i++){
 		partTypes['partType'+i] = partTypes['partType'+i].replace(/(of )(.*?)(\. )/, 'of an absolute increase in lymphocytes with fewer neutrophils and monocytes. ');
 		}
 	}else if (lymphIx >=20.0){
@@ -518,7 +524,7 @@ if (agerx == 2){
 	if (monoIx > 1.2 && monoIx < 2.5 && monoIx < neutIx && wbcIx < 16.0){
 	$('#_partType163').addClass('helpful');
 		
-	for (var i=150; i<166; i++){
+	for (var i=150; i<167; i++){
 		partTypes['partType'+i] = partTypes['partType'+i].replace(/( and monocytes.)/, '. There is a relative prominence of monocytes, which include a few young forms. ');
 		}
 
@@ -559,7 +565,7 @@ if (agerx == 2){
 	}
 
 	// Possible spherocytes
-	if (mchcIx > 35 && rdwIx > 17){
+	if (mchcIx >= 34.5 && rdwIx > 17){
 	$('#_mxLine107').addClass('helpful');
 	$('#_mxLine108').addClass('helpful');
 	$('#_mxLine109').addClass('helpful');
@@ -747,6 +753,9 @@ $('#_commLine110').addClass('helpful');
 $('#_dxOut100').addClass('helpful');
 });
 
+$('#mxLine125').on('change', function(){ // HBSC
+	$('#_commLine113').toggleClass('helpful');
+});
 // CHANGE DX TO MATCH RED CELL INDICES
 $('#partType102, #partType106').on('change', function(){
 	if ($(this).is(':checked')){
@@ -755,17 +764,17 @@ $('#partType102, #partType106').on('change', function(){
 			}
 	}
 });
-$('#partType103').on('change', function(){ 
+$('#partType103').on('change', function(){
 	if ($('#partType103').is(':checked')){
 		for (var i=100; i<114; i++){
 			dxOuts['dxOut'+i] = dxOuts['dxOut'+i].replace(/Normochromic, normocytic /, 'Normochromic, macrocytic ');
 			}
 
-		
-	}
-}); 
 
-// END RBC DX HELPERS 
+	}
+});
+
+// END RBC DX HELPERS
 
 // WBC HELPERS
 $('#partType150, #partType151').on('change', function(){ // NORMAL WBC
@@ -831,7 +840,7 @@ $('#mxLine151').on('change', function(){ // REACTIVE LGLS
 var neutIx = parseFloat($('#NEUT').val(), 10);
 var lymphIx = parseFloat($('#LYMPH').val(), 10);
 $('#column2f .helpful').removeClass('helpful');
-$('#_dxOut163').addClass('helpful'); 
+$('#_dxOut163').addClass('helpful');
 if (lymphIx >= 5 && lymphIx > neutIx){// REACTIVE LYMPHOCYTOSIS
 dxOuts.dxOut163 = dxOuts.dxOut163.replace(/few /, '');
 } else {
@@ -843,10 +852,10 @@ var neutIx = parseFloat($('#NEUT').val(), 10);
 var lymphIx = parseFloat($('#LYMPH').val(), 10);
 $('#column2f .helpful').removeClass('helpful');
 if (lymphIx >= 5 && lymphIx > neutIx){// MANY REACTIVE
-$('#_dxOut162').addClass('helpful'); 
+$('#_dxOut162').addClass('helpful');
 dxOuts.dxOut162 = dxOuts.dxOut162.replace(/few /, '');
 } else { // FEW REACTIVE
-$('#_dxOut175').addClass('helpful'); 
+$('#_dxOut175').addClass('helpful');
 dxOuts.dxOut175 = dxOuts.dxOut175.replace(/reactive /, 'some reactive ');
 }
 });

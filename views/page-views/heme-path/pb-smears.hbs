@@ -87,6 +87,7 @@
             <div class="card-block">
                 <p class="card-text">Enter CBC Data</p>
                 <div class="row">
+                    <div class="table-responsive">
                     <table class="table">
                         <thead class="thead-default">
                         <tr>
@@ -133,7 +134,7 @@
                             <td><input type="text" class="form-control form-control-sm cbcval" id="EOS"
                                        placeholder="n/a"></td>
                             <td><input type="checkbox" class="form-check-input" id="CBCswitch">
-                                <p>Check to use %values</p></td>
+                                <p class="small">Check to calc abs values from %estimation</p></td>
                             <td><input type="text" class="form-control form-control-sm cbcval" id="PNEUT"
                                        placeholder="0" disabled=""></td>
                             <td><input type="text" class="form-control form-control-sm cbcval" id="PLYMPH"
@@ -143,6 +144,7 @@
                         </tr>
                         </tbody>
                     </table>
+                    </div>
                 </div>
                 <div class="row">
                     <button class="btn btn-outline-primary p-1" id="cbcWrite">Print CBC</button>
