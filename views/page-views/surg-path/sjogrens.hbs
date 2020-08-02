@@ -50,7 +50,10 @@ Salivary Gland Biopsy
                 Number of lobules in biopsy </label> 
             <label class="w-100 form-check-label" id="_partType101">
                 <input class="form-check-input" id="partType101" size='5'>
-                Number of atrophic lobules </label> 
+                Number of atrophic lobules </label>
+            <label class="w-100 form-check-label" id="_mxLine10">
+                <input class="form-check-input" id="mxLine100" size='5'>
+                Estimated acinar surface area (mm^2) </label>
             <hr>
             <label class="w-100 form-check-label" id="_partType200">
                 <input class="form-check-input" id="partType200" type='checkbox'>
@@ -58,20 +61,29 @@ Salivary Gland Biopsy
             <label class="w-100 form-check-label" id="_partType201">
                 <input class="form-check-input" id="partType201" type='checkbox'>
                 Suboptimal sample due to small size </label>
-            <label class="w-100 form-check-label" id="_partType202">
+            <label class="w-100 form-check-label" id="_partType202" style="display: none;">
                 <input class="form-check-input" id="partType202" type='checkbox'>
-                Mostly atrophic lobular changes </label>
+                All acini are atrophic
+                <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
+                                       title="This is an inadequate biopsy"></i>
+            </label>
             <label class="w-100 form-check-label" id="_partType203">
                 <input class="form-check-input" id="partType203" type='checkbox'>
-                No salivary gland acini present - just fat </label> 
+                No salivary gland acini present - just fat
+                <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
+                   title="This is an inadequate biopsy"></i>
+            </label>
             <label class="w-100 form-check-label" id="_partType204">
                 <input class="form-check-input" id="partType204" type='checkbox'>
-                No salivary gland acini present - lymph node </label> 
+                No salivary gland acini present - lymph node
+                <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
+                   title="This is an inadequate biopsy"></i>
+            </label>
         </div>
     </div>
     <div class="card">
         <div class="card-header">
-            <h5>Acinar Histologic Findings</h5>
+            <h5>Acinar Histologic Findings (if adequate sampling)</h5>
         </div>
         <div class="card-block">
             <label class="w-100 form-check-label" id="_mxLine200">
@@ -79,7 +91,10 @@ Salivary Gland Biopsy
                 Normal lobules description (none with atrophy) </label>
             <label class="w-100 form-check-label" id="_mxLine201">
                 <input class="form-check-input" id="mxLine201" type='checkbox'>
-                Mostly normal lobules; few with atrophy</label>
+                Mostly normal lobules (atrophy is present)</label>
+            <label class="w-100 form-check-label" id="_mxLine209">
+                <input class="form-check-input" id="mxLine209" type='checkbox'>
+                Mostly atrophic lobules (few intact acinar units)</label>
             <hr>
             <div class="bg-warning mb-2">Qualifiers</div>
             <label class="w-100 form-check-label" id="_mxLine202">
@@ -108,30 +123,40 @@ Salivary Gland Biopsy
 
             <div class="bg-warning mb-2 mt-3">
                 Additional biopsy findings</div>
-            <label class="w-100 form-check-label" id="_mxLine211">
-                <input class="form-check-input" id="mxLine211" type='checkbox'>
+            <label class="w-100 form-check-label" id="_mxLine230">
+                <input class="form-check-input" id="mxLine230" type='checkbox'>
                 No lymphoepithelial lesions </label> 
-            <label class="w-100 form-check-label" id="_mxLine212">
-                <input class="form-check-input" id="mxLine212" type='checkbox'>
+            <label class="w-100 form-check-label" id="_mxLine231">
+                <input class="form-check-input" id="mxLine231" type='checkbox'>
                 Lymphoepithelial lesions are present</label> 
-            <label class="w-100 form-check-label" id="_mxLine213">
-                <input class="form-check-input" id="mxLine213" type='checkbox'>
+            <label class="w-100 form-check-label" id="_mxLine232">
+                <input class="form-check-input" id="mxLine232" type='checkbox'>
                 No germinal center formation </label> 
-            <label class="w-100 form-check-label" id="_mxLine214">
-                <input class="form-check-input" id="mxLine214" type='checkbox'>
+            <label class="w-100 form-check-label" id="_mxLine233">
+                <input class="form-check-input" id="mxLine233" type='checkbox'>
                 Germinal centers present </label> 
             <hr>
 
             <div class="bg-info mb-2">Focus Score</div>
-            <input type="number" id="mxLine100" size='5'> Total surface area (mm^2)
-            <span class="w-100 py-1"></span>
-            <input type="number" id="mxLine101" size='5'> Total inflammatory foci 
-            <label class="w-100 form-check-label" id="_mxLine210">
-                <input class="form-check-input" id="mxLine210" type='checkbox'>
-                Check here to include FS </label> 
-            <label class="form-check-label" id="_mxLine209">
-                <input class="form-check-input" id="mxLine209" type='checkbox'>
-                Check here if you cannot perform FS </label>
+            <label class="w-100 form-check-label" id="_mxLine101">
+                <input class="form-check-input" id="mxLine101" size='5'>
+                Total # of inflammatory foci </label>
+
+            <div class="py-2 w-100"></div>
+            
+            <label class="w-100 form-check-label" id="_mxLine221">
+                <input class="form-check-input" id="mxLine221" type='checkbox'>
+                Check here to include FS </label>
+
+            <div class="py-2 w-100"></div>
+
+            <label class="form-check-label" id="_mxLine220">
+                <input class="form-check-input" id="mxLine220" type='checkbox'>
+                Check here if you cannot perform FS
+                <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
+                                       title="Reasons to not provide a FS include: excessive atrophic changes, inflammation is plasma cell rich, superimposed acinar injury"></i>
+            </label>
+            <br>
             <i class="fa fa-exclamation-triangle mx-2"></i>Use this for NSCS or SCS<i class="fa fa-exclamation-triangle mx-2"></i>
         </div>
     </div>
@@ -186,8 +211,7 @@ Salivary Gland Biopsy
         <div class="card-block">
             <div class="form-group">
                 <textarea class="form-control" id="outPut-3" rows="6"
-                          placeholder="Finals">SALIVARY GLAND, LIP, BIOPSY:
-                </textarea>
+                          placeholder="Finals"></textarea>
                 <span class="input-group-addon copy btn btn-primary"
                       data-clipboard-target="#outPut-3">Copy to Clipboard</span>
             </div>

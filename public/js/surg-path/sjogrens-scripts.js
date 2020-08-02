@@ -57,10 +57,40 @@ $(window).on('load', function () {
     }
 
 
-    // TEXT MODIFIERS
+// TEXT MODIFIERS
+
+// Hide micro based on atropy
+$("#partType101").on('input', function (){
+    // get num atrophic lobules
+    var num = parseInt($(this).val(), 10);
+    // get num total lobules
+    var lobs = parseInt($('#partType100').val(), 10);
+    var rat = num / lobs;
+    if (num > 0 && rat <= 0.5){  // if <50% atrophy is present
+        $('#_mxLine200').hide();
+        $('#_mxLine201').show();
+        $('#_mxLine209').hide();
+    } else if (num > 0 && rat > 0.5){ // if > 50% atrophy is present
+        $('#_mxLine200').hide();
+        $('#_mxLine201').hide();
+        $('#_mxLine209').show();
+    } else { // if no atrophic lobules seen
+        $('#_mxLine200').show();
+        $('#_mxLine201').hide();
+        $('#_mxLine209').hide();
+    }
+    if (num == lobs){
+        $("#_partType202").show();
+        $("#_partType202").css("background", "yellow");
+    } else {
+        $("#_partType202").hide();
+        $("#_partType202").css("background", "none");
+
+    }
+}) ;
 
 // Focus score
-    $('#mxLine210').on('change', function () {
+    $('#mxLine221').on('change', function () {
         var inf_foci = parseInt($('#mxLine101').val(), 10).toFixed(0);
         var surf_area = parseInt($('#mxLine100').val(), 10).toFixed(1);
         var foci_words = toWords(inf_foci);
@@ -85,24 +115,38 @@ $(window).on('load', function () {
         }
     });
 
-    $('#mxLine209').on('change', function () {
+    $('#mxLine220').on('change', function () {
         $('#outPut-4').val(commLines.commLine102);
     });
 
 // Lobules description
-    $('#partType101').on('blur', function () {
+    $('#mxLine100').on('blur', function () {
         var lobs = parseInt($('#partType100').val(), 10);
         var atrophy = parseInt($('#partType101').val(), 10);
+        var area = parseInt($('#mxLine100').val(), 10) + " mm^2";
         lobs = toWords(lobs);
         atrophy = toWords(atrophy);
 
+        if (atrophy == 0){
+            $.each(partTypes, function (key, val) {
+                partTypes[key] = partTypes[key].replace(/#AAA# /, lobs).replace(/#BBB# /, 'none ').replace(/#CCC#/, area);
+            });
+        } else {
+            $.each(partTypes, function (key, val) {
+                partTypes[key] = partTypes[key].replace(/#AAA# /, lobs).replace(/#BBB# /, atrophy).replace(/#CCC#/, area);
+            });
+        }
+
+        /*
         for (var i = 200; i < 204; i++) {
             if (atrophy == 0) {
-                partTypes['partType' + i] = partTypes['partType' + i].replace(/#AAA# /, lobs).replace(/#BBB# /, 'none ');
+                partTypes['partType' + i] = partTypes['partType' + i].replace(/#AAA# /, lobs).replace(/#BBB# /, 'none ').replace(/#CCC#/, area);
             } else {
-                partTypes['partType' + i] = partTypes['partType' + i].replace(/#AAA# /, lobs).replace(/#BBB# /, atrophy);
+                partTypes['partType' + i] = partTypes['partType' + i].replace(/#AAA# /, lobs).replace(/#BBB# /, atrophy)replace(/#CCC#/, area);
             }
         }
+        */
+
     });
 
 
@@ -130,7 +174,7 @@ $(window).on('load', function () {
         if (diag_choice !== null) {
             final_text += dxOuts[diag_choice] ;
             diag_choice = null;
-            if ($("#mxLine210").is(":checked")) { // add focus score
+            if ($("#mxLine221").is(":checked")) { // add focus score
                 $('#outPut-3').val(final_text + dxOuts.dxOut200);
 
             } else {

@@ -6,7 +6,6 @@ $(window).on('load', function(){
             $('.tx-date').show();
             $.each(commLines, function (key, val) {
                 commLines[key] = commLines[key].replace(/suggestive of previously transfused/, 'consistent with previously transfused');
-                console.log("Transfused update: "+commLines.he304);
             });
             }
         else {
