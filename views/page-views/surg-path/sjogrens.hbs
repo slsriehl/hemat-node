@@ -45,18 +45,20 @@ Salivary Gland Biopsy
             <h5>Histomorphometry</h5>
         </div>
         <div class="card-block">
-            <label class="w-100 form-check-label" id="_partType100">
-                <input class="form-check-input" id="partType100" size='5'>
-                Number of lobules in biopsy </label> 
-            <label class="w-100 form-check-label" id="_partType101">
-                <input class="form-check-input" id="partType101" size='5'>
-                Number of atrophic lobules </label>
-            <label class="w-100 form-check-label" id="_mxLine10">
-                <input class="form-check-input" id="mxLine100" size='5'>
-                Estimated acinar surface area (mm^2)
-                <i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
+            <div class="input-group" id="_partType100">
+                <input class="form-control col-3" id="partType100">
+                <span class="input-group-addon">Number of lobules in biopsy</span>
+            </div>
+            <div class="input-group my-2" id="_partType101">
+                <input class="form-control col-3" id="partType101">
+                <span class="input-group-addon">Number of atrophic lobules</span>
+            </div>
+            <div class="input-group my-2" id="_mxLine10">
+                <input class="form-control col-3" id="mxLine100" >
+                <span class="input-group-addon">Estimated acinar surface area (mm^2)</span>
+                <i class="fa fa-question-circle input-group-addon" data-placement="right" data-toggle="tooltip"
                                        title="Include atrophic regions in this measurement"></i>
-            </label>
+            </div>
             <hr>
             <label class="w-100 form-check-label" id="_partType200">
                 <input class="form-check-input" id="partType200" type='checkbox'>
