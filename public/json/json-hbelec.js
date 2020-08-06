@@ -152,7 +152,7 @@ $(window).on('load', function(){
         // HbSS + elevated A2 (sickle beta-thal) - A = 0, F 5-10%, A2 >3.5%
         he307: 'Findings suggestive of heterozygous hemoglobin S and beta-thalassemia (sickle-beta thalassemia). ',
         // HbSS + increased HbF non-infant - sickle HPFH: S + F 15-30%
-        he308: 'Findings suggestive of heterozygous hemoglobin S (trait) and hereditary persistence of fetal hemoglobin (HPFH).',
+        he308: 'Findings show increased HbF in the setting of HbS. In patients with homozygous HbSS disease, increased HbF likely indicates medication (hydroxyurea) effect. Alternatively, this pattern may also be observed in patients with heterozygous hemoglobin S (trait) and hereditary persistence of fetal hemoglobin (HPFH). If necessary, beta-globin gene testing can help differentiate among these possibilities. ',
         // HbSS + increased HbF infant - sickle or sickle HPFH
         he309: 'Findings suggestive of homozygous hemoglobin S (sickle cell disease) or, possible, heterozygous HbS and hereditary persistence of fetal hemoglobin (HPFH). Repeat hemoglobin electrophoresis after the age of 2 is recommeded to assess whether the HbF levels decline to the expected levels for sickle cell disease. ',
         // HbS and HbC only- HbSC
