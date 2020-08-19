@@ -172,9 +172,9 @@ $('#done').on('click', function(){
             micro = "The cytospin slides from the '"+ arrayToSentence(parts) +"' sample consist predominantly of "+arrayToSentence(cells_maj);
         }
             if (cells_min.length > 0 && parts.length === 1){
-                micro += " and fewer "+arrayToSentence(cells_min)+". "
+                micro += " and lesser "+arrayToSentence(cells_min)+". "
             } else if (cells_min.length > 0 && parts.length > 1) {
-                micro += ", with fewer "+arrayToSentence(cells_min)+". "
+                micro += ", with lesser "+arrayToSentence(cells_min)+". "
             } else {
                 micro += ". "
             }
