@@ -127,7 +127,7 @@ $(window).on('load', function() {
         //
         mxLine116: 'large, pleomorphic malignant cells',
         //
-        mxLine117: 'blood',
+        mxLine117: 'abundant background blood',
         //
         mxLine118: 'atypical mesothelial cells',
         // Minor cells (repeated from prior block)
@@ -165,7 +165,7 @@ $(window).on('load', function() {
         //
         mxLine146: 'large, pleomorphic malignant cells',
         //
-        mxLine147: 'background red blood cells',
+        mxLine147: 'amount of background red blood cells',
         //
         mxLine148: 'atypical mesothelial cells',
         // Microorganisms
