@@ -160,10 +160,10 @@ $('#cbcWrite').on('click', function () {
     }
     else {
         if (eosIx !== ''){
-            cbcText = "LABORATORY DATA (" + mySite + ", " + dateIx +"):" + " WBC: " + wbcIx + " K/ul;" + " RBC: " + rbcIx + " MIL;" + " HB: " + hbIx + " gm/dl;" + " HCT: " + hctIx + " %;" + " MCV: " + mcvIx + " fl;" + "MCHC: "+  mchcIx + " g/dl;" +  " RDW: " + rdwIx + " %;" + " PLT: " + pltIx + " K/ul;" + " ABS NEUT: " + neutIx + " K/ul;" + " ABS LYMPH: " + lymphIx + " K/ul;" + " ABS MONO: " + monoIx + " K/ul; ABS EOS: "+eosIx+" K/uL.";
+            cbcText = "LABORATORY DATA (" + mySite + ", " + dateIx +"):" + " WBC: " + wbcIx + " K/ul;" + " RBC: " + rbcIx + " MIL;" + " HB: " + hbIx + " gm/dl;" + " HCT: " + hctIx + " %;" + " MCV: " + mcvIx + " fl; MCHC: "+  mchcIx + " g/dl;" +  " RDW: " + rdwIx + " %;" + " PLT: " + pltIx + " K/ul;" + " ABS NEUT: " + neutIx + " K/ul;" + " ABS LYMPH: " + lymphIx + " K/ul;" + " ABS MONO: " + monoIx + " K/ul; ABS EOS: "+eosIx+" K/uL.";
             $('#outPut-1').val(cbcText);
         } else {
-            cbcText = "LABORATORY DATA (" + mySite + ", " + dateIx +"):" + " WBC: " + wbcIx + " K/ul;" + " RBC: " + rbcIx + " MIL;" + " HB: " + hbIx + " gm/dl;" + " HCT: " + hctIx + " %;" + " MCV: " + mcvIx + " fl;" + "MCHC: "+  mchcIx + " g/dl;" +  " RDW: " + rdwIx + " %;" + " PLT: " + pltIx + " K/ul;" + " ABS NEUT: " + neutIx + " K/ul;" + " ABS LYMPH: " + lymphIx + " K/ul;" + " ABS MONO: " + monoIx + " K/ul.";
+            cbcText = "LABORATORY DATA (" + mySite + ", " + dateIx +"):" + " WBC: " + wbcIx + " K/ul;" + " RBC: " + rbcIx + " MIL;" + " HB: " + hbIx + " gm/dl;" + " HCT: " + hctIx + " %;" + " MCV: " + mcvIx + " fl; MCHC: "+  mchcIx + " g/dl;" +  " RDW: " + rdwIx + " %;" + " PLT: " + pltIx + " K/ul;" + " ABS NEUT: " + neutIx + " K/ul;" + " ABS LYMPH: " + lymphIx + " K/ul;" + " ABS MONO: " + monoIx + " K/ul.";
             $('#outPut-1').val(cbcText);
         }
         }
