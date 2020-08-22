@@ -1,14 +1,17 @@
 $(window).on('load', function(){
+    var isTransfused = false;
     // Pop-ups
     $('#txhx').on("change", function(){
         var sel = $('#txhx').val();
         if (sel.indexOf("Yes") > -1) {
+            isTransfused = true;
             $('.tx-date').show();
             $.each(commLines, function (key, val) {
                 commLines[key] = commLines[key].replace(/suggestive of previously transfused/, 'consistent with previously transfused');
             });
             }
         else {
+            isTransfused = false;
             $('.tx-date').hide();
             $.each(commLines, function (key, val) {
                 commLines[key] = commLines[key].replace(/consistent with previously transfused/, 'suggestive of previously transfused');
@@ -171,10 +174,10 @@ $(window).on('load', function(){
         $('#outPut-2').val(micro+"\n\n");
 
         // Final diagnosis
-        $('#outPut-3').val(final);
+        $('#outPut-3').val(final + "\n\nCPT: 83020-26");
 
         // Comment
-        $('#outPut-4').val(comment + "\n\nCPT: 83020-26");;
+        $('#outPut-4').val(comment);;
 
 
         var textToPass = $('#outPut-2').val()+'\nFINAL DIAGNOSIS\n'+$('#outPut-3').val()+'\n\nCOMMENT\n'+$('#outPut-4').val();
