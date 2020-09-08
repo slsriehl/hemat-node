@@ -9,17 +9,23 @@ $(window).on('load', function () {
     //*************************************************************//
     //                        Pop-ups                              //
     // *************************************************************/
-
-    $("#box1").on('change', function () {
-        var sel = $(this).val();
-        if (sel.indexOf('Embryonal') > -1) {
-            $(".embryonal").show();
-            $(".glioma").hide();
-        } else {
-            $(".embryonal").hide();
-            $(".glioma").show();
-        }
+    $('#box1').change(function(){
+        var sel = $('#box1').val();
+        if (sel == 'Present') {
+            $('#box1_2').show();}
+        else {
+            $('#box1_2').hide();}
     });
+
+    $('#box41').change(function(){
+        var sel = $('#box41').val();
+        if (sel == 'Present') {
+            $('#box41_2').show();}
+        else {
+            $('#box41_2').hide();}
+    });
+
+
 
     //************************************************************//
     // Script to populate the template data in the output textarea//
@@ -50,126 +56,186 @@ $(window).on('load', function () {
         // ***************** END VALIDATION ********************//
 
 
-        var captext = "CNS Cyto-Molecular Biomarker Results\n\n";
+        var captext = "\n-- CNS Molecular Genetics Biomarker Results --\n\n";
 
-        var box_1 = $('#box1').val();
+        var box_1 = $("#box1").val();
+        var box_1_2 = $("#box1_2").val();
+        if(box_1 != "Not performed") {
 
-        if (box_1.indexOf('Embryonal') > -1) {
-
-            var box_2 = $("#box2").val();
-            if (box_2 != "Not applicable") {
-                captext += "\nNuclear Beta-Catenin Immunohistochemistry: " + box_2 + "\n";
+            if (box_1 == 'Present') {
+                captext += "\nATRX mutation:\n- Present: " + box_1_2 + "\n";
             }
-
-            var box_3 = $("#box3").val();
-            if (box_3 != "Not applicable") {
-                captext += "\nMonosomy 6: " + box_3 + "\n";
-            }
-
-            var box_4 = $("#box4").val();
-            if (box_4 != "Not applicable") {
-                captext += "\nGAB1 Immunohistochemistry: " + box_4 + "\n";
-            }
-
-            var box_5 = $("#box5").val();
-            if (box_5 != "Not applicable") {
-                captext += "\nMYC Amplification: " + box_5 + "\n";
-            }
-
-            var box_6 = $("#box6").val();
-            if (box_6 != "Not applicable") {
-                captext += "\nMYCN Amplification: " + box_6 + "\n";
-            }
-
-            var box_7 = $("#box7").val();
-            if (box_7 != "Not applicable") {
-                captext += "\nIsochromosome 17: " + box_7 + "\n";
-            }
-
-            var box_8 = $("#box8").val();
-            if (box_8 != "Not applicable") {
-                captext += "\nINI1 Immunohistochemistry: " + box_8 + "\n";
-            }
-
-            var box_9 = $("#box9").val();
-            if (box_9 != "Not applicable") {
-                captext += "\n+ SMARCB1/INI1/HNSF5 Mutation: " + box_9 + "\n";
+            else {
+                captext += "\nATRX mutation:\n- " + box_1 + "\n";
             }
         }
 
-        if (box_1.indexOf('Glioma') > -1) {
 
-            var box_20 = $("#box20").val();
-            if (box_20 != "Not applicable") {
-                captext += "\nIDH1/2 Mutation: " + box_20 + "\n";
-            }
+        var box_5 = $("#box5").val();
+        if(box_5 != "Not performed") {
 
-            var box_21 = $("#box21").val();
-            if (box_21 != "Not applicable") {
-                captext += "\nIDH1 R132H Immunohistochemistry: " + box_21 + "\n";
-            }
+            captext += "\nBRAF mutation:\n- " + box_5 + "\n";
+        }
 
-            var box_22 = $("#box22").val();
-            if (box_22 != "Not applicable") {
-                captext += "\n1p/19q Deletion: " + box_22 + "\n";
-            }
+        var box_6 = $("#box6").val();
+        if(box_6 != "Not performed") {
 
-            var box_23 = $("#box23").val();
-            if (box_23 != "Not applicable") {
-                captext += "\nTP53 Mutation: " + box_23 + "\n";
-            }
+            captext += "\nBRAF rearrangement:\n- " + box_6 + "\n";
+        }
 
-            var box_24 = $("#box24").val();
-            if (box_24 != "Not applicable") {
-                captext += "\nATRX Mutation: " + box_24 + "\n";
-            }
+        var box_10 = $("#box10").val();
+        if(box_10 != "Not performed") {
 
-            var box_25 = $("#box25").val();
-            if (box_25 != "Not applicable") {
-                captext += "\nATRX Immunohistochemistry: " + box_25 + "\n";
-            }
+            captext += "\nBeta-catenin mutation:\n- " + box_10 + "\n";
+        }
 
-            var box_26 = $("#box26").val();
-            if (box_26 != "Not applicable") {
-                captext += "\nEGFR Amplification: " + box_26 + "\n";
-            }
+        var box_11 = $("#box11").val();
+        if(box_11 != "Not performed") {
 
-            var box_27 = $("#box27").val();
-            if (box_27 != "Not applicable") {
-                captext += "\n10q23 Deletion: " + box_27 + "\n";
-            }
+            captext += "\nBeta-catenin nuclear IHC:\n- " + box_11 + "\n";
+        }
 
-            var box_28 = $("#box28").val();
-            if (box_28 != "Not applicable") {
-                captext += "\nPTEN Mutatio: " + box_28 + "\n";
-            }
+        var box_15 = $("#box15").val();
+        if(box_15 != "Not performed") {
 
-            var box_29 = $("#box29").val();
-            if (box_29 != "Not applicable") {
-                captext += "\nMGMT Promoter Methylation: " + box_29 + "\n";
-            }
+            captext += "\nC19MC alteration:\n- " + box_15 + "\n";
+        }
 
-            var box_30 = $("#box30").val();
-            if (box_30 != "Not applicable") {
-                captext += "\nBRAF Mutation: " + box_30 + "\n";
-            }
+        var box_20 = $("#box20").val();
+        if(box_20 != "Not performed") {
 
-            var box_31 = $("#box31").val();
-            if (box_31 != "Not applicable") {
-                captext += "\nBRAF V600E Immunohistochemistry: " + box_31 + "\n";
-            }
+            captext += "\n1p/19q codeletion:\n- " + box_20 + "\n";
+        }
 
-            var box_32 = $("#box32").val();
-            if (box_32 != "Not applicable") {
-                captext += "\nBRAF Rearrangement: " + box_32 + "\n";
-            }
+        var box_25 = $("#box25").val();
+        if(box_25 != "Not performed") {
+            captext += "\nChromosome 7  gain:\n- " + box_25 + "\n";
+        }
 
-            var box_33 = $("#box33").val();
-            captext += "\nKi-67%: " + box_33 + "%\n";
+        var box_30 = $("#box30").val();
+        if(box_30 != "Not performed") {
+            captext += "\nPTEN deletion:\n- " + box_30 + "\n";
+        }
+
+        var box_31 = $("#box31").val();
+        if(box_31 != "Not performed") {
+            captext += "\nPTEN mutation:\n- " + box_31 + "\n";
+        }
+
+        var box_35 = $("#box35").val();
+        if(box_35 != "Not performed") {
+            captext += "\nEGFR amplification:\n- " + box_35 + "\n";
+        }
+
+        var box_36 = $("#box36").val();
+        if(box_36 != "Not performed") {
+            captext += "\nEGFRvIII mutation:\n- " + box_36 + "\n";
         }
 
         var box_40 = $("#box40").val();
-        captext += "\nOther cyto-molecular results:\n- " + box_40 + "\n";
+        if(box_40 != "Not performed") {
+            captext += "\nFGFR1 mutation:\n- " + box_40 + "\n";
+        }
+
+        var box_41 = $("#box41").val();
+        var box_41_2 = $("#box41_2").val();
+        if(box_41 != "Not performed") {
+            if (box_41 == 'Present') {
+                captext += "\nH3 gene family mutation:\n- Present:  " + box_41_2 + "\n";
+            }
+            else {
+                captext += "\nH3 gene family mutation:\n- " + box_41 + "\n";
+            }
+        }
+
+
+        var box_42 = $("#box42").val();
+        if(box_42 != "Not performed") {
+            captext += "\nAlk alteration:\n- " + box_42 + "\n";
+        }
+
+        var box_43 = $("#box43").val();
+        if(box_43 != "Not performed") {
+            captext += "\nNTRK alteration:\n- " + box_43 + "\n";
+        }
+
+        var box_44 = $("#box44").val();
+        if(box_44 != "Not performed") {
+            captext += "\nBCOR alteration:\n- " + box_44 + "\n";
+        }
+
+        var box_45 = $("#box45").val();
+        if(box_45 != "Not performed") {
+            captext += "\nSMARBC1 alteration:\n- " + box_45 + "\n";
+        }
+
+        var box_50 = $("#box50").val();
+        if(box_50 != "Not performed") {
+            captext += "\nIDH1/2 mutation:\n- " + box_50 + "\n";
+        }
+
+        var box_55 = $("#box55").val();
+        if(box_55 != "Not performed") {
+            captext += "\nIsochromosome 17q:\n- " + box_55 + "\n";
+        }
+
+        var box_60 = $("#box60").val();
+        if(box_60 != "Not performed"){
+            captext += "\nMGMT promoter methylation:\n- "  + box_60+ "\n";
+        }
+
+        var box_65 = $("#box65").val();
+        if(box_65 != "Not performed"){
+            captext += "\nMonosomy 6:\n- "  + box_65+ "\n";
+        }
+
+        var box_70 = $("#box70").val();
+        if(box_70 != "Not performed"){
+            captext += "\nMYC amplification:\n- "  + box_70+ "\n";
+        }
+
+        var box_71 = $("#box71").val();
+        if(box_71 != "Not performed"){
+            captext += "\nMYCN amplification:\n- "  + box_71+ "\n";
+        }
+
+        var box_75 = $("#box75").val();
+        if(box_75 != "Not performed"){
+            captext += "\nNAB2-STAT6 fusion:\n- "  + box_75+ "\n";
+        }
+
+        var box_80 = $("#box80").val();
+        if(box_80 != "Not performed"){
+            captext += "\nRELA fusion:\n- "  + box_80+ "\n";
+        }
+
+        var box_85 = $("#box85").val();
+        if(box_85 != "Not performed"){
+            captext += "\nTERT promoter mutation:\n- "  + box_85+ "\n";
+        }
+
+        var box_90 = $("#box90").val();
+        if(box_90 != "Not performed"){
+            captext += "\nTP53 mutation:\n- "  + box_90+ "\n";
+        }
+
+
+        var box_95 = $("#box95").val();
+        if(box_95 != "Not performed"){
+            captext += "\nYAP1 fusion:\n- "  + box_95+ "\n";
+        }
+
+        var box_98 = $("#box98").val();
+        if (box_98.length > 0){
+            captext += "\nOther cytogenetic findings:\n"  + box_98 + "\n";
+        }
+
+        var box_99 = $("#box99").val();
+        if (box_99.length > 0){
+            captext += "\nOther molecular findings:\n"  + box_99 + "\n";
+        }
+
+
 
         $('#outPut-1').val(captext);
 

@@ -18,302 +18,412 @@
 
 			<hr>
 			<div class="p-4">
-			<h5>Tumor type</h5>
-			<select id="box1" class='form-control selectpicker col-sm-12'>
-				<option>Embryonal Tumor</option>
-				<option>Glioma</option>
-			</select>
+
+				<div class="card-block">
+					<div class="card">
+						<h5 class="card-header">ATRX mutation</h5>
+						<div class="card-block">
+							<select id="box1" class='form-control form-control-sm col-sm-6'>
+								<option>Not performed</option>
+								<option>Absent</option>
+								<option>Present</option>
+							</select><br>
+							<input class="form-control form-control-sm mt-3 col-sm-6" id='box1_2' style='display:none;' placeholder='Specify details'>
+						</div>
+					</div>
+				</div>
+
+				<div class="card-block">
+					<div class="card">
+						<h5 class="card-header">BRAF mutation</h5>
+						<div class="card-block">
+							<select id="box5" class='form-control form-control-sm col-sm-6'>
+								<option>Not performed</option>
+								<option>Absent</option>
+								<option>Present: BRAF V600E</option>
+								<option>Present: Other BRAF mutation</option>
+							</select></div>
+					</div>
+				</div>
+
+				<div class="card-block">
+					<div class="card">
+						<h5 class="card-header">BRAF rearrangement</h5>
+						<div class="card-block">
+							<select id="box6" class='form-control form-control-sm col-sm-6'>
+								<option>Not performed</option>
+								<option>Absent</option>
+								<option>Present: KIAA1549-BRAF rearrangement</option>
+								<option>Present: Other BRAF rearrangement</option>
+							</select></div>
+					</div>
+				</div>
+
+				<div class="card-block">
+					<div class="card">
+						<h5 class="card-header">Beta-catenin mutation</h5>
+						<div class="card-block">
+							<select id="box10" class='form-control form-control-sm col-sm-6'>
+								<option>Not performed</option>
+								<option>Absent</option>
+								<option>Present</option>
+								<option></option>
+							</select></div>
+					</div>
+				</div>
+
+				<div class="card-block">
+					<div class="card">
+						<h5 class="card-header">Beta-catenin nuclear IHC</h5>
+						<div class="card-block">
+							<select id="box11" class='form-control form-control-sm col-sm-6'>
+								<option>Not performed</option>
+								<option>Nuclear expression absent</option>
+								<option>Nuclear expression present</option>
+								<option></option>
+							</select></div>
+					</div>
+				</div>
+
+				<div class="card-block">
+					<div class="card">
+						<h5 class="card-header">C19MC alteration</h5>
+						<div class="card-block">
+							<select id="box15" class='form-control form-control-sm col-sm-6'>
+								<option>Not performed</option>
+								<option>Absent</option>
+								<option>Absent with low-level gain</option>
+								<option>Present</option>
+								<option></option>
+							</select></div>
+					</div>
+				</div>
+
+				<div class="card-block">
+					<div class="card">
+						<h5 class="card-header">1p/19q codeletion</h5>
+						<div class="card-block">
+							<select id="box20" class='form-control form-control-sm col-sm-6'>
+								<option>Not performed</option>
+								<option>No codeletion detected</option>
+								<option>1p/19q codeletion detected</option>
+								<option>1p deletion only</option>
+								<option>19q deletion only</option>
+								<option>Relative deletion</option>
+								<option></option>
+							</select></div>
+					</div>
+				</div>
+
+				<div class="card-block">
+					<div class="card">
+						<h5 class="card-header">Chromosome 7  gain</h5>
+						<div class="card-block">
+							<select id="box25" class='form-control form-control-sm col-sm-6'>
+								<option>Not performed</option>
+								<option>Absent</option>
+								<option>Present</option>
+								<option></option>
+							</select></div>
+					</div>
+				</div>
+
+				<div class="card-block">
+					<div class="card">
+						<h5 class="card-header">PTEN deletion</h5>
+						<div class="card-block">
+							<select id="box30" class='form-control form-control-sm col-sm-6'>
+								<option>Not performed</option>
+								<option>Absent</option>
+								<option>Present</option>
+								<option></option>
+							</select></div>
+					</div>
+				</div>
+
+				<div class="card-block">
+					<div class="card">
+						<h5 class="card-header">PTEN mutation</h5>
+						<div class="card-block">
+							<select id="box31" class='form-control form-control-sm col-sm-6'>
+								<option>Not performed</option>
+								<option>Absent</option>
+								<option>Present</option>
+								<option></option>
+							</select></div>
+					</div>
+				</div>
+
+				<div class="card-block">
+					<div class="card">
+						<h5 class="card-header">EGFR amplification</h5>
+						<div class="card-block">
+							<select id="box35" class='form-control form-control-sm col-sm-6'>
+								<option>Not performed</option>
+								<option>Absent</option>
+								<option>Absent with low-level gain</option>
+								<option>Present</option>
+								<option></option>
+							</select></div>
+					</div>
+				</div>
+
+				<div class="card-block">
+					<div class="card">
+						<h5 class="card-header">EGFRvIII mutation</h5>
+						<div class="card-block">
+							<select id="box36" class='form-control form-control-sm col-sm-6'>
+								<option>Not performed</option>
+								<option>Absent</option>
+								<option>Present</option>
+								<option></option>
+							</select></div>
+					</div>
+				</div>
+
+				<div class="card-block">
+					<div class="card">
+						<h5 class="card-header">FGFR1 mutation</h5>
+						<div class="card-block">
+							<select id="box40" class='form-control form-control-sm col-sm-6'>
+								<option>Not performed</option>
+								<option>Absent</option>
+								<option>Present</option>
+								<option></option>
+							</select></div>
+					</div>
+				</div>
+
+				<div class="card-block">
+					<div class="card">
+						<h5 class="card-header">H3 gene family mutation</h5>
+						<div class="card-block">
+							<select id="box41" class='form-control form-control-sm col-sm-6'>
+								<option>Not performed</option>
+								<option>Absent</option>
+								<option>Present</option>
+							</select><br>
+							<input class="form-control form-control-sm mt-3 col-sm-6" id='box41_2' style='display:none;' placeholder='Specify H3 gene and locus'>
+						</div>
+					</div>
+				</div>
+
+				<div class="card-block">
+					<div class="card">
+						<h5 class="card-header">Alk alteration</h5>
+						<div class="card-block">
+							<select id="box42" class='form-control form-control-sm col-sm-6'>
+								<option>Not performed</option>
+								<option>Absent</option>
+								<option>Present, mutation</option>
+								<option>Present, rearrangement</option>
+								<option></option>
+							</select></div>
+					</div>
+				</div>
+
+				<div class="card-block">
+					<div class="card">
+						<h5 class="card-header">NTRK alteration</h5>
+						<div class="card-block">
+							<select id="box43" class='form-control form-control-sm col-sm-6'>
+								<option>Not performed</option>
+								<option>Absent</option>
+								<option>Present, mutation</option>
+								<option>Present, rearrangement</option>
+								<option></option>
+							</select></div>
+					</div>
+				</div>
+
+				<div class="card-block">
+					<div class="card">
+						<h5 class="card-header">BCOR alteration</h5>
+						<div class="card-block">
+							<select id="box44" class='form-control form-control-sm col-sm-6'>
+								<option>Not performed</option>
+								<option>Absent</option>
+								<option>Present, mutation</option>
+								<option>Present, rearrangement</option>
+								<option></option>
+							</select></div>
+					</div>
+				</div>
+
+				<div class="card-block">
+					<div class="card">
+						<h5 class="card-header">SMARBC1 alteration</h5>
+						<div class="card-block">
+							<select id="box45" class='form-control form-control-sm col-sm-6'>
+								<option>Not performed</option>
+								<option>Absent</option>
+								<option>Present, deletion</option>
+								<option>Present, mutation</option>
+								<option></option>
+							</select></div>
+					</div>
+				</div>
+
+				<div class="card-block">
+					<div class="card">
+						<h5 class="card-header">IDH1/2 mutation</h5>
+						<div class="card-block">
+							<select id="box50" class='form-control form-control-sm col-sm-6'>
+								<option>Not performed</option>
+								<option>Absent</option>
+								<option>Present</option>
+								<option></option>
+							</select></div>
+					</div>
+				</div>
+
+				<div class="card-block">
+					<div class="card">
+						<h5 class="card-header">Isochromosome 17q</h5>
+						<div class="card-block">
+							<select id="box55" class='form-control form-control-sm col-sm-6'>
+								<option>Not performed</option>
+								<option>Absent</option>
+								<option>Present</option>
+								<option></option>
+							</select></div>
+					</div>
+				</div>
+
+				<div class="card-block">
+					<div class="card">
+						<h5 class="card-header">MGMT promoter methylation</h5>
+						<div class="card-block">
+							<select id="box60" class='form-control form-control-sm col-sm-6'>
+								<option>Not performed</option>
+								<option>Absent</option>
+								<option>Present</option>
+								<option></option>
+							</select></div>
+					</div>
+				</div>
+
+				<div class="card-block">
+					<div class="card">
+						<h5 class="card-header">Monosomy 6</h5>
+						<div class="card-block">
+							<select id="box65" class='form-control form-control-sm col-sm-6'>
+								<option>Not performed</option>
+								<option>Absent</option>
+								<option>Present</option>
+								<option></option>
+							</select></div>
+					</div>
+				</div>
+
+				<div class="card-block">
+					<div class="card">
+						<h5 class="card-header">MYC amplification</h5>
+						<div class="card-block">
+							<select id="box70" class='form-control form-control-sm col-sm-6'>
+								<option>Not performed</option>
+								<option>Absent</option>
+								<option>Present</option>
+								<option></option>
+							</select></div>
+					</div>
+				</div>
+
+				<div class="card-block">
+					<div class="card">
+						<h5 class="card-header">MYCN amplification</h5>
+						<div class="card-block">
+							<select id="box71" class='form-control form-control-sm col-sm-6'>
+								<option>Not performed</option>
+								<option>Absent</option>
+								<option>Present</option>
+								<option></option>
+							</select></div>
+					</div>
+				</div>
+
+				<div class="card-block">
+					<div class="card">
+						<h5 class="card-header">NAB2-STAT6 fusion</h5>
+						<div class="card-block">
+							<select id="box75" class='form-control form-control-sm col-sm-6'>
+								<option>Not performed</option>
+								<option>Absent</option>
+								<option>Present</option>
+								<option></option>
+							</select></div>
+					</div>
+				</div>
+
+				<div class="card-block">
+					<div class="card">
+						<h5 class="card-header">RELA fusion</h5>
+						<div class="card-block">
+							<select id="box80" class='form-control form-control-sm col-sm-6'>
+								<option>Not performed</option>
+								<option>Absent</option>
+								<option>Present</option>
+								<option></option>
+							</select></div>
+					</div>
+				</div>
+
+				<div class="card-block">
+					<div class="card">
+						<h5 class="card-header">TERT promoter mutation</h5>
+						<div class="card-block">
+							<select id="box85" class='form-control form-control-sm col-sm-6'>
+								<option>Not performed</option>
+								<option>Absent</option>
+								<option>Present, Hotspot mutation (C228T or C250T)</option>
+								<option>Present, other TERT mutation</option>
+								<option></option>
+							</select></div>
+					</div>
+				</div>
+
+				<div class="card-block">
+					<div class="card">
+						<h5 class="card-header">TP53 mutation</h5>
+						<div class="card-block">
+							<select id="box90" class='form-control form-control-sm col-sm-6'>
+								<option>Not performed</option>
+								<option>Absent</option>
+								<option>Present</option>
+								<option></option>
+							</select></div>
+					</div>
+				</div>
+
+				<div class="card-block">
+					<div class="card">
+						<h5 class="card-header">YAP1 fusion</h5>
+						<div class="card-block">
+							<select id="box95" class='form-control form-control-sm col-sm-6'>
+								<option>Not performed</option>
+								<option>Absent</option>
+								<option>Present</option>
+								<option></option>
+							</select></div>
+					</div>
+				</div>
+
+				<div class="card-block">
+					<div class="card">
+						<h5 class="card-header">Other cytogenetic findings:</h5>
+						<div class="card-block">
+							<textarea class="w-100" rows="5" id="box98" placeholder=""></textarea> </div>
+					</div>
+				</div>
+
+				<div class="card-block">
+					<div class="card">
+						<h5 class="card-header">Other molecular findings:</h5>
+						<div class="card-block">
+							<textarea class="w-100" rows="5" id="box99" placeholder=""></textarea> </div>
+					</div>
+				</div>
 			</div>
-			<div class="embryonal">
-				<hr class="p-2">
-
-				<h4>Embryonal Tumor Biomarkers</h4>
-				<hr class="p-2" >
-				<h5>Nuclear Beta-Catenin Immunohistochemistry </h5>
-				<select id="box2" class='form-control selectpicker form-control-sm col-sm-6'>
-					<option value="Positive nuclear staining">Positive (nuclear staining in at least 50% of tumor cells)</option>
-					<option value="Negative nuclear staining">Negative (no staining or nuclear staining in <50% of tumor cells)</option>
-					<option selected>Not applicable</option>
-				</select>
-
-
-
-
-
-				<hr class="p-2" >
-				<h5>Monosomy 6</h5>
-				<select id="box3" class='form-control selectpicker form-control-sm col-sm-6'>
-					<option>Present</option>
-					<option>Absent</option>
-					<option selected>Not applicable</option>
-				</select>
-
-
-
-
-
-				<hr class="p-2" >
-				<h5>GAB1 Immunohistochemistry</h5>
-				<select id="box4" class='form-control selectpicker form-control-sm col-sm-6'>
-					<option>Positive</option>
-					<option>Negative</option>
-					<option selected>Not applicable</option>
-				</select>
-
-
-
-
-
-				<hr class="p-2" >
-				<h5>MYC Amplification</h5>
-				<select id="box5" class='form-control selectpicker form-control-sm col-sm-6'>
-					<option>Present</option>
-					<option>Absent</option>
-					<option selected>Not applicable</option>
-				</select>
-
-
-
-
-
-				<hr class="p-2" >
-				<h5>MYCN Amplification</h5>
-				<select id="box6" class='form-control selectpicker form-control-sm col-sm-6'>
-					<option>Present</option>
-					<option>Absent</option>
-					<option selected>Not applicable</option>
-				</select>
-
-
-
-
-
-				<hr class="p-2" >
-				<h5>Isochromosome 17</h5>
-				<select id="box7" class='form-control selectpicker form-control-sm col-sm-6'>
-					<option>Present</option>
-					<option>Absent</option>
-					<option selected>Not applicable</option>
-				</select>
-
-
-
-
-
-				<hr class="p-2" >
-				<h5>INI1 Immunohistochemistry</h5>
-				<select id="box8" class='form-control selectpicker form-control-sm col-sm-6'>
-					<option>Loss of nuclear expression</option>
-					<option>Intact nuclear expression</option>
-					<option selected>Not applicable</option>
-				</select>
-
-
-
-
-
-				<hr class="p-2" >
-				<h5>SMARCB1/INI1/HNSF5 Mutation</h5>
-				<select id="box9" class='form-control selectpicker form-control-sm col-sm-6'>
-					<option>Present </option>
-					<option>Absent</option>
-					<option selected>Not applicable</option>
-				</select>
-
-			</div>
-
-			<div class="glioma" style="display:none;">
-
-				<hr class="p-2">
-				<h4>Glioma Biomarkers</h4>
-
-
-				<hr class="p-2" >
-				<h5>IDH1/2 Mutation</h5>
-				<select id="box20" class='form-control selectpicker form-control-sm col-sm-6'>
-					<option>Present </option>
-					<option>Absent</option>
-					<option selected>Not applicable</option>
-				</select>
-
-
-
-
-
-				<hr class="p-2" >
-				<h5>IDH1 R132H Immunohistochemistry</h5>
-				<select id="box21" class='form-control selectpicker form-control-sm col-sm-6'>
-					<option>Positive</option>
-					<option>Negative</option>
-					<option selected>Not applicable</option>
-				</select>
-
-
-
-
-
-				<hr class="p-2" >
-				<h5>1p/19q Deletion </h5>
-				<select id="box22" class='form-control selectpicker form-control-sm col-sm-6'>
-					<option>1p/19q co-deletion</option>
-					<option>1p only deleted</option>
-					<option>19q only deleted</option>
-					<option>Polysomy </option>
-					<option>Monosomy </option>
-					<option>None detected </option>
-					<option selected>Not applicable</option>
-				</select>
-
-
-
-
-
-				<hr class="p-2" >
-				<h5>TP53 Mutation</h5>
-				<select id="box23" class='form-control selectpicker form-control-sm col-sm-6'>
-					<option>Present</option>
-					<option>Absent</option>
-					<option selected>Not applicable</option>
-				</select>
-
-
-
-
-
-				<hr class="p-2" >
-				<h5>ATRX Mutation</h5>
-				<select id="box24" class='form-control selectpicker form-control-sm col-sm-6'>
-					<option>Present</option>
-					<option>Absent</option>
-					<option selected>Not applicable</option>
-				</select>
-
-
-
-
-
-				<hr class="p-2" >
-				<h5>ATRX Immunohistochemistry </h5>
-				<select id="box25" class='form-control selectpicker form-control-sm col-sm-6'>
-					<option>Loss of nuclear expression</option>
-					<option>Intact nuclear expression </option>
-					<option selected>Not applicable</option>
-				</select>
-
-
-
-
-
-				<hr class="p-2" >
-				<h5>EGFR Amplification </h5>
-				<select id="box26" class='form-control selectpicker form-control-sm col-sm-6'>
-					<option>Present</option>
-					<option>Absent</option>
-					<option selected>Not applicable</option>
-				</select>
-
-
-
-
-
-				<hr class="p-2" >
-				<h5>10q23 Deletion</h5>
-				<select id="box27" class='form-control selectpicker form-control-sm col-sm-6'>
-					<option>Deletion identified</option>
-					<option>Polysomy</option>
-					<option>Monosomy </option>
-					<option>None detected</option>
-					<option selected>Not applicable</option>
-				</select>
-
-
-
-
-
-				<hr class="p-2" >
-				<h5>PTEN Mutatio</h5>
-				<select id="box28" class='form-control selectpicker form-control-sm col-sm-6'>
-					<option>Present</option>
-					<option>Absent</option>
-					<option selected>Not applicable</option>
-				</select>
-
-
-
-
-
-				<hr class="p-2" >
-				<h5>MGMT Promoter Methylation</h5>
-				<select id="box29" class='form-control selectpicker form-control-sm col-sm-6'>
-					<option>Present</option>
-					<option>Present, low level</option>
-					<option>Present, high level</option>
-					<option>Absent</option>
-					<option selected>Not applicable</option>
-				</select>
-
-
-
-
-
-				<hr class="p-2" >
-				<h5>BRAF Mutation</h5>
-				<select id="box30" class='form-control selectpicker form-control-sm col-sm-6'>
-					<option>BRAF V600E (c.1799T>A) mutation present</option>
-					<option>Other BRAF mutation present </option>
-					<option>Absent </option>
-					<option selected>Not applicable</option>
-				</select>
-
-
-
-
-
-				<hr class="p-2" >
-				<h5>BRAF V600E Immunohistochemistry</h5>
-				<select id="box31" class='form-control selectpicker form-control-sm col-sm-6'>
-					<option>Positive</option>
-					<option>Negative</option>
-					<option selected>Not applicable</option>
-				</select>
-
-
-
-
-
-				<hr class="p-2" >
-				<h5>BRAF Rearrangement</h5>
-				<select id="box32" class='form-control selectpicker form-control-sm col-sm-6'>
-					<option>Present</option>
-					<option>Absent</option>
-					<option selected>Not applicable</option>
-				</select>
-
-
-
-
-
-				<hr class="p-2" >
-				<h5>Ki-67%</h5>
-				<input type="number" class="form-control form-control-sm col-sm-6" id="box33" placeholder="">
-
-			</div>
-
-
-
-
-
-
-
-
-
-			<hr class="p-2" >
-			<h5>List any other findings here</h5>
-			<textarea class="form-control form-control-sm w-100" id="box40" ></textarea>
-
-
-
-
 
 
 
