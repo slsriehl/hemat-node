@@ -483,27 +483,7 @@ $(window).on('load', function () {
             }
         }
 
-        var box_33 = $("#box33").val();
-        var box_33_2 = $("#box33_2").val();
-        var box_33_3 = $("#box33_3").val();
-        var trig1_box_33 = box_33.filter(function (el) {
-            return el.indexOf("Other") > -1;
-        });
-        var trig2_box_33 = box_33.filter(function (el) {
-            return el.indexOf("therapy") > -1;
-        });
-        if (box_33.length  > 0){
-            if (trig1_box_33.length > 0 && trig2_box_33.length == 0) {
-                captext += "\n+ Clinical History:\n- " + box_33.join("\n- ").replace(/Other/, box_33_2) + "\n";
-            } else if (trig1_box_33.length == 0 && trig2_box_33.length > 0) {
-                captext += "\n+ Clinical History:\n- " + box_33.join("\n- ").replace(/therapy/, box_33_3) + "\n";
-            } else if (trig1_box_33.length > 0 && trig2_box_33.length > 0) {
-                captext += "\n+ Clinical History:\n- " + box_33.join("\n- ").replace(/Other/, box_33_2).replace(/therapy/, box_33_3) + "\n";
-            } else {
-                captext += "\n+ Clinical History:\n- " + box_33.join("\n- ") + "\n";
-            }
-        }
-
+        
         $('#outPut-1').val(captext);
 
         dataObj.singleSection = $('#outPut-1').val();
