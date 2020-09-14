@@ -28,145 +28,140 @@
                 </div>
                 <form id="plac_save">
                     <div class="card-block row text-sm-center" style="font-size: 0.8em">
-                        {{!-- <div class="row text-sm-center"> --}}
-                            <div class="col col-md-3">
-                                <div class="card">
-                                    <div class="card-header h-100 text-sm-center">
-                                        Gestational Age (weeks)
-                                    </div>
-                                    <div class="card-block ">
-                                        <input type="number" min="19" max="44" class="form-control mx-auto" id="plac_age" placeholder="19-44">
-                                    </div>
+                        <div class="col col-md-3">
+                            <div class="card">
+                                <div class="card-header h-100 text-sm-center">
+                                    Gestational Age (weeks)
+                                </div>
+                                <div class="card-block ">
+                                    <input type="number" min="19" max="44" class="form-control mx-auto" id="plac_age" placeholder="19-44">
                                 </div>
                             </div>
+                        </div>
 
-                            <div class='col col-md-2'>
-                                <div class="card">
-                                    <div class="card-header h-100 px-2 text-sm-center">
-                                        Weight (grams)
-                                    </div>
-                                    <div class="card-block ">
-                                        <div>
-                                            <input type="number" class="form-control col-12 mx-auto" id="plac_wt">
-                                        </div>
+                        <div class='col col-md-2'>
+                            <div class="card">
+                                <div class="card-header h-100 px-2 text-sm-center">
+                                    Weight (grams)
+                                </div>
+                                <div class="card-block ">
+                                    <div>
+                                        <input type="number" class="form-control col-12 mx-auto" id="plac_wt">
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class='col col-md-2'>
-                                <div class="card">
-                                    <div class="card-header h-100 px-2 text-sm-center">
-                                        Gestation Type
-                                    </div>
-                                    <div class="card-block ">
-                                        <div>
-                                            <select id="plac_type" class="form-control">
-                                                <option value="partType500" data-twin="0">Single</option>
-                                                <option value="partType501" data-twin="1">Twin</option>
-                                            </select>
-                                        </div>
+                        <div class='col col-md-2'>
+                            <div class="card">
+                                <div class="card-header h-100 px-2 text-sm-center">
+                                    Gestation Type
+                                </div>
+                                <div class="card-block ">
+                                    <div>
+                                        <select id="plac_type" class="form-control">
+                                            <option value="partType500" data-twin="0">Single</option>
+                                            <option value="partType501" data-twin="1">Twin</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="col col-md-5">
-                                <div class="card">
-                                    <div class="card-header h-100 text-sm-center">
-                                        Preferred Historic Reference
-                                    </div>
-                                    <div class="card-block ">
-                                        <div>
-                                            <select id="reference" class="form-control">
-                                                <option data-ref="Pinar H. et al. Pediatr Pathol Lab med 1996; 16:901-7." value="1">Pinar et al. - Singleton/Twin (1996)</option>
-                                                <option data-ref="Boyd T. et al. Mod Pathol 1999; 12:1P." value="2">Boyd et al. - Singleton (1999)</option>
-                                            </select>
-                                        </div>
+                        <div class="col col-md-5">
+                            <div class="card">
+                                <div class="card-header h-100 text-sm-center">
+                                    Preferred Historic Reference
+                                </div>
+                                <div class="card-block ">
+                                    <div>
+                                        <select id="reference" class="form-control">
+                                            <option data-ref="Pinar H. et al. Pediatr Pathol Lab med 1996; 16:901-7." value="1">Pinar et al. - Singleton/Twin (1996)</option>
+                                            <option data-ref="Boyd T. et al. Mod Pathol 1999; 12:1P." value="2">Boyd et al. - Singleton (1999)</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
-                        {{!-- </div> --}}
+                        </div>
+                        
                     </div>
                     {{#if isAuth.check}}
                     <div class="card-block row text-center" style="font-size: 0.8em">
-                        {{!-- <div class="row text-center"> --}}
-                            <div class="col-12">
-                                <div class="checkbox_container form-check form-control alert alert-success" style="margin:0;" role="alert">
-                                    <input id="agreement" name="agreement" type="checkbox" class="form-check-input" checked="checked">
-                                    <label class="form-check-label" for="agreement">I agree to add my data for collection</label>
-                                </div>
+                        <div class="col-12">
+                            <div class="checkbox_container form-check form-control alert alert-success" style="margin:0;" role="alert">
+                                <input id="agreement" name="agreement" type="checkbox" class="form-check-input" checked="checked">
+                                <label class="form-check-label" for="agreement">I agree to add my data for collection</label>
                             </div>
-                        {{!-- </div> --}}
+                        </div>
                     </div>
                     <div class="card-block row text-sm-center" style="font-size: 0.8em" id="optionalInputs">
-                        {{!-- <div class="row text-sm-center"> --}}
-                            <div class='col col-md-3'>
-                                <div class="card">
-                                    <div class="card-header h-100 px-2 text-sm-center">
-                                        Sex of Baby
-                                    </div>
-                                    <div class="card-block ">
-                                        <div>
-                                            <select id="plac_sex" class="form-control">
-                                                <option value="unknown" data-sex="0">Choose...</option>
-                                                <option value="female" data-sex="1">Female</option>
-                                                <option value="male" data-sex="2">Male</option>
-                                                <option value="intersex" data-sex="3">Intersex</option>
-                                                <option value="unknown" data-sex="0">Unknown</option>
-                                            </select>
-                                        </div>
+                        <div class='col col-md-3'>
+                            <div class="card">
+                                <div class="card-header h-100 px-2 text-sm-center">
+                                    Sex of Baby
+                                </div>
+                                <div class="card-block ">
+                                    <div>
+                                        <select id="plac_sex" class="form-control">
+                                            <option value="unknown" data-sex="0">Choose...</option>
+                                            <option value="female" data-sex="1">Female</option>
+                                            <option value="male" data-sex="2">Male</option>
+                                            <option value="intersex" data-sex="3">Intersex</option>
+                                            <option value="unknown" data-sex="0">Unknown</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="col col-md-3">
-                                <div class="card">
-                                    <div class="card-header h-100 text-sm-center">
-                                        Age of Mother
-                                    </div>
-                                    <div class="card-block ">
-                                        <input type="number" min="8" max="60" class="form-control mx-auto" id="plac_mother" placeholder="8-60">
-                                    </div>
+                        <div class="col col-md-3">
+                            <div class="card">
+                                <div class="card-header h-100 text-sm-center">
+                                    Age of Mother
+                                </div>
+                                <div class="card-block ">
+                                    <input type="number" min="8" max="60" class="form-control mx-auto" id="plac_mother" placeholder="8-60">
                                 </div>
                             </div>
+                        </div>
 
-                            <div class='col col-md-3'>
-                                <div class="card">
-                                    <div class="card-header h-100 px-2 text-sm-center">
-                                        Post-Formalin
-                                    </div>
-                                    <div class="card-block ">
-                                        <div>
-                                            <select id="plac_formalin" class="form-control">
-                                                <option value="no" selected="selected" data-formalin="0">No</option>
-                                                <option value="yes" data-formalin="1">Yes</option>
-                                                <option value="unknown" data-formalin="null">Unknown</option>
-                                            </select>
-                                        </div>
+                        <div class='col col-md-3'>
+                            <div class="card">
+                                <div class="card-header h-100 px-2 text-sm-center">
+                                    Post-Formalin
+                                </div>
+                                <div class="card-block ">
+                                    <div>
+                                        <select id="plac_formalin" class="form-control">
+                                            <option value="no" selected="selected" data-formalin="0">No</option>
+                                            <option value="yes" data-formalin="1">Yes</option>
+                                            <option value="unknown" data-formalin="null">Unknown</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="col col-md-3">
-                                <div class="card">
-                                    <div class="card-header h-100 text-sm-center">
-                                        Grossly Abnormal Appearance
-                                    </div>
-                                    <div class="card-block ">
-                                        <div>
-                                            <select id="plac_abnormal" class="form-control">
-                                                <option value="no" selected="selected" data-abnormal="0">No</option>
-                                                <option value="yes" data-abnormal="1">Yes</option>
-                                                <option value="unknown" data-abnormal="null">Unknown</option>
-                                            </select>
-                                        </div>
+                        <div class="col col-md-3">
+                            <div class="card">
+                                <div class="card-header h-100 text-sm-center">
+                                    Grossly Abnormal Appearance
+                                </div>
+                                <div class="card-block ">
+                                    <div>
+                                        <select id="plac_abnormal" class="form-control">
+                                            <option value="no" selected="selected" data-abnormal="0">No</option>
+                                            <option value="yes" data-abnormal="1">Yes</option>
+                                            <option value="unknown" data-abnormal="null">Unknown</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
-                        {{!-- </div> --}}
+                        </div>
                     </div>
                     {{/if}}
                     <div class="card-footer text-sm-center">
-                        <button type="submit" class="btn btn-lg btn-success m-2 p-2 getref" style="white-space:normal !important;max-width:400px">Get the Placenta Reference Weight Range</button>
+                        <button type="submit" class="btn btn-lg btn-success m-2 p-2 getref" role="button" style="white-space:normal !important;max-width:400px">Get the Placenta Reference Weight Range</button>
                     </div>
                 </form>
             </div>
