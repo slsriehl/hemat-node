@@ -1,12 +1,12 @@
-<table class="table table-bordered {{#unless summary}}table-hover table-striped {{/unless}}" id="{{#if geo}}summaryData2{{else if summary}}summaryData{{else}}fullData{{/if}}">
+<table class="table table-bordered {{#unless summary}}table-hover table-striped {{/unless}}" id="{{#if geo}}summaryData2{{else}}{{#if summary}}summaryData{{else}}fullData{{/if}}{{/if}}">
     <thead class="bg-d3-blue text-white">
         {{#if geo}}
             <tr id="summaryHead2">
             </tr>
-        {{else if summary}}
-            <tr id="summaryHead">
-            </tr>
         {{else}}
+            {{#if summary}}
+                <tr id="summaryHead"></tr>
+            {{else}}
             <tr>
                 <th scope="col" class="text-center">Gestational Age</th>
                 <th scope="col" class="text-center">Weight</th>
@@ -15,15 +15,19 @@
                 <th scope="col" class="text-center">State</th>
                 <th scope="col" class="text-center">City</th>
             </tr>
+            {{/if}}
         {{/if}}
     </thead>
+
     <tbody>
         {{#if geo}}
             <tr id="summaryBody2">
             </tr>
-        {{else if summary}}
-            <tr id="summaryBody">
-            </tr>
+        {{else}}
+            {{#if summary}}
+                <tr id="summaryBody">
+                </tr>
+            {{/if}}
         {{/if}}
     </tbody>
 </table>
