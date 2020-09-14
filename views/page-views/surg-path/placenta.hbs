@@ -673,11 +673,10 @@
                                 <p class="text-center pt-2">To export the full dataset as an excel spreadsheet, please <a href="/mail">send me an email</a>.</p>
                             </div>
                         </div>
-                        
-                    
+                        {{!-- data filters --}}
                         <div class="row mb-3">
                             <div class="form-group col-md-3">
-                                <label class="my-1 mr-2 ml-1" for="geoSelection">Filter By</label>
+                                <label class="my-1 mr-2 ml-1" for="geoSelection">Location</label>
                                 <select id="geoSelection" name="geoSelection" class="form-control">
                                     <option selected value="0">None</option>
                                     <option value="3">Country</option>
@@ -685,38 +684,35 @@
                                     <option value="5">City</option>
                                 </select>
                             </div>
-                            <div class="col-md-9" id="autocomplete">
-                                <div class="form-group">
-                                    <label class="my-1 mr-2 ml-1" for="geoInput"></label>
-
-                                    <input id="geoInput" name="geoInput" type="text" class="d-none form-control mt-2" placeholder="Enter country, city or state/region...">
-
-                                    <ul id="autocompleteList" class="d-none list-group" style="position: absolute; z-index: 900; margin: 0;">
-                                    </ul>
-                                </div>
-                            
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-3">
                                 <label class="my-1 mr-2 ml-1" for="plac_age_filter">Gestational Age (weeks)</label>  
                                 <input type="number" min="19" max="44" class="form-control mx-auto" id="plac_age_filter" name="plac_age_filter">
                             </div>
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-3">
                                 <label class="my-1 mr-2 ml-1" for="twin_filter">Gestation Type</label>  
-                                <select id="twin_filter" name="twin_filter" class="form-control col-10">
-                                        <option value="partType500" data-twin="0" selected>Single</option>
-                                        <option value="partType501" data-twin="1">Twin</option>
+                                <select id="twin_filter" name="twin_filter" class="form-control">
+                                    <option value="partType500" data-twin="0" selected>Single</option>
+                                    <option value="partType501" data-twin="1">Twin</option>
                                 </select>
                             </div>
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-3">
                                 <label for="geoSubmit"></label>
                                 <button type="submit" id="geoSubmit" class="form-control btn btn-primary mt-2 p-2" role="button">Filter</button>
                             </div>
-                            <div class="form-group col-md-12">
-                                {{!-- <label class="my-1 mr-2 ml-1" for="warningLabel"></label> --}}
-                                <label class="my-1 mr-2 ml-1 text-danger" name="warningLabel" id="warningLabel"></label>
+
+                            <div class="form-group col-md-9" id="autocomplete">
+                                <label class="d-none" value="Geographical Input" for="geoInput"></label>
+
+                                <input id="geoInput" name="geoInput" type="text" class="d-none form-control mt-2" placeholder="Enter country, city or state/region...">
+
+                                <ul id="autocompleteList" class="d-none list-group" style="position: absolute; z-index: 900; margin: 0;">
+                                </ul>
+                            
+                            </div>
+                            
+                            <div class="form-group col-md-3">
+                                <label class="d-none" for="warningLabel"></label>
+                                <label class="text-danger" name="warningLabel" id="warningLabel"></label>
                             </div>
                         </div>
                     </div>
