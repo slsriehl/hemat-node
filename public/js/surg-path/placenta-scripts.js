@@ -363,6 +363,7 @@ $(window).on('load', function(){
                     $("#div_summaryTable2").addClass('d-none');
                     $("#graphContainer").addClass('d-none');
                     $("#warningLabel").html("Not enough data points to display summary statistics");
+                    $("#warningLabel").removeClass('d-none');
                 } else {
                     percentiles2 = calculatePercents(percentages, sorted);  
                     if (!filter){  
@@ -668,6 +669,10 @@ function drawGraph(percentiles, sorted, filtered=[]){
         // Event handler: updates the summary table, data table, and graph accordingly when the user submits the filter
         $("#geoForm").on("submit", function(e) {
             e.preventDefault();
+            var warningOff = $('#warningLabel').hasClass('d-none');
+            if(!warningOff) {
+                $('#warningLabel').addClass('d-none')
+            }
             var wk = parseFloat($('#plac_age_filter').val())
             var twn = $('#plac_age_filter').val()
             if(!(wk > 0)){
@@ -697,6 +702,7 @@ function drawGraph(percentiles, sorted, filtered=[]){
                     var filteredPercentiles = calculatePercents(percentages, filteredData);
                     if (filteredData.length < minDataPoints){
                         $("#warningLabel").html("Not enough data points to display geo filtered summary statistics");
+                        $("#warningLabel").removeClass('d-none');
                         $("#div_summaryTable2").addClass('d-none');
                         if (percentilesHistoric){
                             drawGraph([percentilesHistoric,percentilesRealtime], sorted);
@@ -718,6 +724,7 @@ function drawGraph(percentiles, sorted, filtered=[]){
                     }
                 } else {
                     $("#warningLabel").html("Not enough data points to display geo filtered summary statistics");
+                    $("#warningLabel").removeClass('d-none');
                     $("#div_summaryTable2").addClass('d-none');
                     $("#div_dataTable").addClass("d-none");
                 }
@@ -744,6 +751,7 @@ function drawGraph(percentiles, sorted, filtered=[]){
         function populateSummary(data, ga, tw, geo, n, label){
             // empty the table
             $("#div_summaryTable" + geo).removeClass('d-none')
+            $("#warningLabel").addClass('d-none');
             $("#warningLabel").html('');
             $("#summaryData" + geo).removeClass('d-none');
             $('#summaryHead' + geo).empty()

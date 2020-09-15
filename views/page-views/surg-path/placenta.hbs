@@ -27,140 +27,141 @@
                     <!--Date-->
                 </div>
                 <form id="plac_save">
-                    <div class="card-block" style="font-size: 0.8em">
-                        <div class="row text-sm-center">
-                            <div class="col col-md-3">
-                                <div class="card">
-                                    <div class="card-header h-100 text-sm-center">
-                                        Gestational Age (weeks)
-                                    </div>
-                                    <div class="card-block ">
-                                        <input type="number" min="19" max="44" class="form-control mx-auto" id="plac_age" placeholder="19-44">
-                                    </div>
+                    <div class="card-block row text-sm-center" style="font-size: 0.8em">
+                        <div class="col col-md-3">
+                            <div class="card">
+                                <div class="card-header h-100 text-sm-center">
+                                    Gestational Age (weeks)
+                                </div>
+                                <div class="card-block ">
+                                    <input type="number" min="19" max="44" class="form-control mx-auto" id="plac_age" placeholder="19-44">
                                 </div>
                             </div>
+                        </div>
 
-                            <div class='col col-md-2'>
-                                <div class="card">
-                                    <div class="card-header h-100 px-2 text-sm-center">
-                                        Weight (grams)
-                                    </div>
-                                    <div class="card-block ">
-                                        <div>
-                                            <input type="number" class="form-control col-12 mx-auto" id="plac_wt">
-                                        </div>
-                                    </div>
+                        <div class='col col-md-2'>
+                            <div class="card">
+                                <div class="card-header h-100 px-2 text-sm-center">
+                                    Weight (grams)
                                 </div>
-                            </div>
-
-                            <div class='col col-md-2'>
-                                <div class="card">
-                                    <div class="card-header h-100 px-2 text-sm-center">
-                                        Gestation Type
-                                    </div>
-                                    <div class="card-block ">
-                                        <div>
-                                            <select id="plac_type" class="form-control">
-                                                <option value="partType500" data-twin="0">Single</option>
-                                                <option value="partType501" data-twin="1">Twin</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col col-md-5">
-                                <div class="card">
-                                    <div class="card-header h-100 text-sm-center">
-                                        Preferred Historic Reference
-                                    </div>
-                                    <div class="card-block ">
-                                        <div>
-                                            <select id="reference" class="form-control">
-                                                <option data-ref="Pinar H. et al. Pediatr Pathol Lab med 1996; 16:901-7." value="1">Pinar et al. - Singleton/Twin (1996)</option>
-                                                <option data-ref="Boyd T. et al. Mod Pathol 1999; 12:1P." value="2">Boyd et al. - Singleton (1999)</option>
-                                            </select>
-                                        </div>
+                                <div class="card-block ">
+                                    <div>
+                                        <input type="number" class="form-control col-12 mx-auto" id="plac_wt">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        {{#if isAuth.check}}
-                        <div class="row text-center">
-                            <div class="col-12 mt-2">
-                                <div class="checkbox_container form-check mt-2 mb-4">
-                                    <input id="agreement" type="checkbox" class="form-check-input" checked="checked">
-                                    <label class="form-check-label" for="agreement">I agree to add my data for collection</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row text-sm-center" id="optionalInputs">
-                            <div class='col col-md-2'>
-                                <div class="card">
-                                    <div class="card-header h-100 px-2 text-sm-center">
-                                        Sex of Baby
-                                    </div>
-                                    <div class="card-block ">
-                                        <div>
-                                            <select id="plac_sex" class="form-control">
-                                                <option value="" data-sex=""></option>
-                                                <option value="male" data-sex="1">Male</option>
-                                                <option value="female" data-sex="0">Female</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class='col col-md-3'>
-                                <div class="card">
-                                    <div class="card-header h-100 px-2 text-sm-center">
-                                        Post Formalin Fixation?
-                                    </div>
-                                    <div class="card-block ">
-                                        <div>
-                                            <select id="plac_formalin" class="form-control">
-                                                <option value="" data-formalin=""></option>
-                                                <option value="yes" data-formalin="1">Yes</option>
-                                                <option value="no" data-formalin="0">No</option>
-                                            </select>
-                                        </div>
-                                    </div>
+                        <div class='col col-md-2'>
+                            <div class="card">
+                                <div class="card-header h-100 px-2 text-sm-center">
+                                    Gestation Type
                                 </div>
-                            </div>
-
-                            <div class="col col-md-3">
-                                <div class="card">
-                                    <div class="card-header h-100 text-sm-center">
-                                        Age of Mother
-                                    </div>
-                                    <div class="card-block ">
-                                        <input type="number" min="15" max="70" class="form-control mx-auto" id="plac_mother" placeholder="15-70">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col col-md-4">
-                                <div class="card">
-                                    <div class="card-header h-100 text-sm-center">
-                                        Placenta Appears Grossly Abnormal?
-                                    </div>
-                                    <div class="card-block ">
-                                        <div>
-                                            <select id="plac_abnormal" class="form-control">
-                                                <option value="" data-abnormal=""></option>
-                                                <option value="no" data-abnormal="0">No</option>
-                                                <option value="yes" data-abnormal="1">Yes</option>
-                                            </select>
-                                        </div>
+                                <div class="card-block ">
+                                    <div>
+                                        <select id="plac_type" class="form-control">
+                                            <option value="partType500" data-twin="0">Single</option>
+                                            <option value="partType501" data-twin="1">Twin</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        {{/if}}
+
+                        <div class="col col-md-5">
+                            <div class="card">
+                                <div class="card-header h-100 text-sm-center">
+                                    Preferred Historic Reference
+                                </div>
+                                <div class="card-block ">
+                                    <div>
+                                        <select id="reference" class="form-control">
+                                            <option data-ref="Pinar H. et al. Pediatr Pathol Lab med 1996; 16:901-7." value="1">Pinar et al. - Singleton/Twin (1996)</option>
+                                            <option data-ref="Boyd T. et al. Mod Pathol 1999; 12:1P." value="2">Boyd et al. - Singleton (1999)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>
+                    {{#if isAuth.check}}
+                    <div class="card-block row text-center" style="font-size: 0.8em">
+                        <div class="col-12">
+                            <div class="checkbox_container form-check form-control alert alert-success" style="margin:0;" role="alert">
+                                <input id="agreement" name="agreement" type="checkbox" class="form-check-input" checked="checked">
+                                <label class="form-check-label" for="agreement">I agree to add my data for collection</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-block row text-sm-center" style="font-size: 0.8em" id="optionalInputs">
+                        <div class='col col-md-3'>
+                            <div class="card">
+                                <div class="card-header h-100 px-2 text-sm-center">
+                                    Sex of Baby
+                                </div>
+                                <div class="card-block ">
+                                    <div>
+                                        <select id="plac_sex" class="form-control">
+                                            <option value="unknown" data-sex="0">Choose...</option>
+                                            <option value="female" data-sex="1">Female</option>
+                                            <option value="male" data-sex="2">Male</option>
+                                            <option value="intersex" data-sex="3">Intersex</option>
+                                            <option value="unknown" data-sex="0">Unknown</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col col-md-3">
+                            <div class="card">
+                                <div class="card-header h-100 text-sm-center">
+                                    Age of Mother
+                                </div>
+                                <div class="card-block ">
+                                    <input type="number" min="8" max="60" class="form-control mx-auto" id="plac_mother" placeholder="8-60">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class='col col-md-3'>
+                            <div class="card">
+                                <div class="card-header h-100 px-2 text-sm-center">
+                                    Post-Formalin
+                                </div>
+                                <div class="card-block ">
+                                    <div>
+                                        <select id="plac_formalin" class="form-control">
+                                            <option value="no" selected="selected" data-formalin="0">No</option>
+                                            <option value="yes" data-formalin="1">Yes</option>
+                                            <option value="unknown" data-formalin="null">Unknown</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col col-md-3">
+                            <div class="card">
+                                <div class="card-header h-100 text-sm-center">
+                                    Grossly Abnormal Appearance
+                                </div>
+                                <div class="card-block ">
+                                    <div>
+                                        <select id="plac_abnormal" class="form-control">
+                                            <option value="no" selected="selected" data-abnormal="0">No</option>
+                                            <option value="yes" data-abnormal="1">Yes</option>
+                                            <option value="unknown" data-abnormal="null">Unknown</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/if}}
                     <div class="card-footer text-sm-center">
-                        <button type="submit" class="btn btn-lg btn-success m-2 p-2 getref" style="white-space:normal !important;max-width:400px">Get the Placenta Reference Weight Range</button>
+                        <button type="submit" class="btn btn-lg btn-success m-2 p-2 getref" role="button" style="white-space:normal !important;max-width:400px">Get the Placenta Reference Weight Range</button>
                     </div>
                 </form>
             </div>
@@ -191,7 +192,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="card-body d-none" id="plac-report-block">
+                <div class="card-block d-none" id="plac-report-block">
                     <div class="row" style="padding: 1rem;">
                         <div class="col col-md-8" id="accordion" role="tablist" aria-multiselectable="true">  
                             <div id="section1ContentId" class="collapse in" role="tabpanel" aria-labelledby="section1HeaderId">
@@ -664,65 +665,68 @@
                 <div class="card-header border-0 text-center">
                     <h2 class="card-title">Realtime Placenta Data Reference</h2>
                 </div>
-                <div class="card-block">
-                    <div class="row p-2">
-                        <form class="w-100" autocomplete="off" id="geoForm">
-                            <h2 class="text-center">Explore the Data</h2>
-                            <div class="text-center pt-2">
-                                <p>To export the full dataset as an excel spreadsheet, please <a href="/mail">send me an email</a>.</p>
+                <form class="w-100" autocomplete="off" id="geoForm">
+                    <div class="card-block">
+                        <div class="row">
+                            <div class="col-12">
+                                <h3 class="text-center">Explore the Data</h3>
+                                <p class="text-center pt-2">To export the full dataset as an excel spreadsheet, please <a href="/mail">send me an email</a>.</p>
                             </div>
+                        </div>
+                        {{!-- data filters --}}
+                        <div class="row">
+                            <div class="form-group col-md-3">
+                                <label class="my-1 mr-2 ml-1" for="geoSelection">Location</label>
+                                <select id="geoSelection" name="geoSelection" class="form-control">
+                                    <option selected value="0">None</option>
+                                    <option value="3">Country</option>
+                                    <option value="4">State</option>
+                                    <option value="5">City</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label class="my-1 mr-2 ml-1" for="plac_age_filter">Gestational Age (weeks)</label>  
+                                <input type="number" min="19" max="44" class="form-control mx-auto" id="plac_age_filter" name="plac_age_filter">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label class="my-1 mr-2 ml-1" for="twin_filter">Gestation Type</label>  
+                                <select id="twin_filter" name="twin_filter" class="form-control">
+                                    <option value="partType500" data-twin="0" selected>Single</option>
+                                    <option value="partType501" data-twin="1">Twin</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="geoSubmit"></label>
+                                <button type="submit" id="geoSubmit" class="form-control btn btn-primary mt-2 p-2" role="button">Filter</button>
+                            </div>
+
+                            <div class="form-group col-md-9" id="autocomplete">
+                                <label class="d-none" value="Geographical Input" for="geoInput"></label>
+
+                                <input id="geoInput" name="geoInput" type="text" class="d-none form-control mt-2" placeholder="Enter country, city or state/region...">
+
+                                <ul id="autocompleteList" class="d-none list-group" style="position: absolute; z-index: 900; margin: 0;">
+                                </ul>
+                            
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="alert alert-danger d-none" id="warningLabel" role="alert">
+                                </div>
+                            </div>
+                        </div>
                         
-                            <div class="row mb-3">
-                                <div class="col-md-3">
-                                    <label class="my-1 mr-2 ml-1" for="geoSelection">Filter By</label>
-                                    <select id="geoSelection" class="form-control col-10">
-                                        <option selected value="0">None</option>
-                                        <option value="3">Country</option>
-                                        <option value="4">State</option>
-                                        <option value="5">City</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6" id="autocomplete">
-                                    <label class="my-1 mr-2 ml-1" for="geoInput"></label>
-                                    <input id="geoInput" type="text" class="d-none form-control mt-2" placeholder="Enter country, city or state/region...">
-                                    <ul id="autocompleteList" class="d-none list-group ml-2" style="position: absolute;">
-                                    </ul>
-                                </div>
-                            </div>
-
-                             <div class="row mb-3">
-                                <div class="col-md-3">
-                                    <label class="my-1 mr-2 ml-1" for="plac_age_filter">Gestational Age (weeks)</label>  
-                                    <input type="number" min="19" max="44" class="form-control mx-auto" id="plac_age_filter">
-                                </div>
-                                <div class="col-md-3">
-                                    <label class="my-1 mr-2 ml-1" for="twin_filter">Gestation Type</label>  
-                                    <select id="twin_filter" class="form-control col-10">
-                                         <option value="partType500" data-twin="0" selected>Single</option>
-                                         <option value="partType501" data-twin="1">Twin</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-2">
-                                    <label class="my-1 mr-2 ml-1 text-danger" for="geoSubmit"></label>
-                                    <button type="submit" id="geoSubmit" class="form-control btn btn-primary mt-2 p-2">Filter</button>
-                                </div>
-                                <div class="col-md-4">
-                                    <label class="my-1 mr-2 ml-1 text-danger"></label>
-                                    <label class="my-1 mr-2 ml-1 text-danger" id="warningLabel"></label>
-                                </div>
-                            </div>
-
-                        </form>
-
                     </div>
-                    <div id="div_summaryTable" class="row text-center d-none" style="padding: 1rem;">
-                        <h3 id="summaryHeader"></h3>
-                        {{> page-partials/placenta-table summary=true geo=false}}
-                    </div>
-                    <div id="div_summaryTable2" class="row text-center d-none" style="padding: 1rem;">
-                        <h3 id="summaryHeader2"></h3>
-                        {{> page-partials/placenta-table summary=true geo=true}}
-                    </div>
+                </form>
+                
+                <div id="div_summaryTable" class="card-block text-center d-none" style="padding: 1rem;">
+                    <h3 id="summaryHeader"></h3>
+                    {{> page-partials/placenta-table summary=true geo=false}}
+                </div>
+                <div id="div_summaryTable2" class="card-block text-center d-none" style="padding: 1rem;">
+                    <h3 id="summaryHeader2"></h3>
+                    {{> page-partials/placenta-table summary=true geo=true}}
                 </div>
                 <div class="card-block" style="padding: 1rem;">
                     <div id="graphContainer" class="text-center pb-5 d-none"> 
