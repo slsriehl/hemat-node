@@ -24,10 +24,30 @@ module.exports = (sequelize, DataTypes) => {
     },
     city: {
       type: DataTypes.TEXT('tiny')
-    }
+    },
+    sex: {
+      type: DataTypes.ENUM('female', 'male', 'intersex', 'unknown'),
+      allowNull: true
+    },
+    maternalAge: {
+      type: DataTypes.INTEGER(2),
+      allowNull: true,
+    },
+    postFormalin: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
+    },
+    abnormal: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
+    },
   });
   PlacRefs.associate = function(models) {
     // associations can be defined here
+    PlacRefs.belongsTo(models.Users, {
+      foreignKey: 'userId',
+      onDelete: 'SET NULL'
+    });
   };
   return PlacRefs;
 };

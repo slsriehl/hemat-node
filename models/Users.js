@@ -1,27 +1,27 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var Users = sequelize.define('Users', {
-    username: {
+  	var Users = sequelize.define('Users', {
+		username: {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
-    email: {
+		email: {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
-    mobile: {
+		mobile: {
 			type: DataTypes.STRING,
 			allowNull: true
 		},
-    firstname: {
+		firstname: {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
-    lastname: {
+		lastname: {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
-    password: {
+		password: {
 			type: DataTypes.CHAR,
 			allowNull: false
 		},
@@ -29,19 +29,24 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.STRING,
 			allowNull: true
 		},
-    role: DataTypes.STRING,
+		role: DataTypes.STRING,
 		requireReset: {
 			type: DataTypes.BOOLEAN,
 			allowNull: false
+		},
+		trusted: {
+			type: DataTypes.BOOLEAN,
+			defaultValue: false,
+			allowNull: true,
 		},
 		deletedAt: {
 			type: DataTypes.DATE,
 			allowNull: true,
 			defaultValue: null
 		}
-  }, {
-    classMethods: {
-      associate: function(models) {
+  	}, {
+		classMethods: {
+			associate: function(models) {
 				Users.hasMany(models.DismissedMessages, {
 					foreignKey: 'userId'
 				});
@@ -60,9 +65,12 @@ module.exports = function(sequelize, DataTypes) {
 				Users.hasMany(models.IhcPresets, {
 					foreignKey: 'userId'
 				});
-        // associations can be defined here
-      }
-    }
-  });
+				Users.hasMany(models.PlacRefs, {
+					foreignKey: 'userId'
+				});
+				// associations can be defined here
+			}
+		}
+  	});
   return Users;
 };
