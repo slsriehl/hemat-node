@@ -16,7 +16,13 @@ const controller = {
             twin: req.body.twin,
             country: req.body.country,
             state: req.body.state,
-            city: req.body.city
+            city: req.body.city,
+        //+++++ TODO front-end sanitization, check if values supplied ++++++
+            // sex: req.body.plac_sex || 'unknown',
+            // maternalAge: req.body.plac_mother || null,
+            // postFormalin: typeof(req.body.plac_formalin) === 'boolean' ? req.body.plac_formalin : null,
+            // abnormal: typeof(req.body.plac_abnormal) === 'boolean' ? req.body.plac_abnormal : null,
+            userId: req.session.user,
         };
 
         let thirtySecondsAgo = {
