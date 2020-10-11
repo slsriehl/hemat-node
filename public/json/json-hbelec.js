@@ -16,9 +16,9 @@ $(window).on('load', function(){
         // Alpha-thal Hb-CS
         he203: '- Increased HbH at HH%, Hb-Barts at BB% and Hb-Constant spring\n- Findings compatible with alpha-thalassemia with Hb-Constant spring (see comment)\n',
         // Probable beta-thal
-        he210: '- No abnormal hemoglobins detected\n- Findings suggestive of Beta-thalassemia minor (see comment)',
+        he210: '- No abnormal hemoglobins detected\n- Findings suggestive of beta-thalassemia minor (see comment)',
         // Beta-thal
-        he211: '- No abnormal hemoglobins detected\n- Findings compatible with Beta-thalassemia minor (see comment)',
+        he211: '- No abnormal hemoglobins detected\n- Findings compatible with beta-thalassemia minor (see comment)',
         // Hb SS
         // Hb S, no microcytosis - Hbs ~35-45%
         he300: '- HbS detected at SS%',

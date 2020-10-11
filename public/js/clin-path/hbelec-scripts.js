@@ -46,26 +46,83 @@ $(window).on('load', function(){
     //########################LOGIC HELPERS#################################
 
     $(".pct").on('input', function () {
-        var sel = $(this).prop("class");
+        var sel = $(this).prop("class"); // get class as each input engaged
+        var val = parseFloat($(this).val()); // get numeric value
         var hbclass = sel.match(/...(?= pct)/);
         console.log("pct class?", hbclass);
+
+        // if value exists for abnormal Hbs
         if (sel.indexOf('abnl') > 0){
+            // Reset option coloring to neutral
             $("#hbinterp option").css("background-color", "#ffffff");
             $("#hbinterp optgroup").css("background-color", "#ffffff");
 
+            // if value is a number and > 0
             if(!isNaN(this.value) && this.value.length!=0) {
+                // find the input with %age values and highlight corresponding options
                 if (sel.indexOf(hbclass[0]) > 0){
                     console.log(hbclass[0], " exists!");
                     $("#hbinterp option[class*='"+hbclass+"']").css("background-color", "#f3fd58");
                     $("#hbinterp optgroup[class*='"+hbclass+"']").css("background-color", "#f3fd58");
                 }
-
             } else {
+                    // Reset option coloring to neutral
                     console.log("HbX absent!");
                     $("#hbinterp option").css("background-color", "#ffffff");
                     $("#hbinterp optgroup").css("background-color", "#ffffff");
                 }
             }
+        // if value exists for abnormal amounts of HbA2
+        else if (sel.indexOf('quant-A2') > 0) {
+            $("#hbinterp option").css("background-color", "#ffffff");
+            $("#hbinterp optgroup").css("background-color", "#ffffff");
+
+                var hba2 = parseFloat($(".hba2").val());
+                // if value is a number and > 0
+                if(hba2 > 3.4) {
+                    console.log("HbA2: "+hba2);
+                    // find the input with %age values and highlight corresponding options
+                    console.log(hbclass[0], " in abnormal amounts!");
+                    $("#hbinterp option[class*='hba2-hi']").css("background-color", "#f3fd58");
+                    $("#hbinterp optgroup[class*='thal']").css("background-color", "#f3fd58");
+                } else if(hba2 < 2.0) {
+                    // find the input with %age values and highlight corresponding options
+                    console.log(hbclass[0], " in abnormal amounts!");
+                    $("#hbinterp option[class*='hba2-low']").css("background-color", "#f3fd58");
+                    $("#hbinterp optgroup[class*='thal']").css("background-color", "#f3fd58");
+                } else {
+                    // Reset option coloring to neutral
+                    $("#hbinterp option").css("background-color", "#ffffff");
+                    $("#hbinterp optgroup").css("background-color", "#ffffff");
+                }
+        }
+        // if value exists for abnormal amounts of HbF
+        if (sel.indexOf('quant-F') > 0) {
+            $("#hbinterp option").css("background-color", "#ffffff");
+            $("#hbinterp optgroup").css("background-color", "#ffffff");
+
+            var hbF = parseFloat($(".hbf").val());
+            var age = $("#age").find(":selected").data("age");
+            // if value is > 2.0 in non-newborn
+            if(hbF > 2 && age !=2) {
+                console.log("HbF: "+hbF);
+                // find the input with %age values and highlight corresponding options
+                console.log("HbF in abnormal amounts!");
+                $("#hbinterp option[class*='hbf adult']").css("background-color", "#f3fd58");
+                $("#hbinterp optgroup[class*='hbf adult']").css("background-color", "#f3fd58");
+            }
+            // if value is > 14.0 in newborn
+            else if(hbF > 14 && age ==2) {
+                // find the input with %age values and highlight corresponding options
+                console.log(hbclass[0], " in abnormal amounts!");
+                $("#hbinterp option[class*='hbf child']").css("background-color", "#f3fd58");
+                $("#hbinterp optgroup[class*='hbf child']").css("background-color", "#f3fd58");
+            } else {
+                // Reset option coloring to neutral
+                $("#hbinterp option").css("background-color", "#ffffff");
+                $("#hbinterp optgroup").css("background-color", "#ffffff");
+            }
+        }
     })
 
 

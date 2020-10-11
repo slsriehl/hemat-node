@@ -41,6 +41,18 @@
 
                 </div>
                 <div class="card-block">
+                    <div class="form-group row ml-2">
+                        <div class="card-blockquote h3 col-md-3">Age</div>
+                        <select id="age" class='form-control col-md-3'>
+                            <option data-age="0">2 years - adult</option>
+                            <option data-age="1">6 months - 2 years</option>
+                            <option data-age="2">newborn - 6 months</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="py-3 w-100"></div>
+                <div class="card-block">
                     <div class="card-blockquote p-2 h3"> Enter Hb Electrophoresis values here</div>
                     <div class="row mt-2 hbval">
                         <!-- A, A2, F-->
@@ -55,14 +67,14 @@
                             <div class="col">
                                 <div class="card">
                                     <div class="card-block ">
-                                        <input id="HbA2_pct" type="number" class="form-control form-control-sm hba2 pct" placeholder="Hb A2 %">
+                                        <input id="HbA2_pct" type="number" class="form-control form-control-sm hba2 pct quant-A2" placeholder="Hb A2 %">
                                     </div>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="card">
                                     <div class="card-block ">
-                                        <input id="HbF_pct" type="number" class="form-control form-control-sm hbf pct abnl" placeholder="Hb F %">
+                                        <input id="HbF_pct" type="number" class="form-control form-control-sm hbf pct quant-F" placeholder="Hb F %">
                                     </div>
                                 </div>
                             </div>
@@ -161,62 +173,65 @@
     <div class="row top-buffer">
         <div class="col-md-8">
             <!-- left column-->
+            <div class="card-block">
             <hr class="p-2" >
-
-            <h5>Age</h5>
-            <select id="age" class='form-control form-control-sm col-sm-4'>
-                <option>2 years - adult</option>
-                <option>6 months - 2 years</option>
-                <option>newborn - 6 months</option>
-            </select>
+                <div class="card-block">
+                    <div class="form-group row ml-2">
+                        <div class="card-blockquote h3 col-md-6">History of recent transfusion in past 3 months?</div>
+                        <div class="col-md-3">
+                        <select id="txhx" class='form-control'>
+                            <option>No</option>
+                            <option>Unknown</option>
+                            <option>Yes</option>
+                        </select>
+                            <div class="input-group date my-date-picker tx-date" style="display: none;">
+                                <input id="date-pick" type="text" class="form-control form-control-sm" placeholder="Enter Date"/>
+                                <span class="input-group-addon">
+                                    <span class="fa fa-calendar-plus-o"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             <div class="py-3 w-100"></div>
 
-            <h5>History of recent transfusion in past 3 months?</h5>
-            <select id="txhx" class='form-control form-control-sm col-sm-4'>
-                <option>No</option>
-                <option>Unknown</option>
-                <option>Yes</option>
-            </select>
-
-            <div class="input-group date my-date-picker tx-date col-sm-4" style="display: none;">
-                <input id="date-pick" type="text" class="form-control form-control-sm" placeholder="Enter Date"/>
-                <span class="input-group-addon">
-                    <span class="fa fa-calendar-plus-o"></span>
-                </span>
-            </div>
-
-            <div class="py-3 w-100"></div>
-            <div class="row">
-                <div class="col-md-4 p-2" style="background-color: rgba(255, 152, 0, 0.45)">
-                    <h5>Microcytic for age?</h5>
-                    <select id="mcv" class='form-control form-control-sm'>
-                        <option>No</option>
-                        <option>Unknown</option>
-                        <option>Yes</option>
-                    </select>
+                <div class="card-block">
+                    <div class="form-group row ml-2">
+                        <div class="card-blockquote h3 col-md-6">Microcytic for age?</div>
+                        <select id="mcv" class='form-control col-md-3'>
+                            <option>No</option>
+                            <option>Unknown</option>
+                            <option>Yes</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="col-md-4 p-2" style="background-color: rgba(255, 152, 0, 0.45)">
-                    <h5>Erythrocytosis for age?</h5>
-                    <select id="eryth" class='form-control form-control-sm'>
-                        <option>No</option>
-                        <option>Unknown</option>
-                        <option>Yes</option>
-                    </select>
+                <div class="card-block">
+                    <div class="form-group row ml-2">
+                        <div class="card-blockquote h3 col-md-6">Erythrocytosis for age?</div>
+                        <select id="eryth" class='form-control col-md-3'>
+                            <option>No</option>
+                            <option>Unknown</option>
+                            <option>Yes</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="col-md-4 p-2" style="background-color: rgba(255, 152, 0, 0.45)">
-                    <h5>Ferritin?</h5>
-                    <select id="ferritin" class='form-control form-control-sm'>
-                        <option>Not low</option>
-                        <option>Unknown</option>
-                        <option>Low</option>
-                    </select>
+                <div class="card-block">
+                    <div class="form-group row ml-2">
+                        <div class="card-blockquote h3 col-md-6">Ferritin known?</div>
+                        <select id="ferritin" class='form-control col-md-3'>
+                            <option>Not low</option>
+                            <option>Unknown</option>
+                            <option>Low</option>
+                        </select>
+                    </div>
                 </div>
             </div>
-
 
             <hr class="py-3 w-100">
-            <h5>Interpretation</h5>
+            <div class="card-blockquote h3 col-md-6">Interpretation</div>
+                        <div class="py-2 w-100"></div>
+
             <select id="hbinterp" class='form-control form-control-sm col-sm-8'>
                 <option>Choose...</option>
                 <optgroup label="No abnormal hemoglobins" class="norm"></optgroup>
@@ -226,12 +241,12 @@
                     <option class="norm child mcv" data-dx="he011">Infant: No abnormal hemoglobins, microcytosis</option>
                     <option class="norm child fer" data-dx="he012">Infant: No abnormal hemoglobins, iron deficiency</option>
                 <optgroup label="Thalassemia (no abnormal hemoglobins)"  class="norm thal"></optgroup>
-                    <option class="a2 mcv" data-dx="he200">Probable a-thal: Erythrocytosis and microcytosis, Fer unkown</option>
-                    <option class="a2 mcv" data-dx="he201">Likely a-thal: Erythrocytosis and microcytosis, Fer normal</option>
-                    <option class="a2 mcv" data-dx="he202">Likely 3 gene a-thal: incr HbH & decr. A2</option>
-                    <option class="a2 mcv" data-dx="he203">Likely a-thal + Hb-CS: Hb Barts > HbH & decr. A2 w/ HbCS</option>
-                    <option class="a2 mcv" data-dx="he210">Probable b-thal: Microcytosis and A2 >3.5%, but no erythrocytosis</option>
-                    <option class="a2 mcv" data-dx="he211">Likely b-thal: Erythrocytosi and microcytosis and A2 >3.5%</option>
+                    <option class="mcv" data-dx="he200">Probable a-thal: Erythrocytosis and microcytosis, Fer unkown</option>
+                    <option class="mcv" data-dx="he201">Likely a-thal: Erythrocytosis and microcytosis, Fer normal</option>
+                    <option class="hba2-low mcv" data-dx="he202">Likely 3 gene a-thal: incr HbH & decr. A2</option>
+                    <option class="hba2-low mcv" data-dx="he203">Likely a-thal + Hb-CS: Hb Barts > HbH & decr. A2 w/ HbCS</option>
+                    <option class="hba2-hi mcv" data-dx="he210">Probable b-thal: Microcytosis and A2 >3.5%, but no erythrocytosis</option>
+                    <option class="hba2-hi mcv" data-dx="he211">Likely b-thal: Erythrocytosi and microcytosis and A2 >3.5%</option>
                 <optgroup label="HbS detected" class="hbs"></optgroup>
                     <option class="hbs" data-dx="he300">Hb S, no microcytosis - Hbs 35-45%</option>
                     <option class="hbs mcv" data-dx="he301">Hb S + microcytosis - HbS ~35 or less, no iron deficiency</option>
@@ -254,10 +269,10 @@
                     <option class="hbc" data-dx="he404">Hemoglobin C trait and beta -thal (C-beta thal) - C only (25-45%), F 2-5%, A2 >3.5</option>
                     <option class="hbc" data-dx="he405">Homozygous Hb C</option>
                 <optgroup label="only HbF elevated" class="hbf" ></optgroup>
-                    <option class="hbf" data-dx="he500" >Not infant: HPFH - Hb F ~10-35% > 2 yrs of age</option>
-                    <option class="hbf" data-dx="he501" >Not infant: Mildly increased Hb F 2-10%</option>
+                    <option class="hbf adult" data-dx="he500" >Not infant: HPFH - Hb F ~10-35% > 2 yrs of age</option>
+                    <option class="hbf adult child" data-dx="he501" >Not infant: Mildly increased Hb F 2-10%</option>
                     <option class="hbf child" data-dx="he502">Infant: Increased HbF for age (up to 2 years)</option>
-                    <option class="hbf mcv child" data-dx="he503" >Increased HbF and thalassemic RBC indices w/ increased A2$%</option>
+                    <option class="hbf child mcv" data-dx="he503" >Increased HbF and thalassemic RBC indices w/ increased A2%</option>
                 <optgroup label="only Zone6 (HbD or HbQ-India) elevated" class="hbd"></optgroup>
                     <option class="hbd" data-dx="he550" >HbD trait - HbD ~35-40%</option>
                     <option class="hbd" data-dx="he551">HbD trait + transfusion - HbD ~25%</option>
@@ -291,7 +306,8 @@
 
             <div class="py-3 w-100"></div>
 
-            <h5>Interpretive Comment</h5>
+            <div class="card-blockquote h3 col-md-6">Interpretive comment</div>
+            <div class="py-2 w-100"></div>
             <div class="small py-2">Adjust as necessary</div>
             <textarea  id="hbtext" class="form-control col-sm-8" rows="15" ></textarea>
 
