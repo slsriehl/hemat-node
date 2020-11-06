@@ -40,7 +40,7 @@ $(window).on('load', function(){
 
 // Focus score description
         mxLine220: '\n\nFOCUS SCORE: A focus score cannot be performed due to lack of appropriate lymphocyte predominant aggregates (see comment). ',
-        mxLine221: '\n\nFOCUS SCORE: A total of #SSS# mm^2 of evaluable acinar tissue is present. The lobules are examined for any significant (ie. > 50 grouped chronic inflammatory cells) foci. There are #TTT# such foci present, resulting in a focus score of #UUU#. ',
+        mxLine221: '\n\nFOCUS SCORE: A total of #SSS# mm^2 of evaluable acinar tissue is present. The lobules are examined for any significant (ie. > 50 grouped, intra-acinar) lymphocyte predominant foci. There are #TTT# such foci present, resulting in a focus score of #UUU#. ',
 
 // Additional microscopic findings:
 // no LELs

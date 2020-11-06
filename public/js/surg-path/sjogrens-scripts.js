@@ -91,13 +91,14 @@ $("#partType101").on('input', function (){
 
 // Focus score
     $('#mxLine221').on('change', function () {
+        console.log("Focus script fired!");
         var inf_foci = parseInt($('#mxLine101').val(), 10).toFixed(0);
         var surf_area = parseInt($('#mxLine100').val(), 10).toFixed(1);
         var foci_words = toWords(inf_foci);
 
         var fs = ((inf_foci / surf_area) * 4).toFixed(1);
 
-        for (var i = 200; i < 211; i++) {
+        for (var i = 220; i < 222; i++) {
             if (mxLines.hasOwnProperty("mxLine" + i)) {
                 mxLines['mxLine' + i] = mxLines['mxLine' + i].replace(/#SSS#/, surf_area).replace(/#TTT# /, foci_words).replace(/#UUU#/, fs);
             }
