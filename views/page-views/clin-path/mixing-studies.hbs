@@ -1,0 +1,401 @@
+<div class="container-fluid">
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+            Clinical Pathology Tools / Coagulation
+        </li>
+        <li class="breadcrumb-item active" id="bc-jump"><i class="fa fa-hourglass-half mr-2"></i>PT and PTT Mixing studies</li>
+    </ol>
+
+    {{> message-center this}}
+
+    <!-- Full width row + card -->
+    <div class="row">
+        <!-- top card-->
+        <div class="col col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <!-- inline header form-->
+                    <form class="form-inline">
+
+                        <div class="col col-md-4 ">
+                            <button type="button" class="btn btn-primary btn-md p-1 w-100" data-toggle="modal"
+                                    data-target="#modal-1">About this app
+                            </button>
+                        </div>
+                        <div class="col col-md-4">
+                            <button type="button" class="btn btn-warning btn-md p-1 w-100" data-toggle="modal"
+                                    data-target="#modal-2">Pertinent references
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+                <!--div class="card-block">
+                    <div class="form-group row ml-2">
+                        <div class="card-blockquote h4 col-md-4">History of recent heparin administration?</div>
+                            <select id="heparin" class="form-control col-md-3">
+                                <option>Unknown</option>
+                                <option>No</option>
+                                <option>Yes</option>
+                            </select>
+                    </div>
+                </div-->
+                <div class="card-block">
+                    <div class="card-blockquote p-2 h3"> PT clotting times</div>
+                    <div class="row mt-2 text-center mixingval">
+                        <!-- PT immedate-->
+                        <div class="col-md-3 ct">
+                            <div class="col">
+                                <span class="h4">Immediate mix</span>
+                                <div class="card">
+                                    <div class="card-block ">PT ref. range (s)
+                                        <input id="PT_ref_imm" type="text" class="form-control form-control-sm pct" placeholder="9.4-12.5">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-block ">PT normal control (s)
+                                        <input id="PT_ctrl_imm" type="number" step="0.1" class="form-control form-control-sm" placeholder="enter clot time">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-block ">PT patient value (s)
+                                        <input id="PT_pat_imm" type="number" step="0.1" class="form-control form-control-sm" placeholder="enter clot time">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-block ">PT 1:1 mix (immediate)
+                                        <input id="PT_1_imm" type="number" step="0.1" class="form-control form-control-sm" placeholder="enter clot time">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-block ">PT 4:1 mix (immediate)
+                                        <input id="PT_4_imm" type="number" step="0.1" class="form-control form-control-sm" placeholder="enter clot time">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- PT incubated -->
+                        <!--div class="col-md-3 ct">
+                            <div class="col">
+                                <span class="h4">1 hour incubation</span>
+                                <div class="card">
+                                    <div class="card-block ">1hr PT ref. range (s)
+                                        <input id="PT_ref_inc" type="text" class="form-control form-control-sm pct" placeholder="9.4-12.5">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-block ">PT 1hr control (s)
+                                        <input id="PT_ctrl_inc" type="number" step="0.1" class="form-control form-control-sm" placeholder="enter clot time">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-block ">PT 1hr patient value (s)
+                                        <input id="PT_pat_inc" type="number" step="0.1" class="form-control form-control-sm" placeholder="enter clot time">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-block ">PT 1:1 mix (1 hr)
+                                        <input id="PT_1_inc" type="number" step="0.1" class="form-control form-control-sm" placeholder="enter clot time">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-block ">PT 4:1 mix (1 hr)
+                                        <input id="PT_4_inc" type="number" step="0.1" class="form-control form-control-sm" placeholder="enter clot time">
+                                    </div>
+                                </div>
+                            </div>
+                        </div-->
+                        <!-- Percent correction -->
+                        <div class="col-md-4 p-2" style="background-color: rgba(253,245,165,0.46)">
+                            <div class="col">
+                                <span class="h4">% correction</span><i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
+                                                                             title="Refers to correction calculation by Chang et al."></i>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-block ">
+                                        <div class="card-header h4">PT 4:1 immediate</div>
+                                        <input id="PT_chang_4_imm" type="text" class="form-control form-control-sm my-2">
+                                        <div class="card-footer h5">
+                                            Immediate 4:1 % correction > 40% suggests a factor deficiency is present
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- silent alert for erroneous  data-->
+                    <div class="alert alert-warning alert-dismissible collapse" id="alert-2" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <strong>Uh Oh!</strong> One or more of your values do not appear to be correct. Please check the values entered.
+                    </div>
+                </div>
+
+                <div class="py-2 w-100"></div>
+
+                <div class="card-block">
+                    <div class="card-blockquote p-2 h3"> PTT clotting times</div>
+                    <div class="row mt-2 text-center mixingval">
+                        <!-- PTT immedate-->
+                        <div class="col-md-3 ct">
+                            <div class="col">
+                                <span class="h4">Immediate mix</span>
+                                <div class="card">
+                                    <div class="card-block ">PTT ref. range (s)
+                                        <input id="PTT_ref_imm" type="text" class="form-control form-control-sm pct" placeholder="25.1-36.5">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-block ">PTT normal control (s)
+                                        <input id="PTT_ctrl_imm" type="number" step="0.1" class="form-control form-control-sm" placeholder="enter clot time">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-block ">PTT patient value (s)
+                                        <input id="PTT_pat_imm" type="number" step="0.1" class="form-control form-control-sm" placeholder="enter clot time">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-block ">PTT 1:1 mix (immedate)
+                                        <input id="PTT_1_imm" type="number" step="0.1" class="form-control form-control-sm" placeholder="enter clot time">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-block ">PTT 4:1 mix (immedate)
+                                        <input id="PTT_4_imm" type="number" step="0.1" class="form-control form-control-sm" placeholder="enter clot time">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- PTT incubated -->
+                        <div class="col-md-3 ct">
+                            <div class="col">
+                                <span class="h4">1 hour incubation</span>
+                                <div class="card">
+                                    <div class="card-block ">1hr PTT ref. range (s)
+                                        <input id="PTT_ref_inc" type="text" class="form-control form-control-sm pct" placeholder="25.1-36.5">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-block ">PTT 1hr control (s)
+                                        <input id="PTT_ctrl_inc" type="number" step="0.1" class="form-control form-control-sm" placeholder="enter clot time">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-block ">PTT patient value (s)
+                                        <input id="PTT_pat_inc" type="number" step="0.1" class="form-control form-control-sm" placeholder="enter clot time">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-block ">PTT 1:1 mix <br>(1 hour)
+                                        <input id="PTT_1_inc" type="number" step="0.1" class="form-control form-control-sm" placeholder="enter clot time">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-block ">PTT 4:1 mix <br>(1 hour)
+                                        <input id="PTT_4_inc" type="number" step="0.1" class="form-control form-control-sm" placeholder="enter clot time">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Percent correction -->
+                        <div class="col-md-4 p-2" style="background-color: rgba(143,197,253,0.75)">
+                            <div class="col">
+                                <span class="h4">% correction</span><i class="fa fa-question-circle ml-2" data-placement="right" data-toggle="tooltip"
+                                                                       title="Refers to correction calculation by Chang et al."></i>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-block">
+                                        <div class="card-header h4">PTT 4:1 immediate</div>
+                                        <input id="PTT_chang_4_imm" type="text" class="form-control form-control-sm my-2">
+                                        <div class="card-footer h5">
+                                            Immediate 4:1 % correction > 50% suggests a factor deficiency is present
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-block ">
+                                        <div class="card-header h4">PTT 4:1 incubated</div>
+                                        <input id="PTT_chang_4_inc" type="text" class="form-control form-control-s my-2">
+                                        <div class="card-footer h5">
+                                            Incubated 4:1 % correction > 10% suggests a factor deficiency is present
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- silent alert for erroneous  data-->
+                    <div class="alert alert-warning alert-dismissible collapse" id="alert-1" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <strong>Uh Oh!</strong> One or more of your values do not appear to be correct. Please check the values entered.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row top-buffer">
+        <div class="col-md-8">
+            <!-- left column-->
+            <div class="card-block chkboxes">
+                <div class="card-group">
+                    <div class="card">
+                        <div class="card-header h4">
+                            Interpretations
+                        </div>
+                        <div class="card-block chkboxes">
+                            <div style="font-size: 0.8em;" class="content form-check ml-2" id="diagnoses">
+                                <div class="py-2 w-50 bg-info font-weight-bold"><span class="p-1">Normal PT and PTTs</span></div>
+                                <label class="form-check-label w-100">
+                                    <input class="form-check-input" data-dx="100" type="checkbox"> Normal PT & PTT
+                                </label>
+                                <label class="form-check-label w-100">
+                                    <input class="form-check-input" data-dx="101" type="checkbox"> Normal PT
+                                </label>
+                                <label class="form-check-label w-100">
+                                    <input class="form-check-input" data-dx="102" type="checkbox"> Normal aPTT
+                                </label>
+                                <div class="py-2 w-100"></div>
+                                <div class="py-2 w-50 bg-warning font-weight-bold"><span class="p-1">Prolonged PT and PTT</span></div>
+                                <label class="form-check-label w-100">
+                                    <input class="form-check-input" data-dx="200" type="checkbox"> Prolonged PT & PTT - Correcting immediately and after PTT incubation
+                                </label>
+                                <label class="form-check-label w-100">
+                                    <input class="form-check-input" data-dx="205" type="checkbox"> Prolonged PT & PTT - Both correcting immediately, but PTT NOT after incubation
+                                </label>
+                                <label class="form-check-label w-100">
+                                    <input class="form-check-input" data-dx="210" type="checkbox"> Prolonged PT & PTT - Not correcting immediately or after PTT incubation
+                                </label>
+                                <div class="py-2 w-100"></div>
+                                <div class="py-2 w-50 bg-danger font-weight-bold"><span class="p-1">Prolonged PTT only</span></div>
+                                <label class="form-check-label w-100">
+                                    <input class="form-check-input" data-dx="300" type="checkbox"> Prolonged PTT - Correcting immediately and after incubation
+                                </label>
+                                <label class="form-check-label w-100">
+                                    <input class="form-check-input" data-dx="305" type="checkbox"> Prolonged PTT - Correcting immediately but NOT after incubation
+                                </label>
+                                <label class="form-check-label w-100">
+                                    <input class="form-check-input" data-dx="310" type="checkbox"> Prolonged PTT - Neither correcting immediately or after incubation
+                                </label>
+
+                                <div class="py-2 w-100"></div>
+                                <div class="py-2 w-50 bg-success font-weight-bold"><span class="p-1">Prolonged PT only</span></div>
+                                <label class="form-check-label w-100">
+                                    <input class="form-check-input" data-dx="400" type="checkbox"> Prolonged PT - Correcting immediately
+                                </label>
+                                <!--label class="form-check-label w-100">
+                                    <input class="form-check-input" data-dx="405" type="checkbox"> Prolonged PT - Correcting immediately but NOT after incubation
+                                </label-->
+                                <label class="form-check-label w-100">
+                                    <input class="form-check-input" data-dx="410" type="checkbox"> Prolonged PT - NOT correcting immediately
+                                </label>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+        <!-- right column-->
+        <div class="col col-md-4" id="sticky">
+            <div class="card text-center">
+                <div class="card-header button-box">
+                    <ul class="nav nav-pills standard-button-box">
+                        <a class="btn btn-outline-success p-1 mb-2" id="writeReport">
+                            Write Report
+                        </a>
+
+                        <a class="btn btn-outline-danger p-1 mb-2 ml-4" id="Reset">Reset</a>
+                    </ul>
+                </div>
+                <div class="card-block">
+
+                    <form>
+                        <!-- hide first text area
+                <div class="form-group">
+                        <textarea class="form-control" id="outPut-1" rows="5" placeholder="CBC Data"></textarea>
+                        <span class="input-group-addon btn btn-primary" data-clipboard-target="#outPut-1">Copy to Clipboard</span>
+                </div>   -->
+                        <div class="form-group">
+                            <textarea class="form-control" id="outPut-2" rows="15"
+                                      placeholder="Example Micro"></textarea>
+                            <span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-2">Copy to Clipboard</span>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" id="outPut-3" rows="10"
+                                      placeholder="Example Final"></textarea>
+                            <span class="input-group-addon copy  btn btn-primary" data-clipboard-target="#outPut-3">Copy to Clipboard</span>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" id="outPut-4" rows="5"
+                                      placeholder="Example Comment"></textarea>
+                            <span class="input-group-addon copy btn btn-primary" data-clipboard-target="#outPut-4">Copy to Clipboard</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- end right column-->
+    </div>
+    <!-- end bottom row-->
+    {{> page-modals/clin-path/mixing-how-to-use}}
+    {{> page-modals/clin-path/mixing-references}}
+    {{> page-modals/combined-report}}
+    {{> page-modals/new-case-reference}}
+    {{> page-partials/history-module}}
+</div>
+<!--end container wrapper-->
+
+

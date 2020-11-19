@@ -62,4 +62,11 @@ router.get('/hb-elec', (req, res) => {
     ]);
 });
 
+router.get('/mixing-studies', (req, res) => {
+    return render(req, res, './page-views/clin-path/mixing-studies.hbs', [
+        "/json/json-mixing.js",
+        "/js/clin-path/mixing-scripts.js"
+    ]);
+});
+
 module.exports = router;
