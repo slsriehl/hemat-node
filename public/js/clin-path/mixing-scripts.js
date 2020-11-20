@@ -64,6 +64,7 @@ $(window).on('load', function() {
         }
     });
 
+
     //Helpers
 
     // PT helpers - no PTT
@@ -195,6 +196,91 @@ $(window).on('load', function() {
         }
     });
 
+// populate pseudotable micro
+    $(".final").on("change", function(){
+        // **** MIXING STUDY PSEUDO TABLE CONSTRUCT **** //
+        // PT immediate
+        var PT_ref_imm = $("#PT_ref_imm").val() || "9.4 - 12.5";
+        var PT_ctrl_imm = $("#PT_ctrl_imm").val();
+        var PT_pat_imm = $("#PT_pat_imm").val();
+        var PT_1_imm = $("#PT_1_imm").val();
+        var PT_4_imm = $("#PT_4_imm").val();
+        var PT_chang_4_imm = $("#PT_chang_4_imm").val();
+
+        // PTT immediate
+        var PTT_ref_imm = $("#PTT_ref_imm").val() || "9.4 - 12.5";
+        var PTT_ctrl_imm = $("#PTT_ctrl_imm").val();
+        var PTT_pat_imm = $("#PTT_pat_imm").val();
+        var PTT_1_imm = $("#PTT_1_imm").val();
+        var PTT_4_imm = $("#PTT_4_imm").val();
+        var PTT_chang_4_imm = $("#PTT_chang_4_imm").val();
+        // PTT incubated
+        var PTT_ref_inc = $("#PTT_ref_inc").val() || "25.1 - 36.5";
+        var PTT_ctrl_inc = $("#PTT_ctrl_inc").val();
+        var PTT_pat_inc = $("#PTT_pat_inc").val();
+        var PTT_1_inc = $("#PTT_1_inc").val();
+        var PTT_4_inc = $("#PTT_4_inc").val();
+        var PTT_chang_4_inc = $("#PTT_chang_4_inc").val();
+
+        // Footers and disclaimers
+        var disclaimer = "\n* Correction % defined as per:\nChang et al. Am J Clin Pathol 2002;117:62-73\n"
+
+        if (PT_pat_imm != 0){
+            console.log (PT_pat_imm, "PT data is not empty");
+            var PT_mix_head = "PT MIXING STUDIES \t\tCLOTTING TIME\n";
+            var PT_data  =  "IMMEDIATE \n"+
+                "  PT reference range\t\t\t"+PT_ref_imm+" s\n"+
+                "  PT normal control\t\t\t"+PT_ctrl_imm+" s\n"+
+                "  PT clotting time\t\t\t"+PT_pat_imm+" s\n"+
+                "  PT 1:1 mix\t\t\t\t"+PT_1_imm+" s\n"+
+                "  PT 4:1 mix\t\t\t\t"+PT_4_imm+" s\n";
+            var PT_text = PT_mix_head + PT_data;
+        } else {
+            PT_text = '';
+            console.log ("PT data is empty");
+        }
+
+        if (PTT_pat_imm != 0){
+            console.log (PTT_pat_imm, "PTT data is not empty");
+            var PTT_mix_head  =  "\nPTT MIXING STUDIES \t\tCLOTTING TIME\n";
+            var PTT_data  = "IMMEDIATE \n"+
+                "  PTT reference range\t\t\t"+PTT_ref_imm+" s\n"+
+                "  PTT normal control\t\t\t"+PTT_ctrl_imm+" s\n"+
+                "  PTT clotting time\t\t\t"+PTT_pat_imm+" s\n"+
+                "  PTT 1:1 mix\t\t\t\t"+PTT_1_imm+" s\n"+
+                "  PTT 4:1 mix\t\t\t\t"+PTT_4_imm+" s\n"+
+                "\nINCUBATED (1 HOUR)\n"+
+                "  PTT reference range\t\t\t"+PTT_ref_inc+" s\n"+
+                "  PTT normal control\t\t\t"+PTT_ctrl_inc+" s\n"+
+                "  PTT clotting time\t\t\t"+PTT_pat_inc+" s\n"+
+                "  PTT 1:1 mix\t\t\t\t"+PTT_1_inc+" s\n"+
+                "  PTT 4:1 mix\t\t\t\t"+PTT_4_inc+" s\n";
+
+            var PTT_text = PTT_mix_head + PTT_data;
+        } else {
+            PTT_text = '';
+            console.log ("PTT data is empty");
+        }
+
+        if ((PT_chang_4_imm.length > 0) && (PTT_chang_4_imm.length > 0)) {
+            var Chang_data = "\nPERCENT CORRECTION*\t4:1 PT\t|4:1 PTT\n" +
+                "IMMEDIATE\t\t" + PT_chang_4_imm + "%\t" + "|"+PTT_chang_4_imm + "%\n"+
+                "INCUBATED\t\t\t|" + PTT_chang_4_inc + "%\n";
+
+        } else if ((PT_chang_4_imm.length < 1) && (PTT_chang_4_imm.length > 0)){
+            Chang_data = "\nPERCENT CORRECTION*\t4:1 PTT\n" +
+                "IMMEDIATE\t\t" + PTT_chang_4_imm + "%\n" +
+                "INCUBATED\t\t" + PTT_chang_4_inc + "%\n";
+        } else if ((PT_chang_4_imm.length > 0) && (PTT_chang_4_imm.length < 1)){
+            Chang_data = "\nPERCENT CORRECTION*\t4:1 PT\n" +
+                "IMMEDIATE\t\t" + PT_chang_4_imm + "%\n";
+        } else {
+            Chang_data = "";
+        }
+
+        $("#outPut-2").val(PT_text + PTT_text + Chang_data + disclaimer);
+
+    });
 
 //--END CLICK MODIFIERS --------------------//
 
@@ -287,96 +373,7 @@ $(window).on('load', function() {
 // ********************* Combined report function ***********************//
 
     $('#writeReport').on('click', function () {
-        // **** MIXING STUDY PSEUDO TABLE CONSTRUCT **** //
-        var hep_hx = $("#heparin").val();
-        // PT immediate
-        var PT_ref_imm = $("#PT_ref_imm").val() || "9.4 - 12.5";
-        var PT_ctrl_imm = $("#PT_ctrl_imm").val();
-        var PT_pat_imm = $("#PT_pat_imm").val();
-        var PT_1_imm = $("#PT_1_imm").val();
-        var PT_4_imm = $("#PT_4_imm").val();
-        var PT_chang_4_imm = $("#PT_chang_4_imm").val();
 
-        /*/ PT incubated - not useful
-        var PT_ref_inc = $("#PT_ref_inc").val() || "9.4 - 12.5";
-        var PT_ctrl_inc = $("#PT_ctrl_inc").val();
-        var PT_pat_inc = $("#PT_pat_inc").val();
-        var PT_1_inc = $("#PT_1_inc").val();
-        var PT_4_inc = $("#PT_4_inc").val();
-        */
-
-        // PTT immediate
-        var PTT_ref_imm = $("#PTT_ref_imm").val() || "9.4 - 12.5";
-        var PTT_ctrl_imm = $("#PTT_ctrl_imm").val();
-        var PTT_pat_imm = $("#PTT_pat_imm").val();
-        var PTT_1_imm = $("#PTT_1_imm").val();
-        var PTT_4_imm = $("#PTT_4_imm").val();
-        var PTT_chang_4_imm = $("#PTT_chang_4_imm").val();
-        // PTT incubated
-        var PTT_ref_inc = $("#PTT_ref_inc").val() || "25.1 - 36.5";
-        var PTT_ctrl_inc = $("#PTT_ctrl_inc").val();
-        var PTT_pat_inc = $("#PTT_pat_inc").val();
-        var PTT_1_inc = $("#PTT_1_inc").val();
-        var PTT_4_inc = $("#PTT_4_inc").val();
-        var PTT_chang_4_inc = $("#PTT_chang_4_inc").val();
-
-        // Footers and disclaimers
-        var disclaimer = "\n* Correction % defined as per:\nChang et al. Am J Clin Pathol 2002;117:62-73\n"
-
-        if (PT_pat_imm != 0){
-            console.log (PT_pat_imm, "PT data is not empty");
-            var PT_mix_head = "PT MIXING STUDIES \t\tCLOTTING TIME\n";
-            var PT_data  =  "IMMEDIATE \n"+
-                            "  PT reference range\t\t\t"+PT_ref_imm+" s\n"+
-                            "  PT normal control\t\t\t"+PT_ctrl_imm+" s\n"+
-                            "  PT clotting time\t\t\t"+PT_pat_imm+" s\n"+
-                            "  PT 1:1 mix\t\t\t\t"+PT_1_imm+" s\n"+
-                            "  PT 4:1 mix\t\t\t\t"+PT_4_imm+" s\n";
-            var PT_text = PT_mix_head + PT_data;
-        } else {
-            PT_text = '';
-            console.log ("PT data is empty");
-        }
-
-        if (PTT_pat_imm != 0){
-            console.log (PTT_pat_imm, "PTT data is not empty");
-            var PTT_mix_head  =  "\nPTT MIXING STUDIES \t\tCLOTTING TIME\n";
-            var PTT_data  = "IMMEDIATE \n"+
-                            "  PTT reference range\t\t\t"+PTT_ref_imm+" s\n"+
-                            "  PTT normal control\t\t\t"+PTT_ctrl_imm+" s\n"+
-                            "  PTT clotting time\t\t\t"+PTT_pat_imm+" s\n"+
-                            "  PTT 1:1 mix\t\t\t\t"+PTT_1_imm+" s\n"+
-                            "  PTT 4:1 mix\t\t\t\t"+PTT_4_imm+" s\n"+
-                            "\nINCUBATED (1 HOUR)\n"+
-                            "  PTT reference range\t\t\t"+PTT_ref_inc+" s\n"+
-                            "  PTT normal control\t\t\t"+PTT_ctrl_inc+" s\n"+
-                            "  PTT clotting time\t\t\t"+PTT_pat_inc+" s\n"+
-                            "  PTT 1:1 mix\t\t\t\t"+PTT_1_inc+" s\n"+
-                            "  PTT 4:1 mix\t\t\t\t"+PTT_4_inc+" s\n";
-
-            var PTT_text = PTT_mix_head + PTT_data;
-        } else {
-            PTT_text = '';
-            console.log ("PTT data is empty");
-        }
-
-        if ((PT_chang_4_imm.length > 0) && (PTT_chang_4_imm.length > 0)) {
-            var Chang_data = "\nPERCENT CORRECTION*\t4:1 PT\t|4:1 PTT\n" +
-                "IMMEDIATE\t\t" + PT_chang_4_imm + "%\t" + "|"+PTT_chang_4_imm + "%\n"+
-                "INCUBATED\t\t\t|" + PTT_chang_4_inc + "%\n";
-
-        } else if ((PT_chang_4_imm.length < 1) && (PTT_chang_4_imm.length > 0)){
-                Chang_data = "\nPERCENT CORRECTION*\t4:1 PTT\n" +
-                "IMMEDIATE\t\t" + PTT_chang_4_imm + "%\n" +
-                "INCUBATED\t\t" + PTT_chang_4_inc + "%\n";
-        } else if ((PT_chang_4_imm.length > 0) && (PTT_chang_4_imm.length < 1)){
-                Chang_data = "\nPERCENT CORRECTION*\t4:1 PT\n" +
-                    "IMMEDIATE\t\t" + PTT_chang_4_imm + "%\n";
-        } else {
-            Chang_data = "";
-        }
-
-        $("#outPut-2").val(PT_text + PTT_text + Chang_data + disclaimer);
 
         // store your text to localStorage when someone click the link
         var textToPass = $('#outPut-2').val() + '\n\nCOAGULATION MIXING STUDIES:\n' + $('#outPut-3').val() + '\n\n' + $('#outPut-4').val();

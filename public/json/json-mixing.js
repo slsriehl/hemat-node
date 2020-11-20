@@ -10,19 +10,19 @@ $(window).on('load', function() {
         // Both corrects at Immediate but not after Incubation
         dxLine205 : '- Prolonged PTT and PT, both correcting sufficiently with mixing studies performed immediately, but not after incubation (see comment)\n',
         // Both not correcting at Immediate or Incubation
-        dxLine210 : '-  Prolonged PTT and PT, neither correcting sufficiently with mixing studies performed immediately or after incubation (see comment)\n',
+        dxLine210 : '- Prolonged PTT and PT, neither correcting sufficiently with mixing studies performed immediately or after incubation (see comment)\n',
         // Prolonged PTT, normal or unknown PT
         // Prolonged PTT correcting at Immediate and after Incubation
-        dxLine300 : '-  Prolonged PTT, correcting sufficiently with mixing studies performed immediately and after incubation (see comment)\n',
+        dxLine300 : '- Prolonged PTT, correcting sufficiently with mixing studies performed immediately and after incubation (see comment)\n',
         // Prolonged PTT correcting at Immediate but not after Incubation
-        dxLine305 : '-  Prolonged PTT, correcting sufficiently with mixing studies performed immediately, but not after incubation (see comment)\n',
+        dxLine305 : '- Prolonged PTT, correcting sufficiently with mixing studies performed immediately, but not after incubation (see comment)\n',
         // PTT not correcting Immediate or after Incubation
         dxLine310 : '- Prolonged PTT, not correcting sufficiently with mixing studies performed immediately or after incubation (see comment)\n',
         // Prolonged PT, normal or unknown PTT
         // Prolonged PT correcting at Immediate and after Incubation
-        dxLine400 : '-   Prolonged PT, correcting sufficiently with mixing studies performed immediately and after incubation (see comment)\n',
+        dxLine400 : '- Prolonged PT, correcting sufficiently with mixing studies performed immediately and after incubation (see comment)\n',
         // Prolonged PT correcting at Immediate but not after Incubation
-        dxLine405 : '-  Prolonged PT, correcting sufficiently with mixing studies performed immediately, but not after incubation (see comment)\n',
+        dxLine405 : '- Prolonged PT, correcting sufficiently with mixing studies performed immediately, but not after incubation (see comment)\n',
         // PT not correcting Immediate or after Incubation
         dxLine410 : '- Prolonged PT, not correcting sufficiently with mixing studies performed immediately or after incubation (see comment)\n',
 
