@@ -366,10 +366,13 @@ $(window).on('load', function() {
                 "INCUBATED\t\t\t|" + PTT_chang_4_inc + "%\n";
 
         } else if ((PT_chang_4_imm.length < 1) && (PTT_chang_4_imm.length > 0)){
-                Chang_data = "\nPERCENT CORRECTION*\t4:1 PTT\n\t\t\t=======\n" +
+                Chang_data = "\nPERCENT CORRECTION*\t4:1 PTT\n" +
                 "IMMEDIATE\t\t" + PTT_chang_4_imm + "%\n" +
                 "INCUBATED\t\t" + PTT_chang_4_inc + "%\n";
-        } else if ((PT_chang_4_imm.length < 1) && (PTT_chang_4_imm.length <1)){
+        } else if ((PT_chang_4_imm.length > 0) && (PTT_chang_4_imm.length < 1)){
+                Chang_data = "\nPERCENT CORRECTION*\t4:1 PT\n" +
+                    "IMMEDIATE\t\t" + PTT_chang_4_imm + "%\n";
+        } else {
             Chang_data = "";
         }
 
