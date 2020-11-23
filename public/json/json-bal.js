@@ -62,7 +62,7 @@ $(window).on('load', function() {
         mxLine152: 'predominantly of a mixture of alveolar macrophages and neutrophils, with fewer respiratory epithelial cells',
         mxLine153: 'predominantly of neutrophils, with fewer alveolar macrophages and respiratory epithelial cells',
         mxLine154: 'predominantly of a mixture of neutrophils and eosinophils, with fewer alveolar macrophages and respiratory epithelial cells',
-        mxLine155: 'predominantly of oropharyngeal squamous epithelial cells; no alveolar macrophages or respiratory epithelial cells are present',
+        mxLine155: 'predominantly of oropharyngeal squamous epithelial cells; limited alveolar macrophages and respiratory epithelial cells are present',
         mxLine156: 'predominantly of mucoid debris, degenerating mononuclear cells and few neutrophils',
         mxLine157: 'predominantly of mucoid and necrotic debris with neutrophils',
         mxLine158: 'predominantly of red blood cells with scattered mature leukocytes and few alveolar macrophages',
