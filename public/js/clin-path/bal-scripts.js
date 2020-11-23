@@ -57,7 +57,7 @@ $('#done').on('click', function(){
 
 // Gross description
         var box_1 = $('#box1').val();
-
+        var source_text = arrayToSentence(box_1).toLowerCase();
         var box_2 = $('#box2').val();
         var box_3 = $('#box3').val();
         var box_4 = $('#box4').val();
@@ -89,7 +89,8 @@ $('#done').on('click', function(){
         var box_12 = $("#box12").val();
         var box_20 = $("#box20").val();
 
-        micro +=    "The cytospin slides are "+box_12+" and consist "+
+
+        micro +=    "The cytospin slides from the '"+source_text+"' sampling are "+box_12+" and consist "+
                     mxLines[box_6]+ ". ";
 
         // Add any background blood description (unless user selects hemorrhage for cell mixture
