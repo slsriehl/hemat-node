@@ -756,24 +756,65 @@ $('#_dxOut100').addClass('helpful');
 $('#mxLine125').on('change', function(){ // HBSC
 	$('#_commLine113').toggleClass('helpful');
 });
+
 // CHANGE DX TO MATCH RED CELL INDICES
-$('#partType102, #partType106').on('change', function(){
-	if ($(this).is(':checked')){
-		for (var i=100; i<114; i++){
-			dxOuts['dxOut'+i] = dxOuts['dxOut'+i].replace(/Normochromic, normocytic /, 'Hypochromic, microcytic ');
-			}
+    // Replace with normal red cell #
+$('#partType100').on('change', function(){
+	for (var i=100; i<115; i++){
+		dxOuts['dxOut'+i] = dxOuts['dxOut'+i]
+			.replace(/(?<=- )(.*?)(?=( a| r| e))/, 'Normochromic, normocytic')
+			.replace(/(?<=c\s)(\banemia\b)|(\berythrocytosis\b)|(\bred cells\b)(?=\s)/, 'red cells');
 	}
 });
+    // Replace with normal red cell #
+$('#partType101').on('change', function(){
+        for (var i=100; i<115; i++){
+            dxOuts['dxOut'+i] = dxOuts['dxOut'+i]
+				.replace(/(?<=- )(.*?)(?=( a| r| e))/, 'Normochromic, normocytic')
+                .replace(/(?<=c\s)(\banemia\b)|(\berythrocytosis\b)|(\bred cells\b)(?=\s)/, 'anemia');
+        }
+    });
+	// Replace with HM and anemia
+$('#partType102').on('change', function(){
+		for (var i=100; i<115; i++){
+			dxOuts['dxOut'+i] = dxOuts['dxOut'+i]
+				.replace(/(?<=- )(.*?)(?=( a| r| e))/, 'Hypochromic, microcytic')
+				.replace(/(?<=c\s)(\banemia\b)|(\berythrocytosis\b)|(\bred cells\b)(?=\s)/, 'anemia');
+			}
+});
+	// Replace with HM and red cells
+$('#partType106').on('change', function(){
+        for (var i=100; i<115; i++){
+            dxOuts['dxOut'+i] = dxOuts['dxOut'+i]
+				.replace(/(?<=- )(.*?)(?=( a| r| e))/, 'Hypochromic, microcytic')
+				.replace(/(?<=c\s)(\banemia\b)|(\berythrocytosis\b)|(\bred cells\b)(?=\s)/, 'red cells');
+        }
+});
+    // Replace with HM and red cells
 $('#partType103').on('change', function(){
 	if ($('#partType103').is(':checked')){
-		for (var i=100; i<114; i++){
-			dxOuts['dxOut'+i] = dxOuts['dxOut'+i].replace(/Normochromic, normocytic /, 'Normochromic, macrocytic ');
-			}
-
-
+		for (var i=100; i<115; i++){
+			dxOuts['dxOut'+i] = dxOuts['dxOut'+i]
+				.replace(/(?<=- )(.*?)(?=( a| r| e))/, 'Normochromic, macrocytic');
+        }
 	}
 });
-
+    // Replace with increased red cell # and HM
+$('#partType104').on('change', function(){
+        for (var i=100; i<115; i++){
+            dxOuts['dxOut'+i] = dxOuts['dxOut'+i]
+				.replace(/(?<=- )(.*?)(?=( a| r| e))/, 'Hypochromic, microcytic')
+				.replace(/(?<=c\s)(\banemia\b)|(\berythrocytosis\b)|(\bred cells\b)(?=\s)/, 'erythrocytosis');
+        }
+    });
+    // Replace with increased red cell #
+$('#partType105').on('change', function(){
+	for (var i=100; i<115; i++){
+		dxOuts['dxOut'+i] = dxOuts['dxOut'+i]
+			.replace(/(?<=- )(.*?)(?=( a| r| e))/, 'Normochromic, normocytic')
+			.replace(/(?<=c\s)(\banemia\b)|(\berythrocytosis\b)|(\bred cells\b)(?=\s)/, 'erythrocytosis');
+	}
+});
 // END RBC DX HELPERS
 
 // WBC HELPERS
