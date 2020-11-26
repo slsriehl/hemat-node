@@ -599,6 +599,19 @@ function make_data(datatable) {
                 datatable +=
                     "Infant Anthropometric Data: "+$("#box2").val()+" \nData represented as 'value [expected mean; expected range]'\n\n"+
 
+                    "Infant Measurements: \n"+
+                    "Item".padEnd(16, ".")+"Value\t"+
+                    "\n".padEnd(50, "-") +
+                    "\nCrown-Heel".padEnd(16, ".")+ms_ch+" (cm)"+
+                    "\nCrown-Rump".padEnd(16, ".")+ms_cr+" (cm)"+
+                    "\nHead Circ".padEnd(16, ".")+ms_hc+" (cm)"+
+                    "\nFoot Length".padEnd(16, ".")+ms_fl+" (cm)"+
+                    "\nChest Circ".padEnd(16, ".")+ms_cc+" (cm)"+
+                    "\nAbdomen Circ".padEnd(16, ".")+ms_ac+" (cm)"+
+                    "\nInner Canth".padEnd(16, ".")+ms_ic+" (cm)"+
+                    "\nOuter Canth".padEnd(16, ".")+ms_oc+" (cm)"+
+                    "\nGonads".padEnd(16, ".")+ms_oc+" (cm)"+
+
                     "\n\nOrgan Weights with reference ranges: \n"+
                     "Item".padEnd(16)+"Value".padEnd(10)+"Reference"+
                     "\n".padEnd(50, "-") +

@@ -554,7 +554,7 @@ String.prototype.rpad = function (num, brk = 45) {
         var padded = text[0]; // get first line, don't pad
 		if (text.length > 1){
             for (var i = 1; i < text.length; i++) {
-                padded += "\n".padEnd(num+1) + text[i]; // pad subsequent lines
+                padded += "\n".padEnd(num) + text[i]; // pad subsequent lines
             }
         }
 

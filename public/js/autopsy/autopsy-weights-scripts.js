@@ -284,6 +284,19 @@ wt = {male:{yr1m:{body:"4.0, 3-4.9kg",heart:"23, 16-30g",lungs:"64, 43-85g",live
                 datatable +=
                     "Infant Anthropometric Data: "+$("#box2").val()+" \nData represented as 'value [expected mean; expected range]'\n\n"+
 
+                    "Infant Measurements: \n"+
+                    "Item .......... Value\t+
+                    "\n-----------------------------------------"+
+                    "\nCrown-Heel .... "+ms_ch+" (cm)\n"+
+                    "\nCrown-Rump .... "+ms_cr+" (cm)\n"+
+                    "\nHead Circ ..... "+ms_hc+" (cm)\n"+
+                    "\nFoot Length ... "+ms_fl+" (cm)\n"+
+                    "\nChest Circ .... "+ms_cc+" (cm)\n"+
+                    "\nAbdomen Circ .. "+ms_ac+" (cm)\n"+
+                    "\nInner Canth ... "+ms_ic+" (cm)\n"+
+                    "\nOuter Canth ... "+ms_oc+" (cm)\n"+
+                    "\nGonads ........ "+ms_oc+" (cm)\n"+
+
                     "\n\nOrgan Weights with reference ranges: \n"+
                     "Item .......... Value\tReference"+
                     "\n-----------------------------------------"+
