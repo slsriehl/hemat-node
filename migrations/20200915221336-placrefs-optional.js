@@ -17,7 +17,8 @@ module.exports = {
     .then(() => {
       return queryInterface.addColumn('PlacRefs', 'maternalAge', {
         type: Sequelize.INTEGER(2),
-        allowNull: true
+        allowNull: true,
+        validate: { min: 8, max: 60 }
       })
     })
     .then(() => {
@@ -42,7 +43,17 @@ module.exports = {
         onDelete: 'SET NULL',
         allowNull: true
       })
-    })
+    }).then(() => {
+      return queryInterface.changeColumn('PlacRefs', 'weight', {
+        type: Sequelize.INTEGER(4),
+        validate: { min: 50, max: 2000 }
+      })
+        }).then(() => {
+          return queryInterface.changeColumn('PlacRefs', 'gestage', {
+            type: Sequelize.INTEGER(2),
+            validate: { min: 19, max: 44 }
+          })
+        })
     .catch((err) => {
       console.log(err);
       return Promise.resolve(false);
@@ -71,6 +82,16 @@ module.exports = {
     .then(() => {
       return queryInterface.removeColumn('PlacRefs', 'userId')
     })
+    .then(() => {
+          return queryInterface.changeColumn('PlacRefs', 'weight', {
+            type: DataTypes.INTEGER(4)
+          })
+        })
+    .then(() => {
+          return queryInterface.changeColumn('PlacRefs', 'gestage', {
+            type: DataTypes.INTEGER(2)
+          })
+        })
     .catch((err) => {
       console.log(err);
       return Promise.resolve(false);

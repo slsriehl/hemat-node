@@ -91,19 +91,24 @@ $(window).on('load', function(){
             }
     });
 
+
+
 // PLACENTA HISTORIC REFERENCE RANGE AND DATA ENTRY
     $('.getref').on('click', function (e) {
         e.preventDefault();
         var plac_ga = $('#plac_age').val();
         var plac_weight = $('#plac_wt').val();
-        var wk = parseFloat($('#plac_age').val());
-        var plac_wt_num = Number($('#plac_wt').val());
         var plac_ref = $('#reference').val();
         var plac_cite = $('#reference').find(":selected").data("ref");
-        var plac_type = $("#plac_type").val();
+        var plac_type = $('#plac_type option:selected').data('twin');
         var minWeight = 50;
+        var plac_mother_age = $('#plac_mother').val();
+        var plac_sex = $('#plac_sex option:selected').val();
+        var plac_formalin = $('#plac_formalin option:selected').val();
+        var plac_abnormal = $('#plac_abnormal option:selected').val();
 
-        if(!(wk > 0)){
+
+        if(!(Number(plac_ga) > 0)){
             alert("You forgot to enter a gestational age!");
             return;
         }
@@ -111,78 +116,118 @@ $(window).on('load', function(){
             alert("You forgot to enter a placenta weight!");
             return;
         }
-        if (plac_weight < minWeight){ // prevent any inputs
+        if (Number(plac_weight) < minWeight){ // prevent any inputs
             console.log("placenta weight error");
             alert('Are you sure this placenta weighs less than 50g? The database does not support that kind of weight. Please check your entry and try again');
             return;
         }
 
 
-    // *********************************************
-    // Send placenta reference data to database
-    // *********************************************
-
         let placObj = {};
-        placObj.ga = $('#plac_age').val();
-        placObj.weight = $('#plac_wt').val();
-        placObj.twin = $('#plac_type option:selected').data('twin');
+        placObj.ga = plac_ga;
+        placObj.weight = plac_weight;
+        placObj.twin = plac_type;
+        var maxAge = 60;
+        var minAge = 8;
 
         // if statement here when user agrees to submit data...
         var checked = $("#agreement").prop('checked');
 
+        // check optional inputs
+        // check if mother is appropriate age
+        // if the value of the mother's age is present
+        if (plac_mother_age.length > 0) {
+            // and it falls below or above the minimum or maximum age, raise an error
+            if (minAge > Number(plac_mother_age) || Number(plac_mother_age) > maxAge) {
+                console.log("placenta mother age error");
+                alert('Are you sure the Age of the Mother is correct? The database does not allow submissions of a mother that is ' + plac_mother_age + ' years old.');
+                return;
+            }
+        }
+        // if this else block is reached, the length of the mother age is less than 1 which means its null
+        else {
+            plac_mother_age = undefined;
+        }
+        if(plac_sex == 'unknown'){
+            plac_sex = undefined;
+        }
+        if(plac_formalin == 'unknown'){
+            plac_formalin = undefined;
+        }
+        else{
+            let value = 'yes';
+            // this checks if plac_formulain is equal to yes
+            // if it is, assign the boolean of true
+            // else, assign the boolean of false
+            plac_formalin = plac_formalin === value;
+        }
+        if(plac_abnormal == 'unknown'){
+            plac_abnormal = undefined;
+        }
+        else{
+            let value = 'yes';
+            // this checks if plac_formulain is equal to yes
+            // if it is, assign the boolean of true
+            // else, assign the boolean of false
+            plac_abnormal = plac_abnormal === value;
+        }
+
+        // *********************************************
+        // Send placenta reference data to database
+        // *********************************************
+
         if (checked){
-            console.log("Form submit called");
-            // Set placenta weights data object
 
-            $("#plac_save").on("submit", function(e){
-                //don't reload page
-                e.preventDefault();
-                e.stopImmediatePropagation();
-                console.log("Form submit after e.preventDefault");
 
-                //define ajax request data obj
+            console.log("User agreed to submit, data is being sent");
 
-                placObj.ga = $('#plac_age').val();
-                placObj.weight = $('#plac_wt').val();
-                placObj.twin = $('#plac_type option:selected').data('twin');
+            //don't reload page
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            console.log("Form submit after e.preventDefault");
 
+
+            placObj.sex = plac_sex;
+            placObj.maternalAge = plac_mother_age;
+            placObj.postFormalin = plac_formalin;
+            placObj.abnormal = plac_abnormal;
+
+
+            $.ajax({
+                url: "https://ipapi.co/json/",
+                type: 'GET',
+                success: function(json)
+                {
+                    placObj.country = json.country;
+                    placObj.city = json.city;
+                    placObj.state = json.region;
+                    console.log("Geolocation called");
+
+                    // AJAX success page
+                    $("#alert-1").show();
+                    $(".getref").prop("disabled", true);
+                    setTimeout(function() {
+                        $("#alert-1").fadeOut('1000');
+                        $(".getref").prop("disabled", false);
+                    }, 1500);
+
+                },
+                error: function(err)
+                {
+                    console.log("Geolocation Request failed, error= " + err);
+                }
+            }).done(function(response) {
+                console.log(".done block called");
+
+                //ajax call to save new placenta object in the db when geoloc is done
                 $.ajax({
-                    url: "https://ipapi.co/json/",
-                    type: 'GET',
-                    success: function(json)
-                    {
-                        placObj.country = json.country;
-                        placObj.city = json.city;
-                        placObj.state = json.region;
-                        console.log("Geolocation called");
-
-                        // AJAX success page
-                        $("#alert-1").show();
-                        $(".getref").prop("disabled", true);
-                        setTimeout(function() {
-                            $("#alert-1").fadeOut('1000');
-                            $(".getref").prop("disabled", false);
-                        }, 1500);
-
-                    },
-                    error: function(err)
-                    {
-                        console.log("Geolocation Request failed, error= " + err);
-                    }
-                }).done(function(response) {
-                    console.log(".done block called");
-
-                    //ajax call to save new placenta object in the db when geoloc is done
-                    $.ajax({
-                        url: '/placenta/add',
-                        type: 'POST',
-                        data: placObj,
-                        dataType: "json",
-                        cache: false
-                    });
-                    console.log("Data to DB", placObj);
+                    url: '/placenta/add',
+                    type: 'POST',
+                    data: placObj,
+                    dataType: "json",
+                    cache: false
                 });
-                return false;
+                console.log("Data to DB", placObj);
             });
         }
 
@@ -571,10 +616,11 @@ function drawGraph(percentiles, sorted, filtered=[]){
 
     
     // Function to update the 3rd plot based on a change to the geo filter
-    function drawGraphGeo(percentilesGeo, g, v){     
+    function drawGraphGeo(percentilesGeo, g, v){
+        var transitionDuration = 5000;
          // make the opacity 0 for any data points that do not match the filter
         d3.selectAll(".realtimeGeoData")
-            .transition().duration(5000)
+            .transition().duration(transitionDuration)
             .style('fill-opacity',function(d) { 
                 if (g != "country"){
                     return (d[g].toLowerCase() == v ? .7 : 0)
@@ -592,19 +638,19 @@ function drawGraph(percentiles, sorted, filtered=[]){
 
             // move the elements of the box & whisker plot to match the updated percentiles
             d3.select(".rectGeoData")
-            .transition().duration(5000)
+            .transition().duration(transitionDuration)
             .attr('x',xScale(percentilesGeo[1]))
             .attr('width', xScale(percentilesGeo[3]) - xScale(percentilesGeo[1]))
             d3.select(".midlineGeoData")
-            .transition().duration(5000)
+            .transition().duration(transitionDuration)
             .attr('x1',xScale(percentilesGeo[2]))
             .attr('x2',xScale(percentilesGeo[2]))
             d3.select(".lowlineGeoData")
-            .transition().duration(5000)
+            .transition().duration(transitionDuration)
             .attr('x1',xScale(percentilesGeo[0]))
             .attr('x2',xScale(percentilesGeo[1]))
             d3.select(".highlineGeoData")
-            .transition().duration(5000)
+            .transition().duration(transitionDuration)
             .attr('x1',xScale(percentilesGeo[3]))
             .attr('x2',xScale(percentilesGeo[4]))
     }
@@ -614,6 +660,7 @@ function drawGraph(percentiles, sorted, filtered=[]){
     // *********************************************
 
         function getAllGeo(arr,selection){
+            console.log(arr, selection);
             //creates a list of all the countries/states/cities in the dataset, sorts them, and filters out duplicates
             return arr.map(function(obj){
                 return obj[selection];

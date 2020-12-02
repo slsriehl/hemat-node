@@ -17,11 +17,10 @@ const controller = {
             country: req.body.country,
             state: req.body.state,
             city: req.body.city,
-        //+++++ TODO front-end sanitization, check if values supplied ++++++
-            // sex: req.body.plac_sex || 'unknown',
-            // maternalAge: req.body.plac_mother || null,
-            // postFormalin: typeof(req.body.plac_formalin) === 'boolean' ? req.body.plac_formalin : null,
-            // abnormal: typeof(req.body.plac_abnormal) === 'boolean' ? req.body.plac_abnormal : null,
+            sex: req.body.sex,
+            maternalAge: req.body.maternalAge,
+            postFormalin: req.body.postFormalin,
+            abnormal: req.body.abnormal,
             userId: req.session.user,
         };
 
@@ -36,8 +35,9 @@ const controller = {
             where: Object.assign({}, placenta, thirtySecondsAgo)
         })
         .then(data => {
-            // console.log(data);
+            console.log(data);
             if(!data.length) {
+                console.log('Sent placenta data to db')
                 return models.PlacRefs.create(placenta)
             } else {
                 return Promise.reject(new Error(entryExists));

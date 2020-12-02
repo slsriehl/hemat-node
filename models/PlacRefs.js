@@ -8,10 +8,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     },
     gestage: {
-      type: DataTypes.INTEGER(2)
+      type: DataTypes.INTEGER(2),
+      validate: { min: 19, max: 44 }
     },
     weight: {
-      type: DataTypes.INTEGER(4)
+      type: DataTypes.INTEGER(4),
+      validate: { min: 50, max: 2000 }
     },
     twin: {
       type: DataTypes.BOOLEAN
@@ -32,6 +34,7 @@ module.exports = (sequelize, DataTypes) => {
     maternalAge: {
       type: DataTypes.INTEGER(2),
       allowNull: true,
+      validate: { min: 8, max: 60 }
     },
     postFormalin: {
       type: DataTypes.BOOLEAN,
