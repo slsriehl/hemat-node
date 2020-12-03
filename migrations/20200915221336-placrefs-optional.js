@@ -14,50 +14,39 @@ module.exports = {
       type: Sequelize.ENUM('female', 'male', 'intersex', 'unknown'),
       allowNull: true
     })
-    .then(() => {
-      return queryInterface.addColumn('PlacRefs', 'maternalAge', {
-        type: Sequelize.INTEGER(2),
-        allowNull: true,
-        validate: { min: 8, max: 60 }
-      })
-    })
-    .then(() => {
-      return queryInterface.addColumn('PlacRefs', 'postFormalin', {
-        type: Sequelize.BOOLEAN,
-        allowNull: true
-      })
-    })
-    .then(() => {
-      return queryInterface.addColumn('PlacRefs', 'abnormal', {
-        type: Sequelize.BOOLEAN,
-        allowNull: true
-      })
-    })
-    .then(() => {
-      return queryInterface.addColumn('PlacRefs', 'userId', {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Users',
-          key: 'id'
-        },
-        onDelete: 'SET NULL',
-        allowNull: true
-      })
-    }).then(() => {
-      return queryInterface.changeColumn('PlacRefs', 'weight', {
-        type: Sequelize.INTEGER(4),
-        validate: { min: 50, max: 2000 }
-      })
-        }).then(() => {
-          return queryInterface.changeColumn('PlacRefs', 'gestage', {
+        .then(() => {
+          return queryInterface.addColumn('PlacRefs', 'maternalAge', {
             type: Sequelize.INTEGER(2),
-            validate: { min: 19, max: 44 }
+            allowNull: true
           })
         })
-    .catch((err) => {
-      console.log(err);
-      return Promise.resolve(false);
-    });
+        .then(() => {
+          return queryInterface.addColumn('PlacRefs', 'postFormalin', {
+            type: Sequelize.BOOLEAN,
+            allowNull: true
+          })
+        })
+        .then(() => {
+          return queryInterface.addColumn('PlacRefs', 'abnormal', {
+            type: Sequelize.BOOLEAN,
+            allowNull: true
+          })
+        })
+        .then(() => {
+          return queryInterface.addColumn('PlacRefs', 'userId', {
+            type: Sequelize.INTEGER,
+            references: {
+              model: 'Users',
+              key: 'id'
+            },
+            onDelete: 'SET NULL',
+            allowNull: true
+          })
+        })
+        .catch((err) => {
+          console.log(err);
+          return Promise.resolve(false);
+        });
 
   },
 
@@ -70,31 +59,21 @@ module.exports = {
       return queryInterface.dropTable('users');
     */
     return queryInterface.removeColumn('PlacRefs', 'sex')
-    .then(() => {
-      return queryInterface.removeColumn('PlacRefs', 'maternalAge')
-    })
-    .then(() => {
-      return queryInterface.removeColumn('PlacRefs', 'postFormalin')
-    })
-    .then(() => {
-      return queryInterface.removeColumn('PlacRefs', 'abnormal')
-    })
-    .then(() => {
-      return queryInterface.removeColumn('PlacRefs', 'userId')
-    })
-    .then(() => {
-          return queryInterface.changeColumn('PlacRefs', 'weight', {
-            type: DataTypes.INTEGER(4)
-          })
+        .then(() => {
+          return queryInterface.removeColumn('PlacRefs', 'maternalAge')
         })
-    .then(() => {
-          return queryInterface.changeColumn('PlacRefs', 'gestage', {
-            type: DataTypes.INTEGER(2)
-          })
+        .then(() => {
+          return queryInterface.removeColumn('PlacRefs', 'postFormalin')
         })
-    .catch((err) => {
-      console.log(err);
-      return Promise.resolve(false);
-    });
+        .then(() => {
+          return queryInterface.removeColumn('PlacRefs', 'abnormal')
+        })
+        .then(() => {
+          return queryInterface.removeColumn('PlacRefs', 'userId')
+        })
+        .catch((err) => {
+          console.log(err);
+          return Promise.resolve(false);
+        });
   }
 };
