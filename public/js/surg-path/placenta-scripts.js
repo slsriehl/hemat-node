@@ -28,6 +28,20 @@ $(window).on('load', function(){
     var countries, states, cities;
     var minDataPoints = 10;
 
+    // Cache JQuery selectors that are used frequently
+    // this prevents repeating JQuery selectors
+    var $geoInput = $("#geoInput");
+    var $warningLabel = $("#warningLabel");
+    var $graphContainer = $("#graphContainer");
+    var $autocompleteList = $("#autocompleteList");
+    var $plac_age_filter = $('#plac_age_filter');
+    var $geoSelection = $("#geoSelection");
+    var $summaryHeadWithGeo = $('#summaryHead' + geo);
+    var $summaryHeaderWithGeo = $('#summaryHeader' + geo);
+    var $summaryBodyWithGeo = $('#summaryBody' + geo);
+
+
+
     // *********************************************
     // GET REALTIME REFERENCE
     // *********************************************
@@ -61,8 +75,8 @@ $(window).on('load', function(){
     $("#plac_age").on("input", function(e){
         if ($(this).val().length > 1){
             var num = Number($(this).val()); // this input
-            var max = 44; // get max input
-            var min = 19;
+            let max = 44; // get max input
+            let min = 19;
             if (num > max){ // prevent any inputs
                 console.log("node numeric validation error");
                 e.preventDefault();
@@ -96,10 +110,11 @@ $(window).on('load', function(){
 // PLACENTA HISTORIC REFERENCE RANGE AND DATA ENTRY
     $('.getref').on('click', function (e) {
         e.preventDefault();
+        var $reference = $('#reference');
         var plac_ga = $('#plac_age').val();
         var plac_weight = $('#plac_wt').val();
-        var plac_ref = $('#reference').val();
-        var plac_cite = $('#reference').find(":selected").data("ref");
+        var plac_ref = $reference.val();
+        var plac_cite = $reference.find(":selected").data("ref");
         var plac_type = $('#plac_type option:selected').data('twin');
         var minWeight = 50;
         var plac_mother_age = $('#plac_mother').val();
@@ -157,19 +172,19 @@ $(window).on('load', function(){
         else{
             let value = 'yes';
             // this checks if plac_formulain is equal to yes
-            // if it is, assign the boolean of true
-            // else, assign the boolean of false
-            plac_formalin = plac_formalin === value;
+            // if it is, assign the 1 for true
+            // else, assign the 0 for false
+            plac_formalin = (plac_formalin === value) ? 1 : 0;
         }
         if(plac_abnormal == 'unknown'){
             plac_abnormal = undefined;
         }
         else{
             let value = 'yes';
-            // this checks if plac_formulain is equal to yes
-            // if it is, assign the boolean of true
-            // else, assign the boolean of false
-            plac_abnormal = plac_abnormal === value;
+            // this checks if grossly abnormal appearance is equal to yes
+            // if it is, assign the 1 for true
+            // else, assign the 0 for false
+            plac_abnormal = (plac_abnormal === value) ? 1 : 0;
         }
 
         // *********************************************
@@ -231,7 +246,7 @@ $(window).on('load', function(){
             });
         }
 
-        var partTypes = handleSubmit(false,placObj,plac_ga,plac_weight,plac_wt_num,wk,plac_ref,plac_cite,plac_type);
+        var partTypes = handleSubmit(false,placObj,plac_ref, plac_cite);
 
         // add final header
         var head = '';
@@ -249,7 +264,13 @@ $(window).on('load', function(){
 
 
 
-        function handleSubmit(filter,placObj,plac_ga,plac_weight,plac_wt_num,wk,plac_ref,plac_cite,plac_type){
+        function handleSubmit(filter,placObj,plac_ref, plac_cite){
+            let plac_ga = placObj.ga;
+            let plac_weight = placObj.weight;
+            let plac_wt_num = Number(plac_weight);
+            let wk = parseFloat(plac_ga);
+            let plac_type = placObj.twin;
+
 
             var partTypes = $.extend(true, {}, partJson); // extended original JSON to this variable, so header replaces are reset on new values entered
 
@@ -390,9 +411,9 @@ $(window).on('load', function(){
                     $("#div_summaryTable").removeClass("d-none");
                     // If the user just entered a new data point, temporarily remove the geo filter
                     if (!filter){
-                        $("#geoInput").val('');
-                        $("#geoSelection").val('0');
-                        $("#geoInput").addClass('d-none');
+                        $geoInput.val('');
+                        $geoSelection.val('0');
+                        $geoInput.addClass('d-none');
                         $("#div_summaryTable2").addClass('d-none');
                     }
                     // If there exists realtime data, populate the full data table
@@ -406,9 +427,9 @@ $(window).on('load', function(){
                     plac_range_2 = "Not enough data points available";
                     $("#div_summaryTable").addClass('d-none');
                     $("#div_summaryTable2").addClass('d-none');
-                    $("#graphContainer").addClass('d-none');
-                    $("#warningLabel").html("Not enough data points to display summary statistics");
-                    $("#warningLabel").removeClass('d-none');
+                    $graphContainer.addClass('d-none');
+                    $warningLabel.html("Not enough data points to display summary statistics");
+                    $warningLabel.removeClass('d-none');
                 } else {
                     percentiles2 = calculatePercents(percentages, sorted);  
                     if (!filter){  
@@ -426,7 +447,7 @@ $(window).on('load', function(){
                         });
                         drawGraph([percentilesHistoric, percentilesRealtime], sorted);
                     } else {
-                        $("#graphContainer").empty();
+                        $graphContainer.empty();
                     }
                 }
 
@@ -434,8 +455,8 @@ $(window).on('load', function(){
                  // change the filters down below to match the inputted data point
                     $("#plac_age_filter").val(placObj.ga);
                     $("#twin_filter").val(placObj.twin ? "partType501" : "partType500");
-                    $("#geoSelection").val(0);
-                    $("#geoInput").addClass('d-none');
+                    $geoSelection.val(0);
+                    $geoInput.addClass('d-none');
                     // show the appropriate string with the realtime reference range
                     $(".plac-range-2").val(plac_range_2); 
                 } 
@@ -509,8 +530,8 @@ function drawGraph(percentiles, sorted, filtered=[]){
     }
 
     // Empty the graph, then append an svg with the specified height and width
-    $("#graphContainer").empty();
-    $("#graphContainer").removeClass('d-none');
+    $graphContainer.empty();
+    $graphContainer.removeClass('d-none');
 
     var svg = d3.select("#graphContainer")
         .append("svg")
@@ -670,8 +691,8 @@ function drawGraph(percentiles, sorted, filtered=[]){
         }
 
         function closeAllLists(){
-            $("#autocompleteList").empty();
-            $("#autocompleteList").addClass('d-none');
+            $autocompleteList.empty();
+            $autocompleteList.addClass('d-none');
         }
 
         // Given the array of options and the value of the text input, creates an autocomplete dropdown
@@ -693,7 +714,7 @@ function drawGraph(percentiles, sorted, filtered=[]){
                     HTML = '<li class="list-group-item list-group-item-action" style="z-index: 1;">' + HTML + '</li>';
                     $(HTML).appendTo('#autocompleteList').on("click", function() {
                           // insert the value for the autocomplete text field //
-                          $('#geoInput').val(item);
+                          $geoInput.val(item);
                           closeAllLists();
                     })
                 }
@@ -701,35 +722,35 @@ function drawGraph(percentiles, sorted, filtered=[]){
         }
 
         // Event handler: updates the dropdown autocomplete list when the user searches for a country/state/city
-        $("#geoInput").on("keyup", function() {
+        $geoInput.on("keyup", function() {
             var val = $(this).val();
-            var selection = $("#geoSelection").val()
+            var selection = $geoSelection.val()
             closeAllLists();
             if (!val) { 
                 return false;
             }
             var arr = (selection == 3 ? countries : (selection == 4 ? states : cities));    
             createDropdown(arr,val);
-            $("#autocompleteList").removeClass('d-none');
+            $autocompleteList.removeClass('d-none');
         });
         
         // Event handler: updates the summary table, data table, and graph accordingly when the user submits the filter
         $("#geoForm").on("submit", function(e) {
             e.preventDefault();
-            var warningOff = $('#warningLabel').hasClass('d-none');
+            var warningOff = $warningLabel.hasClass('d-none');
             if(!warningOff) {
                 $('#warningLabel').addClass('d-none')
             }
-            var wk = parseFloat($('#plac_age_filter').val())
-            var twn = $('#plac_age_filter').val()
+            var wk = parseFloat($plac_age_filter.val())
+            var twn = $plac_age_filter.val()
             if(!(wk > 0)){
                 alert("You forgot to enter a gestational age!");
                 return;
             }
 
             // prepare inputs to handleSubmit function
-            var selection = $("#geoSelection").val()
-            var plac_ga = $('#plac_age_filter').val();
+            var selection = $geoSelection.val()
+            var plac_ga = $plac_age_filter.val();
             var plac_type = $("#twin_filter").val();
             let placObj = {};
             placObj.ga = plac_ga
@@ -741,24 +762,24 @@ function drawGraph(percentiles, sorted, filtered=[]){
             // if a geofilter is being applied
             if (selection != 0){
                 var g = (selection == 3 ? "country" : (selection == 4 ? "state" : "city")); 
-                var v = $("#geoInput").val().toLowerCase();
+                var v = $geoInput.val().toLowerCase();
                 var filteredData = filterArray(sorted,[g,v]);
                 // if there exist data that match the filters
                 if (filteredData.length > 0){
                     populateTable(filteredData);
                     var filteredPercentiles = calculatePercents(percentages, filteredData);
                     if (filteredData.length < minDataPoints){
-                        $("#warningLabel").html("Not enough data points to display geo filtered summary statistics");
-                        $("#warningLabel").removeClass('d-none');
+                        $warningLabel.html("Not enough data points to display geo filtered summary statistics");
+                        $warningLabel.removeClass('d-none');
                         $("#div_summaryTable2").addClass('d-none');
                         if (percentilesHistoric){
                             drawGraph([percentilesHistoric,percentilesRealtime], sorted);
                         } else {
-                            $("#graphContainer").addClass('d-none');
+                            $graphContainer.addClass('d-none');
                         }
                     } else {
                         // only populate the summary table and draph the 3rd box & whisker plot if there are enough data points
-                        populateSummary(filteredPercentiles,wk,twn,"2",filteredData.length,g.charAt(0).toUpperCase() + g.slice(1) + " = " + $("#geoInput").val());
+                        populateSummary(filteredPercentiles,wk,twn,"2",filteredData.length,g.charAt(0).toUpperCase() + g.slice(1) + " = " + $geoInput.val());
                         if (percentilesHistoric){
                             var percentilesFiltered = filteredPercentiles.map(function(obj,index){
                                 return obj.plac_wt_num;
@@ -766,12 +787,12 @@ function drawGraph(percentiles, sorted, filtered=[]){
                             drawGraph([percentilesHistoric,percentilesRealtime,percentilesFiltered], sorted);
                             drawGraphGeo(percentilesFiltered, g, v);
                         } else {
-                            $("#graphContainer").addClass('d-none');
+                            $graphContainer.addClass('d-none');
                         }
                     }
                 } else {
-                    $("#warningLabel").html("Not enough data points to display geo filtered summary statistics");
-                    $("#warningLabel").removeClass('d-none');
+                    $warningLabel.html("Not enough data points to display geo filtered summary statistics");
+                    $warningLabel.removeClass('d-none');
                     $("#div_summaryTable2").addClass('d-none');
                     $("#div_dataTable").addClass("d-none");
                 }
@@ -779,9 +800,9 @@ function drawGraph(percentiles, sorted, filtered=[]){
         });
 
         // Event handler: resets the summary table, data table, and graph if the user selects filter as "None"
-        $("#geoSelection").on("change", function() {
+            $geoSelection.on("change", function() {
             var value = $(this).val();
-            $("#geoInput").val('');
+            $geoInput.val('');
             console.log('here')
             if (value != "0"){
                 $("#geoInput").removeClass('d-none');
@@ -798,27 +819,27 @@ function drawGraph(percentiles, sorted, filtered=[]){
         function populateSummary(data, ga, tw, geo, n, label){
             // empty the table
             $("#div_summaryTable" + geo).removeClass('d-none')
-            $("#warningLabel").addClass('d-none');
-            $("#warningLabel").html('');
+            $warningLabel.addClass('d-none');
+            $warningLabel.html('');
             $("#summaryData" + geo).removeClass('d-none');
-            $('#summaryHead' + geo).empty()
-            $('#summaryHeader' + geo).empty()
-            $('#summaryHeader' + geo).html('N = ' + n + (geo == "" ? "" : ", " + label))
-            $('#summaryBody' + geo).empty()
-            $('#summaryHead' + geo).append('<th scope="col" class="text-center">Gestational Age</th>')
-            $('#summaryHead' + geo).append('<th scope="col" class="text-center">Gestational Type</th>')
+            $summaryHeadWithGeo.empty()
+            $summaryHeaderWithGeo.empty()
+            $summaryHeaderWithGeo.html('N = ' + n + (geo == "" ? "" : ", " + label))
+            $summaryBodyWithGeo.empty()
+            $summaryHeadWithGeo.append('<th scope="col" class="text-center">Gestational Age</th>')
+            $summaryHeadWithGeo.append('<th scope="col" class="text-center">Gestational Type</th>')
             // create a column heading for each calculated percentile
             var contentHead;
             percentages.forEach(function(percent,index){
                 contentHead += '<th scope="col" class="text-center">' + percent + '%</th>'
             });
-            $('#summaryHead' + geo).append(contentHead);
+            $summaryHeadWithGeo.append(contentHead);
             // add a table data to the table body for each calculatepod percentile
             var contentBody = '<td>'+ ga + '</td><td>' + (tw == 1 ? "Twin" : "Single") + '</td>';
             data.forEach(function(p,index){
                 contentBody += '<td>' + p.plac_wt_num + 'g</td>'   
             });
-            $('#summaryBody' + geo).append(contentBody);
+            $summaryBodyWithGeo.append(contentBody);
         }
 
         function populateTable(data){
