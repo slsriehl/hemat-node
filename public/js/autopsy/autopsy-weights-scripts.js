@@ -285,7 +285,7 @@ wt = {male:{yr1m:{body:"4.0, 3-4.9kg",heart:"23, 16-30g",lungs:"64, 43-85g",live
                     "Infant Anthropometric Data: "+$("#box2").val()+" \nData represented as 'value [expected mean; expected range]'\n\n"+
 
                     "Infant Measurements: \n"+
-                    "Item .......... Value\t+
+                    "Item .......... Value\t"+
                     "\n-----------------------------------------"+
                     "\nCrown-Heel .... "+ms_ch+" (cm)\n"+
                     "\nCrown-Rump .... "+ms_cr+" (cm)\n"+
