@@ -1,3 +1,10 @@
+<!-- Makes JQuery validation plugin text red -->
+<style>
+    form .error {
+        color: #ff0000;
+    }
+</style>
+
 <div class="container-fluid">
     <!-- Breadcrumbs -->
     <ol class="breadcrumb">
@@ -34,7 +41,7 @@
                                     Gestational Age (weeks)
                                 </div>
                                 <div class="card-block ">
-                                    <input type="number" min="19" max="44" class="form-control mx-auto" id="plac_age" placeholder="19-44">
+                                    <input type="number" min="19" max="44" class="form-control mx-auto" id="plac_age" name="plac_age" placeholder="19-44">
                                 </div>
                             </div>
                         </div>
@@ -46,7 +53,7 @@
                                 </div>
                                 <div class="card-block ">
                                     <div>
-                                        <input type="number" class="form-control col-12 mx-auto" id="plac_wt">
+                                        <input type="number" class="form-control col-12 mx-auto" id="plac_wt" name="plac_wt">
                                     </div>
                                 </div>
                             </div>
@@ -59,7 +66,7 @@
                                 </div>
                                 <div class="card-block ">
                                     <div>
-                                        <select id="plac_type" class="form-control">
+                                        <select id="plac_type" class="form-control" name="plac_type">
                                             <option value="partType500" data-twin="0">Single</option>
                                             <option value="partType501" data-twin="1">Twin</option>
                                         </select>
@@ -75,7 +82,7 @@
                                 </div>
                                 <div class="card-block ">
                                     <div>
-                                        <select id="reference" class="form-control">
+                                        <select id="reference" class="form-control" name="reference">
                                             <option data-ref="Pinar H. et al. Pediatr Pathol Lab med 1996; 16:901-7." value="1">Pinar et al. - Singleton/Twin (1996)</option>
                                             <option data-ref="Boyd T. et al. Mod Pathol 1999; 12:1P." value="2">Boyd et al. - Singleton (1999)</option>
                                         </select>
@@ -102,7 +109,7 @@
                                 </div>
                                 <div class="card-block ">
                                     <div>
-                                        <select id="plac_sex" class="form-control">
+                                        <select id="plac_sex" class="form-control" name="plac_sex">
                                             <option value="unknown" data-sex="0">Choose...</option>
                                             <option value="female" data-sex="1">Female</option>
                                             <option value="male" data-sex="2">Male</option>
@@ -120,7 +127,7 @@
                                     Age of Mother
                                 </div>
                                 <div class="card-block ">
-                                    <input type="number" min="8" max="60" class="form-control mx-auto" id="plac_mother" placeholder="8-60">
+                                    <input type="number" min="8" max="60" class="form-control mx-auto" id="plac_mother" placeholder="8-60" name="plac_mother">
                                 </div>
                             </div>
                         </div>
@@ -132,7 +139,7 @@
                                 </div>
                                 <div class="card-block ">
                                     <div>
-                                        <select id="plac_formalin" class="form-control">
+                                        <select id="plac_formalin" class="form-control" name="plac_formalin">
                                             <option value="no" data-formalin="0" selected="selected">No</option>
                                             <option value="yes" data-formalin="1">Yes</option>
                                         </select>
@@ -148,7 +155,7 @@
                                 </div>
                                 <div class="card-block ">
                                     <div>
-                                        <select id="plac_abnormal" class="form-control">
+                                        <select id="plac_abnormal" class="form-control" name="plac_abnormal">
                                             <option value="no"  data-abnormal="0" selected="selected">No</option>
                                             <option value="yes" data-abnormal="1">Yes</option>
                                         </select>

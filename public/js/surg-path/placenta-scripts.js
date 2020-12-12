@@ -1,5 +1,6 @@
 $(window).on('load', function(){
-// Hide dialogs on start
+
+    // Hide dialogs on start
     $('.twin_dialog').dialog({autoOpen:false});
 
     $('.umbilical').dialog({autoOpen:false});
@@ -36,9 +37,6 @@ $(window).on('load', function(){
     var $autocompleteList = $("#autocompleteList");
     var $plac_age_filter = $('#plac_age_filter');
     var $geoSelection = $("#geoSelection");
-    var $summaryHeadWithGeo = $('#summaryHead' + geo);
-    var $summaryHeaderWithGeo = $('#summaryHeader' + geo);
-    var $summaryBodyWithGeo = $('#summaryBody' + geo);
 
 
 
@@ -71,200 +69,155 @@ $(window).on('load', function(){
 
 //***************************************************************************************//
 // SCRIPTS PERTAINING TO THE PLACENTA REFERENCE AND SENDING DATA TO DB
-// Plaenta GA validation - Prevent entering beyond GA max or min
-    $("#plac_age").on("input", function(e){
-        if ($(this).val().length > 1){
-            var num = Number($(this).val()); // this input
-            let max = 44; // get max input
-            let min = 19;
-            if (num > max){ // prevent any inputs
-                console.log("node numeric validation error");
-                e.preventDefault();
-                $(this).val('44');
+// SETUP FOR JQUERY-VALIDATION PLUGIN
+    var validator = $('#plac_save').validate({
+        debug: true,
+        rules: {
+            plac_age: {
+                required: true,
+                min: 19,
+                max: 44
+            },
+            plac_wt: {
+                required: true,
+                min: 50,
+                max: 2000
+            },
+            plac_type: "required",
+            plac_mother: {
+                min: 8,
+                max: 60
             }
-            if (num < min){
-                console.log("node numeric validation error");
-                e.preventDefault();
-                $(this).val('19');
+        },
+        messages: {
+            plac_age: {
+                required: "A placenta age is required.",
+                min: "The placenta age cannot be less than 19 weeks.",
+                max: "The placenta age cannot be greater than 44 weeks."
+            },
+            plac_wt: {
+                required: "A placenta weight is required.",
+                min: "The placenta weight cannot be less than 50 grams.",
+                max: "The placenta weight cannot be more than 2000 grams."
+            },
+            plac_type: "Please select a gestational type.",
+            plac_mother: {
+                min: "The age of the mother cannot be less than 8 years old.",
+                max: "The age of the mother cannot be older than 60 years old."
+            }
+        },
+        submitHandler: function(form) {
+            var {placObj, plac_ref, plac_cite} = createPlacObj();
+
+            // check to see if user agreed to submit data
+            var checked = $("#agreement").prop('checked');
+            if (checked) {
+
+
+                console.log("User agreed to submit, data is being sent");
+                // send the placObj to the database
+                placToDB(placObj);
+            }
+            // create the header for filtering placenta db
+            var partTypes = handleSubmit(false,placObj,plac_ref, plac_cite);
+
+            // add final header
+            var head = '';
+            if( plac_type == "partType501" ) {
+                head = partTypes.partType500.replace(/DELIVERY/, 'TWIN DELIVERY');
+                $("#outPut-3").val(head).trigger("input");
+                $("#outPut-4").val("Placenta Weights Reference: "+plac_cite+"\n\n").trigger("input");
+            } else {
+                head = partTypes.partType500;
+                $("#outPut-3").val(head).trigger("input");
+                $("#outPut-4").val("Placenta Weights Reference: "+plac_cite+"\n\n").trigger("input");
             }
         }
-
     });
 
-// Plaenta weight validation - Prevent entering 2000 grams or <50 grams
-    $("#plac_wt").on("input", function(e){
-            if ($(this).val().length > 1){
-                var num = Number($(this).val()); // this input
-                    var max = 2000; // get max input
-                    if (num >= max){ // prevent any inputs
-                        console.log("placenta weight error");
-                        alert('Are you sure this placenta weighs more than 2000g? The database does not support that kind of weight. Please check your entry and try again');
-                        e.preventDefault();
-                        $(this).val('');
-                    }
-            }
+    // HELPER FUNCTIONS FOR JQUERY FORM VALIDATION
+    // Creates a Placenta Data Object for the database
+function createPlacObj(){
+    // convert inputs to appropriate types
+    var ga = parseInt($("#plac_age").val());
+    var weight = parseFloat($("#plac_wt").val());
+    var gt = $("#plac_type").val();
+    // check if the gestation is single or twin
+    var twin = gt === "Single" ? 0 : 1;
+    // check optional inputs to see if null
+    var s = $("#plac_sex").val();
+    var sex = s === 'unknown' ? undefined : s;
+    var pm = $("#plac_mother").val();
+    // if the value is unknown, assign the variable undefined
+    var maternalAge = pm === '' ? undefined : pm;
+    var pf = $("#plac_formalin").val();
+    // if the value is no, assign it 0 otherwise 1 for yes
+    var postFormalin = pf === "No" ? 0 : 1;
+    var ab = $("#plac_abnormal").val();
+    var abnormal = ab === "No" ? 0 : 1;
+
+    var plac_ref = $('#reference').val();
+    var plac_cite = $('#reference').find(":selected").data("ref");
+
+    // create the placObj for the database
+    var placObj = new Object({
+        ga: ga,
+        weight: weight,
+        twin: twin,
+        sex: sex,
+        maternalAge: maternalAge,
+        postFormalin: postFormalin,
+        abnormal: abnormal});
+
+    return {placObj, plac_ref, plac_cite};
+}
+
+// handles the submission and filtering of the data to the Placenta Weight range tool
+function placToDB(placObj){
+    // *********************************************
+    // Send placenta reference data to database
+    // *********************************************
+    $.ajax({
+        url: "https://ipapi.co/json/",
+        type: 'GET',
+        success: function(json)
+        {
+            placObj.country = json.country;
+            placObj.city = json.city;
+            placObj.state = json.region;
+            console.log("Geolocation called");
+
+            // AJAX success page
+            $("#alert-1").show();
+            $(".getref").prop("disabled", true);
+            setTimeout(function() {
+                $("#alert-1").fadeOut('1000');
+                $(".getref").prop("disabled", false);
+            }, 1500);
+
+        },
+        error: function(err)
+        {
+            console.log("Geolocation Request failed, error= " + err);
+        }
+    }).done(function(response) {
+        console.log(".done block called");
+
+        //ajax call to save new placenta object in the db when geoloc is done
+        $.ajax({
+            url: '/placenta/add',
+            type: 'POST',
+            data: placObj,
+            dataType: "json",
+            cache: false,
+        });
+        console.log("Data to DB", placObj);
     });
+}
+// END OF HELPER FUNCTIONS
 
 
-
-// PLACENTA HISTORIC REFERENCE RANGE AND DATA ENTRY
-    $('.getref').on('click', function (e) {
-        e.preventDefault();
-        var $reference = $('#reference');
-        var plac_ga = $('#plac_age').val();
-        var plac_weight = $('#plac_wt').val();
-        var plac_ref = $reference.val();
-        var plac_cite = $reference.find(":selected").data("ref");
-        var plac_type = $('#plac_type option:selected').data('twin');
-        var minWeight = 50;
-        var plac_mother_age = $('#plac_mother').val();
-        var plac_sex = $('#plac_sex option:selected').val();
-        var plac_formalin = $('#plac_formalin option:selected').val();
-        var plac_abnormal = $('#plac_abnormal option:selected').val();
-
-
-        if(!(Number(plac_ga) > 0)){
-            alert("You forgot to enter a gestational age!");
-            return;
-        }
-        if (plac_weight.length <1){
-            alert("You forgot to enter a placenta weight!");
-            return;
-        }
-        if (Number(plac_weight) < minWeight){ // prevent any inputs
-            console.log("placenta weight error");
-            alert('Are you sure this placenta weighs less than 50g? The database does not support that kind of weight. Please check your entry and try again');
-            return;
-        }
-
-
-        let placObj = {};
-        placObj.ga = plac_ga;
-        placObj.weight = plac_weight;
-        placObj.twin = plac_type;
-        var maxAge = 60;
-        var minAge = 8;
-
-        // if statement here when user agrees to submit data...
-        var checked = $("#agreement").prop('checked');
-
-        // check optional inputs
-        // check if mother is appropriate age
-        // if the value of the mother's age is present
-        if (plac_mother_age.length > 0) {
-            // and it falls below or above the minimum or maximum age, raise an error
-            if (minAge > Number(plac_mother_age) || Number(plac_mother_age) > maxAge) {
-                console.log("placenta mother age error");
-                alert('Are you sure the Age of the Mother is correct? The database does not allow submissions of a mother that is ' + plac_mother_age + ' years old.');
-                return;
-            }
-        }
-        // if this else block is reached, the length of the mother age is less than 1 which means its null
-        else {
-            plac_mother_age = undefined;
-        }
-        if(plac_sex == 'unknown'){
-            plac_sex = undefined;
-        }
-        if(plac_formalin == 'unknown'){
-            plac_formalin = undefined;
-        }
-        else{
-            let value = 'yes';
-            // this checks if plac_formulain is equal to yes
-            // if it is, assign the 1 for true
-            // else, assign the 0 for false
-            plac_formalin = (plac_formalin === value) ? 1 : 0;
-        }
-        if(plac_abnormal == 'unknown'){
-            plac_abnormal = undefined;
-        }
-        else{
-            let value = 'yes';
-            // this checks if grossly abnormal appearance is equal to yes
-            // if it is, assign the 1 for true
-            // else, assign the 0 for false
-            plac_abnormal = (plac_abnormal === value) ? 1 : 0;
-        }
-
-        // *********************************************
-        // Send placenta reference data to database
-        // *********************************************
-
-        if (checked){
-
-
-            console.log("User agreed to submit, data is being sent");
-
-            //don't reload page
-            e.preventDefault();
-            e.stopImmediatePropagation();
-            console.log("Form submit after e.preventDefault");
-
-
-            placObj.sex = plac_sex;
-            placObj.maternalAge = plac_mother_age;
-            placObj.postFormalin = plac_formalin;
-            placObj.abnormal = plac_abnormal;
-
-
-            $.ajax({
-                url: "https://ipapi.co/json/",
-                type: 'GET',
-                success: function(json)
-                {
-                    placObj.country = json.country;
-                    placObj.city = json.city;
-                    placObj.state = json.region;
-                    console.log("Geolocation called");
-
-                    // AJAX success page
-                    $("#alert-1").show();
-                    $(".getref").prop("disabled", true);
-                    setTimeout(function() {
-                        $("#alert-1").fadeOut('1000');
-                        $(".getref").prop("disabled", false);
-                    }, 1500);
-
-                },
-                error: function(err)
-                {
-                    console.log("Geolocation Request failed, error= " + err);
-                }
-            }).done(function(response) {
-                console.log(".done block called");
-
-                //ajax call to save new placenta object in the db when geoloc is done
-                $.ajax({
-                    url: '/placenta/add',
-                    type: 'POST',
-                    data: placObj,
-                    dataType: "json",
-                    cache: false
-                });
-                console.log("Data to DB", placObj);
-            });
-        }
-
-        var partTypes = handleSubmit(false,placObj,plac_ref, plac_cite);
-
-        // add final header
-        var head = '';
-        if( plac_type == "partType501" ) {
-            head = partTypes.partType500.replace(/DELIVERY/, 'TWIN DELIVERY');
-            $("#outPut-3").val(head).trigger("input");
-            $("#outPut-4").val("Placenta Weights Reference: "+plac_cite+"\n\n").trigger("input");
-        } else {
-            head = partTypes.partType500;
-            $("#outPut-3").val(head).trigger("input");
-            $("#outPut-4").val("Placenta Weights Reference: "+plac_cite+"\n\n").trigger("input");
-        }
-
-    });
-
-
-
-        function handleSubmit(filter,placObj,plac_ref, plac_cite){
+function handleSubmit(filter,placObj,plac_ref, plac_cite){
             let plac_ga = placObj.ga;
             let plac_weight = placObj.weight;
             let plac_wt_num = Number(plac_weight);
@@ -818,6 +771,10 @@ function drawGraph(percentiles, sorted, filtered=[]){
         // label is what is added to the end of the label to indicate the geo filter that was applied
         function populateSummary(data, ga, tw, geo, n, label){
             // empty the table
+            var $summaryHeadWithGeo = $('#summaryHead' + geo);
+            var $summaryHeaderWithGeo = $('#summaryHeader' + geo);
+            var $summaryBodyWithGeo = $('#summaryBody' + geo);
+
             $("#div_summaryTable" + geo).removeClass('d-none')
             $warningLabel.addClass('d-none');
             $warningLabel.html('');

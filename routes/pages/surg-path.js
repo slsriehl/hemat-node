@@ -49,6 +49,7 @@ router.get('/surg-path/placenta', (req, res) => {
 		"/json/json-geo.js",
         "/json/json-placenta.js",
 		"/js/surg-path/placenta-scripts.js",
+		"/vendor/jquery/js/jquery.validate.min.js"
     ]);
 });
 
