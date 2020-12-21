@@ -15,7 +15,7 @@ $(window).on('load', function() {
         // Prolonged PTT correcting at Immediate and after Incubation
         dxLine300 : '- Prolonged PTT, correcting sufficiently with mixing studies performed immediately and after incubation (see comment)\n',
         // Prolonged PTT correcting at Immediate but not after Incubation
-        dxLine305 : '- Prolonged PTT, correcting sufficiently with mixing studies performed immediately, but not after incubation (see comment)\n',
+        dxLine305 : '- Prolonged PTT, correcting sufficiently with mixing studies performed after incubation, but not immediately (see comment)\n',
         // PTT not correcting Immediate or after Incubation
         dxLine310 : '- Prolonged PTT, not correcting sufficiently with mixing studies performed immediately or after incubation (see comment)\n',
         // Prolonged PT, normal or unknown PTT
