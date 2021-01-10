@@ -15,8 +15,10 @@ router.get('/', (req, res) => {
 router.get('/pb-smears', (req, res) => {
 	return render(req, res, './page-views/heme-path/pb-smears.hbs', [
 		"/json/json-pbsmears.js",
-		"/js/heme-path/pb-rules.js",
+        "/js/heme-path/bm-diff-scripts.js",
+        "/js/heme-path/pb-rules.js",
 		"/js/heme-path/pb-scripts.js"
+
 	]);
 });
 

@@ -26,3 +26,79 @@
 				</div>
 		</div>
 </div>
+<div class="card-block" aria-labelledby="bmdifferential">
+	<div class="card-text">
+                            <textarea id="diffinput" class="form-control counter" rows="2" cols="100"
+									  placeholder="BM differential counter"></textarea>
+	</div>
+	<div class="card bg-success">
+		<table class='table table-responsive diffhead'>
+			<tr>
+				<th>Count Type</th>
+				<th>Count Limit</th>
+				<th>Cells Counted</th>
+				<th>M:E ratio</th>
+			</tr>
+			<tr>
+				<td>
+					<select class="form-control selectpicker form-control-sm" id="asp_1"
+							name="asp_1">
+						<option selected value="aspirate">Aspirate</option>
+						<option value="touch prep">Touch Prep</option>
+					</select>
+				</td>
+				<td>
+					<select class="form-control selectpicker form-control-sm" id="limit">
+						<option>100</option>
+						<option selected>200</option>
+						<option>300</option>
+						<option>400</option>
+						<option>500</option>
+					</select>
+				</td>
+				<td>
+					<input type="text" class="form-control form-control-sm input-sm" id="counter">
+				</td>
+				<td>
+					<input type="text" class="form-control form-control-sm input-sm" id="merat">
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="card">
+		<table class="table table-responsive bg-info difftable table-small">
+			<tr>
+				<td><p> Blasts: </p><input class="form-control form-control-sm" size="3" id="asp_2"
+										   name="aspdiff" type="text" value="0"></td>
+				<td><p> Pro: </p><input class="form-control form-control-sm" size="3" id="asp_3"
+										name="aspdiff" value="0"></td>
+				<td><p> Meta/Myel: </p><input class="form-control form-control-sm" size="3"
+											  id="asp_4" name="aspdiff" value="0"></td>
+				<td><p> Segs: </p><input class="form-control form-control-sm" size="3" id="asp_5"
+										 name="aspdiff" value="0"></td>
+				<td><p> Eryth: </p><input class="form-control form-control-sm" size="3" id="asp_6"
+										  name="aspdiff" value="0"></td>
+				<td><p> Lymphs: </p><input class="form-control form-control-sm" size="3" id="asp_7"
+										   name="aspdiff" value="0"></td>
+			</tr>
+			<tr>
+				<td><p> Atypical cells: </p><input class="form-control form-control-sm" size="3"
+												   id="asp_8" name="aspdiff" value="0"></td>
+				<td><p> Monos: </p><input class="form-control form-control-sm" size="3" id="asp_9"
+										  name="aspdiff" value="0"></td>
+				<td><p> Eos: </p><input class="form-control form-control-sm" size="3" id="asp_10"
+										name="aspdiff" value="0"></td>
+				<td><p> Basos: </p><input class="form-control form-control-sm" size="3" id="asp_11"
+										  name="aspdiff" value="0"></td>
+				<td><p> Plasma Cells: </p><input class="form-control form-control-sm" size="3"
+												 id="asp_12" name="aspdiff" value="0"></td>
+				<td class="align-bottom">
+					<button class="btn btn-primary btn-sm p-1" id="diffWrite" type="button">Write
+						Diff
+					</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+

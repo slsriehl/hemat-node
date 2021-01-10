@@ -171,6 +171,29 @@ $('#cbcWrite').on('click', function () {
 });
 // ======================================================================//
 
+// *************** Write Diff modal values to text area function **********************//
+$('#diffWrite').on('click', function() {
+    // setting field variables
+// get assign the values from each text input
+    var diff_blasts = $('#asp_2').val();
+    var diff_pro = $('#asp_3').val();
+    var diff_myel = $('#asp_4').val();
+    var diff_segs = $('#asp_5').val();
+    var diff_eryth = $('#asp_6').val();
+    var diff_lymph = $('#asp_7').val();
+    var diff_atlymph = $('#asp_8').val();
+    var diff_mono = $('#asp_9').val();
+    var diff_eos = $('#asp_10').val();
+    var diff_baso = $('#asp_11').val();
+    var diff_plasma = $('#asp_12').val();
+    var _limit = $('#limit').val();
+    var diffText = _limit + " Cell  differential: " + "Blasts " + diff_blasts + "%; "+ "Pro " + diff_pro + "%; "+ "Meta/Myel " + diff_myel + "%; " + "Segs " + diff_segs + "%; " + "Eryth " + diff_eryth + "%; " + "Lymphs " + diff_lymph + "%; " + "Atypical Lymphs " + diff_atlymph + "%; " + "Monos " + diff_mono + "%; " + "Eos " + diff_eos + "%; " + "Basos " + diff_baso + "%; " + "Plasma cells " + diff_plasma;
+    // display diffText into text area
+    $('#outPut-1').val(($('#outPut-1').val() + "\n\n"+ diffText));
+});
+
+// ======================================================================//
+
 // ********************* Combined report function ***********************//
 $('#writeReport').on('click', function () {
     // store your text to localStorage when someone click the link

@@ -1,0 +1,95 @@
+<div class="modal fade" id="diff_popup" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" data-backdrop="false"
+		 aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+						<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+								</button>
+								<h4 class="modal-title" id="modelTitleId">WBC differential counter</h4>
+						</div>
+						<div class="modal-body">
+							<div class="card-block" aria-labelledby="differential">
+								<div class="card-text">
+                            <textarea id="diffinput" class="form-control counter" rows="2" cols="100"
+									  placeholder="WBC differential counter"></textarea>
+								</div>
+								<div class="card bg-success">
+									<table class='table table-responsive diffhead'>
+										<tr>
+											<th>Count Limit</th>
+											<th>Cells Counted</th>
+										</tr>
+										<tr>
+											<td>
+												<select class="form-control selectpicker form-control-sm" id="limit">
+													<option selected>100</option>
+													<option>200</option>
+													<option>300</option>
+													<option>400</option>
+													<option>500</option>
+												</select>
+											</td>
+											<td>
+												<input type="text" class="form-control form-control-sm input-sm" id="counter">
+											</td>
+										</tr>
+									</table>
+								</div>
+								<div class="card">
+									<table class="table table-responsive bg-info difftable table-small">
+										<tr>
+											<td><p> Blasts: </p><input class="form-control form-control-sm" size="3" id="asp_2"
+																	   name="aspdiff" type="text" value="0"></td>
+											<td><p> Pro: </p><input class="form-control form-control-sm" size="3" id="asp_3"
+																	name="aspdiff" value="0"></td>
+											<td><p> Meta/Myel: </p><input class="form-control form-control-sm" size="3"
+																		  id="asp_4" name="aspdiff" value="0"></td>
+											<td><p> Segs: </p><input class="form-control form-control-sm" size="3" id="asp_5"
+																	 name="aspdiff" value="0"></td>
+											<td><p> Eryth: </p><input class="form-control form-control-sm" size="3" id="asp_6"
+																	  name="aspdiff" value="0"></td>
+											<td><p> Lymphs: </p><input class="form-control form-control-sm" size="3" id="asp_7"
+																	   name="aspdiff" value="0"></td>
+										</tr>
+										<tr>
+											<td><p> Atypical cells: </p><input class="form-control form-control-sm" size="3"
+																			   id="asp_8" name="aspdiff" value="0"></td>
+											<td><p> Monos: </p><input class="form-control form-control-sm" size="3" id="asp_9"
+																	  name="aspdiff" value="0"></td>
+											<td><p> Eos: </p><input class="form-control form-control-sm" size="3" id="asp_10"
+																	name="aspdiff" value="0"></td>
+											<td><p> Basos: </p><input class="form-control form-control-sm" size="3" id="asp_11"
+																	  name="aspdiff" value="0"></td>
+											<td><p> Plasma Cells: </p><input class="form-control form-control-sm" size="3"
+																			 id="asp_12" name="aspdiff" value="0"></td>
+											<td class="align-bottom">
+												<button class="btn btn-primary btn-sm p-1" id="diffWrite" type="button">Write
+													Diff
+												</button>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+
+						</div>
+						<div class="card">
+							<div class="card-block">
+								<img class="pull-left img img-responsive-stretch" src="/img/diff_key.png">
+							<ul class="list-group">
+								<li class="list-group-item">Place you cursor in the differential text box, and use the numberpad to count cells</li>
+								<li class="list-group-item">Your differential will populate, then click the 'Write Diff' button</li>
+							</ul>
+							</div>
+							<div class="card-footer">
+								<button type="button" class="pull-right btn btn-lg btn-secondary" data-dismiss="modal">Close
+								</button>
+
+							</div>
+						</div>
+				</div>
+		</div>
+</div>
+
+

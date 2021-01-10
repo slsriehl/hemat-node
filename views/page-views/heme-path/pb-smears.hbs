@@ -147,9 +147,14 @@
                     </div>
                 </div>
                 <div class="row">
-                    <button class="btn btn-outline-primary p-1" id="cbcWrite">Print CBC</button>
-
+                    <button class="pull-left btn btn-outline-primary p-1" id="cbcWrite">Print CBC</button>
+                    <span class="col-1"></span>
+                    <!-- Diff counter button trigger modal -->
+                    <button class="pull-right btn btn-outline-warning p-1"  data-toggle="modal" data-target="#diff_popup">Launch Diff counter</button>
                 </div>
+                <!-- Differential counter Modal -->
+                {{> page-modals/heme-path/diff-popup}}
+
                 <!-- silent alert for erroneous CBC data, fired from pbrules.js-->
                 <div class="alert alert-warning alert-dismissible collapse" id="cbcerror" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
