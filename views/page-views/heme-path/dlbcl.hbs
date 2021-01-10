@@ -128,8 +128,28 @@
 																		<th >RESULTS</th>
 																</tr>
 																<tr>
+																	<td class="h6">Select</td>
+																	<td><select class="form-control selectpicker form-control-sm"  id="box9_0">
+																		<optgroup label="Not done">
+																			<option selected>Not performed</option>
+																			<option>Not performed due to insufficient material available</option>
+																			<option>Not performed due to insufficient viable tumor cells</option>
+																		</optgroup>
+																		<optgroup label="Pending">
+																			<option>Aggressive B-cell lymphoma panel pending</option>
+																			<option>Comprehensive B-cell lymphoma panel pending</option>
+																			<option>NGS mutation panel pending</option>
+																			<option>FISH and NGS mutation panel pending</option>
+																		</optgroup>
+																		<optgroup label="Completed">
+																			<option>Aggressive B-cell lymphoma panel complete</option>
+																			<option>Comprehensive B-cell lymphoma panel complete</option>
+																		</optgroup>
+																	</select></td>
+																</tr>
+																<tr>
 																		<td class="h6">MYC rearrangement</td>
-																		<td><select class="form-control selectpicker form-control-sm"  id="box9">
+																		<td><select class="form-control selectpicker form-control-sm FISH"  id="box9">
 																						<option>Not detected</option>
 																						<option>Detected</option>
 																						<option>Pending (see addendum)</option>
@@ -138,7 +158,7 @@
 																</tr>
 																<tr>
 																		<td class="h6">BCL2 rearrangement</td>
-																		<td><select class="form-control selectpicker form-control-sm"  id="box10">
+																		<td><select class="form-control selectpicker form-control-sm FISH"  id="box10">
 																						<option>Not detected</option>
 																						<option>Detected</option>
 																						<option>Reflex, if necessary (see addendum)</option>
@@ -148,7 +168,7 @@
 																</tr>
 																<tr>
 																		<td class="h6">BCL6 rearrangement</td>
-																		<td><select class="form-control selectpicker form-control-sm"  id="box11">
+																		<td><select class="form-control selectpicker form-control-sm FISH"  id="box11">
 																						<option>Not detected</option>
 																						<option>Detected</option>
 																						<option>Reflex, if necessary (see addendum)</option>
@@ -164,6 +184,7 @@
 																<option>GC-type</option>
 																<option>non-GC type</option>
 																<option>Indeterminate</option>
+																<option>Not applicable</option>
 														</select>
 												</div><!-- end NHL biomarker div-->
 

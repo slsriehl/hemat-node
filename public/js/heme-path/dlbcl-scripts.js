@@ -2,7 +2,17 @@ $(window).on('load', function(){
 //*************************************************************//
 //                        Pop-ups                              //
 // *************************************************************/
-        $('#box15').change(function(){
+    $('.FISH').hide();
+
+    $('#box9_0').change(function(){
+        var sel = $('#box9_0').val();
+        if (sel.indexOf('complete') > 0) {
+            $('.FISH').show();}
+        else {
+            $('.FISH').hide();}
+    });
+
+    $('#box15').change(function(){
             var sel = $('#box15').val();
             if (sel == 'Other') {
                 $('#box15_2').show();}
@@ -12,7 +22,7 @@ $(window).on('load', function(){
 
     //DIAGNOSES
     $("input#box1").autocomplete({
-        source: ["Follicular lymphoma, WHO Grade 3", "Duodenal-type follicular lymphoma", "Pediatric-type follicular lymphoma", "Large B-cell lymphoma with IRF4 rearrangement", "Diffuse large B-cell lymphoma (DLBCL), NOS", "T-cell/histiocyte-rich large B-cell lymphoma", "Primary Diffuse large B-cell lymphoma of the central nervous system (CNS)", "Primary cutaneous Diffuse large B-cell lymphoma, leg type", "EBV Diffuse large B-cell lymphoma, NOS", "EBV mucocutaneous ulcer", "Diffuse large B-cell lymphoma associated with chronic inflammation", "Lymphomatoid granulomatosis", "Primary mediastinal (thymic) large B-cell lymphoma", "Intravascular large B-cell lymphoma", "ALK large B-cell lymphoma", "Plasmablastic lymphoma", "Primary effusion lymphoma", "HHV8 Diffuse large B-cell lymphoma, NOS", "Burkitt lymphoma", "Burkitt-like lymphoma with 11q aberration", "High-grade B-cell lymphoma, with MYC and BCL2 and/or BCL6 rearrangements", "High-grade B-cell lymphoma, NOS", "Nodular lymphocyte predominant Hodgkin lymphoma", "Classic Hodgkin lymphoma", "Nodular sclerosis classic Hodgkin lymphoma", "Lymphocyte-rich classic Hodgkin lymphoma", "Mixed cellularity classic Hodgkin lymphoma", "Lymphocyte-depleted classic Hodgkin lymphoma", "Classic Hodgkin lymphoma PTLD"],
+        source: ["Follicular lymphoma, WHO Grade 3", "Duodenal-type follicular lymphoma", "Pediatric-type follicular lymphoma", "Large B-cell lymphoma with IRF4 rearrangement", "Diffuse large B-cell lymphoma (DLBCL), NOS", "T-cell/histiocyte-rich large B-cell lymphoma", "Primary Diffuse large B-cell lymphoma of the central nervous system (CNS)", "Primary cutaneous Diffuse large B-cell lymphoma, leg type", "EBV Diffuse large B-cell lymphoma, NOS", "EBV mucocutaneous ulcer", "Diffuse large B-cell lymphoma associated with chronic inflammation", "Lymphomatoid granulomatosis", "Primary mediastinal (thymic) large B-cell lymphoma", "Intravascular large B-cell lymphoma", "ALK large B-cell lymphoma", "Plasmablastic lymphoma", "Primary effusion lymphoma", "HHV8 Diffuse large B-cell lymphoma, NOS", "Burkitt lymphoma", "Burkitt-like lymphoma with 11q aberration", "High-grade B-cell lymphoma, with MYC and BCL2 and/or BCL6 rearrangements", "High-grade B-cell lymphoma, NOS", "Nodular lymphocyte predominant Hodgkin lymphoma", "Classic Hodgkin lymphoma", "Nodular sclerosis classic Hodgkin lymphoma", "Lymphocyte-rich classic Hodgkin lymphoma", "Mixed cellularity classic Hodgkin lymphoma", "Lymphocyte-depleted classic Hodgkin lymphoma", "Classic Hodgkin lymphoma PTLD", "Aggressive mature B-cell lymphoma, pending FISH studies"],
         appendTo: '#Leftpanel'
     });
 
@@ -113,7 +123,7 @@ $(window).on('load', function(){
             captext += "\nHISTOLOGIC TYPE:\n- " + box_1 + "\n";
 
             var box_2 = $("#box2").val();
-            captext += "\nFLOW IMMUNOPHENOTYPE:\n- " + box_2 + "\n";
+            captext += "\nFLOW IMMUNOPHENOTYPE:\n- " + box_2.replace(/- /, "") + "\n";
 
 // NHL biomarkers
             if ((box_1.toLowerCase().indexOf("b-cell") >= 0) || (box_1.toLowerCase().indexOf("burkitt") >= 0)) {
@@ -140,14 +150,20 @@ $(window).on('load', function(){
                 var box_16 = $("#box16").val();
                 captext += "- MUM1/IRF4: " + box_16 + "\n";
 
-                var box_9 = $("#box9").val();
-                captext += "\nGENETIC TESTING:\n- MYC rearrangement: " + box_9 + "\n";
+                var box_9_0 = $("#box9_0").val();
+                if (box_9_0.indexOf('complete') > 0){
+                    var box_9 = $("#box9").val();
+                    captext += "\nGENETIC TESTING:\n- MYC rearrangement: " + box_9 + "\n";
 
-                var box_10 = $("#box10").val();
-                captext += "- BCL2 rearrangement: " + box_10 + "\n";
+                    var box_10 = $("#box10").val();
+                    captext += "- BCL2 rearrangement: " + box_10 + "\n";
 
-                var box_11 = $("#box11").val();
-                captext += "- BCL6 rearrangement: " + box_11 + "\n";
+                    var box_11 = $("#box11").val();
+                    captext += "- BCL6 rearrangement: " + box_11 + "\n";
+
+                } else {
+                    captext += "\nGENETIC TESTING:\n- " + box_9_0 + "\n";
+                }
 
                 var box_12 = $("#box12").val();
                 captext += "\nSUBTYPE CLASSIFICATION:\n- " + box_12 + "\n";
