@@ -9,9 +9,9 @@ var dxLines = {
     // Negative for ACR
     dxLine001: "- Negative for cell mediated rejection (ISHLT 2004 Grade 0R)",
     // Negative histology for AMR
-    dxLine010: "- Negative for histopathologic antibody-mediated rejection (ISHLT 20013 Grade pAMR0)",
+    dxLine010: "- Negative for histopathologic antibody-mediated rejection (ISHLT 2013 Grade pAMR0)",
     // Negative histology and IHC for AMR
-    dxLine020: "- Negative for pathologic antibody-mediated rejection (ISHLT 20013 Grade pAMR0), evaluated in conjunction with negative C4d immunohistochemistry",
+    dxLine020: "- Negative for pathologic antibody-mediated rejection (ISHLT 2013 Grade pAMR0), evaluated in conjunction with negative C4d immunohistochemistry",
     //
     // ACR - mild
     dxLine100: "- Mild acute cell-mediated rejection (ISHLT 2004 grade 1R)",
