@@ -1,6 +1,7 @@
 $(window).on('load', function(){
     var isTransfused = false;
-    // Pop-ups
+    // Modifiers
+    // Transfused?
     $('#txhx').on("change", function(){
         var sel = $('#txhx').val();
         if (sel.indexOf("Yes") > -1) {
@@ -9,16 +10,28 @@ $(window).on('load', function(){
             $.each(commLines, function (key, val) {
                 commLines[key] = commLines[key].replace(/suggestive of previously transfused/, 'consistent with previously transfused');
             });
-            }
+            $(".abnl-choice.trans").css("background-color", "#ff725e");
+        }
         else {
             isTransfused = false;
             $('.tx-date').hide();
             $.each(commLines, function (key, val) {
                 commLines[key] = commLines[key].replace(/consistent with previously transfused/, 'suggestive of previously transfused');
             });
+            $(".abnl-choice.trans").css("background-color", "#ffffff");
         }
     });
-
+    // Microcytic Erythrocytosis?
+    $('#mcv').on("change", function(){
+        var sel_mcv = $('#mcv').val();
+        var sel_eryth = $('#eryth').val();
+        if ((sel_mcv.indexOf("Yes") > -1) && (sel_eryth.indexOf("Yes") > -1)) {
+            $(".mcv.eryth").css("background-color", "#72b7ff");
+        }
+        else {
+            $(".mcv.eryth").css("background-color", "#ffffff");
+        }
+    });
 
     // decimels and sum total validation
     function calculateTotal() {
@@ -54,52 +67,61 @@ $(window).on('load', function(){
         // if value exists for abnormal Hbs
         if (sel.indexOf('abnl') > 0){
             // Reset option coloring to neutral
-            $("#hbinterp option").css("background-color", "#ffffff");
-            $("#hbinterp optgroup").css("background-color", "#ffffff");
+            $(".abnl").css("background-color", "#ffffff");
+            $(".thal").css("background-color", "#ffffff");
 
             // if value is a number and > 0
             if(!isNaN(this.value) && this.value.length!=0) {
                 // find the input with %age values and highlight corresponding options
                 if (sel.indexOf(hbclass[0]) > 0){
-                    console.log(hbclass[0], " exists!");
-                    $("#hbinterp option[class*='"+hbclass+"']").css("background-color", "#f3fd58");
-                    $("#hbinterp optgroup[class*='"+hbclass+"']").css("background-color", "#f3fd58");
+                    console.log(".abnl-choice."+hbclass[0], " exists!");
+                    $(".abnl-choice."+hbclass[0]).css("background-color", "#f3fd58");
                 }
+                // if concurrent beta-thal (A2 > 3.5%)
+                // get the value of hbA2
+                var hba2 = parseFloat($(".hba2").val());
+                if  (hba2 > 3.4) {
+                    console.log("elevated A2 and and abnormal hemoglobin here");
+
+                    console.log("HbA2: "+hba2);
+                        // find the input with %age values and highlight corresponding options
+                        console.log(hbclass[0], " in abnormal amounts!");
+                        $(".thal.hba2-hi").not('.noabnl').css("background-color", "#FF008C");
+                    }
             } else {
                     // Reset option coloring to neutral
                     console.log("HbX absent!");
-                    $("#hbinterp option").css("background-color", "#ffffff");
-                    $("#hbinterp optgroup").css("background-color", "#ffffff");
+                    $(".abnl-choice").css("background-color", "#ffffff");
                 }
             }
-        // if value exists for abnormal amounts of HbA2
+        // if value exists for abnormal amounts of HbA2 && no abnormal hemoglobines
         else if (sel.indexOf('quant-A2') > 0) {
-            $("#hbinterp option").css("background-color", "#ffffff");
-            $("#hbinterp optgroup").css("background-color", "#ffffff");
-
+            // active only if no concurrent abnormal hemoglobins are present
+            var abnormal_hb = $(".abnl").val();
+            console.log("abnl values array: ", abnormal_hb.length);
+            if (abnormal_hb.length == 0){
+                console.log("only elevated A2; no abnormal hemoglobins here");
+                $(".thal").css("background-color", "#ffffff");
                 var hba2 = parseFloat($(".hba2").val());
                 // if value is a number and > 0
                 if(hba2 > 3.4) {
                     console.log("HbA2: "+hba2);
                     // find the input with %age values and highlight corresponding options
                     console.log(hbclass[0], " in abnormal amounts!");
-                    $("#hbinterp option[class*='hba2-hi']").css("background-color", "#f3fd58");
-                    $("#hbinterp optgroup[class*='thal']").css("background-color", "#f3fd58");
+                    $(".thal.hba2-hi").not('.abnl-choice').css("background-color", "#FF008C");
                 } else if(hba2 < 2.0) {
                     // find the input with %age values and highlight corresponding options
                     console.log(hbclass[0], " in abnormal amounts!");
-                    $("#hbinterp option[class*='hba2-low']").css("background-color", "#f3fd58");
-                    $("#hbinterp optgroup[class*='thal']").css("background-color", "#f3fd58");
+                    $(".thal.hba2-low").not('.abnl-choice').css("background-color", "#FF008C");
                 } else {
                     // Reset option coloring to neutral
-                    $("#hbinterp option").css("background-color", "#ffffff");
-                    $("#hbinterp optgroup").css("background-color", "#ffffff");
+                    $(".thal").css("background-color", "#ffffff");
                 }
+            }
         }
         // if value exists for abnormal amounts of HbF
         if (sel.indexOf('quant-F') > 0) {
-            $("#hbinterp option").css("background-color", "#ffffff");
-            $("#hbinterp optgroup").css("background-color", "#ffffff");
+            $(".hbf").css("background-color", "#ffffff");
 
             var hbF = parseFloat($(".hbf").val());
             var age = $("#age").find(":selected").data("age");
@@ -108,23 +130,22 @@ $(window).on('load', function(){
                 console.log("HbF: "+hbF);
                 // find the input with %age values and highlight corresponding options
                 console.log("HbF in abnormal amounts!");
-                $("#hbinterp option[class*='hbf adult']").css("background-color", "#f3fd58");
-                $("#hbinterp optgroup[class*='hbf adult']").css("background-color", "#f3fd58");
+                $(".hbf.adult").css("background-color", "#84fda7");
             }
             // if value is > 14.0 in newborn
             else if(hbF > 14 && age ==2) {
                 // find the input with %age values and highlight corresponding options
                 console.log(hbclass[0], " in abnormal amounts!");
-                $("#hbinterp option[class*='hbf child']").css("background-color", "#f3fd58");
-                $("#hbinterp optgroup[class*='hbf child']").css("background-color", "#f3fd58");
+                $(".hbf.child").css("background-color", "#84fda7");
             } else {
                 // Reset option coloring to neutral
-                $("#hbinterp option").css("background-color", "#ffffff");
-                $("#hbinterp optgroup").css("background-color", "#ffffff");
+                $(".hbf.adult").css("background-color", "#ffffff");
+                $(".hbf.child").css("background-color", "#ffffff");
             }
         }
     })
 
+    // Modifiers by clinical data
 
     //######################################################################
 

@@ -175,6 +175,13 @@ $(window).on('load', function(){
         he311: 'Findings suggestive of previously transfused homozygous Hemoglobin S (sickle cell disease). There is increased HbF as well, which may indicate medication (hydroxyurea) effect. The elevated HbF, however, also raises the possibility of heterozygous HbS and hereditary persistence of fetal hemoglobin. If necessary, beta-globin gene testing can help differentiate among these possibilities. \n\nNote: In sickle cell patients with detectable HbA, hemoglobin electrophoresis cannot reliably distinguish between previous transfusion (in the absence of a marrow transplant) and incomplete engraftment in bone marrow transplant recipients. ',
         // HbS + HbD
         he312: 'Findings consistent with combined hemoglobin S and Hemoglobin D (sickle-D disease). ',
+        // HbS trait + transfusion, no microcytosis - HbS <35%, & A
+        he313: 'Findings suggestive of previously transfused heterozygous Hemoglobin S (sickle cell trait).\n\nNote: In sickle cell patients with detectable HbA, hemoglobin electrophoresis cannot reliably distinguish between previous transfusion (in the absence of a marrow transplant) and incomplete engraftment in bone marrow transplant recipients. ',
+        // HbS trait + transfusion & HbF, no microcytosis - HbS + HbA + HbF >10%
+        he314: 'Findings suggestive of previously transfused heterozygous Hemoglobin S (sickle cell trait). There is increased HbF as well, which may indicate medication (hydroxyurea) effect. The elevated HbF, however, also raises the possibility of heterozygous HbS and hereditary persistence of fetal hemoglobin. If necessary, beta-globin gene testing can help differentiate among these possibilities. \n\nNote: In sickle cell patients with detectable HbA, hemoglobin electrophoresis cannot reliably distinguish between previous transfusion (in the absence of a marrow transplant) and incomplete engraftment in bone marrow transplant recipients. ',
+        // HbS and a small amount of HbC only- HbSS + passive HbC
+        he315: 'Findings suggestive of previously transfused homozygous HbS (sickel-cell disease). There is also a small fraction of HbC, which has not been documented previously in this patient. This is likely passive acquisition from a prior transfusion. Repeat Hb-electrophoresis after a 3 month interval should show near complete resolution of this abnormal HbC fraction. ',
+
         //
         // HbC
         // Heterozygous Hb C trait - no microcytosis - c 25-45%

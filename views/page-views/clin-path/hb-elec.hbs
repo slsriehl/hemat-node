@@ -198,8 +198,8 @@
 
                 <div class="card-block">
                     <div class="form-group row ml-2">
-                        <div class="card-blockquote h3 col-md-6">Microcytic for age?</div>
-                        <select id="mcv" class='form-control col-md-3'>
+                        <div class="card-blockquote h3 col-md-6">Erythrocytosis for age?</div>
+                        <select id="eryth" class='form-control col-md-3'>
                             <option>No</option>
                             <option>Unknown</option>
                             <option>Yes</option>
@@ -208,8 +208,8 @@
                 </div>
                 <div class="card-block">
                     <div class="form-group row ml-2">
-                        <div class="card-blockquote h3 col-md-6">Erythrocytosis for age?</div>
-                        <select id="eryth" class='form-control col-md-3'>
+                        <div class="card-blockquote h3 col-md-6">Microcytic for age?</div>
+                        <select id="mcv" class='form-control col-md-3'>
                             <option>No</option>
                             <option>Unknown</option>
                             <option>Yes</option>
@@ -235,72 +235,75 @@
             <select id="hbinterp" class='form-control form-control-sm col-sm-8'>
                 <option>Choose...</option>
                 <optgroup label="No abnormal hemoglobins" class="norm"></optgroup>
-                    <option data-dx="he000">Not infant: No abnormal hemoglobins</option>
+                    <option class="norm" data-dx="he000">Not infant: No abnormal hemoglobins</option>
                     <option class="norm mcv" data-dx="he001">Not infant: No abnormal hemoglobins, microcytosis</option>
                     <option class="norm child" data-dx="he010">Infant: No abnormal hemoglobins, repeat > 2 years</option>
                     <option class="norm child mcv" data-dx="he011">Infant: No abnormal hemoglobins, microcytosis</option>
                     <option class="norm child fer" data-dx="he012">Infant: No abnormal hemoglobins, iron deficiency</option>
                 <optgroup label="Thalassemia (no abnormal hemoglobins)"  class="norm thal"></optgroup>
-                    <option class="mcv" data-dx="he200">Probable a-thal: Erythrocytosis and microcytosis, Fer unkown</option>
-                    <option class="mcv" data-dx="he201">Likely a-thal: Erythrocytosis and microcytosis, Fer normal</option>
-                    <option class="hba2-low mcv" data-dx="he202">Likely 3 gene a-thal: incr HbH & decr. A2</option>
-                    <option class="hba2-low mcv" data-dx="he203">Likely a-thal + Hb-CS: Hb Barts > HbH & decr. A2 w/ HbCS</option>
-                    <option class="hba2-hi mcv" data-dx="he210">Probable b-thal: Microcytosis and A2 >3.5%, but no erythrocytosis</option>
-                    <option class="hba2-hi mcv" data-dx="he211">Likely b-thal: Erythrocytosi and microcytosis and A2 >3.5%</option>
-                <optgroup label="HbS detected" class="hbs"></optgroup>
-                    <option class="hbs" data-dx="he300">Hb S, no microcytosis - Hbs 35-45%</option>
-                    <option class="hbs mcv" data-dx="he301">Hb S + microcytosis - HbS ~35 or less, no iron deficiency</option>
-                    <option class="hbs fer" data-dx="he302">Hb S + microcytosis - HbS ~35 or less, yes iron deficiency</option>
-                    <option class="hbs" data-dx="he303">HbSS - typical (non-infant) - HbS only, >90%</option>
-                    <option class="hbs" data-dx="he304">HbSS + transfusion, no microcytosis - HbS & A in some ratio </option>
-                    <option class="hbs" data-dx="he311">HbSS + transfusion & incr HbF, no microcytosis - HbS + HbA + HbF >10% </option>
-                    <option class="hbs mcv" data-dx="he305">HbSS + transfusion and microcytosis - HbS >50 or <35%, & A </option>
-                    <option class="hbs" data-dx="he306">HbS + elevated A2 (trait beta-thal) - A<30%, F 5-10%, A2 >3.5%</option>
-                    <option class="hbs" data-dx="he307">HbSS + elevated A2 (sickle beta-thal) - A = 0, F 5-10%, A2 >3.5%</option>
-                    <option class="hbs" data-dx="he308">HbSS + increased HbF non-infant - sickle HPFH: S + F 15-30%</option>
-                    <option class="hbs" data-dx="he309">HbSS + increased HbF infant - sickle or sickle HPFH</option>
-                    <option class="hbs hbc" data-dx="he310">HbS and HbC only- HbSC </option>
-                    <option class="hbs hbd" data-dx="he310">HbS and HbD only- HbSD </option>
-                <optgroup label="HbC detected" class="hbc" ></optgroup>
-                    <option class="hbc" data-dx="he400">Heterozygous Hb C trait - 25-45%, no microcytosis</option>
-                    <option class="hbc mcv" data-dx="he401">Heterozygous Hb C trait - 25-45% and microcytosis</option>
-                    <option class="hbc fer" data-dx="he402">Heterozygous Hb C trait - 25-45% and iron deficiency</option>
-                    <option class="hbc" data-dx="he403">Hemoglobin C trait and beta plus-thal (C-beta+ thal) - C (25-45%) > A, F 2-5%, A2 >3.5</option>
-                    <option class="hbc" data-dx="he404">Hemoglobin C trait and beta -thal (C-beta thal) - C only (25-45%), F 2-5%, A2 >3.5</option>
-                    <option class="hbc" data-dx="he405">Homozygous Hb C</option>
-                <optgroup label="only HbF elevated" class="hbf" ></optgroup>
-                    <option class="hbf adult" data-dx="he500" >Not infant: HPFH - Hb F ~10-35% > 2 yrs of age</option>
-                    <option class="hbf adult child" data-dx="he501" >Not infant: Mildly increased Hb F 2-10%</option>
-                    <option class="hbf child" data-dx="he502">Infant: Increased HbF for age (up to 2 years)</option>
-                    <option class="hbf child mcv" data-dx="he503" >Increased HbF and thalassemic RBC indices w/ increased A2%</option>
-                <optgroup label="only Zone6 (HbD or HbQ-India) elevated" class="hbd"></optgroup>
-                    <option class="hbd" data-dx="he550" >HbD trait - HbD ~35-40%</option>
-                    <option class="hbd" data-dx="he551">HbD trait + transfusion - HbD ~25%</option>
-                    <option class="hbd" data-dx="he552">HbDD - Zone-6 / HbD without A</option>
-                    <option class="hbd mcv" data-dx="he553">(rare!) HbDD - Zone-6 + transfusion - HbD ~50% with lesser amounts of A</option>
-                    <option class="hbd mcv" data-dx="he554">Hb Q-India trait - Zone 6 migrating as D at ~15-20% + Incr A2</option>
-                <optgroup label="only HbE elevated" class="hbe"></optgroup>
-                    <option class="hbe" data-dx="he600" >HbE trait - HbE ~25-30%</option>
-                    <option class="hbe mcv" data-dx="he601">HbEE vs HbE-B-thal major - HbE without A, incr A2 and Hb F</option>
-                    <option class="hbe mcv" data-dx="he602">HbE-B-thal minor - HbE without A, incr A2 and Hb F</option>
-                <optgroup label="HbX detected" class="hbx"></optgroup>
-                    <option class="hbx" data-dx="he701">Zone 1: Abnormal HbX </option>
-                    <option class="hbx" data-dx="he702">Zone 2: Abnormal HbX (HbCS ~2-5%)</option>
-                    <option class="hbx" data-dx="he703">Zone 3: Abnormal HbX (HbO-Arab ~30-40%)</option>
-                    <option class="hbx" data-dx="he704">Zone 4: Abnormal HbX (Hb Koln multiple peaks btwn A and A2)</option>
-                    <option class="hbx" data-dx="he705">Zone 5: Abnormal HbX </option>
-                    <option class="hbx" data-dx="he706">Zone 6: Abnormal HbX (HbD ~40-45%) </option>
-                    <option class="hbx" data-dx="he707">Zone 6: Abnormal HbX (Hb Lepore ~7-15%) </option>
-                    <option class="hbx" data-dx="he708">Zone 6: Abnormal HbX (HbG 20-25% with F and A2 derivatives) </option>
-                    <option class="hbx" data-dx="he709">Zone 7: Abnormal HbX (usually ~25-35%)</option>
-                    <option class="hbx" data-dx="he710">Zone 8: Abnormal HbX (usually ~35-50%)</option>
-                    <option class="hbx" data-dx="he711">Zone 9: Abnormal HbX </option>
-                    <option class="hbx" data-dx="he712">Zone 10: Abnormal HbX </option>
-                    <option class="hbx" data-dx="he713">Zone 11: Abnormal HbX </option>
-                    <option class="hbx" data-dx="he714">Zone 12: Abnormal HbX (Hb Barts <10%) </option>
-                    <option class="hbx" data-dx="he715">Zone 12: Abnormal HbX (not Barts or H) </option>
-                    <option class="hbx" data-dx="he716">Zone 13: Abnormal HbX (Hb N-Baltimore 40-50%) </option>
-                    <option class="hbx" data-dx="he717">Zone 15: Abnormal HbX (Hb H, >10%) </option>
+                    <option class="mcv thal eryth noabnl" data-dx="he200">Probable a-thal: Erythrocytosis and microcytosis, Fer unkown</option>
+                    <option class="mcv thal eryth noabnl" data-dx="he201">Likely a-thal: Erythrocytosis and microcytosis, Fer normal</option>
+                    <option class="hba2-low mcv thal noabnl" data-dx="he202">Likely 3 gene a-thal: incr HbH & decr. A2</option>
+                    <option class="hba2-low mcv thal noabnl" data-dx="he203">Likely a-thal + Hb-CS: Hb Barts > HbH & decr. A2 w/ HbCS</option>
+                    <option class="hba2-hi mcv thal noabnl" data-dx="he210">Probable b-thal: Microcytosis and A2 >3.5%, but no erythrocytosis</option>
+                    <option class="hba2-hi mcv thal noabnl" data-dx="he211">Likely b-thal: Erythrocytosis and microcytosis and A2 >3.5%</option>
+                <optgroup label="HbS detected" class="hbs abnl-choice"></optgroup>
+                    <option class="hbs abnl-choice" data-dx="he300">Hb S, no microcytosis - Hbs 35-45%</option>
+                    <option class="hbs mcv abnl-choice" data-dx="he301">Hb S + microcytosis - HbS ~35 or less, no iron deficiency</option>
+                    <option class="hbs fer abnl-choice" data-dx="he302">Hb S + microcytosis - HbS ~35 or less, yes iron deficiency</option>
+                    <option class="hbs trans abnl-choice" data-dx="he313">HbS + transfusion, no microcytosis - HbA > HbS in some ratio; use if known trait </option>
+                    <option class="hbs trans abnl-choice" data-dx="he314">HbS + transfusion & incr HbF, no microcytosis - HbA >HbS + HbF >10%; use if known trait </option>
+                    <option class="hbs abnl-choice" data-dx="he303">HbSS - typical (non-infant) - HbS only, >90%</option>
+                    <option class="hbs trans abnl-choice" data-dx="he304">HbSS + transfusion, no microcytosis - HbS & A in some ratio </option>
+                    <option class="hbs trans abnl-choice" data-dx="he311">HbSS + transfusion & incr HbF, no microcytosis - HbS + HbA + HbF >10% </option>
+                    <option class="hbs trans mcv abnl-choice" data-dx="he305">HbSS + transfusion and microcytosis - HbS >50 or <35%, & A </option>
+                    <option class="hbs abnl-choice thal hba2-hi" data-dx="he306">HbS + elevated A2 (trait beta-thal) - A<30%, F 5-10%, A2 >3.5%</option>
+                    <option class="hbs abnl-choice thal hba2-hi" data-dx="he307">HbSS + elevated A2 (sickle beta-thal) - A = 0, F 5-10%, A2 >3.5%</option>
+                    <option class="hbs abnl-choice" data-dx="he308">HbSS + increased HbF non-infant - sickle HPFH: S + F 15-30%</option>
+                    <option class="hbs abnl-choice" data-dx="he309">HbSS + increased HbF infant - sickle or sickle HPFH</option>
+                    <option class="hbs hbc abnl-choice" data-dx="he310">HbS and HbC only- HbSC </option>
+                    <option class="hbs hbc abnl-choice" data-dx="he315">HbS and a small fraction of HbC + transfusion - HbS + passively acquired C</option>
+                    <option class="hbs hbd abnl-choice" data-dx="he312">HbS and HbD only- HbSD </option>
+                <optgroup label="HbC detected" class="hbc abnl-choice" ></optgroup>
+                    <option class="hbc abnl-choice" data-dx="he400">Heterozygous Hb C trait - 25-45%, no microcytosis</option>
+                    <option class="hbc mcv abnl-choice" data-dx="he401">Heterozygous Hb C trait - 25-45% and microcytosis</option>
+                    <option class="hbc fer abnl-choice" data-dx="he402">Heterozygous Hb C trait - 25-45% and iron deficiency</option>
+                    <option class="hbc abnl-choice thal hba2-hi" data-dx="he403">Hemoglobin C trait and beta plus-thal (C-beta+ thal) - C (25-45%) > A, F 2-5%, A2 >3.5</option>
+                    <option class="hbc abnl-choice thal hba2-hi" data-dx="he404">Hemoglobin C trait and beta -thal (C-beta thal) - C only (25-45%), F 2-5%, A2 >3.5</option>
+                    <option class="hbc abnl-choice" data-dx="he405">Homozygous Hb C</option>
+                <optgroup label="only HbF elevated" class="hbf abnl-choice" ></optgroup>
+                    <option class="hbf adult noabl" data-dx="he500" >Not infant: HPFH - Hb F ~10-35% > 2 yrs of age</option>
+                    <option class="hbf adult noabl" data-dx="he501" >Not infant: Mildly increased Hb F 2-10%</option>
+                    <option class="hbf child noabl" data-dx="he502">Infant: Increased HbF for age (up to 2 years)</option>
+                    <option class="hbf adult mcv eryth hbA2-hi noabl" data-dx="he503" >Increased HbF and thalassemic RBC indices w/ increased A2%</option>
+                <optgroup label="only Zone6 (HbD or HbQ-India) elevated" class="hbd abnl-choice"></optgroup>
+                    <option class="hbd abnl-choice" data-dx="he550" >HbD trait - HbD ~35-40%</option>
+                    <option class="hbd abnl-choice" data-dx="he551">HbD trait + transfusion - HbD ~25%</option>
+                    <option class="hbd abnl-choice" data-dx="he552">HbDD - Zone-6 / HbD without A</option>
+                    <option class="hbd mcv abnl-choice" data-dx="he553">(rare!) HbDD - Zone-6 + transfusion - HbD ~50% with lesser amounts of A</option>
+                    <option class="hbd mcv abnl-choice thal hba2-hi" data-dx="he554">Hb Q-India trait - Zone 6 migrating as D at ~15-20% + Incr A2</option>
+                <optgroup label="only HbE elevated" class="hbe abnl-choice"></optgroup>
+                    <option class="hbe abnl-choice" data-dx="he600" >HbE trait - HbE ~25-30%</option>
+                    <option class="hbe mcv abnl-choice hbf" data-dx="he601">HbEE vs HbE-B-thal major - HbE without A, incr A2 and Hb F</option>
+                    <option class="hbe mcv abnl-choice hbf" data-dx="he602">HbE-B-thal minor - HbE without A, incr A2 and Hb F</option>
+                <optgroup label="HbX detected" class="hbx abnl-choice"></optgroup>
+                    <option class="hbx abnl-choice" data-dx="he701">Zone 1: Abnormal hbx abnl-choice </option>
+                    <option class="hbx abnl-choice" data-dx="he702">Zone 2: Abnormal hbx abnl-choice (HbCS ~2-5%)</option>
+                    <option class="hbx abnl-choice" data-dx="he703">Zone 3: Abnormal hbx abnl-choice (HbO-Arab ~30-40%)</option>
+                    <option class="hbx abnl-choice" data-dx="he704">Zone 4: Abnormal hbx abnl-choice (Hb Koln multiple peaks btwn A and A2)</option>
+                    <option class="hbx abnl-choice" data-dx="he705">Zone 5: Abnormal hbx abnl-choice </option>
+                    <option class="hbx abnl-choice" data-dx="he706">Zone 6: Abnormal hbx abnl-choice (HbD ~40-45%) </option>
+                    <option class="hbx abnl-choice" data-dx="he707">Zone 6: Abnormal hbx abnl-choice (Hb Lepore ~7-15%) </option>
+                    <option class="hbx abnl-choice" data-dx="he708">Zone 6: Abnormal hbx abnl-choice (HbG 20-25% with F and A2 derivatives) </option>
+                    <option class="hbx abnl-choice" data-dx="he709">Zone 7: Abnormal hbx abnl-choice (usually ~25-35%)</option>
+                    <option class="hbx abnl-choice" data-dx="he710">Zone 8: Abnormal hbx abnl-choice (usually ~35-50%)</option>
+                    <option class="hbx abnl-choice" data-dx="he711">Zone 9: Abnormal hbx abnl-choice </option>
+                    <option class="hbx abnl-choice" data-dx="he712">Zone 10: Abnormal hbx abnl-choice </option>
+                    <option class="hbx abnl-choice" data-dx="he713">Zone 11: Abnormal hbx abnl-choice </option>
+                    <option class="hbx abnl-choice" data-dx="he714">Zone 12: Abnormal hbx abnl-choice (Hb Barts <10%) </option>
+                    <option class="hbx abnl-choice" data-dx="he715">Zone 12: Abnormal hbx abnl-choice (not Barts or H) </option>
+                    <option class="hbx abnl-choice" data-dx="he716">Zone 13: Abnormal hbx abnl-choice (Hb N-Baltimore 40-50%) </option>
+                    <option class="hbx abnl-choice" data-dx="he717">Zone 15: Abnormal hbx abnl-choice (Hb H, >10%) </option>
 
             </select>
 
