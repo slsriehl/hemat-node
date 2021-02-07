@@ -1117,12 +1117,30 @@ $(window).on('load', function(){
     });
 
     $('#writeReport').on('click', function () {
-        // validate that all parts have a corresponding final diagnosis:
-        validate_finals();
+        var part_orig = $("#outPut-3").val();
+        var part_final = "";
+        if ($("#part_labels").is(":checked")){
+            // part_final runs add_label function, passes two arguments 'variable with original text' and variable with final modified text.
+            part_final = add_label(part_orig, part_final);
+
             // store your text to localStorage when someone click the link
-            var textToPass = $('#outPut-2').val()+'\n\n'+$('#outPut-3').val()+'\n\n'+$('#outPut-4').val();
+            var textToPass = $('#outPut-2').val()+'\n\n'+part_final+'\n\n'+$('#outPut-4').val();
             $('#outPut-combine').val(textToPass);
             $('#combined-report').modal("show");
+            // validate that all parts have a corresponding final diagnosis:
+            validate_finals();
+
+        } else {
+            // store your text to localStorage when someone click the link
+            textToPass = $('#outPut-2').val()+'\n\n'+part_orig+'\n\n'+$('#outPut-4').val();
+            $('#outPut-combine').val(textToPass);
+            $('#combined-report').modal("show");
+            // validate that all parts have a corresponding final diagnosis:
+            validate_finals();
+
+        }
+
+
             dataObj.singleSection = $('#outPut-combine').val();
             makeCreatePdfBtn();
     });

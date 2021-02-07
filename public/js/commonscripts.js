@@ -591,6 +591,19 @@ function validate_finals(){
 }
 // ********************END CORRECTION FOR BLANK DIAGNOSES *********//
 
+//*********************ADD PART DESIGNATION IF USER DESIRES  ********//
+function add_label(orig, modified){
+    // add letter labels to parts
+    let lastCharCode = 64; // charcode for capital A
+    // regex = matches start of a line that starts with a letter; function appends ascending charcode and period space
+    modified = orig.replace(/^\b/gm, () => String.fromCharCode(++lastCharCode) + '. ');
+    console.log(modified);
+    return modified;
+}
+// ********************END OPTIONAL PART DESIGNATION *********//
+
+
+
 //*********************MAKE ALL MODALS DRAGGABLE*******************//
 $(".modal-dialog").draggable({
     handle: ".modal-header"
