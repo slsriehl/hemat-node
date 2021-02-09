@@ -132,6 +132,18 @@ $(document).ready(function(){
 						dump = prompt('Enter value');
 						txt = txt.replace(/{value}/, dump);
 				}
+
+				if (txt.indexOf("{margin}") >=0){
+					dump = prompt('Was the lesion excised? Enter Y or N');
+					    if (dump == 'Y' || dump == 'y'){
+                            txt = txt.replace(/{margin}/, "The lesion is excised. ");
+                            site = site.replace(/\b$/gm, ", excised");
+                        } else if (dump == 'N' || dump == 'n'){
+                            txt = txt.replace(/{margin}/, "The lesion is transected along the specimen margin. ");
+                            site = site.replace(/\b$/gm, ", transected");
+                        }
+
+				}
 				$('#outPut-2').val(txt);
 				$('#outPut-1').val(site);
 				$(this).blur;
