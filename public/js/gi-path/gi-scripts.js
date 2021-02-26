@@ -683,7 +683,8 @@ $(window).on('load', function(){
                 console.log("EOS per HPF array:",eoshpf);
 
                 for (var i=200; i<219; i++){
-                    mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/(?:to ).*(?: in )/, "to "+arrayToSentence(eoshpf)+" in "); // replace site for multi site micros
+                    mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/(?:number ).*(?: in )/, "number up to "+arrayToSentence(eoshpf)+" in "); // replace eos # for multi site micros
+                    mxLines['mxLine'+i] = mxLines['mxLine'+i].replace(/(?:enumerated ).*(?: in )/, "enumerated at "+(eoshpf[eoshpf.length-1])+" in "); // replace eos # for single site
                 }
 
                 for (var i=201; i<214; i++){

@@ -246,11 +246,11 @@ $(window).on('load', function(){
         // NORMAL EOSPHAGUS, ALL SITES
         mxLine201: "Sections from the '###' esophageal biopsies show similar findings. They show fragments of unremarkable squamous mucosa without intraepithelial inflammatory infiltrates. \n",
         // TYPICAL REFLUX, 1 SITE
-        mxLine202: "Sections from the 'esophagus' biopsy show fragments of reactive squamous mucosa characterized by prominent basal cell hyperplasia and spongiosis. There is a mild increase in intraepithelial eosinophils which number up to 5 in a representative high-powered field. \n",
+        mxLine202: "Sections from the 'esophagus' biopsy show fragments of reactive squamous mucosa characterized by prominent basal cell hyperplasia and spongiosis. There is a mild increase in intraepithelial eosinophils which are enumerated at 5 in a representative high-powered field. \n",
         // TYPICAL REFLUX, ALL SITES
         mxLine203: "Sections from the '###' esophageal biopsies show similar findings which are described together. They show fragments of reactive squamous mucosa characterized by prominent basal cell hyperplasia and spongiosis. There is a mild increase in intraepithelial eosinophils which number up to 10 in a representative high-powered field at each site. \n",
         // TYPICAL EE, ALL SITES
-        mxLine204: "Sections from the '###' esophageal biopsies show similar findings. They show fragments of reactive squamous mucosa characterized by prominent basal cell hyperplasia and spongiosis. There is a marked increase in intraepithelial eosinophils which number up to 80 in a representative high-powered field at each site. The infiltrate extends the entire thickness of the mucosa and focally includes small superficial aggregates. \n",
+        mxLine204: "Sections from the '###' esophageal biopsies show similar findings. They show fragments of reactive squamous mucosa characterized by prominent basal cell hyperplasia and spongiosis. There is a marked increase in intraepithelial eosinophils which number up to 75 in a representative high-powered field at each site. The infiltrate extends the entire thickness of the mucosa and focally includes small superficial aggregates. \n",
         // ACUTE ESOPHAGITIS, 1 SITE, NO CANDIDA
         mxLine205: "Sections from the 'esophagus' biopsy show fragments of reactive squamous mucosa with a superficial neutrophilic infiltrate [and areas of surface ulceration]. No intraepithelial eosinophils are seen. A GMS stain shows no fungal organisms. \n",
         // ACUTE ESOPHAGITIS, 1 SITE, WITH CANDIDA
@@ -270,7 +270,7 @@ $(window).on('load', function(){
         // MILD RE
         mxLine213: "Sections from the 'esophagus' biopsy show fragments of mildly reactive squamous mucosa characterized by minimal basal cell hyperplasia and some spongiosis. There are few intraepithelial lymphocytes; no intraepithelial eosinophils or neutrophils are seen. \n ",
         // MILD REE
-        mxLine214: "Sections from the 'esophagus' biopsy show fragments of mildly reactive squamous mucosa characterized by spongiosis. There are few intraepithelial eosinophils which number up to 5 in a representative high-powered field. \n",
+        mxLine214: "Sections from the 'esophagus' biopsy show fragments of mildly reactive squamous mucosa characterized by spongiosis. There are few intraepithelial eosinophils which are enumerated at 5 in a representative high-powered field. \n",
         // GEJ WITH IM; NO DYS OR CA
         mxLine215: "Sections from the 'esophagus' biopsy show fragments of unremarkable squamous mucosa without intraepithelial inflammatory infiltrates. There is sampling of the gastroesophageal junction with gastric cardia-type mucosa bearing a mild increase in lamina propria cellularity comprised of lymphocytes and plasma cells. There is intestinal metaplasia without dysplasia or carcinoma.  \n",
         // ACUTE EROSIVE ESOPHAGITIS
