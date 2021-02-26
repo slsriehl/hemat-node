@@ -236,6 +236,8 @@ $(window).on('load', function(){
         mxLine124: 'There are occasional nucleated red blood cells. ',
 // Howell-Jolly bodies
         mxLine125: 'Few Howell-Jolly bodies are present. ',
+// Dimorphic RBCs
+        mxLine126: 'Red cells show a dimorphic population including a subset with normal chromia and morphology. ',
 
 //
 // NORMAL WBC MORPH
@@ -285,6 +287,9 @@ $(window).on('load', function(){
         mxLine171: 'Lymphocytes are reduced in absolute terms but show normal morphology. ',
 // RELATIVE INCREASE IN EOSINOPHILS
         mxLine172: 'There is a relative prominence in eosinophils, which show normal morphology. ',
+// NEUTROPHIL ACTIVATION CHANGES
+        mxLine173: 'Neutrophils show activation changes characterized by coarse cytoplasmic granules and Dohle bodies. ',
+
 // NORMAL PLT
         mxLine200: '',
 // HYPOGRANULAR
@@ -620,6 +625,8 @@ $(window).on('load', function(){
         dxOut113:'PERIPHERAL BLOOD:\n- Normochromic, normocytic anemia with prominent tear drop forms \n',
 // hypo micro not anemia
         dxOut114:'PERIPHERAL BLOOD:\n- Hypochromic, microcytic red cells \n',
+// nna + teardrops
+        dxOut115:'PERIPHERAL BLOOD:\n- Normochromic, normocytic anemia with dimorphic red cell population \n',
 
 // **************************************  wbc options **********************************************
 // nsa leukocytes
@@ -674,6 +681,9 @@ $(window).on('load', function(){
         dxOut174: '- Granulocyte dysplasia and rare circulating blasts (see comment) \n',
 // some reactive lymphocytes
         dxOut175: '- Reactive lymphocytes \n',
+// activated neutrophils only
+        dxOut176: '- Neutrophils with activation changes (see comment) \n',
+
 // ************************************ platelet options ******************************************//
 // nsa platelets
         dxOut200:'- No significant abnormalities of platelets \n',
