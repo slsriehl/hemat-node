@@ -49,17 +49,17 @@ $(window).on('load', function(){
         //
         // HbC
         // Heterozygous Hb C trait - no microcytosis
-        he400: '- HbS detected at CC% ',
+        he400: '- HbC detected at CC% ',
         // Heterozygous Hb C trait - and microcytosis
-        he401: '- HbS detected at CC% ',
+        he401: '- HbC detected at CC% ',
         // Heterozygous Hb C trait - and iron deficiency
-        he402: '- HbS detected at CC% ',
+        he402: '- HbC detected at CC% ',
         // Hemoglobin C trait and beta plus-thal (C-beta+ thal) - C > A, F 2-5%, A2 >3.5
-        he403: '- HbS detected at CC% \n- Hb F mildly elevated at FF% \n- HbA2 mildly elevated at TT%',
+        he403: '- HbC detected at CC% \n- Hb F mildly elevated at FF% \n- HbA2 mildly elevated at TT%',
         // Hemoglobin C trait and beta -thal (C-beta thal) - C only, F 2-5%, A2 >3.5
-        he404: '- HbS detected at CC% \n- Hb F mildly elevated at FF% \n- HbA2 mildly elevated at TT%',
+        he404: '- HbC detected at CC% \n- Hb F mildly elevated at FF% \n- HbA2 mildly elevated at TT%',
         // Homozygous Hb C
-        he405: '- HbS detected at CC% ',
+        he405: '- HbC detected at CC% ',
         //
         // HbF
         // HPFH
